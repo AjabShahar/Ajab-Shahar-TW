@@ -1,0 +1,73 @@
+#set ($con = ${request.getParameter("id")})
+#if($UtilMethods.isSet($con))
+
+  	#set($content = $dotcontent.find($con))			
+	<!-- Google Map -->
+	<script>
+		#if($!{content.country.selectValue} == "United States" || $!{content.country.selectValue} == "Canada")
+			#set($location = "$!{content.address1} $!{content.address2} $!{content.city}, $!{content.state.selectValue} $!{content.zip}")
+		#else
+			#set($location = "$!{content.address1} $!{content.address2} $!{content.city}, $!{content.country.selectValue}")
+		#end
+	
+		var address1 = '${location}';
+		$(document).ready(function() {
+			var geocoder = new google.maps.Geocoder();
+		      
+			geocoder.geocode({ 'address': address1}, function(results){    
+				var latlng = results[0].geometry.location;
+				var myOptions = {
+					zoom: 12,
+					center: latlng,
+					mapTypeControl: false,
+					mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+					zoomControl: false,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+				}
+				var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+		        
+				var marker = new google.maps.Marker({
+					position: latlng,
+					map: map,
+				});
+			});
+		});
+	</script>
+
+	<div id="map_canvas" class="p5" style="margin:0 auto;border:1px solid #979797; background-color:#fff; width:98%; height:200px; overflow:hidden;">
+		<div style="width:100%;height:100%;background:url(/images/icons/loader.gif) no-repeat center center;"></div>
+	</div>
+	
+	<!-- Office details -->
+	<div class="p5">
+		<table class="ajaxTable">
+			<tr>
+				<th>Address</th>
+				<td>
+					<address>
+						$!{content.address1}<br/>
+						#if ($UtilMethods.isSet($content.address2))
+							$!{content.address2}<br/>
+						#end
+						$!{content.city}, 
+						$!{content.state.selectValue} $!{content.zip}
+						#if($!{content.country.selectValue} != "United States" && $!{content.country.selectValue} != "Canada")
+							$!{content.country.selectValue}
+						#end
+					</address>
+				</td>
+			</tr>
+			<tr>
+				<th>Phone</th>
+				<td>$!{content.phone}</td>
+			</tr>
+			<tr>
+				<th>Fax</th>
+				<td>$!{content.fax}</td>
+			</tr>
+		</table>
+	</div>
+  
+#else
+	<h3>We are sorry, but the Location you are looking for is no longer available. <a href="/home/" data-direction="reverse">Click here to see all our locations</a>.</h3>
+#end

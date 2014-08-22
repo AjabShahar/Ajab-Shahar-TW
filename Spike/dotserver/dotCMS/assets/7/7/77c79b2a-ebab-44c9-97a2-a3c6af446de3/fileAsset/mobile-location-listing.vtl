@@ -1,0 +1,10 @@
+#set($_qk = "+structureName:Location 
+			+(conhost:48190c8c-42c4-46af-8d1a-0cd5db894797 conhost:SYSTEM_HOST)")
+
+#set($cons = $dotcontent.pull(${_qk},30,"Location.country desc"))
+
+<ul class="default">
+	#foreach($con in $cons)
+		<li><a href="/about-us/location-detail.html?id=$con.identifier">$!{con.title}</a></li>
+	#end
+</ul>

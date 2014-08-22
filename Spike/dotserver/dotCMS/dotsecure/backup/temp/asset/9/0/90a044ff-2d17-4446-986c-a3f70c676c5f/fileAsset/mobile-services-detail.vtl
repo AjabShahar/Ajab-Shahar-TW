@@ -1,0 +1,12 @@
+#set ($con = ${request.getParameter("id")})
+#if($UtilMethods.isSet($con))
+
+  	#set($content = $dotcontent.find($con))			
+	<div class="p5">
+		<h3>$!{content.title}</h3>
+		$!{content.body}
+	</div>
+  
+#else
+	<h3>We are sorry, but we can't find the service you are looking for. <a href="#" data-rel="back" data-direction="reverse">Click here to see all of our services</a>.</h3>
+#end

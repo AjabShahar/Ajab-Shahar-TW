@@ -1,0 +1,30 @@
+#if($request.getParameter("cat"))
+	#set($catVar=$request.getParameter("cat"))
+	#set($catQuery = "+(categories:$catVar)")
+#end
+
+
+#set($nowsers= $date.format('yyyyMMddHHmmss', $date.getDate()))
+#set($finalQuery = "+structureName:Blog $!{catQuery} +Blog.sysPublishDate:[19001010101000 TO $nowsers]")
+
+<?xml version="1.0" encoding="utf-8"?> 
+<rss version="2.0" xmlns:jf="http://${host.hostname}/blogs/rss">
+<channel>
+<title>Quest Financial Blogs</title>
+<link>http://${host.hostname}/blogs/</link>
+<description>Most Recent $!{catVar} - Quest Financial Blog</description>
+<language>en-US</language>
+<pubDate>$!{date.format('yyyy-MM-dd', $date.getDate())}T$!{date.format('hh:mm:ss', $date.getDate())}</pubDate>
+		
+#set($blogContent= $dotcontent.pull("${finalQuery}",50,"Blog.sysPublishDate desc"))	
+#foreach($blogEntry in $blogContent)
+<item>
+	<title>$webapi.xmlEscape($!{blogEntry.title})</title>
+	<description>$webapi.xmlEscape($UtilMethods.prettyShortenString("$blogEntry.body", 200))</description>
+	<link>http://${host.hostname}/blog/$blogEntry.urlTitle</link>
+	<pubDate>$!{date.format('yyyy-MM-dd', $blogEntry.sysPublishDate)}T$!{date.format('hh:mm:ss', $blogEntry.sysPublishDate)}</pubDate>
+	<guid>http://${host.hostname}/blog/$blogEntry.urlTitle</guid>
+</item>
+#end
+</channel>
+</rss>

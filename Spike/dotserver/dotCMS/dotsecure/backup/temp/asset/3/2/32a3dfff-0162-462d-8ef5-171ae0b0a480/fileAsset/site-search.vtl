@@ -1,0 +1,393 @@
+##set($indexToSearch = "fullsite")
+#set($exclude = " -mimeType:*css* -mimeType:*js* -mimeType:*plain  -mimeType:*jpg -mimeType:*png -mimeType:*jpeg -mimeType:*javascript* -mimeType:*velocity* ")
+
+
+
+#set($q = 			$request.getParameter("q"))
+#set($mimeType = 	$request.getParameter("mimeType"))
+#set($keyword = 	$request.getParameter("keyword"))
+#set($modifiedOn = 	$request.getParameter("modifiedOn"))
+
+#set($show = 20)
+#set($page = $request.getParameter("p"))
+#if(! $UtilMethods.isSet($page))
+	#set($page = 0)
+#end
+#set($page = $math.add($page, 0))
+#if($page < 0)
+	#set($page = 0)
+#end
+
+#set($start = $math.mul($page, $show))
+#set($end = $math.mul($math.add($page,1), $show))
+
+
+
+
+#if($UtilMethods.isSet($q) )
+
+	## QUERY
+	
+	#set($runQ  =$q.replaceAll("\"", ""))
+
+	
+	#set($newQ = "")
+		#if(!$runQ.contains("+"))
+		#foreach($xx in $runQ.split(" "))
+			#set($newQ = " $newQ +$xx* title:$xx*")
+		#end
+		#set($runQ = "$newQ")
+	#end
+	
+	#if($UtilMethods.isSet($mimeType))
+		#set($runQ = "$runQ +mimeType:$mimeType")
+	#end
+	
+	#if($UtilMethods.isSet($keyword))
+		#if($keyword.contains(" "))
+		  #set($runQ = "$runQ +keywords:${esc.q}$keyword${esc.q}")
+		#else
+		  #set($runQ = "$runQ +keywords:$keyword")
+		#end
+	#end
+	
+	#if($UtilMethods.isSet($modifiedOn))
+		#set($runQ = "$runQ +modified:$modifiedOn")
+	#end
+	
+	#set($runQ = "$runQ $exclude")
+	
+	
+	
+	## null for the first argument searches the "default" index
+	##set($results = $sitesearch.search("$!runQ ",  $start, $end))
+	
+	#set($results = $sitesearch.search($indexToSearch, "$!runQ ",  $start, $end))
+
+	
+	## FACETS
+	
+	## if there are quotes, we need to escape them
+	## for a facet query
+	#if($runQ.contains('"'))
+		#set($runQ = $runQ.replaceAll("\"", "\\\""))
+	#end
+	
+	#set($mimeFacetsQry = '  {
+		"query" : { "query_string" : {"query" : "$runQ"} },
+		"facets" : {
+		"mimeType" : { "terms" : {"field" : "mimeType"} }
+		},"size":0
+	}')
+	
+	
+	#set($mimeFacetsQry = $render.eval($context, $mimeFacetsQry ))
+	#set($mimeFacets = $sitesearch.getFacets($indexToSearch, $mimeFacetsQry))
+	
+	
+	#set($dateFacets = '  {
+		"query" : { "query_string" : {"query" : "$runQ"} },
+		"facets" : {
+		"modified" : { "date_histogram" : {"field" : "modified","interval" : "month" }}
+		},"size":0
+	}')
+	
+	#set($dateFacets = $render.eval($context, $dateFacets ))
+	#set($dateFacets = $sitesearch.getFacets($indexToSearch, $dateFacets))
+	
+	##Keywords Facet
+	#set($kwFacetsQry = '  {
+		"query" : { "query_string" : {"query" : "$runQ"} },
+		"facets" : {
+		"keywords" : { "terms" : { "field" : "keywords", "size" : 10 } }
+		},"size":0
+	}')
+	
+	#set($kwFacetsQry = $render.eval($context,$kwFacetsQry))
+	
+	#set($kwFacets = $sitesearch.getFacets($indexToSearch, $kwFacetsQry))
+	
+#end
+
+
+<style>
+	#resultsSearchBox{padding:10px;padding-bottom:1px;}
+	#mainResultsNum{padding-left:15px;padding-top:1px;padding-bottom:10px;font-size:80%;margin-bottom:10px;border-bottom:1px #eeeeee solid;}
+	.resultsNum{padding:1px 15px 0 15px;font-size:80%;}
+	.resultResult{padding:7px;padding-left:15px;word-wrap: break-word;}
+	.resultTitle a{font-size:110%;font-weight:bold;}
+	.resultSummary{padding-left:5px;}
+	.resultUrl{padding-left:5px;color:SteelBlue;}
+	.resultSummary em{background: #FFFFCC;}
+	.resultSummary .ellipsis{display:none;}
+
+	#resultsNone{padding:20px;font-weight:bold;}
+	#resultsMisspell{padding:20px;}
+
+
+</style>
+
+<script>
+	function addMimeType(term ){
+		document.getElementById("mimeType").value  = term;
+		document.getElementById("siteSearchForm").submit();
+	}
+	
+	function addModifiedOn(start, end ){
+		if(start && end){
+			document.getElementById("modifiedOn").value  = "[" + start + " TO " + end + "]";
+		}else{
+			document.getElementById("modifiedOn").value  = "";
+		}
+		document.getElementById("siteSearchForm").submit();
+	}
+
+	function addKeyword(term ){
+		document.getElementById("keyword").value  = term;
+		document.getElementById("siteSearchForm").submit();
+	}
+	
+	function goNext( ){
+	
+		document.getElementById("page").value  = "$math.add($page,1)";
+		
+		
+		document.getElementById("siteSearchForm").submit();
+	}
+	
+	function goPrevious(term ){
+		document.getElementById("page").value  = "$math.add($page,-1)";
+		document.getElementById("siteSearchForm").submit();
+	}
+	
+	
+	function goPage(page ){
+		document.getElementById("page").value  = page;
+		document.getElementById("siteSearchForm").submit();
+	}
+	
+</script>
+
+<div class="content">
+	
+	<div class="row">
+		<div class="span12">
+			<span style="color:white">$!{UtilMethods.xmlEscape($!runQ)}</span>
+			<form method="get" id="siteSearchForm">
+				<div id="resultsSearchBox"><input type="text" id="dotQ" name="q" value="$!{UtilMethods.xmlEscape($!q)}"> <input type="submit" value="search"></div>
+				<input type="hidden" id="modifiedOn" 	name="modifiedOn" value="$!{UtilMethods.xmlEscape($!modifiedOn)}">
+				<input type="hidden" id="mimeType" 		name="mimeType" value="$!{UtilMethods.xmlEscape($!mimeType)}">
+				<input type="hidden" id="keyword" 		name="keyword" value="$!{UtilMethods.xmlEscape($!keyword)}">
+				<input type="hidden" id="page" 			name="p" value="$!{UtilMethods.xmlEscape($!page)}">
+			</form>
+		</div>
+	</div>
+	
+	<div class="row">
+			
+		<!-- START Results box -->
+		<div class="span8">
+			#if(! $results.totalResults || $results.totalResults == 0)
+			
+				<div id="mainResultsDiv">
+			    	<div id="mainResultsNum"></div>
+					<div class="resultResult">
+						<em>No Results</em>
+					</div>
+				</div>
+			  
+			#else
+			
+				<div id="mainResultsDiv">
+					<div id="mainResultsNum">
+						#set($showEnd = $end)
+						#if($showEnd >  $results.totalResults)
+							#set($showEnd = $results.totalResults)
+						#end
+						Showing results $math.add($results.start,1) - $showEnd of $results.totalResults
+				    </div>
+				    
+					#set($i =0)
+					#foreach($detail in $results.results)
+						<div class="resultResult">
+							<div class="resultTitle"><a href="$detail.uri">$detail.title</a></div>
+							<div class="resultUrl">http://dotcms.com$detail.uri</div>
+							#foreach($highlight in $detail.highlights)
+								<div class="resultSummary">$highlight...</div>
+								#break
+							#end
+							<div class="resultsNum">modified: $detail.modified</div>
+							<div class="resultsNum">${detail.highlights.size()} match(es) in document</div>
+						</div>
+				  		#set($i =$math.add($i, 1))
+				  		#if($i==$show)
+				  			#break
+				  		#end
+					#end
+				</div>
+				
+			#end​​
+		</div>
+		<!-- END Results box -->
+		
+		<!-- START Facet box -->
+		<div class="span4 visible-desktop">
+			<div id="facetDiv">
+				
+				#if($UtilMethods.isSet($mimeFacets) && $mimeFacets.size() > 0)
+					#foreach($facet in $mimeFacets)
+						<span>
+							Type:
+							#if($UtilMethods.isSet($mimeType))
+								(<a href="javascript:addMimeType('')">clear</a>)
+							#end
+						
+						
+							#if(!$UtilMethods.isSet($facet.entries()) || $facet.entries().size() ==0)
+								<em>No Results</em>
+							#end
+						</span>
+
+						<ul>
+							#foreach($term in $facet.entries())
+								#set($strStart = $term.term.indexOf("/") +1)
+								#set($strEnd = $term.term.length())
+								#set($termTerm  = $term.term.substring($strStart, $strEnd))
+								#if($termTerm.contains("document"))
+									#set($termTerm ="document")
+								#end
+								<li>
+									#if($term.term == "$mimeType")
+										<i class="icon-ok-circle"></i> <a href="javascript:addMimeType('$term.term')"><b>$termTerm</b></a> ($term.count)
+									#else
+										<i class="icon-ok-circle"></i> <a href="javascript:addMimeType('$term.term')">$termTerm</a> ($term.count)
+									#end
+								</li>
+							#end
+						</ul>
+					#end
+				#end
+		
+				#if($dateFacets)
+					#foreach($facet in $dateFacets)
+						<span>
+							
+							Month Modified:
+							#if($UtilMethods.isSet($modifiedOn))
+								(<a href="javascript:addModifiedOn('','')">clear</a>)
+							#end
+							
+							#if(!$UtilMethods.isSet($facet.entries()) || $facet.entries().size() ==0)
+								<em>No Results</em>
+							#end
+						</span>
+
+						<ul>
+							#set($terms = $facet.entries())
+							#set($startDate =$date.getDate())
+		
+							#foreach($t in $facet.entries())
+								#set( $index = $facet.entries().size() - $velocityCount )
+								#set($t = $listTool.get($terms,$index))
+								#set($x = $date.getDate())
+								${x.setTime($t.time)}
+								<li>
+								
+									#if($UtilMethods.isSet($modifiedOn))
+										#set($nextDay = $date.getDate())
+										$nextDay.setTime($math.add($x.time, 86400000))
+										<b>$date.format('MMM', $nextDay) </b> ($t.count)
+									#else
+										#set($nextDay = $date.getDate())
+										$nextDay.setTime($math.add($x.time, 86400000))
+										
+										<i class="icon-ok-circle"></i> 
+										<a href="javascript:addModifiedOn('$date.format('yyyy-MM-dd', $nextDay)','$date.format('yyyy-MM-dd', $startDate)')">
+											$date.format('MMM', $nextDay)
+										</a>
+										($t.count)
+		  							#end
+								</li>
+								#set($startDate =$x)
+							#end
+						</ul>
+					#end
+				#end
+		        
+				#if($UtilMethods.isSet($kwFacets) && $kwFacets.size() > 0)
+					#foreach($facet in $kwFacets)
+						<span>
+							By Keywords:
+							#if(!$UtilMethods.isSet($facet.entries()) || $facet.entries().size() ==0)
+								<em>No Results</em>
+							#end
+							#if($UtilMethods.isSet($keyword))
+								(<a href="javascript:addKeyword('')">clear</a>)
+							#end
+						</span>
+						<ul>
+							#foreach($term in $facet.entries())
+								#if($UtilMethods.isSet($term.term))
+									#if(!$UtilMethods.isSet($keyword))
+										<li><i class="icon-ok-circle"></i> <a href="javascript:addKeyword('$term.term')">$term.term</a> ($term.count)</li>
+									#elseif($keyword == $term.term)
+										<li><b>$term.term</b> ($term.count)</li>
+									#end
+								#end
+							#end    
+						</ul>
+					#end
+				#end
+			</div>
+		</div>
+		<!-- END Facet box -->
+	
+	</div>
+
+
+	<!-- START Pagination -->
+	#if($results.totalResults > 0)
+		<div class="row">
+			<div class="span12">
+				<div class="pagination pagination-centered">
+					<ul>
+						#if($page > 0)
+							<li><a href="#" onclick="goPrevious()" class="next">Prev</a></li>
+						#else
+							<li class="disabled"><a>Prev</a></li>
+						#end
+	
+						
+						#set($pages = $math.div($results.totalHits,$show))
+						#set($showPagesBottom = $pages)
+						
+						#if($pages > 9)
+							#set($showPagesBottom = 9)
+						#end
+		
+						#foreach($foo in [0..$showPagesBottom])
+							#if($foo == $page)
+								<li class="active"><a>$math.add($foo,1)</a></li>
+							#else
+								<li><a href="#" onclick="goPage($foo)">$math.add($foo,1)</a></li>
+							#end
+						#end
+
+	
+						#if($math.add($page,1) < $pages)
+							<li><a href="#" onclick="goNext()" class="next">Next</a></li>
+						#else
+							<li class="disabled"><a>Next</a></li>
+						#end
+					</ul>
+				</div>
+			</div>	
+		</div>
+	#end
+	<!-- End Pagintation -->
+
+</div>
+
+
+
+

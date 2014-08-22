@@ -1,0 +1,27 @@
+#if(!$EDIT_MODE)
+	$response.setContentType("text/xml")
+#end
+#set($nowsers= $date.format('yyyyMMddHHmmss', $date.getDate()))
+
+#set($_qk = "+structureName:News
+      +(conhost:$host.identifier conhost:SYSTEM_HOST)
+      +News.sysPublishDate:[19001010101000 TO $nowsers]")
+
+#set($cons = $dotcontent.pull(${_qk},20,"News.sysPublishDate desc"))
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Quest News and Healines</title>
+    <description>Today’s top stores and headlines from the world of finance.</description>
+    <link>http://${host.hostname}/</link>
+    <atom:link href="http://${host.hostname}/news-events/news-rss.html" rel="self" type="application/rss+xml" />
+        #foreach($con in $cons)
+            <item>
+                <title>$webapi.xmlEscape($!{con.title})</title>
+                <description>$webapi.xmlEscape($UtilMethods.prettyShortenString("$con.story", 255))</description>
+                <link>http://${host.hostname}/news/$con.urlTitle</link>
+                <guid>http://${host.hostname}/news/$con.urlTitle</guid>
+            </item>
+    	#end
+  </channel>
+</rss>

@@ -1,0 +1,20 @@
+#set($nowsers= $date.format('yyyyMMddHHmmss', $date.getDate()))
+
+#set($_qk = "+structureName:News
+      +(conhost:48190c8c-42c4-46af-8d1a-0cd5db894797 conhost:SYSTEM_HOST)
+      +News.sysPublishDate:[19001010101000 TO $nowsers]")
+
+#set($cons = $dotcontent.pull(${_qk},20,"News.sysPublishDate desc"))
+
+<ul class="default">
+	#foreach($con in $cons)
+		<li>
+			<a data-transition='slide' href="/news/news-detail.html?id=$con.identifier">
+				$!{con.title}
+				<time datetime="$date.format('yyyy-MM-dd',$!con.sysPublishDate)T$date.format('hh:mm:ss',$!con.sysPublishDate)">
+					$date.format('MMMM dd, yyyy',$con.sysPublishDate)
+				</time>
+			</a>
+		</li>
+	#end
+</ul>

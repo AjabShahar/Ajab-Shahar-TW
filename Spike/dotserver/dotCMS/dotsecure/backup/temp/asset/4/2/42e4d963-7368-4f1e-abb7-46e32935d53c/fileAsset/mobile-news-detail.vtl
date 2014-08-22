@@ -1,0 +1,21 @@
+#set ($con = ${request.getParameter("id")})
+
+#if($UtilMethods.isSet($con))
+	#getContent("${con}")
+	<div class="news-header">
+		<h3>$!content.title</h3>
+		<span class="byline">Author: $!content.byline</span>
+		<time datetime="$date.format('yyyy-MM-dd',$content.sysPublishDate)T$date.format('hh:mm:ss',$content.sysPublishDate)">$date.format('MMM dd yyyy',$!content.sysPublishDate) at $date.format('HH:mm z',$!content.sysPublishDate)</time>
+		<div class="clear"></div>
+	</div>
+
+	<div class="news-body">
+		#if($UtilMethods.isSet($!content.lead))
+			<p>$!content.lead</p>
+		#end
+		
+		$!content.story
+	</div>
+#else
+	<h3>We are sorry, but the story you are looking for is no longer available. <a href="/news/">Click here to see all news stories</a>.</h3>
+#end

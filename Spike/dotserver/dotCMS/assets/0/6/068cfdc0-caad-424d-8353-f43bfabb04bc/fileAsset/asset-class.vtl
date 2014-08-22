@@ -1,0 +1,68 @@
+<script>
+
+  function updateAssetType(){
+    var x = dijit.byId("assetSelect");
+    
+    document.getElementById("assetClass").value=x.value;
+    
+    if (x.value == "Stock") {
+      dojo.style("marketCap_tag", "display", "block");
+      dojo.style("marketCap_field", "display", "block");
+      dojo.style("style_tag", "display", "block");
+      dojo.style("style_field", "display", "block");
+      
+      dijit.byId("quality").setValue("");
+      dijit.byId("maturity").setValue("");
+      
+      dojo.style("quality_tag", "display", "none");
+      dojo.style("quality_field", "display", "none");
+      dojo.style("maturity_tag", "display", "none");
+      dojo.style("maturity_field", "display", "none");
+    }
+    else if (x.value == "Bond") {
+      dijit.byId("marketCap").setValue("");
+      dijit.byId("marketCap").setValue("");
+      
+      dojo.style("marketCap_tag", "display", "none");
+      dojo.style("marketCap_field", "display", "none");
+      dojo.style("style_tag", "display", "none");
+      dojo.style("style_field", "display", "none");
+      
+      dojo.style("quality_tag", "display", "block");
+      dojo.style("quality_field", "display", "block");
+      dojo.style("maturity_tag", "display", "block");
+      dojo.style("maturity_field", "display", "block");
+    }
+    else {
+      dijit.byId("quality").setValue("");
+      dijit.byId("maturity").setValue("");
+      dijit.byId("marketCap").setValue("");
+      dijit.byId("style").setValue("");
+      
+      dojo.style("marketCap_tag", "display", "none");
+      dojo.style("marketCap_field", "display", "none");
+      dojo.style("style_tag", "display", "none");
+      dojo.style("style_field", "display", "none");
+      
+      dojo.style("quality_tag", "display", "none");
+      dojo.style("quality_field", "display", "none");
+      dojo.style("maturity_tag", "display", "none");
+      dojo.style("maturity_field", "display", "none");
+    }
+  }
+  
+  dojo.addOnLoad(function(){
+    updateAssetType();
+  });
+  
+</script>
+
+<select dojoType="dijit.form.ComboBox" id="assetSelect" name="assetSelect" value="$assetClass" onchange="updateAssetType();">
+    <option></option>
+  <option value="Balanced" >Balanced</option>
+    <option value="Bond">Bond</option>
+    <option value="Money Market">Money Market</option>
+  <option value="Stock">Stock</option>
+</select>
+          
+          

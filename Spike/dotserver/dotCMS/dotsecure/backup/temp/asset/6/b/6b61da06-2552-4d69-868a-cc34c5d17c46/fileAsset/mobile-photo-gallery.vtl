@@ -1,0 +1,9 @@
+<ul class="gallery">
+	#foreach($con in $dotcontent.pull("+structureName:Document +Document.metaData.contentType:image/*",25,"modDate desc"))						
+	<li>
+		<a href="/contentAsset/resize-image/$con.identifier/fileAsset?h=450" rel="external">
+			<img src="/contentAsset/resize-image/$con.identifier/fileAsset?w=100" alt="$con.title" />
+		</a>
+	</li>
+	#end
+</ul>

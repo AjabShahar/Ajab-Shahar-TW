@@ -1,0 +1,95 @@
+#macro (showBootStrapNav $menuLevel $levelPath $level $menuSpans $firstItemClass $lastItemClass $menuIdPrefix)
+
+  #set ($VTLSERVLET_DECODED_URI = "${UtilMethods.decodeURL($VTLSERVLET_URI)}")
+  #if (($menuLevel.size() > 0) && ($UtilMethods.inString($VTLSERVLET_DECODED_URI, $levelPath) || ($UtilMethods.isSet($openAllLevels) && $openAllLevels == true)))
+    
+    #if ($level == 1)
+      <ul class="nav pull-right">
+    #else
+      <ul class="dropdown-menu">
+    #end
+
+      #foreach ($menuItem in $menuLevel)
+      
+        #if (!$UtilMethods.isSet($menuItem.linkType))
+          #set($menuItem.linkType = "")
+        #end
+      
+        
+        #if (($menuItem.type == "LINK") && ($menuItem.linkType == "CODE"))
+        
+          <li>$menuItem.path</li>
+          
+        #else
+        
+          #if ($menuItem.type == "LINK")
+            #set ($link = "${menuItem.protocal}${menuItem.name}")
+          #elseif ($menuItem.type == "FOLDER")
+            #set ($link = "${menuItem.path}")
+          #else
+            #set ($link = "${menuItem.path}$!{menuItem.name}")  
+          #end
+          
+                  
+          #set ($target = "")
+          #if (($menuItem.type == "LINK") && $UtilMethods.isSet($menuItem.target))
+            #set ($target = "target='${menuItem.target}'")
+          #end
+
+        
+        
+          #if ($menuItem && $menuItem.submenu && $menuItem.submenu.size() > 1)
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                $menuItem.title
+                <b class="caret"></b>
+              </a>
+          #else
+            <li>
+              #if ($menuItem.type == "LINK")
+                <a href="$!{link}" $!{target}>${menuItem.title}</a>
+              #else
+                <a href='$!{UtilMethods.encodeURIComponent($link)}' $!{target}>$!{menuItem.title}</a>
+              #end
+          #end
+          
+        #end
+        
+        #if ($menuItem.type == "FOLDER")
+            #showBootStrapNav($menuItem.submenu $menuItem.path $math.add($level, 1) $menuSpans $firstItemClass $lastItemClass $menuIdPrefix)
+          </li>
+        #else
+          </li>
+        #end
+      #end
+      
+      </ul>
+    #end
+#end
+
+
+<div class="navbar navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      
+      #if($UtilMethods.isSet($!user) && $cmsuser.isUserRole($user, "Intranet") && !($EDIT_MODE))
+        <a class="logo" href="/"><img src="/images/template/intranet-logo.png" alt="Quest Advisor | dotCMS Starter Site"></a>
+      #else
+        <a class="logo" href="/"><img src="/images/template/logo.png" alt="Quest | dotCMS Starter Site"></a>
+      #end
+      
+      
+      <div class="nav-collapse collapse">
+        #showBootStrapNav($navigationItems '/' 1 $menuSpans $firstItemClass $lastItemClass $menuIdPrefix)
+      </div>
+      
+    </div>
+  </div>
+</div>

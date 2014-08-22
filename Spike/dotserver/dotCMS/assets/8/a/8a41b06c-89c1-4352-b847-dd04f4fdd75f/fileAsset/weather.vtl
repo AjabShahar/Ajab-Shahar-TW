@@ -1,0 +1,17 @@
+#set($geolocationFromSession = $session.getAttribute("geolocation"))
+ 
+#if(!$UtilMethods.isSet($geolocationFromSession))
+	#set($locationURL = "http://www.geoplugin.net/json.gp?ip=$!clickstream.remoteAddress")
+	#set($geolocation = $json.fetch("$!locationURL"))
+	$session.setAttribute("geolocation", $geolocation)
+#else
+	#set($geolocation = $session.getAttribute("geolocation"))
+#end
+
+<div class="weather">
+	#if(!$UtilMethods.isSet($geolocation)) 
+		<iframe allowtransparency="true" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no"  height="222" width="300" src="http://www.superpages.com/cities/wconsole.php?size=5&color=light&idlt=25.73,-80.24&T=Miami&S=FL"></iframe>
+	#else
+		<iframe allowtransparency="true" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no"  height="222" width="300" src="http://www.superpages.com/cities/wconsole.php?size=5&color=light&idlt=$!{geolocation.geoplugin_latitude},$!{geolocation.geoplugin_longitude}&T=$!{geolocation.geoplugin_city}&S=$!{geolocation.geoplugin_region}"></iframe>
+	#end 
+</div>

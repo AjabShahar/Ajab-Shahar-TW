@@ -1,0 +1,123 @@
+#set($categoryList = "")
+
+#foreach($con in $URLMapContent.topic)
+	#set($categoryList = "$categoryList $con.categoryVelocityVarName")
+#end
+
+#set($nowsers= $date.format('yyyyMMddHHmmss', $date.getDate()))
+		
+	<!-- STORY PHOTO -->
+	#if ($UtilMethods.isSet($URLMapContent.imageBinaryFileURI))
+		<div class="p3">
+			<figure>
+				<a href="$URLMapContent.imageBinaryFileURI/$URLMapContent.imageBinaryFileTitle" class="hoverImage prettyPhoto" title="">
+					<img src="/contentAsset/resize-image/$URLMapContent.identifier/image/w/294" alt="$!URLMapContent.title, $!URLMapContent.caption" />
+				</a>
+			</figure>
+			#if ($UtilMethods.isSet($URLMapContent.caption))
+				<figcaption>$URLMapContent.caption</figcaption>
+			#end
+			
+		</div>
+	#end
+
+
+	<!-- RELATED NEWS -->
+	<div class="p6">
+		#set($_qk = "+structureName:News
+			+(conhost:$host.identifier conhost:SYSTEM_HOST)
+			+($categoryList)
+			-News.title:*${URLMapContent.title}*
+			+News.sysPublishDate:[19001010101000 TO $nowsers]")
+	
+		#set($cons = $dotcontent.pull(${_qk},10,"News.syspublishdate desc"))
+		
+		<h3>Related News</h3>
+		<ul class="related-news">
+			#foreach($con in $cons)
+				<li>
+					<a href="/news/$con.urlTitle" class="normaltip" title="Publish Date: $date.format('MMM dd yyyy',$con.sysPublishDate) at $date.format('HH:mm z',$con.sysPublishDate)">$!{con.title}</a>
+				</li>
+			#end
+		</ul>
+	</div>
+
+
+	<!-- RELATED MEDIA -->
+	<div class="p3">
+		
+		#set($_qk = "+structureName:Media
+			+(conhost:48190c8c-42c4-46af-8d1a-0cd5db894797 conhost:SYSTEM_HOST)
+			+($categoryList)
+			+Media.sysPublishDate:[19001010101000 TO $nowsers]")
+	
+		#set($cons = $dotcontent.pull(${_qk},9,"Media.syspublishdate desc"))
+		
+		<h3>Related Media</h3>
+		<ul class="gallery">
+			
+		#foreach($con in $cons)
+			## Set File path for link
+			#if ($UtilMethods.isSet($con.file.rawUri))
+				#set ($filePath = "$con.file.rawUri/$con.file.name")
+			#else
+				#set ($filePath = $con.url)
+			#end
+			
+			
+			## Set thumbnail Image
+			#if ($UtilMethods.isSet($con.thumbnail.rawUri))
+				#set ($thumbNail = "<img src='/contentAsset/image/$con.inode/thumbnail/byInode/1/filter/Resize/resize_h/60/resize_w/75' alt='$!{con.title}' />")
+			#elseif($UtilMethods.isImage($filePath))
+				#set ($thumbNail = "<img src='/contentAsset/image/$con.inode/file/byInode/1/filter/Resize/resize_h/60/resize_w/75' alt='$!{con.title}' />")
+			#else
+				#set ($thumbNail = "<img src='/images/photos/willathishomeoffice.jpg' width='75' alt='$!{con.title}' />")
+			#end
+			
+			
+			## Set hover class
+			#if ($UtilMethods.isImage($filePath))
+				#set($class = "hoverImage")
+			#else
+				#set($class = "hoverVideo")
+			#end
+	
+	
+			<li>
+				<div class="media-thumbnail">
+					#if ($UtilMethods.getFileExtension($filePath) != 'mp3')
+						<a href="$filePath" class="$class prettyPhoto" title="$!{con.title}">
+							${thumbNail}
+						</a>
+					#else
+						<a href="#playerDiv" class="$class prettyPhoto" title="$!{con.title}">
+							${thumbNail}
+						</a>
+	
+						<div id="playerDiv" style="display:none;">
+						<div style="width:425px;height:30px;margin:0 auto;padding:20px;">
+  							<object class="playerpreview" type="application/x-shockwave-flash" data="/images/prettyPhoto/player_mp3.swf" width="400" height="40">
+          					<param name="movie" value="/images/prettyPhoto/player_mp3.swf" />
+          					<param name="FlashVars" value="mp3=$filePath&autoplay=1&showstop=1&showvolume=1&bgcolor1=4287b5&bgcolor2=0b698f" />
+      						</object>
+						</div>
+						</div>
+					#end
+				</div>
+				<div class="media-details">
+					<span class="media-title">
+						#if ($UtilMethods.isSet($con.averageRating))
+							<span class="star-rating pct$!math.floor($!{con.averageRating}) normaltip" title="$!math.roundTo(2, $!{con.averageRating})">&nbsp;</span>
+						#else
+							<span class="star-rating pct0 normaltip" title="Not Rated">&nbsp;</span>
+						#end
+						$con.title
+					</span>
+					<time class="media-date" datetime="$date.format('yyyy-MM-dd',$!con.sysPublishDate)T$date.format('hh:mm:ss',$!con.sysPublishDate)">$date.format('MMM dd yyyy',$con.sysPublishDate) at $date.format('HH:mm z',$con.sysPublishDate)</time>
+					<span class="media-description">$UtilMethods.prettyShortenString("$con.description", 100)</span>
+				</div>
+				<div class="clear"></div>
+			</li>
+		#end
+		</ul>
+	</div>

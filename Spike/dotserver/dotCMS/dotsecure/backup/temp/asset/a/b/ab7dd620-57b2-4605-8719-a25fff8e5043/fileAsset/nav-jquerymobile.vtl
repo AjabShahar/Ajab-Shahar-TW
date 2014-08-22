@@ -1,0 +1,64 @@
+#macro (showMobileNavigation $menuLevel $levelPath $level $menuSpans $firstItemClass $lastItemClass $menuIdPrefix)
+#set ($VTLSERVLET_DECODED_URI = "${UtilMethods.decodeURL($VTLSERVLET_URI)}")
+#if (($menuLevel.size() > 0) && ($UtilMethods.inString($VTLSERVLET_DECODED_URI, $levelPath) || ($UtilMethods.isSet($openAllLevels) && $openAllLevels == true)))
+
+<ul class="default">
+	#foreach ($mobileMenuItem in $menuLevel)
+		#if (!$UtilMethods.isSet($mobileMenuItem.linkType))
+			#set($mobileMenuItem.linkType = "")
+		#end
+		#if (($mobileMenuItem.type == "LINK") && ($mobileMenuItem.linkType == "CODE"))
+			$mobileMenuItem.path
+		#else
+			#set ($li = "<li")
+
+			#if ($mobileMenuItem.type == "LINK")
+				#set ($link = "${mobileMenuItem.protocal}${mobileMenuItem.name}")
+			#elseif ($mobileMenuItem.type == "FOLDER")
+				#set ($link = "${mobileMenuItem.path}")
+			#else
+				#set ($link = "${mobileMenuItem.path}$!{mobileMenuItem.name}")	
+			#end
+	
+			#set ($folderId = "")
+			#if ($mobileMenuItem.type == "FOLDER")
+				#set ($folderId = "${mobileMenuItem.name}")
+				#if ($UtilMethods.isSet($menuIdPrefix))
+					#set ($folderId = "${menuIdPrefix}_${folderId}")
+				#end
+				#set ($folderId = "id='${folderId}'")
+			#end
+	
+			#set ($target = "")
+			#if (($mobileMenuItem.type == "LINK") && $UtilMethods.isSet($mobileMenuItem.target))
+				#set ($target = "target='${mobileMenuItem.target}' rel='external'")
+			#end
+	
+			#if ($mobileMenuItem.type == "LINK")
+				#set ($li = "${li} ${folderId}><a ${styleClass} href='$!{link}' ${target}>")
+			#else
+				#set ($li = "${li} ${folderId}><a ${styleClass} href='${UtilMethods.encodeURIComponent($link)}' ${target}>")
+			#end
+			
+			#if ($menuSpans)
+				#set ($li = "${li} <span>$mobileMenuItem.title</span>")
+			#else
+				#set ($li = "${li} $mobileMenuItem.title")
+			#end
+			
+			#set ($li = "${li}</a>")
+			#if ($mobileMenuItem.type == "FOLDER")
+			        $li
+				#showMobileNavigation($mobileMenuItem.submenu $mobileMenuItem.path $math.add($level, 1) $menuSpans $firstItemClass $lastItemClass $menuIdPrefix)
+				</li>
+			#else
+				$li</li>
+			#end
+		#end
+	#end
+</ul>
+
+#end
+#end
+
+#showMobileNavigation($navigationItems '/' 1 $menuSpans $firstItemClass $lastItemClass $menuIdPrefix)

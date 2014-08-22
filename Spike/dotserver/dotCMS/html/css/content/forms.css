@@ -1,0 +1,215 @@
+/* default styles for Forms */
+
+/* General Layout
+------------------------------------------------- */
+.submitContent {
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+.submitContent .group:after {
+	margin: 0 0 1.75em 0;
+	padding: 0;
+	content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+.submitContent dt.formFieldLabel {
+	margin: 0;
+	padding: 0;
+	float: left;
+	display: block;
+	width: 37%;
+}
+.submitContent dt.formFieldLabel label {
+	margin: 0;
+	padding: 0;
+	float: right; 
+}
+.submitContent dd.formFieldInput {
+	margin: 0;
+	padding: 0;
+	float: right;
+	display: block;
+	width:60%;
+}
+.submitContent dd.formFieldInput label {
+	margin: 0;
+	padding: 0;
+	float: none;
+	display: inline;
+}
+.submitButton {
+	margin: 0;
+	padding: 0;
+	width:100%;
+	text-align: center;
+	clear:both;
+}
+.submitContent .formDivider{
+	font-weight:bold;
+	border-bottom:1px solid #ddd;
+	padding: 3px;
+	margin-bottom:15px;
+}
+/* Tab Styles
+------------------------------------------------- */
+.submitContent .tabSet {
+	margin: 0 0 15px 0;
+	padding: 0;
+	border-bottom:1px solid #ddd; 
+	float:left; 
+	width:100%;
+}
+.submitContent .tabSet ul {
+	margin:0;
+	padding:0.75em 0;
+}
+.submitContent .tabSet ul li.alpha, 
+.submitContent .tabSet ul li.beta {
+	margin:0 0 0 0;
+	padding: 0 1.5em 0 0;
+	display: inline;
+	list-style-type: none;
+	background: url(../../images/icons/arrow-000-medium.png) right no-repeat;
+}
+.submitContent .tabSet ul li.alpha {
+	color:#333;
+}
+.submitContent .tabSet ul li.beta {
+	color:#ccc;
+}
+.submitContent .tabSet ul li.beta.last, 
+.submitContent .tabSet ul li.alpha.last {
+	background-image: none;
+}
+
+#categoriesbox {
+	border:none;	
+	border-bottom: 1px solid #efefef;
+	padding-bottom: 1.0em;
+}
+
+/* Patch IE Browsers
+------------------------------------------------- */
+* html .group { /* IE6 */
+	height: 1%;
+	padding-bottom: 1.75em;
+}
+*:first-child+html .group { /* IE7 */
+	min-height: 1px;
+	padding-bottom: 1.75em;
+}
+
+/* Marked for deletion
+------------------------------------------------- 
+.submitContent dd.formFieldInput input {
+	margin: 0;
+	padding: 0;
+}
+.submitContent .tabSet a:link, 
+.submitContent .tabSet a:visited {
+	margin: 0;
+	padding: 0 1.25em 0.75em 1.25em;
+	display: block;
+	float:left;
+	font-size: 105%;
+	text-decoration: none;
+	border-top:1px solid #ddd;
+	border-left:1px solid #ddd;
+	border-right:1px solid #ddd;
+	background: #82c7ea;
+	color:#fff;
+}
+.submitContent .tabSet a:hover {
+	background: #143d55;
+	color: #fff;
+	text-decoration: none;
+}
+*/
+/* relationship dialog */
+#relationshipsDialog .dojoDialog {
+	background : #ffffff;
+	border : 1px solid #999;
+	-moz-border-radius : 5px;
+	padding : 4px;
+	margin-bottom : 0;
+}
+/* group multiple buttons in a row */
+#searchFields {
+	display: block;
+	text-align: center;
+}
+#searchFields .dojoButton {
+	float: left;
+	margin-right: 10px;
+}
+
+#relationshipsDialog #searchResults li {
+   border-bottom: 1px solid #B3B3B3;
+   list-style-type: none;
+}
+#relationshipsDialog #searchResults li .addButton {
+	float:right;
+}
+
+#relationshipsDialog #pagination .previousButton{
+	float:left;
+}
+
+#relationshipsDialog #pagination .nextButton{
+	float:right;
+}
+
+button.removeFile, button.browse {
+	padding: 6px !important;
+	width: 100px !important;
+	margin-left: 3px;	
+}
+.submitContent dt.formFieldLabel .contentHint{
+	display:block;
+	color:#999;
+	font-size:11px;
+	font-weight:normal;
+	line-height:14px;
+	white-space:normal;
+	font-style:italic;
+}
+.submitContent dt.formFieldLabel .hintIcon {
+	background: url(/html/images/icons/dotcms-sprite.png) no-repeat -21px -900px;
+	width:18px;
+	height:18px;
+	display:inline-block;
+	vertical-align:top; 
+	opacity:.4;
+}
+.submitContent dt.formFieldLabel .hintIcon:hover{
+	opacity:.9;
+}
+
+.dmundra .dijitInputField INPUT, .dmundra .dijitTextBox, .dmundra .dijitSpinner{
+	padding:0 0 3px;
+}
+input.imageField , input.fileField {
+       width: 300px;
+       position: relative;
+   	   text-align: right;
+       -moz-opacity:0 ;
+       filter:alpha(opacity: 0);
+       opacity: 0;
+       z-index: 2;
+}
+div.imageInputs , div.fileInputs {
+       position: relative;
+}
+div.browseFile { 
+       position: absolute; 
+       top: 0px; 
+       left:0px;
+       z-index: 1;
+}
+input.dijitArrowButtonInner{
+      cursor:pointer;
+}

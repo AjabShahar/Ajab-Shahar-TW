@@ -1,0 +1,36 @@
+#set($nowsers= $date.format('yyyyMMddHHmmss', $date.getDate()))
+
+#set($_qk = "+structureName:News
+      +(conhost:$host.identifier conhost:SYSTEM_HOST)
+      +News.sysPublishDate:[19001010101000 TO $nowsers]")
+
+#set($cons = $dotcontent.pull(${_qk},20,"News.sysPublishDate desc"))
+
+<div class="page-title">
+  <h2>Headlines</h2>
+  <a href="/news-events/news/news-rss.html" class="rss-button">RSS Feeds</a>
+</div>
+<ul class="news-listing">
+#foreach($con in $cons)
+  <li>
+    #editContentlet($con.inode)
+    #if($con.hostfolder.name == "intranet" && !($EDIT_MODE))
+      <div class="exclusive">Advisor Exclusive</div>
+    #end
+    <h3><a href="/news/$con.urlTitle">$!{con.title}</a></h3>
+    <time datetime="$date.format('yyyy-MM-dd',$!con.sysPublishDate)T$date.format('hh:mm:ss',$!con.sysPublishDate)">
+      $date.format('MMMM dd, yyyy',$con.sysPublishDate),
+      #if($con.commentscount > 0)
+        $con.commentscount Comments
+      #else
+         No Comments
+      #end
+    </time>
+    #if($UtilMethods.isSet($!con.lead))
+      $!{con.lead}
+    #else
+      $UtilMethods.prettyShortenString("$con.story", 130)</p>
+    #end
+  </li>
+#end
+</ul>

@@ -1,0 +1,51 @@
+#if($UtilMethods.isSet($request.getParameter('date')))
+  #set($dateString = $request.getParameter('date'))
+#else
+  #set($dateString = $date.format('yyyy-MM-dd',$UtilMethods.getCurrentDate()))
+#end
+#set($nowlv = $date.toDate('yyyy-MM-dd',$dateString))
+#set($now = $date.toDate('yyyy-MM-dd',$dateString))
+#set($fromDatelv = $date.toDate('yyyy-MM-dd',$dateString))
+#set($toDatelv = $date.toDate('yyyy-MM-dd',$dateString))
+#set($calendarlv = $date.toCalendar($nowlv))
+#set($dayOfWeeklv = $math.sub($calendarlv.get(7),1))
+
+#set($temp = $fromDatelv.setTime($math.sub($fromDatelv.getTime(), $math.mul(86400000,$dayOfWeeklv))))
+#set($temp = $toDatelv.setTime($math.add($toDatelv.getTime(),$math.mul(86400000,$math.sub(6,$dayOfWeeklv)))))
+
+#set ($query = "+structureName:calendarEvent +conhost:$host.identifier +live:true +calendarEvent.startdate:[19000101000000 TO $date.format('yyyyMMddHHmmss',$toDatelv)] +calendarEvent.enddate:[$date.format('yyyyMMddHHmmss',$fromDatelv) TO 30000101000000]")
+
+#set($tag = $request.getParameter('tag'))
+#if($UtilMethods.isSet($tag))
+  #set ($query = "$query +calendarEvent.tags:$tag")
+#end
+
+#set($cat = $request.getParameter('cat'))
+#if($UtilMethods.isSet($cat))
+  #set ($query = "$query +categories:$cat")
+#end
+#set($keywordBox = $request.getParameter('keywordBox'))
+#if($UtilMethods.isSet($keywordBox))
+  #set ($query = "$query +calendarEvent.title:${keywordBox}*")
+#end
+
+#set ($list = $dotcontent.pull("$query",0,"calendarEvent.startDate desc"))
+
+#if ($list.size() > 0)
+<div class="ongoing-events">
+  <h3>Ongoing Events</h3>
+  <ul>
+    #foreach($levent in $list)
+    #set($evtSD = $date.format('MMMM d',$levent.startDate))
+    #set($evtED = $date.format('MMMM d',$levent.endDate))
+    #if($evtSD != $evtED)
+    <li>
+      <a href="/news-events/events/$levent.urlTitle?id=$levent.identifier">$levent.title</a><br>
+      <small>$evtSD to $evtED</small>
+      ##<p>$UtilMethods.shortenString("$levent.description", 220)</p>
+    </li>
+    #end
+    #end
+  </ul>
+</div>
+#end

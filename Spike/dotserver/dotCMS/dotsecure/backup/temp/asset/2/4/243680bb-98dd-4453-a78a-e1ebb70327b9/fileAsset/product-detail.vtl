@@ -1,0 +1,158 @@
+#if($URLMapContent.inode)
+
+<script>
+	$(document).ready(function() {
+				
+		jQuery.getJSON("http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22$!{URLMapContent.tickerSymbol}%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=?",
+		function(data) {
+			var q = (data.query.results.quote.PreviousClose);
+			var x = (data.query.results.quote.Change);
+			var y = (data.query.results.quote.PercentChange);
+			
+			jQuery("#price").append(q);
+			
+			if (x.indexOf("-") != -1) {
+				var x = "<span class=\"down\">&nbsp;" + x + "&nbsp;(" + y + ")</span>";
+			} else if (x.indexOf("+") != -1) {
+				var x = "<span class=\"up\">&nbsp;" + x + "&nbsp;(" + y + ")</span>";
+			} else {
+				var x = "<span>&nbsp;" + x + "&nbsp;(" + y + ")</span>";
+			}
+			jQuery("#change").append(x);
+		});
+		
+		jQuery.getJSON("http://query.yahooapis.com/v1/public/yql?q=use%20'http%3A%2F%2Fyqlblog.net%2Fsamples%2Fdata.html.cssselect.xml'%20as%20data.html.cssselect%3B%20select%20*%20from%20data.html.cssselect%20where%20url%3D%22http%3A%2F%2Ffinance.yahoo.com%2Fq%3Fs%3D$!{URLMapContent.tickerSymbol}%22%20and%20css%3D%22%23yfi_perf_risk%20.bd%20table%20tr%22&format=json&callback=?",
+		function(data) {
+			var i = 0;
+			while (i <= 3) {
+				var x = "<tr><th scope=\"row\" class=\"name\">" + (data.query.results.results.tr[i].td[0].p) + "</th>";
+				var x = x + "<td style=\"text-align:right\">" + (data.query.results.results.tr[i].td[1].p) + "</td></tr>";
+				jQuery("#performace tr:last").after(x);
+				i++;
+			}
+		});
+		
+		#if($URLMapContent.assetClass == "Stock" && $!{URLMapContent.type1.selectValue} == "Fund")
+			jQuery.getJSON("http://query.yahooapis.com/v1/public/yql?q=use%20'http%3A%2F%2Fyqlblog.net%2Fsamples%2Fdata.html.cssselect.xml'%20as%20data.html.cssselect%3B%20select%20*%20from%20data.html.cssselect%20where%20url%3D%22http%3A%2F%2Ffinance.yahoo.com%2Fq%3Fs%3D$!{URLMapContent.tickerSymbol}%26ql%3D1%22%20and%20css%3D%22%23yfi_top_holdings%20.bd%20table%20tbody%20tr%22&format=json&callback=?",
+			function(data) {
+				var i = 1;
+				while (i <= 5) {
+					var x = "<tr><th scope=\"row\" class=\"name\">" + (data.query.results.results.tr[i].td[0].a.title) + "</th>";
+					var x = x + "<td style=\"text-align:center\">" + (data.query.results.results.tr[i].td[1].p) + "</td>";
+					var x = x + "<td style=\"text-align:center\">" + (data.query.results.results.tr[i].td[2].p) + "</td></tr>";
+					jQuery("#topHoldings tr:last").after(x);
+					i++;
+				}
+			});
+		#end
+	});
+</script>
+
+<div class="content">
+	<div class="row">
+		<div class="span12">
+			<div id="product-select" class="visible-desktop">
+				<select onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value" id="event-categories" style="width:290px">
+					#foreach($con in $dotcontent.pull("+structureName:Products +(conhost:48190c8c-42c4-46af-8d1a-0cd5db894797 conhost:SYSTEM_HOST)",0,"Products.title"))
+						#if($URLMapContent.urlTitle == $con.urlTitle)
+							<option value="$con.urlTitle" selected>$con.title $!{con.type1.selectValue}</option>
+						#else
+							<option value="$con.urlTitle">$con.title $!{con.type1.selectValue}</option>
+						#end
+					#end
+				</select>
+			</div>
+			<div style="margin-bottom:20px;border-bottom:1px solid #ccc;">
+				#editContentlet($URLMapContent.inode)
+				<h2>#dotedit($!URLMapContent.inode,$!URLMapContent.title) $!{URLMapContent.type1.selectValue} ($!{URLMapContent.tickerSymbol})</h2>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="row">
+		<div class="span8">
+			#dotedit($!URLMapContent.inode,$URLMapContent.summary)
+			<div style="margin: 20px 0;"><img src="http://chart.finance.yahoo.com/c/6m/n/$!{URLMapContent.tickerSymbol}" alt="Chart for $!{URLMapContent.tickerSymbol}" /></div>
+			
+			<section class="headlines">
+				<h3>Headlines</h3>
+				<ul>
+					#set($rssTotal = 10)
+					#pullRSSFeed("http://feeds.finance.yahoo.com/rss/2.0/headline?s=$!{URLMapContent.tickerSymbol}&region=US&lang=en-US")
+					#foreach($content in $list)
+						<li>
+							<h4><a href="$content.link" target="_blank">$!content.title</a></h4>
+							<time datetime="$!content.pubDate">$!content.pubDate</time>
+						</li>
+					#end
+				</ul>
+			</section>			
+		</div>
+		
+		<div class="span4">
+			<table class="p4">
+				<tr>
+					<td>Price:</td>
+					<td id="price"></td>
+				</tr>
+				<tr>
+					<td>Change:</td>
+					<td><span id="change"></span></td>
+				</tr>
+				<tr>
+					<td>Asset Class:</td>
+					<td>$!{URLMapContent.assetClass}</td>
+				</tr>
+				
+				#if($URLMapContent.assetClass == "Stock" || $URLMapContent.assetClass == "Bond")
+					<tr>
+						<td>Category:</td>
+						<td>
+							#set($category = "$!{URLMapContent.marketCap.selectValue}$!{URLMapContent.quality.selectValue}-$!{URLMapContent.style.selectValue}$!{URLMapContent.maturity.selectValue}")
+							<div title="$category" class="normaltip  $category"></div>
+						</td>
+					</tr>
+				#end
+					
+				<tr>
+					<td>Expense Ratio:</td>
+					<td>$!{URLMapContent.expenseRatio}&#37;</td>
+				</tr>
+				<tr>
+					<td>Inception:</td>
+					<td>$date.format('MM/dd/yyyy',$URLMapContent.inception)</td>
+				</tr>
+				<tr>
+					<td style="vertical-align:middle;">Risk Potential</td>
+					<td><div class="risk${URLMapContent.risk.selectValue}-lg normaltip" title="${URLMapContent.risk.selectValue}" style="margin:0;">${URLMapContent.risk.selectValue}</div></td>
+				</tr>
+			</table>
+			
+			<h3>Performance &amp; Risk</h3>
+			<div class="loading" style="min-height:185px;">
+			<table id="performace" class="ajax-table p4"><tr></tr></table>
+			</div>
+			
+			#if($URLMapContent.assetClass == "Stock" && $!{URLMapContent.type1.selectValue} == "Fund")
+				<h3>Top Holdings</h3>
+				<div class="loading">
+				<table id="topHoldings" class="ajax-table">
+					<tr>
+						<th scope="col">Symbol</th>
+						<th scope="col">% Assets</th>
+						<th scope="col">YTD Return %</th>
+					</tr>
+				</table>
+				</div>
+			#end
+				
+		</div>
+	</div>
+</div>
+
+#else
+
+	<div class="content"><h3>We are sorry, but the product you are looking for is no longer available. <a href="/product/">Click here to see all our products</a>.</h3></div>
+	
+#end

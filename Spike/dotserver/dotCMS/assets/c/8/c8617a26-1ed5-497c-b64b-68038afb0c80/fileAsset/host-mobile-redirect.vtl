@@ -1,0 +1,44 @@
+<script>
+	function updateRedirect(){
+	    var x = dijit.byId('mycheck').get('value');
+		dojo.byId('mobileRedirect').value = x;
+		if (x == 'true'){
+			dijit.byId('mobileUrl').set('disabled',false);
+			dijit.byId('testButton').set('disabled',false);
+		}else{
+			dijit.byId('mobileUrl').set('disabled',true);
+			dijit.byId('testButton').set('disabled',true);
+		}	
+	}
+	
+	dojo.addOnLoad(function(){
+		var y = dojo.byId('mobileRedirect').value;
+		if(y == 'true'){
+			dijit.byId('mycheck').set('value','true');
+    	}
+	});
+	
+	
+
+	function testLink(){
+		var testUrl = dijit.byId('mobileUrl').get('value');
+		
+		var dialog = new dijit.Dialog({
+			title: "Mobile Link Checker",
+			content: "<iframe id='myIframe' src='" + testUrl + "' width='480' height='640' style='border: 0 none;margin:-10px;'></iframe>",
+			loadingMessage: "Loading...",
+			style: "width:480px;height:640px;padding:0;"
+		});
+		dialog.show();
+	}
+	
+	
+</script>
+
+
+
+
+<input type="checkbox" name="mycheck" id="mycheck" dojoType="dijit.form.CheckBox" value="true" onChange="updateRedirect();">
+<label for="mrCheck">Redirect mobile visitors</label>
+
+<button id="testButton" dojoType="dijit.form.Button" onClick="testLink();" iconClass="linkIcon">Test URL</button>

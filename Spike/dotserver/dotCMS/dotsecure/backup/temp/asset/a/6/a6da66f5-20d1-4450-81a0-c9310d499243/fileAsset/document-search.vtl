@@ -1,0 +1,334 @@
+#set ($myTags = "")
+#set ($myCats = "")
+#set ($myExts = "")
+#set ($filterDel = "")
+
+#set($getSearch = "")
+#set($getCat = "")
+#set($getTag = "")
+#set($getExt = "")
+
+#set($getSearch = $request.getParameter("docSearch"))
+#set($getCatVars = $request.getParameterValues("cat"))
+#set($getTagVar = $request.getParameterValues("tag"))
+#if($UtilMethods.isSet($request.getParameter("ext")))
+  #set($getExt = $request.getParameter("ext"))
+#else
+  #set($getExt = "all")
+#end
+
+#set ($getCat = "")
+#foreach ($cat in $getCatVars)
+  #if ($velocityCount == 1)
+    #set ($getCat = "$!{cat}")
+  #else
+    #set ($getCat = "$!{getCat},$!{cat}")
+  #end
+#end
+
+#set ($getTag = "")
+#foreach ($tag in $getTagVar)
+  #if ($velocityCount == 1)
+    #set ($getTag = "$!{tag}")
+  #else
+    #set ($getTag = "$!{getTag},$!{tag}")
+  #end
+#end
+
+#if($UtilMethods.isSet($getSearch))
+<h3 class="p2">Your Filters</h3>
+<nav class="p3">
+    
+    ##REMOVE EXTENSIONS
+    #if($UtilMethods.isSet($getExt))
+    
+    #if ($UtilMethods.isSet($getSearch) && !$UtilMethods.isSet($getCat) && !$UtilMethods.isSet($getTag))
+    
+      #set ($mySearch = "?docSearch=$!{getSearch}")
+      #set ($myCats = "")
+      #set ($myTags = "")
+    
+    #elseif (!$UtilMethods.isSet($getSearch) && $UtilMethods.isSet($getCat) && !$UtilMethods.isSet($getTag))
+    
+      #set ($mySearch = "")
+      #set ($myCats = "?cat=$!{getCat}")
+      #set ($myTags = "")
+      
+    #elseif (!$UtilMethods.isSet($getSearch) && !$UtilMethods.isSet($getCat) && $UtilMethods.isSet($getTag))
+    
+      #set ($mySearch = "")
+      #set ($myCats = "")
+      #set ($myTags = "?tag=$!{getTag}")
+      
+    #elseif ($UtilMethods.isSet($getSearch) && $UtilMethods.isSet($getCat) && !$UtilMethods.isSet($getTag))
+    
+      #set ($mySearch = "?docSearch=$!{getSearch}")
+      #set ($myCats = "&tag=$!{getCat}")
+      #set ($myTags = "")
+      
+    #elseif ($UtilMethods.isSet($getSearch) && !$UtilMethods.isSet($getCat) && $UtilMethods.isSet($getTag))
+    
+      #set ($mySearch = "?docSearch=$!{getSearch}")
+      #set ($myCats = "")
+      #set ($myTags = "&tag=$!{getTag}")
+      
+    #elseif (!$UtilMethods.isSet($getSearch) && $UtilMethods.isSet($getCat) && $UtilMethods.isSet($getTag))
+    
+      #set ($mySearch = "")
+      #set ($myCats = "?cat=$!{getCat}")
+      #set ($myTags = "&tag=$!{getTag}")
+      
+    #elseif ($UtilMethods.isSet($getSearch) && $UtilMethods.isSet($getCat) && $UtilMethods.isSet($getTag))
+    
+      #set ($mySearch = "?docSearch=$!{getSearch}")
+      #set ($myCats = "&cat=$!{getCat}")
+      #set ($myTags = "&tag=$!{getTag}")
+      
+    #elseif (!$UtilMethods.isSet($getSearch) && !$UtilMethods.isSet($getCat) && !$UtilMethods.isSet($getTag))
+    
+      #set ($mySearch = "")
+      #set ($myCats = "")
+      #set ($myTags = "")
+      
+    #end
+
+      ##<a href="/resources/index.html$!{mySearch}$!{myCats}$!{myTags}" class="button clr right">Clear all</a>
+      ##<h4>Extensions</h4>
+      ##<ul class="filters">
+      #foreach ($ext in $getExt.split(","))
+        #set ($filterDel = "")
+        #foreach ($rext in $getExt.split(","))
+          #if ($ext != $rext)
+            #set ($filterDel = "$!{filterDel}$!{rext},")
+          #end
+        #end
+        
+        #set($filterDelLength = $filterDel.length())
+        #if($filterDel.lastIndexOf(',') != -1)
+          #set($filterDel = $filterDel.substring(0,$math.sub($filterDelLength,1)))
+        #end
+        
+        
+        #if ($UtilMethods.isSet($getSearch) && !$UtilMethods.isSet($getCat) && !$UtilMethods.isSet($getTag) && !$UtilMethods.isSet($filterDel))
+        
+          #set ($mySearch = "?docSearch=$!{getSearch}")
+          #set ($myCats = "")
+          #set ($myTags = "")
+          #set ($filterDel = "")
+
+        #elseif (!$UtilMethods.isSet($getSearch) && $UtilMethods.isSet($getCat) && !$UtilMethods.isSet($getTag) && !$UtilMethods.isSet($filterDel))
+
+          #set ($mySearch = "")
+          #set ($myCats = "?cat=$!{getCat}")
+          #set ($myTags = "")
+          #set ($filterDel = "")
+          
+        #elseif (!$UtilMethods.isSet($getSearch) && !$UtilMethods.isSet($getCat) && $UtilMethods.isSet($getTag) && !$UtilMethods.isSet($filterDel))
+
+          #set ($mySearch = "")
+          #set ($myCats = "")
+          #set ($myTags = "?tag=$!{getTag}")
+          #set ($filterDel = "")
+        
+        #elseif (!$UtilMethods.isSet($getSearch) && !$UtilMethods.isSet($getCat) && !$UtilMethods.isSet($getTag) && $UtilMethods.isSet($filterDel))
+
+          #set ($mySearch = "")
+          #set ($myCats = "")
+          #set ($myTags = "")
+          #set ($filterDel = "?ext=$!{filterDel}")
+          
+        #elseif ($UtilMethods.isSet($getSearch) && $UtilMethods.isSet($getCat) && !$UtilMethods.isSet($getTag) && !$UtilMethods.isSet($filterDel))
+
+          #set ($mySearch = "?docSearch=$!{getSearch}")
+          #set ($myCats = "&cat=$!{getCat}")
+          #set ($myTags = "")
+          #set ($filterDel = "")
+          
+        #elseif ($UtilMethods.isSet($getSearch) && !$UtilMethods.isSet($getCat) && $UtilMethods.isSet($getTag) && !$UtilMethods.isSet($filterDel))
+
+          #set ($mySearch = "?docSearch=$!{getSearch}")
+          #set ($myCats = "")
+          #set ($myTags = "&tag=$!{getTag}")
+          #set ($filterDel = "")
+          
+        #elseif ($UtilMethods.isSet($getSearch) && !$UtilMethods.isSet($getCat) && !$UtilMethods.isSet($getTag) && $UtilMethods.isSet($filterDel))
+
+          #set ($mySearch = "?docSearch=$!{getSearch}")
+          #set ($myCats = "")
+          #set ($myTags = "")
+          #set ($filterDel = "&ext=$!{filterDel}")
+          
+        #elseif (!$UtilMethods.isSet($getSearch) && $UtilMethods.isSet($getCat) && $UtilMethods.isSet($getTag) && !$UtilMethods.isSet($filterDel))
+
+          #set ($mySearch = "")
+          #set ($myCats = "?cat=$!{getCat}")
+          #set ($myTags = "&tag=$!{getTag}")
+          #set ($filterDel = "")
+          
+        #elseif (!$UtilMethods.isSet($getSearch) && $UtilMethods.isSet($getCat) && !$UtilMethods.isSet($getTag) && $UtilMethods.isSet($filterDel))
+
+          #set ($mySearch = "")
+          #set ($myCats = "?cat=$!{getCat}")
+          #set ($myTags = "")
+          #set ($filterDel = "&ext=$!{filterDel}")
+          
+        #elseif (!$UtilMethods.isSet($getSearch) && !$UtilMethods.isSet($getCat) && $UtilMethods.isSet($getTag) && $UtilMethods.isSet($filterDel))
+
+          #set ($mySearch = "")
+          #set ($myCats = "")
+          #set ($myTags = "?tag=$!{getTag}")
+          #set ($filterDel = "&ext=$!{filterDel}")
+          
+        #elseif ($UtilMethods.isSet($getSearch) && $UtilMethods.isSet($getCat) && $UtilMethods.isSet($getTag) && !$UtilMethods.isSet($filterDel))
+
+          #set ($mySearch = "?docSearch=$!{getSearch}")
+          #set ($myCats = "&cat=$!{getCat}")
+          #set ($myTags = "&tag=$!{getTag}")
+          #set ($filterDel = "")
+          
+        #elseif ($UtilMethods.isSet($getSearch) && $UtilMethods.isSet($getCat) && !$UtilMethods.isSet($getTag) && $UtilMethods.isSet($filterDel))
+
+          #set ($mySearch = "?docSearch=$!{getSearch}")
+          #set ($myCats = "&cat=$!{getCat}")
+          #set ($myTags = "")
+          #set ($filterDel = "&ext=$!{filterDel}")
+          
+        #elseif ($UtilMethods.isSet($getSearch) && !$UtilMethods.isSet($getCat) && $UtilMethods.isSet($getTag) && $UtilMethods.isSet($filterDel))
+
+          #set ($mySearch = "?docSearch=$!{getSearch}")
+          #set ($myCats = "")
+          #set ($myTags = "&tag=$!{getTag}")
+          #set ($filterDel = "&ext=$!{filterDel}")
+          
+        #elseif (!$UtilMethods.isSet($getSearch) && $UtilMethods.isSet($getCat) && $UtilMethods.isSet($getTag) && $UtilMethods.isSet($filterDel))
+
+          #set ($mySearch = "")
+          #set ($myCats = "?cat=$!{getCat}")
+          #set ($myTags = "&tag=$!{getTag}")
+          #set ($filterDel = "&ext=$!{filterDel}")
+
+        #elseif ($UtilMethods.isSet($getSearch) && $UtilMethods.isSet($getCat) && $UtilMethods.isSet($getTag) && $UtilMethods.isSet($filterDel))
+
+          #set ($mySearch = "?docSearch=$!{getSearch}")
+          #set ($myCats = "&cat=$!{getCat}")
+          #set ($myTags = "&tag=$!{getTag}")
+          #set ($filterDel = "&ext=$!{filterDel}")
+          
+        #elseif (!$UtilMethods.isSet($getSearch) && !$UtilMethods.isSet($getCat) && !$UtilMethods.isSet($getTag) && !$UtilMethods.isSet($filterDel))
+
+          #set ($mySearch = "")
+          #set ($myCats = "")
+          #set ($myTags = "")
+          #set ($filterDel = "")
+
+        #end
+
+        ##<li><a href="/resources/index.html$!{mySearch}$!{myCats}$!{myTags}$!{filterDel}">$!{ext}</a></li>
+      #end
+      ##</ul>
+    #end
+
+
+    ##REMOVE KEYWORD
+    #if($UtilMethods.isSet($getSearch))
+      <h4>Keywords</h4>
+      <ul class="filters">
+        
+        #if ($UtilMethods.isSet($getCat) && !$UtilMethods.isSet($getTag) && !$UtilMethods.isSet($getExt))
+          
+          #set ($myCats = "?cat=$!{getCat}")
+          #set ($myTags = "")
+          #set ($myExts = "")
+          
+        #elseif (!$UtilMethods.isSet($getCat) && $UtilMethods.isSet($getTag) && !$UtilMethods.isSet($getExt))
+          
+          #set ($myCats = "")
+          #set ($myTags = "?tag=$!{getTag}")
+          #set ($myExts = "")
+          
+        #elseif (!$UtilMethods.isSet($getCat) && !$UtilMethods.isSet($getTag) && $UtilMethods.isSet($getExt))
+          
+          #set ($myCats = "")
+          #set ($myTags = "")
+          #set ($myExts = "?ext=$!{getExt}")
+          
+        #elseif ($UtilMethods.isSet($getCat) && $UtilMethods.isSet($getTag) && !$UtilMethods.isSet($getExt))
+          
+          #set ($myCats = "?cat=$!{getCat}")
+          #set ($myTags = "&tag=$!{getTag}")
+          #set ($myExts = "")
+        
+        #elseif ($UtilMethods.isSet($getCat) && !$UtilMethods.isSet($getTag) && $UtilMethods.isSet($getExt))
+          
+          #set ($myCats = "?cat=$!{getCat}")
+          #set ($myTags = "")
+          #set ($myExts = "&ext=$!{getExt}")
+          
+        #elseif ($UtilMethods.isSet($getCat) && $UtilMethods.isSet($getTag) && $UtilMethods.isSet($getExt))
+          
+          #set ($myCats = "?cat=$!{getCat}")
+          #set ($myTags = "&tag=$!{getTag}")
+          #set ($myExts = "&ext=$!{getExt}")
+          
+        #elseif (!$UtilMethods.isSet($getCat) && !$UtilMethods.isSet($getTag) && !$UtilMethods.isSet($getExt))
+          
+          #set ($myCats = "")
+          #set ($myTags = "")
+          #set ($myExts = "")
+          
+        #end
+        
+        <li><a href="/resources/index.html$!{myCats}$!{myTags}$!{myExts}">$getSearch</a></li>
+      </ul>
+    #end
+  </ul>
+</nav>
+#end
+
+
+<form id="doc-search" method="get">
+  <nav class="doc-search">
+   <h3>Keywords</h3> 
+    <div class="seachBox-small">
+      <input id="searchBox" type="text" name="docSearch" value="$!{getSearch}" placeholder="Enter Keyword(s)" />
+      <a href="#" id="resSubmit">Search</a>
+      <div class="format">
+        <input type="radio" name="ext" value="all" id="all" #if ($getExt == "all")checked#end> <label for="all">All</label>
+        <input type="radio" name="ext" value="image" id="image" #if ($getExt == "image")checked#end> <label for="image">Image</label>
+        <input type="radio" name="ext" value="video" id="video" #if ($getExt == "video")checked#end> <label for="video">Video</label>
+        <input type="radio" name="ext" value="document" id="document" #if ($getExt == "document")checked#end> <label for="document">Document</label>
+      </div>
+    </div>
+  </nav>
+  <!-- end .BlogSearch -->
+
+  <nav class="p5">
+    <h3>Topics</h3>
+    <ul class="side-menu">
+      #foreach($con in $categories.getChildrenCategoriesByKey("topic"))
+        <li class="$con.categoryVelocityVarName">
+          <input type="checkbox" name="cat" value="$!{con.categoryVelocityVarName}" id="$!{con.categoryVelocityVarName}" #if ($getCat.contains("$!{con.categoryVelocityVarName}"))checked#end />
+          <label for="$!{con.categoryVelocityVarName}" #if($getCat.contains("$!{con.categoryVelocityVarName}"))class="on"#end>$!{con.categoryName}</a>
+        </li>
+      #end
+    </ul>
+  </nav>
+
+  <nav class="p3">
+    <h3>Tags</h3>
+    
+    #set($tagCloudStructures = $webapi.splitString("Document", ","))
+    #set($tagsCount = $macro.getTagsCount($tagCloudStructures, 99, $ignoredTags, $request))
+    #set($tagSorted = $macro.sortAlpha($tagsCount.keySet()))
+    
+    <ul class="side-menu">
+    #foreach($tag in $tagSorted)
+      <li class="$!{tag.replaceAll("[\s\.]","")}">
+        <input type="checkbox" name="tag" value="$!{tag}" id="$!{tag}" #if($getTag.contains("$!{tag}"))checked#end />
+        <label for="$!{tag}" #if($getTag.contains("$!{tag}"))class="on"#end>$!{tag}</label>
+      </li>
+    #end
+    </ul>
+  </nav>
+
+</form>

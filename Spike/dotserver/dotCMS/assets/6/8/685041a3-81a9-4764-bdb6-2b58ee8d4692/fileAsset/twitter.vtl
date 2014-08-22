@@ -1,0 +1,158 @@
+#set($actionId = $!request.getParameter("actionId"))
+#set($wfConId = $!request.getParameter("inode"))
+#set($user = $cmsuser.getLoggedInUser($request))
+#set($action = $workflow.findAction($actionId, $user))
+#if($UtilMethods.isSet($wfConId))
+	#set($content = ${dotcontent.find($wfConId)})
+	
+	#set($url = "http://${content.host.hostName}$content.fileAsset.uri")
+	
+	#set($bitlyUser="dotcmsdemo")
+	#set($bitlyKey ="R_f0c91eac63cd553fa1969dc1647e5969")
+
+	
+#end
+<script type="text/javascript">
+
+	dojo.ready(function() {
+		
+		  //Character limit
+		  var limit = 140; 
+		
+		
+		
+		  var div = document.createElement('div');
+		  div.className = 'charcounter';
+		
+		  var txt = document.getElementById('taskCommentsAux');
+		  txt.parentNode.insertBefore(div, txt);
+
+		  //this will contain the background numbers
+		  var counter = document.createElement('div');
+		  div.appendChild(counter);
+		  counter.innerHTML = limit;
+		
+		  //Add both keypress and keydown handlers to make sure the event always fires
+		  txt.onkeypress = txt.onkeydown = txt.onblur = function() {
+			//Calculate how many chars the user has remaining
+			var len = limit - txt.value.length;
+			if(len < 0) {
+			  counter.className = 'negative';
+			}
+			else {
+			  counter.className = '';
+			}
+		
+			counter.innerHTML = len;
+		  };
+		
+		  txt.parentNode.removeChild(txt);
+		  div.appendChild(txt);
+		}
+	);
+	
+	
+	function doBitly(url){
+
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", "http://api.bitly.com/v3/shorten?login=$bitlyUser&apiKey=$bitlyKey&longUrl=" + encodeURIComponent(url));
+		xhr.onreadystatechange = function() { 
+			if(xhr.readyState == 4) { 
+	
+					console.log(xhr);
+					var res = dojo.fromJson(xhr.response);
+					var urly=res.data.url;
+					if(urly){
+						dojo.byId("bitlyLink").innerHTML=urly;
+					}else{
+						dojo.byId("bitlyLink").innerHTML="n/a";
+					}
+					
+				
+			} 
+		}
+		xhr.send();
+	}
+	
+	
+	#if($UtilMethods.isSet($wfConId))
+		doBitly("$url");
+	#end
+	
+
+
+</script>
+<style type="text/css">
+	.charcounter {
+			position: relative;
+			width:350px;
+			margin:auto;
+			min-height:130px;
+	
+	}
+	
+	.charcounter * {
+		background: none repeat scroll 0 0 transparent;
+		height: 120px;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		padding:5px;
+	}
+	
+	.charcounter textarea{border: 1px solid #CCCCCC;}
+	
+	.charcounter div {
+			color: silver;
+			font-family: Arial;
+			font-size: 550%;
+			font-weight: bold;
+			text-align: center;
+			line-height: 100px;
+			vertial-align: middle;
+			opacity: 0.5;
+	}
+	
+	.charcounter div.negative {
+			color: red;
+	}
+	
+	#twitterText{
+		margin:auto;
+	
+	}
+</style>
+
+
+
+<textarea id="taskCommentsAux" name="taskCommentsAux"></textarea>
+
+<input name="wfConId" id="wfConId" type="hidden" value="$wfConId">
+<input name="wfActionId" id="wfActionId" type="hidden" value="$actionId">
+<input type="hidden" name="taskAssignmentAux" id="taskAssignmentAux" value="$action.nextAssign">
+
+	<table class="listingTable" style="width:400px;margin:10px;margin-left:auto;margin-right:auto;">
+		<tr>
+			<td width="40">url: </td>
+			<td>#if($UtilMethods.isSet($wfConId))<a href="$url" target="_blank">$url</a>#else n/a  #end</td>
+		</tr>
+		<tr>
+			<td>bit.ly: </td>
+			<td><span id="bitlyLink"></span></td>
+		</tr>
+	</table>
+
+
+
+
+
+<div class="buttonRow">
+	<button dojoType="dijit.form.Button" iconClass="saveAssignIcon" onClick="contentAdmin.saveAssign()" type="button">
+		$text.get("save")
+	</button>
+	<button dojoType="dijit.form.Button" iconClass="cancelIcon" onClick="dijit.byId('contentletWfDialog').hide()" type="button">
+		$text.get("cancel")
+	</button>
+
+</div>

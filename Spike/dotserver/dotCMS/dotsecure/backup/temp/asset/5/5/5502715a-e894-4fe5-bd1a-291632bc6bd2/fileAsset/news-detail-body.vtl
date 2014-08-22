@@ -1,0 +1,53 @@
+#if($URLMapContent.inode && $URLMapContent.sysPublishDate.before($date.date))
+  <div class="news-header">
+    #editContentlet($URLMapContent.inode)
+    <h2>#dotedit($!URLMapContent.inode,$!URLMapContent.title)</h2>
+    <span class="byline">$URLMapContent.byline</span>
+    <time datetime="$date.format('yyyy-MM-dd',$!URLMapContent.sysPublishDate)T$date.format('hh:mm:ss',$!URLMapContent.sysPublishDate)">$date.format('MMM dd yyyy',$!URLMapContent.sysPublishDate) at $date.format('HH:mm z',$!URLMapContent.sysPublishDate)</time>
+    <div class="addThisNews">#dotParse('//shared/vtl/widgets/full-site/add-this.vtl')</div>
+    <div class="clear"></div>
+  </div>
+  
+  <div class="news-body">
+    #if($UtilMethods.isSet($URLMapContent.lead))
+      <p>#dotedit($!URLMapContent.inode,$URLMapContent.lead)</p>
+    #end
+
+    #if($UtilMethods.isSet($URLMapContent.image) && $UtilMethods.isSet($URLMapContent.image.file))
+      <div class="image">
+        <img src='/contentAsset/image/$!URLMapContent.inode/image/byInode/1/filter/Resize/resize_w/300' alt="$!{con.title}" />
+        #if($UtilMethods.isSet($URLMapContent.caption))
+          <span>$!URLMapContent.caption</span>
+        #end
+      </div>
+    #end
+    
+    #dotedit($!URLMapContent.inode,$!URLMapContent.story)
+  </div>
+  
+  <div class="addThisNews">#dotParse('//shared/vtl/widgets/full-site/add-this.vtl')</div>
+  <div class="clear p3">&nbsp;</div>
+  <div class="border-bot wrapper p3"><a class="top" href="#">top</a></div>
+  
+  <div class="comments">
+    <!-- Uncomment desired settings -->
+    ##set($commentsModeration="News Publisher") 
+    ##set($commentForceLogin = 'true')
+    ##set($commentDateDescending = true)
+    ##set($copmmentStripHTML = 'true')
+    
+    
+    #set($myContent = $URLMapContent.inode)
+    #set($commentTitle = 'Comments')
+    #set($commentUseCaptcha = 'true')
+    #set($commentAutoPublish = 'true')
+    #set($maxDepth = 2)
+    #set($commentSourceCode = '//shared/vtl/macros/comments.vtl')
+    #comment($myContent)
+  </div>
+  <div class="clear p3"></div>
+  <div class="border-bot wrapper p3"><a class="top" href="#">top</a></div>
+
+#else
+<h3>We are sorry, but the story you are looking for is no longer available. <a href="/news-events/news/">Click here to see all news stories</a>.</h3>
+#end

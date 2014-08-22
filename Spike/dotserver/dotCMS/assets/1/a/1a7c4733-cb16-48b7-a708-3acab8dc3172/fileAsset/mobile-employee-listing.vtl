@@ -1,0 +1,22 @@
+#set($_qk = "
+	+structureName:Employee
+	+(conhost:48190c8c-42c4-46af-8d1a-0cd5db894797 conhost:SYSTEM_HOST)
+")
+
+#set($results = $dotcontent.pull(${_qk},0,"Employee.lastName"))
+
+<div data-role="collapsible-set">
+	#foreach($con in $results)	
+		<div data-role="collapsible">
+			<h3>$!con.lastName, $!con.firstName</h3>
+			<div class="employee">
+				<span class="job-title">$!con.jobTitle</span>
+				<a href="tel:${con.phone.replaceAll("-", "")}" class="phone">$!con.phone</a>
+				#if ($UtilMethods.isSet(${con.mobile}))
+					<a href="tel:${con.mobile.replaceAll("-", "")}" class="mobile">$!con.mobile</a>
+				#end
+				<span class="email"><a href="mailto:$!con.email">$!con.email</a></span>
+			</div>
+		</div>
+	#end
+</div>

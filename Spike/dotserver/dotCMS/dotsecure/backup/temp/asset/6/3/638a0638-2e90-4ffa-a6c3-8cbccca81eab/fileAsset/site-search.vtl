@@ -1,0 +1,130 @@
+#set($cx = "$!request.getParameter('cx')")
+#if(!$UtilMethods.isSet($cx))
+  #set($cx = "003877329041303128826:8srp5glxqpg")
+#end
+#set($q = "$!request.getParameter('q')")
+#set($q = $esc.url($q))
+#set($url= "http://www.google.com/search?q=$q&hl=en&start=0&num=100&output=xml_no_dtd&client=google-csbe&cx=$cx")
+#set($doc = $xmltool.read($url))
+
+#if($request.getParameter("debug"))
+  q: $q
+  <a href="$url">$url</a>
+    #set($myVal = $import.read($url))
+    $esc.xml($myVal)
+  <hr>
+#end
+
+#set($results = $doc.RES.M.text)
+#if(!$UtilMethods.isSet($results))
+  #set($results = 0)
+#end
+
+
+
+
+<style>
+.resultWrapper{
+  padding:10px;
+  padding-left:30px;
+  
+}
+.resultPageUrl {
+  padding-left:15px;
+  color:"red";
+  font-color:"green";
+}
+.resultPageUrl a{
+  color:"green";
+  font-color:"green";
+}
+.resultPageDescription{
+  padding-left:15px;
+}
+.resultPageTitle{
+  font-size:110%;
+}
+
+#searchTools tr td{
+  padding:1px;
+  white-space:nowrap;
+  
+}
+label{
+display:inline;  
+float:none;}
+</style>
+
+
+
+
+
+
+
+<table id="searchTools">
+  <form id="searchForm" action="/home/site-search.html" name="searchForm">
+    <tr>
+      <td valign-"top">
+        Searching:
+      </td>
+      <td valign-"top"  width="100%">
+        <input style="background:#eeeeee;border:1px solid silver;height:20px;padding:5px;" name="q" type="text" onfocus="if(this.value=='Site Search')this.value='';" onblur="if(this.value=='')this.value='Site Search';" value="$q">
+        <input type="submit" value="search">
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td nowrap="true">
+        <label for="siteCX"><input type="radio" name="cx" id="siteCX"
+          #if($cx=="003877329041303128826:8srp5glxqpg") checked="true" #end
+        value="003877329041303128826:8srp5glxqpg">Site</label>
+        &nbsp; &nbsp;
+        
+        <label for="docCX"><input type="radio" name="cx" id="docCX"
+          #if($cx=="003877329041303128826:i1gztwemulo") checked="true" #end
+        value="003877329041303128826:i1gztwemulo">Documentation</label>
+    
+      </td>
+    </tr>
+  </form>
+</table>
+<hr style="color:silver">
+Search Results: <span id="numOfResults"></span><br>
+
+#set($doc =$doc.RES)
+#set($numResults =0)
+#foreach($x in $doc.children())
+  #set($x =$xmltool.parse($x))
+  #if($x.name == "R")
+    #if(!$x.T.text.startsWith("404"))
+      <div class="resultWrapper">
+        <div class="resultPageTitle">
+          <a href="$x.U.text">$x.T.text</a>
+        </div>
+        <div class="resultPageDescription">
+          $x.S.text
+        </div>
+        <div class="resultPageUrl">
+          $x.U.text
+        </div>
+      </div>
+      #set($numResults =$math.add($numResults, 1))
+      #if($numResults == 100)
+        #break
+      #end
+    #end
+  #end
+#end
+
+
+#if($numResults ==0)
+  <div class="resultWrapper">
+    <div class="resultPageTitle">
+      No results were found for <b><em>$!q</em></b>.  Please refine your search and try again.
+    </div>
+  </div>
+#end
+<script>
+var ele=document.getElementById("numOfResults");
+ele.innerHTML = "$numResults";
+</script>

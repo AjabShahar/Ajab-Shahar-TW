@@ -1,0 +1,25 @@
+#if($URLMapContent.inode)
+					
+	<h2>
+		#dotedit($!URLMapContent.inode,$!URLMapContent.title)
+		#editContentlet($URLMapContent.inode)
+	</h2>
+    
+	#if ($UtilMethods.isSet($URLMapContent.imageBinaryFileURI))
+		<div class="img-indent-r p2">
+			<figure>
+				<a href="$URLMapContent.imageBinaryFileURI/$URLMapContent.imageBinaryFileTitle" class="hoverImage prettyPhoto" title="">
+					<img src="/contentAsset/resize-image/$URLMapContent.identifier/image?w=294" alt="$URLMapContent.title" />
+				</a>
+			</figure>
+		</div>
+	#end
+  
+	#dotedit($!URLMapContent.inode,$!URLMapContent.description)
+	
+	<div class="clear p3">&nbsp;</div>
+	<div class="border-bot wrapper p3"><a class="top" href="#">top</a></div>
+
+#else
+	<h3>We are sorry, but the Location you are looking for is no longer available. <a href="/about-us/locations.html">Click here to see all our locations</a>.</h3>
+#end

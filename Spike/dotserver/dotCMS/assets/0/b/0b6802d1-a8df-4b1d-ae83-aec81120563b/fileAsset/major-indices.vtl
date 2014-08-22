@@ -1,0 +1,50 @@
+<script>
+	$(document).ready(function() {
+				
+		jQuery.getJSON("http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22%5EGSPC%22%2C%22%5EIXIC%22%2C%22CLQ12.NYM%22%2C%22%5ETNX%22%2C%22GCQ12.CMX%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=?",
+		function(data) {
+			var i = 0;
+			while (i <= 5) {
+				
+				var x = "<div class=\"stockQuote-top\">"
+
+				if ((data.query.results.quote[i].Name).indexOf("Oil") != -1) {
+					var x = x + "<div>Oil</div>";
+				} else if ((data.query.results.quote[i].Name).indexOf("NASDAQ") != -1) {
+					var x = x + "<div>NASDAQ</div>";
+				} else if ((data.query.results.quote[i].Name).indexOf("Interest") != -1) {
+					var x = x + "<div>10-Year Bond</div>";
+				} else if ((data.query.results.quote[i].Name).indexOf("Gold") != -1) {
+					var x = x + "<div>Gold</div>";
+				} else {
+					var x = x + "<div>" + (data.query.results.quote[i].Name) + "</div>";
+				}
+					
+				var x = x + "<div>" + (data.query.results.quote[i].LastTradePriceOnly) + "</div>";
+				
+				if ((data.query.results.quote[i].Change).indexOf("-") != -1) {
+					var x = x + "<div style=\"color:red;\">" + (data.query.results.quote[i].Change) + "</div>";
+					var x = x + "<div style=\"color:red;\">" + (data.query.results.quote[i].ChangeinPercent) + "</div>";
+				} else if ((data.query.results.quote[i].Change).indexOf("+") != -1) {
+					var x = x + "<div style=\"color:green;\">" + (data.query.results.quote[i].Change) + "</div>";
+					var x = x + "<div style=\"color:green;\">" + (data.query.results.quote[i].ChangeinPercent) + "</div>";
+				} else {
+					var x = x + "<div>" + (data.query.results.quote[i].Change) + "</div>";
+					var x = x + "<div>" + (data.query.results.quote[i].ChangeinPercent) + "</div>";
+				}
+				
+				var x = x + "</div>"
+				
+				jQuery("#Quotes").append(x);
+				i++;
+			}
+		});
+	});
+</script>
+
+
+<div class="chart-banner">
+	<div id="Quotes"></div>
+	<div class="clear"></div>
+</div>
+

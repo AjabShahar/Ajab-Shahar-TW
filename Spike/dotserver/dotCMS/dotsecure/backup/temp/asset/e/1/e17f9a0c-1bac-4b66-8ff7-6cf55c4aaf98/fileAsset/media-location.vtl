@@ -1,0 +1,47 @@
+ 
+
+<script>
+
+  function updateLocation(){
+
+    var x = dijit.byId("mediaLink");
+
+    if(x.checked){
+      dojo.style("url_tag", "display", "block");
+      dojo.style("url_field", "display", "block");
+      dojo.style("file_tag", "display", "none");
+      dojo.style("file_field", "display", "none");
+      dijit.byId('mediaType_dropDown').set("disabled",false);
+      document.getElementById('mediaType_dropDown').disabled=false;
+    }
+    else{
+      dijit.byId("url").setValue("");
+      dojo.style("url_tag", "display", "none");
+      dojo.style("url_field", "display", "none");
+      dojo.style("file_tag", "display", "block");
+      dojo.style("file_field", "display", "block");
+      dijit.byId('mediaType_dropDown').set("disabled",true);
+      document.getElementById('mediaType_dropDown').disabled=true;
+    }
+  }
+  
+  dojo.addOnLoad(function(){
+    var x = dijit.byId("url");
+    if(x.value ==undefined || x.value == ""){
+      dijit.byId("mediaUpload").setChecked(true);
+    }
+    else{
+      dijit.byId("mediaLink").setChecked(true);
+    }
+    updateLocation()
+    
+  
+  });
+  
+</script>
+
+<div style="border:1px solid #d3aad1;background:#f4d8f2;padding:5px;">
+  <input type="radio" dojoType="dijit.form.RadioButton" name="mediaLocation" id="mediaUpload" value="upload" onChange="updateLocation();" /> <label for="mediaUpload">Upload File</label>
+  &nbsp;&nbsp;
+  <input type="radio" dojoType="dijit.form.RadioButton" name="mediaLocation" id="mediaLink" value="link" onChange="updateLocation();" /> <label for="mediaLink">Link to External File</label>
+</div>

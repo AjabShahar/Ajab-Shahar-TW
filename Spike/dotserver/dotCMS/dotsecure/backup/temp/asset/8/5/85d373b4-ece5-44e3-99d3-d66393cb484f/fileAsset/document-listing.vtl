@@ -1,0 +1,245 @@
+#set($searchVar=$request.getParameter("docSearch"))
+#set($getCat=$request.getParameter("cat"))
+#set($getTag=$request.getParameter("tag"))
+#set($getExt=$request.getParameter("ext"))
+
+
+## GET THE CATEGORIES
+#if ($UtilMethods.isSet($getCat) && $getCat.contains(","))
+  #set ($cats = "")
+  #foreach ($cat in $getCat.split(","))
+    #if ($velocityCount == 1)
+      #set ($cats = "categories: $!{cat}")
+    #else
+      #set ($cats = "$cats categories: $!{cat}")
+    #end
+  #end
+  #set ($catVar = "+($cats) ")
+#elseif ($UtilMethods.isSet($getCat))
+  #set ($catVar = "+(categories: $!{getCat}) ")
+#else
+  #set ($catVar = "")
+#end
+
+## GET THE TAGS
+#if ($UtilMethods.isSet($getTag) && $getTag.contains(","))
+  #set ($tags = "")
+  #foreach ($tag in $getTag.split(","))
+    #if ($velocityCount == 1)
+      #set ($tagVar = "+Document.tags: *$!{tag}*")
+    #else
+      #set ($tagVar = "$!{tagVar} +Document.tags: *$!{tag}*")
+    #end
+  #end
+#elseif ($UtilMethods.isSet($getTag))
+  #set ($tagVar = "+Document.tags: *$!{getTag}*")
+#else
+  #set ($tagVar = "")
+#end
+
+## GET THE EXTENSIONS
+#if ($getExt == "image")
+  #set ($extVar = " +Document.metaData.contentType:image/*")
+#end
+#if ($getExt == "video")
+  #set ($extVar = " +(Document.metaData.contentType:video/* Document.metaData.contentType:application/ogg)")
+#end
+#if ($getExt == "document")
+  #set ($extVar = " +Document.metaData.contentType:application/* -Document.metaData.contentType:application/ogg")
+#end
+
+#set($nowsers= $date.format('yyyyMMddHHmmss', $date.getDate()))
+
+#set($_qk = " +structureName:Document +(conhost:$host.identifier conhost:SYSTEM_HOST)")
+
+
+#if($UtilMethods.isSet($searchVar))
+  #set($_qk = $_qk + "+_all:*$!{searchVar}*")
+#end
+
+#if($UtilMethods.isSet($catVar))
+  #set($_qk = $_qk + "$!{catVar}")
+#end
+
+#if($UtilMethods.isSet($tagVar))
+  #set($_qk = $_qk + "$!{tagVar}")
+#end
+
+#if($UtilMethods.isSet($extVar))
+  #set($_qk = $_qk + "$!{extVar}")
+#end
+
+#if($request.getParameter("page"))
+  #set($pageNumber = $math.toInteger($request.getParameter("page")))
+#else
+  #set($pageNumber = 1)
+#end
+
+#set($numberToPull = 3)
+
+#set($mypagelist = $dotcontent.pullPerPage("${_qk}",${pageNumber},${numberToPull},"modDate desc"))
+
+
+<div class="page-title">
+  <h2>Document Search</h2>
+  <p class="search-string">
+    #if($UtilMethods.isSet($searchVar))
+      Search Results for: <span>"$searchVar"</span>
+    #end
+
+    #if ($UtilMethods.isSet($getCat) && $getCat.contains(","))
+      Filter by:
+      #foreach ($cat in $getCat.split(","))
+        <span>$!{cat}</span>#if ($velocityCount != $getCat.split(",").size()),#end
+      #end
+    #elseif ($UtilMethods.isSet($getCat))
+      Filter by: <span>$!{getCat}</span>
+    #end
+
+    #if ($UtilMethods.isSet($getTag) && $getTag.contains(","))
+      Tagged by:
+      #foreach ($tag in $getTag.split(","))
+        <span>$!{tag}</span>#if ($velocityCount != $getTag.split(",").size()),#end
+      #end
+    #elseif ($UtilMethods.isSet($getTag))
+      Tagged by: <span>$request.getParameter("tag")</span>
+    #end
+  </p>
+</div>
+
+#if(!$EDIT_MODE)
+  <div class="file-uplaod"><a href="/resources/upload-document.html">Upload File</a></div>
+#end
+<!-- Total Number of Pages: $mypagelist.totalPages -->
+
+Results: $mypagelist.totalResults
+<ul class="doc-results">
+  #set($contentCount = ($pageNumber - 1) * $numberToPull)
+  #foreach($con in $mypagelist)
+    #set($contentCount = $contentCount + 1)
+    <li>
+      <a href="/resources/document-detail.html?id=$!{con.identifier}">
+        #if($con.metaData.contentType.indexOf("image/") == 0)
+          <div class="doc-thumbnail" style="background-image: url(/resize_image?path=$con.fileAsset.uri&w=120);"></div>
+        #elseif($con.metaData.contentType.indexOf("video/") == 0 || $con.metaData.contentType.indexOf("application/ogg") == 0)
+          <div class="doc-thumbnail" style="background-image: url(/resize_image?path=/images/icons/video-icon.png&w=115);"></div>
+        #else
+          <div class="doc-thumbnail" style="background-image: url(/resize_image?path=/images/icons/pdf-icon.png&w=115);"></div>
+        #end
+        <h3>$!{con.title}</h3>
+        #if($UtilMethods.isSet($con.metaData.Author))
+          <span class="byline">$!{con.metaData.Author}</span>
+        #end
+        #if($UtilMethods.isSet($con.sysPublishDate))
+          <time datetime="$date.format('yyyy-MM-dd',$!con.sysPublishDate)T$date.format('hh:mm:ss',$!con.sysPublishDate)">
+            $date.format('MMMM dd, yyyy',$con.sysPublishDate),
+          </time>
+        #end
+        #if($UtilMethods.isSet($con.description1))
+          <p>$UtilMethods.prettyShortenString("$con.description1", 200)</p>
+        #elseif($UtilMethods.isSet($con.description))
+          <p>$UtilMethods.prettyShortenString("$con.description", 200)</p>
+        #end
+      </a>
+    </li>
+  #end
+</ul>
+
+##########################
+## SET PAGINATION LINK ###
+##########################
+
+#if($mypagelist.previousPage)
+  #set($prevPage = $pageNumber - 1)
+#end
+  
+#if($mypagelist.nextPage)
+  #set($nextPage = $pageNumber + 1)
+#end
+
+#set($filterLink = "")
+
+
+#if($UtilMethods.isSet($searchVar))
+  #set($filterLink = $filterLink + '&docSearch=' + $searchVar)
+#end
+
+#if($UtilMethods.isSet($getCat))
+  #set($filterLink = $filterLink + '&cat=' + $getCat)
+#end
+
+#if($UtilMethods.isSet($getTag))
+  #set($filterLink = $filterLink + '&tag=' +$getTag)
+#end
+
+#if($UtilMethods.isSet($getExt))
+  #set($filterLink = $filterLink + '&ext=' +$getExt)
+#end
+
+
+<!-- ========== PAGINATION TOP =========== -->
+    
+  <div class="doc-pagination">
+    
+  #if($mypagelist.previousPage)
+    <a href="?page=$!{prevPage}$!{filterLink}">&#x25C0;</a>
+  #else
+    <span>&#x25C0;</span>
+  #end
+    
+  <script>
+    var x = 1;
+    while(x <= ${mypagelist.totalPages}){
+      if(x == $pageNumber){
+        document.write("<span class='active'>" + x + "</span>");
+      }else{
+        document.write("<a href='?page=" + x + "$!{filterLink}'> " + x + "</a>");
+      }
+      x++;
+    }
+    </script>
+    
+  #if($mypagelist.nextPage)
+    <a href="?page=$!{nextPage}$!{filterLink}">&#x25B6;</a>
+  #else
+    <span>&#x25B6;</span>
+  #end
+</div>
+
+
+<!--
+<div class="pagination">
+  <div style="float:left;">
+    #if($mypagelist.previousPage)
+      #set($prevPage= $pageNumber - 1)
+      #if($UtilMethods.isSet($searchVar))
+        <a href="?page=$prevPage&blogSearch=$searchVar">
+      #elseif($UtilMethods.isSet($catVar))
+        <a href="?page=$prevPage&cat=$catVar">
+      #elseif($UtilMethods.isSet($tagVar))
+        <a href="?page=$prevPage&tag=$tagVar">
+      #else
+        <a href="?page=$prevPage">
+      #end
+      &#x25C0; Previous</a>
+    #end
+  </div>
+  <div style="float:right;">
+    #if($mypagelist.nextPage)
+      #set($nextPage= $pageNumber + 1)
+      #if($UtilMethods.isSet($searchVar))
+        <a href="?page=$nextPage&blogSearch=$searchVar">
+      #elseif($UtilMethods.isSet($catVar))
+        <a href="?page=$nextPage&cat=$catVar">
+      #elseif($UtilMethods.isSet($tagVar))
+        <a href="?page=$nextPage&tag=$tagVar">
+      #else
+        <a href="?page=$nextPage">
+      #end
+      Next &#x25B6;</a>
+    #end
+  </div>
+
+  <div class="clear"></div>
+</div>
+-->

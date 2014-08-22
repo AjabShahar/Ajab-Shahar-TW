@@ -1,0 +1,72 @@
+<!-- Start header.vtl Include -->
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<a href="/" class="brand hidden-desktop">
+				<img src="/application/themes/openbank/images/logo-bw.png" alt="myCompany" >
+			</a>
+			<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">Menu</a>
+  
+			<!-- Everything you want hidden at 940px or less, place within here -->
+			<nav class="nav-collapse collapse">
+				
+				#set($list = $navtool.getNav("/"))
+				<ul class="nav">
+					#foreach($n in $list)
+						#set($children = $n.children)
+						#if($children && $children.size() > 0)
+							<li class="dropdown #if($n.active) active#end">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">${n.title} <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									#foreach($ch in $children)
+										#if($ch.isCodeLink())
+											<li>${ch.codeLink}</li>
+										#else
+											<li #if($ch.active) class="active" #end><a href='${ch.href}'>${ch.title}</a></li>
+										#end
+									#end
+								</ul>
+							</li>
+						#else
+							<li><a href='${n.href}'>${n.title}</a></li>
+						#end
+					#end
+				</ul>
+
+				<!-- .nav, .navbar-search, .navbar-form, etc -->
+				<div class="search">
+					<form class="navbar-form pull-right" id="searchForm" action="/home/search-results.dot" name="searchForm">
+						<input id="search" name="q" type="text" onfocus="if(this.value=='Site Search')this.value='';" onblur="if(this.value=='')this.value='Site Search';" value="Site Search">
+					</form>
+				</div>
+  			</nav>
+  			
+  			
+		</div>
+	</div>
+</div>
+	
+<div class="container visible-desktop">
+	<div class="row">
+		<div class="span4">
+			<div class="logo">
+				<a href="/">
+					<h1>myCompany</h1>
+					<img src="/application/themes/openbank/images/logo.png" alt="myCompany">
+				</a>
+			</div>
+		</div>
+		<div class="span8">
+			<div class="siteTools">
+				<ul>
+					<li><a href="/application/createaccount/create_account.html">Create An Account</a></li>
+					<li><a href="/dotCMS/login?referrer=/intranet/" class="signin">Sign In</a></li>
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+<!-- Start header.vtl Include -->

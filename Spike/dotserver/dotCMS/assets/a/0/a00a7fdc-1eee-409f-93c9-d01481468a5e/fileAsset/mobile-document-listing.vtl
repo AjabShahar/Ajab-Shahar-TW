@@ -1,0 +1,15 @@
+
+#foreach($con in $dotcontent.pull("+structureName:Document +Document.metaData.contentType:application/* -Document.metaData.contentType:application/ogg",10,"Document.fileName desc"))
+	<div data-role="collapsible" data-iconpos="right">
+		<h3><img src="/icon?i=${con.fileName}"> ${con.title}</h3>
+		<div class="document">
+			<table style="margin:10px;width:100%;">
+				<tr>
+					<td style="padding:0 15px 0 0;"><b>Date:</b> $date.format('MMMM dd, yyyy',$con.sysPublishDate)</td>
+					<td><b>Size</b> $UtilMethods.prettyByteify( $math.toInteger($con.metaData.fileSize))</td>
+				</tr>
+			</table>
+			<a href="http://${con.host.title}${con.fileAsset.uri}?force_download=true"  rel="external" data-role="button" data-icon="arrow-d" data-mini="true">Download</a>
+		</div>
+	</div>
+#end

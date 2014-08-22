@@ -1,0 +1,193 @@
+#set($currentOrganization = $request.getParameter("currentOrganization"))
+<script language="javascript">
+  
+function submitForm()
+{
+  var form = document.getElementById("dotRegistrationForm");
+  var message = "";
+  var validate = true;
+  try
+  {
+    if (form.ceoName.value == "")
+    {
+      message += "The CEO name is mandatory";
+      validate = false;
+    }
+  }
+  catch(e)
+  {}
+  if (!validate)
+  {
+    alert(message);
+    return validate;
+  }
+  form.submit();
+}
+
+//Inicio funciones manejo de layers
+styleReference = "style.";
+visibleLayer = "inline";
+browser = "Explorer";
+
+function printpage() 
+{
+  window.print();  
+}
+
+function referenceLayer(layerName) 
+{ 
+  //if (navegador=="Netscape") 
+  //  return "document.layers['"+layerName+"']."; 
+  //else 
+  //  return "document.all['"+layerName+"']."; 
+    
+  return "document.getElementById('" + layerName + "').";
+}
+
+function hideLayer(layerName)
+{ 
+  eval(referenceLayer(layerName)+styleReference+ 'display="none"'); 
+}
+
+function showLayer(layerName) 
+{ 
+  eval(referenceLayer(layerName)+styleReference+ 'display="'+visibleLayer+'"'); 
+} 
+   
+function change(layer)
+{
+  if (eval("document.all['" + layer + "'].style.display == 'none'"))
+  {
+    showLayer(layer);
+  }
+  else
+  {
+    hideLayer(layer);
+  }
+}
+
+function goBack()
+{
+  var form = document.getElementById("dotRegistrationForm");
+  form.dispatch.value = "unspecified";
+  form.submit();
+}
+</script>
+<form action="/dotCMS/addRegistration" method="post" name="dotRegistrationForm" id="dotRegistrationForm">
+<input type="hidden" name="referrer" value="$!{dotRegistrationForm.referrer}">
+<input type="hidden" name="from" value="$!{dotRegistrationForm.from}">
+<input type="hidden" name="dispatch" value="finish">
+<input type="hidden" name="userProxyInode" value="$!{dotRegistrationForm.userProxyInode}">
+<input type="hidden" name="userID" value="$!{dotRegistrationForm.userID}">
+<input type="hidden" name="extUserInode" value="$!{dotRegistrationForm.extUserInode}">
+
+
+
+
+<table width="75%">
+  <tr>
+    <td align="right">
+      <input type="button" onClick="window.location='/dotCMS/myAccount';" class="clearInputStyles" value="Change Information" />
+      &nbsp;&nbsp;
+      <input type="button" onClick="window.location='/dotCMS/checkOutCart'" class="clearInputStyles" value="Proceed to Payment" />
+    </td>
+  </tr>
+</table>
+
+<h3>User Information</h3>
+<table width="75%">
+  <tr>
+    <td><b>Email:</b></td>
+    <td>$!{dotRegistrationForm.emailAddress}</td>
+  </tr>
+  <tr>
+    <td><b>Password:</b></td>
+    <td>********</td>
+  </tr>
+  #if ($dotRegistrationForm.prefix != "")
+  <tr>
+    <td><b>Prefix:</b></td>
+    #set ($prefix = "")
+    #if ($!{dotRegistrationForm.prefix} == "mr")
+      #set ($prefix = "Mr.")
+    #elseif ($!{dotRegistrationForm.prefix} == "mrs")
+      #set ($prefix = "Mrs.")
+    #elseif ($!{dotRegistrationForm.prefix} == "miss")
+      #set ($prefix = "Ms.")
+    #elseif ($!{dotRegistrationForm.prefix} == "dr")
+      #set ($prefix = "Dr.")
+    #end
+    <td>$!{prefix}</td>
+  </tr>
+  #end
+  <tr>
+    <td><b>First Name:</b></td>
+    <td>$!{dotRegistrationForm.firstName}</td>
+  </tr>
+  <tr>
+    <td><b>Last Name:</b></td>
+    <td>$!{dotRegistrationForm.lastName}</td>
+  </tr>
+  #if ($dotRegistrationForm.suffix != "")
+  <tr>
+    <td><b>Suffix:</b></td>
+    <td>$!{dotRegistrationForm.suffix}</td>
+  </tr>
+  #end
+  #if ($dotRegistrationForm.title != "")
+    <tr>  
+      <td><b>Title:</b></td>
+      <td>$!{dotRegistrationForm.title}</td>
+    </tr>
+  #end
+  <!-- END USER INFORMATION -->
+</table>
+
+<h3>My $!{dotRegistrationForm.description} Address</h3>
+<table width="75%">
+  <tr>
+    <td><!-- Organization Inode--></td>
+    <td><input type="hidden" name="addressID" value="$!{dotRegistrationForm.addressID}"></td>
+  </tr>
+  <tr>
+    <td><b>Street1:</b></td>
+    <td>$!{dotRegistrationForm.street1}</td>
+  </tr>
+  #if ($dotRegistrationForm.street2 != "")
+    <tr>
+      <td><b>Street 2:</b></td>
+      <td>$!{dotRegistrationForm.street2}</td>
+    </tr>
+  #end
+  <tr>
+    <td><b>City:</b></td>
+    <td>$!{dotRegistrationForm.city}</td>
+  </tr>
+  <tr>
+    <td><b>State:</b></td>
+    <td>$!{dotRegistrationForm.state}</td>
+  </tr>
+  <tr>
+    <td><b>Country:</b></td>
+    <td>$!{dotRegistrationForm.country}</td>
+  </tr>
+  <tr>
+    <td><b>Zip:</b></td>
+    <td>$!{dotRegistrationForm.zip}</td>
+  </tr>
+  <tr>  
+    <td><b>Phone:</b></td>
+    <td>$!{dotRegistrationForm.phone}</td>
+  </tr>
+  #if ($dotRegistrationForm.fax != "")
+    <tr>  
+      <td><b>Fax:</b></td>
+      <td>$!{dotRegistrationForm.fax}</td>
+    </tr>
+  #end
+  </table>
+  <div class="item"></div>
+  <!-- END Mailing Aaddres -->
+<div class="item"></div>
+
+</form>​

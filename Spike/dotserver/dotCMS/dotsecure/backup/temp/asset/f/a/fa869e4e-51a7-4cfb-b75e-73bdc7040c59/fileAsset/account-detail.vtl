@@ -1,0 +1,133 @@
+<script type="text/javascript" src="/dwr/engine.js"></script>
+<script type="text/javascript" src="/dwr/util.js"></script>
+<script type='text/javascript' src='/dwr/interface/TagAjax.js'></script>
+<script type='text/javascript' src='/html/js/tag.js'></script>
+
+#parse('static/messages.html')
+#if(!$myAccountForm || !$user || !${myAccountForm.userId})
+	$response.sendRedirect("/")
+#end
+#set($addresses = $cmsuser.getAddresesByUser($user))
+
+<script>
+	function doSubmit(){
+		document.getElementById("myAccountForm").submit();
+	}
+	
+	function prefixChanged (obj) {
+		if (obj.options[obj.selectedIndex].value == "other") {
+			document.myAccountForm.otherPrefix.readOnly = false;
+			document.myAccountForm.otherPrefix.focus();
+		} else {
+			document.myAccountForm.otherPrefix.readOnly = true;
+		}
+	}
+
+	function doAddAddress(id){
+		var ele = document.getElementById("dispatch");
+		ele.value="editUserAddress";
+		ele = document.getElementById("addressID");
+		ele.value=id;
+		document.getElementById("myAccountForm").submit();
+	}
+</script>
+
+<form action="/dotCMS/myAccount" method="post" id="myAccountForm" name="myAccountForm" autocomplete="off">
+	<input type="hidden" name="dispatch" id="dispatch" value="saveUserInfo"> 
+	<input type="hidden" name="userId" value="${myAccountForm.userId}">
+	<input type="hidden" name="addressID" id="addressID" value="${myAccountForm.addressID}">
+	
+	<h3>My Account</h3>
+	<table width="100%">
+		<tr><td colspan="3" bgcolor="#DDDDDD">Personal Information</td></tr>
+		
+		<tr>
+			<td width="280">Prefix:</td>
+			<td>
+				#if($!{myAccountForm.prefix} == "mr")
+					#set( $mr = "selected")
+				#elseif($!{myAccountForm.prefix} == "mrs")
+					#set( $mrs = "selected")
+				#elseif($!{myAccountForm.prefix} == "miss")
+					#set( $miss = "selected")
+				#elseif($!{myAccountForm.prefix} == "dr")
+					#set( $dr =  "selected")
+				#else
+					#set( $other = "selected")
+				#end
+				<select  name="prefix" value="$!{myAccountForm.prefix}" onchange="prefixChanged(this)">
+					<option value="mr" $!{mr}>Mr.</option>
+					<option value="mrs" $!{mrs}>Mrs.</option>
+					<option value="miss" $!{miss}>Ms.</option>
+					<option value="dr" $!{dr}>Dr.</option>
+					<option value="other" $!{other}>Other</option>
+				</select>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>*First Name:</td>
+			<td><input type="text" name="firstName" value="$!myAccountForm.firstName"></td>
+		</tr>
+		
+  		<tr>
+			<td>*Last Name:</td>
+			<td><input type="text" name="lastName" value="$!myAccountForm.lastName"></td>
+		</tr>
+  
+		<tr>
+			<td>Suffix:</td>
+			<td><input type="text" name="suffix" value="$!myAccountForm.suffix"></td>
+		</tr>
+
+		<tr>
+			<td>Title:</td>
+			<td><input type="text" name="title" value="$!myAccountForm.title"></td>
+		</tr>
+	</table>
+	
+	<table>
+		<tr><td colspan="2" bgcolor="#DDDDDD">Address Information</td></tr>
+		<tr>
+			<td valign="top">
+				#if($addresses.size() > 1)
+					Addresses:
+				#else
+					Address:
+				#end
+			</td>
+			<td>
+				<div style="float:right"><a href="javascript:doAddAddress(0)">add new address</a></div>
+				#foreach($addr in $addresses )
+					<div style="height:20px;font-weight:bold;">$addr.description (<a href="javascript:doAddAddress($addr.addressId)">edit</a>)</div>
+				#end
+			</td>
+		</tr>
+	</table>
+	
+	<table>
+		<tr><td colspan="3" bgcolor="#DDDDDD">Account Information</td></tr>
+		
+		<tr>
+			<td>E-mail address:</td>
+			<td><input type="text" name="emailAddress" value="$!myAccountForm.emailAddress" style="width:150px" class="dotStoreText"></td>
+		</tr>
+		
+		<tr>
+			<td>* Current Password:</td>
+			<td><input type="password" name="password" value=""  style="width:150px" class="dotStoreText"></td>
+		</tr>
+		
+		<tr>
+			<td>New Password:</td>
+			<td><input type="password" name="newPassword" style="width:150px" class="dotStoreText"></td>
+		</tr>
+		
+		<tr>
+			<td>New Password again:</td>
+			<td><input type="password" name="verifyPassword" style="width:150px" class="dotStoreText"></td>
+		</tr>
+		
+	</table>​
+	<div style="text-align:center;margin:20px;"><button onclick="doSubmit();">Save Information</button></div>
+</form>

@@ -1,0 +1,49 @@
+#if($URLMapContent.inode)
+	<div class="news-header">
+		<h2>
+			#dotedit($!URLMapContent.inode,$!URLMapContent.title)
+			#editContentlet($URLMapContent.inode)
+		</h2>
+		<span class="byline">$!URLMapContent.author</span>
+		<time datetime="$date.format('yyyy-MM-dd',$!URLMapContent.sysPublishDate)T$date.format('hh:mm:ss',$!URLMapContent.sysPublishDate)">$date.format('MMM dd yyyy',$!URLMapContent.sysPublishDate) at $date.format('HH:mm z',$!URLMapContent.sysPublishDate)</time>
+		<div class="addThisNews">#dotParse('//shared/vtl/widgets/full-site/add-this.vtl')</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div class="news-body">
+		#dotedit($!URLMapContent.inode,$!URLMapContent.body)
+		<div class="tags">
+			<b>Tags:</b> 
+			#set($tags = $!URLMapContent.tags.split(","))
+			#foreach($tag in $tags)
+				<a href="/blogs/?tag=${UtilMethods.encodeURL($tag.trim())}">$tag</a>
+			#end
+		</div>
+	</div>
+	<div class="addThisNews">#dotParse('//shared/vtl/widgets/full-site/add-this.vtl')</div>
+	<div class="clear p3">&nbsp;</div>
+	<div class="border-bot wrapper p3"><a class="top" href="#">top</a></div>
+	
+	<div class="comments">
+		<!-- Uncomment desired settings -->
+		##set($commentsModeration="News Publisher") 
+		##set($commentForceLogin = 'true')
+		##set($commentDateDescending = true)
+		##set($copmmentStripHTML = 'true')
+		
+		
+		#set($myContent = $URLMapContent.inode)
+		#set($commentTitle = 'Comments')
+		#set($commentUseCaptcha = 'true')
+		#set($commentAutoPublish = 'true')
+		#set($maxDepth = 2)
+		#set($commentSourceCode = '//shared/vtl/macros/comments.vtl')
+		#comment($myContent)
+
+	</div>
+	<div class="clear p3"></div>
+	<div class="border-bot wrapper p3"><a class="top" href="#">top</a></div>
+
+#else
+	<h3>We are sorry, but the blog you are looking for is no longer available. <a href="/blogs/">Click here to see resent blogs</a>.</h3>
+#end

@@ -1,0 +1,72 @@
+#if($UtilMethods.isSet($request.getParameter('date')))
+  #set($dateString = $request.getParameter('date'))
+#else
+  #set($dateString = $date.format('yyyy-MM-dd',$UtilMethods.getCurrentDate()))
+#end
+#set($nowlv = $date.toDate('yyyy-MM-dd',$dateString))
+#set($now = $date.toDate('yyyy-MM-dd',$dateString))
+#set($fromDatelv = $date.toDate('yyyy-MM-dd',$dateString))
+#set($toDatelv = $date.toDate('yyyy-MM-dd',$dateString))
+#set($calendarlv = $date.toCalendar($nowlv))
+#set($dayOfWeeklv = $math.sub($calendarlv.get(7),1))
+
+#set($temp = $fromDatelv.setTime($math.sub($fromDatelv.getTime(), $math.mul(86400000,$dayOfWeeklv))))
+#set($temp = $toDatelv.setTime($math.add($toDatelv.getTime(),$math.mul(86400000,$math.sub(6,$dayOfWeeklv)))))
+
+#set($tag = $request.getParameter('tag'))
+#set($keywordBox = $request.getParameter('keywordBox'))
+#set($cat = $request.getParameter('cat'))
+
+  
+#set($events = $calendar.findEvents($host.identifier, $fromDatelv, $toDatelv, $tag, $keywordBox, $cat, "startDate", 1 , 1))
+
+#if (!$UtilMethods.isSet($request.getParameter('cat')))
+<div class="prev-next">
+	<a href="/news-events/events/index.html?date=$date.format('yyyy-MM-dd',$UtilMethods.addDate($now,-7,5))" class="previous pull-left">&laquo; Previous</a>
+	$date.format('MMMM d',$fromDatelv) - $date.format('MMMM d',$toDatelv)
+	<a href="/news-events/events/index.html?date=$date.format('yyyy-MM-dd',$UtilMethods.addDate($now,7,5))" class="next pull-right">Next &raquo;</a>
+</div>
+#end
+
+#dotParse('//shared/vtl/widgets/full-site/calendar-ongoing.vtl')
+
+#if($events.size() > 0)
+
+#if ($UtilMethods.isSet($request.getParameter('cat')))
+  <h2>Upcoming <em>$categories.getCategoryByInode($cat).getCategoryName()</em> Events</h2>
+#end
+
+#foreach ($event in $events)
+<div class="day clearfix #if($velocityCount == $events.size())last#end">  
+  <div class="date">
+    <div class="month">$date.format('MMM',$event.startDate)</div>
+    <div class="day-number">$date.format('dd',$event.startDate)</div>
+  </div><!--/ .date -->
+
+  <ul>
+    <li>
+      <p class="small">
+      #if("$date.format('ha',$event.startDate)" != "12AM")
+        <strong>$date.format('ha',$event.startDate)</strong>,
+      #end
+      $date.format('EEEE, MMMM d, yyyy',$event.startDate)</p>
+      #if($event.recurs)
+      #set($eventId = $event.identifier.substring(0,$event.identifier.indexOf('-rec')))
+        <h3><a href="/news-events/events/$event.urlTitle?id=$eventId&recurrenceStartDate=$date.format('dd/MM/yyyy HH:mm:ss',$event.startDate)&recurrenceEndDate=$date.format('dd/MM/yyyy HH:mm:ss',$event.endDate)">$event.title</a>#editContentlet($event.inode)</h3>
+      #else
+        <h3><a href="/news-events/events/$event.urlTitle?id=$event.identifier">$event.title</a>#editContentlet($event.inode)</h3>
+      #end
+      
+      $UtilMethods.shortenString("$event.description", 220)
+    </li>
+  </ul>
+</div><!--/ .day -->
+#end
+#else
+  #if ($UtilMethods.isSet($request.getParameter('cat')))
+    <h5>There are no results matching the "$categories.getCategoryByInode($cat).getCategoryName()" event type</h5>
+  #else
+    <h5>There are no events to show for the selected dates and / or filters.</h5>
+  #end
+    <p class="no-results">Click <a href="/news-events/events/index.html">here</a> to view this week's upcoming events.</p>
+#end

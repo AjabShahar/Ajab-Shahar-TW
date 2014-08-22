@@ -1,0 +1,11 @@
+#set($_qk = "
+	+structureName:Products 
+	+(conhost:48190c8c-42c4-46af-8d1a-0cd5db894797 conhost:SYSTEM_HOST)
+")
+	
+#set($results = $dotcontent.pull(${_qk},100,"Products.title"))
+<ul class="default">
+	#foreach($con in $results)
+		<li><a href="/products/product-detail.html?id=$con.identifier">$!{con.tickerSymbol} ($con.title)</a></li>
+	#end
+</ul>

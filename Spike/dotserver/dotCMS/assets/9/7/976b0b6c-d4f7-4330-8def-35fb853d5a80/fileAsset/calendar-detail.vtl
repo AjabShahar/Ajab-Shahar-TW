@@ -1,0 +1,182 @@
+#set($eventIdentifier = $request.getParameter('id'))
+#if(!$UtilMethods.isSet($eventIdentifier))
+   #if($URLMapContent)
+      #set($eventIdentifier = $URLMapContent.identifier)
+   #end
+#end
+   
+#set($recurrenceStartDate= $request.getParameter('recurrenceStartDate'))
+#set($recurrenceEndDate= $request.getParameter('recurrenceEndDate'))
+
+
+#if($UtilMethods.isSet($recurrenceStartDate))
+  #set($startDateV= $date.toDate('dd/MM/yyyy HH:mm:ss',$recurrenceStartDate))
+#else
+  #if($UtilMethods.isSet($content.startDate))
+   #set($startDateV= $content.startDate)
+  #else
+     #set($eventVar = $calendar.find($eventIdentifier))
+     #set($startDateV= $eventVar.startDate)
+  #end 
+#end  
+
+#if($UtilMethods.isSet($recurrenceEndDate))
+  #set($endDateV= $date.toDate('dd/MM/yyyy HH:mm:ss',$recurrenceEndDate))
+#else
+  #if($UtilMethods.isSet($content.endDate))
+    #set($endDateV= $content.endDate) 
+  #else
+     #set($eventVar = $calendar.find($eventIdentifier))
+     #set($endDateV= $eventVar.endDate)
+  #end  
+#end
+  
+
+
+
+#if($UtilMethods.isSet($eventIdentifier))
+  #getContentMapDetail($eventIdentifier)
+  #if($UtilMethods.isSet($content.identifier))
+  #if($UtilMethods.isSet($recurrenceStartDate) && $UtilMethods.isSet($recurrenceEndDate) )
+  #set($vcalendarUrl = "/dotCMS/downloadVCalendar?id=$content.identifier&recurrenceStartDate=$date.format('dd/MM/yyyy HH:mm:ss',$startDateV)&recurrenceEndDate=$date.format('dd/MM/yyyy HH:mm:ss',$endDateV)")
+#else
+  #set($vcalendarUrl = "/dotCMS/downloadVCalendar?id=${content.identifier}")
+#end
+  
+    <div class="share">
+      #set($socialBookmarksList = ['digg','delicious','yahoo','google','newsvine'])
+      #socialBookmarks()
+    </div>
+    <a href="$vcalendarUrl" class="add">Add to Calendar</a>
+    <h2>$content.get('title')</span>#editContentlet($content.inode)</h2>
+    <table cellpadding="0" cellspacing="0" width="100%" class="event-details">
+      <tr>
+        <td><strong>When:</strong></td>
+        #set($startDate = $date.format('MMMM d, h:mm a', ${startDateV}))
+        #set($endDate = $date.format('MMMM d, h:mm a', ${endDateV}))
+        #if($startDate == $endDate)
+        
+          <td>$startDate</td>
+        #else     
+          #if($date.format('EEE, MMMM d yyyy',$startDateV)==$date.format('EEE, MMMM d yyyy',$endDateV))
+            <td>    
+              #if($date.format('h:mm a',$startDateV)=='12:00 AM' && $date.format('h:mm a',$endDateV)=='11:59 PM' )
+                $date.format('MMMM d', ${endDateV}) <small>(all day event)</small>
+              #else
+                $startDate - $date.format('h:mm a',$endDateV) 
+              #end  
+            </td>
+          #else   
+            <td>$startDate - $endDate</td>
+          #end
+        #end
+      </tr>
+      
+      #if($UtilMethods.isSet($content.link))
+        <tr>
+          <td><strong>Link:</strong></td>
+          <td>
+            #if(!$content.get('link').startsWith('/') && !$content.get('link').startsWith('http'))
+              #set($linkUrl = "http://$content.get('link')")
+            #else
+              #set($linkUrl = "$content.get('link')")
+            #end
+            <a href="$linkUrl" target="_blank" class="external">$content.get('link')</a>
+          </td>
+        </tr>
+      #end
+      
+      #if($UtilMethods.isSet($content.tags))
+        <tr>
+          <td><strong>Tagged:</strong></td>
+          <td>
+            #set($tagsSpplited = $content.tags.split(','))
+            #foreach($tag in $tagsSpplited)#if($velocityCount > 1),#end
+            <a href="/news-events/events/index.html?date=${date.format('yyyy-MM-dd',$startDateV)}&tag=$tag">$tag</a>
+            #end
+          </td>
+        </tr>
+      #end
+      
+      #if($UtilMethods.isSet($content.file))
+      <tr>
+        <td><strong>Files:</strong></td>
+        <td><a href="$content.fileFileURI">$content.fileFileName</a></td>
+      </tr>
+      #end
+      #if($listTool.size($content.ContentletCategories) > 0)
+      <tr>
+        <td><strong>Filed Under:</strong></td>
+        <td>
+          #foreach($catInode in $content.ContentletCategories)#if($velocityCount > 1),#end
+            #set($category = $categories.getCategoryByInode($catInode))
+            <a href="/news-events/events.html?date=${date.format('yyyy-MM-dd',$startDateV)}&cat=$category.categoryVelocityVarName">$category.categoryName</a>
+          #end
+        </td>
+      </tr>
+      #end
+      
+    </table>
+    
+    <div style="overflow:hidden">
+      #if($UtilMethods.isSet($content.image))
+        <img src="/resize_image?path=$content.imageImageURI&w=150" alt="$content.title" class="left" />
+      #end
+
+      #if($UtilMethods.isSet($content.description))
+        <!-- <h3>Description:</h3> -->
+        $content.description
+      #end
+    </div>
+    
+    
+    <!-- Related Events -->
+    
+    #set($datePart = $date.format("yyyyMMdd", $content.startDate))
+    #set($fromDate = $UtilMethods.addDays($date.toDate("yyyyMMddHHmmss", "${datePart}000000"), -7))
+    #set($toDate = $UtilMethods.addDays($date.toDate("yyyyMMddHHmmss", "${datePart}235959"), 7))
+    #set($eventsList = $calendar.findRelatedEvents($eventIdentifier, $fromDate, $toDate))
+    
+    #set($hasRelated = false)
+    #if($eventsList.size()>0)
+      <div class="events" id="related-events">
+        <h3>Related Events</h3>
+        #foreach($event in $eventsList)
+          #if($event.identifier != $eventIdentifier && $velocityCount < 6)
+            #set($hasRelated = true)
+            <div class="day clearfix #if($velocityCount == $events.size())last#end">  
+              <div class="date">
+                <div class="month">$date.format('MMM',$event.startDate)</div>
+                <div class="day-number">$date.format('dd',$event.startDate)</div>
+              </div><!--/ .date -->
+              
+              <ul>
+                <li>
+                  <p class="small">
+                  #if("$date.format('ha',$event.startDate)" != "12AM")
+                    <strong>$date.format('ha',$event.startDate)</strong>,
+                  #end
+                  $date.format('EEEE, MMMM d, yyyy',$event.startDate)</p>
+                  #if($event.recurs)
+                  #set($eventId = $event.identifier.substring(0,$event.identifier.indexOf('-rec')))
+                    <h3><a href="/news-events/events/$event.urlTitle?id=$eventId&recurrenceStartDate=$date.format('dd/MM/yyyy HH:mm:ss',$event.startDate)&recurrenceEndDate=$date.format('dd/MM/yyyy HH:mm:ss',$event.endDate)">$event.title</a>#editContentlet($event.inode)</h3>
+                  #else
+                    <h3><a href="/news-events/events/$event.urlTitle?id=$event.identifier">$event.title</a>#editContentlet($event.inode)</h3>
+                  #end
+                  
+                  $UtilMethods.shortstring("$event.description", 220, true)
+                </li>
+              </ul>
+            </div>
+          #end
+        #end
+      </div>
+    #end
+    #if(!$hasRelated)
+      <p>There are no related events.</p>
+    #end
+    
+  #end
+#else
+  <p>You need to pass an ID to show the Event Detail</p>
+#end

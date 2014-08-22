@@ -1,0 +1,33 @@
+<script>
+// Flickr
+	$(document).ready(function(){
+		$('#flicker-$CONTENT_INODE').jflickrfeed({
+			limit: $!{results},
+			qstrings: {
+				id: '$!{account}'
+			},
+			itemTemplate: '<li>'+
+							'<a rel="prettyPhoto[$!{title}]" href="{{image}}" title="{{title}}" style="background: url({{image_s}}) no-repeat center center;">' +
+								'{{title}}' +
+							'</a>' +
+						  '</li>'
+		}, function(data) {			
+			$("#flicker-$CONTENT_INODE a").prettyPhoto({
+				animation_speed: 'fast', /* fast/slow/normal */
+				slideshow: 5000,
+				autoplay_slideshow: false,
+				show_title: false,
+				allow_resize: true,
+				counter_separator_label: ' of ', /* The separator for the gallery counter 1 "of" 2 */
+				theme: 'pp_default', /* light_rounded / dark_rounded / light_square / dark_square / facebook */
+				horizontal_padding: 20, /* The padding on each side of the picture */
+				modal: false, /* If set to true, only the close button will close the window */
+				deeplinking: false, /* Allow prettyPhoto to update the url to enable deeplinking. */
+				overlay_gallery: true, /* If set to true, a gallery will overlay the fullscreen image on mouse over */
+			});
+		});
+	});
+</script>
+<h3>$!{title} $content hello</h3>
+<ul id="flicker-$CONTENT_INODE" class="photo-gallery"></ul>
+<div class="clear p4"></div>

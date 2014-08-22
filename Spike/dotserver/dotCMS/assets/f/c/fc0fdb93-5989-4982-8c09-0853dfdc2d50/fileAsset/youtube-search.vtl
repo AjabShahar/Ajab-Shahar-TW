@@ -1,0 +1,120 @@
+
+<style>
+  #videoResultsDiv{}
+  #myResults{padding:8px 10px 8px 10px;width:530px; height:400px;overflow-x: hidden; overflow-y: auto;}
+  #myResults ul{margin:0;padding:0;font-family:Arial, Helvetica, sans-serif;font-size:12px;line-height:16px;}
+  #myResults ul li{position:relative;display:block;list-style:none;padding:0;padding:10px 10px 20px 140px;border-bottom:1px dashed #ccc;cursor:pointer;}
+  #myResults ul li:hover{background:#c3e1eb;}
+  #myResults ul li span{display:block;position:absolute;left:10px; top:10px; width:120px; height:90px;}
+  #thumbnailImage{height:252px;width:400px;overflow:hidden;}
+  .imageWrapper{border:1px solid #ccc;width:400px;height:252px;margin:20px 0 0 0;padding:6px;background:#fff;position:relative;}
+  .playButton{display:block; width:412px;height:264px;background: url(http://nhsn.4researchers.org/conference/resources/common/images/play-button-overlay.png) center center no-repeat;position:absolute; top:0; left:0;}
+</style>
+
+
+<script type="text/javascript">
+
+	dojo.addOnLoad( function(){
+		var x = dojo.byId("thumbnail2").value;
+		if(x != ""){
+			var y = dojo.byId("url").value;
+			dojo.style(dojo.byId("thumbnailImage"), "background", "url(" + x + ") center center no-repeat");
+		}
+	});
+	
+
+    function searchClicked(){
+		var mySearch = document.getElementById("inputSearchStrId").value;
+		if(mySearch.length < 1){
+			alert("Please Enter Search Term");
+			document.getElementById('inputSearchStrId').focus();
+		}else{
+			dijit.byId('videoResultsDiv').show();
+        	document.getElementById("myResults").innerHTML = 'Loading YouTube videos ...';
+	        var script = document.createElement('script');
+	        script.setAttribute('id', 'jsonScript');
+	        script.setAttribute('type', 'text/javascript');
+	        script.setAttribute('src', 'http://gdata.youtube.com/feeds/' + 
+	               'videos?vq=' + mySearch + '&max-results=25&' + 
+	               'alt=json-in-script&callback=showMyVideos&' + 
+	               'orderby=relevance&sortorder=descending&format=5&fmt=18');
+	        document.documentElement.firstChild.appendChild(script);
+	   }
+    }
+    
+
+    function showMyVideos(data){
+        var feed = data.feed;
+        var entries = feed.entry || [];
+        var html = ['<ul>'];
+        for (var i = 0; i < entries.length; i++)
+        {
+            var entry = entries[i];
+            var title = entry.title.$t;
+            var lnk = entry.link[0].href;
+            var published = entry.published.$t;
+            var length = entry.media$group.media$thumbnail[1].time;
+            var by = entry.author[0].name.$t;
+            var picSm = entry.media$group.media$thumbnail[1].url;
+            var picLg = entry.media$group.media$thumbnail[0].url;
+			var passVar = " ' " + lnk + " ' , ' " + picSm + "' , '" + picLg + "' , '" + title + "' , '" + by + "' , '" + length + "' , '" + published + " ' ";
+            html.push('<li onclick=\"setFields(', passVar , ');\"><span style=\"background:url(', picSm, ') no-repeat;\"></span><b>' , title , '</b><br><b>Author: </b>', by ,'<br><b>Length: </b>', length, '<br><b>Published: </b>', published , '</li>');
+        }
+        html.push('</ul>');
+        document.getElementById('myResults').innerHTML = html.join('');  
+    }
+    
+    
+    function setFields(lnk,picSm,picLg,title,by,length,published){
+    	dijit.byId('videoResultsDiv').hide();
+    	dojo.byId("widgetTitle").value=title;
+    	dojo.byId("author").value=by;
+    	dojo.byId("length").value=length;
+    	dojo.byId("thumbnail").value=picSm;
+    	dojo.byId("thumbnail2").value=picLg;
+    	dojo.byId("published").value=published;
+    	dojo.byId("url").value=lnk;
+    	dojo.byId("inputSearchStrId").value="";
+    	dojo.style(dojo.byId("thumbnailImage"), "background", "url(" + picLg + ") center center no-repeat");
+    }
+    
+    
+    function playVideo(){
+    	var y = dojo.byId("url").value;
+    	if(y.length < 1){
+    		document.getElementById('inputSearchStrId').focus();
+    	}else{
+			y = y.replace('watch?v=', 'embed/');
+			y = y.substring(0, y.indexOf("&"));
+			var videoPlayer = new dijit.Dialog({
+				title: "dotCMS Player",
+				content: "<iframe id='myIframe' src='" + y + "' width='560' height='315' style='border: 0 none;margin:-10px;'></iframe>",
+				loadingMessage: "Loading...",
+				style: "width:560px;height:341px;padding:0;",
+			});
+			videoPlayer.show();
+			videoPlayer.connect(videoPlayer, 'onHide', function() {
+			    setTimeout(function() { videoPlayer.destroyRecursive(); }, 0);
+			});
+    	}
+    }
+
+</script>
+
+
+<div>
+    <div>                  
+        <input name="searchStr" id="inputSearchStrId" type="text" dojoType="dijit.form.TextBox" style="width:400px;" placeHolder="Search for Videos on YouTube" />
+    	<button dojoType="dijit.form.Button" onClick="searchClicked()" iconClass="searchIcon">Search</button>
+    </div>
+    
+    <div class="imageWrapper">
+    	<a href="#" onClick="playVideo()" class="playButton"></a>
+    	<div id="thumbnailImage"></div>
+    </div>
+    
+    <div id="videoResultsDiv" dojoType="dijit.Dialog" style="display: none">
+		<div id="myResults"></div>
+    </div>
+    
+</div>

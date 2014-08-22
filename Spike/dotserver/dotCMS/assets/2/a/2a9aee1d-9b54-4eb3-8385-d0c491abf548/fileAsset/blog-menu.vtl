@@ -1,0 +1,42 @@
+<div class="BlogSearch">
+	<form method="get">
+		<input id="searchBox" type="text" name="blogSearch" placeholder="Search" #if($blogSearch!= '') value="$!{blogSearch}"#end />
+		<input type="submit" value="Find" />
+		<input type="hidden" name="search" value="true" />
+	</form>
+</div>
+<!-- end .BlogSearch -->
+	
+<script type="text/javascript">
+	function focusOnSearchBox() {
+		document.getElementById('searchBox').focus();
+	}
+	window.onLoad = focusOnSearchBox();
+</script>
+
+
+
+<style>
+	#if($UtilMethods.isSet($catVar))
+		li.$catVar a{font-weight:bold;color:#d54c20;}
+	#else
+		li.all a{font-weight:bold;color:#d54c20;}
+	#end
+</style>
+
+<h3>Topics</h3>
+<nav class="p5" style="margin-top:20px;">
+	<ul class="side-menu">
+			<li class="all"><a href="/blogs/index.html">Most Recent</a></li>
+		#foreach($con in $categories.getChildrenCategoriesByKey("topic"))
+			<li class="$con.categoryVelocityVarName"><a href="/blogs/index.html?cat=$con.categoryVelocityVarName">$con.categoryName</a></li>
+		#end
+	</ul>
+</nav>
+
+<h3 class="border-bottom">Tags</h3>
+<nav class="tag-cloud p3">
+	#set($tagCloudNoStyles = "true")
+	#tagCloud("Blog" '/blogs/index.html' 20)
+	<div class="clear"></div>
+</nav>

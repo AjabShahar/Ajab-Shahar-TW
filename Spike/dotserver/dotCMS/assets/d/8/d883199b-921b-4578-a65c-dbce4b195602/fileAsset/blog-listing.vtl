@@ -1,0 +1,104 @@
+#set($catVar=$request.getParameter("cat"))
+#set($tagVar=$request.getParameter("tag"))
+#set($searchVar=$request.getParameter("blogSearch"))
+
+#set($nowsers= $date.format('yyyyMMddHHmmss', $date.getDate()))
+
+#set($_qk = "+structureName:Blog +(conhost:$host.identifier conhost:SYSTEM_HOST)")
+
+#if($UtilMethods.isSet($searchVar))
+	#set($_qk = $_qk + "+(Blog.title:*$searchVar* || Blog.body:*$searchVar*)")
+#end
+
+#if($UtilMethods.isSet($catVar))
+  #set($_qk = $_qk + "+(categories:$catVar)")
+#end
+
+#if($UtilMethods.isSet($tagVar))
+  #set($_qk = $_qk + "+Blog.tags:*$tagVar*")
+#end
+
+#if($request.getParameter("page"))
+  #set($pageNumber = $math.toInteger($request.getParameter("page")))
+#else
+  #set($pageNumber = 1)
+#end
+
+#set($numberToPull = 5)
+
+#set($mypagelist = $dotcontent.pullPerPage("${_qk}",${pageNumber},${numberToPull},"Blog.sysPublishDate desc"))
+
+<div class="page-title">
+	#if($UtilMethods.isSet($catVar))
+		<a class="rss-button" href="/blogs/rss.html?cat=$catVar">RSS</a>
+	#else
+		<a class="rss-button" href="/blogs/rss.html">RSS</a>
+	#end
+	<h2>Insight Blog</h2>
+	<p class="search-string">
+		#if($UtilMethods.isSet($searchVar))
+			Search Results for: <span>"$searchVar"</span>
+		#end
+		#if($UtilMethods.isSet($catVar))
+			Filter by: <span>"$catVar"</span>
+		#end
+		#if($UtilMethods.isSet($tagVar))
+			Tagged by: <span>"$tagVar"</span>
+		#end
+	</p>
+</div>
+
+<ul class="news-listing">
+	#set($contentCount = ($pageNumber - 1) * $numberToPull)
+	#foreach($con in $mypagelist)
+		#set($contentCount = $contentCount + 1)
+		<li>
+			#editContentlet($con.inode)
+			<h3><a href="/blog/$con.urlTitle">$!{con.title}</a></h3>
+			<span class="byline">$!con.author</span>
+			<time datetime="$date.format('yyyy-MM-dd',$!con.sysPublishDate)T$date.format('hh:mm:ss',$!con.sysPublishDate)">
+				$date.format('MMMM dd, yyyy',$con.sysPublishDate),
+				#if($con.commentscount > 0)
+					$con.commentscount Comments
+				#else
+					No Comments
+				#end
+			</time>
+			<p>$UtilMethods.prettyShortenString("$con.body", 200)</p>
+		</li>
+	#end
+</ul>
+
+<div class="pagination">
+	<div style="float:left;">
+		#if($mypagelist.previousPage)
+			#set($prevPage= $pageNumber - 1)
+			#if($UtilMethods.isSet($searchVar))
+				<a href="?page=$prevPage&blogSearch=$searchVar">
+			#elseif($UtilMethods.isSet($catVar))
+				<a href="?page=$prevPage&cat=$catVar">
+			#elseif($UtilMethods.isSet($tagVar))
+				<a href="?page=$prevPage&tag=$tagVar">
+			#else
+				<a href="?page=$prevPage">
+			#end
+			&#x25C0; Previous</a>
+		#end
+	</div>
+	<div style="float:right;">
+		#if($mypagelist.nextPage)
+			#set($nextPage= $pageNumber + 1)
+			#if($UtilMethods.isSet($searchVar))
+				<a href="?page=$nextPage&blogSearch=$searchVar">
+			#elseif($UtilMethods.isSet($catVar))
+				<a href="?page=$nextPage&cat=$catVar">
+			#elseif($UtilMethods.isSet($tagVar))
+				<a href="?page=$nextPage&tag=$tagVar">
+			#else
+				<a href="?page=$nextPage">
+			#end
+			Next &#x25B6;</a>
+		#end
+	</div>
+	<div class="clear"></div>
+</div>

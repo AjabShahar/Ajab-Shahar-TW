@@ -1,0 +1,21 @@
+#set($_qk = "+structureName:Document +confolder:$!{folder1} +Document.metaData.contentType:image/*")
+#set($cons = $dotcontent.pull(${_qk},$!{numberOfResults},"Document.sysPublishDate desc"))
+
+#if ($UtilMethods.isSet($title))
+  <h3>$!{title}</h3>
+#end
+#if($cons.size() > 0)
+	<ul class="photo-gallery">
+		#foreach($con in $cons)
+			<li>
+				<a class="prettyPhoto" href="/contentAsset/resize-image/$con.identifier/fileAsset" rel="external" title="$!{con.title}" style="background: url(/contentAsset/resize-image/$con.identifier/fileAsset/h/65) no-repeat center center;">
+					$!{con.title}
+				</a>
+			</li>
+		#end
+	</ul>
+#else
+	There currently no images in the folder.
+#end
+
+<div class="clear p4"></div>

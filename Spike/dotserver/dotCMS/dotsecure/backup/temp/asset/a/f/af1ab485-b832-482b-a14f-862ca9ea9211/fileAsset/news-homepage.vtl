@@ -1,0 +1,33 @@
+#set($nowsers= $date.format('yyyyMMddHHmmss', $date.getDate()))
+
+#set($_qk = "
+	+structureName:News 
+	+(conhost:$host.identifier conhost:SYSTEM_HOST)
+	+News.sysPublishDate:[19001010101000 TO $nowsers]
+")
+
+#set($results = $dotcontent.pull(${_qk},3,"News.sysPublishDate desc"))
+
+<h3>Headlines</h3>
+
+<ul class="news-listing">
+#foreach($con in $results)
+	<li>
+		#editContentlet($con.inode)
+		<a href="/news/$con.urlTitle">$!{con.title}</a>
+		<time datetime="$date.format('yyyy-MM-dd',$con.sysPublishDate)T$date.format('hh:mm:ss',$con.sysPublishDate)">
+			$date.format('MMMM dd, yyyy',$con.sysPublishDate),
+			#if($con.commentscount > 0)
+				$con.commentscount Comments
+			#else
+			 	No Comments
+			#end
+		</time>
+		#if($UtilMethods.isSet($!con.lead))
+			$!{con.lead}
+		#else
+			$UtilMethods.prettyShortenString("$con.story", 130)</p>
+		#end
+	</li>
+#end
+</ul>

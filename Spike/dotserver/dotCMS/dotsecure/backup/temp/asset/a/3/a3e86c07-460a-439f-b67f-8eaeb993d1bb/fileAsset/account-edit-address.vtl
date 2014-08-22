@@ -1,0 +1,78 @@
+<script language="javascript" type="text/javascript" src='/html/js/states_and_countries.js'></script>
+<script>
+	function doSubmit(){
+		document.getElementById("myAccountForm").submit();
+	}
+</script>
+
+<style>
+	#myAccountForm div{margin:10px;position:relative;height:30px;}
+	#myAccountForm div input[type="text"], #createAccountForm div select{position:absolute;left:150px;}
+</style>
+
+<div padding:20px;>
+      <a href="/dotCMS/myAccount">My Account</a>
+</div>
+
+
+<form action="/dotCMS/myAccount" method="post" id="myAccountForm" name="myAccountForm" autocomplete="off">
+	<input type="hidden" name="dispatch" value="saveUserAddress">
+	<input type="hidden" name="userId" value="${myAccountForm.userId}">
+	<input type="hidden" name="addressID" value="${myAccountForm.addressID}">
+    #parse('static/messages.html')
+  
+	<div>
+		Address Description:
+		<input type="text" class="dotStoreText" name="description" value="$!myAccountForm.description">
+	</div>
+	
+	<div>
+		Street 1:
+		<input type="text" class="dotStoreText" name="street1" value="$!myAccountForm.street1">
+	</div>
+	
+	<div>
+		Street 2:
+		<input type="text" class="dotStoreText" name="street2" value="$!myAccountForm.street2" style="width:150px"></td>
+	</div>
+	
+	<div>
+		City:
+		<input type="text" class="dotStoreText" name="city" value="$!myAccountForm.city" style="width:150px"></td>
+	</div>
+	
+	<div>
+		State:
+		<input type="text" class="dotStoreText" name="state" id="stateText" value="$!myAccountForm.state" style="width:150px">
+	</div>
+	
+	<div>
+		Country:
+		<div style="position: absolute;left: 140px;top: -10px;">
+			<script language="javascript">
+				writeCountriesSelect('country','$!myAccountForm.country');
+			</script>
+		</div>
+	</div>
+	
+	<div>         
+		Zip:
+		<input type="text" class="dotStoreText" name="zip" value="$!myAccountForm.zip" style="width:150px"></td>
+	</div>
+	
+	<div>
+		Phone:
+		<input type="text" class="dotStoreText" name="phone" value="$!myAccountForm.phone" style="width:150px"></td>
+	</div>
+	
+	<div>
+		Fax:
+		<input type="text" class="dotStoreText" name="fax" value="$!myAccountForm.fax" style="width:150px"></td>
+	</div>
+
+	<div>
+		<input type="button" onclick="window.location='/dotCMS/myAccount?r=$date';" value="Cancel"/>
+		&nbsp; &nbsp; &nbsp; 
+		<input type="button" onclick="doSubmit();" value="Save">
+	</div>
+</form>

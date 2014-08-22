@@ -1,0 +1,24 @@
+var x = $(window).width();
+var y = Math.round(x*0.4);
+
+#set($numResults = "3")
+
+document.getElementById("coin-slider").innerHTML=
+#foreach($con in $dotcontent.pull("+structureName:Banner +(conhost:48190c8c-42c4-46af-8d1a-0cd5db894797 conhost:SYSTEM_HOST)",$numResults,"modDate desc"))
+	"<a href=\"#\">" +
+	"<img src=\"/contentAsset/image/$con.inode/image?byInode=1&amp;filter=Resize&amp;resize_h=" + y + "\" alt=\"$!{con.title}\" />" +
+	"<span><b>$!{con.title}</b></span>" +
+	"</a>" #if($velocityCount != $numResults) + #end
+#end
+
+$('#coin-slider').coinslider({
+	navigation: true,
+	delay: 5000,
+	effect: 'straight',
+	opacity: 0.7,
+	hoverPause: true,
+	height: y,
+	width: x,
+	spw: 5,
+	sph: 3
+});

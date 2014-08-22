@@ -1,0 +1,81 @@
+<!-- Start footer.vtl Include -->
+<div class="container">
+	<div class="row">
+		<div class="span3 hidden-phone">
+			<h4>About Us</h4>
+			<h5>Sit amet, consec tetuer adipisci.</h5>
+			<p>Ves tibu lum moles tit lacu aenean nonum myhen drerit mauris dolore phaselu porta. Fusce suset cip varius mium sociis</p>
+			<a href="http://www.dotcms.com" target="_blank" class="read-more">Read More <span>&raquo;</span></a>
+		</div>
+		<div class="span3 hidden-phone">
+			<h4>Recent Posts</h4>
+			<ul class="recent-posts">
+				#foreach($con in $dotcontent.pull("+structureName:Blog +(conhost:48190c8c-42c4-46af-8d1a-0cd5db894797 conhost:SYSTEM_HOST)",2,"Blog.sysPublishDate desc"))
+					<li>
+						<a href="/blog/$con.urlTitle">$con.title</a>
+						<span>$date.format('MMMM dd, yyyy',$con.sysPublishDate)</span>
+						<span class="autor-photo"><img src="/images/icons/profile-image.png" width="50" height="50"></span>
+					</li>
+				#end
+			</ul>
+		</div>
+		<div class="span3 hidden-phone">
+			<h4>Featured Product</h4>
+			<ul class="ft-products">
+				#foreach($con in $dotcontent.pull("+structureName:Products +(conhost:48190c8c-42c4-46af-8d1a-0cd5db894797 conhost:SYSTEM_HOST) +Products.risk:*4* +Products.type1:*Fund*",4,"Products.title"))
+					<li>
+						<a href="/products/$con.urlTitle">$con.title</a>
+					</li>
+				#end
+			</ul>
+			<a href="/products/" class="read-more">All Products <span>&raquo;</span></a>
+		</div>
+		<div class="span3">
+			<div class="getTouch">
+				<h4>Get in Touch</h4>
+				<ul>
+					<li>Freephone: <a href="tel:+1-800-555-5555">+1 800 555 5555</a></li>
+					<li>Telephone: <a href="tel:+1-305-555-5555">+1 305 555 5555</a></li>
+					<li>E-mail: <a href="mailto:mail@dotcmsdemo.com">mail@dotcmsdemo.com</a></li>
+				</ul>
+				<ul class="social">
+				    <li><a href="https://www.facebook.com/dotcms" class="facebook"></a></li>
+				    <li><a href="http://twitter.com/dotcms" class="twitter"></a></li>
+				    <li><a href="https://plus.google.com/115123784807613481836/posts" class="google"></a></li>
+				    <li><a href="http://dotcms.com/community/rss-feeds.dot" class="rss"></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+		
+	<hr>
+		
+	<div class="row hidden-phone">
+		<div class="span4">
+			<a href="http://www.dotcms.com" target="_blank"><img src="/application/themes/openbank/images/logo-bw.png" alt="openBank" style="width:155px;height:65px;margin-top:-10px;"></a>
+		</div>
+		<div class="span8">
+			<nav class="footer-nav">
+				#set($list = $navtool.getNav("/"))
+				<ul>
+					#foreach($n in $list)
+						<li><a href='${n.href}'>${n.title}</a></li>
+					#end
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+<!-- Placed at the end of the document so the pages load faster -->	
+<script src="/js/jquery.flexslider.min.js"></script>
+<script src="/js/jquery.atooltip.js"></script>
+<script src="/js/jquery.prettyPhoto.js"></script>
+<script src="/js/jquery.tweet.js"></script>
+<script src="/js/jquery.easing.1.3.js"></script>
+<script src="/js/jquery.tablesorter.min.js"></script>
+<script src="/js/jflickrfeed.min.js"></script>
+<script src="/js/chosen.jquery.js"></script>
+<script src="/js/script.js?v=10012012"></script>
+
+<!-- Start footer.vtl Include -->

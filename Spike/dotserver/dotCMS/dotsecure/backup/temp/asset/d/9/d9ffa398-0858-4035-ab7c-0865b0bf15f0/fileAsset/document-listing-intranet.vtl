@@ -1,0 +1,24 @@
+<h2>Advisor Resources</h2></h2>
+
+<table class="sort-table">
+	<thead>
+		<tr>
+			<th style="text-align:left;">Name</th>
+			<th class="hidden-phone">Date</th>
+			<th>Size</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		#foreach($con in $dotcontent.pull("+structureName:Document +conFolder:dbda9d5d-06a4-432c-9347-855acbfe3c94",10,"Document.fileName desc"))
+			<tr class="tr$math.mod($velocityCount,2)" onclick="window.location.href='/resources/document-detail.html?id=$!{con.identifier}';">
+				<td style="text-align:left;">
+					<img src="/icon?i=${con.fileName}">
+					${con.title}
+				</td>
+				<td class="hidden-phone" style="text-align:center">$date.format('MMMM dd, yyyy',$con.sysPublishDate)</td>
+				<td style="text-align:center">$UtilMethods.prettyByteify( $math.toInteger($con.metaData.fileSize))</td>
+			</tr>
+		#end
+	</tbody>
+</table>

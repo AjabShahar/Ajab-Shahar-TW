@@ -1,0 +1,184 @@
+#if ($UtilMethods.isSet($request.getParameter("id")))
+#set ($content = $dotcontent.find($request.getParameter("id")))
+
+<div class="row"> 
+	 
+	<div class="span4">
+		<div class="wrapper">
+		    <h2>$content.title</h2>#editContentlet($content.inode)
+		    #if ($UtilMethods.isSet($content.description1))
+		      <p>$content.description1</p>
+		    #end
+		    
+		    #if ($UtilMethods.isSet($content.sysPublishDate) || $content.topic.size() > 0 || $UtilMethods.isSet($content.tags))
+		      <ul style="margin-bottom: 20px;">
+		        #if ($UtilMethods.isSet($content.sysPublishDate))
+		          <li style="list-style:none;"><strong>Publish on:</strong> $date.format('MM/dd/yyyy',$content.sysPublishDate)</li>
+		        #end
+		    
+		        #if ($content.topic.size() > 0)
+		          <li style="list-style:none;">
+		            <strong>Categories:</strong>
+		            #foreach ($cat in $content.topic)
+		              <a href="/resources/index.html?cat=$!{cat.categoryVelocityVarName}">$!{cat.categoryName}</a>#if($velocityCount != $content.topic.size()),#end
+		            #end
+		          </li>
+		        #end
+		    
+		        #if ($UtilMethods.isSet($content.tags) && $content.tags.size() > 0)
+		          <li style="list-style:none;">
+		            <strong>Tags:</strong>
+		      #foreach ($tag in $content.tags)
+		        <a href="/resources/index.html?tag=$!{tag}">$!{tag}</a>#if($velocityCount != $content.tags.size()),#end
+		      #end
+		          </li>
+		        #end
+		      </ul>
+		    #end
+		</div>
+  </div>
+  
+  <div class="span8" style="text-align:center;"> 
+    ## IF IMAGE
+    #if($content.metaData.contentType.indexOf("image/") == 0)
+      <a href="$content.fileAsset.uri" class="hoverImage prettyPhoto" title="$content.title">
+        <img src="/resize_image?path=$content.fileAsset.uri&w=560">
+      </a>
+    
+    ## IF PDF  
+    #elseif($content.metaData.contentType.indexOf("application/pdf") == 0)
+      <a href="${content.fileAsset.uri}?force_download=true">
+        <img src="/images/icons/pdf-icon.jpg" alt="Download PDF" width="400" height="250">
+	  </a>
+    
+    ## IF QUICKTIME
+    #elseif($content.metaData.contentType.indexOf("video/quicktime") == 0)
+      <OBJECT classid='clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B' width="560" height="264" codebase='http://www.apple.com/qtactivex/qtplugin.cab'>
+        <param name='src' value="$content.fileAsset.uri">
+        <param name='autoplay' value="false">
+        <param name='controller' value="true">
+        <param name='loop' value="false">
+        <EMBED src="$content.fileAsset.uri" width="560" height="264" autoplay="false"
+          controller="true" loop="false" bgcolor="#000000" pluginspage='http://www.apple.com/quicktime/download/'>
+        </EMBED>
+      </OBJECT>
+      
+    ## IF MP4 VIDEO
+    #elseif($content.metaData.contentType.indexOf("video/mp4") == 0)
+      <video width="560" height="264" controls="controls">
+        <source src="$content.fileAsset.uri" type="video/mp4" />
+      </video>
+      
+    ## IF OGG VIDEO
+    #elseif($content.metaData.contentType.indexOf("application/ogg") == 0)
+      <video width="560" height="264" controls="controls">
+        <source src="$content.fileAsset.uri" type="video/ogg" />
+      </video>
+      
+    ## IF WEB VIDEO
+    #elseif($content.metaData.contentType.indexOf("application/octet-stream") == 0)
+      <video width="560" height="264" controls="controls">
+        <source src="$content.fileAsset.uri" type="video/webv" />
+      </video>
+    
+    ## IF WINDOWS VIDEO
+    #elseif($content.metaData.contentType.indexOf("video/wmv") == 0)
+      <OBJECT id='mediaPlayer' width="560" height="264"
+        classid='CLSID:22d6f312-b0f6-11d0-94ab-0080c74c7e95'
+        codebase='http://activex.microsoft.com/activex/controls/ mplayer/en/nsmp2inf.cab#Version=5,1,52,701'
+        standby='Loading Microsoft Windows Media Player components...' type='application/x-oleobject'>
+        <param name='fileName' value="$content.fileAsset.uri">
+        <param name='animationatStart' value='1'>
+        <param name='transparentatStart' value='1'>
+        <param name='autoStart' value='0'>
+        <param name='ShowControls' value='1'>
+        <param name='ShowDisplay' value='1'>
+        <param name='ShowStatusBar' value='1'>
+        <param name='loop' value='0'>
+        
+        <EMBED type='application/x-mplayer2'
+          pluginspage='http://microsoft.com/windows/mediaplayer/ en/download/'
+          id='mediaPlayer' name='mediaPlayer' displaysize='4' autosize='0'
+          bgcolor='darkblue' showcontrols='1' showtracker='1'
+          showdisplay='1' showstatusbar='1' videoborder3d='0' width="560" height="264"
+          src="$content.fileAsset.uri" autostart='0' designtimesp='5311' loop='0'>
+        </EMBED>
+      </OBJECT>
+      
+    ## IF WORD DOC
+    #elseif(
+          $content.metaData.contentType.indexOf("application/msword") == 0 || 
+          $content.metaData.contentType.indexOf("application/vnd.openxmlformats-officedocument.wordprocessingml.document") == 0 || 
+          $content.metaData.contentType.indexOf("application/vnd.openxmlformats-officedocument.wordprocessingml.template") == 0 || 
+          $content.metaData.contentType.indexOf("application/vnd.ms-word.document.macroEnabled.12") == 0 || 
+          $content.metaData.contentType.indexOf("application/vnd.ms-word.template.macroEnabled.12") == 0
+        )
+        <a href="${content.fileAsset.uri}?force_download=true">
+        	<img src="/images/icons/word-icon.jpg" alt="Download Word Doc" width="400" height="250">
+		</a>
+	
+	## IF EXCEL DOC
+	#elseif(
+          $content.metaData.contentType.indexOf("application/vnd.ms-excel") == 0 || 
+          $content.metaData.contentType.indexOf("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") == 0 || 
+          $content.metaData.contentType.indexOf("application/vnd.openxmlformats-officedocument.spreadsheetml.template") == 0 || 
+          $content.metaData.contentType.indexOf("application/vnd.ms-excel.sheet.macroEnabled.12") == 0 || 
+          $content.metaData.contentType.indexOf("application/vnd.ms-excel.template.macroEnabled.12") == 0 ||
+          $content.metaData.contentType.indexOf("application/vnd.ms-excel.addin.macroEnabled.12") == 0 ||
+          $content.metaData.contentType.indexOf("application/vnd.ms-excel.sheet.binary.macroEnabled.12") == 0
+        )
+        <a href="${content.fileAsset.uri}?force_download=true">
+        	<img src="/images/icons/excel-icon.jpg" alt="Download Excel Doc" width="400" height="250">
+		</a>
+	
+	## IF POWERPOINT
+	#elseif(
+          $content.metaData.contentType.indexOf("application/vnd.ms-powerpoint") == 0 || 
+          $content.metaData.contentType.indexOf("application/vnd.openxmlformats-officedocument.presentationml.presentation") == 0 || 
+          $content.metaData.contentType.indexOf("application/vnd.openxmlformats-officedocument.presentationml.template") == 0 || 
+          $content.metaData.contentType.indexOf("application/vnd.openxmlformats-officedocument.presentationml.slideshow") == 0 || 
+          $content.metaData.contentType.indexOf("application/vnd.ms-powerpoint.addin.macroEnabled.12") == 0 ||
+          $content.metaData.contentType.indexOf("application/vnd.ms-powerpoint.presentation.macroEnabled.12") == 0 ||
+          $content.metaData.contentType.indexOf("application/vnd.ms-powerpoint.template.macroEnabled.12") == 0 ||
+          $content.metaData.contentType.indexOf("application/vnd.ms-powerpoint.slideshow.macroEnabled.12")
+        )
+        <a href="${content.fileAsset.uri}?force_download=true">
+        	<img src="/images/icons/ppt-icon.jpg" alt="Download Power Point" width="400" height="250">
+		</a>
+    #else
+      <a href="${content.fileAsset.uri}?force_download=true">
+        	<img src="/images/icons/unknown-icon.jpg" alt="Download Document" width="400" height="250">
+		</a>
+    #end
+  </div>
+</div>
+  
+
+
+	#if ($UtilMethods.isSet($content.metaData))
+		<div class="row">  
+			<div class="span12">
+				<div class="wrapper">
+					<h2>Metadata</h2>
+					<table class="metadata">
+						#foreach($key in $content.metaData.entrySet())
+							#if($key.key != "map")
+								<tr>
+									<td>$key.key</td>
+									<td>$!{UtilMethods.prettyShortenString($key.value, 400)}</td>
+								</tr>
+							#end
+						#end
+					</table>
+				</div>
+			</div>
+		</div>
+	#end
+
+#else
+	<div class="row">  
+		<div class="span12">
+			<h3>We are sorry, but the Document you are looking for is no longer available. <a href="/resources/">Click here to see all Documents</a>.</h3>
+		</div>
+	</div>
+#end

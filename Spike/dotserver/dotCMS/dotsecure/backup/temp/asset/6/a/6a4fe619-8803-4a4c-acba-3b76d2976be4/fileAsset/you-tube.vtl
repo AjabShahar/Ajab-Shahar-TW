@@ -1,0 +1,9 @@
+<div class="feat-video">
+	<a href="$url" class="hoverVideo prettyPhoto" title="$!{widgetTitle}" style="width:100%">
+		#if ($UtilMethods.isSet($thumbnail2))
+			<img src="$!{thumbnail2}" alt="$!{widgetTitle}" style="width:98%;margin:0 6px 0 0;"/>
+		#else
+			$!{widgetTitle}
+		#end
+	</a>
+</div>

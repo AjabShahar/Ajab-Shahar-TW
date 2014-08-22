@@ -1,0 +1,224 @@
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/Users/prasathr/Documents/dotcms_2.5/dotserver/dotCMS/WEB-INF/lib/slf4j-jcl-1.6.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/Users/prasathr/Documents/dotcms_2.5/dotserver/dotCMS/WEB-INF/lib/tika-app-1.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+DEBUG: WIRE: [1.0] osgi.wiring.package; (osgi.wiring.package=javax.xml.stream) -> [0]
+DEBUG: WIRE: [1.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.framework)(version>=1.4.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [1.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.log)(version>=1.3.0)(!(version>=2.0.0))) -> [3.0]
+DEBUG: WIRE: [1.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.url)(version>=1.0.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [4.0] osgi.wiring.package; (osgi.wiring.package=org.osgi.framework) -> [0]
+DEBUG: WIRE: [4.0] osgi.wiring.package; (osgi.wiring.package=org.osgi.util.tracker) -> [0]
+DEBUG: WIRE: [3.0] osgi.wiring.package; (&(osgi.wiring.package=org.apache.felix.service.command)(status=provisional)(version>=0.10.0)(!(version>=1.0.0))) -> [4.0]
+DEBUG: WIRE: [3.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.framework)(version>=1.5.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [3.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.framework.wiring)(version>=1.0.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [3.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.packageadmin)(version>=1.2.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [3.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.startlevel)(version>=1.1.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [3.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.util.tracker)(version>=1.3.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [2.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.framework)(version>=1.4.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [2.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.log)(version>=1.3.0)(!(version>=2.0.0))) -> [3.0]
+DEBUG: WIRE: [2.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.packageadmin)(version>=1.2.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [2.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.startlevel)(version>=1.1.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [2.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.url)(version>=1.0.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [2.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.util.tracker)(version>=1.4.0)(!(version>=2.0.0))) -> [0]
+DEBUG: DYNAMIC WIRE: [3.0] osgi.wiring.package; (osgi.wiring.package=org.apache.felix.bundlerepository) -> [1.0]
+DEBUG: WIRE: [5.0] osgi.wiring.package; (&(osgi.wiring.package=org.apache.felix.service.command)(status=provisional)(version>=0.10.0)) -> [4.0]
+DEBUG: WIRE: [5.0] osgi.wiring.package; (osgi.wiring.package=org.osgi.framework) -> [0]
+DEBUG: WIRE: [5.0] osgi.wiring.package; (osgi.wiring.package=org.osgi.service.startlevel) -> [0]
+DEBUG: WIRE: [5.0] osgi.wiring.package; (osgi.wiring.package=org.osgi.util.tracker) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (osgi.wiring.package=javax.net.ssl) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (osgi.wiring.package=javax.security.cert) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (&(osgi.wiring.package=javax.servlet)(version>=2.5.0)) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (&(osgi.wiring.package=javax.servlet.http)(version>=2.5.0)) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (osgi.wiring.package=javax.xml.parsers) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.framework)(version>=1.3.0)) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.log)(version>=1.3.0)) -> [3.0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.util.tracker)(version>=1.3.0)) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (osgi.wiring.package=org.slf4j) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (osgi.wiring.package=org.xml.sax) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (osgi.wiring.package=org.xml.sax.helpers) -> [0]
+[INFO] Started bridged http service
+AbandonedObjectPool is used (org.apache.tomcat.dbcp.dbcp.AbandonedObjectPool@29ec6c08)
+   LogAbandoned: true
+   RemoveAbandoned: true
+   RemoveAbandonedTimeout: 60
+Aug 22, 2014 3:38:32 PM com.sun.jersey.server.impl.application.WebApplicationImpl _initiate
+INFO: Initiating Jersey application, version 'Jersey: 1.12 02/15/2012 04:51 PM'
+Aug 22, 2014 3:38:32 PM com.sun.jersey.server.impl.application.DeferredResourceConfig$ApplicationHolder <init>
+INFO: Instantiated the Application class com.dotcms.rest.config.DotRestApplication
+Aug 22, 2014 3:38:34 PM net.sf.ehcache.config.ConfigurationFactory parseConfiguration
+WARNING: No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/prasathr/Documents/dotcms_2.5/dotserver/dotCMS/WEB-INF/lib/ehcache-1.6.1.jar!/ehcache-failsafe.xml
+Warning:  org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser: Property 'http://www.oracle.com/xml/jaxp/properties/entityExpansionLimit' is not recognized.
+Warning:  org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser: Property 'http://www.oracle.com/xml/jaxp/properties/entityExpansionLimit' is not recognized.
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/Users/prasathr/Documents/dotcms_2.5/dotserver/dotCMS/WEB-INF/lib/slf4j-jcl-1.6.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/Users/prasathr/Documents/dotcms_2.5/dotserver/dotCMS/WEB-INF/lib/tika-app-1.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+DEBUG: WIRE: [4.0] osgi.wiring.package; (osgi.wiring.package=org.osgi.framework) -> [0]
+DEBUG: WIRE: [4.0] osgi.wiring.package; (osgi.wiring.package=org.osgi.util.tracker) -> [0]
+DEBUG: WIRE: [3.0] osgi.wiring.package; (&(osgi.wiring.package=org.apache.felix.service.command)(status=provisional)(version>=0.10.0)(!(version>=1.0.0))) -> [4.0]
+DEBUG: WIRE: [3.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.framework)(version>=1.5.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [3.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.framework.wiring)(version>=1.0.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [3.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.packageadmin)(version>=1.2.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [3.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.startlevel)(version>=1.1.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [3.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.util.tracker)(version>=1.3.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [1.0] osgi.wiring.package; (osgi.wiring.package=javax.xml.stream) -> [0]
+DEBUG: WIRE: [1.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.framework)(version>=1.4.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [1.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.log)(version>=1.3.0)(!(version>=2.0.0))) -> [3.0]
+DEBUG: WIRE: [1.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.url)(version>=1.0.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [2.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.framework)(version>=1.4.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [2.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.log)(version>=1.3.0)(!(version>=2.0.0))) -> [3.0]
+DEBUG: WIRE: [2.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.packageadmin)(version>=1.2.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [2.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.startlevel)(version>=1.1.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [2.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.url)(version>=1.0.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [2.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.util.tracker)(version>=1.4.0)(!(version>=2.0.0))) -> [0]
+DEBUG: DYNAMIC WIRE: [3.0] osgi.wiring.package; (osgi.wiring.package=org.apache.felix.bundlerepository) -> [1.0]
+DEBUG: WIRE: [5.0] osgi.wiring.package; (&(osgi.wiring.package=org.apache.felix.service.command)(status=provisional)(version>=0.10.0)) -> [4.0]
+DEBUG: WIRE: [5.0] osgi.wiring.package; (osgi.wiring.package=org.osgi.framework) -> [0]
+DEBUG: WIRE: [5.0] osgi.wiring.package; (osgi.wiring.package=org.osgi.service.startlevel) -> [0]
+DEBUG: WIRE: [5.0] osgi.wiring.package; (osgi.wiring.package=org.osgi.util.tracker) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (osgi.wiring.package=javax.net.ssl) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (osgi.wiring.package=javax.security.cert) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (&(osgi.wiring.package=javax.servlet)(version>=2.5.0)) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (&(osgi.wiring.package=javax.servlet.http)(version>=2.5.0)) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (osgi.wiring.package=javax.xml.parsers) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.framework)(version>=1.3.0)) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.log)(version>=1.3.0)) -> [3.0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.util.tracker)(version>=1.3.0)) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (osgi.wiring.package=org.slf4j) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (osgi.wiring.package=org.xml.sax) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (osgi.wiring.package=org.xml.sax.helpers) -> [0]
+[INFO] Started bridged http service
+AbandonedObjectPool is used (org.apache.tomcat.dbcp.dbcp.AbandonedObjectPool@64900079)
+   LogAbandoned: true
+   RemoveAbandoned: true
+   RemoveAbandonedTimeout: 60
+Aug 22, 2014 3:51:03 PM com.sun.jersey.server.impl.application.WebApplicationImpl _initiate
+INFO: Initiating Jersey application, version 'Jersey: 1.12 02/15/2012 04:51 PM'
+Aug 22, 2014 3:51:03 PM com.sun.jersey.server.impl.application.DeferredResourceConfig$ApplicationHolder <init>
+INFO: Instantiated the Application class com.dotcms.rest.config.DotRestApplication
+Aug 22, 2014 3:51:04 PM net.sf.ehcache.config.ConfigurationFactory parseConfiguration
+WARNING: No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/prasathr/Documents/dotcms_2.5/dotserver/dotCMS/WEB-INF/lib/ehcache-1.6.1.jar!/ehcache-failsafe.xml
+Warning:  org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser: Property 'http://www.oracle.com/xml/jaxp/properties/entityExpansionLimit' is not recognized.
+Warning:  org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser: Property 'http://www.oracle.com/xml/jaxp/properties/entityExpansionLimit' is not recognized.
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/Users/prasathr/Documents/dotcms_2.5/dotserver/dotCMS/WEB-INF/lib/slf4j-jcl-1.6.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/Users/prasathr/Documents/dotcms_2.5/dotserver/dotCMS/WEB-INF/lib/tika-app-1.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+DEBUG: WIRE: [3.0] osgi.wiring.package; (&(osgi.wiring.package=org.apache.felix.service.command)(status=provisional)(version>=0.10.0)(!(version>=1.0.0))) -> [4.0]
+DEBUG: WIRE: [3.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.framework)(version>=1.5.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [3.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.framework.wiring)(version>=1.0.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [3.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.packageadmin)(version>=1.2.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [3.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.startlevel)(version>=1.1.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [3.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.util.tracker)(version>=1.3.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [1.0] osgi.wiring.package; (osgi.wiring.package=javax.xml.stream) -> [0]
+DEBUG: WIRE: [1.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.framework)(version>=1.4.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [1.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.log)(version>=1.3.0)(!(version>=2.0.0))) -> [3.0]
+DEBUG: WIRE: [1.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.url)(version>=1.0.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [4.0] osgi.wiring.package; (osgi.wiring.package=org.osgi.framework) -> [0]
+DEBUG: WIRE: [4.0] osgi.wiring.package; (osgi.wiring.package=org.osgi.util.tracker) -> [0]
+DEBUG: WIRE: [2.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.framework)(version>=1.4.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [2.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.log)(version>=1.3.0)(!(version>=2.0.0))) -> [3.0]
+DEBUG: WIRE: [2.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.packageadmin)(version>=1.2.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [2.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.startlevel)(version>=1.1.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [2.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.url)(version>=1.0.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [2.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.util.tracker)(version>=1.4.0)(!(version>=2.0.0))) -> [0]
+DEBUG: DYNAMIC WIRE: [3.0] osgi.wiring.package; (osgi.wiring.package=org.apache.felix.bundlerepository) -> [1.0]
+DEBUG: WIRE: [5.0] osgi.wiring.package; (&(osgi.wiring.package=org.apache.felix.service.command)(status=provisional)(version>=0.10.0)) -> [4.0]
+DEBUG: WIRE: [5.0] osgi.wiring.package; (osgi.wiring.package=org.osgi.framework) -> [0]
+DEBUG: WIRE: [5.0] osgi.wiring.package; (osgi.wiring.package=org.osgi.service.startlevel) -> [0]
+DEBUG: WIRE: [5.0] osgi.wiring.package; (osgi.wiring.package=org.osgi.util.tracker) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (osgi.wiring.package=javax.net.ssl) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (osgi.wiring.package=javax.security.cert) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (&(osgi.wiring.package=javax.servlet)(version>=2.5.0)) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (&(osgi.wiring.package=javax.servlet.http)(version>=2.5.0)) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (osgi.wiring.package=javax.xml.parsers) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.framework)(version>=1.3.0)) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.log)(version>=1.3.0)) -> [3.0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.util.tracker)(version>=1.3.0)) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (osgi.wiring.package=org.slf4j) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (osgi.wiring.package=org.xml.sax) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (osgi.wiring.package=org.xml.sax.helpers) -> [0]
+[INFO] Started bridged http service
+AbandonedObjectPool is used (org.apache.tomcat.dbcp.dbcp.AbandonedObjectPool@397dea61)
+   LogAbandoned: true
+   RemoveAbandoned: true
+   RemoveAbandonedTimeout: 60
+Aug 22, 2014 3:55:34 PM com.sun.jersey.server.impl.application.WebApplicationImpl _initiate
+INFO: Initiating Jersey application, version 'Jersey: 1.12 02/15/2012 04:51 PM'
+Aug 22, 2014 3:55:35 PM com.sun.jersey.server.impl.application.DeferredResourceConfig$ApplicationHolder <init>
+INFO: Instantiated the Application class com.dotcms.rest.config.DotRestApplication
+Aug 22, 2014 3:55:36 PM net.sf.ehcache.config.ConfigurationFactory parseConfiguration
+WARNING: No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/prasathr/Documents/dotcms_2.5/dotserver/dotCMS/WEB-INF/lib/ehcache-1.6.1.jar!/ehcache-failsafe.xml
+Warning:  org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser: Property 'http://www.oracle.com/xml/jaxp/properties/entityExpansionLimit' is not recognized.
+Warning:  org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser: Property 'http://www.oracle.com/xml/jaxp/properties/entityExpansionLimit' is not recognized.
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/Users/prasathr/Documents/dotcms_2.5/dotserver/dotCMS/WEB-INF/lib/slf4j-jcl-1.6.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/Users/prasathr/Documents/dotcms_2.5/dotserver/dotCMS/WEB-INF/lib/tika-app-1.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+DEBUG: WIRE: [4.0] osgi.wiring.package; (osgi.wiring.package=org.osgi.framework) -> [0]
+DEBUG: WIRE: [4.0] osgi.wiring.package; (osgi.wiring.package=org.osgi.util.tracker) -> [0]
+DEBUG: WIRE: [3.0] osgi.wiring.package; (&(osgi.wiring.package=org.apache.felix.service.command)(status=provisional)(version>=0.10.0)(!(version>=1.0.0))) -> [4.0]
+DEBUG: WIRE: [3.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.framework)(version>=1.5.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [3.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.framework.wiring)(version>=1.0.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [3.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.packageadmin)(version>=1.2.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [3.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.startlevel)(version>=1.1.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [3.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.util.tracker)(version>=1.3.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [1.0] osgi.wiring.package; (osgi.wiring.package=javax.xml.stream) -> [0]
+DEBUG: WIRE: [1.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.framework)(version>=1.4.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [1.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.log)(version>=1.3.0)(!(version>=2.0.0))) -> [3.0]
+DEBUG: WIRE: [1.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.url)(version>=1.0.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [2.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.framework)(version>=1.4.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [2.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.log)(version>=1.3.0)(!(version>=2.0.0))) -> [3.0]
+DEBUG: WIRE: [2.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.packageadmin)(version>=1.2.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [2.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.startlevel)(version>=1.1.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [2.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.url)(version>=1.0.0)(!(version>=2.0.0))) -> [0]
+DEBUG: WIRE: [2.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.util.tracker)(version>=1.4.0)(!(version>=2.0.0))) -> [0]
+DEBUG: DYNAMIC WIRE: [3.0] osgi.wiring.package; (osgi.wiring.package=org.apache.felix.bundlerepository) -> [1.0]
+DEBUG: WIRE: [5.0] osgi.wiring.package; (&(osgi.wiring.package=org.apache.felix.service.command)(status=provisional)(version>=0.10.0)) -> [4.0]
+DEBUG: WIRE: [5.0] osgi.wiring.package; (osgi.wiring.package=org.osgi.framework) -> [0]
+DEBUG: WIRE: [5.0] osgi.wiring.package; (osgi.wiring.package=org.osgi.service.startlevel) -> [0]
+DEBUG: WIRE: [5.0] osgi.wiring.package; (osgi.wiring.package=org.osgi.util.tracker) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (osgi.wiring.package=javax.net.ssl) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (osgi.wiring.package=javax.security.cert) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (&(osgi.wiring.package=javax.servlet)(version>=2.5.0)) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (&(osgi.wiring.package=javax.servlet.http)(version>=2.5.0)) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (osgi.wiring.package=javax.xml.parsers) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.framework)(version>=1.3.0)) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.service.log)(version>=1.3.0)) -> [3.0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (&(osgi.wiring.package=org.osgi.util.tracker)(version>=1.3.0)) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (osgi.wiring.package=org.slf4j) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (osgi.wiring.package=org.xml.sax) -> [0]
+DEBUG: WIRE: [6.0] osgi.wiring.package; (osgi.wiring.package=org.xml.sax.helpers) -> [0]
+[INFO] Started bridged http service
+AbandonedObjectPool is used (org.apache.tomcat.dbcp.dbcp.AbandonedObjectPool@5f18cd5)
+   LogAbandoned: true
+   RemoveAbandoned: true
+   RemoveAbandonedTimeout: 60
+Aug 22, 2014 4:00:29 PM com.sun.jersey.server.impl.application.WebApplicationImpl _initiate
+INFO: Initiating Jersey application, version 'Jersey: 1.12 02/15/2012 04:51 PM'
+Aug 22, 2014 4:00:29 PM com.sun.jersey.server.impl.application.DeferredResourceConfig$ApplicationHolder <init>
+INFO: Instantiated the Application class com.dotcms.rest.config.DotRestApplication
+Aug 22, 2014 4:00:30 PM net.sf.ehcache.config.ConfigurationFactory parseConfiguration
+WARNING: No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/Users/prasathr/Documents/dotcms_2.5/dotserver/dotCMS/WEB-INF/lib/ehcache-1.6.1.jar!/ehcache-failsafe.xml
+Warning:  org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser: Property 'http://www.oracle.com/xml/jaxp/properties/entityExpansionLimit' is not recognized.
+Warning:  org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser: Property 'http://www.oracle.com/xml/jaxp/properties/entityExpansionLimit' is not recognized.
+Attempting to load ESAPI.properties via file I/O.
+Attempting to load ESAPI.properties as resource file via file I/O.
+Not found in 'org.owasp.esapi.resources' directory or file not readable: /Users/prasathr/Documents/dotcms_2.5/dotserver/ESAPI.properties
+Not found in SystemResource Directory/resourceDirectory: .esapi/ESAPI.properties
+Not found in 'user.home' (/Users/prasathr) directory: /Users/prasathr/esapi/ESAPI.properties
+Loading ESAPI.properties via file I/O failed. Exception was: java.io.FileNotFoundException
+Attempting to load ESAPI.properties via the classpath.
+SUCCESSFULLY LOADED ESAPI.properties via the CLASSPATH from '/ (root)' using current thread context class loader!
+SecurityConfiguration for Validator.ConfigurationFile not found in ESAPI.properties. Using default: validation.properties
+Attempting to load validation.properties via file I/O.
+Attempting to load validation.properties as resource file via file I/O.
+Not found in 'org.owasp.esapi.resources' directory or file not readable: /Users/prasathr/Documents/dotcms_2.5/dotserver/validation.properties
+Not found in SystemResource Directory/resourceDirectory: .esapi/validation.properties
+Not found in 'user.home' (/Users/prasathr) directory: /Users/prasathr/esapi/validation.properties
+Loading validation.properties via file I/O failed.
+Attempting to load validation.properties via the classpath.
+validation.properties could not be loaded by any means. fail. Exception was: java.lang.IllegalArgumentException: Failed to load ESAPI.properties as a classloader resource.
+SecurityConfiguration for Encryptor.CipherTransformation not found in ESAPI.properties. Using default: AES/CBC/PKCS5Padding
+SecurityConfiguration for Logger.LogApplicationName not found in ESAPI.properties. Using default: true
+SecurityConfiguration for Logger.LogServerIP not found in ESAPI.properties. Using default: true
