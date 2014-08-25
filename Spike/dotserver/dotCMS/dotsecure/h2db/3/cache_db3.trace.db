@@ -1,3 +1,0 @@
-08-22 16:01:01 jdbc[2]: exception
-org.h2.jdbc.JdbcSQLException: Table "VELOCITYCACHE" not found; SQL statement:
-SELECT CACHE_DATA FROM `velocitycache` WHERE CACHE_KEY=? [42102-169]
