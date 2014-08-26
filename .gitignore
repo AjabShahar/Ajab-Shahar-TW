@@ -1,0 +1,14 @@
+
+#intellij idea 
+.idea
+.idea_modules
+AjabShahar/.idea
+
+#eclipse
+.settings
+
+.DS_Store
+RUNNING_PID
+*iml
+
+target
