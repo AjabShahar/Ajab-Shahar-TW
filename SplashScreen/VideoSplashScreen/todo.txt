@@ -1,0 +1,13 @@
+on the Home-Screen
+	[/] Looping the video infinitely.
+		problem: a screen is shown with other videos recommendations.
+	Enabling full-screen mode for the video being played.
+
+On moving the cursor
+	Pausing the video.
+	Showing up AS splash screen image with language selection text.
+	A mechanism to go back to the video from the splash screen.
+	Redirecting the user after his choice.
+
+Once gone back to the video
+	Resuming the video.
