@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Splash_screen</title>
+	<style>
+		body{
+			background-color: black;
+		}
+		.splash_screen {
+			height: 305px;
+			width: 700px;
+			border: 1px solid black;
+			margin: 150px 404px;
+			background-image: url("Images/swan.jpg");
+			-webkit-background-size: cover;
+  			-moz-background-size: cover;
+  			-o-background-size: cover;
+  			background-size: cover;
+		}
+		h1 {
+			margin: 10px 20px;
+			color: black;
+		}
+
+		#b1{
+			margin-top: 40px
+			margin-left: 20px;
+		}
+		
+		button {
+			margin-top: 20px;
+			margin-left: 20px;
+			height: 30px;
+			width: 80px;
+			border: 1px solid black;
+			background-color: black;
+			color: white;
+			border-radius: 5px;
+			box-shadow: 5px 5px 5px grey;
+			font-size: 13px;
+		}
+		button:hover{
+			background-color: grey;
+		}
+	</style>
+	
+</head>
+<body>
+	<section class="splash_screen">
+		<div class="box1">
+			<h1>Please choose your preferred language</h1>
+		</div>
+		<div class="box2">
+			<button id="b1" onclick="myFunction()">English</button>
+		</div>
+		<div class="box3">
+			<button id="b2" onclick="myFunction()">हिंदी</button>
+		<div>
+	</section>
+	<script type="text/Javascript">
+		function myFunction() {
+    			alert("Thanks for choosing");
+			}
+	</script>
+</body>
+</html>
