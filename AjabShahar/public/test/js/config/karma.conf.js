@@ -5,8 +5,6 @@ module.exports = function (config) {
     files: [
       'js/lib/underscore/underscore-min.js',
       'js/lib/angular/angular.js',
-      'js/lib/angular-route/angular-route.js',
-      'js/lib/angular-resource/angular-resource.js',
       'js/lib/angular-mocks/angular-mocks.js',
       'js/app/**/*.js',
       'test/js/unit/**/*.js'
