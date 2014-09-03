@@ -1,21 +1,48 @@
+<!--<html lang="en"><head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Splash_screen</title>-->
+    <!--<script type="text/javascript" src="js/lib/angular/angular.js"></script>-->
+    <!--<script type="text/javascript" src="js/app/Introduction/app.js"></script>-->
+    <!--<script type="text/javascript" src="js/app/Introduction/controllers/splashScreenController.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<p>One {{'yet' +'!'}}</p>-->
+    <div ng-app="introductionApp">
+        <div ng-controller="splashScreenController">
+            <input ng-model="videoUrl"/>
+            testing {{videoUrl}}
+        </div>
+        <div ng-controller="splashScreenController">
+            <section class="splash_screen">
+                testing {{screen.videoUrl}}
+                <iframe id="player" frameborder="0" allowfullscreen="1" title="YouTube video player" width="100%" height="100%" src="screen.videoUrl"></iframe>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
+
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="introductionApp">
 <head>
-  <meta charset="utf-8">
-  <title>My AngularJS App</title>
-  <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("img/favicon.png")">
-  <link rel="stylesheet" href="@routes.Assets.versioned("css/app.css")">
-  <script data-main="@routes.Assets.versioned("js/main.js")" src="@routes.Assets.versioned("lib/requirejs/require.js")"></script>
+    <meta charset="utf-8">
+    <title>My HTML File</title>
+    <style>
+        * {
+        margin-left: 0px;
+        padding-left: 0px;
+        }
+    </style>
+    <script src="js/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="js/app/Introduction/app.js"></script>
+    <script type="text/javascript" src="js/app/Introduction/controllers/splashScreenController.js"></script>
+    <script id="www-widgetapi-script" src="https://s.ytimg.com/yts/jsbin/www-widgetapi-vflRuC1lW/www-widgetapi.js" async=""></script>
+    <script src="http://www.youtube.com/player_api"></script>
+    <script type="text/javascript" src="js/lib/youTube/youtube_player.js"></script>
 </head>
-<body>
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>
-
-  <div ng-view></div>
-
-  <div>Angular seed app: v<span app-version></span></div>
-
+<body ng-controller="splashScreenController">
+    <section class="splash_screen">
+        <iframe id="player" frameborder="0" allowfullscreen="1" title="YouTube video player" width="100%" height="100%" ng-src="{{videoUrl}}"></iframe>
+    </section>
 </body>
 </html>

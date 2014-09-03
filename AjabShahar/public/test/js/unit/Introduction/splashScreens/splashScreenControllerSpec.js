@@ -4,7 +4,8 @@ describe("SplashScreenController Specs", function(){
 	var scope;//scope will have requiredURL with it
 
 	var sampleResponse = 
-		["http://test.com", "http://test2.com"];
+		["https://www.youtube.com/embed/O-WVDBpBdRY?enablejsapi=1",
+		 "https://www.youtube.com/embed/O-WVDBpBdRY?enablejsapi=1"];
 	
 
 	beforeEach(inject(function (_$rootScope_, _$controller_) {

@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <testsuites>
-  <testsuite name="PhantomJS 1.9.7 (Mac OS X)" package="" timestamp="2014-09-02T12:47:51" id="0" hostname="akritiay.corporate.thoughtworks.com">
+  <testsuite name="PhantomJS 1.9.7 (Mac OS X)" package="" timestamp="2014-09-03T06:58:49" id="0" hostname="INjaideepk.local">
     <properties>
       <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.7 Safari/534.34"/>
     </properties>
   </testsuite>
-  <testsuite name="PhantomJS 1.9.7 (Mac OS X)" package="" timestamp="2014-09-02T12:47:51" id="0" hostname="akritiay.corporate.thoughtworks.com" tests="1" errors="0" failures="0" time="0.006">
+  <testsuite name="PhantomJS 1.9.7 (Mac OS X)" package="" timestamp="2014-09-03T06:58:50" id="0" hostname="INjaideepk.local" tests="1" errors="0" failures="0" time="0.006">
     <properties>
       <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.7 Safari/534.34"/>
     </properties>
