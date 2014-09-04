@@ -5,6 +5,7 @@ describe('Ajab-Shahar Introduction', function () {
 
   beforeEach(function () {
     module('introductionApp');
+    module('trustUrl');
     inject(function ($route) {
       route = $route;
     });

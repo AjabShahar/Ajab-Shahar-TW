@@ -1,31 +1,24 @@
-//var splashScreenController = function($scope){
-//    $scope.videoUrl = "https://www.youtube.com/embed/O-WVDBpBdRY?enablejsapi=1";
-////	$scope.getVideoUrl = function(){
-////			var listOfVideoUrls = ["https://www.youtube.com/embed/O-WVDBpBdRY?enablejsapi=1",
-////			 "https://www.youtube.com/embed/O-WVDBpBdRY?enablejsapi=1"];
-////			var min = 0, max = listOfVideoUrls.length;
-////
-////			var index = getRandomIntWithRange(min, max);
-////			return listOfVideoUrls[index];
-////	};
-////
-////	$scope.getRandomIntWithRange = function(min, max) {
-////        return Math.floor(Math.random() * (max - min)) + min;
-////    };
-//};
+var splashScreenController = function($scope,$location){
+     $scope.videoUrl;
+     $scope.getVideoUrl = function(){
+         var splashScreenOptions = {
+             "options" :[
+                         {"format":"audio","url":"https://www.youtube.com/embed/O-WVDBpBdRY?enablejsapi=1","imageUrl":""},
+                         {"format":"video","url":"https://www.youtube.com/embed/O-WVDBpBdRY?enablejsapi=1"}
+             ]
+         };
+         var min = 0, max = splashScreenOptions.options.length;
 
-introductionApp.controller('splashScreenController',function($scope,$sce){
-    $scope.videoUrl = $sce.trustAsResourceUrl('https://www.youtube.com/embed/O-WVDBpBdRY?enablejsapi=1');
-    $scope.getVideoUrl = function(){
-            var listOfVideoUrls = ["https://www.youtube.com/embed/O-WVDBpBdRY?enablejsapi=1",
-             "https://www.youtube.com/embed/O-WVDBpBdRY?enablejsapi=1"];
-            var min = 0, max = listOfVideoUrls.length;
+         var index = $scope.getRandomIntWithRange(min, max);
+         $scope.videoUrl = splashScreenOptions.options[index].url;
+         $scope.ngViewUrl = "/splashScreenVideo";
+         $location.path($scope.ngViewUrl);
+     };
 
-            var index = getRandomIntWithRange(min, max);
-            return listOfVideoUrls[index];
-    };
+     $scope.getRandomIntWithRange = function(min, max) {
+         return Math.floor(Math.random() * (max - min)) + min;
+     };
 
-    $scope.getRandomIntWithRange = function(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min;
-    };
-});
+     $scope.getVideoUrl();
+ };
+introductionApp.controller('splashScreenController',['$scope','$location',splashScreenController]);
