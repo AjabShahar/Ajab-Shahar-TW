@@ -1,24 +1,26 @@
-var splashScreenController = function($scope,$location){
-     $scope.videoUrl;
+var splashScreenController = function($scope,$location,cmsService){
      $scope.getVideoUrl = function(){
-         var splashScreenOptions = {
-             "options" :[
-                         {"format":"audio","url":"https://www.youtube.com/embed/O-WVDBpBdRY?enablejsapi=1","imageUrl":""},
-                         {"format":"video","url":"https://www.youtube.com/embed/O-WVDBpBdRY?enablejsapi=1"}
-             ]
-         };
+         var splashScreenOptions = cmsService.getScreenOptions();
+         if(splashScreenOptions==null || splashScreenOptions.options.length==0)
+            return {"url":"","imageUrl":""};
          var min = 0, max = splashScreenOptions.options.length;
 
          var index = $scope.getRandomIntWithRange(min, max);
-         $scope.videoUrl = splashScreenOptions.options[index].url;
-         $scope.ngViewUrl = "/splashScreenVideo";
-         $location.path($scope.ngViewUrl);
+         var splashScreenOption = splashScreenOptions.options[index];
+
+         if(splashScreenOption.format=='video'){
+              $location.path('/splashScreenVideo');
+              return {"url": splashScreenOption.url,imageUrl:""};
+         }
+         if(splashScreenOption.format=='audio'){
+              $location.path('/splashScreenAudio');
+              return {"url": splashScreenOption.url,imageUrl:splashScreenOption.imageUrl};
+         }
      };
 
      $scope.getRandomIntWithRange = function(min, max) {
          return Math.floor(Math.random() * (max - min)) + min;
      };
-
-     $scope.getVideoUrl();
+    $scope.getVideoUrl();
  };
-introductionApp.controller('splashScreenController',['$scope','$location',splashScreenController]);
+introductionApp.controller('splashScreenController',['$scope','$location','cmsService',splashScreenController]);

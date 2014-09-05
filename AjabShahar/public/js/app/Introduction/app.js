@@ -14,12 +14,9 @@ introductionApp .config(['$routeProvider',
 function($routeProvider) {
      $routeProvider.
        when('/splashScreenVideo', {
-         templateUrl: 'templates/splash-screen-video.html',
+         templateUrl: 'js/templates/splash-screen-video.html',
        }).
        when('/splashScreenAudio', {
-         templateUrl: 'templates/splash-screen-audio.html',
-       }).
-       otherwise({
-         redirectTo: '/splashScreenVideo'
+         templateUrl: 'js/templates/splash-screen-audio.html',
        });
    }]);
