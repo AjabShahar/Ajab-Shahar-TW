@@ -1,0 +1,21 @@
+.map {
+  background-image: url(../images/map.jpg);
+  background-repeat: repeat-y;
+  height: 500%;
+}
+
+.dance {
+  height: 500%;
+  width: 100%;
+  position: absolute;
+  opacity: .6;
+  z-index: 1;
+}
+
+#clouds {
+  background-image: url(../images/clouds.jpg);
+  background-repeat: repeat-xy;
+  width: 600%;
+  height: 400%;
+  opacity: .8;
+}

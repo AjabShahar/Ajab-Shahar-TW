@@ -1,0 +1,60 @@
+<html ng-app="ngApp">
+  <head>
+    <link href="styles/main.css" media="all" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div>
+      <img id="dance" class="dance" src="images/dance.jpg" />
+      <div parallax-background class="map" parallax-ratio="4">
+        <div id="clouds" class="clouds" scroll/>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
+    <script src="scripts/angular-parallax.js"></script>
+    <script src="scripts/angular-scroll.js" type="text/javascript"></script>
+    <script>
+      var lastScrollTop = 0;
+
+      var moveCloudsToLeft = function(margin){
+        var margin = margin.substring(0, margin.length - 2);
+        newMarginValue = margin - 8;
+
+        document.getElementById("clouds").style.marginLeft = newMarginValue + "px";
+        // console.log(newMarginValue);
+      }
+
+      var moveCloudsToRight = function(margin){
+        var margin = margin.substring(0, margin.length - 2);
+        newMarginValue = parseInt(margin) + 8;
+
+        document.getElementById("clouds").style.marginLeft = newMarginValue + "px";
+        // console.log(newMarginValue);
+      }
+
+      var app = angular.module('ngApp', [
+      'angular-parallax'
+      ]);
+
+
+      app.directive("scroll", function ($window) {
+          return function(element, attrs) {
+              angular.element($window).bind("scroll", function() {
+                var currentScrollPosition = $window.scrollY;
+                var isDownwordScroll = currentScrollPosition > lastScrollTop;
+                var element = document.getElementById('clouds'),
+                  style = window.getComputedStyle(element),
+                  marginLeftValue = style.getPropertyValue('margin-left').toString();
+
+                if(isDownwordScroll){
+                  moveCloudsToLeft(marginLeftValue);
+                }
+                else{
+                  moveCloudsToRight(marginLeftValue);
+                }
+                lastScrollTop = currentScrollPosition;
+              });
+          };
+      });
+    </script>
+  </body>
+</html>
