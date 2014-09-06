@@ -21,7 +21,7 @@
   opacity: .8;
 }
 
-.dorString, .hindiText{
+.dorString, .hindiText, .river{
   width: 100%;
   height: 100%;
 }
@@ -34,6 +34,11 @@
 .hindiText {
   background-image: url(../images/hindiText.png);
   opacity: 1;
+}
+
+.river {
+ background-image: url(../images/riverlinewithoutmask.png);
+  opacity: .7; 
 }
 
 html {
