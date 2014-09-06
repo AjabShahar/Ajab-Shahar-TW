@@ -5,9 +5,15 @@
   <body>
     <div>
       <img id="dance" class="dance" src="images/dance.jpg" />
+      
       <div parallax-background class="map" parallax-ratio="4">
-        <div id="clouds" class="clouds" scroll/>
+        <div class="dorString" >
+          <div class="hindiText" >
+            <div id="clouds" class="clouds" scroll />
+          </div>
+        </div>
       </div>
+
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
     <script src="scripts/angular-parallax.js"></script>
@@ -20,7 +26,6 @@
         newMarginValue = margin - 8;
 
         document.getElementById("clouds").style.marginLeft = newMarginValue + "px";
-        // console.log(newMarginValue);
       }
 
       var moveCloudsToRight = function(margin){
@@ -28,7 +33,6 @@
         newMarginValue = parseInt(margin) + 8;
 
         document.getElementById("clouds").style.marginLeft = newMarginValue + "px";
-        // console.log(newMarginValue);
       }
 
       var app = angular.module('ngApp', [
