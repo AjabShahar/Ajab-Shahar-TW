@@ -66,36 +66,37 @@ introductionApp.directive('youtube', function($window, YT_event) {
               event.target.playVideo();
             }
         }
-      scope.$watch('height + width', function(newValue, oldValue) {
+
+        scope.$watch('height + width', function(newValue, oldValue) {
         if (newValue == oldValue) {
           return;
         }
 
         player.setSize(scope.width, scope.height);
 
-      });
+        });
 
-      scope.$watch('videoid', function(newValue, oldValue) {
+        scope.$watch('videoid', function(newValue, oldValue) {
         if (newValue == oldValue) {
           return;
         }
 
         player.cueVideoById(scope.videoid);
 
-      });
+        });
 
-      scope.$on(YT_event.STOP, function () {
+        scope.$on(YT_event.STOP, function () {
         player.seekTo(0);
         player.stopVideo();
-      });
+        });
 
-      scope.$on(YT_event.PLAY, function () {
+        scope.$on(YT_event.PLAY, function () {
         player.playVideo();
-      });
+        });
 
-      scope.$on(YT_event.PAUSE, function () {
+        scope.$on(YT_event.PAUSE, function () {
         player.pauseVideo();
-      });
+        });
 
     }
   };
