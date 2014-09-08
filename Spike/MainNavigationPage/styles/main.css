@@ -2,11 +2,11 @@
   margin-top: -8px;
   background-image: url(../images/map.jpg);
   background-repeat: repeat-y;
-  height: 500%;
+  height: 400%;
 }
 
 .dance {
-  height: 500%;
+  height: 400%;
   width: 100%;
   position: absolute;
   opacity: .7;
