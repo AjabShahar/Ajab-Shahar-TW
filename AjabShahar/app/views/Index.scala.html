@@ -15,7 +15,10 @@
     <link href="css/splashScreen.css" rel="stylesheet" type="text/css">
 </head>
 <body ng-controller="splashScreenController" ng-mouseover="showEnterButton()">
-    <img class="slide slide_bottom" ng-show="expand" src="/img/enter.png" />
+<div class="slide slide_bottom" ng-show="expand">
+    <a class='enter' href='#'></a>
+    <a class='pravesh' href='#'></a>
+</div>
     <div ng-view></div>
 </body>
 </html>
