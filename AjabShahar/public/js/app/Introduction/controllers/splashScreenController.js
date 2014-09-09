@@ -30,20 +30,20 @@ var splashScreenController = function($scope,$location,cmsService){
      };
     $scope.getVideoUrl();
  };
+introductionApp.animation('.slide', function() {
+    var NgHideClassName = 'ng-hide';
+    return {
+        beforeAddClass: function(element, className, done) {
+            if(className === NgHideClassName) {
+                jQuery(element).slideUp(done);
+            }
+        },
+        removeClass: function(element, className, done) {
+            if(className === NgHideClassName) {
+                jQuery(element).hide().slideDown(done);
+            }
+        }
+    }
+});
 
- introductionApp.animation('.slide', function() {
-     var NgHideClassName = 'ng-hide';
-     return {
-         beforeAddClass: function(element, className, done) {
-             if(className === NgHideClassName) {
-                 jQuery(element).slideUp(done);
-             }
-         },
-         removeClass: function(element, className, done) {
-             if(className === NgHideClassName) {
-                 jQuery(element).hide().slideDown(done);
-             }
-         }
-     }
- });
 introductionApp.controller('splashScreenController',['$scope','$location','cmsService',splashScreenController]);
