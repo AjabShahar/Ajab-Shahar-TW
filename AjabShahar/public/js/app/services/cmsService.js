@@ -15,4 +15,4 @@ var cmsService = function ($http) {
   };
 };
 
-introductionApp.factory('cmsService', ['$http', cmsService]);
+ajabShaharApp.factory('cmsService', ['$http', cmsService]);

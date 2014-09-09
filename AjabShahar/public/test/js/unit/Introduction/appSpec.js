@@ -4,7 +4,7 @@ describe('Ajab-Shahar Introduction', function () {
   var route;
 
   beforeEach(function () {
-    module('introductionApp');
+    module('ajabShaharApp');
     module('trustUrl');
     inject(function ($route) {
       route = $route;
