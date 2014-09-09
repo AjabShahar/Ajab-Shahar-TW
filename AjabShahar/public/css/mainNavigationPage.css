@@ -1,0 +1,46 @@
+.map {
+  margin-top: -8px;
+  background-image: url(../img/map.jpg);
+  background-repeat: repeat-y;
+  height: 400%;
+}
+
+.dance {
+  height: 400%;
+  width: 100%;
+  position: absolute;
+  opacity: .7;
+  z-index: 1;
+}
+
+.clouds {
+  background-image: url(../img/clouds.png);
+  background-repeat: repeat-xy;
+  width: 600%;
+  height: 102%;
+  opacity: .8;
+}
+
+.dorString, .hindiText, .river{
+  width: 100%;
+  height: 100%;
+}
+
+.dorString {
+  background-image: url(../img/dorString.jpg);
+  opacity: 1;
+}
+
+.hindiText {
+  background-image: url(../img/hindiText.png);
+  opacity: 1;
+}
+
+.river {
+ background-image: url(../img/riverlinewithoutmask.png);
+  opacity: .7;
+}
+
+html {
+    overflow-x: hidden;
+}
