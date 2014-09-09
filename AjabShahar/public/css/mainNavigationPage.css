@@ -4,11 +4,9 @@ overflow: hidden;
 background:#eee;
 }
 
-
-
 .map {
   margin-top: -8px;
-  background: url(../images/newset/07_body.png) 0 100px no-repeat;
+  background: url(../img/newset/07_body.png) 0 100px no-repeat;
   height: 400%;
 }
 
@@ -21,7 +19,7 @@ background:#eee;
 }
 
 .clouds {
-  background-image: url(../images/05_clouds-new.png);
+  background-image: url(../img/05_clouds-new.png);
   background-repeat: repeat-xy;
   width: 600%;
   height: 102%;
@@ -34,21 +32,21 @@ background:#eee;
 }
 
 .dorString {
-  background: url(../images/newset/03_whiteString.png) center no-repeat;
+  background: url(../img/newset/03_whiteString.png) center no-repeat;
   opacity: 1;
 }
 
 .hindiText {
-  background-image: url(../images/hindiText.png);
+  background-image: url(../img/hindiText.png);
   opacity: 1;
 }
 
 .bird {
- background: url(../images/bird.png);
+ background: url(../img/bird.png);
   opacity: .7; 
 }
 .river {
- background:#ddd url(../images/newset/01_riverlines.png) repeat-y;
+ background:#ddd url(../img/newset/01_riverlines.png) repeat-y;
   opacity: .7; 
   position:absolute;
   z-index: -1;

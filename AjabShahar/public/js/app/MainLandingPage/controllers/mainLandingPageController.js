@@ -1,3 +1,7 @@
+var mainLandingPageController = function(){
+}
+
+ajabShaharApp.controller('mainLandingPageController',[mainLandingPageController]);
 var lastScrollTop = 0;
 
 var moveCloudsToLeft = function(margin){
