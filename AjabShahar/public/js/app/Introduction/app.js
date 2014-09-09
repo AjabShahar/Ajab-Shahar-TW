@@ -1,4 +1,4 @@
-var introductionApp = angular.module('introductionApp',['ngRoute']);
+var introductionApp = angular.module('introductionApp',['ngRoute','ngAnimate']);
 
 introductionApp.config(function($sceDelegateProvider) {
                         $sceDelegateProvider.resourceUrlWhitelist([

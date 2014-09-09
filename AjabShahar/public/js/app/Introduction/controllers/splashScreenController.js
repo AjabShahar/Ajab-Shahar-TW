@@ -22,9 +22,28 @@ var splashScreenController = function($scope,$location,cmsService){
          }
      };
 
+    $scope.showEnterButton = function(){
+        $scope.expand = true;
+    }
      $scope.getRandomIntWithRange = function(min, max) {
          return Math.floor(Math.random() * (max - min)) + min;
      };
     $scope.getVideoUrl();
  };
+
+ introductionApp.animation('.slide', function() {
+     var NgHideClassName = 'ng-hide';
+     return {
+         beforeAddClass: function(element, className, done) {
+             if(className === NgHideClassName) {
+                 jQuery(element).slideUp(done);
+             }
+         },
+         removeClass: function(element, className, done) {
+             if(className === NgHideClassName) {
+                 jQuery(element).hide().slideDown(done);
+             }
+         }
+     }
+ });
 introductionApp.controller('splashScreenController',['$scope','$location','cmsService',splashScreenController]);

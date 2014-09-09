@@ -5,13 +5,16 @@
     <title>Welcome</title>
     <script src="js/lib/angular/angular.js"></script>
     <script src="js/lib/angular-route/angular-route.js"></script>
+    <script src="js/lib/angular-animate/angular-animate.js"></script>
+    <script src="js/lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="js/app/Introduction/app.js"></script>
     <script type="text/javascript" src="js/app/services/cmsService.js"></script>
     <script type="text/javascript" src="js/app/Introduction/controllers/splashScreenController.js"></script>
     <script type="text/javascript" src="js/app/directives/youtube_player.js"></script>
     <link href="css/splashScreen.css" rel="stylesheet" type="text/css">
 </head>
-<body ng-controller="splashScreenController">
+<body ng-controller="splashScreenController" ng-mouseover="showEnterButton()">
+    <img class="slide" ng-show="expand" src="http://evilillusion.50webs.com/html/images/image-2.jpg"/>
     <div ng-view></div>
 </body>
 </html>
