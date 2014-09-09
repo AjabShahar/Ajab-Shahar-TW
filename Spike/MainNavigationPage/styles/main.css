@@ -1,7 +1,14 @@
+body{
+width: 100%;
+overflow: hidden;
+background:#eee;
+}
+
+
+
 .map {
   margin-top: -8px;
-  background-image: url(../images/map.jpg);
-  background-repeat: repeat-y;
+  background: url(../images/newset/07_body.png) 0 100px no-repeat;
   height: 400%;
 }
 
@@ -14,7 +21,7 @@
 }
 
 .clouds {
-  background-image: url(../images/clouds.png);
+  background-image: url(../images/05_clouds-new.png);
   background-repeat: repeat-xy;
   width: 600%;
   height: 102%;
@@ -27,7 +34,7 @@
 }
 
 .dorString {
-  background-image: url(../images/dorString.jpg);
+  background: url(../images/newset/03_whiteString.png) center no-repeat;
   opacity: 1;
 }
 
@@ -36,9 +43,18 @@
   opacity: 1;
 }
 
-.river {
- background-image: url(../images/riverlinewithoutmask.png);
+.bird {
+ background: url(../images/bird.png);
   opacity: .7; 
+}
+.river {
+ background:#ddd url(../images/newset/01_riverlines.png) repeat-y;
+  opacity: .7; 
+  position:absolute;
+z-index: -1;
+top: 0;
+height:400%;
+
 }
 
 html {
