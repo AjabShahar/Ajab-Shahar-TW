@@ -51,10 +51,9 @@ background:#eee;
  background:#ddd url(../images/newset/01_riverlines.png) repeat-y;
   opacity: .7; 
   position:absolute;
-z-index: -1;
-top: 0;
-height:400%;
-
+  z-index: -1;
+  top: 0;
+  height:400%;
 }
 
 html {
