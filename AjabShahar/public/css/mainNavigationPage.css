@@ -4,13 +4,14 @@ overflow: hidden;
 background:#eee;
 }
 
-.map {
+.dance {
   margin-top: -8px;
   background: url(../img/newset/07_body.png) 0px no-repeat;
   height: 5540px;
 }
 
-.dance {
+.map {
+  background-image: url(../img/newset/02_map.png);
   height: 5540px;
   width: 100%;
   position: absolute;
