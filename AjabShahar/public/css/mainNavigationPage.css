@@ -6,12 +6,12 @@ background:#eee;
 
 .map {
   margin-top: -8px;
-  background: url(../img/newset/07_body.png) 0 100px no-repeat;
-  height: 4000px;
+  background: url(../img/newset/07_body.png) 0px no-repeat;
+  height: 5540px;
 }
 
 .dance {
-  height: 4000px;
+  height: 5540px;
   width: 100%;
   position: absolute;
   opacity: .7;
@@ -22,19 +22,19 @@ background:#eee;
   background-image: url(../img/05_clouds-new.png);
   background-repeat: repeat-xy;
   width: 6000px;
-  height: 5020px;
+  height: 5540px;
   opacity: .8;
 }
 
 .dorString, .hindiText, .river{
   width: 100%;
-  height: 1000px;
+  height: 5540px;
 }
 
 .dorString {
   background: url(../img/newset/03_whiteString.png) center no-repeat;
   opacity: 1;
-  height:4000px;
+  height:5540px;
 }
 
 .hindiText {
@@ -52,7 +52,7 @@ background:#eee;
   position:absolute;
   z-index: -1;
   top: 0;
-  height:4000px;
+  height:5540px;
 }
 
 html {
