@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('angular-parallax', [
-]).directive('parallax', ['$window', function($window) {
+angular.module('angular-parallax', [])
+.directive('parallax', ['$window', function($window) {
   return {
     restrict: 'A',
     scope: {
@@ -27,7 +27,8 @@ angular.module('angular-parallax', [
       angular.element($window).bind("touchmove", setPosition);
     }  // link function
   };
-}]).directive('parallaxBackground', ['$window', function($window) {
+}])
+.directive('parallaxBackground', ['$window', function($window) {
   return {
     restrict: 'A',
     transclude: true,
@@ -52,7 +53,8 @@ angular.module('angular-parallax', [
       angular.element($window).bind("touchmove", setPosition);
     }  // link function
   };
-}]).directive("scroll", function ($window) {
+}])
+.directive("scroll", function ($window) {
     return {
         restrict: 'A',
         scope: {
@@ -76,21 +78,22 @@ angular.module('angular-parallax', [
               });
             };
 
-            angular.element($window).bind("scroll", function() {
-              var currentScrollPosition = $window.scrollY;
-              var isDownwordScroll = currentScrollPosition > lastScrollTop;
-              var element = document.getElementById('clouds'),
-                style = window.getComputedStyle(element),
+            var setPosition = function() {
+                var currentScrollPosition = $window.scrollY;
+                var isDownwordScroll = currentScrollPosition > lastScrollTop;
+                var style = window.getComputedStyle(element[0]),
                 marginLeftValue = style.getPropertyValue('margin-left').toString();
 
-              if(isDownwordScroll){
-                moveCloudsToLeft(marginLeftValue);
-              }
-              else{
-                moveCloudsToRight(marginLeftValue);
-              }
-              lastScrollTop = currentScrollPosition;
-            });
+                if(isDownwordScroll){
+                  moveCloudsToLeft(marginLeftValue);
+                }
+                else{
+                  moveCloudsToRight(marginLeftValue);
+                }
+                lastScrollTop = currentScrollPosition;
+            };
+
+                angular.element($window).bind("scroll", setPosition);
         }  // link function
       };
 });
