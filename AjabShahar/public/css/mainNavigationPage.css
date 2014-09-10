@@ -24,7 +24,6 @@ background:#eee;
   background-repeat: repeat-xy;
   width: 6000px;
   height: 5540px;
-  opacity: .8;
 }
 
 .dorString, .hindiText, .river{
@@ -45,11 +44,11 @@ background:#eee;
 
 .bird {
  background: url(../img/bird.png);
-  opacity: .7; 
+  opacity: .7;
 }
 .river {
  background:#ddd url(../img/newset/01_riverlines.png) repeat-y;
-  opacity: .7; 
+  opacity: .7;
   position:absolute;
   z-index: -1;
   top: 0;
