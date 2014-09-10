@@ -1,0 +1,1 @@
+var mainLandingPageApp = angular.module('mainLandingPageApp',['']);

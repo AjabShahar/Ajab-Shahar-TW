@@ -1,6 +1,6 @@
-var ajabShaharApp = angular.module('ajabShaharApp',['ngRoute','ngAnimate']);
+var introductionApp = angular.module('introductionApp',['ngRoute','ngAnimate','youtubeApp']);
 
-ajabShaharApp.config(function($sceDelegateProvider) {
+introductionApp.config(function($sceDelegateProvider) {
                         $sceDelegateProvider.resourceUrlWhitelist([
                           // Allow same origin resource loads.
                           'self',
@@ -10,7 +10,7 @@ ajabShaharApp.config(function($sceDelegateProvider) {
                         ]);
                        });
 
-ajabShaharApp .config(['$routeProvider',
+introductionApp .config(['$routeProvider',
 function($routeProvider) {
      $routeProvider.
        when('/splashScreenVideo', {
@@ -21,7 +21,7 @@ function($routeProvider) {
        });
    }]);
 
-ajabShaharApp.animation('.slide', function() {
+introductionApp.animation('.slide', function() {
     var NgHideClassName = 'ng-hide';
     return {
         beforeAddClass: function(element, className, done) {
@@ -36,3 +36,5 @@ ajabShaharApp.animation('.slide', function() {
         }
     }
 });
+
+introductionApp.factory('cmsService', ['$http', cmsService]);

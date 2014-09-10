@@ -1,10 +1,12 @@
-ajabShaharApp.constant('YT_event', {
+var youtubeApp = angular.module('youtubeApp',[]);
+
+youtubeApp.constant('YT_event', {
   STOP:            0,
   PLAY:            1,
   PAUSE:           2
 });
 
-ajabShaharApp.controller('YouTubeCtrl', function($scope, YT_event) {
+youtubeApp.controller('YouTubeCtrl', function($scope, YT_event) {
   $scope.yt = {
     width: '100%',
     height: '100%',
@@ -12,7 +14,7 @@ ajabShaharApp.controller('YouTubeCtrl', function($scope, YT_event) {
   };
 });
 
-ajabShaharApp.directive('youtube', function($window, YT_event) {
+youtubeApp.directive('youtube', function($window, YT_event) {
   return {
     restrict: "E",
 

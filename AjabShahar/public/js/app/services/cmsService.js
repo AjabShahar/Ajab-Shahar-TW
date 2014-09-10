@@ -14,5 +14,3 @@ var cmsService = function ($http) {
     getScreenOptions: getScreenOptions,
   };
 };
-
-ajabShaharApp.factory('cmsService', ['$http', cmsService]);

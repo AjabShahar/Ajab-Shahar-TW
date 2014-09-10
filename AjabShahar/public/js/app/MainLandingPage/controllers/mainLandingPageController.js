@@ -1,7 +1,7 @@
 var mainLandingPageController = function(){
 }
 
-ajabShaharApp.controller('mainLandingPageController',[mainLandingPageController]);
+mainLandingPageApp.controller('mainLandingPageController',[mainLandingPageController]);
 var lastScrollTop = 0;
 
 var moveCloudsToLeft = function(margin){
@@ -16,7 +16,7 @@ var moveCloudsToRight = function(margin){
     document.getElementById("clouds").style.marginLeft = newMarginValue + "px";
 }
 
-ajabShaharApp.directive("scroll", function ($window) {
+mainLandingPageApp.directive("scroll", function ($window) {
   return function(element, attrs) {
       angular.element($window).bind("scroll", function() {
         var currentScrollPosition = $window.scrollY;

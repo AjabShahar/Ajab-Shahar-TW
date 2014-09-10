@@ -31,4 +31,4 @@ var splashScreenController = function($scope,$location,cmsService){
     $scope.getVideoUrl();
  };
 
-ajabShaharApp.controller('splashScreenController',['$scope','$location','cmsService',splashScreenController]);
+introductionApp.controller('splashScreenController',['$scope','$location','cmsService',splashScreenController]);
