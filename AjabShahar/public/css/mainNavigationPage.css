@@ -11,7 +11,7 @@ background:#eee;
 }
 
 .dance {
-  height: 400%;
+  height: 4000px;
   width: 100%;
   position: absolute;
   opacity: .7;
@@ -21,14 +21,14 @@ background:#eee;
 .clouds {
   background-image: url(../img/05_clouds-new.png);
   background-repeat: repeat-xy;
-  width: 600%;
-  height: 102%;
+  width: 6000px;
+  height: 5020px;
   opacity: .8;
 }
 
 .dorString, .hindiText, .river{
   width: 100%;
-  height: 100%;
+  height: 1000px;
 }
 
 .dorString {
