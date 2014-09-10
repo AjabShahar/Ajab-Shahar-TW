@@ -53,36 +53,45 @@ angular.module('angular-parallax', [
     }  // link function
   };
 }]).directive("scroll", function ($window) {
-    var lastScrollTop = 0;
-    var newMarginValue = 0;
-    var moveCloudsToLeft = function(margin){
-        var margin = margin.substring(0, margin.length - 2);
-        newMarginValue = margin - 12;
-        document.getElementById("clouds").style.marginLeft = newMarginValue + "px";
-    }
+    return {
+        restrict: 'A',
+        scope: {
+        },
+        link: function($scope,element, attrs) {
+            var lastScrollTop = 0;
+            var newMarginValue = 0;
 
-    var moveCloudsToRight = function(margin){
-        var margin = margin.substring(0, margin.length - 2);
-        newMarginValue = parseInt(margin) + 12;
-        document.getElementById("clouds").style.marginLeft = newMarginValue + "px";
-    }
+            var moveCloudsToLeft = function(margin){
+              var margin = margin.substring(0, margin.length - 2);
+              newMarginValue = margin - 12;
+              _.each(element, function(ele){
+                  ele.style.marginLeft = newMarginValue + "px";
+              });
+            };
+            var moveCloudsToRight = function(margin){
+              var margin = margin.substring(0, margin.length - 2);
+              newMarginValue = parseInt(margin) + 12;
+              _.each(element, function(ele){
+                  ele.style.marginLeft = newMarginValue + "px";
+              });
+            };
 
-  return function(element, attrs) {
-      angular.element($window).bind("scroll", function() {
-        var currentScrollPosition = $window.scrollY;
-        var isDownwordScroll = currentScrollPosition > lastScrollTop;
-        var element = document.getElementById('clouds'),
-          style = window.getComputedStyle(element),
-          marginLeftValue = style.getPropertyValue('margin-left').toString();
+            angular.element($window).bind("scroll", function() {
+              var currentScrollPosition = $window.scrollY;
+              var isDownwordScroll = currentScrollPosition > lastScrollTop;
+              var element = document.getElementById('clouds'),
+                style = window.getComputedStyle(element),
+                marginLeftValue = style.getPropertyValue('margin-left').toString();
 
-        if(isDownwordScroll){
-          moveCloudsToLeft(marginLeftValue);
-        }
-        else{
-          moveCloudsToRight(marginLeftValue);
-        }
-        lastScrollTop = currentScrollPosition;
-      });
-  };
+              if(isDownwordScroll){
+                moveCloudsToLeft(marginLeftValue);
+              }
+              else{
+                moveCloudsToRight(marginLeftValue);
+              }
+              lastScrollTop = currentScrollPosition;
+            });
+        }  // link function
+      };
 });
 ;
