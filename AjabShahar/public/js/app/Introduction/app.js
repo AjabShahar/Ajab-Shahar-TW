@@ -1,4 +1,4 @@
-var introductionApp = angular.module('introductionApp',['ngRoute','ngAnimate','youtubeApp','angular-parallax']);
+var introductionApp = angular.module('introductionApp',['ngRoute','ngAnimate','youtubeApp']);
 
 introductionApp.config(function($sceDelegateProvider) {
                         $sceDelegateProvider.resourceUrlWhitelist([

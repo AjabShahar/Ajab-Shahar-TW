@@ -1,1 +1,1 @@
-var mainLandingPageApp = angular.module('mainLandingPageApp',['']);
+var mainLandingPageApp = angular.module('mainLandingPageApp',['angular-parallax']);
