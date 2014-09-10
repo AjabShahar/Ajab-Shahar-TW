@@ -7,7 +7,7 @@ background:#eee;
 .map {
   margin-top: -8px;
   background: url(../img/newset/07_body.png) 0 100px no-repeat;
-  height: 400%;
+  height: 4000px;
 }
 
 .dance {
@@ -34,6 +34,7 @@ background:#eee;
 .dorString {
   background: url(../img/newset/03_whiteString.png) center no-repeat;
   opacity: 1;
+  height:4000px;
 }
 
 .hindiText {
@@ -51,7 +52,7 @@ background:#eee;
   position:absolute;
   z-index: -1;
   top: 0;
-  height:400%;
+  height:4000px;
 }
 
 html {
