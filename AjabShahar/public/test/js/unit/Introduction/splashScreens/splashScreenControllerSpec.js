@@ -7,7 +7,7 @@ describe("SplashScreenController Specs", function(){
 		["https://www.youtube.com/embed/O-WVDBpBdRY?enablejsapi=1",
 		 "https://www.youtube.com/embed/O-WVDBpBdRY?enablejsapi=1"];
 
-	var cmsService = {
+	var introductionAppService = {
 	    getScreenOptions:function(){}
 	};
 
@@ -18,17 +18,17 @@ describe("SplashScreenController Specs", function(){
 	beforeEach(inject(function (_$rootScope_, _$controller_) {
     	scope = _$rootScope_.$new();
         spyOn(location,'path');
-        spyOn(cmsService,'getScreenOptions');
+        spyOn(introductionAppService,'getScreenOptions');
 
     	_$controller_(splashScreenController, {
 	        $scope: scope,
 	        $location:location,
-	        cmsService:cmsService,
+	        introductionAppService:introductionAppService,
         })
     }));
 
 	it("should contain video-url randomly choosen from the list of video urls", function(){
-	    cmsService.getScreenOptions.andReturn(
+	    introductionAppService.getScreenOptions.andReturn(
 	                 {
                          "options" :[
                                      {"format":"video","url":"aaa","imageUrl":""},
@@ -42,7 +42,7 @@ describe("SplashScreenController Specs", function(){
 	});
 
 	it("should contain audio-url randomly choosen from the list of audio urls", function(){
-	    cmsService.getScreenOptions.andReturn(
+	    introductionAppService.getScreenOptions.andReturn(
 	                 {
                          "options" :[
                                      {"format":"audio","url":"aaa","imageUrl":"kkk"},

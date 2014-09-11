@@ -37,4 +37,3 @@ introductionApp.animation('.slide', function() {
     }
 });
 
-introductionApp.factory('cmsService', ['$http', cmsService]);
