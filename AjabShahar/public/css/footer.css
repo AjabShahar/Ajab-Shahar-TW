@@ -30,22 +30,30 @@ footer ul{
   margin-right:2%;
   border-left:dotted 1px #555;
   text-align: left;
-  font-size: 0.7em;
+  font-size: 0.9em;
 }
 
 footer ul.footerList li{
 text-transform: uppercase;
-padding: 2% 0;
+padding: 5% 0;
 }
 
 footer ul.footerExtra li{
-padding: 2% 0;
+padding: 5% 0;
 }
 
 footer ul.footerExtra{
   width:20%;
 }
 
+footer ul.footerExtra li.kabirProject{
+ background: url(../img/icons/kabirinit.png) 135px 1px no-repeat;
+padding: 10% 0% 0 0%;
+height: 35px;
+width: 200px;
+margin-top: 10%;
+}
+
 footer ul li{
-color:#ccc;
+color:#999;
 }
