@@ -9,11 +9,29 @@
     <script type="text/javascript" src="js/app/MainLandingPage/app.js"></script>
     <script type="text/javascript" src="js/app/MainLandingPage/controllers/mainLandingPageController.js"></script>
     <link href="css/mainNavigationPage.css" rel="stylesheet" type="text/css">
+    <link href="css/header.css" rel="stylesheet" type="text/css">
+    <link href="css/footer.css" rel="stylesheet" type="text/css">
+
+
+
 </head>
 <body ng-controller="mainLandingPageController">
-    <div>
+    @header()
+<!--     <div>
+      <img id="dance" class="dance" src="images/newset/02_map.png"></img>
+       <div class="river" parallax-background parallax-ratio="100"></div>
+      <div parallax-background class="map" parallax-ratio="4">
 
-
+        <div class="dorString" parallax-background parallax-ratio="2">
+          <div class="hindiText" >
+            
+            <div id="clouds" class="clouds" scroll>
+                          <div class="bird" parallax-background parallax-ratio="1"></div>
+            </div>
+          </div>
+        </div>
+    </div>
+ -->
         <div  class="dance">
             <div class="map" parallax-background parallax-ratio="2">
             <div class="river" parallax-background parallax-ratio="100"></div>
@@ -27,6 +45,6 @@
             </div>
         </div>
     </div>
-
+    @footer()
 </body>
 </html>
