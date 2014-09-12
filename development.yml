@@ -1,0 +1,15 @@
+template: Hello, %s!
+defaultName: Stranger
+database:
+  driverClass: org.postgresql.Driver
+  user: pg-dev
+  password:
+  url: jdbc:postgresql://localhost/platform-dev?allowMultiQueries=true&createDatabaseIfNotExist=true
+  properties:
+    charSet: UTF-8
+    hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+  maxWaitForConnection: 1s
+  validationQuery: "/* MyApplication Health Check */ SELECT 1"
+  minSize: 8
+  maxSize: 32
+  checkConnectionWhileIdle: false
