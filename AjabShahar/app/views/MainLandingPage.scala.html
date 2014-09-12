@@ -17,34 +17,43 @@
 </head>
 <body ng-controller="mainLandingPageController">
     @header()
-<!--     <div>
-      <img id="dance" class="dance" src="images/newset/02_map.png"></img>
-       <div class="river" parallax-background parallax-ratio="100"></div>
-      <div parallax-background class="map" parallax-ratio="4">
 
-        <div class="dorString" parallax-background parallax-ratio="2">
-          <div class="hindiText" >
-            
-            <div id="clouds" class="clouds" scroll>
-                          <div class="bird" parallax-background parallax-ratio="1"></div>
-            </div>
-          </div>
-        </div>
+    <!-- parallax effect starts -->
+    <div class='parallax-container'>
+        <div class='pxLayers px-layer1' data-name='body'></div>
+        <div class='pxLayers px-layer2' data-name='map' parallax-background parallax-ratio="10"></div>
+        <div class='pxLayers px-layer3' data-name='water'></div>
+        <div class='pxLayers px-layer4' data-name='riverlines' ></div>
+        <div class='pxLayers px-layer5' data-name='bird'></div>
+        <div class='pxLayers px-layer6' data-name='clouds' scroll></div>
+        <div class='pxLayers px-layer7' data-name='whitestring'></div>
+        <div class='pxLayers px-layer8' data-name='hinditext'></div>
     </div>
- -->
-        <div  class="dance">
-            <div class="map" parallax-background parallax-ratio="2">
-            <div class="river" parallax-background parallax-ratio="100"></div>
-            <div class="dorString">
-                <div class="hindiText" >
-                    <div id="clouds" class="clouds" scroll>
-                        <div class="bird" parallax-background parallax-ratio="1"></div>
-                    </div>
-                </div>
+    <!-- parallax effect ends -->
+
+
+
+    <!-- thumbnail and middle content starts -->
+    <div class='ajab-container'>
+    <div class='ajab-wrapper'>
+    <div class='homepage-content'>
+
+        <div class='thumbnail'>
+            <div class='thumbnailVideo'>
+              <iframe src="https://www.youtube.com/watch?v=c8SHCS2nSsc" frameborder="0" allowfullscreen></iframe>
             </div>
-            </div>
+             <div class='thumbnailDesc'>
+              <h3 class='selected'>Practice the art of dying!</h3>
+              <small>sings PARVATHY BAUL</small>
+             </div>
         </div>
+
+
     </div>
+    </div>
+    </div>
+    <!-- thumbnail and middle content starts -->
+    
     @footer()
 </body>
 </html>

@@ -1,5 +1,4 @@
 /* global rules starts */
-
 html {
     overflow-x: hidden;
 }
@@ -35,84 +34,64 @@ h1,h2,h3,h4,h5,h6{padding:0;margin:0;}
   display:inline-block;
   margin:0 auto;
 }
-
-
 /* global rules ends*/
-
-
-
-
 
 
 
 /* thumbnail */
 .thumbnail{width:370px;text-align:left;}
-.thumbnailVideo{width:100%;height:210px;background: url(../img/thumbnailvideo.png) no-repeat;}
+.thumbnailVideo{width:100%;height:230px;background: url(../img/thumbnailVideo.png) no-repeat;background-size: cover;}
 .thumbnailVideo iframe{width: 92%;height: 180px;margin-top: 4%;margin-left: 5%;}
-.thumbnailDesc{width:80%;height:100px;background: url(../img/thumbnaildesc.png) left top no-repeat;margin: -15% 0% 0 27%;padding: 6% 0 0 6%;}
-
-
+.thumbnailDesc{width:85%;height:100px;background: url(../img/thumbnailDesc.png) left top no-repeat;margin: -15% 0% 0 18%;padding: 6% 0 0 6%;background-size: cover;}
 
 
 
 /* middle content  starts */
-.dance {
-  margin-top: -12%;
-  background: url(../img/newset/07_body.png) 0px no-repeat;
-  height: 5540px;
+.parallax-container{
+  margin-top: -11%;
 }
 
-.map {
-  background-image: url(../img/newset/02_map.png);
-  height: 5540px;
-  width: 100%;
-  position: absolute;
-  opacity: .7;
-  z-index: 1;
+.pxLayers{
+  width:100%;height:5540px;position: absolute;
 }
 
-.clouds {
-  background-image: url(../img/05_clouds-new.png);
-  background-repeat: repeat-xy;
-
-  height: 5540px;
+.px-layer1{
+   background: url(../img/newset/07_body.png)  0px -185px no-repeat;
 }
 
-.dorString, .hindiText, .river{
-  width: 100%;
-  height: 5540px;
+.px-layer2{
+   background: url(../img/newset/02_map.png) 0px repeat-y;
 }
 
-.dorString {
-  background: url(../img/newset/03_whiteString.png) center no-repeat;
-  opacity: 1;
-  height:5540px;
+.px-layer3{
+   background: url(../img/newset/08_water.png) 0px  -185px no-repeat;
 }
 
-.hindiText {
-  background-image: url(../img/hindiText.png);
-  opacity: 1;
+.px-layer4{
+    background: url(../img/newset/riverlines.png) -14px -188px no-repeat;
+    opacity: 0.3;
 }
 
-.bird {
- background: url(../img/bird.png);
-  opacity: .7;
-}
-.river {
- background:#ddd url(../img/newset/01_riverlines.png) repeat-y;
-  opacity: .7;
-  position:absolute;
-  z-index: -1;
-  top: 0;
-  height:5540px;
+.px-layer5{
+   background: url(../img/newset/bird.png) 0px no-repeat;
 }
 
+.px-layer6{
+   background: url(../img/newset/05_clouds.png) 0px no-repeat;
+}
+
+.px-layer7{
+   background: url(../img/newset/03_whiteString.png) center 0px no-repeat;
+}
+
+.px-layer8{
+   background: url(../img/newset/hindiText.png) center 0px repeat-y;
+}
+
+
+.homepage-content{
+  width:100%;height:5540px;position: relative;margin-top:20%;
+}
 /* middle content  ends */
-
-
-
-
-
-
 
 
