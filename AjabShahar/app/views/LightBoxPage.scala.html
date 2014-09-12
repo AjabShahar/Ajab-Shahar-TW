@@ -1,0 +1,39 @@
+<html>
+<head>
+    <style>
+        .bar{
+        position:absolute;
+        top:0;
+        left:0;
+        width:20%;
+        height:20%;
+        }
+        img {
+            height: 10%;
+            width: 10%;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="js/lib/jquery-colorbox/example1/colorbox.css">
+    <script src="js/lib/jquery/dist/jquery.min.js"></script>
+    <script src="js/lib/jquery-colorbox/jquery.colorbox-min.js"></script>
+
+    <script>
+$(document).ready(function(){
+    //Examples of how to assign the Colorbox event to elements
+    $(".group1").colorbox({iframe:true, innerWidth:640, innerHeight:390});
+    $(".group2").colorbox({rel:'group1'});
+});
+
+</script>
+</head>
+<body>
+    <iframe id="test2" class="group2" frameborder="0" title="YouTube video player" width="20%" height="20%" src="http://www.youtube.com/embed/O-WVDBpBdRY"></iframe>
+    <a class="group1" href="https://www.youtube.com/embed/O-WVDBpBdRY?autoplay=1" title="AS video in lightBox">
+        <div class="bar"></div>
+    </a>
+
+    <a class="group2" href="http://icons.iconarchive.com/icons/artdesigner/emoticons-2/icons-390.jpg">
+        <img src="http://icons.iconarchive.com/icons/artdesigner/emoticons-2/icons-390.jpg" alt=""/>
+    </a>
+</body>
+</html>
