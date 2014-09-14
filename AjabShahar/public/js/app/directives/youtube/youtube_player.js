@@ -10,7 +10,10 @@ youtubeApp.controller('YouTubeCtrl', function($scope, YT_event) {
   $scope.yt = {
     width: '100%',
     height: '100%',
-    videoid: "M7lc1UVf-VE"
+    videoid: "M7lc1UVf-VE",
+    autoplay:false,
+    showcontrols:false,
+    autoreplay:false,
   };
 });
 
@@ -21,7 +24,10 @@ youtubeApp.directive('youtube', function($window, YT_event) {
     scope: {
       height: "@",
       width: "@",
-      videoid: "@"
+      videoid: "@",
+      autoplay:"@",
+      showcontrols:"@",
+      autoreplay:'@',
     },
 
     template: '<div></div>',
@@ -38,33 +44,28 @@ youtubeApp.directive('youtube', function($window, YT_event) {
 
         player = new YT.Player(element.children()[0], {
           playerVars: {
-            autoplay: 0,
+            autoplay: (scope.autoplay)? 1:0,
             html5: 1,
             theme: "light",
             modesbranding: 0,
             color: "white",
             iv_load_policy: 3,
             showinfo: 0,
-            controls: 0
+            controls: (scope.showControls)?1:0
           },
 
           height: scope.height,
           width: scope.width,
           videoId: scope.videoid,
           events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-          },
+                'onStateChange': onPlayerStateChange
+            },
         });
       }
 
-        function onPlayerReady(event) {
-            event.target.playVideo();
-        }
-
         // when video ends
         function onPlayerStateChange(event) {
-            if(event.data === 0) {
+            if(scope.autoreplay && event.data === 0) {
               event.target.playVideo();
             }
         }

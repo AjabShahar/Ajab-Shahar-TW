@@ -5,10 +5,14 @@
     <title>Landing Page</title>
     <script src="js/lib/angular/angular.js"></script>
     <script src="js/lib/underscore/underscore.js"></script>
+    <script type="text/javascript" src="js/app/directives/thumbnail/thumbnail.js"></script>
     <script type="text/javascript" src="js/app/directives/parallax/angular-parallax.js"></script>
+    <script type="text/javascript" src="js/app/directives/youtube/youtube_player.js"></script>
     <script type="text/javascript" src="js/app/MainLandingPage/app.js"></script>
     <script type="text/javascript" src="js/app/MainLandingPage/controllers/mainLandingPageController.js"></script>
     <link href="css/mainNavigationPage.css" rel="stylesheet" type="text/css">
+    <link href="css/parallax.css" rel="stylesheet" type="text/css">
+    <link href="css/thumbnail.css" rel="stylesheet" type="text/css">
     <link href="css/header.css" rel="stylesheet" type="text/css">
     <link href="css/footer.css" rel="stylesheet" type="text/css">
 
@@ -21,7 +25,7 @@
     <!-- parallax effect starts -->
     <div class='parallax-container'>
         <div class='pxLayers px-layer1' data-name='body'></div>
-        <div class='pxLayers px-layer2' data-name='map' parallax-background parallax-ratio="10"></div>
+        <div class='pxLayers px-layer2' data-name='map' parallax-background parallax-ratio="1"></div>
         <div class='pxLayers px-layer3' data-name='water'></div>
         <div class='pxLayers px-layer4' data-name='riverlines' ></div>
         <div class='pxLayers px-layer5' data-name='bird'></div>
@@ -37,10 +41,10 @@
     <div class='ajab-container'>
     <div class='ajab-wrapper'>
     <div class='homepage-content'>
-
+        <thumbnailWithBubble></thumbnailWithBubble>
         <div class='thumbnail'>
             <div class='thumbnailVideo'>
-              <iframe src="https://www.youtube.com/watch?v=c8SHCS2nSsc" frameborder="0" allowfullscreen></iframe>
+                <youtube width="100%" height="100%" videoid="O-WVDBpBdRY"></youtube>
             </div>
              <div class='thumbnailDesc'>
               <h3 class='selected'>Practice the art of dying!</h3>
@@ -48,6 +52,145 @@
              </div>
         </div>
 
+        <div class='thumbnail' ng-class="shiftRight(1)">
+            <div class='thumbnailVideo'>
+                <youtube width="100%" height="100%" videoid="O-WVDBpBdRY"></youtube>
+            </div>
+             <div class='thumbnailDesc'>
+              <h3 class='selected'>Practice the art of dying!</h3>
+              <small>sings PARVATHY BAUL</small>
+             </div>
+        </div>
+
+        <div class='thumbnail' ng-class="shiftRight(2)">
+            <div class='thumbnailVideo'>
+                <youtube width="100%" height="100%" videoid="O-WVDBpBdRY"></youtube>
+            </div>
+             <div class='thumbnailDesc'>
+              <h3 class='selected'>Practice the art of dying!</h3>
+              <small>sings PARVATHY BAUL</small>
+             </div>
+        </div>
+
+        <div class='thumbnail'>
+            <div class='thumbnailVideo'>
+                <youtube width="100%" height="100%" videoid="O-WVDBpBdRY"></youtube>
+            </div>
+             <div class='thumbnailDesc'>
+              <h3 class='selected'>Practice the art of dying!</h3>
+              <small>sings PARVATHY BAUL</small>
+             </div>
+        </div>
+
+        <div class='thumbnail' ng-class="shiftRight(1)">
+            <div class='thumbnailVideo'>
+                <youtube width="100%" height="100%" videoid="O-WVDBpBdRY"></youtube>
+            </div>
+             <div class='thumbnailDesc'>
+              <h3 class='selected'>Practice the art of dying!</h3>
+              <small>sings PARVATHY BAUL</small>
+             </div>
+        </div>
+
+        <div class='thumbnail'  ng-class="shiftRight(2)">
+            <div class='thumbnailVideo'>
+                <youtube width="100%" height="100%" videoid="O-WVDBpBdRY"></youtube>
+            </div>
+             <div class='thumbnailDesc'>
+              <h3 class='selected'>Practice the art of dying!</h3>
+              <small>sings PARVATHY BAUL</small>
+             </div>
+        </div>
+
+        <div class='thumbnail'>
+            <div class='thumbnailVideo'>
+                <youtube width="100%" height="100%" videoid="O-WVDBpBdRY"></youtube>
+            </div>
+             <div class='thumbnailDesc'>
+              <h3 class='selected'>Practice the art of dying!</h3>
+              <small>sings PARVATHY BAUL</small>
+             </div>
+        </div>
+
+        <div class='thumbnail'  ng-class="shiftRight(1)">
+            <div class='thumbnailVideo'>
+                <youtube width="100%" height="100%" videoid="O-WVDBpBdRY"></youtube>
+            </div>
+             <div class='thumbnailDesc'>
+              <h3 class='selected'>Practice the art of dying!</h3>
+              <small>sings PARVATHY BAUL</small>
+             </div>
+        </div>
+
+        <div class='thumbnail' ng-class="shiftRight(2)">
+            <div class='thumbnailVideo'>
+                <youtube width="100%" height="100%" videoid="O-WVDBpBdRY"></youtube>
+            </div>
+             <div class='thumbnailDesc'>
+              <h3 class='selected'>Practice the art of dying!</h3>
+              <small>sings PARVATHY BAUL</small>
+             </div>
+        </div>
+
+        <div class='thumbnail'>
+            <div class='thumbnailVideo'>
+                <youtube width="100%" height="100%" videoid="O-WVDBpBdRY"></youtube>
+            </div>
+             <div class='thumbnailDesc'>
+              <h3 class='selected'>Practice the art of dying!</h3>
+              <small>sings PARVATHY BAUL</small>
+             </div>
+        </div>
+
+        <div class='thumbnail' ng-class="shiftRight(1)">
+            <div class='thumbnailVideo'>
+                <youtube width="100%" height="100%" videoid="O-WVDBpBdRY"></youtube>
+            </div>
+             <div class='thumbnailDesc'>
+              <h3 class='selected'>Practice the art of dying!</h3>
+              <small>sings PARVATHY BAUL</small>
+             </div>
+        </div>
+
+        <div class='thumbnail' ng-class="shiftRight(2)">
+            <div class='thumbnailVideo'>
+                <youtube width="100%" height="100%" videoid="O-WVDBpBdRY"></youtube>
+            </div>
+             <div class='thumbnailDesc'>
+              <h3 class='selected'>Practice the art of dying!</h3>
+              <small>sings PARVATHY BAUL</small>
+             </div>
+        </div>
+
+        <div class='thumbnail' ng-class="shiftRight(1)">
+            <div class='thumbnailVideo'>
+                <youtube width="100%" height="100%" videoid="O-WVDBpBdRY"></youtube>
+            </div>
+             <div class='thumbnailDesc'>
+              <h3 class='selected'>Practice the art of dying!</h3>
+              <small>sings PARVATHY BAUL</small>
+             </div>
+        </div>
+
+        <div class='thumbnail' ng-class="shiftRight(2)">
+            <div class='thumbnailVideo'>
+                <youtube width="100%" height="100%" videoid="O-WVDBpBdRY"></youtube>
+            </div>
+             <div class='thumbnailDesc'>
+              <h3 class='selected'>Practice the art of dying!</h3>
+              <small>sings PARVATHY BAUL</small>
+             </div>
+        </div>
+
+        <div class='thumbnail' ng-class="shiftRight(1)">
+            <div class='thumbnailVideo'>
+                <youtube width="100%" height="100%" videoid="O-WVDBpBdRY"></youtube>
+            </div>
+             <div class='thumbnailDesc'>
+              <h3 class='selected'>Practice the art of dying!</h3>
+              <small>sings PARVATHY BAUL</small>
+             </div>
+        </div>
 
     </div>
     </div>

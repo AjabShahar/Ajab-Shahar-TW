@@ -1,0 +1,40 @@
+.parallax-container{
+  margin-top: -11%;
+}
+
+.pxLayers{
+  width:100%;height:5540px;position: absolute;
+}
+
+.px-layer1{
+   background: url(../img/newset/07_body.png)  0px -185px no-repeat;
+}
+
+.px-layer2{
+   background: url(../img/newset/02_map.png) 0px repeat-y;
+}
+
+.px-layer3{
+   background: url(../img/newset/08_water.png) 0px  -185px no-repeat;
+}
+
+.px-layer4{
+    background: url(../img/newset/riverlines.png) -14px -188px no-repeat;
+    opacity: 0.3;
+}
+
+.px-layer5{
+   background: url(../img/newset/bird.png) 0px no-repeat;
+}
+
+.px-layer6{
+   background: url(../img/newset/05_clouds.png) 0px no-repeat;
+}
+
+.px-layer7{
+   background: url(../img/newset/03_whiteString.png) center 0px no-repeat;
+}
+
+.px-layer8{
+   background: url(../img/newset/hindiText.png) center 0px repeat-y;
+}

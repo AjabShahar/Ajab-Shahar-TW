@@ -14,10 +14,10 @@ introductionApp .config(['$routeProvider',
 function($routeProvider) {
      $routeProvider.
        when('/splashScreenVideo', {
-         templateUrl: 'js/templates/splash-screen-video.html',
+         templateUrl: 'js/templates/splashScreen/video.html',
        }).
        when('/splashScreenAudio', {
-         templateUrl: 'js/templates/splash-screen-audio.html',
+         templateUrl: 'js/templates/splashScreen/audio.html',
        });
    }]);
 
