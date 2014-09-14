@@ -33,14 +33,13 @@ youtubeApp.directive('youtube', function($window, YT_event) {
     template: '<div></div>',
 
     link: function(scope, element, attrs, $rootScope) {
-      var tag = document.createElement('script');
-      tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        var player;
 
-      var player;
-
-      $window.onYouTubeIframeAPIReady = function() {
+        $window.onYouTubeIframeAPIReady = function() {
 
         player = new YT.Player(element.children()[0], {
           playerVars: {
@@ -51,7 +50,7 @@ youtubeApp.directive('youtube', function($window, YT_event) {
             color: "white",
             iv_load_policy: 3,
             showinfo: 0,
-            controls: (scope.showControls)?1:0
+            controls: (scope.showcontrols)?1:0
           },
 
           height: scope.height,
@@ -61,10 +60,10 @@ youtubeApp.directive('youtube', function($window, YT_event) {
                 'onStateChange': onPlayerStateChange
             },
         });
-      }
+        }
 
         // when video ends
-        function onPlayerStateChange(event) {
+        onPlayerStateChange = function(event) {
             if(scope.autoreplay && event.data === 0) {
               event.target.playVideo();
             }
@@ -100,7 +99,6 @@ youtubeApp.directive('youtube', function($window, YT_event) {
         scope.$on(YT_event.PAUSE, function () {
         player.pauseVideo();
         });
-
     }
   };
 });
