@@ -22,3 +22,6 @@ server.pid
 *.eml
 activator-*.sbt
 node_modules
+public/coverage
+test-results.xml
+npm-debug.log
