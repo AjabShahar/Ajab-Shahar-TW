@@ -1,0 +1,15 @@
+{
+  "globals": {
+    "console": false,
+    "require": false,
+    "define": false,
+    "describe": false,
+    "it": false,
+    "beforeEach": false,
+    "module": false,
+    "inject": false,
+    "expect": false,
+    "spyOn": false
+  },
+  "globalstrict": true
+}

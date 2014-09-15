@@ -1,0 +1,18 @@
+{
+    "name": "ngtut",
+    "description": "A starter project for AngularJS",
+    "version": "0.0.0",
+    "homepage": "https://github.com/rnjn/ngtut",
+    "private": true,
+    "dependencies": {
+        "angular": "1.2.x",
+        "angular-resource": "1.2.x",
+        "angular-route": "1.2.x",
+        "bootstrap": "x",
+        "requirejs": "x"
+    },
+    "devDependencies": {
+        "angular-mocks": "1.2.x"
+    }
+
+}

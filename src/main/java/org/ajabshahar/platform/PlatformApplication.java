@@ -1,6 +1,7 @@
 package org.ajabshahar.platform;
 
 import io.dropwizard.Application;
+import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.migrations.MigrationsBundle;
@@ -29,6 +30,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
   public void initialize(Bootstrap<PlatformConfiguration> bootstrap) {
     bootstrap.addBundle(hibernate);
     bootstrap.addBundle(migrationsBundle);
+    bootstrap.addBundle(new AssetsBundle("/assets/app", "/","index.html"));
   }
 
   @Override
@@ -41,6 +43,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
 
     final TemplateHealthCheck templateHealthCheck = new TemplateHealthCheck(configuration.getTemplate());
 
+    environment.jersey().setUrlPattern("/api/*");
     environment.jersey().register(resource);
     environment.healthChecks().register("template", templateHealthCheck);
   }
