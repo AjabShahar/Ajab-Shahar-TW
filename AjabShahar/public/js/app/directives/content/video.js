@@ -8,7 +8,13 @@ contentModule.directive("videoWithDetails", function() {
             name:'@',
             singer:'@',
             showcontrols:'@',
+            shiftStyle:'&',
         },
         templateUrl:'js/templates/content/video.html',
+        controller:function($scope){
+            $scope.shiftRight = function(num){
+                return 'shiftRight'+num;
+            };
+        }
     }
 });

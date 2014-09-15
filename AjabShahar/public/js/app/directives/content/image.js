@@ -7,8 +7,14 @@ contentModule.directive("imageWithDetails", function() {
             name:'@',
             singer:'@',
             showcontrols:'@',
-            imgSrc:'@'
+            imgSrc:'@',
+            shiftStyle:'@',
         },
         templateUrl:'js/templates/content/image.html',
+        controller:function($scope){
+            $scope.shiftRight = function(num){
+                return 'shiftRight'+num;
+            };
+        }
     }
 });
