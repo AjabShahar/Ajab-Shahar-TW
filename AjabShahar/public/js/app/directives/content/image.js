@@ -6,14 +6,17 @@ contentModule.directive("imageWithDetails", function() {
         scope: {
             name:'@',
             singer:'@',
-            showcontrols:'@',
             imgSrc:'@',
-            shiftStyle:'@',
+            shiftDirection:'@',
+            shiftIndex:'@',
         },
         templateUrl:'js/templates/content/image.html',
         controller:function($scope){
-            $scope.shiftRight = function(num){
-                return 'shiftRight'+num;
+            $scope.shift = function(direction,num){
+                if(direction && (direction=='r'||direction=='R'))
+                    return 'shiftRight'+num;
+                if(direction && (direction=='l'||direction=='L'))
+                    return 'shiftLeft'+num;
             };
         }
     }
