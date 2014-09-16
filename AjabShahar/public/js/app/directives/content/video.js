@@ -13,10 +13,11 @@ contentModule.directive("videoWithDetails", function() {
         },
         templateUrl:'js/templates/content/video.html',
         controller:function($scope){
-            $scope.shift = function(direction,num){
-                if(direction && (direction=='l'||direction=='L'))
-                    return 'shiftLeft'+num;
-                return 'shiftRight'+num;
+            $scope.shift = function(){
+                if($scope.shiftDirection && ($scope.shiftDirection=='r'||$scope.shiftDirection=='R'))
+                    return 'shiftRight'+$scope.shiftIndex;
+                if($scope.shiftDirection && ($scope.shiftDirection=='l'||$scope.shiftDirection=='L'))
+                    return 'shiftLeft'+$scope.shiftIndex;
             };
         }
     }

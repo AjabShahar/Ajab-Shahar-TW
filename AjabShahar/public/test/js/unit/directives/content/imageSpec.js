@@ -17,20 +17,44 @@ describe('Content', function() {
             template = $templateCache;
         }));
 
-        it('Should initialize image with details', function() {
-            scope = {
-                        name1:'some Name',
-                        singer1:'Some Singer',
-                        imgSrc1:'someimg',
-                        shiftDirection1:'r',
-                        shiftIndex1:'1',
-                        showcontrols1:true,
-            };
-            element = angular.element('<image-with-details showcontrols="{{showcontrols1}}" shift-direction="{{shiftDirection1}}" shift-index="{{shiftIndex1}}" img-src="{{imgSrc1}}" name="{{name1}}" singer="{{singer1}}"></image-with-details>');
-            template.put('js/templates/content/image.html', '{{name}} {{singer}} {{img-src}} shift({{shift-direction}},{{shift-index}}) {{show-controls}}');
+        it('Should initialize image with details and shift right', function() {
+            scope.name1='some Name';
+            scope.singer1='Some Singer';
+            scope.imgSrc1='someimg';
+            scope.shiftDirection1='r';
+            scope.shiftIndex1='2';
+            element = angular.element('<image-with-details shift-direction="{{shiftDirection1}}" shift-index="{{shiftIndex1}}" img-src="{{imgSrc1}}" name="{{name1}}" singer="{{singer1}}"></image-with-details>');
+            template.put('js/templates/content/image.html', '{{name}} {{singer}} {{imgSrc}} {{shift()}}');
             compile(element)(scope);
+            scope.$apply();
 
-            expect(element.html()).toBe('some Name Some Singer someimg shiftRight1 true');
+            expect(element.html()).toBe('some Name Some Singer someimg shiftRight2');
+        });
+
+        it('Should initialize image with details and shift left', function() {
+            scope.name1='some Name';
+            scope.singer1='Some Singer';
+            scope.imgSrc1='someimg';
+            scope.shiftDirection1='l';
+            scope.shiftIndex1='2';
+            element = angular.element('<image-with-details shift-direction="{{shiftDirection1}}" shift-index="{{shiftIndex1}}" img-src="{{imgSrc1}}" name="{{name1}}" singer="{{singer1}}"></image-with-details>');
+            template.put('js/templates/content/image.html', '{{name}} {{singer}} {{imgSrc}} {{shift()}}');
+            compile(element)(scope);
+            scope.$apply();
+
+            expect(element.html()).toBe('some Name Some Singer someimg shiftLeft2');
+        });
+
+        it('Should initialize image with details and no shift', function() {
+            scope.name1='some Name';
+            scope.singer1='Some Singer';
+            scope.imgSrc1='someimg';
+            element = angular.element('<image-with-details img-src="{{imgSrc1}}" name="{{name1}}" singer="{{singer1}}"></image-with-details>');
+            template.put('js/templates/content/image.html', '{{name}} {{singer}} {{imgSrc}} {{shift()}}');
+            compile(element)(scope);
+            scope.$apply();
+
+            expect(element.html()).toBe('some Name Some Singer someimg ');
         });
     });
 });
