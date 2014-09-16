@@ -2,7 +2,7 @@
 
 describe('Content', function() {
 
-    describe('image content', function() {
+    describe('song content', function() {
         var scope;
         var element;
         var compile;
