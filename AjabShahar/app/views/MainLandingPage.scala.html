@@ -19,6 +19,19 @@
     <link href="css/footer.css" rel="stylesheet" type="text/css">
 
 
+    <link rel="stylesheet" type="text/css" href="js/lib/jquery-colorbox/example1/colorbox.css">
+    <script src="js/lib/jquery/dist/jquery.min.js"></script>
+    <script src="js/lib/jquery-colorbox/jquery.colorbox-min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            //Examples of how to assign the Colorbox event to elements
+            $(".group1").colorbox({iframe:true, innerWidth:640, innerHeight:390});
+            $(".group2").colorbox({rel:'group1', arrowKey: false});
+        });
+
+    </script>
+
 
 </head>
 <body ng-controller="mainLandingPageController">
@@ -29,7 +42,7 @@
         <div class='pxLayers px-layer1' data-name='body'></div>
         <div class='pxLayers px-layer2' data-name='map' parallax-background parallax-ratio="1"></div>
         <div class='pxLayers px-layer3' data-name='water'></div>
-        <div class='pxLayers px-layer4' data-name='riverlines' ></div>
+        <div class='pxLayers px-layer4' data-name='riverlines'></div>
         <div class='pxLayers px-layer5' data-name='bird'></div>
         <div class='pxLayers px-layer6' data-name='clouds' scroll></div>
         <div class='pxLayers px-layer7' data-name='whitestring'></div>
@@ -41,20 +54,64 @@
     <div class='ajab-wrapper'>
     <div class='homepage-content'>
         <video-with-details showcontrols="true" videoid="O-WVDBpBdRY" name="Practice the art of dying!" singer="PARVATHY BAUL"></video-with-details>
+
+        <a class="group2" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">
         <image-with-details showcontrols="true" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></image-with-details>
+        </a>
+
+        <a class="group2" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">
         <image-with-details showcontrols="true" shift-direction="R" shift-index="1" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></image-with-details>
-        <image-with-details showcontrols="true" shift-direction="R" shift-index="2"  img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></image-with-details>
-        <image-with-details showcontrols="true" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></image-with-details>
+        </a>
+        
+
+         <a class="group2" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">
         <image-with-details showcontrols="true" shift-direction="R" shift-index="1" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></image-with-details>
-        <image-with-details showcontrols="true" shift-direction="R" shift-index="2"  img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></image-with-details>
-        <image-with-details showcontrols="true" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></image-with-details>
+        </a>
+
+         <a class="group2" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">
         <image-with-details showcontrols="true" shift-direction="R" shift-index="1" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></image-with-details>
-        <image-with-details showcontrols="true" shift-direction="R" shift-index="2"  img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></image-with-details>
-        <image-with-details showcontrols="true" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></image-with-details>
+        </a>
+
+         <a class="group2" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">
         <image-with-details showcontrols="true" shift-direction="R" shift-index="1" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></image-with-details>
-        <image-with-details showcontrols="true" shift-direction="R" shift-index="2"  img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></image-with-details>
-        <image-with-details showcontrols="true" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></image-with-details>
+        </a>
+
+         <a class="group2" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">
         <image-with-details showcontrols="true" shift-direction="R" shift-index="1" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></image-with-details>
+        </a>
+        
+         <a class="group2" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">
+        <image-with-details showcontrols="true" shift-direction="R" shift-index="1" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></image-with-details>
+        </a>
+
+         <a class="group2" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">
+        <image-with-details showcontrols="true" shift-direction="R" shift-index="1" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></image-with-details>
+        </a>
+
+         <a class="group2" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">
+        <image-with-details showcontrols="true" shift-direction="R" shift-index="1" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></image-with-details>
+        </a>
+
+         <a class="group2" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">
+        <image-with-details showcontrols="true" shift-direction="R" shift-index="1" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></image-with-details>
+        </a>
+
+         <a class="group2" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">
+        <image-with-details showcontrols="true" shift-direction="R" shift-index="1" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></image-with-details>
+        </a>
+
+         <a class="group2" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">
+        <image-with-details showcontrols="true" shift-direction="R" shift-index="1" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></image-with-details>
+        </a>
+
+         <a class="group2" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">
+        <image-with-details showcontrols="true" shift-direction="R" shift-index="1" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></image-with-details>
+        </a>
+
+         <a class="group2" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">
+        <image-with-details showcontrols="true" shift-direction="R" shift-index="1" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></image-with-details>
+        </a>
+
     </div>
     </div>
     </div>
