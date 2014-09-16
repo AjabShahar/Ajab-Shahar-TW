@@ -1,13 +1,12 @@
 'use strict';
 
-contentModule.directive("imageWithDetails", function() {
+contentModule.directive("songWithDetails", function() {
     return {
         restrict: 'E',
         scope: {
             name:'@',
             singer:'@',
             imgSrc:'@',
-            shiftDirection:'@',
             customStyle:'@',
         },
         templateUrl:'js/templates/content/song.html',

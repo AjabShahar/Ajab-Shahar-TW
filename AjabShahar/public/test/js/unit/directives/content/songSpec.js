@@ -22,7 +22,7 @@ describe('Content', function() {
             scope.singer1='Some Singer';
             scope.imgSrc1='someimg';
             scope.customStyle1='someStyle';
-            element = angular.element('<image-with-details custom-style="{{customStyle1}}" shift-index="{{shiftIndex1}}" img-src="{{imgSrc1}}" name="{{name1}}" singer="{{singer1}}"></image-with-details>');
+            element = angular.element('<song-with-details custom-style="{{customStyle1}}" shift-index="{{shiftIndex1}}" img-src="{{imgSrc1}}" name="{{name1}}" singer="{{singer1}}"></song-with-details>');
             template.put('js/templates/content/song.html', '{{name}} {{singer}} {{imgSrc}} {{customStyle}}');
             compile(element)(scope);
             scope.$apply();
