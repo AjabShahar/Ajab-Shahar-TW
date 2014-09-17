@@ -18,7 +18,9 @@ position:relative;
 z-index:9;
 }
 
-
+.textcolor{
+ color: #E223DC
+}
 footer{
   width:65%;
 }
@@ -40,6 +42,7 @@ padding: 5% 0;
 
 footer ul.footerExtra li{
 padding: 5% 0;
+
 }
 
 footer ul.footerExtra{
