@@ -31,7 +31,7 @@ introductionApp.animation('.slide', function() {
         },
         removeClass: function(element, className, done) {
             if(className === NgHideClassName) {
-                jQuery(element).hide().slideDown(done);
+                jQuery(element).hide().slideDown(1800,done);
             }
         }
     }
