@@ -18,7 +18,7 @@ contentModule.directive("songWithDetails", function() {
         link: function($scope,element, attrs){
 //                    $(".group2").colorbox({iframe:true, innerWidth:640, innerHeight:390});
             var colorBoxConfig = {rel:'group1', arrowKey: false};
-            $(".group1").colorbox(colorBoxConfig);
+            // $(".group1").colorbox(colorBoxConfig);
         },
         templateUrl:'js/templates/content/song.html',
     }
