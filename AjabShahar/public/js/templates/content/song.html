@@ -3,9 +3,11 @@
         <div class="thumbnailVideo">
             <img src="{{imgSrc}}"/>
         </div>
-        <div class="thumbnailDesc">
-            <h3 class="selected" >{{name}}</h3>
-            <small>sings {{singer}}</small>
-        </div>
+        <a href="{{lightBoxImageUrl}}" class="group1">
+            <div class="thumbnailDesc" ng-click="showLightBox()">
+                <h3 class="selected" >{{name}}</h3>
+                <small>sings {{singer}}</small>
+            </div>
+        </a>
     </div>
 </div>
