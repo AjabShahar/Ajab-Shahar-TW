@@ -33,6 +33,7 @@ z-index:9;
 header ul{text-transform:uppercase;display:inline-block;width:100%;clear:right;padding:1% 0;border-bottom: solid 1px #eee;color:#444;}
 header ul:last-child{border:0;}
 header ul li{padding:0% 2%;border-left:solid 1px #ddd;display:inline-block;float:left;}
+header ul.topLine li.selected{border-left: solid 1px #ddd;}
 header ul li:first-child{border:0;}
 
 header ul.firstLine{font-size:2em;margin-top:-1.5%;color:#666;}
@@ -47,7 +48,7 @@ font-size: 0.9em;
 color:#ccc;
 }
 
-header ul.topLine li{float:right;padding:0 1%;bxorder:0;}
+header ul.topLine li{float:right;padding:0 1%;}
 header ul.topLine li:last-child{border:0;}
 
 
