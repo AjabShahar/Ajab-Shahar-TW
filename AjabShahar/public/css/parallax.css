@@ -31,6 +31,14 @@
   0% {margin-left: 1000px;}
   100% {margin-left: -1000px;}
 }
+@-moz-keyframes moveclouds {
+  0% {margin-left: 1000px;}
+  100% {margin-left: -1000px;}
+}
+@-o-keyframes moveclouds {
+  0% {margin-left: 1000px;}
+  100% {margin-left: -1000px;}
+}
 
 .px-layer6{
    background: url(../img/newset/05_clouds.png);
