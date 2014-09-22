@@ -27,8 +27,16 @@
    background: url(../img/newset/bird.png) 0px no-repeat;
 }
 
+@-webkit-keyframes moveclouds {
+  0% {margin-left: 1000px;}
+  100% {margin-left: -1000px;}
+}
+
 .px-layer6{
-   background: url(../img/newset/05_clouds.png) 0px no-repeat;
+   background: url(../img/newset/05_clouds.png);
+   -webkit-animation: moveclouds 15s linear infinite;
+   -moz-animation: moveclouds 15s linear infinite;
+   -o-animation: moveclouds 15s linear infinite;
 }
 
 .px-layer7{
