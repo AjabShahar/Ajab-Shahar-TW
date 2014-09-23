@@ -7,8 +7,12 @@
 GET        /                                 controllers.Application.index()
 
 GET     /landingPage               controllers.MainLandingPageController.getLandingPage()
+GET     /songsPage                 controllers.SongsPageController.getSongsPage()
+GET     /coupletsPage              controllers.CoupletsPageController.getCoupletsPage()
+GET     /wordsPage                 controllers.WordsPageController.getWordsPage()
+GET     /reflectionsPage           controllers.ReflectionsPageController.getReflectionsPage()
+GET     /peoplesPage               controllers.PeoplesPageController.getPeoplesPage()
 
 GET /lightBoxPage controllers.LightBoxPageController.getLightBoxPage()
-
 # Map the JS resource paths
 GET        /*file                            controllers.Assets.versioned(path="/public", file: Asset)
