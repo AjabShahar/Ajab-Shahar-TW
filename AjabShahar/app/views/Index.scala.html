@@ -18,15 +18,11 @@
     <link href="css/splashScreen.css" rel="stylesheet" type="text/css">
     <link href="css/mainNavigationPage.css" rel="stylesheet" type="text/css">
 </head>
-<!--<body>-->
-<!--<song-with-details overlay-id="overlayId1" showcontrols="true" custom-style="shift4" light-box-image-url="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>-->
-
-<!--</body>-->
 <body ng-controller="splashScreenController" ng-mouseover="showEnterButton()">
-<div class="slide slide_bottom" ng-show="expand">
-    <a class='enter' title='Enter English Site' href='/landingPage'></a>
-    <a class='pravesh' title='हिन्दी वेबसाइट में प्रवेश करें'href='#prevesh'></a>
-</div>
+    <div class="slide slide_bottom" ng-show="expand">
+        <a class='enter' title='Enter English Site' href='/landingPage'></a>
+        <a class='pravesh' title='हिन्दी वेबसाइट में प्रवेश करें'href='#prevesh'></a>
+    </div>
 
     <div ng-view></div>
 </body>
