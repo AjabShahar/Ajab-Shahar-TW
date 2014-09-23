@@ -3,11 +3,19 @@
         <div class="thumbnailVideo">
             <img src="{{imgSrc}}"/>
         </div>
-        <a href="{{lightBoxImageUrl}}" class="group1">
-            <div class="thumbnailDesc" ng-click="showLightBox()">
-                <h3 class="selected" >{{name}}</h3>
-                <small>sings {{singer}}</small>
-            </div>
-        </a>
+        <!--<div ng-controller="PopupController">-->
+            <!--<button class="btn" ng-click="open()">Open me!</button>-->
+            <!--<popup show="shouldBeOpen" close="close()">-->
+                <!--<h1>Content</h1>-->
+            <!--</popup>-->
+        <!--</div>-->
+        <div class="thumbnailDesc" ng-click="open()">
+            <h3 class="selected" >{{name}}</h3>
+            <small>sings {{singer}}</small>
+        </div>
+
+        <pop-up overlay-id="{{overlayId}}" width="100" show="shouldBeOpen" on-close="onClose()" closeButton="true">
+            <img src="{{imgSrc}}"/>
+        </pop-up>
     </div>
 </div>
