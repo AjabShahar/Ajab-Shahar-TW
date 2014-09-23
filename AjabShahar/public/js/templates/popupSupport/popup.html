@@ -1,14 +1,14 @@
 <div ng-show="show()" style="z-index:2147483647">
-    <div id ="'{{overlayId}}" class="bt-lightbox-bg"></div>
-    <div style="width:{{width}}px; margin-left: {{(width/ 2 * -1)}}px;" class="bt-lightbox-frame" ng-show="show()">
-        <div style="left:{{width}}px;display:block;" class="bt-box-close">
+    <div id ="'{{overlayId}}" class="lightbox-bg"></div>
+    <div style="width:{{width}}px; margin-left: {{(width/ 2 * -1)}}px;" class="lightbox-frame" ng-show="show()">
+        <div style="left:{{width}}px;display:block;" class="box-close">
             <a target="_top" ng-click="onClose()"></a>
         </div>
-        <div class="roundedcornr_box_629119">
-            <div class="roundedcornr_top_629119"></div>
-            <div class="roundedcornr_content_629119">
+        <div class="roundedcornr_box">
+            <div class="roundedcornr_top"></div>
+            <div class="roundedcornr_content">
                 <div ng-transclude/></div>
-            <div class="roundedcornr_bottom_629119"></div>
+            <div class="roundedcornr_bottom"></div>
         </div>
     </div>
 </div>

@@ -1,16 +1,16 @@
-body.bt-lb-body
+body.lb-body
 {
 	padding: 0;
 	margin: 0;
 	height: 100%;
 }
 
-.bt-lightbox
+.lightbox
 {
 	display: none;
 }
 
-.bt-lightbox-bg
+.lightbox-bg
 {
 	z-index: 998;
 	width: 100%;
@@ -25,36 +25,36 @@ body.bt-lb-body
 	left: 0;
 }
 
-.roundedcornr_box_629119
+.roundedcornr_box
 {
-	background: url("../img/roundedcornr_629119_tl.png") no-repeat top left;
+	background: url("../img/roundedcornr_tl.png") no-repeat top left;
 }
-.roundedcornr_top_629119
+.roundedcornr_top
 {
-	background: url("../img/roundedcornr_629119_tr.png") no-repeat top right;
+	background: url("../img/roundedcornr_tr.png") no-repeat top right;
 }
-.roundedcornr_bottom_629119
+.roundedcornr_bottom
 {
-	background: url("../img/roundedcornr_629119_bl.png") no-repeat bottom left;
+	background: url("../img/roundedcornr_bl.png") no-repeat bottom left;
 }
-.roundedcornr_bottom_629119 div
+.roundedcornr_bottom div
 {
-	background: url("../img/roundedcornr_629119_br.png") no-repeat bottom right;
+	background: url("../img/roundedcornr_br.png") no-repeat bottom right;
 }
-.roundedcornr_content_629119
+.roundedcornr_content
 {    
 	padding: 20px;
-	background: url("../img/roundedcornr_629119_r.png") top right repeat-y;
+	background: url("../img/roundedcornr_r.png") top right repeat-y;
 }
 
 
-.roundedcornr_top_629119 div, .roundedcornr_top_629119, .roundedcornr_bottom_629119 div, .roundedcornr_bottom_629119
+.roundedcornr_top div, .roundedcornr_top, .roundedcornr_bottom div, .roundedcornr_bottom
 {
 	width: 100%;
 	height: 20px;
 	font-size: 1px;
 }
-.roundedcornr_content_629119, .roundedcornr_bottom_629119
+.roundedcornr_content, .roundedcornr_bottom
 {
 	margin-top: -19px;
 }
