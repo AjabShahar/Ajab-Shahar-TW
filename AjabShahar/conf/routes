@@ -12,6 +12,15 @@ GET     /coupletsPage              controllers.CoupletsPageController.getCouplet
 GET     /wordsPage                 controllers.WordsPageController.getWordsPage()
 GET     /reflectionsPage           controllers.ReflectionsPageController.getReflectionsPage()
 GET     /peoplesPage               controllers.PeoplesPageController.getPeoplesPage()
+GET     /placesPage                controllers.UnderConstructionPageController.getUnderConstructionPage()
+GET     /gatheringsPage            controllers.UnderConstructionPageController.getUnderConstructionPage()
+GET     /filmsPage                 controllers.UnderConstructionPageController.getUnderConstructionPage()
+GET     /classRoomPage             controllers.UnderConstructionPageController.getUnderConstructionPage()
+GET     /poetsPage                 controllers.UnderConstructionPageController.getUnderConstructionPage()
+GET     /radioPage                 controllers.UnderConstructionPageController.getUnderConstructionPage()
+GET     /stringPage                controllers.UnderConstructionPageController.getUnderConstructionPage()
+GET     /glimpsePage               controllers.UnderConstructionPageController.getUnderConstructionPage()
+GET     /participatePage            controllers.UnderConstructionPageController.getUnderConstructionPage()
 
 GET /lightBoxPage controllers.LightBoxPageController.getLightBoxPage()
 # Map the JS resource paths
