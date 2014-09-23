@@ -1,0 +1,60 @@
+/* footer */
+.footerBox{
+  margin-top: -15%;
+}
+
+.footerArt{
+  background:url(../img/footer1.png) top no-repeat;
+  background-size: cover;
+  height: 145px;
+  position: relative;
+  z-index: 9;
+}
+
+.footerWrapper{
+background: #000;
+padding:0% 0 4% 0;
+position:relative;
+z-index:9;
+}
+
+
+footer{
+  width:65%;
+}
+
+footer ul{
+  display:inline-block;
+  padding:1%;
+  float:left;
+  margin-right:2%;
+  border-left:dotted 1px #555;
+  text-align: left;
+  font-size: 0.9em;
+}
+
+footer ul.footerList li{
+text-transform: uppercase;
+padding: 5% 0;
+}
+
+footer ul.footerExtra li{
+padding: 5% 0;
+
+}
+
+footer ul.footerExtra{
+  width:20%;
+}
+
+footer ul.footerExtra li.kabirProject{
+ background: url(../img/icons/kabirinit.png) 135px 1px no-repeat;
+padding: 10% 0% 0 0%;
+height: 35px;
+width: 200px;
+margin-top: 10%;
+}
+
+footer ul li{
+color:#999;
+}

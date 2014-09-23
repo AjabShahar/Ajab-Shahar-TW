@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en" ng-app="mainLandingPageApp">
+<head>
+    <meta charset="utf-8">
+    <title>Landing Page</title>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/underscore/underscore.js"></script>
+    <script type="text/javascript" src="js/app/directives/content/contentModule.js"></script>
+    <script type="text/javascript" src="js/app/directives/content/song.js"></script>
+    <script type="text/javascript" src="js/app/directives/parallax/angular-parallax.js"></script>
+    <script type="text/javascript" src="js/app/directives/youtube/youtube_player.js"></script>
+    <script type="text/javascript" src="js/app/MainLandingPage/app.js"></script>
+    <script type="text/javascript" src="js/app/MainLandingPage/controllers/mainLandingPageController.js"></script>
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/jquery-colorbox/jquery.colorbox-min.js"></script>
+    <link href="css/mainNavigationPage.css" rel="stylesheet" type="text/css">
+    <link href="css/parallax.css" rel="stylesheet" type="text/css">
+    <link href="css/thumbnail.css" rel="stylesheet" type="text/css">
+    <link href="css/header.css" rel="stylesheet" type="text/css">
+    <link href="css/footer.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="lib/jquery-colorbox/example1/colorbox.css">
+</head>
+<body ng-controller="mainLandingPageController">
+<div class='headerBox ajab-container '>
+    <div class='headerWrapper'>
+        <header>
+            <div class='logoContainer'>
+                <img class='logo' src='img/logo.png'/>
+            </div>
+            <div class='menuContainer'>
+                <ul class='topLine'>
+                    <li class='selected'>Eclong</li>
+                    <li>हिन्दी</li>
+                    <li title="Support an artist or Ajab Shahar">Support</li>
+                    <li title='Take a tour of this city '>Map</li>
+                    <li title='Our inspiration, team, funding…'>About</li>
+                    <li title=''>Sign in</li>
+                </ul>
+
+                <ul class='firstLine'>
+                    <li title='Songs from the oral traditions – Bhakti, Sufi, Baul…'>Songs</li>
+                    <li title='Pithy poems – dohas, saakhis, beyts, rekhtas…'>Couplets</li>
+                    <li title='Explorations of key words and ideas in the poetry'>Words</li>
+                </ul>
+                <ul class='secondLine'>
+                    <li title='Interviews and writings about the poetry'>Reflections</li>
+                    <li title='Meet with poets, singers, artists, scholars, seekers… '>People</li>
+                    <li title='Enter the landscapes of song'>Places</li>
+                    <li title='Join a festival, concert, talk, satsang…'>Gatherings</li>
+                    <li title='Four musical travelogues exploring Kabir'>Films</li>
+                    <li title='Taking mystic poetry to students '>Classroom</li>
+                </ul>
+                <ul class='thirdLine'>
+                    <li title='Bhakti, Sufi and Baul poets in Ajab Shahar'>Poets</li>
+                    <li title='Playlists of music from Ajab Shahar '>Radio</li>
+                    <li title='String couplets on the thread of a word'>string</li>
+                    <li title='Visual expressions of mystic poetry'>Glimpse</li>
+                    <li title='Share a song, thought, idea, artwork or start a discussion'>Participate</li>
+                    <li class='searchBox'>
+                        <input class='searchField' placeholder='Search'/>
+                    </li>
+                </ul>
+            </div>
+
+        </header>
+    </div>
+    <div class='headerArt'></div>
+</div>
+
+<!-- parallax effect starts -->
+<div class='parallax-container'>
+    <div class='pxLayers px-layer1' data-name='body'></div>
+    <div class='pxLayers px-layer2' data-name='map' parallax-background parallax-ratio="1"></div>
+    <div class='pxLayers px-layer3' data-name='water'></div>
+    <div class='pxLayers px-layer4' data-name='riverlines'></div>
+    <div class='pxLayers px-layer5' data-name='bird'></div>
+    <div class='pxLayers px-layer6' data-name='clouds'></div>
+    <div class='pxLayers px-layer7' data-name='whitestring'></div>
+    <div class='pxLayers px-layer8' data-name='hinditext'></div>
+</div>
+<!-- parallax effect ends -->
+<!-- thumbnail and middle content starts -->
+<div class='ajab-container'>
+    <div class='ajab-wrapper'>
+        <div class='homepage-content'>
+            <song-with-details showcontrols="true" custom-style="shift4"
+                               light-box-image-url="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
+                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
+                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <!--<a class="group2 thumbnailWrapper" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">-->
+            <song-with-details showcontrols="true" custom-style="shift5"
+                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
+                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <!--</a>-->
+
+
+            <!--<a class="group2 thumbnailWrapper" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">-->
+            <song-with-details showcontrols="true" custom-style="shift6"
+                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
+                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <!--</a>-->
+
+            <!--<a class="group2 thumbnailWrapper" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">-->
+            <song-with-details showcontrols="true" custom-style="shift1"
+                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
+                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <!--</a>-->
+
+            <!--<a class="group2 thumbnailWrapper" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">-->
+            <song-with-details showcontrols="true" custom-style="shift2"
+                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
+                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <!--</a>-->
+
+            <!--<a class="group2 thumbnailWrapper" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">-->
+            <song-with-details showcontrols="true" custom-style="shift3"
+                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
+                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <!--</a>-->
+
+            <!--<a class="group2 thumbnailWrapper" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">-->
+            <song-with-details showcontrols="true" custom-style="shift4"
+                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
+                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <!--</a>-->
+
+            <!--<a class="group2 thumbnailWrapper" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">-->
+            <song-with-details showcontrols="true" custom-style="shift5"
+                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
+                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <!--</a>-->
+
+            <!--<a class="group2 thumbnailWrapper" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">-->
+            <song-with-details showcontrols="true" custom-style="shift6"
+                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
+                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <!--</a>-->
+
+            <!--<a class="group2 thumbnailWrapper" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">-->
+            <song-with-details showcontrols="true" custom-style="shift1"
+                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
+                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <!--</a>-->
+
+            <!--<a class="group2 thumbnailWrapper" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">-->
+            <song-with-details showcontrols="true" custom-style="shift2"
+                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
+                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <!--</a>-->
+
+            <!--<a class="group2 thumbnailWrapper" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">-->
+            <song-with-details showcontrols="true" custom-style="shift3"
+                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
+                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <!--</a>-->
+
+            <!--<a class="group2 thumbnailWrapper" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">-->
+            <song-with-details showcontrols="true" custom-style="shift4"
+                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
+                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <!--</a>-->
+
+            <!--<a class="group2 thumbnailWrapper" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">-->
+            <song-with-details showcontrols="true" custom-style="shift5"
+                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
+                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <!--</a>-->
+
+        </div>
+    </div>
+</div>
+<!-- thumbnail and middle content starts -->
+
+<div class='footerBox ajab-container '>
+    <div class='footerArt'></div>
+    <div class='footerWrapper'>
+        <footer class='ajab-wrapper'>
+            <ul class='footerList'>
+                <li>Songs</li>
+                <li>Couplets</li>
+                <li>words</li>
+            </ul>
+
+            <ul class='footerList'>
+                <li>Reflections</li>
+                <li>People</li>
+                <li>Places</li>
+                <li>Gatherings</li>
+                <li>Films</li>
+                <li>Classroom</li>
+            </ul>
+
+            <ul class='footerList'>
+                <li>Poets</li>
+                <li>Radio</li>
+                <li>String</li>
+                <li>Glimpse</li>
+            </ul>
+
+            <ul class='footerList'>
+                <li>About</li>
+                <li>Map</li>
+                <li>Shop</li>
+                <li>Support</li>
+                <li>Glossary</li>
+                <li>Singer Index</li>
+                <li>Resources</li>
+                <li>Copyright</li>
+            </ul>
+
+            <ul class='footerList'>
+                <li>Contact</li>
+                <li>OK Listen</li>
+                <li>Facebook</li>
+                <li>Twitter</li>
+                <li>Youtube</li>
+                <li>Soundcloud</li>
+            </ul>
+
+            <ul class='footerExtra'>
+                <li><font color="#e83785">SUBCRIBE</font> - Get updates about new uploads, events, curated playlists..
+                </li>
+                <li><font color="#e83785">PARTICIPATE</font> - Share your songs or thoughts, support an artist, start a
+                    discussion..
+                </li>
+                <li class='kabirProject'>A Kabir Project initiative</li>
+            </ul>
+
+        </footer>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,15 +1,25 @@
 <!doctype html>
-<html lang="en">
-    <head>
-        <title></title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-        <link rel="stylesheet" href="css/app.css">
-        <script data-main="js/main.js" src="bower_components/requirejs/require.js"></script>    
-    </head>
-    <body>
-        <div name='ngtut'>
-            <div ng-view class="container-fluid"></div>
-        </div>
-    </body>
+<html lang="en" ng-app="introductionApp">
+<head>
+    <meta charset="utf-8">
+    <title>Welcome</title>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="js/app/Introduction/app.js"></script>
+    <script type="text/javascript" src="js/app/Introduction/services/introductionAppService.js"></script>
+    <script type="text/javascript" src="js/app/Introduction/controllers/splashScreenController.js"></script>
+    <script type="text/javascript" src="js/app/directives/youtube/youtube_player.js"></script>
+    <script type="text/javascript" src="js/app/directives/parallax/angular-parallax.js"></script>
+    <link href="css/splashScreen.css" rel="stylesheet" type="text/css">
+    <link href="css/mainNavigationPage.css" rel="stylesheet" type="text/css">
+</head>
+<body ng-controller="splashScreenController" ng-mouseover="showEnterButton()">
+<div class="slide slide_bottom" ng-show="expand">
+    <a class='enter' title='Enter English Site' href='/landingpage.html'></a>
+    <a class='pravesh' title='हिन्दी वेबसाइट में प्रवेश करें' href='#prevesh'></a>
+</div>
+<div ng-view></div>
+</body>
 </html>

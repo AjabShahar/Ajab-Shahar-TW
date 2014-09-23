@@ -1,35 +1,33 @@
 {
-  "version": "0.0.0",
-  "private": true,
-  "name": "ngtut",
-  "description": "workbench for javascript AngularJS",
-  "license": "MIT",
-  "devDependencies": {
-    "karma-chrome-launcher": "^0.1.4",
-    "karma": "~0.12.0",
-    "karma-jasmine": "~0.2.0",
-    "karma-phantomjs-launcher": "~0.1",
-    "karma-requirejs":"~0.2.0",
-    "protractor": "~1.0.0",
-    "http-server": "^0.6.1",
-    "tmp": "0.0.23",
-    "bower": "^1.3.1",
-    "shelljs": "^0.2.6"
+  "dependencies": {
+    "bower": "~1.3"
   },
-  "scripts": {
-    "postinstall": "bower install",
+  "description": "Web interface for the Ajab-Shahar application",
+  "devDependencies": {
+    "karma": "0.10.2",
+    "karma-jasmine": "~0.1.3",
+    "karma-junit-reporter": "~0.1",
+    "karma-phantomjs-launcher": "~0.1",
+    "karma-coverage":"~0.1",
+    "karma-coffee-preprocessor": "0.1.3"
+  },
+   "scripts": {
+      "postinstall": "bower install",
 
-    "prestart": "npm install",
-    "start": "http-server -a 0.0.0.0 -p 8000",
+      "prestart": "npm install",
+      "start": "http-server app -o -d false -p 8000",
 
-    "pretest": "npm install",
-    "test": "node node_modules/karma/bin/karma start test/karma.conf.js",
-    "test-single-run": "node node_modules/karma/bin/karma start test/karma.conf.js  --single-run",
+      "pretest": "npm install",
+      "test": "node node_modules/karma/bin/karma start app/test/js/config/karma.conf.js",
+      "dev": "node node_modules/karma/bin/karma start app/test/js/config/karma.dev.conf.js",
+      "test-single-run": "node node_modules/karma/bin/karma start app/test/js/config/karma.conf.js  --single-run",
 
-    "preupdate-webdriver": "npm install",
-    "update-webdriver": "webdriver-manager update",
+      "preupdate-webdriver": "npm install",
+      "update-webdriver": "webdriver-manager update",
 
-    "preprotractor": "npm run update-webdriver",
-    "protractor": "protractor test/protractor-conf.js"
-  }
+      "preprotractor": "npm run update-webdriver",
+      "protractor": "protractor test/protractor-conf.js"
+    },
+  "name": "ajab-shahar",
+  "version": "0.0.0"
 }

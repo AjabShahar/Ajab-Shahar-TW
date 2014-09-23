@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<testsuites>
+  <testsuite name="PhantomJS 1.9.7 (Mac OS X)" package="undefined" timestamp="2014-09-23T10:14:16" id="0" hostname="mln.corporate.thoughtworks.com" tests="4" errors="0" failures="0" time="0.02">
+    <properties>
+      <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.7 Safari/534.34"/>
+    </properties>
+    <testcase name="should contain video-url randomly choosen from the list of video urls" time="0.007" classname="PhantomJS 1.9.7 (Mac OS X).SplashScreenController Specs"/>
+    <testcase name="should contain audio-url randomly choosen from the list of audio urls" time="0.001" classname="PhantomJS 1.9.7 (Mac OS X).SplashScreenController Specs"/>
+    <testcase name="Should initialize image with details" time="0.01" classname="PhantomJS 1.9.7 (Mac OS X).Content song content"/>
+    <testcase name="should increase the margin left value when user scrolls down" time="0.002" classname="PhantomJS 1.9.7 (Mac OS X).angular-parallaxSpec testing scroll directive"/>
+    <system-out><![CDATA[
+]]></system-out>
+    <system-err/>
+  </testsuite>
+</testsuites>
