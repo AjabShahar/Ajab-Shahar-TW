@@ -1,0 +1,110 @@
+body.lb-body
+{
+	padding: 0;
+	margin: 0;
+	height: 100%;
+}
+
+.lightbox
+{
+	display: none;
+}
+
+.lightbox-bg
+{
+	z-index: 998;
+	width: 100%;
+	background: #111;
+	position: fixed;
+	top: 0px; /* IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)"; /* IE 5-7 */
+	filter: alpha(opacity=60); /* Netscape */
+	-moz-opacity: 0.6; /* Safari 1.x */
+	-khtml-opacity: 0.6; /* Good browsers */
+	opacity: 0.6;
+	left: 0;
+}
+
+.roundedcornr_box
+{
+	background: url("../img/roundedcornr_tl.png") no-repeat top left;
+}
+.roundedcornr_top
+{
+	background: url("../img/roundedcornr_tr.png") no-repeat top right;
+}
+.roundedcornr_bottom
+{
+	background: url("../img/roundedcornr_bl.png") no-repeat bottom left;
+}
+.roundedcornr_bottom div
+{
+	background: url("../img/roundedcornr_br.png") no-repeat bottom right;
+}
+.roundedcornr_content
+{    
+	padding: 20px;
+	background: url("../img/roundedcornr_r.png") top right repeat-y;
+}
+
+
+.roundedcornr_top div, .roundedcornr_top, .roundedcornr_bottom div, .roundedcornr_bottom
+{
+	width: 100%;
+	height: 20px;
+	font-size: 1px;
+}
+.roundedcornr_content, .roundedcornr_bottom
+{
+	margin-top: -19px;
+}
+
+.bt-box-close
+{
+	width: 78px;
+	height: 49px;
+	float: right;
+	position: absolute;
+	top: -20px;
+}
+.bt-box-close a
+{
+	background: url("../img/lightbox_close.png") no-repeat;
+	display: block;
+	margin-left: -30px !important;
+	position: relative;
+	width: 48px;
+	height: 49px;
+	cursor: pointer;
+}
+.bt-lightbox-frame
+{
+	z-index: 999;
+	top: 70px; /* setup margin top */
+	z-index: 999;
+	position: absolute;
+	left: 50%;
+}
+
+/* CHANGE WIDTH */
+.bt-lightbox-frame
+{
+	/*width:800px; margin-left:-400px;*/ /* Margin is half of width */
+}
+.bt-box-close
+{
+	/*left:800px;*/ /* the same like width of .bt-lightbox-content */
+}
+.clear_lightbox
+{
+	clear: both;
+}
+.lightbox_hr 
+{
+    background: none repeat scroll 0 0 #CCCCCC;
+    border: medium none;
+    clear: both;
+    color: #CCCCCC;
+    height: 1px;
+    margin: 5px 0 10px;
+}

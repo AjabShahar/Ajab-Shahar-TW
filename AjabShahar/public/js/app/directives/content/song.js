@@ -9,17 +9,19 @@ contentModule.directive("songWithDetails", function() {
             imgSrc:'@',
             customStyle:'@',
             lightBoxImageUrl:'@',
-        },
-        controller: function($scope) {
-            $scope.showLightBox = function(){
-
-            }
-        },
-        link: function($scope,element, attrs){
-//                    $(".group2").colorbox({iframe:true, innerWidth:640, innerHeight:390});
-            var colorBoxConfig = {rel:'group1', arrowKey: false};
-            // $(".group1").colorbox(colorBoxConfig);
+            overlayId:'@'
         },
         templateUrl:'js/templates/content/song.html',
+        controller:function($scope){
+            $scope.shouldBeOpen = false;
+
+            $scope.open = function(){
+                $scope.shouldBeOpen = true;
+            }
+
+            $scope.onClose = function(){
+                $scope.shouldBeOpen = false;
+            }
+        }
     }
 });
