@@ -27,24 +27,24 @@ body.lb-body
 
 .roundedcornr_box
 {
-	background: url("../img/roundedcornr_tl.png") no-repeat top left;
+	background: url("../img/popup/roundedcornr_tl.png") no-repeat top left;
 }
 .roundedcornr_top
 {
-	background: url("../img/roundedcornr_tr.png") no-repeat top right;
+	background: url("../img/popup/roundedcornr_tr.png") no-repeat top right;
 }
 .roundedcornr_bottom
 {
-	background: url("../img/roundedcornr_bl.png") no-repeat bottom left;
+	background: url("../img/popup/roundedcornr_bl.png") no-repeat bottom left;
 }
 .roundedcornr_bottom div
 {
-	background: url("../img/roundedcornr_br.png") no-repeat bottom right;
+	background: url("../img/popup/roundedcornr_br.png") no-repeat bottom right;
 }
 .roundedcornr_content
 {    
 	padding: 20px;
-	background: url("../img/roundedcornr_r.png") top right repeat-y;
+	background: url("../img/popup/roundedcornr_r.png") top right repeat-y;
 }
 
 
@@ -69,7 +69,7 @@ body.lb-body
 }
 .box-close a
 {
-	background: url("../img/lightbox_close.png") no-repeat;
+	background: url("../img/popup/lightbox_close.png") no-repeat;
 	display: block;
 	margin-left: -30px !important;
 	position: relative;
