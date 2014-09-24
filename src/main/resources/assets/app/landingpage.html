@@ -5,20 +5,19 @@
     <title>Landing Page</title>
     <script src="lib/angular/angular.js"></script>
     <script src="lib/underscore/underscore.js"></script>
-    <script type="text/javascript" src="js/directives/content/contentModule.js"></script>
-    <script type="text/javascript" src="js/directives/content/song.js"></script>
+    <script type="text/javascript" src="js/directives/thumbnail/thumbnailModule.js"></script>
+    <script type="text/javascript" src="js/directives/popupSupport/popup.js"></script>
+    <script type="text/javascript" src="js/directives/thumbnail/song.js"></script>
     <script type="text/javascript" src="js/directives/parallax/angular-parallax.js"></script>
     <script type="text/javascript" src="js/directives/youtube/youtube_player.js"></script>
     <script type="text/javascript" src="js/MainLandingPage/app.js"></script>
     <script type="text/javascript" src="js/MainLandingPage/controllers/mainLandingPageController.js"></script>
     <script src="lib/jquery/dist/jquery.min.js"></script>
-    <script src="lib/jquery-colorbox/jquery.colorbox-min.js"></script>
     <link href="css/mainNavigationPage.css" rel="stylesheet" type="text/css">
     <link href="css/parallax.css" rel="stylesheet" type="text/css">
     <link href="css/thumbnail.css" rel="stylesheet" type="text/css">
     <link href="css/header.css" rel="stylesheet" type="text/css">
     <link href="css/footer.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="lib/jquery-colorbox/example1/colorbox.css">
 </head>
 <body ng-controller="mainLandingPageController">
 <div class='headerBox ajab-container '>
@@ -83,89 +82,20 @@
 <div class='ajab-container'>
     <div class='ajab-wrapper'>
         <div class='homepage-content'>
-            <song-with-details showcontrols="true" custom-style="shift4"
-                               light-box-image-url="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
-                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
-                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
-            <!--<a class="group2 thumbnailWrapper" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">-->
-            <song-with-details showcontrols="true" custom-style="shift5"
-                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
-                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
-            <!--</a>-->
-
-
-            <!--<a class="group2 thumbnailWrapper" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">-->
-            <song-with-details showcontrols="true" custom-style="shift6"
-                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
-                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
-            <!--</a>-->
-
-            <!--<a class="group2 thumbnailWrapper" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">-->
-            <song-with-details showcontrols="true" custom-style="shift1"
-                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
-                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
-            <!--</a>-->
-
-            <!--<a class="group2 thumbnailWrapper" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">-->
-            <song-with-details showcontrols="true" custom-style="shift2"
-                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
-                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
-            <!--</a>-->
-
-            <!--<a class="group2 thumbnailWrapper" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">-->
-            <song-with-details showcontrols="true" custom-style="shift3"
-                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
-                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
-            <!--</a>-->
-
-            <!--<a class="group2 thumbnailWrapper" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">-->
-            <song-with-details showcontrols="true" custom-style="shift4"
-                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
-                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
-            <!--</a>-->
-
-            <!--<a class="group2 thumbnailWrapper" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">-->
-            <song-with-details showcontrols="true" custom-style="shift5"
-                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
-                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
-            <!--</a>-->
-
-            <!--<a class="group2 thumbnailWrapper" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">-->
-            <song-with-details showcontrols="true" custom-style="shift6"
-                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
-                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
-            <!--</a>-->
-
-            <!--<a class="group2 thumbnailWrapper" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">-->
-            <song-with-details showcontrols="true" custom-style="shift1"
-                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
-                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
-            <!--</a>-->
-
-            <!--<a class="group2 thumbnailWrapper" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">-->
-            <song-with-details showcontrols="true" custom-style="shift2"
-                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
-                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
-            <!--</a>-->
-
-            <!--<a class="group2 thumbnailWrapper" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">-->
-            <song-with-details showcontrols="true" custom-style="shift3"
-                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
-                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
-            <!--</a>-->
-
-            <!--<a class="group2 thumbnailWrapper" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">-->
-            <song-with-details showcontrols="true" custom-style="shift4"
-                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
-                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
-            <!--</a>-->
-
-            <!--<a class="group2 thumbnailWrapper" href="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG">-->
-            <song-with-details showcontrols="true" custom-style="shift5"
-                               img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
-                               name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
-            <!--</a>-->
-
+            <song-with-details overlay-id="overlayId1" custom-style="shift4" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <song-with-details overlay-id="overlayId2" custom-style="shift5" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <song-with-details overlay-id="overlayId3"  custom-style="shift6" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <song-with-details overlay-id="overlayId4"  custom-style="shift1" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <song-with-details overlay-id="overlayId5"  custom-style="shift2" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <song-with-details overlay-id="overlayId6"  custom-style="shift3" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <song-with-details overlay-id="overlayId7"  custom-style="shift4" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <song-with-details overlay-id="overlayId8"  custom-style="shift5" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <song-with-details overlay-id="overlayId9"  custom-style="shift6" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <song-with-details overlay-id="overlayId10"  custom-style="shift1" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <song-with-details overlay-id="overlayId11"  custom-style="shift2" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <song-with-details overlay-id="overlayId12"  custom-style="shift3" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <song-with-details overlay-id="overlayId13"  custom-style="shift4" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
+            <song-with-details overlay-id="overlayId14"  custom-style="shift5" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG" name="Practice the art of dying!" singer="PARVATHY BAUL"></song-with-details>
         </div>
     </div>
 </div>
