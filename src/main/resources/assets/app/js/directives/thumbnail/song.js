@@ -11,7 +11,7 @@ thumbnailModule.directive("songWithDetails", function() {
             lightBoxImageUrl:'@',
             overlayId:'@'
         },
-        templateUrl:'js/templates/content/song.html',
+        templateUrl:'js/templates/thumbnail/song.html',
         controller:function($scope){
             $scope.shouldBeOpen = false;
 
