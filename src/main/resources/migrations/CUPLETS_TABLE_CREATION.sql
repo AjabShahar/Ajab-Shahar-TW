@@ -14,7 +14,4 @@ CREATE TABLE COUPLET (
     PERSON_ID INT FOREIGN KEY,
 
 );
---rollback drop table test1;
-
---changeset JAIDEEP:2 dbms:postgresql
-create sequence seq_test;
+--rollback drop table couplet;

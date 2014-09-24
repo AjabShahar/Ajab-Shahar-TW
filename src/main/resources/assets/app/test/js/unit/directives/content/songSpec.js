@@ -8,7 +8,7 @@ describe('Content', function() {
         var compile;
         var template;
         beforeEach(function(){
-            module('contentModule');
+            module('thumbnailModule');
         });
 
         beforeEach(inject(function($rootScope,$compile,$templateCache) {
@@ -23,7 +23,7 @@ describe('Content', function() {
             scope.imgSrc1='someimg';
             scope.customStyle1='someStyle';
             element = angular.element('<song-with-details custom-style="{{customStyle1}}" shift-index="{{shiftIndex1}}" img-src="{{imgSrc1}}" name="{{name1}}" singer="{{singer1}}"></song-with-details>');
-            template.put('templates/content/song.html', '{{name}} {{singer}} {{imgSrc}} {{customStyle}}');
+            template.put('js/templates/content/song.html', '{{name}} {{singer}} {{imgSrc}} {{customStyle}}');
             compile(element)(scope);
             scope.$apply();
 
