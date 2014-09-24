@@ -1,4 +1,4 @@
-var mainLandingPageApp = angular.module('mainLandingPageApp',['angular-parallax','thumbnailModule','youtubeApp','PopupSupport']);
+var mainLandingPageApp = angular.module('mainLandingPageApp',['angular-parallax','contentModule','youtubeApp']);
 
 mainLandingPageApp.config(function($sceDelegateProvider) {
                         $sceDelegateProvider.resourceUrlWhitelist([

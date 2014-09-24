@@ -11,7 +11,10 @@ RUNNING_PID
 *iml
 
 target
-.idea/libraries
-.idea/workspace.xml
-
+AjabShahar/.idea/*.*
+AjabShahar/Ajab-Shahar-TW.iml
+AjabShahar/node_modules
+AjabShahar/public/js/lib
+AjabShahar/public/coverage
+test-results.xml
 platform.iml
