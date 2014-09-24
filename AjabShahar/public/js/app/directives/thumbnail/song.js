@@ -1,6 +1,6 @@
 'use strict';
 
-contentModule.directive("songWithDetails", function() {
+thumbnailModule.directive("songWithDetails", function() {
     return {
         restrict: 'E',
         scope: {

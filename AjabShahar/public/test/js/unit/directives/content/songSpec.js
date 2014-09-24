@@ -8,7 +8,7 @@ describe('Content', function() {
         var compile;
         var template;
         beforeEach(function(){
-            module('contentModule');
+            module('thumbnailModule');
         });
 
         beforeEach(inject(function($rootScope,$compile,$templateCache) {
