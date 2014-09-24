@@ -11,4 +11,7 @@ RUNNING_PID
 *iml
 
 target
+.idea/libraries
 .idea/workspace.xml
+
+platform.iml
