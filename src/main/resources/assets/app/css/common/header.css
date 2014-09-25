@@ -54,7 +54,7 @@ header ul.topLine li:last-child{border:0;}
 
 li.searchBox{float:right;width:40%;border:0;}
 .searchField{
-background: #f1f1f1 url(../../img/icons/searchicon.png) right 0px no-repeat;
+background: #f1f1f1 url(../../img/common/icons/searchicon.png) right 0px no-repeat;
 background-origin: content-box;
 border: solid 1px #eee;
 border-radius: 20px;
