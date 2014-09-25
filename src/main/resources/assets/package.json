@@ -12,6 +12,7 @@
     "karma-coffee-preprocessor": "0.1.3"
   },
    "scripts": {
+      "preinstall": "npm i -g http-server",
       "postinstall": "bower install",
 
       "prestart": "npm install",
@@ -31,7 +32,7 @@
     "repository" : {
      "type" : "git" ,
       "url" : "https://github.com/AjabShahar/Ajab-Shahar-TW"
-    }
+    },
   "name": "ajab-shahar",
   "version": "0.0.0"
 }
