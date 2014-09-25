@@ -1,20 +1,5 @@
-#intellij idea 
-.idea
-.idea_modules
-AjabShahar/.idea
-
-#eclipse
-.settings
-
+#intellij idea
+.idea/workspace.xml
 .DS_Store
-RUNNING_PID
-*iml
-
 target
-AjabShahar/.idea/*.*
-AjabShahar/Ajab-Shahar-TW.iml
-AjabShahar/node_modules
-AjabShahar/public/js/lib
-AjabShahar/public/coverage
 test-results.xml
-platform.iml
