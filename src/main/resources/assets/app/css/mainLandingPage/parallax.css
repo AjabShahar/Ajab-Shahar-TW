@@ -1,0 +1,92 @@
+.parallax-container{
+  margin-top: -11%;
+}
+
+.pxLayers{
+  width:100%;height:5540px;position: absolute;
+}
+
+.px-layer1{
+   background: url(../../img/newset/07_body.png)  0px -185px no-repeat;
+}
+
+.px-layer2{
+   background: url(../../img/newset/02_map.png) 0px repeat-y;
+}
+
+.px-layer3{
+   background: url(../../img/newset/08_water.png) 0px  -185px no-repeat;
+}
+
+.px-layer4{
+    background: url(../../img/newset/riverlines.png) -14px -188px no-repeat;
+    opacity: 0.3;
+}
+
+
+/* bird animation begins */
+.px-layer5{
+   background: url(../../img/newset/bird.png) 0px no-repeat;
+
+      -webkit-animation: birdopacity 15s linear infinite; 
+     -webkit-animation: movebird 55s linear infinite; 
+   -moz-animation: movebird 15s linear infinite;
+   -o-animation: movebird 15s linear infinite;
+   -webkit-transform-origin: 30em 60em;
+}
+
+
+@-webkit-keyframes birdopacity {
+  0%{opacity:0.4;}
+50% {opacity: 1}
+100%{opacity:1;}
+}
+@-webkit-keyframes movebird {
+  0% {background-position-y: 100px;background-position-x: 0px;-webkit-transform: rotate(80deg); }
+  50% {background-position-y: 500px;background-position-x: 1200px;}
+  100% {background-position-y: 200px;background-position-x: 500px;-webkit-transform: rotate(892deg); }
+}
+@-moz-keyframes movebird {
+  0% {background-position-x: 800px;}
+  100% {background-position-y: 500px;}
+}
+@-o-keyframes movebird {
+  0% {background-position-x: 800px;}
+  100% {background-position-y: 500px;}
+}
+/* bird animation ends */
+
+
+
+/* clouds animation begins */
+@-webkit-keyframes moveclouds {
+  0% {margin-left: 1000px;}
+  100% {margin-left: -1000px;}
+}
+@-moz-keyframes moveclouds {
+  0% {margin-left: 1000px;}
+  100% {margin-left: -1000px;}
+}
+@-o-keyframes moveclouds {
+  0% {margin-left: 1000px;}
+  100% {margin-left: -1000px;}
+}
+
+.px-layer6{
+   background: url(../../img/newset/05_clouds.png);
+   margin-top: -30%;
+   -webkit-animation: moveclouds 15s linear infinite;
+   -moz-animation: moveclouds 15s linear infinite;
+   -o-animation: moveclouds 15s linear infinite;
+}
+/* clouds animation ends */
+
+
+
+.px-layer7{
+   background: url(../../img/newset/03_whiteString.png) center 0px no-repeat;
+}
+
+.px-layer8{
+   background: url(../../img/newset/hindiText.png) center 0px repeat-y;
+}
