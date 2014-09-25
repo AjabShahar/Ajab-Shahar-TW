@@ -1,3 +1,5 @@
+--liquibase formatted sql
+
 --changeset JAIDEEP:7
 CREATE TABLE LANGUAGE (
     ID SERIAL,

@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset JAIDEEP:11
+--changeset JAIDEEP:6
 CREATE TABLE NOTE (
     ID SERIAL,
     TEXT_IN_ENGLISH_TRANSLITERATION VARCHAR(500) NOT NULL,

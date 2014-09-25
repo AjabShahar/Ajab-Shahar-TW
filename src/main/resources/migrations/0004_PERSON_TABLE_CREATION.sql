@@ -1,4 +1,6 @@
---changeset JAIDEEP:6
+--liquibase formatted sql
+
+--changeset JAIDEEP:4
 CREATE TABLE PERSON (
     ID SERIAL,
     NAME VARCHAR(100) NOT NULL,
