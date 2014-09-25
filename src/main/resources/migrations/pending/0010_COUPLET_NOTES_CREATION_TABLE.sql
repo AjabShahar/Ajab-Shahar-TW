@@ -1,5 +1,3 @@
---liquibase formatted sql
-
 --changeset JAIDEEP:10
 CREATE TABLE COUPLET_NOTE (
     ID SERIAL,

@@ -1,5 +1,3 @@
---liquibase formatted sql
-
 --changeset JAIDEEP:12
 CREATE TABLE COUPLET_GENRE (
     ID SERIAL,

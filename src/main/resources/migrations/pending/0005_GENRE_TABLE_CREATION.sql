@@ -1,5 +1,3 @@
---liquibase formatted sql
-
 --changeset JAIDEEP:5
 CREATE TABLE GENRE (
     ID SERIAL,

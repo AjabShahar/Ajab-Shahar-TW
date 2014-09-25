@@ -1,5 +1,3 @@
---liquibase formatted sql
-
 --changeset JAIDEEP:11
 CREATE TABLE COUPLET_AND_COUPLET_STRING (
     ID SERIAL,

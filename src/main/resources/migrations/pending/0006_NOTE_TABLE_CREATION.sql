@@ -1,5 +1,3 @@
---liquibase formatted sql
-
 --changeset JAIDEEP:6
 CREATE TABLE NOTE (
     ID SERIAL,

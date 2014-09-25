@@ -30,6 +30,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
   public void initialize(Bootstrap<PlatformConfiguration> bootstrap) {
     bootstrap.addBundle(hibernate);
     bootstrap.addBundle(migrationsBundle);
+
     bootstrap.addBundle(new AssetsBundle("/assets/app", "/","index.html"));
   }
 

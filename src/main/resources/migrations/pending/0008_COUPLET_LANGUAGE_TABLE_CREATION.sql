@@ -1,5 +1,3 @@
---liquibase formatted sql
-
 --changeset JAIDEEP:8
 CREATE TABLE COUPLET_LANGUAGE (
     ID SERIAL,

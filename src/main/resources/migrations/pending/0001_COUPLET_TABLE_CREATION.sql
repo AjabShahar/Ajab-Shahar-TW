@@ -1,6 +1,3 @@
---liquibase formatted sql
-
---changeset JAIDEEP:1
 CREATE TABLE COUPLET (
     ID SERIAL,
     TITLE_IN_HINDI VARCHAR(255) NOT NULL,

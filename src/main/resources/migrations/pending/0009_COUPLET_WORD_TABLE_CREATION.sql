@@ -1,5 +1,3 @@
---liquibase formatted sql
-
 --changeset JAIDEEP:9
 CREATE TABLE COUPLET_WORD (
     ID SERIAL,
