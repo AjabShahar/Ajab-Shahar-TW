@@ -28,6 +28,10 @@
       "preprotractor": "npm run update-webdriver",
       "protractor": "protractor test/protractor-conf.js"
     },
+    "repository" : {
+     "type" : "git" ,
+      "url" : "https://github.com/AjabShahar/Ajab-Shahar-TW"
+    }
   "name": "ajab-shahar",
   "version": "0.0.0"
 }
