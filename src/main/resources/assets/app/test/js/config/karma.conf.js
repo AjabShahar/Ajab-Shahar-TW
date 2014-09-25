@@ -6,7 +6,7 @@ module.exports = function (config) {
       'lib/underscore/underscore-min.js',
       'lib/angular/angular.js',
       'lib/angular-mocks/angular-mocks.js',
-      'js/app/directives/thumbnail/thumbnailModule.js',
+      'js/app/common/directives/thumbnail/thumbnailModule.js',
       'js/app/**/*.js',
       'test/js/unit/**/*.js'
     ],

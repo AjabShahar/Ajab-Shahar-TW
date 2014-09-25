@@ -12,7 +12,7 @@ angular.module('PopupSupport', [])
                 width: '@', //width of the popup
                 overlayId: '@'//an id for the background overlay for manipulation via jquery
             },
-            templateUrl: 'js/templates/popupSupport/popup.html',
+            templateUrl: 'js/common/templates/popupSupport/popup.html',
             controller: function($scope) {
                 $scope.$watch(function() { return $scope.show(); }, function(newValue, oldValue) {
                     if (newValue != true)
