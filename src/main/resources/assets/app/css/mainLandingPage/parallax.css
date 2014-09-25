@@ -7,26 +7,26 @@
 }
 
 .px-layer1{
-   background: url(../../img/newset/07_body.png)  0px -185px no-repeat;
+   background: url(../../img/mainLandingPage/parallax/07_body.png)  0px -185px no-repeat;
 }
 
 .px-layer2{
-   background: url(../../img/newset/02_map.png) 0px repeat-y;
+   background: url(../../img/mainLandingPage/parallax/02_map.png) 0px repeat-y;
 }
 
 .px-layer3{
-   background: url(../../img/newset/08_water.png) 0px  -185px no-repeat;
+   background: url(../../img/mainLandingPage/parallax/08_water.png) 0px  -185px no-repeat;
 }
 
 .px-layer4{
-    background: url(../../img/newset/riverlines.png) -14px -188px no-repeat;
+    background: url(../../img/mainLandingPage/parallax/riverlines.png) -14px -188px no-repeat;
     opacity: 0.3;
 }
 
 
 /* bird animation begins */
 .px-layer5{
-   background: url(../../img/newset/bird.png) 0px no-repeat;
+   background: url(../../img/mainLandingPage/parallax/bird.png) 0px no-repeat;
 
       -webkit-animation: birdopacity 15s linear infinite; 
      -webkit-animation: movebird 55s linear infinite; 
@@ -73,7 +73,7 @@
 }
 
 .px-layer6{
-   background: url(../../img/newset/05_clouds.png);
+   background: url(../../img/mainLandingPage/parallax/05_clouds.png);
    margin-top: -30%;
    -webkit-animation: moveclouds 15s linear infinite;
    -moz-animation: moveclouds 15s linear infinite;
@@ -84,9 +84,9 @@
 
 
 .px-layer7{
-   background: url(../../img/newset/03_whiteString.png) center 0px no-repeat;
+   background: url(../../img/mainLandingPage/parallax/03_whiteString.png) center 0px no-repeat;
 }
 
 .px-layer8{
-   background: url(../../img/newset/hindiText.png) center 0px repeat-y;
+   background: url(../../img/mainLandingPage/parallax/hindiText.png) center 0px repeat-y;
 }
