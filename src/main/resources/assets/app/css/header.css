@@ -13,7 +13,7 @@ header img.logo{float:left;}
 }
 
 .headerArt{
-  background:url(../img/header.png) top no-repeat;
+  background:url(../img/common/header.png) top no-repeat;
   background-size: cover;
   height: 145px;
   position: relative;
