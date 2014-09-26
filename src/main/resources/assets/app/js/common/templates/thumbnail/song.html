@@ -3,9 +3,13 @@
         <div class="thumbnailVideo">
             <img src="{{imgSrc}}"/>
         </div>
-        <div class="thumbnailDesc" ng-click="open()">
+        <div class="thumbnailDesc" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()" ng-click="open()">
             <h3 class="selected" >{{name}}</h3>
             <small>sings {{singer}}</small>
+            <div ng-show="shouldShowDetails">
+                <small class="play">{{categoryName}}</small>
+                <small>{{duration}}</small>
+            </div>
         </div>
 
         <pop-up overlay-id="{{overlayId}}" width="100" show="shouldBeOpen" on-close="onClose()" closeButton="true">

@@ -7,6 +7,7 @@ thumbnailModule.directive("songWithDetails", function() {
             name:'@',
             singer:'@',
             imgSrc:'@',
+            categoryName:'@',
             customStyle:'@',
             lightBoxImageUrl:'@',
             overlayId:'@'
@@ -14,13 +15,21 @@ thumbnailModule.directive("songWithDetails", function() {
         templateUrl:'js/common/templates/thumbnail/song.html',
         controller:function($scope){
             $scope.shouldBeOpen = false;
-
+            $scope.shouldShowDetails = false;
             $scope.open = function(){
                 $scope.shouldBeOpen = true;
             }
 
             $scope.onClose = function(){
                 $scope.shouldBeOpen = false;
+            }
+
+            $scope.showDetails = function(){
+                $scope.shouldShowDetails = true;
+            }
+
+            $scope.hideDetails = function(){
+                $scope.shouldShowDetails = false;
             }
         }
     }

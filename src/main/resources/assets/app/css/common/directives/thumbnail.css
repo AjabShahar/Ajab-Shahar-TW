@@ -15,6 +15,9 @@
 	background-size: cover;
 }
 
+.play{
+    background: url(../../../img/common/icons/play.png) right 0px no-repeat;
+}
 
 .shift1{margin:0 0 0 -15%;}
 .shift2{margin:0 0 0 -10%;}

@@ -1,5 +1,5 @@
 document.createElement('pop-up');
-angular.module('PopupSupport', [])
+var popupSupport = angular.module('PopupSupport', [])
     .directive('popUp', function() {
         return {
             restrict: 'E',
@@ -33,3 +33,16 @@ angular.module('PopupSupport', [])
             }
         };
     });    
+
+var popUpController = function($scope){
+    $scope.shouldBeOpen = false;
+
+    $scope.open = function(){
+        $scope.shouldBeOpen = true;
+    }
+
+    $scope.onClose = function(){
+        $scope.shouldBeOpen = false;
+    }
+};
+popupSupport.controller('popUpController',['$scope',popUpController]);
