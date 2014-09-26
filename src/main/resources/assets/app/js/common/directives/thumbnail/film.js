@@ -6,7 +6,7 @@ thumbnailModule.directive("filmWithDetails", function() {
         scope: {
             context:'@',
             imgSrc:'@',
-            description:'@',
+            name:'@',
             customStyle:'@',
             overlayId:'@'
         },

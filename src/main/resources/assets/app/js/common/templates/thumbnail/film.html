@@ -5,7 +5,7 @@
         </div>
         <div class="thumbnailDesc" ng-click="open()">
             <h3 class="selected" >{{context}}</h3>
-            <small>{{description}}</small>
+            <small>in the film {{name|uppercase}}</small>
         </div>
 
         <pop-up overlay-id="{{overlayId}}" width="100" show="shouldBeOpen" on-close="onClose()" closeButton="true">
