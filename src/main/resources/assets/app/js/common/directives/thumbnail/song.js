@@ -8,8 +8,9 @@ thumbnailModule.directive("songWithDetails", function() {
             singer:'@',
             imgSrc:'@',
             categoryName:'@',
+            duration:'@',
+            poet:'@',
             customStyle:'@',
-            lightBoxImageUrl:'@',
             overlayId:'@'
         },
         templateUrl:'js/common/templates/thumbnail/song.html',
