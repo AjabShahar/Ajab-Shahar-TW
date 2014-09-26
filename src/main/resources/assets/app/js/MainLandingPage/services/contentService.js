@@ -24,7 +24,7 @@ var contentService = function ($http) {
                     {
                         "category":"Reflections",
                         "name":"The Ulatbansi of Kabir",
-                        "description":"Linda Hess",
+                        "by":"Linda Hess",
                         "videoUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
                         "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
                     },

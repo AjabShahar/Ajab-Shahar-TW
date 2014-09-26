@@ -4,8 +4,9 @@ thumbnailModule.directive("filmWithDetails", function() {
     return {
         restrict: 'E',
         scope: {
-            name:'@',
+            context:'@',
             imgSrc:'@',
+            description:'@',
             customStyle:'@',
             overlayId:'@'
         },

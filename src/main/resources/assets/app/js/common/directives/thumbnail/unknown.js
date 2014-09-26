@@ -6,6 +6,7 @@ thumbnailModule.directive("unknownFormat", function() {
         scope: {
             name:'@',
             imgSrc:'@',
+            description:'@',
             customStyle:'@',
             overlayId:'@'
         },
