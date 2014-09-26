@@ -1,4 +1,4 @@
-var introductionAppService = function ($http) {
+var contentService = function ($http) {
   var getScreenOptions = function () {
     return {
         "options" :[
@@ -15,4 +15,4 @@ var introductionAppService = function ($http) {
   };
 };
 
-introductionApp.factory('introductionAppService', ['$http', introductionAppService]);
+introductionApp.factory('contentService', ['$http', contentService]);

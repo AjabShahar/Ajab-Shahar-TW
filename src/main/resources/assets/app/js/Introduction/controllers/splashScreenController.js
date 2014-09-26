@@ -1,8 +1,8 @@
-var splashScreenController = function($scope,$location,introductionAppService){
+var splashScreenController = function($scope,$location,contentService){
     $scope.url;
     $scope.imageUrl;
     $scope.getVideoUrl = function(){
-         var splashScreenOptions = introductionAppService.getScreenOptions();
+         var splashScreenOptions = contentService.getScreenOptions();
          if(splashScreenOptions==null || splashScreenOptions.options.length==0)
             return {"url":"","imageUrl":""};
          var min = 0, max = splashScreenOptions.options.length;
@@ -31,4 +31,4 @@ var splashScreenController = function($scope,$location,introductionAppService){
     $scope.getVideoUrl();
  };
 
-introductionApp.controller('splashScreenController',['$scope','$location','introductionAppService',splashScreenController]);
+introductionApp.controller('splashScreenController',['$scope','$location','contentService',splashScreenController]);
