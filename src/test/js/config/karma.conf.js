@@ -1,17 +1,16 @@
 'use strict';
 module.exports = function (config) {
   config.set({
-    basePath: '../../..',
+    basePath: '../../../main/resources/assets/app',
     files: [
       'lib/underscore/underscore-min.js',
       'lib/angular/angular.js',
       'lib/angular-mocks/angular-mocks.js',
       'js/common/directives/thumbnail/thumbnailModule.js',
-      'js/app/**/*.js',
       'js/common/**/*.js',
       'js/Introduction/**/*.js',
       'js/MainLandingPage/**/*.js',
-      'test/js/unit/**/*.js'
+      '../../../../test/js/unit/**/*.js'
     ],
     autoWatch: true,
     frameworks: ['jasmine'],
