@@ -18,6 +18,7 @@
     <script type="text/javascript" src="js/common/directives/youtube/youtube_player.js"></script>
     <script type="text/javascript" src="js/common/config/resourceUrlWhiteList.js"></script>
     <script type="text/javascript" src="js/MainLandingPage/app.js"></script>
+    <script type="text/javascript" src="js/MainLandingPage/services/contentService.js"></script>
     <script type="text/javascript" src="js/MainLandingPage/controllers/mainLandingPageController.js"></script>
     <script src="lib/jquery/dist/jquery.min.js"></script>
     <link href="css/common/header.css" rel="stylesheet" type="text/css">
@@ -47,7 +48,7 @@
     <div class='ajab-container'>
         <div class='ajab-wrapper'>
             <div class='homepage-content'>
-                <div bind-unsafe-html="myHTML"></div>
+                <div bind-unsafe-html="html"></div>
             </div>
         </div>
     </div>

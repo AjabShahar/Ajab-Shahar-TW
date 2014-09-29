@@ -9,7 +9,7 @@ var contentService = function ($http) {
                         "poet":"Sharath",
                         "videoUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
                         "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
-                        "description":"sings PARVATHY BAUL",
+                        "singer":"Parvathy Baul",
                         "duration":"09:11",
                     },
                     {
@@ -116,3 +116,5 @@ var contentService = function ($http) {
     getLandingPageThumbnails: getLandingPageThumbnails,
   };
 };
+
+mainLandingPageApp.factory('contentService', ['$http', contentService]);
