@@ -1,0 +1,11 @@
+--liquibase formatted sql
+
+--changeset JAIDEEP:16
+CREATE TABLE SPLASH_SCREEN (
+    ID SERIAL,
+    URL VARCHAR(300),
+	IMAGE_URL VARCHAR(300),
+	FORMAT VARCHAR(100) NOT NULL
+);
+
+--rollback drop table SPLASH_SCREEN;
