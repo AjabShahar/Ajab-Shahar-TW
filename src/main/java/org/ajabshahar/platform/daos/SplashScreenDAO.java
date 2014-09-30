@@ -1,8 +1,11 @@
 package org.ajabshahar.platform.daos;
 
-import io.dropwizard.hibernate.AbstractDAO;
+import com.google.common.base.Optional;
 import org.ajabshahar.platform.models.SplashScreen;
+import io.dropwizard.hibernate.AbstractDAO;
 import org.hibernate.SessionFactory;
+
+import java.util.List;
 
 public class SplashScreenDAO extends AbstractDAO<SplashScreen> {
 	public SplashScreenDAO(SessionFactory sessionFactory) {
@@ -18,6 +21,6 @@ public class SplashScreenDAO extends AbstractDAO<SplashScreen> {
 	}
 
 	public List<SplashScreen> findAll() {
-	    return list(namedQuery("com.example.helloworld.core.SplashScreen.findAll"));
+	    return list(namedQuery("org.ajabshahar.platform.models.SplashScreen.findAll"));
 	}
 }
