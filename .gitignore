@@ -1,4 +1,5 @@
 #intellij idea
+.idea/libraries/
 .idea/workspace.xml
 .DS_Store
 target
