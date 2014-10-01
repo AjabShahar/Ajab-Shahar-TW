@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Enter song details page</title>
+</head>
+<body>
+	<h2>Enter song details</h2>
+	<form>
+		<fieldset>
+			<legend>Category</legend>
+	        <label>Song</label>
+			<input type ="radio" name="category" value="song" checked="checked">
+	        <label>Song and reflection</label>
+	        <input type ="radio" name="category" value="songAndReflection">
+		</fieldset>
+		<fieldset>
+			<legend>Format</legend>
+	        <label>Video</label>
+			<input type ="radio" name="format" value="video">
+	        <label>Audio</label>
+	        <input type ="radio" name="format" value="audio">
+		</fieldset>
+		<fieldset>
+			<legend>Rendition</legend>
+			<label >Is this a rendition ?</label>
+			<br>
+	        <label>Yes</label>
+			<input type ="radio" name="rendition" value="yes">
+	        <label>No</label>
+	        <input type ="radio" name="rendition" value="no">
+			<br>
+			<label>Is this default Rendition for display on Video Players?</label>
+			<br>
+	        <label>Yes</label>
+			<input type = "radio" name="defaultRendition" value="yes">
+	        <label>No</label>
+	        <input type = "radio" name="defaultRendition" value="no">
+	        <hr>
+	        <label>Duration</label>
+			<input>
+			<span>hh:mm:ss</span>
+		</fieldset>
+		<fieldset>
+			<legend>Song title</legend>
+			<label>Title in original language</label>
+			<input>
+			<br>
+			<label>Title in English transliteration</label>
+			<input>
+			<br>
+			<label>Title in English translation</label>
+			<input>
+			<br>
+			<label>Enter reflection title(optional)</label>
+			<input>
+			<br>
+			<hr>
+			<legend>Umbrella title</legend>
+			<label>Select the umbrella title from the drop-down menu</label>
+			<br>
+			<input list="UmbrellaTitle">
+			<datalist id="UmbrellaTitle">
+  				<option value="Umbrella title 1">
+	  			<option value="Umbrella title 1">
+	  			<option value="Umbrella title 1">
+			</datalist>
+			<button>Add a new</button>
+		</fieldset>
+		<fieldset>
+			<label>Is this part of a double song ?</label>
+			<br>
+			<label>Yes</label>
+			<input type ="radio" name="double_song" value="yes">
+			<label>No</label>
+			<input type ="radio" name="double_song" value="No" checked="checked">
+			<div>
+				<label>Title in Original Language Script</label>
+				<input>
+				<label>Title in English Transliteration</label>
+				<input>
+				<label>Title in English Translation</label>
+				<input>
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>Poet and singer</legend>
+
+			<label>Select singer from the drop-down menu</label>
+			<br>
+			<input list="singerList">
+			<datalist id="singerList">
+			  <option value="Enrique">
+			  <option value="A.R Rahman">
+			  <option value="Sonu nigam">
+			</datalist>
+			<button>Add a new</button>
+			<hr>
+			<label>Select poet from the drop-down menu</label>
+			<br>
+			<input list="PoetList">
+			<datalist id="PoetList">
+			  <option value="Unknown">
+			  <option value="Kabir shaheb">
+			  <option value="Ravi das">
+			  <option value="Tulsi das">
+			  <option value="Kali das">
+			</datalist>
+			<button>Add a new</button>
+		</fieldset>
+		<fieldset>
+			<legend>About</legend>
+			<label>Song note</label>
+			<br>
+			<textarea placeholder="A short description of the song..."></textarea>
+		</fieldset>
+		<fieldset>
+			<legend>Credits</legend>
+			<ul>
+				<li>
+					<label>Song credits</label>
+				</li>
+				<br>
+				<textarea placeholder="Credits to the accompanists,"></textarea>
+				<hr>
+				<li>
+					<label>Video credits</label>
+				</li>
+				<br>
+				<label>Camera</label>
+				<input>
+				<br>
+				<label>Editing</label>
+				<input>
+				<br>
+				<label>Sound recording</label>
+				<input>
+				<br>
+				<label>Translation</label>
+				<input>
+				<br>
+				<label>Translation support</label>
+				<input>
+				<br>
+				<label>Subtitled by</label>
+				<input>
+				<br>
+				<label>Recirded by</label>
+				<input>
+				<br>
+				<label>Date</label>
+				<input type="date">
+				<br>
+				<label>Collection</label>
+				<input>
+				<br>
+				<button>Add a new field</button>
+			</ul>
+		</fieldset>
+		<fieldset>
+			<legend>Notes</legend>
+			<button>Add a note</button>
+		</fieldset>
+		<fieldset>
+			<legend>Transcript</legend>
+			<label>Enter English transcript text</label>
+			<textarea></textarea>
+			<br>
+			<label>Enter original language transcript text</label>
+			<textarea></textarea>
+		</fieldset>
+		<fieldset>
+			<legend>Tags</legend>
+			<label>Select genre:</label>
+			<br>
+			<input list="genreList">
+			<datalist id="genreList">
+			  <option value="folk">
+			  <option value="classical">
+			  <option value="bhajan">
+			</datalist>
+			<button>Add a new</button>
+			<hr>
+			<label>Select language:</label>
+			<br>
+			<input list="languageList">
+			<datalist id="languageList">
+			  <option value="Gujarati-Hindi">
+			  <option value="Bengali">
+			  <option value="Sindhi">
+			</datalist>
+			<button>Add a new</button>
+			<hr>
+			<label>Select places:</label>
+			<br>
+			<input list="placesList">
+			<datalist id="placesList">
+			  <option value="Pakistan">
+			  <option value="Rajasthan">
+			  <option value="Bangladesh">
+			</datalist>
+			<button>Add a new</button>
+			<hr>
+			<label>Word/Theme:</label>
+			<br>
+			<ul>
+				<li>
+					<label>Primary:</label>
+					<br>
+					<label>Select word/theme from the drop-down menu</label>
+				</li>
+				<br>
+				<input list="primaryWordList">
+				<datalist id="primaryWordList">
+				  <option value="Sahaj">
+				  <option value="Death">
+				</datalist>
+				<button>Add a new</button>
+				<li>
+					<label>Secondary:</label>
+					<br>
+					<label>Select word/theme from the drop-down menu</label>
+				</li>
+					<input list="secondaryWordList">
+					<datalist id="secondaryWordList">
+					  <option value="Sahaj">
+					  <option value="Death">
+					</datalist>
+			</ul>
+			<hr>
+			<label>Gathering</label>
+			<input>
+		</fieldset>
+		<fieldset>
+			<label>Is this a cousin song?</label>
+			<br>
+			<label>Yes</label>
+			<input type ="radio" name="cousinSong" value="yes">
+			<label>No</label>
+			<input type ="radio" name="cousinSong" value="no">
+			<br>
+			<input type="url">
+			<button>Add a another cousin song</button>
+		</fieldset>
+		<fieldset>
+			<legend>Upload thumbnail picture</legend>
+			<label>For desktop</label>
+			<input type="file">
+			<br>
+			<label>For mobile 4"</label>
+			<input type="file">
+			<br>
+			<label>For mobile 7"</label>
+			<input type="file">
+		</fieldset>
+		<fieldset>
+			<label>Display on Homepage and Song dashboards</label>
+			<br>
+			<label>Yes</label>
+			<input type ="radio" name="displayOnHomeAndSongDashboard" value="yes">
+			<label>No</label>
+			<input type ="radio" name="displayOnHomeAndSongDashboard" value="no">
+		</fieldset>
+		<fieldset>
+			<legend>Add youtube and soundCloud links</legend>
+			<label>Youtube</label>
+			<input type="url">
+			<br>
+			<label>SoundCloud</label>
+			<input type="url">
+		</fieldset>
+
+	</form>
+	<button>Save</button>
+	<button>Publish</button>
+	<button>Unpublish</button>
+</body>
+</html>

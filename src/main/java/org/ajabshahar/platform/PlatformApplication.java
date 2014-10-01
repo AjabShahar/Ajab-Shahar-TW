@@ -34,6 +34,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
     bootstrap.addBundle(migrationsBundle);
 
     bootstrap.addBundle(new AssetsBundle("/assets/app", "/","index.html"));
+    bootstrap.addBundle(new AssetsBundle("/assets/app", "/enterSongDetails","admin/enterSongDetails.html"));
   }
 
   @Override
