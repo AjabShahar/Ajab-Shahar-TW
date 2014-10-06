@@ -1,12 +1,11 @@
 var mainLandingPageController = function($scope,contentService){
-    $scope.html = '<test>blah</test>';
-    $scope.init = function(){
+    $scope.getLandingPageThumbnails = function(){
         var details = contentService.getLandingPageThumbnails().details;
         var result = _.reduce(details, function(memo, value, index){
             shiftIndex = ((4+index) % 6) == 0 ? 6 : ((4+index) % 6);
             if(value.category=='Songs'){
-                return memo + '<song-with-details overlay-id="oid'+index +
-                ' custom-style="shift'+shiftIndex+'" ' +
+                return memo + '<song-with-details overlay-id="oid'+index +'"'+
+                ' custom-style="shift'+shiftIndex+'"' +
                 ' img-src="'+details[index].imageUrl+'"'+
                 ' name="'+details[index].name+'"'+
                 ' singer="'+details[index].singer+'"' +
@@ -15,24 +14,24 @@ var mainLandingPageController = function($scope,contentService){
             }
 
             if(value.category=='Films'){
-                return memo + '<film-with-details overlay-id="oid'+index +
-                ' custom-style="shift'+shiftIndex+'" ' +
+                return memo + '<film-with-details overlay-id="oid'+index +'"'+
+                ' custom-style="shift'+shiftIndex+'"' +
                 ' img-src="'+details[index].imageUrl+'"'+
                 ' name="'+details[index].name+'"'+
                 ' context="'+details[index].context+'"'+ '></film-with-details>';
             }
 
             if(value.category=='Reflections'){
-                return memo + '<reflection-with-details overlay-id="oid'+index +
-                ' custom-style="shift'+shiftIndex+'" ' +
+                return memo + '<reflection-with-details overlay-id="oid'+index +'"'+
+                ' custom-style="shift'+shiftIndex+'"' +
                 ' img-src="'+details[index].imageUrl+'"'+
                 ' name="'+details[index].name+'"'+
                 ' by="'+details[index].by+'"></reflection-with-details>';
             }
 
             if(value.category=='Words'){
-                return memo + '<word-with-details overlay-id="oid'+index +
-                ' custom-style="shift'+shiftIndex+'" ' +
+                return memo + '<word-with-details overlay-id="oid'+index + '"'+
+                ' custom-style="shift'+shiftIndex+'"' +
                 ' img-src="'+details[index].imageUrl+'"'+
                 ' name="'+details[index].name+'"'+
                 ' contextual-meaning="'+details[index].contextualMeaning+'">' +
@@ -40,8 +39,8 @@ var mainLandingPageController = function($scope,contentService){
             }
 
             if(value.category=='Gathering'){
-                return memo + '<gathering-with-details overlay-id="oid'+index +
-                ' custom-style="shift'+shiftIndex+'" ' +
+                return memo + '<gathering-with-details overlay-id="oid'+index  +'"'+
+                ' custom-style="shift'+shiftIndex+'"' +
                 ' img-src="'+details[index].imageUrl+'"'+
                 ' name="'+details[index].name+'"'+
                 ' location="'+details[index].location+'"' +
@@ -50,22 +49,20 @@ var mainLandingPageController = function($scope,contentService){
             }
 
             if(value.category=='Couplets'){
-                return memo + '<couplet-with-details overlay-id="oid'+index +'" custom-style="shift'+shiftIndex+'" ' +
+                return memo + '<couplet-with-details overlay-id="oid'+index +'" custom-style="shift'+shiftIndex+'"' +
                 ' img-src="'+details[index].imageUrl+'"'+
                 ' name="'+details[index].name+'"'+
                 '</couplet-with-details>';
             }
 
-        return memo + '<unknown-format overlay-id="oid'+index +'" custom-style="shift'+shiftIndex+'" ' +
+        return memo + '<unknown-format overlay-id="oid'+index +'" custom-style="shift'+shiftIndex+'"' +
                 ' img-src="'+details[index].imageUrl+'"'+
                 ' name="'+details[index].name+'"'+
                 ' description="'+details[index].description+'">'+
                 '</unknown-format>'},'');
 
-        $scope.html = result;
+        return result;
     }
-
-    $scope.init();
 }
 
 mainLandingPageApp.controller('mainLandingPageController',['$scope','contentService',mainLandingPageController]);
