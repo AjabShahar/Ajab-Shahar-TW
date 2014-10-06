@@ -1,6 +1,5 @@
 #intellij idea
-.idea/libraries/
-.idea/workspace.xml
+.idea/
 .DS_Store
 target
 test-results.xml
