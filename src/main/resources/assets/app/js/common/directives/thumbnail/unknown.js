@@ -10,7 +10,7 @@ thumbnailModule.directive("unknownFormat", function() {
             customStyle:'@',
             overlayId:'@'
         },
-        templateUrl:'js/common/templates/thumbnail/unknown.html',
+        templateUrl:'/js/common/templates/thumbnail/unknown.html',
         controller:function($scope){
             $scope.shouldBeOpen = false;
 

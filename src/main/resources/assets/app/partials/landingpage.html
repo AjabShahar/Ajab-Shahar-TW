@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" ng-app="mainLandingPageApp">
+<head>
+    <meta charset="utf-8">
+    <title>Landing Page</title>
+    <script src="../lib/angular/angular.js"></script>
+    <script src="../lib/underscore/underscore.js"></script>
+    <script type="text/javascript" src="../js/common/directives/thumbnail/thumbnailModule.js"></script>
+    <script type="text/javascript" src="../js/common/directives/popupSupport/popup.js"></script>
+    <script type="text/javascript" src="../js/common/directives/thumbnail/song.js"></script>
+    <script type="text/javascript" src="../js/common/directives/thumbnail/couplet.js"></script>
+    <script type="text/javascript" src="../js/common/directives/thumbnail/film.js"></script>
+    <script type="text/javascript" src="../js/common/directives/thumbnail/gathering.js"></script>
+    <script type="text/javascript" src="../js/common/directives/thumbnail/reflection.js"></script>
+    <script type="text/javascript" src="../js/common/directives/thumbnail/unknown.js"></script>
+    <script type="text/javascript" src="../js/common/directives/thumbnail/word.js"></script>
+    <script type="text/javascript" src="../js/common/directives/parallax/angular-parallax.js"></script>
+    <script type="text/javascript" src="../js/common/directives/youtube/youtube_player.js"></script>
+    <script type="text/javascript" src="../js/common/config/resourceUrlWhiteList.js"></script>
+    <script type="text/javascript" src="../js/MainLandingPage/app.js"></script>
+    <script type="text/javascript" src="../js/MainLandingPage/services/contentService.js"></script>
+    <script type="text/javascript" src="../js/MainLandingPage/controllers/mainLandingPageController.js"></script>
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <link href="../css/common/header.css" rel="stylesheet" type="text/css">
+    <link href="../css/common/footer.css" rel="stylesheet" type="text/css">
+    <link href="../css/mainLandingPage/main.css" rel="stylesheet" type="text/css">
+    <link href="../css/mainLandingPage/parallax.css" rel="stylesheet" type="text/css">
+    <link href="../css/common/directives/thumbnail.css" rel="stylesheet" type="text/css">
+    <link href="../css/common/directives/popup.css" rel="stylesheet" type="text/css">
+</head>
+<body ng-controller="mainLandingPageController">
+    <div ng-include src="'common/header.html'"></div>
+
+    <!-- parallax effect starts -->
+    <div class='parallax-container'>
+        <div class='pxLayers px-layer1' data-name='body'></div>
+        <div class='pxLayers px-layer2' data-name='map' parallax-background parallax-ratio="1"></div>
+        <div class='pxLayers px-layer3' data-name='water'></div>
+        <div class='pxLayers px-layer3' data-name='water'></div>
+        <div class='pxLayers px-layer4' data-name='riverlines'></div>
+        <div class='pxLayers px-layer5' data-name='bird'></div>
+        <div class='pxLayers px-layer6' data-name='clouds'></div>
+        <div class='pxLayers px-layer7' data-name='whitestring'></div>
+        <div class='pxLayers px-layer8' data-name='hinditext'></div>
+    </div>
+    <!-- parallax effect ends -->
+    <!-- thumbnail and middle content starts -->
+    <div class='ajab-container'>
+        <div class='ajab-wrapper'>
+            <div class='homepage-content'>
+                <div bind-unsafe-html="html"></div>
+            </div>
+        </div>
+    </div>
+    <!-- thumbnail and middle content starts -->
+
+    <div ng-include src="'common/footer.html'"></div>
+
+</body>
+</html>

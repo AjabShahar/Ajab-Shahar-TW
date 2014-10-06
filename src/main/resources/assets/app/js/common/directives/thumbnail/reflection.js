@@ -10,7 +10,7 @@ thumbnailModule.directive("reflectionWithDetails", function() {
             customStyle:'@',
             overlayId:'@'
         },
-        templateUrl:'js/common/templates/thumbnail/reflection.html',
+        templateUrl:'/js/common/templates/thumbnail/reflection.html',
         controller:function($scope){
             $scope.shouldBeOpen = false;
 

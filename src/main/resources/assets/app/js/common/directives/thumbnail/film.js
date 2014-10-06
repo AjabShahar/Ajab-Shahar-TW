@@ -10,7 +10,7 @@ thumbnailModule.directive("filmWithDetails", function() {
             customStyle:'@',
             overlayId:'@'
         },
-        templateUrl:'js/common/templates/thumbnail/film.html',
+        templateUrl:'/js/common/templates/thumbnail/film.html',
         controller:function($scope){
             $scope.shouldBeOpen = false;
 

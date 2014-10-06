@@ -9,7 +9,7 @@ thumbnailModule.directive("coupletWithDetails", function() {
             customStyle:'@',
             overlayId:'@'
         },
-        templateUrl:'js/common/templates/thumbnail/couplet.html',
+        templateUrl:'/js/common/templates/thumbnail/couplet.html',
         controller:function($scope){
             $scope.shouldBeOpen = false;
 

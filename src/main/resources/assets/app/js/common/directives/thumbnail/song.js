@@ -13,7 +13,7 @@ thumbnailModule.directive("songWithDetails", function() {
             customStyle:'@',
             overlayId:'@'
         },
-        templateUrl:'js/common/templates/thumbnail/song.html',
+        templateUrl:'/js/common/templates/thumbnail/song.html',
         controller:function($scope){
             $scope.shouldBeOpen = false;
             $scope.shouldShowDetails = false;

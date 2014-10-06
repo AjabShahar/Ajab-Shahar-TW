@@ -10,7 +10,7 @@ thumbnailModule.directive("wordWithDetails", function() {
             customStyle:'@',
             overlayId:'@'
         },
-        templateUrl:'js/common/templates/thumbnail/word.html',
+        templateUrl:'/js/common/templates/thumbnail/word.html',
         controller:function($scope){
             $scope.shouldBeOpen = false;
 

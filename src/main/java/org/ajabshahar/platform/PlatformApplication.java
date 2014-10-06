@@ -33,7 +33,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
     // bootstrap.addBundle(hibernate);
     bootstrap.addBundle(migrationsBundle);
 
-    bootstrap.addBundle(new AssetsBundle("/assets/app", "/","*.html"));
+    bootstrap.addBundle(new AssetsBundle("/assets/app", "/","index.html"));
   }
 
   @Override
