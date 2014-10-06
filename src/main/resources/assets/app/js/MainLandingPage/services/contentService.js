@@ -18,7 +18,7 @@ var contentService = function ($http) {
                         "context":"Prahlad Tipanya Meets His Guru",
                         "videoUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
                         "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
-                        "description":"in the film KOI SUNTA HAI",
+                        "name":"KOI SUNTA HAI",
                         "duration":"21 : 00",
                     },
                     {
@@ -32,7 +32,8 @@ var contentService = function ($http) {
                         "category":"Songs",
                         "categoryName":"Song & Talk",
                         "name":"My Song My Life",
-                        "description":"Satsang with GAVRA DEVI",
+                        "singer":"GAVRA DEVI",
+                        "poet":"Unknown",
                         "videoUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
                         "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
                         "duration":"35 : 09",
@@ -55,7 +56,7 @@ var contentService = function ($http) {
                         "category":"Words",
                         "categoryName":"WORD INTRO",
                         "name":"Untellable Tale",
-                        "description":"An iconic poetic phrase in Kabir, which evokes a realm of experience beyond description...",
+                        "contextualMeaning":"An iconic poetic phrase in Kabir, which evokes a realm of experience beyond description...",
                         "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
                     },
                     {
@@ -69,7 +70,7 @@ var contentService = function ($http) {
                         "category":"Songs",
                         "categoryName":"Song",
                         "name":"Everyday I Wish You Well",
-                        "description":"sings MUKHTIYAR ALI",
+                        "singer":"MUKHTIYAR ALI",
                         "poet":"ULLEH SHAH0",
                         "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
                         "videoUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
@@ -87,7 +88,8 @@ var contentService = function ($http) {
                     {
                         "category":"Gathering",
                         "name":"Bangalore Festival Of Kabir",
-                        "description":"Bangalore 2009",
+                        "location":"Bangalore",
+                        "date":"2009",
                         "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
                     },
                     {
