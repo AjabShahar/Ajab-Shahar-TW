@@ -4,7 +4,7 @@ var contentService = function ($http) {
         "details" :[
                     {
                         "category":"Songs",
-                        "category-name":"Song & Reflection",
+                        "categoryName":"Song & Reflection",
                         "name":"Practice the art of dying",
                         "poet":"Sharath",
                         "videoUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
@@ -14,7 +14,7 @@ var contentService = function ($http) {
                     },
                     {
                         "category":"Films",
-                        "category-name":"Film Episode",
+                        "categoryName":"Film Episode",
                         "context":"Prahlad Tipanya Meets His Guru",
                         "videoUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
                         "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
@@ -30,7 +30,7 @@ var contentService = function ($http) {
                     },
                     {
                         "category":"Songs",
-                        "category-name":"Song & Talk",
+                        "categoryName":"Song & Talk",
                         "name":"My Song My Life",
                         "description":"Satsang with GAVRA DEVI",
                         "videoUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
@@ -39,35 +39,35 @@ var contentService = function ($http) {
                     },
                     {
                         "category":"Unknown",
-                        "category-name":"School Experiment",
+                        "categoryName":"School Experiment",
                         "name":"Parrot & The Jungle Fire",
                         "description":"Dance drama by children of HBP School",
                         "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
                     },
                     {
                         "category":"Unknown",
-                        "category-name":"ArtWork",
+                        "categoryName":"ArtWork",
                         "name":"Kahat Kabir",
                         "description":"Paintings by GHULAM SHEIKH",
                         "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
                     },
                     {
                         "category":"Words",
-                        "category-name":"WORD INTRO",
+                        "categoryName":"WORD INTRO",
                         "name":"Untellable Tale",
                         "description":"An iconic poetic phrase in Kabir, which evokes a realm of experience beyond description...",
                         "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
                     },
                     {
                         "category":"Unknown",
-                        "category-name":"Story",
+                        "categoryName":"Story",
                         "name":"10 Images X 100 Words",
                         "description":"Photo Essay by SMRITI CHANCHANI & VIPUL RIKHI",
                         "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
                     },
                     {
                         "category":"Songs",
-                        "category-name":"Song",
+                        "categoryName":"Song",
                         "name":"Everyday I Wish You Well",
                         "description":"sings MUKHTIYAR ALI",
                         "poet":"ULLEH SHAH0",
@@ -77,7 +77,7 @@ var contentService = function ($http) {
                     },
                     {
                         "category":"Relections",
-                        "category-name":"Relection",
+                        "categoryName":"Relection",
                         "name":"Reinterpreting Kabir’s life & times",
                         "description":"by PURUSHOTTAM AGRAWAL",
                         "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
@@ -92,13 +92,13 @@ var contentService = function ($http) {
                     },
                     {
                         "category":"Couplets",
-                        "category-name":"Couplet",
+                        "categoryName":"Couplet",
                         "name":"A pot in water, water in a pot...",
                         "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
                     },
                     {
                         "category":"Couplets",
-                        "category-name":"Couplet",
+                        "categoryName":"Couplet",
                         "name":"A pot in water, water in a pot...",
                         "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
                     },

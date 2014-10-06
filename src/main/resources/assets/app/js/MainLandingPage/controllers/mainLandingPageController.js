@@ -10,7 +10,7 @@ var mainLandingPageController = function($scope,contentService){
                 ' img-src="'+details[index].imageUrl+'"'+
                 ' name="'+details[index].name+'"'+
                 ' singer="'+details[index].singer+'"' +
-                ' category-name="'+details[index].category-name+'"'+
+                ' category-name="'+details[index].categoryName+'"'+
                 ' poet="'+details[index].poet+'"></song-with-details>';
             }
 
@@ -56,8 +56,7 @@ var mainLandingPageController = function($scope,contentService){
                 '</couplet-with-details>';
             }
 
-        return memo ;
-        + '<unknown-format overlay-id="oid'+index +'" custom-style="shift'+shiftIndex+'" ' +
+        return memo + '<unknown-format overlay-id="oid'+index +'" custom-style="shift'+shiftIndex+'" ' +
                 ' img-src="'+details[index].imageUrl+'"'+
                 ' name="'+details[index].name+'"'+
                 ' description="'+details[index].description+'">'+
