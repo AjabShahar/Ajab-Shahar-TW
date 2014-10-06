@@ -7,10 +7,10 @@ import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.migrations.MigrationsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-import org.ajabshahar.platform.daos.SplashScreenDAO;
-import org.ajabshahar.platform.models.SplashScreen;
+import org.ajabshahar.platform.daos.SplashScreenOptionsDAO;
+import org.ajabshahar.platform.models.SplashScreenOptions;
 import org.ajabshahar.platform.resources.HelloWorldResource;
-import org.ajabshahar.platform.resources.SplashScreenResource;
+import org.ajabshahar.platform.resources.SplashScreenOptionsResource;
 
 public class PlatformApplication extends Application<PlatformConfiguration> {
 
@@ -21,7 +21,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
     }
   };
 
-  private final HibernateBundle<PlatformConfiguration> hibernate = new HibernateBundle<PlatformConfiguration>(SplashScreen.class) {
+  private final HibernateBundle<PlatformConfiguration> hibernate = new HibernateBundle<PlatformConfiguration>(SplashScreenOptions.class) {
      @Override
      public DataSourceFactory getDataSourceFactory(PlatformConfiguration configuration) {
        return configuration.getDataSourceFactory();
@@ -43,13 +43,13 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         configuration.getTemplate(),
         configuration.getDefaultName()
     );
-      final SplashScreenDAO dao = new SplashScreenDAO (hibernate.getSessionFactory());
+      final SplashScreenOptionsDAO dao = new SplashScreenOptionsDAO(hibernate.getSessionFactory());
 
     final TemplateHealthCheck templateHealthCheck = new TemplateHealthCheck(configuration.getTemplate());
 
     environment.jersey().setUrlPattern("/api/*");
     environment.jersey().register(resource);
-    environment.jersey().register(new SplashScreenResource(dao));
+    environment.jersey().register(new SplashScreenOptionsResource(dao));
     environment.healthChecks().register("template", templateHealthCheck);
   }
 

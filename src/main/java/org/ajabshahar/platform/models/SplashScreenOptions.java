@@ -6,11 +6,11 @@ import javax.persistence.*;
 @Table(name = "SPLASH_SCREEN")
 @NamedQueries({
          @NamedQuery(
-                 name = "org.ajabshahar.platform.models.SplashScreen.findAll",
-                 query = "SELECT p FROM SplashScreen p"
+                 name = "org.ajabshahar.platform.models.SplashScreenOptions.findAll",
+                 query = "SELECT p FROM SplashScreenOptions p"
          )
 })
-public class SplashScreen {
+public class SplashScreenOptions {
 	  @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
      private long id;
