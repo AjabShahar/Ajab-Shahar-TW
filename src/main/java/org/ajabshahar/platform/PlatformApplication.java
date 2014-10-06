@@ -21,16 +21,16 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
     }
   };
 
-  // private final HibernateBundle<PlatformConfiguration> hibernate = new HibernateBundle<PlatformConfiguration>(SplashScreen.class) {
-  //   @Override
-  //   public DataSourceFactory getDataSourceFactory(PlatformConfiguration configuration) {
-  //     return configuration.getDataSourceFactory();
-  //   }
-  // };
+  private final HibernateBundle<PlatformConfiguration> hibernate = new HibernateBundle<PlatformConfiguration>(SplashScreen.class) {
+     @Override
+     public DataSourceFactory getDataSourceFactory(PlatformConfiguration configuration) {
+       return configuration.getDataSourceFactory();
+     }
+  };
 
   @Override
   public void initialize(Bootstrap<PlatformConfiguration> bootstrap) {
-    // bootstrap.addBundle(hibernate);
+    bootstrap.addBundle(hibernate);
     bootstrap.addBundle(migrationsBundle);
 
     bootstrap.addBundle(new AssetsBundle("/assets/app", "/","index.html"));
@@ -43,13 +43,13 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         configuration.getTemplate(),
         configuration.getDefaultName()
     );
-      // final SplashScreenDAO dao = new SplashScreenDAO (hibernate.getSessionFactory());
+      final SplashScreenDAO dao = new SplashScreenDAO (hibernate.getSessionFactory());
 
     final TemplateHealthCheck templateHealthCheck = new TemplateHealthCheck(configuration.getTemplate());
 
     environment.jersey().setUrlPattern("/api/*");
     environment.jersey().register(resource);
-    // environment.jersey().register(new SplashScreenResource(dao));
+    environment.jersey().register(new SplashScreenResource(dao));
     environment.healthChecks().register("template", templateHealthCheck);
   }
 

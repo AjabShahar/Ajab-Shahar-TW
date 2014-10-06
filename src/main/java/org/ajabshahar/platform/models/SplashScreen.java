@@ -7,7 +7,7 @@ import javax.persistence.*;
 @NamedQueries({
          @NamedQuery(
                  name = "org.ajabshahar.platform.models.SplashScreen.findAll",
-                 query = "SELECT p FROM SPLASH_SCREEN p"
+                 query = "SELECT p FROM SplashScreen p"
          )
 })
 public class SplashScreen {

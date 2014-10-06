@@ -1,7 +1,7 @@
 package org.ajabshahar.platform.resources;
 
-import org.ajabshahar.platform.models.SplashScreen;
 import org.ajabshahar.platform.daos.SplashScreenDAO;
+import org.ajabshahar.platform.models.SplashScreen;
 import io.dropwizard.hibernate.UnitOfWork;
 
 import javax.ws.rs.GET;
