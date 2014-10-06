@@ -6,7 +6,10 @@ header{
   padding: 1% 0 0 0;
 
 }
-header img.logo{float:left;}
+header img.logo{
+    content:url("../../img/common/logo.png");
+    float:left;
+}
 
 .headerBox{
   margin-top: 0%;

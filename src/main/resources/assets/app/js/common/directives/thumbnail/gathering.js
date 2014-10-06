@@ -11,7 +11,7 @@ thumbnailModule.directive("gatheringWithDetails", function() {
             customStyle:'@',
             overlayId:'@'
         },
-        templateUrl:'../js/common/templates/thumbnail/gathering.html',
+        templateUrl:'/js/common/templates/thumbnail/gathering.html',
         controller:function($scope){
             $scope.shouldBeOpen = false;
 

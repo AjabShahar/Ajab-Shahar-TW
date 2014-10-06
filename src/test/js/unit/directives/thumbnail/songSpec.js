@@ -27,7 +27,7 @@ describe('Content', function() {
             scope.poet1='poet',
 
             element = angular.element('<song-with-details category-name="{{categoryName1}}" duration="{{duration1}}" poet="{{poet1}}" custom-style="{{customStyle1}}" img-src="{{imgSrc1}}" name="{{name1}}" singer="{{singer1}}"></song-with-details>');
-            template.put('js/common/templates/thumbnail/song.html', '{{categoryName}} {{duration}} {{poet}} {{name}} {{singer}} {{imgSrc}} {{customStyle}}');
+            template.put('/js/common/templates/thumbnail/song.html', '{{categoryName}} {{duration}} {{poet}} {{name}} {{singer}} {{imgSrc}} {{customStyle}}');
             compile(element)(scope);
             scope.$apply();
 

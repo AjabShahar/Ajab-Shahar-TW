@@ -25,7 +25,7 @@ describe('Content', function() {
             scope.overlay1='overlayId',
 
             element = angular.element('<word-with-details overlay-id="{{overlay1}}" custom-style="{{customStyle1}}" img-src="{{imgSrc1}}" name="{{name1}}" contextual-meaning="{{contextualMeaning1}}"></word-with-details>');
-            template.put('js/common/templates/thumbnail/word.html', '{{overlayId}} {{customStyle}} {{imgSrc}} {{name}} {{contextualMeaning}}');
+            template.put('/js/common/templates/thumbnail/word.html', '{{overlayId}} {{customStyle}} {{imgSrc}} {{name}} {{contextualMeaning}}');
             compile(element)(scope);
             scope.$apply();
 
