@@ -5,14 +5,11 @@ introductionApp.config(resourceUrlWhiteList);
 introductionApp .config(['$routeProvider',
 function($routeProvider) {
      $routeProvider.
-       when('/', {
-         templateUrl: 'common/index.html',
-       }).
        when('/splashScreenVideo', {
-         templateUrl: 'splashScreen/video.html',
+         templateUrl: 'partials/splashScreen/video.html',
        }).
        when('/splashScreenAudio', {
-         templateUrl: 'splashScreen/audio.html',
+         templateUrl: 'partials/splashScreen/audio.html',
        });
    }]);
 

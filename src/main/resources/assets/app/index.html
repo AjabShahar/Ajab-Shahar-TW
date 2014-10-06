@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" ng-app="introductionApp">
+<head>
+    <meta charset="utf-8">
+    <title>Welcome</title>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="js/common/config/resourceUrlWhiteList.js"></script>
+    <script type="text/javascript" src="js/Introduction/app.js"></script>
+    <script type="text/javascript" src="js/Introduction/services/contentService.js"></script>
+    <script type="text/javascript" src="js/Introduction/controllers/splashScreenController.js"></script>
+    <script type="text/javascript" src="js/common/directives/youtube/youtube_player.js"></script>
+    <script type="text/javascript" src="js/common/directives/parallax/angular-parallax.js"></script>
+    <link href="css/introduction/splashScreen.css" rel="stylesheet" type="text/css">
+    <link href="css/introduction/main.css" rel="stylesheet" type="text/css">
+</head>
+<body ng-controller="splashScreenController" ng-mouseover="showEnterButton()">
+<div class="slide slide_bottom" ng-show="expand">
+    <a class='enter' title='Enter English Site' href='/partials/landingpage.html'></a>
+    <a class='pravesh' title='हिन्दी वेबसाइट में प्रवेश करें' href='#prevesh'></a>
+</div>
+<div ng-view></div>
+</body>
+</html>
