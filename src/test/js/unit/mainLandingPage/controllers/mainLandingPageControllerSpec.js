@@ -1,27 +1,7 @@
 'use strict';
 
 describe("MainLandingPage controller Specs", function(){
-	var scope;//scope will have requiredURL with it
-
-	var sampleResponse = {
-                "details" :[
-                            {
-                                "category":"Unknown",
-                                "categoryName":"Story",
-                                "name":"10 Images X 100 Words",
-                                "description":"Photo Essay by SMRITI CHANCHANI & VIPUL RIKHI",
-                                "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
-                            },
-                            {
-                                "category":"Couplets",
-                                "categoryName":"Couplet",
-                                "name":"A pot in water, water in a pot...",
-                                "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
-                            },
-                ]
-            };
-
-
+	var scope;
 	var contentService = {
 	    getLandingPageThumbnails:function(){}
 	};
