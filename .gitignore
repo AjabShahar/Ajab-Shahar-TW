@@ -1,5 +1,5 @@
 #intellij idea
-.idea/
+.idea
 .DS_Store
 target
 test-results.xml
