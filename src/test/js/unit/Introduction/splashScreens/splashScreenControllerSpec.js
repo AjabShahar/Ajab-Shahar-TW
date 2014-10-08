@@ -1,7 +1,14 @@
 'use strict';
 
 describe("SplashScreenController Specs", function(){
-	var scope;//scope will have requiredURL with it
+	var scope,q,controller;
+
+    var getPromise = function(response) {
+      response = response || '';
+      var deferred = q.defer();
+      deferred.resolve(response);
+      return deferred.promise;
+    };
 
 	var sampleResponse = 
 		["https://www.youtube.com/embed/O-WVDBpBdRY?enablejsapi=1",
@@ -15,44 +22,57 @@ describe("SplashScreenController Specs", function(){
         path:function(){}
     };
 
+    beforeEach(inject(function($q) {
+      q = $q;
+    }));
+
 	beforeEach(inject(function (_$rootScope_, _$controller_) {
     	scope = _$rootScope_.$new();
         spyOn(location,'path');
-        spyOn(contentService,'getScreenOptions');
-
-    	_$controller_(splashScreenController, {
-	        $scope: scope,
-	        $location:location,
-	        contentService:contentService,
-        })
+        controller = _$controller_;
     }));
 
 	it("should contain video-url randomly choosen from the list of video urls", function(){
-	    contentService.getScreenOptions.andReturn(
-	                 {
-                         "options" :[
-                                     {"format":"video","url":"aaa","imageUrl":""},
-                         ]
-                     }
-	    );
+        spyOn(contentService,'getScreenOptions').andReturn(getPromise({
+          "data" :[
+                      {"format":"video","url":"aaa","imageUrl":""},
+          ]
+        }));
+
+        controller(splashScreenController, {
+            $scope: scope,
+            $location:location,
+            contentService:contentService,
+        });
 
         var splashScreenDetails = scope.getVideoUrl();
-        expect(splashScreenDetails.url).toBe('aaa');
+        expect(contentService.getScreenOptions).toHaveBeenCalled();
+        scope.$apply();
+
+        expect(scope.option.url).toBe('aaa');
         expect(location.path).toHaveBeenCalledWith('/splashScreenVideo');
 	});
 
 	it("should contain audio-url randomly choosen from the list of audio urls", function(){
-	    contentService.getScreenOptions.andReturn(
-	                 {
-                         "options" :[
-                                     {"format":"audio","url":"aaa","imageUrl":"kkk"},
-                         ]
-                     }
-	    );
+        spyOn(contentService,'getScreenOptions').andReturn(getPromise({
+          "data" :[
+             {"format":"audio","url":"aaa","imageUrl":"kkk"},
+          ]
+        }));
+
+        controller(splashScreenController, {
+            $scope: scope,
+            $location:location,
+            contentService:contentService,
+        });
 
         var splashScreenDetails = scope.getVideoUrl();
-        expect(splashScreenDetails.url).toBe('aaa');
-        expect(splashScreenDetails.imageUrl).toBe('kkk');
+        expect(contentService.getScreenOptions).toHaveBeenCalled();
+        scope.$apply();
+
+        expect(scope.option.url).toBe('aaa');
+        expect(scope.option.imageUrl).toBe('kkk');
+
         expect(location.path).toHaveBeenCalledWith('/splashScreenAudio');
 	});
 });

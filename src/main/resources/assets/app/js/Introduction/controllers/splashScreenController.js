@@ -1,26 +1,30 @@
 var splashScreenController = function($scope,$location,contentService){
-    $scope.url;
-    $scope.imageUrl;
+    $scope.option;
+    $scope.splashScreenOptions;
     $scope.getVideoUrl = function(){
-        var result = contentService.getScreenOptions().then(function(splashScreenOptions){
-             if(splashScreenOptions==null || splashScreenOptions.data.length==0)
-                return {"url":"","imageUrl":""};
-             var min = 0, max = splashScreenOptions.data.length;
+        contentService.getScreenOptions().then(function(result){
+                splashScreenOptions = result
+                $scope.option = {"url":"","imageUrl":""};
+                if(splashScreenOptions==null || splashScreenOptions.data.length==0)
+                return;
 
-             var index = $scope.getRandomIntWithRange(min, max);
-             var splashScreenOption = splashScreenOptions.data[index];
+                var min = 0, max = splashScreenOptions.data.length;
 
-            $scope.url = splashScreenOption.url;
-            $scope.imageUrl = splashScreenOption.imageUrl;
-             if(splashScreenOption.format=='video'){
+                var index = $scope.getRandomIntWithRange(min, max);
+                var splashScreenOption = splashScreenOptions.data[index];
+
+                $scope.option.url = splashScreenOption.url;
+
+                if(splashScreenOption.format=='video'){
                   $location.path('/splashScreenVideo');
-                  return {"url": splashScreenOption.url,imageUrl:""};
-             }
-             if(splashScreenOption.format=='audio'){
+                  $scope.option.imageUrl = "";
+                }
+                if(splashScreenOption.format=='audio'){
                   $location.path('/splashScreenAudio');
-                  return {"url": splashScreenOption.url,imageUrl:splashScreenOption.imageUrl};
-             }
-         });
+                  $scope.option.imageUrl = splashScreenOption.imageUrl;
+                }
+
+            });
      };
 
     $scope.showEnterButton = function(){
