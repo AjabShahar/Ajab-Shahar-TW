@@ -21,7 +21,7 @@ var splashScreenController = function($scope,$location,contentService){
                 }
                 if(splashScreenOption.format=='audio'){
                   $location.path('/splashScreenAudio');
-                  $scope.option.imageUrl = splashScreenOption.imageUrl;
+                  $scope.option.imageUrl = splashScreenOption.image;
                 }
 
             });
