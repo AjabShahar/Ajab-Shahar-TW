@@ -1,5 +1,5 @@
 var splashScreenController = function($scope,$location,contentService){
-    $scope.option;
+    $scope.option = {"url":"","imageUrl":""};
     $scope.splashScreenOptions;
     $scope.getVideoUrl = function(){
         contentService.getScreenOptions().then(function(result){
