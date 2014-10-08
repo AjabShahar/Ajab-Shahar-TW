@@ -51,4 +51,9 @@ public class SplashScreenOptions {
      public void setFormat(String FORMAT) {
          this.FORMAT = FORMAT;
      }
+
+    @Override
+    public String toString(){
+        return String.format("Url: %s, ImageUrl: %s, Format: %s", this.URL, this.IMAGE_URL, this.FORMAT);
+    }
 }

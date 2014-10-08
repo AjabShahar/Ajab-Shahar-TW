@@ -12,7 +12,7 @@ var contentService = function ($http) {
 
   return {
     getScreenOptions: getScreenOptions,
-  };
+   };
 };
 
 introductionApp.factory('contentService', ['$http', contentService]);

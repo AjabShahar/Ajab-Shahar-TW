@@ -2,7 +2,7 @@ var introductionApp = angular.module('introductionApp',['ngRoute','ngAnimate','y
 
 introductionApp.config(resourceUrlWhiteList);
 
-introductionApp .config(['$routeProvider',
+introductionApp.config(['$routeProvider',
 function($routeProvider) {
      $routeProvider.
        when('/splashScreenVideo', {
