@@ -31,6 +31,12 @@ z-index:9;
 }
 
 
+.headerWrapper.fixed{display:none}
+.headerArt.fixed{position:fixed;width:100%;top:0;cursor:pointer;}
+
+.headerWrapper.fixedOnScroll{position:fixed;width:100%;top:0;display:block;}
+
+
 .logoContainer{float:left;display:inline-block;}
 .menuContainer{float:left;display:inline-block;width:80%;}
 header ul{text-transform:uppercase;display:inline-block;width:100%;clear:right;padding:1% 0;border-bottom: solid 1px #eee;color:#444;}
