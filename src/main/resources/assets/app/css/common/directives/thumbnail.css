@@ -8,12 +8,23 @@
 	z-index: 1;
 	position: relative;
 	width:85%;
-	height:100px;
-	background: url(../../../img/common/directives/thumbnail/desc.png) left top no-repeat;
-	margin: -15% 0% 0 18%;
-	padding: 6% 0 0 6%;
+	background:#fff;
+	margin: -14% 0% 0 18%;
+	padding: 11px 11px 16px 11px;
 	background-size: cover;
 	cursor:pointer;
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 35px;
+}
+.thumbnailDesc:before{
+content: '';
+width: 105%;
+display: inline-block;
+height: 30px;
+background: rgba(255, 255, 255, 0) url(../../../img/common/directives/thumbnail/top.png) left top no-repeat;
+background-size: cover;
+position: absolute;
+margin: -37px 0 0 -15px;
 }
 
 .play{
