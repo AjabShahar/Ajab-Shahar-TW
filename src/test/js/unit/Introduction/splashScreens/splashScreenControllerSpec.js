@@ -56,7 +56,7 @@ describe("SplashScreenController Specs", function(){
 	it("should contain audio-url randomly choosen from the list of audio urls", function(){
         spyOn(contentService,'getScreenOptions').andReturn(getPromise({
           "data" :[
-             {"format":"audio","url":"aaa","imageUrl":"kkk"},
+             {"format":"audio","url":"aaa","image":"kkk"},
           ]
         }));
 
@@ -71,7 +71,7 @@ describe("SplashScreenController Specs", function(){
         scope.$apply();
 
         expect(scope.option.url).toBe('aaa');
-//        expect(scope.option.imageUrl).toBe('kkk');
+        expect(scope.option.imageUrl).toBe('kkk');
 
         expect(location.path).toHaveBeenCalledWith('/splashScreenAudio');
 	});
