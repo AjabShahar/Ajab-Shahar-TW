@@ -3,6 +3,7 @@ module.exports = function (config) {
   config.set({
     basePath: '../../../main/resources/assets/app',
     files: [
+      'lib/jquery/dist/jquery.min.js',
       'lib/underscore/underscore-min.js',
       'lib/angular/angular.js',
       'lib/angular-mocks/angular-mocks.js',

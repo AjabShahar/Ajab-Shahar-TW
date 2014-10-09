@@ -1,4 +1,5 @@
-
+$.noConflict();
+jQuery( document ).ready(function( $ ) {
 $(function(){
 $(window).scroll(function(){
   var sticky = $('.headerWrapper'),stickyArt = $('.headerArt'),
@@ -22,4 +23,5 @@ else{
 }
 });
 
+});
 });
