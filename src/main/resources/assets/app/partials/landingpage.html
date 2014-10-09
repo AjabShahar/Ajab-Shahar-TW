@@ -17,6 +17,7 @@
     <script type="text/javascript" src="../js/common/directives/parallax/angular-parallax.js"></script>
     <script type="text/javascript" src="../js/common/directives/youtube/youtube_player.js"></script>
     <script type="text/javascript" src="../js/common/config/resourceUrlWhiteList.js"></script>
+    <script type="text/javascript" src="../js/common/directives/common/ajabShaharHeader.js"></script>
     <script type="text/javascript" src="../js/MainLandingPage/app.js"></script>
     <script type="text/javascript" src="../js/MainLandingPage/services/contentService.js"></script>
     <script type="text/javascript" src="../js/MainLandingPage/controllers/mainLandingPageController.js"></script>
@@ -30,7 +31,7 @@
     <link href="../css/common/directives/popup.css" rel="stylesheet" type="text/css">
 </head>
 <body ng-controller="mainLandingPageController">
-    <div ng-include src="'common/header.html'"></div>
+    <ajab-shahar-header should-expand-by-default="true"></ajab-shahar-header>
 
     <!-- parallax effect starts -->
     <div class='parallax-container'>
