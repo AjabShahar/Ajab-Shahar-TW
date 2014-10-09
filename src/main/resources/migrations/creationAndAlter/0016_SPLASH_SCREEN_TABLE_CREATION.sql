@@ -8,4 +8,4 @@ CREATE TABLE SPLASH_SCREEN (
 	FORMAT VARCHAR(100) NOT NULL
 );
 
---rollback drop table SPLASH_SCREEN;
+-- drop table SPLASH_SCREEN;
