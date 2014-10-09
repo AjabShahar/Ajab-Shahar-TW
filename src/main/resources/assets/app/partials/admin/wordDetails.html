@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="wordDetailsApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../lib/angular/angular.js"></script>
+    <script src="../../lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../../js/Words/app.js"></script>
+    <script type="text/javascript" src="../../js/Words/controllers/wordDetailsController.js"></script>
+</head>
+<body>
+<h2>Enter Word details</h2>
+<div ng-controller="wordDetailsController">
+    <form >
+        Name: <input type="text" name="word" ng-model="formInfo.NAME"><br>
+        Synonym: <input type="text" name="translation" ng-model="formInfo.SYNONYM"><br>
+        Category: <input type="text" name="transliteration" ng-model="formInfo.CATEGORY"><br>
+        Meaning: <input type="text" name="meaning" ng-model="formInfo.MEANING"><br>
+        Show On LandingPage :
+        <select name="format" ng-model="formInfo.SHOWONLANDINGPAGE">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select><br/>
+        <button type="submit" ng-click="saveData()">Submit</button>
+
+    </form>
+</div>
+</body>
+</html>

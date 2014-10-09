@@ -11,6 +11,10 @@ import org.ajabshahar.platform.daos.SplashScreenOptionsDAO;
 import org.ajabshahar.platform.models.SplashScreenOptions;
 import org.ajabshahar.platform.resources.HelloWorldResource;
 import org.ajabshahar.platform.resources.SplashScreenOptionsResource;
+import org.ajabshahar.platform.resources.WordDetailsResource;
+import org.ajabshahar.platform.daos.WordDetailsDAO;
+import org.ajabshahar.platform.models.WordDetails;
+
 
 public class PlatformApplication extends Application<PlatformConfiguration> {
 
@@ -28,9 +32,17 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
      }
   };
 
+  private final HibernateBundle<PlatformConfiguration> wordHibernate = new HibernateBundle<PlatformConfiguration>(WordDetails.class) {
+        @Override
+        public DataSourceFactory getDataSourceFactory(PlatformConfiguration configuration) {
+            return configuration.getDataSourceFactory();
+        }
+  };
+
   @Override
   public void initialize(Bootstrap<PlatformConfiguration> bootstrap) {
     bootstrap.addBundle(hibernate);
+    bootstrap.addBundle(wordHibernate);
     bootstrap.addBundle(migrationsBundle);
 
     bootstrap.addBundle(new AssetsBundle("/assets/app", "/","index.html"));
@@ -44,12 +56,14 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         configuration.getDefaultName()
     );
       final SplashScreenOptionsDAO dao = new SplashScreenOptionsDAO(hibernate.getSessionFactory());
+      final WordDetailsDAO detailsDAO = new WordDetailsDAO(wordHibernate.getSessionFactory());
 
     final TemplateHealthCheck templateHealthCheck = new TemplateHealthCheck(configuration.getTemplate());
 
     environment.jersey().setUrlPattern("/api/*");
     environment.jersey().register(resource);
     environment.jersey().register(new SplashScreenOptionsResource(dao));
+    environment.jersey().register(new WordDetailsResource(detailsDAO));
     environment.healthChecks().register("template", templateHealthCheck);
   }
 
