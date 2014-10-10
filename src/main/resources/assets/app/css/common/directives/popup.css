@@ -1,110 +1,58 @@
-body.lb-body
-{
-	padding: 0;
-	margin: 0;
-	height: 100%;
+.overlay{display:block;width:100%;height:100%;position:absolute;background:#333;text-align:center}
+.arrows.left{width:4.5%;height:100%;float:left}
+.arrows.right{width:4.5%;height:100%;float:right}
+.popupWrapper{width:90%;display:inline-block;height:100%;margin:0 auto}
+.popupContainer{display:inline-block;margin:0 auto;width:98%;max-height:98%;margin-top:2%;position:relative}
+.popupMedia.image{max-width:100%;max-height:80%;border-radius:5px;box-shadow:#333 0 0 10px;margin:1% 0;}
+.arrows span{display: inline-block;
+background: rgba(204, 204, 204, 0.4);
+padding: 15px 18px 20px 0;
+font-size: 41px;
+color: #fff;
+opacity: 0.7;
+border-radius: 100px;
+margin-top: -25px;
+position: relative;
+top: 50%;
+border-top-left-radius: 0;
+border-bottom-left-radius: 0;
+margin-left:-5px;}
+.arrows.right span{
+    border-top-right-radius: 0;
+border-bottom-right-radius: 0;
+border-top-left-radius: 100px;
+border-bottom-left-radius: 100px;
+padding: 15px 0px 20px 18px;
+margin-left:0px;
+margin-top:-65px;
+top:46%;
+}
+.arrows.right .close{
+background: rgba(204, 204, 204, 0.4);
+color:#fff;
+padding: 7px 15px 10px 15px;
+position: relative;
+font-size: 20px;
+border-radius: 100px;
+top: 20px;
 }
 
-.lightbox
-{
-	display: none;
-}
+.mediaWrapper{display:inline-block;text-align: left;color:#fff;}
 
-.lightbox-bg
-{
-	z-index: 998;
-	width: 100%;
-	background: #111;
-	position: fixed;
-	top: 0px; /* IE 8 */
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)"; /* IE 5-7 */
-	filter: alpha(opacity=60); /* Netscape */
-	-moz-opacity: 0.6; /* Safari 1.x */
-	-khtml-opacity: 0.6; /* Good browsers */
-	opacity: 0.6;
-	left: 0;
-}
+.artistName{text-transform: uppercase;}
+.artistName small{font-weight: normal;text-transform: capitalize;}
+.projectName small{font-weight: normal;font-style: italic;text-transform: capitalize;}
 
-.roundedcornr_box
-{
-	background: url("../../../img/common/directives/popup/roundedcornr_tl.png") no-repeat top left;
-}
-.roundedcornr_top
-{
-	background: url("../../../img/common/directives/popup/roundedcornr_tr.png") no-repeat top right;
-}
-.roundedcornr_bottom
-{
-	background: url("../../../img/common/directives/popup/roundedcornr_bl.png") no-repeat bottom left;
-}
-.roundedcornr_bottom div
-{
-	background: url("../../../img/common/directives/popup/roundedcornr_br.png") no-repeat bottom right;
-}
-.roundedcornr_content
-{    
-	padding: 20px;
-	background: url("../../../img/common/directives/popup/roundedcornr_r.png") top right repeat-y;
-}
+.mediaPagination{float:right;color:#fff;text-transform: capitalize;}
 
 
-.roundedcornr_top div, .roundedcornr_top, .roundedcornr_bottom div, .roundedcornr_bottom
-{
-	width: 100%;
-	height: 20px;
-	font-size: 1px;
-}
-.roundedcornr_content, .roundedcornr_bottom
-{
-	margin-top: -19px;
-}
 
-.box-close
-{
-	width: 78px;
-	height: 49px;
-	float: right;
-	position: absolute;
-	top: -20px;
-}
-.box-close a
-{
-	background: url("../../../img/common/directives/popup/lightbox_close.png") no-repeat;
-	display: block;
-	margin-left: -30px !important;
-	position: relative;
-	width: 48px;
-	height: 49px;
-	cursor: pointer;
-}
-.lightbox-frame
-{
-	z-index: 999;
-	top: 70px; /* setup margin top */
-	z-index: 999;
-	position: absolute;
-	left: 50%;
-}
 
-/* CHANGE WIDTH */
-.lightbox-frame
-{
-	/*width:800px; margin-left:-400px;*/ /* Margin is half of width */
-}
-.box-close
-{
-	/*left:800px;*/ /* the same like width of .bt-lightbox-content */
-}
-.clear_lightbox
-{
-	clear: both;
-}
-.lightbox_hr 
-{
-    background: none repeat scroll 0 0 #CCCCCC;
-    border: medium none;
-    clear: both;
-    color: #CCCCCC;
-    height: 1px;
-    margin: 5px 0 10px;
-}
+
+
+
+
+
+
+
+

@@ -25,6 +25,8 @@ h1,h2,h3,h4,h5,h6{padding:0;margin:0;}
 a,a:visited,a:link{color:inherit;text-decoration: none;outline:none;}
 
 
+/* clear rules */
+.line{display:inline-block;clear:both;width:100%;height:1px;}
 
 
 /* app containers and boxes */
