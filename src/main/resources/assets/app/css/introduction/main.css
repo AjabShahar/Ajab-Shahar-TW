@@ -29,6 +29,10 @@ a,a:visited,a:link{color:inherit;text-decoration: none;outline:none;}
 .line{display:inline-block;clear:both;width:100%;height:1px;}
 
 
+/* hide object */
+.hidethis{display:none;}
+
+
 /* app containers and boxes */
 .ajab-container{
   width:100%;
