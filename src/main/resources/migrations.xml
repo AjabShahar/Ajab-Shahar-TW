@@ -8,5 +8,4 @@
 
     <includeAll path="migrations/creationAndAlter"/>
     <includeAll path="migrations/insertion"/>
-    <includeAll path="migrations/wordDetails"/>
 </databaseChangeLog>
