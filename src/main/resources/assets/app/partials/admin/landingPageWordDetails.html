@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html ng-app="wordDetailsApp">
+<html ng-app="adminApp">
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
     <script src="../../lib/angular/angular.js"></script>
     <script src="../../lib/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="../../js/Words/app.js"></script>
-    <script type="text/javascript" src="../../js/Words/controllers/wordDetailsController.js"></script>
+    <script type="text/javascript" src="../../js/Admin/app.js"></script>
+    <script type="text/javascript" src="../../js/Admin/controllers/enterWordDetailsController.js"></script>
 </head>
 <body>
 <h2>Enter Word details</h2>
-<div ng-controller="wordDetailsController">
+<div ng-controller="enterWordDetailsController">
     <form >
         Name: <input type="text" name="word" ng-model="formInfo.NAME"><br>
         Synonym: <input type="text" name="translation" ng-model="formInfo.SYNONYM"><br>

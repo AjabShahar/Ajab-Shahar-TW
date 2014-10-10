@@ -1,4 +1,4 @@
-var wordDetailsController = function($scope, $http){
+var enterWordDetailsController = function($scope, $http){
 
   $scope.formInfo = {};
   $scope.saveData = function(){
@@ -8,4 +8,4 @@ var wordDetailsController = function($scope, $http){
   };
 };
 
-wordDetailsApp.controller('wordDetailsController',['$scope','$http',wordDetailsController]);
+adminApp.controller('enterWordDetailsController',['$scope','$http',enterWordDetailsController]);
