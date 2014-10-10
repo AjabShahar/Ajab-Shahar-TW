@@ -4,7 +4,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "COUPLET")
-
+@NamedQueries({
+        @NamedQuery(
+                name = "org.ajabshahar.platform.models.Couplet.findAll",
+                query = "SELECT p FROM Couplet p"
+        )
+})
 public class Couplet {
 
     @Id

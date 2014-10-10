@@ -14,9 +14,9 @@ import org.ajabshahar.platform.models.SplashScreenOptions;
 import org.ajabshahar.platform.resources.CoupletResource;
 import org.ajabshahar.platform.resources.HelloWorldResource;
 import org.ajabshahar.platform.resources.SplashScreenOptionsResource;
-import org.ajabshahar.platform.resources.WordDetailsResource;
-import org.ajabshahar.platform.daos.WordDetailsDAO;
-import org.ajabshahar.platform.models.WordDetails;
+import org.ajabshahar.platform.resources.WordResource;
+import org.ajabshahar.platform.daos.WordDAO;
+import org.ajabshahar.platform.models.Word;
 
 
 public class PlatformApplication extends Application<PlatformConfiguration> {
@@ -35,7 +35,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
      }
   };
 
-  private final HibernateBundle<PlatformConfiguration> wordHibernate = new HibernateBundle<PlatformConfiguration>(WordDetails.class) {
+  private final HibernateBundle<PlatformConfiguration> wordHibernate = new HibernateBundle<PlatformConfiguration>(Word.class) {
         @Override
         public DataSourceFactory getDataSourceFactory(PlatformConfiguration configuration) {
             return configuration.getDataSourceFactory();
@@ -67,7 +67,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         configuration.getDefaultName()
     );
       final SplashScreenOptionsDAO dao = new SplashScreenOptionsDAO(hibernate.getSessionFactory());
-      final WordDetailsDAO detailsDAO = new WordDetailsDAO(wordHibernate.getSessionFactory());
+      final WordDAO wordDAO = new WordDAO(wordHibernate.getSessionFactory());
       final CoupletDAO coupletDAO = new CoupletDAO(coupletHibernate.getSessionFactory());
 
     final TemplateHealthCheck templateHealthCheck = new TemplateHealthCheck(configuration.getTemplate());
@@ -75,7 +75,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
     environment.jersey().setUrlPattern("/api/*");
     environment.jersey().register(resource);
     environment.jersey().register(new SplashScreenOptionsResource(dao));
-    environment.jersey().register(new WordDetailsResource(detailsDAO));
+    environment.jersey().register(new WordResource(wordDAO));
     environment.jersey().register(new CoupletResource(coupletDAO));
     environment.healthChecks().register("template", templateHealthCheck);
   }

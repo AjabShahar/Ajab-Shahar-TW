@@ -6,12 +6,12 @@ import javax.persistence.*;
 @Table(name = "WORD")
 @NamedQueries({
         @NamedQuery(
-                name = "org.ajabshahar.platform.models.WordDetails.findAll",
-                query = "SELECT p FROM WordDetails p"
+                name = "org.ajabshahar.platform.models.Word.findAll",
+                query = "SELECT p FROM Word p"
         )
 })
 
-public class WordDetails {
+public class Word {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
