@@ -9,13 +9,15 @@
     <script type="text/javascript" src="../../js/Admin/controllers/enterWordDetailsController.js"></script>
 </head>
 <body>
-<h2>Enter Word details</h2>
+<h2>Enter Word details for landing page</h2>
 <div ng-controller="enterWordDetailsController">
     <form >
         Name: <input type="text" name="word" ng-model="formInfo.NAME"><br>
         Synonym: <input type="text" name="translation" ng-model="formInfo.SYNONYM"><br>
-        Category: <input type="text" name="transliteration" ng-model="formInfo.CATEGORY"><br>
-        Meaning: <input type="text" name="meaning" ng-model="formInfo.MEANING"><br>
+        Category:
+        <select name="format" ng-model="formInfo.CATEGORY">
+            <option value="Word intro">Word intro</option>
+        </select><br/>
         Show On LandingPage :
         <select name="format" ng-model="formInfo.SHOWONLANDINGPAGE">
             <option value="yes">Yes</option>

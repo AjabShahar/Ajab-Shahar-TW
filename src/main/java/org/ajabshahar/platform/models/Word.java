@@ -26,9 +26,6 @@ public class Word {
     @Column(name = "CATEGORY", nullable = false)
     private String CATEGORY;
 
-    @Column(name = "MEANING", nullable = false)
-    private String MEANING;
-
     @Column(name = "SHOWONLANDINGPAGE", nullable = false)
     private String SHOWONLANDINGPAGE;
 
@@ -60,14 +57,6 @@ public class Word {
 
     public void setCATEGORY(String CATEGORY) {
         this.CATEGORY=CATEGORY;
-    }
-
-    public String getMEANING() {
-        return MEANING;
-    }
-
-    public void setMEANING(String MEANING) {
-        this.MEANING=MEANING;
     }
 
     public String getSHOWONLANDINGPAGE() {
