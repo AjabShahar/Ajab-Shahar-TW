@@ -1,10 +1,57 @@
 var mainLandingPageController = function($scope,contentService){
-    $scope.getLandingPageThumbnails = function(){
-        var details = contentService.getLandingPageThumbnails().details;
+    $scope.thumbnailDetails=null;
+    $scope.shouldBeOpen={};
+    $scope.getThumbnailDetails = function(){
+        if($scope.thumbnailDetails!=null)
+            return $scope.thumbnailDetails;
+        $scope.thumbnailDetails = contentService.getLandingPageThumbnails().details;
+    };
+
+    $scope.open = function(id){
+        $scope.shouldBeOpen[id] = true;
+    }
+
+    $scope.onClose = function(id){
+        $scope.shouldBeOpen[id] = false;
+    }
+
+    $scope.shouldShow = function(id){
+        return $scope.shouldBeOpen[id];
+    }
+
+    $scope.getPopupDetails = function(){
+        var details = $scope.getThumbnailDetails();
         var result = _.reduce(details, function(memo, value, index){
-            shiftIndex = ((4+index) % 6) == 0 ? 6 : ((4+index) % 6);
+            $scope.shouldBeOpen['\'oid'+index+'\''] = false;
+            if(value.category=='Songs'){
+                return memo+'<pop-up id="oid'+index+'"'+
+                            ' width="100" show="shouldShow"'+
+                            ' on-close="onClose" closeButton="true">'+
+                            '<div class="mediaWrapper">'+
+                                '<h5 class="artistName">'+details[index].singer+ '<small>sings</small></h5>'+
+                                '<h3 class="projectName">'+details[index].name+'<small>(In this body)</small></h3>'+
+                                '<img class="popupMedia image" src="https://trello-attachments.s3.amazonaws.com/53f5c6a1054c6091852905be/53f5dfa82a3dd4d00adc9b42/1320x837/c892246aa9dda4fbe59e1e49af479076/splash_page-language_option.png"/>'+
+                            '</div>'+
+                            '<div class="line"></div>'+
+                        '</pop-up>';
+            }
+            return memo;
+        },'');
+        return result;
+    }
+
+    $scope.getShiftIndex = function(index){
+        return ((4+index) % 6) == 0 ? 6 : ((4+index) % 6);
+    };
+
+    $scope.getLandingPageThumbnails = function(){
+        var details = $scope.getThumbnailDetails();
+        var result = _.reduce(details, function(memo, value, index){
+            shiftIndex = $scope.getShiftIndex(index);
             if(value.category=='Songs'){
                 return memo + '<song-with-details overlay-id="oid'+index +'"'+
+                ' open="open"'+
+                ' close="close"'+
                 ' custom-style="shift'+shiftIndex+'"' +
                 ' img-src="'+details[index].imageUrl+'"'+
                 ' name="'+details[index].name+'"'+

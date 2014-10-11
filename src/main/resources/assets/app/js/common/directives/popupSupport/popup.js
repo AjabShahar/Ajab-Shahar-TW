@@ -19,17 +19,9 @@ var popupSupport = angular.module('PopupSupport', [])
                         return;
 
                     if ($scope.overlayId) {
-                        $('#' + $scope.overlayId).css("height", overlayHeight());
+                        jQuery('#' + $scope.overlayId).css("height", jQuery(window).height());
                     }
                 });
-
-                function overlayHeight() {
-                    if ($(document).height() > $(window).height()) {
-                        return $(document).height() + 40;
-                    } else {
-                        return $(window).height();
-                    }
-                };
             }
         };
     });    
