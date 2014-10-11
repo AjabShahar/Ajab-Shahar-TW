@@ -13,7 +13,10 @@
 <div ng-controller="enterCoupletDetailsController">
     <form >
         Description: <input type="text" name="word" ng-model="formInfo.DESCRIPTION"><br>
-        Category: <input type="text" name="translation" ng-model="formInfo.CATEGORY"><br>
+        Category:
+        <select name="format" ng-model="formInfo.CATEGORY">
+            <option value="Couplet">Couplet</option>
+        </select><br/>
         Show On LandingPage :
         <select name="format" ng-model="formInfo.SHOW_ON_LANDINGPAGE">
             <option value="yes">Yes</option>
