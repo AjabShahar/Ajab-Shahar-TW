@@ -25,15 +25,9 @@ var mainLandingPageController = function($scope,contentService){
             $scope.shouldBeOpen['\'oid'+index+'\''] = false;
             if(value.category=='Songs'){
                 return memo+
-                    '<pop-up id="oid'+index+'"'+
-                    ' width="100" show="shouldShow(\'oid'+index+'\')"'+
-                    ' on-close="onClose(\'oid'+index+'\')"'+
-                    ' closeButton="true">'+
-                        '<div class="mediaWrapper">'+
-                            '<h5 class="artistName">'+details[index].singer+'<small> sings</small></h5>'+
-                            '<h3 class="projectName">'+details[index].name+'<small>(In this body)</small></h3>'+
-                            '<img class="popupMedia image" src="'+details[index].imageUrl+'"/>'+
-                        '</div>'+
+                    '<pop-up id="oid'+index+'" width="100" show="shouldShow(\'oid'+index+'\')"'+
+                    ' on-close="onClose(\'oid'+index+'\')" closeButton="true">'+
+                        '<song-introduction singer="'+details[index].singer+'" name="'+details[index].name+'" image-url="'+details[index].imageUrl+'"></song-introduction>'+
                     '</pop-up>';
             }
             return memo;
