@@ -3,7 +3,7 @@
         <div class="thumbnailVideo">
             <img src="{{imgSrc}}"/>
         </div>
-        <div class="thumbnailDesc" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()" ng-click="open()">
+        <div class="thumbnailDesc" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()" ng-click="open('oid0')">
             <h3 class="selected" >{{name}}</h3>
             <small>sings {{singer|uppercase}}</small>
             <div ng-show="shouldShowDetails">
@@ -11,13 +11,5 @@
                 <small class="play">{{categoryName}}</small><small> {{duration}}</small>
             </div>
         </div>
-
-        <pop-up overlay-id="{{overlayId}}" width="100" show="shouldBeOpen" on-close="onClose()" closeButton="true">
-            <div class='mediaWrapper'>
-                <h5 class='artistName'>Moorala marwada <small>sings</small></h5>
-                <h3 class='projectName'>Hiye Kaaya Mein<small>(In this body)</small></h3>
-                <img class='popupMedia image' src='https://trello-attachments.s3.amazonaws.com/53f5c6a1054c6091852905be/53f5dfa82a3dd4d00adc9b42/1320x837/c892246aa9dda4fbe59e1e49af479076/splash_page-language_option.png'/>
-            </div>
-        </pop-up>
     </div>
 </div>

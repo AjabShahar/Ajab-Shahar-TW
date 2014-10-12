@@ -10,7 +10,7 @@ var popupSupport = angular.module('PopupSupport', [])
                 onClose: '&', //close click handler ~ callback to controller
                 closeButton: '@', //true-false ~ displays/hides close option
                 width: '@', //width of the popup
-                overlayId: '@'//an id for the background overlay for manipulation via jquery
+                id: '@'//an id for the background overlay for manipulation via jquery
             },
             templateUrl: '/js/common/templates/popupSupport/popup.html',
             controller: function($scope) {

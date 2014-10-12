@@ -11,19 +11,20 @@ thumbnailModule.directive("songWithDetails", function() {
             duration:'@',
             poet:'@',
             customStyle:'@',
-            overlayId:'@'
+            overlayId:'@',
+            open: '&', //open click handler ~ callback to controller
         },
         templateUrl:'/js/common/templates/thumbnail/song.html',
         controller:function($scope){
-            $scope.shouldBeOpen = false;
+//            $scope.shouldBeOpen = false;
             $scope.shouldShowDetails = false;
-            $scope.open = function(){
-                $scope.shouldBeOpen = true;
-            }
+//            $scope.open = function(){
+//                $scope.shouldBeOpen = true;
+//            }
 
-            $scope.onClose = function(){
-                $scope.shouldBeOpen = false;
-            }
+//            $scope.onClose = function(){
+//                $scope.shouldBeOpen = false;
+//            }
 
             $scope.showDetails = function(){
                 $scope.shouldShowDetails = true;
