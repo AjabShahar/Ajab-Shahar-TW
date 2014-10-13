@@ -23,8 +23,8 @@ public class Couplet {
     private String CATEGORY;
 
 
-    @Column(name = "SHOW_ON_LANDINGPAGE", nullable = false)
-    private String SHOW_ON_LANDINGPAGE;
+    @Column(name = "SHOW_ON_LANDING_PAGE", nullable = false)
+    private String showOnLandingPage;
 
 
 
@@ -49,12 +49,12 @@ public class Couplet {
     }
 
 
-    public String getSHOW_ON_LANDINGPAGE() {
-        return SHOW_ON_LANDINGPAGE;
+    public String getShowOnLandingPage() {
+        return showOnLandingPage;
     }
 
-    public void setSHOW_ON_LANDINGPAGE(String SHOW_ON_LANDINGPAGE) {
-        this.SHOW_ON_LANDINGPAGE=SHOW_ON_LANDINGPAGE;
+    public void setShowOnLandingPage(String showOnLandingPage) {
+        this.showOnLandingPage = showOnLandingPage;
     }
 
 }

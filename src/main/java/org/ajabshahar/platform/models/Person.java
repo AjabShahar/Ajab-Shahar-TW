@@ -58,6 +58,4 @@ public class Person {
     public void setCategory(String CATEGORY) {
         this.CATEGORY= CATEGORY;
     }
-
-
 }

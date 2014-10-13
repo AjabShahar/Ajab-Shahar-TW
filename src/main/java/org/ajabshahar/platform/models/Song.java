@@ -14,14 +14,7 @@ public class Song {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    private Title title;
-
-
-//    @Column(name = "SINGER_ID", nullable = true)
 //    private Person singer;
-//
-//    @Column(name = "POET_ID", nullable = true)
 //    private Person poet;
 
     @Column(name = "SHOW_ON_LANDING_PAGE", nullable = true)
@@ -37,25 +30,41 @@ public class Song {
         return id;
     }
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "song")
-    @JoinColumn(name = "title_id")
-    public Title getTitle() {
-        return title;
+    @Column(name = "ORIGINAL", nullable = false)
+    private String original;
+
+    @Column(name = "ENGLISH_TRANSLATION", nullable = false)
+    private String english_Translation;
+
+    @Column(name = "ENGLISH_TRANSLITERATION", nullable = false)
+    private String english_Transliteration;
+
+    public String getOriginalTitle() {
+        return original;
     }
 
-    public void setTitle(Title title) {
-        this.title = title;
+    public void setOriginalTitle(String Original) {
+        this.original = Original;
     }
 
-//    public void setTitle_ID(int title_ID) {
-//        this.title_ID = title_ID;
-//    }
-//
-//    public int getTitleID() {
-//        return title_ID;
-//    }
+    public String getEnglishTranslationTitle() {
+        return english_Translation;
+    }
 
+    public void setEnglishTranslationTitle(String ENGLISH_TRANSLATION) {
+        this.english_Translation = ENGLISH_TRANSLATION;
+    }
 
+    public String getEnglishTransliterationTitle() {
+        return english_Transliteration;
+    }
+
+    public void setEnglishTransliterationTitle(String ENGLISH_TRANSLITERATION) {
+        this.english_Transliteration = ENGLISH_TRANSLITERATION;
+    }
+
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "song")
+//    @JoinColumn(name = "singer_id")
 //    public Person getSinger() {
 //        return singer;
 //    }
@@ -64,6 +73,8 @@ public class Song {
 //        this.singer = singer;
 //    }
 //
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "song")
+//    @JoinColumn(name = "poet_id")
 //    public Person getPoet() {
 //        return poet;
 //    }
