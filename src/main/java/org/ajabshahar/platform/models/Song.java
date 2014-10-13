@@ -15,14 +15,14 @@ public class Song {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "TITLE_ID", nullable = true)
     private Title title;
 
-    @Column(name = "SINGER_ID", nullable = true)
-    private Person singer;
 
-    @Column(name = "POET_ID", nullable = true)
-    private Person poet;
+//    @Column(name = "SINGER_ID", nullable = true)
+//    private Person singer;
+//
+//    @Column(name = "POET_ID", nullable = true)
+//    private Person poet;
 
     @Column(name = "SHOW_ON_LANDING_PAGE", nullable = true)
     private Boolean showOnLandingPage;
@@ -37,6 +37,8 @@ public class Song {
         return id;
     }
 
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "song")
+    @JoinColumn(name = "title_id")
     public Title getTitle() {
         return title;
     }
@@ -45,21 +47,30 @@ public class Song {
         this.title = title;
     }
 
-    public Person getSinger() {
-        return singer;
-    }
+//    public void setTitle_ID(int title_ID) {
+//        this.title_ID = title_ID;
+//    }
+//
+//    public int getTitleID() {
+//        return title_ID;
+//    }
 
-    public void setSinger(Person singer) {
-        this.singer = singer;
-    }
 
-    public Person getPoet() {
-        return poet;
-    }
-
-    public void setPoet(Person poet) {
-        this.poet = poet;
-    }
+//    public Person getSinger() {
+//        return singer;
+//    }
+//
+//    public void setSinger(Person singer) {
+//        this.singer = singer;
+//    }
+//
+//    public Person getPoet() {
+//        return poet;
+//    }
+//
+//    public void setPoet(Person poet) {
+//        this.poet = poet;
+//    }
 
     public Boolean getShowOnLandingPage() {
         return showOnLandingPage;

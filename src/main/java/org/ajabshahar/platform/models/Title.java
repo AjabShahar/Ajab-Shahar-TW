@@ -24,6 +24,10 @@ public class Title {
     @Column(name = "ENGLISH_TRANSLITERATION", nullable = false)
     private String ENGLISH_TRANSLITERATION;
 
+//    @OneToOne(mappedBy = "title")
+//    @JoinColumn(name="TITLE_ID", nullable = true)
+//    private Song song;
+
     public String getOriginalTitle() {
         return ORIGINAL;
     }
@@ -47,4 +51,12 @@ public class Title {
     public void setEnglishTransliterationTitle(String ENGLISH_TRANSLITERATION) {
         this.ENGLISH_TRANSLITERATION = ENGLISH_TRANSLITERATION;
     }
+
+//    public Song getSong() {
+//        return song;
+//    }
+//
+//    public void setSong(Song song) {
+//        this.song = song;
+//    }
 }
