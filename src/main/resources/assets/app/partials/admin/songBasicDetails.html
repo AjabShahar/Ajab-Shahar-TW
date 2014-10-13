@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="adminApp">
+<head lang="">
+    <meta charset="UTF-8">
+    <title></title>
+    <title></title>
+    <script src="../../lib/angular/angular.js"></script>
+    <script src="../../lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../../js/Admin/app.js"></script>
+    <script type="text/javascript" src="../../js/Admin/controllers/songBasicDetailsController.js"></script>
+</head>
+<body>
+<h2>Enter Song basic details</h2>
+<div ng-controller="songBasicDetailsController">
+    <form >
+        Title:
+        <select ng-model="titleList.originalTitle"
+                ng-options="title as title.originalTitle for title in titleList">
+        </select><br/>
+        Singer:
+        <select  ng-model="singerList.firstName"
+                ng-options="singer.firstName  for singer in singerList">
+        </select><br/>
+        Poet:
+        Show On LandingPage :
+        <select name="format" ng-model="formInfo.SHOW_ON_LANDINGPAGE">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select><br/>
+        Category:
+        <select name="format" ng-model="formInfo.CATEGORY">
+            <option value="Song">Song</option>
+        </select><br/>
+        Duration:<input type="text" name="duration" ng-model="formInfo.DURATION"><br/>
+        Youtube Video Id:<input type="text" name="youtubeVideoId" ng-model="formInfo.YOUTUBE_VIDEO_ID"><br/>
+        Thumbnail Url:<input type="text" name="thumbnailUrl" ng-model="formInfo.THUMBNAIL_URL"><br/>
+        <button type="submit" ng-click="saveData()">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>
