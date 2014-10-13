@@ -64,6 +64,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
     bootstrap.addBundle(coupletHibernate);
     bootstrap.addBundle(titleHibernate);
 //    bootstrap.addBundle(songHibernate);
+    bootstrap.addBundle(songHibernate);
     bootstrap.addBundle(migrationsBundle);
 
     bootstrap.addBundle(new AssetsBundle("/assets/app", "/","index.html"));
@@ -76,12 +77,11 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         configuration.getTemplate(),
         configuration.getDefaultName()
     );
-      final SplashScreenOptionsDAO dao = new SplashScreenOptionsDAO(hibernate.getSessionFactory());
-      final WordDAO wordDAO = new WordDAO(wordHibernate.getSessionFactory());
-      final CoupletDAO coupletDAO = new CoupletDAO(coupletHibernate.getSessionFactory());
-//      final SongDAO songDAO = new SongDAO(songHibernate.getSessionFactory());
-     final TitleDAO titleDAO = new TitleDAO(titleHibernate.getSessionFactory());
-
+    final SplashScreenOptionsDAO dao = new SplashScreenOptionsDAO(hibernate.getSessionFactory());
+    final WordDAO wordDAO = new WordDAO(wordHibernate.getSessionFactory());
+    final CoupletDAO coupletDAO = new CoupletDAO(coupletHibernate.getSessionFactory());
+    final TitleDAO titleDAO = new TitleDAO(titleHibernate.getSessionFactory());
+    final SongDAO songDAO = new SongDAO(songHibernate.getSessionFactory());
     final TemplateHealthCheck templateHealthCheck = new TemplateHealthCheck(configuration.getTemplate());
 
     environment.jersey().setUrlPattern("/api/*");
@@ -90,7 +90,8 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
     environment.jersey().register(new WordResource(wordDAO));
     environment.jersey().register(new CoupletResource(coupletDAO));
     environment.jersey().register(new TitleResource(titleDAO));
-//    environment.jersey().register(new SongResource(songDAO));
+      
+    environment.jersey().register(new SongResource(songDAO));
     environment.healthChecks().register("template", templateHealthCheck);
   }
 

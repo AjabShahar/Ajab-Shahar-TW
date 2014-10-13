@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset JAIDEEP:16
+--changeset PADMA:6
 CREATE TABLE SPLASH_SCREEN (
     ID SERIAL,
     URL VARCHAR(300),

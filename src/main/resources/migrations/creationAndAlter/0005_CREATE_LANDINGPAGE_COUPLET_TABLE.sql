@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset JAIDEEP:5
+--changeset PADMA:5
 CREATE TABLE COUPLET (
     ID SERIAL,
     DESCRIPTION VARCHAR(200) NOT NULL,

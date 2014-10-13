@@ -1,7 +1,0 @@
---liquibase formatted sql
-
---changeset PADMA:8
-
-ALTER TABLE SONG ADD COLUMN  YOUTUBE_VIDEO_ID varchar(200) NOT NULL;
-
-ALTER TABLE SONG ADD COLUMN  THUMBNAIL_URL varchar(200);

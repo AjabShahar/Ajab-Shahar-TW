@@ -26,8 +26,8 @@ public class SongResource {
     @POST
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createSplashScreen(String jsonSplashScreenOptions) {
-        Song song = new Gson().fromJson(jsonSplashScreenOptions, Song.class);
+    public Response createSong(String jsonSong) {
+        Song song = new Gson().fromJson(jsonSong, Song.class);
         songDAO.create(song);
         return Response.status(200).entity(song.toString()).build();
     }
