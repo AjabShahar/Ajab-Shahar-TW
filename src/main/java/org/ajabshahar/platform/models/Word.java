@@ -7,7 +7,7 @@ import javax.persistence.*;
 @NamedQueries({
         @NamedQuery(
                 name = "org.ajabshahar.platform.models.Word.findAll",
-                query = "SELECT p FROM Word p where showOnLandingPage='yes'"
+                query = "SELECT p FROM Word p where show_On_Landing_Page='yes'"
         )
 })
 

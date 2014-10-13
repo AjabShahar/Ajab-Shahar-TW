@@ -30,7 +30,7 @@ public class Song {
         return id;
     }
 
-    @Column(name = "ORIGINAL", nullable = false)
+    @Column(name = "ORIGINAL_TITLE", nullable = false)
     private String original;
 
     @Column(name = "ENGLISH_TRANSLATION", nullable = false)
