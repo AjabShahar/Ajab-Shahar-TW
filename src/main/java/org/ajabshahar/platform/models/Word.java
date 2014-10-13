@@ -29,8 +29,6 @@ public class Word {
     @Column(name = "SHOWONLANDINGPAGE", nullable = false)
     private String SHOWONLANDINGPAGE;
 
-
-
     public long getId() {
         return id;
     }
@@ -66,6 +64,4 @@ public class Word {
     public void setSHOWONLANDINGPAGE(String SHOWONLANDINGPAGE) {
         this.SHOWONLANDINGPAGE=SHOWONLANDINGPAGE;
     }
-
-
 }

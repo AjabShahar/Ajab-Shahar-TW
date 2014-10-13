@@ -14,49 +14,34 @@ public class Title {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    private String original;
+    private String english_Translation;
+    private String english_Transliteration;
 
     @Column(name = "ORIGINAL", nullable = false)
-    private String ORIGINAL;
+    public String getOriginalTitle() {
+        return original;
+    }
+
+    public void setOriginalTitle(String Original) {
+        this.original = Original;
+    }
 
     @Column(name = "ENGLISH_TRANSLATION", nullable = false)
-    private String ENGLISH_TRANSLATION;
-
-    @Column(name = "ENGLISH_TRANSLITERATION", nullable = false)
-    private String ENGLISH_TRANSLITERATION;
-
-//    @OneToOne(mappedBy = "title")
-//    @JoinColumn(name="TITLE_ID", nullable = true)
-//    private Song song;
-
-    public String getOriginalTitle() {
-        return ORIGINAL;
-    }
-
-    public void setOriginalTitle(String ORIGINAL) {
-        this.ORIGINAL = ORIGINAL;
-    }
-
     public String getEnglishTranslationTitle() {
-        return ENGLISH_TRANSLATION;
+        return english_Translation;
     }
 
     public void setEnglishTranslationTitle(String ENGLISH_TRANSLATION) {
-        this.ENGLISH_TRANSLATION = ENGLISH_TRANSLATION;
+        this.english_Translation = ENGLISH_TRANSLATION;
     }
 
+    @Column(name = "ENGLISH_TRANSLITERATION", nullable = false)
     public String getEnglishTransliterationTitle() {
-        return ENGLISH_TRANSLITERATION;
+        return english_Transliteration;
     }
 
     public void setEnglishTransliterationTitle(String ENGLISH_TRANSLITERATION) {
-        this.ENGLISH_TRANSLITERATION = ENGLISH_TRANSLITERATION;
+        this.english_Transliteration = ENGLISH_TRANSLITERATION;
     }
-
-//    public Song getSong() {
-//        return song;
-//    }
-//
-//    public void setSong(Song song) {
-//        this.song = song;
-//    }
 }
