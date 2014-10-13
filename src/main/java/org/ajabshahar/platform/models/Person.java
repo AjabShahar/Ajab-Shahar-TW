@@ -21,8 +21,11 @@ public class Person {
     @Column(name = "MIDDLE_NAME", nullable = true)
     private String MIDDLE_NAME;
 
-    @Column(name = "LAST_NAME", nullable = false)
+    @Column(name = "LAST_NAME", nullable = true)
     private String LAST_NAME;
+
+    @Column(name = "CATEGORY", nullable = false)
+    private String CATEGORY;
 
     public String getFirstName() {
         return FIRST_NAME;
@@ -47,4 +50,14 @@ public class Person {
     public void setLastName(String LAST_NAME) {
         this.LAST_NAME = LAST_NAME;
     }
+
+    public String getCategory() {
+        return CATEGORY;
+    }
+
+    public void setCategory(String CATEGORY) {
+        this.CATEGORY= CATEGORY;
+    }
+
+
 }

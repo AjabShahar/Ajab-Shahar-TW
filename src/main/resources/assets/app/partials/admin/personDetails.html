@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="adminApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../lib/angular/angular.js"></script>
+    <script src="../../lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../../js/Admin/app.js"></script>
+    <script type="text/javascript" src="../../js/Admin/controllers/personDetailsController.js"></script>
+</head>
+<body>
+<h2>Enter Person details</h2>
+<div ng-controller="personDetailsController">
+    <form >
+        First Name: <input type="text" name="FirstName" ng-model="formInfo.FIRST_NAME"><br>
+        Middle Name:<input type="text" name="MiddleName" ng-model="formInfo.MIDDLE_NAME"><br/>
+        Last Name:<input type="text" name="LastName" ng-model="formInfo.LAST_NAME"><br/>
+        Person Category :
+        <select name="format" ng-model="formInfo.CATEGORY">
+            <option value="Poet">Poet</option>
+            <option value="Singer">Singer</option>
+        </select><br/>
+        <button type="submit" ng-click="saveData()">Submit</button>
+    </form>
+</div>
+</body>
+</html>
