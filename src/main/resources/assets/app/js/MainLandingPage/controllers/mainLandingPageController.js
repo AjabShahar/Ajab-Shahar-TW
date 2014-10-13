@@ -5,6 +5,7 @@ var mainLandingPageController = function($scope,contentService){
         if($scope.thumbnailDetails!=null)
             return $scope.thumbnailDetails;
         $scope.thumbnailDetails = contentService.getLandingPageThumbnails().details;
+        return $scope.thumbnailDetails;
     };
 
     $scope.open = function(id){
