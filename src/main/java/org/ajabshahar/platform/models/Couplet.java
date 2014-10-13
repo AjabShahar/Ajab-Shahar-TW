@@ -7,7 +7,7 @@ import javax.persistence.*;
 @NamedQueries({
         @NamedQuery(
                 name = "org.ajabshahar.platform.models.Couplet.findAll",
-                query = "SELECT p FROM Couplet p"
+                query = "SELECT p FROM Couplet p where show_on_landingpage = 'yes'"
         )
 })
 public class Couplet {
