@@ -9,11 +9,7 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import org.ajabshahar.platform.daos.*;
 import org.ajabshahar.platform.models.*;
-import org.ajabshahar.platform.resources.CoupletResource;
-import org.ajabshahar.platform.resources.HelloWorldResource;
-import org.ajabshahar.platform.resources.SongResource;
-import org.ajabshahar.platform.resources.SplashScreenOptionsResource;
-import org.ajabshahar.platform.resources.WordResource;
+import org.ajabshahar.platform.resources.*;
 import org.ajabshahar.platform.daos.WordDAO;
 import org.ajabshahar.platform.models.Word;
 
@@ -66,7 +62,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
     bootstrap.addBundle(hibernate);
     bootstrap.addBundle(wordHibernate);
     bootstrap.addBundle(coupletHibernate);
-//    bootstrap.addBundle(titleHibernate);
+    bootstrap.addBundle(titleHibernate);
 //    bootstrap.addBundle(songHibernate);
     bootstrap.addBundle(migrationsBundle);
 
@@ -84,7 +80,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
       final WordDAO wordDAO = new WordDAO(wordHibernate.getSessionFactory());
       final CoupletDAO coupletDAO = new CoupletDAO(coupletHibernate.getSessionFactory());
 //      final SongDAO songDAO = new SongDAO(songHibernate.getSessionFactory());
-//      final TitleDAO titleDAO = new TitleDAO(titleHibernate.getSessionFactory());
+     final TitleDAO titleDAO = new TitleDAO(titleHibernate.getSessionFactory());
 
     final TemplateHealthCheck templateHealthCheck = new TemplateHealthCheck(configuration.getTemplate());
 
@@ -93,6 +89,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
     environment.jersey().register(new SplashScreenOptionsResource(dao));
     environment.jersey().register(new WordResource(wordDAO));
     environment.jersey().register(new CoupletResource(coupletDAO));
+    environment.jersey().register(new TitleResource(titleDAO));
 //    environment.jersey().register(new SongResource(songDAO));
     environment.healthChecks().register("template", templateHealthCheck);
   }
