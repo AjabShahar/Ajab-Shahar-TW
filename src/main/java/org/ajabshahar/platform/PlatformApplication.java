@@ -66,8 +66,8 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
     bootstrap.addBundle(hibernate);
     bootstrap.addBundle(wordHibernate);
     bootstrap.addBundle(coupletHibernate);
-    bootstrap.addBundle(titleHibernate);
-    bootstrap.addBundle(songHibernate);
+//    bootstrap.addBundle(titleHibernate);
+//    bootstrap.addBundle(songHibernate);
     bootstrap.addBundle(migrationsBundle);
 
     bootstrap.addBundle(new AssetsBundle("/assets/app", "/","index.html"));
