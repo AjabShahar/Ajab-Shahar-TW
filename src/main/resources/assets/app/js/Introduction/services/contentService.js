@@ -1,6 +1,6 @@
 var contentService = function ($http) {
   var getScreenOptions = function () {
-      return $http.get('/api/SplashScreenOptions');;
+      return $http.get('/api/SplashScreenOptions');
   };
 
   return {

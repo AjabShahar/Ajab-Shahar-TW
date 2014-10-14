@@ -36,19 +36,6 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         }
   };
 
-  private final HibernateBundle<PlatformConfiguration> personHibernate = new HibernateBundle<PlatformConfiguration>(PersonDetails.class) {
-        @Override
-        public DataSourceFactory getDataSourceFactory(PlatformConfiguration configuration) {
-            return configuration.getDataSourceFactory();
-        }
-  };
-
-  private final HibernateBundle<PlatformConfiguration> songHibernate = new HibernateBundle<PlatformConfiguration>(Song.class) {
-        @Override
-        public DataSourceFactory getDataSourceFactory(PlatformConfiguration configuration) {
-            return configuration.getDataSourceFactory();
-        }
-    };
 
   private final HibernateBundle<PlatformConfiguration> coupletHibernate = new HibernateBundle<PlatformConfiguration>(Couplet.class) {
       @Override
@@ -62,8 +49,6 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
     bootstrap.addBundle(hibernate);
     bootstrap.addBundle(wordHibernate);
     bootstrap.addBundle(coupletHibernate);
-    bootstrap.addBundle(personHibernate);
-    bootstrap.addBundle(songHibernate);
     bootstrap.addBundle(migrationsBundle);
 
     bootstrap.addBundle(new AssetsBundle("/assets/app", "/","index.html"));
@@ -79,8 +64,6 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
     final SplashScreenOptionsDAO dao = new SplashScreenOptionsDAO(hibernate.getSessionFactory());
     final WordDAO wordDAO = new WordDAO(wordHibernate.getSessionFactory());
     final CoupletDAO coupletDAO = new CoupletDAO(coupletHibernate.getSessionFactory());
-    final PersonDAO personDAO=new PersonDAO(personHibernate.getSessionFactory());
-    final SongDAO songDAO = new SongDAO(songHibernate.getSessionFactory());
     final TemplateHealthCheck templateHealthCheck = new TemplateHealthCheck(configuration.getTemplate());
 
     environment.jersey().setUrlPattern("/api/*");
@@ -88,8 +71,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
     environment.jersey().register(new SplashScreenOptionsResource(dao));
     environment.jersey().register(new WordResource(wordDAO));
     environment.jersey().register(new CoupletResource(coupletDAO));
-    environment.jersey().register(new PersonResource(personDAO));
-    environment.jersey().register(new SongResource(songDAO));
+    environment.jersey().register(new MainLandingPageResource());
     environment.healthChecks().register("template", templateHealthCheck);
   }
 
