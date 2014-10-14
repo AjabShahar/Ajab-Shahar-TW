@@ -1,6 +1,8 @@
 package org.ajabshahar.platform.models;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "SONG")
@@ -14,8 +16,16 @@ public class Song {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-//    private Person singer;
-//    private Person poet;
+
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(name = "SONG_SINGER", joinColumns = { @JoinColumn(name = "ID") },
+//            inverseJoinColumns = { @JoinColumn(name = "PERSON_ID") })
+//    private Set<Person> singers = new HashSet<Person>(0);
+//
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(name = "SONG_POET", joinColumns = { @JoinColumn(name = "ID") },
+//            inverseJoinColumns = { @JoinColumn(name = "PERSON_ID") })
+//    private Set<Person> poets = new HashSet<Person>(0);
 
     @Column(name = "SHOW_ON_LANDING_PAGE", nullable = true)
     private Boolean showOnLandingPage;
@@ -63,26 +73,6 @@ public class Song {
         this.english_Transliteration = ENGLISH_TRANSLITERATION;
     }
 
-//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "song")
-//    @JoinColumn(name = "singer_id")
-//    public Person getSinger() {
-//        return singer;
-//    }
-//
-//    public void setSinger(Person singer) {
-//        this.singer = singer;
-//    }
-//
-//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "song")
-//    @JoinColumn(name = "poet_id")
-//    public Person getPoet() {
-//        return poet;
-//    }
-//
-//    public void setPoet(Person poet) {
-//        this.poet = poet;
-//    }
-
     public Boolean getShowOnLandingPage() {
         return showOnLandingPage;
     }
@@ -106,4 +96,20 @@ public class Song {
     public void setDuration(String duration) {
         this.duration = duration;
     }
+
+//    public Set<Person> getSingers() {
+//        return singers;
+//    }N
+
+//    public void setSingers(Set<Person> singers) {
+//        this.singers = singers;
+//    }
+
+//    public Set<Person> getPoets() {
+//        return poets;
+//    }
+//
+//    public void setPoets(Set<Person> poets) {
+//        this.poets = poets;
+//    }
 }
