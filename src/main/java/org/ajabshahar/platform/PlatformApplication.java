@@ -36,7 +36,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         }
   };
 
-  private final HibernateBundle<PlatformConfiguration> personHibernate = new HibernateBundle<PlatformConfiguration>(Person.class) {
+  private final HibernateBundle<PlatformConfiguration> personHibernate = new HibernateBundle<PlatformConfiguration>(PersonDetails.class) {
         @Override
         public DataSourceFactory getDataSourceFactory(PlatformConfiguration configuration) {
             return configuration.getDataSourceFactory();

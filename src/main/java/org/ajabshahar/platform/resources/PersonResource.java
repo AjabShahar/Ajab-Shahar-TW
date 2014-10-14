@@ -7,7 +7,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import com.google.gson.Gson;
 import org.ajabshahar.platform.daos.PersonDAO;
-import org.ajabshahar.platform.models.Person;
+import org.ajabshahar.platform.models.PersonDetails;
 
 import java.util.List;
 
@@ -26,14 +26,14 @@ public class PersonResource {
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createPersonDetails(String jsonPersonDetails) {
-        Person person= new Gson().fromJson(jsonPersonDetails, Person.class);
-        personDAO.create(person);
-        return Response.status(200).entity(person.toString()).build();
+        PersonDetails personDetails = new Gson().fromJson(jsonPersonDetails, PersonDetails.class);
+        personDAO.create(personDetails);
+        return Response.status(200).entity(personDetails.toString()).build();
     }
 
     @GET
     @UnitOfWork
-    public List<Person> listAllTitleDetails() {
+    public List<PersonDetails> listAllTitleDetails() {
         return personDAO.findAll();
     }
 }

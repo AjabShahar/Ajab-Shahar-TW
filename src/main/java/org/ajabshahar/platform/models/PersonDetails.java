@@ -5,11 +5,11 @@ import javax.persistence.*;
 @Table(name = "PERSON")
 @NamedQueries({
         @NamedQuery(
-                name = "org.ajabshahar.platform.models.Person.findAll",
-                query = "SELECT p FROM Person p"
+                name = "org.ajabshahar.platform.models.PersonDetails.findAll",
+                query = "SELECT p FROM PersonDetails p"
         )
 })
-public class Person {
+public class PersonDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
