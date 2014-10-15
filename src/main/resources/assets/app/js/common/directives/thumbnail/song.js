@@ -7,6 +7,7 @@ thumbnailModule.directive("songWithDetails", function() {
             name:'@',
             singer:'@',
             imgSrc:'@',
+            url:'@',
             categoryName:'@',
             duration:'@',
             poet:'@',

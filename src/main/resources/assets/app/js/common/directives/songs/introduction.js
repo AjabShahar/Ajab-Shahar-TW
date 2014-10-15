@@ -6,7 +6,7 @@ thumbnailModule.directive("songIntroduction", function() {
         scope: {
             name:'@',
             singer:'@',
-            imageUrl:'@'
+            url:'@'
         },
         templateUrl:'/js/common/templates/songs/introduction.html',
         controller:function($scope){

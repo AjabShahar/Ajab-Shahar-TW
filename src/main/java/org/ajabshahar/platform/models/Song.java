@@ -49,6 +49,9 @@ public class Song {
     @Column(name = "ENGLISH_TRANSLITERATION", nullable = false)
     private String english_Transliteration;
 
+    @Column(name = "YOUTUBE_VIDEO_ID", nullable = false)
+    private String youtubeVideoId;
+
     public String getOriginalTitle() {
         return original;
     }
@@ -95,6 +98,14 @@ public class Song {
 
     public void setDuration(String duration) {
         this.duration = duration;
+    }
+
+    public String getYoutubeVideoId() {
+        return youtubeVideoId;
+    }
+
+    public void setYoutubeVideoId(String youtubeVideoId) {
+        this.youtubeVideoId = youtubeVideoId;
     }
 
 //    public Set<Person> getSingers() {

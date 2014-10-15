@@ -40,9 +40,9 @@ public class MainLandingPageResource {
 
         firstElement.addProperty("category", "Songs");
         firstElement.addProperty("categoryName", "Song & Reflection");
-        firstElement.addProperty("name", "Practice the art of dying");
-        firstElement.addProperty("poet", "Sharath");
-        firstElement.addProperty("videoUrl", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
+        firstElement.addProperty("name", "For a few days,O Heart");
+        firstElement.addProperty("poet", "ROSHIK");
+        firstElement.addProperty("youtubeVideoId", "tNh2kjmSzPw");
         firstElement.addProperty("imageUrl", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
         firstElement.addProperty("singer", "Parvathy Baul");
         firstElement.addProperty("duration", "09:11");
@@ -69,11 +69,11 @@ public class MainLandingPageResource {
 
         forthElement.addProperty("category", "Songs");
         forthElement.addProperty("categoryName", "Song & Talk");
-        forthElement.addProperty("name", "My Song My Life");
+        forthElement.addProperty("name", "The Cart of Meditation is Tottering");
         forthElement.addProperty("context", "Prahlad Tipanya Meets His Guru");
         forthElement.addProperty("singer", "GAVRA DEVI");
-        forthElement.addProperty("poet", "Unknown");
-        forthElement.addProperty("videoUrl", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
+        forthElement.addProperty("poet", "Fakru");
+        forthElement.addProperty("youtubeVideoId", "7Gg0vSOZhJQ");
         forthElement.addProperty("imageUrl", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
         forthElement.addProperty("singer", "Parvathy Baul");
         forthElement.addProperty("duration", "35 : 09");
@@ -109,9 +109,10 @@ public class MainLandingPageResource {
 
         eightElement.addProperty("category", "Songs");
         eightElement.addProperty("categoryName", "Song");
-        eightElement.addProperty("name", "Everyday I Wish You Well");
-        eightElement.addProperty("singer", "MUKHTIYAR ALI");
-        eightElement.addProperty("poet", "ULLEH SHAH0");
+        eightElement.addProperty("name", "In This Body");
+        eightElement.addProperty("singer", "Mooralala Marwada");
+        eightElement.addProperty("poet", "ROSHIK");
+        eightElement.addProperty("youtubeVideoId", "J4IU5tDlD_s");
         eightElement.addProperty("imageUrl", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
         eightElement.addProperty("singer", "Parvathy Baul");
         eightElement.addProperty("duration", "09 : 11");
