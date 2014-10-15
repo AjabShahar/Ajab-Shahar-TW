@@ -1,6 +1,6 @@
 $.noConflict();
 jQuery( document ).ready(function( $ ) {
-$(function(){
+$(window).load(function(){
 $(window).scroll(function(){
   var sticky = $('.headerWrapper'),stickyArt = $('.headerArt'),
       scroll = $(window).scrollTop(),toFix=$('.headerWrapper').height();
@@ -22,6 +22,16 @@ else{
     $('.headerArt').css('top','0px');
 }
 });
+
+
+
+//set height on mainlanding page for parallax thumbnail content
+var hpHeight=jQuery('.homepage-content').height();
+$('.pxLayers').css('height',hpHeight+400+"px");
+$('.homepage-content').css('height',hpHeight+300+"px");
+
+
+
 
 });
 });

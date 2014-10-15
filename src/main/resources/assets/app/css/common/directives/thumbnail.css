@@ -10,7 +10,7 @@
 	width:85%;
 	background:#fff;
 	margin: -14% 0% 0 18%;
-	padding: 11px 11px 16px 11px;
+	padding:11px 11px 20px 11px;
 	background-size: cover;
 	cursor:pointer;
 	border-bottom-left-radius: 25px;
@@ -29,7 +29,15 @@ margin: -37px 0 0 -15px;
 
 .play{
     background: url(../../../img/common/icons/play.png) right 0px no-repeat;
+    float: right;
+	position: relative;
+	right: 4%;color:#888;
+	text-transform: capitalize;
 }
+
+
+.poetDetails{color:#888;}
+
 
 .shift1{margin:0 0 0 -25%;}
 .shift2{margin:0 0 0 -20%;}
