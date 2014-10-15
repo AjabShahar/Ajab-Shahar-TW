@@ -3,12 +3,8 @@
         <div class="thumbnailVideo">
             <img src="{{imgSrc}}"/>
         </div>
-        <div class="thumbnailDesc" ng-click="open()">
+        <div class="thumbnailDesc">
             <h3 class="selected" >{{name}}</h3>
         </div>
-
-        <pop-up overlay-id="{{overlayId}}" width="100" show="shouldBeOpen" on-close="onClose()" closeButton="true">
-            <img src="{{imgSrc}}"/>
-        </pop-up>
     </div>
 </div>
