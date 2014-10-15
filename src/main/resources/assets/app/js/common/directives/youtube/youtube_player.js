@@ -37,11 +37,10 @@ youtubeApp.directive('youtube', function($window, YT_event) {
         tag.src = "https://www.youtube.com/iframe_api";
         var firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-        var player;
 
         $window.onYouTubeIframeAPIReady = function() {
 
-        player = new YT.Player(element.children()[0], {
+        scope.player = new YT.Player(element.children()[0], {
           playerVars: {
             autoplay: (scope.autoplay)? 1:0,
             html5: 1,
@@ -57,47 +56,45 @@ youtubeApp.directive('youtube', function($window, YT_event) {
           width: scope.width,
           videoId: scope.videoid,
           events: {
-                'onStateChange': onPlayerStateChange
+                'onStateChange': scope.onPlayerStateChange
             },
         });
         }
 
         // when video ends
-        onPlayerStateChange = function(event) {
+        scope.onPlayerStateChange = function(event) {
             if(scope.autoreplay && event.data === 0) {
               event.target.playVideo();
             }
         }
 
         scope.$watch('height + width', function(newValue, oldValue) {
-        if (newValue == oldValue) {
-          return;
-        }
+            if (newValue == oldValue) {
+              return;
+            }
 
-        player.setSize(scope.width, scope.height);
-
+            player.setSize(scope.width, scope.height);
         });
 
         scope.$watch('videoid', function(newValue, oldValue) {
-        if (newValue == oldValue) {
-          return;
-        }
+            if (newValue == oldValue) {
+              return;
+            }
 
-        player.cueVideoById(scope.videoid);
-
+            player.cueVideoById(scope.videoid);
         });
 
         scope.$on(YT_event.STOP, function () {
-        player.seekTo(0);
-        player.stopVideo();
+            player.seekTo(0);
+            player.stopVideo();
         });
 
         scope.$on(YT_event.PLAY, function () {
-        player.playVideo();
+            player.playVideo();
         });
 
         scope.$on(YT_event.PAUSE, function () {
-        player.pauseVideo();
+            player.pauseVideo();
         });
     }
   };

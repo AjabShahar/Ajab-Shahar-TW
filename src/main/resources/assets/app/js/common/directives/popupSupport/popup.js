@@ -24,17 +24,4 @@ var popupSupport = angular.module('PopupSupport', [])
                 });
             }
         };
-    });    
-
-var popUpController = function($scope){
-    $scope.shouldBeOpen = false;
-
-    $scope.open = function(){
-        $scope.shouldBeOpen = true;
-    }
-
-    $scope.onClose = function(){
-        $scope.shouldBeOpen = false;
-    }
-};
-popupSupport.controller('popUpController',['$scope',popUpController]);
+    });

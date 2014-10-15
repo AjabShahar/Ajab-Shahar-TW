@@ -9,7 +9,5 @@ thumbnailModule.directive("songIntroduction", function() {
             url:'@'
         },
         templateUrl:'/js/common/templates/songs/introduction.html',
-        controller:function($scope){
-        }
     }
 });

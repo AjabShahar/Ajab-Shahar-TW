@@ -31,7 +31,7 @@ var mainLandingPageController = function($scope,contentService){
                 return memo+
                     '<pop-up id="oid'+index+'" width="100" show="shouldShow(\'oid'+index+'\')"'+
                     ' on-close="onClose(\'oid'+index+'\')" closeButton="true">'+
-                        '<song-introduction singer="'+details[index].singer+'" name="'+details[index].name+'" url="tNh2kjmSzPw"></song-introduction>'+
+                        '<song-introduction singer="'+details[index].singer+'" name="'+details[index].name+'" url="https://www.youtube.com/embed/'+details[index].youtubeVideoId+'"></song-introduction>'+
                     '</pop-up>';
             }
             return memo;
