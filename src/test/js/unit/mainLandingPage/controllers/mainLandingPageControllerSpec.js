@@ -1,38 +1,53 @@
 'use strict';
 
 describe("MainLandingPage controller Specs", function(){
-	var scope;
+	var scope, q, controller;
 	var contentService = {
 	    getLandingPageThumbnails:function(){}
 	};
 
+    var getPromise = function(response) {
+        response = response || '';
+        var deferred = q.defer();
+        deferred.resolve(response);
+        return deferred.promise;
+    };
+
+    beforeEach(inject(function($q) {
+        q = $q;
+    }));
+
 	beforeEach(inject(function (_$rootScope_, _$controller_) {
     	scope = _$rootScope_.$new();
-        spyOn(contentService,'getLandingPageThumbnails');
-
-    	_$controller_(mainLandingPageController, {
-	        $scope: scope,
-	        contentService:contentService,
-        })
+    	controller = _$controller_;
     }));
 
 	it("should get songs on the landing page thumbnails", function(){
 	    var songsSampleResponse = {
-                "details" :[
-                            {
-                                "category":"Songs",
-                                "categoryName":"Song & Reflection",
-                                "name":"Practice the art of dying",
-                                "poet":"Sharath",
-                                "videoUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
-                                "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
-                                "singer":"Parvathy Baul",
-                                "duration":"09:11",
-                            },
+            "data": {
+                "details": [
+                    {
+                        "category": "Songs",
+                        "categoryName": "Song & Reflection",
+                        "name": "Practice the art of dying",
+                        "poet": "Sharath",
+                        "videoUrl": "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
+                        "imageUrl": "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
+                        "singer": "Parvathy Baul",
+                        "duration": "09:11"
+                    }
                 ]
-            };
+            }
+        };
 
-	    contentService.getLandingPageThumbnails.andReturn(songsSampleResponse);
+	    spyOn(contentService,'getLandingPageThumbnails').andReturn(getPromise(songsSampleResponse));
+
+        controller(mainLandingPageController, {
+            $scope: scope,
+            contentService:contentService
+        });
+
+        scope.$apply();
 
         var landingPageThumbnails = scope.getLandingPageThumbnails();
 
@@ -44,6 +59,7 @@ describe("MainLandingPage controller Specs", function(){
 
 	it("should get films on the landing page thumbnails", function(){
 	    var filmsSampleResponse = {
+            "data": {
                 "details" :[
                             {
                                 "category":"Films",
@@ -52,12 +68,20 @@ describe("MainLandingPage controller Specs", function(){
                                 "videoUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
                                 "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
                                 "name":"KOI SUNTA HAI",
-                                "duration":"21 : 00",
-                            },
+                                "duration":"21 : 00"
+                            }
                 ]
-            };
+            }
+        };
 
-	    contentService.getLandingPageThumbnails.andReturn(filmsSampleResponse);
+	    spyOn(contentService,'getLandingPageThumbnails').andReturn(getPromise(filmsSampleResponse));
+
+        controller(mainLandingPageController, {
+            $scope: scope,
+            contentService:contentService,
+        });
+
+        scope.$apply();
 
         var landingPageThumbnails = scope.getLandingPageThumbnails();
         expect(landingPageThumbnails).toBe('<film-with-details overlay-id="oid0" custom-style="shift4"'+
@@ -67,18 +91,27 @@ describe("MainLandingPage controller Specs", function(){
 
     it("should get reflections on the landing page thumbnails", function(){
 	    var reflectionsSampleResponse = {
+            "data": {
                 "details" :[
                             {
                                 "category":"Reflections",
                                 "name":"The Ulatbansi of Kabir",
                                 "by":"Linda Hess",
                                 "videoUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
-                                "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
-                            },
+                                "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
+                            }
                 ]
-            };
+            }
+        };
 
-	    contentService.getLandingPageThumbnails.andReturn(reflectionsSampleResponse);
+	    spyOn(contentService,'getLandingPageThumbnails').andReturn(getPromise(reflectionsSampleResponse));
+
+        controller(mainLandingPageController, {
+            $scope: scope,
+            contentService:contentService,
+        });
+
+        scope.$apply();
 
         var landingPageThumbnails = scope.getLandingPageThumbnails();
         expect(landingPageThumbnails).toBe('<reflection-with-details overlay-id="oid0" custom-style="shift4"'+
@@ -88,18 +121,27 @@ describe("MainLandingPage controller Specs", function(){
 
     it("should get words on the landing page thumbnails", function(){
 	    var wordsSampleResponse = {
-                "details" :[
-                            {
-                                "category":"Words",
-                                "categoryName":"WORD INTRO",
-                                "name":"Untellable Tale",
-                                "contextualMeaning":"An iconic poetic phrase in Kabir, which evokes a realm of experience beyond description...",
-                                "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
-                            },
+            "data": {
+                "details": [
+                    {
+                        "category": "Words",
+                        "categoryName": "WORD INTRO",
+                        "name": "Untellable Tale",
+                        "contextualMeaning": "An iconic poetic phrase in Kabir, which evokes a realm of experience beyond description...",
+                        "imageUrl": "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
+                    }
                 ]
-            };
+            }
+        };
 
-	    contentService.getLandingPageThumbnails.andReturn(wordsSampleResponse);
+	    spyOn(contentService,'getLandingPageThumbnails').andReturn(getPromise(wordsSampleResponse));
+
+        controller(mainLandingPageController, {
+            $scope: scope,
+            contentService:contentService,
+        });
+
+        scope.$apply();
 
         var landingPageThumbnails = scope.getLandingPageThumbnails();
         expect(landingPageThumbnails).toBe('<word-with-details overlay-id="oid0" custom-style="shift4"'+
@@ -109,20 +151,31 @@ describe("MainLandingPage controller Specs", function(){
 
     it("should get gatherings on the landing page thumbnails", function(){
 	    var gatheringsSampleResponse = {
+            "data": {
                 "details" :[
                             {
                                 "category":"Gathering",
                                 "name":"Bangalore Festival Of Kabir",
                                 "location":"Bangalore",
                                 "date":"2009",
-                                "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
-                            },
+                                "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
+                            }
                 ]
-            };
+            }
+        };
 
-	    contentService.getLandingPageThumbnails.andReturn(gatheringsSampleResponse);
+
+        spyOn(contentService,'getLandingPageThumbnails').andReturn(getPromise(gatheringsSampleResponse));
+
+        controller(mainLandingPageController, {
+            $scope: scope,
+            contentService:contentService,
+        });
+
+        scope.$apply();
 
         var landingPageThumbnails = scope.getLandingPageThumbnails();
+
         expect(landingPageThumbnails).toBe('<gathering-with-details overlay-id="oid0" custom-style="shift4"'+
                                             ' img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"'+
                                             ' name="Bangalore Festival Of Kabir" location="Bangalore" date="2009"></gathering-with-details>');
@@ -130,6 +183,7 @@ describe("MainLandingPage controller Specs", function(){
 
     it("should get couplets on the landing page thumbnails", function(){
 	    var coupletsSampleResponse = {
+            "data": {
                 "details" :[
                             {
                                 "category":"Couplets",
@@ -138,9 +192,15 @@ describe("MainLandingPage controller Specs", function(){
                                 "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
                             },
                 ]
-            };
+            }
+        };
 
-	    contentService.getLandingPageThumbnails.andReturn(coupletsSampleResponse);
+	    spyOn(contentService,'getLandingPageThumbnails').andReturn(getPromise(coupletsSampleResponse));
+
+        controller(mainLandingPageController, {
+            $scope: scope,
+            contentService:contentService,
+        });
 
         var landingPageThumbnails = scope.getLandingPageThumbnails();
         expect(landingPageThumbnails).toBe('<couplet-with-details overlay-id="oid0" custom-style="shift4"'+
