@@ -3,7 +3,6 @@
 .arrows.right{width:4.5%;height:100%;float:right}
 .popupWrapper{width:90%;display:inline-block;height:100%;margin:0 auto}
 .popupContainer{display:inline-block;margin:0 auto;width:98%;max-height:98%;margin-top:2%;position:relative}
-.popupMedia.image{max-width:100%;max-height:80%;border-radius:5px;box-shadow:#333 0 0 10px;margin:1% 0;}
 .arrows span{display: inline-block;
 background: rgba(204, 204, 204, 0.4);
 padding: 15px 18px 20px 0;
