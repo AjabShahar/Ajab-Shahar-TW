@@ -39,7 +39,8 @@ youtubeApp.directive('youtube', function($window, YT_event) {
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
         $window.onYouTubeIframeAPIReady = function() {
-
+        var selector = angular.element(element.children()[0]);
+        var selectorScope = selector.scope();
         scope.player = new YT.Player(element.children()[0], {
           playerVars: {
             autoplay: (scope.autoplay)? 1:0,
@@ -73,7 +74,7 @@ youtubeApp.directive('youtube', function($window, YT_event) {
               return;
             }
 
-            player.setSize(scope.width, scope.height);
+            scope.player.setSize(scope.width, scope.height);
         });
 
         scope.$watch('videoid', function(newValue, oldValue) {
@@ -81,20 +82,20 @@ youtubeApp.directive('youtube', function($window, YT_event) {
               return;
             }
 
-            player.cueVideoById(scope.videoid);
+            scope.player.cueVideoById(scope.videoid);
         });
 
         scope.$on(YT_event.STOP, function () {
-            player.seekTo(0);
-            player.stopVideo();
+            scope.player.seekTo(0);
+            scope.player.stopVideo();
         });
 
         scope.$on(YT_event.PLAY, function () {
-            player.playVideo();
+            scope.player.playVideo();
         });
 
         scope.$on(YT_event.PAUSE, function () {
-            player.pauseVideo();
+            scope.player.pauseVideo();
         });
     }
   };
