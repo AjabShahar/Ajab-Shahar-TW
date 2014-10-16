@@ -17,18 +17,19 @@ describe("Thumbnail service Specs", function(){
                         "categoryName": "Song & Reflection",
                         "name": "Practice the art of dying",
                         "poet": "Sharath",
-                        "videoUrl": "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
-                        "imageUrl": "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
+                        "youtubeVideoId": "videoId",
+                        "imageUrl": "imgId",
                         "singer": "Parvathy Baul",
                         "duration": "09:11"
                     }
                 ]
         ;
 
-        var landingPageThumbnails = service.getLandingPageThumbnails();
+        var landingPageThumbnails = service.getThumbnailWithBubble(songsSampleResponse);
 
         expect(landingPageThumbnails).toBe('<song-with-details overlay-id="oid0" open="open(\'oid0\')" custom-style="shift4"'+
-            ' img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"'+
+            ' img-src="imgId"'+
+            ' url="videoId"'+
             ' name="Practice the art of dying" singer="Parvathy Baul" category-name="Song & Reflection"'+
             ' poet="Sharath"></song-with-details>');
 	});
@@ -47,7 +48,7 @@ describe("Thumbnail service Specs", function(){
                         }
             ];
 
-        var landingPageThumbnails = service.getLandingPageThumbnails();
+        var landingPageThumbnails = service.getThumbnailWithBubble(filmsSampleResponse);
         expect(landingPageThumbnails).toBe('<film-with-details overlay-id="oid0" custom-style="shift4"'+
         ' img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"'+
         ' name="KOI SUNTA HAI" context="Prahlad Tipanya Meets His Guru"></film-with-details>');
@@ -65,7 +66,7 @@ describe("Thumbnail service Specs", function(){
                         }
             ];
 
-        var landingPageThumbnails = service.getLandingPageThumbnails();
+        var landingPageThumbnails = service.getThumbnailWithBubble(reflectionsSampleResponse);
         expect(landingPageThumbnails).toBe('<reflection-with-details overlay-id="oid0" custom-style="shift4"'+
         ' img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"'+
         ' name="The Ulatbansi of Kabir" by="Linda Hess"></reflection-with-details>');
@@ -83,7 +84,7 @@ describe("Thumbnail service Specs", function(){
                     }
             ];
 
-        var landingPageThumbnails = service.getLandingPageThumbnails();
+        var landingPageThumbnails = service.getThumbnailWithBubble(wordsSampleResponse);
         expect(landingPageThumbnails).toBe('<word-with-details overlay-id="oid0" custom-style="shift4"'+
          ' img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"'+
          ' name="Untellable Tale" contextual-meaning="An iconic poetic phrase in Kabir, which evokes a realm of experience beyond description..."></word-with-details>');
@@ -101,7 +102,7 @@ describe("Thumbnail service Specs", function(){
                             }
             ];
 
-        var landingPageThumbnails = service.getLandingPageThumbnails();
+        var landingPageThumbnails = service.getThumbnailWithBubble(gatheringsSampleResponse);
 
         expect(landingPageThumbnails).toBe('<gathering-with-details overlay-id="oid0" custom-style="shift4"'+
                                             ' img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"'+
@@ -119,7 +120,7 @@ describe("Thumbnail service Specs", function(){
                             },
             ];
 
-        var landingPageThumbnails = service.getLandingPageThumbnails();
+        var landingPageThumbnails = service.getThumbnailWithBubble(coupletsSampleResponse);
         expect(landingPageThumbnails).toBe('<couplet-with-details overlay-id="oid0" custom-style="shift4"'+
                                            ' img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"'+
                                            ' name="A pot in water, water in a pot..."</couplet-with-details>');
