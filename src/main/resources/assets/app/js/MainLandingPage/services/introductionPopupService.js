@@ -1,4 +1,4 @@
-var introductionPopupService = function () {
+htmlGenerator.factory('introductionPopupService', function () {
   var getPopupDetails = function (details) {
       return _.reduce(details, function(memo, value, index){
           if(value.category=='Songs'){
@@ -15,6 +15,4 @@ var introductionPopupService = function () {
   return {
     getPopupDetails: getPopupDetails,
   };
-};
-
-mainLandingPageApp.factory('introductionPopupService', [introductionPopupService]);
+});

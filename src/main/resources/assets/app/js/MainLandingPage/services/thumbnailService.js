@@ -1,4 +1,4 @@
-var thumbnailService = function () {
+htmlGenerator.factory('thumbnailService', function () {
     var getShiftIndex = function(index){
         return ((4+index) % 6) == 0 ? 6 : ((4+index) % 6);
     };
@@ -70,6 +70,4 @@ var thumbnailService = function () {
   return {
     getThumbnailWithBubble: getThumbnailWithBubble,
   };
-};
-
-mainLandingPageApp.factory('thumbnailService', [thumbnailService]);
+});

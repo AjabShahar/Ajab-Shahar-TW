@@ -3,11 +3,10 @@
 describe("Thumbnail service Specs", function(){
 	var service;
 
-    beforeEach(inject(function($q) {
-        module('mainLandingPageApp');
-        inject(function (thumbnailService) {
-            service = thumbnailService;
-        });
+    beforeEach(module('htmlGenerator'));
+
+    beforeEach(inject(function(thumbnailService) {
+        service = thumbnailService;
     }));
 
 	it("should get songs on the landing page thumbnails", function(){
