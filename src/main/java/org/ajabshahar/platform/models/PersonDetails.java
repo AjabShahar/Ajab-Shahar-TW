@@ -1,5 +1,7 @@
 package org.ajabshahar.platform.models;
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "PERSON")

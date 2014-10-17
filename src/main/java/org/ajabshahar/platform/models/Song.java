@@ -17,16 +17,6 @@ public class Song {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinTable(name = "SONG_SINGER", joinColumns = { @JoinColumn(name = "ID") },
-//            inverseJoinColumns = { @JoinColumn(name = "PERSON_ID") })
-//    private Set<Person> singers = new HashSet<Person>(0);
-//
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinTable(name = "SONG_POET", joinColumns = { @JoinColumn(name = "ID") },
-//            inverseJoinColumns = { @JoinColumn(name = "PERSON_ID") })
-//    private Set<Person> poets = new HashSet<Person>(0);
-
     @Column(name = "SHOW_ON_LANDING_PAGE", nullable = true)
     private Boolean showOnLandingPage;
 
@@ -51,6 +41,21 @@ public class Song {
 
     @Column(name = "YOUTUBE_VIDEO_ID", nullable = false)
     private String youtubeVideoId;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "SONG_SINGER", joinColumns = { @JoinColumn(name = "SONG_ID", referencedColumnName = "ID") },
+            inverseJoinColumns = { @JoinColumn(name = "SINGER_ID", referencedColumnName = "ID")})
+    private Set<PersonDetails> singer;
+
+
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinTable(name = "SONG_POET", joinColumns = { @JoinColumn(name = "SONG_ID", referencedColumnName = "ID") },
+            inverseJoinColumns = { @JoinColumn(name = "POET_ID", referencedColumnName = "ID") })
+    private Set<PersonDetails> poet;
+
+    public Set<PersonDetails> getPoet(){return poet;}
+
+    public void setPoet(Set<PersonDetails> poet){this.poet = poet;}
 
     public String getOriginalTitle() {
         return original;
@@ -108,19 +113,11 @@ public class Song {
         this.youtubeVideoId = youtubeVideoId;
     }
 
-//    public Set<Person> getSingers() {
-//        return singers;
-//    }N
+    public Set<PersonDetails> getSinger() {
+        return singer;
+    }
 
-//    public void setSingers(Set<Person> singers) {
-//        this.singers = singers;
-//    }
-
-//    public Set<Person> getPoets() {
-//        return poets;
-//    }
-//
-//    public void setPoets(Set<Person> poets) {
-//        this.poets = poets;
-//    }
+    public void setSinger(Set<PersonDetails> singers) {
+        this.singer = singers;
+    }
 }

@@ -23,7 +23,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
   };
 
   private final HibernateBundle<PlatformConfiguration> hibernate = new HibernateBundle<PlatformConfiguration>(SplashScreenOptions.class,Word.class,
-          Couplet.class,Song.class) {
+          Couplet.class,Song.class,PersonDetails.class) {
      @Override
      public DataSourceFactory getDataSourceFactory(PlatformConfiguration configuration) {
        return configuration.getDataSourceFactory();
@@ -66,6 +66,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
     final WordDAO wordDAO = new WordDAO(hibernate.getSessionFactory());
     final CoupletDAO coupletDAO = new CoupletDAO(hibernate.getSessionFactory());
     final SongDAO songDAO = new SongDAO(hibernate.getSessionFactory());
+    final PersonDAO personDAO = new PersonDAO(hibernate.getSessionFactory());
     final TemplateHealthCheck templateHealthCheck = new TemplateHealthCheck(configuration.getTemplate());
 
     environment.jersey().setUrlPattern("/api/*");
@@ -75,6 +76,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
     environment.jersey().register(new CoupletResource(coupletDAO));
     environment.jersey().register(new MainLandingPageResource());
     environment.jersey().register(new SongResource(songDAO));
+    environment.jersey().register(new PersonResource(personDAO));
     environment.healthChecks().register("template", templateHealthCheck);
   }
 
