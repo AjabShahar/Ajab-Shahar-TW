@@ -47,6 +47,13 @@ use idea to open the project
 enable hot reload code in idea settings, so that when u compile the code is hot swappedcode is hot swapped
 
 ########
+Running migrations
+------------------
+
+java -jar target/platform-1.0-SNAPSHOT.jar server development.yml
+This runs the migration against the connection string specified in developer.yml file
+
+########
 
 Rolling back your migration scripts
 -----------------------------------
