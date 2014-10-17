@@ -204,6 +204,6 @@ public class MainLandingPageResource {
 
         result.add("details", jsonArray);
 
-        return result.toString();
+        return "At least its something!";
     }
 }

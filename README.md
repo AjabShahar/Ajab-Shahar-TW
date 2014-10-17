@@ -1,6 +1,4 @@
-This is the AjabShahar Platform
-
-It contains
+The application contains:
 
 An angular js web front end : src/main/resources/assets
 Dropwizard REST api
@@ -46,4 +44,27 @@ see package.json for script implementations
 developing server side code
 ---------------------------
 use idea to open the project
-enable hot reload code in idea settings, so that when u compile the code is hot swapped
+enable hot reload code in idea settings, so that when u compile the code is hot swappedcode is hot swapped
+
+########
+
+Rolling back your migration scripts
+-----------------------------------
+
+"To roll back change sets which have already been applied, run the db rollback command. You will need to specify either a tag, a date, or a number of change sets to roll back to."
+Link - http://dropwizard.readthedocs.org/en/latest/manual/migrations.html
+
+In case you get an error like this - "No inverse to liquibase.change.core.RawSQLChange created"
+
+You need the fix this via adding a rollback comment to each of your scripts, like this:
+–liquibase formatted sql
+–changeset henkbl:PROD111111
+CREATE VIEW all_employees AS
+SELECT *
+FROM employee;
+–rollback DROP VIEW all_employees;
+
+Testing rolling back scripts
+----------------------------
+​To test your migration whether the syntax is correct for them to rollback, run the command:
+java -jar target/platform-1.0-SNAPSHOT.jar db test development.yml​

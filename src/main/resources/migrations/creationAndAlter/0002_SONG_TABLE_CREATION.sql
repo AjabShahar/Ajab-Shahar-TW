@@ -13,4 +13,4 @@ CREATE TABLE SONG (
     ENGLISH_TRANSLITERATION VARCHAR(200) NOT NULL
 );
 
--- drop table SONG;
+--rollback drop table SONG;

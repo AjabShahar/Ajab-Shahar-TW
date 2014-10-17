@@ -7,4 +7,4 @@ CREATE TABLE SONG_POET (
     SONG_ID INT REFERENCES SONG(ID)
 );
 
--- drop table SONG;
+--rollback drop table SONG;

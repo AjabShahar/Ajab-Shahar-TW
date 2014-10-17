@@ -15,9 +15,9 @@ VALUES
 ('Mooralala','','Marwada','SINGER'),
 ('Kabir','','','POET');
 
---delete from PERSON where FIRST_NAME='PARVATHY';
---delete from PERSON where FIRST_NAME='ROSHIK';
---delete from PERSON where FIRST_NAME='Gavra Devi';
---delete from PERSON where FIRST_NAME='Fakru';
---delete from PERSON where FIRST_NAME='Mooralala';
---delete from PERSON where FIRST_NAME='Kabir';
+--rollback delete from PERSON where FIRST_NAME='PARVATHY';
+--rollback delete from PERSON where FIRST_NAME='ROSHIK';
+--rollback delete from PERSON where FIRST_NAME='Gavra Devi';
+--rollback delete from PERSON where FIRST_NAME='Fakru';
+--rollback delete from PERSON where FIRST_NAME='Mooralala';
+--rollback delete from PERSON where FIRST_NAME='Kabir';

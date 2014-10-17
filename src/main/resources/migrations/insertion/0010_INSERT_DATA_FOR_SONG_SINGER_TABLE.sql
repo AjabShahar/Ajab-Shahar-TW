@@ -9,3 +9,7 @@ VALUES
 (1,1),
 (2,3),
 (3,4);
+
+--rollback delete from SONG_SINGER where SONG_ID='1';
+--rollback delete from SONG_SINGER where SONG_ID='2';
+--rollback delete from SONG_SINGER where SONG_ID='3';

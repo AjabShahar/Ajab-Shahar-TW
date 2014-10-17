@@ -9,4 +9,4 @@ CREATE TABLE PERSON (
     CATEGORY varchar(200) NOT NULL
 );
 
--- drop table PERSON;
+--rollback drop table PERSON;
