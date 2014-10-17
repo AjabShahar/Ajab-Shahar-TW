@@ -37,30 +37,36 @@ youtubeApp.directive('youtube', function($window, YT_event) {
         tag.src = "https://www.youtube.com/iframe_api";
         var firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        scope.cueVideoById = false;
 
         $window.onYouTubeIframeAPIReady = function() {
-        var selector = angular.element(element.children()[0]);
-        var selectorScope = selector.scope();
-        scope.player = new YT.Player(element.children()[0], {
-          playerVars: {
-            autoplay: (scope.autoplay)? 1:0,
-            html5: 1,
-            theme: "light",
-            modesbranding: 0,
-            color: "white",
-            iv_load_policy: 3,
-           // showinfo: 0, //to hide youtube logo 
-            controls: (scope.showcontrols)?1:0
-          },
-
-          height: scope.height,
-          width: scope.width,
-          videoId: scope.videoid,
-          events: {
-                'onStateChange': scope.onPlayerStateChange
-            },
-        });
+            scope.$root.$broadcast('onYouTubeIframeAPIReady', 'onYouTubeIframeAPIReady');
         }
+
+        scope.$on('onYouTubeIframeAPIReady', function (event, data) {
+            scope.player = new YT.Player(element.children()[0], {
+              playerVars: {
+                autoplay: (scope.autoplay)? 1:0,
+                html5: 1,
+                theme: "light",
+                modesbranding: 0,
+                color: "white",
+                iv_load_policy: 3,
+               // showinfo: 0, //to hide youtube logo
+                controls: (scope.showcontrols)?1:0
+              },
+
+              height: scope.height,
+              width: scope.width,
+              videoId: scope.videoid,
+              events: {
+                    'onStateChange': scope.onPlayerStateChange
+                },
+            });
+
+            if(!scope.cueVideoById)
+                scope.cueVideo();
+        });
 
         // when video ends
         scope.onPlayerStateChange = function(event) {
@@ -77,12 +83,17 @@ youtubeApp.directive('youtube', function($window, YT_event) {
             scope.player.setSize(scope.width, scope.height);
         });
 
+        scope.cueVideo = function(){
+            scope.cueVideoById = true;
+            scope.player.cueVideoById(scope.videoid);
+        };
+
         scope.$watch('videoid', function(newValue, oldValue) {
-            if (newValue == oldValue) {
+            if (!scope.player || newValue == oldValue) {
               return;
             }
 
-            scope.player.cueVideoById(scope.videoid);
+            scope.cueVideo();
         });
 
         scope.$on(YT_event.STOP, function () {
