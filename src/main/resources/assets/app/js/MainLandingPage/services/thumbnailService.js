@@ -15,6 +15,7 @@ htmlGenerator.factory('thumbnailService', function () {
               ' name="'+details[index].name+'"'+
               ' singer="'+details[index].singer+'"' +
               ' category-name="'+details[index].categoryName+'"'+
+              ' duration="'+details[index].duration+'"'+
               ' poet="'+details[index].poet+'"></song-with-details>';
           }
 
