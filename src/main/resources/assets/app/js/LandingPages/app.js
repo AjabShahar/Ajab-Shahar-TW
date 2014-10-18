@@ -1,4 +1,4 @@
-var mainLandingPageApp = angular.module('mainLandingPageApp',['angular-parallax','thumbnailModule','youtubeApp','PopupSupport','htmlGenerator']);
+var mainLandingPageApp = angular.module('mainLandingPageApp',['angular-parallax','thumbnailModule','youtubeApp','PopupSupport','htmlGenerator','sticky']);
 
 mainLandingPageApp.config(resourceUrlWhiteList);
 mainLandingPageApp.factory('contentService', ['$http', contentService]);

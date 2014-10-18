@@ -1,5 +1,5 @@
 <div class='headerBox ajab-container '>
-    <div class='headerWrapper'>
+    <div class='headerWrapper {{fixedOnScroll}}'>
         <header>
             <div class='logoContainer'>
                 <img class='logo' />
@@ -41,6 +41,6 @@
 
         </header>
     </div>
-    <div class='headerArt'></div>
+    <div sticky class='headerArt' ng-click="showMenu()" style="top: {{headerArtTop}}px;"></div>
 </div>
 

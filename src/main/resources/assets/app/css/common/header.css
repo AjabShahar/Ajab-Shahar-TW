@@ -30,7 +30,7 @@ position:relative;
 z-index:9;
 }
 
-
+.headerBox.fixed{position:fixed;width:100%;top:0;cursor:pointer;}
 .headerWrapper.fixed{display:none}
 .headerArt.fixed{position:fixed;width:100%;top:0;cursor:pointer;}
 
