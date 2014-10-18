@@ -22,6 +22,10 @@ var popupSupport = angular.module('PopupSupport', [])
                         jQuery('#' + $scope.overlayId).css("height", jQuery(window).height());
                     }
                 });
+
+                $scope.isClosed = function(){
+                    return !$scope.show();
+                }
             }
         };
     });

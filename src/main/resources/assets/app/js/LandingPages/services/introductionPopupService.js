@@ -5,7 +5,7 @@ htmlGenerator.factory('introductionPopupService', function () {
               return memo+
                   '<pop-up id="oid'+index+'" width="100" show="shouldShow(\'oid'+index+'\')"'+
                   ' on-close="onClose(\'oid'+index+'\')" closeButton="true">'+
-                      '<song-introduction singer="'+details[index].singer+'" name="'+details[index].name+'" url="'+details[index].youtubeVideoId+'"></song-introduction>'+
+                      '<song-introduction singer="'+details[index].singer+'" name="'+details[index].name+'" url="'+details[index].youtubeVideoId+'" s="isClosed()"></song-introduction>'+
                   '</pop-up>';
           }
           return memo;

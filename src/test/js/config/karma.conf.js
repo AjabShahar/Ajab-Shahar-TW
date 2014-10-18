@@ -10,7 +10,7 @@ module.exports = function (config) {
       'js/common/directives/thumbnail/thumbnailModule.js',
       'js/common/**/*.js',
       'js/Introduction/**/*.js',
-      'js/MainLandingPage/**/*.js',
+      'js/LandingPages/**/*.js',
       '../../../../test/js/unit/**/*.js'
     ],
     autoWatch: true,

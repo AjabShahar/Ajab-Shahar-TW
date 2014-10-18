@@ -9,10 +9,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-@Path("/MainLandingPageContent")
-public class MainLandingPageResource {
+@Path("/LandingPagesContent")
+public class LandingPagesResource {
 
-    public MainLandingPageResource() {
+    public LandingPagesResource() {
 
     }
 
