@@ -53,7 +53,7 @@ youtubeApp.directive('youtube', function($window, YT_event) {
                 color: "white",
                 iv_load_policy: 3,
                 //showinfo: 0, //to hide youtube logo
-                controls: (scope.showcontrols)?1:0
+                controls: (scope.showcontrols)?2:0
               },
 
               height: scope.height,
