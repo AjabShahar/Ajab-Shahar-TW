@@ -6,16 +6,16 @@ youtubeApp.constant('YT_event', {
   PAUSE:           2
 });
 
-youtubeApp.controller('YouTubeCtrl', function($scope, YT_event) {
-  $scope.yt = {
-    width: '100%',
-    height: '100%',
-    videoid: "M7lc1UVf-VE",
-    autoplay:false,
-    showcontrols:false,
-    autoreplay:false,
-  };
-});
+//youtubeApp.controller('YouTubeCtrl', function($scope, YT_event) {
+//  $scope.yt = {
+//    width: '100%',
+//    height: '100%',
+//    videoid: "M7lc1UVf-VE",
+//    autoplay:false,
+//    showcontrols:false,
+//    autoreplay:false,
+//  };
+//});
 
 youtubeApp.directive('youtube', function($window, YT_event) {
   return {
@@ -28,6 +28,7 @@ youtubeApp.directive('youtube', function($window, YT_event) {
       autoplay:"@",
       showcontrols:"@",
       autoreplay:'@',
+      stopVideo:'&',
     },
 
     template: '<div></div>',
@@ -75,6 +76,15 @@ youtubeApp.directive('youtube', function($window, YT_event) {
             }
         }
 
+        scope.$watch(function() { return scope.stopVideo(); }, function(newValue, oldValue) {
+            if (newValue == oldValue) {
+              return;
+            }
+
+            if(newValue)
+                scope.stopVideo();
+        });
+
         scope.$watch('height + width', function(newValue, oldValue) {
             if (newValue == oldValue) {
               return;
@@ -93,12 +103,16 @@ youtubeApp.directive('youtube', function($window, YT_event) {
               return;
             }
 
-            scope.cueVideo();
+            scope.stopVideoInPlayer();
         });
 
-        scope.$on(YT_event.STOP, function () {
+        scope.stopVideoInPlayer = function(){
             scope.player.seekTo(0);
             scope.player.stopVideo();
+        }
+
+        scope.$on(YT_event.STOP, function () {
+            scope.stopVideoInPlayer();
         });
 
         scope.$on(YT_event.PLAY, function () {

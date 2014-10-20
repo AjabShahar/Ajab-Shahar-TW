@@ -21,6 +21,10 @@ var mainLandingPageController = function($scope,contentService,thumbnailService,
         return $scope.shouldBeOpen[id];
     }
 
+    $scope.isClosed = function(id){
+        return !$scope.shouldBeOpen[id];
+    }
+
     $scope.init();
 }
 
