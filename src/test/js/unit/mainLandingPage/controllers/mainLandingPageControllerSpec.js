@@ -3,7 +3,7 @@
 describe("LandingPages controller Specs", function(){
 	var scope, q, controller;
 	var contentService = {
-	    getLandingPageThumbnails:function(){}
+	    getMainLandingPageThumbnails:function(){}
 	};
 
     var getPromise = function(response) {

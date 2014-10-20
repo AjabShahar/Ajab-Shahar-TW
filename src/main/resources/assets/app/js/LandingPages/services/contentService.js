@@ -1,9 +1,14 @@
 var contentService = function ($http) {
-  var getLandingPageThumbnails = function (resource) {
-    return $http.get('/api/' + resource);
+  var getMainLandingPageThumbnails = function () {
+    return $http.get('/api/LandingPages/mainPage');
+  };
+
+  var getSongsLandingPageThumbnails = function () {
+    return $http.get('/api/LandingPages/songsPage');
   };
 
   return {
-    getLandingPageThumbnails: getLandingPageThumbnails,
+    getMainLandingPageThumbnails: getMainLandingPageThumbnails,
+    getSongsLandingPageThumbnails: getSongsLandingPageThumbnails,
   };
 };

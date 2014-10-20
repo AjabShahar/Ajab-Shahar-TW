@@ -9,7 +9,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-@Path("/LandingPagesContent")
+@Path("/LandingPages")
 public class LandingPagesResource {
 
     public LandingPagesResource() {
@@ -17,6 +17,32 @@ public class LandingPagesResource {
     }
 
     @GET
+    @Path("/songsPage")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String listAllSongsContent() {
+        JsonObject result = new JsonObject();
+        JsonArray jsonArray = new JsonArray();
+
+        JsonObject firstElement = new JsonObject();
+
+        firstElement.addProperty("category", "Songs");
+        firstElement.addProperty("categoryName", "Song & Reflection");
+        firstElement.addProperty("name", "For a few days,O Heart");
+        firstElement.addProperty("poet", "ROSHIK");
+        firstElement.addProperty("youtubeVideoId", "tNh2kjmSzPw");
+        firstElement.addProperty("imageUrl", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
+        firstElement.addProperty("singer", "Parvathy Baul");
+        firstElement.addProperty("duration", "09:11");
+
+        jsonArray.add(firstElement);
+
+        result.add("details", jsonArray);
+
+        return result.toString();
+    }
+
+        @GET
+    @Path("/mainPage")
     @Produces(MediaType.APPLICATION_JSON)
     public String listAllContent()
     {

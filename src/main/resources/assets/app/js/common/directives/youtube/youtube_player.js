@@ -28,7 +28,7 @@ youtubeApp.directive('youtube', function($window, YT_event) {
       autoplay:"@",
       showcontrols:"@",
       autoreplay:'@',
-      stopVideo:'&',
+      shouldStopVideo:'&',
     },
 
     template: '<div></div>',
@@ -76,13 +76,13 @@ youtubeApp.directive('youtube', function($window, YT_event) {
             }
         }
 
-        scope.$watch(function() { return scope.stopVideo(); }, function(newValue, oldValue) {
+        scope.$watch(function() { return scope.shouldStopVideo(); }, function(newValue, oldValue) {
             if (newValue == oldValue) {
               return;
             }
 
             if(newValue)
-                scope.stopVideo();
+                scope.stopVideoInPlayer();
         });
 
         scope.$watch('height + width', function(newValue, oldValue) {

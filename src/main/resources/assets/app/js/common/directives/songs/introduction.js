@@ -7,11 +7,11 @@ thumbnailModule.directive("songIntroduction", function() {
             name:'@',
             singer:'@',
             url:'@',
-            openVideo:'&'
+            closeVideo:'&'
         },
         templateUrl:'/js/common/templates/songs/introduction.html',
         controller: function($scope) {
-            $scope.$watch(function() { return $scope.openVideo(); }, function(newValue, oldValue) {
+            $scope.$watch(function() { return $scope.closeVideo(); }, function(newValue, oldValue) {
                 $scope.shouldStopVideo = !newValue;
             });
             //$scope.$on($scope.stopOn,$stopParam)
