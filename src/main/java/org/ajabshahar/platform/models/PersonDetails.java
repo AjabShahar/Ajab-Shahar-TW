@@ -9,6 +9,14 @@ import java.util.Set;
         @NamedQuery(
                 name = "org.ajabshahar.platform.models.PersonDetails.findAll",
                 query = "SELECT p FROM PersonDetails p"
+        ),
+        @NamedQuery(
+                name = "org.ajabshahar.platform.models.PersonDetails.findSingers",
+                query = "select p from PersonDetails p where p.CATEGORY='SINGER'"
+        ),
+        @NamedQuery(
+                name = "org.ajabshahar.platform.models.PersonDetails.findPoets",
+                query = "select p from PersonDetails p where p.CATEGORY='POET'"
         )
 })
 public class PersonDetails {

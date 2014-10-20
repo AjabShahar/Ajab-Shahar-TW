@@ -13,17 +13,16 @@
 <h2>Enter Song basic details</h2>
 <div ng-controller="songBasicDetailsController">
     <form >
-        Title:
-        <select ng-model="titleList.originalTitle"
-                ng-options="title as title.originalTitle for title in titleList">
-        </select><br/>
         Singer:
-        <select  ng-model="singerList.firstName"
-                ng-options="singer.firstName  for singer in singerList">
+        <select  ng-model="singersList.firstName"
+                ng-options="singer.firstName  for singer in singersList">
         </select><br/>
         Poet:
+        <select  ng-model="poetsList.firstName"
+                 ng-options="poet.firstName  for poet in poetsList">
+        </select><br/>
         Show On LandingPage :
-        <select name="format" ng-model="formInfo.SHOW_ON_LANDINGPAGE">
+        <select name="format" ng-model="formInfo.SHOW_ON_LANDING_PAGE">
             <option value="yes">Yes</option>
             <option value="no">No</option>
         </select><br/>
@@ -34,6 +33,9 @@
         Duration:<input type="text" name="duration" ng-model="formInfo.DURATION"><br/>
         Youtube Video Id:<input type="text" name="youtubeVideoId" ng-model="formInfo.YOUTUBE_VIDEO_ID"><br/>
         Thumbnail Url:<input type="text" name="thumbnailUrl" ng-model="formInfo.THUMBNAIL_URL"><br/>
+        Original Title:<input type="text" name="originalTitle" ng-model="formInfo.ORIGINAL_TITLE"><br/>
+        English Translation:<input type="text" name="englishTranslation" ng-model="formInfo.ENGLISH_TRANSLATION"><br/>
+        English Transliteration:<input type="text" name="englishTransliteration" ng-model="formInfo.ENGLISH_TRANSLITERATION"><br/>
         <button type="submit" ng-click="saveData()">Submit</button>
     </form>
 </div>

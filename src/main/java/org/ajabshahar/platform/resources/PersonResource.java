@@ -36,4 +36,19 @@ public class PersonResource {
     public List<PersonDetails> listAllTitleDetails() {
         return personDAO.findAll();
     }
+
+
+    @GET
+    @UnitOfWork
+    @Path("/Singers")
+    public List<PersonDetails>   listAllSingers() {
+        return personDAO.findSingers();
+    }
+
+    @GET
+    @UnitOfWork
+    @Path("/Poets")
+    public List<PersonDetails>   listAllPoets() {
+        return personDAO.findPoets();
+    }
 }
