@@ -3,4 +3,4 @@
 .DS_Store
 target
 test-results.xml
-
+src/main/resources/assets/npm-debug.log
