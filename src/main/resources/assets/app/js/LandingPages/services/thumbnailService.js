@@ -27,9 +27,9 @@ htmlGenerator.factory('thumbnailService', function () {
               ' img-src="'+details[index].imageUrl+'"'+
               ' url="'+details[index].youtubeVideoId+'"'+
               ' name="'+details[index].englishTranslationTitle+'"'+
-              ' duration="'+ details[index].duration+'"'+
               ' singer="' + getName(details[index].singer[0]) + '"' +
-              // ' category-name="'+details[index].categoryName+'"'+
+              ' category-name="'+details[index].categoryName+'"'+
+              ' duration="'+ details[index].duration+'"'+
               ' poet="' + getName(details[index].poet[0]) + '"></song-with-details>';
           }
 
