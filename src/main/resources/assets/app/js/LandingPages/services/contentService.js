@@ -1,6 +1,6 @@
 var contentService = function ($http) {
-  var getLandingPageThumbnails = function () {
-    return $http.get('/api/LandingPagesContent');
+  var getLandingPageThumbnails = function (resource) {
+    return $http.get('/api/' + resource);
   };
 
   return {

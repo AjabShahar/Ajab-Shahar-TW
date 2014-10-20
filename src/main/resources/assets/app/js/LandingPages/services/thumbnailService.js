@@ -3,20 +3,34 @@ htmlGenerator.factory('thumbnailService', function () {
         return ((4+index) % 6) == 0 ? 6 : ((4+index) % 6);
     };
 
+    var prependSpaceIfNotEmpty = function(string) {
+      return (string != "") ? string = ' ' + string : string = string;
+    };
+
+    var getName = function (person) {
+      var firstName = person.firstName,
+      middleName = person.middleName,
+      lastName = person.lastName;
+
+      return firstName + prependSpaceIfNotEmpty(middleName) + prependSpaceIfNotEmpty(lastName);
+    };
+
     var getThumbnailWithBubble = function (details) {
     return _.reduce(details, function(memo, value, index){
           shiftIndex = getShiftIndex(index);
-          if(value.category=='Songs'){
+          
+          if(value.category=='SONG'){
+
               return memo + '<song-with-details overlay-id="oid'+index +'"'+
               ' open="open(\'oid'+index+'\')"'+
               ' custom-style="shift'+shiftIndex+'"' +
               ' img-src="'+details[index].imageUrl+'"'+
               ' url="'+details[index].youtubeVideoId+'"'+
-              ' name="'+details[index].name+'"'+
-              ' singer="'+details[index].singer+'"' +
-              ' category-name="'+details[index].categoryName+'"'+
-              ' duration="'+details[index].duration+'"'+
-              ' poet="'+details[index].poet+'"></song-with-details>';
+              ' name="'+details[index].englishTranslationTitle+'"'+
+              ' duration="'+ details[index].duration+'"'+
+              ' singer="' + getName(details[index].singer[0]) + '"' +
+              // ' category-name="'+details[index].categoryName+'"'+
+              ' poet="' + getName(details[index].poet[0]) + '"></song-with-details>';
           }
 
           if(value.category=='Films'){

@@ -3,7 +3,7 @@ var mainLandingPageController = function($scope,contentService,thumbnailService,
     $scope.thumbnailContent=null;
     $scope.shouldBeOpen={};
     $scope.init = function(){
-        contentService.getLandingPageThumbnails().then(function(result){
+        contentService.getLandingPageThumbnails("LandingPagesContent").then(function(result){
             $scope.thumbnailContent = thumbnailService.getThumbnailWithBubble(result.data.details);
             $scope.popupContent = introductionPopupService.getPopupDetails(result.data.details);
         });

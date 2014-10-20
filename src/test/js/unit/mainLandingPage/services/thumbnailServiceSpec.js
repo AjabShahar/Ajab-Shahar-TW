@@ -13,13 +13,28 @@ describe("Thumbnail service Specs", function(){
 	    var songsSampleResponse =
 	            [
                     {
-                        "category": "Songs",
+                        "category": "SONG",
                         "categoryName": "Song & Reflection",
-                        "name": "Practice the art of dying",
-                        "poet": "Sharath",
+                        "englishTranslationTitle": "Practice the art of dying",
+                        "poet": [
+                            {
+                            "category": "POET",
+                            "firstName": "Sharath",
+                            "middleName": "",
+                            "lastName": ""
+                            }
+                            ],
+
                         "youtubeVideoId": "videoId",
                         "imageUrl": "imgId",
-                        "singer": "Parvathy Baul",
+                        "singer": [
+                            {
+                            "category": "SINGER",
+                            "firstName": "Parvathy",
+                            "middleName": "",
+                            "lastName": "Baul"
+                            }
+                            ],
                         "duration": "09:11"
                     }
                 ]
