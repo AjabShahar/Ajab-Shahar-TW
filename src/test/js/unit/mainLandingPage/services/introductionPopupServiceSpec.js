@@ -28,7 +28,7 @@ describe("introduction popup service Specs", function(){
         var landingPageThumbnails = service.getPopupDetails(songsSampleResponse);
 
         expect(landingPageThumbnails).toBe('<pop-up id="oid0" width="100" show="shouldShow(\'oid0\')" on-close="onClose(\'oid0\')" closeButton="true">'+
-            '<song-introduction singer="Parvathy Baul" name="Practice the art of dying" url="videoId"></song-introduction></pop-up>');
+            '<song-introduction singer="Parvathy Baul" name="Practice the art of dying" url="videoId" open-video="isClosed(\'oid0\')"></song-introduction></pop-up>');
     });
 
 });
