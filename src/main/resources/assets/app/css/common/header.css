@@ -17,10 +17,19 @@ header img.logo{
 
 .headerArt{
   background:url(../../img/common/header.png) top no-repeat;
-  background-size: cover;
-  height: 145px;
+  margin-top:-15px;
+  height: 95px;
   position: relative;
   z-index: 9;
+}
+
+.headerArt .menuTree{
+  display: inline-block;
+  width: 130px;
+  height: 70px;
+  float: right;
+  margin: 28px 125px 0 -100px;
+  cursor: pointer;
 }
 
 .headerWrapper{
@@ -28,6 +37,7 @@ background: #fff;
 padding:0% 0 0% 0;
 position:relative;
 z-index:9;
+box-shadow: #898989 0 1px 15px;
 }
 
 .headerBox.fixed{position:fixed;width:100%;top:0;cursor:pointer;}
