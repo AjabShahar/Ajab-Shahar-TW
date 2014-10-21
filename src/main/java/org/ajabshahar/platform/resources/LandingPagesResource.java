@@ -53,7 +53,7 @@ public class LandingPagesResource {
         secondElement.addProperty("context", "Prahlad Tipanya Meets His Guru");
         secondElement.addProperty("poet", "Sharath");
         secondElement.addProperty("videoUrl", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
-        secondElement.addProperty("imageUrl", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
+        secondElement.addProperty("thumbnail_url", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
         secondElement.addProperty("singer", "Parvathy Baul");
         secondElement.addProperty("duration", "21 : 00");
 
@@ -63,7 +63,7 @@ public class LandingPagesResource {
         thirdElement.addProperty("context", "Prahlad Tipanya Meets His Guru");
         thirdElement.addProperty("poet", "Sharath");
         thirdElement.addProperty("videoUrl", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
-        thirdElement.addProperty("imageUrl", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
+        thirdElement.addProperty("thumbnail_url", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
         thirdElement.addProperty("singer", "Parvathy Baul");
         thirdElement.addProperty("duration", "21 : 00");
 
@@ -85,7 +85,7 @@ public class LandingPagesResource {
         fifthElement.addProperty("singer", "GAVRA DEVI");
         fifthElement.addProperty("poet", "Unknown");
         fifthElement.addProperty("videoUrl", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
-        fifthElement.addProperty("imageUrl", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
+        fifthElement.addProperty("thumbnail_url", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
         fifthElement.addProperty("singer", "Parvathy Baul");
         fifthElement.addProperty("duration", "35 : 09");
 
@@ -93,7 +93,7 @@ public class LandingPagesResource {
         sixthElement.addProperty("categoryName", "WORD INTRO");
         sixthElement.addProperty("name", "Untellable Tale");
         sixthElement.addProperty("contextualMeaning", "An iconic poetic phrase in Kabir, which evokes a realm of experience beyond description...");
-        sixthElement.addProperty("imageUrl", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
+        sixthElement.addProperty("thumbnail_url", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
         sixthElement.addProperty("singer", "Parvathy Baul");
         sixthElement.addProperty("duration", "35 : 09");
 
@@ -102,7 +102,7 @@ public class LandingPagesResource {
         seventhElement.addProperty("name", "10 Images X 100 Words");
         seventhElement.addProperty("description", "Photo Essay by SMRITI CHANCHANI & VIPUL RIKHI");
         seventhElement.addProperty("contextualMeaning", "An iconic poetic phrase in Kabir, which evokes a realm of experience beyond description...");
-        seventhElement.addProperty("imageUrl", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
+        seventhElement.addProperty("thumbnail_url", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
         seventhElement.addProperty("singer", "Parvathy Baul");
         seventhElement.addProperty("duration", "35 : 09");
 
@@ -121,7 +121,7 @@ public class LandingPagesResource {
         ninthElement.addProperty("description", "Reinterpreting Kabir’s life & times");
         ninthElement.addProperty("singer", "MUKHTIYAR ALI");
         ninthElement.addProperty("poet", "ULLEH SHAH0");
-        ninthElement.addProperty("imageUrl", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
+        ninthElement.addProperty("thumbnail_url", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
         ninthElement.addProperty("singer", "Parvathy Baul");
         ninthElement.addProperty("duration", "09 : 11");
 
@@ -133,7 +133,7 @@ public class LandingPagesResource {
         tenthElement.addProperty("poet", "ULLEH SHAH0");
         tenthElement.addProperty("date", "2009");
         tenthElement.addProperty("location", "Bangalore");
-        tenthElement.addProperty("imageUrl", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
+        tenthElement.addProperty("thumbnail_url", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
         tenthElement.addProperty("singer", "Parvathy Baul");
         tenthElement.addProperty("duration", "09 : 11");
 
@@ -145,7 +145,7 @@ public class LandingPagesResource {
         eleventhElement.addProperty("poet", "ULLEH SHAH0");
         eleventhElement.addProperty("date", "2009");
         eleventhElement.addProperty("location", "Bangalore");
-        eleventhElement.addProperty("imageUrl", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
+        eleventhElement.addProperty("thumbnail_url", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
         eleventhElement.addProperty("singer", "Parvathy Baul");
         eleventhElement.addProperty("duration", "09 : 11");
 
@@ -157,7 +157,7 @@ public class LandingPagesResource {
         twelfthElement.addProperty("poet", "ULLEH SHAH0");
         twelfthElement.addProperty("date", "2009");
         twelfthElement.addProperty("location", "Bangalore");
-        twelfthElement.addProperty("imageUrl", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
+        twelfthElement.addProperty("thumbnail_url", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
         twelfthElement.addProperty("singer", "Parvathy Baul");
         twelfthElement.addProperty("duration", "09 : 11");
 
@@ -169,7 +169,7 @@ public class LandingPagesResource {
         thirdElement.addProperty("poet", "ULLEH SHAH0");
         thirdElement.addProperty("date", "2009");
         thirdElement.addProperty("location", "Bangalore");
-        thirdElement.addProperty("imageUrl", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
+        thirdElement.addProperty("thumbnail_url", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
         thirdElement.addProperty("singer", "Parvathy Baul");
         thirdElement.addProperty("duration", "09 : 11");
 
@@ -181,7 +181,7 @@ public class LandingPagesResource {
         fourteenElement.addProperty("poet", "ULLEH SHAH0");
         fourteenElement.addProperty("date", "2009");
         fourteenElement.addProperty("location", "Bangalore");
-        fourteenElement.addProperty("imageUrl", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
+        fourteenElement.addProperty("thumbnail_url", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
         fourteenElement.addProperty("singer", "Parvathy Baul");
         fourteenElement.addProperty("duration", "09 : 11");
 
