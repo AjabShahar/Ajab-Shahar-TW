@@ -19,20 +19,21 @@ htmlGenerator.factory('thumbnailService', function () {
     return _.reduce(details, function(memo, value, index){
           shiftIndex = getShiftIndex(index);
           
-          if(value.bubbleType=='Songs'){
+          if(value.thumbnailType=='Songs'){
               return memo + '<song-with-details overlay-id="oid'+index +'"'+
               ' open="open(\'oid'+index+'\')"'+
               ' custom-style="shift'+shiftIndex+'"' +
               ' img-src="'+details[index].thumbnail_url+'"'+
               ' url="'+details[index].youtubeVideoId+'"'+
               ' name="'+details[index].englishTranslationTitle+'"'+
-              ' singer="' + getName(details[index].singers[0]) + '"' +
+              //' singer="' + getName(details[index].singers[0]) + '"' +
               ' category-name="'+details[index].categoryName+'"'+
               ' duration="'+ details[index].duration+'"'+
-              ' poet="' + getName(details[index].poets[0]) + '"></song-with-details>';
+              //' poet="' + getName(details[index].poets[0]) + '">
+              '</song-with-details>';
           }
 
-          if(value.bubbleType=='Films'){
+          if(value.thumbnailType=='Films'){
               return memo + '<film-with-details overlay-id="oid'+index +'"'+
               ' custom-style="shift'+shiftIndex+'"' +
               ' img-src="'+details[index].thumbnail_url+'"'+
@@ -40,7 +41,7 @@ htmlGenerator.factory('thumbnailService', function () {
               ' context="'+details[index].context+'"'+ '></film-with-details>';
           }
 
-          if(value.bubbleType=='Reflections'){
+          if(value.thumbnailType=='Reflections'){
               return memo + '<reflection-with-details overlay-id="oid'+index +'"'+
               ' custom-style="shift'+shiftIndex+'"' +
               ' img-src="'+details[index].thumbnail_url+'"'+
@@ -48,7 +49,7 @@ htmlGenerator.factory('thumbnailService', function () {
               ' by="'+details[index].by+'"></reflection-with-details>';
           }
 
-          if(value.bubbleType=='Words'){
+          if(value.thumbnailType=='Words'){
               return memo + '<word-with-details overlay-id="oid'+index + '"'+
               ' custom-style="shift'+shiftIndex+'"' +
               ' img-src="'+details[index].thumbnail_url+'"'+
@@ -57,7 +58,7 @@ htmlGenerator.factory('thumbnailService', function () {
               '</word-with-details>';
           }
 
-          if(value.bubbleType=='Gathering'){
+          if(value.thumbnailType=='Gathering'){
               return memo + '<gathering-with-details overlay-id="oid'+index  +'"'+
               ' custom-style="shift'+shiftIndex+'"' +
               ' img-src="'+details[index].thumbnail_url+'"'+
@@ -67,7 +68,7 @@ htmlGenerator.factory('thumbnailService', function () {
               '</gathering-with-details>';
           }
 
-          if(value.bubbleType=='Couplets'){
+          if(value.thumbnailType=='Couplets'){
               return memo + '<couplet-with-details overlay-id="oid'+index +'" custom-style="shift'+shiftIndex+'"' +
               ' img-src="'+details[index].thumbnail_url+'"'+
               ' name="'+details[index].name+'"'+

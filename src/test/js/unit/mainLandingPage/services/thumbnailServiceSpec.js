@@ -13,7 +13,7 @@ describe("Thumbnail service Specs", function(){
 	    var songsSampleResponse =
 	            [
                     {
-                        "bubbleType": "SONG",
+                        "thumbnailType": "Songs",
                         "categoryName": "Song & Reflection",
                         "englishTranslationTitle": "Practice the art of dying",
                         "poets": [
@@ -45,16 +45,19 @@ describe("Thumbnail service Specs", function(){
         expect(landingPageThumbnails).toBe('<song-with-details overlay-id="oid0" open="open(\'oid0\')" custom-style="shift4"'+
             ' img-src="imgId"'+
             ' url="videoId"'+
-            ' name="Practice the art of dying" singer="Parvathy Baul" category-name="Song & Reflection"'+
+            ' name="Practice the art of dying"'+
+             //singer="Parvathy Baul"
+            ' category-name="Song & Reflection"'+
             ' duration="09:11"'+
-            ' poet="Sharath"></song-with-details>');
+            //' poet="Sharath">
+            '</song-with-details>');
 	});
 
 	it("should get films on the landing page thumbnails", function(){
 	    var filmsSampleResponse =
             [
                         {
-                            "bubbleType":"Films",
+                            "thumbnailType":"Films",
                             "categoryName":"Film Episode",
                             "context":"Prahlad Tipanya Meets His Guru",
                             "videoUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
@@ -74,7 +77,7 @@ describe("Thumbnail service Specs", function(){
 	    var reflectionsSampleResponse =
             [
                         {
-                            "bubbleType":"Reflections",
+                            "thumbnailType":"Reflections",
                             "name":"The Ulatbansi of Kabir",
                             "by":"Linda Hess",
                             "videoUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
@@ -92,7 +95,7 @@ describe("Thumbnail service Specs", function(){
 	    var wordsSampleResponse =
             [
                     {
-                        "bubbleType": "Words",
+                        "thumbnailType": "Words",
                         "categoryName": "WORD INTRO",
                         "name": "Untellable Tale",
                         "contextualMeaning": "An iconic poetic phrase in Kabir, which evokes a realm of experience beyond description...",
@@ -110,7 +113,7 @@ describe("Thumbnail service Specs", function(){
 	    var gatheringsSampleResponse =
             [
                             {
-                                "bubbleType":"Gathering",
+                                "thumbnailType":"Gathering",
                                 "name":"Bangalore Festival Of Kabir",
                                 "location":"Bangalore",
                                 "date":"2009",
@@ -129,7 +132,7 @@ describe("Thumbnail service Specs", function(){
 	    var coupletsSampleResponse =
             [
                             {
-                                "bubbleType":"Couplets",
+                                "thumbnailType":"Couplets",
                                 "categoryName":"Couplet",
                                 "name":"A pot in water, water in a pot...",
                                 "thumbnail_url":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
