@@ -13,13 +13,20 @@ describe("introduction popup service Specs", function(){
         var songsSampleResponse =
                 [
                     {
-                        "thumbnailType": "Songs",
+                        "contentType": "Songs",
                         "categoryName": "Song & Reflection",
-                        "name": "Practice the art of dying",
+                        "englishTranslationTitle": "Practice the art of dying",
                         "poet": "Sharath",
                         "youtubeVideoId": "videoId",
                         "imageUrl": "imgId",
-                        "singer": "Parvathy Baul",
+                        "singers": [
+                            {
+                            "category": "SINGER",
+                            "firstName": "Parvathy",
+                            "middleName": "",
+                            "lastName": "Baul"
+                            }
+                            ],
                         "duration": "09:11"
                     }
                 ]
