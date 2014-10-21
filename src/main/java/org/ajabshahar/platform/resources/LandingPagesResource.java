@@ -1,5 +1,6 @@
 package org.ajabshahar.platform.resources;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -11,28 +12,11 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
+import javax.ws.rs.core.Response;
 
-@Path("/LandingPages")
+@Path("/mainLandingPages")
 public class LandingPagesResource {
-
-    private final SongDAO songDAO;
-    public LandingPagesResource(SongDAO songDAO) {
-
-        this.songDAO = songDAO;
-    }
-
     @GET
-    @Path("/songsPage")
-    @UnitOfWork
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Song> listAllSongsContent() {
-        return songDAO.getShowOnLandingPageSongs();
-    }
-
-
-        @GET
-    @Path("/mainPage")
     @Produces(MediaType.APPLICATION_JSON)
     public String listAllContent()
     {

@@ -19,64 +19,63 @@ htmlGenerator.factory('thumbnailService', function () {
     return _.reduce(details, function(memo, value, index){
           shiftIndex = getShiftIndex(index);
           
-          if(value.category=='SONG'){
-
+          if(value.bubbleType=='Songs'){
               return memo + '<song-with-details overlay-id="oid'+index +'"'+
               ' open="open(\'oid'+index+'\')"'+
-              ' custom  -style="shift'+shiftIndex+'"' +
-              ' img-src="'+details[index].imageUrl+'"'+
+              ' custom-style="shift'+shiftIndex+'"' +
+              ' img-src="'+details[index].thumbnail_url+'"'+
               ' url="'+details[index].youtubeVideoId+'"'+
               ' name="'+details[index].englishTranslationTitle+'"'+
-              ' singer="' + getName(details[index].singer[0]) + '"' +
+              ' singer="' + getName(details[index].singers[0]) + '"' +
               ' category-name="'+details[index].categoryName+'"'+
               ' duration="'+ details[index].duration+'"'+
-              ' poet="' + getName(details[index].poet[0]) + '"></song-with-details>';
+              ' poet="' + getName(details[index].poets[0]) + '"></song-with-details>';
           }
 
-          if(value.category=='Films'){
+          if(value.bubbleType=='Films'){
               return memo + '<film-with-details overlay-id="oid'+index +'"'+
               ' custom-style="shift'+shiftIndex+'"' +
-              ' img-src="'+details[index].imageUrl+'"'+
+              ' img-src="'+details[index].thumbnail_url+'"'+
               ' name="'+details[index].name+'"'+
               ' context="'+details[index].context+'"'+ '></film-with-details>';
           }
 
-          if(value.category=='Reflections'){
+          if(value.bubbleType=='Reflections'){
               return memo + '<reflection-with-details overlay-id="oid'+index +'"'+
               ' custom-style="shift'+shiftIndex+'"' +
-              ' img-src="'+details[index].imageUrl+'"'+
+              ' img-src="'+details[index].thumbnail_url+'"'+
               ' name="'+details[index].name+'"'+
               ' by="'+details[index].by+'"></reflection-with-details>';
           }
 
-          if(value.category=='Words'){
+          if(value.bubbleType=='Words'){
               return memo + '<word-with-details overlay-id="oid'+index + '"'+
               ' custom-style="shift'+shiftIndex+'"' +
-              ' img-src="'+details[index].imageUrl+'"'+
+              ' img-src="'+details[index].thumbnail_url+'"'+
               ' name="'+details[index].name+'"'+
               ' contextual-meaning="'+details[index].contextualMeaning+'">' +
               '</word-with-details>';
           }
 
-          if(value.category=='Gathering'){
+          if(value.bubbleType=='Gathering'){
               return memo + '<gathering-with-details overlay-id="oid'+index  +'"'+
               ' custom-style="shift'+shiftIndex+'"' +
-              ' img-src="'+details[index].imageUrl+'"'+
+              ' img-src="'+details[index].thumbnail_url+'"'+
               ' name="'+details[index].name+'"'+
               ' location="'+details[index].location+'"' +
               ' date="'+details[index].date+'">'+
               '</gathering-with-details>';
           }
 
-          if(value.category=='Couplets'){
+          if(value.bubbleType=='Couplets'){
               return memo + '<couplet-with-details overlay-id="oid'+index +'" custom-style="shift'+shiftIndex+'"' +
-              ' img-src="'+details[index].imageUrl+'"'+
+              ' img-src="'+details[index].thumbnail_url+'"'+
               ' name="'+details[index].name+'"'+
               '</couplet-with-details>';
           }
 
           return memo + '<unknown-format overlay-id="oid'+index +'" custom-style="shift'+shiftIndex+'"' +
-                  ' img-src="'+details[index].imageUrl+'"'+
+                  ' img-src="'+details[index].thumbnail_url+'"'+
                   ' name="'+details[index].name+'"'+
                   ' description="'+details[index].description+'">'+
                   '</unknown-format>'},'');

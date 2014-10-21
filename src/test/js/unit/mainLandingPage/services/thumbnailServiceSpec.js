@@ -13,10 +13,10 @@ describe("Thumbnail service Specs", function(){
 	    var songsSampleResponse =
 	            [
                     {
-                        "category": "SONG",
+                        "bubbleType": "SONG",
                         "categoryName": "Song & Reflection",
                         "englishTranslationTitle": "Practice the art of dying",
-                        "poet": [
+                        "poets": [
                             {
                             "category": "POET",
                             "firstName": "Sharath",
@@ -26,8 +26,8 @@ describe("Thumbnail service Specs", function(){
                             ],
 
                         "youtubeVideoId": "videoId",
-                        "imageUrl": "imgId",
-                        "singer": [
+                        "thumbnail_url": "imgId",
+                        "singers": [
                             {
                             "category": "SINGER",
                             "firstName": "Parvathy",
@@ -54,11 +54,11 @@ describe("Thumbnail service Specs", function(){
 	    var filmsSampleResponse =
             [
                         {
-                            "category":"Films",
+                            "bubbleType":"Films",
                             "categoryName":"Film Episode",
                             "context":"Prahlad Tipanya Meets His Guru",
                             "videoUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
-                            "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
+                            "thumbnail_url":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
                             "name":"KOI SUNTA HAI",
                             "duration":"21 : 00"
                         }
@@ -74,11 +74,11 @@ describe("Thumbnail service Specs", function(){
 	    var reflectionsSampleResponse =
             [
                         {
-                            "category":"Reflections",
+                            "bubbleType":"Reflections",
                             "name":"The Ulatbansi of Kabir",
                             "by":"Linda Hess",
                             "videoUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
-                            "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
+                            "thumbnail_url":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
                         }
             ];
 
@@ -92,11 +92,11 @@ describe("Thumbnail service Specs", function(){
 	    var wordsSampleResponse =
             [
                     {
-                        "category": "Words",
+                        "bubbleType": "Words",
                         "categoryName": "WORD INTRO",
                         "name": "Untellable Tale",
                         "contextualMeaning": "An iconic poetic phrase in Kabir, which evokes a realm of experience beyond description...",
-                        "imageUrl": "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
+                        "thumbnail_url": "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
                     }
             ];
 
@@ -110,11 +110,11 @@ describe("Thumbnail service Specs", function(){
 	    var gatheringsSampleResponse =
             [
                             {
-                                "category":"Gathering",
+                                "bubbleType":"Gathering",
                                 "name":"Bangalore Festival Of Kabir",
                                 "location":"Bangalore",
                                 "date":"2009",
-                                "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
+                                "thumbnail_url":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"
                             }
             ];
 
@@ -129,10 +129,10 @@ describe("Thumbnail service Specs", function(){
 	    var coupletsSampleResponse =
             [
                             {
-                                "category":"Couplets",
+                                "bubbleType":"Couplets",
                                 "categoryName":"Couplet",
                                 "name":"A pot in water, water in a pot...",
-                                "imageUrl":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
+                                "thumbnail_url":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
                             },
             ];
 

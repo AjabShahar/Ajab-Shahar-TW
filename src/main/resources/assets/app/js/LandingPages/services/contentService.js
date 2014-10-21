@@ -1,10 +1,10 @@
 var contentService = function ($http) {
   var getMainLandingPageThumbnails = function () {
-    return $http.get('/api/LandingPages/mainPage');
+    return $http.get('/api/mainLandingPage');
   };
 
   var getSongsLandingPageThumbnails = function () {
-    return $http.get('/api/LandingPages/songsPage');
+    return $http.get('/api/songs/landingPage');
   };
 
   return {

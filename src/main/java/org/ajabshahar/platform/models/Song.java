@@ -1,7 +1,6 @@
 package org.ajabshahar.platform.models;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -12,8 +11,8 @@ import java.util.Set;
                 query = "SELECT p FROM Song p"
         ),
         @NamedQuery(
-                name = "org.ajabshahar.platform.models.Song.findShowOnLandingPageSongs",
-                query = "SELECT p FROM Song p where p.showOnLandingPage = true "
+                name = "org.ajabshahar.platform.models.Song.findAllSongsOnLandingPage",
+                query = "SELECT p.duration FROM Song p where p.showOnLandingPage=true"
         )
 })
 public class Song {
@@ -25,7 +24,7 @@ public class Song {
     private Boolean showOnLandingPage;
 
     @Column(name = "CATEGORY", nullable = false)
-    private String category;
+    private String categoryName;
 
     @Column(name = "DURATION", nullable = true)
     private String duration;
@@ -46,20 +45,22 @@ public class Song {
     @Column(name = "YOUTUBE_VIDEO_ID", nullable = false)
     private String youtubeVideoId;
 
+    @Column(name = "THUMBNAIL_URL")
+    private String thumbnail_url;
+
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "SONG_SINGER", joinColumns = { @JoinColumn(name = "SONG_ID", referencedColumnName = "ID") },
             inverseJoinColumns = { @JoinColumn(name = "SINGER_ID", referencedColumnName = "ID")})
-    private Set<PersonDetails> singer;
-
+    private Set<PersonDetails> singers;
 
     @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinTable(name = "SONG_POET", joinColumns = { @JoinColumn(name = "SONG_ID", referencedColumnName = "ID") },
             inverseJoinColumns = { @JoinColumn(name = "POET_ID", referencedColumnName = "ID") })
-    private Set<PersonDetails> poet;
+    private Set<PersonDetails> poets;
 
-    public Set<PersonDetails> getPoet(){return poet;}
+    public Set<PersonDetails> getPoets(){return poets;}
 
-    public void setPoet(Set<PersonDetails> poet){this.poet = poet;}
+    public void setPoets(Set<PersonDetails> poets){this.poets = poets;}
 
     public String getOriginalTitle() {
         return original;
@@ -93,12 +94,12 @@ public class Song {
         this.showOnLandingPage = showOnLandingPage;
     }
 
-    public String getCategory() {
-        return category;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public String getDuration() {
@@ -117,11 +118,19 @@ public class Song {
         this.youtubeVideoId = youtubeVideoId;
     }
 
-    public Set<PersonDetails> getSinger() {
-        return singer;
+    public Set<PersonDetails> getSingers() {
+        return singers;
     }
 
-    public void setSinger(Set<PersonDetails> singers) {
-        this.singer = singers;
+    public void setSingers(Set<PersonDetails> singers) {
+        this.singers = singers;
+    }
+
+    public String getThumbnail_url() {
+        return thumbnail_url;
+    }
+
+    public void setThumbnail_url(String thumbnail_url) {
+        this.thumbnail_url = thumbnail_url;
     }
 }

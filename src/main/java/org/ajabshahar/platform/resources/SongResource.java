@@ -14,7 +14,7 @@ import com.google.gson.Gson;
 import org.ajabshahar.platform.daos.SongDAO;
 import org.ajabshahar.platform.models.Song;
 
-@Path("/Song")
+@Path("/songs")
 @Produces(MediaType.APPLICATION_JSON)
 public class SongResource {
     private final SongDAO songDAO;
@@ -36,6 +36,13 @@ public class SongResource {
     @UnitOfWork
     public List<Song> listAllSongValues() {
         return songDAO.findAll();
+    }
+
+    @GET
+    @Path("/landingPage")
+    @UnitOfWork
+    public List<Song> listAllSongOnLandingValues() {
+        return songDAO.findAllSongsOnLandingPage();
     }
 
 }
