@@ -13,7 +13,7 @@ describe("introduction popup service Specs", function(){
         var songsSampleResponse =
                 [
                     {
-                        "category": "Songs",
+                        "thumbnailType": "Songs",
                         "categoryName": "Song & Reflection",
                         "name": "Practice the art of dying",
                         "poet": "Sharath",
