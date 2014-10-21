@@ -26,12 +26,10 @@ htmlGenerator.factory('thumbnailService', function () {
               ' img-src="'+details[index].thumbnail_url+'"'+
               ' url="'+details[index].youtubeVideoId+'"'+
               ' name="'+details[index].englishTranslationTitle+'"'+
-              ' singer="' + "Singer" + '"' +
-              //getName(details[index].singers[0])
               ' category-name="'+details[index].categoryName+'"'+
               ' duration="'+ details[index].duration+'"'+
-              ' poet="' + "Poet" + '">'+
-              //getName(details[index].poets[0])
+              ' singer="' + getName(details[index].singers[0]) + '"' +
+              ' poet="' + getName(details[index].poets[0]) + '">' +
               '</song-with-details>';
           }
 

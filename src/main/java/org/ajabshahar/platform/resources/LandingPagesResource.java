@@ -38,13 +38,26 @@ public class LandingPagesResource {
         JsonObject thirteenElement = new JsonObject();
         JsonObject fourteenElement = new JsonObject();
 
+        JsonObject poetObject = new JsonObject();
+        JsonArray poetArray = new JsonArray();
+        JsonObject singerObject = new JsonObject();
+        JsonArray singerArray = new JsonArray();
+
         firstElement.addProperty("thumbnailType", "Songs");
         firstElement.addProperty("categoryName", "Song & Reflection");
         firstElement.addProperty("englishTranslationTitle", "For a few days,O Heart");
-        firstElement.addProperty("poets", "ROSHIK");
+        poetObject.addProperty("firstName", "ROSHIK");
+        poetObject.addProperty("middleName","");
+        poetObject.addProperty("lastName","");
+        poetArray.add(poetObject);
+        firstElement.add("poets", poetArray);
         firstElement.addProperty("youtubeVideoId", "tNh2kjmSzPw");
         firstElement.addProperty("thumbnail_url", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
-        firstElement.addProperty("singers", "Parvathy Baul");
+        singerObject.addProperty("firstName","Parvathy");
+        singerObject.addProperty("middleName","");
+        singerObject.addProperty("lastName","Baul");
+        singerArray.add(singerObject);
+        firstElement.add("singers", singerArray);
         firstElement.addProperty("duration", "09:11");
 
         secondElement.addProperty("thumbnailType", "Films");
@@ -71,10 +84,20 @@ public class LandingPagesResource {
         forthElement.addProperty("categoryName", "Song & Talk");
         forthElement.addProperty("englishTranslationTitle", "The Cart of Meditation is Tottering");
         forthElement.addProperty("context", "Prahlad Tipanya Meets His Guru");
-        forthElement.addProperty("poets", "Fakru");
+        poetObject.addProperty("firstName","Fakru");
+        poetObject.addProperty("middleName","" );
+        poetObject.addProperty("lastName","");
+        poetArray.remove(0);
+        poetArray.add(poetObject);
+        forthElement.add("poets",poetArray);
         forthElement.addProperty("youtubeVideoId", "7Gg0vSOZhJQ");
         forthElement.addProperty("thumbnail_url", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
-        forthElement.addProperty("singers", "Parvathy Baul");
+        singerObject.addProperty("firstName","Parvathy");
+        singerObject.addProperty("middleName","");
+        singerObject.addProperty("lastName","Baul");
+        singerArray.remove(0);
+        singerArray.add(singerObject);
+        forthElement.add("singers", singerArray);
         forthElement.addProperty("duration", "35 : 09");
 
         fifthElement.addProperty("thumbnailType", "Unknown");
@@ -109,10 +132,19 @@ public class LandingPagesResource {
         eightElement.addProperty("thumbnailType", "Songs");
         eightElement.addProperty("categoryName", "Song");
         eightElement.addProperty("englishTranslationTitle", "In This Body");
-        eightElement.addProperty("poets", "ROSHIK");
+        poetObject.addProperty("firstName","ROSHIK");
+        poetObject.addProperty("middleName","");
+        poetObject.addProperty("lastName","");
+        poetArray.add(poetObject);
+        eightElement.add("poets",poetArray);
         eightElement.addProperty("youtubeVideoId", "J4IU5tDlD_s");
         eightElement.addProperty("thumbnail_url", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
-        eightElement.addProperty("singers", "Parvathy Baul");
+        singerObject.addProperty("firstName","Parvathy");
+        singerObject.addProperty("middleName","");
+        singerObject.addProperty("lastName","Baul");
+        singerArray.remove(0);
+        singerArray.add(singerObject);
+        eightElement.add("singers",singerArray);
         eightElement.addProperty("duration", "09 : 11");
 
         ninthElement.addProperty("thumbnailType", "Relections");
