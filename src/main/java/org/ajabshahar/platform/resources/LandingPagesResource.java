@@ -43,7 +43,7 @@ public class LandingPagesResource {
         firstElement.addProperty("englishTranslationTitle", "For a few days,O Heart");
         firstElement.addProperty("poets", "ROSHIK");
         firstElement.addProperty("youtubeVideoId", "tNh2kjmSzPw");
-        firstElement.addProperty("imageUrl", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
+        firstElement.addProperty("thumbnail_url", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
         firstElement.addProperty("singers", "Parvathy Baul");
         firstElement.addProperty("duration", "09:11");
 
@@ -73,7 +73,7 @@ public class LandingPagesResource {
         forthElement.addProperty("context", "Prahlad Tipanya Meets His Guru");
         forthElement.addProperty("poets", "Fakru");
         forthElement.addProperty("youtubeVideoId", "7Gg0vSOZhJQ");
-        forthElement.addProperty("imageUrl", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
+        forthElement.addProperty("thumbnail_url", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
         forthElement.addProperty("singers", "Parvathy Baul");
         forthElement.addProperty("duration", "35 : 09");
 
@@ -111,7 +111,7 @@ public class LandingPagesResource {
         eightElement.addProperty("englishTranslationTitle", "In This Body");
         eightElement.addProperty("poets", "ROSHIK");
         eightElement.addProperty("youtubeVideoId", "J4IU5tDlD_s");
-        eightElement.addProperty("imageUrl", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
+        eightElement.addProperty("thumbnail_url", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
         eightElement.addProperty("singers", "Parvathy Baul");
         eightElement.addProperty("duration", "09 : 11");
 
