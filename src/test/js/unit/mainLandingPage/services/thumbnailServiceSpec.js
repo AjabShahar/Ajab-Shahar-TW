@@ -46,10 +46,10 @@ describe("Thumbnail service Specs", function(){
             ' img-src="imgId"'+
             ' url="videoId"'+
             ' name="Practice the art of dying"'+
-             //singer="Parvathy Baul"
             ' category-name="Song & Reflection"'+
             ' duration="09:11"'+
-            //' poet="Sharath">
+            ' singer="Parvathy Baul"'+
+            ' poet="Sharath">'+
             '</song-with-details>');
 	});
 
