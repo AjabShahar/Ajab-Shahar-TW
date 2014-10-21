@@ -22,6 +22,7 @@
     <script type="text/javascript" src="../../js/LandingPages/services/contentService.js"></script>
     <script type="text/javascript" src="../../js/LandingPages/app.js"></script>
     <script type="text/javascript" src="../../js/LandingPages/services/htmlGenerator.js"></script>
+    <script type="text/javascript" src="../../js/LandingPages/services/songThumbnailService.js"></script>
     <script type="text/javascript" src="../../js/LandingPages/services/thumbnailService.js"></script>
     <script type="text/javascript" src="../../js/LandingPages/services/introductionPopupService.js"></script>
     <script type="text/javascript" src="../../js/LandingPages/controllers/songsController.js"></script>
@@ -38,6 +39,8 @@
 </head>
 <body ng-controller="songsController" class="page-songs">
 <ajab-shahar-header should-expand-by-default="true"></ajab-shahar-header>
+
+<div bind-unsafe-html="popupContent"></div>
 
 <!-- thumbnail and middle content starts -->
 <div class='ajab-container'>

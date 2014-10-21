@@ -12,7 +12,7 @@ import java.util.Set;
         ),
         @NamedQuery(
                 name = "org.ajabshahar.platform.models.Song.findAllSongsOnLandingPage",
-                query = "SELECT p.duration FROM Song p where p.showOnLandingPage=true"
+                          query = "SELECT p FROM Song p where p.showOnLandingPage=true"
         )
 })
 public class Song {

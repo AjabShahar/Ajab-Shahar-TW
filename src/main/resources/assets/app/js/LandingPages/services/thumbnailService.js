@@ -1,39 +1,17 @@
-htmlGenerator.factory('thumbnailService', function () {
+var thumbnailService= function (songThumbnailService) {
     var getShiftIndex = function(index){
         return ((4+index) % 6) == 0 ? 6 : ((4+index) % 6);
     };
 
-    var prependSpaceIfNotEmpty = function(string) {
-      return (string != "") ? string = ' ' + string : string = string;
-    };
-
-    var getName = function (person) {
-      var firstName = person.firstName,
-      middleName = person.middleName,
-      lastName = person.lastName;
-
-      return firstName + prependSpaceIfNotEmpty(middleName) + prependSpaceIfNotEmpty(lastName);
-    };
-
-    var getThumbnailWithBubble = function (details) {
+    var getThumbnailWithBubble = function (details,contentType) {
     return _.reduce(details, function(memo, value, index){
           shiftIndex = getShiftIndex(index);
           
-          if(value.thumbnailType=='Songs'){
-              return memo + '<song-with-details overlay-id="oid'+index +'"'+
-              ' open="open(\'oid'+index+'\')"'+
-              ' custom-style="shift'+shiftIndex+'"' +
-              ' img-src="'+details[index].thumbnail_url+'"'+
-              ' url="'+details[index].youtubeVideoId+'"'+
-              ' name="'+details[index].englishTranslationTitle+'"'+
-              ' category-name="'+details[index].categoryName+'"'+
-              ' duration="'+ details[index].duration+'"'+
-              ' singer="' + getName(details[index].singers[0]) + '"' +
-              ' poet="' + getName(details[index].poets[0]) + '">' +
-              '</song-with-details>';
+          if(contentType||value.contentType=='Songs'){
+            return memo+songThumbnailService.getSongThumbnailWithBubble(details[index],'oid'+index);
           }
 
-          if(value.thumbnailType=='Films'){
+          if(value.contentType=='Films'){
               return memo + '<film-with-details overlay-id="oid'+index +'"'+
               ' custom-style="shift'+shiftIndex+'"' +
               ' img-src="'+details[index].thumbnail_url+'"'+
@@ -41,7 +19,7 @@ htmlGenerator.factory('thumbnailService', function () {
               ' context="'+details[index].context+'"'+ '></film-with-details>';
           }
 
-          if(value.thumbnailType=='Reflections'){
+          if(value.contentType=='Reflections'){
               return memo + '<reflection-with-details overlay-id="oid'+index +'"'+
               ' custom-style="shift'+shiftIndex+'"' +
               ' img-src="'+details[index].thumbnail_url+'"'+
@@ -49,7 +27,7 @@ htmlGenerator.factory('thumbnailService', function () {
               ' by="'+details[index].by+'"></reflection-with-details>';
           }
 
-          if(value.thumbnailType=='Words'){
+          if(value.contentType=='Words'){
               return memo + '<word-with-details overlay-id="oid'+index + '"'+
               ' custom-style="shift'+shiftIndex+'"' +
               ' img-src="'+details[index].thumbnail_url+'"'+
@@ -58,7 +36,7 @@ htmlGenerator.factory('thumbnailService', function () {
               '</word-with-details>';
           }
 
-          if(value.thumbnailType=='Gathering'){
+          if(value.contentType=='Gathering'){
               return memo + '<gathering-with-details overlay-id="oid'+index  +'"'+
               ' custom-style="shift'+shiftIndex+'"' +
               ' img-src="'+details[index].thumbnail_url+'"'+
@@ -68,7 +46,7 @@ htmlGenerator.factory('thumbnailService', function () {
               '</gathering-with-details>';
           }
 
-          if(value.thumbnailType=='Couplets'){
+          if(value.contentType=='Couplets'){
               return memo + '<couplet-with-details overlay-id="oid'+index +'" custom-style="shift'+shiftIndex+'"' +
               ' img-src="'+details[index].thumbnail_url+'"'+
               ' name="'+details[index].name+'"'+
@@ -85,4 +63,6 @@ htmlGenerator.factory('thumbnailService', function () {
   return {
     getThumbnailWithBubble: getThumbnailWithBubble,
   };
-});
+};
+
+htmlGenerator.factory('thumbnailService',['songThumbnailService', thumbnailService]);

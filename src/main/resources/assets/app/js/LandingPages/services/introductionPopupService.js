@@ -1,7 +1,7 @@
 htmlGenerator.factory('introductionPopupService', function () {
-  var getPopupDetails = function (details) {
+  var getPopupDetails = function (details,contentType) {
       return _.reduce(details, function(memo, value, index){
-          if(value.thumbnailType=='Songs'){
+          if(contentType=='Songs' || value.contentType=='Songs'){
               return memo+
                   '<pop-up id="oid'+index+'" width="100" show="shouldShow(\'oid'+index+'\')"'+
                   ' on-close="onClose(\'oid'+index+'\')" closeButton="true">'+

@@ -4,8 +4,8 @@ var songsController = function($scope,contentService,thumbnailService,introducti
     $scope.shouldBeOpen={};
     $scope.init = function(){
         contentService.getSongsLandingPageThumbnails().then(function(result){
-            $scope.thumbnailContent = thumbnailService.getThumbnailWithBubble(result.data);
-            $scope.popupContent = introductionPopupService.getPopupDetails(result.data);
+            $scope.thumbnailContent = thumbnailService.getThumbnailWithBubble(result.data,'Songs');
+            $scope.popupContent = introductionPopupService.getPopupDetails(result.data,'Songs');
         });
     }
 
@@ -19,6 +19,10 @@ var songsController = function($scope,contentService,thumbnailService,introducti
 
     $scope.shouldShow = function(id){
         return $scope.shouldBeOpen[id];
+    }
+
+    $scope.isClosed = function(id){
+        return !$scope.shouldBeOpen[id];
     }
 
     $scope.init();
