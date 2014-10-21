@@ -10,6 +10,10 @@ import java.util.Set;
         @NamedQuery(
                 name = "org.ajabshahar.platform.models.Song.findAll",
                 query = "SELECT p FROM Song p"
+        ),
+        @NamedQuery(
+                name = "org.ajabshahar.platform.models.Song.findShowOnLandingPageSongs",
+                query = "SELECT p FROM Song p where p.showOnLandingPage = true "
         )
 })
 public class Song {

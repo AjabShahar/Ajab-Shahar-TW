@@ -3,43 +3,33 @@ package org.ajabshahar.platform.resources;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import io.dropwizard.hibernate.UnitOfWork;
+import org.ajabshahar.platform.daos.SongDAO;
+import org.ajabshahar.platform.models.Song;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @Path("/LandingPages")
 public class LandingPagesResource {
 
-    public LandingPagesResource() {
+    private final SongDAO songDAO;
+    public LandingPagesResource(SongDAO songDAO) {
 
+        this.songDAO = songDAO;
     }
 
     @GET
     @Path("/songsPage")
+    @UnitOfWork
     @Produces(MediaType.APPLICATION_JSON)
-    public String listAllSongsContent() {
-        JsonObject result = new JsonObject();
-        JsonArray jsonArray = new JsonArray();
-
-        JsonObject firstElement = new JsonObject();
-
-        firstElement.addProperty("category", "Songs");
-        firstElement.addProperty("categoryName", "Song & Reflection");
-        firstElement.addProperty("name", "For a few days,O Heart");
-        firstElement.addProperty("poet", "ROSHIK");
-        firstElement.addProperty("youtubeVideoId", "tNh2kjmSzPw");
-        firstElement.addProperty("imageUrl", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
-        firstElement.addProperty("singer", "Parvathy Baul");
-        firstElement.addProperty("duration", "09:11");
-
-        jsonArray.add(firstElement);
-
-        result.add("details", jsonArray);
-
-        return result.toString();
+    public List<Song> listAllSongsContent() {
+        return songDAO.getShowOnLandingPageSongs();
     }
+
 
         @GET
     @Path("/mainPage")

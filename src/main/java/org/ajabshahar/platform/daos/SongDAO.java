@@ -23,4 +23,8 @@ public class SongDAO extends AbstractDAO<Song> {
     public List<Song> findAll() {
         return list(namedQuery("org.ajabshahar.platform.models.Song.findAll"));
     }
+
+    public List<Song> getShowOnLandingPageSongs() {
+        return list(namedQuery("org.ajabshahar.platform.models.Song.findShowOnLandingPageSongs"));
+    }
 }

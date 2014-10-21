@@ -23,7 +23,7 @@ htmlGenerator.factory('thumbnailService', function () {
 
               return memo + '<song-with-details overlay-id="oid'+index +'"'+
               ' open="open(\'oid'+index+'\')"'+
-              ' custom-style="shift'+shiftIndex+'"' +
+              ' custom  -style="shift'+shiftIndex+'"' +
               ' img-src="'+details[index].imageUrl+'"'+
               ' url="'+details[index].youtubeVideoId+'"'+
               ' name="'+details[index].englishTranslationTitle+'"'+
