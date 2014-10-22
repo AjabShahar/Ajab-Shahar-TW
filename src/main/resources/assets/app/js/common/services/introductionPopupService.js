@@ -14,10 +14,10 @@ htmlGenerator.factory('introductionPopupService', function () {
   var getPopupDetails = function (details,contentType) {
       return _.reduce(details.songs, function(memo, value, index){
             return memo+
-                '<pop-up id="oid'+index+'" width="100" show="shouldShow(\'oid'+index+'\')"'+
-                ' on-close="onClose(\'oid'+index+'\')" closeButton="true">'+
+                '<pop-up id="oid'+index+'" width="100" show="popupService.shouldShow(\'oid'+index+'\')"'+
+                ' on-close="popupService.onClose(\'oid'+index+'\')" closeButton="true">'+
                   '<song-introduction singer="'+getName(details.songs[index].singers[0])+'" name="'+details.songs[index].englishTranslationTitle
-                    +'" url="'+details.songs[index].youtubeVideoId+'" close-video="isClosed(\'oid'+index+'\')"></song-introduction>'+
+                    +'" url="'+details.songs[index].youtubeVideoId+'" close-video="popupService.isClosed(\'oid'+index+'\')"></song-introduction>'+
                 '</pop-up>';
       },'');
   };

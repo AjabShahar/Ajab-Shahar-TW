@@ -17,7 +17,7 @@ songThumbnailService = function (){
 
     var getThumbnailWithBubble = function(details,id,customStyle){
           return '<song-with-details overlay-id="'+id +'"'+
-          ' open="open(\''+id+'\')"'+
+          ' open="popupService.open(\''+id+'\')"'+
           ' custom-style="'+customStyle+'"' +
           ' img-src="'+details.thumbnail_url+'"'+
           ' url="'+details.youtubeVideoId+'"'+

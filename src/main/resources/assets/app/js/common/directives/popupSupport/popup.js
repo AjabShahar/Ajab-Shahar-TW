@@ -1,6 +1,4 @@
-document.createElement('pop-up');
-var popupSupport = angular.module('PopupSupport', [])
-    .directive('popUp', function() {
+var popUp = function() {
         return {
             restrict: 'E',
             transclude: true,
@@ -28,4 +26,6 @@ var popupSupport = angular.module('PopupSupport', [])
                 }
             }
         };
-    });
+    };
+
+popupSupport.directive('popUp',popUp);

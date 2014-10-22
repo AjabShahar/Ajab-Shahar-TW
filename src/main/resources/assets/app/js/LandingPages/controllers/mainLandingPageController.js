@@ -1,7 +1,7 @@
-var mainLandingPageController = function($scope,contentService,mainLandingPageThumbnailService,introductionPopupService){
+var mainLandingPageController = function($scope,contentService,mainLandingPageThumbnailService,introductionPopupService,popupService){
     $scope.popupContent=null;
     $scope.thumbnailContent=null;
-    $scope.shouldBeOpen={};
+    $scope.popupService = popupService;
     $scope.init = function(){
         contentService.getMainLandingPageThumbnails().then(function(result){
             $scope.thumbnailContent = mainLandingPageThumbnailService.getThumbnailWithBubble(result.data);
@@ -9,23 +9,7 @@ var mainLandingPageController = function($scope,contentService,mainLandingPageTh
         });
     }
 
-    $scope.open = function(id){
-        $scope.shouldBeOpen[id] = true;
-    }
-
-    $scope.onClose = function(id){
-        $scope.shouldBeOpen[id] = false;
-    }
-
-    $scope.shouldShow = function(id){
-        return $scope.shouldBeOpen[id];
-    }
-
-    $scope.isClosed = function(id){
-        return !$scope.shouldBeOpen[id];
-    }
-
     $scope.init();
 }
 
-mainLandingPageApp.controller('mainLandingPageController',['$scope','contentService','mainLandingPageThumbnailService','introductionPopupService',mainLandingPageController]);
+ajabShaharApp.controller('mainLandingPageController',['$scope','contentService','mainLandingPageThumbnailService','introductionPopupService','popupService',mainLandingPageController]);
