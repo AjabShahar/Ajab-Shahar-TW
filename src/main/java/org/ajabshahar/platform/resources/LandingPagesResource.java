@@ -42,9 +42,13 @@ public class LandingPagesResource {
         JsonArray poetArray = new JsonArray();
         JsonObject singerObject = new JsonObject();
         JsonArray singerArray = new JsonArray();
+        JsonObject categoryObject = new JsonObject();
+        JsonArray categoryArray = new JsonArray();
 
         firstElement.addProperty("contentType", "Songs");
-        firstElement.addProperty("categoryName", "Song & Reflection");
+        categoryObject.addProperty("name","Song & Reflection");
+        categoryArray.add(categoryObject);
+        firstElement.add("category",categoryArray);
         firstElement.addProperty("englishTranslationTitle", "For a few days,O Heart");
         poetObject.addProperty("firstName", "ROSHIK");
         poetObject.addProperty("middleName","");
@@ -61,7 +65,10 @@ public class LandingPagesResource {
         firstElement.addProperty("duration", "09:11");
 
         secondElement.addProperty("contentType", "Films");
-        secondElement.addProperty("categoryName", "Film Episode");
+        categoryObject.addProperty("name","Film Episode");
+        categoryArray.remove(0);
+        categoryArray.add(categoryObject);
+        secondElement.add("category",categoryArray);
         secondElement.addProperty("name", "KOI SUNTA HAI");
         secondElement.addProperty("context", "Prahlad Tipanya Meets His Guru");
         secondElement.addProperty("poet", "Sharath");
@@ -71,7 +78,10 @@ public class LandingPagesResource {
         secondElement.addProperty("duration", "21 : 00");
 
         thirdElement.addProperty("contentType", "Reflections");
-        thirdElement.addProperty("categoryName", "Film Episode");
+        categoryObject.addProperty("name","Film Episode");
+        categoryArray.remove(0);
+        categoryArray.add(categoryObject);
+        thirdElement.add("category",categoryArray);
         thirdElement.addProperty("name", "The Ulatbansi of Kabir by Linda Hess");
         thirdElement.addProperty("context", "Prahlad Tipanya Meets His Guru");
         thirdElement.addProperty("poet", "Sharath");
@@ -81,7 +91,10 @@ public class LandingPagesResource {
         thirdElement.addProperty("duration", "21 : 00");
 
         forthElement.addProperty("contentType", "Songs");
-        forthElement.addProperty("categoryName", "Song & Talk");
+        categoryObject.addProperty("name","Song & Talk");
+        categoryArray.remove(0);
+        categoryArray.add(categoryObject);
+        forthElement.add("category", categoryArray);
         forthElement.addProperty("englishTranslationTitle", "The Cart of Meditation is Tottering");
         forthElement.addProperty("context", "Prahlad Tipanya Meets His Guru");
         poetObject.addProperty("firstName","Fakru");
@@ -101,7 +114,10 @@ public class LandingPagesResource {
         forthElement.addProperty("duration", "35 : 09");
 
         fifthElement.addProperty("contentType", "Unknown");
-        fifthElement.addProperty("categoryName", "School Experiment");
+        categoryObject.addProperty("name","School Experiment");
+        categoryArray.remove(0);
+        categoryArray.add(categoryObject);
+        fifthElement.add("category", categoryArray);
         fifthElement.addProperty("description", "Dance drama by children of HBP School");
         fifthElement.addProperty("name", "Parrot & The Jungle Fire");
         fifthElement.addProperty("context", "Prahlad Tipanya Meets His Guru");
@@ -113,7 +129,10 @@ public class LandingPagesResource {
         fifthElement.addProperty("duration", "35 : 09");
 
         sixthElement.addProperty("contentType", "Words");
-        sixthElement.addProperty("categoryName", "WORD INTRO");
+        categoryObject.addProperty("name","Word Intro");
+        categoryArray.remove(0);
+        categoryArray.add(categoryObject);
+        sixthElement.add("category", categoryArray);
         sixthElement.addProperty("name", "Untellable Tale");
         sixthElement.addProperty("contextualMeaning", "An iconic poetic phrase in Kabir, which evokes a realm of experience beyond description...");
         sixthElement.addProperty("thumbnail_url", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
@@ -121,7 +140,10 @@ public class LandingPagesResource {
         sixthElement.addProperty("duration", "35 : 09");
 
         seventhElement.addProperty("contentType", "Unknown");
-        seventhElement.addProperty("categoryName", "Story");
+        categoryObject.addProperty("name","Story");
+        categoryArray.remove(0);
+        categoryArray.add(categoryObject);
+        seventhElement.add("category",categoryArray);
         seventhElement.addProperty("name", "10 Images X 100 Words");
         seventhElement.addProperty("description", "Photo Essay by SMRITI CHANCHANI & VIPUL RIKHI");
         seventhElement.addProperty("contextualMeaning", "An iconic poetic phrase in Kabir, which evokes a realm of experience beyond description...");
@@ -130,11 +152,15 @@ public class LandingPagesResource {
         seventhElement.addProperty("duration", "35 : 09");
 
         eightElement.addProperty("contentType", "Songs");
-        eightElement.addProperty("categoryName", "Song");
+        categoryObject.addProperty("name","Song");
+        categoryArray.remove(0);
+        categoryArray.add(categoryObject);
+        eightElement.add("category",categoryArray);
         eightElement.addProperty("englishTranslationTitle", "In This Body");
         poetObject.addProperty("firstName","ROSHIK");
         poetObject.addProperty("middleName","");
         poetObject.addProperty("lastName","");
+        poetArray.remove(0);
         poetArray.add(poetObject);
         eightElement.add("poets",poetArray);
         eightElement.addProperty("youtubeVideoId", "J4IU5tDlD_s");
@@ -148,7 +174,10 @@ public class LandingPagesResource {
         eightElement.addProperty("duration", "09 : 11");
 
         ninthElement.addProperty("contentType", "Relections");
-        ninthElement.addProperty("categoryName", "Relection");
+        categoryObject.addProperty("name","Reflection");
+        categoryArray.remove(0);
+        categoryArray.add(categoryObject);
+        ninthElement.add("category", categoryArray);
         ninthElement.addProperty("name", "Reinterpreting Kabir’s life & times by PURUSHOTTAM AGRAWAL");
         ninthElement.addProperty("description", "Reinterpreting Kabir’s life & times");
         ninthElement.addProperty("singer", "MUKHTIYAR ALI");
@@ -158,7 +187,10 @@ public class LandingPagesResource {
         ninthElement.addProperty("duration", "09 : 11");
 
         tenthElement.addProperty("contentType", "Gathering");
-        tenthElement.addProperty("categoryName", "Relection");
+        categoryObject.addProperty("name","Reflection");
+        categoryArray.remove(0);
+        categoryArray.add(categoryObject);
+        tenthElement.add("category", categoryArray);
         tenthElement.addProperty("name", "Bangalore Festival Of Kabir");
         tenthElement.addProperty("description", "Reinterpreting Kabir’s life & times");
         tenthElement.addProperty("singer", "MUKHTIYAR ALI");
@@ -170,7 +202,10 @@ public class LandingPagesResource {
         tenthElement.addProperty("duration", "09 : 11");
 
         eleventhElement.addProperty("contentType", "Couplets");
-        eleventhElement.addProperty("categoryName", "Couplet");
+        categoryObject.addProperty("name","Couplet");
+        categoryArray.remove(0);
+        categoryArray.add(categoryObject);
+        eleventhElement.add("category", categoryArray);
         eleventhElement.addProperty("name", "A pot in water, water in a pot...");
         eleventhElement.addProperty("description", "Reinterpreting Kabir’s life & times");
         eleventhElement.addProperty("singer", "MUKHTIYAR ALI");
@@ -182,7 +217,10 @@ public class LandingPagesResource {
         eleventhElement.addProperty("duration", "09 : 11");
 
         twelfthElement.addProperty("contentType", "Couplets");
-        twelfthElement.addProperty("categoryName", "Couplet");
+        categoryObject.addProperty("name","Couplet");
+        categoryArray.remove(0);
+        categoryArray.add(categoryObject);
+        twelfthElement.add("category", categoryArray);
         twelfthElement.addProperty("name", "A pot in water, water in a pot...");
         twelfthElement.addProperty("description", "Reinterpreting Kabir’s life & times");
         twelfthElement.addProperty("singer", "MUKHTIYAR ALI");
@@ -193,20 +231,26 @@ public class LandingPagesResource {
         twelfthElement.addProperty("singer", "Parvathy Baul");
         twelfthElement.addProperty("duration", "09 : 11");
 
-        thirdElement.addProperty("contentType", "Gathering");
-        thirdElement.addProperty("categoryName", "Couplet");
-        thirdElement.addProperty("name", "Evening With Madan Gopal Singh");
-        thirdElement.addProperty("description", "Bangalore 2011");
-        thirdElement.addProperty("singer", "MUKHTIYAR ALI");
-        thirdElement.addProperty("poet", "ULLEH SHAH0");
-        thirdElement.addProperty("date", "2009");
-        thirdElement.addProperty("location", "Bangalore");
-        thirdElement.addProperty("thumbnail_url", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
-        thirdElement.addProperty("singer", "Parvathy Baul");
-        thirdElement.addProperty("duration", "09 : 11");
+        thirteenElement.addProperty("contentType", "Gathering");
+        categoryObject.addProperty("name","Couplet");
+        categoryArray.remove(0);
+        categoryArray.add(categoryObject);
+        thirteenElement.add("category", categoryArray);
+        thirteenElement.addProperty("name", "Evening With Madan Gopal Singh");
+        thirteenElement.addProperty("description", "Bangalore 2011");
+        thirteenElement.addProperty("singer", "MUKHTIYAR ALI");
+        thirteenElement.addProperty("poet", "ULLEH SHAH0");
+        thirteenElement.addProperty("date", "2009");
+        thirteenElement.addProperty("location", "Bangalore");
+        thirteenElement.addProperty("thumbnail_url", "http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG");
+        thirteenElement.addProperty("singer", "Parvathy Baul");
+        thirteenElement.addProperty("duration", "09 : 11");
 
         fourteenElement.addProperty("contentType", "Gathering");
-        fourteenElement.addProperty("categoryName", "Couplet");
+        categoryObject.addProperty("name","Couplet");
+        categoryArray.remove(0);
+        categoryArray.add(categoryObject);
+        fourteenElement.add("category", categoryObject);
         fourteenElement.addProperty("name", "Evening With Madan Gopal Singh");
         fourteenElement.addProperty("description", "Bangalore 2011");
         fourteenElement.addProperty("singer", "MUKHTIYAR ALI");
