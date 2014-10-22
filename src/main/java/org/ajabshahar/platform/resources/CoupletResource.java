@@ -11,7 +11,7 @@ import org.ajabshahar.platform.models.Couplet;
 
 import java.util.List;
 
-@Path("/Couplet")
+@Path("/couplets")
 @Produces(MediaType.APPLICATION_JSON)
 public class CoupletResource {
 
@@ -34,5 +34,12 @@ public class CoupletResource {
     @UnitOfWork
     public List<Couplet> listAllWordDetails() {
         return coupletDAO.findAll();
+    }
+
+    @GET
+    @Path("/landingPage")
+    @UnitOfWork
+    public List<Couplet> listAllOnLandingValues() {
+        return coupletDAO.findAllOnLandingPage();
     }
 }

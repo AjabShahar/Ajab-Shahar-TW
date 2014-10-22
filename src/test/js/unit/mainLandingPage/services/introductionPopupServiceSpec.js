@@ -10,27 +10,27 @@ describe("introduction popup service Specs", function(){
     }));
 
     it("should get popup for songs", function(){
-        var songsSampleResponse =
-                [
-                    {
-                        "contentType": "Songs",
-                        "categoryName": "Song & Reflection",
-                        "englishTranslationTitle": "Practice the art of dying",
-                        "poet": "Sharath",
-                        "youtubeVideoId": "videoId",
-                        "imageUrl": "imgId",
-                        "singers": [
-                            {
-                            "category": "SINGER",
-                            "firstName": "Parvathy",
-                            "middleName": "",
-                            "lastName": "Baul"
-                            }
-                            ],
-                        "duration": "09:11"
-                    }
-                ]
-        ;
+        var songsSampleResponse ={"songs":
+            [
+                {
+                    "contentType": "Songs",
+                    "categoryName": "Song & Reflection",
+                    "englishTranslationTitle": "Practice the art of dying",
+                    "poet": "Sharath",
+                    "youtubeVideoId": "videoId",
+                    "imageUrl": "imgId",
+                    "singers": [
+                        {
+                        "category": "SINGER",
+                        "firstName": "Parvathy",
+                        "middleName": "",
+                        "lastName": "Baul"
+                        }
+                        ],
+                    "duration": "09:11"
+                }
+            ]
+        };
 
         var landingPageThumbnails = service.getPopupDetails(songsSampleResponse);
 

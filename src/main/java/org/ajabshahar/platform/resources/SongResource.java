@@ -46,10 +46,7 @@ public class SongResource {
     @UnitOfWork
     @Produces(MediaType.APPLICATION_JSON)
     public List<Song> listAllSongOnLandingValues() {
-
-        List<Song> songList = new ArrayList<Song>();
-        songList = songDAO.findAllSongsOnLandingPage();
-        return songList;
+        return songDAO.findAllOnLandingPage();
     }
 
 }

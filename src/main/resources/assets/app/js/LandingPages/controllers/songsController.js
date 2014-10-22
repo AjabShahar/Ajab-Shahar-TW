@@ -1,11 +1,11 @@
-var songsController = function($scope,contentService,thumbnailService,introductionPopupService){
+var songsController = function($scope,contentService,songThumbnailService,introductionPopupService){
     $scope.popupContent=null;
     $scope.thumbnailContent=null;
     $scope.shouldBeOpen={};
     $scope.init = function(){
         contentService.getSongsLandingPageThumbnails().then(function(result){
-            $scope.thumbnailContent = thumbnailService.getThumbnailWithBubble(result.data,'Songs');
-            $scope.popupContent = introductionPopupService.getPopupDetails(result.data,'Songs');
+            $scope.thumbnailContent = songThumbnailService.getThumbnailsWithBubble(result.data);
+            $scope.popupContent = introductionPopupService.getPopupDetails({"songs":result.data});
         });
     }
 
@@ -28,4 +28,4 @@ var songsController = function($scope,contentService,thumbnailService,introducti
     $scope.init();
 }
 
-mainLandingPageApp.controller('songsController',['$scope','contentService','thumbnailService','introductionPopupService',songsController]);
+mainLandingPageApp.controller('songsController',['$scope','contentService','songThumbnailService','introductionPopupService',songsController]);

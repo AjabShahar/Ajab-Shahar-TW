@@ -1,6 +1,7 @@
 package org.ajabshahar.platform.daos;
 
 import com.google.common.base.Optional;
+import org.ajabshahar.platform.models.Couplet;
 import org.ajabshahar.platform.models.Word;
 import io.dropwizard.hibernate.AbstractDAO;
 import org.hibernate.SessionFactory;
@@ -19,5 +20,9 @@ public class WordDAO extends AbstractDAO<Word> {
 
     public List<Word> findAll() {
         return list(namedQuery("org.ajabshahar.platform.models.Word.findAll"));
+    }
+
+    public List<Word> findAllOnLandingPage()  {
+        return list(namedQuery("org.ajabshahar.platform.models.Word.findAllOnLandingPage"));
     }
 }

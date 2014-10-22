@@ -7,8 +7,12 @@ import javax.persistence.*;
 @NamedQueries({
         @NamedQuery(
                 name = "org.ajabshahar.platform.models.Word.findAll",
-                query = "SELECT p FROM Word p where show_On_Landing_Page=true"
-        )
+                query = "SELECT p FROM Word p"
+        ),
+        @NamedQuery(
+                name = "org.ajabshahar.platform.models.Word.findAllOnLandingPage",
+                query = "SELECT p FROM Word p where p.showOnLandingPage=true"
+        ),
 })
 
 public class Word {

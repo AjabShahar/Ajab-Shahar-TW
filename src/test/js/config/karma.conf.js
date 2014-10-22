@@ -10,6 +10,10 @@ module.exports = function (config) {
       'js/common/directives/thumbnail/thumbnailModule.js',
       'js/common/**/*.js',
       'js/Introduction/**/*.js',
+      'js/LandingPages/services/htmlGenerator.js',
+      'js/LandingPages/services/coupletThumbnailService.js',
+      'js/LandingPages/services/filmThumbnailService.js',
+      'js/LandingPages/services/gatheringThumbnailService.js',
       'js/LandingPages/**/*.js',
       '../../../../test/js/unit/**/*.js'
     ],

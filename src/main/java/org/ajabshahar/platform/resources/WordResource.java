@@ -11,7 +11,7 @@ import com.google.gson.Gson;
 
 import java.util.List;
 
-@Path("/Word")
+@Path("/words")
 @Produces(MediaType.APPLICATION_JSON)
 public class WordResource {
 
@@ -36,4 +36,12 @@ public class WordResource {
     public List<Word> listAllWordDetails() {
         return wordDAO.findAll();
     }
+
+    @GET
+    @Path("/landingPage")
+    @UnitOfWork
+    public List<Word> listAllOnLandingValues() {
+        return wordDAO.findAllOnLandingPage();
+    }
+
 }

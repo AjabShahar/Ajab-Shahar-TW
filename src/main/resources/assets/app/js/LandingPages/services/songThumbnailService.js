@@ -11,10 +11,14 @@ songThumbnailService = function (){
       return (string != "") ? string = ' ' + string : string = string;
     };
 
-    var getSongThumbnailWithBubble = function(details,id){
+    var getShiftIndex = function(index){
+        return ((4+index) % 6) == 0 ? 6 : ((4+index) % 6);
+    };
+
+    var getThumbnailWithBubble = function(details,id,customStyle){
           return '<song-with-details overlay-id="'+id +'"'+
           ' open="open(\''+id+'\')"'+
-          ' custom-style="shift'+shiftIndex+'"' +
+          ' custom-style="'+customStyle+'"' +
           ' img-src="'+details.thumbnail_url+'"'+
           ' url="'+details.youtubeVideoId+'"'+
           ' name="'+details.englishTranslationTitle+'"'+
@@ -25,9 +29,15 @@ songThumbnailService = function (){
           '</song-with-details>';
     }
 
+    var getThumbnailsWithBubble = function (details,contentType) {
+        return _.reduce(details, function(memo, value, index){
+                return memo+getThumbnailWithBubble(details[index],'oid'+index,"shift"+getShiftIndex(index));
+        },'');
+    }
 
 return {
-    getSongThumbnailWithBubble: getSongThumbnailWithBubble,
+    getThumbnailWithBubble: getThumbnailWithBubble,
+    getThumbnailsWithBubble: getThumbnailsWithBubble,
   };
 };
 

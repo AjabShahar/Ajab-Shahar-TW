@@ -11,7 +11,7 @@ import java.util.Set;
                 query = "SELECT p FROM Song p"
         ),
         @NamedQuery(
-                name = "org.ajabshahar.platform.models.Song.findAllSongsOnLandingPage",
+                name = "org.ajabshahar.platform.models.Song.findAllOnLandingPage",
                 query = "SELECT p FROM Song p where p.showOnLandingPage=true"
         )
 })
@@ -136,3 +136,4 @@ public class Song {
         this.category = category;
     }
 }
+

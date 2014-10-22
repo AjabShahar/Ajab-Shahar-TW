@@ -11,7 +11,7 @@ import org.ajabshahar.platform.models.PersonDetails;
 
 import java.util.List;
 
-@Path("/Person")
+@Path("/people")
 @Produces(MediaType.APPLICATION_JSON)
 public class PersonResource {
 
@@ -40,14 +40,14 @@ public class PersonResource {
 
     @GET
     @UnitOfWork
-    @Path("/Singers")
+    @Path("/singers")
     public List<PersonDetails>   listAllSingers() {
         return personDAO.findSingers();
     }
 
     @GET
     @UnitOfWork
-    @Path("/Poets")
+    @Path("/poets")
     public List<PersonDetails>   listAllPoets() {
         return personDAO.findPoets();
     }
