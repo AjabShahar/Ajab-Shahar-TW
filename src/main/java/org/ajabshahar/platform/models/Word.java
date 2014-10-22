@@ -12,7 +12,7 @@ import javax.persistence.*;
         @NamedQuery(
                 name = "org.ajabshahar.platform.models.Word.findAllOnLandingPage",
                 query = "SELECT p FROM Word p where p.showOnLandingPage=true"
-        ),
+        )
 })
 
 public class Word {
