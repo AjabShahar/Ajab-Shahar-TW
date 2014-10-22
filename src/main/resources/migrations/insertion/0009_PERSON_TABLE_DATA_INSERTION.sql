@@ -8,12 +8,12 @@ INSERT INTO PERSON(
  CATEGORY
 )
 VALUES
-('PARVATHY','','BAUL','SINGER'),
-('ROSHIK','','','POET'),
-('Gavra Devi','','','SINGER'),
-('Fakru','','','POET'),
-('Mooralala','','Marwada','SINGER'),
-('Kabir','','','POET');
+('Parvathy','','Baul','Singer'),
+('Roshik','','','Poet'),
+('Gavra Devi','','','Singer'),
+('Fakru','','','Poet'),
+('Mooralala','','Marwada','Singer'),
+('Kabir','','','Poet');
 
 --rollback delete from PERSON where FIRST_NAME='PARVATHY';
 --rollback delete from PERSON where FIRST_NAME='ROSHIK';

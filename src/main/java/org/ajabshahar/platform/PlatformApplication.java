@@ -23,7 +23,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
   };
 
   private final HibernateBundle<PlatformConfiguration> hibernate = new HibernateBundle<PlatformConfiguration>(SplashScreenOptions.class,Word.class,
-          Couplet.class,Song.class,PersonDetails.class) {
+          Couplet.class,Song.class,PersonDetails.class,Category.class) {
      @Override
      public DataSourceFactory getDataSourceFactory(PlatformConfiguration configuration) {
        return configuration.getDataSourceFactory();

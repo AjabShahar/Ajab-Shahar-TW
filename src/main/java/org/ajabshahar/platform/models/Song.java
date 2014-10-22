@@ -12,7 +12,7 @@ import java.util.Set;
         ),
         @NamedQuery(
                 name = "org.ajabshahar.platform.models.Song.findAllSongsOnLandingPage",
-                          query = "SELECT p FROM Song p where p.showOnLandingPage=true"
+                query = "SELECT p FROM Song p where p.showOnLandingPage=true"
         )
 })
 public class Song {
@@ -22,9 +22,6 @@ public class Song {
 
     @Column(name = "SHOW_ON_LANDING_PAGE", nullable = true)
     private Boolean showOnLandingPage;
-
-    @Column(name = "CATEGORY", nullable = false)
-    private String categoryName;
 
     @Column(name = "DURATION", nullable = true)
     private String duration;
@@ -57,6 +54,11 @@ public class Song {
     @JoinTable(name = "SONG_POET", joinColumns = { @JoinColumn(name = "SONG_ID", referencedColumnName = "ID") },
             inverseJoinColumns = { @JoinColumn(name = "POET_ID", referencedColumnName = "ID") })
     private Set<PersonDetails> poets;
+
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "CATEGORY_ID")
+    private Category category;
+
 
     public Set<PersonDetails> getPoets(){return poets;}
 
@@ -94,14 +96,6 @@ public class Song {
         this.showOnLandingPage = showOnLandingPage;
     }
 
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
-
     public String getDuration() {
         return duration;
     }
@@ -132,5 +126,13 @@ public class Song {
 
     public void setThumbnail_url(String thumbnail_url) {
         this.thumbnail_url = thumbnail_url;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

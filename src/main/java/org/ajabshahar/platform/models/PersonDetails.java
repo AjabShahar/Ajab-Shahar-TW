@@ -12,11 +12,11 @@ import java.util.Set;
         ),
         @NamedQuery(
                 name = "org.ajabshahar.platform.models.PersonDetails.findSingers",
-                query = "select p from PersonDetails p where p.CATEGORY='SINGER'"
+                query = "select p from PersonDetails p where p.CATEGORY='Singer'"
         ),
         @NamedQuery(
                 name = "org.ajabshahar.platform.models.PersonDetails.findPoets",
-                query = "select p from PersonDetails p where p.CATEGORY='POET'"
+                query = "select p from PersonDetails p where p.CATEGORY='Poet'"
         )
 })
 public class PersonDetails {

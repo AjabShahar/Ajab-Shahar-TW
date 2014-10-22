@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset PADMA:10
+--changeset PADMA:12
 INSERT INTO SONG_SINGER(
     SONG_ID ,
     SINGER_ID
@@ -8,7 +8,7 @@ INSERT INTO SONG_SINGER(
 VALUES
 (1,1),
 (2,3),
-(3,4);
+(3,5);
 
 --rollback delete from SONG_SINGER where SONG_ID='1';
 --rollback delete from SONG_SINGER where SONG_ID='2';

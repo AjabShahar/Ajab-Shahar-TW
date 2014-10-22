@@ -7,7 +7,7 @@ import javax.persistence.*;
 @NamedQueries({
         @NamedQuery(
                 name = "org.ajabshahar.platform.models.Word.findAll",
-                query = "SELECT p FROM Word p where show_On_Landing_Page='yes'"
+                query = "SELECT p FROM Word p where show_On_Landing_Page=true"
         )
 })
 
@@ -27,7 +27,7 @@ public class Word {
     private String CATEGORY;
 
     @Column(name = "SHOW_ON_LANDING_PAGE", nullable = false)
-    private String showOnLandingPage;
+    private boolean showOnLandingPage;
 
     public long getId() {
         return id;
@@ -57,11 +57,12 @@ public class Word {
         this.CATEGORY=CATEGORY;
     }
 
-    public String getShowOnLandingPage() {
+
+    public boolean isShowOnLandingPage() {
         return showOnLandingPage;
     }
 
-    public void setShowOnLandingPage(String showOnLandingPage) {
+    public void setShowOnLandingPage(boolean showOnLandingPage) {
         this.showOnLandingPage = showOnLandingPage;
     }
 }

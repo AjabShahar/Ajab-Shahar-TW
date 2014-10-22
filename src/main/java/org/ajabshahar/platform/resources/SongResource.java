@@ -9,6 +9,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import com.google.gson.Gson;
 import org.ajabshahar.platform.daos.SongDAO;
@@ -22,6 +24,7 @@ public class SongResource {
     public SongResource(SongDAO songDAO) {
         this.songDAO = songDAO;
     }
+
 
     @POST
     @UnitOfWork
@@ -41,8 +44,12 @@ public class SongResource {
     @GET
     @Path("/landingPage")
     @UnitOfWork
+    @Produces(MediaType.APPLICATION_JSON)
     public List<Song> listAllSongOnLandingValues() {
-        return songDAO.findAllSongsOnLandingPage();
+
+        List<Song> songList = new ArrayList<Song>();
+        songList = songDAO.findAllSongsOnLandingPage();
+        return songList;
     }
 
 }

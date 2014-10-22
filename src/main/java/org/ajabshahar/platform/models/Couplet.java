@@ -7,7 +7,7 @@ import javax.persistence.*;
 @NamedQueries({
         @NamedQuery(
                 name = "org.ajabshahar.platform.models.Couplet.findAll",
-                query = "SELECT p FROM Couplet p where show_on_landing_page = 'yes'"
+                query = "SELECT p FROM Couplet p where show_on_landing_page = true"
         )
 })
 public class Couplet {
@@ -24,7 +24,7 @@ public class Couplet {
 
 
     @Column(name = "SHOW_ON_LANDING_PAGE", nullable = false)
-    private String showOnLandingPage;
+    private boolean showOnLandingPage;
 
 
 
@@ -49,12 +49,11 @@ public class Couplet {
     }
 
 
-    public String getShowOnLandingPage() {
+    public boolean isShowOnLandingPage() {
         return showOnLandingPage;
     }
 
-    public void setShowOnLandingPage(String showOnLandingPage) {
+    public void setShowOnLandingPage(boolean showOnLandingPage) {
         this.showOnLandingPage = showOnLandingPage;
     }
-
 }
