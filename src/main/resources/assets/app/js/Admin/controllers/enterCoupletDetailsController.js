@@ -1,7 +1,7 @@
 var enterCoupletDetailsController = function($scope, $http){
     $scope.formInfo = {};
       $scope.saveData = function(){
-      $http.post('/api/Couplet',$scope.formInfo).success(function(){
+      $http.post('/api/couplets',$scope.formInfo).success(function(){
               alert("Data added");
            });
     };

@@ -4,17 +4,17 @@ var songBasicDetailsController = function($scope, $http){
   $scope.titleList=[];
   $scope.singersList=[];
   $scope.poetsList=[];
-  $http.get('/api/Person/Singers').success(function(singersList){
+  $http.get('/api/people/singers').success(function(singersList){
                    $scope.singersList = singersList;
 
   });
-  $http.get('/api/Person/Poets').success(function(poetsList){
+  $http.get('/api/people/poets').success(function(poetsList){
                      $scope.poetsList = poetsList;
 
   });
 
   $scope.saveData = function(){
-  $http.post('/api/Song',$scope.formInfo).success(function(){
+  $http.post('/api/songs',$scope.formInfo).success(function(){
           alert("Data added");
        });
   } ;
