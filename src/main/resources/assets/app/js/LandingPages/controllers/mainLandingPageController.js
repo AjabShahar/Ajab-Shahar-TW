@@ -9,7 +9,16 @@ var mainLandingPageController = function($scope,contentService,mainLandingPageTh
         });
     }
 
+    $scope.setPageHeight = function(){
+        var homepageContent = jQuery('.' + 'homepage-content')[0];
+        var pxLayers = jQuery('.' + 'pxLayers');
+
+        _.each(pxLayers, function(pxLayer){
+            pxLayer.style.height = (homepageContent.offsetHeight+400)+"px";
+        });
+        homepageContent.style.height = (homepageContent.offsetHeight+300)+"px";
+    }
     $scope.init();
 }
 
-ajabShaharApp.controller('mainLandingPageController',['$scope','contentService','mainLandingPageThumbnailService','introductionPopupService','popupService',mainLandingPageController]);
+landingPagesApp.controller('mainLandingPageController',['$scope','contentService','mainLandingPageThumbnailService','introductionPopupService','popupService',mainLandingPageController]);

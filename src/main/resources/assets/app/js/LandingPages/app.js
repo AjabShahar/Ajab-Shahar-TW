@@ -1,9 +1,9 @@
-var ajabShaharApp = angular.module('ajabShaharApp',['angular-parallax','thumbnailModule','youtubeApp','popupSupport','htmlGenerator','sticky']);
+var landingPagesApp = angular.module('landingPagesApp',['angular-parallax','thumbnailModule','youtubeApp','popupSupport','htmlGenerator','sticky','headerModule']);
 
-ajabShaharApp.config(resourceUrlWhiteList);
-ajabShaharApp.factory('contentService', ['$http', contentService]);
+landingPagesApp.config(resourceUrlWhiteList);
+landingPagesApp.factory('contentService', ['$http', contentService]);
 
-ajabShaharApp.directive('bindUnsafeHtml', ['$compile', function ($compile) {
+landingPagesApp.directive('bindUnsafeHtml', ['$compile', function ($compile) {
   return function(scope, element, attrs) {
       scope.$watch(
         function(scope) {

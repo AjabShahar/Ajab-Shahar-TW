@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en" ng-app="ajabShaharApp">
+<html lang="en" ng-app="landingPagesApp">
 <head>
     <meta charset="utf-8">
     <title>Landing Page</title>
     <script src="../lib/angular/angular.js"></script>
     <script src="../lib/underscore/underscore.js"></script>
-    <script type="text/javascript" src="../js/common/directives/thumbnail/thumbnailModule.js"></script>
-    <script type="text/javascript" src="../js/common/modules/popupSupport.js"></script>
+    <script type="text/javascript" src="../js/common/modules/thumbnailModule.js"></script>
+    <script type="text/javascript" src="../js/common/modules/PopupSupport.js"></script>
     <script type="text/javascript" src="../js/common/directives/popupSupport/popup.js"></script>
     <script type="text/javascript" src="../js/common/directives/thumbnail/song.js"></script>
     <script type="text/javascript" src="../js/common/directives/thumbnail/couplet.js"></script>
@@ -19,6 +19,8 @@
     <script type="text/javascript" src="../js/common/directives/youtube/youtube_player.js"></script>
     <script type="text/javascript" src="../js/common/directives/songs/introduction.js"></script>
     <script type="text/javascript" src="../js/common/config/resourceUrlWhiteList.js"></script>
+    <script type="text/javascript" src="../js/common/modules/headerModule.js"></script>
+    <script type="text/javascript" src="../js/common/directives/common/landingPageHeader.js"></script>
     <script type="text/javascript" src="../js/common/directives/common/ajabShaharHeader.js"></script>
     <script type="text/javascript" src="../js/LandingPages/services/contentService.js"></script>
     <script type="text/javascript" src="../js/common/services/popupService.js"></script>
@@ -44,7 +46,7 @@
     <link href="../css/common/directives/introduction.css" rel="stylesheet" type="text/css">
 </head>
 <body ng-controller="mainLandingPageController">
-    <ajab-shahar-header should-expand-by-default="true"></ajab-shahar-header>
+    <ajab-shahar-header show-menu-content="true" call-back="setPageHeight()"></ajab-shahar-header>
 
     <!-- parallax effect starts -->
     <div class='parallax-container'>
