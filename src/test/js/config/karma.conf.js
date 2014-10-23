@@ -9,7 +9,7 @@ module.exports = function (config) {
       'lib/angular-mocks/angular-mocks.js',
       'js/common/modules/thumbnailModule.js',
       'js/common/modules/headerModule.js',
-      'js/common/modules/popupSupport.js',
+      'js/common/modules/PopupSupport.js',
       'js/common/**/*.js',
       'js/Introduction/**/*.js',
       'js/LandingPages/**/*.js',
