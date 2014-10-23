@@ -40,7 +40,7 @@ describe("Song Thumbnail service Specs", function(){
 
         var landingPageThumbnails = service.getThumbnailWithBubble(songsSampleResponse,"oid0","shift4");
 
-        expect(landingPageThumbnails).toBe('<song-with-details overlay-id="oid0" open="open(\'oid0\')" custom-style="shift4"'+
+        expect(landingPageThumbnails).toBe('<song-with-details overlay-id="oid0" open="popupService.open(\'oid0\')" custom-style="shift4"'+
             ' img-src="imgId"'+
             ' url="videoId"'+
             ' name="Practice the art of dying"'+
