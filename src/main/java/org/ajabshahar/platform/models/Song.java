@@ -59,7 +59,6 @@ public class Song {
     @JoinColumn(name = "CATEGORY_ID")
     private Category category;
 
-
     public Set<PersonDetails> getPoets(){return poets;}
 
     public void setPoets(Set<PersonDetails> poets){this.poets = poets;}
