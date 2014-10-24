@@ -1,9 +1,8 @@
 var songBasicDetailsController = function($scope, $http){
 
   $scope.formInfo = {};
-  $scope.formInfo.singer={};
-  $scope.formInfo.poet={};
-  $scope.titleList=[];
+  $scope.formInfo.singers=new Array();
+  $scope.formInfo.poets=[];
   $scope.singersList=[];
   $scope.poetsList=[];
   $http.get('/api/people/singers').success(function(singersList){
@@ -16,11 +15,11 @@ var songBasicDetailsController = function($scope, $http){
   });
 
   $scope.saveData = function(){
-  $http.post('/api/songs',$scope.formInfo).success(function(){
-          alert("Data added");
-       });
-  } ;
-
+    $scope.formInfo.category = {"name" : "Song"};
+    $http.post('/api/songs',$scope.formInfo).success(function(){
+            alert("Data added");
+         });
+    } ;
 };
 
 adminApp.controller('songBasicDetailsController',['$scope','$http',songBasicDetailsController]);

@@ -12,11 +12,11 @@ import java.util.Set;
         ),
         @NamedQuery(
                 name = "org.ajabshahar.platform.models.PersonDetails.findSingers",
-                query = "select p from PersonDetails p where p.CATEGORY='Singer'"
+                query = "select p from PersonDetails p where p.category='Singer'"
         ),
         @NamedQuery(
                 name = "org.ajabshahar.platform.models.PersonDetails.findPoets",
-                query = "select p from PersonDetails p where p.CATEGORY='Poet'"
+                query = "select p from PersonDetails p where p.category='Poet'"
         )
 })
 public class PersonDetails {
@@ -25,46 +25,46 @@ public class PersonDetails {
     private long id;
 
     @Column(name = "FIRST_NAME", nullable = false)
-    private String FIRST_NAME;
+    private String firstName;
 
     @Column(name = "MIDDLE_NAME", nullable = true)
-    private String MIDDLE_NAME;
+    private String middleName;
 
     @Column(name = "LAST_NAME", nullable = true)
-    private String LAST_NAME;
+    private String lastName;
 
     @Column(name = "CATEGORY", nullable = false)
-    private String CATEGORY;
+    private String category;
 
     public String getFirstName() {
-        return FIRST_NAME;
+        return firstName;
     }
 
-    public void setFirstName(String FIRST_NAME) {
-        this.FIRST_NAME = FIRST_NAME;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getMiddleName() {
-        return MIDDLE_NAME;
+        return middleName;
     }
 
-    public void setMiddleName(String MIDDLE_NAME) {
-        this.MIDDLE_NAME = MIDDLE_NAME;
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
     }
 
     public String getLastName() {
-        return LAST_NAME;
+        return lastName;
     }
 
-    public void setLastName(String LAST_NAME) {
-        this.LAST_NAME = LAST_NAME;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getCategory() {
-        return CATEGORY;
+        return category;
     }
 
-    public void setCategory(String CATEGORY) {
-        this.CATEGORY= CATEGORY;
+    public void setCategory(String category) {
+        this.category= category;
     }
 }

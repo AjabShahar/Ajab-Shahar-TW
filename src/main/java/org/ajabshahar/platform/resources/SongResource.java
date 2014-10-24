@@ -9,8 +9,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import com.google.gson.Gson;
 import org.ajabshahar.platform.daos.SongDAO;

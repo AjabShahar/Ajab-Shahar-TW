@@ -14,28 +14,28 @@
 <div ng-controller="songBasicDetailsController">
     <form >
         Singer:
-        <select  ng-model="formInfo.singer"
+        <select  ng-model="formInfo.singers[0]"
                 ng-options="singer.firstName for singer in singersList">
         </select><br/>
         Poet:
-        <select  ng-model="formInfo.poet"
+        <select  ng-model="formInfo.poets[0]"
                  ng-options="poet.firstName for poet in poetsList">
         </select><br/>
         Show On LandingPage :
-        <select name="format" ng-model="formInfo.SHOW_ON_LANDING_PAGE">
+        <select name="format" ng-model="formInfo.showOnLandingPage">
             <option value="yes">Yes</option>
             <option value="no">No</option>
         </select><br/>
         Category:
-        <select name="format" ng-model="formInfo.CATEGORY">
-            <option value="Song">Song</option>
+        <select name="format" ng-model="formInfo.category">
+            <!-- <option value="Song">Song</option> -->
         </select><br/>
-        Duration:<input type="text" name="duration" ng-model="formInfo.DURATION"><br/>
-        Youtube Video Id:<input type="text" name="youtubeVideoId" ng-model="formInfo.YOUTUBE_VIDEO_ID"><br/>
-        Thumbnail Url:<input type="text" name="thumbnailUrl" ng-model="formInfo.THUMBNAIL_URL"><br/>
-        Original Title:<input type="text" name="originalTitle" ng-model="formInfo.ORIGINAL_TITLE"><br/>
-        English Translation:<input type="text" name="englishTranslation" ng-model="formInfo.ENGLISH_TRANSLATION"><br/>
-        English Transliteration:<input type="text" name="englishTransliteration" ng-model="formInfo.ENGLISH_TRANSLITERATION"><br/>
+        Duration:<input type="text" name="duration" ng-model="formInfo.duration"><br/>
+        Youtube Video Id:<input type="text" name="youtubeVideoId" ng-model="formInfo.youtubeVideoId"><br/>
+        Thumbnail Url:<input type="text" name="thumbnailUrl" ng-model="formInfo.thumbnail_url"><br/>
+        Original Title:<input type="text" name="originalTitle" ng-model="formInfo.original"><br/>
+        English Translation:<input type="text" name="englishTranslation" ng-model="formInfo.english_Translation"><br/>
+        English Transliteration:<input type="text" name="englishTransliteration" ng-model="formInfo.english_Transliteration"><br/>
         <button type="submit" ng-click="saveData()">Submit</button>
     </form>
 </div>
