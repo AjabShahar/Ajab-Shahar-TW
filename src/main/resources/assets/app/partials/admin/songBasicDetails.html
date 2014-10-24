@@ -27,8 +27,8 @@
             <option value="no">No</option>
         </select><br/>
         Category:
-        <select name="format" ng-model="formInfo.category">
-            <!-- <option value="Song">Song</option> -->
+        <select ng-model="formInfo.category"
+                ng-options="category.name for category in categoryList">
         </select><br/>
         Duration:<input type="text" name="duration" ng-model="formInfo.duration"><br/>
         Youtube Video Id:<input type="text" name="youtubeVideoId" ng-model="formInfo.youtubeVideoId"><br/>
