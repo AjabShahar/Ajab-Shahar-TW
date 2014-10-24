@@ -13,7 +13,7 @@ describe("Song Thumbnail service Specs", function(){
 	    var songsSampleResponse =
                     {
                         "contentType": "Songs",
-                        "categoryName": "Song & Reflection",
+                        "category": {"name":"Song & Reflection"},
                         "englishTranslationTitle": "Practice the art of dying",
                         "poets": [
                             {

@@ -13,7 +13,7 @@ describe("Thumbnail service Specs", function(){
 	    var songsSampleResponse ={"songs":
 	    	            [
                             {
-                                "categoryName": "Song & Reflection",
+                                "category": {"name":"Song & Reflection"},
                                 "englishTranslationTitle": "Practice the art of dying",
                                 "poets": [
                                     {
