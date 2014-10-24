@@ -14,12 +14,12 @@
 <div ng-controller="songBasicDetailsController">
     <form >
         Singer:
-        <select  ng-model="singersList.firstName"
-                ng-options="singer.firstName  for singer in singersList">
+        <select  ng-model="formInfo.singer"
+                ng-options="singer.firstName for singer in singersList">
         </select><br/>
         Poet:
-        <select  ng-model="poetsList.firstName"
-                 ng-options="poet.firstName  for poet in poetsList">
+        <select  ng-model="formInfo.poet"
+                 ng-options="poet.firstName for poet in poetsList">
         </select><br/>
         Show On LandingPage :
         <select name="format" ng-model="formInfo.SHOW_ON_LANDING_PAGE">

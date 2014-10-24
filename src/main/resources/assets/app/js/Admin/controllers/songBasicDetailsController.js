@@ -1,6 +1,8 @@
 var songBasicDetailsController = function($scope, $http){
 
   $scope.formInfo = {};
+  $scope.formInfo.singer={};
+  $scope.formInfo.poet={};
   $scope.titleList=[];
   $scope.singersList=[];
   $scope.poetsList=[];
