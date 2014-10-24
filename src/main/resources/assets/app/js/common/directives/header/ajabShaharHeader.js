@@ -7,7 +7,7 @@ headerModule.directive("ajabShaharHeader", function($window) {
             showMenuContent:'@',
             callBack:'&',
         },
-        templateUrl:'/js/common/templates/common/header.html',
+        templateUrl:'/js/common/templates/header/ajabShaharHeader.html',
         controller:function($scope){
             $window.onload = function () {
                 $scope.callBack && $scope.callBack();

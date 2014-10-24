@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Songs Landing Page</title>
     <script src="../../lib/angular/angular.js"></script>
+    <script src="../../lib/angular-animate/angular-animate.min.js"></script>
     <script src="../../lib/underscore/underscore.js"></script>
     <script src="../../lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="../../js/common/modules/thumbnailModule.js"></script>
@@ -23,6 +24,7 @@
     <script type="text/javascript" src="../../js/common/services/songThumbnailService.js"></script>
     <script type="text/javascript" src="../../js/common/services/introductionPopupService.js"></script>
     <script type="text/javascript" src="../../js/common/directives/header/sticky.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/carouselSupport/carousel.js"></script>
     <link href="../../css/common/header.css" rel="stylesheet" type="text/css">
     <link href="../../css/common/footer.css" rel="stylesheet" type="text/css">
     <link href="../../css/mainLandingPage/main.css" rel="stylesheet" type="text/css">
@@ -31,11 +33,11 @@
     <link href="../../css/common/directives/popup.css" rel="stylesheet" type="text/css">
     <link href="../../css/common/directives/introduction.css" rel="stylesheet" type="text/css">
     <link href="../../css/pages/songs.css" rel="stylesheet" type="text/css">
-
-
+    <link href="../../css/carouselSupport/carousel.css" rel="stylesheet" type="text/css">
+    <link href="../../css/carouselSupport/carouselAnimation.css" rel="stylesheet" type="text/css">
 </head>
 <body ng-controller="allSongsController" class="page-songs">
-<ajab-shahar-header></ajab-shahar-header>
-
+    <ajab-shahar-header></ajab-shahar-header>
+    <carousel elements="elements" />
 </body>
 </html>
