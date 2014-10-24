@@ -30,26 +30,9 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
      }
   };
 
-//  private final HibernateBundle<PlatformConfiguration> wordHibernate = new HibernateBundle<PlatformConfiguration>(Word.class) {
-//        @Override
-//        public DataSourceFactory getDataSourceFactory(PlatformConfiguration configuration) {
-//            return configuration.getDataSourceFactory();
-//        }
-//  };
-//
-//
-//  private final HibernateBundle<PlatformConfiguration> coupletHibernate = new HibernateBundle<PlatformConfiguration>(Couplet.class) {
-//      @Override
-//      public DataSourceFactory getDataSourceFactory(PlatformConfiguration configuration) {
-//          return configuration.getDataSourceFactory();
-//      }
-//    };
-
   @Override
   public void initialize(Bootstrap<PlatformConfiguration> bootstrap) {
     bootstrap.addBundle(hibernate);
-//    bootstrap.addBundle(wordHibernate);
-//    bootstrap.addBundle(coupletHibernate);
     bootstrap.addBundle(migrationsBundle);
 
     bootstrap.addBundle(new AssetsBundle("/assets/app", "/","index.html"));
@@ -67,6 +50,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
     final CoupletDAO coupletDAO = new CoupletDAO(hibernate.getSessionFactory());
     final SongDAO songDAO = new SongDAO(hibernate.getSessionFactory());
     final PersonDAO personDAO = new PersonDAO(hibernate.getSessionFactory());
+    final CategoryDAO categoryDAO = new CategoryDAO(hibernate.getSessionFactory());
     final TemplateHealthCheck templateHealthCheck = new TemplateHealthCheck(configuration.getTemplate());
 
     environment.jersey().setUrlPattern("/api/*");
@@ -77,6 +61,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
     environment.jersey().register(new LandingPagesResource(songDAO,coupletDAO,wordDAO));
     environment.jersey().register(new SongResource(songDAO));
     environment.jersey().register(new PersonResource(personDAO));
+    environment.jersey().register(new CategoryResource(categoryDAO));
     environment.healthChecks().register("template", templateHealthCheck);
   }
 
