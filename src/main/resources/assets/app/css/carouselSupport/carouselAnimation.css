@@ -6,6 +6,9 @@
 .carousel-animation.ng-hide-remove,
 .carousel-animation.ng-hide-add {
   -webkit-transition:0.5s linear all;
+  -moz-transition:0.5s linear all;
+  -o-transition:0.5s linear all;
+  -ms-transition:0.5s linear all;
   transition:0.5s linear all;
   height:500px;
 

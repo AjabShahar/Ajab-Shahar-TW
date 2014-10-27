@@ -31,7 +31,7 @@ songThumbnailService = function (){
 
     var getThumbnailsWithBubble = function (details,contentType) {
         return _.reduce(details, function(memo, value, index){
-                return memo+getThumbnailWithBubble(details[index],'oid'+index,"shift"+getShiftIndex(index));
+                return memo+getThumbnailWithBubble(details[index],'song_'+details[index].id,"shift"+getShiftIndex(index));
         },'');
     }
 

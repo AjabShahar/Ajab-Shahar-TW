@@ -13,6 +13,7 @@ describe("introduction popup service Specs", function(){
         var songsSampleResponse ={"songs":
             [
                 {
+                    "id":2,
                     "contentType": "Songs",
                     "categoryName": "Song & Reflection",
                     "englishTranslationTitle": "Practice the art of dying",
@@ -34,8 +35,8 @@ describe("introduction popup service Specs", function(){
 
         var landingPageThumbnails = service.getPopupDetails(songsSampleResponse);
 
-        expect(landingPageThumbnails).toBe('<pop-up id="oid0" width="100" show="popupService.shouldShow(\'oid0\')" on-close="popupService.onClose(\'oid0\')" closeButton="true">'+
-            '<song-introduction singer="Parvathy Baul" name="Practice the art of dying" url="videoId" close-video="popupService.isClosed(\'oid0\')"></song-introduction></pop-up>');
+        expect(landingPageThumbnails).toBe('<pop-up id="song_2" width="100" show="popupService.shouldShow(\'song_2\')" on-close="popupService.onClose(\'song_2\')" closeButton="true">'+
+            '<song-introduction singer="Parvathy Baul" name="Practice the art of dying" url="videoId" close-video="popupService.isClosed(\'song_2\')"></song-introduction></pop-up>');
     });
 
 });

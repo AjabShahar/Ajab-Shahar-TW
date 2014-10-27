@@ -13,6 +13,7 @@ thumbnailModule.directive("songWithDetails", function() {
             poet:'@',
             customStyle:'@',
             overlayId:'@',
+            id:'@',
             open: '&', //open click handler ~ callback to controller
         },
         templateUrl:'/js/common/templates/thumbnail/song.html',

@@ -11,7 +11,8 @@ describe("Song Thumbnail service Specs", function(){
 
 	it("should get songs on the landing page thumbnails", function(){
 	    var songsSampleResponse =
-                    {
+                    [{
+                        "id":1,
                         "contentType": "Songs",
                         "category": {"name":"Song & Reflection"},
                         "englishTranslationTitle": "Practice the art of dying",
@@ -35,12 +36,11 @@ describe("Song Thumbnail service Specs", function(){
                             }
                             ],
                         "duration": "09:11"
-                    };
-        ;
+                    }];
 
-        var landingPageThumbnails = service.getThumbnailWithBubble(songsSampleResponse,"oid0","shift4");
+        var landingPageThumbnails = service.getThumbnailsWithBubble(songsSampleResponse);
 
-        expect(landingPageThumbnails).toBe('<song-with-details overlay-id="oid0" open="popupService.open(\'oid0\')" custom-style="shift4"'+
+        expect(landingPageThumbnails).toBe('<song-with-details overlay-id="song_1" open="popupService.open(\'song_1\')" custom-style="shift4"'+
             ' img-src="imgId"'+
             ' url="videoId"'+
             ' name="Practice the art of dying"'+

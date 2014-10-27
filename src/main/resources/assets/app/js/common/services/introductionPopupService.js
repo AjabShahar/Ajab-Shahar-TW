@@ -13,11 +13,12 @@ htmlGenerator.factory('introductionPopupService', function () {
 
   var getPopupDetails = function (details,contentType) {
       return _.reduce(details.songs, function(memo, value, index){
+            var id = 'song_'+details.songs[index].id;
             return memo+
-                '<pop-up id="oid'+index+'" width="100" show="popupService.shouldShow(\'oid'+index+'\')"'+
-                ' on-close="popupService.onClose(\'oid'+index+'\')" closeButton="true">'+
+                '<pop-up id="'+id+'" width="100" show="popupService.shouldShow(\''+id+'\')"'+
+                ' on-close="popupService.onClose(\''+id+'\')" closeButton="true">'+
                   '<song-introduction singer="'+getName(details.songs[index].singers[0])+'" name="'+details.songs[index].englishTranslationTitle
-                    +'" url="'+details.songs[index].youtubeVideoId+'" close-video="popupService.isClosed(\'oid'+index+'\')"></song-introduction>'+
+                    +'" url="'+details.songs[index].youtubeVideoId+'" close-video="popupService.isClosed(\''+id+'\')"></song-introduction>'+
                 '</pop-up>';
       },'');
   };
