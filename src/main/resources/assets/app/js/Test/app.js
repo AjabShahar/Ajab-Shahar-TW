@@ -1,18 +1,18 @@
-var myApp = angular.module ('myApp', ['fb']);
+var myApp = angular.module ('myApp', ['djds4rce.angular-socialshare']);
 
-myApp.config (['facebookProvider', function (facebookProvider) {
-    facebookProvider.init ({appId: "714039208665351"});
-}]);
+myApp.run(function($FB){
+  $FB.init('714039208665351');
+});
 
-// myApp.run (['$rootScope', 'facebook', function ($rootScope, facebook) {
-//     $rootScope.$on ('fb.auth.authResponseChange', function (event, response) {
-//         if (response == 'connected') {
-//             facebook.api ('me').then (function (result) {
-//                 $rootScope.userInfo = result;
-//             });
-//         } else {
-//                 $rootScope.userInfo = null;
-//         }
-//     }
-//     facebook.login ();
-// }]);
+myApp.config(function($locationProvider){
+    $locationProvider.html5Mode(true).hashPrefix('!');
+});
+
+var test = myApp.controller('test', ['$scope', '$location', function($scope, $location){
+	$scope.url;
+	$scope.testingCall = function(){
+		$scope.url = $location.absUrl();
+	};
+
+	$scope.testingCall();
+}])
