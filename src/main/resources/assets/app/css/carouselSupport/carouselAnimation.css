@@ -1,10 +1,10 @@
-.my-switch-container {
+.carousel-container {
   position:relative;
   height:500px;
 }
 
-.my-switch-animation.ng-enter,
-.my-switch-animation.ng-leave {
+.carousel-animation.ng-hide-remove,
+.carousel-animation.ng-hide-add {
   -webkit-transition:0.5s linear all;
   transition:0.5s linear all;
   height:500px;
@@ -15,15 +15,15 @@
   right:0;
 }
 
-.my-switch-animation.ng-enter {
+.carousel-animation.ng-hide-remove {
   left:100%;
 }
 
-.my-switch-animation.ng-leave,
-.my-switch-animation.ng-enter.ng-enter-active {
+.carousel-animation.ng-hide-add,
+.carousel-animation.ng-hide-remove.ng-hide-remove-active {
   left:0;
 }
 
-.my-switch-animation.ng-leave.ng-leave-active {
+.carousel-animation.ng-hide-add.ng-hide-add-active {
   left:-100%;
 }

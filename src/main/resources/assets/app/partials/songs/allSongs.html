@@ -38,6 +38,14 @@
 </head>
 <body ng-controller="allSongsController" class="page-songs">
     <ajab-shahar-header></ajab-shahar-header>
-    <carousel elements="elements" />
+
+    <carousel>
+        <section id="one">
+            <song-with-details overlay-id="oid0" open="popupService.open('oid0')" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&amp;var1=IMGP7051a.JPG" url="tNh2kjmSzPw" name="For a few days,O Heart" category-name="undefined" duration="5:45" singer="Parvathy Baul" poet="Roshik" class="ng-scope ng-isolate-scope"></song-with-details>
+        </section>
+        <section id="two">
+            <song-with-details overlay-id="oid0" open="popupService.open('oid0')" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&amp;var1=IMGP7051a.JPG" url="tNh2kjmSzPw" name="Abcd" category-name="undefined" duration="5:45" singer="Parvathy Baul" poet="Roshik" class="ng-scope ng-isolate-scope"></song-with-details>
+        </section>
+    </carousel>
 </body>
 </html>
