@@ -1,13 +1,18 @@
 <div class="carousel">
-    <div class="slide" ng-repeat="element in elements" ng-show="element.visible">
-        <song-with-details overlay-id="oid0" open="popupService.open('oid0')" custom-style="shift4" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&amp;var1=IMGP7051a.JPG" url="tNh2kjmSzPw" name="For a few days,O Heart" category-name="undefined" duration="5:45" singer="Parvathy Baul" poet="Roshik" class="ng-scope ng-isolate-scope"></song-with-details>
-    </div>
-    <div class="arrows">
-        <a href="#" ng-click="prev()">
-            <img class="leftArrow" />
-        </a>
-        <a href="#" ng-click="next()">
-            <img class="rightArrow" />
-        </a>
+    <div ng-init="myExp='one'">
+        <button ng-click="myExp='one'">One</button>
+        <button ng-click="myExp='two'">Two</button>
+        <button ng-click="myExp='three'">Three</button>
+        <div ng-switch="myExp" class="my-switch-container">
+            <div ng-switch-when="one" class="my-switch-animation">
+                <song-with-details overlay-id="oid0" open="popupService.open('oid0')" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&amp;var1=IMGP7051a.JPG" url="tNh2kjmSzPw" name="For a few days,O Heart" category-name="undefined" duration="5:45" singer="Parvathy Baul" poet="Roshik" class="ng-scope ng-isolate-scope"></song-with-details>
+            </div>
+            <div ng-switch-when="two" class="my-switch-animation">
+                <song-with-details overlay-id="oid1" open="popupService.open('oid1')" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&amp;var1=IMGP7051a.JPG" url="7Gg0vSOZhJQ" name="The Cart of Meditation is Tottering" category-name="undefined" duration="5:10" singer="Gavra Devi" poet="Fakru" class="ng-scope ng-isolate-scope"></song-with-details>
+            </div>
+            <div ng-switch-when="three" class="my-switch-animation">
+                three
+            </div>
+        </div>
     </div>
 </div>
