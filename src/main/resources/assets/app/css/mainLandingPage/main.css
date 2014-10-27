@@ -1,5 +1,6 @@
 /* load fonts */
 @import url(http://fonts.googleapis.com/css?family=Merriweather);
+@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans);
 
 
 /* global rules starts */
@@ -12,7 +13,7 @@ width: 100%;
 overflow: hidden;
 background:#eee;
 margin:0;padding:0;
-font-family:'Merriweather',lucida grande,arial,tahoma,verdana,sans serif;
+font-family:'Merriweather Sans','Merriweather',lucida grande,arial,tahoma,verdana,sans serif;
 font-size: 0.8em;
 }
 

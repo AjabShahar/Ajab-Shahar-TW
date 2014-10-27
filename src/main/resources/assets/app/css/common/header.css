@@ -3,7 +3,7 @@ header{
   display:inline-block;
   max-width:1000px;
   width:100%;
-  padding: 1% 0 0 0;
+  padding: 1% 0 10px 0;
 
 }
 header img.logo{
@@ -51,19 +51,19 @@ box-shadow: #898989 0 1px 15px;
 .menuContainer{float:left;display:inline-block;width:80%;}
 header ul{text-transform:uppercase;display:inline-block;width:100%;clear:right;padding:1% 0;border-bottom: solid 1px #eee;color:#444;}
 header ul:last-child{border:0;}
-header ul li{padding:0% 2%;border-left:solid 1px #ddd;display:inline-block;float:left;}
+header ul li{padding:0% 1.5%;border-left:solid 1px #ddd;display:inline-block;float:left;}
 header ul.topLine li.selected{border-left: solid 1px #ddd;}
 header ul li:first-child{border:0;}
 
-header ul.firstLine{font-size:2em;margin-top:-1.5%;color:#666;}
-header ul.secondLine{font-size:1.2em;color:#999;}
+header ul.firstLine{font-size:1.5em;margin-top:0%;color:#666;}
+header ul.secondLine{font-size:0.9em;color:#999;}
 header ul.thirdLine{font-size:1em;color:#ccc;}
 
 header ul.topLine{
 float: right;
 text-align: right;
 border: 0;
-font-size: 0.9em;
+font-size: 0.8em;
 color:#ccc;
 }
 
