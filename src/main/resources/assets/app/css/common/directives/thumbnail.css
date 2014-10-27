@@ -3,18 +3,25 @@
 .thumbnailWrapper{display:block;width:100%;overflow:hidden;margin:15% 0;}
 .thumbnailVideo{width:100%;height:230px;background: url(../../../img/common/directives/thumbnail/video.png) no-repeat;background-size: cover;}
 .thumbnailVideo iframe{width: 92%;height: 200px;margin-top: 4%;margin-left: 5%;}
-.thumbnailVideo img{width: 92%;height: 200px;margin-top: 4%;margin-left: 5%;border-radius: 10px;}
+.thumbnailVideo img{
+width: 92%;
+height: 200px;
+border-radius: 0;
+background: #F2F2F2;
+border: solid 5px #fff;
+box-shadow: #909090 0 0 10px;
+}
 .thumbnailDesc{
-	z-index: 1;
-	position: relative;
-	width:85%;
-	background:#fff;
-	margin: -14% 0% 0 18%;
-	padding:11px 11px 20px 11px;
-	background-size: cover;
-	cursor:pointer;
-	border-bottom-left-radius: 25px;
-	border-bottom-right-radius: 35px;
+z-index: 1;
+width: 320px;
+background: #fff;
+margin: -2% 0% 0 3%;
+padding: 11px 11px 20px 11px;
+background-size: cover;
+cursor: pointer;
+border-bottom-left-radius: 25px;
+border-bottom-right-radius: 35px;
+position: absolute;
 }
 .thumbnailDesc:before{
 content: '';
@@ -25,6 +32,15 @@ background: rgba(255, 255, 255, 0) url(../../../img/common/directives/thumbnail/
 background-size: cover;
 position: absolute;
 margin: -37px 0 0 -15px;
+}
+
+.thumbnailDesc h3{
+{
+margin-top:-10px;
+}
+
+.shouldShowDetails{
+	color:#888;
 }
 
 .play{
