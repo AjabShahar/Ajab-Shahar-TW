@@ -1,41 +1,37 @@
-.overlay{display:block;width:100%;height:100%;position:fixed;background:#333; float: left;top:0;left:0;}
+.overlay{
+display: block;
+width: 100%;
+height: 100%;
+position: fixed;
+background: #ccc url(../../../img/common/bg/overlaybg.jpg);
+float: left;
+top: 0;
+color: #666;
+}
 .arrows.left{width:4.5%;height:100%;float:left}
 .arrows.right{width:4.5%;height:100%;float:right}
 .popupWrapper{width:90%;display:inline-block;height:100%;margin:0 auto;text-align: center;}
 .popupContainer{text-align:center;display:inline-block;margin:0 auto;width:98%;height:98%;max-height:98%;margin-top:2%;position:relative}
-.arrows span{display: inline-block;
-background: rgba(204, 204, 204, 0.4);
-padding: 15px 18px 20px 0;
-font-size: 41px;
-color: #fff;
-cursor: pointer;
-opacity: 0.7;
-border-radius: 100px;
-margin-top: -25px;
+.arrows span{
+background: #ddd;
+display: inline-block;
+padding: 15%;
+border-radius: 10px;
+float: right;
+right: 15px;
 position: relative;
-top: 50%;
-border-top-left-radius: 0;
-border-bottom-left-radius: 0;
-margin-left:-5px;}
-.arrows.right span{
-    border-top-right-radius: 0;
-border-bottom-right-radius: 0;
-border-top-left-radius: 100px;
-border-bottom-left-radius: 100px;
-padding: 15px 0px 20px 18px;
-margin-left:0px;
-margin-top:-65px;
-top:46%;
-right:-10px;
+top: 5%;
+box-shadow: #8C8C8C 0 0 2px;
+clear: right;
+margin-bottom: 15px;
 }
+
 .arrows.right .close{
-background: rgba(204, 204, 204, 0.4);
-color:#fff;
-padding: 7px 15px 10px 15px;
+padding: 7px 0px 10px 25px;
 position: relative;
-font-size: 20px;
+font-size: 30px;
 border-radius: 100px;
-top: 20px;
+color: #666;
 }
 
 .fullScreen{width:100%;height:100%;}
