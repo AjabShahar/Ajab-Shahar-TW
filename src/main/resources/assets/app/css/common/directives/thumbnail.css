@@ -34,7 +34,7 @@ position: absolute;
 margin: -37px 0 0 -15px;
 }
 
-.thumbnailDesc h3{
+.thumbnailDesc h3
 {
 margin-top:-10px;
 }
@@ -43,12 +43,23 @@ margin-top:-10px;
 	color:#888;
 }
 
+.shouldShowDetails .categoryDetails{
+text-align: right;
+}
+
 .play{
-    background: url(../../../img/common/icons/play.png) right 0px no-repeat;
-    float: right;
-	position: relative;
-	right: 4%;color:#888;
-	text-transform: uppercase;
+ background: url(../../../img/common/icons/play.png) left 2px no-repeat;
+background-size: contain;
+float: right;
+position: relative;
+right: 4%;
+padding:2px 0 3px 25px;
+padding-left: 8%;
+padding-bottom: 3px;
+padding-top: 2px;
+margin-left: 7%;
+color: #888;
+text-transform: uppercase;
 }
 
 

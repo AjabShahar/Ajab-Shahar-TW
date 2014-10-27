@@ -56,7 +56,7 @@ header ul.topLine li.selected{border-left: solid 1px #ddd;}
 header ul li:first-child{border:0;}
 
 header ul.firstLine{font-size:1.5em;margin-top:0%;color:#666;}
-header ul.secondLine{font-size:0.9em;color:#999;}
+header ul.secondLine{font-size:0.8em;color:#999;}
 header ul.thirdLine{font-size:1em;color:#ccc;}
 
 header ul.topLine{
