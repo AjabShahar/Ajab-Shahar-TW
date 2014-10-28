@@ -7,21 +7,50 @@
     <script src="../../../lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="../../../js/Admin/app.js"></script>
     <script type="text/javascript" src="../../../js/Admin/controllers/couplets/detailsController.js"></script>
+    <link href="../../../css/bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <h2>Enter Couplet details for landing page</h2>
 <div ng-controller="coupletDetailsController">
     <form >
-        Description: <input type="text" name="word" ng-model="formInfo.DESCRIPTION"><br>
-        Category:
-        <select name="format" ng-model="formInfo.CATEGORY">
-            <option value="Couplet">Couplet</option>
-        </select><br/>
-        Show On LandingPage :
-        <select name="format" ng-model="formInfo.showOnLandingPage">
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-        </select><br/>
+        <div class="row">
+            <div class="form-group col-sm-5">
+                <label>Description</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-5">
+                <input type="text" name="word" ng-model="formInfo.DESCRIPTION" maxlength="30" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-5">
+                <label>Category</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-5">
+                <select name="format" ng-model="formInfo.CATEGORY">
+                    <option value="Couplet">Couplet</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-5">
+                <label>Show On LandingPage</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-5">
+                <select name="format" ng-model="formInfo.showOnLandingPage">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+        </div>
+
         <button type="submit" ng-click="saveData()">Submit</button>
 
     </form>

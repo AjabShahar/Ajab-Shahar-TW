@@ -7,20 +7,61 @@
     <script src="../../../lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="../../../js/Admin/app.js"></script>
     <script type="text/javascript" src="../../../js/Admin/controllers/person/detailsController.js"></script>
+    <link href="../../../css/bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <h2>Enter Person details</h2>
 <div ng-controller="personDetailsController">
     <form >
-        First Name: <input type="text" name="FirstName" ng-model="formInfo.firstName"><br>
-        Middle Name:<input type="text" name="MiddleName" ng-model="formInfo.middleName"><br/>
-        Last Name:<input type="text" name="LastName" ng-model="formInfo.lastName"><br/>
-        Person Category :
-        <select name="format" ng-model="formInfo.category">
-            <option value="Poet">Poet</option>
-            <option value="Singer">Singer</option>
-        </select><br/>
+        <div class="row">
+            <div class="form-group col-sm-5">
+                <label>First Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-5">
+                <input type="text" name="FirstName" ng-model="formInfo.firstName" maxlength="30" required/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-5">
+                <label>Middle Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-5">
+                <input type="text" name="MiddleName" ng-model="formInfo.middleName" maxlength="30">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-5">
+                <label>Last Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-5">
+                <input type="text" name="LastName" ng-model="formInfo.lastName">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-5">
+                <label>Artist field</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-5">
+                <select name="format" ng-model="formInfo.category">
+                    <option value="Poet">Poet</option>
+                    <option value="Singer">Singer</option>
+                </select>
+            </div>
+        </div>
+
         <button type="submit" ng-click="saveData()">Submit</button>
+
     </form>
 </div>
 </body>
