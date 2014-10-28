@@ -8,6 +8,8 @@ var songBasicDetailsController = function($scope, $http,$window){
   $scope.poetsList = [];
   $scope.categoryList = [];
   $scope.songDetails = {};
+  $scope.songCategoryList = [];
+  $scope.mediaCategoryList = [];
 
   $http.get('/api/people/singers').success(function(singersList){
     $scope.singersList = singersList;
@@ -18,8 +20,12 @@ var songBasicDetailsController = function($scope, $http,$window){
   });
 
   $http.get('/api/category/song').success(function(categoryList){
-    $scope.categoryList = categoryList;
+    $scope.songCategoryList = categoryList;
   });
+
+  $http.get('/api/category/media').success(function(categoryList){
+      $scope.mediaCategoryList = categoryList;
+    });
 
   $scope.saveData = function(){
     $http.post('/api/songs',$scope.formInfo).success(function(data){

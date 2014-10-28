@@ -56,7 +56,7 @@ public class Song {
     private Set<PersonDetails> poets;
 
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "CATEGORY_ID")
+    @JoinColumn(name = "SONG_CATEGORY")
     private Category category;
 
     public Set<PersonDetails> getPoets(){return poets;}
