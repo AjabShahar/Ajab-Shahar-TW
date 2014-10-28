@@ -1,8 +1,8 @@
 <div class="carousel">
     <div ng-init="myExp='one'">
-            <button ng-click="next()">Next</button>
-            <button ng-click="prev()">Prev</button>
-            <div class="carousel-container" ng-transclude>
-        </div>
+    	 <div class='carousel-arrows'> <button ng-click="prev()">Prev</button></div>
+    	    <div class="carousel-container" ng-transclude></div>
+    	<div class='carousel-arrows'><button ng-click="next()">Next</button></div>
+      	
     </div>
 </div>
