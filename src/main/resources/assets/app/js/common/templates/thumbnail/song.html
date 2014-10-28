@@ -1,9 +1,9 @@
-<div class="thumbnailWrapper">
+<div class="thumbnailWrapper" ng-click="open('{{overlayId}}')">
     <div class="thumbnail {{customStyle}}">
         <div class="thumbnailVideo">
             <img src="{{imgSrc}}"/>
         </div>
-        <div class="thumbnailDesc" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()" ng-click="open('{{overlayId}}')">
+        <div class="thumbnailDesc" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
             <h3 class="selected" >{{name}}</h3>
             <small>sings {{singer|uppercase}}</small>
 

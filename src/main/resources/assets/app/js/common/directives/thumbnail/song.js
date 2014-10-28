@@ -12,7 +12,6 @@ thumbnailModule.directive("songWithDetails", function() {
             duration:'@',
             poet:'@',
             customStyle:'@',
-            overlayId:'@',
             id:'@',
             open: '&', //open click handler ~ callback to controller
         },

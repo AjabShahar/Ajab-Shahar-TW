@@ -15,11 +15,11 @@ htmlGenerator.factory('introductionPopupService', function () {
       return _.reduce(details.songs, function(memo, value, index){
             var id = 'song_'+details.songs[index].id;
             return memo+
-                '<pop-up id="'+id+'" width="100" show="popupService.shouldShow(\''+id+'\')"'+
-                ' on-close="popupService.onClose(\''+id+'\')" closeButton="true">'+
-                  '<song-introduction singer="'+getName(details.songs[index].singers[0])+'" name="'+details.songs[index].englishTranslationTitle
-                    +'" url="'+details.songs[index].youtubeVideoId+'" close-video="popupService.isClosed(\''+id+'\')"></song-introduction>'+
-                '</pop-up>';
+                '<pop-up id="'+id+'" width="100" show="popupService.shouldShow(\''+id+'\')"'
+                + ' on-close="popupService.onClose(\''+id+'\')" closeButton="true">'
+                  + '<song-introduction id="'+id+'" singer="'+getName(details.songs[index].singers[0])+'" name="'+details.songs[index].englishTranslationTitle+'"'
+                   + ' url="'+details.songs[index].youtubeVideoId+'" close-video="popupService.isClosed(\''+id+'\')"></song-introduction>'
+                +'</pop-up>';
       },'');
   };
 

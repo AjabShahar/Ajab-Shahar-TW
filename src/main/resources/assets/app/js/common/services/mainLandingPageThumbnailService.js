@@ -8,7 +8,7 @@ filmThumbnailService,gatheringThumbnailService,reflectionThumbnailService) {
         var startIndex =-1;
         var songs = _.reduce(details.songs, function(memo, value, index){
                 startIndex++;
-                return memo+songThumbnailService.getThumbnailWithBubble(details.songs[index],'oid'+startIndex,"shift"+getShiftIndex(startIndex));
+                return memo+songThumbnailService.getThumbnailWithBubble(details.songs[index],'song_'+details.songs[index].id,"shift"+getShiftIndex(startIndex));
         },'');
 
         var couplets = _.reduce(details.couplets, function(memo, value, index){
