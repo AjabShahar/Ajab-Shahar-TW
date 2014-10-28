@@ -21,7 +21,21 @@ public class CategoryResource {
 
     @GET
     @UnitOfWork
-    public List<Category> listAllTitleDetails() {
+    public List<Category> listAllCategories() {
         return categoryDAO.findAll();
+    }
+
+    @GET
+    @UnitOfWork
+    @Path("/song")
+    public List<Category> listAllSongCategories() {
+        return categoryDAO.findAllSongCategories();
+    }
+
+    @GET
+    @UnitOfWork
+    @Path("/media")
+    public List<Category> listAllMediaCategories() {
+        return categoryDAO.findAllMediaCategories();
     }
 }

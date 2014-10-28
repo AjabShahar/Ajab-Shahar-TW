@@ -17,7 +17,7 @@ var songBasicDetailsController = function($scope, $http,$window){
     $scope.poetsList = poetsList;
   });
 
-  $http.get('/api/category').success(function(categoryList){
+  $http.get('/api/category/song').success(function(categoryList){
     $scope.categoryList = categoryList;
   });
 

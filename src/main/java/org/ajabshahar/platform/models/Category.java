@@ -8,6 +8,14 @@ import javax.persistence.*;
         @NamedQuery(
                 name = "org.ajabshahar.platform.models.Category.findAll",
                 query = "SELECT p FROM Category p"
+        ),
+        @NamedQuery(
+                name = "org.ajabshahar.platform.models.Category.findAllSongCategories",
+                query = "SELECT p FROM Category p where p.categoryType='song'"
+        ),
+        @NamedQuery(
+                name = "org.ajabshahar.platform.models.Category.findAllMediaCategories",
+                query = "SELECT p FROM Category p where p.categoryType='media'"
         )
 })
 public class Category {
@@ -17,6 +25,9 @@ public class Category {
 
     @Column(name = "NAME", nullable = false)
     private String name;
+
+    @Column(name = "CATEGORY_TYPE", nullable = false)
+    private String categoryType;
 
     public String getName() {
         return name;
@@ -32,5 +43,13 @@ public class Category {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getCategoryType() {
+        return categoryType;
+    }
+
+    public void setCategoryType(String categoryType) {
+        this.categoryType = categoryType;
     }
 }
