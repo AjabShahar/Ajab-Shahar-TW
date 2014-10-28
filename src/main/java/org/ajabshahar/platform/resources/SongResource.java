@@ -2,14 +2,12 @@ package org.ajabshahar.platform.resources;
 
 import io.dropwizard.hibernate.UnitOfWork;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.Consumes;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.Locale;
+
 import com.google.gson.Gson;
 import org.ajabshahar.platform.daos.SongDAO;
 import org.ajabshahar.platform.models.Song;
@@ -30,7 +28,7 @@ public class SongResource {
     public Response createSong(String jsonSong) {
         Song song = new Gson().fromJson(jsonSong, Song.class);
         songDAO.create(song);
-        return Response.status(200).entity(song.toString()).build();
+        return Response.status(200).entity(song.getId()).build();
     }
 
     @GET
@@ -45,6 +43,19 @@ public class SongResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Song> listAllSongOnLandingValues() {
         return songDAO.findAllOnLandingPage();
+    }
+
+    @GET
+    @Path("/edit")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Song getSongById(@QueryParam("id") Long id){
+        try {
+            return songDAO.findById(id);
+        }
+        catch (Exception e){
+            System.out.println(e.getStackTrace());
+        }
+        return null;
     }
 
 }
