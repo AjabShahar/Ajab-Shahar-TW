@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title></title>
     <script src="../../../lib/angular/angular.js"></script>
-    <script src="../../../lib/jquery/dist/jquery.min.js"></script>
+    <script src="../../../lib/angular-route/angular-route.js"></script>
     <script type="text/javascript" src="../../../js/Admin/app.js"></script>
     <script type="text/javascript" src="../../../js/Admin/controllers/couplets/detailsController.js"></script>
     <link href="../../../css/bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
@@ -14,22 +14,18 @@
 <div ng-controller="coupletDetailsController">
     <form >
         <div class="row">
-            <div class="form-group col-sm-5">
+            <div class="form-group col-sm-2">
                 <label>Description</label>
             </div>
-        </div>
-        <div class="row">
             <div class="form-group col-sm-5">
                 <input type="text" name="word" ng-model="formInfo.DESCRIPTION" maxlength="30" required>
             </div>
         </div>
 
         <div class="row">
-            <div class="form-group col-sm-5">
+            <div class="form-group col-sm-2">
                 <label>Category</label>
             </div>
-        </div>
-        <div class="row">
             <div class="form-group col-sm-5">
                 <select name="format" ng-model="formInfo.CATEGORY">
                     <option value="Couplet">Couplet</option>
@@ -38,11 +34,9 @@
         </div>
 
         <div class="row">
-            <div class="form-group col-sm-5">
+            <div class="form-group col-sm-2">
                 <label>Show On LandingPage</label>
             </div>
-        </div>
-        <div class="row">
             <div class="form-group col-sm-5">
                 <select name="format" ng-model="formInfo.showOnLandingPage">
                     <option value="yes">Yes</option>

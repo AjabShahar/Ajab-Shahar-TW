@@ -5,7 +5,6 @@
     <title></title>
     <title></title>
     <script src="../../../lib/angular/angular.js"></script>
-    <script src="../../../lib/jquery/dist/jquery.min.js"></script>
     <script src="../../../lib/angular-route/angular-route.js"></script>
     <script type="text/javascript" src="../../../js/Admin/app.js"></script>
     <script type="text/javascript" src="../../../js/Admin/controllers/songs/detailsController.js"></script>
@@ -15,33 +14,116 @@
 <h2>Enter Song basic details</h2>
 <div ng-controller="songDetailsController">
     <form >
-        Singer:
-        <select  ng-model="formInfo.singers[0]"
-                ng-options="singer.firstName for singer in singersList">
-        </select><br/>
-        Poet:
-        <select  ng-model="formInfo.poets[0]"
-                 ng-options="poet.firstName for poet in poetsList">
-        </select><br/>
-        Show On LandingPage :
-        <select name="format" ng-model="formInfo.showOnLandingPage">
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-        </select><br/>
-        Song Category:
-        <select ng-model="formInfo.songCategory"
-                ng-options="category.name for category in songCategoryList">
-        </select><br/>
-        Media Category:
-        <select ng-model="formInfo.mediaCategory"
-                ng-options="category.name for category in mediaCategoryList">
-        </select><br/>
-        Duration:<input type="text" name="duration" ng-model="formInfo.duration"><br/>
-        Youtube Video Id:<input type="text" name="youtubeVideoId" ng-model="formInfo.youtubeVideoId"><br/>
-        Thumbnail Url:<input type="text" name="thumbnailUrl" ng-model="formInfo.thumbnail_url"><br/>
-        Original Title:<input type="text" name="originalTitle" ng-model="formInfo.original"><br/>
-        English Translation:<input type="text" name="englishTranslation" ng-model="formInfo.english_Translation"><br/>
-        English Transliteration:<input type="text" name="englishTransliteration" ng-model="formInfo.english_Transliteration"><br/>
+        <div class="row">
+            <div class="form-group col-sm-2">
+                <label>Singer</label>
+            </div>
+            <div class="form-group col-sm-5">
+                <select  ng-model="formInfo.singers[0]"
+                         ng-options="singer.firstName for singer in singersList">
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-2">
+                <label>Poet</label>
+            </div>
+            <div class="form-group col-sm-5">
+                <select  ng-model="formInfo.poets[0]"
+                         ng-options="poet.firstName for poet in poetsList">
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-2">
+                <label>Show On LandingPage</label>
+            </div>
+            <div class="form-group col-sm-5">
+                <select name="format" ng-model="formInfo.showOnLandingPage">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-2">
+                <label>Song Category</label>
+            </div>
+            <div class="form-group col-sm-5">
+                <select ng-model="formInfo.songCategory"
+                        ng-options="category.name for category in songCategoryList">
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-2">
+                <label>Media Category</label>
+            </div>
+            <div class="form-group col-sm-5">
+                <select ng-model="formInfo.mediaCategory"
+                        ng-options="category.name for category in mediaCategoryList">
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-2">
+                <label>Duration</label>
+            </div>
+            <div class="form-group col-sm-5">
+                <input type="text" name="duration" ng-model="formInfo.duration">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-2">
+                <label>Youtube Video Id</label>
+            </div>
+            <div class="form-group col-sm-5">
+                <input type="text" name="youtubeVideoId" ng-model="formInfo.youtubeVideoId">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-2">
+                <label>Thumbnail Url</label>
+            </div>
+            <div class="form-group col-sm-5">
+                <input type="text" name="thumbnailUrl" ng-model="formInfo.thumbnail_url">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-2">
+                <label>Original Title</label>
+            </div>
+            <div class="form-group col-sm-5">
+                <input type="text" name="originalTitle" ng-model="formInfo.original">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-2">
+                <label>English Translation</label>
+            </div>
+            <div class="form-group col-sm-5">
+                <input type="text" name="englishTranslation" ng-model="formInfo.english_Translation">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-2">
+                <label>English Transliteration</label>
+            </div>
+            <div class="form-group col-sm-5">
+                <input type="text" name="englishTransliteration" ng-model="formInfo.english_Transliteration">
+            </div>
+        </div>
+
         <button type="submit" ng-click="saveData()">Submit</button>
     </form>
 </div>
