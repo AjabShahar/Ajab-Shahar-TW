@@ -57,7 +57,11 @@ public class Song {
 
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "SONG_CATEGORY")
-    private Category category;
+    private Category songCategory;
+
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "MEDIA_CATEGORY")
+    private Category mediaCategory;
 
     public Set<PersonDetails> getPoets(){return poets;}
 
@@ -127,16 +131,24 @@ public class Song {
         this.thumbnail_url = thumbnail_url;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
     public void setId(long id) {
         this.id = id;
+    }
+
+    public Category getSongCategory() {
+        return songCategory;
+    }
+
+    public Category getMediaCategory() {
+        return mediaCategory;
+    }
+
+    public void setMediaCategory(Category mediaCategory) {
+        this.mediaCategory = mediaCategory;
+    }
+
+    public void setSongCategory(Category songCategory) {
+        this.songCategory = songCategory;
     }
 }
 
