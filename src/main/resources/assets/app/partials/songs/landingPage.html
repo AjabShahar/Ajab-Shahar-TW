@@ -39,6 +39,22 @@
 <body ng-controller="songsController" class="page-songs">
 <ajab-shahar-header show-menu-content="true" call-back="setPageHeight()"></ajab-shahar-header>
 
+   <!-- parallax effect starts -->
+    <div class='song-parallax-container songsParallax'>
+        <div class='pxSongLayers px-song-layer1' data-name='songbg'></div>
+        <div class='pxSongLayers px-song-layer2' data-name='tambura' ></div>
+        <div class='pxSongLayers px-song-layer3' data-name='tambura2'></div>
+        <div class='pxSongLayers px-song-layer4' data-name='triangles'></div>
+        <div class='pxSongLayers px-song-layer5' data-name='vibrations'></div>
+        <div class='pxSongLayers px-song-layer6' data-name='darkedges'></div>
+        <div class='pxSongLayers px-song-layer7' data-name='pingla'></div>
+        <div class='pxSongLayers px-song-layer8' data-name='ingla'></div>
+        <div class='pxSongLayers px-song-layer9' data-name='sushamna'></div>
+        <div class='pxSongLayers px-song-layer10' data-name='snake'></div>
+    </div>
+    <!-- parallax effect ends -->
+
+
 <div bind-unsafe-html="popupContent"></div>
 
 <!-- thumbnail and middle content starts -->

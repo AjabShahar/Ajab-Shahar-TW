@@ -3,7 +3,7 @@
 }
 .carousel {
   position: relative;
-  width: 610px;
+  width: 100%;
   margin: auto;
 }
 .slide {
@@ -29,3 +29,39 @@ h1 {
 .rightArrow{
     content:url('../../img/common/directives/carousel/right-arrow.jpg');
 }
+
+
+
+
+.ajab-ribbon{
+  display: inline-block;
+}
+
+.ajab-ribbon li{
+  width:280px;
+  float:left;
+  margin:0 10px 0 0;
+}
+
+.ajab-ribbon .thumbnail{
+  width:100%;
+}
+
+.ajab-ribbon .thumbnailVideo{
+  height:150px;
+}
+
+.ajab-ribbon .thumbnailVideo img{
+  height:100%;
+}
+
+.ajab-ribbon .thumbnailDesc{
+  width: 230px;
+  margin:10px 0% 0 20px;
+}
+
+
+.ajab-ribbon .thumbnailDesc:before{
+margin:-31px 0 0 -14px;
+}
+

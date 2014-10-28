@@ -1,6 +1,13 @@
 .carousel-container {
-  position:relative;
-  height:500px;
+position: relative;
+height: 500px;
+width: 880px;
+display: inline-block;
+float: left;
+}
+
+.carousel-arrows{
+  width:45px;float: left;
 }
 
 .carousel-animation.ng-hide-remove,
@@ -16,10 +23,12 @@
   top:0;
   left:0;
   right:0;
+  opacity: 1;
 }
 
 .carousel-animation.ng-hide-remove {
   left:100%;
+  opacity:0;
 }
 
 .carousel-animation.ng-hide-add,
