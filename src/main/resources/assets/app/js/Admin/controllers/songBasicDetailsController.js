@@ -29,7 +29,7 @@ var songBasicDetailsController = function($scope, $http,$window){
 
   $scope.saveData = function(){
     $http.post('/api/songs',$scope.formInfo).success(function(data){
-          $window.location.href = 'partials/admin/songDetails/edit.html?id='+data;
+          $window.location.href = '/partials/admin/songDetails/edit.html?id='+data;
 
     });
    };
