@@ -6,6 +6,7 @@
     <title></title>
     <script src="../../lib/angular/angular.js"></script>
     <script src="../../lib/jquery/dist/jquery.min.js"></script>
+    <script src="../../lib/angular-route/angular-route.js"></script>
     <script type="text/javascript" src="../../js/Admin/app.js"></script>
     <script type="text/javascript" src="../../js/Admin/controllers/songBasicDetailsController.js"></script>
 </head>
@@ -26,9 +27,13 @@
             <option value="true">Yes</option>
             <option value="false">No</option>
         </select><br/>
-        Category:
-        <select ng-model="formInfo.category"
+        Song Category:
+        <select ng-model="formInfo.songCategory"
                 ng-options="category.name for category in songCategoryList">
+        </select><br/>
+        Media Category:
+        <select ng-model="formInfo.mediaCategory"
+                ng-options="category.name for category in mediaCategoryList">
         </select><br/>
         Duration:<input type="text" name="duration" ng-model="formInfo.duration"><br/>
         Youtube Video Id:<input type="text" name="youtubeVideoId" ng-model="formInfo.youtubeVideoId"><br/>

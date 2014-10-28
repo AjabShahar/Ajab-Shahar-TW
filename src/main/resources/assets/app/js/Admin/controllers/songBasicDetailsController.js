@@ -29,20 +29,22 @@ var songBasicDetailsController = function($scope, $http,$window){
 
   $scope.saveData = function(){
     $http.post('/api/songs',$scope.formInfo).success(function(data){
-          alert(data);
-          $http.get('/api/songs/edit', {
-                  params: {
-                     id:data
-                  }
-               })
-               .success(function (data,status) {
-                    alert(data.id);
-                    $scope.songDetails = data;
-                    $window.location.href='/partials/admin/songDetails/edit.html'
-           });
+          $window.location.href = '/partials/admin/songDetails/edit.html?id='+data;
 
     });
-  };
+   };
+
+    $scope.getSongData = function(){
+
+      $http.get('/api/songs/edit', {
+                        params: {
+                           id:data
+                        }
+                     })
+                     .success(function (data,status) {
+                          $scope.songDetails = data;
+      });
+    };
 }
 
 adminApp.controller('songBasicDetailsController',['$scope','$http','$window',songBasicDetailsController]);
