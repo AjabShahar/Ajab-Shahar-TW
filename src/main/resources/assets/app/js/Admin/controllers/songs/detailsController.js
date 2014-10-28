@@ -1,4 +1,4 @@
-var songBasicDetailsController = function($scope, $http,$window){
+var songDetailsController = function($scope, $http,$window){
 
   $scope.formInfo = {};
   $scope.formInfo.singers = [];
@@ -47,4 +47,4 @@ var songBasicDetailsController = function($scope, $http,$window){
     };
 }
 
-adminApp.controller('songBasicDetailsController',['$scope','$http','$window',songBasicDetailsController]);
+adminApp.controller('songDetailsController',['$scope','$http','$window',songDetailsController]);

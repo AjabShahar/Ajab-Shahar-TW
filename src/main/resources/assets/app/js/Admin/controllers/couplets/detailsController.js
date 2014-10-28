@@ -1,4 +1,4 @@
-var enterCoupletDetailsController = function($scope, $http){
+var coupletDetailsController = function($scope, $http){
     $scope.formInfo = {};
       $scope.saveData = function(){
       $http.post('/api/couplets',$scope.formInfo).success(function(){
@@ -6,4 +6,4 @@ var enterCoupletDetailsController = function($scope, $http){
            });
     };
  };
-adminApp.controller('enterCoupletDetailsController',['$scope','$http',enterCoupletDetailsController]);
+adminApp.controller('coupletDetailsController',['$scope','$http',coupletDetailsController]);
