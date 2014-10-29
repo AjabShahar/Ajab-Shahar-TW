@@ -30,6 +30,14 @@ public class SongResource {
         songDAO.create(song);
         return Response.status(200).entity(song.getId()).build();
     }
+    @PUT
+    @UnitOfWork
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response updateSong(Long id,String jsonSong){
+        Song song = songDAO.findById(id);
+        
+        return null;
+    }
 
     @GET
     @UnitOfWork

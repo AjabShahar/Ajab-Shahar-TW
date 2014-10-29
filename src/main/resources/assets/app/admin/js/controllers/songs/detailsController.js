@@ -1,4 +1,4 @@
-var songDetailsController = function($scope, $http,$window){
+var songDetailsController = function($scope, $http,$window,$location){
 
   $scope.formInfo = {};
   $scope.formInfo.singers = [];
@@ -7,7 +7,6 @@ var songDetailsController = function($scope, $http,$window){
   $scope.singersList = [];
   $scope.poetsList = [];
   $scope.categoryList = [];
-  $scope.songDetails = {};
   $scope.songCategoryList = [];
   $scope.mediaCategoryList = [];
 
@@ -35,16 +34,16 @@ var songDetailsController = function($scope, $http,$window){
    };
 
     $scope.getSongData = function(){
-
+      var data = $location.search().id;
       $http.get('/api/songs/edit', {
                         params: {
                            id:data
                         }
                      })
                      .success(function (data,status) {
-                          $scope.songDetails = data;
+                          $scope.formInfo = data;
       });
     };
 }
 
-adminApp.controller('songDetailsController',['$scope','$http','$window',songDetailsController]);
+adminApp.controller('songDetailsController',['$scope','$http','$window','$location',songDetailsController]);

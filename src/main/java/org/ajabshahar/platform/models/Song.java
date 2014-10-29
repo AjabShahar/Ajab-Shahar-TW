@@ -30,10 +30,10 @@ public class Song {
     private String original;
 
     @Column(name = "ENGLISH_TRANSLATION", nullable = false)
-    private String english_Translation;
+    private String englishTranslation;
 
     @Column(name = "ENGLISH_TRANSLITERATION", nullable = false)
-    private String english_Transliteration;
+    private String englishTransliteration;
 
     @Column(name = "YOUTUBE_VIDEO_ID", nullable = false)
     private String youtubeVideoId;
@@ -63,28 +63,28 @@ public class Song {
 
     public void setPoets(Set<PersonDetails> poets){this.poets = poets;}
 
-    public String getOriginalTitle() {
+    public String getOriginal() {
         return original;
     }
 
-    public void setOriginalTitle(String Original) {
+    public void setOriginal(String Original) {
         this.original = Original;
     }
 
-    public String getEnglishTranslationTitle() {
-        return english_Translation;
+    public String getEnglishTranslation() {
+        return englishTranslation;
     }
 
-    public void setEnglishTranslationTitle(String ENGLISH_TRANSLATION) {
-        this.english_Translation = ENGLISH_TRANSLATION;
+    public void setEnglishTranslation(String ENGLISH_TRANSLATION) {
+        this.englishTranslation = ENGLISH_TRANSLATION;
     }
 
-    public String getEnglishTransliterationTitle() {
-        return english_Transliteration;
+    public String getEnglishTransliteration() {
+        return englishTransliteration;
     }
 
     public void setEnglishTransliterationTitle(String ENGLISH_TRANSLITERATION) {
-        this.english_Transliteration = ENGLISH_TRANSLITERATION;
+        this.englishTransliteration = ENGLISH_TRANSLITERATION;
     }
 
     public Boolean getShowOnLandingPage() {
