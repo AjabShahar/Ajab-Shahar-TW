@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" ng-app="allSongsApp">
+<head>
+    <meta charset="utf-8">
+    <title>Songs Landing Page</title>
+    <script src="../../common/lib/angular/angular.js"></script>
+    <script src="../../common/lib/angular-animate/angular-animate.min.js"></script>
+    <script src="../../common/lib/underscore/underscore.js"></script>
+    <script src="../../common/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../../js/common/modules/thumbnailModule.js"></script>
+    <script type="text/javascript" src="../../js/common/modules/PopupSupport.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/popupSupport/popup.js"></script>
+    <script type="text/javascript" src="../../js/common/services/popupService.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/thumbnail/song.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/youtube/youtube_player.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/songs/introduction.js"></script>
+    <script type="text/javascript" src="../../js/common/config/resourceUrlWhiteList.js"></script>
+    <script type="text/javascript" src="../../js/common/modules/headerModule.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/header/ajabShaharHeader.js"></script>
+    <script type="text/javascript" src="../../js/LandingPages/services/contentService.js"></script>
+    <script type="text/javascript" src="../../js/songs/app.js"></script>
+    <script type="text/javascript" src="../../js/songs/controllers/allSongsController.js"></script>
+    <script type="text/javascript" src="../../js/common/modules/htmlGenerator.js"></script>
+    <script type="text/javascript" src="../../js/common/services/songThumbnailService.js"></script>
+    <script type="text/javascript" src="../../js/common/services/introductionPopupService.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/header/sticky.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/carouselSupport/carousel.js"></script>
+    <link href="../../css/common/header.css" rel="stylesheet" type="text/css">
+    <link href="../../css/common/footer.css" rel="stylesheet" type="text/css">
+    <link href="../../css/mainLandingPage/main.css" rel="stylesheet" type="text/css">
+    <link href="../../css/mainLandingPage/parallax.css" rel="stylesheet" type="text/css">
+    <link href="../../css/common/directives/thumbnail.css" rel="stylesheet" type="text/css">
+    <link href="../../css/common/directives/popup.css" rel="stylesheet" type="text/css">
+    <link href="../../css/common/directives/introduction.css" rel="stylesheet" type="text/css">
+    <link href="../../css/pages/songs.css" rel="stylesheet" type="text/css">
+    <link href="../../css/carouselSupport/carousel.css" rel="stylesheet" type="text/css">
+    <link href="../../css/carouselSupport/carouselAnimation.css" rel="stylesheet" type="text/css">
+</head>
+<body ng-controller="allSongsController" class="page-songs">
+    <ajab-shahar-header></ajab-shahar-header>
+
+    <carousel>
+        <section id="one">
+            <ul>
+                <li><song-with-details overlay-id="oid0" open="popupService.open('oid0')" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&amp;var1=IMGP7051a.JPG" url="tNh2kjmSzPw" name="For a few days,O Heart" category-name="undefined" duration="5:45" singer="Parvathy Baul" poet="Roshik" class="ng-scope ng-isolate-scope"></song-with-details></li>
+                <li><song-with-details overlay-id="oid0" open="popupService.open('oid0')" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&amp;var1=IMGP7051a.JPG" url="tNh2kjmSzPw" name="For a few days,O Heart" category-name="undefined" duration="5:45" singer="Parvathy Baul" poet="Roshik" class="ng-scope ng-isolate-scope"></song-with-details></li>
+            </ul>
+        </section>
+        <section id="two">
+            <song-with-details overlay-id="oid0" open="popupService.open('oid0')" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&amp;var1=IMGP7051a.JPG" url="tNh2kjmSzPw" name="Abcd" category-name="undefined" duration="5:45" singer="Parvathy Baul" poet="Roshik" class="ng-scope ng-isolate-scope"></song-with-details>
+        </section>
+    </carousel>
+</body>
+</html>

@@ -26,7 +26,7 @@ describe('Content', function() {
             scope.overlay1='overlayId',
 
             element = angular.element('<gathering-with-details overlay-id="{{overlay1}}" custom-style="{{customStyle1}}" img-src="{{imgSrc1}}" name="{{name1}}" location="{{location1}}" date="{{date1}}"></gathering-with-details>');
-            template.put('/js/common/templates/thumbnail/gathering.html', '{{overlayId}} {{customStyle}} {{imgSrc}} {{name}} {{date}} {{location}}');
+            template.put('/user/js/common/templates/thumbnail/gathering.html', '{{overlayId}} {{customStyle}} {{imgSrc}} {{name}} {{date}} {{location}}');
             compile(element)(scope);
             scope.$apply();
 

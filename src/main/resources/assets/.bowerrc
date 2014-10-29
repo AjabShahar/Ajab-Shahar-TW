@@ -1,4 +1,4 @@
 {
-  "directory": "app/lib",
+  "directory": "app/common/lib",
   "interactive": false
 }

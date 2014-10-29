@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" ng-app="landingPagesApp">
+<head>
+    <meta charset="utf-8">
+    <title>Songs Landing Page</title>
+    <script src="../../../common/lib/angular/angular.js"></script>
+    <script src="../../../common/lib/underscore/underscore.js"></script>
+    <script src="../../../common/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../common/services/nameService.js"></script>
+    <script type="text/javascript" src="../../js/common/modules/thumbnailModule.js"></script>
+    <script type="text/javascript" src="../../js/common/modules/PopupSupport.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/popupSupport/popup.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/thumbnail/song.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/thumbnail/word.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/parallax/angular-parallax.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/youtube/youtube_player.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/songs/introduction.js"></script>
+    <script type="text/javascript" src="../../js/common/config/resourceUrlWhiteList.js"></script>
+    <script type="text/javascript" src="../../js/common/modules/headerModule.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/header/ajabShaharHeader.js"></script>
+    <script type="text/javascript" src="../../js/LandingPages/services/contentService.js"></script>
+    <script type="text/javascript" src="../../js/LandingPages/app.js"></script>
+    <script type="text/javascript" src="../../js/common/services/popupService.js"></script>
+    <script type="text/javascript" src="../../js/common/modules/htmlGenerator.js"></script>
+    <script type="text/javascript" src="../../js/common/services/songThumbnailService.js"></script>
+    <script type="text/javascript" src="../../js/common/services/introductionPopupService.js"></script>
+    <script type="text/javascript" src="../../js/LandingPages/controllers/songsController.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/header/sticky.js"></script>
+    <link href="../../css/common/header.css" rel="stylesheet" type="text/css">
+    <link href="../../css/common/footer.css" rel="stylesheet" type="text/css">
+    <link href="../../css/mainLandingPage/main.css" rel="stylesheet" type="text/css">
+    <link href="../../css/mainLandingPage/parallax.css" rel="stylesheet" type="text/css">
+    <link href="../../css/common/directives/thumbnail.css" rel="stylesheet" type="text/css">
+    <link href="../../css/common/directives/popup.css" rel="stylesheet" type="text/css">
+    <link href="../../css/common/directives/introduction.css" rel="stylesheet" type="text/css">
+    <link href="../../css/pages/songs.css" rel="stylesheet" type="text/css">
+
+
+</head>
+<body ng-controller="songsController" class="page-songs">
+<ajab-shahar-header show-menu-content="true" call-back="setPageHeight()"></ajab-shahar-header>
+
+   <!-- parallax effect starts -->
+    <div class='song-parallax-container songsParallax'>
+        <div class='pxSongLayers px-song-layer1' data-name='songbg'></div>
+        <div class='pxSongLayers px-song-layer2' data-name='tambura' ></div>
+        <div class='pxSongLayers px-song-layer3' data-name='tambura2'></div>
+        <div class='pxSongLayers px-song-layer4' data-name='triangles'></div>
+        <div class='pxSongLayers px-song-layer5' data-name='vibrations'></div>
+        <div class='pxSongLayers px-song-layer6' data-name='darkedges'></div>
+        <div class='pxSongLayers px-song-layer7' data-name='pingla'></div>
+        <div class='pxSongLayers px-song-layer8' data-name='ingla'></div>
+        <div class='pxSongLayers px-song-layer9' data-name='sushamna'></div>
+        <div class='pxSongLayers px-song-layer10' data-name='snake'></div>
+    </div>
+    <!-- parallax effect ends -->
+
+
+<div bind-unsafe-html="popupContent"></div>
+
+<!-- thumbnail and middle content starts -->
+<div class='ajab-container'>
+    <div class='ajab-wrapper'>
+        <div class='homepage-content songs'>
+            <div bind-unsafe-html="thumbnailContent"></div>
+        </div>
+    </div>
+</div>
+<!-- thumbnail and middle content starts -->
+
+<div ng-include src="'../common/footer.html'"></div>
+
+</body>
+</html>
