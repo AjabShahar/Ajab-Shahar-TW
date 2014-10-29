@@ -16,7 +16,7 @@ describe("introduction popup service Specs", function(){
                     "id":2,
                     "contentType": "Songs",
                     "categoryName": "Song & Reflection",
-                    "englishTranslationTitle": "Practice the art of dying",
+                    "englishTranslation": "Practice the art of dying",
                     "poet": "Sharath",
                     "youtubeVideoId": "videoId",
                     "imageUrl": "imgId",
