@@ -1,12 +1,10 @@
 package org.ajabshahar.platform.daos;
 
-import com.google.common.base.Optional;
 import io.dropwizard.hibernate.AbstractDAO;
-import io.dropwizard.jersey.sessions.Session;
 import org.ajabshahar.platform.models.Song;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
 public class SongDAO extends AbstractDAO<Song> {
@@ -29,6 +27,7 @@ public class SongDAO extends AbstractDAO<Song> {
     }
 
     public List<Song> findAllOnLandingPage() {
-        return list(namedQuery("org.ajabshahar.platform.models.Song.findAllOnLandingPage"));
+        Query q = this.currentSession().createQuery("FROM  Song p where p.showOnLandingPage=true").setMaxResults(15);
+        return q.list();
     }
 }
