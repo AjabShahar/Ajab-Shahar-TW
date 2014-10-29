@@ -6,35 +6,18 @@
     <script src="http://connect.soundcloud.com/sdk.js"></script>
     <script src="https://w.soundcloud.com/player/api.js"></script>
     <script src="../common/lib/jquery/dist/jquery.js"></script>
+
+    <script src="../common/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="../user/js/Test/SoundCloud/app.js"></script>
+    <script type="text/javascript" src="../user/js/Test/SoundCloud/controllers/soundCloudController.js"></script>
+
 </head>
-<body>
-    <input type="button" id="loadTracks" class="button big" value="Get hottest track" />
-    <div id="track"></div>
+<body ng-app="soundCloudApp">
+    <div ng-controller="soundCloudController">
+        <input type="button" id="loadTracks" class="button big" value="Get hottest track" ng-click="loadTrack()"/>
+        <div id="track"></div>
 
-    <button class="pause" onclick="pause()">Pause</button>
-
-    <script>
-    $(document).ready(function(){
-        SC.initialize({
-            client_id: "694f15bbffd7ae8e6e399f49dd228725"
-        });
-
-        $("#loadTracks").on("click", function(){
-          SC.get("/tracks", {limit: 1}, function(tracks){
-            var track = tracks[0];
-            SC.oEmbed(track.uri, document.getElementById("track"));
-          });
-        });
-    });
-
-    
-    var pause = function(){
-        var iframeElement   = document.querySelector('iframe');
-        var widget1         = SC.Widget(iframeElement);
-        console.log("working" + widget1);
-        widget1.pause();
-    }
-
-    </script>
+        <button class="pause" ng-click="pauseTrack()">Pause</button>
+    </div>
 </body>
 </html>
