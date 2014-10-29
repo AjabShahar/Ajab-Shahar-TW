@@ -2,7 +2,6 @@ var landingPagesApp = angular.module('landingPagesApp',['angular-parallax','thum
 
 landingPagesApp.config(resourceUrlWhiteList);
 landingPagesApp.factory('contentService', ['$http', contentService]);
-landingPagesApp.factory('nameService', [nameService]);
 
 landingPagesApp.directive('bindUnsafeHtml', ['$compile', function ($compile) {
   return function(scope, element, attrs) {
