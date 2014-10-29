@@ -95,7 +95,7 @@ youtubeApp.directive('youtube', function($window, YT_event) {
 
         scope.cueVideo = function(){
             scope.cueVideoById = true;
-            scope.player.cueVideoById(scope.videoid);
+            //scope.player.cueVideoById(scope.videoid, 0, "small");
         };
 
         scope.$watch('videoid', function(newValue, oldValue) {
