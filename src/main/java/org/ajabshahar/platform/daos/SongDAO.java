@@ -27,8 +27,7 @@ public class SongDAO extends AbstractDAO<Song> {
     }
 
     public List<Song> findAllOnLandingPage() {
-        Query q = this.currentSession().createQuery("FROM  Song p where p.showOnLandingPage=true and p.isAuthoringComplete=true").setMaxResults(15);
-        return q.list();
+        return list(namedQuery("org.ajabshahar.platform.models.Song.findAllOnLandingPage").setMaxResults(15));
     }
 
     public void updateSong(Long id,Song updatableSongData) {
