@@ -83,7 +83,7 @@ public class Song {
         return englishTransliteration;
     }
 
-    public void setEnglishTransliterationTitle(String ENGLISH_TRANSLITERATION) {
+    public void setEnglishTransliteration(String ENGLISH_TRANSLITERATION) {
         this.englishTransliteration = ENGLISH_TRANSLITERATION;
     }
 

@@ -1,16 +1,16 @@
 package org.ajabshahar.platform.resources;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import io.dropwizard.hibernate.UnitOfWork;
+import org.ajabshahar.platform.daos.SongDAO;
+import org.ajabshahar.platform.models.Song;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
-import java.util.Locale;
-
-import com.google.gson.Gson;
-import org.ajabshahar.platform.daos.SongDAO;
-import org.ajabshahar.platform.models.Song;
 
 @Path("/songs")
 @Produces(MediaType.APPLICATION_JSON)
@@ -31,11 +31,16 @@ public class SongResource {
         return Response.status(200).entity(song.getId()).build();
     }
     @PUT
+    @Path("/edit")
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateSong(Long id,String jsonSong){
-        Song song = songDAO.findById(id);
-        
+    public Response updateSong(String  jsonSong){
+       // Song song = songDAO.findById(id);
+        JsonElement jsonElement = new Gson().fromJson(jsonSong, JsonElement.class);
+        JsonObject jsonObject = jsonElement.getAsJsonObject();
+        Long id = jsonObject.get("id").getAsLong();
+        Song song = new Gson().fromJson(jsonObject.get("data"),Song.class);
+        songDAO.updateSong(id,song);
         return null;
     }
 

@@ -9,6 +9,7 @@ var songDetailsController = function($scope, $http,$window,$location){
   $scope.categoryList = [];
   $scope.songCategoryList = [];
   $scope.mediaCategoryList = [];
+  $scope.urlId = $location.search().id;
 
   $http.get('/api/people/singers').success(function(singersList){
     $scope.singersList = singersList;
@@ -34,16 +35,26 @@ var songDetailsController = function($scope, $http,$window,$location){
    };
 
     $scope.getSongData = function(){
-      var data = $location.search().id;
       $http.get('/api/songs/edit', {
                         params: {
-                           id:data
+                           id:$scope.urlId
                         }
                      })
                      .success(function (data,status) {
                           $scope.formInfo = data;
       });
     };
+
+  $scope.updateSong = function(){
+     $http.put('/api/songs/edit',
+            {
+              id:$scope.urlId,
+              data:$scope.formInfo
+            }
+     ).success(function(data){
+            alert('data updated');
+     });
+  }
 }
 
 adminApp.controller('songDetailsController',['$scope','$http','$window','$location',songDetailsController]);

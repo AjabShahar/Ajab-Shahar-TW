@@ -30,4 +30,26 @@ public class SongDAO extends AbstractDAO<Song> {
         Query q = this.currentSession().createQuery("FROM  Song p where p.showOnLandingPage=true").setMaxResults(15);
         return q.list();
     }
+
+    public void updateSong(Long id,Song updatableSongData) {
+        Song originalSongData = (Song) sessionFactory.openSession().get(Song.class,id);
+        originalSongData = invokeAllSetters(originalSongData,updatableSongData);
+        sessionFactory.openStatelessSession().update(persist(originalSongData));
+    }
+
+    public Song invokeAllSetters(Song originalSongData,Song updatableSongData){
+
+        originalSongData.setShowOnLandingPage(updatableSongData.getShowOnLandingPage());
+        originalSongData.setDuration(updatableSongData.getDuration());
+        originalSongData.setOriginal(updatableSongData.getOriginal());
+        originalSongData.setEnglishTranslation(updatableSongData.getEnglishTranslation());
+        originalSongData.setEnglishTransliteration(updatableSongData.getEnglishTransliteration());
+        originalSongData.setYoutubeVideoId(updatableSongData.getYoutubeVideoId());
+        originalSongData.setThumbnail_url(updatableSongData.getThumbnail_url());
+        originalSongData.setSingers(updatableSongData.getSingers());
+        originalSongData.setPoets(updatableSongData.getPoets());
+        originalSongData.setSongCategory(updatableSongData.getSongCategory());
+        originalSongData.setMediaCategory(updatableSongData.getMediaCategory());
+        return originalSongData;
+    }
 }
