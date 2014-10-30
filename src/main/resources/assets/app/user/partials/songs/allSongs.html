@@ -2,11 +2,12 @@
 <html lang="en" ng-app="allSongsApp">
 <head>
     <meta charset="utf-8">
-    <title>Songs Landing Page</title>
-    <script src="../../common/lib/angular/angular.js"></script>
-    <script src="../../common/lib/angular-animate/angular-animate.min.js"></script>
-    <script src="../../common/lib/underscore/underscore.js"></script>
-    <script src="../../common/lib/jquery/dist/jquery.min.js"></script>
+    <title>All Songs Page</title>
+    <script src="../../../common/lib/angular/angular.js"></script>
+    <script src="../../../common/lib/angular-animate/angular-animate.min.js"></script>
+    <script src="../../../common/lib/underscore/underscore.js"></script>
+    <script src="../../../common/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../common/services/nameService.js"></script>
     <script type="text/javascript" src="../../js/common/modules/thumbnailModule.js"></script>
     <script type="text/javascript" src="../../js/common/modules/PopupSupport.js"></script>
     <script type="text/javascript" src="../../js/common/directives/popupSupport/popup.js"></script>
@@ -35,20 +36,76 @@
     <link href="../../css/pages/songs.css" rel="stylesheet" type="text/css">
     <link href="../../css/carouselSupport/carousel.css" rel="stylesheet" type="text/css">
     <link href="../../css/carouselSupport/carouselAnimation.css" rel="stylesheet" type="text/css">
+    <link href="../../css/pages/gridview.css" rel="stylesheet" type="text/css">
 </head>
 <body ng-controller="allSongsController" class="page-songs">
     <ajab-shahar-header></ajab-shahar-header>
 
-    <carousel>
-        <section id="one">
-            <ul>
-                <li><song-with-details overlay-id="oid0" open="popupService.open('oid0')" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&amp;var1=IMGP7051a.JPG" url="tNh2kjmSzPw" name="For a few days,O Heart" category-name="undefined" duration="5:45" singer="Parvathy Baul" poet="Roshik" class="ng-scope ng-isolate-scope"></song-with-details></li>
-                <li><song-with-details overlay-id="oid0" open="popupService.open('oid0')" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&amp;var1=IMGP7051a.JPG" url="tNh2kjmSzPw" name="For a few days,O Heart" category-name="undefined" duration="5:45" singer="Parvathy Baul" poet="Roshik" class="ng-scope ng-isolate-scope"></song-with-details></li>
-            </ul>
-        </section>
-        <section id="two">
-            <song-with-details overlay-id="oid0" open="popupService.open('oid0')" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&amp;var1=IMGP7051a.JPG" url="tNh2kjmSzPw" name="Abcd" category-name="undefined" duration="5:45" singer="Parvathy Baul" poet="Roshik" class="ng-scope ng-isolate-scope"></song-with-details>
-        </section>
-    </carousel>
+    <div class="ajab-container fullHeight">
+        <div class="ajab-wrapper fullHeight">
+
+
+            <div class='leftnav'>
+
+                <div class='navElementsWrapper'>
+                    <h1 class='categoryLogo'></h1>
+                    <small class='categoryAtt newline'>457 songs</small>
+                    <nav><a>---</a><a>|||</a></nav>
+                    <input value='search'/>
+                </div>
+
+                <ul class='navList titles'>
+                    <li class='head'>TITLES<li>
+                    <li><a>Original</a></li>
+                    <li><a>English</a></li>
+                </ul>
+
+                <ul class='navList filters'>
+                    <li class='head'>Filter by</li>
+                    <li><a>Singer</a></li>
+                    <li><a>Poet</a></li>
+                    <li><a>Word</a></li>
+                    <li><a>Genre</a></li>
+                    <li><a>Gathering</a></li>
+                    <li><a>land</a></li>
+                    <li><a>all</a></li>
+                </ul>
+
+
+            </div>
+
+
+            <div class='gridView'>
+
+                <div class='paginationHead'>
+                    <div class='alphabets'>
+                        <a>A</a>
+                        <a>B</a>
+                        <a>C</a>
+                        <a>D</a>
+                        <a>E</a>
+                        <a>F</a>
+                        <a>G</a>
+                        <a>H</a>
+                        <a>I</a>
+                        <a>J</a>
+                    </div>
+
+                    <div class='numericCount'>457 songs</div>
+                </div>
+                <div class='gridWrapper'>
+                    <div class='songs'></div>
+                    <div class='songs'></div>
+                    <div class='songs'></div>
+                    <div class='songs'></div>
+                    <div class='songs'></div>
+                    <div class='songs'></div>
+                    <div class='songs'></div>
+                    <div class='songs'></div>
+                    <div class='songs'></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
