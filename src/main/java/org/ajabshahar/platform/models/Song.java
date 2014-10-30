@@ -35,8 +35,11 @@ public class Song {
     @Column(name = "ENGLISH_TRANSLITERATION", nullable = false)
     private String englishTransliteration;
 
-    @Column(name = "YOUTUBE_VIDEO_ID", nullable = false)
+    @Column(name = "YOUTUBE_VIDEO_ID", nullable = true)
     private String youtubeVideoId;
+
+    @Column(name = "SOUNDCLOUD_TRACK_ID", nullable = false)
+    private String soundCloudTrackID;
 
     @Column(name = "THUMBNAIL_URL")
     private String thumbnail_url;
@@ -145,6 +148,14 @@ public class Song {
 
     public void setSongCategory(Category songCategory) {
         this.songCategory = songCategory;
+    }
+
+    public String getSoundCloudTrackID() {
+        return soundCloudTrackID;
+    }
+
+    public void setSoundCloudTrackID(String soundCloudTrackID) {
+        this.soundCloudTrackID = soundCloudTrackID;
     }
 }
 

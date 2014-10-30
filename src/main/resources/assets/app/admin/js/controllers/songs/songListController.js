@@ -1,4 +1,4 @@
-var songDetailsController = function($scope, contentService,nameService){
+var songListController = function($scope, contentService,nameService){
     $scope.songs = [];
     $scope.nameService = nameService;
     $scope.init = function(){
@@ -8,6 +8,9 @@ var songDetailsController = function($scope, contentService,nameService){
     }
 
     $scope.init();
+    $scope.getName=function(person){
+        return $scope.nameService.getName(person);
+    }
 }
 
-adminApp.controller('songDetailsController',['$scope','contentService','nameService',songDetailsController]);
+adminApp.controller('songListController',['$scope','contentService','nameService',songListController]);

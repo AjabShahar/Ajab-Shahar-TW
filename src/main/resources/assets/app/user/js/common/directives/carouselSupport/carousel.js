@@ -10,7 +10,7 @@ carouselModule.directive('carousel', function($timeout) {
       $scope.currentIndex = 0; // Initially the index is at the first element
       $scope.sections = [];
       $scope.carouselSelection = 'one';
-
+      $scope.clazz = "carousel";
       $scope.next = function() {
           var oldIndex = $scope.currentIndex;
           $scope.currentIndex < $scope.sections.length - 1 ? $scope.currentIndex++ : $scope.currentIndex = 0;

@@ -20,10 +20,10 @@
                 <td>Poet</td>
             </th>
             <tr ng-repeat="song in songs">
-                <td>{{song.englishTranslationTitle}}</td>
+                <td>{{song.englishTranslation}}</td>
                 <td>{{song.songCategory.name}}</td>
-                <td>{{nameService.getName(song.singers[0])}}</td>
-                <td>{{nameService.getName(song.poets[0])}}</td>
+                <td>getName({{song.singers[0]}})</td>
+                <td>getName({{song.poets[0]}})</td>
             </tr>
         </table>
     </div>
