@@ -44,6 +44,9 @@ public class Song {
     @Column(name = "THUMBNAIL_URL")
     private String thumbnail_url;
 
+    @Column(name = "IS_AUTHORING_COMPLETE")
+    private Boolean isAuthoringComplete;
+
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "SONG_SINGER", joinColumns = { @JoinColumn(name = "SONG_ID", referencedColumnName = "ID") },
             inverseJoinColumns = { @JoinColumn(name = "SINGER_ID", referencedColumnName = "ID")})
@@ -156,6 +159,14 @@ public class Song {
 
     public void setSoundCloudTrackID(String soundCloudTrackID) {
         this.soundCloudTrackID = soundCloudTrackID;
+    }
+
+    public Boolean getIsAuthoringComplete() {
+        return isAuthoringComplete;
+    }
+
+    public void setIsAuthoringComplete(Boolean isAuthoringComplete) {
+        this.isAuthoringComplete = isAuthoringComplete;
     }
 }
 

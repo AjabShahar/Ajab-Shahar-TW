@@ -46,6 +46,7 @@ public class SongDAO extends AbstractDAO<Song> {
         originalSongData.setEnglishTransliteration(updatableSongData.getEnglishTransliteration());
         originalSongData.setYoutubeVideoId(updatableSongData.getYoutubeVideoId());
         originalSongData.setThumbnail_url(updatableSongData.getThumbnail_url());
+        originalSongData.setIsAuthoringComplete(updatableSongData.getIsAuthoringComplete());
         originalSongData.setSingers(updatableSongData.getSingers());
         originalSongData.setPoets(updatableSongData.getPoets());
         originalSongData.setSongCategory(updatableSongData.getSongCategory());
