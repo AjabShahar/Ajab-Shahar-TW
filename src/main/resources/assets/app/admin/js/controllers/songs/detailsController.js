@@ -27,13 +27,25 @@ var songDetailsController = function($scope, $http,$window,$location){
     });
 
   $scope.saveData = function(){
-    $http.post('/api/songs',$scope.formInfo).success(function(data){
+    var youtubeIdIsNull = $scope.formInfo.youtubeVideoId == undefined || $scope.formInfo.youtubeVideoId == "";
+
+    if(youtubeIdIsNull){
+      $scope.formInfo.mediaCategory =  $scope.mediaCategoryList.filter(function( mediaCategory ) {
+        return mediaCategory.name == "audio only";
+      })[0];
+    }
+    else {
+      $scope.formInfo.mediaCategory =  $scope.mediaCategoryList.filter(function( mediaCategory ) {
+        return mediaCategory.name == "video and audio";
+      })[0];
+    }
+
+    $http.post('/api/songs', $scope.formInfo).success(function(data){
           $window.location.href = '/admin/partials/songs/edit.html?id='+data;
-
     });
-   };
+  };
 
-    $scope.getSongData = function(){
+  $scope.getSongData = function(){
       var data = $location.search().id;
       $http.get('/api/songs/edit', {
                         params: {
@@ -43,7 +55,7 @@ var songDetailsController = function($scope, $http,$window,$location){
                      .success(function (data,status) {
                           $scope.formInfo = data;
       });
-    };
+  };
 }
 
 adminApp.controller('songDetailsController',['$scope','$http','$window','$location',songDetailsController]);
