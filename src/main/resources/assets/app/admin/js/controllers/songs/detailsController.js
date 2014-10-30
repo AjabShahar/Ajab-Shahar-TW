@@ -68,6 +68,11 @@ var songDetailsController = function($scope, $http,$window,$location){
             alert('data updated');
      });
   };
+
+  $scope.redirectToEnterPage= function(){
+   alert('This data is not updated');
+    $window.location.href = '/admin/partials/songs/details.html';
+  };
 }
 
 adminApp.controller('songDetailsController',['$scope','$http','$window','$location',songDetailsController]);
