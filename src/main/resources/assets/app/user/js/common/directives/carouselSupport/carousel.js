@@ -9,8 +9,6 @@ carouselModule.directive('carousel', function($timeout) {
     controller: ['$scope',function($scope) {
       $scope.currentIndex = 0; // Initially the index is at the first element
       $scope.sections = [];
-      $scope.carouselSelection = 'one';
-      $scope.clazz = "carousel";
       $scope.next = function() {
           var oldIndex = $scope.currentIndex;
           $scope.currentIndex < $scope.sections.length - 1 ? $scope.currentIndex++ : $scope.currentIndex = 0;
@@ -54,7 +52,7 @@ carouselModule.directive('carousel', function($timeout) {
          carouselCtrl.addSection(scope);
        },
        template:
-       '<div ng-init="selected=false" ng-show="isSelected()" class="carousel-animation" ng-transclude>'+
+       '<div ng-show="isSelected()" class="ltr-animation" ng-transclude>'+
         '</div>',
        replace: true
      };

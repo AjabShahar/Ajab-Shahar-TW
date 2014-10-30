@@ -10,8 +10,8 @@ float: left;
   width:45px;float: left;
 }
 
-.carousel-animation.ng-hide-remove,
-.carousel-animation.ng-hide-add {
+.ltr-animation.ng-hide-remove,
+.ltr-animation.ng-hide-add {
   -webkit-transition:0.5s linear all;
   -moz-transition:0.5s linear all;
   -o-transition:0.5s linear all;
@@ -26,16 +26,16 @@ float: left;
   opacity: 1;
 }
 
-.carousel-animation.ng-hide-remove {
+.ltr-animation.ng-hide-remove {
   left:100%;
   opacity:0;
 }
 
-.carousel-animation.ng-hide-add,
-.carousel-animation.ng-hide-remove.ng-hide-remove-active {
+.ltr-animation.ng-hide-add,
+.ltr-animation.ng-hide-remove.ng-hide-remove-active {
   left:0;
 }
 
-.carousel-animation.ng-hide-add.ng-hide-add-active {
+.ltr-animation.ng-hide-add.ng-hide-add-active {
   left:-100%;
 }
