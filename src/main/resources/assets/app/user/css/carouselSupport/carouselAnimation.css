@@ -11,7 +11,9 @@ float: left;
 }
 
 .ltr-animation.ng-hide-remove,
-.ltr-animation.ng-hide-add {
+.rtl-animation.ng-hide-remove,
+.ltr-animation.ng-hide-add,
+.rtl-animation.ng-hide-add {
   -webkit-transition:0.5s linear all;
   -moz-transition:0.5s linear all;
   -o-transition:0.5s linear all;
@@ -38,4 +40,18 @@ float: left;
 
 .ltr-animation.ng-hide-add.ng-hide-add-active {
   left:-100%;
+}
+
+.rtl-animation.ng-hide-remove {
+  right:100%;
+  opacity:0;
+}
+
+.rtl-animation.ng-hide-add,
+.rtl-animation.ng-hide-remove.ng-hide-remove-active {
+  right:0%;
+}
+
+.rtl-animation.ng-hide-add.ng-hide-add-active {
+  right:-100%;
 }

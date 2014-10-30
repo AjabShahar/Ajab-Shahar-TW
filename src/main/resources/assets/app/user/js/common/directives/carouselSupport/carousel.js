@@ -14,6 +14,9 @@ carouselModule.directive('carousel', function($timeout) {
           $scope.currentIndex < $scope.sections.length - 1 ? $scope.currentIndex++ : $scope.currentIndex = 0;
           $scope.sections[oldIndex].selected = false;
           $scope.sections[$scope.currentIndex].selected = true;
+
+          $scope.sections[oldIndex].carouselAnimation = 'rtl';
+          $scope.sections[$scope.currentIndex].carouselAnimation ='rtl';
       };
 
       $scope.prev = function() {
@@ -21,6 +24,9 @@ carouselModule.directive('carousel', function($timeout) {
           $scope.currentIndex > 0 ? $scope.currentIndex-- : $scope.currentIndex = $scope.sections.length - 1;
           $scope.sections[oldIndex].selected = false;
           $scope.sections[$scope.currentIndex].selected = true;
+
+            $scope.sections[oldIndex].carouselAnimation = 'ltr';
+            $scope.sections[$scope.currentIndex].carouselAnimation ='ltr';
       };
 
       this.addSection = function(section) {
@@ -45,6 +51,11 @@ carouselModule.directive('carousel', function($timeout) {
        scope: { id: '@' },
        link: function(scope, element, attrs, carouselCtrl) {
          scope.selected = false;
+            scope.carouselAnimation = 'ltr';
+            scope.getCarouselAnimation = function(){
+             return scope.carouselAnimation;
+            }
+
          scope.isSelected = function(){
             return scope.selected;
          }
@@ -52,7 +63,7 @@ carouselModule.directive('carousel', function($timeout) {
          carouselCtrl.addSection(scope);
        },
        template:
-       '<div ng-show="isSelected()" class="ltr-animation" ng-transclude>'+
+       '<div ng-show="isSelected()" class="{{getCarouselAnimation()}}-animation" ng-transclude>'+
         '</div>',
        replace: true
      };
