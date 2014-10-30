@@ -22,13 +22,13 @@ public class Word {
     private long id;
 
     @Column(name = "NAME", nullable = false)
-    private String NAME;
+    private String name;
 
-    @Column(name = "SYNONYM", nullable = false)
-    private String SYNONYM;
+    @Column(name = "synonym", nullable = false)
+    private String synonym;
 
-    @Column(name = "CATEGORY", nullable = false)
-    private String CATEGORY;
+    @Column(name = "category", nullable = false)
+    private String category;
 
     @Column(name = "SHOW_ON_LANDING_PAGE", nullable = false)
     private boolean showOnLandingPage;
@@ -37,32 +37,32 @@ public class Word {
         return id;
     }
 
-    public String getNAME() {
-        return NAME;
+    public String getName() {
+        return name;
     }
 
-    public void setNAME(String NAME) {
-        this.NAME = NAME;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getSYNONYM() {
-        return SYNONYM;
+    public String getSynonym() {
+        return synonym;
     }
 
-    public void setSYNONYM(String SYNONYM) {
-        this.SYNONYM=SYNONYM;
+    public void setSynonym(String synonym) {
+        this.synonym = synonym;
     }
 
-    public String getCATEGORY() {
-        return CATEGORY;
+    public String getCategory() {
+        return category;
     }
 
-    public void setCATEGORY(String CATEGORY) {
-        this.CATEGORY=CATEGORY;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
 
-    public boolean isShowOnLandingPage() {
+    public boolean getShowOnLandingPage() {
         return showOnLandingPage;
     }
 

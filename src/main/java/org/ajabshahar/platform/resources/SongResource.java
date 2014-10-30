@@ -35,13 +35,12 @@ public class SongResource {
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updateSong(String  jsonSong){
-       // Song song = songDAO.findById(id);
         JsonElement jsonElement = new Gson().fromJson(jsonSong, JsonElement.class);
         JsonObject jsonObject = jsonElement.getAsJsonObject();
         Long id = jsonObject.get("id").getAsLong();
         Song song = new Gson().fromJson(jsonObject.get("data"),Song.class);
         songDAO.updateSong(id,song);
-        return null;
+        return Response.status(200).entity(song.toString()).build();
     }
 
     @GET
