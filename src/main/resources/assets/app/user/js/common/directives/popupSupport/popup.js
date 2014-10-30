@@ -8,7 +8,9 @@ var popUp = function() {
                 onClose: '&', //close click handler ~ callback to controller
                 closeButton: '@', //true-false ~ displays/hides close option
                 width: '@', //width of the popup
-                id: '@'//an id for the background overlay for manipulation via jquery
+                id: '@',//an id for the background overlay for manipulation via jquery
+                onNext: '&',
+                onPrev: '&'
             },
             templateUrl: '/user/js/common/templates/popupSupport/popup.html',
             controller: function($scope) {
