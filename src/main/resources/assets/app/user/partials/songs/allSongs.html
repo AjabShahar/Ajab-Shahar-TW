@@ -38,15 +38,12 @@
     <link href="../../css/carouselSupport/carouselAnimation.css" rel="stylesheet" type="text/css">
     <link href="../../css/pages/gridview.css" rel="stylesheet" type="text/css">
 </head>
-<body ng-controller="allSongsController" class="page-songs">
-    <ajab-shahar-header></ajab-shahar-header>
-
-    <div class="ajab-container fullHeight">
-        <div class="ajab-wrapper fullHeight">
-
+<body ng-controller="allSongsController" class="page-songs ng-scope" style="">
+    <div class="ajab-container">
+        <div class="ajab-wrapper" fullHeight>
+            <ajab-shahar-header></ajab-shahar-header>
 
             <div class='leftnav'>
-
                 <div class='navElementsWrapper'>
                     <h1 class='categoryLogo'></h1>
                     <small class='categoryAtt newline'>457 songs</small>
@@ -94,15 +91,10 @@
                     <div class='numericCount'>457 songs</div>
                 </div>
                 <div class='gridWrapper'>
-                    <div class='songs'></div>
-                    <div class='songs'></div>
-                    <div class='songs'></div>
-                    <div class='songs'></div>
-                    <div class='songs'></div>
-                    <div class='songs'></div>
-                    <div class='songs'></div>
-                    <div class='songs'></div>
-                    <div class='songs'></div>
+                    <song-with-details class='songs' open="showDetails('song_1')" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&amp;var1=IMGP7051a.JPG" url="tNh2kjmSzPw" name="For a few days,O Heart" category-name="undefined" duration="5:45" singer="Parvathy Baul" poet="Roshik" class="ng-scope ng-isolate-scope"></song-with-details>
+                    <song-with-details class='songs' open="showDetails('song_1')" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&amp;var1=IMGP7051a.JPG" url="tNh2kjmSzPw" name="For a few days,O Heart" category-name="undefined" duration="5:45" singer="Parvathy Baul" poet="Roshik" class="ng-scope ng-isolate-scope"></song-with-details>
+                    <song-with-details class='songs' open="showDetails('song_1')" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&amp;var1=IMGP7051a.JPG" url="tNh2kjmSzPw" name="For a few days,O Heart" category-name="undefined" duration="5:45" singer="Parvathy Baul" poet="Roshik" class="ng-scope ng-isolate-scope"></song-with-details>
+                    <song-with-details class='songs' open="showDetails('song_1')" img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&amp;var1=IMGP7051a.JPG" url="tNh2kjmSzPw" name="For a few days,O Heart" category-name="undefined" duration="5:45" singer="Parvathy Baul" poet="Roshik" class="ng-scope ng-isolate-scope"></song-with-details>
                 </div>
             </div>
         </div>
