@@ -4,7 +4,7 @@ thumbnailModule.directive("coupletWithDetails", function() {
     return {
         restrict: 'E',
         scope: {
-            name:'@',
+            title:'@',
             imgSrc:'@',
             customStyle:'@',
             overlayId:'@'

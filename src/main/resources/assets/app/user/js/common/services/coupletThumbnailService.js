@@ -1,8 +1,8 @@
 coupletThumbnailService = function (){
     var getThumbnailWithBubble = function(details,id,customStyle){
         return '<couplet-with-details overlay-id="'+id +'" custom-style="'+customStyle+'"' +
+        ' title="'+details.englishTranslation+'"'+
         ' img-src="'+details.thumbnail_url+'"'+
-        ' name="'+details.name+'"'+
         '</couplet-with-details>';
     }
 
