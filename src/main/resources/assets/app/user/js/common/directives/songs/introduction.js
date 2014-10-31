@@ -8,6 +8,7 @@ thumbnailModule.directive("songIntroduction", function() {
             singer:'@',
             url:'@',
             id:'@',
+            audioUrl:'@',
             closeVideo:'&'
         },
         templateUrl:'/user/js/common/templates/songs/introduction.html',

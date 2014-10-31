@@ -21,7 +21,8 @@ htmlGenerator.factory('introductionPopupService', function () {
                 '<pop-up ng-init="popupService.init('+startIndex+',\''+id+'\')" id="'+id+'" width="100" on-next="popupService.next('+index+')" on-prev="popupService.prev('+index+')" show="popupService.shouldShow(\''+id+'\')"'
                 + ' on-close="popupService.onClose(\''+id+'\')" closeButton="true">'
                   + '<song-introduction id="'+id+'" singer="'+getName(details.songs[index].singers[0])+'" name="'+details.songs[index].englishTranslation+'"'
-                   + ' url="'+details.songs[index].youtubeVideoId+'" close-video="popupService.isClosed(\''+id+'\')"></song-introduction>'
+                  + ' audio-Url="' + details.songs[index].soundCloudTrackID + '"'
+                  + ' url="'+details.songs[index].youtubeVideoId+'" close-video="popupService.isClosed(\''+id+'\')"></song-introduction>'
                 +'</pop-up>';
       },'');
   };
