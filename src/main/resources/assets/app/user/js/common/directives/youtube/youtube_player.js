@@ -6,17 +6,6 @@ youtubeApp.constant('YT_event', {
   PAUSE:           2
 });
 
-//youtubeApp.controller('YouTubeCtrl', function($scope, YT_event) {
-//  $scope.yt = {
-//    width: '100%',
-//    height: '100%',
-//    videoid: "M7lc1UVf-VE",
-//    autoplay:false,
-//    showcontrols:false,
-//    autoreplay:false,
-//  };
-//});
-
 youtubeApp.directive('youtube', function($window, YT_event) {
   return {
     restrict: "E",

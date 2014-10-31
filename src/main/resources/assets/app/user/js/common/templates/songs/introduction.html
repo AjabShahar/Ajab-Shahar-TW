@@ -5,8 +5,10 @@
 	<div ng-controller="soundCloudController">
 	
 	    <div ng-if="url != 'null'" ng-init="loadTrack(audioUrl)">
+	    <div ng-click="playTrack()">
 	    	<youtube width="100%" height="90%" videoid="{{url}}" showcontrols="true" should-stop-video="closeVideo()"></youtube>
-	    	<div id="track"></div>
+	    </div>
+	    	<div id="track" ></div>
 	    </div>
 		
 	    <div ng-if=" url == 'null'" ng-init="loadTrack(audioUrl)">
