@@ -21,10 +21,10 @@ public class Couplet {
     private long id;
 
     @Column(name = "DESCRIPTION", nullable = false)
-    private String DESCRIPTION;
+    private String description;
 
     @Column(name = "CATEGORY", nullable = false)
-    private String CATEGORY;
+    private String category;
 
 
     @Column(name = "SHOW_ON_LANDING_PAGE", nullable = false)
@@ -36,20 +36,20 @@ public class Couplet {
         return id;
     }
 
-    public String getDESCRIPTION() {
-        return DESCRIPTION;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDESCRIPTION(String DESCRIPTION) {
-        this.DESCRIPTION= DESCRIPTION;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getCATEGORY() {
-        return CATEGORY;
+    public String getCategory() {
+        return category;
     }
 
-    public void setCATEGORY(String CATEGORY) {
-        this.CATEGORY=CATEGORY;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
 
