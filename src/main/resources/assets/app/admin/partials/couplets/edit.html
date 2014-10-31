@@ -11,8 +11,8 @@
     <link href="../../css/bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<h2>Enter Couplet details for landing page</h2>
-<div ng-controller="coupletDetailsController">
+<h2>Edit Couplet details for landing page</h2>
+<div ng-controller="coupletDetailsController" ng-init="getCoupletData()">
     <form >
         <div class="row">
             <div class="form-group col-sm-2">
@@ -46,7 +46,8 @@
             </div>
         </div>
 
-        <button type="submit" ng-click="saveData()">Submit</button>
+        <button type="submit" ng-click="updateCouplet()">Submit</button>
+        <button type="reset" ng-click="redirectToEnterPage()">Add More</button>
 
     </form>
 </div>
