@@ -19,7 +19,7 @@
                 <label>Description</label>
             </div>
             <div class="form-group col-sm-5">
-                <input type="text" name="couplet" ng-model="formInfo.description" maxlength="30">
+                <input type="text" name="word" ng-model="formInfo.description" maxlength="30" required>
             </div>
         </div>
 
@@ -40,8 +40,8 @@
             </div>
             <div class="form-group col-sm-5">
                 <select name="format" ng-model="formInfo.showOnLandingPage">
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
                 </select>
             </div>
         </div>
