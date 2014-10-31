@@ -14,6 +14,34 @@
 <h2>Enter Couplet details for landing page</h2>
 <div ng-controller="coupletDetailsController">
     <form >
+
+        <div class="row">
+            <div class="form-group col-sm-2">
+                <label>Original Title</label>
+            </div>
+            <div class="form-group col-sm-5">
+                <input type="text" name="originalTitle" ng-model="formInfo.originalTitle">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-2">
+                <label>English Translation</label>
+            </div>
+            <div class="form-group col-sm-5">
+                <input type="text" name="englishTranslation" ng-model="formInfo.englishTranslation">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-2">
+                <label>English Transliteration</label>
+            </div>
+            <div class="form-group col-sm-5">
+                <input type="text" name="englishTransliteration" ng-model="formInfo.englishTransliteration">
+            </div>
+        </div>
+
         <div class="row">
             <div class="form-group col-sm-2">
                 <label>Description</label>
@@ -25,23 +53,34 @@
 
         <div class="row">
             <div class="form-group col-sm-2">
-                <label>Category</label>
+                <label>Show On LandingPage</label>
             </div>
             <div class="form-group col-sm-5">
-                <select name="format" ng-model="formInfo.category">
-                    <option value="Couplet">Couplet</option>
+                <select name="format" ng-model="formInfo.showOnLandingPage">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
                 </select>
             </div>
         </div>
 
         <div class="row">
             <div class="form-group col-sm-2">
-                <label>Show On LandingPage</label>
+                <label>Poet</label>
             </div>
             <div class="form-group col-sm-5">
-                <select name="format" ng-model="formInfo.showOnLandingPage">
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
+                <select  ng-model="formInfo.poet"
+                         ng-options="poet.firstName for poet in poetsList">
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-2">
+                <label>Category</label>
+            </div>
+            <div class="form-group col-sm-5">
+                <select ng-model="formInfo.category"
+                        ng-options="category.name for category in categoryList">
                 </select>
             </div>
         </div>

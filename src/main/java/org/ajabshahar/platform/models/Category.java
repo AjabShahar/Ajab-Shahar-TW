@@ -16,6 +16,10 @@ import javax.persistence.*;
         @NamedQuery(
                 name = "org.ajabshahar.platform.models.Category.findAllMediaCategories",
                 query = "SELECT p FROM Category p where p.categoryType='media'"
+        ),
+        @NamedQuery(
+                name = "org.ajabshahar.platform.models.Category.findAllCoupletCategories",
+                query = "SELECT p FROM Category p where p.categoryType='couplet'"
         )
 })
 public class Category {

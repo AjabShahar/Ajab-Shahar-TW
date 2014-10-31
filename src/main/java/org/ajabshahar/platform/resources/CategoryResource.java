@@ -25,6 +25,7 @@ public class CategoryResource {
         return categoryDAO.findAll();
     }
 
+
     @GET
     @UnitOfWork
     @Path("/song")
@@ -37,5 +38,12 @@ public class CategoryResource {
     @Path("/media")
     public List<Category> listAllMediaCategories() {
         return categoryDAO.findAllMediaCategories();
+    }
+
+    @GET
+    @UnitOfWork
+    @Path("/couplet")
+    public List<Category> listAllCoupletCategories() {
+        return categoryDAO.findAllCoupletCategories();
     }
 }

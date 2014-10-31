@@ -29,6 +29,7 @@ public class CoupletResource {
         Couplet couplet= new Gson().fromJson(jsonCouplet, Couplet.class);
         coupletDAO.create(couplet);
         return Response.status(200).entity(couplet.getId()).build();
+
     }
     @PUT
     @Path("/edit")

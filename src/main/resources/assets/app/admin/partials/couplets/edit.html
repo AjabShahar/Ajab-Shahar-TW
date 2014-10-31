@@ -11,26 +11,43 @@
     <link href="../../css/bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<h2>Edit Couplet details for landing page</h2>
-<div ng-controller="coupletDetailsController" ng-init="getCoupletData()">
+<h2>Enter Couplet details for landing page</h2>
+<div ng-controller="coupletDetailsController" ng-init = "getCoupletData()">
     <form >
+
         <div class="row">
             <div class="form-group col-sm-2">
-                <label>Description</label>
+                <label>Original Title</label>
             </div>
             <div class="form-group col-sm-5">
-                <input type="text" name="couplet" ng-model="formInfo.description" maxlength="30">
+                <input type="text" name="originalTitle" ng-model="formInfo.originalTitle">
             </div>
         </div>
 
         <div class="row">
             <div class="form-group col-sm-2">
-                <label>Category</label>
+                <label>English Translation</label>
             </div>
             <div class="form-group col-sm-5">
-                <select name="format" ng-model="formInfo.category">
-                    <option value="Couplet">Couplet</option>
-                </select>
+                <input type="text" name="englishTranslation" ng-model="formInfo.englishTranslation">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-2">
+                <label>English Transliteration</label>
+            </div>
+            <div class="form-group col-sm-5">
+                <input type="text" name="englishTransliteration" ng-model="formInfo.englishTransliteration">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-2">
+                <label>Description</label>
+            </div>
+            <div class="form-group col-sm-5">
+                <input type="text" name="word" ng-model="formInfo.description" maxlength="30" required>
             </div>
         </div>
 
@@ -46,9 +63,30 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="form-group col-sm-2">
+                <label>Poet</label>
+            </div>
+            <div class="form-group col-sm-5">
+                <select  ng-model="formInfo.poet"
+                         ng-options="poet.firstName for poet in poetsList">
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-2">
+                <label>Category</label>
+            </div>
+            <div class="form-group col-sm-5">
+                <select ng-model="formInfo.category"
+                        ng-options="category.name for category in categoryList">
+                </select>
+            </div>
+        </div>
+
         <button type="submit" ng-click="updateCouplet()">Submit</button>
         <button type="reset" ng-click="redirectToEnterPage()">Add More</button>
-
     </form>
 </div>
 </body>

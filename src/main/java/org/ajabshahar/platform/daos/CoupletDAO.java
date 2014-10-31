@@ -41,9 +41,12 @@ public class CoupletDAO  extends AbstractDAO<Couplet>{
     }
 
     private Couplet invokeSetters(Couplet originalCouplet, Couplet updatableCouplet) {
-        originalCouplet.setDescription(updatableCouplet.getDescription());
-        originalCouplet.setCategory(updatableCouplet.getCategory());
+        originalCouplet.setOriginalTitle(updatableCouplet.getOriginalTitle());
+        originalCouplet.setEnglishTranslation(updatableCouplet.getEnglishTranslation());
+        originalCouplet.setEnglishTransliteration(updatableCouplet.getEnglishTransliteration());
         originalCouplet.setShowOnLandingPage(updatableCouplet.getShowOnLandingPage());
+        originalCouplet.setCategory(updatableCouplet.getCategory());
+        originalCouplet.setPoet(updatableCouplet.getPoet());
         return originalCouplet;
     }
 }

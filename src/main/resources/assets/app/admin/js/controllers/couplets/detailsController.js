@@ -1,7 +1,19 @@
 var coupletDetailsController = function($scope, $http,$window,$location){
     $scope.formInfo = {};
+    $scope.formInfo.poet = [];
+    $scope.categoryList= [];
     $scope.urlId = $location.search().id;
-    
+
+
+    $http.get('/api/people/poets').success(function(poetsList){
+        $scope.poetsList = poetsList;
+    });
+
+    $http.get('/api/category/couplet').success(function(categoryList){
+        $scope.categoryList = categoryList;
+    });
+
+
     $scope.saveData = function(){
     $http.post('/api/couplets',$scope.formInfo).success(function(data){
          $window.location.href = '/admin/partials/couplets/edit.html?id='+data;
