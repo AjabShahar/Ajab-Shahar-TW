@@ -13,12 +13,12 @@ filmThumbnailService,gatheringThumbnailService,reflectionThumbnailService) {
 
         var couplets = _.reduce(details.couplets, function(memo, value, index){
                 startIndex++;
-                return memo+coupletThumbnailService.getThumbnailWithBubble(details.couplets[index],'oid'+startIndex,"shift"+getShiftIndex(startIndex));
+                return memo+coupletThumbnailService.getThumbnailWithBubble(details.couplets[index],'couplet_'+startIndex,"shift"+getShiftIndex(startIndex));
         },'');
 
         var words = _.reduce(details.words, function(memo, value, index){
                 startIndex++;
-                return memo+wordThumbnailService.getThumbnailWithBubble(details.words[index],'oid'+startIndex,"shift"+getShiftIndex(startIndex));
+                return memo+wordThumbnailService.getThumbnailWithBubble(details.words[index],'word_'+startIndex,"shift"+getShiftIndex(startIndex));
         },'');
 
         var film = _.reduce(details.films, function(memo, value, index){

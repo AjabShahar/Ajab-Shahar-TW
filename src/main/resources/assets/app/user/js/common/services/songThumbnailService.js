@@ -1,16 +1,4 @@
 var songThumbnailService = function (nameService){
-    var getName = function (person) {
-      var firstName = person.firstName,
-      middleName = person.middleName,
-      lastName = person.lastName;
-
-      return firstName + prependSpaceIfNotEmpty(middleName) + prependSpaceIfNotEmpty(lastName);
-    };
-
-    var prependSpaceIfNotEmpty = function(string) {
-      return (string != "") ? string = ' ' + string : string = string;
-    };
-
     var getShiftIndex = function(index){
         return ((4+index) % 6) == 0 ? 6 : ((4+index) % 6);
     };
@@ -24,8 +12,8 @@ var songThumbnailService = function (nameService){
           ' name="'+details.englishTranslation+'"'+
           ' category-name="'+details.songCategory.name+'"'+
           ' duration="'+ details.duration+'"'+
-          ' singer="' + getName(details.singers[0]) + '"' +
-          ' poet="' + getName(details.poets[0]) + '">' +
+          ' singer="' + nameService.getName(details.singers[0]) + '"' +
+          ' poet="' + nameService.getName(details.poets[0]) + '">' +
           '</song-with-details>';
     }
 

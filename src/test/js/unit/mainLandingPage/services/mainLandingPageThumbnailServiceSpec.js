@@ -106,7 +106,7 @@ describe("Thumbnail service Specs", function(){
 	    };
 
         var landingPageThumbnails = service.getThumbnailWithBubble(wordsSampleResponse);
-        expect(landingPageThumbnails).toBe('<word-with-details overlay-id="oid0" custom-style="shift4"'+
+        expect(landingPageThumbnails).toBe('<word-with-details overlay-id="word_0" custom-style="shift4"'+
          ' img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"'+
          ' name="Untellable Tale" contextual-meaning="An iconic poetic phrase in Kabir, which evokes a realm of experience beyond description..."></word-with-details>');
 	});
@@ -144,7 +144,7 @@ describe("Thumbnail service Specs", function(){
 	    };
 
         var landingPageThumbnails = service.getThumbnailWithBubble(coupletsSampleResponse);
-        expect(landingPageThumbnails).toBe('<couplet-with-details overlay-id="oid0" custom-style="shift4"'+
+        expect(landingPageThumbnails).toBe('<couplet-with-details overlay-id="couplet_0" custom-style="shift4"'+
                                            ' img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"'+
                                            ' name="A pot in water, water in a pot..."</couplet-with-details>');
 	});
