@@ -1,5 +1,6 @@
 package org.ajabshahar.platform;
 
+import com.bazaarvoice.dropwizard.caching.CachingBundle;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.db.DataSourceFactory;
@@ -30,10 +31,13 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
      }
   };
 
+  private CachingBundle cachingBundle = new CachingBundle();
+
   @Override
   public void initialize(Bootstrap<PlatformConfiguration> bootstrap) {
     bootstrap.addBundle(hibernate);
     bootstrap.addBundle(migrationsBundle);
+    bootstrap.addBundle(cachingBundle);
 
     bootstrap.addBundle(new AssetsBundle("/assets/app", "/","index.html"));
   }

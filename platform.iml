@@ -80,6 +80,7 @@
     <orderEntry type="library" name="Maven: com.codahale.metrics:metrics-json:3.0.1" level="project" />
     <orderEntry type="library" name="Maven: net.sourceforge.argparse4j:argparse4j:0.4.3" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty.toolchain.setuid:jetty-setuid-java:1.0.2" level="project" />
+    <orderEntry type="library" name="Maven: com.bazaarvoice.dropwizard:dropwizard-caching-bundle:2.0.5" level="project" />
     <orderEntry type="library" name="Maven: io.dropwizard:dropwizard-migrations:0.7.0" level="project" />
     <orderEntry type="library" name="Maven: io.dropwizard:dropwizard-db:0.7.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-jdbc:7.0.50" level="project" />

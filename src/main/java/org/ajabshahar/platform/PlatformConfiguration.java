@@ -1,5 +1,8 @@
 package org.ajabshahar.platform;
 
+import com.bazaarvoice.dropwizard.caching.CacheControlConfiguration;
+import com.bazaarvoice.dropwizard.caching.CachingBundleConfiguration;
+import com.bazaarvoice.dropwizard.caching.CachingConfiguration;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;
 import io.dropwizard.db.DataSourceFactory;
@@ -8,7 +11,10 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-public class PlatformConfiguration extends Configuration {
+public class PlatformConfiguration extends Configuration implements CachingBundleConfiguration {
+  private CachingConfiguration cache = new CachingConfiguration();
+  public CacheControlConfiguration cacheControl = new CacheControlConfiguration();
+
   @NotEmpty
   private String template;
 
@@ -43,4 +49,14 @@ public class PlatformConfiguration extends Configuration {
   public void setDefaultName(String name) {
     this.defaultName = name;
   }
+
+    @Override
+    public CachingConfiguration getCache() {
+        return cache;
+    }
+
+    @Override
+    public CacheControlConfiguration getCacheControl() {
+        return cacheControl;
+    }
 }

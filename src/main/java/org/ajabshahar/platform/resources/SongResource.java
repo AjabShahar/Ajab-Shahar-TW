@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import io.dropwizard.hibernate.UnitOfWork;
+import io.dropwizard.jersey.caching.CacheControl;
 import org.ajabshahar.platform.daos.SongDAO;
 import org.ajabshahar.platform.models.Song;
 
@@ -52,6 +53,7 @@ public class SongResource {
     @GET
     @Path("/landingPage")
     @UnitOfWork
+    @CacheControl(maxAge = 60)
     @Produces(MediaType.APPLICATION_JSON)
     public List<Song> listAllSongOnLandingValues() {
         return songDAO.findAllOnLandingPage();
