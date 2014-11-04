@@ -37,7 +37,7 @@ describe("introduction popup service Specs", function(){
         var landingPageThumbnails = service.getPopupDetails(songsSampleResponse);
 
         expect(landingPageThumbnails).toBe('<pop-up ng-init="popupService.init(0,\'song_2\')" id="song_2" width="100" on-next="popupService.next(0)" on-prev="popupService.prev(0)" show="popupService.shouldShow(\'song_2\')" on-close="popupService.onClose(\'song_2\')" closeButton="true">'+
-            '<song-introduction id="song_2" singer="Parvathy Baul" name="Practice the art of dying" audio-Url="scId" url="videoId" close-video="popupService.isClosed(\'song_2\')"></song-introduction></pop-up>');
+            '<song-introduction id="song_2" singer="Parvathy Baul" name="Practice the art of dying" audio-Url="scId" video-Url="videoId" close-video="popupService.isClosed(\'song_2\')"></song-introduction></pop-up>');
     });
 
 });

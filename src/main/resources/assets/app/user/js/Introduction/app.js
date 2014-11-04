@@ -1,4 +1,4 @@
-var introductionApp = angular.module('introductionApp',['ngRoute','ngAnimate','youtubeApp']);
+var introductionApp = angular.module('introductionApp',['ngRoute','ngAnimate','mediaPlayer']);
 
 introductionApp.config(resourceUrlWhiteList);
 

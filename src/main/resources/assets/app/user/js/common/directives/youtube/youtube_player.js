@@ -1,12 +1,10 @@
-var youtubeApp = angular.module('youtubeApp',[]);
-
-youtubeApp.constant('YT_event', {
+mediaPlayer.constant('YT_event', {
   STOP:            0,
   PLAY:            1,
   PAUSE:           2
 });
 
-youtubeApp.directive('youtube', function($window, YT_event) {
+mediaPlayer.directive('youtube', function($window, YT_event) {
   return {
     restrict: "E",
 

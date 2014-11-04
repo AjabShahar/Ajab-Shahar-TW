@@ -6,7 +6,7 @@ thumbnailModule.directive("songIntroduction", function() {
         scope: {
             name:'@',
             singer:'@',
-            url:'@',
+            videoUrl:'@',
             id:'@',
             audioUrl:'@',
             closeVideo:'&'
@@ -16,6 +16,14 @@ thumbnailModule.directive("songIntroduction", function() {
             $scope.$watch(function() { return $scope.closeVideo(); }, function(newValue, oldValue) {
                 $scope.shouldStopVideo = !newValue;
             });
+
+            $scope.isVideo = function(){
+                return $scope.videoUrl!=null && $scope.videoUrl != "null";
+            };
+
+            $scope.isAudio = function(){
+                return !$scope.isVideo();
+            };
             //$scope.$on($scope.stopOn,$stopParam)
         }
     }
