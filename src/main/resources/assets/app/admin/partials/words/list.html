@@ -14,16 +14,15 @@
 <body>
 <div ng-controller="wordListController">
     <table>
+        Any: <input ng-model="search.$"> <br>
         <tr>
-            <td>Name</td>
-            <td>Category</td>
-            <td>Poet</td>
+            <td>word or phrase</td>
+            <td>meaning</td>
             <td>edit</td>
         </tr>
         <tr ng-repeat="song in songs">
-            <td>{{song.title}}</td>
-            <td>{{song.categoryName}}</td>
-            <td>{{song.poetName}}</td>
+            <td>{{song.wordOrPhrase}}</td>
+            <td>{{song.meaning}}</td>
             <td><a href="edit.html?id={{song.id}}">edit</a></td>
         </tr>
     </table>
