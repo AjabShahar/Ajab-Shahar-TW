@@ -20,7 +20,12 @@ import javax.persistence.*;
         @NamedQuery(
                 name = "org.ajabshahar.platform.models.Category.findAllCoupletCategories",
                 query = "SELECT p FROM Category p where p.categoryType='couplet'"
+        ),
+        @NamedQuery(
+                name = "org.ajabshahar.platform.models.Category.findAllWordCategories",
+                query = "SELECT p FROM Category p where p.categoryType='word'"
         )
+
 })
 public class Category {
     @Id

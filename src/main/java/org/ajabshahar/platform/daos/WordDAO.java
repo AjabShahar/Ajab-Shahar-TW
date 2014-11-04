@@ -42,10 +42,11 @@ public class WordDAO extends AbstractDAO<Word> {
     }
 
     private Word invokeSetters(Word originalWord, Word updatableWord) {
-          originalWord.setName(updatableWord.getName());
+          originalWord.setWordOrPhrase(updatableWord.getWordOrPhrase());
           originalWord.setSynonym(updatableWord.getSynonym());
-          originalWord.setCategory(updatableWord.getCategory());
+          originalWord.setThumbnailUrl(updatableWord.getThumbnailUrl());
           originalWord.setShowOnLandingPage(updatableWord.getShowOnLandingPage());
+          originalWord.setCategory(updatableWord.getCategory());
           return originalWord;
     }
 }

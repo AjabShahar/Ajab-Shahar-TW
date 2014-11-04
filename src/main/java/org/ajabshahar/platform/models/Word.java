@@ -21,29 +21,26 @@ public class Word {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "NAME", nullable = false)
-    private String name;
+    @Column(name = "WORD_OR_PHRASE", nullable = false)
+    private String wordOrPhrase;
 
     @Column(name = "synonym", nullable = false)
     private String synonym;
 
-    @Column(name = "category", nullable = false)
-    private String category;
+    @Column(name = "THUMBNAIL_URL", nullable = false)
+    private String thumbnailUrl;
 
     @Column(name = "SHOW_ON_LANDING_PAGE", nullable = false)
     private boolean showOnLandingPage;
+
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "CATEGORY_ID")
+    private Category category;
 
     public long getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getSynonym() {
         return synonym;
@@ -53,13 +50,6 @@ public class Word {
         this.synonym = synonym;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
 
 
     public boolean getShowOnLandingPage() {
@@ -68,5 +58,29 @@ public class Word {
 
     public void setShowOnLandingPage(boolean showOnLandingPage) {
         this.showOnLandingPage = showOnLandingPage;
+    }
+
+    public String getWordOrPhrase() {
+        return wordOrPhrase;
+    }
+
+    public void setWordOrPhrase(String wordOrPhrase) {
+        this.wordOrPhrase = wordOrPhrase;
+    }
+
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
+    }
+
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

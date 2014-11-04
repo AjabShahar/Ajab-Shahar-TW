@@ -46,4 +46,11 @@ public class CategoryResource {
     public List<Category> listAllCoupletCategories() {
         return categoryDAO.findAllCoupletCategories();
     }
+
+    @GET
+    @UnitOfWork
+    @Path("/word")
+    public List<Category> listAllWordCategories() {
+        return categoryDAO.findAllWordCategories();
+    }
 }

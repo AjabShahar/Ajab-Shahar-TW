@@ -1,7 +1,13 @@
 var wordDetailsController = function($scope, $http,$window,$location){
 
   $scope.formInfo = {};
+  $scope.categoryList = [];
   $scope.urlId = $location.search().id;
+
+  $http.get('/api/category/word').success(function(categoryList){
+          $scope.categoryList = categoryList;
+  });
+
   $scope.saveData = function(){
   $http.post('/api/words',$scope.formInfo).success(function(data){
       $window.location.href = '/admin/partials/words/edit.html?id='+data;

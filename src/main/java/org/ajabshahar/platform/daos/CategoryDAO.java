@@ -32,4 +32,8 @@ public class CategoryDAO extends AbstractDAO<Category> {
     public List<Category> findAllCoupletCategories() {
             return list(namedQuery("org.ajabshahar.platform.models.Category.findAllCoupletCategories"));
     }
+
+    public List<Category> findAllWordCategories() {
+        return list(namedQuery("org.ajabshahar.platform.models.Category.findAllWordCategories"));
+    }
 }
