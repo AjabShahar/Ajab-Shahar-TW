@@ -11,6 +11,7 @@ module.exports = function (config) {
       'user/js/common/modules/thumbnailModule.js',
       'user/js/common/modules/headerModule.js',
       'user/js/common/modules/PopupSupport.js',
+      'user/js/common/modules/mediaPlayer.js',
       'user/js/common/**/*.js',
       'user/js/Introduction/**/*.js',
       'user/js/LandingPages/**/*.js',
