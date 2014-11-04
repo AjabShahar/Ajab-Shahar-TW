@@ -1,4 +1,5 @@
-var allSongsApp = angular.module('allSongsApp',['thumbnailModule','mediaPlayer','popupSupport','htmlGenerator','sticky', 'headerModule','carouselModule']);
+var allSongsApp = angular.module('allSongsApp',['thumbnailModule','mediaPlayer','popupSupport','htmlGenerator','sticky', 'headerModule','carouselModule', 'infinite-scroll']);
+
 
 allSongsApp.config(resourceUrlWhiteList);
 allSongsApp.factory('contentService', ['$http', contentService]);

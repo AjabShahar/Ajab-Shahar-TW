@@ -1,6 +1,7 @@
 var allSongsController = function($scope,contentService,songThumbnailService,introductionPopupService,popupService){
     $scope.popupService = popupService;
     $scope.thumbnailContent=null;
+    $scope.paginationthumbnailContent=null;
 
     $scope.init = function(){
     	contentService.getMainLandingPageThumbnails().then(function(result){
@@ -17,6 +18,10 @@ var allSongsController = function($scope,contentService,songThumbnailService,int
         	},'');
 
     	});
+    }
+
+    $scope.addMoreItems = function(){
+        console.log("show other");
     }
 
     $scope.init();
