@@ -29,6 +29,9 @@ public class Couplet {
     @Column(name = "ENGLISH_TRANSLITERATION", nullable = false)
     private String englishTransliteration;
 
+    @Column(name = "THUMBNAIL_URL", nullable = false)
+    private String thumbnailUrl;
+
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
 
@@ -101,5 +104,13 @@ public class Couplet {
 
     public void setPoet(PersonDetails poet) {
         this.poet = poet;
+    }
+
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
+    }
+
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
     }
 }

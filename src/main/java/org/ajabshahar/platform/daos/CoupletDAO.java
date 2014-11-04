@@ -44,6 +44,7 @@ public class CoupletDAO  extends AbstractDAO<Couplet>{
         originalCouplet.setOriginalTitle(updatableCouplet.getOriginalTitle());
         originalCouplet.setEnglishTranslation(updatableCouplet.getEnglishTranslation());
         originalCouplet.setEnglishTransliteration(updatableCouplet.getEnglishTransliteration());
+        originalCouplet.setThumbnailUrl(updatableCouplet.getThumbnailUrl());
         originalCouplet.setShowOnLandingPage(updatableCouplet.getShowOnLandingPage());
         originalCouplet.setCategory(updatableCouplet.getCategory());
         originalCouplet.setPoet(updatableCouplet.getPoet());
