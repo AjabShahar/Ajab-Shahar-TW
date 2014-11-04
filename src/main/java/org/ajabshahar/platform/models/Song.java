@@ -69,6 +69,10 @@ public class Song {
     @JoinColumn(name = "MEDIA_CATEGORY")
     private Category mediaCategory;
 
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "UMBRELLA_TITLE_ID")
+    private UmbrellaTitle umbrellaTitle;
+
     public Set<PersonDetails> getPoets(){return poets;}
 
     public void setPoets(Set<PersonDetails> poets){this.poets = poets;}
@@ -171,6 +175,15 @@ public class Song {
 
     public void setIsAuthoringComplete(Boolean isAuthoringComplete) {
         this.isAuthoringComplete = isAuthoringComplete;
+    }
+
+
+    public UmbrellaTitle getUmbrellaTitle() {
+        return umbrellaTitle;
+    }
+
+    public void setUmbrellaTitle(UmbrellaTitle umbrellaTitle) {
+        this.umbrellaTitle = umbrellaTitle;
     }
 }
 

@@ -9,7 +9,12 @@ var songDetailsController = function($scope, $http,$window,$location){
   $scope.categoryList = [];
   $scope.songCategoryList = [];
   $scope.mediaCategoryList = [];
+  $scope.umbrellaTitleList = [];
   $scope.urlId = $location.search().id;
+
+  $http.get('/api/umbrella').success(function(umbrellaTitleList){
+    $scope.umbrellaTitleList = umbrellaTitleList;
+  });
 
   $http.get('/api/people/singers').success(function(singersList){
     $scope.singersList = singersList;
@@ -59,6 +64,19 @@ var songDetailsController = function($scope, $http,$window,$location){
     };
 
   $scope.updateSong = function(){
+     var youtubeIdIsNull = $scope.formInfo.youtubeVideoId == undefined || $scope.formInfo.youtubeVideoId == "";
+
+         if(youtubeIdIsNull){
+           $scope.formInfo.mediaCategory =  $scope.mediaCategoryList.filter(function( mediaCategory ) {
+             return mediaCategory.name == "audio only";
+           })[0];
+         }
+         else {
+           $scope.formInfo.mediaCategory =  $scope.mediaCategoryList.filter(function( mediaCategory ) {
+             return mediaCategory.name == "video and audio";
+           })[0];
+         }
+
      $http.put('/api/songs/edit',
             {
               id:$scope.urlId,

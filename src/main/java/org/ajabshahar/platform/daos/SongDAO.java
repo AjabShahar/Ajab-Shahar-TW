@@ -50,6 +50,7 @@ public class SongDAO extends AbstractDAO<Song> {
         originalSongData.setPoets(updatableSongData.getPoets());
         originalSongData.setSongCategory(updatableSongData.getSongCategory());
         originalSongData.setMediaCategory(updatableSongData.getMediaCategory());
+        originalSongData.setUmbrellaTitle(updatableSongData.getUmbrellaTitle());
         return originalSongData;
     }
 }
