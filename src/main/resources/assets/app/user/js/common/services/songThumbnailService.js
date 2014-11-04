@@ -13,6 +13,7 @@ var songThumbnailService = function (nameService){
           ' category-name="'+details.songCategory.name+'"'+
           ' duration="'+ details.duration+'"'+
           ' singer="' + nameService.getName(details.singers[0]) + '"' +
+          ' class = "songs"' +
           ' poet="' + nameService.getName(details.poets[0]) + '">' +
           '</song-with-details>';
     }

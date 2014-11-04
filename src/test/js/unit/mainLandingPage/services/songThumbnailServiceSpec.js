@@ -47,6 +47,7 @@ describe("Song Thumbnail service Specs", function(){
             ' category-name="Song & Reflection"'+
             ' duration="09:11"'+
             ' singer="Parvathy Baul"'+
+            ' class = "songs"' +
             ' poet="Sharath">'+
             '</song-with-details>');
 	});
