@@ -78,4 +78,12 @@ public class SongResource {
         return null;
     }
 
+    @GET
+    @UnitOfWork
+    @Path("/versions")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Song> getSongWithRenditions(@QueryParam("id") Long id){
+        return songDAO.findSongWithRenditions(id);
+    }
+
 }

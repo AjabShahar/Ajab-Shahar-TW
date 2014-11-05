@@ -53,4 +53,8 @@ public class SongDAO extends AbstractDAO<Song> {
         originalSongData.setUmbrellaTitle(updatableSongData.getUmbrellaTitle());
         return originalSongData;
     }
+
+    public List<Song> findSongWithRenditions(Long id) {
+        return list(namedQuery("org.ajabshahar.platform.models.Song.findSongWithRenditions").setParameter("id",id));
+    }
 }
