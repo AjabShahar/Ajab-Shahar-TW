@@ -4,7 +4,7 @@ var songThumbnailService = function (nameService){
     };
 
     var getThumbnailWithBubble = function(details,id,customStyle){
-          return '<song-with-details overlay-id="'+id +'"'+
+          return '<song-with-details id="'+id +'"'+
           ' open="popupService.open(\''+id+'\')"'+
           ' custom-style="'+customStyle+'"' +
           ' img-src="'+details.thumbnail_url+'"'+
