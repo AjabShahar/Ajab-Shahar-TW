@@ -54,7 +54,13 @@ public class SongDAO extends AbstractDAO<Song> {
         return originalSongData;
     }
 
+
     public List<Song> findSongWithRenditions(Long id) {
         return list(namedQuery("org.ajabshahar.platform.models.Song.findSongWithRenditions").setParameter("id",id));
+    }
+
+    public List<Song> findAllRanging(long from, long to) {
+        return list(namedQuery("org.ajabshahar.platform.models.Song.findAllRanging").setParameter("from", from).setParameter("to", to));
+
     }
 }
