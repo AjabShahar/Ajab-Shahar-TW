@@ -80,7 +80,7 @@ public class SongResource {
 
     @GET
     @UnitOfWork
-    @Path("/versions")
+    @Path("/renditions")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Song> getSongWithRenditions(@QueryParam("id") Long id){
         return songDAO.findSongWithRenditions(id);
