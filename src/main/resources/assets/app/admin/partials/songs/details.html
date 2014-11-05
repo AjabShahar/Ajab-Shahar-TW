@@ -13,17 +13,45 @@
 </head>
 <body>
 <h2>Enter Song basic details</h2>
-<div ng-controller="songDetailsController">
+<div ng-controller="songDetailsController" ng-init="AddNewDiv=false">
     <form >
 
         <div class="row">
-            <div class="form-group col-sm-2">
+            <div class="form-group col-sm-2" >
                 <label>Umbrella Title</label>
             </div>
-            <div class="form-group col-sm-5">
-                <select ng-model="formInfo.umbrellaTitle"
+            <div class="form-group col-sm-1"  >
+                <select ng-model="formInfo.umbrellaTitle" ng-disabled="AddNewDiv"
                         ng-options="uTitle.title for uTitle in umbrellaTitleList">
                 </select>
+            </div>
+
+            <div class="form-group col-sm-2" >
+                <button type="button" ng-click="enableNew()">Add New</button>
+            </div>
+            <div class="row col-sm-12">
+                <div class="form-group col-sm-2" ng-show="AddNewDiv">
+                    <label>Original Title</label>
+                </div>
+                <div class="form-group col-sm-5" ng-show="AddNewDiv">
+                    <input type="text" ng-model="formInfo.umbrellaTitle.title">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-2" ng-show="AddNewDiv">
+                    <label>English Translation</label>
+                </div>
+                <div class="form-group col-sm-5" ng-show="AddNewDiv">
+                    <input type="text" ng-model="formInfo.umbrellaTitle.englishTranslation">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-2" ng-show="AddNewDiv">
+                    <label>English Transliteration</label>
+                </div>
+                <div class="form-group col-sm-5" ng-show="AddNewDiv">
+                    <input type="text" ng-model="formInfo.umbrellaTitle.englishTransliteration">
+                </div>
             </div>
         </div>
 

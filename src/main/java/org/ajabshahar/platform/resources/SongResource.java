@@ -39,9 +39,15 @@ public class SongResource {
         JsonElement jsonElement = new Gson().fromJson(jsonSong, JsonElement.class);
         JsonObject jsonObject = jsonElement.getAsJsonObject();
         Long id = jsonObject.get("id").getAsLong();
-        Song song = new Gson().fromJson(jsonObject.get("data"),Song.class);
-        songDAO.updateSong(id,song);
-        return Response.status(200).entity(song.toString()).build();
+        try{
+            Song song = new Gson().fromJson(jsonObject.get("data"),Song.class);
+            songDAO.updateSong(id,song);
+            return Response.status(200).entity(song.toString()).build();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @GET

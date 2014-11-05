@@ -3,7 +3,7 @@ var songDetailsController = function($scope, $http,$window,$location){
   $scope.formInfo = {};
   $scope.formInfo.singers = [];
   $scope.formInfo.poets = [];
-  $scope.category = {};
+  $scope.umbrellaTitle = {};
   $scope.singersList = [];
   $scope.poetsList = [];
   $scope.categoryList = [];
@@ -60,6 +60,7 @@ var songDetailsController = function($scope, $http,$window,$location){
                      })
                      .success(function (data,status) {
                           $scope.formInfo = data;
+                          $scope.formInfo.umbrellaTitle = {"selected":null};
       });
     };
 
@@ -91,6 +92,10 @@ var songDetailsController = function($scope, $http,$window,$location){
    alert('This data is not updated');
     $window.location.href = '/admin/partials/songs/details.html';
   };
+
+  $scope.enableNew = function(){
+      return $scope.AddNewDiv = true;
+  }
 }
 
 adminApp.controller('songDetailsController',['$scope','$http','$window','$location',songDetailsController]);
