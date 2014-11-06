@@ -1,20 +1,18 @@
 var allSongsController = function($scope,songsContentService,songThumbnailService,introductionPopupService,popupService){
-    $scope.detailsService = popupService;
-    $scope.thumbnailContent=[];
-    $scope.paginationthumbnailContent=null;
+    $scope.songs=[];
     var i = 0, j;
 
-    $scope.init = function(from , to){
+    $scope.loadSongFromRange = function(from , to){
     	songsContentService.getSongsGivenRange(from, to).then(function(result){
             for(j = 0; j < result.data.length ;j++, i++){
                 var songThumbnailWithBubble = songThumbnailService.getThumbnailWithBubble(result.data[j],'song_'+result.data[j].id,'');
-                $scope.thumbnailContent.push(songThumbnailWithBubble);
+                $scope.songs.push(songThumbnailWithBubble);
             }
         });
     }
 
-    $scope.addMoreItems = function(){
-        $scope.init(i, i + 9);
+    $scope.loadMoreSongs = function(){
+        $scope.loadSongFromRange(i, i + 9);
     }
 
 };
