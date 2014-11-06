@@ -3,20 +3,20 @@ package org.ajabshahar.platform.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "UMBRELLA_TITLE")
+@Table(name = "TITLE")
 @NamedQueries({
         @NamedQuery(
-                name = "org.ajabshahar.platform.models.UmbrellaTitle.findAll",
-                query = "SELECT p FROM UmbrellaTitle p"
+                name = "org.ajabshahar.platform.models.Title.findAll",
+                query = "SELECT p FROM Title p"
         )
 })
-public class UmbrellaTitle {
+public class Title {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "TITLE",nullable = true)
-    private String title;
+    @Column(name = "ORIGINAL_TITLE",nullable = true)
+    private String originalTitle;
 
     @Column(name = "ENGLISH_TRANSLATION",nullable = true)
     private String englishTranslation;
@@ -24,13 +24,9 @@ public class UmbrellaTitle {
     @Column(name = "ENGLISH_TRANSLITERATION", nullable = true)
     private String englishTransliteration;
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "CATEGORY_ID")
+    private Category category;
 
     public long getId() {
         return id;
@@ -54,5 +50,21 @@ public class UmbrellaTitle {
 
     public void setEnglishTransliteration(String englishTransliteration) {
         this.englishTransliteration = englishTransliteration;
+    }
+
+    public String getOriginalTitle() {
+        return originalTitle;
+    }
+
+    public void setOriginalTitle(String originalTitle) {
+        this.originalTitle = originalTitle;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

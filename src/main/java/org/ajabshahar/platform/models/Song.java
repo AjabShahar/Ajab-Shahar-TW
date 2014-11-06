@@ -16,7 +16,7 @@ import java.util.Set;
         ),
         @NamedQuery(
                 name = "org.ajabshahar.platform.models.Song.findSongWithRenditions",
-                query = "SELECT p FROM Song p where p.umbrellaTitle=(SELECT s.umbrellaTitle from Song s where s.id=:id)"
+                query = "SELECT p FROM Song p where p.title=(SELECT s.title from Song s where s.id=:id)"
         )
 })
 public class Song {
@@ -75,7 +75,7 @@ public class Song {
 
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "UMBRELLA_TITLE_ID")
-    private UmbrellaTitle umbrellaTitle;
+    private Title title;
 
     public Set<PersonDetails> getPoets(){return poets;}
 
@@ -182,12 +182,12 @@ public class Song {
     }
 
 
-    public UmbrellaTitle getUmbrellaTitle() {
-        return umbrellaTitle;
+    public Title getUmbrellaTitle() {
+        return title;
     }
 
-    public void setUmbrellaTitle(UmbrellaTitle umbrellaTitle) {
-        this.umbrellaTitle = umbrellaTitle;
+    public void setUmbrellaTitle(Title title) {
+        this.title = title;
     }
 }
 
