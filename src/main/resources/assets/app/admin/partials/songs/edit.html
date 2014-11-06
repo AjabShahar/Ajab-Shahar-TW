@@ -21,8 +21,8 @@
                 <label>Umbrella Title</label>
             </div>
             <div class="form-group col-sm-1"  >
-                <select ng-model="formInfo.title" ng-disabled="AddNewDiv"
-                        ng-options="uTitle.originalTitle for uTitle in umbrellaTitleList">
+                <select ng-model="formInfo.title.id" ng-disabled="AddNewDiv"
+                        ng-options="uTitle.id as uTitle.originalTitle for uTitle in umbrellaTitleList">
                 </select>
             </div>
 
@@ -53,6 +53,9 @@
                     <input type="text" ng-model="formInfo.title.englishTransliteration">
                 </div>
             </div>
+            <div class="form-group col-sm-2" ng-show="AddNewDiv">
+                <button type="button" ng-click="disableNew()">Cancel</button>
+            </div>
 
         </div>
 
@@ -61,7 +64,7 @@
                 <label>Singer</label>
             </div>
             <div class="form-group col-sm-5">
-                <select ng-model="formInfo.singers[0]" ng-options="singer as singer.firstName for singer in singersList">
+                <select ng-model="formInfo.singers[0].id" ng-options="singer.id as singer.firstName for singer in singersList">
                 </select>
             </div>
         </div>
@@ -71,7 +74,7 @@
                 <label>Poet</label>
             </div>
             <div class="form-group col-sm-5">
-                <select ng-model="formInfo.poets[0]" ng-options="poet as poet.firstName for poet in poetsList">
+                <select ng-model="formInfo.poets[0].id" ng-options="poet.id as poet.firstName for poet in poetsList">
                 </select>
             </div>
         </div>

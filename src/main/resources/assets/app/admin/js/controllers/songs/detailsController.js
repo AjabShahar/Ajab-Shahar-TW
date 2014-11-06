@@ -3,9 +3,9 @@ var songDetailsController = function($scope, $http,$window,$location){
   $scope.formInfo = {};
   $scope.formInfo.singers = [];
   $scope.formInfo.poets = [];
-  $scope.umbrellaTitle = {};
   $scope.singersList = [];
   $scope.poetsList = [];
+  $scope.title = {};
   $scope.categoryList = [];
   $scope.songCategoryList = [];
   $scope.mediaCategoryList = [];
@@ -36,13 +36,13 @@ var songDetailsController = function($scope, $http,$window,$location){
     var youtubeIdIsNull = $scope.formInfo.youtubeVideoId == undefined || $scope.formInfo.youtubeVideoId == "";
 
     if(youtubeIdIsNull){
-      $scope.formInfo.mediaCategory =  $scope.mediaCategoryList.filter(function( mediaCategory ) {
+      $scope.formInfo["mediaCategory"] =  $scope.mediaCategoryList.filter(function( mediaCategory ) {
         return mediaCategory.name == "audio only";
       })[0];
     }
     else {
-      $scope.formInfo.mediaCategory =  $scope.mediaCategoryList.filter(function( mediaCategory ) {
-        return mediaCategory.name == "video and audio";
+      $scope.formInfo["mediaCategory"] =  $scope.mediaCategoryList.filter(function( mediaCategory ) {
+        return mediaCategory.name == "audio & video";
       })[0];
     }
 
@@ -56,7 +56,7 @@ var songDetailsController = function($scope, $http,$window,$location){
       $http.get('/api/songs/'+$scope.urlId)
             .success(function (data,status) {
                           $scope.formInfo = data;
-                          $scope.formInfo.umbrellaTitle = {"selected":null};
+
       });
     };
 
@@ -64,13 +64,13 @@ var songDetailsController = function($scope, $http,$window,$location){
      var youtubeIdIsNull = $scope.formInfo.youtubeVideoId == undefined || $scope.formInfo.youtubeVideoId == "";
 
          if(youtubeIdIsNull){
-           $scope.formInfo.mediaCategory =  $scope.mediaCategoryList.filter(function( mediaCategory ) {
+           $scope.formInfo["mediaCategory"] =  $scope.mediaCategoryList.filter(function( mediaCategory ) {
              return mediaCategory.name == "audio only";
            })[0];
          }
          else {
-           $scope.formInfo.mediaCategory =  $scope.mediaCategoryList.filter(function( mediaCategory ) {
-             return mediaCategory.name == "video and audio";
+           $scope.formInfo["mediaCategory"] =  $scope.mediaCategoryList.filter(function( mediaCategory ) {
+             return mediaCategory.name == "audio & video";
            })[0];
          }
 
@@ -90,7 +90,17 @@ var songDetailsController = function($scope, $http,$window,$location){
   };
 
   $scope.enableNew = function(){
+      $scope.formInfo.title = {"selected":null};
       return $scope.AddNewDiv = true;
+  }
+
+  $scope.disableNew = function (){
+     $http.get('/api/songs/'+$scope.urlId)
+                 .success(function (data,status) {
+                               $scope.formInfo = data;
+
+     });
+     return $scope.AddNewDiv = false;
   }
 }
 

@@ -59,25 +59,25 @@ public class Song {
     @Column(name = "IS_AUTHORING_COMPLETE")
     private Boolean isAuthoringComplete;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "SONG_SINGER", joinColumns = { @JoinColumn(name = "SONG_ID", referencedColumnName = "ID") },
             inverseJoinColumns = { @JoinColumn(name = "SINGER_ID", referencedColumnName = "ID")})
     private Set<PersonDetails> singers;
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "SONG_POET", joinColumns = { @JoinColumn(name = "SONG_ID", referencedColumnName = "ID") },
             inverseJoinColumns = { @JoinColumn(name = "POET_ID", referencedColumnName = "ID") })
     private Set<PersonDetails> poets;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "SONG_CATEGORY")
     private Category songCategory;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "MEDIA_CATEGORY")
     private Category mediaCategory;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
     @JoinColumn(name = "UMBRELLA_TITLE_ID")
     private Title title;
 
