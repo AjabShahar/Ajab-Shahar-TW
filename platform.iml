@@ -21,7 +21,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="Maven: com.bazaarvoice.dropwizard:dropwizard-caching-bundle:2.0.5" level="project" />
     <orderEntry type="library" name="Maven: io.dropwizard:dropwizard-core:0.7.0" level="project" />
     <orderEntry type="library" name="Maven: io.dropwizard:dropwizard-util:0.7.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.3.0" level="project" />
