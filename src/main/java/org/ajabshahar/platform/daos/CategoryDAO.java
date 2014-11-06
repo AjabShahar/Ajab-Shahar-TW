@@ -36,4 +36,15 @@ public class CategoryDAO extends AbstractDAO<Category> {
     public List<Category> findAllWordCategories() {
         return list(namedQuery("org.ajabshahar.platform.models.Category.findAllWordCategories"));
     }
+
+    public Category listUmbrellaTitleCategory() {
+        List<Category> categories = list(namedQuery("org.ajabshahar.platform.models.Category.findUmbrellaTitleCategory"));
+        return categories.get(0);
+
+    }
+
+    public Category listSongTitleCategory() {
+        List<Category> categories = list(namedQuery("org.ajabshahar.platform.models.Category.findSongTitleCategory"));
+        return categories.get(0);
+    }
 }

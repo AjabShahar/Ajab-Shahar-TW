@@ -10,7 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("/umbrella")
+@Path("/title")
 @Produces(MediaType.APPLICATION_JSON)
 public class TitleResource {
     private final TitleDAO titleDAO;
@@ -21,9 +21,18 @@ public class TitleResource {
 
     @GET
     @UnitOfWork
+    @Path("/umbrella")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Title> findAllUmbrellaTitles(){
-        return titleDAO.findAll();
+        return titleDAO.findAllUmbrellaTitles();
+    }
+
+    @GET
+    @UnitOfWork
+    @Path("/song")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Title> findAllSongTitles(){
+        return titleDAO.findAllSongTitles();
     }
 
 }

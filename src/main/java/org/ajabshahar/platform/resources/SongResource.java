@@ -5,8 +5,12 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.jersey.caching.CacheControl;
+import org.ajabshahar.platform.daos.CategoryDAO;
 import org.ajabshahar.platform.daos.SongDAO;
+import org.ajabshahar.platform.daos.TitleDAO;
+import org.ajabshahar.platform.models.Category;
 import org.ajabshahar.platform.models.Song;
+import org.ajabshahar.platform.models.Title;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -17,9 +21,10 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 public class SongResource {
     private final SongDAO songDAO;
-
-    public SongResource(SongDAO songDAO) {
+    private final TitleDAO titleDAO;
+    public SongResource(SongDAO songDAO, TitleDAO titleDAO) {
         this.songDAO = songDAO;
+        this.titleDAO = titleDAO;
     }
 
 
@@ -28,7 +33,20 @@ public class SongResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createSong(String jsonSong) {
         Song song = new Gson().fromJson(jsonSong, Song.class);
-        songDAO.create(song);
+        try{
+            if(song.getTitle().getId() == 0){
+                Title umbrellaTitle = titleDAO.create(song.getTitle());
+                song.setTitle(umbrellaTitle);
+            }
+            if(song.getSongTitle().getId() == 0){
+                Title songTitle = titleDAO.create(song.getSongTitle());
+                song.setSongTitle(songTitle);
+            }
+            songDAO.create(song);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
         return Response.status(200).entity(song.getId()).build();
     }
     @PUT
@@ -41,6 +59,14 @@ public class SongResource {
         Long id = jsonObject.get("id").getAsLong();
         try{
             Song song = new Gson().fromJson(jsonObject.get("data"),Song.class);
+            if(song.getTitle().getId() == 0){
+                Title umbrellaTitle = titleDAO.create(song.getTitle());
+                song.setTitle(umbrellaTitle);
+            }
+            if(song.getSongTitle().getId() == 0){
+                Title songTitle = titleDAO.create(song.getSongTitle());
+                song.setSongTitle(songTitle);
+            }
             songDAO.updateSong(id,song);
             return Response.status(200).entity(song.toString()).build();
         }

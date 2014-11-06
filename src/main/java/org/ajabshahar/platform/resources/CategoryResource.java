@@ -53,4 +53,18 @@ public class CategoryResource {
     public List<Category> listAllWordCategories() {
         return categoryDAO.findAllWordCategories();
     }
+
+    @GET
+    @UnitOfWork
+    @Path("/umbrellaTitle")
+    public  Category listUmbrellaTitleCategory(){
+        return categoryDAO.listUmbrellaTitleCategory();
+    }
+
+    @GET
+    @UnitOfWork
+    @Path("/songTitle")
+    public Category listSongTitleCategory(){
+        return categoryDAO.listSongTitleCategory();
+    }
 }

@@ -27,4 +27,13 @@ public class TitleDAO extends AbstractDAO<Title> {
      }
      return null;
     }
+
+    public List<Title> findAllSongTitles() {
+
+        return list(namedQuery("org.ajabshahar.platform.models.Title.findSongTitles"));
+    }
+
+    public List<Title> findAllUmbrellaTitles() {
+        return list(namedQuery("org.ajabshahar.platform.models.Title.findUmbrellaTitles"));
+    }
 }

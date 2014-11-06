@@ -40,9 +40,6 @@ public class SongDAO extends AbstractDAO<Song> {
 
         originalSongData.setShowOnLandingPage(updatableSongData.getShowOnLandingPage());
         originalSongData.setDuration(updatableSongData.getDuration());
-        originalSongData.setOriginal(updatableSongData.getOriginal());
-        originalSongData.setEnglishTranslation(updatableSongData.getEnglishTranslation());
-        originalSongData.setEnglishTransliteration(updatableSongData.getEnglishTransliteration());
         originalSongData.setYoutubeVideoId(updatableSongData.getYoutubeVideoId());
         originalSongData.setThumbnail_url(updatableSongData.getThumbnail_url());
         originalSongData.setIsAuthoringComplete(updatableSongData.getIsAuthoringComplete());
@@ -51,6 +48,7 @@ public class SongDAO extends AbstractDAO<Song> {
         originalSongData.setSongCategory(updatableSongData.getSongCategory());
         originalSongData.setMediaCategory(updatableSongData.getMediaCategory());
         originalSongData.setTitle(updatableSongData.getTitle());
+        originalSongData.setSongTitle(updatableSongData.getSongTitle());
         return originalSongData;
     }
 

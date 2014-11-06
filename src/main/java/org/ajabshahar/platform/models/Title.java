@@ -8,6 +8,14 @@ import javax.persistence.*;
         @NamedQuery(
                 name = "org.ajabshahar.platform.models.Title.findAll",
                 query = "SELECT p FROM Title p"
+        ),
+        @NamedQuery(
+                name = "org.ajabshahar.platform.models.Title.findSongTitles",
+                query = "SELECT p FROM Title p WHERE p.category=(SELECT c from Category c where c.categoryType='Song Title')"
+        ),
+        @NamedQuery(
+                name = "org.ajabshahar.platform.models.Title.findUmbrellaTitles",
+                query = "SELECT p FROM Title p WHERE p.category=(SELECT c from Category c where c.categoryType='Umbrella Title')"
         )
 })
 public class Title {

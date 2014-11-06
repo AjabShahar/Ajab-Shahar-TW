@@ -24,6 +24,14 @@ import javax.persistence.*;
         @NamedQuery(
                 name = "org.ajabshahar.platform.models.Category.findAllWordCategories",
                 query = "SELECT p FROM Category p where p.categoryType='word'"
+        ),
+        @NamedQuery(
+                name = "org.ajabshahar.platform.models.Category.findUmbrellaTitleCategory",
+                query = "SELECT p FROM Category p where p.categoryType='Umbrella Title'"
+        ),
+        @NamedQuery(
+                name = "org.ajabshahar.platform.models.Category.findSongTitleCategory",
+                query = "SELECT p FROM Category p where p.categoryType='Song Title'"
         )
 
 })

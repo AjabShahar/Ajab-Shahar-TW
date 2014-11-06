@@ -38,15 +38,6 @@ public class Song {
         return id;
     }
 
-    @Column(name = "ORIGINAL_TITLE", nullable = false)
-    private String original;
-
-    @Column(name = "ENGLISH_TRANSLATION", nullable = false)
-    private String englishTranslation;
-
-    @Column(name = "ENGLISH_TRANSLITERATION", nullable = false)
-    private String englishTransliteration;
-
     @Column(name = "YOUTUBE_VIDEO_ID", nullable = true)
     private String youtubeVideoId;
 
@@ -77,37 +68,17 @@ public class Song {
     @JoinColumn(name = "MEDIA_CATEGORY")
     private Category mediaCategory;
 
-    @ManyToOne(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "UMBRELLA_TITLE_ID")
     private Title title;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "SONG_TITLE_ID")
+    private Title songTitle;
 
     public Set<PersonDetails> getPoets(){return poets;}
 
     public void setPoets(Set<PersonDetails> poets){this.poets = poets;}
-
-    public String getOriginal() {
-        return original;
-    }
-
-    public void setOriginal(String Original) {
-        this.original = Original;
-    }
-
-    public String getEnglishTranslation() {
-        return englishTranslation;
-    }
-
-    public void setEnglishTranslation(String ENGLISH_TRANSLATION) {
-        this.englishTranslation = ENGLISH_TRANSLATION;
-    }
-
-    public String getEnglishTransliteration() {
-        return englishTransliteration;
-    }
-
-    public void setEnglishTransliteration(String ENGLISH_TRANSLITERATION) {
-        this.englishTransliteration = ENGLISH_TRANSLITERATION;
-    }
 
     public Boolean getShowOnLandingPage() {
         return showOnLandingPage;
@@ -192,6 +163,14 @@ public class Song {
 
     public void setTitle(Title title) {
         this.title = title;
+    }
+
+    public Title getSongTitle() {
+        return songTitle;
+    }
+
+    public void setSongTitle(Title songTitle) {
+        this.songTitle = songTitle;
     }
 }
 

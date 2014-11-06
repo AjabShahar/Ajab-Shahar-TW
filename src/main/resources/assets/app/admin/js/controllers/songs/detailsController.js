@@ -6,14 +6,20 @@ var songDetailsController = function($scope, $http,$window,$location){
   $scope.singersList = [];
   $scope.poetsList = [];
   $scope.title = {};
+  $scope.songTitle = {};
   $scope.categoryList = [];
   $scope.songCategoryList = [];
   $scope.mediaCategoryList = [];
   $scope.umbrellaTitleList = [];
+  $scope.songTitleList = [];
   $scope.urlId = $location.search().id;
 
-  $http.get('/api/umbrella').success(function(umbrellaTitleList){
+  $http.get('/api/title/umbrella').success(function(umbrellaTitleList){
     $scope.umbrellaTitleList = umbrellaTitleList;
+  });
+
+  $http.get('/api/title/song').success(function(songTitleList){
+      $scope.songTitleList= songTitleList;
   });
 
   $http.get('/api/people/singers').success(function(singersList){
@@ -90,8 +96,12 @@ var songDetailsController = function($scope, $http,$window,$location){
   };
 
   $scope.enableNew = function(){
-      $scope.formInfo.title = {"selected":null};
-      return $scope.AddNewDiv = true;
+     $scope.formInfo.title = {"selected":null};
+        $http.get('/api/category/umbrellaTitle').success(function(data){
+          $scope.formInfo.title.category = data;
+        }) ;
+
+     return $scope.AddNewDiv = true;
   }
 
   $scope.disableNew = function (){
@@ -101,6 +111,21 @@ var songDetailsController = function($scope, $http,$window,$location){
 
      });
      return $scope.AddNewDiv = false;
+  }
+  $scope.enableNewSongTitle = function(){
+   $scope.formInfo.songTitle ={"selected":null};
+      $http.get('/api/category/songTitle').success(function(data){
+         $scope.formInfo.songTitle.category = data;
+      })
+   return $scope.AddNewSongTitle = true;
+  }
+  $scope.disableNewSongTitle = function(){
+   $http.get('/api/songs/'+$scope.urlId)
+                    .success(function (data,status) {
+                                  $scope.formInfo = data;
+
+   });
+   return $scope.AddNewSongTitle = false;
   }
 }
 
