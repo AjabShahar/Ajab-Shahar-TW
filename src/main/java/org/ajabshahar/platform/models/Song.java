@@ -17,6 +17,10 @@ import java.util.Set;
         @NamedQuery(
                 name = "org.ajabshahar.platform.models.Song.findSongWithRenditions",
                 query = "SELECT p FROM Song p where p.title=(SELECT s.title from Song s where s.id=:id)"
+        ),
+        @NamedQuery(
+                name = "org.ajabshahar.platform.models.Song.findAllRanging",
+                query = "SELECT p FROM Song p where p.id between :from and :to"
         )
 })
 public class Song {
@@ -182,11 +186,11 @@ public class Song {
     }
 
 
-    public Title getUmbrellaTitle() {
+    public Title getTitle() {
         return title;
     }
 
-    public void setUmbrellaTitle(Title title) {
+    public void setTitle(Title title) {
         this.title = title;
     }
 }

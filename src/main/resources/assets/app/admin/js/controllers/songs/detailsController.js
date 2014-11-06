@@ -53,12 +53,8 @@ var songDetailsController = function($scope, $http,$window,$location){
 
 
   $scope.getSongData = function(){
-      $http.get('/api/songs/edit', {
-                        params: {
-                           id:$scope.urlId
-                        }
-                     })
-                     .success(function (data,status) {
+      $http.get('/api/songs/'+$scope.urlId)
+            .success(function (data,status) {
                           $scope.formInfo = data;
                           $scope.formInfo.umbrellaTitle = {"selected":null};
       });

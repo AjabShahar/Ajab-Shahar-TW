@@ -50,11 +50,17 @@ public class SongDAO extends AbstractDAO<Song> {
         originalSongData.setPoets(updatableSongData.getPoets());
         originalSongData.setSongCategory(updatableSongData.getSongCategory());
         originalSongData.setMediaCategory(updatableSongData.getMediaCategory());
-        originalSongData.setUmbrellaTitle(updatableSongData.getUmbrellaTitle());
+        originalSongData.setTitle(updatableSongData.getTitle());
         return originalSongData;
     }
 
+
     public List<Song> findSongWithRenditions(Long id) {
         return list(namedQuery("org.ajabshahar.platform.models.Song.findSongWithRenditions").setParameter("id",id));
+    }
+
+    public List<Song> findAllRanging(long from, long to) {
+        return list(namedQuery("org.ajabshahar.platform.models.Song.findAllRanging").setParameter("from", from).setParameter("to", to));
+
     }
 }

@@ -1,14 +1,11 @@
 var allSongsController = function($scope,contentService,songThumbnailService,introductionPopupService,popupService){
-    $scope.popupService = popupService;
+    $scope.detailsService = popupService;
     $scope.thumbnailContent=null;
     $scope.paginationthumbnailContent=null;
 
     $scope.init = function(){
     	contentService.getMainLandingPageThumbnails().then(function(result){
-
-			var getShiftIndex = function(index){
-		        return ((4+index) % 6) == 0 ? 6 : ((4+index) % 6);
-		    };
+            
     		var startIndex =-1;
     		var details = result.data;
 

@@ -57,6 +57,16 @@ public class SongResource {
     }
 
     @GET
+    @Path("/range")
+    @UnitOfWork
+    @CacheControl(maxAge = 60)
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Song> listAllSongFromGivenRange(@QueryParam("from") long from,@QueryParam("to") long to)
+    {
+        return songDAO.findAllRanging(from, to);
+    }
+
+    @GET
     @Path("/landingPage")
     @UnitOfWork
     @CacheControl(maxAge = 60)
@@ -66,9 +76,9 @@ public class SongResource {
     }
 
     @GET
-    @Path("/edit")
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Song getSongById(@QueryParam("id") Long id){
+    public Song getSongById(@PathParam("id") Long id){
         try {
             return songDAO.findById(id);
         }
