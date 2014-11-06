@@ -18,11 +18,11 @@ htmlGenerator.factory('introductionPopupService', function () {
             startIndex++;
             var id = 'song_'+details.songs[index].id;
             return memo+
-                '<pop-up ng-init="popupService.init('+startIndex+',\''+id+'\')" id="'+id+'" width="100" on-next="popupService.next('+index+')" on-prev="popupService.prev('+index+')" show="popupService.shouldShow(\''+id+'\')"'
-                + ' on-close="popupService.onClose(\''+id+'\')" closeButton="true">'
+                '<pop-up ng-init="detailsService.init('+startIndex+',\''+id+'\')" id="'+id+'" width="100" on-next="detailsService.next('+index+')" on-prev="detailsService.prev('+index+')" show="detailsService.shouldShow(\''+id+'\')"'
+                + ' on-close="detailsService.onClose(\''+id+'\')" closeButton="true">'
                   + '<song-introduction id="'+id+'" singer="'+getName(details.songs[index].singers[0])+'" name="'+details.songs[index].englishTranslation+'"'
                   + ' audio-Url="' + details.songs[index].soundCloudTrackID + '"'
-                  + ' video-Url="'+details.songs[index].youtubeVideoId+'" close-video="popupService.isClosed(\''+id+'\')"></song-introduction>'
+                  + ' video-Url="'+details.songs[index].youtubeVideoId+'" close-video="detailsService.isClosed(\''+id+'\')"></song-introduction>'
                 +'</pop-up>';
       },'');
 
@@ -31,10 +31,10 @@ htmlGenerator.factory('introductionPopupService', function () {
 //            startIndex++;
 //            var id = 'couplet_'+details.couplets[index].id;
 //            return memo+
-//                '<pop-up ng-init="popupService.init('+startIndex+',\''+id+'\')" id="'+id+'" width="100" on-next="popupService.next('+index+')" on-prev="popupService.prev('+index+')" show="popupService.shouldShow(\''+id+'\')"'
-//                + ' on-close="popupService.onClose(\''+id+'\')" closeButton="true">'
+//                '<pop-up ng-init="detailsService.init('+startIndex+',\''+id+'\')" id="'+id+'" width="100" on-next="detailsService.next('+index+')" on-prev="detailsService.prev('+index+')" show="detailsService.shouldShow(\''+id+'\')"'
+//                + ' on-close="detailsService.onClose(\''+id+'\')" closeButton="true">'
 //                  + '<couplet-introduction id="'+id+'" poet="'+getName(details.couplets[index].poets[0])+'" name="'+details.couplets[index].englishTranslation+'"'
-//                  + ' close-video="popupService.isClosed(\''+id+'\')"></couplet-introduction>'
+//                  + ' close-video="detailsService.isClosed(\''+id+'\')"></couplet-introduction>'
 //                +'</pop-up>';
 //      },'');
 

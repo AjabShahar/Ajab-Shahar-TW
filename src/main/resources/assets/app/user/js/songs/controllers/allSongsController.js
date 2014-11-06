@@ -1,5 +1,5 @@
 var allSongsController = function($scope,contentService,songThumbnailService,introductionPopupService,popupService){
-    $scope.popupService = popupService;
+    $scope.detailsService = popupService;
     $scope.thumbnailContent=null;
     $scope.paginationthumbnailContent=null;
 

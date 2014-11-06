@@ -1,5 +1,5 @@
 var songDetailsController = function($scope,contentService,songDetailsService){
-    $scope.popupService = this;
+    $scope.detailsService = this;
     visibilityOfAllVersions = {};
 
     $scope.open = function(id){
