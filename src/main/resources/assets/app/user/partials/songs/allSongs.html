@@ -97,7 +97,7 @@
                 </div>
                 <div class='gridWrapper' infinite-scroll="loadMoreSongs()" infinite-scroll-distance='2'>
                     <ul ng-repeat="song in songs track by $index">
-                        <li bind-dynamic-html="song"></li>
+                        <li><song-with-details id="{{song.id}}" open="detailsService.open('{{song.id}}')" custom-style="{{song.customStyle}}" img-src="{{song.imgSrc}}" url="{{song.url}}" name="{{song.name}}" category-name="{{song.songCategoryName}}" duration="{{song.duration}}" singer="{{song.singer}}" class = "songs" poet="{{song.poet}}"></song-with-details></li>
                     </ul>
                 </div>
             </div>

@@ -5,7 +5,7 @@ var allSongsController = function($scope,songsContentService,songThumbnailServic
     $scope.loadSongFromRange = function(from , to){
     	songsContentService.getSongsGivenRange(from, to).then(function(result){
             for(j = 0; j < result.data.length ;j++, i++){
-                var songThumbnailWithBubble = songThumbnailService.getThumbnailWithBubble(result.data[j],'song_'+result.data[j].id,'');
+                var songThumbnailWithBubble = songThumbnailService.getSongDetailsForBinding(result.data[j],'song_'+result.data[j].id,'');
                 $scope.songs.push(songThumbnailWithBubble);
             }
         });
