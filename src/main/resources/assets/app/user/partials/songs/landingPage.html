@@ -67,6 +67,7 @@
 <div class='ajab-container'>
     <div class='ajab-wrapper'>
         <div class='homepage-content songs'>
+                <song-with-details ng-repeat="song in songs" id="{{song.id}}" open="detailsService.open('{{song.id}}')" custom-style="{{song.customStyle}}" img-src="{{song.imgSrc}}" url="{{song.url}}" name="{{song.name}}" category-name="{{song.songCategoryName}}" duration="{{song.duration}}" singer="{{song.singer}}" class = "songs" poet="{{song.poet}}"></song-with-details>
             <div bind-dynamic-html="thumbnailContent"></div>
         </div>
     </div>

@@ -4,7 +4,7 @@ var songsController = function($scope,contentService,songThumbnailService,introd
     $scope.detailsService = popupService;
     $scope.init = function(){
         contentService.getSongsLandingPageThumbnails().then(function(result){
-            $scope.thumbnailContent = songThumbnailService.getThumbnailsWithBubble(result.data);
+            $scope.songs = songThumbnailService.getSongsDetailsForBinding(result.data);
             $scope.popupContent = introductionPopupService.getPopupDetails({"songs":result.data});
         });
     }

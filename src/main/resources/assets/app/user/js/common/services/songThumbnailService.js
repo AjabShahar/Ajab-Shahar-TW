@@ -10,6 +10,13 @@ var songThumbnailService = function (nameService){
         };
     };
 
+    var getSongsDetailsForBinding = function(details,id,customStyle){
+        return _.reduce(details, function(memo, value, index){
+                memo.push(getSongDetailsForBinding(details[index],'song_'+details[index].id,"shift"+getShiftIndex(index)));
+                return memo;
+        },[]);
+    };
+
     var getThumbnailWithBubble = function(details,id,customStyle){
           return '<song-with-details id="'+id +'"'+
           ' open="detailsService.open(\''+id+'\')"'+
@@ -32,6 +39,7 @@ var songThumbnailService = function (nameService){
     };
 
 return {
+    getSongsDetailsForBinding:getSongsDetailsForBinding,
     getSongDetailsForBinding:getSongDetailsForBinding,
     getThumbnailWithBubble: getThumbnailWithBubble,
     getThumbnailsWithBubble: getThumbnailsWithBubble,
