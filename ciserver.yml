@@ -1,0 +1,28 @@
+template: Hello, %s!
+defaultName: Stranger
+server:
+  applicationConnectors:
+  - type: http 
+    port: 9000
+  adminConnectors:
+  - type: http
+    port: 9001
+database:
+  driverClass: org.postgresql.Driver
+  user: pg-dev
+  password:
+  url: jdbc:postgresql://172.18.65.56/platform-ci?allowMultiQueries=true&createDatabaseIfNotExist=true
+  properties:
+    charSet: UTF-8
+    hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+  maxWaitForConnection: 1s
+  validationQuery: "/* MyApplication Health Check */ SELECT 1"
+  minSize: 8
+  maxSize: 32
+  checkConnectionWhileIdle: false
+cache:
+  local:
+    maximumSize: 5MB
+    expire: 30m
+cacheControl:
+    - maxAge: 30s
