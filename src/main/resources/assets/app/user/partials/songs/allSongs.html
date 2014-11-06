@@ -94,8 +94,8 @@
 
                     <div class='numericCount'>457 songs</div>
                 </div>
-                <div class='gridWrapper' infinite-scroll="addMoreItems()">
-                    <ul ng-repeat="content in thumbnailContent">
+                <div class='gridWrapper' infinite-scroll="addMoreItems()" infinite-scroll-distance='2'>
+                    <ul ng-repeat="content in thumbnailContent track by $index">
                         <li bind-unsafe-html="content"></li>
                     </ul>
                 </div>
