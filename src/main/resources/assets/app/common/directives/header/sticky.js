@@ -2,7 +2,10 @@ angular.module('sticky', [])
 .directive('sticky', [ function () {
     return {
         restrict: 'A',
-
+        scope: {
+            onScroll: "&onScroll",
+            onTop: "&onTop",
+          },
         link: function ($scope, $elem, $attrs) {
             var offsetTop = 0,
                 $window = angular.element(window),
@@ -25,9 +28,11 @@ angular.module('sticky', [])
                 if (scrollTop >= stickyLine) {
                     $elem.css('position', 'fixed');
                     $elem.addClass('fixed');
+                    $scope.onScroll();
                 } else {
                     $elem.removeClass('fixed');
                     $elem.css('position', initialPositionStyle);
+                    $scope.onTop();
                 }
             }
         }

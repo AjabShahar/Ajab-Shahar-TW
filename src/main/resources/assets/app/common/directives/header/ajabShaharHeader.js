@@ -17,6 +17,14 @@ headerModule.directive("ajabShaharHeader", function($window) {
             }
 
             $scope.showMenu = function(){
+                $scope.showMenuContent = true;
+            }
+
+            $scope.hideMenu = function(){
+                $scope.showMenuContent = false;
+            }
+
+            $scope.toggleMenu = function(){
                 $scope.showMenuContent = !$scope.showMenuContent;
             }
 

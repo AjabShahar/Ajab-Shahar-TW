@@ -1,4 +1,4 @@
-<div class='headerBox ajab-container '>
+<div sticky onScroll="hideMenu()" onTop="showMenu()" class='headerBox ajab-container '>
     <div class='headerWrapper' ng-show="shouldShowMenuContent()">
         <header>
             <div class='logoContainer'>
@@ -34,9 +34,9 @@
 
         </header>
     </div>
-    <div sticky class='headerArt' style="top: {{headerArtTop}}px;">
+    <div class='headerArt'>
         <div class='ajab-wrapper'>
-        <a class='menuTree' ng-click="showMenu()"></a>
+        <a class='menuTree' ng-click="toggleMenu()"></a>
         </div>
     </div>
 </div>
