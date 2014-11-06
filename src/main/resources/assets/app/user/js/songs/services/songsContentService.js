@@ -1,14 +1,21 @@
 var songsContentService = function ($http) {
-  var getAllSongs = function () {
-    return $http.get('/api/songs');
-  };
+    var getSongsVersions = function (id) {
+        return $http.get('/api/songs');
+        //return $http.get('/api/songs/'+id+"/versions");
+    };
 
-  var getSongsGivenRange = function(from, to){
-  	return $http.get('/api/songs/range?from=' + from + "&to=" + to);
-  };
+    var getAllSongs = function () {
+        return $http.get('/api/songs');
+    };
 
-  return {
-    getAllSongs: getAllSongs,
-    getSongsGivenRange: getSongsGivenRange
-  };
+
+    var getSongsGivenRange = function(from, to){
+        return $http.get('/api/songs/range?from=' + from + "&to=" + to);
+    };
+
+    return {
+        getAllSongs: getAllSongs,
+        getSongsGivenRange: getSongsGivenRange,
+        getSongsVersions:getSongsVersions,
+    };
 };

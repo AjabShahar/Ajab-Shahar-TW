@@ -21,6 +21,7 @@
     <script type="text/javascript" src="../../js/common/config/resourceUrlWhiteList.js"></script>
     <script type="text/javascript" src="../../../common/modules/headerModule.js"></script>
     <script type="text/javascript" src="../../../common/directives/header/ajabShaharHeader.js"></script>
+    <script type="text/javascript" src="../../../common/directives/htmlGenerator/bindDynamicHtml.js"></script>
     <script type="text/javascript" src="../../js/LandingPages/services/contentService.js"></script>
     <script type="text/javascript" src="../../js/songs/services/songsContentService.js"></script>
     <script type="text/javascript" src="../../js/songs/app.js"></script>
@@ -96,7 +97,7 @@
                 </div>
                 <div class='gridWrapper' infinite-scroll="loadMoreSongs()" infinite-scroll-distance='2'>
                     <ul ng-repeat="song in songs track by $index">
-                        <li bind-unsafe-html="song"></li>
+                        <li bind-dynamic-html="song"></li>
                     </ul>
                 </div>
             </div>

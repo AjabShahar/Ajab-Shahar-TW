@@ -1,13 +1,13 @@
 var songDetailsService= function (songThumbnailService) {
-    var getThumbnailWithBubble = function (details,contentType) {
-        var songs = _.reduce(details.versions, function(memo, value, index){
-                memo = (index%3==0) ? '<section><ul class="ajab-ribbon">' : '';
-                memo = memo + songThumbnailService.getThumbnailWithBubble(details.songs[index],'song_'+details.songs[index].id,"");
-                memo = memo + (index%3==2) || (index==details.versions.length) ? '</ul></section>' : '';
+    var getThumbnailWithBubble = function (details) {
+        var songs ="<carousel>"+ _.reduce(details, function(memo, value, index){
+                memo = memo + ((index%3==0) ? '<section><ul class="ajab-ribbon">' : '');
+                memo = memo + '<li>'+(songThumbnailService.getThumbnailWithBubble(details[index],'song_'+details[index].id,""))+'</li>';
+                memo = memo + ((index%3==2) || (index==details.length) ? '</ul></section>' : '');
                 return memo;
         },'');
 
-        return songs;
+        return songs+"</carousel>";
   };
 
   return {

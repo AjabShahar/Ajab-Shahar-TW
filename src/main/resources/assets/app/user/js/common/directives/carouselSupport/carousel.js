@@ -4,7 +4,6 @@ carouselModule.directive('carousel', function($timeout) {
   return {
     restrict: 'E',
     transclude: true,
-    replace: true,
     scope: {},
     controller: ['$scope',function($scope) {
       $scope.currentIndex = 0; // Initially the index is at the first element

@@ -22,6 +22,7 @@
     <script type="text/javascript" src="../../js/common/config/resourceUrlWhiteList.js"></script>
     <script type="text/javascript" src="../../../common/modules/headerModule.js"></script>
     <script type="text/javascript" src="../../../common/directives/header/ajabShaharHeader.js"></script>
+    <script type="text/javascript" src="../../../common/directives/htmlGenerator/bindDynamicHtml.js"></script>
     <script type="text/javascript" src="../../js/LandingPages/services/contentService.js"></script>
     <script type="text/javascript" src="../../js/LandingPages/app.js"></script>
     <script type="text/javascript" src="../../js/common/services/popupService.js"></script>
@@ -60,13 +61,13 @@
     <!-- parallax effect ends -->
 
 
-<div bind-unsafe-html="popupContent"></div>
+<div bind-dynamic-html="popupContent"></div>
 
 <!-- thumbnail and middle content starts -->
 <div class='ajab-container'>
     <div class='ajab-wrapper'>
         <div class='homepage-content songs'>
-            <div bind-unsafe-html="thumbnailContent"></div>
+            <div bind-dynamic-html="thumbnailContent"></div>
         </div>
     </div>
 </div>

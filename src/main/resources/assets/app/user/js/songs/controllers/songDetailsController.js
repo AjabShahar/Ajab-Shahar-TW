@@ -1,7 +1,7 @@
-var songDetailsController = function($scope,contentService,songDetailsService){
+var songDetailsController = function($scope,$location,songsContentService,songDetailsService){
     $scope.detailsService = this;
     visibilityOfAllVersions = {};
-
+    $scope.urlId = $location.search().id;
     $scope.open = function(id){
         _.each(visibilityOfAllVersions, function(detail) {
             visibilityOfAllVersions[key] = false;
@@ -10,9 +10,9 @@ var songDetailsController = function($scope,contentService,songDetailsService){
     }
 
     $scope.init = function(){
-        contentService.getSongDetails().then(function(result){
+        songsContentService.getSongsVersions($scope.urlId).then(function(result){
             $scope.carouselSections = songDetailsService.getThumbnailWithBubble(result.data);
-            $scope.detailContent = introductionPopupService.getPopupDetails(result.data);
+            $scope.detailContent = '';
         });
     }
 
@@ -20,4 +20,4 @@ var songDetailsController = function($scope,contentService,songDetailsService){
     //carouselSections
 };
 
-songDetailsApp.controller('songDetailsController',['$scope','contentService','songDetailsService',songDetailsController]);
+songDetailsApp.controller('songDetailsController',['$scope','$location','songsContentService','songDetailsService',songDetailsController]);
