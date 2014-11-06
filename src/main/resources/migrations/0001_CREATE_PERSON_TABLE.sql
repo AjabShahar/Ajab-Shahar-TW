@@ -6,7 +6,7 @@ CREATE TABLE PERSON (
     FIRST_NAME VARCHAR(130) NOT NULL,
     MIDDLE_NAME VARCHAR(130),
     LAST_NAME VARCHAR(130),
-    CATEGORY varchar(200) NOT NULL remove it
+    CATEGORY varchar(200) NOT NULL
 );
 
 --rollback drop table PERSON;
