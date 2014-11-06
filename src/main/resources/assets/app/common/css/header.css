@@ -40,7 +40,7 @@ z-index:9;
 box-shadow: #898989 0 1px 15px;
 }
 
-.headerBox.fixed{position:fixed;width:100%;top:0;cursor:pointer;}
+.headerBox.fixed{position:fixed;width:100%;top:0;cursor:pointer; z-index: 15}
 .headerArt.fixed{position:fixed;width:100%;top:0;cursor:pointer;}
 .headerWrapper.fixed{position:fixed;width:100%;top:0;display:block;}
 
