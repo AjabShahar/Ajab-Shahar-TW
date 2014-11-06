@@ -1,27 +1,23 @@
-var allSongsController = function($scope,contentService,songThumbnailService,introductionPopupService,popupService){
+var allSongsController = function($scope,songsContentService,songThumbnailService,introductionPopupService,popupService){
     $scope.detailsService = popupService;
-    $scope.thumbnailContent=null;
+    $scope.thumbnailContent=[];
+
     $scope.paginationthumbnailContent=null;
 
     $scope.init = function(){
-    	contentService.getMainLandingPageThumbnails().then(function(result){
-            
-    		var startIndex =-1;
-    		var details = result.data;
-
-    		$scope.thumbnailContent = _.reduce(details.songs, function(memo, value, index){
-                startIndex++;
-                return memo+songThumbnailService.getThumbnailWithBubble(details.songs[index],'song_'+details.songs[index].id,'');
-        	},'');
-
-    	});
+    	songsContentService.getSongsGivenRange(0, 9).then(function(result){
+            for(i = 0; i < 9 ; i++){
+                $scope.thumbnailContent[i] = songThumbnailService.getThumbnailWithBubble(result.data[i],'song_'+result.data[i].id,'');
+            }
+        });
     }
 
+    console.log("Test " + $scope.thumbnailContent[0]);
     $scope.addMoreItems = function(){
-        console.log("show other");
+        console.log("increase paginatin");
     }
 
     $scope.init();
 };
 
-allSongsApp.controller('allSongsController',['$scope','contentService','songThumbnailService','introductionPopupService','popupService',allSongsController]);
+allSongsApp.controller('allSongsController',['$scope','songsContentService','songThumbnailService','introductionPopupService','popupService',allSongsController]);

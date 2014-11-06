@@ -3,7 +3,12 @@ var songsContentService = function ($http) {
     return $http.get('/api/songs');
   };
 
+  var getSongsGivenRange = function(from, to){
+  	return $http.get('/api/songs/range?from=' + from + "&to=" + to);
+  };
+
   return {
-    getAllSongs: getAllSongs
+    getAllSongs: getAllSongs,
+    getSongsGivenRange: getSongsGivenRange
   };
 };

@@ -2,7 +2,8 @@ var allSongsApp = angular.module('allSongsApp',['thumbnailModule','mediaPlayer',
 
 
 allSongsApp.config(resourceUrlWhiteList);
-allSongsApp.factory('contentService', ['$http', contentService]);
+allSongsApp.factory('songsContentService', ['$http', songsContentService]);
+
 allSongsApp.directive('bindUnsafeHtml', ['$compile', function ($compile) {
   return function(scope, element, attrs) {
       scope.$watch(
