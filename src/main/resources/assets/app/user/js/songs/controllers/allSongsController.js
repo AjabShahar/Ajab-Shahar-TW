@@ -1,12 +1,17 @@
 var allSongsController = function($scope,songsContentService,songThumbnailService,introductionPopupService,popupService){
     $scope.songs=[];
+    $scope.songDetails=[];
+    $scope.detailsService = popupService;
     var i = 0, j;
 
     $scope.loadSongFromRange = function(from , to){
     	songsContentService.getSongsGivenRange(from, to).then(function(result){
             for(j = 0; j < result.data.length ;j++, i++){
-                var songThumbnailWithBubble = songThumbnailService.getSongDetailsForBinding(result.data[j],'song_'+result.data[j].id,'');
+                var songThumbnailWithBubble = songThumbnailService.getThumbnailWithBubble(result.data[j],'song_'+result.data[j].id,'');
                 $scope.songs.push(songThumbnailWithBubble);
+
+                var popupContent = songThumbnailService.getPopupDetails(result.data[j],j,'song_'+result.data[j].id,j);
+                $scope.songDetails.push(popupContent);
             }
         });
     }

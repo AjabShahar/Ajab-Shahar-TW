@@ -76,7 +76,6 @@
 
             </div>
 
-
             <div class='gridView'>
 
                 <div class='paginationHead'>
@@ -97,11 +96,16 @@
                 </div>
                 <div class='gridWrapper' infinite-scroll="loadMoreSongs()" infinite-scroll-distance='2'>
                     <ul ng-repeat="song in songs track by $index">
-                        <li><song-with-details id="{{song.id}}" open="detailsService.open('{{song.id}}')" custom-style="{{song.customStyle}}" img-src="{{song.imgSrc}}" url="{{song.url}}" name="{{song.name}}" category-name="{{song.songCategoryName}}" duration="{{song.duration}}" singer="{{song.singer}}" class = "songs" poet="{{song.poet}}"></song-with-details></li>
+                        <li bind-dynamic-html="song"></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+
+    <div ng-repeat="songDetail in songDetails track by $index">
+        <div bind-dynamic-html="songDetail"></div>
+    </div>
+
 </body>
 </html>

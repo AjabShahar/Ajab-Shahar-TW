@@ -11,7 +11,7 @@ htmlGenerator.factory('introductionPopupService', function () {
       return (string != "") ? string = ' ' + string : string = string;
     };
 
-  var getPopupDetails = function (details,contentType) {
+    var getPopupDetails = function (details,contentType) {
       var startIndex =-1;
 
       var songPopups = _.reduce(details.songs, function(memo, value, index){
