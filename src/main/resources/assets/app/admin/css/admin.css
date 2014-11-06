@@ -1,0 +1,19 @@
+body.admin-pages{
+margin-top:20%;
+margin-bottom: 50%;
+}
+
+.admin-container{
+  width:100%;
+  text-align: center;
+  display:inline-block;
+}
+
+.admin-wrapper{
+  max-width:1000px;
+  width:100%;
+  text-align: center;
+  display:inline-block;
+  margin:0 auto;
+}
+
