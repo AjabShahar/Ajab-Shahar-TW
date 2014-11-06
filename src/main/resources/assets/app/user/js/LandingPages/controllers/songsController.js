@@ -1,12 +1,16 @@
 var songsController = function($scope,contentService,songThumbnailService,introductionPopupService,popupService){
     $scope.popupContent=null;
     $scope.thumbnailContent=null;
-    $scope.detailsService = popupService;
+    $scope.detailsService=popupService;
     $scope.init = function(){
         contentService.getSongsLandingPageThumbnails().then(function(result){
-            $scope.songs = songThumbnailService.getSongsDetailsForBinding(result.data);
+            $scope.thumbnailContent = songThumbnailService.getThumbnailsWithBubble(result.data);
             $scope.popupContent = introductionPopupService.getPopupDetails({"songs":result.data});
         });
+    }
+
+    $scope.open = function(id){
+        popupService.open(id);
     }
 
     $scope.setPageHeight = function(){
