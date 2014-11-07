@@ -32,11 +32,17 @@ public class Couplet {
     @Column(name = "THUMBNAIL_URL", nullable = false)
     private String thumbnailUrl;
 
-    @Column(name = "DESCRIPTION", nullable = false)
-    private String description;
-
     @Column(name = "SHOW_ON_LANDING_PAGE", nullable = false)
     private boolean showOnLandingPage;
+
+    @Column(name = "ORIGINAL_TEXT", nullable = false)
+    private  String originalText;
+
+    @Column(name = "ENGLISH_TRANSLATION_TEXT",nullable = true)
+    private String englishTranslationText;
+
+    @Column(name ="ENGLISH_TRANSLITERATION_TEXT", nullable = true)
+    private String englishTransliterationText;
 
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "CATEGORY_ID")
@@ -48,14 +54,6 @@ public class Couplet {
 
     public long getId() {
         return id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public boolean getShowOnLandingPage() {
@@ -112,5 +110,33 @@ public class Couplet {
 
     public void setThumbnailUrl(String thumbnailUrl) {
         this.thumbnailUrl = thumbnailUrl;
+    }
+
+    public String getOriginalText() {
+        return originalText;
+    }
+
+    public void setOriginalText(String originalText) {
+        this.originalText = originalText;
+    }
+
+    public String getEnglishTranslationText() {
+        return englishTranslationText;
+    }
+
+    public void setEnglishTranslationText(String englishTranslationText) {
+        this.englishTranslationText = englishTranslationText;
+    }
+
+    public String getEnglishTransliterationText() {
+        return englishTransliterationText;
+    }
+
+    public void setEnglishTransliterationText(String englishTransliterationText) {
+        this.englishTransliterationText = englishTransliterationText;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
