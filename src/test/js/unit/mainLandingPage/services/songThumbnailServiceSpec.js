@@ -15,7 +15,9 @@ describe("Song Thumbnail service Specs", function(){
                         "id":1,
                         "contentType": "Songs",
                         "songCategory": {"name":"Song & Reflection"},
-                        "englishTranslation": "Practice the art of dying",
+                        "songTitle":{
+                           "englishTranslation": "Practice the art of dying",
+                        },
                         "poets": [
                             {
                             "category": "POET",

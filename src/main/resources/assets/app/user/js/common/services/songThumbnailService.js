@@ -6,7 +6,7 @@ var songThumbnailService = function (nameService){
     var getPopupDetails = function(details,startIndex,id,index){
         return '<pop-up ng-init="detailsService.init('+startIndex+',\''+id+'\')" id="'+id+'" width="100" on-next="detailsService.next('+index+')" on-prev="detailsService.prev('+index+')" show="detailsService.shouldShow(\''+id+'\')"'
         + ' on-close="detailsService.onClose(\''+id+'\')" closeButton="true">'
-          + '<song-introduction id="'+id+'" singer="'+nameService.getName(details.singers[0])+'" name="'+details.englishTranslation+'"'
+          + '<song-introduction id="'+id+'" singer="'+nameService.getName(details.singers[0])+'" name="'+details.songTitle.englishTranslation+'"'
           + ' audio-Url="' + details.soundCloudTrackID + '"'
           + ' video-Url="'+details.youtubeVideoId+'" close-video="detailsService.isClosed(\''+id+'\')"></song-introduction>'
         +'</pop-up>';
@@ -32,7 +32,7 @@ var songThumbnailService = function (nameService){
           ' custom-style="'+customStyle+'"' +
           ' img-src="'+details.thumbnail_url+'"'+
           ' url="'+details.youtubeVideoId+'"'+
-          ' name="'+details.englishTranslation+'"'+
+          ' name="'+details.songTitle.englishTranslation+'"'+
           ' category-name="'+details.songCategory.name+'"'+
           ' duration="'+ details.duration+'"'+
           ' singer="' + nameService.getName(details.singers[0]) + '"' +

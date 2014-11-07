@@ -15,7 +15,9 @@ describe("Thumbnail service Specs", function(){
                             {
                                 "id":0,
                                 "songCategory": {"name":"Song & Reflection"},
-                                "englishTranslation": "Practice the art of dying",
+                                "songTitle":{
+                                    "englishTranslation": "Practice the art of dying",
+                                },
                                 "poets": [
                                     {
                                     "category": "POET",
