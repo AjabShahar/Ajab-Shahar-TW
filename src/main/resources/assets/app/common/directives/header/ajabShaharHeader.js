@@ -18,12 +18,14 @@ headerModule.directive("ajabShaharHeader", function($window) {
 
             $scope.showMenu = function(){
                 $scope.showMenuDetails = true;
-                $scope.$digest();
+                if(!$scope.$$phase && !$scope.$root.$$phase)
+                    $scope.$digest();
             }
 
             $scope.hideMenu = function(){
                 $scope.showMenuDetails = false;
-                $scope.$digest();
+                if(!$scope.$$phase && !$scope.$root.$$phase)
+                    $scope.$digest();
             }
 
             $scope.toggleMenu = function(){
