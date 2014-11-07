@@ -4,7 +4,7 @@ headerModule.directive("ajabShaharHeader", function($window) {
     return {
         restrict: 'E',
         scope: {
-            showMenuContent:'@',
+            showMenuDetails:'@',
             callBack:'&',
         },
         templateUrl:'/common/js/templates/header/ajabShaharHeader.html',
@@ -17,21 +17,18 @@ headerModule.directive("ajabShaharHeader", function($window) {
             }
 
             $scope.showMenu = function(){
-                $scope.showMenuContent = true;
+                $scope.showMenuDetails = true;
+                $scope.$digest();
             }
 
             $scope.hideMenu = function(){
-                $scope.showMenuContent = false;
+                $scope.showMenuDetails = false;
+                $scope.$digest();
             }
 
             $scope.toggleMenu = function(){
-                $scope.showMenuContent = !$scope.showMenuContent;
+                $scope.showMenuDetails = !$scope.showMenuDetails;
             }
-
-            $scope.shouldShowMenuContent = function(){
-                return $scope.showMenuContent;
-            }
-
         }
     }
 });

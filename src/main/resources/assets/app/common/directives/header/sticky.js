@@ -25,14 +25,17 @@ angular.module('sticky', [])
 
             function checkSticky() {
                 scrollTop = window.pageYOffset;
+                if(scrollTop<stickyLine || scrollTop==0) {
+                    $elem.removeClass('fixed');
+                    $elem.css('position', initialPositionStyle);
+                    $scope.onTop();
+                    return;
+                }
+
                 if (scrollTop >= stickyLine) {
                     $elem.css('position', 'fixed');
                     $elem.addClass('fixed');
                     $scope.onScroll();
-                } else {
-                    $elem.removeClass('fixed');
-                    $elem.css('position', initialPositionStyle);
-                    $scope.onTop();
                 }
             }
         }
