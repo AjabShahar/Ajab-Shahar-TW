@@ -10,8 +10,13 @@ var songDetailsService= function (songThumbnailService) {
         return songs+"</carousel>";
   };
 
+  var getSongRenditions = function(details){
+    return songThumbnailService.getSongsDetailsForBinding(details);
+  };
+
   return {
     getThumbnailWithBubble: getThumbnailWithBubble,
+    getSongRenditions:getSongRenditions,
   };
 };
 

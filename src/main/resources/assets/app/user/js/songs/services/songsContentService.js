@@ -4,6 +4,11 @@ var songsContentService = function ($http) {
         //return $http.get('/api/songs/'+id+"/versions");
     };
 
+    var getSongRenditions = function (id) {
+        return $http.get('/api/songs');
+        //return $http.get('/api/songs/'+id+"/versions");
+    };
+
     var getAllSongs = function () {
         return $http.get('/api/songs');
     };
@@ -17,5 +22,6 @@ var songsContentService = function ($http) {
         getAllSongs: getAllSongs,
         getSongsGivenRange: getSongsGivenRange,
         getSongsVersions:getSongsVersions,
+        getSongRenditions:getSongRenditions,
     };
 };

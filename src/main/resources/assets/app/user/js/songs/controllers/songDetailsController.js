@@ -12,12 +12,22 @@ var songDetailsController = function($scope,$location,songsContentService,songDe
     $scope.init = function(){
         songsContentService.getSongsVersions($scope.urlId).then(function(result){
             $scope.carouselSections = songDetailsService.getThumbnailWithBubble(result.data);
-            $scope.detailContent = '';
+        });
+
+        $scope.detailContents = songsContentService.getSongRenditions($scope.urlId).then(function(result){
+            $scope.renditionDetails = songDetailsService.getSongRenditions(result.data);
         });
     }
 
+    $scope.isVideo = function(id){
+        return true;
+    }
+
+    $scope.isAudio = function(id){
+        return false;
+    }
+
     $scope.init();
-    //carouselSections
 };
 
 songDetailsApp.controller('songDetailsController',['$scope','$location','songsContentService','songDetailsService',songDetailsController]);

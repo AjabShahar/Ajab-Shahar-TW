@@ -12,20 +12,20 @@ var songThumbnailService = function (nameService){
         +'</pop-up>';
     }
 
-//    var getSongDetailsForBinding = function(details,id,customStyle){
-//        return {"id":id, "customStyle":customStyle,"imgSrc":details.thumbnail_url,"url":details.youtubeVideoId,"name":details.englishTranslation,
-//            "categoryName":details.songCategory.name, "duration":details.duration, "singer":nameService.getName(details.singers[0]) ,
-//            "poet":nameService.getName(details.poets[0])
-//        };
-//    };
-//
-//    var getSongsDetailsForBinding = function(details,id,customStyle){
-//        return _.reduce(details, function(memo, value, index){
-//                memo.push(getSongDetailsForBinding(details[index],'song_'+details[index].id,"shift"+getShiftIndex(index)));
-//                return memo;
-//        },[]);
-//    };
-//
+    var getSongDetailsForBinding = function(details,id,customStyle){
+        return {"id":id, "customStyle":customStyle,"imgSrc":details.thumbnail_url,"videoId":details.youtubeVideoId,"name":details.englishTranslation,
+            "categoryName":details.songCategory.name, "duration":details.duration, "singer":nameService.getName(details.singers[0]) ,
+            "poet":nameService.getName(details.poets[0])
+        };
+    };
+
+    var getSongsDetailsForBinding = function(details,id,customStyle){
+        return _.reduce(details, function(memo, value, index){
+                memo.push(getSongDetailsForBinding(details[index],'song_'+details[index].id,"shift"+getShiftIndex(index)));
+                return memo;
+        },[]);
+    };
+
     var getThumbnailWithBubble = function(details,id,customStyle){
           return '<song-with-details id="'+id +'"'+
           ' open="detailsService.open(\''+id+'\')"'+
@@ -48,8 +48,8 @@ var songThumbnailService = function (nameService){
     };
 
 return {
-//    getSongsDetailsForBinding:getSongsDetailsForBinding,
-//    getSongDetailsForBinding:getSongDetailsForBinding,
+    getSongsDetailsForBinding:getSongsDetailsForBinding,
+    getSongDetailsForBinding:getSongDetailsForBinding,
     getPopupDetails:getPopupDetails,
     getThumbnailWithBubble: getThumbnailWithBubble,
     getThumbnailsWithBubble: getThumbnailsWithBubble,
