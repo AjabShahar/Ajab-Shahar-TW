@@ -1,0 +1,6 @@
+--liquibase formatted sql
+
+--changeset PADMA:39
+UPDATE SONG SET  SONG_TITLE_ID = 1 where YOUTUBE_VIDEO_ID = 'tNh2kjmSzPw';
+UPDATE SONG SET  SONG_TITLE_ID = 2 where YOUTUBE_VIDEO_ID = '7Gg0vSOZhJQ';
+UPDATE SONG SET  SONG_TITLE_ID = 3 where YOUTUBE_VIDEO_ID = 'J4IU5tDlD_s';
