@@ -27,7 +27,7 @@ var songThumbnailService = function (nameService){
     };
 
     var getThumbnailWithBubble = function(details,id,customStyle){
-          return '<song-with-details id="'+id +'"'+
+          return '<song id="'+id +'"'+
           ' open="detailsService.open(\''+id+'\')"'+
           ' custom-style="'+customStyle+'"' +
           ' img-src="'+details.thumbnail_url+'"'+
@@ -38,7 +38,7 @@ var songThumbnailService = function (nameService){
           ' singer="' + nameService.getName(details.singers[0]) + '"' +
           ' class = "songs"' +
           ' poet="' + nameService.getName(details.poets[0]) + '">' +
-          '</song-with-details>';
+          '</song>';
     };
 
     var getThumbnailsWithBubble = function (details,contentType) {

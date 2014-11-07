@@ -1,12 +1,12 @@
 'use strict';
 
-thumbnailModule.directive("songContent", function() {
+thumbnailModule.directive("songContentDetails", function() {
     return {
         restrict: 'E',
         scope: {
             song:'=',
         },
-        templateUrl:'/user/js/common/templates/songs/content.html',
+        templateUrl:'/user/js/common/templates/songs/contentDetails.html',
         controller: function($scope) {
             $scope.closeVideo = function(){
                 return $scope.song.shouldCloseVideo;

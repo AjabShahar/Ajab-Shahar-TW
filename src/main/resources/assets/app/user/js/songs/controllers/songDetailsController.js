@@ -1,13 +1,7 @@
 var songDetailsController = function($scope,$location,songsContentService,songDetailsService){
     $scope.detailsService = this;
-    visibilityOfAllVersions = {};
     $scope.urlId = $location.search().id;
-    $scope.open = function(id){
-        _.each(visibilityOfAllVersions, function(detail) {
-            visibilityOfAllVersions[key] = false;
-        });
-        visibilityOfAllVersions[id] = true;
-    }
+    $scope.detailsService = $scope;
 
     $scope.init = function(){
         songsContentService.getSongsVersions($scope.urlId).then(function(result){
@@ -15,7 +9,14 @@ var songDetailsController = function($scope,$location,songsContentService,songDe
         });
 
         $scope.detailContents = songsContentService.getSongRenditions($scope.urlId).then(function(result){
-            $scope.renditionDetails = songDetailsService.getSongRenditions(result.data);
+            $scope.details = songDetailsService.getSongRenditions(result.data);
+            $scope.details[0].showContentDetails = true;
+        });
+    }
+
+    $scope.open = function(id){
+        _.each($scope.details, function(detail) {
+            detail.showContentDetails = (detail.id == id);
         });
     }
 

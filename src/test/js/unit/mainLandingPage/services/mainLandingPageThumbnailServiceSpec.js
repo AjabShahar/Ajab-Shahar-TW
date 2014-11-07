@@ -43,7 +43,7 @@ describe("Thumbnail service Specs", function(){
 
         var landingPageThumbnails = service.getThumbnailWithBubble(songsSampleResponse);
 
-        expect(landingPageThumbnails).toBe('<song-with-details id="song_0" open="detailsService.open(\'song_0\')" custom-style="shift4"'+
+        expect(landingPageThumbnails).toBe('<song id="song_0" open="detailsService.open(\'song_0\')" custom-style="shift4"'+
             ' img-src="imgId"'+
             ' url="videoId"'+
             ' name="Practice the art of dying"'+
@@ -52,7 +52,7 @@ describe("Thumbnail service Specs", function(){
             ' singer="Parvathy Baul"'+
             ' class = "songs"' +
             ' poet="Sharath">'+
-            '</song-with-details>');
+            '</song>');
 	});
 
 	it("should get films on the landing page thumbnails", function(){
