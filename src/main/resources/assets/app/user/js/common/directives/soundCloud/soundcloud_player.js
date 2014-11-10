@@ -24,16 +24,26 @@ mediaPlayer.directive('soundCloud', function($window, YT_event) {
               });
         }
 
+        scope.$watch(function() { return scope.shouldStopVideo(); }, function(newValue, oldValue) {
+            if (newValue == oldValue) {
+              return;
+            }
+
+            if(newValue){
+                scope.pauseTrack();
+            }
+        });
+
         scope.pauseTrack = function(){
-            var iframeElement = document.querySelector('iframe');
-            var widget1         = SC.Widget(iframeElement);
+            var iframeElement = element.find('iframe');
+            var widget1         = SC.Widget(iframeElement[0]);
             console.log("working" + widget1);
             widget1.pause();
         }
 
         scope.playTracks = function(){
-            var iframeElement = document.querySelector('iframe');
-            var widget1         = SC.Widget(iframeElement);
+            var iframeElement = element.find('iframe');
+            var widget1         = SC.Widget(iframeElement[0]);
             console.log("working" + widget1);
             widget1.play();
         }
