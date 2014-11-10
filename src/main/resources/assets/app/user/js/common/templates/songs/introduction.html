@@ -8,6 +8,11 @@
     <div ng-if="isAudio()">
         <sound-cloud audio-url="{{audioUrl}}" id="snd_{{id}}" should-stop-video="closeVideo()"></sound-cloud>
     </div>
+    
+    <div facebook class="facebookShare" data-url='{{url}}' data-shares='shares'></div>
+    <a twitter  data-lang="en" data-count='horizontal' data-url='{{url}}' data-via='notsosleepy' data-size="medium" data-text='Testing Twitter Share' ></a>
+    <div pintrest data-href='{{url}}' data-description='testing share' data-pin-do='buttonPin' data-pin-config='beside'></div>
+
     <div class="mediaFooter">
         <h3 class='infoText'>For lyrics, translations, versions,reflections, echoes and more enter <a href="/user/partials/songs/details.html#id={{id}}">SONG</a></h3>
         <div class='creditCont'>

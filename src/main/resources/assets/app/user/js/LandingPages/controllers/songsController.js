@@ -1,8 +1,10 @@
-var songsController = function($scope,contentService,songThumbnailService,introductionPopupService,popupService){
+var songsController = function($scope,contentService,songThumbnailService,introductionPopupService,popupService, $location){
+    $scope.url = null;
     $scope.popupContent=null;
     $scope.thumbnailContent=null;
     $scope.detailsService=popupService;
     $scope.init = function(){
+        $scope.url = $location.absUrl();
         contentService.getSongsLandingPageThumbnails().then(function(result){
             $scope.thumbnailContent = songThumbnailService.getThumbnailsWithBubble(result.data);
             $scope.popupContent = introductionPopupService.getPopupDetails({"songs":result.data});
@@ -26,4 +28,4 @@ var songsController = function($scope,contentService,songThumbnailService,introd
     $scope.init();
 }
 
-landingPagesApp.controller('songsController',['$scope','contentService','songThumbnailService','introductionPopupService','popupService',songsController]);
+landingPagesApp.controller('songsController',['$scope','contentService','songThumbnailService','introductionPopupService','popupService', '$location',songsController]);
