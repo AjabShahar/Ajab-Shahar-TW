@@ -1,6 +1,5 @@
 var categoryDetailsController = function($scope, $http){
   $scope.categoryTypeList = null;
-  $scope.categoryName = "";
   $scope.category = {};
   $scope.AddNewDiv = false;
 
@@ -9,11 +8,14 @@ var categoryDetailsController = function($scope, $http){
   });
 
   $scope.enableNew = function(){
+    $scope.category.categoryType = '';
     $scope.AddNewDiv = true;
   }
 
   $scope.saveData = function(){
-    console.log("enableNew called");
+    $http.post('/api/category', $scope.category).success(function(data){
+      alert("data added");
+    });
   }  
 }
 

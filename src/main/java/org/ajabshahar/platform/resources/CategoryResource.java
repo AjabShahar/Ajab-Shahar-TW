@@ -1,13 +1,13 @@
 package org.ajabshahar.platform.resources;
 
+import com.google.gson.Gson;
 import io.dropwizard.hibernate.UnitOfWork;
 import org.ajabshahar.platform.daos.CategoryDAO;
 import org.ajabshahar.platform.models.Category;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/category")
@@ -23,6 +23,15 @@ public class CategoryResource {
     @UnitOfWork
     public List<Category> listAllCategories() {
         return categoryDAO.findAll();
+    }
+
+    @POST
+    @UnitOfWork
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response createSplashScreen(String jsonSplashScreenOptions) {
+        Category category = new Gson().fromJson(jsonSplashScreenOptions, Category.class);
+        categoryDAO.create(category);
+        return Response.status(200).entity(category.toString()).build();
     }
 
 
