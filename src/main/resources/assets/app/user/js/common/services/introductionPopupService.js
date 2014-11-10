@@ -5,7 +5,7 @@ htmlGenerator.factory('introductionPopupService', function (songThumbnailService
       var songPopups = _.reduce(details.songs, function(memo, value, index){
             startIndex++;
             var id = 'song_'+details.songs[index].id;
-            return memo+songThumbnailService.getPopupDetails(details.songs,startIndex,id,index);
+            return memo+songThumbnailService.getPopupDetails(details.songs[index],startIndex,id,index);
       },'');
 
       var coupletPopups = '';
