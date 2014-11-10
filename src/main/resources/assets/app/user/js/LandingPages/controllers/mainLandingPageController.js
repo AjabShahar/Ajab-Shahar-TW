@@ -1,4 +1,4 @@
-var mainLandingPageController = function($scope,contentService,mainLandingPageThumbnailService,introductionPopupService,popupService){
+var mainLandingPageController = function($scope,contentService,mainLandingPageThumbnailService,introductionPopupService,popupService, $location){
     $scope.popupContent=null;
     $scope.thumbnailContent=null;
     $scope.url = null;
@@ -23,4 +23,4 @@ var mainLandingPageController = function($scope,contentService,mainLandingPageTh
     $scope.init();
 }
 
-landingPagesApp.controller('mainLandingPageController',['$scope','contentService','mainLandingPageThumbnailService','introductionPopupService','popupService',mainLandingPageController]);
+landingPagesApp.controller('mainLandingPageController',['$scope','contentService','mainLandingPageThumbnailService','introductionPopupService','popupService', '$location',mainLandingPageController]);

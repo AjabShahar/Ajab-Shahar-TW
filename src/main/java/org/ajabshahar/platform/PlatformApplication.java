@@ -44,11 +44,6 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
 
   @Override
   public void run(PlatformConfiguration configuration, Environment environment) throws Exception {
-
-    final HelloWorldResource resource = new HelloWorldResource(
-        configuration.getTemplate(),
-        configuration.getDefaultName()
-    );
     final SplashScreenOptionsDAO dao = new SplashScreenOptionsDAO(hibernate.getSessionFactory());
     final WordDAO wordDAO = new WordDAO(hibernate.getSessionFactory());
     final CoupletDAO coupletDAO = new CoupletDAO(hibernate.getSessionFactory());
@@ -59,7 +54,6 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
     final TemplateHealthCheck templateHealthCheck = new TemplateHealthCheck(configuration.getTemplate());
 
     environment.jersey().setUrlPattern("/api/*");
-    environment.jersey().register(resource);
     environment.jersey().register(new SplashScreenOptionsResource(dao));
     environment.jersey().register(new WordResource(wordDAO));
     environment.jersey().register(new CoupletResource(coupletDAO));
