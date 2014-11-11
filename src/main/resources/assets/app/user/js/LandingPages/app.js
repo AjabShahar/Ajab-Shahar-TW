@@ -7,8 +7,5 @@ landingPagesApp.run(function($FB){
   $FB.init('714039208665351');
 });
  
-landingPagesApp.config(function($locationProvider){
-    $locationProvider.html5Mode(true).hashPrefix('!');
-});
 
 landingPagesApp.directive('bindDynamicHtml', ['$compile', bindDynamicHtml]);
