@@ -3,8 +3,15 @@
         <div class="thumbnailMedia">
             <img src="{{imgSrc}}"/>
         </div>
-        <div class="thumbnailDesc">
-            <h3 class="selected" >{{title}}</h3>
+
+        <div class="thumbnailDesc" ng-mouseEnter="open()" ng-mouseleave="onClose()">
+            <h3 class="selected" >{{title}}..</h3>
+            <small>{{englishTranslationText}}</small>
+            <div ng-show="shouldBeOpen" class='shouldShowDetails'>
+                <div class='categoryDetails'>
+                    <small class="categoryName">{{categoryName | uppercase}}</small>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -6,6 +6,8 @@ thumbnailModule.directive("coupletWithDetails", function() {
         scope: {
             title:'@',
             imgSrc:'@',
+            englishTranslationText:'@',
+            categoryName:'@',
             customStyle:'@',
             overlayId:'@'
         },
