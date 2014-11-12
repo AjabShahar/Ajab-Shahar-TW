@@ -1,7 +1,7 @@
 .carousel-container {
 position: relative;
-height: 500px;
-width: 880px;
+height: 30%;
+width: 90%;
 display: inline-block;
 float: left;
 }
@@ -29,7 +29,7 @@ float: left;
 }
 
 .ltr-animation.ng-hide-remove {
-  left:-100%;
+  left:-30%;
   opacity:1;
 }
 
@@ -39,7 +39,7 @@ float: left;
 }
 
 .ltr-animation.ng-hide-add.ng-hide-add-active {
-  left:-100%;
+  left:-30%;
   opacity:0;
 }
 

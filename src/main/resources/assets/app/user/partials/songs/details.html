@@ -6,7 +6,6 @@
     <script src="../../../common/lib/angular/angular.js"></script>
     <script src="../../../common/lib/angular-animate/angular-animate.min.js"></script>
     <script src="../../../common/lib/underscore/underscore.js"></script>
-    <script src="../../../common/lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="../../../common/services/nameService.js"></script>
     <script type="text/javascript" src="../../js/common/modules/thumbnailModule.js"></script>
     <script type="text/javascript" src="../../js/common/directives/thumbnail/song.js"></script>
@@ -27,6 +26,7 @@
     <script type="text/javascript" src="../../js/common/services/songThumbnailService.js"></script>
     <script type="text/javascript" src="../../../common/directives/header/sticky.js"></script>
     <script type="text/javascript" src="../../js/common/directives/carouselSupport/carousel.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/accordionSupport/accordion.js"></script>
     <link href="../../../common/css/header.css" rel="stylesheet" type="text/css">
     <link href="../../../common/css/footer.css" rel="stylesheet" type="text/css">
     <link href="../../css/mainLandingPage/main.css" rel="stylesheet" type="text/css">
@@ -36,13 +36,16 @@
     <link href="../../css/pages/songs.css" rel="stylesheet" type="text/css">
     <link href="../../css/carouselSupport/carousel.css" rel="stylesheet" type="text/css">
     <link href="../../css/carouselSupport/carouselAnimation.css" rel="stylesheet" type="text/css">
+    <link href="../../css/accordionSupport/accordionAnimation.css" rel="stylesheet" type="text/css">
 </head>
 <body ng-controller="songDetailsController" class="page-songs">
     <ajab-shahar-header></ajab-shahar-header>
 
     <div class='ajab-container'>
         <div class='ajab-wrapper'>
-            <div bind-dynamic-html="carouselSections"></div>
+            <accordion>
+                <div bind-dynamic-html="carouselSections"></div>
+            </accordion>
             <div ng-repeat="song in details">
                 <div ng-show="song.showContentDetails">
                     <song-content-details song="song"></song-content-details>
