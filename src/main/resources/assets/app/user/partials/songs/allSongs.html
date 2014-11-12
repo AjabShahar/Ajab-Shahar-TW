@@ -82,22 +82,38 @@
 
                 <div class='paginationHead'>
                     <div class='alphabets'>
-                        <a>A</a>
-                        <a>B</a>
-                        <a>C</a>
-                        <a>D</a>
-                        <a>E</a>
-                        <a>F</a>
-                        <a>G</a>
-                        <a>H</a>
-                        <a>I</a>
-                        <a>J</a>
+                        <a ng-click="filterSongsBasedOnAlphabets('a')">A</a>
+                        <a ng-click="filterSongsBasedOnAlphabets('b')">B</a>
+                        <a ng-click="filterSongsBasedOnAlphabets('c')">C</a>
+                        <a ng-click="filterSongsBasedOnAlphabets('d')">D</a>
+                        <a ng-click="filterSongsBasedOnAlphabets('e')">E</a>
+                        <a ng-click="filterSongsBasedOnAlphabets('f')">F</a>
+                        <a ng-click="filterSongsBasedOnAlphabets('g')">G</a>
+                        <a ng-click="filterSongsBasedOnAlphabets('h')">H</a>
+                        <a ng-click="filterSongsBasedOnAlphabets('i')">I</a>
+                        <a ng-click="filterSongsBasedOnAlphabets('j')">J</a>
+                        <a ng-click="filterSongsBasedOnAlphabets('k')">K</a>
+                        <a ng-click="filterSongsBasedOnAlphabets('l')">L</a>
+                        <a ng-click="filterSongsBasedOnAlphabets('m')">M</a>
+                        <a ng-click="filterSongsBasedOnAlphabets('n')">N</a>
+                        <a ng-click="filterSongsBasedOnAlphabets('o')">O</a>
+                        <a ng-click="filterSongsBasedOnAlphabets('p')">P</a>
+                        <a ng-click="filterSongsBasedOnAlphabets('q')">Q</a>
+                        <a ng-click="filterSongsBasedOnAlphabets('r')">R</a>
+                        <a ng-click="filterSongsBasedOnAlphabets('s')">S</a>
+                        <a ng-click="filterSongsBasedOnAlphabets('t')">T</a>
+                        <a ng-click="filterSongsBasedOnAlphabets('u')">U</a>
+                        <a ng-click="filterSongsBasedOnAlphabets('v')">V</a>
+                        <a ng-click="filterSongsBasedOnAlphabets('w')">W</a>
+                        <a ng-click="filterSongsBasedOnAlphabets('x')">X</a>
+                        <a ng-click="filterSongsBasedOnAlphabets('y')">Y</a>
+                        <a ng-click="filterSongsBasedOnAlphabets('z')">Z</a>
                     </div>
 
-                    <div class='numericCount'>{{totalSongs}} songs<!-- (has to change based on filters) --></div>
+                    <div class='numericCount'>{{totalFilteredSongs}} songs</div>
                 </div>
                 <div class='gridWrapper'>
-                    <ul ng-repeat="song in songs track by $index" class="flexiThumbnails">
+                    <ul ng-repeat="song in songs" class="flexiThumbnails">
                         <li bind-dynamic-html="song"></li>
                     </ul>
                 </div>
