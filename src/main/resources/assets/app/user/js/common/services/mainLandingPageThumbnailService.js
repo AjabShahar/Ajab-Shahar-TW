@@ -13,7 +13,7 @@ filmThumbnailService,gatheringThumbnailService,reflectionThumbnailService) {
 
         var couplets = _.reduce(details.couplets, function(memo, value, index){
                 startIndex++;
-                return memo+coupletThumbnailService.getThumbnailWithBubble(details.couplets[index],'couplet_'+startIndex,"shift"+getShiftIndex(startIndex));
+                return memo+coupletThumbnailService.getThumbnailWithBubble(details.couplets[index],'couplet_'+details.couplets[index].id,"shift"+getShiftIndex(startIndex));
         },'');
 
         var words = _.reduce(details.words, function(memo, value, index){

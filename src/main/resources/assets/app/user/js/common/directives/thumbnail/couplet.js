@@ -9,7 +9,8 @@ thumbnailModule.directive("coupletWithDetails", function() {
             englishTranslationText:'@',
             categoryName:'@',
             customStyle:'@',
-            overlayId:'@'
+            id:'@',
+            open:'&',
         },
         templateUrl:'/user/js/common/templates/thumbnail/couplet.html',
         controller:function($scope){

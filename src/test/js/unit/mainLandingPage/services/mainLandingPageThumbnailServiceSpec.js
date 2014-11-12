@@ -138,6 +138,7 @@ describe("Thumbnail service Specs", function(){
 	    var coupletsSampleResponse ={"couplets":
 	                [
                                     {
+                                        "id":0,
                                         "contentType":"Couplets",
                                         "category":{
                                          "name":"Couplet",
@@ -145,12 +146,12 @@ describe("Thumbnail service Specs", function(){
                                         "englishTransliteration":"Jal mein kumbh, kumbh mein jal hai...",
                                         "englishTranslationText":"A pot in water, water in a pot",
                                         "thumbnail_url":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
-                                    },
+                                    }
                     ]
 	    };
 
         var landingPageThumbnails = service.getThumbnailWithBubble(coupletsSampleResponse);
-        expect(landingPageThumbnails).toBe('<couplet-with-details overlay-id="couplet_0" custom-style="shift4"'+
+        expect(landingPageThumbnails).toBe('<couplet-with-details id="couplet_0" custom-style="shift4" open="detailsService.open(\'couplet_0\')"'+
                                            ' title="Jal mein kumbh, kumbh mein jal hai..."'+
                                            ' english-translation-text="A pot in water, water in a pot"'+
                                            ' category-name="Couplet"'+

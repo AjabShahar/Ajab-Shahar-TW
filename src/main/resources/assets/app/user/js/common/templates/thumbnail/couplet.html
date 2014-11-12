@@ -1,5 +1,5 @@
 <div class="thumbnailWrapper">
-    <div class="thumbnail {{customStyle}}">
+    <div class="thumbnail {{customStyle}}" ng-click="open('{{id}}')">
         <div class="thumbnailMedia">
             <img src="{{imgSrc}}"/>
         </div>
@@ -7,6 +7,7 @@
         <div class="thumbnailDesc" ng-mouseEnter="open()" ng-mouseleave="onClose()">
             <h3 class="selected" >{{title}}..</h3>
             <small>{{englishTranslationText}}</small>
+
             <div ng-show="shouldBeOpen" class='shouldShowDetails'>
                 <div class='categoryDetails'>
                     <small class="categoryName">{{categoryName | uppercase}}</small>

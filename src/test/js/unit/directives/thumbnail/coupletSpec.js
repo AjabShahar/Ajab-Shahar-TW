@@ -28,7 +28,7 @@ describe('Content', function() {
             compile(element)(scope);
             scope.$apply();
 
-            expect(element.html()).toBe('overlayId someStyle  someimg');
+            expect(element.html()).toBe(' someStyle  someimg');
         });
     });
 });
