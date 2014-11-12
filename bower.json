@@ -13,6 +13,7 @@
     "angular": "~1.2.23",
     "angular-route":"~1.2",
     "angular-animate":"~1.2.23",
+    "angular-touch":"~1.2.23",
     "jquery":"~1.11.0",
     "underscore": "~1.5.2",
     "bower-facebook" : "~1.0.0",
