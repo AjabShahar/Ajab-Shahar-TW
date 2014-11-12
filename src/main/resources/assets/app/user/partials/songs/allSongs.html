@@ -45,7 +45,7 @@
     <link href="../../css/carouselSupport/carouselAnimation.css" rel="stylesheet" type="text/css">
     <link href="../../css/pages/gridview.css" rel="stylesheet" type="text/css">
 </head>
-<body ng-controller="allSongsController" class="page-songs ng-scope" style="">
+<body ng-controller="allSongsController" class="page-songs ng-scope" style="" ng-init="getTotalSongsCount()">
     <div class="ajab-container">
         <div class="ajab-wrapper" fullHeight>
             <ajab-shahar-header></ajab-shahar-header>
@@ -53,7 +53,7 @@
             <div class='leftnav'>
                 <div class='navElementsWrapper'>
                     <h1 class='categoryLogo'></h1>
-                    <small class='categoryAtt newline'>457 songs</small>
+                    <small class='categoryAtt newline'>{{totalSongs}} songs</small>
                     <nav><a>---</a><a>|||</a></nav>
                     <input value='search'/>
                 </div>
@@ -66,13 +66,13 @@
 
                 <ul class='navList filters'>
                     <li class='head'>Filter by</li>
-                    <li><a>Singer</a></li>
-                    <li><a>Poet</a></li>
-                    <li><a>Word</a></li>
+                    <li><a>Singers</a></li>
+                    <li><a>Poets</a></li>
+                    <li><a>Words</a></li>
                     <li><a>Genre</a></li>
                     <li><a>Gathering</a></li>
-                    <li><a>land</a></li>
-                    <li><a>all</a></li>
+                    <li><a>Places</a></li>
+                    <li><a>All</a></li>
                 </ul>
 
 
@@ -94,7 +94,7 @@
                         <a>J</a>
                     </div>
 
-                    <div class='numericCount'>457 songs</div>
+                    <div class='numericCount'>{{totalSongs}} songs<!-- (has to change based on filters) --></div>
                 </div>
                 <div class='gridWrapper'>
                     <ul ng-repeat="song in songs track by $index" class="flexiThumbnails">

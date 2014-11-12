@@ -1,8 +1,15 @@
 var allSongsController = function($scope,songsContentService,songThumbnailService,introductionPopupService,popupService){
     $scope.songs=[];
     $scope.songDetails=[];
+    $scope.totalSongs = null;
     $scope.detailsService = popupService;
     var i = 0, j;
+
+    $scope.getTotalSongsCount = function(){
+        songsContentService.getAllSongs().then(function(songsList){
+            $scope.totalSongs = songsList.data.length;
+        });
+    }
 
     $scope.loadSongFromRange = function(from , to){
     	songsContentService.getSongsGivenRange(from, to).then(function(result){
@@ -19,7 +26,6 @@ var allSongsController = function($scope,songsContentService,songThumbnailServic
     $scope.loadMoreSongs = function(){
         $scope.loadSongFromRange(i, i + 9);
     }
-
 };
 
 allSongsApp.controller('allSongsController',['$scope','songsContentService','songThumbnailService','introductionPopupService','popupService',allSongsController]);
