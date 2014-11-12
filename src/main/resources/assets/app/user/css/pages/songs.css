@@ -1,3 +1,7 @@
+body.page-songs {
+background: #ccc url(../../../user/img/common/bg/overlaybg.jpg);
+}
+
 body.page-songs .homepage-content.songs{
 margin-top:20%;
 margin-bottom: 50%;
@@ -40,6 +44,7 @@ margin-top:0;
 
 .songsParallax .px-song-layer6{
    background: url(../../img/songs/parallax/darkedges.png) 0px  -185px no-repeat;background-size: contain;
+   opacity: 0.6;
 }
 
 .songsParallax .px-song-layer7{

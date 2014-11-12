@@ -47,11 +47,14 @@
     <link href="../../css/pages/gridview.css" rel="stylesheet" type="text/css">
 </head>
 <body ng-controller="allSongsController" class="page-songs ng-scope" style="" ng-init="getTotalSongsCount()">
-    <div class="ajab-container">
-        <div class="ajab-wrapper" fullHeight>
-            <ajab-shahar-header></ajab-shahar-header>
+    <ajab-shahar-header></ajab-shahar-header>
 
-            <div class='leftnav'>
+
+    <div class="ajab-container headerfixOuter">
+        <div class="ajab-wrapper" fullHeight>
+      
+
+            <div class='leftnav headerfixInner'>
                 <div class='navElementsWrapper'>
                     <h1 class='categoryLogo'></h1>
                     <small class='categoryAtt newline'>{{totalSongs}} songs</small>

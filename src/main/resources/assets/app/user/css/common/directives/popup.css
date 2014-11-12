@@ -5,6 +5,7 @@ height: 100%;
 position: fixed;
 background: #ccc url(../../../img/common/bg/overlaybg.jpg);
 float: left;
+text-align: center;
 top: 0;
 color: #666;
 }

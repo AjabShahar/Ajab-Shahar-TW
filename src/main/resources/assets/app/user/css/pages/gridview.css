@@ -9,8 +9,6 @@ html{height:100%;}
 
 .leftnav{
   float: left;
-background: #fff;
-box-shadow: #ccc 1px 0 10px;
 width: 16%;
 height: 100%;
 text-align: left;
@@ -20,10 +18,7 @@ color:#666;
 
 .gridView{
   float: right;
-background: #ddd;
-box-shadow: #ccc 1px 0 10px;
-width: 76%;
-padding: 2%;
+width: 80%;
 color:#666;
 }
 
@@ -33,7 +28,7 @@ color:#666;
 
 .paginationHead{display:inline-block;width:100%;padding:1% 0; border-bottom: solid 1px #ccc;text-align: center}
 .alphabets{text-transform: uppercase;color:#888;}
-.alphabets a{display:inline-block;margin:1%;}
+.alphabets a{display:inline-block;margin:1%;cursor: pointer;}
 .numericCount{float: right;
 display: inline-block;
 text-transform: capitalize;
@@ -53,7 +48,8 @@ width: 50%;
 height: 75px;
 display: inline-block;
 border-radius: 100%;
-background: #eee;
+background: #fff;
+box-shadow: #cc 0 0 5px;
 margin-top: 5%;
 }
 .navElementsWrapper nav a{padding:2%;background:#eee;margin:1%;displaY:inline-block;}
@@ -79,9 +75,9 @@ width: 100%;}
 }
 
 .flexiThumbnails li{
-  width:243px;
-  float:left;
-  margin:0 10px 0 0;
+  width: 220px;
+float: left;
+margin: 0 23px 20% 23px;
 }
 
 .flexiThumbnails .thumbnail{
@@ -94,16 +90,17 @@ width: 100%;}
 
 .flexiThumbnails .thumbnailMedia img{
   height:100%;
+  border:solid 2px #fff;
 }
 
 .flexiThumbnails .thumbnailDesc{
-  width: 200px;
-  margin:10px 0% 0 20px;
+  width: 188px;
+  margin:10px 0% 0 0px;
 }
 
 
 .flexiThumbnails .thumbnailDesc:before{
-margin:-29px 0 0 -14px;
+margin:-26px 0 0 -14px;
 background-size: contain;
 }
 
