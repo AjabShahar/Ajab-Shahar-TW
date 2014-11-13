@@ -16,6 +16,8 @@
     <script type="text/javascript" src="../../js/common/directives/popupSupport/popup.js"></script>
     <script type="text/javascript" src="../../js/common/services/popupService.js"></script>
     <script type="text/javascript" src="../../js/common/directives/thumbnail/song.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/mappers/songMapper.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/mappers/introduction/songIntroductionMapper.js"></script>
     <script type="text/javascript" src="../../js/common/modules/mediaPlayer.js"></script>
     <script type="text/javascript" src="../../js/common/directives/soundCloud/soundcloud_player.js"></script>
     <script type="text/javascript" src="../../js/common/directives/youtube/youtube_player.js"></script>
@@ -118,16 +120,15 @@
                 </div>
                 <div class='gridWrapper'>
                     <ul ng-repeat="song in songs" class="flexiThumbnails">
-                        <li bind-dynamic-html="song"></li>
+                        <li><song-mapper details="song" show-details-service="detailsService" custom-style=""/></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 
-    <div ng-repeat="songDetail in songDetails track by $index">
-        <div bind-dynamic-html="songDetail"></div>
+    <div ng-repeat="song in songs track by $index">
+        <song-introduction-mapper index="{{$index}}" details="song" show-details-service="detailsService"/>
     </div>
-
 </body>
 </html>

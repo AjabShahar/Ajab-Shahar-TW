@@ -1,13 +1,10 @@
-var mainLandingPageController = function($scope,contentService,introductionPopupService,popupService, $location){
-    $scope.popupContent=null;
-    $scope.thumbnailContent=null;
+var mainLandingPageController = function($scope,contentService,popupService, $location){
     $scope.detailsService = popupService;
     $scope.url = null;
     $scope.init = function(){
         $scope.url = $location.absUrl();
         contentService.getMainLandingPageThumbnails().then(function(result){
             $scope.thumbnailDetails = result.data;
-            $scope.popupContent = introductionPopupService.getPopupDetails(result.data);
         });
     }
 
@@ -36,4 +33,4 @@ var mainLandingPageController = function($scope,contentService,introductionPopup
     $scope.init();
 }
 
-landingPagesApp.controller('mainLandingPageController',['$scope','contentService','introductionPopupService','popupService', '$location',mainLandingPageController]);
+landingPagesApp.controller('mainLandingPageController',['$scope','contentService','popupService', '$location',mainLandingPageController]);

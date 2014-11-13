@@ -1,18 +1,19 @@
-var songsController = function($scope,contentService,songThumbnailService,introductionPopupService,popupService, $location){
-    $scope.url = null;
-    $scope.popupContent=null;
-    $scope.thumbnailContent=null;
+var songsController = function($scope,contentService,popupService, $location){
     $scope.detailsService=popupService;
     $scope.init = function(){
         $scope.url = $location.absUrl();
         contentService.getSongsLandingPageThumbnails().then(function(result){
-            $scope.thumbnailContent = songThumbnailService.getThumbnailsWithBubble(result.data);
-            $scope.popupContent = introductionPopupService.getPopupDetails({"songs":result.data});
+            $scope.songs = result.data;
         });
     }
 
-    $scope.open = function(id){
-        popupService.open(id);
+    $scope.getSongCustomStyle = function(thumbnail){
+        return $scope.getCustomStyle(_.indexOf($scope.songs, thumbnail));
+    }
+
+    $scope.getCustomStyle =function(id){
+        var index = ((4+id) % 6) == 0 ? 6 : ((4+id) % 6);
+        return "shift"+index;
     }
 
     $scope.setPageHeight = function(){
@@ -28,4 +29,4 @@ var songsController = function($scope,contentService,songThumbnailService,introd
     $scope.init();
 }
 
-landingPagesApp.controller('songsController',['$scope','contentService','songThumbnailService','introductionPopupService','popupService', '$location',songsController]);
+landingPagesApp.controller('songsController',['$scope','contentService','popupService', '$location',songsController]);

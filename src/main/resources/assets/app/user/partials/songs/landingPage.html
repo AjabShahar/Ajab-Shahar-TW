@@ -17,6 +17,8 @@
     <script type="text/javascript" src="../../js/common/directives/soundCloud/sdk.js"></script>
     <script type="text/javascript" src="../../js/common/directives/soundCloud/api.js"></script>
     <script type="text/javascript" src="../../js/common/directives/thumbnail/song.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/mappers/songMapper.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/mappers/introduction/songIntroductionMapper.js"></script>
     <script type="text/javascript" src="../../js/common/directives/thumbnail/word.js"></script>
     <script type="text/javascript" src="../../js/common/directives/parallax/angular-parallax.js"></script>
     <script type="text/javascript" src="../../js/common/modules/mediaPlayer.js"></script>
@@ -31,9 +33,6 @@
     <script type="text/javascript" src="../../js/LandingPages/app.js"></script>
     <script type="text/javascript" src="../../js/common/services/popupService.js"></script>
     <script type="text/javascript" src="../../js/common/modules/htmlGenerator.js"></script>
-    <script type="text/javascript" src="../../js/common/services/songThumbnailService.js"></script>
-    <script type="text/javascript" src="../../js/common/services/introductionPopupService.js"></script>
-    <script type="text/javascript" src="../../js/common/services/coupletThumbnailService.js"></script>
     <script type="text/javascript" src="../../js/LandingPages/controllers/songsController.js"></script>
     <script type="text/javascript" src="../../../common/directives/header/sticky.js"></script>
     <link href="../../../common/css/header.css" rel="stylesheet" type="text/css">
@@ -66,19 +65,23 @@
     <!-- parallax effect ends -->
 
 
-<div bind-dynamic-html="popupContent"></div>
+    <div ng-repeat="song in songs">
+        <song-introduction-mapper index="{{$index}}" details="song" show-details-service="detailsService"/>
+    </div>
 
-<!-- thumbnail and middle content starts -->
-<div class='ajab-container'>
-    <div class='ajab-wrapper'>
-        <div class='homepage-content songs'>
-            <div bind-dynamic-html="thumbnailContent"></div>
+    <!-- thumbnail and middle content starts -->
+    <div class='ajab-container'>
+        <div class='ajab-wrapper'>
+            <div class='homepage-content songs'>
+                <div ng-repeat="song in songs">
+                    <song-mapper details="song" show-details-service="detailsService" custom-style="{{getSongCustomStyle(song)}}"/>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-<!-- thumbnail and middle content starts -->
+    <!-- thumbnail and middle content starts -->
 
-<div ng-include src="'../common/footer.html'"></div>
+    <div ng-include src="'../common/footer.html'"></div>
 
 </body>
 </html>
