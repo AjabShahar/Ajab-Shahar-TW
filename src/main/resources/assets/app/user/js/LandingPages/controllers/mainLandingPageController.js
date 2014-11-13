@@ -1,11 +1,14 @@
 var mainLandingPageController = function($scope,contentService,mainLandingPageThumbnailService,introductionPopupService,popupService, $location){
     $scope.popupContent=null;
     $scope.thumbnailContent=null;
-    $scope.url = null;
     $scope.detailsService = popupService;
+    $scope.url = null;
     $scope.init = function(){
         $scope.url = $location.absUrl();
         contentService.getMainLandingPageThumbnails().then(function(result){
+            $scope.thumbnailDetails = result.data;
+
+
             $scope.thumbnailContent = mainLandingPageThumbnailService.getThumbnailWithBubble(result.data);
             $scope.popupContent = introductionPopupService.getPopupDetails(result.data);
         });

@@ -7,6 +7,7 @@
     <script type="text/javascript" src="../js/common/directives/soundCloud/api.js"></script>
     <script src="../../common/lib/angular/angular.js"></script>
     <script src="../../common/lib/underscore/underscore.js"></script>
+    <script src="../../common/lib/jquery/dist/jquery.js"></script>
     <link rel="stylesheet" type="text/css" href="../../common/lib/angular-socialshare/angular-socialshare.css">
     <script src="../js/common/directives/socialMedia/widgets.js"></script>
     <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
@@ -16,6 +17,7 @@
     <script type="text/javascript" src="../js/common/modules/PopupSupport.js"></script>
     <script type="text/javascript" src="../js/common/directives/popupSupport/popup.js"></script>
     <script type="text/javascript" src="../js/common/directives/thumbnail/song.js"></script>
+    <script type="text/javascript" src="../js/common/directives/thumbnail/helper/songHelper.js"></script>
     <script type="text/javascript" src="../js/common/directives/thumbnail/couplet.js"></script>
     <script type="text/javascript" src="../js/common/directives/thumbnail/film.js"></script>
     <script type="text/javascript" src="../js/common/directives/thumbnail/gathering.js"></script>
@@ -77,7 +79,9 @@
     <div class='ajab-container'>
         <div class='ajab-wrapper'>
             <div class='homepage-content'>
-                <div bind-dynamic-html="thumbnailContent"></div>
+                <div ng-repeat="song in thumbnailDetails.songs">
+                    <song-helper details="song" show-details-service="detailsService" custom-style=""/>
+                </div>
             </div>
         </div>
     </div>

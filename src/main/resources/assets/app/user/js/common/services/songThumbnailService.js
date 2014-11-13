@@ -13,7 +13,7 @@ var songThumbnailService = function (nameService){
     }
 
     var getSongDetailsForBinding = function(details,id,customStyle){
-        return {"id":id, "customStyle":customStyle,"imgSrc":details.thumbnail_url,"videoId":details.youtubeVideoId,"name":details.englishTranslation,
+        return {"id":id, "customStyle":customStyle,"imgSrc":details.thumbnail_url,"videoId":details.youtubeVideoId,"englishTranslation":details.englishTranslation,
             "categoryName":details.songCategory.name, "duration":details.duration, "singer":nameService.getName(details.singers[0]) ,
             "poet":nameService.getName(details.poets[0])
         };
