@@ -40,8 +40,8 @@ var popupService = function (){
         shouldBeOpen[newId] = true;
     }
 
-    init = function(index,id){
-        orderOfPopups[index] = id;
+    init = function(id){
+        orderOfPopups[orderOfPopups.length] = id;
     }
 
     return {

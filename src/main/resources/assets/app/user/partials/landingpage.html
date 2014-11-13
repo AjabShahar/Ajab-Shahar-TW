@@ -21,6 +21,7 @@
     <script type="text/javascript" src="../js/common/directives/mappers/introduction/songIntroductionMapper.js"></script>
     <script type="text/javascript" src="../js/common/directives/thumbnail/couplet.js"></script>
     <script type="text/javascript" src="../js/common/directives/mappers/coupletMapper.js"></script>
+    <script type="text/javascript" src="../js/common/directives/mappers/introduction/coupletIntroductionMapper.js"></script>
     <script type="text/javascript" src="../js/common/directives/thumbnail/film.js"></script>
     <script type="text/javascript" src="../js/common/directives/thumbnail/gathering.js"></script>
     <script type="text/javascript" src="../js/common/directives/thumbnail/reflection.js"></script>
@@ -78,6 +79,10 @@
     <div ng-repeat="song in thumbnailDetails.songs">
         <song-introduction-mapper index="{{$index}}" details="song" show-details-service="detailsService"/>
     </div>
+
+    <!--<div ng-repeat="couplet in thumbnailDetails.couplets">-->
+        <!--<couplet-introduction-mapper details="couplet" show-details-service="detailsService"/>-->
+    <!--</div>-->
 
     <div class='ajab-container'>
         <div class='ajab-wrapper'>
