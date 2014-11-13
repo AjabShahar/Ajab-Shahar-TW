@@ -1,6 +1,6 @@
 'use strict';
 
-thumbnailModule.directive("couplet", function() {
+thumbnailModule.directive("coupletIntroduction", function() {
     return {
         restrict: 'E',
         scope: {
