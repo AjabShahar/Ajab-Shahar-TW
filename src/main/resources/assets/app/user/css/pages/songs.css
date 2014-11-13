@@ -2,6 +2,8 @@ body.page-songs {
 background: #ccc url(../../../user/img/common/bg/overlaybg.jpg);
 }
 
+
+
 body.page-songs .homepage-content.songs{
 margin-top:20%;
 margin-bottom: 50%;
@@ -68,7 +70,9 @@ margin-top:0;
 
 
 
-
+body.page-songs .footerBox{
+  margin-top: 0;
+}
 
 
 

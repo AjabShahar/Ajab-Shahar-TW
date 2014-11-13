@@ -127,5 +127,7 @@
     <div ng-repeat="song in songs track by $index">
         <song-introduction-mapper index="{{$index}}" details="song" show-details-service="detailsService"/>
     </div>
+
+<div ng-include src="'../common/footer.html'"></div>
 </body>
 </html>
