@@ -15,7 +15,7 @@ thumbnailModule.directive("coupletMapper", function(nameService) {
                             "categoryName":$scope.details.category.name
                         };
             $scope.open = function(){
-                return $scope.showDetailsService.open($scope.song.id);
+                return $scope.showDetailsService.open($scope.couplet.id);
             }
         }
     }
