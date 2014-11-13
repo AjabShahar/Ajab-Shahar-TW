@@ -24,7 +24,7 @@ describe('Content', function() {
             scope.context1='context';
             scope.overlay1='overlayId',
 
-            element = angular.element('<film-with-details overlay-id="{{overlay1}}" custom-style="{{customStyle1}}" img-src="{{imgSrc1}}" context="{{context1}}" name="{{name1}}"></film-with-details>');
+            element = angular.element('<film overlay-id="{{overlay1}}" custom-style="{{customStyle1}}" img-src="{{imgSrc1}}" context="{{context1}}" name="{{name1}}"></film>');
             template.put('/user/js/common/templates/thumbnail/film.html', '{{overlayId}} {{customStyle}} {{imgSrc}} {{context}} {{name}}');
             compile(element)(scope);
             scope.$apply();

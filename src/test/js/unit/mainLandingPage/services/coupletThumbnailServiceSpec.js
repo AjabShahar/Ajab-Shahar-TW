@@ -22,12 +22,12 @@ describe("Couple Thumbnail service Specs", function(){
                             };
 
         var landingPageThumbnails = service.getThumbnailWithBubble(coupletsSampleResponse,"oid0","shift4");
-        expect(landingPageThumbnails).toBe('<couplet-with-details id="oid0" custom-style="shift4"'+
+        expect(landingPageThumbnails).toBe('<couplet id="oid0" custom-style="shift4"'+
                                            ' open="detailsService.open(\'oid0\')"'+
                                            ' title="Jal mein kumbh, kumbh mein jal hai..."'+
                                            ' english-translation-text="A pot in water, water in a pot"'+
                                            ' category-name="Couplet"'+
                                            ' img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"'+
-                                           '</couplet-with-details>');
+                                           '</couplet>');
 	});
 });

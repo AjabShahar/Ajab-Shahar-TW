@@ -1,6 +1,6 @@
 'use strict';
 
-thumbnailModule.directive("reflectionWithDetails", function() {
+thumbnailModule.directive("reflection", function() {
     return {
         restrict: 'E',
         scope: {

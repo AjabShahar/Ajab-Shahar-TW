@@ -1,10 +1,10 @@
 reflectionThumbnailService = function (){
     var getThumbnailWithBubble = function(details,id,customStyle){
-        return '<reflection-with-details overlay-id="'+id +'"'+
+        return '<reflection overlay-id="'+id +'"'+
         ' custom-style="'+customStyle+'"' +
         ' img-src="'+details.thumbnail_url+'"'+
         ' name="'+details.name+'"'+
-        ' by="'+details.by+'"></reflection-with-details>';
+        ' by="'+details.by+'"></reflection>';
     }
 
 

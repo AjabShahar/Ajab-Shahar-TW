@@ -20,9 +20,9 @@ describe("Reflection Thumbnail service Specs", function(){
                         };
 
         var landingPageThumbnails = service.getThumbnailWithBubble(reflectionsSampleResponse,"oid0","shift4");
-        expect(landingPageThumbnails).toBe('<reflection-with-details overlay-id="oid0" custom-style="shift4"'+
+        expect(landingPageThumbnails).toBe('<reflection overlay-id="oid0" custom-style="shift4"'+
         ' img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"'+
-        ' name="The Ulatbansi of Kabir" by="Linda Hess"></reflection-with-details>');
+        ' name="The Ulatbansi of Kabir" by="Linda Hess"></reflection>');
 	});
 
 });

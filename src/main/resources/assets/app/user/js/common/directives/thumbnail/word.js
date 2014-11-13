@@ -1,6 +1,6 @@
 'use strict';
 
-thumbnailModule.directive("wordWithDetails", function() {
+thumbnailModule.directive("word", function() {
     return {
         restrict: 'E',
         scope: {

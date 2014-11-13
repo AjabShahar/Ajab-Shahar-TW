@@ -20,8 +20,8 @@ describe("Word Thumbnail service Specs", function(){
                     };
 
         var landingPageThumbnails = service.getThumbnailWithBubble(wordsSampleResponse,"oid0","shift4");
-        expect(landingPageThumbnails).toBe('<word-with-details overlay-id="oid0" custom-style="shift4"'+
+        expect(landingPageThumbnails).toBe('<word overlay-id="oid0" custom-style="shift4"'+
          ' img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"'+
-         ' name="Untellable Tale" contextual-meaning="An iconic poetic phrase in Kabir, which evokes a realm of experience beyond description..."></word-with-details>');
+         ' name="Untellable Tale" contextual-meaning="An iconic poetic phrase in Kabir, which evokes a realm of experience beyond description..."></word>');
 	});
 });

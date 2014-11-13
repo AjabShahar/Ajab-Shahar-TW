@@ -1,6 +1,6 @@
 'use strict';
 
-thumbnailModule.directive("filmWithDetails", function() {
+thumbnailModule.directive("film", function() {
     return {
         restrict: 'E',
         scope: {

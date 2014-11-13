@@ -1,6 +1,6 @@
 'use strict';
 
-thumbnailModule.directive("gatheringWithDetails", function() {
+thumbnailModule.directive("gathering", function() {
     return {
         restrict: 'E',
         scope: {

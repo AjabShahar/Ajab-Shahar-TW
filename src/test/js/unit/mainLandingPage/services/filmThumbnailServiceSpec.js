@@ -22,8 +22,8 @@ describe("Film Thumbnail service Specs", function(){
                         };
 
         var landingPageThumbnails = service.getThumbnailWithBubble(filmsSampleResponse,"oid0","shift4");
-        expect(landingPageThumbnails).toBe('<film-with-details overlay-id="oid0" custom-style="shift4"'+
+        expect(landingPageThumbnails).toBe('<film overlay-id="oid0" custom-style="shift4"'+
         ' img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"'+
-        ' name="KOI SUNTA HAI" context="Prahlad Tipanya Meets His Guru"></film-with-details>');
+        ' name="KOI SUNTA HAI" context="Prahlad Tipanya Meets His Guru"></film>');
 	});
 });

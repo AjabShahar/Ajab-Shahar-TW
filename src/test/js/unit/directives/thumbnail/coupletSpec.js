@@ -23,7 +23,7 @@ describe('Content', function() {
             scope.customStyle1='someStyle';
             scope.overlayId1='overlayId';
 
-            element = angular.element('<couplet-with-details overlay-id="{{overlayId1}}" custom-style="{{customStyle1}}" img-src="{{imgSrc1}}" name="{{name1}}"></couplet-with-details>');
+            element = angular.element('<couplet overlay-id="{{overlayId1}}" custom-style="{{customStyle1}}" img-src="{{imgSrc1}}" name="{{name1}}"></couplet>');
             template.put('/user/js/common/templates/thumbnail/couplet.html', '{{overlayId}} {{customStyle}} {{name}} {{imgSrc}}');
             compile(element)(scope);
             scope.$apply();

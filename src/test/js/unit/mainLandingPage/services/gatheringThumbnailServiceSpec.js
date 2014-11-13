@@ -21,8 +21,8 @@ describe("Reflection Thumbnail service Specs", function(){
 
         var landingPageThumbnails = service.getThumbnailWithBubble(gatheringsSampleResponse,"oid0","shift4");
 
-        expect(landingPageThumbnails).toBe('<gathering-with-details overlay-id="oid0" custom-style="shift4"'+
+        expect(landingPageThumbnails).toBe('<gathering overlay-id="oid0" custom-style="shift4"'+
                                             ' img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"'+
-                                            ' name="Bangalore Festival Of Kabir" location="Bangalore" date="2009"></gathering-with-details>');
+                                            ' name="Bangalore Festival Of Kabir" location="Bangalore" date="2009"></gathering>');
 	});
 });

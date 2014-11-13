@@ -10,14 +10,14 @@ coupletThumbnailService = function (nameService){
     };
 
     var getThumbnailWithBubble = function(details,id,customStyle){
-        return '<couplet-with-details id="'+id +'"'+
+        return '<couplet id="'+id +'"'+
         ' custom-style="'+customStyle+'"' +
         ' open="detailsService.open(\''+id+'\')"'+
         ' title="'+details.englishTransliteration+'"'+
         ' english-translation-text="'+details.englishTranslationText+'"'+
         ' category-name="'+details.category.name+'"'+
         ' img-src="'+details.thumbnail_url+'"'+
-        '</couplet-with-details>';
+        '</couplet>';
     };
 
      return {
