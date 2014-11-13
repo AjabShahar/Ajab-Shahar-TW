@@ -9,52 +9,6 @@ describe("Thumbnail service Specs", function(){
         service = mainLandingPageThumbnailService;
     }));
 
-	it("should get songs on the landing page thumbnails", function(){
-	    var songsSampleResponse ={"songs":
-	    	            [
-                            {
-                                "id":0,
-                                "songCategory": {"name":"Song & Reflection"},
-                                "songTitle":{
-                                    "englishTranslation": "Practice the art of dying",
-                                },
-                                "poets": [
-                                    {
-                                    "category": "POET",
-                                    "firstName": "Sharath",
-                                    "middleName": "",
-                                    "lastName": ""
-                                    }
-                                    ],
-
-                                "youtubeVideoId": "videoId",
-                                "thumbnail_url": "imgId",
-                                "singers": [
-                                    {
-                                    "category": "SINGER",
-                                    "firstName": "Parvathy",
-                                    "middleName": "",
-                                    "lastName": "Baul"
-                                    }
-                                    ],
-                                "duration": "09:11"
-                            }
-                        ]};
-
-        var landingPageThumbnails = service.getThumbnailWithBubble(songsSampleResponse);
-
-        expect(landingPageThumbnails).toBe('<song id="song_0" open="detailsService.open(\'song_0\')" custom-style="shift4"'+
-            ' img-src="imgId"'+
-            ' url="videoId"'+
-            ' name="Practice the art of dying"'+
-            ' category-name="Song & Reflection"'+
-            ' duration="09:11"'+
-            ' singer="Parvathy Baul"'+
-            ' class = "songs"' +
-            ' poet="Sharath">'+
-            '</song>');
-	});
-
 	it("should get films on the landing page thumbnails", function(){
 	    var filmsSampleResponse = {"films":
 	                [
@@ -132,30 +86,5 @@ describe("Thumbnail service Specs", function(){
         expect(landingPageThumbnails).toBe('<gathering overlay-id="oid0" custom-style="shift4"'+
                                             ' img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"'+
                                             ' name="Bangalore Festival Of Kabir" location="Bangalore" date="2009"></gathering>');
-	});
-
-    it("should get couplets on the landing page thumbnails", function(){
-	    var coupletsSampleResponse ={"couplets":
-	                [
-                                    {
-                                        "id":0,
-                                        "contentType":"Couplets",
-                                        "category":{
-                                         "name":"Couplet",
-                                        },
-                                        "englishTransliteration":"Jal mein kumbh, kumbh mein jal hai...",
-                                        "englishTranslationText":"A pot in water, water in a pot",
-                                        "thumbnail_url":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
-                                    }
-                    ]
-	    };
-
-        var landingPageThumbnails = service.getThumbnailWithBubble(coupletsSampleResponse);
-        expect(landingPageThumbnails).toBe('<couplet id="couplet_0" custom-style="shift4" open="detailsService.open(\'couplet_0\')"'+
-                                           ' title="Jal mein kumbh, kumbh mein jal hai..."'+
-                                           ' english-translation-text="A pot in water, water in a pot"'+
-                                           ' category-name="Couplet"'+
-                                           ' img-src="http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG"'+
-                                           '</couplet>');
 	});
 });
