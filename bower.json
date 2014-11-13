@@ -11,18 +11,21 @@
   ],
   "dependencies": {
     "angular": "1.2.25",
-    "angular-route":"1.2.25",
-    "angular-animate":"1.2.25",
-    "angular-socialshare" : "0.0.5",
-    "ngInfiniteScroll" : "1.1.2",
-    "angular-filter" : "0.4.9",
-    "angular-touch":"1.2.25",
-    "jquery":"~1.11.0",
+    "angular-route": "1.2.25",
+    "angular-animate": "1.2.25",
+    "angular-socialshare": "0.0.5",
+    "ngInfiniteScroll": "1.1.2",
+    "angular-filter": "0.4.9",
+    "angular-touch": "1.2.25",
+    "jquery": "~1.11.0",
     "underscore": "~1.5.2",
-    "bower-facebook" : "~1.0.0",
+    "bower-facebook": "~1.0.0",
     "bootstrap": "~3.3.0"
   },
   "devDependencies": {
     "angular-mocks": "~1.2"
+  },
+  "resolutions": {
+    "angular": "1.3.2"
   }
 }
