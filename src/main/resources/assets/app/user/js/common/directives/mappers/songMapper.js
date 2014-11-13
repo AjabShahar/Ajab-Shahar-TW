@@ -1,6 +1,6 @@
 'use strict';
 
-thumbnailModule.directive("songHelper", function(nameService) {
+thumbnailModule.directive("songMapper", function(nameService) {
     return {
         restrict: 'E',
         scope: {
@@ -8,18 +8,7 @@ thumbnailModule.directive("songHelper", function(nameService) {
             customStyle:'@',
             showDetailsService:'='
         },
-        template:'<song id="{{song.id}}"'+
-                           ' open="open()"'+
-                           ' custom-style="{{song.customStyle}}"' +
-                           ' img-src="{{song.imgSrc}}"'+
-                           ' url="{{song.videoId}}"'+
-                           ' name="{{song.englishTranslation}}"'+
-                           ' category-name="{{song.categoryName}}"'+
-                           ' duration="{{song.duration}}"'+
-                           ' singer="{{song.singer}}"' +
-                           ' class = "songs"' +
-                           ' poet="{{song.poet}}">' +
-                           '</song>',
+        templateUrl:'/user/js/common/templates/mappers/songMapper.html',
         controller:function($scope){
             $scope.song = {"id":"song_"+$scope.details.id, "customStyle":$scope.customStyle,"imgSrc":$scope.details.thumbnail_url,"videoId":$scope.details.youtubeVideoId,"englishTranslation":$scope.details.songTitle.englishTranslation,
                             "categoryName":$scope.details.songCategory.name, "duration":$scope.details.duration, "singer":nameService.getName($scope.details.singers[0]) ,

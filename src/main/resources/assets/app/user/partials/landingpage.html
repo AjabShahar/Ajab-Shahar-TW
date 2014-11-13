@@ -17,8 +17,9 @@
     <script type="text/javascript" src="../js/common/modules/PopupSupport.js"></script>
     <script type="text/javascript" src="../js/common/directives/popupSupport/popup.js"></script>
     <script type="text/javascript" src="../js/common/directives/thumbnail/song.js"></script>
-    <script type="text/javascript" src="../js/common/directives/thumbnail/helper/songHelper.js"></script>
+    <script type="text/javascript" src="../js/common/directives/mappers/songMapper.js"></script>
     <script type="text/javascript" src="../js/common/directives/thumbnail/couplet.js"></script>
+    <script type="text/javascript" src="../js/common/directives/mappers/coupletMapper.js"></script>
     <script type="text/javascript" src="../js/common/directives/thumbnail/film.js"></script>
     <script type="text/javascript" src="../js/common/directives/thumbnail/gathering.js"></script>
     <script type="text/javascript" src="../js/common/directives/thumbnail/reflection.js"></script>
@@ -80,7 +81,10 @@
         <div class='ajab-wrapper'>
             <div class='homepage-content'>
                 <div ng-repeat="song in thumbnailDetails.songs">
-                    <song-helper details="song" show-details-service="detailsService" custom-style=""/>
+                    <song-mapper details="song" show-details-service="detailsService" custom-style=""/>
+                </div>
+                <div ng-repeat="couplet in thumbnailDetails.couplets">
+                    <couplet-mapper details="couplet" show-details-service="detailsService" custom-style=""/>
                 </div>
             </div>
         </div>
