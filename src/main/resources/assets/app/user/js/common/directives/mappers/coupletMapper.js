@@ -11,7 +11,7 @@ thumbnailModule.directive("coupletMapper", function(nameService) {
         templateUrl:'/user/js/common/templates/mappers/coupletMapper.html',
         controller:function($scope){
             $scope.couplet = {"id":"couplet_"+$scope.details.id, "customStyle":$scope.customStyle,"imgSrc":$scope.details.thumbnail_url,"englishTranslationText":$scope.details.englishTranslationText,
-                            "title":$scope.details.englishTranslation,
+                            "title":$scope.details.englishTransliteration,
                             "categoryName":$scope.details.category.name
                         };
             $scope.open = function(){
