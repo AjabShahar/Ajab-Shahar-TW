@@ -1,5 +1,7 @@
 .parallax-container{
-  margin-top: -11%;
+  display: inline-block;
+width: 100%;
+position: relative;
 }
 
 .pxLayers{
@@ -8,18 +10,22 @@
 
 .px-layer1{
    background: url(../../img/mainLandingPage/parallax/07_body.png)  0px -185px no-repeat;
+   background-size: cover;
 }
 
 .px-layer2{
    background: url(../../img/mainLandingPage/parallax/02_map.png) 0px repeat-y;
+   background-size: cover;
 }
 
 .px-layer3{
    background: url(../../img/mainLandingPage/parallax/08_water.png) 0px  -185px no-repeat;
+   background-size: cover;
 }
 
 .px-layer4{
-    background: url(../../img/mainLandingPage/parallax/riverlines.png) -14px -188px no-repeat;
+    background: url(../../img/mainLandingPage/parallax/riverlines.png) 0px -188px no-repeat;
+    background-size: cover;
     opacity: 0.3;
 }
 

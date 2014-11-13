@@ -5,8 +5,7 @@ background: #ccc url(../../../user/img/common/bg/overlaybg.jpg);
 
 
 body.page-songs .homepage-content.songs{
-margin-top:20%;
-margin-bottom: 50%;
+
 }
 
 body.page-songs .thumbnailWrapper{
@@ -16,7 +15,9 @@ margin-top:0;
 
 
 .songsParallax.song-parallax-container{
-  margin-top: -11%;
+display: inline-block;
+width: 100%;
+position: relative;
 }
 
 .songsParallax .pxSongLayers{
@@ -67,12 +68,6 @@ margin-top:0;
 
 
 
-
-
-
-body.page-songs .footerBox{
-  margin-top: 0;
-}
 
 
 

@@ -48,26 +48,22 @@
 <body ng-controller="allSongsController" class="page-songs ng-scope" style="" ng-init="getTotalSongsCount()">
     <ajab-shahar-header></ajab-shahar-header>
 
-
-    <div class="ajab-container headerfixOuter">
-        <div class="ajab-wrapper" fullHeight>
+<div class='mainContentWrapper noParallaxPage'>
+    <div class="ajab-container">
+        <div class="ajab-wrapper" >
       
 
             <div class='leftnav headerfixInner'>
                 <div class='navElementsWrapper'>
-                    <h1 class='categoryLogo'></h1>
-                    <small class='categoryAtt newline'>{{totalSongs}} songs</small>
-                    <nav><a>---</a><a>|||</a></nav>
-                    <input value='search'/>
+                    <h1 class='categoryLogo'>
+                    <img src='../../../user/img/songs/songspagelogo.png'/>
+                    </h1>
                 </div>
 
-                <ul class='navList titles'>
-                    <li class='head'>TITLES<li>
-                    <li><a>Original</a></li>
-                    <li><a>English</a></li>
-                </ul>
+               
+                <h2 class='filterTitle selected'>FILTER +</h2>
 
-                <ul class='navList filters'>
+                <ul class='navList filters hidethis'>
                     <li class='head'>Filter by</li>
                     <li><a>Singers</a></li>
                     <li><a>Poets</a></li>
@@ -83,7 +79,22 @@
 
             <div class='gridView' infinite-scroll="loadMoreSongs()">
 
-                <div class='paginationHead'>
+                <div class='navInfoBar'>
+                    <ul class='navList titles'>
+                    <li class='original'><a>Original</a></li>
+                    <li class='selectedGreen'><a>English</a></li>
+                </ul>
+                <div class='numericCount'>{{totalFilteredSongs}} songs</div>
+               
+                  <nav>
+                        <a><img src="../../../user/img/songs/icons/gridicon.png"/></a>
+                        <a><img src="../../../user/img/songs/icons/listview.png"/></a>
+                    </nav>
+                     <div class='searchBox'>
+                    <img src='../../../user/img/songs/icons/searchicon.png'/>
+                </div>
+                </div>
+                  <div class='paginationHead'>
                     <div class='alphabets'>
                         <a ng-click="filterSongsBasedOnAlphabets('a')">A</a>
                         <a ng-click="filterSongsBasedOnAlphabets('b')">B</a>
@@ -112,8 +123,6 @@
                         <a ng-click="filterSongsBasedOnAlphabets('y')">Y</a>
                         <a ng-click="filterSongsBasedOnAlphabets('z')">Z</a>
                     </div>
-
-                    <div class='numericCount'>{{totalFilteredSongs}} songs</div>
                 </div>
                 <div class='gridWrapper'>
                     <ul ng-repeat="song in songs" class="flexiThumbnails">
@@ -127,7 +136,7 @@
     <div ng-repeat="song in songs track by $index">
         <song-introduction-mapper index="{{$index}}" details="song" show-details-service="detailsService"/>
     </div>
-
+</div>
 <div ng-include src="'../common/footer.html'"></div>
 </body>
 </html>
