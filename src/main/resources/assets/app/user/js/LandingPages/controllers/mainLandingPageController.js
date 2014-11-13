@@ -1,4 +1,4 @@
-var mainLandingPageController = function($scope,contentService,mainLandingPageThumbnailService,introductionPopupService,popupService, $location){
+var mainLandingPageController = function($scope,contentService,introductionPopupService,popupService, $location){
     $scope.popupContent=null;
     $scope.thumbnailContent=null;
     $scope.detailsService = popupService;
@@ -7,11 +7,21 @@ var mainLandingPageController = function($scope,contentService,mainLandingPageTh
         $scope.url = $location.absUrl();
         contentService.getMainLandingPageThumbnails().then(function(result){
             $scope.thumbnailDetails = result.data;
-
-
-            $scope.thumbnailContent = mainLandingPageThumbnailService.getThumbnailWithBubble(result.data);
             $scope.popupContent = introductionPopupService.getPopupDetails(result.data);
         });
+    }
+
+    $scope.getSongCustomStyle = function(thumbnail){
+        return $scope.getCustomStyle(_.indexOf($scope.thumbnailDetails.songs, thumbnail));
+    }
+
+    $scope.getCoupletCustomStyle = function(thumbnail){
+        return $scope.getCustomStyle(_.indexOf($scope.thumbnailDetails.couplets, thumbnail) + $scope.thumbnailDetails.songs.length);
+    }
+
+    $scope.getCustomStyle =function(id){
+        var index = ((4+id) % 6) == 0 ? 6 : ((4+id) % 6);
+        return "shift"+index;
     }
 
     $scope.setPageHeight = function(){
@@ -26,4 +36,4 @@ var mainLandingPageController = function($scope,contentService,mainLandingPageTh
     $scope.init();
 }
 
-landingPagesApp.controller('mainLandingPageController',['$scope','contentService','mainLandingPageThumbnailService','introductionPopupService','popupService', '$location',mainLandingPageController]);
+landingPagesApp.controller('mainLandingPageController',['$scope','contentService','introductionPopupService','popupService', '$location',mainLandingPageController]);
