@@ -18,6 +18,7 @@
     <script type="text/javascript" src="../js/common/directives/popupSupport/popup.js"></script>
     <script type="text/javascript" src="../js/common/directives/thumbnail/song.js"></script>
     <script type="text/javascript" src="../js/common/directives/mappers/songMapper.js"></script>
+    <script type="text/javascript" src="../js/common/directives/mappers/introduction/songIntroductionMapper.js"></script>
     <script type="text/javascript" src="../js/common/directives/thumbnail/couplet.js"></script>
     <script type="text/javascript" src="../js/common/directives/mappers/coupletMapper.js"></script>
     <script type="text/javascript" src="../js/common/directives/thumbnail/film.js"></script>
@@ -74,7 +75,9 @@
     </div>
     <!-- parallax effect ends -->
     <!-- thumbnail and middle content starts -->
-    <div bind-dynamic-html="popupContent"></div>
+    <div ng-repeat="song in thumbnailDetails.songs">
+        <song-introduction-mapper index="{{$index}}" details="song" show-details-service="detailsService"/>
+    </div>
 
     <div class='ajab-container'>
         <div class='ajab-wrapper'>
@@ -83,15 +86,11 @@
                     <song-mapper details="song" show-details-service="detailsService" custom-style="{{getSongCustomStyle(song)}}"/>
                 </div>
                 <div ng-repeat="couplet in thumbnailDetails.couplets">
-                    <couplet-mapper details="couplet" show-details-service="detailsService" custom-style="{{getCoupletCustomStyle(couplet)}}/>
+                    <couplet-mapper details="couplet" show-details-service="detailsService" custom-style="{{getCoupletCustomStyle(couplet)}}"/>
                 </div>
             </div>
         </div>
     </div>
-
-    <!--<div bind-dynamic-html="getPopupDetails()"></div>-->
-
-    <!-- thumbnail and middle content starts -->
 
     <div ng-include src="'common/footer.html'"></div>
 
