@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="songDetailsApp">
+<head>
+    <meta charset="utf-8">
+    <title>AngularJS Animate Slider</title>
+
+    <link href="../../../common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../../css/pages/songDetails.css" rel="stylesheet" type="text/css">
+</head>
+
+<body ng-controller="songDetailsController">
+
+<div class="container slider">
+    <div ng-repeat="slide in slides" class="slide slide-animation nonDraggableImage"
+         ng-swipe-right="nextSlide()" ng-swipe-left="prevSlide()"
+         ng-hide="!isCurrentSlideIndex($index)">
+        <img style="width:150px" ng-src="{{slide.image}}">
+        <img style="width:150px" ng-src="{{slide.image}}">
+    </div>
+
+    <a class="arrow prev" href="#" ng-click="nextSlide()"></a>
+    <a class="arrow next" href="#" ng-click="prevSlide()"></a>
+    <nav class="nav">
+        <div class="wrapper">
+            <ul class="dots">
+                <li class="dot" ng-repeat="slide in slides">
+                    <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
+                       ng-click="setCurrentSlideIndex($index);">{{slide.description}}</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<script type="text/javascript" src="../../../common/services/nameService.js"></script>
+<script type="text/javascript" src="../../../common/lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="../../../common/lib/angular/angular.js"></script>
+<script type="text/javascript" src="../../../common/lib/angular-touch/angular-touch.js"></script>
+<script type="text/javascript" src="../../../common/lib/angular-animate/angular-animate.min.js"></script>
+<script type="text/javascript" src="../../../common/lib/angular-touch/angular-touch.min.js"></script>
+<script type="text/javascript" src="../../../common/lib/gsap/src/minified/TweenMax.min.js"></script>
+<script type="text/javascript" src="../../../common/directives/htmlGenerator/bindDynamicHtml.js"></script>
+<script type="text/javascript" src="../../js/common/config/resourceUrlWhiteList.js"></script>
+<script type="text/javascript" src="../../js/songs/services/songsContentService.js"></script>
+<script type="text/javascript" src="../../js/common/modules/thumbnailModule.js"></script>
+<script type="text/javascript" src="../../js/common/modules/mediaPlayer.js"></script>
+<script type="text/javascript" src="../../js/common/modules/htmlGenerator.js"></script>
+<script type="text/javascript" src="../../../common/directives/header/sticky.js"></script>
+<script type="text/javascript" src="../../../common/modules/headerModule.js"></script>
+<script type="text/javascript" src="../../js/songs/songDetailsApp.js"></script>
+<script type="text/javascript" src="../../js/common/services/songDetailsService.js"></script>
+<script type="text/javascript" src="../../js/songs/controllers/songDetailsController.js"></script>
+
+</body>
+</html>
