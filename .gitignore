@@ -5,3 +5,7 @@ target
 test-results.xml
 src/main/resources/assets/npm-debug.log
 node_modules/
+.gradle/
+AjabShahar.iml
+AjabShahar.ipr
+AjabShahar.iws
