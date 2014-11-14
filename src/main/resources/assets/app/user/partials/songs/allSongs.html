@@ -125,8 +125,8 @@
                     </div>
                 </div>
                 <div class='gridWrapper'>
-                    <ul ng-repeat="song in songs" class="flexiThumbnails">
-                        <li><song-mapper details="song" show-details-service="detailsService" custom-style=""/></li>
+                    <ul class="flexiThumbnails">
+                        <li  ng-repeat="song in songs"><song-mapper details="song" show-details-service="detailsService" custom-style=""/></li>
                     </ul>
                 </div>
             </div>
