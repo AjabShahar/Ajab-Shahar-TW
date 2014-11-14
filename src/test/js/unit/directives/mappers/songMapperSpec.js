@@ -23,6 +23,7 @@ describe('Mapper', function() {
                                 "songCategory": {"name":"Song & Reflection"},
                                 "songTitle":{
                                     "englishTranslation": "Practice the art of dying",
+                                    "englishTransliteration": "Kichhu din mone mone"
                                 },
                                 "poets": [
                                     {
@@ -47,11 +48,11 @@ describe('Mapper', function() {
                             };
 
             element = angular.element('<song-mapper details="detailsFromService" custom-style="blah"/>');
-            template.put('/user/js/common/templates/mappers/songMapper.html', '{{song.id}} {{song.customStyle}} {{song.imgSrc}} {{song.videoId}} {{song.englishTranslation}} {{song.categoryName}} {{song.duration}} {{song.singer}} {{song.poet}}');
+            template.put('/user/js/common/templates/mappers/songMapper.html', '{{song.id}} {{song.customStyle}} {{song.imgSrc}} {{song.videoId}} {{song.englishTransliteration}} {{song.categoryName}} {{song.duration}} {{song.singer}} {{song.poet}}');
             compile(element)(scope);
             scope.$apply();
 
-            expect(element.html()).toBe('song_0 blah imgId videoId Practice the art of dying Song &amp; Reflection 09:11 Parvathy Baul Sharath');
+            expect(element.html()).toBe('song_0 blah imgId videoId Kichhu din mone mone Song &amp; Reflection 09:11 Parvathy Baul Sharath');
         });
     });
 });
