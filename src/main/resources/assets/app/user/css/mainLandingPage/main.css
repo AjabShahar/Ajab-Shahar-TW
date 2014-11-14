@@ -3,6 +3,12 @@
 @import url(https://fonts.googleapis.com/css?family=Merriweather+Sans);
 
 
+/* animate tags to create smooth transition */
+*{
+   -webkit-transition: all 2s; /* For Safari 3.1 to 6.0 */
+    transition: all 2s;
+}
+
 /* global rules starts */
 html {
     overflow-x: hidden;
