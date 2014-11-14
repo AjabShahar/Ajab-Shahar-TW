@@ -4,9 +4,11 @@ thumbnailModule.directive("coupletIntroduction", function() {
     return {
         restrict: 'E',
         scope: {
-            name:'@',
-            poet:'@',
             id:'@',
+            originalText:'@',
+            englishTranslationText:'@',
+            englishTransliterationText:'@',
+            poet:'@',
             closeVideo:'&'
         },
         templateUrl:'/user/js/common/templates/couplets/introduction.html',

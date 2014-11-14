@@ -11,8 +11,8 @@ thumbnailModule.directive("coupletIntroductionMapper", function(nameService) {
         },
         templateUrl:'/user/js/common/templates/mappers/introduction/coupletIntroductionMapper.html',
         controller:function($scope){
-            $scope.couplet = {"id":"couplet_"+$scope.details.id, "englishTranslation":$scope.details.englishTranslation,
-                            "poet":nameService.getName($scope.details.poet)
+            $scope.couplet = {"id":"couplet_"+$scope.details.id, "originalText":$scope.details.originalText, "englishTranslationText":$scope.details.englishTranslationText,
+                             "englishTransliterationText":$scope.details.englishTransliterationText, "poet":nameService.getName($scope.details.poet)
                         };
             $scope.init = function(){
                 return $scope.showDetailsService.init($scope.couplet.id);
