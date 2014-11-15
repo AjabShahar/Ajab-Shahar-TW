@@ -2,6 +2,7 @@
 
 thumbnailModule.directive("gathering", function() {
     return {
+        replace : true,
         restrict: 'E',
         scope: {
             name:'@',

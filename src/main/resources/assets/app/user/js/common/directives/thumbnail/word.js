@@ -2,6 +2,7 @@
 
 thumbnailModule.directive("word", function() {
     return {
+        replace : true,
         restrict: 'E',
         scope: {
             name:'@',

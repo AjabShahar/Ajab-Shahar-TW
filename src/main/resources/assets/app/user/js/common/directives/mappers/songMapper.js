@@ -2,6 +2,7 @@
 
 thumbnailModule.directive("songMapper", function(nameService) {
     return {
+        replace : true,
         restrict: 'E',
         scope: {
             details:'=',

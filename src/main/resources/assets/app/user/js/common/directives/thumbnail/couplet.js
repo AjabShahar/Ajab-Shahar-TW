@@ -2,6 +2,7 @@
 
 thumbnailModule.directive("couplet", function() {
     return {
+        replace : true,
         restrict: 'E',
         scope: {
             title:'@',

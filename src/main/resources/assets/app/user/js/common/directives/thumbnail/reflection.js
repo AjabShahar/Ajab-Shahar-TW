@@ -2,6 +2,7 @@
 
 thumbnailModule.directive("reflection", function() {
     return {
+        replace : true,
         restrict: 'E',
         scope: {
             name:'@',

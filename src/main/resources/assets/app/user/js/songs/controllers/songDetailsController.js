@@ -2,10 +2,20 @@ var songDetailsController = function($scope,$location,songsContentService){
     $scope.detailsService = this;
     $scope.urlId = $location.search().id;
     $scope.detailsService = $scope;
+    $scope.sections = [];
 
     $scope.init = function(){
         songsContentService.getSongsVersions($scope.urlId).then(function(result){
-            $scope.carouselSections = result.data;
+            var songs = result.data;
+            _.reduce(songs,function(sections, song,index) {
+                if(index%3==0)
+                {
+                    sections.push({});
+                    sections[sections.length-1].songs = [];
+                }
+                sections[sections.length-1].songs.push(song);
+                return sections;
+            },$scope.sections);
         });
 
         $scope.detailContents = songsContentService.getSongRenditions($scope.urlId).then(function(result){

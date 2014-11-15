@@ -2,6 +2,7 @@
 
 thumbnailModule.directive("film", function() {
     return {
+        replace : true,
         restrict: 'E',
         scope: {
             context:'@',

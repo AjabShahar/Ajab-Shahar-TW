@@ -2,6 +2,7 @@
 
 thumbnailModule.directive("song", function() {
     return {
+        replace : true,
         restrict: 'E',
         scope: {
             name:'@',
