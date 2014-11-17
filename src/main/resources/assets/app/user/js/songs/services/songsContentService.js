@@ -13,15 +13,20 @@ var songsContentService = function ($http) {
         return $http.get('/api/songs');
     };
 
+    var getSongsInRangeAndFilteredBy = function(startIndex, letter){
+        console.log("Request made: " + '/api/songs/filterByWithRange?startingIndex=' + startIndex + "&letter=" + letter);
+        return $http.get('/api/songs/filterByWithRange?startingIndex=' + startIndex + "&letter=" + letter);
+    }
 
-    var getSongsGivenRange = function(from, to){
-        return $http.get('/api/songs/range?from=' + from + "&to=" + to);
-    };
+    var getSongsStartingWith = function(letter){
+        return $http.get('/api/songs/count/startingWith?letter=' + letter);
+    }
 
     return {
         getAllSongs: getAllSongs,
-        getSongsGivenRange: getSongsGivenRange,
         getSongsVersions:getSongsVersions,
         getSongRenditions:getSongRenditions,
+        getSongsInRangeAndFilteredBy:getSongsInRangeAndFilteredBy,
+        getSongsStartingWith:getSongsStartingWith
     };
 };

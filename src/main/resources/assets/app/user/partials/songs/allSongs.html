@@ -16,12 +16,10 @@
     <script type="text/javascript" src="../../js/common/directives/popupSupport/popup.js"></script>
     <script type="text/javascript" src="../../js/common/services/popupService.js"></script>
     <script type="text/javascript" src="../../js/common/directives/thumbnail/song.js"></script>
-    <script type="text/javascript" src="../../js/common/directives/mappers/songMapper.js"></script>
-    <script type="text/javascript" src="../../js/common/directives/mappers/introduction/songIntroductionMapper.js"></script>
     <script type="text/javascript" src="../../js/common/modules/mediaPlayer.js"></script>
     <script type="text/javascript" src="../../js/common/directives/soundCloud/soundcloud_player.js"></script>
     <script type="text/javascript" src="../../js/common/directives/youtube/youtube_player.js"></script>
-    <script type="text/javascript" src="../../js/common/directives/songs/songIntroduction.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/songs/introduction.js"></script>
     <script type="text/javascript" src="../../js/common/config/resourceUrlWhiteList.js"></script>
     <script type="text/javascript" src="../../../common/modules/headerModule.js"></script>
     <script type="text/javascript" src="../../../common/directives/header/ajabShaharHeader.js"></script>
@@ -31,6 +29,9 @@
     <script type="text/javascript" src="../../js/songs/app.js"></script>
     <script type="text/javascript" src="../../js/songs/controllers/allSongsController.js"></script>
     <script type="text/javascript" src="../../js/common/modules/htmlGenerator.js"></script>
+    <script type="text/javascript" src="../../js/common/services/songThumbnailService.js"></script>
+    <script type="text/javascript" src="../../js/common/services/coupletThumbnailService.js"></script>
+    <script type="text/javascript" src="../../js/common/services/introductionPopupService.js"></script>
     <script type="text/javascript" src="../../../common/directives/header/sticky.js"></script>
     <script type="text/javascript" src="../../js/common/directives/carouselSupport/carousel.js"></script>
     <link href="../../../common/css/header.css" rel="stylesheet" type="text/css">
@@ -48,22 +49,26 @@
 <body ng-controller="allSongsController" class="page-songs ng-scope" style="" ng-init="getTotalSongsCount()">
     <ajab-shahar-header></ajab-shahar-header>
 
-<div class='mainContentWrapper noParallaxPage'>
-    <div class="ajab-container">
-        <div class="ajab-wrapper" >
+
+    <div class="ajab-container headerfixOuter">
+        <div class="ajab-wrapper" fullHeight>
       
 
             <div class='leftnav headerfixInner'>
                 <div class='navElementsWrapper'>
-                    <h1 class='categoryLogo'>
-                    <img src='../../../user/img/songs/songspagelogo.png'/>
-                    </h1>
+                    <h1 class='categoryLogo'></h1>
+                    <small class='categoryAtt newline'>{{totalSongs}} songs</small>
+                    <nav><a>---</a><a>|||</a></nav>
+                    <input value='search'/>
                 </div>
 
-               
-                <h2 class='filterTitle selected'>FILTER +</h2>
+                <ul class='navList titles'>
+                    <li class='head'>TITLES<li>
+                    <li><a>Original</a></li>
+                    <li><a>English</a></li>
+                </ul>
 
-                <ul class='navList filters hidethis'>
+                <ul class='navList filters'>
                     <li class='head'>Filter by</li>
                     <li><a>Singers</a></li>
                     <li><a>Poets</a></li>
@@ -77,24 +82,9 @@
 
             </div>
 
-            <div class='gridView' infinite-scroll="loadMoreSongs()">
+            <div class='gridView' infinite-scroll="loadSongFromRange()">
 
-                <div class='navInfoBar'>
-                    <ul class='navList titles'>
-                    <li class='original'><a>Original</a></li>
-                    <li class='selectedGreen'><a>English</a></li>
-                </ul>
-                <div class='numericCount'>{{totalFilteredSongs}} songs</div>
-               
-                  <nav>
-                        <a><img src="../../../user/img/songs/icons/gridicon.png"/></a>
-                        <a><img src="../../../user/img/songs/icons/listview.png"/></a>
-                    </nav>
-                     <div class='searchBox'>
-                    <img src='../../../user/img/songs/icons/searchicon.png'/>
-                </div>
-                </div>
-                  <div class='paginationHead'>
+                <div class='paginationHead'>
                     <div class='alphabets'>
                         <a ng-click="filterSongsBasedOnAlphabets('a')">A</a>
                         <a ng-click="filterSongsBasedOnAlphabets('b')">B</a>
@@ -123,20 +113,21 @@
                         <a ng-click="filterSongsBasedOnAlphabets('y')">Y</a>
                         <a ng-click="filterSongsBasedOnAlphabets('z')">Z</a>
                     </div>
+
+                    <div class='numericCount'>{{totalFilteredSongs}} songs</div>
                 </div>
                 <div class='gridWrapper'>
-                    <ul class="flexiThumbnails">
-                        <li  ng-repeat="song in songs"><song-mapper details="song" show-details-service="detailsService" custom-style=""/></li>
+                    <ul ng-repeat="song in songs track by $index" class="flexiThumbnails">
+                        <li bind-dynamic-html="song"></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 
-    <div ng-repeat="song in songs track by $index">
-        <song-introduction-mapper index="{{$index}}" details="song" show-details-service="detailsService"/>
+    <div ng-repeat="songDetail in songDetails track by $index">
+        <div bind-dynamic-html="songDetail"></div>
     </div>
-</div>
-<div ng-include src="'../common/footer.html'"></div>
+
 </body>
 </html>

@@ -2,31 +2,19 @@ var allSongsController = function($scope,songsContentService,popupService){
     $scope.songs=[];
     $scope.songDetails=[];
     $scope.totalSongs = null;
-    $scope.totalFilteredSongs = null;
+    $scope.totalFilteredSongs = 0;
     $scope.detailsService = popupService;
-    $scope.activeLetter = null;
+    $scope.activeLetter = '';
     $scope.filterOn = false;
-    $scope.allSongsList = null;
+    $scope.songsList = null;
 
     var i = 0;
 
     $scope.getTotalSongsCount = function(){
         songsContentService.getAllSongs().then(function(songsList){
-            $scope.allSongsList = songsList;
             $scope.totalSongs = songsList.data.length;
             $scope.totalFilteredSongs = $scope.totalSongs;
         });
-    }
-
-    $scope.filterBasedOnLetter = function(input, letter){
-        input = input || [];
-        var out = [];
-        input.forEach(function (item) {
-            if (item.songTitle.englishTranslation.charAt(0).toLowerCase() == letter) {
-                out.push(item);
-            }
-        });
-        return out;
     }
 
     $scope.removeSongs = function(){
@@ -39,29 +27,33 @@ var allSongsController = function($scope,songsContentService,popupService){
         $scope.filterOn = true;
         $scope.activeLetter = letter;
         $scope.removeSongs();
-        $scope.loadMoreSongs();
+        $scope.loadSongFromRange();
 
-        var allFilteredSongs = $scope.filterBasedOnLetter($scope.allSongsList.data, $scope.activeLetter);
-        $scope.totalFilteredSongs = allFilteredSongs.length;
-    }
-
-    $scope.loadSongFromRange = function(from , to){
-    	songsContentService.getSongsGivenRange(from, to).then(function(result){
-            var filteredResult = null;
-
-            if($scope.filterOn){
-                filteredResult = $scope.filterBasedOnLetter(result.data, $scope.activeLetter);
-            }
-            else {
-                filteredResult = result.data;
-            }
-
-            $scope.songs = filteredResult;
+        songsContentService.getSongsStartingWith($scope.activeLetter).then(function(songsCountJson){
+            $scope.totalFilteredSongs = songsCountJson.data;
         });
     }
 
-    $scope.loadMoreSongs = function(){
-        $scope.loadSongFromRange(i, i + 9);
+    $scope.createSongThumbnailWithPopUp = function(result){
+        var j;
+        for(j = 0; j < result.length ;j++){
+                var songThumbnailWithBubble = songThumbnailService.getThumbnailWithBubble(result[j]);
+
+                $scope.songs.push(songThumbnailWithBubble);
+
+                var popupContent = songThumbnailService.getPopupDetails(result[j],j,'song_'+result[j].id,j);
+                $scope.songDetails.push(popupContent);
+            }
+    }
+
+    $scope.loadSongFromRange = function(){
+        if(i <= $scope.totalFilteredSongs){
+        	songsContentService.getSongsInRangeAndFilteredBy(i, $scope.activeLetter).then(function(result){
+                $scope.songsList = result.data;
+                $scope.createSongThumbnailWithPopUp(result.data);
+                i += 9;
+            });
+        }
     }
 };
 

@@ -57,8 +57,11 @@ public class SongDAO extends AbstractDAO<Song> {
         return list(namedQuery("org.ajabshahar.platform.models.Song.findSongWithRenditions").setParameter("id",id));
     }
 
-    public List<Song> findAllRanging(long from, long to) {
-        return list(namedQuery("org.ajabshahar.platform.models.Song.findAllRanging").setParameter("from", from).setParameter("to", to));
+    public List<Song> findAllInRangeAndFilteredBy(int startIndex, String letter) {
+        return list(namedQuery("org.ajabshahar.platform.models.Song.findAllFilteredBy").setParameter("letter", letter + "%").setFirstResult(startIndex).setMaxResults(9));
+    }
 
+    public int getCountOfSongsThatStartWith(String letter) {
+        return list(namedQuery("org.ajabshahar.platform.models.Song.findAllFilteredBy").setParameter("letter", letter + "%")).size();
     }
 }

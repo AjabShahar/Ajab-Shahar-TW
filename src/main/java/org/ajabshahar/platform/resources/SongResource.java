@@ -83,13 +83,24 @@ public class SongResource {
     }
 
     @GET
-    @Path("/range")
+    @Path("/filterByWithRange")
+    @UnitOfWork
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Song> listAllSongsStartingWithAndFilteredBy(@QueryParam("startingIndex") int startIndex, @QueryParam("letter") String letter)
+    {
+        letter = letter == null ? "" : letter;
+        return songDAO.findAllInRangeAndFilteredBy(startIndex, letter);
+    }
+
+    @GET
+    @Path("/count/startingWith")
     @UnitOfWork
     @CacheControl(maxAge = 60)
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Song> listAllSongFromGivenRange(@QueryParam("from") long from,@QueryParam("to") long to)
+    public int listAllSongsFilteredBy(@QueryParam("letter") String letter)
     {
-        return songDAO.findAllRanging(from, to);
+        letter = letter == null ? "" : letter;
+        return songDAO.getCountOfSongsThatStartWith(letter);
     }
 
     @GET
