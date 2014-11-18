@@ -16,9 +16,14 @@
     <script type="text/javascript" src="../js/common/modules/thumbnailModule.js"></script>
     <script type="text/javascript" src="../js/common/modules/PopupSupport.js"></script>
     <script type="text/javascript" src="../js/common/directives/popupSupport/popup.js"></script>
+
     <script type="text/javascript" src="../js/common/directives/thumbnail/song.js"></script>
     <script type="text/javascript" src="../js/common/directives/mappers/songMapper.js"></script>
     <script type="text/javascript" src="../js/common/directives/mappers/introduction/songIntroductionMapper.js"></script>
+
+    <script type="text/javascript" src="../js/common/directives/thumbnail/word.js"></script>
+    <script type="text/javascript" src="../js/common/directives/mappers/wordMapper.js"></script>
+
     <script type="text/javascript" src="../js/common/directives/thumbnail/couplet.js"></script>
     <script type="text/javascript" src="../js/common/directives/mappers/coupletMapper.js"></script>
     <script type="text/javascript" src="../js/common/directives/mappers/introduction/coupletIntroductionMapper.js"></script>
@@ -26,20 +31,23 @@
     <script type="text/javascript" src="../js/common/directives/thumbnail/gathering.js"></script>
     <script type="text/javascript" src="../js/common/directives/thumbnail/reflection.js"></script>
     <script type="text/javascript" src="../js/common/directives/thumbnail/unknown.js"></script>
-    <script type="text/javascript" src="../js/common/directives/thumbnail/word.js"></script>
     <script type="text/javascript" src="../js/common/directives/parallax/angular-parallax.js"></script>
     <script type="text/javascript" src="../js/common/modules/mediaPlayer.js"></script>
     <script type="text/javascript" src="../js/common/directives/soundCloud/soundcloud_player.js"></script>
     <script type="text/javascript" src="../js/common/directives/youtube/youtube_player.js"></script>
     <script type="text/javascript" src="../js/common/directives/couplets/coupletIntroduction.js"></script>
+
     <script type="text/javascript" src="../js/common/directives/songs/songIntroduction.js"></script>
+
     <script type="text/javascript" src="../js/common/config/resourceUrlWhiteList.js"></script>
     <script type="text/javascript" src="../../common/modules/headerModule.js"></script>
     <script type="text/javascript" src="../../common/directives/header/ajabShaharHeader.js"></script>
     <script type="text/javascript" src="../../common/directives/htmlGenerator/bindDynamicHtml.js"></script>
     <script type="text/javascript" src="../js/LandingPages/services/contentService.js"></script>
     <script type="text/javascript" src="../js/common/services/popupService.js"></script>
+
     <script type="text/javascript" src="../js/LandingPages/app.js"></script>
+
     <script type="text/javascript" src="../js/LandingPages/controllers/soundCloudController.js"></script>
     <script type="text/javascript" src="../js/common/modules/htmlGenerator.js"></script>
     <script type="text/javascript" src="../js/LandingPages/controllers/mainLandingPageController.js"></script>
@@ -71,22 +79,29 @@
     </div>
     <!-- parallax effect ends -->
     <!-- thumbnail and middle content starts -->
-    <div ng-repeat="song in thumbnailDetails.songs">
+    <div ng-repeat="song in thumbnailDetails.songs | limitTo: 5">
         <song-introduction-mapper index="{{$index}}" details="song" show-details-service="detailsService"/>
     </div>
 
-    <div ng-repeat="couplet in thumbnailDetails.couplets">
+    <div ng-repeat="couplet in thumbnailDetails.couplets | limitTo: 5">
         <couplet-introduction-mapper details="couplet" show-details-service="detailsService"/>
+    </div>
+
+    <div ng-repeat="word in thumbnailDetails.words | limitTo: 5">
+        <word-introduction-mapper details="word" show-details-service="detailsService"/>
     </div>
 
     <div class='ajab-container'>
         <div class='ajab-wrapper'>
             <div class='homepage-content'>
-                <div ng-repeat="song in thumbnailDetails.songs">
+                <div ng-repeat="song in thumbnailDetails.songs | limitTo: 5">
                     <song-mapper details="song" show-details-service="detailsService" custom-style="{{getSongCustomStyle(song)}}"/>
                 </div>
-                <div ng-repeat="couplet in thumbnailDetails.couplets">
+                <div ng-repeat="couplet in thumbnailDetails.couplets | limitTo: 5">
                     <couplet-mapper details="couplet" show-details-service="detailsService" custom-style="{{getCoupletCustomStyle(couplet)}}"/>
+                </div>
+                <div ng-repeat="word in thumbnailDetails.words | limitTo: 5">
+                    <word-mapper details="word" show-details-service="detailsService" custom-style="{{getWordCustomStyle(word)}}"/>
                 </div>
             </div>
         </div>

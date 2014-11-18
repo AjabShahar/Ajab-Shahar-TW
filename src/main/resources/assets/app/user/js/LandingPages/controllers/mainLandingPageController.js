@@ -16,6 +16,10 @@ var mainLandingPageController = function($scope,contentService,popupService, $lo
         return $scope.getCustomStyle(_.indexOf($scope.thumbnailDetails.couplets, thumbnail) + $scope.thumbnailDetails.songs.length);
     }
 
+    $scope.getWordCustomStyle = function(thumbnail){
+        return $scope.getCustomStyle(_.indexOf($scope.thumbnailDetails.words, thumbnail));
+    }
+
     $scope.getCustomStyle =function(id){
         var index = ((4+id) % 6) == 0 ? 6 : ((4+id) % 6);
         return "shift"+index;
