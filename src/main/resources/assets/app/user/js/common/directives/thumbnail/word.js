@@ -11,10 +11,12 @@ thumbnailModule.directive("word", function() {
             customStyle:'@',
             overlayId:'@',
             id:'@',
+            categoryName:'@',
         },
         templateUrl:'/user/js/common/templates/thumbnail/word.html',
         controller:function($scope){
             $scope.shouldBeOpen = false;
+            $scope.shouldShowDetails = false;
 
             $scope.open = function(){
                 $scope.shouldBeOpen = true;
@@ -22,6 +24,14 @@ thumbnailModule.directive("word", function() {
 
             $scope.onClose = function(){
                 $scope.shouldBeOpen = false;
+            }
+
+            $scope.showDetails = function(){
+                $scope.shouldShowDetails = true;
+            }
+
+            $scope.hideDetails = function(){
+                $scope.shouldShowDetails = false;
             }
         }
     }
