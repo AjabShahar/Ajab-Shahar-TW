@@ -6,36 +6,38 @@ carouselModule.directive('carousel', function($timeout) {
     transclude: true,
     scope: {},
     controller: ['$scope',function($scope) {
-      $scope.currentIndex = 0; // Initially the index is at the first element
-      $scope.sections = [];
-      $scope.next = function() {
-          var oldIndex = $scope.currentIndex;
-          $scope.currentIndex < $scope.sections.length - 1 ? $scope.currentIndex++ : $scope.currentIndex = 0;
-          $scope.sections[oldIndex].selected = false;
-          $scope.sections[$scope.currentIndex].selected = true;
+        $scope.currentIndex = 0; // Initially the index is at the first element
+        $scope.sections = [];
+        $scope.direction = 'left';
+        $scope.currentIndex = 0;
 
-          $scope.sections[oldIndex].carouselAnimation = 'rtl';
-          $scope.sections[$scope.currentIndex].carouselAnimation ='rtl';
-      };
+        $scope.setCurrentSlideIndex = function (index) {
+             $scope.direction = (index > $scope.currentIndex) ? 'left' : 'right';
+             $scope.currentIndex = index;
+         };
 
-      $scope.prev = function() {
-          var oldIndex = $scope.currentIndex;
-          $scope.currentIndex > 0 ? $scope.currentIndex-- : $scope.currentIndex = $scope.sections.length - 1;
-          $scope.sections[oldIndex].selected = false;
-          $scope.sections[$scope.currentIndex].selected = true;
+        $scope.prevSlide = function () {
+             $scope.direction = 'left';
+             $scope.currentIndex = ($scope.currentIndex < $scope.sections.length - 1) ? ++$scope.currentIndex : 0;
+         };
 
-            $scope.sections[oldIndex].carouselAnimation = 'ltr';
-            $scope.sections[$scope.currentIndex].carouselAnimation ='ltr';
-      };
+        $scope.nextSlide = function () {
+             $scope.direction = 'right';
+             $scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.sections.length - 1;
+         };
 
-      this.addSection = function(section) {
-        $scope.sections.push(section);
-        if($scope.sections.length==1)
-        {
-            $scope.currentIndex = 0;
-            $scope.sections[$scope.currentIndex].selected = true;
+        this.getCurrentIndex = function(){
+            return $scope.currentIndex;
         }
-      }
+
+        this.addSection = function(section) {
+            $scope.sections.push(section);
+            if($scope.sections.length==1)
+            {
+                $scope.currentIndex = 0;
+                $scope.sections[$scope.currentIndex].selected = true;
+            }
+         }
     }],
     link: function(scope, elem, attrs) {
     },
@@ -47,23 +49,16 @@ carouselModule.directive('carousel', function($timeout) {
        require: '^carousel',
        restrict: 'E',
        transclude: true,
-       scope: { id: '@' },
+       scope: { id: '@',index:'@' },
        link: function(scope, element, attrs, carouselCtrl) {
-         scope.selected = false;
-            scope.carouselAnimation = 'ltr';
-            scope.getCarouselAnimation = function(){
-             return scope.carouselAnimation;
-            }
-
-         scope.isSelected = function(){
-            return scope.selected;
-         }
-
          carouselCtrl.addSection(scope);
+
+         scope.isCurrentSlideIndex = function (index) {
+              return carouselCtrl.getCurrentIndex() === index;
+          };
+
        },
-       template:
-       '<div ng-show="isSelected()" class="{{getCarouselAnimation()}}-animation" ng-transclude>'+
-        '</div>',
+       templateUrl:'/user/js/common/templates/carouselSupport/section.html',
        replace: true
      };
    });

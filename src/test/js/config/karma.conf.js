@@ -9,7 +9,6 @@ module.exports = function (config) {
       'common/lib/angular-mocks/angular-mocks.js',
       'common/services/nameService.js',
       'common/modules/headerModule.js',
-      'common/directives/htmlGenerator/bindDynamicHtml.js',
       'user/js/common/modules/thumbnailModule.js',
       'user/js/common/modules/PopupSupport.js',
       'user/js/common/modules/mediaPlayer.js',

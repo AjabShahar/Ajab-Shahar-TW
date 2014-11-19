@@ -19,19 +19,14 @@
     <script type="text/javascript" src="../../js/common/modules/mediaPlayer.js"></script>
     <script type="text/javascript" src="../../js/common/directives/soundCloud/soundcloud_player.js"></script>
     <script type="text/javascript" src="../../js/common/directives/youtube/youtube_player.js"></script>
-    <script type="text/javascript" src="../../js/common/directives/songs/introduction.js"></script>
     <script type="text/javascript" src="../../js/common/config/resourceUrlWhiteList.js"></script>
     <script type="text/javascript" src="../../../common/modules/headerModule.js"></script>
     <script type="text/javascript" src="../../../common/directives/header/ajabShaharHeader.js"></script>
-    <script type="text/javascript" src="../../../common/directives/htmlGenerator/bindDynamicHtml.js"></script>
     <script type="text/javascript" src="../../js/LandingPages/services/contentService.js"></script>
     <script type="text/javascript" src="../../js/songs/services/songsContentService.js"></script>
     <script type="text/javascript" src="../../js/songs/app.js"></script>
     <script type="text/javascript" src="../../js/songs/controllers/allSongsController.js"></script>
     <script type="text/javascript" src="../../js/common/modules/htmlGenerator.js"></script>
-    <script type="text/javascript" src="../../js/common/services/songThumbnailService.js"></script>
-    <script type="text/javascript" src="../../js/common/services/coupletThumbnailService.js"></script>
-    <script type="text/javascript" src="../../js/common/services/introductionPopupService.js"></script>
     <script type="text/javascript" src="../../../common/directives/header/sticky.js"></script>
     <script type="text/javascript" src="../../js/common/directives/carouselSupport/carousel.js"></script>
     <link href="../../../common/css/header.css" rel="stylesheet" type="text/css">
@@ -117,16 +112,16 @@
                     <div class='numericCount'>{{totalFilteredSongs}} songs</div>
                 </div>
                 <div class='gridWrapper'>
-                    <ul ng-repeat="song in songs track by $index" class="flexiThumbnails">
-                        <li bind-dynamic-html="song"></li>
+                    <ul class="flexiThumbnails">
+                        <li  ng-repeat="song in songs track by $index"><song-mapper details="song" show-details-service="detailsService" custom-style=""/></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 
-    <div ng-repeat="songDetail in songDetails track by $index">
-        <div bind-dynamic-html="songDetail"></div>
+    <div ng-repeat="song in songs track by $index">
+        <song-introduction-mapper index="{{$index}}" details="song" show-details-service="detailsService"/>
     </div>
 
 </body>

@@ -34,23 +34,10 @@ var allSongsController = function($scope,songsContentService,popupService){
         });
     }
 
-    $scope.createSongThumbnailWithPopUp = function(result){
-        var j;
-        for(j = 0; j < result.length ;j++){
-                var songThumbnailWithBubble = songThumbnailService.getThumbnailWithBubble(result[j]);
-
-                $scope.songs.push(songThumbnailWithBubble);
-
-                var popupContent = songThumbnailService.getPopupDetails(result[j],j,'song_'+result[j].id,j);
-                $scope.songDetails.push(popupContent);
-            }
-    }
-
     $scope.loadSongFromRange = function(){
         if(i <= $scope.totalFilteredSongs){
         	songsContentService.getSongsInRangeAndFilteredBy(i, $scope.activeLetter).then(function(result){
-                $scope.songsList = result.data;
-                $scope.createSongThumbnailWithPopUp(result.data);
+                $scope.songs = result.data;
                 i += 9;
             });
         }

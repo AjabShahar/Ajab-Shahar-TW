@@ -6,6 +6,3 @@ landingPagesApp.factory('contentService', ['$http', contentService]);
 landingPagesApp.run(function($FB){
   $FB.init('714039208665351');
 });
- 
-
-landingPagesApp.directive('bindDynamicHtml', ['$compile', bindDynamicHtml]);

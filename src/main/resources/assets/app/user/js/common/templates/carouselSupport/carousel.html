@@ -1,5 +1,5 @@
-<div class="carousel">
-     <div class='carousel-arrows'> <button ng-click="prev()">Prev</button></div>
-        <div class="carousel-container" ng-transclude></div>
-    <div class='carousel-arrows'><button ng-click="next()">Next</button></div>
+<div class="carousel-container slider">
+    <div ng-transclude></div>
+    <a class="arrow prev" href="#" ng-click="nextSlide()"></a>
+    <a class="arrow next" href="#" ng-click="prevSlide()"></a>
 </div>
