@@ -4,21 +4,28 @@ thumbnailModule.directive("songContentDetails", function() {
     return {
         restrict: 'E',
         scope: {
-            song:'=',
+            videoId:'@',
+            audioUrl:'@',
+            id:'@',
+            detailsService:'='
         },
         templateUrl:'/user/js/common/templates/songs/contentDetails.html',
         controller: function($scope) {
-            $scope.closeVideo = function(){
-                return $scope.song.shouldCloseVideo;
+            $scope.hideContents = function(){
+                return $scope.detailsService.shouldHideDetails;
             }
 
             $scope.isVideo = function(){
-                return $scope.song.videoId!=null && $scope.song.videoId != "null";
+                return $scope.videoId!=null && $scope.videoId != "null";
             };
 
             $scope.isAudio = function(){
                 return !$scope.isVideo();
             };
+
+            $scope.shouldStopVideo = function(){
+                return detailsService.isClosed(id);
+            }
         }
     }
 });

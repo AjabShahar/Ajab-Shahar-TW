@@ -3,6 +3,8 @@ var songDetailsController = function($scope,$location,songsContentService){
     $scope.urlId = $location.search().id;
     $scope.detailsService = $scope;
     $scope.sections = [];
+    $scope.showContentDetails = {};
+    $scope.prevId = null;
 
     $scope.init = function(){
         songsContentService.getSongsVersions($scope.urlId).then(function(result){
@@ -18,26 +20,41 @@ var songDetailsController = function($scope,$location,songsContentService){
                 sections[sections.length-1].songs.push(song);
                 return sections;
             },$scope.sections);
+
+            $scope.open($scope.sections[0].songs[0].id);
         });
 
         $scope.detailContents = songsContentService.getSongRenditions($scope.urlId).then(function(result){
             $scope.details = result.data;
-//            $scope.details[0].showContentDetails = true;
         });
+    }
+
+    $scope.$on('sectionChanged', function(event, args) {
+        $scope.open($scope.sections[index].songs[0].id);
+    });
+
+    $scope.getSongId = function(id){
+        return id.toString().match(/[0-9]+/)[0];
     }
 
     $scope.open = function(id){
-        _.each($scope.details, function(detail) {
-            detail.showContentDetails = (detail.id == id);
-        });
+        var songId = $scope.getSongId(id);
+
+        if($scope.prevId!=null)
+            $scope.showContentDetails[$scope.prevId] = false;
+
+        $scope.prevId = id;
+        $scope.showContentDetails[songId] = true;
     }
 
-    $scope.isVideo = function(id){
-        return true;
+    $scope.isOpen = function(id){
+        var songId = $scope.getSongId(id);
+        return $scope.showContentDetails[songId];
     }
 
-    $scope.isAudio = function(id){
-        return false;
+    $scope.isClosed = function(id){
+        var songId = $scope.getSongId(id);
+        return $scope.showContentDetails[songId];
     }
 
     $scope.init();

@@ -2,7 +2,7 @@
 <html ng-app="songDetailsApp">
 <head>
     <meta charset="utf-8">
-    <title>AngularJS Animate Slider</title>
+    <title>Song details page</title>
     <link href="../../../common/css/header.css" rel="stylesheet" type="text/css">
     <link href="../../../common/css/footer.css" rel="stylesheet" type="text/css">
     <link href="../../../common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
@@ -14,7 +14,6 @@
     <link href="../../css/carouselSupport/carousel.css" rel="stylesheet" type="text/css">
     <link href="../../css/carouselSupport/carouselAnimation.css" rel="stylesheet" type="text/css">
     <link href="../../css/accordionSupport/accordionAnimation.css" rel="stylesheet" type="text/css">
-    <link href="../../css/pages/songDetails.css" rel="stylesheet" type="text/css">
 
     <script type="text/javascript" src="../../../common/lib/underscore/underscore.js"></script>
     <script type="text/javascript" src="../../../common/services/nameService.js"></script>
@@ -38,27 +37,27 @@
     <script type="text/javascript" src="../../js/songs/songDetailsApp.js"></script>
     <script type="text/javascript" src="../../js/songs/controllers/songDetailsController.js"></script>
     <script type="text/javascript" src="../../js/common/directives/mappers/songMapper.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/mappers/songContentDetailsMapper.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/soundCloud/soundcloud_player.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/youtube/youtube_player.js"></script>
     <script type="text/javascript" src="../../js/common/directives/thumbnail/song.js"></script>
 </head>
 
 <body ng-controller="songDetailsController" class="page-songs">
-<ajab-shahar-header></ajab-shahar-header>
-<div class='ajab-container'>
-    <div class='ajab-wrapper'>
-        <carousel>
-            <section ng-repeat="section in sections" index="{{$index}}">
-                <div ng-repeat="song in section.songs">
-                    <song-mapper details="song" show-details-service="detailsService" custom-style=""/>
-                </div>
-            </section>
-        </carousel>
-
-        <div ng-repeat="song in details">
-            <div ng-show="song.showContentDetails">
-                <song-content-details song="song"></song-content-details>
-            </div>
+    <ajab-shahar-header></ajab-shahar-header>
+    <div class='ajab-container'>
+        <div class='ajab-wrapper'>
+            <carousel>
+                <section ng-repeat="section in sections" index="{{$index}}">
+                    <div ng-repeat="song in section.songs">
+                        <song-mapper details="song" show-details-service="detailsService" custom-style=""/>
+                    </div>
+                </section>
+            </carousel>
         </div>
     </div>
-</div>
+    <div ng-repeat="song in details" ng-show="isOpen({{song.id}})">
+        <song-content-details-mapper details="song" details-service="detailsService"></song-content-details-mapper>
+    </div>
 </body>
 </html>

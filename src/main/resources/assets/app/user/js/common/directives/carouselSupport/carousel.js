@@ -9,12 +9,6 @@ carouselModule.directive('carousel', function($timeout) {
         $scope.currentIndex = 0; // Initially the index is at the first element
         $scope.sections = [];
         $scope.direction = 'left';
-        $scope.currentIndex = 0;
-
-        $scope.setCurrentSlideIndex = function (index) {
-             $scope.direction = (index > $scope.currentIndex) ? 'left' : 'right';
-             $scope.currentIndex = index;
-         };
 
         $scope.prevSlide = function () {
              $scope.direction = 'left';
@@ -32,11 +26,6 @@ carouselModule.directive('carousel', function($timeout) {
 
         this.addSection = function(section) {
             $scope.sections.push(section);
-            if($scope.sections.length==1)
-            {
-                $scope.currentIndex = 0;
-                $scope.sections[$scope.currentIndex].selected = true;
-            }
          }
     }],
     link: function(scope, elem, attrs) {
