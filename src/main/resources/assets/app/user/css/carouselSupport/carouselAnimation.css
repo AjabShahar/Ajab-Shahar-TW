@@ -6,53 +6,18 @@ display: inline-block;
 float: left;
 }
 
-.carousel-arrows{
-  width:45px;float: left;
+.slider {
+    width: 800px;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    background: #e6e6e6;
+    border: 20px solid #FFF;
+    margin-top: 20px;
 }
 
-.ltr-animation.ng-hide-remove,
-.rtl-animation.ng-hide-remove,
-.ltr-animation.ng-hide-add,
-.rtl-animation.ng-hide-add {
-  -webkit-transition:1s linear all;
-  -moz-transition:1s linear all;
-  -o-transition:1s linear all;
-  -ms-transition:1s linear all;
-  transition:1s linear all;
-  height:500px;
-
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  opacity: 1;
-}
-
-.ltr-animation.ng-hide-remove {
-  left:-30%;
-  opacity:1;
-}
-
-.ltr-animation.ng-hide-add,
-.ltr-animation.ng-hide-remove.ng-hide-remove-active {
-  left:0;
-}
-
-.ltr-animation.ng-hide-add.ng-hide-add-active {
-  left:-30%;
-  opacity:0;
-}
-
-
-.rtl-animation.ng-hide-add-active {
-  right:-200%;
-  opacity:0;
-}
-
-.rtl-animation.ng-hide-remove {
-  opacity:0;
-}
-
-.rtl-animation.ng-hide-remove.ng-hide-remove-active {
-  opacity:1;
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
