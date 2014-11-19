@@ -11,16 +11,23 @@
     <link href="../../css/common/directives/thumbnail.css" rel="stylesheet" type="text/css">
     <link href="../../css/common/directives/introduction.css" rel="stylesheet" type="text/css">
     <link href="../../css/pages/songs.css" rel="stylesheet" type="text/css">
-    <link href="../../css/carouselSupport/carousel.css" rel="stylesheet" type="text/css">
-    <link href="../../css/carouselSupport/carouselAnimation.css" rel="stylesheet" type="text/css">
     <link href="../../css/accordionSupport/accordionAnimation.css" rel="stylesheet" type="text/css">
-
+    <link href="../../../common/lib/angular-carousel/dist/angular-carousel.min.css" rel="stylesheet" type="text/css">
+    <style>
+        ul[rn-carousel] {
+            height:300px;
+        }
+        ul[rn-carousel]>li>div {
+            float: left;
+        }
+    </style>
     <script type="text/javascript" src="../../../common/lib/underscore/underscore.js"></script>
     <script type="text/javascript" src="../../../common/services/nameService.js"></script>
     <script type="text/javascript" src="../../../common/lib/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="../../../common/lib/angular/angular.js"></script>
     <script type="text/javascript" src="../../../common/lib/angular-touch/angular-touch.js"></script>
     <script type="text/javascript" src="../../../common/lib/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="../../../common/lib/angular-carousel/dist/angular-carousel.min.js"></script>
     <script type="text/javascript" src="../../../common/lib/angular-touch/angular-touch.min.js"></script>
     <script type="text/javascript" src="../../../common/lib/gsap/src/minified/TweenMax.min.js"></script>
     <script type="text/javascript" src="../../js/common/config/resourceUrlWhiteList.js"></script>
@@ -31,9 +38,7 @@
     <script type="text/javascript" src="../../../common/directives/header/sticky.js"></script>
     <script type="text/javascript" src="../../../common/modules/headerModule.js"></script>
     <script type="text/javascript" src="../../../common/directives/header/ajabShaharHeader.js"></script>
-    <script type="text/javascript" src="../../js/common/directives/carouselSupport/carousel.js"></script>
     <script type="text/javascript" src="../../js/common/directives/songs/songContentDetails.js"></script>
-    <script type="text/javascript" src="../../js/common/animation/carouselAnimation.js"></script>
     <script type="text/javascript" src="../../js/songs/songDetailsApp.js"></script>
     <script type="text/javascript" src="../../js/songs/controllers/songDetailsController.js"></script>
     <script type="text/javascript" src="../../js/common/directives/mappers/songMapper.js"></script>
@@ -47,17 +52,17 @@
     <ajab-shahar-header></ajab-shahar-header>
     <div class='ajab-container'>
         <div class='ajab-wrapper'>
-            <carousel>
-                <section ng-repeat="section in sections" index="{{$index}}">
+            <ul rn-carousel rn-carousel-controls class="image">
+                <li ng-repeat="section in sections">
                     <div ng-repeat="song in section.songs">
-                        <song-mapper details="song" show-details-service="detailsService" custom-style=""/>
+                        <song-mapper details="song" show-details-service="detailsService" custom-style="alignLeft"/>
                     </div>
-                </section>
-            </carousel>
+                </li>
+            </ul>
+            <div ng-repeat="song in details" ng-show="isOpen({{song.id}})">
+                <song-content-details-mapper details="song" details-service="detailsService"></song-content-details-mapper>
+            </div>
         </div>
-    </div>
-    <div ng-repeat="song in details" ng-show="isOpen({{song.id}})">
-        <song-content-details-mapper details="song" details-service="detailsService"></song-content-details-mapper>
     </div>
 </body>
 </html>

@@ -8,7 +8,7 @@ carouselModule.directive('carousel', function($timeout) {
     controller: ['$scope',function($scope) {
         $scope.currentIndex = 0; // Initially the index is at the first element
         $scope.sections = [];
-        $scope.direction = 'left';
+        $scope.direction = '';
 
         $scope.prevSlide = function () {
              $scope.direction = 'left';

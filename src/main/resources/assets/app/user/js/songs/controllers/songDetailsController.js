@@ -5,6 +5,22 @@ var songDetailsController = function($scope,$location,songsContentService){
     $scope.sections = [];
     $scope.showContentDetails = {};
     $scope.prevId = null;
+    $scope.currentIndex = 0; // Initially the index is at the first element
+    $scope.direction = '';
+
+    $scope.prevSlide = function () {
+         $scope.direction = 'left';
+         $scope.currentIndex = ($scope.currentIndex < $scope.sections.length - 1) ? ++$scope.currentIndex : 0;
+     };
+
+    $scope.nextSlide = function () {
+         $scope.direction = 'right';
+         $scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.sections.length - 1;
+     };
+
+    $scope.isCurrentSlideIndex = function (index) {
+      return $scope.currentIndex === index;
+    };
 
     $scope.init = function(){
         songsContentService.getSongsVersions($scope.urlId).then(function(result){
@@ -43,7 +59,7 @@ var songDetailsController = function($scope,$location,songsContentService){
         if($scope.prevId!=null)
             $scope.showContentDetails[$scope.prevId] = false;
 
-        $scope.prevId = id;
+        $scope.prevId = songId;
         $scope.showContentDetails[songId] = true;
     }
 
@@ -61,5 +77,4 @@ var songDetailsController = function($scope,$location,songsContentService){
 };
 
 songDetailsApp
-.controller('songDetailsController',['$scope','$location','songsContentService',songDetailsController])
-.animation('.slide-animation', carouselAnimation);
+.controller('songDetailsController',['$scope','$location','songsContentService',songDetailsController]);
