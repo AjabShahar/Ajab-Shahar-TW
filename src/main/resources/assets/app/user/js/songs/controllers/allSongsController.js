@@ -1,30 +1,24 @@
 var allSongsController = function($scope,songsContentService,popupService){
     $scope.songs=[];
-    $scope.songDetails=[];
     $scope.totalSongs = null;
     $scope.totalFilteredSongs = 0;
     $scope.detailsService = popupService;
     $scope.activeLetter = '';
-    $scope.filterOn = false;
-    $scope.songsList = null;
 
     var i = 0;
-
-    $scope.getTotalSongsCount = function(){
-        songsContentService.getAllSongs().then(function(songsList){
-            $scope.totalSongs = songsList.data.length;
-            $scope.totalFilteredSongs = $scope.totalSongs;
-        });
-    }
 
     $scope.removeSongs = function(){
         i = 0;
         $scope.songs.splice(0, $scope.songs.length);
-        $scope.songDetails.splice(0, $scope.songDetails.length);
     }
 
-    $scope.filterSongsBasedOnAlphabets = function(letter){
-        $scope.filterOn = true;
+    $scope.getTotalSongsCount = function(){
+        songsContentService.getAllSongs().then(function(songsList){
+            $scope.totalFilteredSongs = $scope.totalSongs = songsList.data.length;
+        });
+    }
+
+    $scope.filterSongsOnLetter = function(letter){
         $scope.activeLetter = letter;
         $scope.removeSongs();
         $scope.loadSongFromRange();
@@ -36,12 +30,18 @@ var allSongsController = function($scope,songsContentService,popupService){
 
     $scope.loadSongFromRange = function(){
         if(i <= $scope.totalFilteredSongs){
-        	songsContentService.getSongsInRangeAndFilteredBy(i, $scope.activeLetter).then(function(result){
-                $scope.songs = result.data;
+            songsContentService.getSongsInRangeAndFilteredBy(i, $scope.activeLetter).then(function(result){
+
+                for(j=0; j< result.data.length; j++){
+                    $scope.songs.push(result.data[j]);
+                }
+
                 i += 9;
             });
         }
     }
+
+    $scope.loadSongFromRange();
 };
 
 allSongsApp.controller('allSongsController',['$scope','songsContentService','popupService',allSongsController]);
