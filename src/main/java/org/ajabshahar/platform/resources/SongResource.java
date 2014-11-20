@@ -5,10 +5,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.jersey.caching.CacheControl;
-import org.ajabshahar.platform.daos.CategoryDAO;
+import org.ajabshahar.api.SongsRepresentation;
 import org.ajabshahar.platform.daos.SongDAO;
 import org.ajabshahar.platform.daos.TitleDAO;
-import org.ajabshahar.platform.models.Category;
 import org.ajabshahar.platform.models.Song;
 import org.ajabshahar.platform.models.Title;
 
@@ -22,9 +21,12 @@ import java.util.List;
 public class SongResource {
     private final SongDAO songDAO;
     private final TitleDAO titleDAO;
-    public SongResource(SongDAO songDAO, TitleDAO titleDAO) {
+    private SongsRepresentationFactory songsRepresentationFactory;
+
+    public SongResource(SongDAO songDAO, TitleDAO titleDAO, SongsRepresentationFactory songsRepresentationFactory) {
         this.songDAO = songDAO;
         this.titleDAO = titleDAO;
+        this.songsRepresentationFactory = songsRepresentationFactory;
     }
 
 
@@ -131,6 +133,20 @@ public class SongResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Song> getSongWithRenditions(@PathParam("id") Long id){
         return songDAO.findSongWithRenditions(id);
+    }
+
+    @GET
+    @UnitOfWork
+    @Path("/getsongs")
+    public Response getSongs(@QueryParam("singerId") int singerId) {
+        List<Song> songs = songDAO.findBySingerId(singerId);
+        SongsRepresentation songsRepresentation = songsRepresentationFactory.create(songs);
+        return getResponseOk(songsRepresentation);
+    }
+
+    private static Response getResponseOk(SongsRepresentation songsRepresentation) {
+        Response.ResponseBuilder ok = Response.ok(songsRepresentation, MediaType.APPLICATION_JSON);
+        return ok.build();
     }
 
 }

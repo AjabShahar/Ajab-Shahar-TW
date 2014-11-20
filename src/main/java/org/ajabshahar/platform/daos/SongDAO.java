@@ -2,7 +2,6 @@ package org.ajabshahar.platform.daos;
 
 import io.dropwizard.hibernate.AbstractDAO;
 import org.ajabshahar.platform.models.Song;
-import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
@@ -63,5 +62,9 @@ public class SongDAO extends AbstractDAO<Song> {
 
     public int getCountOfSongsThatStartWith(String letter) {
         return list(namedQuery("org.ajabshahar.platform.models.Song.findAllFilteredBy").setParameter("letter", letter + "%")).size();
+    }
+
+    public List<Song> findBySingerId(int singerId) {
+        return list(namedQuery("org.ajabshahar.platform.models.Song.findAll"));
     }
 }
