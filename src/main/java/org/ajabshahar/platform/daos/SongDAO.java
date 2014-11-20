@@ -2,7 +2,10 @@ package org.ajabshahar.platform.daos;
 
 import io.dropwizard.hibernate.AbstractDAO;
 import org.ajabshahar.platform.models.Song;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
@@ -65,7 +68,15 @@ public class SongDAO extends AbstractDAO<Song> {
     }
 
     public List<Song> findBy(int singerId, int poetId) {
-        return list(namedQuery("org.ajabshahar.platform.models.Song.findAll"));
+        Session currentSession = sessionFactory.getCurrentSession();
+        Criteria findSongs = currentSession.createCriteria(Song.class);
+
+        findSongs.createAlias("singers", "singersAlias");
+        findSongs.add(Restrictions.eq("singersAlias.id", Long.valueOf(singerId) ));
+
+        findSongs.createAlias("poets", "poetsAlias");
+        findSongs.add(Restrictions.eq("poetsAlias.id", Long.valueOf(poetId)));
+        return findSongs.list();
     }
 
 }
