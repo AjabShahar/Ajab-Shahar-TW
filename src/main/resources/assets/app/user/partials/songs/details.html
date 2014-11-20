@@ -13,6 +13,8 @@
     <link href="../../css/pages/songs.css" rel="stylesheet" type="text/css">
     <link href="../../css/accordionSupport/accordionAnimation.css" rel="stylesheet" type="text/css">
     <link href="../../../common/lib/angular-carousel/dist/angular-carousel.min.css" rel="stylesheet" type="text/css">
+    <link href="../../js/common/jcarousel.basic.css" rel="stylesheet" type="text/css">
+    <link href="../../js/common/style.css" rel="stylesheet" type="text/css">
     <style>
         ul[rn-carousel] {
             height:300px;
@@ -39,6 +41,8 @@
     <script type="text/javascript" src="../../../common/modules/headerModule.js"></script>
     <script type="text/javascript" src="../../../common/directives/header/ajabShaharHeader.js"></script>
     <script type="text/javascript" src="../../js/common/directives/songs/songContentDetails.js"></script>
+    <script type="text/javascript" src="../../js/common/jCarousel.js"></script>
+    <script type="text/javascript" src="../../js/common/jcarousel.basic.js"></script>
     <script type="text/javascript" src="../../js/songs/songDetailsApp.js"></script>
     <script type="text/javascript" src="../../js/songs/controllers/songDetailsController.js"></script>
     <script type="text/javascript" src="../../js/common/directives/mappers/songMapper.js"></script>
@@ -46,19 +50,34 @@
     <script type="text/javascript" src="../../js/common/directives/soundCloud/soundcloud_player.js"></script>
     <script type="text/javascript" src="../../js/common/directives/youtube/youtube_player.js"></script>
     <script type="text/javascript" src="../../js/common/directives/thumbnail/song.js"></script>
+
 </head>
 
 <body ng-controller="songDetailsController" class="page-songs">
     <ajab-shahar-header></ajab-shahar-header>
     <div class='ajab-container'>
         <div class='ajab-wrapper'>
-            <ul rn-carousel rn-carousel-controls class="image">
-                <li ng-repeat="section in sections">
-                    <div ng-repeat="song in section.songs">
-                        <song-mapper details="song" show-details-service="detailsService" custom-style="alignLeft"/>
-                    </div>
-                </li>
-            </ul>
+            <div class="jcarousel-wrapper">
+                <div class="jcarousel">
+                    <ul>
+                        <li ng-repeat="song in songs">
+                            <song-mapper width="25%" details="song" show-details-service="detailsService" custom-style="alignLeft"/>
+                        </li>
+                    </ul>
+                </div>
+
+                <p class="photo-credits">
+                    Photos by <a href="http://www.mw-fotografie.de">Marc Wiegelmann</a>
+                </p>
+
+                <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+                <a href="#" class="jcarousel-control-next">&rsaquo;</a>
+
+                <p class="jcarousel-pagination">
+
+                </p>
+            </div>
+
             <div ng-repeat="song in details" ng-show="isOpen({{song.id}})">
                 <song-content-details-mapper details="song" details-service="detailsService"></song-content-details-mapper>
             </div>
