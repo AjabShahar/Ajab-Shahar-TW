@@ -2,25 +2,27 @@ package org.ajabshahar.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-    public class SongRepresentation {
+import java.util.List;
+
+public class SongRepresentation {
 
     private long id;
     private String englishTranslationTitle;
     private String englishTransliterationTitle;
-    private String singer;
-    private String poet;
+    private List<String> singers;
+    private List<String> poets;
     private String duration;
 
     public SongRepresentation() {
 
     }
 
-    public SongRepresentation(long id, String englishTranslationTitle, String englishTransliterationTitle, String singer, String poet, String duration) {
+    public SongRepresentation(long id, String englishTranslationTitle, String englishTransliterationTitle, List<String> singers, List<String> poets, String duration) {
         this.id = id;
         this.englishTranslationTitle = englishTranslationTitle;
         this.englishTransliterationTitle = englishTransliterationTitle;
-        this.singer = singer;
-        this.poet = poet;
+        this.singers = singers;
+        this.poets = poets;
         this.duration = duration;
     }
 
@@ -39,14 +41,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
         return englishTransliterationTitle;
     }
 
-    @JsonProperty("singer")
-    public String getSinger() {
-        return singer;
+    @JsonProperty("singers")
+    public List<String> getSingers() {
+        return singers;
     }
 
     @JsonProperty("poet")
-    public String getPoet() {
-        return poet;
+    public List<String> getPoets() {
+        return poets;
     }
 
     @JsonProperty("duration")

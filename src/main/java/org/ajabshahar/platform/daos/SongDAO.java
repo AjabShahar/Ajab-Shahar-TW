@@ -64,7 +64,8 @@ public class SongDAO extends AbstractDAO<Song> {
         return list(namedQuery("org.ajabshahar.platform.models.Song.findAllFilteredBy").setParameter("letter", letter + "%")).size();
     }
 
-    public List<Song> findBySingerId(int singerId) {
+    public List<Song> findBy(int singerId, int poetId) {
         return list(namedQuery("org.ajabshahar.platform.models.Song.findAll"));
     }
+
 }

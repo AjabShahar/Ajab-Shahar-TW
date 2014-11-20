@@ -138,8 +138,8 @@ public class SongResource {
     @GET
     @UnitOfWork
     @Path("/getsongs")
-    public Response getSongs(@QueryParam("singerId") int singerId) {
-        List<Song> songs = songDAO.findBySingerId(singerId);
+    public Response getSongs(@QueryParam("singerId") int singerId,@QueryParam("poetId") int poetId) {
+        List<Song> songs = songDAO.findBy(singerId, poetId);
         SongsRepresentation songsRepresentation = songsRepresentationFactory.create(songs);
         return getResponseOk(songsRepresentation);
     }
@@ -148,5 +148,4 @@ public class SongResource {
         Response.ResponseBuilder ok = Response.ok(songsRepresentation, MediaType.APPLICATION_JSON);
         return ok.build();
     }
-
 }
