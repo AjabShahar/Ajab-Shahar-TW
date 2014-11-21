@@ -51,6 +51,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         final TitleDAO titleDAO = new TitleDAO(hibernate.getSessionFactory());
         final TemplateHealthCheck templateHealthCheck = new TemplateHealthCheck(configuration.getTemplate());
         final SongsRepresentationFactory songsRepresentationFactory = new SongsRepresentationFactory();
+        final PersonRepresentationFactory personRepresentationFactory =  new PersonRepresentationFactory();
 
         environment.jersey().setUrlPattern("/api/*");
         environment.jersey().register(new SplashScreenOptionsResource(dao));
@@ -58,7 +59,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         environment.jersey().register(new CoupletResource(coupletDAO));
         environment.jersey().register(new LandingPagesResource(songDAO, coupletDAO, wordDAO));
         environment.jersey().register(new SongResource(songDAO, titleDAO, songsRepresentationFactory));
-        environment.jersey().register(new PersonResource(personDAO));
+        environment.jersey().register(new PersonResource(personDAO, personRepresentationFactory));
         environment.jersey().register(new CategoryResource(categoryDAO));
         environment.jersey().register(new TitleResource(titleDAO));
         environment.healthChecks().register("template", templateHealthCheck);

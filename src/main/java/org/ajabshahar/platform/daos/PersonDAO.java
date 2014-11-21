@@ -3,8 +3,10 @@ package org.ajabshahar.platform.daos;
 import com.google.common.base.Optional;
 import io.dropwizard.hibernate.AbstractDAO;
 import org.ajabshahar.platform.models.PersonDetails;
-import org.ajabshahar.platform.models.Song;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
@@ -32,5 +34,13 @@ public class PersonDAO extends AbstractDAO<PersonDetails> {
     public List<PersonDetails> findPoets() {
         return list(namedQuery("org.ajabshahar.platform.models.PersonDetails.findPoets"));
 
+    }
+
+    public List<PersonDetails> findBy(int personId) {
+
+        Session session = currentSession();
+        Criteria criteria = session.createCriteria(PersonDetails.class);
+        criteria.add(Restrictions.eq("id", Long.valueOf(personId)));
+        return criteria.list();
     }
 }

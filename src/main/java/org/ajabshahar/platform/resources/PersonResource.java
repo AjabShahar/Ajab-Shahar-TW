@@ -6,6 +6,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import com.google.gson.Gson;
+import org.ajabshahar.api.PersonRepresentation;
 import org.ajabshahar.platform.daos.PersonDAO;
 import org.ajabshahar.platform.models.PersonDetails;
 
@@ -16,10 +17,11 @@ import java.util.List;
 public class PersonResource {
 
     private final PersonDAO personDAO;
+    private PersonRepresentationFactory personRepresentationFactory;
 
-
-    public PersonResource(PersonDAO personDAO) {
+    public PersonResource(PersonDAO personDAO, PersonRepresentationFactory personRepresentationFactory) {
         this.personDAO=personDAO;
+        this.personRepresentationFactory = personRepresentationFactory;
     }
 
     @POST
@@ -50,5 +52,14 @@ public class PersonResource {
     @Path("/poets")
     public List<PersonDetails>   listAllPoets() {
         return personDAO.findPoets();
+    }
+
+    @GET
+    @UnitOfWork
+    @Path("/{id}")
+    public PersonRepresentation getPerson(@PathParam("id") int personId) {
+        List<PersonDetails> personDetails = personDAO.findBy(personId);
+        PersonRepresentation personRepresentation = personRepresentationFactory.create(personDetails);
+        return personRepresentation;
     }
 }

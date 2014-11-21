@@ -76,6 +76,10 @@ public class SongDAO extends AbstractDAO<Song> {
 
         findSongs.createAlias("poets", "poetsAlias");
         findSongs.add(Restrictions.eq("poetsAlias.id", Long.valueOf(poetId)));
+
+//        findSongs.setFirstResult(1);
+//        findSongs.setMaxResults(10);
+
         return findSongs.list();
     }
 
