@@ -1,6 +1,6 @@
 'use strict';
 
-describe("LandingPages controller Specs", function(){
+describe("EditorsChoice controller Specs", function(){
 	var scope, q, controller;
 	var contentService = {
 	    getMainLandingPageThumbnails:function(){}

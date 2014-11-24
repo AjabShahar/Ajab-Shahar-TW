@@ -29,4 +29,4 @@ var songsEditorsChoiceController = function($scope,contentService,popupService, 
     $scope.init();
 }
 
-landingPagesApp.controller('songsEditorsChoiceController',['$scope','contentService','popupService', '$location',songsEditorsChoiceController]);
+editorsChoiceApp.controller('songsEditorsChoiceController',['$scope','contentService','popupService', '$location',songsEditorsChoiceController]);

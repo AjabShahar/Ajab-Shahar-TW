@@ -48,7 +48,7 @@ describe('Mapper', function() {
                             };
 
             element = angular.element('<song-mapper details="detailsFromService" custom-style="blah"/>');
-            template.put('/user/js/common/templates/mappers/songMapper.html', '{{song.id}} {{song.customStyle}} {{song.imgSrc}} {{song.videoId}} {{song.englishTransliteration}} {{song.categoryName}} {{song.duration}} {{song.singer}} {{song.poet}}');
+            template.put('/user/js/common/templates/mappers/songMapper.html', '<div>{{song.id}} {{song.customStyle}} {{song.imgSrc}} {{song.videoId}} {{song.englishTransliteration}} {{song.categoryName}} {{song.duration}} {{song.singer}} {{song.poet}}</div>');
             compile(element)(scope);
             scope.$apply();
 

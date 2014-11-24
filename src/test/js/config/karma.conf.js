@@ -14,7 +14,7 @@ module.exports = function (config) {
       'user/js/common/modules/mediaPlayer.js',
       'user/js/common/**/*.js',
       'user/js/Introduction/**/*.js',
-      'user/js/LandingPages/**/*.js',
+      'user/js/EditorsChoice/**/*.js',
       '../../../../test/js/unit/**/*.js'
     ],
     autoWatch: true,

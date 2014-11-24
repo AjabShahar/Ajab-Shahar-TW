@@ -17,12 +17,12 @@ import java.util.List;
 
 @Path("/mainLandingPage")
 @Produces(MediaType.APPLICATION_JSON)
-public class LandingPagesResource {
+public class EditorsChoiceResource {
     private SongDAO songDAO;
     private CoupletDAO coupletDAO;
     private WordDAO wordDAO;
 
-    public LandingPagesResource(SongDAO songDAO, CoupletDAO coupletDAO, WordDAO wordDAO) {
+    public EditorsChoiceResource(SongDAO songDAO, CoupletDAO coupletDAO, WordDAO wordDAO) {
         this.songDAO = songDAO;
         this.coupletDAO = coupletDAO;
         this.wordDAO = wordDAO;

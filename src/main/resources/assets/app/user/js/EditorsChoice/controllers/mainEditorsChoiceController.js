@@ -37,4 +37,4 @@ var mainEditorsChoiceController = function($scope,contentService,popupService, $
     $scope.init();
 }
 
-landingPagesApp.controller('mainEditorsChoiceController',['$scope','contentService','popupService', '$location',mainEditorsChoiceController]);
+editorsChoiceApp.controller('mainEditorsChoiceController',['$scope','contentService','popupService', '$location',mainEditorsChoiceController]);

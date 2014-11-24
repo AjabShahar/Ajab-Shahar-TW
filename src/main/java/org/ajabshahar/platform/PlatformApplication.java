@@ -57,7 +57,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         environment.jersey().register(new SplashScreenOptionsResource(dao));
         environment.jersey().register(new WordResource(wordDAO));
         environment.jersey().register(new CoupletResource(coupletDAO));
-        environment.jersey().register(new LandingPagesResource(songDAO, coupletDAO, wordDAO));
+        environment.jersey().register(new EditorsChoiceResource(songDAO, coupletDAO, wordDAO));
         environment.jersey().register(new SongResource(songDAO, titleDAO, songsRepresentationFactory));
         environment.jersey().register(new PersonResource(personDAO, personRepresentationFactory));
         environment.jersey().register(new CategoryResource(categoryDAO));
