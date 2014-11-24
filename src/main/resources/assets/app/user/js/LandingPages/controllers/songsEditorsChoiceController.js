@@ -1,4 +1,4 @@
-var songsController = function($scope,contentService,popupService, $location){
+var songsEditorsChoiceController = function($scope,contentService,popupService, $location){
     $scope.detailsService=popupService;
     $scope.init = function(){
         $scope.url = $location.absUrl();
@@ -29,4 +29,4 @@ var songsController = function($scope,contentService,popupService, $location){
     $scope.init();
 }
 
-landingPagesApp.controller('songsController',['$scope','contentService','popupService', '$location',songsController]);
+landingPagesApp.controller('songsEditorsChoiceController',['$scope','contentService','popupService', '$location',songsEditorsChoiceController]);

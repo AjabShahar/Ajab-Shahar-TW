@@ -1,4 +1,4 @@
-var mainLandingPageController = function($scope,contentService,popupService, $location){
+var mainEditorsChoiceController = function($scope,contentService,popupService, $location){
     $scope.detailsService = popupService;
     $scope.url = null;
     $scope.init = function(){
@@ -37,4 +37,4 @@ var mainLandingPageController = function($scope,contentService,popupService, $lo
     $scope.init();
 }
 
-landingPagesApp.controller('mainLandingPageController',['$scope','contentService','popupService', '$location',mainLandingPageController]);
+landingPagesApp.controller('mainEditorsChoiceController',['$scope','contentService','popupService', '$location',mainEditorsChoiceController]);
