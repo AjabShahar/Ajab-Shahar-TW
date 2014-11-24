@@ -69,4 +69,16 @@ public class CoupletResource {
         }
         return null;
     }
+
+    @GET
+    @UnitOfWork
+    @Path("/{id}")
+    public Response getCouplet(@PathParam("id") int id) {
+        List<Couplet> couplets = coupletDAO.findBy(id);
+        return getResponse(couplets).build();
+    }
+
+    public Response.ResponseBuilder getResponse(List<Couplet> couplets) {
+        return Response.ok(couplets);
+    }
 }
