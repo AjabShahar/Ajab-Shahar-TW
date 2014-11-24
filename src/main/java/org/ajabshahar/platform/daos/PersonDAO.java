@@ -1,6 +1,7 @@
 package org.ajabshahar.platform.daos;
 
 import com.google.common.base.Optional;
+import com.google.common.base.Strings;
 import io.dropwizard.hibernate.AbstractDAO;
 import org.ajabshahar.platform.models.PersonDetails;
 import org.hibernate.Criteria;
@@ -36,11 +37,15 @@ public class PersonDAO extends AbstractDAO<PersonDetails> {
 
     }
 
-    public List<PersonDetails> findBy(int personId) {
-
+    public List<PersonDetails> findBy(int personId, String role) {
         Session session = currentSession();
         Criteria criteria = session.createCriteria(PersonDetails.class);
-        criteria.add(Restrictions.eq("id", Long.valueOf(personId)));
+        if (personId > 0) {
+            criteria.add(Restrictions.eq("id", Long.valueOf(personId)));
+        }
+        if (!Strings.isNullOrEmpty(role)) {
+            criteria.add(Restrictions.eq("category", role));
+        }
         return criteria.list();
     }
 }
