@@ -18,11 +18,11 @@ var popupService = function (){
         return !shouldBeOpen[id];
     }
 
-    select = function(index){
-        _.each(popups,function(id){
-            shouldBeOpen[id] = false;
-        });
-        shouldBeOpen[popups[index]] = true;
+    select = function(oldIndex, newIndex){
+        shouldBeOpen[popups[oldIndex]] = false;
+        if(newIndex>popups.length)
+            newIndex = 0;
+        shouldBeOpen[popups[newIndex]] = true;
     }
 
     init = function(id){
@@ -32,6 +32,7 @@ var popupService = function (){
     return {
         open: open,
         onClose: onClose,
+        select: select,
         shouldShow: shouldShow,
         isClosed: isClosed,
         init:init,

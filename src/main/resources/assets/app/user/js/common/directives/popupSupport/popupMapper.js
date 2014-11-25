@@ -15,9 +15,9 @@ popupSupport.directive("popupMapper", function(nameService) {
             $scope.init = function(){
                 return $scope.showDetailsService.init($scope.id);
             }
-            $scope.select = function(){
-                return $scope.showDetailsService.select($scope.index);
-            }
+            $scope.$on('popupSelectionChanged', function(event,data){
+                return $scope.showDetailsService.select(parseInt($scope.index),data);
+            });
             $scope.shouldShow = function(){
                 return $scope.showDetailsService.shouldShow($scope.id);
             }

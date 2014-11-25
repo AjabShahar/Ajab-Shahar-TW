@@ -24,7 +24,6 @@ thumbnailModule.directive("songIntroduction", function() {
             $scope.isAudio = function(){
                 return !$scope.isVideo();
             };
-            //$scope.$on($scope.stopOn,$stopParam)
         }
     }
 });

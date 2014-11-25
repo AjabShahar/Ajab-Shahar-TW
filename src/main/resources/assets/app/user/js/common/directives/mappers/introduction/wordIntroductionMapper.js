@@ -7,7 +7,8 @@ thumbnailModule.directive("wordIntroductionMapper", function(nameService) {
             details:'=',
             customStyle:'@',
             showDetailsService:'=',
-            index:'@'
+            index:'@',
+            totalCount:'@'
         },
         templateUrl:'/user/js/common/templates/mappers/introduction/wordIntroductionMapper.html',
         controller:function($scope){

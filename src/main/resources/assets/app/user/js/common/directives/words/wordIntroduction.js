@@ -16,7 +16,6 @@ thumbnailModule.directive("wordIntroduction", function() {
             $scope.$watch(function() { return $scope.closeVideo(); }, function(newValue, oldValue) {
                 $scope.shouldStopVideo = !newValue;
             });
-            //$scope.$on($scope.stopOn,$stopParam)
         }
     }
 });

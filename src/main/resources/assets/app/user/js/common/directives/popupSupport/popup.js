@@ -10,10 +10,9 @@ var popUp = function() {
                 width: '@', //width of the popup
                 popupCount: '@',
                 id: '@',//an id for the background overlay for manipulation via jquery
-                onSelect: '&',
             },
             templateUrl: '/user/js/common/templates/popupSupport/popup.html',
-            controller: function($scope) {
+            controller: function($scope,$rootScope) {
                 $scope.$watch(function() { return $scope.show(); }, function(newValue, oldValue) {
                     if (newValue != true)
                         return;
@@ -25,6 +24,10 @@ var popUp = function() {
 
                 $scope.getPopupCount = function() {
                     return ($scope.popupCount==null)?new Array(15):new Array(parseInt($scope.popupCount));
+                }
+
+                $scope.onSelect = function(index){
+                    $rootScope.$broadcast('popupSelectionChanged',index);
                 }
 
                 $scope.isClosed = function(){
