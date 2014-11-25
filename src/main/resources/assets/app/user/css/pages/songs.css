@@ -68,6 +68,35 @@ position: relative;
 
 
 
+/* styles for songs details page */
+
+.page-songs .headerWrapper {
+    display: none;
+}
+
+.page-header {
+    background: transparent url(../../img/songs/song-detail-hdr-shadow.gif) 0 0 repeat;
+    width: 100%;
+    height: 100px;
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 0;
+}
+
+.page-header .page-logo {
+    background: transparent url(../../img/songs/songslogo.png) 0 0 no-repeat;
+    width: 88px;
+    height: 88px;
+    float: left;
+}
+
+.page-header .page-title {
+    float: left;
+}
+
+
+
 
 
 

@@ -2,66 +2,109 @@
 <html ng-app="songDetailsApp">
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
     <title>Song details page</title>
+
     <link href="../../../common/css/header.css" rel="stylesheet" type="text/css">
     <link href="../../../common/css/footer.css" rel="stylesheet" type="text/css">
-    <link href="../../../common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <!--<link href="../../../common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">-->
     <link href="../../css/mainLandingPage/main.css" rel="stylesheet" type="text/css">
-    <link href="../../css/mainLandingPage/parallax.css" rel="stylesheet" type="text/css">
-    <link href="../../css/common/directives/thumbnail.css" rel="stylesheet" type="text/css">
+    <!--<link href="../../css/mainLandingPage/parallax.css" rel="stylesheet" type="text/css">-->
+    <!--<link href="../../css/common/directives/thumbnail.css" rel="stylesheet" type="text/css">-->
     <link href="../../css/common/directives/introduction.css" rel="stylesheet" type="text/css">
     <link href="../../css/pages/songs.css" rel="stylesheet" type="text/css">
-    <link href="../../../common/jquery/jcarousel/jcarousel.responsive.css" rel="stylesheet" type="text/css">
+    <!--<link href="../../../common/jquery/jcarousel/jcarousel.responsive.css" rel="stylesheet" type="text/css">-->
     <script type="text/javascript" src="../../../common/lib/underscore/underscore.js"></script>
-    <script type="text/javascript" src="../../../common/services/nameService.js"></script>
+    <!--<script type="text/javascript" src="../../../common/services/nameService.js"></script>-->
     <script type="text/javascript" src="../../../common/lib/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="../../../common/lib/angular/angular.js"></script>
-    <script type="text/javascript" src="../../../common/lib/angular-touch/angular-touch.js"></script>
-    <script type="text/javascript" src="../../../common/lib/angular-animate/angular-animate.min.js"></script>
-    <script type="text/javascript" src="../../../common/lib/angular-touch/angular-touch.min.js"></script>
-    <script type="text/javascript" src="../../../common/lib/jcarousel/dist/jquery.jcarousel.min.js"></script>
-    <script type="text/javascript" src="../../js/common/config/resourceUrlWhiteList.js"></script>
-    <script type="text/javascript" src="../../js/songs/services/songsContentService.js"></script>
-    <script type="text/javascript" src="../../js/common/modules/thumbnailModule.js"></script>
-    <script type="text/javascript" src="../../js/common/modules/mediaPlayer.js"></script>
-    <script type="text/javascript" src="../../js/common/modules/htmlGenerator.js"></script>
-    <script type="text/javascript" src="../../../common/directives/header/sticky.js"></script>
-    <script type="text/javascript" src="../../../common/modules/headerModule.js"></script>
-    <script type="text/javascript" src="../../../common/directives/header/ajabShaharHeader.js"></script>
-    <script type="text/javascript" src="../../js/common/directives/songs/songContentDetails.js"></script>
-    <script type="text/javascript" src="../../../common/jquery/jcarousel/jcarousel.responsive.js"></script>
-    <script type="text/javascript" src="../../js/songs/songDetailsApp.js"></script>
-    <script type="text/javascript" src="../../js/songs/controllers/songDetailsController.js"></script>
-    <script type="text/javascript" src="../../js/common/directives/mappers/songMapper.js"></script>
-    <script type="text/javascript" src="../../js/common/directives/mappers/songContentDetailsMapper.js"></script>
-    <script type="text/javascript" src="../../js/common/directives/soundCloud/soundcloud_player.js"></script>
-    <script type="text/javascript" src="../../js/common/directives/youtube/youtube_player.js"></script>
-    <script type="text/javascript" src="../../js/common/directives/thumbnail/song.js"></script>
+    <!--<script type="text/javascript" src="../../../common/lib/angular/angular.js"></script>-->
+    <!--<script type="text/javascript" src="../../../common/lib/angular-touch/angular-touch.js"></script>-->
+    <!--<script type="text/javascript" src="../../../common/lib/angular-animate/angular-animate.min.js"></script>-->
+    <!--<script type="text/javascript" src="../../../common/lib/angular-touch/angular-touch.min.js"></script>-->
+    <!--<script type="text/javascript" src="../../../common/lib/jcarousel/dist/jquery.jcarousel.min.js"></script>-->
+    <script type="text/javascript" src="../../../common/jquery/jcarousel/jquery-carousel.min.js"></script>
+    <!--<script type="text/javascript" src="../../js/common/config/resourceUrlWhiteList.js"></script>-->
+    <!--<script type="text/javascript" src="../../js/songs/services/songsContentService.js"></script>-->
+    <!--<script type="text/javascript" src="../../js/common/modules/thumbnailModule.js"></script>-->
+    <!--<script type="text/javascript" src="../../js/common/modules/mediaPlayer.js"></script>-->
+    <!--<script type="text/javascript" src="../../js/common/modules/htmlGenerator.js"></script>-->
+    <!--<script type="text/javascript" src="../../../common/directives/header/sticky.js"></script>-->
+    <!--<script type="text/javascript" src="../../../common/modules/headerModule.js"></script>-->
+    <!--<script type="text/javascript" src="../../../common/directives/header/ajabShaharHeader.js"></script>-->
+    <!--<script type="text/javascript" src="../../js/common/directives/songs/songContentDetails.js"></script>-->
+    <!--<script type="text/javascript" src="../../../common/jquery/jcarousel/jcarousel.responsive.js"></script>-->
+    <!--<script type="text/javascript" src="../../js/songs/songDetailsApp.js"></script>-->
+    <script type="text/javascript" src="../../js/songs/songDetails.js"></script>
+
+    <!--<script type="text/javascript" src="../../js/songs/controllers/songDetailsController.js"></script>-->
+    <!--<script type="text/javascript" src="../../js/common/directives/mappers/songMapper.js"></script>-->
+    <!--<script type="text/javascript" src="../../js/common/directives/mappers/songContentDetailsMapper.js"></script>-->
+    <!--<script type="text/javascript" src="../../js/common/directives/soundCloud/soundcloud_player.js"></script>-->
+    <!--<script type="text/javascript" src="../../js/common/directives/youtube/youtube_player.js"></script>-->
+    <!--<script type="text/javascript" src="../../js/common/directives/thumbnail/song.js"></script>-->
 
 </head>
 
 <body ng-controller="songDetailsController" class="page-songs">
-    <ajab-shahar-header></ajab-shahar-header>
-    <div class='ajab-container'>
-        <div class='ajab-wrapper'>
-            <div class="jcarousel-wrapper">
-                <div class="jcarousel">
-                    <ul>
-                        <li ng-repeat="song in songs">
-                            <song-mapper details="song" show-details-service="detailsService" custom-style="alignLeft"/>
-                        </li>
+    <div sticky on-scroll="hideMenu()" on-top="showMenu()" class='headerBox ajab-container '>
+        <div class='headerWrapper' ng-show="showMenuDetails">
+            <header>
+                <div class='logoContainer'>
+                    <img class='logo' />
+                </div>
+                <div class='menuContainer'>
+                    <ul class='topLine'>
+                        <li class='selected'>English</li>
+                        <li>हिन्दी</li>
+                        <li title="Support an artist or Ajab Shahar">Support</li>
+                        <li title='Take a tour of this city '>Map</li>
+                        <li title='Our inspiration, team, funding…'>About</li>
+                        <li title=''>Sign in</li>
+                    </ul>
+
+                    <ul class='firstLine'>
+                        <li title='Songs from the oral traditions – Bhakti, Sufi, Baul…'><a href="/user/partials/songs/editorsChoice.html">Songs</a></li>
+                        <li title='Pithy poems – dohas, saakhis, beyts, rekhtas…'><a href="/user/partials/couplets/editorsChoice.html">Couplets</a></li>
+                        <li title='Explorations of key words and ideas in the poetry'><a href="/user/partials/words/editorsChoice.html">Words</a></li>
+                    </ul>
+                    <ul class='secondLine'>
+                        <li title='Interviews and writings about the poetry'><a href="/user/partials/reflections/editorsChoice.html">Reflections</a></li>
+                        <li title='Meet with poets, singers, artists, scholars, seekers… '><a href="/user/partials/people/editorsChoice.html">People</a></li>
+                        <li title='Enter the landscapes of song'><a href="/user/partials/common/underConstruction.html">Places</a></li>
+                        <li title='Join a festival, concert, talk, satsang…'><a href="/user/partials/common/underConstruction.html">Gatherings</a></li>
+                        <li title='Four musical travelogues exploring Kabir'><a href="/user/partials/common/underConstruction.html">Films</a></li>
+                        <li title='expressions'><a href="/user/partials/common/underConstruction.html">Expressions</a></li>
+                        <li title='Taking mystic poetry to students '><a href="/user/partials/common/underConstruction.html">Classroom</a></li>
+                        <li title='strings'><a href="/user/partials/common/underConstruction.html">String</a></li>
+                        <li title='Four musical travelogues exploring Kabir'><a href="/user/partials/common/underConstruction.html">Radio</a></li>
                     </ul>
                 </div>
 
-                <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
-                <a href="#" class="jcarousel-control-next">&rsaquo;</a>
-
-                <p class="jcarousel-pagination"></p>
+            </header>
+        </div>
+        <div class='headerArt'>
+            <div class='ajab-wrapper'>
+                <a class='menuTree' ng-click="toggleMenu()"></a>
             </div>
-
-            <div ng-repeat="song in details" ng-show="isOpen({{song.id}})">
-                <song-content-details-mapper details="song" details-service="detailsService"></song-content-details-mapper>
+        </div>
+    </div>
+    <div class="page-header">
+        <div class="ajab-wrapper">
+            <div class="page-logo"></div>
+            <div class="page-title">
+                <span class="main">Bhajan Ro Gudak Rahyo Gaado</span>
+                <span class="sub-main">Cart of Meditation is Tottering</span>
             </div>
+        </div>
+
+    </div>
+    <div class='ajab-container'>
+        <div class='ajab-wrapper'>
+
+
+
         </div>
     </div>
 </body>
