@@ -1,9 +1,9 @@
-package org.ajabshahar.platform.resources;
+package org.ajabshahar.api;
 
-import org.ajabshahar.api.SongsRepresentation;
 import org.ajabshahar.platform.daos.SongDAO;
 import org.ajabshahar.platform.daos.TitleDAO;
 import org.ajabshahar.platform.models.Song;
+import org.ajabshahar.platform.resources.SongResource;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -49,7 +48,7 @@ public class SongResourceTest {
         Response result = songResource.getSongs(SINGER_ID, POET_ID);
 
         assertEquals(result.getStatus(), expectedResult.getStatus());
-        assertEquals(result.getEntity(),expectedResult.getEntity());
+        assertEquals(result.getEntity(), expectedResult.getEntity());
 
     }
 

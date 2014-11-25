@@ -1,6 +1,5 @@
-package org.ajabshahar.platform.resources;
+package org.ajabshahar.api;
 
-import org.ajabshahar.api.PersonRepresentation;
 import org.ajabshahar.platform.models.PersonDetails;
 import org.hamcrest.core.IsEqual;
 import org.junit.Before;
@@ -11,8 +10,6 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.stubVoid;
-import static org.mockito.Mockito.when;
 
 public class PersonRepresentationFactoryTest {
 

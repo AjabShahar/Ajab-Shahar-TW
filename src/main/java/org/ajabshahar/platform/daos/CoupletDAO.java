@@ -1,7 +1,6 @@
 package org.ajabshahar.platform.daos;
 
 import io.dropwizard.hibernate.AbstractDAO;
-import io.dropwizard.jersey.sessions.Session;
 import org.ajabshahar.platform.models.Couplet;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;

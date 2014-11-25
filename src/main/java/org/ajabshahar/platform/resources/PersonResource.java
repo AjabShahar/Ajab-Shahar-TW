@@ -2,7 +2,9 @@ package org.ajabshahar.platform.resources;
 
 import com.google.gson.Gson;
 import io.dropwizard.hibernate.UnitOfWork;
+import org.ajabshahar.api.PeopleRepresentation;
 import org.ajabshahar.api.PersonRepresentation;
+import org.ajabshahar.api.PersonRepresentationFactory;
 import org.ajabshahar.platform.daos.PersonDAO;
 import org.ajabshahar.platform.models.PersonDetails;
 

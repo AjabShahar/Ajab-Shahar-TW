@@ -71,15 +71,17 @@ public class SongDAO extends AbstractDAO<Song> {
         Session currentSession = sessionFactory.getCurrentSession();
         Criteria findSongs = currentSession.createCriteria(Song.class);
 
-        findSongs.createAlias("singers", "singersAlias");
-        findSongs.add(Restrictions.eq("singersAlias.id", Long.valueOf(singerId) ));
-
-        findSongs.createAlias("poets", "poetsAlias");
-        findSongs.add(Restrictions.eq("poetsAlias.id", Long.valueOf(poetId)));
+        if (singerId != 0) {
+            findSongs.createAlias("singers", "singersAlias");
+            findSongs.add(Restrictions.eq("singersAlias.id", Long.valueOf(singerId)));
+        }
+        if (poetId != 0) {
+            findSongs.createAlias("poets", "poetsAlias");
+            findSongs.add(Restrictions.eq("poetsAlias.id", Long.valueOf(poetId)));
+        }
 
 //        findSongs.setFirstResult(1);
 //        findSongs.setMaxResults(10);
-
         return findSongs.list();
     }
 

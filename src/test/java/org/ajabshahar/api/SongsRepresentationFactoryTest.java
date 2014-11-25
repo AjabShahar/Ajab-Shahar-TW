@@ -1,6 +1,5 @@
-package org.ajabshahar.platform.resources;
+package org.ajabshahar.api;
 
-import org.ajabshahar.api.SongsRepresentation;
 import org.ajabshahar.platform.models.PersonDetails;
 import org.ajabshahar.platform.models.Song;
 import org.ajabshahar.platform.models.Title;

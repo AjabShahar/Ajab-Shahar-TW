@@ -1,8 +1,8 @@
-package org.ajabshahar.platform.resources;
+package org.ajabshahar.api;
 
-import org.ajabshahar.api.PersonRepresentation;
 import org.ajabshahar.platform.daos.PersonDAO;
 import org.ajabshahar.platform.models.PersonDetails;
+import org.ajabshahar.platform.resources.PersonResource;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,8 +12,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)

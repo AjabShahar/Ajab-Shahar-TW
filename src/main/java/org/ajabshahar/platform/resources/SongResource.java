@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.jersey.caching.CacheControl;
 import org.ajabshahar.api.SongsRepresentation;
+import org.ajabshahar.api.SongsRepresentationFactory;
 import org.ajabshahar.platform.daos.SongDAO;
 import org.ajabshahar.platform.daos.TitleDAO;
 import org.ajabshahar.platform.models.Song;

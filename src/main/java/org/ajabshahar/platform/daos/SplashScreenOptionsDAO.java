@@ -1,8 +1,8 @@
 package org.ajabshahar.platform.daos;
 
 import com.google.common.base.Optional;
-import org.ajabshahar.platform.models.SplashScreenOptions;
 import io.dropwizard.hibernate.AbstractDAO;
+import org.ajabshahar.platform.models.SplashScreenOptions;
 import org.hibernate.SessionFactory;
 
 import java.util.List;

@@ -1,6 +1,5 @@
-package org.ajabshahar.platform.resources;
+package org.ajabshahar.api;
 
-import org.ajabshahar.api.PersonRepresentation;
 import org.ajabshahar.platform.models.PersonDetails;
 
 import java.util.List;

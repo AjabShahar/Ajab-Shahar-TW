@@ -1,7 +1,8 @@
-package org.ajabshahar.platform.resources;
+package org.ajabshahar.api;
 
 import org.ajabshahar.platform.daos.CoupletDAO;
 import org.ajabshahar.platform.models.Couplet;
+import org.ajabshahar.platform.resources.CoupletResource;
 import org.hibernate.SessionFactory;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +14,7 @@ import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)

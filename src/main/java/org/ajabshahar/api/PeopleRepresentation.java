@@ -1,4 +1,4 @@
-package org.ajabshahar.platform.resources;
+package org.ajabshahar.api;
 
 import org.ajabshahar.platform.models.PersonDetails;
 
