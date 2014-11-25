@@ -5,4 +5,23 @@
     <div ng-if="isAudio()">
         <sound-cloud audio-url="{{audioUrl}}" id="snd_{{id}}"></sound-cloud>
     </div>
+
+    <ul class='socialIcons'>
+        <li><img class='favorite' src='../../../../user/img/common/icons/favorite.png'/></li>
+        <li><img class='share' src='../../../../user/img/common/icons/share.png'/>
+            <div class='shareItemsDropDown'>
+                <ul class='shareItems'>
+                    <li>Share on facebook</li>
+                    <li>Share on twitter</li>
+                    <li>Share on pinterest</li>
+                </ul>
+            </div>
+        </li>
+        <li><img class='comment' src='../../../../user/img/common/icons/comment.png'/></li>
+    </ul>
+
+    <div facebook class="facebookShare hide" data-url='{{url}}' data-shares='shares'></div>
+    <a  class='twitterPlug hide' twitter  data-lang="en" data-count='horizontal' data-url='{{url}}' data-via='notsosleepy' data-size="medium" data-text='Testing Twitter Share' ></a>
+    <div class='pinterestPlug hide' pintrest data-href='{{url}}' data-description='testing share' data-pin-do='buttonPin' data-pin-config='beside'></div>
+
 </div>
