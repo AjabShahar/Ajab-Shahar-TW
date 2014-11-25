@@ -8,9 +8,9 @@ var popUp = function() {
                 onClose: '&', //close click handler ~ callback to controller
                 closeButton: '@', //true-false ~ displays/hides close option
                 width: '@', //width of the popup
+                popupCount: '@',
                 id: '@',//an id for the background overlay for manipulation via jquery
-                onNext: '&',
-                onPrev: '&'
+                onSelect: '&',
             },
             templateUrl: '/user/js/common/templates/popupSupport/popup.html',
             controller: function($scope) {
@@ -22,6 +22,10 @@ var popUp = function() {
                         jQuery('#' + $scope.overlayId).css("height", jQuery(window).height());
                     }
                 });
+
+                $scope.getPopupCount = function() {
+                    return ($scope.popupCount==null)?new Array(15):new Array(parseInt($scope.popupCount));
+                }
 
                 $scope.isClosed = function(){
                     return !$scope.show();

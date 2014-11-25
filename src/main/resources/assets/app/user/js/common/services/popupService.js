@@ -18,6 +18,13 @@ var popupService = function (){
         return !shouldBeOpen[id];
     }
 
+    select = function(index){
+        _.each(popups,function(id){
+            shouldBeOpen[id] = false;
+        });
+        shouldBeOpen[popups[index]] = true;
+    }
+
     init = function(id){
         popups[popups.length] = id;
     }

@@ -16,6 +16,7 @@
     <script type="text/javascript" src="../js/common/modules/thumbnailModule.js"></script>
     <script type="text/javascript" src="../js/common/modules/PopupSupport.js"></script>
     <script type="text/javascript" src="../js/common/directives/popupSupport/popup.js"></script>
+    <script type="text/javascript" src="../js/common/directives/popupSupport/popupMapper.js"></script>
 
     <script type="text/javascript" src="../js/common/directives/thumbnail/song.js"></script>
     <script type="text/javascript" src="../js/common/directives/mappers/songMapper.js"></script>
@@ -78,18 +79,6 @@
     </div>
     <!-- parallax effect ends -->
     <!-- thumbnail and middle content starts -->
-    <div ng-repeat="song in thumbnailDetails.songs | limitTo: 5">
-        <song-introduction-mapper index="{{$index}}" details="song" show-details-service="detailsService"/>
-    </div>
-
-    <div ng-repeat="couplet in thumbnailDetails.couplets | limitTo: 5">
-        <couplet-introduction-mapper details="couplet" show-details-service="detailsService"/>
-    </div>
-
-    <div ng-repeat="word in thumbnailDetails.words | limitTo: 5">
-        <word-introduction-mapper details="word" show-details-service="detailsService"/>
-    </div>
-
     <div class='ajab-container'>
         <div class='ajab-wrapper'>
             <div class='homepage-content'>
@@ -104,6 +93,17 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div ng-repeat="song in thumbnailDetails.songs | limitTo: 5">
+        <song-introduction-mapper total-count="15" index="{{$index}}" details="song" show-details-service="detailsService"/>
+    </div>
+
+    <div ng-repeat="couplet in thumbnailDetails.couplets | limitTo: 5">
+        <couplet-introduction-mapper total-count="15" details="couplet" show-details-service="detailsService"/>
+    </div>
+
+    <div ng-repeat="word in thumbnailDetails.words | limitTo: 5">
+        <word-introduction-mapper total-count="15" details="word" show-details-service="detailsService"/>
     </div>
 
 </div>

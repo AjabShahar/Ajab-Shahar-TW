@@ -14,6 +14,7 @@
     <script type="text/javascript" src="../../js/common/modules/thumbnailModule.js"></script>
     <script type="text/javascript" src="../../js/common/modules/PopupSupport.js"></script>
     <script type="text/javascript" src="../../js/common/directives/popupSupport/popup.js"></script>
+    <script type="text/javascript" src="../js/common/directives/popupSupport/popupMapper.js"></script>
     <script type="text/javascript" src="../../js/common/directives/soundCloud/sdk.js"></script>
     <script type="text/javascript" src="../../js/common/directives/soundCloud/api.js"></script>
     <script type="text/javascript" src="../../js/common/directives/thumbnail/song.js"></script>
@@ -63,12 +64,6 @@
         <div class='pxSongLayers px-song-layer10' data-name='snake'></div>
     </div>
     <!-- parallax effect ends -->
-
-
-    <div ng-repeat="song in songs">
-        <song-introduction-mapper index="{{$index}}" details="song" show-details-service="detailsService"/>
-    </div>
-
     <!-- thumbnail and middle content starts -->
     <div class='ajab-container'>
         <div class='ajab-wrapper'>
@@ -80,6 +75,10 @@
         </div>
     </div>
     <!-- thumbnail and middle content starts -->
+    <div ng-repeat="song in songs">
+        <song-introduction-mapper total-count="{{songs.length}}" index="{{$index}}" details="song" show-details-service="detailsService"/>
+    </div>
+
 </div>
     <div ng-include src="'../common/footer.html'"></div>
 
