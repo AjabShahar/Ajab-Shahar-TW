@@ -63,22 +63,17 @@ public class SongResource {
         JsonElement jsonElement = new Gson().fromJson(jsonSong, JsonElement.class);
         JsonObject jsonObject = jsonElement.getAsJsonObject();
         Long id = jsonObject.get("id").getAsLong();
-        try {
-            Song song = new Gson().fromJson(jsonObject.get("data"), Song.class);
-            if (song.getTitle().getId() == 0) {
+        Song song = new Gson().fromJson(jsonObject.get("data"), Song.class);
+        if (song.getTitle().getId() == 0) {
                 Title umbrellaTitle = titleDAO.create(song.getTitle());
                 song.setTitle(umbrellaTitle);
             }
-            if (song.getSongTitle().getId() == 0) {
-                Title songTitle = titleDAO.create(song.getSongTitle());
-                song.setSongTitle(songTitle);
-            }
-            songDAO.updateSong(id, song);
-            return Response.status(200).entity(song.toString()).build();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (song.getSongTitle().getId() == 0) {
+            Title songTitle = titleDAO.create(song.getSongTitle());
+            song.setSongTitle(songTitle);
         }
-        return null;
+        songDAO.updateSong(id, song);
+        return Response.ok(song).build();
     }
 
     @GET
