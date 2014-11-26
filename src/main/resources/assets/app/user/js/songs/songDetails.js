@@ -4,6 +4,7 @@
         function songDetails() {
             var _domReady = function() {
                 _bindEvents();
+                this.setLeftNav();
             }
 
             var _bindEvents = function() {
@@ -23,10 +24,20 @@
             }
 
 
+            this.setLeftNav = function() {
+
+                var topMargin = $('.page-header').height() + $('.carousel-wrapper').height();
+                console.log(topMargin);
+                $("#left_nav").css({'top': topMargin});
+            }
+
+
+
             this.init = (function(){
                 $(function(){
                     _domReady();
                     $('.jcarousel').jcarousel();
+
                 });
 
             })();
