@@ -13,9 +13,9 @@ public class PersonRepresentationFactory {
 
     public PeopleRepresentation create(List<PersonDetails> personDetails) {
         PeopleRepresentation peopleRepresentation = new PeopleRepresentation();
-        for (PersonDetails person : personDetails){
-            peopleRepresentation.add(person);
+        for (PersonDetails person : personDetails) {
+            peopleRepresentation.add(new PersonRepresentation(person.getFirstName(), person.getMiddleName(), person.getLastName(), person.getCategory()));
         }
-        return  peopleRepresentation;
+        return peopleRepresentation;
     }
 }

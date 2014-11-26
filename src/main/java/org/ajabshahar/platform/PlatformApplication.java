@@ -10,6 +10,7 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import org.ajabshahar.api.PersonRepresentationFactory;
 import org.ajabshahar.api.SongsRepresentationFactory;
+import org.ajabshahar.core.People;
 import org.ajabshahar.platform.daos.*;
 import org.ajabshahar.platform.models.*;
 import org.ajabshahar.platform.resources.*;
@@ -54,6 +55,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         final TemplateHealthCheck templateHealthCheck = new TemplateHealthCheck(configuration.getTemplate());
         final SongsRepresentationFactory songsRepresentationFactory = new SongsRepresentationFactory();
         final PersonRepresentationFactory personRepresentationFactory =  new PersonRepresentationFactory();
+        final People people = new People(personDAO);
 
         environment.jersey().setUrlPattern("/api/*");
         environment.jersey().register(new SplashScreenOptionsResource(dao));
@@ -61,7 +63,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         environment.jersey().register(new CoupletResource(coupletDAO));
         environment.jersey().register(new EditorsChoiceResource(songDAO, coupletDAO, wordDAO));
         environment.jersey().register(new SongResource(songDAO, titleDAO, songsRepresentationFactory));
-        environment.jersey().register(new PersonResource(personDAO, personRepresentationFactory));
+        environment.jersey().register(new PersonResource(personDAO, people, personRepresentationFactory));
         environment.jersey().register(new CategoryResource(categoryDAO));
         environment.jersey().register(new TitleResource(titleDAO));
         environment.healthChecks().register("template", templateHealthCheck);

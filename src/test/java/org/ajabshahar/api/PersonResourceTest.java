@@ -1,6 +1,6 @@
 package org.ajabshahar.api;
 
-import org.ajabshahar.platform.daos.PersonDAO;
+import org.ajabshahar.core.People;
 import org.ajabshahar.platform.models.PersonDetails;
 import org.ajabshahar.platform.resources.PersonResource;
 import org.junit.Before;
@@ -19,31 +19,30 @@ import static org.mockito.Mockito.when;
 public class PersonResourceTest {
 
     public static final int PERSON_ID = 1001;
-    public static final String SINGER = "Singer";
-    public static final String POET = "Poet";
+    public static final String ROLE = "role";
     @Mock
-    private PersonDAO personRepository;
+    private People people;
     @Mock
     private PersonRepresentationFactory personRepresentationFactory;
     @Mock
-    private PersonRepresentation personRepresentation;
+    private PersonDetails personDetails;
     @Mock
-    private List<PersonDetails> personDetails;
+    private List<PersonDetails> personDetailsList;
     @Mock
     private PeopleRepresentation peopleRepresentation;
+    @Mock
+    private PersonRepresentation personRepresentation;
     private PersonResource personResource;
-
 
     @Before
     public void setUp() {
-        personResource = new PersonResource(personRepository, personRepresentationFactory);
+        personResource = new PersonResource(null, people, personRepresentationFactory);
     }
 
     @Test
     public void shouldGetPersonById() throws Exception {
-
-        when(personRepository.findBy(PERSON_ID, null)).thenReturn(personDetails);
-        when(personRepresentationFactory.create(personDetails.get(0))).thenReturn(personRepresentation);
+        when(people.findBy(PERSON_ID)).thenReturn(personDetails);
+        when(personRepresentationFactory.create(personDetails)).thenReturn(personRepresentation);
 
         Response actualResult = personResource.getPerson(PERSON_ID);
         Response expectedResult = Response.ok(personRepresentation).build();
@@ -53,26 +52,11 @@ public class PersonResourceTest {
 
     @Test
     public void shouldGetSingers() {
+        when(people.findBy(ROLE)).thenReturn(personDetailsList);
+        when(personRepresentationFactory.create(personDetailsList)).thenReturn(peopleRepresentation);
 
-        when(personRepository.findBy(0, SINGER)).thenReturn(personDetails);
-        when(personRepresentationFactory.create(personDetails)).thenReturn(peopleRepresentation);
-
-
-        Response actualResult = personResource.getPeople(SINGER);
+        Response actualResult = personResource.getPeople(ROLE);
         Response expectedResult = Response.ok(peopleRepresentation).build();
-
-        assertEquals(expectedResult.getEntity(), actualResult.getEntity());
-
-    }
-
-    @Test
-    public void shouldGetPoets() {
-
-       when(personRepository.findBy(0, POET)).thenReturn(personDetails);
-       when(personRepresentationFactory.create(personDetails)).thenReturn(peopleRepresentation);
-
-       Response actualResult  = personResource.getPeople(POET);
-       Response expectedResult = Response.ok(peopleRepresentation).build();
 
         assertEquals(expectedResult.getEntity(), actualResult.getEntity());
     }

@@ -10,7 +10,7 @@ public class SongsRepresentation {
     private List<SongRepresentation> songs;
 
     public SongsRepresentation() {
-        songs = new ArrayList<SongRepresentation>();
+        songs = new ArrayList<>();
     }
 
     @JsonProperty("songs")

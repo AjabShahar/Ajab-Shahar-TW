@@ -13,38 +13,39 @@ import static org.junit.Assert.assertThat;
 
 public class PersonRepresentationFactoryTest {
 
-    private List<PersonDetails> people;
+    private List<PersonDetails> personDetailsList;
     private PersonRepresentationFactory personRepresentationFactory = new PersonRepresentationFactory();
-    private PersonDetails person;
+    private PersonDetails personDetails;
 
     @Before
     public void setUp() {
-        people = new ArrayList<>();
-        person = new PersonDetails();
-        person.setFirstName("Latha");
-        person.setMiddleName("OOO");
-        person.setLastName("Hooo");
-        person.setCategory("Singer");
+        personDetailsList = new ArrayList<>();
+        personDetails = new PersonDetails();
+        personDetails.setFirstName("FirstName");
+        personDetails.setMiddleName("MiddleName");
+        personDetails.setLastName("LastName");
+        personDetails.setCategory("Singer");
 
-        people.add(person);
+        personDetailsList.add(personDetails);
     }
 
     @Test
     public void shouldCreatePersonRepresentation() {
-        PersonRepresentation personRepresentation = personRepresentationFactory.create(person);
+        PersonRepresentation personRepresentation = personRepresentationFactory.create(personDetails);
 
-        assertThat(personRepresentation.getFirstName(), IsEqual.equalTo("Latha"));
-        assertThat(personRepresentation.getMiddleName(), IsEqual.equalTo("OOO"));
-        assertThat(personRepresentation.getLastName(), IsEqual.equalTo("Hooo"));
+        assertThat(personRepresentation.getFirstName(), IsEqual.equalTo("FirstName"));
+        assertThat(personRepresentation.getMiddleName(), IsEqual.equalTo("MiddleName"));
+        assertThat(personRepresentation.getLastName(), IsEqual.equalTo("LastName"));
         assertThat(personRepresentation.getRoles().get(0), IsEqual.equalTo("Singer"));
-
     }
 
     @Test
     public void shouldCreatePeopleRepresentation() {
+        PeopleRepresentation peopleRepresentation = personRepresentationFactory.create(personDetailsList);
 
-        PeopleRepresentation peopleRepresentation = personRepresentationFactory.create(people);
-
-        assertEquals(peopleRepresentation.getPeople(),people);
+        assertThat(peopleRepresentation.getPeople().get(0).getFirstName(), IsEqual.equalTo("FirstName"));
+        assertThat(peopleRepresentation.getPeople().get(0).getMiddleName(), IsEqual.equalTo("MiddleName"));
+        assertThat(peopleRepresentation.getPeople().get(0).getLastName(), IsEqual.equalTo("LastName"));
+        assertThat(peopleRepresentation.getPeople().get(0).getRoles().get(0), IsEqual.equalTo("Singer"));
     }
 }

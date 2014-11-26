@@ -1,23 +1,24 @@
 package org.ajabshahar.api;
 
-import org.ajabshahar.platform.models.PersonDetails;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PeopleRepresentation {
 
-    private List<PersonDetails>  people;
+    private List<PersonRepresentation> people;
 
     public PeopleRepresentation() {
         people = new ArrayList<>();
     }
 
-    public void add(PersonDetails person) {
+    public void add(PersonRepresentation person) {
         people.add(person);
     }
 
-    public List<PersonDetails> getPeople() {
+    @JsonProperty("people")
+    public List<PersonRepresentation> getPeople() {
         return people;
     }
 }

@@ -5,6 +5,7 @@ import io.dropwizard.hibernate.UnitOfWork;
 import org.ajabshahar.api.PeopleRepresentation;
 import org.ajabshahar.api.PersonRepresentation;
 import org.ajabshahar.api.PersonRepresentationFactory;
+import org.ajabshahar.core.People;
 import org.ajabshahar.platform.daos.PersonDAO;
 import org.ajabshahar.platform.models.PersonDetails;
 
@@ -19,10 +20,12 @@ public class PersonResource {
 
     private final PersonDAO personDAO;
     private PersonRepresentationFactory personRepresentationFactory;
+    private final People people;
 
-    public PersonResource(PersonDAO personDAO, PersonRepresentationFactory personRepresentationFactory) {
+    public PersonResource(PersonDAO personDAO, People people, PersonRepresentationFactory personRepresentationFactory) {
         this.personDAO = personDAO;
         this.personRepresentationFactory = personRepresentationFactory;
+        this.people = people;
     }
 
     @POST
@@ -59,22 +62,18 @@ public class PersonResource {
     @UnitOfWork
     @Path("/{id}")
     public Response getPerson(@PathParam("id") int personId) {
-        List<PersonDetails> personDetails = personDAO.findBy(personId, null);
-        PersonRepresentation personRepresentation = personRepresentationFactory.create(personDetails.get(0));
-        return getResponse(personRepresentation, null);
+        PersonDetails personDetails = people.findBy(personId);
+        PersonRepresentation personRepresentation = personRepresentationFactory.create(personDetails);
+        return Response.ok(personRepresentation).build();
     }
 
     @GET
     @UnitOfWork
     @Path("/getpeople")
     public Response getPeople(@QueryParam("role") String role) {
-        List<PersonDetails> personDetails = personDAO.findBy(0, role);
+        List<PersonDetails> personDetails = people.findBy(role);
         PeopleRepresentation peopleRepresentation = personRepresentationFactory.create(personDetails);
-        return getResponse(null, peopleRepresentation);
+        return Response.ok(peopleRepresentation).build();
     }
 
-
-    private Response getResponse(PersonRepresentation personRepresentation, PeopleRepresentation peopleRepresentation) {
-        return personRepresentation != null ? Response.ok(personRepresentation).build() : Response.ok(peopleRepresentation).build();
-    }
 }
