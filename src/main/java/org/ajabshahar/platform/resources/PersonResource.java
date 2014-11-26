@@ -39,7 +39,7 @@ public class PersonResource {
 
     @GET
     @UnitOfWork
-    public List<PersonDetails> listAllTitleDetails() {
+    public List<PersonDetails> listAllPersonDetails() {
         return personDAO.findAll();
     }
 
