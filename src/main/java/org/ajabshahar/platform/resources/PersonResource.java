@@ -47,6 +47,7 @@ public class PersonResource {
         logger.debug("Get person with id: {}", personId);
         PersonDetails personDetails = people.findBy(personId);
         if (personDetails == null) {
+            logger.debug("No person with id: {}", personId);
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         PersonRepresentation personRepresentation = personRepresentationFactory.create(personDetails);
@@ -57,11 +58,14 @@ public class PersonResource {
     @GET
     @UnitOfWork
     public Response getPeople(@QueryParam("role") String role) {
+        logger.debug("Get people with role: {}", role);
         List<PersonDetails> personDetailsList = people.findBy(role);
         if (personDetailsList == null || personDetailsList.size() == 0) {
+            logger.debug("No people with role: {}", role);
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         PeopleRepresentation peopleRepresentation = personRepresentationFactory.create(personDetailsList);
+        logger.debug("Details of people with id {}:  {} ", role, peopleRepresentation.toString());
         return Response.ok(peopleRepresentation, MediaType.APPLICATION_JSON).build();
     }
 }

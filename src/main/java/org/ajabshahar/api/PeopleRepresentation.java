@@ -21,4 +21,11 @@ public class PeopleRepresentation {
     public List<PersonRepresentation> getPeople() {
         return people;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder peopleString = new StringBuilder();
+        getPeople().forEach(person -> peopleString.append(person));
+        return peopleString.toString();
+    }
 }
