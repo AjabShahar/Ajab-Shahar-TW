@@ -15,7 +15,7 @@
     <!--<link href="../../css/common/directives/thumbnail.css" rel="stylesheet" type="text/css">-->
     <link href="../../css/common/directives/introduction.css" rel="stylesheet" type="text/css">
     <link href="../../css/pages/songs.css" rel="stylesheet" type="text/css">
-    <!--<link href="../../../common/jquery/jcarousel/jcarousel.responsive.css" rel="stylesheet" type="text/css">-->
+    <link href="../../../common/jquery/jcarousel/jcarousel.responsive.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="../../../common/lib/underscore/underscore.js"></script>
     <!--<script type="text/javascript" src="../../../common/services/nameService.js"></script>-->
     <script type="text/javascript" src="../../../common/lib/jquery/dist/jquery.js"></script>
@@ -23,8 +23,8 @@
     <!--<script type="text/javascript" src="../../../common/lib/angular-touch/angular-touch.js"></script>-->
     <!--<script type="text/javascript" src="../../../common/lib/angular-animate/angular-animate.min.js"></script>-->
     <!--<script type="text/javascript" src="../../../common/lib/angular-touch/angular-touch.min.js"></script>-->
-    <!--<script type="text/javascript" src="../../../common/lib/jcarousel/dist/jquery.jcarousel.min.js"></script>-->
-    <script type="text/javascript" src="../../../common/jquery/jcarousel/jquery-carousel.min.js"></script>
+    <script type="text/javascript" src="../../../common/jquery/jcarousel/jquery.jcarousel.min.js"></script>
+    <script type="text/javascript" src="../../../common/jquery/jcarousel/jcarousel.responsive.js"></script>
     <!--<script type="text/javascript" src="../../js/common/config/resourceUrlWhiteList.js"></script>-->
     <!--<script type="text/javascript" src="../../js/songs/services/songsContentService.js"></script>-->
     <!--<script type="text/javascript" src="../../js/common/modules/thumbnailModule.js"></script>-->
@@ -34,7 +34,6 @@
     <!--<script type="text/javascript" src="../../../common/modules/headerModule.js"></script>-->
     <!--<script type="text/javascript" src="../../../common/directives/header/ajabShaharHeader.js"></script>-->
     <!--<script type="text/javascript" src="../../js/common/directives/songs/songContentDetails.js"></script>-->
-    <!--<script type="text/javascript" src="../../../common/jquery/jcarousel/jcarousel.responsive.js"></script>-->
     <!--<script type="text/javascript" src="../../js/songs/songDetailsApp.js"></script>-->
     <script type="text/javascript" src="../../js/songs/songDetails.js"></script>
 
@@ -91,6 +90,7 @@
         </div>
     </div>
     <div class="page-header">
+        <div class="light-bg"></div>
         <div class="ajab-wrapper">
             <div class="page-logo"></div>
             <div class="page-title">
@@ -100,12 +100,44 @@
         </div>
 
     </div>
-    <div class='ajab-container'>
-        <div class='ajab-wrapper'>
 
+    <div class="carousel-wrapper jcarousel-wrapper">
+        <div class="carousel-box jcarousel">
+            <ul>
+                <li><img src="../../img/songs/sample_img.png"></li>
+                <li><img src="../../img/songs/sample_img.png"></li>
+                <li><img src="../../img/songs/sample_img.png"></li>
+                <li><img src="../../img/songs/sample_img.png"></li>
+                <li><img src="../../img/songs/sample_img.png"></li>
+                <li><img src="../../img/songs/sample_img.png"></li>
+            </ul>
+            <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true">‹</a>
+            <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true">›</a>
+        </div>
+        <div class="see-more">
+            <div class="light-bg"></div>
+            <a class="version" href="javascript:void(0)">
+                03 versions
+                <span class="arrow"></span>
+            </a>
 
 
         </div>
     </div>
+    <div class='ajab-container'>
+        <div class='ajab-wrapper'>
+
+            dummy text
+            dummy text
+            dummy text
+            
+
+        </div>
+    </div>
+    <script>
+        $(function() {
+
+        });
+    </script>
 </body>
 </html>

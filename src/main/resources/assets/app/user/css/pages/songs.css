@@ -75,27 +75,95 @@ position: relative;
 }
 
 .page-header {
-    background: transparent url(../../img/songs/song-detail-hdr-shadow.gif) 0 0 repeat;
+    background: transparent url(../../img/songs/song-detail-hdr-shadow.png) bottom center no-repeat;
     width: 100%;
-    height: 100px;
+    height: 132px;
     display: inline-block;
     position: absolute;
     top: 10px;
     left: 0;
+
 }
 
 .page-header .page-logo {
     background: transparent url(../../img/songs/songslogo.png) 0 0 no-repeat;
-    width: 88px;
-    height: 88px;
+    width: 106px;
+    height: 106px;
     float: left;
+    margin-left: 2%;
 }
 
 .page-header .page-title {
     float: left;
+    margin: 40px 0 0 2%;
+
 }
 
 
+    .light-bg {
+    position: absolute;
+    width: inherit;
+    background: #fff;
+
+    opacity: 0.2;
+
+}
+
+.page-header .light-bg {
+    height: 105px;
+    top: -11px;
+}
+
+.carousel-wrapper.jcarousel-wrapper .light-bg {
+    height: 21px;
+}
+
+.page-header .page-title .main {
+    font-size: 21px;
+    margin-right: 10px;
+}
+
+.page-header .page-title .sub-main {
+    font-size: 18px;
+    color: #999;
+}
+
+.carousel-wrapper.jcarousel-wrapper {
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    border-radius: 0;
+    margin-top: 37px;
+}
+
+.carousel-wrapper .carousel-box {
+    display: none;
+    width: 75%;
+    text-align: center;
+    margin: 0 auto;
+    padding: 25px 0 0;
+}
+
+.carousel-wrapper .see-more {
+    background: transparent url(../../img/songs/song-detail-hdr-shadow.png) bottom center no-repeat;
+    height: 38px;
+    padding: 10px 0;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+}
+
+.carousel-wrapper .see-more .version {
+    padding: 5px 0 0;
+    display: inline-block;
+}
+
+.carousel-wrapper .see-more .arrow {
+    background: transparent url(../../img/songs/arrow-down.png) 0 0 no-repeat;
+    height: 10px;
+    width: 12px;
+    display: inline-block;
+}
 
 
 
