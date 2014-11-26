@@ -133,12 +133,9 @@
                 <artifactId>lesscss-maven-plugin</artifactId>
                 <version>1.7.0.1.1</version>
                 <configuration>
-                    <sourceDirectory>${project.basedir}/src/main/resources/assets/app/user/css/pages</sourceDirectory>
-                    <outputDirectory>${project.build.directory}/classes/assets/app/user/css/</outputDirectory>
+                    <sourceDirectory>${project.basedir}/src/main/resources/assets/app</sourceDirectory>
+                    <outputDirectory>${project.build.directory}/classes/assets/app</outputDirectory>
                     <compress>true</compress>
-                    <includes>
-                        <include>songs.less</include>
-                    </includes>
                 </configuration>
                 <executions>
                     <execution>
