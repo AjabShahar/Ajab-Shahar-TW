@@ -1,3 +1,5 @@
+.disabled{display:none;}
+
 .mediaIntroduction{display:inline-block;text-align: left;width:100%;height:77%;}
 
 
@@ -64,9 +66,9 @@ padding: 5px 0;
 display: block;	
 }
 
-
-
-
+.shareItemsDropDown ul.shareItems li a{
+    text-decoration: none;
+}
 
 
 

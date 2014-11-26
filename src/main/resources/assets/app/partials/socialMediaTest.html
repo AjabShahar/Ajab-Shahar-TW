@@ -3,24 +3,47 @@
 <head>
     <meta charset="utf-8">
     <title>Testing Page</title>
-    <link rel="stylesheet" type="text/css" href="../common/lib/angular-socialshare/angular-socialshare.css">
+    <link href="../../user/css/common/directives/introduction.css" rel="stylesheet" type="text/css">
 
-    <script src="../common/lib/angular/angular.js"></script>
-    <script src="../user/js/common/directives/socialMedia/widgets.js"></script>
-    <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
-    <script src="../common/lib/angular-socialshare/angular-socialshare.js"></script>
-    <script type="text/javascript" src="../user/js/Test/SocialMedia/app.js"></script>
+    <script src="../../common/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+    <script src="//connect.facebook.net/en_US/sdk.js"></script>
+
+   <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '714039208665351',
+          xfbml      : true,
+          version    : 'v2.1'
+        });
+      };
+
+      FB.ui(
+         {
+          method: 'share',
+          href: 'https://developers.facebook.com/docs/'
+        }, function(response){});
+    </script>
 </head>
 <body>
-    <div ng-app="myApp">
-        <div ng-controller="test">
-            <div facebook class="facebookShare" data-url='{{url}}' data-shares='shares'></div>
-
-            <a twitter  data-lang="en" data-count='horizontal' data-url='{{url}}' data-via='notsosleepy' data-size="medium" data-text='Testing Twitter Share' ></a>
-
-            <div pintrest data-href='{{url}}' data-description='testing share' data-pin-do='buttonPin' data-pin-config='beside'></div>
-
-        </div>
+    <a href="#" >
+        <img class='share' src='../../../../user/img/common/icons/share.png' />
+    </a>
+    <div class='disabled shareItemsDropDown'>
+            <ul class='shareItems'>
+                <li><a href='http://www.facebook.com/share.php?u=http://localhost:9000/partials/socialMediaTest.html'>Share on facebook</a></li>
+                <li><a class="twitter-share-button"
+                    href="https://twitter.com/share"
+                    data-size="large"
+                    data-url="https://dev.twitter.com/web/tweet-button"
+                    data-count-url="https://dev.twitter.com/web/tweet-button"
+                    data-via="twitterdev"
+                    data-related="twitterapi,twitter"
+                    data-hashtags="example,demo"
+                    data-text="custom share text">Share on twitter</a></li>
+                <li><a href="//pinterest.com/pin/create%2Fbutton/?url=http://localhost:9000/partials/socialMediaTest.html">Share on pinterest</a></li>
+                <li><a href="https://plus.google.com/share?url=http://localhost:9000/partials/socialMediaTest.html">Share on google+</a></li>
+            </ul>
     </div>
 </body>
 </html>
