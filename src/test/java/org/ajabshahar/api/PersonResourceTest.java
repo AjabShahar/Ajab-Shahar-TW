@@ -44,20 +44,38 @@ public class PersonResourceTest {
         when(people.findBy(PERSON_ID)).thenReturn(personDetails);
         when(personRepresentationFactory.create(personDetails)).thenReturn(personRepresentation);
 
-        Response actualResult = personResource.getPerson(PERSON_ID);
-        Response expectedResult = Response.ok(personRepresentation).build();
+        Response response = personResource.getPerson(PERSON_ID);
 
-        assertEquals(expectedResult.getEntity(), actualResult.getEntity());
+        assertEquals(personRepresentation, response.getEntity());
     }
 
     @Test
-    public void shouldGetSingers() {
+    public void shouldGet404IfPersonNotFound() throws Exception {
+        when(people.findBy(PERSON_ID)).thenReturn(null);
+
+        Response response = personResource.getPerson(PERSON_ID);
+
+        assertEquals(Response.Status.NOT_FOUND.getStatusCode(), response.getStatus());
+    }
+
+    @Test
+    public void shouldGetPeopleOfARole() {
+        when(personDetailsList.size()).thenReturn(1);
         when(people.findBy(ROLE)).thenReturn(personDetailsList);
         when(personRepresentationFactory.create(personDetailsList)).thenReturn(peopleRepresentation);
 
-        Response actualResult = personResource.getPeople(ROLE);
-        Response expectedResult = Response.ok(peopleRepresentation).build();
+        Response response = personResource.getPeople(ROLE);
 
-        assertEquals(expectedResult.getEntity(), actualResult.getEntity());
+        assertEquals(peopleRepresentation, response.getEntity());
+    }
+
+    @Test
+    public void shouldGet404IfPeopleForRoleNotFound() throws Exception {
+        when(personDetailsList.size()).thenReturn(0);
+        when(people.findBy(ROLE)).thenReturn(personDetailsList);
+
+        Response response = personResource.getPeople(ROLE);
+
+        assertEquals(Response.Status.NOT_FOUND.getStatusCode(), response.getStatus());
     }
 }
