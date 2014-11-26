@@ -10,12 +10,7 @@ public class People {
     private final PersonDAO personRepository;
 
     public People(PersonDAO personRepository) {
-
         this.personRepository = personRepository;
-    }
-
-    public List<PersonDetails> findBy(int id, String role) {
-        return personRepository.findBy(id, role);
     }
 
     public PersonDetails findBy(int id) {
@@ -25,5 +20,9 @@ public class People {
 
     public List<PersonDetails> findBy(String role) {
         return findBy(0, role);
+    }
+
+    private List<PersonDetails> findBy(int id, String role) {
+        return personRepository.findBy(id, role);
     }
 }

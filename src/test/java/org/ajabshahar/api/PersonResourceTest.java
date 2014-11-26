@@ -20,6 +20,7 @@ public class PersonResourceTest {
 
     public static final int PERSON_ID = 1001;
     public static final String ROLE = "role";
+    private PersonResource personResource;
     @Mock
     private People people;
     @Mock
@@ -32,7 +33,6 @@ public class PersonResourceTest {
     private PeopleRepresentation peopleRepresentation;
     @Mock
     private PersonRepresentation personRepresentation;
-    private PersonResource personResource;
 
     @Before
     public void setUp() {
@@ -47,6 +47,7 @@ public class PersonResourceTest {
         Response response = personResource.getPerson(PERSON_ID);
 
         assertEquals(personRepresentation, response.getEntity());
+        assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
     }
 
     @Test
@@ -67,6 +68,7 @@ public class PersonResourceTest {
         Response response = personResource.getPeople(ROLE);
 
         assertEquals(peopleRepresentation, response.getEntity());
+        assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
     }
 
     @Test

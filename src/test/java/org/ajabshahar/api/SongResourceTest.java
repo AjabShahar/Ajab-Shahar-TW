@@ -1,7 +1,6 @@
 package org.ajabshahar.api;
 
-import org.ajabshahar.platform.daos.SongDAO;
-import org.ajabshahar.platform.daos.TitleDAO;
+import org.ajabshahar.core.Songs;
 import org.ajabshahar.platform.models.Song;
 import org.ajabshahar.platform.resources.SongResource;
 import org.junit.Before;
@@ -10,9 +9,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -23,39 +20,38 @@ public class SongResourceTest {
 
     public static final int SINGER_ID = 1001;
     public static final int POET_ID = 2001;
+    private SongResource songResource;
     @Mock
-    private TitleDAO titleRepository;
-    @Mock
-    private SongDAO songRepository;
-    @Mock
-    private SongsRepresentation songsRepresentation;
+    private Songs songs;
     @Mock
     private SongsRepresentationFactory songsRepresentationFactory;
-    private SongResource songResource;
+    @Mock
+    private List<Song> songList;
+    @Mock
+    private SongsRepresentation songsRepresentation;
 
     @Before
     public void setUp() {
-        songResource = new SongResource(songRepository, titleRepository, songsRepresentationFactory);
+        songResource = new SongResource(null, null, songs, songsRepresentationFactory);
     }
+
     @Test
-    public void shouldGetSongsFilteredBySinger() {
-        List<Song> songs = getSongs();
-        when(songRepository.findBy(SINGER_ID,POET_ID)).thenReturn(songs);
+    public void shouldGetSongsFilteredBySingerAndPoet() {
+        when(songList.size()).thenReturn(1);
+        when(songs.findBy(SINGER_ID, POET_ID)).thenReturn(songList);
+        when(songsRepresentationFactory.create(songList)).thenReturn(songsRepresentation);
 
-        when(songsRepresentationFactory.create(songs)).thenReturn(songsRepresentation);
-
-        Response expectedResult = Response.ok(songsRepresentation, MediaType.APPLICATION_JSON).build();
-        Response result = songResource.getSongs(SINGER_ID, POET_ID);
-
-        assertEquals(result.getStatus(), expectedResult.getStatus());
-        assertEquals(result.getEntity(), expectedResult.getEntity());
-
+        Response response = songResource.getSongs(SINGER_ID, POET_ID);
+        assertEquals(songsRepresentation, response.getEntity());
+        assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
     }
 
-    private ArrayList<Song> getSongs() {
-        ArrayList<Song> songs = new ArrayList<Song>();
-        songs.add(new Song());
-        return songs;
-    }
+    @Test
+    public void shouldGet404IfSongsNotFound() {
+        when(songList.size()).thenReturn(0);
+        when(songs.findBy(SINGER_ID, POET_ID)).thenReturn(songList);
 
+        Response response = songResource.getSongs(SINGER_ID, POET_ID);
+        assertEquals(Response.Status.NOT_FOUND.getStatusCode(), response.getStatus());
+    }
 }

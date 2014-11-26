@@ -46,7 +46,7 @@ public class PersonResource {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         PersonRepresentation personRepresentation = personRepresentationFactory.create(personDetails);
-        return Response.ok(personRepresentation).build();
+        return Response.ok(personRepresentation, MediaType.APPLICATION_JSON).build();
     }
 
     @GET
@@ -57,6 +57,6 @@ public class PersonResource {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         PeopleRepresentation peopleRepresentation = personRepresentationFactory.create(personDetailsList);
-        return Response.ok(peopleRepresentation).build();
+        return Response.ok(peopleRepresentation, MediaType.APPLICATION_JSON).build();
     }
 }

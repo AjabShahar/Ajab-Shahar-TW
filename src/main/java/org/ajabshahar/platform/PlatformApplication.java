@@ -11,6 +11,7 @@ import io.dropwizard.setup.Environment;
 import org.ajabshahar.api.PersonRepresentationFactory;
 import org.ajabshahar.api.SongsRepresentationFactory;
 import org.ajabshahar.core.People;
+import org.ajabshahar.core.Songs;
 import org.ajabshahar.platform.daos.*;
 import org.ajabshahar.platform.models.*;
 import org.ajabshahar.platform.resources.*;
@@ -56,13 +57,14 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         final SongsRepresentationFactory songsRepresentationFactory = new SongsRepresentationFactory();
         final PersonRepresentationFactory personRepresentationFactory =  new PersonRepresentationFactory();
         final People people = new People(personDAO);
+        final Songs songs = new Songs(songDAO);
 
         environment.jersey().setUrlPattern("/api/*");
         environment.jersey().register(new SplashScreenOptionsResource(dao));
         environment.jersey().register(new WordResource(wordDAO));
         environment.jersey().register(new CoupletResource(coupletDAO));
         environment.jersey().register(new EditorsChoiceResource(songDAO, coupletDAO, wordDAO));
-        environment.jersey().register(new SongResource(songDAO, titleDAO, songsRepresentationFactory));
+        environment.jersey().register(new SongResource(songDAO, titleDAO, songs, songsRepresentationFactory));
         environment.jersey().register(new PersonResource(personDAO, people, personRepresentationFactory));
         environment.jersey().register(new CategoryResource(categoryDAO));
         environment.jersey().register(new TitleResource(titleDAO));
