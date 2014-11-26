@@ -2,7 +2,6 @@ package org.ajabshahar.core;
 
 import org.ajabshahar.platform.daos.SongDAO;
 import org.ajabshahar.platform.models.Song;
-import org.hamcrest.core.IsEqual;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -18,6 +17,8 @@ public class SongsTest {
 
     private static final int SINGER_ID = 1001;
     private static final int POET_ID = 2001;
+    public static final int START_FROM = 1;
+    public static final String FILTERED_LETTER = "";
     @Mock
     private SongDAO songsRepository;
     @Mock
@@ -26,8 +27,8 @@ public class SongsTest {
     @Test
     public void shouldGetSongsForSingerAndPoet() {
         Songs songs = new Songs(songsRepository);
-        when(songsRepository.findBy(SINGER_ID, POET_ID)).thenReturn(songsList);
-        List<Song> result = songs.findBy(SINGER_ID, POET_ID);
+        when(songsRepository.findBy(SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER)).thenReturn(songsList);
+        List<Song> result = songs.findBy(SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER);
         assertEquals(songsList, result);
     }
 }

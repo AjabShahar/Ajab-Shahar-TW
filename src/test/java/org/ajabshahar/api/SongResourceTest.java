@@ -20,6 +20,8 @@ public class SongResourceTest {
 
     public static final int SINGER_ID = 1001;
     public static final int POET_ID = 2001;
+    private static final int START_FROM = 1;
+    private static final String FILTERED_LETTER = "";
     private SongResource songResource;
     @Mock
     private Songs songs;
@@ -38,10 +40,10 @@ public class SongResourceTest {
     @Test
     public void shouldGetSongsFilteredBySingerAndPoet() {
         when(songList.size()).thenReturn(1);
-        when(songs.findBy(SINGER_ID, POET_ID)).thenReturn(songList);
+        when(songs.findBy(SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER)).thenReturn(songList);
         when(songsRepresentationFactory.create(songList)).thenReturn(songsRepresentation);
 
-        Response response = songResource.getSongs(SINGER_ID, POET_ID);
+        Response response = songResource.getSongs(SINGER_ID, POET_ID, 1, FILTERED_LETTER);
         assertEquals(songsRepresentation, response.getEntity());
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
     }
@@ -49,9 +51,9 @@ public class SongResourceTest {
     @Test
     public void shouldGet404IfSongsNotFound() {
         when(songList.size()).thenReturn(0);
-        when(songs.findBy(SINGER_ID, POET_ID)).thenReturn(songList);
+        when(songs.findBy(SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER)).thenReturn(songList);
 
-        Response response = songResource.getSongs(SINGER_ID, POET_ID);
+        Response response = songResource.getSongs(SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER);
         assertEquals(Response.Status.NOT_FOUND.getStatusCode(), response.getStatus());
     }
 }

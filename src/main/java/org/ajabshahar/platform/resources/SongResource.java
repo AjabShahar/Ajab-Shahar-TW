@@ -65,9 +65,9 @@ public class SongResource {
         Long id = jsonObject.get("id").getAsLong();
         Song song = new Gson().fromJson(jsonObject.get("data"), Song.class);
         if (song.getTitle().getId() == 0) {
-                Title umbrellaTitle = titleDAO.create(song.getTitle());
-                song.setTitle(umbrellaTitle);
-            }
+            Title umbrellaTitle = titleDAO.create(song.getTitle());
+            song.setTitle(umbrellaTitle);
+        }
         if (song.getSongTitle().getId() == 0) {
             Title songTitle = titleDAO.create(song.getSongTitle());
             song.setSongTitle(songTitle);
@@ -80,15 +80,6 @@ public class SongResource {
     @UnitOfWork
     public List<Song> listAllSongValues() {
         return songDAO.findAll();
-    }
-
-    @GET
-    @Path("/filterByWithRange")
-    @UnitOfWork
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Song> listAllSongsStartingWithAndFilteredBy(@QueryParam("startingIndex") int startIndex, @QueryParam("letter") String letter) {
-        letter = letter == null ? "" : letter;
-        return songDAO.findAllInRangeAndFilteredBy(startIndex, letter);
     }
 
     @GET
@@ -133,8 +124,8 @@ public class SongResource {
     @GET
     @UnitOfWork
     @Path("/getsongs")
-    public Response getSongs(@QueryParam("singerId") int singerId, @QueryParam("poetId") int poetId) {
-        List<Song> songList = songs.findBy(singerId, poetId);
+    public Response getSongs(@QueryParam("singerId") int singerId, @QueryParam("poetId") int poetId, @QueryParam("startFrom") int startFrom, @QueryParam("filteredLetter") String filteredLetter) {
+        List<Song> songList = songs.findBy(singerId, poetId, startFrom, filteredLetter);
         if (songList == null || songList.size() == 0) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }

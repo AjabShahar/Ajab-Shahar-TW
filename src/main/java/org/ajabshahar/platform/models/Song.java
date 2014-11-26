@@ -17,10 +17,6 @@ import java.util.Set;
         @NamedQuery(
                 name = "org.ajabshahar.platform.models.Song.findSongWithRenditions",
                 query = "SELECT p FROM Song p where p.title=(SELECT s.title from Song s where s.id=:id)"
-        ),
-        @NamedQuery(
-                name = "org.ajabshahar.platform.models.Song.findAllFilteredBy",
-                query = "SELECT p FROM Song p where lower(p.songTitle.englishTranslation) like lower(:letter))"
         )
 })
 public class Song {

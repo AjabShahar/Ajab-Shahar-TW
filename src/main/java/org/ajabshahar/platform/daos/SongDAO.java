@@ -5,19 +5,21 @@ import org.ajabshahar.platform.models.Song;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
 public class SongDAO extends AbstractDAO<Song> {
     private final SessionFactory sessionFactory;
+
     public SongDAO(SessionFactory sessionFactory) {
         super(sessionFactory);
         this.sessionFactory = sessionFactory;
     }
 
     public Song findById(Long id) {
-        return (Song) sessionFactory.openSession().get(Song.class,id);
+        return (Song) sessionFactory.openSession().get(Song.class, id);
     }
 
     public Song create(Song song) {
@@ -32,13 +34,13 @@ public class SongDAO extends AbstractDAO<Song> {
         return list(namedQuery("org.ajabshahar.platform.models.Song.findAllOnLandingPage").setMaxResults(15));
     }
 
-    public void updateSong(Long id,Song updatableSongData) {
-        Song originalSongData = (Song) sessionFactory.openSession().get(Song.class,id);
-        originalSongData = invokeAllSetters(originalSongData,updatableSongData);
+    public void updateSong(Long id, Song updatableSongData) {
+        Song originalSongData = (Song) sessionFactory.openSession().get(Song.class, id);
+        originalSongData = invokeAllSetters(originalSongData, updatableSongData);
         sessionFactory.openStatelessSession().update(persist(originalSongData));
     }
 
-    public Song invokeAllSetters(Song originalSongData,Song updatableSongData){
+    public Song invokeAllSetters(Song originalSongData, Song updatableSongData) {
 
         originalSongData.setShowOnLandingPage(updatableSongData.getShowOnLandingPage());
         originalSongData.setDuration(updatableSongData.getDuration());
@@ -56,18 +58,14 @@ public class SongDAO extends AbstractDAO<Song> {
 
 
     public List<Song> findSongWithRenditions(Long id) {
-        return list(namedQuery("org.ajabshahar.platform.models.Song.findSongWithRenditions").setParameter("id",id));
-    }
-
-    public List<Song> findAllInRangeAndFilteredBy(int startIndex, String letter) {
-        return list(namedQuery("org.ajabshahar.platform.models.Song.findAllFilteredBy").setParameter("letter", letter + "%").setFirstResult(startIndex).setMaxResults(9));
+        return list(namedQuery("org.ajabshahar.platform.models.Song.findSongWithRenditions").setParameter("id", id));
     }
 
     public int getCountOfSongsThatStartWith(String letter) {
         return list(namedQuery("org.ajabshahar.platform.models.Song.findAllFilteredBy").setParameter("letter", letter + "%")).size();
     }
 
-    public List<Song> findBy(int singerId, int poetId) {
+    public List<Song> findBy(int singerId, int poetId, int startFrom, String filteredLetter) {
         Session currentSession = sessionFactory.getCurrentSession();
         Criteria findSongs = currentSession.createCriteria(Song.class);
 
@@ -79,10 +77,19 @@ public class SongDAO extends AbstractDAO<Song> {
             findSongs.createAlias("poets", "poetsAlias");
             findSongs.add(Restrictions.eq("poetsAlias.id", Long.valueOf(poetId)));
         }
-
-//        findSongs.setFirstResult(1);
-//        findSongs.setMaxResults(10);
-        return findSongs.list();
+        if (startFrom != 0) {
+            findSongs.setFirstResult(startFrom);
+        }
+        if (filteredLetter != null) {
+            findSongs.createAlias("songTitle", "songTitleAlias");
+            findSongs.add(Restrictions.like("songTitleAlias.englishTranslation", filteredLetter, MatchMode.START));
+        }
+        try {
+            return findSongs.list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

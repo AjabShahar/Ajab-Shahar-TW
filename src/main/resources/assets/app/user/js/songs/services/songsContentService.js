@@ -14,7 +14,7 @@ var songsContentService = function ($http) {
     };
 
     var getSongsInRangeAndFilteredBy = function(startIndex, letter){
-        return $http.get('/api/songs/filterByWithRange?startingIndex=' + startIndex + "&letter=" + letter);
+        return $http.get('/api/songs/getsongs?startFrom=' + startIndex + "&filteredLetter=" + letter);
     }
 
     var getSongsStartingWith = function(letter){

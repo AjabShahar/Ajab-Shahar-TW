@@ -12,7 +12,7 @@ public class Songs {
         this.songsRepository = songsRepository;
     }
 
-    public List<Song> findBy(int singerId, int poetId) {
-        return songsRepository.findBy(singerId, poetId);
+    public List<Song> findBy(int singerId, int poetId, int startFrom, String filteredLetter) {
+        return songsRepository.findBy(singerId, poetId, startFrom, filteredLetter);
     }
 }
