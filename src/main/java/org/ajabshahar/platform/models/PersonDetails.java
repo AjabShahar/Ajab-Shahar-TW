@@ -1,5 +1,7 @@
 package org.ajabshahar.platform.models;
 
+import com.google.common.base.Strings;
+
 import javax.persistence.*;
 
 import static java.lang.String.format;
@@ -70,6 +72,6 @@ public class PersonDetails {
     }
 
     public String getName() {
-        return format("%s %2s %3s", getFirstName(), getMiddleName(), getLastName()).replaceAll("\\s+"," ").trim();
+        return format("%s %2s %3s", Strings.nullToEmpty(getFirstName()), Strings.nullToEmpty(getMiddleName()), Strings.nullToEmpty(getLastName())).replaceAll("\\s+", " ").trim();
     }
 }

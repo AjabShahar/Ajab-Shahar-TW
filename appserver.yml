@@ -26,3 +26,11 @@ cache:
     expire: 30m
 cacheControl:
     - maxAge: 30s
+
+logging:
+  level: ERROR
+  loggers:
+    org.ajabshahar: DEBUG
+    org.hibernate.SQL: ALL
+  appenders:
+    - type: console

@@ -3,6 +3,8 @@ package org.ajabshahar.api;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.String.format;
+
 public class PersonRepresentation {
 
     private String firstName;
@@ -32,5 +34,10 @@ public class PersonRepresentation {
 
     public String getMiddleName() {
         return middleName;
+    }
+
+    @Override
+    public String toString() {
+        return format("first name: %s, middle name: %2s, last name: %3s", getFirstName(), getMiddleName(), getLastName());
     }
 }
