@@ -48,6 +48,9 @@ public class PersonResource {
     @Path("/{id}")
     public Response getPerson(@PathParam("id") int personId) {
         PersonDetails personDetails = people.findBy(personId);
+        if (personDetails == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
         PersonRepresentation personRepresentation = personRepresentationFactory.create(personDetails);
         return Response.ok(personRepresentation).build();
     }
@@ -56,9 +59,11 @@ public class PersonResource {
     @UnitOfWork
     @Path("/getpeople")
     public Response getPeople(@QueryParam("role") String role) {
-        List<PersonDetails> personDetails = people.findBy(role);
-        PeopleRepresentation peopleRepresentation = personRepresentationFactory.create(personDetails);
+        List<PersonDetails> personDetailsList = people.findBy(role);
+        if (personDetailsList == null || personDetailsList.size() == 0) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        PeopleRepresentation peopleRepresentation = personRepresentationFactory.create(personDetailsList);
         return Response.ok(peopleRepresentation).build();
     }
-
 }
