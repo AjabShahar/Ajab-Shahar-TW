@@ -28,15 +28,6 @@ public class PersonDAO extends AbstractDAO<PersonDetails> {
         return list(namedQuery("org.ajabshahar.platform.models.PersonDetails.findAll"));
     }
 
-    public List<PersonDetails> findSingers() {
-        return list(namedQuery("org.ajabshahar.platform.models.PersonDetails.findSingers"));
-    }
-
-    public List<PersonDetails> findPoets() {
-        return list(namedQuery("org.ajabshahar.platform.models.PersonDetails.findPoets"));
-
-    }
-
     public List<PersonDetails> findBy(int personId, String role) {
         Session session = currentSession();
         Criteria criteria = session.createCriteria(PersonDetails.class);

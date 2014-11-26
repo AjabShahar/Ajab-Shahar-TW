@@ -43,21 +43,6 @@ public class PersonResource {
         return personDAO.findAll();
     }
 
-
-    @GET
-    @UnitOfWork
-    @Path("/singers")
-    public List<PersonDetails> listAllSingers() {
-        return personDAO.findSingers();
-    }
-
-    @GET
-    @UnitOfWork
-    @Path("/poets")
-    public List<PersonDetails> listAllPoets() {
-        return personDAO.findPoets();
-    }
-
     @GET
     @UnitOfWork
     @Path("/{id}")

@@ -8,14 +8,6 @@ import javax.persistence.*;
         @NamedQuery(
                 name = "org.ajabshahar.platform.models.PersonDetails.findAll",
                 query = "SELECT p FROM PersonDetails p"
-        ),
-        @NamedQuery(
-                name = "org.ajabshahar.platform.models.PersonDetails.findSingers",
-                query = "select p from PersonDetails p where p.category='Singer'"
-        ),
-        @NamedQuery(
-                name = "org.ajabshahar.platform.models.PersonDetails.findPoets",
-                query = "select p from PersonDetails p where p.category='Poet'"
         )
 })
 public class PersonDetails {
