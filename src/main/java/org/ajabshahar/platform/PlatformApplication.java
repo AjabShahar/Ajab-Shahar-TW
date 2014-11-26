@@ -54,10 +54,10 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         final CategoryDAO categoryDAO = new CategoryDAO(hibernate.getSessionFactory());
         final TitleDAO titleDAO = new TitleDAO(hibernate.getSessionFactory());
         final TemplateHealthCheck templateHealthCheck = new TemplateHealthCheck(configuration.getTemplate());
-        final SongsRepresentationFactory songsRepresentationFactory = new SongsRepresentationFactory();
-        final PersonRepresentationFactory personRepresentationFactory =  new PersonRepresentationFactory();
         final People people = new People(personDAO);
         final Songs songs = new Songs(songDAO);
+        final SongsRepresentationFactory songsRepresentationFactory = new SongsRepresentationFactory(people);
+        final PersonRepresentationFactory personRepresentationFactory =  new PersonRepresentationFactory();
 
         environment.jersey().setUrlPattern("/api/*");
         environment.jersey().register(new SplashScreenOptionsResource(dao));

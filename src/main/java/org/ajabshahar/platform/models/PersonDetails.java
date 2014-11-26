@@ -2,6 +2,8 @@ package org.ajabshahar.platform.models;
 
 import javax.persistence.*;
 
+import static java.lang.String.format;
+
 @Entity
 @Table(name = "PERSON")
 @NamedQueries({
@@ -65,5 +67,9 @@ public class PersonDetails {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return format("%s %2s %3s", getFirstName(), getMiddleName(), getLastName()).replaceAll("\\s+"," ").trim();
     }
 }
