@@ -22,12 +22,12 @@ var songDetailsController = function($scope, $http,$window,$location){
       $scope.songTitleList= songTitleList;
   });
 
-  $http.get('/api/people/getpeople?role=Singer').success(function(allSingers){
+  $http.get('/api/people?role=Singer').success(function(allSingers){
     $scope.singers = allSingers;
     $scope.singersList = $scope.singers.people;
   });
 
-  $http.get('/api/people/getpeople?role=Poet').success(function(allPoets){
+  $http.get('/api/people?role=Poet').success(function(allPoets){
     $scope.poets = allPoets;
     $scope.poetsList = $scope.poets.people;
   });

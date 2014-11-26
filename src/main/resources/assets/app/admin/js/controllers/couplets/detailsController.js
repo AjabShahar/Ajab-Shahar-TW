@@ -5,7 +5,7 @@ var coupletDetailsController = function($scope, $http,$window,$location){
     $scope.urlId = $location.search().id;
 
 
-    $http.get('/api/people/poets').success(function(poetsList){
+    $http.get('/api/people?role=Poet').success(function(poetsList){
         $scope.poetsList = poetsList;
     });
 

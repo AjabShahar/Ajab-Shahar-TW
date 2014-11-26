@@ -39,12 +39,6 @@ public class PersonResource {
 
     @GET
     @UnitOfWork
-    public List<PersonDetails> listAllPersonDetails() {
-        return personDAO.findAll();
-    }
-
-    @GET
-    @UnitOfWork
     @Path("/{id}")
     public Response getPerson(@PathParam("id") int personId) {
         PersonDetails personDetails = people.findBy(personId);
@@ -57,7 +51,6 @@ public class PersonResource {
 
     @GET
     @UnitOfWork
-    @Path("/getpeople")
     public Response getPeople(@QueryParam("role") String role) {
         List<PersonDetails> personDetailsList = people.findBy(role);
         if (personDetailsList == null || personDetailsList.size() == 0) {
