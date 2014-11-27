@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-public class SongRepresentation {
+public class SongSummaryRepresentation {
 
     private long id;
     private String englishTranslationTitle;
@@ -13,11 +13,11 @@ public class SongRepresentation {
     private List<String> poets;
     private String duration;
 
-    public SongRepresentation() {
+    public SongSummaryRepresentation() {
 
     }
 
-    public SongRepresentation(long id, String englishTranslationTitle, String englishTransliterationTitle, List<String> singers, List<String> poets, String duration) {
+    public SongSummaryRepresentation(long id, String englishTranslationTitle, String englishTransliterationTitle, List<String> singers, List<String> poets, String duration) {
         this.id = id;
         this.englishTranslationTitle = englishTranslationTitle;
         this.englishTransliterationTitle = englishTransliterationTitle;
