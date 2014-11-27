@@ -29,11 +29,14 @@ public class CoupletResourceTest {
     private CoupletsRepresentationFactory coupletsRepresentationFactory;
     @Mock
     private CoupletsRepresentation coupletsRepresentation;
+    @Mock
+    private org.ajabshahar.core.Couplet couplet;
+
     private CoupletResource coupletResource;
 
     @Before
     public void setUp() {
-        coupletResource = new CoupletResource(coupletDAO, coupletsRepresentationFactory);
+        coupletResource = new CoupletResource(coupletDAO, coupletsRepresentationFactory, couplet);
     }
 
     @Test

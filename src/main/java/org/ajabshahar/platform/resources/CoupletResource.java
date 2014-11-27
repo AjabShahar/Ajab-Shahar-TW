@@ -20,10 +20,12 @@ public class CoupletResource {
 
     private final CoupletDAO coupletDAO;
     private final CoupletsRepresentationFactory coupletsRepresentationFactory;
+    private final org.ajabshahar.core.Couplet couplet;
 
-    public CoupletResource(CoupletDAO coupletDAO, CoupletsRepresentationFactory coupletsRepresentationFactory) {
+    public CoupletResource(CoupletDAO coupletDAO, CoupletsRepresentationFactory coupletsRepresentationFactory, org.ajabshahar.core.Couplet couplet) {
         this.coupletDAO = coupletDAO;
         this.coupletsRepresentationFactory = coupletsRepresentationFactory;
+        this.couplet = couplet;
     }
 
     @POST
@@ -69,7 +71,7 @@ public class CoupletResource {
     @UnitOfWork
     @Path("/{id}")
     public Response getCouplet(@PathParam("id") int id) {
-        List<Couplet> couplets = coupletDAO.findBy(id);
+        List<Couplet> couplets = couplet.findBy(id);
         CoupletsRepresentation coupletsRepresentation = coupletsRepresentationFactory.create(couplets);
         return getResponse(coupletsRepresentation).build();
     }
