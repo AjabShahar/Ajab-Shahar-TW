@@ -1,3 +1,5 @@
+@import '../common.less';
+
 body.page-songs {
 background: transparent url(../../../user/img/common/bg/bg_pattern.jpg);
 }
@@ -69,45 +71,6 @@ position: relative;
 
 
 /* styles for songs details page */
-
-
-/* todo for UI: transfer this common css styles to common.less */
-.light-bg {
-        position: absolute;
-        width: inherit;
-        background: #fff;
-        top: 0;
-        z-index: -1;
-        opacity: 0.2;
-
-}
-
-#left_nav {
-    width: 15%;
-    position: fixed;
-    left: 4%;
-    text-align: left;
-
-    li {
-        &>a {
-            line-height: 27px;
-            font-size: 14px;
-            color: #b3b3b3;
-            &.active {
-                color: #7AC943;
-            }
-        }
-    }
-}
-
-.main-content {
-    width: 80%;
-    float: left;
-    margin-left: 16%;
-}
-
-
-/* common styles end here */
 
 .page-songs {
 
@@ -287,10 +250,82 @@ position: relative;
         }
     }
 
-    #left_nav, .main-content {
+    .main-content {
         margin-top: 60px;
     }
 
+    #song_container {
+
+        youtube {
+            border: solid 10px #fff;
+            .box-shadow(#000);
+            height: 460px;
+
+            iframe {
+                height: 100%;
+            }
+        }
+
+        .info {
+            width: 853px;
+            display: none;
+            max-height: 160px;
+            padding: 50px 0;
+            overflow: auto;
+            text-align: left;
+        }
+
+        &>ul {
+            text-align: left;
+            float: left;
+            position: relative;
+            width: 130px;
+
+            &>li {
+                float:left;
+                padding: 10px 5px;
+            }
+        }
+
+
+        ul.share-options {
+            li {
+                a {
+                    background: transparent url(../../img/songs/songs_sprite.png) 0  0 no-repeat;
+                    display: inline-block;
+                    width: 22px;
+                    height: 17px;
+
+                    &.favorite {
+                        background-position: 0 -54px;
+                        width: 16px;
+                        height: 13px;
+                    }
+                    &.share {
+                        background-position: 0 -18px;
+                        width: 16px;
+                        height: 13px;
+                    }
+                    &.download {
+                        background-position: 0 -33px;
+                        width: 16px;
+                        height: 13px;
+                    }
+                }
+
+            }
+        }
+    }
+
+    #song_container, #poem_container {
+        clear: both;
+        width: 853px;
+    }
+
+
+    #poem_container {
+        text-align: left;
+    }
 
 
 }

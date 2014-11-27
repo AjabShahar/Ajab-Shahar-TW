@@ -4,7 +4,7 @@
         function songDetails() {
             var _domReady = function() {
                 _bindEvents();
-                this.setLeftNav();
+                _setLeftNav();
             }
 
             var _bindEvents = function() {
@@ -20,26 +20,13 @@
                     _onScroll();
                 });
 
-                $('#left_nav a[href^="#"]').on('click', function (e) {
-                    e.preventDefault();
-                    var that = this;
-                    $(document).off("scroll");
+                $("ul.slide-info").on('click', 'li>a', function() {
+                    var selector = $(this).data('slide'),
+                        refElement = $(this).closest('#song_container').find('#' + selector);
+                    refElement.slideToggle();
+                    refElement.siblings('.info').hide();
+                })
 
-                    $('a').each(function () {
-                        $(this).removeClass('active');
-                    })
-                    $(this).addClass('active');
-
-                    var target = this.hash,
-                        menu = target;
-                    $target = $(target);
-                    $('html, body').stop().animate({
-                        'scrollTop': $target.offset().top+2
-                    }, 500, 'swing', function () {
-                        window.location.hash = target;
-                        $(document).on("scroll", _onScroll);
-                    });
-                });
 
             }
 
@@ -49,7 +36,7 @@
             }
 
 
-            this.setLeftNav = function() {
+            var _setLeftNav = function() {
 
                 var topMargin = $('.page-header').height() + $('.carousel-wrapper').height();
                 $("#left_nav").css({'top': topMargin});
@@ -58,9 +45,10 @@
             var _onScroll = function(event) {
                 var scrollPos = $(document).scrollTop();
                 $('#left_nav a').each(function () {
-                    var currLink = $(this);
-                    var refElement = $(currLink.attr("href"));
-                    if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+                    var currLink = $(this),
+                        refElement = $(currLink.attr("href")),
+                        refElementPos = refElement.offset();
+                    if ( (refElement.length != 0) && (scrollPos > refElementPos.top) && (scrollPos <= (refElementPos.top + refElement.height()) )) {
                         $('#left_nav ul li a').removeClass("active");
                         currLink.addClass("active");
                     }
@@ -76,7 +64,6 @@
                 $(function(){
                     _domReady();
                     $('.jcarousel').jcarousel();
-
                 });
 
             })();
