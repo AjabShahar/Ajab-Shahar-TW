@@ -15,4 +15,8 @@ public class Songs {
     public List<Song> findBy(int singerId, int poetId, int startFrom, String filteredLetter) {
         return songsRepository.findBy(singerId, poetId, startFrom, filteredLetter);
     }
+
+    public Song findBy(int songId) {
+        return null;
+    }
 }

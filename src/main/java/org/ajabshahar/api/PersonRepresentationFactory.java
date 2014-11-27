@@ -6,15 +6,15 @@ import java.util.List;
 
 public class PersonRepresentationFactory {
 
-    public PersonRepresentation create(PersonDetails person) {
-        PersonRepresentation personRepresentation = new PersonRepresentation(person.getFirstName(), person.getMiddleName(), person.getLastName(), person.getCategory());
+    public PersonRepresentation create(PersonDetails personDetails) {
+        PersonRepresentation personRepresentation = new PersonRepresentation(personDetails.getFirstName(), personDetails.getMiddleName(), personDetails.getLastName(), personDetails.getCategory());
         return personRepresentation;
     }
 
-    public PeopleRepresentation create(List<PersonDetails> personDetails) {
+    public PeopleRepresentation create(List<PersonDetails> personDetailsList) {
         PeopleRepresentation peopleRepresentation = new PeopleRepresentation();
-        for (PersonDetails person : personDetails) {
-            peopleRepresentation.add(new PersonRepresentation(person.getFirstName(), person.getMiddleName(), person.getLastName(), person.getCategory()));
+        for (PersonDetails personDetails : personDetailsList) {
+            peopleRepresentation.add(create(personDetails));
         }
         return peopleRepresentation;
     }

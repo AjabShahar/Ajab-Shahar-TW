@@ -5,13 +5,18 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.jersey.caching.CacheControl;
+import org.ajabshahar.api.PersonRepresentation;
+import org.ajabshahar.api.SongRepresentation;
 import org.ajabshahar.api.SongsRepresentation;
 import org.ajabshahar.api.SongsRepresentationFactory;
 import org.ajabshahar.core.Songs;
 import org.ajabshahar.platform.daos.SongDAO;
 import org.ajabshahar.platform.daos.TitleDAO;
+import org.ajabshahar.platform.models.PersonDetails;
 import org.ajabshahar.platform.models.Song;
 import org.ajabshahar.platform.models.Title;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -21,6 +26,8 @@ import java.util.List;
 @Path("/songs")
 @Produces(MediaType.APPLICATION_JSON)
 public class SongResource {
+
+    private final static Logger logger = LoggerFactory.getLogger(SongResource.class);
     private final SongDAO songDAO;
     private final TitleDAO titleDAO;
     private final SongsRepresentationFactory songsRepresentationFactory;
@@ -131,5 +138,20 @@ public class SongResource {
         }
         SongsRepresentation songsRepresentation = songsRepresentationFactory.create(songList);
         return Response.ok(songsRepresentation, MediaType.APPLICATION_JSON).build();
+    }
+
+    @GET
+    @UnitOfWork
+    @Path("/getsongs/{id}")
+    public Response getSong(@PathParam("id") int songId) {
+        logger.debug("Get song with id: {}", songId);
+        Song song = songs.findBy(songId);
+        if (song == null) {
+            logger.debug("No song with id: {}", songId);
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        SongRepresentation songRepresentation = songsRepresentationFactory.create(song);
+        logger.debug("Details of song with id {}:  {} ", songId, songRepresentation.toString());
+        return Response.ok(songRepresentation, MediaType.APPLICATION_JSON).build();
     }
 }

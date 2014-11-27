@@ -29,4 +29,8 @@ public class SongsRepresentationFactory {
         }
         return songs;
     }
+
+    public SongRepresentation create(Song song) {
+        return null;
+    }
 }

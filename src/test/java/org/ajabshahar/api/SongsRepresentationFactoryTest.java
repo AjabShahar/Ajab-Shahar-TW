@@ -22,16 +22,20 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class SongsRepresentationFactoryTest {
     private List<Song> songsList;
+    private SongsRepresentationFactory songsRepresentationFactory;
     @Mock
     private People people;
     @Mock
     private PersonDetails personDetails;
+    private Song song;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
+        songsRepresentationFactory = new SongsRepresentationFactory(people);
+
         songsList = new ArrayList<>();
 
-        Song song = new Song();
+        song = new Song();
         int id = 1;
         song.setId(id);
 
@@ -56,13 +60,12 @@ public class SongsRepresentationFactoryTest {
         song.setDuration("1:00");
         songsList.add(song);
 
-        when(people.findBy(id+1000)).thenReturn(singer);
-        when(people.findBy(id+2000)).thenReturn(poet);
+        when(people.findBy(id + 1000)).thenReturn(singer);
+        when(people.findBy(id + 2000)).thenReturn(poet);
     }
 
     @Test
-    public void shouldCreateASongsRepresentation() throws Exception {
-        SongsRepresentationFactory songsRepresentationFactory = new SongsRepresentationFactory(people);
+    public void shouldCreateASongsRepresentation() {
         SongsRepresentation songsRepresentation = songsRepresentationFactory.create(songsList);
         assertThat(songsRepresentation.getSongs().size(), IsEqual.equalTo(1));
         assertThat(songsRepresentation.getSongs().get(0).getId(), IsEqual.equalTo(1L));
@@ -72,4 +75,11 @@ public class SongsRepresentationFactoryTest {
         assertThat(songsRepresentation.getSongs().get(0).getSingers().get(0), IsEqual.equalTo("Singer1"));
         assertThat(songsRepresentation.getSongs().get(0).getPoets().get(0), IsEqual.equalTo("Poet1"));
     }
+
+    @Test
+    public void shouldCreatePersonRepresentation() {
+        SongRepresentation songRepresentation = songsRepresentationFactory.create(song);
+
+    }
+
 }

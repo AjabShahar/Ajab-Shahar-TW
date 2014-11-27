@@ -4,6 +4,8 @@ import org.ajabshahar.platform.models.PersonDetails;
 import org.hamcrest.core.IsEqual;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,14 +13,17 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
+@RunWith(MockitoJUnitRunner.class)
 public class PersonRepresentationFactoryTest {
 
     private List<PersonDetails> personDetailsList;
-    private PersonRepresentationFactory personRepresentationFactory = new PersonRepresentationFactory();
+    private PersonRepresentationFactory personRepresentationFactory;
     private PersonDetails personDetails;
 
     @Before
     public void setUp() {
+        personRepresentationFactory = new PersonRepresentationFactory();
+
         personDetailsList = new ArrayList<>();
         personDetails = new PersonDetails();
         personDetails.setFirstName("FirstName");
