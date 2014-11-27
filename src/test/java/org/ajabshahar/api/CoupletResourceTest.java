@@ -25,11 +25,15 @@ public class CoupletResourceTest {
     private CoupletDAO coupletDAO;
     @Mock
     private SessionFactory sessionFactory;
+    @Mock
+    private CoupletsRepresentationFactory coupletsRepresentationFactory;
+    @Mock
+    private CoupletsRepresentation coupletsRepresentation;
     private CoupletResource coupletResource;
 
     @Before
     public void setUp() {
-        coupletResource = new CoupletResource(coupletDAO);
+        coupletResource = new CoupletResource(coupletDAO, coupletsRepresentationFactory);
     }
 
     @Test
@@ -37,9 +41,10 @@ public class CoupletResourceTest {
 
         List<Couplet> expectedCouplet = new ArrayList<>();
         when(coupletDAO.findBy(id)).thenReturn(expectedCouplet);
+        when(coupletsRepresentationFactory.create(expectedCouplet)).thenReturn(coupletsRepresentation);
 
         Response actualCouplet = coupletResource.getCouplet(id);
 
-        assertEquals(expectedCouplet, actualCouplet.getEntity());
+        assertEquals(coupletsRepresentation, actualCouplet.getEntity());
     }
 }

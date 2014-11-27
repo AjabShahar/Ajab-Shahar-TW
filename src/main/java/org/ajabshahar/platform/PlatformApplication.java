@@ -8,6 +8,7 @@ import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.migrations.MigrationsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import org.ajabshahar.api.CoupletsRepresentationFactory;
 import org.ajabshahar.api.PersonRepresentationFactory;
 import org.ajabshahar.api.SongsRepresentationFactory;
 import org.ajabshahar.core.People;
@@ -58,11 +59,12 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         final Songs songs = new Songs(songDAO);
         final SongsRepresentationFactory songsRepresentationFactory = new SongsRepresentationFactory(people);
         final PersonRepresentationFactory personRepresentationFactory =  new PersonRepresentationFactory();
+        final CoupletsRepresentationFactory coupletsRepresentationFactory = new CoupletsRepresentationFactory();
 
         environment.jersey().setUrlPattern("/api/*");
         environment.jersey().register(new SplashScreenOptionsResource(dao));
         environment.jersey().register(new WordResource(wordDAO));
-        environment.jersey().register(new CoupletResource(coupletDAO));
+        environment.jersey().register(new CoupletResource(coupletDAO, coupletsRepresentationFactory));
         environment.jersey().register(new EditorsChoiceResource(songDAO, coupletDAO, wordDAO));
         environment.jersey().register(new SongResource(songDAO, titleDAO, songs, songsRepresentationFactory));
         environment.jersey().register(new PersonResource(personDAO, people, personRepresentationFactory));
