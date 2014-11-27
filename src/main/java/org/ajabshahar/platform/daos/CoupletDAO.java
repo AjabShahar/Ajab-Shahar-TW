@@ -19,10 +19,6 @@ public class CoupletDAO  extends AbstractDAO<Couplet>{
         return persist(couplet);
     }
 
-    public List<Couplet> findAll() {
-        return list(namedQuery("org.ajabshahar.platform.models.Couplet.findAll"));
-    }
-
     public List<Couplet> findAllOnLandingPage() {
         return list(namedQuery("org.ajabshahar.platform.models.Couplet.findAllOnLandingPage"));
     }

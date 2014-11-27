@@ -50,12 +50,6 @@ public class CoupletResource {
     }
 
     @GET
-    @UnitOfWork
-    public List<Couplet> listAllCoupletDetails() {
-        return coupletDAO.findAll();
-    }
-
-    @GET
     @Path("/landingPage")
     @UnitOfWork
     public List<Couplet> listAllOnLandingValues() {
@@ -67,12 +61,8 @@ public class CoupletResource {
     @Path("/edit")
     @Produces(MediaType.APPLICATION_JSON)
     public Couplet getCoupletById(@QueryParam("id") Long id) {
-        try {
             return coupletDAO.findById(id);
-        } catch (Exception e) {
-            System.out.println(e.getStackTrace());
-        }
-        return null;
+
     }
 
     @GET
