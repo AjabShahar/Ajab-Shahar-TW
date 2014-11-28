@@ -269,8 +269,10 @@ position: relative;
         .info {
             width: 853px;
             display: none;
-            max-height: 160px;
-            padding: 50px 0;
+            max-height: 260px;
+            margin: 50px 0;
+            padding-left: 10px;
+            .box-shadow(#ccc, 10px);
             overflow: auto;
             text-align: left;
         }
@@ -315,6 +317,31 @@ position: relative;
 
             }
         }
+
+        .song-details {
+            width: 873px;
+            margin: 10px 0;
+            float: left;
+
+            dl {
+                width: 60%;
+                margin: 10px auto;
+                clear: both;
+                overflow: hidden;
+
+                dt {
+                    color: #e6257a;
+                    text-transform: capitalize;
+                    float: left;
+                }
+                dd {
+                    color: #7f8080;
+                    text-transform: uppercase;
+                    float: left;
+                    margin: 0 20px 0 5px;
+                }
+            }
+        }
     }
 
     #song_container, #poem_container {
@@ -325,6 +352,7 @@ position: relative;
 
     #poem_container {
         text-align: left;
+        padding: 10px 0 50px;
     }
 
 
