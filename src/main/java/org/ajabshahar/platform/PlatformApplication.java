@@ -17,6 +17,7 @@ import org.ajabshahar.core.Songs;
 import org.ajabshahar.platform.daos.*;
 import org.ajabshahar.platform.models.*;
 import org.ajabshahar.platform.resources.*;
+import org.picocontainer.DefaultPicoContainer;
 
 public class PlatformApplication extends Application<PlatformConfiguration> {
 
@@ -48,31 +49,51 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
 
     @Override
     public void run(PlatformConfiguration configuration, Environment environment) throws Exception {
-        final SplashScreenOptionsDAO dao = new SplashScreenOptionsDAO(hibernate.getSessionFactory());
-        final WordDAO wordDAO = new WordDAO(hibernate.getSessionFactory());
-        final CoupletDAO coupletDAO = new CoupletDAO(hibernate.getSessionFactory());
-        final SongDAO songDAO = new SongDAO(hibernate.getSessionFactory());
-        final PersonDAO personDAO = new PersonDAO(hibernate.getSessionFactory());
-        final CategoryDAO categoryDAO = new CategoryDAO(hibernate.getSessionFactory());
-        final TitleDAO titleDAO = new TitleDAO(hibernate.getSessionFactory());
-        final TemplateHealthCheck templateHealthCheck = new TemplateHealthCheck(configuration.getTemplate());
-        final People people = new People(personDAO);
-        final Songs songs = new Songs(songDAO);
-        final Couplets couplets = new Couplets(coupletDAO);
-        final SongsRepresentationFactory songsRepresentationFactory = new SongsRepresentationFactory(people);
-        final PersonRepresentationFactory personRepresentationFactory =  new PersonRepresentationFactory();
-        final CoupletsRepresentationFactory coupletsRepresentationFactory = new CoupletsRepresentationFactory();
+        DefaultPicoContainer picoContainer = addToPicoContainer();
+
+        TemplateHealthCheck templateHealthCheck = new TemplateHealthCheck("");
 
         environment.jersey().setUrlPattern("/api/*");
-        environment.jersey().register(new SplashScreenOptionsResource(dao));
-        environment.jersey().register(new WordResource(wordDAO));
-        environment.jersey().register(new CoupletResource(coupletDAO, coupletsRepresentationFactory, couplets));
-        environment.jersey().register(new EditorsChoiceResource(songDAO, coupletDAO, wordDAO));
-        environment.jersey().register(new SongResource(songDAO, titleDAO, songs, songsRepresentationFactory));
-        environment.jersey().register(new PersonResource(personDAO, people, personRepresentationFactory));
-        environment.jersey().register(new CategoryResource(categoryDAO));
-        environment.jersey().register(new TitleResource(titleDAO));
+        environment.jersey().register(picoContainer.getComponent(SplashScreenOptionsResource.class));
+        environment.jersey().register(picoContainer.getComponent(WordResource.class));
+        environment.jersey().register(picoContainer.getComponent(CoupletResource.class));
+        environment.jersey().register(picoContainer.getComponent(EditorsChoiceResource.class));
+        environment.jersey().register(picoContainer.getComponent(SongResource.class));
+        environment.jersey().register(picoContainer.getComponent(PersonResource.class));
+        environment.jersey().register(picoContainer.getComponent(CategoryResource.class));
+        environment.jersey().register(picoContainer.getComponent(TitleResource.class));
         environment.healthChecks().register("template", templateHealthCheck);
+    }
+
+    private DefaultPicoContainer addToPicoContainer() {
+        DefaultPicoContainer picoContainer = new DefaultPicoContainer();
+
+        picoContainer.addComponent(hibernate.getSessionFactory());
+        picoContainer.addComponent(SplashScreenOptionsDAO.class);
+        picoContainer.addComponent(WordDAO.class);
+        picoContainer.addComponent(CoupletDAO.class);
+        picoContainer.addComponent(SongDAO.class);
+        picoContainer.addComponent(PersonDAO.class);
+        picoContainer.addComponent(CategoryDAO.class);
+        picoContainer.addComponent(TitleDAO.class);
+
+        picoContainer.addComponent(Songs.class);
+        picoContainer.addComponent(Couplets.class);
+        picoContainer.addComponent(People.class);
+        picoContainer.addComponent(SongsRepresentationFactory.class);
+        picoContainer.addComponent(PersonRepresentationFactory.class);
+        picoContainer.addComponent(CoupletsRepresentationFactory.class);
+
+        picoContainer.addComponent(SplashScreenOptionsResource.class);
+        picoContainer.addComponent(WordResource.class);
+        picoContainer.addComponent(CoupletResource.class);
+        picoContainer.addComponent(EditorsChoiceResource.class);
+        picoContainer.addComponent(SongResource.class);
+        picoContainer.addComponent(PersonResource.class);
+        picoContainer.addComponent(CategoryResource.class);
+        picoContainer.addComponent(TitleResource.class);
+
+        return picoContainer;
     }
 
     public static void main(String[] args) throws Exception {
