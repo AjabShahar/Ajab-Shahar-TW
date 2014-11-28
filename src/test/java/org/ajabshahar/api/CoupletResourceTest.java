@@ -1,5 +1,6 @@
 package org.ajabshahar.api;
 
+import org.ajabshahar.core.Couplets;
 import org.ajabshahar.platform.daos.CoupletDAO;
 import org.ajabshahar.platform.models.Couplet;
 import org.ajabshahar.platform.resources.CoupletResource;
@@ -30,13 +31,13 @@ public class CoupletResourceTest {
     @Mock
     private CoupletsRepresentation coupletsRepresentation;
     @Mock
-    private org.ajabshahar.core.Couplet couplet;
+    private Couplets couplets;
 
     private CoupletResource coupletResource;
 
     @Before
     public void setUp() {
-        coupletResource = new CoupletResource(coupletDAO, coupletsRepresentationFactory, couplet);
+        coupletResource = new CoupletResource(coupletDAO, coupletsRepresentationFactory, couplets);
     }
 
     @Test

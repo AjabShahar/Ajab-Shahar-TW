@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CoupletTest {
+public class CoupletsTest {
 
     public static final int ID = 1;
     @Mock
@@ -21,11 +21,11 @@ public class CoupletTest {
 
     @Test
     public void shouldGetCoupletById() throws Exception {
-        Couplet couplet = new Couplet(coupletRepository);
+        Couplets couplets = new Couplets(coupletRepository);
         List<org.ajabshahar.platform.models.Couplet> expectedResult = new ArrayList<>();
         when(coupletRepository.findBy(ID)).thenReturn(expectedResult);
 
-        List<org.ajabshahar.platform.models.Couplet> actualResult = couplet.findBy(ID);
+        List<org.ajabshahar.platform.models.Couplet> actualResult = couplets.findBy(ID);
 
         assertEquals(expectedResult, actualResult);
     }

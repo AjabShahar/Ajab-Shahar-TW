@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import io.dropwizard.hibernate.UnitOfWork;
 import org.ajabshahar.api.CoupletsRepresentationFactory;
 import org.ajabshahar.api.CoupletsRepresentation;
+import org.ajabshahar.core.Couplets;
 import org.ajabshahar.platform.daos.CoupletDAO;
 import org.ajabshahar.platform.models.Couplet;
 
@@ -20,12 +21,12 @@ public class CoupletResource {
 
     private final CoupletDAO coupletDAO;
     private final CoupletsRepresentationFactory coupletsRepresentationFactory;
-    private final org.ajabshahar.core.Couplet couplet;
+    private final Couplets couplets;
 
-    public CoupletResource(CoupletDAO coupletDAO, CoupletsRepresentationFactory coupletsRepresentationFactory, org.ajabshahar.core.Couplet couplet) {
+    public CoupletResource(CoupletDAO coupletDAO, CoupletsRepresentationFactory coupletsRepresentationFactory, Couplets couplets) {
         this.coupletDAO = coupletDAO;
         this.coupletsRepresentationFactory = coupletsRepresentationFactory;
-        this.couplet = couplet;
+        this.couplets = couplets;
     }
 
     @POST
@@ -71,7 +72,7 @@ public class CoupletResource {
     @UnitOfWork
     @Path("/{id}")
     public Response getCouplet(@PathParam("id") int id) {
-        List<Couplet> couplets = couplet.findBy(id);
+        List<Couplet> couplets = this.couplets.findBy(id);
         CoupletsRepresentation coupletsRepresentation = coupletsRepresentationFactory.create(couplets);
         return getResponse(coupletsRepresentation).build();
     }

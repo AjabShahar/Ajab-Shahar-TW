@@ -11,6 +11,7 @@ import io.dropwizard.setup.Environment;
 import org.ajabshahar.api.CoupletsRepresentationFactory;
 import org.ajabshahar.api.PersonRepresentationFactory;
 import org.ajabshahar.api.SongsRepresentationFactory;
+import org.ajabshahar.core.Couplets;
 import org.ajabshahar.core.People;
 import org.ajabshahar.core.Songs;
 import org.ajabshahar.platform.daos.*;
@@ -57,7 +58,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         final TemplateHealthCheck templateHealthCheck = new TemplateHealthCheck(configuration.getTemplate());
         final People people = new People(personDAO);
         final Songs songs = new Songs(songDAO);
-        final org.ajabshahar.core.Couplet couplet = new org.ajabshahar.core.Couplet(coupletDAO);
+        final Couplets couplets = new Couplets(coupletDAO);
         final SongsRepresentationFactory songsRepresentationFactory = new SongsRepresentationFactory(people);
         final PersonRepresentationFactory personRepresentationFactory =  new PersonRepresentationFactory();
         final CoupletsRepresentationFactory coupletsRepresentationFactory = new CoupletsRepresentationFactory();
@@ -65,7 +66,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         environment.jersey().setUrlPattern("/api/*");
         environment.jersey().register(new SplashScreenOptionsResource(dao));
         environment.jersey().register(new WordResource(wordDAO));
-        environment.jersey().register(new CoupletResource(coupletDAO, coupletsRepresentationFactory, couplet));
+        environment.jersey().register(new CoupletResource(coupletDAO, coupletsRepresentationFactory, couplets));
         environment.jersey().register(new EditorsChoiceResource(songDAO, coupletDAO, wordDAO));
         environment.jersey().register(new SongResource(songDAO, titleDAO, songs, songsRepresentationFactory));
         environment.jersey().register(new PersonResource(personDAO, people, personRepresentationFactory));
