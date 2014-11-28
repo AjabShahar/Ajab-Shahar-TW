@@ -23,7 +23,6 @@ public class PeopleTest {
     private PersonDAO personRepository;
     @Mock
     private PersonDetails personDetails;
-    @Mock
     private List<PersonDetails> personDetailsList;
     private People people;
 
@@ -31,7 +30,6 @@ public class PeopleTest {
     public void setUp() {
         personDetailsList = new ArrayList<>();
         personDetailsList.add(personDetails);
-
         people = new People(personRepository);
     }
 

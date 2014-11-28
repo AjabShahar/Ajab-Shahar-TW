@@ -7,10 +7,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
 public class SongDAO extends AbstractDAO<Song> {
+    private final static Logger logger = LoggerFactory.getLogger(SongDAO.class);
     private final SessionFactory sessionFactory;
 
     public SongDAO(SessionFactory sessionFactory) {
@@ -65,10 +68,12 @@ public class SongDAO extends AbstractDAO<Song> {
         return list(namedQuery("org.ajabshahar.platform.models.Song.findAllFilteredBy").setParameter("letter", letter + "%")).size();
     }
 
-    public List<Song> findBy(int singerId, int poetId, int startFrom, String filteredLetter) {
+    public List<Song> findBy(int songId, int singerId, int poetId, int startFrom, String filteredLetter) {
         Session currentSession = sessionFactory.getCurrentSession();
         Criteria findSongs = currentSession.createCriteria(Song.class);
-
+        if (songId != 0) {
+            findSongs.add(Restrictions.eq("id", Long.valueOf(songId)));
+        }
         if (singerId != 0) {
             findSongs.createAlias("singers", "singersAlias");
             findSongs.add(Restrictions.eq("singersAlias.id", Long.valueOf(singerId)));
@@ -84,12 +89,6 @@ public class SongDAO extends AbstractDAO<Song> {
             findSongs.createAlias("songTitle", "songTitleAlias");
             findSongs.add(Restrictions.like("songTitleAlias.englishTranslation", filteredLetter, MatchMode.START));
         }
-        try {
-            return findSongs.list();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+        return findSongs.list();
     }
-
 }

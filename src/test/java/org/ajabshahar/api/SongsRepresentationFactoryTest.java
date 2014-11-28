@@ -1,6 +1,7 @@
 package org.ajabshahar.api;
 
 import org.ajabshahar.core.People;
+import org.ajabshahar.platform.models.Category;
 import org.ajabshahar.platform.models.PersonDetails;
 import org.ajabshahar.platform.models.Song;
 import org.ajabshahar.platform.models.Title;
@@ -39,10 +40,30 @@ public class SongsRepresentationFactoryTest {
         int id = 1;
         song.setId(id);
 
+        Title umbrellaTitle = new Title();
+        umbrellaTitle.setId(id);
+        umbrellaTitle.setOriginalTitle(format("Umbrella%sOriginal", id));
+        umbrellaTitle.setEnglishTranslation(format("Umbrella%sEnglishTranslation", id));
+        umbrellaTitle.setEnglishTransliteration(format("Umbrella%sEnglishTransliteration", id));
+        song.setTitle(umbrellaTitle);
+
         Title songTitle = new Title();
+        songTitle.setId(id);
+        songTitle.setOriginalTitle(format("Song%sOriginal", id));
         songTitle.setEnglishTranslation(format("Song%sEnglishTranslation", id));
         songTitle.setEnglishTransliteration(format("Song%sEnglishTransliteration", id));
         song.setSongTitle(songTitle);
+
+        Category songCategory = new Category();
+        songCategory.setName("Song & Reflection");
+        song.setSongCategory(songCategory);
+
+        song.setIsAuthoringComplete(true);
+        song.setShowOnLandingPage(true);
+        song.setYoutubeVideoId("12345");
+        song.setSoundCloudTrackID("67890");
+        song.setThumbnail_url("http://tinyurl.com");
+        song.setDuration("1:00");
 
         PersonDetails singer = new PersonDetails(), poet = new PersonDetails();
         HashSet<PersonDetails> singers = new HashSet<>(), poets = new HashSet<>();
@@ -57,7 +78,6 @@ public class SongsRepresentationFactoryTest {
         poets.add(poet);
         song.setPoets(poets);
 
-        song.setDuration("1:00");
         songsList.add(song);
 
         when(people.findBy(id + 1000)).thenReturn(singer);
@@ -67,19 +87,38 @@ public class SongsRepresentationFactoryTest {
     @Test
     public void shouldCreateASongsRepresentation() {
         SongsRepresentation songsRepresentation = songsRepresentationFactory.create(songsList);
-        assertThat(songsRepresentation.getSongs().size(), IsEqual.equalTo(1));
-        assertThat(songsRepresentation.getSongs().get(0).getId(), IsEqual.equalTo(1L));
-        assertThat(songsRepresentation.getSongs().get(0).getEnglishTranslationTitle(), IsEqual.equalTo("Song1EnglishTranslation"));
-        assertThat(songsRepresentation.getSongs().get(0).getEnglishTransliterationTitle(), IsEqual.equalTo("Song1EnglishTransliteration"));
-        assertThat(songsRepresentation.getSongs().get(0).getDuration(), IsEqual.equalTo("1:00"));
-        assertThat(songsRepresentation.getSongs().get(0).getSingers().get(0), IsEqual.equalTo("Singer1"));
-        assertThat(songsRepresentation.getSongs().get(0).getPoets().get(0), IsEqual.equalTo("Poet1"));
+        List<SongSummaryRepresentation> songs = songsRepresentation.getSongs();
+        assertThat(songs.size(), IsEqual.equalTo(1));
+        assertThat(songs.get(0).getId(), IsEqual.equalTo(1L));
+        assertThat(songs.get(0).getEnglishTranslationTitle(), IsEqual.equalTo("Song1EnglishTranslation"));
+        assertThat(songs.get(0).getEnglishTransliterationTitle(), IsEqual.equalTo("Song1EnglishTransliteration"));
+        assertThat(songs.get(0).getDuration(), IsEqual.equalTo("1:00"));
+        assertThat(songs.get(0).getSingers().get(0), IsEqual.equalTo("Singer1"));
+        assertThat(songs.get(0).getPoets().get(0), IsEqual.equalTo("Poet1"));
     }
 
     @Test
     public void shouldCreatePersonRepresentation() {
         SongRepresentation songRepresentation = songsRepresentationFactory.create(song);
+        assertThat(songRepresentation.getId(), IsEqual.equalTo(1L));
 
+        assertThat(songRepresentation.getUmbrellaTitleOriginal(), IsEqual.equalTo("Umbrella1Original"));
+        assertThat(songRepresentation.getUmbrellaTitleEnglishTranslation(), IsEqual.equalTo("Umbrella1EnglishTranslation"));
+        assertThat(songRepresentation.getUmbrellaTitleEnglishTransliteration(), IsEqual.equalTo("Umbrella1EnglishTransliteration"));
+
+        assertThat(songRepresentation.getTitleOriginal(), IsEqual.equalTo("Song1Original"));
+        assertThat(songRepresentation.getTitleEnglishTranslation(), IsEqual.equalTo("Song1EnglishTranslation"));
+        assertThat(songRepresentation.getTitleEnglishTransliteration(), IsEqual.equalTo("Song1EnglishTransliteration"));
+
+        assertThat(songRepresentation.canPublish(), IsEqual.equalTo(true));
+        assertThat(songRepresentation.getType(), IsEqual.equalTo("Song & Reflection"));
+        assertThat(songRepresentation.isFeatured(), IsEqual.equalTo(true));
+        assertThat(songRepresentation.getYouTubeVideoId(), IsEqual.equalTo("12345"));
+        assertThat(songRepresentation.getSoundCloudTrackId(), IsEqual.equalTo("67890"));
+        assertThat(songRepresentation.getThumbnailUrl(), IsEqual.equalTo("http://tinyurl.com"));
+        assertThat(songRepresentation.getDuration(), IsEqual.equalTo("1:00"));
+
+        assertThat(songRepresentation.getSingers().get(0).toString(), IsEqual.equalTo("id: 1001, name: Singer1"));
+        assertThat(songRepresentation.getPoets().get(0).toString(), IsEqual.equalTo("id: 2001, name: Poet1"));
     }
-
 }

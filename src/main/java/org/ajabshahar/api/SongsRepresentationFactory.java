@@ -1,6 +1,7 @@
 package org.ajabshahar.api;
 
 import org.ajabshahar.core.People;
+import org.ajabshahar.platform.models.PersonDetails;
 import org.ajabshahar.platform.models.Song;
 import org.ajabshahar.platform.models.Title;
 
@@ -31,6 +32,36 @@ public class SongsRepresentationFactory {
     }
 
     public SongRepresentation create(Song song) {
-        return null;
+        Title umbrellaTitle = song.getTitle() == null ? new Title() : song.getTitle();
+        Title songTitle = song.getSongTitle() == null ? new Title() : song.getSongTitle();
+        List<PersonSummaryRepresentation> singers = new ArrayList<>(), poets = new ArrayList<>();
+
+        song.getSingers().forEach(singer -> {
+            PersonDetails personDetails = people.findBy((int) singer.getId());
+            singers.add(new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName()));
+        });
+        song.getPoets().forEach(poet -> {
+            PersonDetails personDetails = people.findBy((int) poet.getId());
+            poets.add(new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName()));
+        });
+
+        return new SongRepresentation(song.getId(),
+                umbrellaTitle.getId(),
+                umbrellaTitle.getOriginalTitle(),
+                umbrellaTitle.getEnglishTransliteration(),
+                umbrellaTitle.getEnglishTranslation(),
+                songTitle.getId(),
+                songTitle.getOriginalTitle(),
+                songTitle.getEnglishTransliteration(),
+                songTitle.getEnglishTranslation(),
+                song.getIsAuthoringComplete(),
+                song.getSongCategory().getName(),
+                song.getShowOnLandingPage(),
+                song.getYoutubeVideoId(),
+                song.getSoundCloudTrackID(),
+                song.getThumbnail_url(),
+                song.getDuration(),
+                singers,
+                poets);
     }
 }

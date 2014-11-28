@@ -6,7 +6,6 @@ import org.ajabshahar.platform.models.PersonDetails;
 import java.util.List;
 
 public class People {
-
     private final PersonDAO personRepository;
 
     public People(PersonDAO personRepository) {

@@ -12,11 +12,17 @@ public class Songs {
         this.songsRepository = songsRepository;
     }
 
-    public List<Song> findBy(int singerId, int poetId, int startFrom, String filteredLetter) {
-        return songsRepository.findBy(singerId, poetId, startFrom, filteredLetter);
+    public Song findBy(int songId) {
+        List<Song> songList = findBy(songId, 0, 0, 0, null);
+        return songList.size() > 0 ? songList.get(0) : null;
     }
 
-    public Song findBy(int songId) {
-        return null;
+    public List<Song> findBy(int singerId, int poetId, int startFrom, String filteredLetter) {
+        return findBy(0, singerId, poetId, startFrom, filteredLetter);
+    }
+
+    private List<Song> findBy(int songId, int singerId, int poetId, int startFrom, String filteredLetter) {
+        return songsRepository.findBy(songId, singerId, poetId, startFrom, filteredLetter);
     }
 }
+
