@@ -4,7 +4,7 @@
         function songDetails() {
             var _domReady = function() {
                 _bindEvents();
-                _setLeftNav();
+//                _setLeftNav();
             }
 
             var _bindEvents = function() {
@@ -16,9 +16,9 @@
                 $(".carousel-wrapper").on("click", ".see-more .version", function() {
                   _toggleCarousel();
                 });
-                $(window).on("scroll", function() {
-                    _onScroll();
-                });
+//                $(window).on("scroll", function() {
+//                    _onScroll();
+//                });
 
                 $("ul.slide-info").on('click', 'li>a', function() {
                     var selector = $(this).data('slide'),
