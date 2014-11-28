@@ -1,7 +1,7 @@
 (function($, AjabShahar, undefined) {
 
-    AjabShahar.songDetails = (function() {
-        function songDetails() {
+    AjabShahar.songPages = (function() {
+        function songPages() {
             var _domReady = function() {
                 _bindEvents();
 //                _setLeftNav();
@@ -69,7 +69,7 @@
             })();
             return this;
         }
-        return new songDetails();
+        return new songPages();
     })();
 
 })(jQuery, window.AjabShahar = window.AjabShahar || {});
