@@ -1,8 +1,6 @@
 package org.ajabshahar.platform.resources;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.jersey.caching.CacheControl;
 import org.ajabshahar.api.SongRepresentation;
@@ -65,19 +63,7 @@ public class SongResource {
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updateSong(String jsonSong) {
-        JsonElement jsonElement = new Gson().fromJson(jsonSong, JsonElement.class);
-        JsonObject jsonObject = jsonElement.getAsJsonObject();
-        Long id = jsonObject.get("id").getAsLong();
-        Song song = new Gson().fromJson(jsonObject.get("data"), Song.class);
-        if (song.getTitle().getId() == 0) {
-            Title umbrellaTitle = titleDAO.create(song.getTitle());
-            song.setTitle(umbrellaTitle);
-        }
-        if (song.getSongTitle().getId() == 0) {
-            Title songTitle = titleDAO.create(song.getSongTitle());
-            song.setSongTitle(songTitle);
-        }
-        songDAO.updateSong(id, song);
+        Song song = songs.updateSong(jsonSong);
         return Response.ok(song).build();
     }
 

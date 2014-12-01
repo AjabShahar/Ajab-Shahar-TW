@@ -1,5 +1,6 @@
 package org.ajabshahar.core;
 
+import com.google.gson.Gson;
 import org.ajabshahar.platform.daos.SongDAO;
 import org.ajabshahar.platform.models.Song;
 
@@ -23,6 +24,11 @@ public class Songs {
 
     private List<Song> findBy(int songId, int singerId, int poetId, int startFrom, String filteredLetter) {
         return songsRepository.findBy(songId, singerId, poetId, startFrom, filteredLetter);
+    }
+
+    public Song updateSong(String jsonSong) {
+        Song song = new Gson().fromJson(jsonSong, Song.class);
+        return songsRepository.updateSong(song);
     }
 }
 

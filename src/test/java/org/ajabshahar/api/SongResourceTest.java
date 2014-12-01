@@ -81,4 +81,15 @@ public class SongResourceTest {
 
         assertEquals(Response.Status.NOT_FOUND.getStatusCode(), response.getStatus());
     }
+
+    @Test
+    public void shouldUpdateSong() throws Exception {
+        String jsonSong = "Song";
+        Song expectedResult = new Song();
+        when(songs.updateSong(jsonSong)).thenReturn(expectedResult);
+
+        Response actualResult = songResource.updateSong(jsonSong);
+
+        assertEquals(expectedResult, actualResult.getEntity());
+    }
 }

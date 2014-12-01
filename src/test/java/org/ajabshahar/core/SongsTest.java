@@ -1,11 +1,13 @@
 package org.ajabshahar.core;
 
+import com.google.gson.JsonObject;
 import org.ajabshahar.platform.daos.SongDAO;
 import org.ajabshahar.platform.models.Song;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
@@ -46,6 +48,19 @@ public class SongsTest {
     public void shouldGetPersonById() throws Exception {
         when(songsRepository.findBy(SONG_ID, 0, 0, 0, null)).thenReturn(songsList);
         Song result = songs.findBy(SONG_ID);
+        assertEquals(song, result);
+    }
+
+    @Test
+    public void shouldUpdateSong() throws Exception {
+        JsonObject json = new JsonObject();
+        Song dummySong = new Song();
+        dummySong.setId(SONG_ID);
+        json.addProperty("", dummySong.toString());
+        when(songsRepository.update(Mockito.any(Song.class))).thenReturn(song);
+
+        Song result = songs.updateSong(json.toString());
+
         assertEquals(song, result);
     }
 }

@@ -82,12 +82,7 @@ var songDetailsController = function($scope, $http,$window,$location){
            })[0];
          }
 
-     $http.put('/api/songs/edit',
-            {
-              id:$scope.urlId,
-              data:$scope.formInfo
-            }
-     ).success(function(data){
+     $http.put('/api/songs/edit',$scope.formInfo).success(function(data){
             alert('data updated');
      });
   };

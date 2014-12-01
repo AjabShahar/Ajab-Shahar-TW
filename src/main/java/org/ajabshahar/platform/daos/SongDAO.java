@@ -37,12 +37,6 @@ public class SongDAO extends AbstractDAO<Song> {
         return list(namedQuery("org.ajabshahar.platform.models.Song.findAllOnLandingPage").setMaxResults(15));
     }
 
-    public void updateSong(Long id, Song updatableSongData) {
-        Song originalSongData = (Song) sessionFactory.openSession().get(Song.class, id);
-        originalSongData = invokeAllSetters(originalSongData, updatableSongData);
-        sessionFactory.openStatelessSession().update(persist(originalSongData));
-    }
-
     public Song invokeAllSetters(Song originalSongData, Song updatableSongData) {
 
         originalSongData.setShowOnLandingPage(updatableSongData.getShowOnLandingPage());
@@ -90,5 +84,13 @@ public class SongDAO extends AbstractDAO<Song> {
             findSongs.add(Restrictions.like("songTitleAlias.englishTranslation", filteredLetter, MatchMode.START));
         }
         return findSongs.list();
+    }
+
+    public Song updateSong(Song updatableSong) {
+        Long id = updatableSong.getId();
+        Song originalSongData = (Song) sessionFactory.openSession().get(Song.class, id);
+        originalSongData = invokeAllSetters(originalSongData, updatableSong);
+        sessionFactory.getCurrentSession().update(originalSongData);
+        return originalSongData;
     }
 }
