@@ -1,12 +1,14 @@
 var coupletDetailsController = function($scope, $http,$window,$location){
     $scope.formInfo = {};
     $scope.formInfo.poet = [];
+    $scope.poetsList = [];
     $scope.categoryList= [];
     $scope.urlId = $location.search().id;
 
 
-    $http.get('/api/people?role=Poet').success(function(poetsList){
-        $scope.poetsList = poetsList;
+    $http.get('/api/people?role=Poet').success(function(allPoets){
+        $scope.poets = allPoets;
+        $scope.poetsList = $scope.poets.people;
     });
 
     $http.get('/api/category/couplet').success(function(categoryList){
@@ -32,12 +34,7 @@ var coupletDetailsController = function($scope, $http,$window,$location){
       };
 
       $scope.updateCouplet = function(){
-           $http.put('/api/couplets/edit',
-                  {
-                    id:$scope.urlId,
-                    data:$scope.formInfo
-                  }
-           ).success(function(data){
+           $http.put('/api/couplets/edit',$scope.formInfo).success(function(data){
                   alert('data updated');
            });
       };

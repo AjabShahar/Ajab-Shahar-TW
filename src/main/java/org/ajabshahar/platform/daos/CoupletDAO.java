@@ -27,15 +27,11 @@ public class CoupletDAO  extends AbstractDAO<Couplet>{
         return (Couplet)sessionFactory.openSession().get(Couplet.class,id);
     }
 
-    public void updateCouplet(Long id, Couplet updatableCouplet) {
-        Couplet originalCouplet = (Couplet) sessionFactory.openSession().get(Couplet.class,id);
+    public void updateCouplet(int id, Couplet updatableCouplet) {
+        Couplet originalCouplet = (Couplet) sessionFactory.openSession().get(Couplet.class,Long.valueOf(id));
         originalCouplet = invokeSetters(originalCouplet,updatableCouplet);
-        try{
-            sessionFactory.openStatelessSession().update(originalCouplet);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
+        sessionFactory.openStatelessSession().update(originalCouplet);
+
     }
 
     private Couplet invokeSetters(Couplet originalCouplet, Couplet updatableCouplet) {
@@ -56,5 +52,13 @@ public class CoupletDAO  extends AbstractDAO<Couplet>{
 
         couplet.add(Restrictions.eq("id", Long.valueOf(id)));
         return couplet.list();
+    }
+
+    public Couplet update( Couplet updatableCouplet) {
+        Long id = updatableCouplet.getId();
+        Couplet originalCouplet = (Couplet) sessionFactory.openSession().get(Couplet.class,id);
+        originalCouplet = invokeSetters(originalCouplet,updatableCouplet);
+        sessionFactory.openStatelessSession().update(originalCouplet);
+        return originalCouplet;
     }
 }

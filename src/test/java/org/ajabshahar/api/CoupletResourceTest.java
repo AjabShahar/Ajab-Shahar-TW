@@ -43,12 +43,24 @@ public class CoupletResourceTest {
     @Test
     public void shouldGetCoupletById() {
 
-        List<Couplet> expectedCouplet = new ArrayList<>();
-        when(coupletDAO.findBy(id)).thenReturn(expectedCouplet);
-        when(coupletsRepresentationFactory.create(expectedCouplet)).thenReturn(coupletsRepresentation);
+        List<Couplet> expectedResult = new ArrayList<>();
+        when(coupletDAO.findBy(id)).thenReturn(expectedResult);
+        when(coupletsRepresentationFactory.create(expectedResult)).thenReturn(coupletsRepresentation);
 
         Response actualCouplet = coupletResource.getCouplet(id);
 
         assertEquals(coupletsRepresentation, actualCouplet.getEntity());
+    }
+
+    @Test
+    public void shouldUpdateCouplet() throws Exception {
+        String jsonString = "hello";
+        Couplet expectedResult = new Couplet();
+        when(couplets.updateCouplet(jsonString)).thenReturn(expectedResult);
+
+        Response actualResult = coupletResource.updateCouplet(jsonString);
+
+        assertEquals(expectedResult, actualResult.getEntity());
+
     }
 }

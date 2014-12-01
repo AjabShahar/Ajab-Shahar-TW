@@ -1,11 +1,9 @@
 package org.ajabshahar.platform.resources;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import io.dropwizard.hibernate.UnitOfWork;
-import org.ajabshahar.api.CoupletsRepresentationFactory;
 import org.ajabshahar.api.CoupletsRepresentation;
+import org.ajabshahar.api.CoupletsRepresentationFactory;
 import org.ajabshahar.core.Couplets;
 import org.ajabshahar.platform.daos.CoupletDAO;
 import org.ajabshahar.platform.models.Couplet;
@@ -43,13 +41,10 @@ public class CoupletResource {
     @Path("/edit")
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateCouplet(String jsonSong) {
-        JsonElement jsonElement = new Gson().fromJson(jsonSong, JsonElement.class);
-        JsonObject jsonObject = jsonElement.getAsJsonObject();
-        Long id = jsonObject.get("id").getAsLong();
-        Couplet couplet = new Gson().fromJson(jsonObject.get("data"), Couplet.class);
-        coupletDAO.updateCouplet(id, couplet);
-        return Response.status(200).entity(couplet.toString()).build();
+    public Response updateCouplet(String jsonCouplet) {
+
+        Couplet couplet = couplets.updateCouplet(jsonCouplet);
+        return Response.ok(couplet).build();
     }
 
     @GET
@@ -80,4 +75,5 @@ public class CoupletResource {
     public Response.ResponseBuilder getResponse(CoupletsRepresentation couplets) {
         return Response.ok(couplets);
     }
+
 }
