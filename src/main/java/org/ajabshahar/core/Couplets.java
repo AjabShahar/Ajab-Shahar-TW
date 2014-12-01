@@ -21,6 +21,6 @@ public class Couplets {
     public Couplet updateCouplet(String jsonCouplet) {
 
         Couplet couplet = new Gson().fromJson(jsonCouplet, Couplet.class);
-        return coupletRepository.update(couplet);
+        return coupletRepository.updateCouplet(couplet);
     }
 }

@@ -45,9 +45,9 @@ public class CoupletsTest {
         Couplet couplet = new Couplet();
         JsonObject jsonObject = new JsonObject();
         couplet.setId(Long.valueOf(1));
-        jsonObject.addProperty("data", couplet.toString());
+        jsonObject.addProperty("", couplet.toString());
         Couplet expectedResult = new Couplet();
-        when(coupletRepository.update(Mockito.any(Couplet.class))).thenReturn(expectedResult);
+        when(coupletRepository.updateCouplet(Mockito.any(Couplet.class))).thenReturn(expectedResult);
 
         Couplet actualResult = couplets.updateCouplet(jsonObject.toString());
 

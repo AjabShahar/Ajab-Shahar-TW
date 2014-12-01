@@ -27,13 +27,6 @@ public class CoupletDAO  extends AbstractDAO<Couplet>{
         return (Couplet)sessionFactory.openSession().get(Couplet.class,id);
     }
 
-    public void updateCouplet(int id, Couplet updatableCouplet) {
-        Couplet originalCouplet = (Couplet) sessionFactory.openSession().get(Couplet.class,Long.valueOf(id));
-        originalCouplet = invokeSetters(originalCouplet,updatableCouplet);
-        sessionFactory.openStatelessSession().update(originalCouplet);
-
-    }
-
     private Couplet invokeSetters(Couplet originalCouplet, Couplet updatableCouplet) {
         originalCouplet.setOriginalTitle(updatableCouplet.getOriginalTitle());
         originalCouplet.setEnglishTranslation(updatableCouplet.getEnglishTranslation());
@@ -54,7 +47,7 @@ public class CoupletDAO  extends AbstractDAO<Couplet>{
         return couplet.list();
     }
 
-    public Couplet update( Couplet updatableCouplet) {
+    public Couplet updateCouplet( Couplet updatableCouplet) {
         Long id = updatableCouplet.getId();
         Couplet originalCouplet = (Couplet) sessionFactory.openSession().get(Couplet.class,id);
         originalCouplet = invokeSetters(originalCouplet,updatableCouplet);

@@ -57,7 +57,7 @@ public class SongsTest {
         Song dummySong = new Song();
         dummySong.setId(SONG_ID);
         json.addProperty("", dummySong.toString());
-        when(songsRepository.update(Mockito.any(Song.class))).thenReturn(song);
+        when(songsRepository.updateSong(Mockito.any(Song.class))).thenReturn(song);
 
         Song result = songs.updateSong(json.toString());
 
