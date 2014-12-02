@@ -6,6 +6,7 @@ var songDetailsController = function($scope,$location,songsContentService){
     $scope.prevId = null;
     $scope.currentIndex = 0; // Initially the index is at the first element
     $scope.direction = '';
+    $scope.dropDownVisible = false;
 
     $scope.prevSlide = function () {
          $scope.direction = 'left';
@@ -22,6 +23,8 @@ var songDetailsController = function($scope,$location,songsContentService){
     };
 
     $scope.init = function(){
+        $scope.url = $location.absUrl();
+        
         songsContentService.getSongsVersions($scope.urlId).then(function(result){
             $scope.songs = result.data;
         });
@@ -29,6 +32,10 @@ var songDetailsController = function($scope,$location,songsContentService){
         $scope.detailContents = songsContentService.getSongRenditions($scope.urlId).then(function(result){
             $scope.details = result.data;
         });
+    }
+
+    $scope.showDropDown = function(){
+        $scope.dropDownVisible = true;
     }
 
     $scope.getSongId = function(id){
