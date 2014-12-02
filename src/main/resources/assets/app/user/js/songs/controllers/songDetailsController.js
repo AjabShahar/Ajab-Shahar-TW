@@ -34,10 +34,6 @@ var songDetailsController = function($scope,$location,songsContentService){
         });
     }
 
-    $scope.showDropDown = function(){
-        $scope.dropDownVisible = true;
-    }
-
     $scope.getSongId = function(id){
         return id.toString().match(/[0-9]+/)[0];
     }
