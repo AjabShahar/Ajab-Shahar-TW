@@ -10,9 +10,6 @@
             var _bindEvents = function() {
 
                 var that = this;
-//                $(".headerArt a.menuTree").on("click", function() {
-//                  $(".headerWrapper").slideToggle();
-//                });
                 $(".carousel-wrapper").on("click", ".see-more .version", function() {
                   _toggleCarousel();
                 });

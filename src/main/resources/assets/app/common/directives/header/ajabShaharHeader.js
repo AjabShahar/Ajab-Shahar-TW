@@ -9,6 +9,7 @@ headerModule.directive("ajabShaharHeader", function($window) {
         },
         templateUrl:'/common/js/templates/header/ajabShaharHeader.html',
         controller:function($scope){
+            $scope.initialMenuState = $scope.showMenuDetails;
             $window.onload = function () {
                 $scope.callBack && $scope.callBack();
             }
@@ -17,7 +18,7 @@ headerModule.directive("ajabShaharHeader", function($window) {
             }
 
             $scope.showMenu = function(){
-                if(!$scope.showMenuDetails)
+                if($scope.initialMenuState && !$scope.showMenuDetails)
                     $scope.toggleMenuAndDigest();
             }
 
