@@ -84,30 +84,15 @@
     <div class='ajab-container'>
         <div class='ajab-wrapper'>
             <div class='homepage-content'>
-                <div ng-repeat="song in thumbnailDetails.songs | limitTo: 5">
+                <div ng-repeat="song in thumbnailDetails.songs | limitTo: 9">
                     <song-mapper details="song" show-details-service="detailsService" custom-style="{{getSongCustomStyle(song)}}"/>
-                </div>
-                <div ng-repeat="couplet in thumbnailDetails.couplets | limitTo: 5">
-                    <couplet-mapper details="couplet" show-details-service="detailsService" custom-style="{{getCoupletCustomStyle(couplet)}}"/>
-                </div>
-                <div ng-repeat="word in thumbnailDetails.words | limitTo: 5">
-                    <word-mapper details="word" show-details-service="detailsService" custom-style="{{getWordCustomStyle(word)}}"/>
                 </div>
             </div>
         </div>
     </div>
-    <div ng-repeat="song in thumbnailDetails.songs | limitTo: 5">
+    <div ng-repeat="song in thumbnailDetails.songs | limitTo: 9">
         <song-introduction-mapper total-count="15" index="{{$index}}" details="song" show-details-service="detailsService"/>
     </div>
-
-    <div ng-repeat="couplet in thumbnailDetails.couplets | limitTo: 5">
-        <couplet-introduction-mapper total-count="15" details="couplet" show-details-service="detailsService"/>
-    </div>
-
-    <div ng-repeat="word in thumbnailDetails.words | limitTo: 5">
-        <word-introduction-mapper total-count="15" details="word" show-details-service="detailsService"/>
-    </div>
-
 </div>
 
     <div ng-include src="'common/footer.html'"></div>
