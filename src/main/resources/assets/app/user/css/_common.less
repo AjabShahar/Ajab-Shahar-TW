@@ -1,0 +1,150 @@
+/* load fonts */
+@import url(https://fonts.googleapis.com/css?family=Merriweather);
+@import url(https://fonts.googleapis.com/css?family=Merriweather+Sans);
+
+
+/* Variables */
+
+@activeLink: #7bd0ca;
+
+/* Common Styles */
+
+.box-shadow(@color, @spread: 7px) {
+    -webkit-box-shadow: 1px 1px @spread @color;
+    -moz-box-shadow: 1px 1px @spread @color;
+    box-shadow: 1px 1px @spread @color;
+
+}
+
+
+/* animate tags to create smooth transition */
+/*{
+   -webkit-transition: all 2s; /* For Safari 3.1 to 6.0 */
+/*    transition: all 2s;
+}*/
+
+
+/* global rules starts */
+html {
+    overflow-x: hidden;
+}
+
+body{
+    width: 100%;
+    overflow: hidden;
+    background:#eee;
+    margin:0;padding:0;
+    font-family:'Merriweather Sans','Merriweather',lucida grande,arial,tahoma,verdana,sans serif;
+    font-size: 0.8em;
+}
+
+
+/* color */
+.selected { color:#e83785; }
+.selectedGreen { color: #18a398; }
+
+/* display rule */
+.hidethis{display:none !important;}
+
+
+/* app containers and boxes */
+.ajab-container{
+  width:100%;
+  text-align: center;
+  display:inline-block;
+}
+
+.ajab-wrapper{
+  width:98%;
+  text-align: center;
+  display:block;
+  margin:0 auto;
+}
+
+
+/* wrapper rules */
+.mainContentWrapper {
+    overflow: hidden;
+    margin-top: -11%;
+}
+
+.noParallaxPage {
+    padding-top:11%;
+    padding-bottom: 250px;
+}
+
+
+
+/* under construction */
+.underConstruction {
+    background: #fff;
+    padding: 3%;
+    border-radius: 10px;
+    border: solid 1px #ccc;
+    color: #ccc;
+    margin-top: 5%;
+    display: inline-block;
+    .box-shadow(#BDBDBD, 15px);
+
+    h1.ucText {
+        font-size: 4em;
+    }
+}
+
+
+
+/* global rules ends*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***************************************/
+.light-bg {
+        position: absolute;
+        width: inherit;
+        background: #fff;
+        top: 0;
+        z-index: -1;
+        opacity: 0.2;
+
+}
+
+#left_nav {
+    width: 15%;
+    position: fixed;
+    left: 4%;
+    top: 29%;
+    text-align: left;
+
+    li {
+        &>a {
+            line-height: 27px;
+            font-size: 14px;
+            color: #b3b3b3;
+            &.active {
+                color: #7AC943;
+            }
+        }
+    }
+}
+
+.main-content {
+    width: 80%;
+    float: left;
+    margin-left: 20%;
+}
