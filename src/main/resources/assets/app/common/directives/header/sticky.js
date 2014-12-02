@@ -7,15 +7,17 @@ headerModule.directive('sticky', [ function () {
           },
         link: function ($scope, $elem, $attrs) {
             var offsetTop = 0,
-                $window = angular.element(window),
-                initialPositionStyle = $elem.css('position'),
-                stickyLine,
-                scrollTop;
+            $window = angular.element(window),
+            initialPositionStyle = $elem.css('position'),
+            stickyLine,
+            scrollTop;
 
             // Set the top offset
             $elem.css('top', '0');
             $window.on('scroll', checkSticky);
-            setInitial();
+            $window.onload = function () {
+                setInitial();
+            }
 
             function setInitial() {
                 stickyLine = $elem[0].offsetTop;
@@ -24,17 +26,18 @@ headerModule.directive('sticky', [ function () {
 
             function checkSticky() {
                 scrollTop = window.pageYOffset;
-                if(scrollTop<stickyLine || scrollTop==0) {
+                if(scrollTop<stickyLine) {
                     $elem.removeClass('fixed');
                     $elem.css('position', initialPositionStyle);
                     $scope.onTop();
                     return;
                 }
 
-                if (scrollTop >= stickyLine) {
+                if (scrollTop > stickyLine) {
                     $elem.css('position', 'fixed');
                     $elem.addClass('fixed');
                     $scope.onScroll();
+                    return;
                 }
             }
         }

@@ -17,13 +17,17 @@ headerModule.directive("ajabShaharHeader", function($window) {
             }
 
             $scope.showMenu = function(){
-                $scope.showMenuDetails = true;
-                if(!$scope.$$phase && !$scope.$root.$$phase)
-                    $scope.$digest();
+                if(!$scope.showMenuDetails)
+                    $scope.toggleMenuAndDigest();
             }
 
             $scope.hideMenu = function(){
-                $scope.showMenuDetails = false;
+                if($scope.showMenuDetails)
+                    $scope.toggleMenuAndDigest();
+            }
+
+            $scope.toggleMenuAndDigest = function(){
+                $scope.toggleMenu();
                 if(!$scope.$$phase && !$scope.$root.$$phase)
                     $scope.$digest();
             }

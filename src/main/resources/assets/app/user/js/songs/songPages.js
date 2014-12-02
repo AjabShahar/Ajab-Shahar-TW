@@ -10,9 +10,9 @@
             var _bindEvents = function() {
 
                 var that = this;
-                $(".headerArt a.menuTree").on("click", function() {
-                  $(".headerWrapper").slideToggle();
-                });
+//                $(".headerArt a.menuTree").on("click", function() {
+//                  $(".headerWrapper").slideToggle();
+//                });
                 $(".carousel-wrapper").on("click", ".see-more .version", function() {
                   _toggleCarousel();
                 });
@@ -36,27 +36,27 @@
             }
 
 
-            var _setLeftNav = function() {
-
-                var topMargin = $('.page-header').height() + $('.carousel-wrapper').height();
-                $("#left_nav").css({'top': topMargin});
-            }
-
-            var _onScroll = function(event) {
-                var scrollPos = $(document).scrollTop();
-                $('#left_nav a').each(function () {
-                    var currLink = $(this),
-                        refElement = $(currLink.attr("href")),
-                        refElementPos = refElement.offset();
-                    if ( (refElement.length != 0) && (scrollPos > refElementPos.top) && (scrollPos <= (refElementPos.top + refElement.height()) )) {
-                        $('#left_nav ul li a').removeClass("active");
-                        currLink.addClass("active");
-                    }
-                    else{
-                        currLink.removeClass("active");
-                    }
-                });
-            }
+//            var _setLeftNav = function() {
+//
+//                var topMargin = $('.page-header').height() + $('.carousel-wrapper').height();
+//                $("#left_nav").css({'top': topMargin});
+//            }
+//
+//            var _onScroll = function(event) {
+//                var scrollPos = $(document).scrollTop();
+//                $('#left_nav a').each(function () {
+//                    var currLink = $(this),
+//                        refElement = $(currLink.attr("href")),
+//                        refElementPos = refElement.offset();
+//                    if ( (refElement.length != 0) && (scrollPos > refElementPos.top) && (scrollPos <= (refElementPos.top + refElement.height()) )) {
+//                        $('#left_nav ul li a').removeClass("active");
+//                        currLink.addClass("active");
+//                    }
+//                    else{
+//                        currLink.removeClass("active");
+//                    }
+//                });
+//            }
 
 
 
