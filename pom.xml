@@ -78,11 +78,11 @@
     <build>
         <plugins>
             <plugin>
-             <artifactId>maven-compiler-plugin</artifactId>
-             <version>3.0</version>
-                 <configuration>
-                     <source>1.8</source>
-                     <target>1.8</target>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -139,6 +139,11 @@
                 <version>1.7.0.1.1</version>
                 <configuration>
                     <sourceDirectory>${project.basedir}/src/main/resources/assets/app</sourceDirectory>
+                    <excludes>
+                        <exclude>
+                            common/lib/bootstrap/less/*.less
+                        </exclude>
+                    </excludes>
                     <outputDirectory>${project.build.directory}/classes/assets/app</outputDirectory>
                     <compress>true</compress>
                 </configuration>
