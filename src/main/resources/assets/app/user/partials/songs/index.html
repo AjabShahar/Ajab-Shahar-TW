@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html ng-app="songDetailsApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <title>Song details page</title>
+    <link href="../../css/common.css" rel="stylesheet" type="text/css">
+    <link href="../../css/reset.css" rel="stylesheet" type="text/css">
+
+    <link href="../../../common/css/header.css" rel="stylesheet" type="text/css">
+    <link href="../../../common/css/footer.css" rel="stylesheet" type="text/css">
+    <link href="../../css/mainLandingPage/main.css" rel="stylesheet" type="text/css">
+    <link href="../../css/common/directives/thumbnail.css" rel="stylesheet" type="text/css">
+    <link href="../../css/common/directives/introduction.css" rel="stylesheet" type="text/css">
+    <link href="../../css/pages/songs.css" rel="stylesheet" type="text/css">
+    <link href="../../../common/jquery/jcarousel/jcarousel.responsive.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../../../common/lib/underscore/underscore.js"></script>
+    <script type="text/javascript" src="../../../common/services/nameService.js"></script>
+    <script type="text/javascript" src="../../../common/lib/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="../../../common/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="../../../common/lib/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="../../../common/lib/jcarousel/dist/jquery.jcarousel.min.js"></script>
+    <script type="text/javascript" src="../../../common/jquery/jcarousel/jcarousel.responsive.js"></script>
+    <script type="text/javascript" src="../../js/common/config/resourceUrlWhiteList.js"></script>
+    <script type="text/javascript" src="../../js/songs/services/songsContentService.js"></script>
+    <script type="text/javascript" src="../../js/common/modules/thumbnailModule.js"></script>
+    <script type="text/javascript" src="../../js/common/modules/mediaPlayer.js"></script>
+    <script type="text/javascript" src="../../js/common/modules/htmlGenerator.js"></script>
+    <script type="text/javascript" src="../../../common/modules/headerModule.js"></script>
+    <script type="text/javascript" src="../../../common/directives/header/sticky.js"></script>
+    <script type="text/javascript" src="../../../common/directives/header/ajabShaharHeader.js"></script>
+    <script type="text/javascript" src="../../../common/directives/animation/animationModule.js"></script>
+    <script type="text/javascript" src="../../../common/directives/animation/toggleBySlide.js"></script>
+    <!--<script type="text/javascript" src="../../js/common/directives/songs/songContentDetails.js"></script>-->
+    <script type="text/javascript" src="../../js/songs/songPages.js"></script>
+    <script type="text/javascript" src="../../js/songs/songDetailsApp.js"></script>
+    <script type="text/javascript" src="../../js/songs/controllers/songDetailsController.js"></script>
+    <!--<script type="text/javascript" src="../../js/common/directives/mappers/songMapper.js"></script>-->
+    <!--<script type="text/javascript" src="../../js/common/directives/mappers/songContentDetailsMapper.js"></script>-->
+    <!--<script type="text/javascript" src="../../js/common/directives/soundCloud/soundcloud_player.js"></script>-->
+    <!--<script type="text/javascript" src="../../js/common/directives/youtube/youtube_player.js"></script>-->
+    <!--<script type="text/javascript" src="../../js/common/directives/thumbnail/song.js"></script>-->
+</head>
+
+<body ng-controller="songDetailsController" class="page-songs">
+<ajab-shahar-header></ajab-shahar-header>
+
+<div class="page-header">
+    <div class="light-bg"></div>
+    <div class="ajab-wrapper">
+        <div class="page-logo"></div>
+        <div class="page-title">
+            <span class="main">Bhajan Ro Gudak Rahyo Gaado</span>
+            <span class="sub-main">Cart of Meditation is Tottering</span>
+        </div>
+    </div>
+
+</div>
+
+<div class="carousel-wrapper jcarousel-wrapper">
+    <div class="carousel-box jcarousel toggleBySlide" ng-show="showVersion">
+        <ul>
+            <li>
+                <div class="thumbnail-media">
+                    <img src="http://3.bp.blogspot.com/-kwpgiMcXc24/TcOcowo6mTI/AAAAAAAAA9w/uNt6ZsJadDg/s1600/parvathy_baul03.jpg">
+                </div>
+                <div class="thumbnail-desc">
+                    <h3 class="item-title">For a few days,O Heart For a few days,O Heart</h3>
+                    <small>sings PARVATHY BAUL</small>
+                </div>
+            </li>
+            <li>
+                <div class="thumbnail-media">
+                    <img src="../../img/songs/sample_img.png">
+                </div>
+                <div class="thumbnail-desc">
+                    <h3 class="item-title">For a few days,O Heart</h3>
+                    <small>sings PARVATHY BAUL</small>
+                </div>
+            </li>
+            <li>
+                <div class="thumbnail-media">
+                    <img src="../../img/songs/sample_img.png">
+                </div>
+                <div class="thumbnail-desc">
+                    <h3 class="item-title">For a few days,O Heart</h3>
+                    <small>sings PARVATHY BAUL</small>
+                </div>
+            </li>
+            <li>
+                <div class="thumbnail-media">
+                    <img src="../../img/songs/sample_img.png">
+                </div>
+                <div class="thumbnail-desc">
+                    <h3 class="item-title">For a few days,O Heart</h3>
+                    <small>sings PARVATHY BAUL</small>
+                </div>
+            </li>
+            <li>
+                <div class="thumbnail-media">
+                    <img src="../../img/songs/sample_img.png">
+                </div>
+                <div class="thumbnail-desc">
+                    <h3 class="item-title">For a few days,O Heart</h3>
+                    <small>sings PARVATHY BAUL</small>
+                </div>
+            </li>
+            <li>
+                <div class="thumbnail-media">
+                    <img src="../../img/songs/sample_img.png">
+                </div>
+                <div class="thumbnail-desc">
+                    <h3 class="item-title">For a few days,O Heart</h3>
+                    <small>sings PARVATHY BAUL</small>
+                </div>
+            </li>
+            <li>
+                <div class="thumbnail-media">
+                    <img src="../../img/songs/sample_img.png">
+                </div>
+                <div class="thumbnail-desc">
+                    <h3 class="item-title">For a few days,O Heart</h3>
+                    <small>sings PARVATHY BAUL</small>
+                </div>
+            </li>
+            <li>
+                <div class="thumbnail-media">
+                    <img src="../../img/songs/sample_img.png">
+                </div>
+                <div class="thumbnail-desc">
+                    <h3 class="item-title">For a few days,O Heart</h3>
+                    <small>sings PARVATHY BAUL</small>
+                </div>
+            </li>
+            <li>
+                <div class="thumbnail-media">
+                    <img src="../../img/songs/sample_img.png">
+                </div>
+                <div class="thumbnail-desc">
+                    <h3 class="item-title">For a few days,O Heart</h3>
+                    <small>sings PARVATHY BAUL</small>
+                </div>
+            </li>
+        </ul>
+        <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true"></a>
+        <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true"></a>
+    </div>
+    <div class="see-more">
+        <a class="version" ng-click="toggleVersion()">
+            03 versions
+            <span class="arrow"></span>
+        </a>
+        <div class="light-bg"></div>
+    </div>
+</div>
+<div class='ajab-container'>
+    <div class='ajab-wrapper'>
+
+        <!--<div id="left_nav">-->
+        <!--<ul>-->
+        <!--<li><a href="#song_container" class="active">song</a></li>-->
+        <!--<li><a href="#poem_container">poem</a></li>-->
+        <!--</ul>-->
+        <!--<a href="javascript:void(0)">explore</a>-->
+        <!--</div>-->
+
+        <div class="main-content">
+            <div id="song_container">
+                <div class="rendition-wrapper">
+                    <ul>
+                        <li><a href="javascript:void(0)" class="active">01</a>|</li>
+                        <li><a href="javascript:void(0)">02</a>|</li>
+                        <li><a href="javascript:void(0)">03</a></li>
+                    </ul>
+
+                </div>
+                <youtube videoid="tNh2kjmSzPw" showcontrols="true" should-stop-video="closeVideo()">
+                    <iframe frameborder="0" allowfullscreen="1" title="YouTube video player" width="100%" src="https://www.youtube.com/embed/tNh2kjmSzPw?autoplay=0&amp;html5=1&amp;theme=light&amp;modesbranding=0&amp;color=white&amp;iv_load_policy=3&amp;controls=2&amp;enablejsapi=1&amp;origin=http%3A%2F%2Flocalhost%3A9000" id="widget2"></iframe>
+                </youtube>
+                <ul class="slide-info">
+                    <li>
+                        <a href="javascript:void(0)" data-slide="slide-about">about</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" data-slide="slide-notes">notes</a>
+                    </li>
+                </ul>
+
+
+                <ul class="share-options">
+                    <li>
+                        <a href="javascript:void(0)" class="favorite"></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="share" ng-click="showDropDown()"></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="comment"></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="download"></a>
+                    </li>
+                </ul>
+
+                <div class='shareItemsDropDown' ng-show="dropDownVisible">
+                    <ul class='shareItems'>
+                        <li><a href='http://www.facebook.com/share.php?u={{url}}'>Share on facebook</a></li>
+                        <li><a class="twitter-share-button"
+                               href="https://twitter.com/share"
+                               data-size="large"
+                               data-url="https://dev.twitter.com/web/tweet-button"
+                               data-count-url="https://dev.twitter.com/web/tweet-button"
+                               data-via="twitterdev"
+                               data-related="twitterapi,twitter"
+                               data-hashtags="example,demo"
+                               data-text="custom share text">Share on twitter</a></li>
+                        <li><a href="//pinterest.com/pin/create%2Fbutton/?url={{url}}">Share on pinterest</a></li>
+                        <li><a href="https://plus.google.com/share?url={{url}}">Share on google+</a></li>
+                    </ul>
+                </div>
+
+                <div class="info" id="slide-about">About Lorem ipsum dolor sit amet, consectetuer
+                    adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
+                    et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
+                    pellentesque eu, pretium quis, sem. Nulla consequat mas
+                    <br/>
+                    About Lorem ipsum dolor sit amet, consectetuer
+                    adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
+                    et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
+                    pellentesque eu, pretium quis, sem. Nulla consequat mas
+                    <br/>
+                    About Lorem ipsum dolor sit amet, consectetuer
+                    adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
+                    et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
+                    pellentesque eu, pretium quis, sem. Nulla consequat mas
+                    adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
+                    et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
+                    pellentesque eu, pretium quis, sem. Nulla consequat mas
+                    <br/>
+                    About Lorem ipsum dolor sit amet, consectetuer
+                    adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
+                    et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
+                    pellentesque eu, pretium quis, sem. Nulla consequat mas
+                    <br/>
+                    About Lorem ipsum dolor sit amet, consectetuer
+                    adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
+                    et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
+                    pellentesque eu, pretium quis, sem. Nulla consequat mas
+                    adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
+                    et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
+                    pellentesque eu, pretium quis, sem. Nulla consequat mas
+                    <br/>
+                    About Lorem ipsum dolor sit amet, consectetuer
+                    adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
+                    et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
+                    pellentesque eu, pretium quis, sem. Nulla consequat mas
+                    <br/>
+                    About Lorem ipsum dolor sit amet, consectetuer
+                    adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
+                    et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
+                    pellentesque eu, pretium quis, sem. Nulla consequat mas
+                </div>
+                <div class="info" id="slide-notes">
+                    Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend
+                    ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra
+                    nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.
+                    Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus
+                </div>
+
+
+                <div class="song-details">
+                    <dl>
+                        <dt>Shah Latif Bhilai</dt>
+                        <dd>Poet</dd>
+                        <dt>Gavra Devi</dt>
+                        <dd>Singer</dd>
+                        <dt>Bhajan meditation</dt>
+                        <dd>Word</dd>
+                    </dl>
+                    <dl>
+                        <dt>Sahaj Spontaneous</dt>
+                        <dd>Word</dd>
+                        <dt>Kutch</dt>
+                        <dd>place</dd>
+                        <dt>Rajasthan Kabir Yatra</dt>
+                        <dd>Gathering</dd>
+                    </dl>
+
+                </div>
+
+            </div>
+            <div id="poem_container">
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,5 +1,4 @@
-angular.module('sticky', [])
-.directive('sticky', [ function () {
+headerModule.directive('sticky', [ function () {
     return {
         restrict: 'A',
         scope: {

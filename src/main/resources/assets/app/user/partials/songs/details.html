@@ -21,16 +21,17 @@
     <script type="text/javascript" src="../../../common/lib/angular-touch/angular-touch.js"></script>
     <script type="text/javascript" src="../../../common/lib/angular-animate/angular-animate.min.js"></script>
     <script type="text/javascript" src="../../../common/lib/angular-touch/angular-touch.min.js"></script>
-    <script type="text/javascript" src="../../../common/jquery/jcarousel/jquery.jcarousel.min.js"></script>
+    <script type="text/javascript" src="../../../common/lib/jcarousel/dist/jquery.jcarousel.min.js"></script>
     <script type="text/javascript" src="../../../common/jquery/jcarousel/jcarousel.responsive.js"></script>
     <script type="text/javascript" src="../../js/common/config/resourceUrlWhiteList.js"></script>
     <script type="text/javascript" src="../../js/songs/services/songsContentService.js"></script>
     <script type="text/javascript" src="../../js/common/modules/thumbnailModule.js"></script>
     <script type="text/javascript" src="../../js/common/modules/mediaPlayer.js"></script>
     <script type="text/javascript" src="../../js/common/modules/htmlGenerator.js"></script>
-    <script type="text/javascript" src="../../../common/directives/header/sticky.js"></script>
     <script type="text/javascript" src="../../../common/modules/headerModule.js"></script>
+    <script type="text/javascript" src="../../../common/directives/header/sticky.js"></script>
     <script type="text/javascript" src="../../../common/directives/header/ajabShaharHeader.js"></script>
+    <script type="text/javascript" src="../../../common/directives/animation/animationModule.js"></script>
     <script type="text/javascript" src="../../js/common/directives/songs/songContentDetails.js"></script>
     <script type="text/javascript" src="../../js/songs/songDetailsApp.js"></script>
     <script type="text/javascript" src="../../js/songs/songPages.js"></script>
@@ -219,7 +220,6 @@
                     <youtube videoid="tNh2kjmSzPw" showcontrols="true" should-stop-video="closeVideo()">
                         <iframe frameborder="0" allowfullscreen="1" title="YouTube video player" width="100%" src="https://www.youtube.com/embed/tNh2kjmSzPw?autoplay=0&amp;html5=1&amp;theme=light&amp;modesbranding=0&amp;color=white&amp;iv_load_policy=3&amp;controls=2&amp;enablejsapi=1&amp;origin=http%3A%2F%2Flocalhost%3A9000" id="widget2"></iframe>
                     </youtube>
-
                     <ul class="slide-info">
                         <li>
                             <a href="javascript:void(0)" data-slide="slide-about">about</a>
@@ -244,7 +244,6 @@
                             <a href="javascript:void(0)" class="download"></a>
                         </li>
                     </ul>
-
                     <div class='shareItemsDropDown' ng-show="dropDownVisible" ng-mouseleave="dropDownVisible='false'">
                         <ul class='shareItems'>
                             <li><a href='http://www.facebook.com/share.php?u={{url}}' target="_blank">Share on facebook</a></li>
@@ -261,7 +260,6 @@
                             <li><a href="https://plus.google.com/share?url={{url}}" target="_blank">Share on google+</a></li>
                         </ul>
                 </div>
-
                     <div class="info" id="slide-about">About Lorem ipsum dolor sit amet, consectetuer
                         adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
                         et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,

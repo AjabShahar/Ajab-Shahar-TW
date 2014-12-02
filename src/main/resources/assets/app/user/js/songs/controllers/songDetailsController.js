@@ -22,6 +22,9 @@ var songDetailsController = function($scope,$location,songsContentService){
       return $scope.currentIndex === index;
     };
 
+    $scope.toggleVersion = function(){
+        $scope.showVersion = !$scope.showVersion;
+    }
     $scope.init = function(){
         $scope.url = $location.absUrl();
         
