@@ -95,6 +95,7 @@ public class SongsRepresentationFactoryTest {
         assertThat(songs.get(0).getDuration(), IsEqual.equalTo("1:00"));
         assertThat(songs.get(0).getSingers().get(0), IsEqual.equalTo("Singer1"));
         assertThat(songs.get(0).getPoets().get(0), IsEqual.equalTo("Poet1"));
+        assertThat(songs.get(0).getCategory(),IsEqual.equalTo("Song & Reflection"));
     }
 
     @Test

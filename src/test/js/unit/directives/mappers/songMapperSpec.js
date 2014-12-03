@@ -20,35 +20,22 @@ describe('Mapper', function() {
         it('Should map song with details from service', function() {
             scope.detailsFromService={
                                 "id":0,
-                                "songCategory": {"name":"Song & Reflection"},
-                                "songTitle":{
-                                    "englishTranslation": "Practice the art of dying",
-                                    "englishTransliteration": "Kichhu din mone mone"
-                                },
-                                "poets": [
-                                    {
-                                    "category": "POET",
-                                    "firstName": "Sharath",
-                                    "middleName": "",
-                                    "lastName": ""
-                                    }
+                                "englishTransliterationTitle": "Kichhu din mone mone",
+                                "category":"Song & Reflection",
+                                "poet": [
+                                     "Sharath",
                                     ],
 
                                 "youtubeVideoId": "videoId",
                                 "thumbnail_url": "imgId",
                                 "singers": [
-                                    {
-                                    "category": "SINGER",
-                                    "firstName": "Parvathy",
-                                    "middleName": "",
-                                    "lastName": "Baul"
-                                    }
+                                      "Parvathy Baul",
                                     ],
                                 "duration": "09:11"
                             };
 
             element = angular.element('<song-mapper details="detailsFromService" custom-style="blah"/>');
-            template.put('/user/js/common/templates/mappers/songMapper.html', '<div>{{song.id}} {{song.customStyle}} {{song.imgSrc}} {{song.videoId}} {{song.englishTransliteration}} {{song.categoryName}} {{song.duration}} {{song.singer}} {{song.poet}}</div>');
+            template.put('/user/js/common/templates/mappers/songMapper.html', '<div>{{song.id}} {{song.customStyle}} {{song.imgSrc}} {{song.videoId}} {{song.englishTransliteration}} {{song.category}} {{song.duration}} {{song.singer}} {{song.poet}}</div>');
             compile(element)(scope);
             scope.$apply();
 
