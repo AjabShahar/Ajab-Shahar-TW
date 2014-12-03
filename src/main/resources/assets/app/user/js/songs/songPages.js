@@ -10,9 +10,6 @@
             var _bindEvents = function() {
 
                 var that = this;
-                $(".carousel-wrapper").on("click", ".see-more .version", function() {
-                  _toggleCarousel();
-                });
 //                $(window).on("scroll", function() {
 //                    _onScroll();
 //                });
@@ -26,12 +23,6 @@
 
 
             }
-
-            var _toggleCarousel = function() {
-                $(".carousel-box").slideToggle();
-                $(".carousel-wrapper.jcarousel-wrapper .see-more .arrow").toggleClass("up-arrow");
-            }
-
 
 //            var _setLeftNav = function() {
 //

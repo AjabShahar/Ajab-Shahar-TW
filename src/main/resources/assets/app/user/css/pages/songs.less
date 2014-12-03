@@ -44,6 +44,28 @@ body.page-songs {
     }
 
 
+    .see-more {
+        background: transparent url(../../img/songs/song-detail-hdr-shadow.png) bottom center no-repeat;
+        height: 36px;
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+        .version {
+            display: inline-block;
+        }
+        .arrow {
+            background: transparent url(../../img/songs/down-arrow.png) 0 0 no-repeat;
+            height: 12px;
+            width: 19px;
+            display: inline-block;
+            &.up-arrow {
+                background-image: url(../../img/songs/up-arrow.png);
+            }
+        }
+
+    }
+
+
     .carousel-wrapper.jcarousel-wrapper {
         border: none;
         box-shadow: none;
@@ -52,7 +74,6 @@ body.page-songs {
         width: 100%;
 
         .carousel-box {
-            display: none;
             width: 86%;
             text-align: center;
             margin: 0 auto;
@@ -62,27 +83,6 @@ body.page-songs {
         .light-bg {
             height: 16px;
             top: -7px;
-        }
-
-        .see-more {
-            background: transparent url(../../img/songs/song-detail-hdr-shadow.png) bottom center no-repeat;
-            height: 36px;
-            width: 100%;
-            display: inline-block;
-            text-align: center;
-            .version {
-                display: inline-block;
-            }
-            .arrow {
-                background: transparent url(../../img/songs/down-arrow.png) 0 0 no-repeat;
-                height: 12px;
-                width: 19px;
-                display: inline-block;
-                &.up-arrow {
-                    background-image: url(../../img/songs/up-arrow.png);
-                }
-            }
-
         }
 
         .jcarousel {

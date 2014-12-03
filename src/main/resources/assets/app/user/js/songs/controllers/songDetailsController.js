@@ -7,6 +7,7 @@ var songDetailsController = function($scope,$location,songsContentService){
     $scope.currentIndex = 0; // Initially the index is at the first element
     $scope.direction = '';
     $scope.dropDownVisible = false;
+    $scope.showVersion = true;
 
     $scope.prevSlide = function () {
          $scope.direction = 'left';
