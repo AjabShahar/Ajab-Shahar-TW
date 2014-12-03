@@ -15,6 +15,7 @@ var allSongsController = function($scope,songsContentService,popupService){
     $scope.getTotalSongsCount = function(){
         songsContentService.getAllSongs().then(function(songsList){
             $scope.totalFilteredSongs = $scope.totalSongs = songsList.data.length;
+            $scope.loadSongFromRange();
         });
     }
 
@@ -32,8 +33,8 @@ var allSongsController = function($scope,songsContentService,popupService){
         if(i <= $scope.totalFilteredSongs){
             songsContentService.getSongsInRangeAndFilteredBy(i, $scope.activeLetter).then(function(result){
 
-                for(j=0; j< result.data.length; j++){
-                    $scope.songs.push(result.data[j]);
+                for(j=0; j< result.data.songs.length; j++){
+                    $scope.songs.push(result.data.songs[j]);
                 }
 
                 i += 9;
@@ -41,7 +42,7 @@ var allSongsController = function($scope,songsContentService,popupService){
         }
     }
 
-    $scope.loadSongFromRange();
+    $scope.getTotalSongsCount();
 };
 
 allSongsApp.controller('allSongsController',['$scope','songsContentService','popupService',allSongsController]);
