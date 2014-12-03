@@ -1,0 +1,53 @@
+/* thumbnail designs for images and their info */
+
+.thumbnail-media {
+    width: 216px;
+    height: 130px;
+
+    img {
+        max-width: 100%;
+        max-height: 100%;
+        border: solid 4px #fff;
+    }
+}
+
+ .thumbnail-desc {
+    z-index: 1;
+    margin: 7px 0 0 15px;
+    width: 219px;
+    background: #fff;
+    padding: 4px 11px 6px;
+    cursor: pointer;
+    text-align: left;
+
+    &:before {
+        content: '';
+        width: 253px;
+        display: inline-block;
+        height: 30px;
+        background: rgba(255, 255, 255, 0) url(../img/common/directives/thumbnail/top.png) left top no-repeat;
+        background-size: cover;
+        position: absolute;
+        margin: -22px 0 0 -14px;
+    }
+    &:after {
+        content: '';
+        width: 254px;
+        display: inline-block;
+        height: 30px;
+        background: rgba(255, 255, 255, 0) url(../img/common/directives/thumbnail/bottom.png) left top no-repeat;
+        background-size: cover;
+        position: absolute;
+        margin: 15px 0 0 -135px;
+    }
+
+    .item-title {
+        font-weight: normal;
+        color: #B3B3B3;
+
+    }
+    small {
+        color: #999;
+        line-height: 25px;
+    }
+}
