@@ -34,8 +34,8 @@
     <script type="text/javascript" src="../../../common/directives/animation/animationModule.js"></script>
     <script type="text/javascript" src="../../../common/directives/animation/toggleBySlide.js"></script>
     <script type="text/javascript" src="../../js/common/directives/songs/songContentDetails.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/carouselSupport/asCarousel.js"></script>
     <script type="text/javascript" src="../../js/songs/songDetailsApp.js"></script>
-    <script type="text/javascript" src="../../js/songs/songPages.js"></script>
 
     <script type="text/javascript" src="../../js/songs/controllers/songDetailsController.js"></script>
     <!--<script type="text/javascript" src="../../js/common/directives/mappers/songMapper.js"></script>-->
@@ -62,7 +62,7 @@
 
     <div class="versions toggleBySlide" ng-show="showVersion">
         <div class="carousel-wrapper jcarousel-wrapper">
-        <div class="carousel-box jcarousel">
+        <div as-carousel class="carousel-box jcarousel">
             <ul>
                 <li>
                     <div class="thumbnail-media">
