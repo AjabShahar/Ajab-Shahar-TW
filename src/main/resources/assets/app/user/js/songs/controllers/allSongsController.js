@@ -32,7 +32,6 @@ var allSongsController = function($scope,songsContentService,popupService){
     $scope.loadSongFromRange = function(){
         if(i <= $scope.totalFilteredSongs){
             songsContentService.getSongsInRangeAndFilteredBy(i, $scope.activeLetter).then(function(result){
-
                 for(j=0; j< result.data.songs.length; j++){
                     $scope.songs.push(result.data.songs[j]);
                 }
