@@ -33,6 +33,8 @@
     <script type="text/javascript" src="../js/common/directives/thumbnail/reflection.js"></script>
     <script type="text/javascript" src="../js/common/directives/thumbnail/unknown.js"></script>
     <script type="text/javascript" src="../js/common/directives/parallax/angular-parallax.js"></script>
+    <script type="text/javascript" src="../js/jquery.stellar.js"></script>
+
     <script type="text/javascript" src="../js/common/modules/mediaPlayer.js"></script>
     <script type="text/javascript" src="../js/common/directives/soundCloud/soundcloud_player.js"></script>
     <script type="text/javascript" src="../js/common/directives/youtube/youtube_player.js"></script>
@@ -72,13 +74,14 @@
 
     <!-- parallax effect starts -->
     <div class='parallax-container'>
-        <div class='pxLayers px-layer1' data-name='body'></div>
-        <div class='pxLayers px-layer2' data-name='map' parallax-background parallax-ratio="1"></div>
-        <div class='pxLayers px-layer3' data-name='water'></div>
-        <div class='pxLayers px-layer3' data-name='water'></div>
+        <!--<div class='pxLayers px-layer1' data-name='body' data-stellar-background-ratio="0.5"></div>-->
+        <!--<div class='pxLayers px-layer2' data-name='map' parallax-background parallax-ratio="1"></div>-->
+        <div class='pxLayers px-layer2' data-name='map' data-stellar-background-ratio="3"></div>
+        <!--<div class='pxLayers px-layer3' data-name='water'></div>-->
+        <div class='pxLayers px-layer3' data-name='water' data-stellar-background-ratio="1"></div>
         <div class='pxLayers px-layer4' data-name='riverlines'></div>
-        <div class='pxLayers px-layer5' data-name='bird'></div>
-        <div class='pxLayers px-layer6' data-name='clouds'></div>
+        <!--<div class='pxLayers px-layer5' data-name='bird'></div>-->
+        <!--<div class='pxLayers px-layer6' data-name='clouds'></div>-->
         <div class='pxLayers px-layer7' data-name='whitestring'></div>
         <div class='pxLayers px-layer8' data-name='hinditext'></div>
     </div>
@@ -99,6 +102,11 @@
 </div>
 
     <div ng-include src="'common/footer.html'"></div>
-
+    <script type="text/javascript">
+        $.stellar({
+            horizontalScrolling: false,
+            responsive: true
+          });
+    </script>
 </body>
 </html>
