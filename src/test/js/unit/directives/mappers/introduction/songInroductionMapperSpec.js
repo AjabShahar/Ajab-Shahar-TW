@@ -37,11 +37,11 @@ describe('Mapper', function() {
                     };
 
             element = angular.element('<song-introduction-mapper details="detailsFromService" show-details-service="detailsService"/>');
-            template.put('/user/js/common/templates/mappers/introduction/songIntroductionMapper.html', '<div>{{song.id}} {{song.singer}} {{song.poet}} {{song.title}} {{song.audioId}} {{song.videoId}}</div>');
+            template.put('/user/js/common/templates/mappers/introduction/songIntroductionMapper.html', '<div>{{song.id}} {{song.contentId}} {{song.singer}} {{song.poet}} {{song.title}} {{song.audioId}} {{song.videoId}}</div>');
             compile(element)(scope);
             scope.$apply();
 
-            expect(element.html()).toBe('<div class="ng-binding">song_2 Parvathy Baul Sharath   </div>');
+            expect(element.html()).toBe('<div class="ng-binding">2 song_2 Parvathy Baul Sharath   </div>');
         });
 
     });

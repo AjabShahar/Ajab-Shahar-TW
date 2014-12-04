@@ -8,9 +8,6 @@
     <title>Song details page</title>
     <link href="../../../common/css/header.css" rel="stylesheet" type="text/css">
     <link href="../../../common/css/footer.css" rel="stylesheet" type="text/css">
-    <!--<link href="../../../common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">-->
-    <!--<link href="../../css/mainLandingPage/parallax.css" rel="stylesheet" type="text/css">-->
-    <!--<link href="../../css/common/directives/thumbnail.css" rel="stylesheet" type="text/css">-->
     <link href="../../css/common/directives/introduction.css" rel="stylesheet" type="text/css">
     <link href="../../../common/jquery/jcarousel/jcarousel.responsive.css" rel="stylesheet" type="text/css">
     <link href="../../css/thumbnails.css" rel="stylesheet" type="text/css">
@@ -42,9 +39,8 @@
     <script type="text/javascript" src="../../js/common/directives/mappers/songMapper.js"></script>
     <script type="text/javascript" src="../../js/common/directives/mappers/songContentDetailsMapper.js"></script>
     <!--<script type="text/javascript" src="../../js/common/directives/soundCloud/soundcloud_player.js"></script>-->
-    <!--<script type="text/javascript" src="../../js/common/directives/youtube/youtube_player.js"></script>-->
+    <script type="text/javascript" src="../../js/common/directives/youtube/youtube_player.js"></script>
     <script type="text/javascript" src="../../js/common/directives/thumbnail/song.js"></script>
-
 </head>
 
 <body ng-controller="songDetailsController" class="page-songs">
@@ -101,125 +97,12 @@
                             <li><a href="javascript:void(0)">02</a>|</li>
                             <li><a href="javascript:void(0)">03</a></li>
                         </ul>
-
+                        <div ng-repeat="song in renditions" ng-show="isOpen({{song.id}})">
+                            <song-content-details-mapper details="song" details-service="detailsService"></song-content-details-mapper>
+                        </div>
                     </div>
-                    <youtube videoid="tNh2kjmSzPw" showcontrols="true" should-stop-video="closeVideo()">
-                        <iframe frameborder="0" allowfullscreen="1" title="YouTube video player" width="100%" src="https://www.youtube.com/embed/tNh2kjmSzPw?autoplay=0&amp;html5=1&amp;theme=light&amp;modesbranding=0&amp;color=white&amp;iv_load_policy=3&amp;controls=2&amp;enablejsapi=1&amp;origin=http%3A%2F%2Flocalhost%3A9000" id="widget2"></iframe>
-                    </youtube>
-                    <ul class="slide-info">
-                        <li>
-                            <a href="javascript:void(0)" data-slide="slide-about">about</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" data-slide="slide-notes">notes</a>
-                        </li>
-                    </ul>
-
-
-                    <ul class="share-options">
-                        <li>
-                            <a href="javascript:void(0)" class="favorite"></a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="share" ng-click="dropDownVisible='true'"></a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="comment"></a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="download"></a>
-                        </li>
-                    </ul>
-                    <div class='shareItemsDropDown' ng-show="dropDownVisible" ng-mouseleave="dropDownVisible='false'">
-                        <ul class='shareItems'>
-                            <li><a href='http://www.facebook.com/share.php?u={{url}}' target="_blank">Share on facebook</a></li>
-                            <li><a class="twitter-share-button"
-                                href="https://twitter.com/share"
-                                data-size="large"
-                                data-url="https://dev.twitter.com/web/tweet-button"
-                                data-count-url="https://dev.twitter.com/web/tweet-button"
-                                data-via="twitterdev"
-                                data-related="twitterapi,twitter"
-                                data-hashtags="example,demo"
-                                data-text="custom share text" target="_blank">Share on twitter</a></li>
-                            <li><a href="//pinterest.com/pin/create%2Fbutton/?url={{url}}" target="_blank">Share on pinterest</a></li>
-                            <li><a href="https://plus.google.com/share?url={{url}}" target="_blank">Share on google+</a></li>
-                        </ul>
-                </div>
-                    <div class="info" id="slide-about">About Lorem ipsum dolor sit amet, consectetuer
-                        adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
-                        et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                        pellentesque eu, pretium quis, sem. Nulla consequat mas
-                        <br/>
-                        About Lorem ipsum dolor sit amet, consectetuer
-                        adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
-                        et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                        pellentesque eu, pretium quis, sem. Nulla consequat mas
-                        <br/>
-                        About Lorem ipsum dolor sit amet, consectetuer
-                        adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
-                        et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                        pellentesque eu, pretium quis, sem. Nulla consequat mas
-                        adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
-                        et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                        pellentesque eu, pretium quis, sem. Nulla consequat mas
-                        <br/>
-                        About Lorem ipsum dolor sit amet, consectetuer
-                        adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
-                        et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                        pellentesque eu, pretium quis, sem. Nulla consequat mas
-                        <br/>
-                        About Lorem ipsum dolor sit amet, consectetuer
-                        adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
-                        et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                        pellentesque eu, pretium quis, sem. Nulla consequat mas
-                        adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
-                        et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                        pellentesque eu, pretium quis, sem. Nulla consequat mas
-                        <br/>
-                        About Lorem ipsum dolor sit amet, consectetuer
-                        adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
-                        et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                        pellentesque eu, pretium quis, sem. Nulla consequat mas
-                        <br/>
-                        About Lorem ipsum dolor sit amet, consectetuer
-                        adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
-                        et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                        pellentesque eu, pretium quis, sem. Nulla consequat mas
-                    </div>
-                    <div class="info" id="slide-notes">
-                        Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend
-                        ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra
-                        nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.
-                        Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus
-                    </div>
-
-
-                    <div class="song-details">
-                        <dl>
-                            <dt>Shah Latif Bhilai</dt>
-                            <dd>Poet</dd>
-                            <dt>Gavra Devi</dt>
-                            <dd>Singer</dd>
-                            <dt>Bhajan meditation</dt>
-                            <dd>Word</dd>
-                        </dl>
-                        <dl>
-                            <dt>Sahaj Spontaneous</dt>
-                            <dd>Word</dd>
-                            <dt>Kutch</dt>
-                            <dd>place</dd>
-                            <dt>Rajasthan Kabir Yatra</dt>
-                            <dd>Gathering</dd>
-                        </dl>
-
-                    </div>
-
                 </div>
                 <div id="poem_container">
-
-
-
                 </div>
             </div>
             

@@ -13,6 +13,7 @@ thumbnailModule.directive("song", function() {
             duration:'@',
             poet:'@',
             customStyle:'@',
+            contentId:'@',
             id:'@',
             open: '&', //open click handler ~ callback to controller
         },

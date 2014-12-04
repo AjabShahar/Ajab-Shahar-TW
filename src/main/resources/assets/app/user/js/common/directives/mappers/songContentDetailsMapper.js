@@ -10,7 +10,7 @@ thumbnailModule.directive("songContentDetailsMapper", function(nameService) {
         },
         templateUrl:'/user/js/common/templates/mappers/songContentDetailsMapper.html',
         controller:function($scope){
-            $scope.song = {"id":"song_"+$scope.details.id, "videoId":$scope.details.youtubeVideoId,"audioUrl":$scope.details.soundCloudTrackID};
+            $scope.song = {"id":$scope.details.id,"contentId":"song_"+$scope.details.id, "videoId":$scope.details.youtubeVideoId,"audioUrl":$scope.details.soundCloudTrackID};
         }
     }
 });
