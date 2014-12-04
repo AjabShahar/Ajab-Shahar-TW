@@ -30,5 +30,10 @@ public class Songs {
         Song song = new Gson().fromJson(jsonSong, Song.class);
         return songsRepository.updateSong(song);
     }
+
+    public List<Song> getSongVersions(int songId) {
+
+        return songsRepository.findSongWithVersions(songId);
+    }
 }
 

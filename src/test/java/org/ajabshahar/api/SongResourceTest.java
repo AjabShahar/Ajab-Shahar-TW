@@ -31,7 +31,7 @@ public class SongResourceTest {
     @Mock
     private List<Song> songList;
     @Mock
-    private SongsRepresentation songsRepresentation;
+    private SongsSummaryRepresentation songsSummaryRepresentation;
     @Mock
     private Song song;
     @Mock
@@ -46,10 +46,10 @@ public class SongResourceTest {
     public void shouldGetSongsFilteredBySingerAndPoet() {
         when(songList.size()).thenReturn(1);
         when(songs.findBy(SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER)).thenReturn(songList);
-        when(songsRepresentationFactory.create(songList)).thenReturn(songsRepresentation);
+        when(songsRepresentationFactory.create(songList)).thenReturn(songsSummaryRepresentation);
 
         Response response = songResource.getSongs(SINGER_ID, POET_ID, 1, FILTERED_LETTER);
-        assertEquals(songsRepresentation, response.getEntity());
+        assertEquals(songsSummaryRepresentation, response.getEntity());
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
     }
 
@@ -89,6 +89,17 @@ public class SongResourceTest {
         when(songs.updateSong(jsonSong)).thenReturn(expectedResult);
 
         Response actualResult = songResource.updateSong(jsonSong);
+
+        assertEquals(expectedResult, actualResult.getEntity());
+    }
+
+    @Test
+    public void shouldGetSongVersions() throws Exception {
+        SongsRepresentation expectedResult = new SongsRepresentation();
+        when(songs.getSongVersions(SONG_ID)).thenReturn(songList);
+        when(songsRepresentationFactory.createSongsRepresentation(songList)).thenReturn(expectedResult);
+
+        Response actualResult = songResource.getSongVersions(SONG_ID);
 
         assertEquals(expectedResult, actualResult.getEntity());
     }

@@ -101,4 +101,16 @@ public class SongDAO extends AbstractDAO<Song> {
         sessionFactory.getCurrentSession().update(originalSongData);
         return originalSongData;
     }
+
+    public List<Song> findSongWithVersions(int songId) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Criteria findSongs = currentSession.createCriteria(Song.class);
+
+        Song song = findById(Long.valueOf(songId));
+        if (song.getTitle() != null) {
+            findSongs.createAlias("title", "titleAlias");
+            findSongs.add(Restrictions.eq("titleAlias.id", song.getTitle().getId()));
+        }
+        return findSongs.list();
+    }
 }

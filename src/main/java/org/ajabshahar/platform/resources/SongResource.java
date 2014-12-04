@@ -6,6 +6,7 @@ import io.dropwizard.jersey.caching.CacheControl;
 import org.ajabshahar.api.SongRepresentation;
 import org.ajabshahar.api.SongsRepresentation;
 import org.ajabshahar.api.SongsRepresentationFactory;
+import org.ajabshahar.api.SongsSummaryRepresentation;
 import org.ajabshahar.core.Songs;
 import org.ajabshahar.platform.daos.SongDAO;
 import org.ajabshahar.platform.daos.TitleDAO;
@@ -111,8 +112,8 @@ public class SongResource {
         if (songList == null || songList.size() == 0) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        SongsRepresentation songsRepresentation = songsRepresentationFactory.create(songList);
-        return Response.ok(songsRepresentation, MediaType.APPLICATION_JSON).build();
+        SongsSummaryRepresentation songsSummaryRepresentation = songsRepresentationFactory.create(songList);
+        return Response.ok(songsSummaryRepresentation, MediaType.APPLICATION_JSON).build();
     }
 
     @GET
@@ -128,5 +129,14 @@ public class SongResource {
         SongRepresentation songRepresentation = songsRepresentationFactory.create(song);
         logger.debug("Details of song with id {}:  {} ", songId, songRepresentation.toString());
         return Response.ok(songRepresentation, MediaType.APPLICATION_JSON).build();
+    }
+
+    @GET
+    @UnitOfWork
+    @Path("/versions")
+    public Response getSongVersions(@QueryParam("id")int songId) {
+        List<Song> songList = songs.getSongVersions(songId);
+        SongsRepresentation songs = songsRepresentationFactory.createSongsRepresentation(songList);
+        return Response.ok(songs, MediaType.APPLICATION_JSON).build();
     }
 }

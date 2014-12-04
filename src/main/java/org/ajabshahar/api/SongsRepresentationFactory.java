@@ -15,8 +15,9 @@ public class SongsRepresentationFactory {
         this.people = people;
     }
 
-    public SongsRepresentation create(List<Song> songList) {
-        SongsRepresentation songs = new SongsRepresentation();
+
+    public SongsSummaryRepresentation create(List<Song> songList) {
+        SongsSummaryRepresentation songs = new SongsSummaryRepresentation();
         for (Song song : songList) {
 
             Title title = song.getSongTitle() == null ? new Title() : song.getSongTitle();
@@ -64,5 +65,46 @@ public class SongsRepresentationFactory {
                 song.getDuration(),
                 singers,
                 poets);
+    }
+
+    public  SongsRepresentation createSongsRepresentation(List<Song> songList)
+    {
+        SongsRepresentation songsRepresentation = new SongsRepresentation();
+        for(Song song:songList){
+
+            Title umbrellaTitle = song.getTitle() == null ? new Title() : song.getTitle();
+            Title songTitle = song.getSongTitle() == null ? new Title() : song.getSongTitle();
+            List<PersonSummaryRepresentation> singers = new ArrayList<>(), poets = new ArrayList<>();
+
+            song.getSingers().forEach(singer -> {
+                PersonDetails personDetails = people.findBy((int) singer.getId());
+                singers.add(new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName()));
+            });
+            song.getPoets().forEach(poet -> {
+                PersonDetails personDetails = people.findBy((int) poet.getId());
+                poets.add(new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName()));
+            });
+
+            SongRepresentation songRepresentation = new SongRepresentation(song.getId(),
+                    umbrellaTitle.getId(),
+                    umbrellaTitle.getOriginalTitle(),
+                    umbrellaTitle.getEnglishTransliteration(),
+                    umbrellaTitle.getEnglishTranslation(),
+                    songTitle.getId(),
+                    songTitle.getOriginalTitle(),
+                    songTitle.getEnglishTransliteration(),
+                    songTitle.getEnglishTranslation(),
+                    song.getIsAuthoringComplete(),
+                    song.getSongCategory().getName(),
+                    song.getShowOnLandingPage(),
+                    song.getYoutubeVideoId(),
+                    song.getSoundCloudTrackID(),
+                    song.getThumbnail_url(),
+                    song.getDuration(),
+                    singers,
+                    poets);
+            songsRepresentation.add(songRepresentation);
+        }
+        return songsRepresentation;
     }
 }

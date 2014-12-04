@@ -63,4 +63,13 @@ public class SongsTest {
 
         assertEquals(song, result);
     }
+
+    @Test
+    public void shouldGetSongVersions() throws Exception {
+        when(songsRepository.findSongWithVersions(SONG_ID)).thenReturn(songsList);
+
+        List<Song> result = songs.getSongVersions(SONG_ID);
+
+        assertEquals(songsList, result);
+    }
 }
