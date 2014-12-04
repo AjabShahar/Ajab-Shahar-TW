@@ -19,7 +19,7 @@ thumbnailModule.directive("songMapper", function(nameService) {
                 "category":$scope.details.category,
                 "duration":$scope.details.duration,
                 "singer":$scope.details.singers[0] ,
-                "poet":$scope.details.poet[0],
+                "poet":($scope.details.poet==null || $scope.details.poet.length==0)?'Unknown': $scope.details.poet[0],
                 "thumbnailUrl":$scope.details.thumbnailUrl
             };
             $scope.open = function(){

@@ -19,7 +19,7 @@ thumbnailModule.directive("songIntroductionMapper", function(nameService) {
                 "englishTranslation":$scope.details.englishTranslationTitle,
                 "singer":$scope.details.singers[0],
                 "audioId":$scope.details.soundCloudTrackID,
-                "poet":$scope.details.poet[0]
+                "poet":($scope.details.poet==null || $scope.details.poet.length==0)?'Unknown': $scope.details.poet[0]
             };
         }
     }});
