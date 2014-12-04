@@ -97,6 +97,7 @@ public class SongsRepresentationFactoryTest {
         assertThat(songs.get(0).getPoets().get(0), IsEqual.equalTo("Poet1"));
         assertThat(songs.get(0).getCategory(),IsEqual.equalTo("Song & Reflection"));
         assertThat(songs.get(0).getThumbnailUrl(),IsEqual.equalTo("http://tinyurl.com"));
+        assertThat(songs.get(0).getYoutubeVideoId(),IsEqual.equalTo("12345"));
     }
 
     @Test

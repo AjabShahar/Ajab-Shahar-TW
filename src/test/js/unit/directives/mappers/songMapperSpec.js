@@ -33,7 +33,7 @@ describe('Mapper', function() {
                             };
 
             element = angular.element('<song-mapper details="detailsFromService" custom-style="blah"/>');
-            template.put('/user/js/common/templates/mappers/songMapper.html', '<div>{{song.id}} {{song.customStyle}} {{song.imgSrc}} {{song.videoId}} {{song.englishTransliteration}} {{song.category}} {{song.duration}} {{song.singer}} {{song.poet}}</div>');
+            template.put('/user/js/common/templates/mappers/songMapper.html', '<div>{{song.id}} {{song.customStyle}} {{song.thumbnailUrl}} {{song.videoId}} {{song.englishTransliteration}} {{song.category}} {{song.duration}} {{song.singer}} {{song.poet}}</div>');
             compile(element)(scope);
             scope.$apply();
 

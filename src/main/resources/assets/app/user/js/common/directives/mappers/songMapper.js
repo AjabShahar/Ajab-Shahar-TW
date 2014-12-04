@@ -11,7 +11,7 @@ thumbnailModule.directive("songMapper", function(nameService) {
         },
         templateUrl:'/user/js/common/templates/mappers/songMapper.html',
         controller:function($scope){
-            $scope.song = {"id":"song_"+$scope.details.id, "customStyle":$scope.customStyle,"imgSrc":$scope.details.thumbnailUrl,"englishTransliteration":$scope.details.englishTransliterationTitle,
+            $scope.song = {"id":"song_"+$scope.details.id, "customStyle":$scope.customStyle,"englishTransliteration":$scope.details.englishTransliterationTitle,
                            "category":$scope.details.category,"duration":$scope.details.duration, "singer":$scope.details.singers[0] ,
                             "poet":$scope.details.poet[0],"thumbnailUrl":$scope.details.thumbnailUrl
                         };

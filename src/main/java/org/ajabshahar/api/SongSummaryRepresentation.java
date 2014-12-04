@@ -14,12 +14,13 @@ public class SongSummaryRepresentation {
     private String duration;
     private String category;
     private String thumbnailUrl;
+    private String youtubeVideoId;
 
     public SongSummaryRepresentation() {
 
     }
 
-    public SongSummaryRepresentation(long id, String englishTranslationTitle, String englishTransliterationTitle, List<String> singers, List<String> poets, String duration, String songCategory, String thumbnailUrl) {
+    public SongSummaryRepresentation(long id, String englishTranslationTitle, String englishTransliterationTitle, List<String> singers, List<String> poets, String duration, String songCategory, String thumbnailUrl, String youtubeVideoId) {
         this.id = id;
         this.englishTranslationTitle = englishTranslationTitle;
         this.englishTransliterationTitle = englishTransliterationTitle;
@@ -27,7 +28,8 @@ public class SongSummaryRepresentation {
         this.poets = poets;
         this.duration = duration;
         this.category = songCategory;
-        this.thumbnailUrl=thumbnailUrl;
+        this.thumbnailUrl = thumbnailUrl;
+        this.youtubeVideoId = youtubeVideoId;
     }
 
     @JsonProperty("id")
@@ -68,5 +70,10 @@ public class SongSummaryRepresentation {
     @JsonProperty("thumbnailUrl")
     public String getThumbnailUrl() {
         return thumbnailUrl;
+    }
+
+    @JsonProperty("youtubeVideoId")
+    public String getYoutubeVideoId() {
+        return youtubeVideoId;
     }
 }
