@@ -57,7 +57,6 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         environment.jersey().register(picoContainer.getComponent(SplashScreenOptionsResource.class));
         environment.jersey().register(picoContainer.getComponent(WordResource.class));
         environment.jersey().register(picoContainer.getComponent(CoupletResource.class));
-        environment.jersey().register(picoContainer.getComponent(EditorsChoiceResource.class));
         environment.jersey().register(picoContainer.getComponent(SongResource.class));
         environment.jersey().register(picoContainer.getComponent(PersonResource.class));
         environment.jersey().register(picoContainer.getComponent(CategoryResource.class));
@@ -87,7 +86,6 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         picoContainer.addComponent(SplashScreenOptionsResource.class);
         picoContainer.addComponent(WordResource.class);
         picoContainer.addComponent(CoupletResource.class);
-        picoContainer.addComponent(EditorsChoiceResource.class);
         picoContainer.addComponent(SongResource.class);
         picoContainer.addComponent(PersonResource.class);
         picoContainer.addComponent(CategoryResource.class);

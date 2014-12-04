@@ -24,31 +24,16 @@ describe('Mapper', function() {
             scope.detailsFromService=
                     {
                         "id":2,
-                        "contentType": "Songs",
-                        "categoryName": "Song & Reflection",
-                        "songTitle":{
-                            "englishTranslation": "Practice the art of dying",
-                         },
-                        "poets": [
-                            {
-                            "category": "POET",
-                            "firstName": "Sharath",
-                            "middleName": "",
-                            "lastName": ""
-                            }
-                        ],
-                        "youtubeVideoId": "videoId",
-                        "soundCloudTrackID": "scId",
-                        "imageUrl": "imgId",
-                        "singers": [
-                            {
-                            "category": "SINGER",
-                            "firstName": "Parvathy",
-                            "middleName": "",
-                            "lastName": "Baul"
-                            }
-                            ],
-                        "duration": "09:11"
+                        "englishTransliterationTitle": "Kichhu din mone mone",
+                         "category":"Song & Reflection",
+                         "poet": [
+                             "Sharath",
+                         ],
+                          "thumbnailUrl": "imgId",
+                          "singers": [
+                             "Parvathy Baul",
+                          ],
+                         "duration": "09:11"
                     };
 
             element = angular.element('<song-introduction-mapper details="detailsFromService" show-details-service="detailsService"/>');
@@ -56,7 +41,7 @@ describe('Mapper', function() {
             compile(element)(scope);
             scope.$apply();
 
-            expect(element.html()).toBe('<div class="ng-binding">song_2 Parvathy Baul Sharath  scId videoId</div>');
+            expect(element.html()).toBe('<div class="ng-binding">song_2 Parvathy Baul Sharath   </div>');
         });
 
     });

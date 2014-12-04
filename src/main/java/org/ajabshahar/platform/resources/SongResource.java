@@ -84,15 +84,6 @@ public class SongResource {
     }
 
     @GET
-    @Path("/landingPage")
-    @UnitOfWork
-    @CacheControl(maxAge = 60)
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Song> listAllSongOnLandingValues() {
-        return songDAO.findAllOnLandingPage();
-    }
-
-    @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Song getSongById(@PathParam("id") Long id) {

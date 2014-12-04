@@ -25,9 +25,7 @@ describe('Mapper', function() {
                                 "poet": [
                                      "Sharath",
                                     ],
-
-                                "youtubeVideoId": "videoId",
-                                "thumbnail_url": "imgId",
+                                "thumbnailUrl": "imgId",
                                 "singers": [
                                       "Parvathy Baul",
                                     ],
@@ -39,7 +37,7 @@ describe('Mapper', function() {
             compile(element)(scope);
             scope.$apply();
 
-            expect(element.html()).toBe('song_0 blah imgId videoId Kichhu din mone mone Song &amp; Reflection 09:11 Parvathy Baul Sharath');
+            expect(element.html()).toBe('song_0 blah imgId  Kichhu din mone mone Song &amp; Reflection 09:11 Parvathy Baul Sharath');
         });
     });
 });
