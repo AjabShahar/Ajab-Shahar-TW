@@ -17,6 +17,7 @@ var coupletDetailsController = function($scope, $http,$window,$location){
 
 
     $scope.saveData = function(){
+    $scope.formInfo.poet.category = $scope.formInfo.poet.roles[0];
     $http.post('/api/couplets',$scope.formInfo).success(function(data){
          $window.location.href = '/admin/partials/couplets/edit.html?id='+data;
            });
