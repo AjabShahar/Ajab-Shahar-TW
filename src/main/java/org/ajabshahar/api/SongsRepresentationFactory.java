@@ -26,7 +26,7 @@ public class SongsRepresentationFactory {
             song.getPoets().forEach(poet -> poets.add(people.findBy((int)poet.getId()).getName()));
 
             SongSummaryRepresentation songSummaryRepresentation = new SongSummaryRepresentation(song.getId(), title.getEnglishTranslation(), title.getEnglishTransliteration(), singers, poets, song.getDuration(),
-                    song.getSongCategory().getName(),song.getThumbnail_url(),song.getYoutubeVideoId());
+                    song.getSongCategory().getName(),song.getThumbnail_url());
             songs.addSong(songSummaryRepresentation);
         }
         return songs;
