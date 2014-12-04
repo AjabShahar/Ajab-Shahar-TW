@@ -207,7 +207,34 @@
                     </div>
                 </div>
 
-                <button type="submit" ng-click="saveData()">Save</button>
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Lyrics</label>
+                    </div>
+
+                    <select name="format" ng-model="formInfo.lyricsComponent">
+                        <option value="stanza">Stanza</option>
+                        <option value="couplet">Couplet</option>
+                    </select>
+                    <br/>
+
+                    <div class="form-group col-sm-3">
+                        <textarea class="form-control" rows="3" name="originalTitle" ng-model="formInfo.originalText"></textarea>
+                    </div>
+
+                    <br/>
+
+                    <button class="btn btn-info">Add</button>
+
+                    <br/>
+
+                </div>
+
+                <textarea class="form-control" rows="3" name="originalTitle" ng-model="formInfo.originalText"></textarea>
+
+                <br/>
+
+                <button type="submit" ng-click="saveData()" class="btn btn-primary">Save</button>
             </form>
            </div>
         </div>
