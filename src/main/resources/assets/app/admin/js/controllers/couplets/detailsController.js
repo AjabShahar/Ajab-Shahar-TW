@@ -1,6 +1,6 @@
 var coupletDetailsController = function($scope, $http,$window,$location){
     $scope.formInfo = {};
-    $scope.formInfo.poet = [];
+    $scope.formInfo.poet = {};
     $scope.poetsList = [];
     $scope.categoryList= [];
     $scope.urlId = $location.search().id;
