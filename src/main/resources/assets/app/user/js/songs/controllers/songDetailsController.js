@@ -1,6 +1,5 @@
 var songDetailsController = function($scope,$location,songsContentService){
     $scope.detailsService = this;
-    $scope.urlId = $location.search().id;
     $scope.detailsService = $scope;
     $scope.showContentDetails = {};
     $scope.prevId = null;
@@ -26,14 +25,17 @@ var songDetailsController = function($scope,$location,songsContentService){
     $scope.toggleVersion = function(){
         $scope.showVersion = !$scope.showVersion;
     }
+
     $scope.init = function(){
         $scope.url = $location.absUrl();
+        $scope.songId = $location.search().id;
+        $scope.open($scope.songId);
         
-        songsContentService.getSongsVersions($scope.urlId).then(function(result){
+        songsContentService.getSongsVersions($scope.songId).then(function(result){
             $scope.versions = result.data;
         });
 
-        $scope.detailContents = songsContentService.getSongRenditions($scope.urlId).then(function(result){
+        $scope.detailContents = songsContentService.getSongRenditions($scope.songId).then(function(result){
             $scope.renditions = result.data;
         });
     }
