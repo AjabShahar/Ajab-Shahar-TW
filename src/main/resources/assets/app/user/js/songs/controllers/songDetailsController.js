@@ -30,11 +30,11 @@ var songDetailsController = function($scope,$location,songsContentService){
         $scope.url = $location.absUrl();
         
         songsContentService.getSongsVersions($scope.urlId).then(function(result){
-            $scope.songs = result.data;
+            $scope.versions = result.data;
         });
 
         $scope.detailContents = songsContentService.getSongRenditions($scope.urlId).then(function(result){
-            $scope.details = result.data;
+            $scope.renditions = result.data;
         });
     }
 

@@ -64,80 +64,9 @@
     <div class="versions toggleBySlide" ng-show="showVersion">
         <div class="carousel-wrapper jcarousel-wrapper">
         <div as-carousel class="carousel-box jcarousel">
-            <ul>
+            <ul ng-repeat="song in versions track by $index">
                 <li>
-                </li>
-                <li>
-                    <div class="thumbnail-media">
-                        <img src="../../img/songs/sample_img.png">
-                    </div>
-                    <div class="thumbnail-desc">
-                        <h3 class="item-title">For a few days,O Heart</h3>
-                        <small>sings PARVATHY BAUL</small>
-                    </div>
-                </li>
-                <li>
-                    <div class="thumbnail-media">
-                        <img src="../../img/songs/sample_img.png">
-                    </div>
-                    <div class="thumbnail-desc">
-                        <h3 class="item-title">For a few days,O Heart</h3>
-                        <small>sings PARVATHY BAUL</small>
-                    </div>
-                </li>
-                <li>
-                    <div class="thumbnail-media">
-                        <img src="../../img/songs/sample_img.png">
-                    </div>
-                    <div class="thumbnail-desc">
-                        <h3 class="item-title">For a few days,O Heart</h3>
-                        <small>sings PARVATHY BAUL</small>
-                    </div>
-                </li>
-                <li>
-                    <div class="thumbnail-media">
-                        <img src="../../img/songs/sample_img.png">
-                    </div>
-                    <div class="thumbnail-desc">
-                        <h3 class="item-title">For a few days,O Heart</h3>
-                        <small>sings PARVATHY BAUL</small>
-                    </div>
-                </li>
-                <li>
-                    <div class="thumbnail-media">
-                        <img src="../../img/songs/sample_img.png">
-                    </div>
-                    <div class="thumbnail-desc">
-                        <h3 class="item-title">For a few days,O Heart</h3>
-                        <small>sings PARVATHY BAUL</small>
-                    </div>
-                </li>
-                <li>
-                    <div class="thumbnail-media">
-                        <img src="../../img/songs/sample_img.png">
-                    </div>
-                    <div class="thumbnail-desc">
-                        <h3 class="item-title">For a few days,O Heart</h3>
-                        <small>sings PARVATHY BAUL</small>
-                    </div>
-                </li>
-                <li>
-                    <div class="thumbnail-media">
-                        <img src="../../img/songs/sample_img.png">
-                    </div>
-                    <div class="thumbnail-desc">
-                        <h3 class="item-title">For a few days,O Heart</h3>
-                        <small>sings PARVATHY BAUL</small>
-                    </div>
-                </li>
-                <li>
-                    <div class="thumbnail-media">
-                        <img src="../../img/songs/sample_img.png">
-                    </div>
-                    <div class="thumbnail-desc">
-                        <h3 class="item-title">For a few days,O Heart</h3>
-                        <small>sings PARVATHY BAUL</small>
-                    </div>
+                    <song-mapper details="song" show-details-service="detailsService" custom-style=""/>
                 </li>
             </ul>
             <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true"></a>
