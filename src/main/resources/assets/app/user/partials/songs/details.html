@@ -64,8 +64,8 @@
     <div class="versions toggleBySlide" ng-show="showVersion">
         <div class="carousel-wrapper jcarousel-wrapper">
         <div as-carousel class="carousel-box jcarousel">
-            <ul ng-repeat="song in versions track by $index">
-                <li>
+            <ul>
+                <li ng-repeat="song in versions track by $index">
                     <song-mapper details="song" show-details-service="detailsService" custom-style=""/>
                 </li>
             </ul>
