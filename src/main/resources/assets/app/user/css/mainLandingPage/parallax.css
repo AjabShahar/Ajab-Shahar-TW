@@ -1,29 +1,45 @@
 .parallax-container{
-  display: inline-block;
-width: 100%;
-position: relative;
-height:5540px;
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    height:5540px;
 }
 
 .pxLayers{
-  width:100%;
+  /*width:100%;
   height:5540px !important;
+  position: absolute;*/
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  height: 5700px !important;
   position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
 }
 
 .px-layer1{
-   background: url(../../img/mainLandingPage/parallax/07_body.png)  0px -185px no-repeat;
-   background-size: cover;
+   /*background: url(../../img/mainLandingPage/parallax/07_body.png)  0px -185px no-repeat;*/
+   /*background-size: cover;*/
+   background-image: url(../../img/mainLandingPage/parallax/07_body.png);
+   background-color: transparent;
+
+
 }
 
 .px-layer2{
-   background: url(../../img/mainLandingPage/parallax/02_map.png) 0px repeat-y;
-   background-size: cover;
+   /*background: url(../../img/mainLandingPage/parallax/02_map.png) 0px repeat-y;
+   background-size: cover;*/
+   background-attachment: fixed;
+   background: transparent url(../../img/mainLandingPage/parallax/02_map.png) 50% 0 repeat;
 }
 
 .px-layer3{
-   background: url(../../img/mainLandingPage/parallax/08_water.png) 0px  -185px no-repeat;
-   background-size: cover;
+   /*background: url(../../img/mainLandingPage/parallax/08_water.png) 0px  -185px no-repeat;
+   background-size: cover;*/
+   background-image: url(../../img/mainLandingPage/parallax/check_img.png);
+       background-color: transparent;
+
 }
 
 .px-layer4{
