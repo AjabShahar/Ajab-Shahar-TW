@@ -1,0 +1,218 @@
+/* reset tools */
+
+.line{display:inline-block;width:100%;height:1px;clear:both;}
+.newline{clear:both;display:block;}
+
+
+
+
+.leftnav{
+  float: left;
+width: 16%;
+height: 100%;
+text-align: left;
+padding: 0 2%;
+color:#666;
+}
+/* Styles for grid View page for all songs */
+
+.all-songs {
+    margin: 90px 0 0 0;
+
+}
+.gridView{
+  float: right;
+width: 80%;
+color:#666;
+}
+
+.gridWrapper{
+  text-align: left;
+}
+
+.paginationHead {
+    display: inline-block;
+    width: 100%;
+    padding: 0% 0 2%;
+
+    &>.upper {
+        display: inline-block;
+        width: 100%;
+        border-bottom: solid 1px #ccc;
+        padding-bottom: 10px;
+
+        .breadcrumb {
+            li {
+                float: left;
+                margin-right: 1%;
+                &>a {
+                    color: #888;
+                    text-transform: uppercase;
+                }
+                &>.active {
+                    text-transform: uppercase;
+                    color: #00A199;
+                 }
+            }
+        }
+        .numericCount {
+            float: left;
+            font-size: 0.9em;
+        }
+        .search-box {
+            float: right;
+            margin-right: 1%;
+
+            .search {
+                width: 150px;
+                border-radius: 0;
+                border: solid 1px #ccc;
+                height: 28px;
+                line-height: 18px;
+                outline: 0;
+                float: left;
+                margin: 0;
+                background: transparent;
+                margin-right: 8px;
+
+            }
+            &:after {
+                content: '';
+                display: inline-block;
+                width: 28px;
+                height: 28px;
+                background: transparent url('../../img/songs/icons/searchicon.png') -3px -3px no-repeat;
+            }
+
+        }
+        .view-options {
+            float: right;
+            &>a {
+                background: transparent url('../../img/songs/icons/gridicon.png') -4px -4px no-repeat;
+                width: 25px;
+                height: 25px;
+                display: inline-block;
+            }
+
+            .list {
+                background-image: url('../../img/songs/icons/listview.png');
+            }
+        }
+
+
+    }
+
+    .alphabets {
+        text-transform: uppercase;
+        clear: both;
+        text-align: left;
+        width: 100%;
+        li {
+            float: left;
+            width: 3.7%;
+            a {
+                color: #888;
+                cursor: pointer;
+            }
+        }
+
+
+    }
+}
+
+.gridView {
+    .gridWrapper {
+        .songs{
+            width:100%;
+            /*height:200px;
+            margin:3.5%;*/
+            margin-bottom: 120px;
+            float:left;
+        }
+    }
+}
+
+.navInfoBar {
+    display: inline-block;
+    width: 100%;
+    border-bottom: solid 1px #ccc;
+    text-transform: uppercase;
+}
+
+
+
+
+
+.navElementsWrapper {
+    margin:0 2% 15% 2%;
+    .categoryLogo {
+        display: inline-block;
+        margin-top: 5%;
+        padding: 0;
+        line-height: 0;
+        img{
+          border-radius: 100px;
+        }
+    }
+}
+
+
+
+
+
+
+.navList {
+    float: left;
+    width: 20%;
+    display: inline-block;
+    margin-top: 10px;
+    li {
+        margin: 0 2%;
+        &.original {
+            border-right: solid 1px #666;
+            padding-right: 10px;
+            margin-right: 7px;
+        }
+
+        &.head {
+            display: inline-block;
+            width:100%;
+            margin-bottom: 1%;
+            font-size: 0.6em;
+            text-transform: uppercase;
+        }
+    }
+
+    &.titles {
+        li {
+            float:left;
+        }
+    }
+
+     &.filters {
+            li {
+                margin: 0 2% 4% 0%;
+                display: inline-block;
+                width: 100%;
+            }
+        }
+}
+
+
+
+.flexiThumbnails {
+  display: inline-block;
+
+  li {
+    width: 220px;
+    float: left;
+    margin: 0 23px 7% 23px;
+  }
+
+  .thumbnail{
+    width:100%;
+  }
+}
+
+
+

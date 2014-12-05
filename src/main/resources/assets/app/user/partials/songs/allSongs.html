@@ -30,7 +30,7 @@
     <link href="../../../common/css/header.css" rel="stylesheet" type="text/css">
     <link href="../../../common/css/footer.css" rel="stylesheet" type="text/css">
     <link href="../../css/main.css" rel="stylesheet" type="text/css">
-    <link href="../../css/mainLandingPage/parallax.css" rel="stylesheet" type="text/css">
+    <!--<link href="../../css/mainLandingPage/parallax.css" rel="stylesheet" type="text/css">-->
     <link href="../../css/thumbnails.css" rel="stylesheet" type="text/css">
     <!--<link href="../../css/common/directives/thumbnail.css" rel="stylesheet" type="text/css">-->
     <link href="../../css/common/directives/popup.css" rel="stylesheet" type="text/css">
@@ -42,23 +42,14 @@
     <ajab-shahar-header></ajab-shahar-header>
 
 
-    <div class="ajab-container headerfixOuter">
-        <div class="ajab-wrapper" fullHeight>
+    <div class="ajab-container headerfixOuter all-songs">
+        <div class="ajab-wrapper">
       
 
             <div class='leftnav headerfixInner'>
                 <div class='navElementsWrapper'>
                     <h1 class='categoryLogo'></h1>
-                    <small class='categoryAtt newline'>{{totalSongs}} songs</small>
-                    <nav><a>---</a><a>|||</a></nav>
-                    <input value='search'/>
                 </div>
-
-                <ul class='navList titles'>
-                    <li class='head'>TITLES<li>
-                    <li><a>Original</a></li>
-                    <li><a>English</a></li>
-                </ul>
 
                 <ul class='navList filters'>
                     <li class='head'>Filter by</li>
@@ -77,36 +68,58 @@
             <div class='gridView' infinite-scroll="loadSongFromRange()">
 
                 <div class='paginationHead'>
-                    <div class='alphabets'>
-                        <a ng-click="filterSongsOnLetter('a')">A</a>
-                        <a ng-click="filterSongsOnLetter('b')">B</a>
-                        <a ng-click="filterSongsOnLetter('c')">C</a>
-                        <a ng-click="filterSongsOnLetter('d')">D</a>
-                        <a ng-click="filterSongsOnLetter('e')">E</a>
-                        <a ng-click="filterSongsOnLetter('f')">F</a>
-                        <a ng-click="filterSongsOnLetter('g')">G</a>
-                        <a ng-click="filterSongsOnLetter('h')">H</a>
-                        <a ng-click="filterSongsOnLetter('i')">I</a>
-                        <a ng-click="filterSongsOnLetter('j')">J</a>
-                        <a ng-click="filterSongsOnLetter('k')">K</a>
-                        <a ng-click="filterSongsOnLetter('l')">L</a>
-                        <a ng-click="filterSongsOnLetter('m')">M</a>
-                        <a ng-click="filterSongsOnLetter('n')">N</a>
-                        <a ng-click="filterSongsOnLetter('o')">O</a>
-                        <a ng-click="filterSongsOnLetter('p')">P</a>
-                        <a ng-click="filterSongsOnLetter('q')">Q</a>
-                        <a ng-click="filterSongsOnLetter('r')">R</a>
-                        <a ng-click="filterSongsOnLetter('s')">S</a>
-                        <a ng-click="filterSongsOnLetter('t')">T</a>
-                        <a ng-click="filterSongsOnLetter('u')">U</a>
-                        <a ng-click="filterSongsOnLetter('v')">V</a>
-                        <a ng-click="filterSongsOnLetter('w')">W</a>
-                        <a ng-click="filterSongsOnLetter('x')">X</a>
-                        <a ng-click="filterSongsOnLetter('y')">Y</a>
-                        <a ng-click="filterSongsOnLetter('z')">Z</a>
+                    <div class="upper">
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="javascript:void(0)">Original</a>
+                            </li>
+                            <li>
+                                <span class="active">English</span>
+                            </li>
+                        </ul>
+                        <span class='numericCount'>{{totalFilteredSongs}} songs</span>
+
+                        <span class="view-options">
+                            <a href="javascript:void(0)" class="grid"></a>
+                            <a href="javascript:void(0)" class="list"></a>
+                        </span>
+                        <form action="post">
+                            <span class="search-box">
+
+                                <input type="search" class="search" />
+
+                            </span>
+                        </form>
                     </div>
 
-                    <div class='numericCount'>{{totalFilteredSongs}} songs</div>
+                    <ul class='alphabets'>
+                        <li><a ng-click="filterSongsOnLetter('a')">A</a></li>
+                        <li><a ng-click="filterSongsOnLetter('b')">B</a></li>
+                        <li><a ng-click="filterSongsOnLetter('c')">C</a></li>
+                        <li><a ng-click="filterSongsOnLetter('d')">D</a></li>
+                        <li><a ng-click="filterSongsOnLetter('e')">E</a></li>
+                        <li> <a ng-click="filterSongsOnLetter('f')">F</a></li>
+                        <li><a ng-click="filterSongsOnLetter('g')">G</a></li>
+                        <li><a ng-click="filterSongsOnLetter('h')">H</a></li>
+                        <li><a ng-click="filterSongsOnLetter('i')">I</a></li>
+                        <li><a ng-click="filterSongsOnLetter('j')">J</a></li>
+                        <li><a ng-click="filterSongsOnLetter('k')">K</a></li>
+                        <li><a ng-click="filterSongsOnLetter('l')">L</a></li>
+                        <li><a ng-click="filterSongsOnLetter('m')">M</a></li>
+                        <li> <a ng-click="filterSongsOnLetter('n')">N</a></li>
+                        <li><a ng-click="filterSongsOnLetter('o')">O</a></li>
+                        <li><a ng-click="filterSongsOnLetter('p')">P</a></li>
+                        <li><a ng-click="filterSongsOnLetter('q')">Q</a></li>
+                        <li><a ng-click="filterSongsOnLetter('r')">R</a></li>
+                        <li> <a ng-click="filterSongsOnLetter('s')">S</a></li>
+                        <li><a ng-click="filterSongsOnLetter('t')">T</a></li>
+                        <li><a ng-click="filterSongsOnLetter('u')">U</a></li>
+                        <li><a ng-click="filterSongsOnLetter('v')">V</a></li>
+                        <li><a ng-click="filterSongsOnLetter('w')">W</a></li>
+                        <li><a ng-click="filterSongsOnLetter('x')">X</a></li>
+                        <li><a ng-click="filterSongsOnLetter('y')">Y</a></li>
+                        <li><a ng-click="filterSongsOnLetter('z')">Z</a></li>
+                    </ul>
                 </div>
                 <div class='gridWrapper'>
                     <ul class="flexiThumbnails" ng-repeat="song in songs track by $index">
