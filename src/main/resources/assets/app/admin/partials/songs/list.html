@@ -21,7 +21,10 @@
                 <td>Poet</td>
                 <td>edit</td>
             </tr>
-            <tr ng-repeat="song in songs">
+            <tr>
+                <td colspan="4">Search: <input ng-model="searchText"></td>
+            </tr>
+            <tr ng-repeat="song in songs| filter:searchText">
                 <td>{{song.title}}</td>
                 <td>{{song.categoryName}}</td>
                 <td>{{song.singerNames}}</td>
