@@ -1,4 +1,13 @@
+/*
+UI Comment
+Remove this file after checking its usage;
+this file is already shifted to thumbnails.less
+*/
+
 /* thumbnail */
+
+
+
 .thumbnail{width:370px;text-align:left;padding: 1% 0 0 1%;display:inline-block;}
 .thumbnailWrapper{display:block;width:100%;overflow:hidden;margin:15% 0;}
 .thumbnailMedia{width:100%;height:230px;}
