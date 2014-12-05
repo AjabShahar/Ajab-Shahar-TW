@@ -13,7 +13,7 @@ VALUES
 ('Gavra Devi','','','Singer'),
 ('Fakru','','','Poet'),
 ('Mooralala','','Marwada','Singer'),
-('Kabir','','','Poet');
+('Kabir','','','Poet'),
 ('Unknown','','','Unknown');
 
 --rollback delete from PERSON where FIRST_NAME='PARVATHY';
