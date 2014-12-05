@@ -1,52 +1,39 @@
-.parallax-container{
-    /*display: inline-block;
-    width: 100%;
-    position: relative;
-    height:5540px;*/
-}
 
-.pxLayers{
-  /*width:100%;
-  height:5540px !important;
-  position: absolute;*/
+.pxLayers {
   background-position: 0 0;
   background-repeat: no-repeat;
-  height: 5700px !important;
+  background-color: transparent;
+  height: 5173px;
   position: absolute;
   width: 100%;
   top: 0;
   left: 0;
+
+  &.px-layer {
+
+    /*body layer*/
+    &1 {
+        background-image: url(../../img/mainLandingPage/parallax/body.png);
+
+    }
+
+    /* map layer */
+    &2 {
+        background: url(../../img/mainLandingPage/parallax/02_map.png) 50% 0 repeat fixed;
+    }
+
+    /*background-effects layer*/
+    &3 {
+        background-image: url(../../img/mainLandingPage/parallax/check_img1.png);
+    }
+  }
 }
 
-.px-layer1{
-   /*background: url(../../img/mainLandingPage/parallax/07_body.png)  0px -185px no-repeat;*/
-   /*background-size: cover;*/
-   background-image: url(../../img/mainLandingPage/parallax/07_body.png);
-   background-color: transparent;
-
-
-}
-
-.px-layer2{
-   /*background: url(../../img/mainLandingPage/parallax/02_map.png) 0px repeat-y;
-   background-size: cover;*/
-   background-attachment: fixed;
-   background: transparent url(../../img/mainLandingPage/parallax/02_map.png) 50% 0 repeat;
-}
-
-.px-layer3{
-   /*background: url(../../img/mainLandingPage/parallax/08_water.png) 0px  -185px no-repeat;
-   background-size: cover;*/
-   background-image: url(../../img/mainLandingPage/parallax/check_img.png);
-       background-color: transparent;
-
-}
-
-.px-layer4{
+/*.px-layer4{
     background: url(../../img/mainLandingPage/parallax/riverlines.png) 0px -188px no-repeat;
     background-size: cover;
     opacity: 0.3;
-}
+}*/
 
 
 /* bird animation begins */
@@ -108,10 +95,10 @@
 
 
 
-.px-layer7{
+/*.px-layer7{
    background: url(../../img/mainLandingPage/parallax/03_whiteString.png) center 0px no-repeat;
 }
 
 .px-layer8{
    background: url(../../img/mainLandingPage/parallax/hindiText.png) center 0px repeat-y;
-}
+}*/

@@ -1,11 +1,10 @@
 /*homepage content box */
+
 .homepage-content{
- width: 70%;
-max-height: 5540px;
-position: relative;
-height: auto !important;
-margin:10% auto;
-padding-bottom: 150px;
+    width: 70%;
+    position: relative;
+    height: 5250px;
+    margin:10% auto 0;
 }
 
 
