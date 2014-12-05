@@ -8,11 +8,17 @@
 .shift6{margin:0 0 0 -20%;}*/
 
 /*.thumbnail{width:370px;text-align:left;padding: 1% 0 0 1%;display:inline-block;}*/
-.thumbnailWrapper{display:block;width:100%;overflow:hidden;margin:15% 0;}
+.thumbnailWrapper {
+    display:block;
+    width:100%;
+    overflow:hidden;
+    margin:15% 0;
+}
 
 .thumbnail-media {
     width: 216px;
     height: 130px;
+    text-align: center;
 
     img {
         max-width: 100%;
@@ -24,43 +30,41 @@
  .desc-wrapper {
     position: absolute;
 
- }
- .thumbnail-desc {
-    z-index: 1;
-    margin: 0 0 0 25px;
-    width: 219px;
-    background: #fff;
-    padding: 0 11px;
-    min-height: 55px;
-    cursor: pointer;
-    text-align: left;
-    position: relative;
+    .thumbnail-desc {
+        z-index: 1;
+        margin: 0 0 0 25px;
+        width: 219px;
+        background: #fff;
+        padding: 0 11px;
+        min-height: 55px;
+        cursor: pointer;
+        text-align: left;
+        position: relative;
 
-    &:before {
-        content: '';
-        width: 253px;
-        display: inline-block;
-        height: 30px;
-        background: rgba(255, 255, 255, 0) url(../img/common/directives/thumbnail/top.png) left top no-repeat;
-        background-size: cover;
-        /*position: absolute;*/
-        margin: -22px 0 0 -14px;
+        &:before {
+            content: '';
+            width: 253px;
+            display: inline-block;
+            height: 30px;
+            background: rgba(255, 255, 255, 0) url(../img/common/directives/thumbnail/top.png) left top no-repeat;
+            background-size: cover;
+            /*position: absolute;*/
+            margin: -22px 0 0 -14px;
+        }
+
+
+        .item-title {
+            font-weight: normal;
+            color: #B3B3B3;
+
+        }
+        small {
+            color: #999;
+            line-height: 25px;
+        }
     }
 
-
-    .item-title {
-        font-weight: normal;
-        color: #B3B3B3;
-
-    }
-    small {
-        color: #999;
-        line-height: 25px;
-    }
-}
-
-.lower-curve {
-
+    .lower-curve {
         width: 252px;
         display: inline-block;
         height: 30px;
@@ -69,3 +73,6 @@
         float: left;
         margin: -6px 0 0 20px;
     }
+ }
+
+
