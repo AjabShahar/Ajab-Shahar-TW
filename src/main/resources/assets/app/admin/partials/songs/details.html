@@ -193,7 +193,14 @@
                     </div>
                 </div>
 
-
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Chorus</label>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <textarea class="form-control" rows="3" name="chorus" ng-model="formInfo.chorus"></textarea>
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="form-group col-sm-2">
@@ -229,8 +236,9 @@
                     <br/>
 
                 </div>
-
-                <textarea class="form-control" rows="3" name="originalTitle" ng-model="formInfo.originalText"></textarea>
+                <div class="form-group col-sm-5">
+                    <textarea class="form-control lyricsBox" rows="30" name="originalTitle" ng-model="formInfo.originalText"></textarea>
+                </div>
 
                 <br/>
 
