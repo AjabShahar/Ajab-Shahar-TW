@@ -2,15 +2,18 @@
     <div class="thumbnail-media">
         <img src="{{imgSrc}}"/>
     </div>
-    <div class="thumbnail-desc" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
-        <h3 class="item-title">{{name}}</h3>
-        <small>sings {{singer|uppercase}}</small>
-        <div ng-show="shouldShowDetails" class='shouldShowDetails'>
-            <small class="poetDetails">Poet {{poet|uppercase}}</small>
-            <div class='categoryDetails'>
-                <small class="categoryName">{{categoryName}}</small>
-                <small class="play">{{duration}}</small>
+    <div class="desc-wrapper">
+        <div class="thumbnail-desc" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
+            <h3 class="item-title">{{name}}</h3>
+            <small>sings {{singer|uppercase}}</small>
+            <div ng-show="shouldShowDetails" class='shouldShowDetails'>
+                <small class="poetDetails">Poet {{poet|uppercase}}</small>
+                <div class='categoryDetails'>
+                    <small class="categoryName">{{categoryName}}</small>
+                    <small class="play">{{duration}}</small>
+                </div>
             </div>
         </div>
+        <div class="lower-curve"></div>
     </div>
 </div>
