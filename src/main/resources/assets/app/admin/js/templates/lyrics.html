@@ -1,0 +1,21 @@
+<div>
+    <div>
+        <label>Lyrics</label>
+    </div>
+    <div>
+        <select name="format" ng-model="lyricsComponent" class="form-control">
+            <option value="stanza">Stanza</option>
+            <option value="couplet">Couplet</option>
+        </select>
+    </div>
+    <div>
+        <textarea name="originalTitle" ng-model="originalText"></textarea>
+    </div>
+
+    <button class="btn btn-info">Add</button>
+
+    <div class="form-group col-sm-3">
+        <textarea class="form-control lyricsBox" rows="30" name="originalTitle" ng-model="formInfo.originalText"></textarea>
+    </div>
+
+</div>

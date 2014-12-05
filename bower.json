@@ -21,7 +21,8 @@
     "jquery": "~1.11.0",
     "underscore": "~1.5.2",
     "bower-facebook": "~1.0.0",
-    "bootstrap": "~3.3.0"
+    "bootstrap": "~3.3.0",
+    "textAngular": "1.2.2"
   },
   "devDependencies": {
     "angular-mocks": "~1.2"

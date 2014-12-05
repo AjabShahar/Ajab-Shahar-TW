@@ -1,4 +1,4 @@
-var adminApp = angular.module('adminApp',[]);
+var adminApp = angular.module('adminApp', ['textAngular']);
 
 adminApp.factory('contentService', ['$http', contentService]);
 adminApp.factory('nameService', [nameService]);
