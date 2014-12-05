@@ -22,9 +22,12 @@
                 <td>edit</td>
             </tr>
             <tr>
-                <td colspan="4">Search: <input ng-model="searchText"></td>
+                <td><input ng-model="search.title"><br></td>
+                <td></td>
+                <td><input ng-model="search.singerNames"><br></td>
+                <td><input ng-model="search.poetNames"><br></td>
             </tr>
-            <tr ng-repeat="song in songs| filter:searchText">
+            <tr ng-repeat="song in songs| filter:search">
                 <td>{{song.title}}</td>
                 <td>{{song.categoryName}}</td>
                 <td>{{song.singerNames}}</td>
