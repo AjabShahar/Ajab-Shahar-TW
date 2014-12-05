@@ -2,8 +2,7 @@
 <html ng-app="adminApp">
 <head lang="">
     <meta charset="UTF-8">
-    <title></title>
-    <title></title>
+    <title>Song details - admin</title>
     <script src="../../../common/lib/angular/angular.js"></script>
     <script type="text/javascript" src="../../../common/lib/angular-filter/dist/angular-filter.js"></script>
     <script type="text/javascript" src="../../../common/services/nameService.js"></script>
@@ -19,233 +18,236 @@
     <link href="../../../common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<h2>Enter Song details</h2>
-<br/>
-    <div>
-        <div>
-            <div ng-controller="songDetailsController" ng-init="AddNewDiv=false">
-                <form >
+<div class="left">
+    <h2>Enter Song details</h2>
+    <br/>
+        <div class="left">
+            <div>
+                <div ng-controller="songDetailsController" ng-init="AddNewDiv=false">
+                    <form >
 
-                <div class="row">
-                    <div class="form-group col-sm-2" >
-                        <label>Umbrella Title</label>
-                    </div>
-                    <div class="form-group col-sm-1"  >
-                        <select ng-model="formInfo.title" ng-disabled="AddNewDiv"
-                                ng-options="uTitle.originalTitle for uTitle in umbrellaTitleList">
-                        </select>
-                    </div>
-
-                    <div class="form-group col-sm-2" >
-                        <button type="button" ng-click="enableNew()">Add New</button>
-                    </div>
-                    <div ng-show="AddNewDiv">
-                        <div class="row col-sm-12">
-                            <div class="form-group col-sm-2">
-                                <label>Original Title</label>
-                            </div>
-                            <div class="form-group col-sm-5">
-                                <input type="text" ng-model="formInfo.title.originalTitle">
-                            </div>
-                        </div>
-                        <div class="row col-sm-12">
-                            <div class="form-group col-sm-2">
-                                <label>English Translation</label>
-                            </div>
-                            <div class="form-group col-sm-5">
-                                <input type="text" ng-model="formInfo.title.englishTranslation">
-                            </div>
-                        </div>
-                        <div class="row col-sm-12">
-                            <div class="form-group col-sm-2">
-                                <label>English Transliteration</label>
-                            </div>
-                            <div class="form-group col-sm-5">
-                                <input type="text" ng-model="formInfo.title.englishTransliteration">
-                            </div>
-                        </div>
-                        <div class="form-group col-sm-2">
-                            <button type="button" ng-click="disableNew()">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-
-                 <div class="row" ng-init="AddNewSongTitle=false">
+                    <div class="row">
                         <div class="form-group col-sm-2" >
-                            <label>Song Title</label>
+                            <label>Umbrella Title</label>
                         </div>
                         <div class="form-group col-sm-1"  >
-                            <select ng-model="formInfo.songTitle" ng-disabled="AddNewSongTitle"
-                                    ng-options="sTitle.originalTitle for sTitle in songTitleList">
+                            <select ng-model="formInfo.title" ng-disabled="AddNewDiv"
+                                    ng-options="uTitle.originalTitle for uTitle in umbrellaTitleList" class="form-control">
                             </select>
                         </div>
 
                         <div class="form-group col-sm-2" >
-                            <button type="button" ng-click="enableNewSongTitle()">Add New</button>
+                            <button type="button" ng-click="enableNew()" class="btn btn-info">Add New</button>
                         </div>
-                        <div class="row col-sm-12">
+                        <div ng-show="AddNewDiv">
+                            <div class="row col-sm-12">
+                                <div class="form-group col-sm-2">
+                                    <label>Original Title</label>
+                                </div>
+                                <div class="form-group col-sm-2">
+                                    <input type="text" ng-model="formInfo.title.originalTitle" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row col-sm-12">
+                                <div class="form-group col-sm-2">
+                                    <label>English Translation</label>
+                                </div>
+                                <div class="form-group col-sm-2">
+                                    <input type="text" ng-model="formInfo.title.englishTranslation" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row col-sm-12">
+                                <div class="form-group col-sm-2">
+                                    <label>English Transliteration</label>
+                                </div>
+                                <div class="form-group col-sm-2">
+                                    <input type="text" ng-model="formInfo.title.englishTransliteration" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-2">
+                                <button type="button" ng-click="disableNew()" class="btn btn-default">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+
+                     <div class="row" ng-init="AddNewSongTitle=false">
+                            <div class="form-group col-sm-2" >
+                                <label>Song Title</label>
+                            </div>
+                            <div class="form-group col-sm-2"  >
+                                <select ng-model="formInfo.songTitle" ng-disabled="AddNewSongTitle"
+                                        ng-options="sTitle.originalTitle for sTitle in songTitleList" class="form-control">
+                                </select>
+                            </div>
+
+                            <div class="form-group col-sm-2" >
+                                <button type="button" ng-click="enableNewSongTitle()" class="btn btn-info">Add New</button>
+                            </div>
+                            <div class="row col-sm-12">
+                                <div class="form-group col-sm-2" ng-show="AddNewSongTitle">
+                                    <label>Original Title</label>
+                                </div>
+                                <div class="form-group col-sm-2" ng-show="AddNewSongTitle">
+                                    <input type="text" ng-model="formInfo.songTitle.originalTitle" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-2" ng-show="AddNewSongTitle">
+                                    <label>English Translation</label>
+                                </div>
+                                <div class="form-group col-sm-2" ng-show="AddNewSongTitle">
+                                    <input type="text" ng-model="formInfo.songTitle.englishTranslation" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-2" ng-show="AddNewSongTitle">
+                                    <label>English Transliteration</label>
+                                </div>
+                                <div class="form-group col-sm-2" ng-show="AddNewSongTitle">
+                                    <input type="text" ng-model="formInfo.songTitle.englishTransliteration" class="form-control">
+                                </div>
+                            </div>
                             <div class="form-group col-sm-2" ng-show="AddNewSongTitle">
-                                <label>Original Title</label>
+                                <button type="button" ng-click="disableNewSongTitle()" class="btn btn-default">Cancel</button>
                             </div>
-                            <div class="form-group col-sm-5" ng-show="AddNewSongTitle">
-                                <input type="text" ng-model="formInfo.songTitle.originalTitle">
-                            </div>
+                     </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>Singer</label>
                         </div>
-                        <div class="row">
-                            <div class="form-group col-sm-2" ng-show="AddNewSongTitle">
-                                <label>English Translation</label>
-                            </div>
-                            <div class="form-group col-sm-5" ng-show="AddNewSongTitle">
-                                <input type="text" ng-model="formInfo.songTitle.englishTranslation">
-                            </div>
+                        <div class="form-group col-sm-2">
+                            <select  ng-model="formInfo.singers[0]"
+                                     ng-options="singer.firstName for singer in singersList" class="form-control">
+                            </select>
                         </div>
-                        <div class="row">
-                            <div class="form-group col-sm-2" ng-show="AddNewSongTitle">
-                                <label>English Transliteration</label>
-                            </div>
-                            <div class="form-group col-sm-5" ng-show="AddNewSongTitle">
-                                <input type="text" ng-model="formInfo.songTitle.englishTransliteration">
-                            </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>Poet</label>
                         </div>
-                        <div class="form-group col-sm-2" ng-show="AddNewSongTitle">
-                            <button type="button" ng-click="disableNewSongTitle()">Cancel</button>
+                        <div class="form-group col-sm-2">
+                            <select  ng-model="formInfo.poets[0]"
+                                     ng-options="poet.firstName for poet in poetsList" class="form-control">
+                            </select>
                         </div>
-                 </div>
+                    </div>
 
-                <div class="row">
-                    <div class="form-group col-sm-2">
-                        <label>Singer</label>
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>Show On LandingPage</label>
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <select name="format" ng-model="formInfo.showOnLandingPage" class="form-control">
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group col-sm-5">
-                        <select  ng-model="formInfo.singers[0]"
-                                 ng-options="singer.firstName for singer in singersList">
-                        </select>
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="form-group col-sm-2">
-                        <label>Poet</label>
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>Song Category</label>
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <select ng-model="formInfo.songCategory"
+                                    ng-options="category.name for category in songCategoryList" class="form-control">
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group col-sm-5">
-                        <select  ng-model="formInfo.poets[0]"
-                                 ng-options="poet.firstName for poet in poetsList">
-                        </select>
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="form-group col-sm-2">
-                        <label>Show On LandingPage</label>
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>Duration</label>
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <input type="text" name="duration" ng-model="formInfo.duration" class="form-control">
+                        </div>
                     </div>
-                    <div class="form-group col-sm-5">
-                        <select name="format" ng-model="formInfo.showOnLandingPage">
-                            <option value="true">Yes</option>
-                            <option value="false">No</option>
-                        </select>
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="form-group col-sm-2">
-                        <label>Song Category</label>
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>Youtube Video ID for video</label>
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <input type="text" name="youtubeVideoId" ng-model="formInfo.youtubeVideoId" class="form-control">
+                        </div>
                     </div>
-                    <div class="form-group col-sm-5">
-                        <select ng-model="formInfo.songCategory"
-                                ng-options="category.name for category in songCategoryList">
-                        </select>
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="form-group col-sm-2">
-                        <label>Duration</label>
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>SoundCloud track ID for audio</label>
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <input type="text" name="soundCloudTrackID" ng-model="formInfo.soundCloudTrackID" class="form-control">
+                        </div>
                     </div>
-                    <div class="form-group col-sm-5">
-                        <input type="text" name="duration" ng-model="formInfo.duration">
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="form-group col-sm-2">
-                        <label>Youtube Video ID for video</label>
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>Thumbnail Url</label>
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <input type="text" name="thumbnailUrl" ng-model="formInfo.thumbnail_url" class="form-control">
+                        </div>
                     </div>
-                    <div class="form-group col-sm-5">
-                        <input type="text" name="youtubeVideoId" ng-model="formInfo.youtubeVideoId">
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="form-group col-sm-2">
-                        <label>SoundCloud track ID for audio</label>
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>Chorus</label>
+                        </div>
+                        <div class="form-group col-sm-3">
+                            <textarea class="form-control" rows="3" name="chorus" ng-model="formInfo.chorus"></textarea>
+                        </div>
                     </div>
-                    <div class="form-group col-sm-5">
-                        <input type="text" name="soundCloudTrackID" ng-model="formInfo.soundCloudTrackID">
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="form-group col-sm-2">
-                        <label>Thumbnail Url</label>
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>Publish</label>
+                        </div>
+                        <div class="form-group col-sm-1">
+                            <select name="format" ng-model="formInfo.isAuthoringComplete" class="form-control">
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group col-sm-5">
-                        <input type="text" name="thumbnailUrl" ng-model="formInfo.thumbnail_url">
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="form-group col-sm-2">
-                        <label>Chorus</label>
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>Lyrics</label>
+                        </div>
+                        <div class="form-group col-sm-1">
+                            <select name="format" ng-model="formInfo.lyricsComponent" class="form-control">
+                                <option value="stanza">Stanza</option>
+                                <option value="couplet">Couplet</option>
+                            </select>
+                        </div>
+                        <br/>
+
+                        <div class="form-group col-sm-3">
+                            <textarea class="form-control" rows="3" name="originalTitle" ng-model="formInfo.originalText"></textarea>
+                        </div>
+
+                        <br/>
+
+                        <button class="btn btn-info">Add</button>
+
+                        <br/>
+
                     </div>
                     <div class="form-group col-sm-3">
-                        <textarea class="form-control" rows="3" name="chorus" ng-model="formInfo.chorus"></textarea>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-sm-2">
-                        <label>Publish</label>
-                    </div>
-                    <div class="form-group col-sm-5">
-                        <select name="format" ng-model="formInfo.isAuthoringComplete">
-                            <option value="true">Yes</option>
-                            <option value="false">No</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-sm-2">
-                        <label>Lyrics</label>
-                    </div>
-
-                    <select name="format" ng-model="formInfo.lyricsComponent">
-                        <option value="stanza">Stanza</option>
-                        <option value="couplet">Couplet</option>
-                    </select>
-                    <br/>
-
-                    <div class="form-group col-sm-3">
-                        <textarea class="form-control" rows="3" name="originalTitle" ng-model="formInfo.originalText"></textarea>
+                        <textarea class="form-control lyricsBox" rows="30" name="originalTitle" ng-model="formInfo.originalText"></textarea>
                     </div>
 
                     <br/>
 
-                    <button class="btn btn-info">Add</button>
-
-                    <br/>
-
-                </div>
-                <div class="form-group col-sm-5">
-                    <textarea class="form-control lyricsBox" rows="30" name="originalTitle" ng-model="formInfo.originalText"></textarea>
-                </div>
-
-                <br/>
-
-                <button type="submit" ng-click="saveData()" class="btn btn-primary">Save</button>
-            </form>
-           </div>
+                    <button type="submit" ng-click="saveData()" class="btn btn-primary btn-lg">Save</button>
+                </form>
+               </div>
+            </div>
         </div>
-    </div>
+</div>
 </body>
 </html>
