@@ -1,12 +1,16 @@
+
 --liquibase formatted sql
 
---changeset JAIDEEP:1
-CREATE TABLE PERSON (
-    ID SERIAL PRIMARY KEY,
-    FIRST_NAME VARCHAR(130) NOT NULL,
-    MIDDLE_NAME VARCHAR(130),
-    LAST_NAME VARCHAR(130),
-    CATEGORY varchar(200) NOT NULL
-);
 
---rollback drop table PERSON;
+CREATE TABLE person
+(
+  id serial NOT NULL,
+  first_name character varying(130) NOT NULL,
+  middle_name character varying(130),
+  last_name character varying(130),
+  category character varying(200) NOT NULL,
+  CONSTRAINT person_pkey PRIMARY KEY (id)
+)
+
+
+--rollback DROP TABLE person;

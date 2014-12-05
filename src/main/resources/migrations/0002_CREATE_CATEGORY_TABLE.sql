@@ -1,7 +1,14 @@
+
 --liquibase formatted sql
 
---changeset PADMA:2
-CREATE TABLE CATEGORY (
-    ID SERIAL PRIMARY KEY,
-    NAME VARCHAR(100) NOT NULL
-);
+
+CREATE TABLE category
+(
+  id serial NOT NULL,
+  name character varying(100) NOT NULL,
+  category_type character varying(150),
+  CONSTRAINT category_pkey PRIMARY KEY (id)
+)
+
+
+--rollback DROP TABLE category;

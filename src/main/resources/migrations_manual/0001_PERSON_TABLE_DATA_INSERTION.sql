@@ -14,6 +14,7 @@ VALUES
 ('Fakru','','','Poet'),
 ('Mooralala','','Marwada','Singer'),
 ('Kabir','','','Poet');
+('Unknown','','','Unknown');
 
 --rollback delete from PERSON where FIRST_NAME='PARVATHY';
 --rollback delete from PERSON where FIRST_NAME='ROSHIK';

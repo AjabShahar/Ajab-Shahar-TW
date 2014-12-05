@@ -1,7 +1,0 @@
---liquibase formatted sql
-
---changeset PADMA:32
-CREATE TABLE UMBRELLA_TITLE(
-   ID SERIAL PRIMARY KEY,
-   TITLE VARCHAR(200)
-);

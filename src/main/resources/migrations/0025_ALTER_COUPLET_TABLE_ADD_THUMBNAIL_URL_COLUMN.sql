@@ -1,4 +1,0 @@
---liquibase formatted sql
-
---changeset PADMA:25
-ALTER TABLE COUPLET ADD COLUMN THUMBNAIL_URL VARCHAR(200);
