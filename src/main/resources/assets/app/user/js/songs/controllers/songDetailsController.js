@@ -8,20 +8,6 @@ var songDetailsController = function($scope,$location,songsContentService){
     $scope.dropDownVisible = false;
     $scope.showVersion = true;
 
-    $scope.prevSlide = function () {
-         $scope.direction = 'left';
-         $scope.currentIndex = ($scope.currentIndex < $scope.sections.length - 1) ? ++$scope.currentIndex : 0;
-     };
-
-    $scope.nextSlide = function () {
-         $scope.direction = 'right';
-         $scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.sections.length - 1;
-     };
-
-    $scope.isCurrentSlideIndex = function (index) {
-      return $scope.currentIndex === index;
-    };
-
     $scope.toggleVersion = function(){
         $scope.showVersion = !$scope.showVersion;
     }
