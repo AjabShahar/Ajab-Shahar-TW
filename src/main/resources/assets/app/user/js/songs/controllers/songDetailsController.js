@@ -14,7 +14,6 @@ var songDetailsController = function($scope,$location,songsContentService){
 
     $scope.init = function(){
         $scope.url = $location.absUrl();
-        $location.url($location.absUrl());
         $scope.songId = $location.search().id;
         $scope.open($scope.songId);
 

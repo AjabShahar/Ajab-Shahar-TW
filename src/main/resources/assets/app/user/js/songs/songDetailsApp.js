@@ -2,3 +2,9 @@ var songDetailsApp = angular.module('songDetailsApp',['thumbnailModule','mediaPl
 
 songDetailsApp.config(resourceUrlWhiteList);
 songDetailsApp.factory('songsContentService', ['$http', songsContentService]);
+
+songDetailsApp.config(function($locationProvider) {
+       $locationProvider.html5Mode({
+         enabled: true,
+       });
+ });
