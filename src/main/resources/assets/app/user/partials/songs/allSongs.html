@@ -15,6 +15,10 @@
     <script type="text/javascript" src="../../js/common/services/popupService.js"></script>
     <script type="text/javascript" src="../../js/common/directives/thumbnail/song.js"></script>
     <script type="text/javascript" src="../../js/common/directives/mappers/songMapper.js"></script>
+    <script type="text/javascript" src="../../js/common/modules/filterModule.js"></script>
+    <script type="text/javascript" src="../../js/common/filters/filterByScroll.js"></script>
+    <script type="text/javascript" src="../../js/common/filters/songFilterBySinger.js"></script>
+    <script type="text/javascript" src="../../js/common/filters/songFilterByPoet.js"></script>
     <script type="text/javascript" src="../../js/common/modules/mediaPlayer.js"></script>
     <script type="text/javascript" src="../../js/common/directives/soundCloud/soundcloud_player.js"></script>
     <script type="text/javascript" src="../../js/common/directives/youtube/youtube_player.js"></script>
@@ -54,7 +58,9 @@
                 <ul class='navList filters'>
                     <li class='head'>Filter by</li>
                     <li><a>Singers</a></li>
+                    <li><input class="pull-right" ng-model="singerNameInFilter"></li>
                     <li><a>Poets</a></li>
+                    <li><input class="pull-right" ng-model="poetNameInFilter"></li>
                     <li><a>Words</a></li>
                     <li><a>Genre</a></li>
                     <li><a>Gathering</a></li>
@@ -119,10 +125,11 @@
                         <li><a ng-click="filterSongsOnLetter('x')">X</a></li>
                         <li><a ng-click="filterSongsOnLetter('y')">Y</a></li>
                         <li><a ng-click="filterSongsOnLetter('z')">Z</a></li>
+                        <li><a ng-click="more()">More</a></li>
                     </ul>
                 </div>
                 <div class='gridWrapper'>
-                    <ul class="flexiThumbnails" ng-repeat="song in songs track by $index">
+                    <ul class="flexiThumbnails" ng-repeat="song in songs | filter:allFiltersComparator | songFilterBySinger:singerNameInFilter | songFilterByPoet:poetNameInFilter | filterByScroll:scrollIndex">
                         <li>
                             <song-mapper details="song" show-details-service="detailsService" custom-style=""/>
                         </li>
@@ -131,10 +138,5 @@
             </div>
         </div>
     </div>
-
-    <div ng-repeat="song in songs track by $index">
-        <song-introduction-mapper index="{{$index}}" details="song" show-details-service="detailsService"/>
-    </div>
-
 </body>
 </html>

@@ -10,7 +10,7 @@ var songsContentService = function ($http) {
     };
 
     var getAllSongs = function () {
-        return $http.get('/api/songs');
+        return $http.get('/api/songs/getsongs');
     };
 
     var getSongsInRangeAndFilteredBy = function(startIndex, letter){
