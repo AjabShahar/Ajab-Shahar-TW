@@ -23,6 +23,10 @@ public class CoupletDAO  extends AbstractDAO<Couplet>{
         return list(namedQuery("org.ajabshahar.platform.models.Couplet.findAllOnLandingPage"));
     }
 
+    public List<Couplet> findAll(){
+        return list(namedQuery("org.ajabshahar.platform.models.Couplet.findAll"));   
+    }
+
     public Couplet findById(Long id) {
         return (Couplet)sessionFactory.openSession().get(Couplet.class,id);
     }

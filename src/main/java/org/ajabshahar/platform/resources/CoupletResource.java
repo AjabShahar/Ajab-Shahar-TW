@@ -54,6 +54,13 @@ public class CoupletResource {
         return coupletDAO.findAllOnLandingPage();
     }
 
+    @GET
+    @Path("/all")
+    @UnitOfWork
+    public List<Couplet> listAll() {
+        return coupletDAO.findAll();
+    }
+
 
     @GET
     @Path("/edit")
