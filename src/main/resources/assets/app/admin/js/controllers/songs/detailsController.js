@@ -16,6 +16,7 @@ var songDetailsController = function($scope, $http,$window,$location){
   $scope.songTitleList = [];
   $scope.urlId = $location.search().id;
   $scope.lyricsTextList = [];
+  $scope.coupletList = [];
 
   $http.get('/api/title/umbrella').success(function(umbrellaTitleList){
     $scope.umbrellaTitleList = umbrellaTitleList;
@@ -33,6 +34,10 @@ var songDetailsController = function($scope, $http,$window,$location){
   $http.get('/api/people?role=Poet').success(function(allPoets){
     $scope.poets = allPoets;
     $scope.poetsList = $scope.poets.people;
+  });
+
+  $http.get('/api/couplets/all').success(function(allCouplets){
+    $scope.coupletList = allCouplets;
   });
 
   $http.get('/api/category/song').success(function(categoryList){
