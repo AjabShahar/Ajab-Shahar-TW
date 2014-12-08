@@ -64,7 +64,7 @@ public class SongResource {
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updateSong(String jsonSong) {
-        Song song = songs.updateSong(jsonSong);
+        Song song = songs.update(jsonSong);
         return Response.ok(song).build();
     }
 
@@ -134,8 +134,8 @@ public class SongResource {
     @GET
     @UnitOfWork
     @Path("/versions")
-    public Response getSongVersions(@QueryParam("id")int songId) {
-        List<Song> songList = songs.getSongVersions(songId);
+    public Response getSongVersions(@QueryParam("songId")int songId) {
+        List<Song> songList = songs.getVersions(songId);
         SongsRepresentation songs = songsRepresentationFactory.createSongsRepresentation(songList);
         return Response.ok(songs, MediaType.APPLICATION_JSON).build();
     }

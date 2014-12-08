@@ -59,7 +59,7 @@ public class SongsTest {
         json.addProperty("", dummySong.toString());
         when(songsRepository.updateSong(Mockito.any(Song.class))).thenReturn(song);
 
-        Song result = songs.updateSong(json.toString());
+        Song result = songs.update(json.toString());
 
         assertEquals(song, result);
     }
@@ -68,7 +68,7 @@ public class SongsTest {
     public void shouldGetSongVersions() throws Exception {
         when(songsRepository.findSongWithVersions(SONG_ID)).thenReturn(songsList);
 
-        List<Song> result = songs.getSongVersions(SONG_ID);
+        List<Song> result = songs.getVersions(SONG_ID);
 
         assertEquals(songsList, result);
     }

@@ -26,13 +26,12 @@ public class Songs {
         return songsRepository.findBy(songId, singerId, poetId, startFrom, filteredLetter);
     }
 
-    public Song updateSong(String jsonSong) {
+    public Song update(String jsonSong) {
         Song song = new Gson().fromJson(jsonSong, Song.class);
         return songsRepository.updateSong(song);
     }
 
-    public List<Song> getSongVersions(int songId) {
-
+    public List<Song> getVersions(int songId) {
         return songsRepository.findSongWithVersions(songId);
     }
 }

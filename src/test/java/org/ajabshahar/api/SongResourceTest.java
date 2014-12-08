@@ -86,7 +86,7 @@ public class SongResourceTest {
     public void shouldUpdateSong() throws Exception {
         String jsonSong = "Song";
         Song expectedResult = new Song();
-        when(songs.updateSong(jsonSong)).thenReturn(expectedResult);
+        when(songs.update(jsonSong)).thenReturn(expectedResult);
 
         Response actualResult = songResource.updateSong(jsonSong);
 
@@ -96,7 +96,7 @@ public class SongResourceTest {
     @Test
     public void shouldGetSongVersions() throws Exception {
         SongsRepresentation expectedResult = new SongsRepresentation();
-        when(songs.getSongVersions(SONG_ID)).thenReturn(songList);
+        when(songs.getVersions(SONG_ID)).thenReturn(songList);
         when(songsRepresentationFactory.createSongsRepresentation(songList)).thenReturn(expectedResult);
 
         Response actualResult = songResource.getSongVersions(SONG_ID);
