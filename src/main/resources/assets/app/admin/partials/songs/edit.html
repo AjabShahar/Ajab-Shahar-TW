@@ -14,12 +14,14 @@
     <script type="text/javascript" src="../../js/controllers/songs/detailsController.js"></script>
 
     <link href="../../../common/css/header.css" rel="stylesheet" type="text/css">
+    <link href="../../css/admin.css" rel="stylesheet" type="text/css">
     <link href="../../../common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
     <title></title>
 </head>
 <body>
-<div>
-    <div>
+<div class="left">
+    <h2>Edit song details</h2>
+    <div class="left">
         <div ng-controller="songDetailsController" ng-init="getSongData()" ng-init="AddNewDiv=false" >
             <form >
 
@@ -29,39 +31,39 @@
                     </div>
                     <div class="form-group col-sm-1"  >
                         <select ng-model="formInfo.title.id" ng-disabled="AddNewDiv"
-                                ng-options="uTitle.id as uTitle.originalTitle for uTitle in umbrellaTitleList">
+                                ng-options="uTitle.id as uTitle.originalTitle for uTitle in umbrellaTitleList" class="form-control">
                         </select>
                     </div>
 
                     <div class="form-group col-sm-2" >
-                        <button type="button" ng-click="enableNew()">Add New</button>
+                        <button type="button" ng-click="enableNew()" class="btn btn-info">Add New</button>
                     </div>
                     <div class="row col-sm-12">
                         <div class="form-group col-sm-2" ng-show="AddNewDiv">
                             <label>Original Title</label>
                         </div>
-                        <div class="form-group col-sm-5" ng-show="AddNewDiv">
-                            <input type="text" ng-model="formInfo.title.originalTitle">
+                        <div class="form-group col-sm-2" ng-show="AddNewDiv">
+                            <input type="text" ng-model="formInfo.title.originalTitle" class="form-control">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-2" ng-show="AddNewDiv">
                             <label>English Translation</label>
                         </div>
-                        <div class="form-group col-sm-5" ng-show="AddNewDiv">
-                            <input type="text" ng-model="formInfo.title.englishTranslation">
+                        <div class="form-group col-sm-2" ng-show="AddNewDiv">
+                            <input type="text" ng-model="formInfo.title.englishTranslation" class="form-control">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-2" ng-show="AddNewDiv">
                             <label>English Transliteration</label>
                         </div>
-                        <div class="form-group col-sm-5" ng-show="AddNewDiv">
-                            <input type="text" ng-model="formInfo.title.englishTransliteration">
+                        <div class="form-group col-sm-2" ng-show="AddNewDiv">
+                            <input type="text" ng-model="formInfo.title.englishTransliteration" class="form-control">
                         </div>
                     </div>
                     <div class="form-group col-sm-2" ng-show="AddNewDiv">
-                         <button type="button" ng-click="disableNew()">Cancel</button>
+                         <button type="button" ng-click="disableNew()" class="btn btn-default">Cancel</button>
                     </div>
                 </div>
 
@@ -71,40 +73,40 @@
                     </div>
                     <div class="form-group col-sm-1"  >
                         <select ng-model="formInfo.songTitle.id" ng-disabled="AddNewSongTitle"
-                                ng-options="sTitle.id as sTitle.originalTitle for sTitle in songTitleList">
+                                ng-options="sTitle.id as sTitle.originalTitle for sTitle in songTitleList" class="form-control">
                         </select>
                     </div>
 
                     <div class="form-group col-sm-2" >
-                        <button type="button" ng-click="enableNewSongTitle()">Add New</button>
+                        <button type="button" ng-click="enableNewSongTitle()" class="btn btn-info">Add New</button>
                     </div>
                     <div class="row col-sm-12">
                         <div class="form-group col-sm-2" ng-show="AddNewSongTitle">
                             <label>Original Title</label>
                         </div>
-                        <div class="form-group col-sm-5" ng-show="AddNewSongTitle">
-                            <input type="text" ng-model="formInfo.songTitle.originalTitle">
+                        <div class="form-group col-sm-2" ng-show="AddNewSongTitle">
+                            <input type="text" ng-model="formInfo.songTitle.originalTitle" class="form-control">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-2" ng-show="AddNewSongTitle">
                             <label>English Translation</label>
                         </div>
-                        <div class="form-group col-sm-5" ng-show="AddNewSongTitle">
-                            <input type="text" ng-model="formInfo.songTitle.englishTranslation">
+                        <div class="form-group col-sm-2" ng-show="AddNewSongTitle">
+                            <input type="text" ng-model="formInfo.songTitle.englishTranslation" class="form-control">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-2" ng-show="AddNewSongTitle">
                             <label>English Transliteration</label>
                         </div>
-                        <div class="form-group col-sm-5" ng-show="AddNewSongTitle">
-                            <input type="text" ng-model="formInfo.songTitle.englishTransliteration">
+                        <div class="form-group col-sm-2" ng-show="AddNewSongTitle">
+                            <input type="text" ng-model="formInfo.songTitle.englishTransliteration" class="form-control">
                         </div>
                     </div>
 
                     <div class="form-group col-sm-2" ng-show="AddNewSongTitle">
-                        <button type="button" ng-click="disableNewSongTitle()">Cancel</button>
+                        <button type="button" ng-click="disableNewSongTitle()" class="btn btn-default">Cancel</button>
                     </div>
                 </div>
 
@@ -112,9 +114,9 @@
                     <div class="form-group col-sm-2">
                         <label>Singer</label>
                     </div>
-                    <div class="form-group col-sm-5">
+                    <div class="form-group col-sm-2">
                         <select ng-model="formInfo.singersList[0].id"
-                                ng-options="singer.id as singer.firstName for singer in singersList">
+                                ng-options="singer.id as singer.firstName for singer in singersList" class="form-control">
                         </select>
                     </div>
                 </div>
@@ -123,9 +125,9 @@
                     <div class="form-group col-sm-2">
                         <label>Poet</label>
                     </div>
-                    <div class="form-group col-sm-5">
+                    <div class="form-group col-sm-2">
                         <select ng-model="formInfo.poetsList[0].id"
-                                ng-options="poet.id as poet.firstName for poet in poetsList">
+                                ng-options="poet.id as poet.firstName for poet in poetsList" class="form-control">
                         </select>
                     </div>
                 </div>
@@ -134,8 +136,8 @@
                     <div class="form-group col-sm-2">
                         <label>Show On LandingPage</label>
                     </div>
-                    <div class="form-group col-sm-5">
-                        <select name="format" ng-model="formInfo.showOnLandingPage">
+                    <div class="form-group col-sm-2">
+                        <select name="format" ng-model="formInfo.showOnLandingPage" class="form-control">
                             <option value="true">Yes</option>
                             <option value="false">No</option>
                         </select>
@@ -146,9 +148,9 @@
                     <div class="form-group col-sm-2">
                         <label>Song Category</label>
                     </div>
-                    <div class="form-group col-sm-5">
+                    <div class="form-group col-sm-2">
                         <select ng-model="formInfo.songCategory.id"
-                                ng-options="category.id as category.name for category in songCategoryList">
+                                ng-options="category.id as category.name for category in songCategoryList" class="form-control">
                         </select>
                     </div>
                 </div>
@@ -157,8 +159,8 @@
                     <div class="form-group col-sm-2">
                         <label>Duration</label>
                     </div>
-                    <div class="form-group col-sm-5">
-                        <input type="text" name="duration" ng-model="formInfo.duration">
+                    <div class="form-group col-sm-2">
+                        <input type="text" name="duration" ng-model="formInfo.duration" class="form-control">
                     </div>
                 </div>
 
@@ -166,8 +168,8 @@
                     <div class="form-group col-sm-2">
                         <label>Youtube Video ID for video</label>
                     </div>
-                    <div class="form-group col-sm-5">
-                        <input type="text" name="youtubeVideoId" ng-model="formInfo.youtubeVideoId">
+                    <div class="form-group col-sm-2">
+                        <input type="text" name="youtubeVideoId" ng-model="formInfo.youtubeVideoId" class="form-control">
                     </div>
                 </div>
 
@@ -175,8 +177,8 @@
                     <div class="form-group col-sm-2">
                         <label>SoundCloud track ID for audio</label>
                     </div>
-                    <div class="form-group col-sm-5">
-                        <input type="text" name="soundCloudTrackID" ng-model="formInfo.soundCloudTrackID">
+                    <div class="form-group col-sm-2">
+                        <input type="text" name="soundCloudTrackID" ng-model="formInfo.soundCloudTrackID" class="form-control">
                     </div>
                 </div>
 
@@ -184,8 +186,8 @@
                     <div class="form-group col-sm-2">
                         <label>Thumbnail Url</label>
                     </div>
-                    <div class="form-group col-sm-5">
-                        <input type="text" name="thumbnailUrl" ng-model="formInfo.thumbnail_url">
+                    <div class="form-group col-sm-2">
+                        <input type="text" name="thumbnailUrl" ng-model="formInfo.thumbnail_url" class="form-control">
                     </div>
                 </div>
 
@@ -194,16 +196,16 @@
                     <div class="form-group col-sm-2">
                         <label>Publish</label>
                     </div>
-                    <div class="form-group col-sm-5">
-                        <select name="format" ng-model="formInfo.isAuthoringComplete">
+                    <div class="form-group col-sm-2">
+                        <select name="format" ng-model="formInfo.isAuthoringComplete" class="form-control">
                             <option value="true">Yes</option>
                             <option value="false">No</option>
                         </select>
                     </div>
                 </div>
 
-                <button type="submit" ng-click="updateSong()">Save</button>
-                <button type="reset"  ng-click="redirectToEnterPage()">Add New Song</button>
+                <button type="submit" ng-click="updateSong()" class="btn btn-primary btn-lg">Save</button>
+                <button type="reset"  ng-click="redirectToEnterPage()" class="btn btn-info">Add New Song</button>
             </form>
         </div>
     </div>

@@ -13,6 +13,7 @@ var songDetailsController = function($scope, $http,$window,$location){
   $scope.umbrellaTitleList = [];
   $scope.songTitleList = [];
   $scope.urlId = $location.search().id;
+  $scope.lyricsTextList = [];
 
   $http.get('/api/title/umbrella').success(function(umbrellaTitleList){
     $scope.umbrellaTitleList = umbrellaTitleList;
@@ -67,6 +68,13 @@ var songDetailsController = function($scope, $http,$window,$location){
 
       });
     };
+
+  $scope.addLyricsText = function(){
+    if($scope.lyricsText != ""){
+      $scope.lyricsTextList.push($scope.lyricsText);
+    }
+    $scope.lyricsText = "";
+  }
 
   $scope.updateSong = function(){
      var youtubeIdIsNull = $scope.formInfo.youtubeVideoId == undefined || $scope.formInfo.youtubeVideoId == "";

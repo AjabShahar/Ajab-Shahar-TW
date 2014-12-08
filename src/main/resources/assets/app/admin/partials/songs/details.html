@@ -28,7 +28,7 @@
 </head>
 <body>
 <div class="left">
-    <h2>Enter Song details</h2>
+    <h2>Enter song details</h2>
     <br/>
         <div class="left">
             <div>
@@ -223,7 +223,44 @@
                         </div>
                     </div>
 
-                    <lyrics lyrics-component="formInfo.lyricsComponent" original-text="formInfo.originalText"></lyrics>
+
+                    <!-- <lyrics lyrics-component="formInfo.lyricsComponent" original-text="formInfo.originalText"></lyrics> -->
+
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>Lyrics</label>
+                        </div>
+                        <div class="form-group col-sm-1">
+                            <select name="format" ng-model="formInfo.lyricsComponent" class="form-control">
+                                <option value="stanza">Stanza</option>
+                                <option value="couplet">Couplet</option>
+                            </select>
+                        </div>
+                        <br/>
+
+                        <div class="form-group col-sm-3">
+                            <textarea class="form-control" rows="6" name="lyricsTextPlaceholder" ng-model="lyricsText"></textarea>
+                        </div>
+
+                        <br/>
+
+                        <button class="btn btn-info" ng-click="addLyricsText()">Add</button>
+
+                        <br/>
+
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <div class="lyricsBoxMultiSelect">
+                            <select ng-model="lyrics" size="40"
+                                    ng-options="songLyrics for songLyrics in lyricsTextList" class="form-control">
+                            </select>
+                        </div>
+                        <div class="lyricsBoxComponents">
+                            <span class="glyphicon glyphicon-arrow-up btn-lg"></span>
+                            <span class="glyphicon glyphicon-arrow-down btn-lg"></span>    
+                        </div>
+                    </div>
+
 
                     <br/>
 

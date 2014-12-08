@@ -21,7 +21,13 @@ margin-bottom: 50%;
 	margin-left: 2%;
 }
 
-.lyricsBox{
+.lyricsBoxComponents{
 	margin-left: 246%;
 	margin-top: -190%;
+}
+
+.lyricsBoxMultiSelect{
+	position: fixed;
+	margin-left: 57%;
+	margin-top: -42%;
 }
