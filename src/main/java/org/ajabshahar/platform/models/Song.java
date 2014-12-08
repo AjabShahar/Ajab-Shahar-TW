@@ -13,10 +13,6 @@ import java.util.Set;
         @NamedQuery(
                 name = "org.ajabshahar.platform.models.Song.findAllOnLandingPage",
                 query = "SELECT p FROM Song p where p.showOnLandingPage=true and p.isAuthoringComplete=true"
-        ),
-        @NamedQuery(
-                name = "org.ajabshahar.platform.models.Song.findSongWithRenditions",
-                query = "SELECT p FROM Song p where p.title=(SELECT s.title from Song s where s.id=:id)"
         )
 })
 public class Song {

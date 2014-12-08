@@ -98,14 +98,6 @@ public class SongResource {
 
     @GET
     @UnitOfWork
-    @Path("/{id}/versions")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Song> getSongWithRenditions(@PathParam("id") Long id) {
-        return songDAO.findSongWithRenditions(id);
-    }
-
-    @GET
-    @UnitOfWork
     @Path("/getsongs")
     public Response getSongs(@QueryParam("singerId") int singerId, @QueryParam("poetId") int poetId, @QueryParam("startFrom") int startFrom, @QueryParam("filteredLetter") String filteredLetter) {
         List<Song> songList = songs.findBy(singerId, poetId, startFrom, filteredLetter);

@@ -54,11 +54,6 @@ public class SongDAO extends AbstractDAO<Song> {
         return originalSongData;
     }
 
-
-    public List<Song> findSongWithRenditions(Long id) {
-        return list(namedQuery("org.ajabshahar.platform.models.Song.findSongWithRenditions").setParameter("id", id));
-    }
-
     public int getCountOfSongsThatStartWith(String letter) {
         return list(namedQuery("org.ajabshahar.platform.models.Song.findAllFilteredBy").setParameter("letter", letter + "%")).size();
     }
@@ -84,6 +79,7 @@ public class SongDAO extends AbstractDAO<Song> {
             findSongs.createAlias("songTitle", "songTitleAlias");
             findSongs.add(Restrictions.like("songTitleAlias.englishTranslation", filteredLetter, MatchMode.START));
         }
+        findSongs.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return findSongs.list();
     }
 
@@ -114,6 +110,7 @@ public class SongDAO extends AbstractDAO<Song> {
         } else {
             return new ArrayList<>();
         }
+        findSongs.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return findSongs.list();
     }
 }
