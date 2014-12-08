@@ -13,7 +13,7 @@ module.exports = function (config) {
       'user/js/common/modules/PopupSupport.js',
       'user/js/common/modules/mediaPlayer.js',
       'user/js/common/**/*.js',
-      'user/js/Introduction/**/*.js',
+      'admin/js/Introduction/**/*.js',
       'user/js/EditorsChoice/**/*.js',
       '../../../../test/js/unit/**/*.js'
     ],

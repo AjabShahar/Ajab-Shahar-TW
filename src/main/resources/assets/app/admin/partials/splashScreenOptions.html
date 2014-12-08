@@ -2,31 +2,62 @@
 <html ng-app="introductionApp">
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Enter splash screen options</title>
+    <title>Splash screen options - admin</title>
     <script src="../../common/lib/angular/angular.js"></script>
-    <script src="../../common/lib/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="../../user/js/Introduction/app.js"></script>
-    <script type="text/javascript" src="../../user/js/Introduction/controllers/enterSplashScreenOptionsController.js"></script>
-    <script type="text/javascript" src="../../user/js/Introduction/services/contentService.js"></script>
     <script src="../../common/lib/angular-route/angular-route.js"></script>
     <script src="../../common/lib/angular-animate/angular-animate.js"></script>
-    <script type="text/javascript" src="../../user/js/common/directives/youtube/youtube_player.js"></script>
-
-
+    <script type="text/javascript" src="../../user/js/common/config/resourceUrlWhiteList.js"></script>
+    <script type="text/javascript" src="../js/Introduction/app.js"></script>
+    <script type="text/javascript" src="../../user/js/common/modules/mediaPlayer.js"></script>
+    <script type="text/javascript" src="../js/Introduction/services/contentService.js"></script>
+    <script type="text/javascript" src="../js/Introduction/controllers/splashScreenController.js"></script>
+    <link href="../../../common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="../css/admin.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-Enter splash screen options
-<div ng-controller="enterSplashScreenOptionsController">
-<form >
-    Url: <input type="text" name="url" ng-model="formInfo.URL" role="form"><br>
-    Image Url: <input type="text" name="imageUrl" ng-model="formInfo.IMAGE_URL"><br>
-    Type :
-    <select name="format" ng-model="formInfo.FORMAT">
-        <option value="audio">Audio</option>
-        <option value="video">Video</option>
-    </select><br>
-    <button type="submit" ng-click="saveData()">Submit</button>
-</form>
+<div class="left">
+    <h2>Enter Splash Screen Options </h2>
+    <br/>
+    <div ng-controller="splashScreenController">
+        <form>
+            <div class="left">
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Youtube Video Url</label>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <input type="text" name="youtubeUrl" ng-model="formInfo.URL" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Image Url</label>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <input type="text" name="ImageUrl" ng-model="formInfo.IMAGE_URL" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Show On LandingPage</label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <select name="format" ng-model="formInfo.FORMAT" class="form-control">
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+
+                </div>
+
+            <button type="submit" ng-click="saveData()" class="btn btn-primary btn-lg">Save</button>
+        </div>
+        </form>
+    </div>
 </div>
 </body>
 </html>
+
+
