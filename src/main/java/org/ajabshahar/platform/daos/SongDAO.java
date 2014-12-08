@@ -10,6 +10,7 @@ import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SongDAO extends AbstractDAO<Song> {
@@ -107,9 +108,11 @@ public class SongDAO extends AbstractDAO<Song> {
         Criteria findSongs = currentSession.createCriteria(Song.class);
 
         Song song = findById(Long.valueOf(songId));
-        if (song.getTitle() != null) {
+        if (song != null) {
             findSongs.createAlias("title", "titleAlias");
             findSongs.add(Restrictions.eq("titleAlias.id", song.getTitle().getId()));
+        } else {
+            return new ArrayList<>();
         }
         return findSongs.list();
     }
