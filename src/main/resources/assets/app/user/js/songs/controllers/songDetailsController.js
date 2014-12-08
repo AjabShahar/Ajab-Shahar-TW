@@ -33,7 +33,7 @@ var songDetailsController = function($scope,$location,songsContentService){
         $scope.open($scope.songId);
 
         songsContentService.getSongsVersions($scope.songId).then(function(result){
-            $scope.versions = result.data;
+            $scope.versions = result.data.songs;
         });
 
         $scope.detailContents = songsContentService.getSongRenditions($scope.songId).then(function(result){
