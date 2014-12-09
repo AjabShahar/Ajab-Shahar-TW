@@ -1,0 +1,5 @@
+<ul class='alphabets'>
+    <li ng-repeat="alphabetFilter in alphabetFilters">
+        <a ng-click="filterSongsOnLetter(alphabetFilter)" ng-class="isSelected(alphabetFilter)">{{alphabetFilter.alphabet}}</a>
+    </li>
+</ul>

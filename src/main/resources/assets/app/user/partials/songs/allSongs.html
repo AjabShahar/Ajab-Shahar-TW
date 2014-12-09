@@ -16,6 +16,7 @@
     <script type="text/javascript" src="../../js/common/directives/thumbnail/song.js"></script>
     <script type="text/javascript" src="../../js/common/directives/mappers/songThumbnailMapper.js"></script>
     <script type="text/javascript" src="../../js/common/modules/filterModule.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/songs/alphabetFilter.js"></script>
     <script type="text/javascript" src="../../js/common/filters/filterByScroll.js"></script>
     <script type="text/javascript" src="../../js/common/filters/songFilterBySinger.js"></script>
     <script type="text/javascript" src="../../js/common/filters/songFilterByPoet.js"></script>
@@ -98,13 +99,9 @@
                         </form>
                     </div>
 
-                    <ul class='alphabets'>
-                        <li ng-repeat="alphabetFilter in alphabetFilters">
-                            <a ng-click="filterSongsOnLetter(alphabetFilter)" ng-class="isSelected(alphabetFilter)">{{alphabetFilter.alphabet}}</a>
-                        </li>
-                        <li><a ng-click="more()">More</a></li>
-                    </ul>
+                    <alphabet-filter active-letter="activeLetter"></alphabet-filter>
                 </div>
+
                 <div class='gridWrapper'>
                     <ul class="flexiThumbnails" ng-repeat="song in songs | filter:songStartsWithComparator | songFilterBySinger:singerNameInFilter | songFilterByPoet:poetNameInFilter | filterByScroll:scrollIndex">
                         <li>
@@ -112,6 +109,8 @@
                         </li>
                     </ul>
                 </div>
+
+                <a ng-click="more()">More</a>
             </div>
         </div>
     </div>
