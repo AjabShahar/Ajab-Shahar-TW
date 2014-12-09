@@ -106,7 +106,7 @@ public class SongDAO extends AbstractDAO<Song> {
         Song song = findById(Long.valueOf(songId));
         if (song != null) {
             findSongs.createAlias("title", "titleAlias");
-            findSongs.add(Restrictions.eq("titleAlias.id", song.getId()));
+            findSongs.add(Restrictions.eq("titleAlias.id", song.getTitle().getId()));
         } else {
             return new ArrayList<>();
         }
