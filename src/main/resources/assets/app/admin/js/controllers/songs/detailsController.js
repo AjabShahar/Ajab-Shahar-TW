@@ -1,7 +1,9 @@
 var songDetailsController = function($scope, $http,$window,$location){
 
-  $scope.formInfo = {};
-  $scope.formInfo.singers = [];
+  $scope.formInfo = {
+    singers:[]
+  };
+//  $scope.formInfo.singers = [];
   $scope.formInfo.poets = [];
   $scope.singersList = [];
   $scope.poetsList = [];
@@ -54,7 +56,9 @@ var songDetailsController = function($scope, $http,$window,$location){
         return mediaCategory.name == "audio & video";
       })[0];
     }
-
+    if($scope.formInfo.title == null){
+       $scope.formInfo.title = $scope.formInfo.songTitle;
+    }
     $http.post('/api/songs', $scope.formInfo).success(function(data){
           $window.location.href = '/admin/partials/songs/edit.html?id='+data;
     });
