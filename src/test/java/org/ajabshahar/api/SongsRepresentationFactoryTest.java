@@ -93,10 +93,10 @@ public class SongsRepresentationFactoryTest {
         assertThat(songs.get(0).getEnglishTranslationTitle(), IsEqual.equalTo("Song1EnglishTranslation"));
         assertThat(songs.get(0).getEnglishTransliterationTitle(), IsEqual.equalTo("Song1EnglishTransliteration"));
         assertThat(songs.get(0).getDuration(), IsEqual.equalTo("1:00"));
-        assertThat(songs.get(0).getSingers().get(0), IsEqual.equalTo("Singer1"));
-        assertThat(songs.get(0).getPoets().get(0), IsEqual.equalTo("Poet1"));
-        assertThat(songs.get(0).getCategory(),IsEqual.equalTo("Song & Reflection"));
-        assertThat(songs.get(0).getThumbnailUrl(),IsEqual.equalTo("http://tinyurl.com"));
+        assertThat(songs.get(0).getSingers().get(0).getName(), IsEqual.equalTo("Singer1"));
+        assertThat(songs.get(0).getPoets().get(0).getName(), IsEqual.equalTo("Poet1"));
+        assertThat(songs.get(0).getCategory(), IsEqual.equalTo("Song & Reflection"));
+        assertThat(songs.get(0).getThumbnailUrl(), IsEqual.equalTo("http://tinyurl.com"));
     }
 
     @Test
@@ -128,10 +128,10 @@ public class SongsRepresentationFactoryTest {
     public void shouldCreateSongsRepresentation() throws Exception {
         SongsRepresentation songs = songsRepresentationFactory.createSongsRepresentation(songsList);
         List<SongRepresentation> songsRepresentation = songs.getSongs();
-        
-        assertThat(songsRepresentation.size(),IsEqual.equalTo(1));
 
-        assertThat(songsRepresentation.get(0).getId(),IsEqual.equalTo(1L));
+        assertThat(songsRepresentation.size(), IsEqual.equalTo(1));
+
+        assertThat(songsRepresentation.get(0).getId(), IsEqual.equalTo(1L));
 
         assertThat(songsRepresentation.get(0).getUmbrellaTitleOriginal(), IsEqual.equalTo("Umbrella1Original"));
         assertThat(songsRepresentation.get(0).getUmbrellaTitleEnglishTranslation(), IsEqual.equalTo("Umbrella1EnglishTranslation"));
@@ -151,6 +151,6 @@ public class SongsRepresentationFactoryTest {
 
         assertThat(songsRepresentation.get(0).getSingers().get(0).toString(), IsEqual.equalTo("id: 1001, name: Singer1"));
         assertThat(songsRepresentation.get(0).getPoets().get(0).toString(), IsEqual.equalTo("id: 2001, name: Poet1"));
-   
+
     }
 }

@@ -21,13 +21,19 @@ public class SongsRepresentationFactory {
         for (Song song : songList) {
 
             Title title = song.getSongTitle() == null ? new Title() : song.getSongTitle();
-            final List<String> singers = new ArrayList<>(), poets = new ArrayList<>();
+            final List<PersonSummaryRepresentation> singers = new ArrayList<>(), poets = new ArrayList<>();
 
-            song.getSingers().forEach(singer -> singers.add(people.findBy((int)singer.getId()).getName()));
-            song.getPoets().forEach(poet -> poets.add(people.findBy((int)poet.getId()).getName()));
+            song.getSingers().forEach(singer -> {
+                PersonDetails personDetails = people.findBy((int) singer.getId());
+                singers.add(new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName()));
+            });
+            song.getPoets().forEach(poet -> {
+                PersonDetails personDetails = people.findBy((int) poet.getId());
+                poets.add(new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName()));
+            });
 
             SongSummaryRepresentation songSummaryRepresentation = new SongSummaryRepresentation(song.getId(), title.getEnglishTranslation(), title.getEnglishTransliteration(), singers, poets, song.getDuration(),
-                    song.getSongCategory().getName(),song.getThumbnail_url());
+                    song.getSongCategory().getName(), song.getThumbnail_url());
             songs.addSong(songSummaryRepresentation);
         }
         return songs;
@@ -67,10 +73,9 @@ public class SongsRepresentationFactory {
                 poets);
     }
 
-    public  SongsRepresentation createSongsRepresentation(List<Song> songList)
-    {
+    public SongsRepresentation createSongsRepresentation(List<Song> songList) {
         SongsRepresentation songsRepresentation = new SongsRepresentation();
-        for(Song song:songList){
+        for (Song song : songList) {
 
             Title umbrellaTitle = song.getTitle() == null ? new Title() : song.getTitle();
             Title songTitle = song.getSongTitle() == null ? new Title() : song.getSongTitle();

@@ -9,8 +9,8 @@ public class SongSummaryRepresentation {
     private long id;
     private String englishTranslationTitle;
     private String englishTransliterationTitle;
-    private List<String> singers;
-    private List<String> poets;
+    private List<PersonSummaryRepresentation> singers;
+    private List<PersonSummaryRepresentation> poets;
     private String duration;
     private String category;
     private String thumbnailUrl;
@@ -19,7 +19,7 @@ public class SongSummaryRepresentation {
 
     }
 
-    public SongSummaryRepresentation(long id, String englishTranslationTitle, String englishTransliterationTitle, List<String> singers, List<String> poets, String duration, String songCategory, String thumbnailUrl) {
+    public SongSummaryRepresentation(long id, String englishTranslationTitle, String englishTransliterationTitle, List<PersonSummaryRepresentation> singers, List<PersonSummaryRepresentation> poets, String duration, String songCategory, String thumbnailUrl) {
         this.id = id;
         this.englishTranslationTitle = englishTranslationTitle;
         this.englishTransliterationTitle = englishTransliterationTitle;
@@ -46,12 +46,12 @@ public class SongSummaryRepresentation {
     }
 
     @JsonProperty("singers")
-    public List<String> getSingers() {
+    public List<PersonSummaryRepresentation> getSingers() {
         return singers;
     }
 
     @JsonProperty("poet")
-    public List<String> getPoets() {
+    public List<PersonSummaryRepresentation> getPoets() {
         return poets;
     }
 

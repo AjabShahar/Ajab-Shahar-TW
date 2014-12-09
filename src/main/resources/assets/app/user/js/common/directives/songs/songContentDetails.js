@@ -6,6 +6,8 @@ thumbnailModule.directive("songContentDetails", function() {
         scope: {
             videoId:'@',
             audioUrl:'@',
+            singer:'@',
+            poet:'@',
             id:'@',
             detailsService:'='
         },

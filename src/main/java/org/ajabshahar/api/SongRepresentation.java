@@ -25,14 +25,14 @@ public class SongRepresentation {
     private String thumbnailUrl;
     private String duration;
     private List<PersonSummaryRepresentation> singers;
-    private List<PersonSummaryRepresentation> poets;
+    private List<PersonSummaryRepresentation> poet;
     private List<LinkRepresentation> links;
 
     public SongRepresentation() {
         this.links = new ArrayList<>();
     }
 
-    public SongRepresentation(long id, long umbrellaTitleId, String umbrellaTitleOriginal, String umbrellaTitleEnglishTransliteration, String umbrellaTitleEnglishTranslation, long titleId, String titleOriginal, String titleEnglishTransliteration, String titleEnglishTranslation, boolean publish, String type, boolean featured, String youTubeVideoId, String soundCloudTrackId, String thumbnailUrl, String duration, List<PersonSummaryRepresentation> singers, List<PersonSummaryRepresentation> poets) {
+    public SongRepresentation(long id, long umbrellaTitleId, String umbrellaTitleOriginal, String umbrellaTitleEnglishTransliteration, String umbrellaTitleEnglishTranslation, long titleId, String titleOriginal, String titleEnglishTransliteration, String titleEnglishTranslation, boolean publish, String type, boolean featured, String youTubeVideoId, String soundCloudTrackId, String thumbnailUrl, String duration, List<PersonSummaryRepresentation> singers, List<PersonSummaryRepresentation> poet) {
         this();
         this.id = id;
         this.umbrellaTitleId = umbrellaTitleId;
@@ -51,9 +51,9 @@ public class SongRepresentation {
         this.thumbnailUrl = thumbnailUrl;
         this.duration = duration;
         this.singers = singers;
-        this.poets = poets;
+        this.poet = poet;
         this.singers.forEach(singer -> links.add(new LinkRepresentation("singer",  format("/api/people/%s", singer.getId()))));
-        this.poets.forEach(poet -> links.add(new LinkRepresentation("poet",  format("/api/people/%s", poet.getId()))));
+        this.poet.forEach(p -> links.add(new LinkRepresentation("poet", format("/api/people/%s", p.getId()))));
     }
 
     @JsonProperty("id")
@@ -91,12 +91,12 @@ public class SongRepresentation {
         return titleOriginal;
     }
 
-    @JsonProperty("titleEnglishTransliteration")
+    @JsonProperty("englishTransliterationTitle")
     public String getTitleEnglishTransliteration() {
         return titleEnglishTransliteration;
     }
 
-    @JsonProperty("titleEnglishTranslation")
+    @JsonProperty("englishTranslationTitle")
     public String getTitleEnglishTranslation() {
         return titleEnglishTranslation;
     }
@@ -141,9 +141,9 @@ public class SongRepresentation {
         return singers;
     }
 
-    @JsonProperty("poets")
+    @JsonProperty("poet")
     public List<PersonSummaryRepresentation> getPoets() {
-        return poets;
+        return poet;
     }
 
     @JsonProperty("links")

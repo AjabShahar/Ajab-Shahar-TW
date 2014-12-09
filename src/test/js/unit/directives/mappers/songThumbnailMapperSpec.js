@@ -23,11 +23,16 @@ describe('Mapper', function() {
                                 "englishTransliterationTitle": "Kichhu din mone mone",
                                 "category":"Song & Reflection",
                                 "poet": [
-                                     "Sharath",
-                                    ],
+                                    {
+                                       "name":"Sharath"
+                                    }
+                                ],
                                 "thumbnailUrl": "imgId",
                                 "singers": [
-                                      "Parvathy Baul",
+                                      {
+                                         "name":"Parvathy Baul"
+                                      }
+                                      ,
                                     ],
                                 "duration": "09:11"
                             };
