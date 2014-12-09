@@ -58,10 +58,22 @@
 
                 <ul class='navList filters'>
                     <li class='head'>Filter by</li>
-                    <li><a>Singers</a></li>
-                    <li><input class="pull-right" ng-model="singerNameInFilter"></li>
-                    <li><a>Poets</a></li>
-                    <li><input class="pull-right" ng-model="poetNameInFilter"></li>
+                    <li><a ng-click="showSingers()">Singers</a></li>
+                    <li ng-show="singerNameInFilter!=''">{{singerNameInFilter}}<a ng-click="removeSingerFilter()">[X]</a></li>
+                    <li ng-show="shouldShowSingers" ng-mouseleave="hideSingers()">
+                        <select ng-model="singerNameInFilter"
+                                ng-options="singer for singer in singers" class="form-control">
+                        </select>
+                    </li>
+                    <li></li>
+                    <li><a ng-click="showPoets()">Poets</a></li>
+                    <li ng-show="poetNameInFilter!=''">{{poetNameInFilter}}<a ng-click="removePoetFilter()">[X]</a></li>
+                    <li ng-show="shouldShowPoets" ng-mouseleave="hidePoets()">
+                        <select ng-model="poetNameInFilter"
+                                ng-options="poet for poet in poets" class="form-control">
+                        </select>
+                    </li>
+                    <li></li>
                     <li><a>Words</a></li>
                     <li><a>Genre</a></li>
                     <li><a>Gathering</a></li>

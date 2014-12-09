@@ -1,4 +1,4 @@
-var allSongsController = function($scope,songsContentService,popupService){
+var allSongsController = function($scope,songsContentService,popupService,$filter){
     $scope.songs=[];
     $scope.allSongs = null;
     $scope.totalFilteredSongs = 0;
@@ -7,8 +7,66 @@ var allSongsController = function($scope,songsContentService,popupService){
     $scope.scrollIndex = 9;
     $scope.singerNameInFilter = '';
     $scope.poetNameInFilter = '';
+    $scope.singers = [];
+    $scope.poets = [];
+    $scope.shouldShowSingers = false;
+    $scope.shouldShowPoets = false;
 
     var i = 0;
+
+    $scope.filterSingers = function(){
+        var songStartsWithResult = _.filter($scope.songs,$scope.songStartsWithComparator);
+        var songsWithPoetNameResult = $filter('songFilterByPoet')(songStartsWithResult, $scope.poetNameInFilter);
+
+        $scope.singers.splice(0, $scope.singers.length);
+        $scope.singers.push('');
+        _.each(songsWithPoetNameResult,function(song){
+            _.each(song.singers, function(singer){
+                if(!_.contains($scope.singers,singer))
+                    $scope.singers.push(singer);
+            });
+        });
+    }
+
+    $scope.removeSingerFilter = function(){
+        $scope.singerNameInFilter = '';
+    }
+
+    $scope.removePoetFilter = function(){
+        $scope.poetNameInFilter = '';
+    }
+
+    $scope.showSingers = function(){
+        $scope.filterSingers();
+        $scope.shouldShowSingers = true;
+    }
+
+    $scope.hideSingers = function(){
+        $scope.shouldShowSingers = false;
+    }
+
+    $scope.showPoets = function(){
+        $scope.filterPoets();
+        $scope.shouldShowPoets = true;
+    }
+
+    $scope.hidePoets = function(){
+        $scope.shouldShowPoets = false;
+    }
+
+    $scope.filterPoets = function(){
+        var songStartsWithResult = _.filter($scope.songs,$scope.songStartsWithComparator);
+        var songsWithPoetNameResult = $filter('songFilterBySinger')(songStartsWithResult, $scope.singerNameInFilter);
+
+        $scope.poets.splice(0, $scope.poets.length);
+        $scope.poets.push('');
+        _.each(songsWithPoetNameResult,function(song){
+            _.each(song.poet, function(poet){
+                if(!_.contains($scope.poets,poet))
+                    $scope.poets.push(poet);
+            });
+        });
+    }
 
     $scope.clearFilters = function(){
         $scope.activeLetter = '';
@@ -58,4 +116,4 @@ var allSongsController = function($scope,songsContentService,popupService){
     $scope.getAllSongs();
 };
 
-allSongsApp.controller('allSongsController',['$scope','songsContentService','popupService',allSongsController]);
+allSongsApp.controller('allSongsController',['$scope','songsContentService','popupService','$filter',allSongsController]);
