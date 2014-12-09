@@ -22,7 +22,7 @@ var allSongsController = function($scope,songsContentService,popupService){
         return (str+"").indexOf(prefix) === 0;
     }
 
-    $scope.allFiltersComparator = function (actual, expected) {
+    $scope.songStartsWithComparator = function (actual, expected) {
        if (!$scope.activeLetter && $scope.activeLetter=='') {
           return true;
        }

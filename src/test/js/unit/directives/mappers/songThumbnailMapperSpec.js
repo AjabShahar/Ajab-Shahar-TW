@@ -32,9 +32,9 @@ describe('Mapper', function() {
                                 "duration": "09:11"
                             };
 
-            element = angular.element('<song-mapper details="detailsFromService" custom-style="blah"/>');
+            element = angular.element('<song-thumbnail-mapper details="detailsFromService" custom-style="blah"/>');
 
-            template.put('/user/js/common/templates/mappers/songMapper.html', '<div>{{song.id}} {{song.contentId}} {{song.customStyle}} {{song.thumbnailUrl}} {{song.videoId}} {{song.englishTransliteration}} {{song.category}} {{song.duration}} {{song.singer}} {{song.poet}}</div>');
+            template.put('/user/js/common/templates/mappers/songThumbnailMapper.html', '<div>{{song.id}} {{song.contentId}} {{song.customStyle}} {{song.thumbnailUrl}} {{song.videoId}} {{song.englishTransliteration}} {{song.category}} {{song.duration}} {{song.singer}} {{song.poet}}</div>');
             compile(element)(scope);
             scope.$apply();
 

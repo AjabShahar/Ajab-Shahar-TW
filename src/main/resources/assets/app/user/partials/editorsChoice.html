@@ -19,14 +19,14 @@
     <script type="text/javascript" src="../js/common/directives/popupSupport/popupMapper.js"></script>
 
     <script type="text/javascript" src="../js/common/directives/thumbnail/song.js"></script>
-    <script type="text/javascript" src="../js/common/directives/mappers/songMapper.js"></script>
+    <script type="text/javascript" src="../js/common/directives/mappers/songThumbnailMapper.js"></script>
     <script type="text/javascript" src="../js/common/directives/mappers/introduction/songIntroductionMapper.js"></script>
 
     <script type="text/javascript" src="../js/common/directives/thumbnail/word.js"></script>
     <script type="text/javascript" src="../js/common/directives/mappers/wordMapper.js"></script>
 
     <script type="text/javascript" src="../js/common/directives/thumbnail/couplet.js"></script>
-    <script type="text/javascript" src="../js/common/directives/mappers/coupletMapper.js"></script>
+    <script type="text/javascript" src="../js/common/directives/mappers/coupletThumbnailMapper.js"></script>
     <script type="text/javascript" src="../js/common/directives/mappers/introduction/coupletIntroductionMapper.js"></script>
     <script type="text/javascript" src="../js/common/directives/thumbnail/film.js"></script>
     <script type="text/javascript" src="../js/common/directives/thumbnail/gathering.js"></script>
@@ -86,7 +86,7 @@
         <div class='ajab-wrapper'>
             <div class='homepage-content'>
                 <div ng-repeat="song in thumbnailDetails.songs | limitTo: 9">
-                    <song-mapper details="song" show-details-service="detailsService" custom-style="{{getSongCustomStyle(song)}}"/>
+                    <song-thumbnail-mapper details="song" show-details-service="detailsService" custom-style="{{getSongCustomStyle(song)}}"/>
                 </div>
             </div>
         </div>

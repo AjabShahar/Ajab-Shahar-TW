@@ -29,8 +29,8 @@ describe('Mapper', function() {
                                         "thumbnail_url":"http://phpalbum.net/demo4/main.php?cmd=imageorig&var1=IMGP7051a.JPG",
                             };
 
-            element = angular.element('<couplet-mapper details="detailsFromService" custom-style="blah"/>');
-            template.put('/user/js/common/templates/mappers/coupletMapper.html', '{{couplet.id}} {{customStyle}} {{couplet.englishTranslationText}} {{couplet.categoryName}} {{couplet.imgSrc}}');
+            element = angular.element('<couplet-thumbnail-mapper details="detailsFromService" custom-style="blah"/>');
+            template.put('/user/js/common/templates/mappers/coupletThumbnailMapper.html', '{{couplet.id}} {{customStyle}} {{couplet.englishTranslationText}} {{couplet.categoryName}} {{couplet.imgSrc}}');
             compile(element)(scope);
             scope.$apply();
 

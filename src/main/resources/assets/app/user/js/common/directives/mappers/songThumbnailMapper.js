@@ -1,6 +1,6 @@
 'use strict';
 
-thumbnailModule.directive("songMapper", function(nameService) {
+thumbnailModule.directive("songThumbnailMapper", function(nameService) {
     return {
         replace : true,
         restrict: 'E',
@@ -9,7 +9,7 @@ thumbnailModule.directive("songMapper", function(nameService) {
             customStyle:'@',
             showDetailsService:'='
         },
-        templateUrl:'/user/js/common/templates/mappers/songMapper.html',
+        templateUrl:'/user/js/common/templates/mappers/songThumbnailMapper.html',
         controller:function($scope){
             $scope.song = {
                 "id":$scope.details.id,

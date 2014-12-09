@@ -36,7 +36,7 @@
     <script type="text/javascript" src="../../js/songs/songDetailsApp.js"></script>
 
     <script type="text/javascript" src="../../js/songs/controllers/songDetailsController.js"></script>
-    <script type="text/javascript" src="../../js/common/directives/mappers/songMapper.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/mappers/songThumbnailMapper.js"></script>
     <script type="text/javascript" src="../../js/common/directives/mappers/songContentDetailsMapper.js"></script>
     <!--<script type="text/javascript" src="../../js/common/directives/soundCloud/soundcloud_player.js"></script>-->
     <script type="text/javascript" src="../../js/common/directives/youtube/youtube_player.js"></script>
@@ -62,7 +62,7 @@
         <div as-carousel class="carousel-box jcarousel">
             <ul>
                 <li ng-repeat="song in versions track by $index">
-                    <song-mapper details="song" show-details-service="detailsService" custom-style=""/>
+                    <song-thumbnail-mapper details="song" show-details-service="detailsService" custom-style=""/>
                 </li>
             </ul>
             <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true"></a>
