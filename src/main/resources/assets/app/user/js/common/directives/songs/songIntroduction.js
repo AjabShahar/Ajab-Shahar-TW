@@ -4,8 +4,10 @@ thumbnailModule.directive("songIntroduction", function() {
     return {
         restrict: 'E',
         scope: {
-            name:'@',
+            englishTranslation:'@',
+            englishTransliteration:'@',
             singer:'@',
+            poet:'@',
             videoUrl:'@',
             id:'@',
             audioUrl:'@',

@@ -15,7 +15,7 @@ thumbnailModule.directive("songIntroductionMapper", function(nameService) {
             var getSingers = function(singers){
                 var value = "" + singers[0];
                 for(var index=1;index< singers.length;index++){
-                   value += ' , '+singers[index];
+                   value += ' & '+singers[index];
                 }
                 return value;
             };
@@ -25,6 +25,7 @@ thumbnailModule.directive("songIntroductionMapper", function(nameService) {
                 "contentId":"song_"+$scope.details.id,
                 "videoId":$scope.details.youtubeVideoId,
                 "englishTranslation":$scope.details.englishTranslationTitle,
+                "englishTransliteration":$scope.details.englishTransliterationTitle,
                 "singer":getSingers($scope.details.singers),
                 "audioId":$scope.details.soundCloudTrackID,
                 "poet":($scope.details.poet==null || $scope.details.poet.length==0)?'Unknown': $scope.details.poet[0]
