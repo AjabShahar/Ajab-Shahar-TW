@@ -65,7 +65,7 @@
                     <li><a>Genre</a></li>
                     <li><a>Gathering</a></li>
                     <li><a>Places</a></li>
-                    <li><a>All</a></li>
+                    <li><a ng-click="clearFilters()">All</a></li>
                 </ul>
 
 
@@ -99,32 +99,9 @@
                     </div>
 
                     <ul class='alphabets'>
-                        <li><a ng-click="filterSongsOnLetter('a')">A</a></li>
-                        <li><a ng-click="filterSongsOnLetter('b')">B</a></li>
-                        <li><a ng-click="filterSongsOnLetter('c')">C</a></li>
-                        <li><a ng-click="filterSongsOnLetter('d')">D</a></li>
-                        <li><a ng-click="filterSongsOnLetter('e')">E</a></li>
-                        <li> <a ng-click="filterSongsOnLetter('f')">F</a></li>
-                        <li><a ng-click="filterSongsOnLetter('g')">G</a></li>
-                        <li><a ng-click="filterSongsOnLetter('h')">H</a></li>
-                        <li><a ng-click="filterSongsOnLetter('i')">I</a></li>
-                        <li><a ng-click="filterSongsOnLetter('j')">J</a></li>
-                        <li><a ng-click="filterSongsOnLetter('k')">K</a></li>
-                        <li><a ng-click="filterSongsOnLetter('l')">L</a></li>
-                        <li><a ng-click="filterSongsOnLetter('m')">M</a></li>
-                        <li> <a ng-click="filterSongsOnLetter('n')">N</a></li>
-                        <li><a ng-click="filterSongsOnLetter('o')">O</a></li>
-                        <li><a ng-click="filterSongsOnLetter('p')">P</a></li>
-                        <li><a ng-click="filterSongsOnLetter('q')">Q</a></li>
-                        <li><a ng-click="filterSongsOnLetter('r')">R</a></li>
-                        <li> <a ng-click="filterSongsOnLetter('s')">S</a></li>
-                        <li><a ng-click="filterSongsOnLetter('t')">T</a></li>
-                        <li><a ng-click="filterSongsOnLetter('u')">U</a></li>
-                        <li><a ng-click="filterSongsOnLetter('v')">V</a></li>
-                        <li><a ng-click="filterSongsOnLetter('w')">W</a></li>
-                        <li><a ng-click="filterSongsOnLetter('x')">X</a></li>
-                        <li><a ng-click="filterSongsOnLetter('y')">Y</a></li>
-                        <li><a ng-click="filterSongsOnLetter('z')">Z</a></li>
+                        <li ng-repeat="alphabetFilter in alphabetFilters">
+                            <a ng-click="filterSongsOnLetter(alphabetFilter)" ng-class="isSelected(alphabetFilter)">{{alphabetFilter.alphabet}}</a>
+                        </li>
                         <li><a ng-click="more()">More</a></li>
                     </ul>
                 </div>
