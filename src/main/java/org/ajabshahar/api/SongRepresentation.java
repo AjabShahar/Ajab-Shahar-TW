@@ -106,7 +106,7 @@ public class SongRepresentation {
         return publish;
     }
 
-    @JsonProperty("type")
+    @JsonProperty("category")
     public String getType() {
         return type;
     }

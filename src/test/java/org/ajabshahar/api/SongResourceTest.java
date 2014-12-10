@@ -31,7 +31,7 @@ public class SongResourceTest {
     @Mock
     private List<Song> songList;
     @Mock
-    private SongsSummaryRepresentation songsSummaryRepresentation;
+    private SongsRepresentation songsRepresentation;
     @Mock
     private Song song;
     @Mock
@@ -46,10 +46,10 @@ public class SongResourceTest {
     public void shouldGetSongsFilteredBySingerAndPoet() {
         when(songList.size()).thenReturn(1);
         when(songs.findBy(SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER)).thenReturn(songList);
-        when(songsRepresentationFactory.create(songList)).thenReturn(songsSummaryRepresentation);
+        when(songsRepresentationFactory.createSongsRepresentation(songList)).thenReturn(songsRepresentation);
 
         Response response = songResource.getSongs(SINGER_ID, POET_ID, 1, FILTERED_LETTER);
-        assertEquals(songsSummaryRepresentation, response.getEntity());
+        assertEquals(songsRepresentation, response.getEntity());
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
     }
 

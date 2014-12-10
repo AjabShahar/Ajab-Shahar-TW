@@ -104,7 +104,7 @@ public class SongResource {
         if (songList == null || songList.size() == 0) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        SongsSummaryRepresentation songsSummaryRepresentation = songsRepresentationFactory.create(songList);
+        SongsRepresentation songsSummaryRepresentation = songsRepresentationFactory.createSongsRepresentation(songList);
         return Response.ok(songsSummaryRepresentation, MediaType.APPLICATION_JSON).build();
     }
 

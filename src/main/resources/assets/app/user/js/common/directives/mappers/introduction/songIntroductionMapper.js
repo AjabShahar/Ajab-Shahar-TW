@@ -23,7 +23,7 @@ thumbnailModule.directive("songIntroductionMapper", function(nameService) {
             $scope.song = {
                 "id":$scope.details.id,
                 "contentId":"song_"+$scope.details.id,
-                "videoId":$scope.details.youtubeVideoId,
+                "videoId":$scope.details.youTubeVideoId,
                 "englishTranslation":$scope.details.englishTranslationTitle,
                 "englishTransliteration":$scope.details.englishTransliterationTitle,
                 "singer":getSingers($scope.details.singers),
