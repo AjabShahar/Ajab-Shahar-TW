@@ -22,7 +22,7 @@ var allSongsController = function($scope,songsContentService,popupService,$filte
         $scope.singers.push('');
         _.each(songsWithPoetNameResult,function(song){
             _.each(song.singers, function(singer){
-                if(!_.contains($scope.singers,singer))
+                if(_.findWhere($scope.singers,{name:singer.name})==null)
                     $scope.singers.push(singer);
             });
         });
@@ -54,6 +54,18 @@ var allSongsController = function($scope,songsContentService,popupService,$filte
         $scope.shouldShowPoets = false;
     }
 
+    $scope.$watch('singerNameInFilter',function(newValue,oldValue){
+        if(newValue==oldValue)
+            return;
+        $scope.hideSingers();
+    });
+
+    $scope.$watch('poetNameInFilter',function(newValue,oldValue){
+        if(newValue==oldValue)
+            return;
+        $scope.hidePoets();
+    });
+
     $scope.filterPoets = function(){
         var songStartsWithResult = _.filter($scope.songs,$scope.songStartsWithComparator);
         var songsWithPoetNameResult = $filter('songFilterBySinger')(songStartsWithResult, $scope.singerNameInFilter);
@@ -62,7 +74,7 @@ var allSongsController = function($scope,songsContentService,popupService,$filte
         $scope.poets.push('');
         _.each(songsWithPoetNameResult,function(song){
             _.each(song.poet, function(poet){
-                if(!_.contains($scope.poets,poet))
+                if(_.findWhere($scope.poets,{name:poet.name})==null)
                     $scope.poets.push(poet);
             });
         });
