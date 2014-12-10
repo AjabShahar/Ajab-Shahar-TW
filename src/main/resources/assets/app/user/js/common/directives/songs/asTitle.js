@@ -3,6 +3,7 @@
 filterModule.directive("asTitle", function() {
     return {
         restrict: 'E',
+        replace:true,
         transclude: true,
         scope: {
             activeLetter:'=',

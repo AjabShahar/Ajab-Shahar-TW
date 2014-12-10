@@ -3,6 +3,7 @@
 filterModule.directive("songFilter", function() {
     return {
         restrict: 'E',
+        replace:true,
         scope: {
             songs:'=',
             songCount: '=',
@@ -36,7 +37,6 @@ filterModule.directive("songFilter", function() {
                 var songsWithPoetNameResult = $filter('filterSongBySinger')(songsWithTitleResult, $scope.singerNameInFilter);
 
                 $scope.poets.splice(0, $scope.poets.length);
-                $scope.poets.push({name:''});
                 _.each(songsWithPoetNameResult,function(song){
                     _.each(song.poet, function(poet){
                         if(_.findWhere($scope.poets,{name:poet.name})==null)
@@ -64,7 +64,6 @@ filterModule.directive("songFilter", function() {
                 var songsWithSongNameResult = $filter('filterSongByPoet')(songsWithTitleResult, $scope.poetNameInFilter);
 
                 $scope.singers.splice(0, $scope.singers.length);
-                $scope.singers.push({name:''});
                 _.each(songsWithSongNameResult,function(song){
                     _.each(song.singers, function(singer){
                         if(_.findWhere($scope.singers,{name:singer.name})==null)
