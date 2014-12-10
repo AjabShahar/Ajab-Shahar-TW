@@ -1,10 +1,10 @@
-var songFilterBySinger = filterModule.filter('songFilterBySinger', function() {
+var filterSongBySinger = filterModule.filter('filterSongBySinger', function() {
    return function( songs, singer) {
-    if(singer==null || singer==='')
+    if(singer==null || singer==='' || singer.name=='')
        return songs;
 
     var filtered = _.reduce(songs, function(filteredList,song){
-        if(_.contains(song.singers, singer))
+        if(_.findWhere(song.singers, singer)!=null)
             filteredList.push(song);
         return filteredList;
     },[]);

@@ -1,13 +1,15 @@
 'use strict';
 
-filterModule.directive("alphabetFilter", function() {
+filterModule.directive("asTitle", function() {
     return {
         restrict: 'E',
+        transclude: true,
         scope: {
             activeLetter:'=',
         },
-        templateUrl:'/user/js/common/templates/songs/alphabetFilter.html',
+        templateUrl:'/user/js/common/templates/songs/asTitle.html',
         controller: function($scope) {
+            $scope.isOriginalTitle = false;
             $scope.alphabetFilters = [
                 {alphabet:'A',isSelected:false},
                 {alphabet:'B',isSelected:false},
@@ -36,6 +38,14 @@ filterModule.directive("alphabetFilter", function() {
                 {alphabet:'Y',isSelected:false},
                 {alphabet:'Z',isSelected:false}];
 
+            $scope.selectOriginalTitle = function(){
+                $scope.isOriginalTitle = true;
+            }
+
+            $scope.selectEnglishTitle = function(){
+                $scope.isOriginalTitle = false;
+            }
+
             $scope.clearAlphabetFilter = function(){
                 _.each($scope.alphabetFilters,function(alphabetFilter){
                     alphabetFilter.isSelected = false;
@@ -44,8 +54,8 @@ filterModule.directive("alphabetFilter", function() {
 
             $scope.filterSongsOnLetter = function(currentAlphabetFilter){
                 $scope.clearAlphabetFilter();
-                $scope.activeLetter = currentAlphabetFilter.alphabet;
                 currentAlphabetFilter.isSelected = true;
+                $scope.activeLetter = currentAlphabetFilter;
             }
 
             $scope.isSelected = function(alphabet){

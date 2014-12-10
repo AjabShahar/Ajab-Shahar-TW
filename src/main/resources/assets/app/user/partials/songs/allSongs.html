@@ -16,10 +16,12 @@
     <script type="text/javascript" src="../../js/common/directives/thumbnail/song.js"></script>
     <script type="text/javascript" src="../../js/common/directives/mappers/songThumbnailMapper.js"></script>
     <script type="text/javascript" src="../../js/common/modules/filterModule.js"></script>
-    <script type="text/javascript" src="../../js/common/directives/songs/alphabetFilter.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/songs/asTitle.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/songs/songFilter.js"></script>
     <script type="text/javascript" src="../../js/common/filters/filterByScroll.js"></script>
-    <script type="text/javascript" src="../../js/common/filters/songFilterBySinger.js"></script>
-    <script type="text/javascript" src="../../js/common/filters/songFilterByPoet.js"></script>
+    <script type="text/javascript" src="../../js/common/filters/filterSongBySinger.js"></script>
+    <script type="text/javascript" src="../../js/common/filters/filterSongByPoet.js"></script>
+    <script type="text/javascript" src="../../js/common/filters/filterSongByTitle.js"></script>
     <script type="text/javascript" src="../../js/common/modules/mediaPlayer.js"></script>
     <script type="text/javascript" src="../../js/common/directives/soundCloud/soundcloud_player.js"></script>
     <script type="text/javascript" src="../../js/common/directives/youtube/youtube_player.js"></script>
@@ -56,66 +58,26 @@
                     <h1 class='categoryLogo'></h1>
                 </div>
 
-                <ul class='navList filters'>
-                    <li class='head'>Filter by</li>
-                    <li><a ng-click="showSingers()">Singers</a></li>
-                    <li ng-show="singerNameInFilter!=''">{{singerNameInFilter.name}}<a ng-click="removeSingerFilter()">[X]</a></li>
-                    <li ng-show="shouldShowSingers">
-                        <select ng-model="singerNameInFilter"
-                                ng-options="singer.name for singer in singers" class="form-control">
-                        </select>
-                    </li>
-                    <li></li>
-                    <li><a ng-click="showPoets()">Poets</a></li>
-                    <li ng-show="poetNameInFilter!=''">{{poetNameInFilter.name}}<a ng-click="removePoetFilter()">[X]</a></li>
-                    <li ng-show="shouldShowPoets">
-                        <select ng-model="poetNameInFilter"
-                                ng-options="poet.name for poet in poets" class="form-control">
-                        </select>
-                    </li>
-                    <li></li>
-                    <li><a>Words</a></li>
-                    <li><a>Genre</a></li>
-                    <li><a>Gathering</a></li>
-                    <li><a>Places</a></li>
-                    <li><a ng-click="clearFilters()">All</a></li>
-                </ul>
-
-
+                <song-filter songs="songs" song-count="songCount" on-clear-filter="clearFilters()" active-letter="activeLetter" poet-name-in-filter="poetNameInFilter" singer-name-in-filter="singerNameInFilter"></song-filter>
             </div>
 
             <div class='gridView' infinite-scroll="loadSongFromRange()">
-
-                <div class='paginationHead'>
+                <as-title active-letter="activeLetter">
                     <div class="upper">
-                        <ul class="breadcrumb">
-                            <li>
-                                <a href="javascript:void(0)">Original</a>
-                            </li>
-                            <li>
-                                <span class="active">English</span>
-                            </li>
-                        </ul>
-                        <span class='numericCount'>{{totalFilteredSongs}} songs</span>
+                        <span class='numericCount'>{{songCount}}</span>
 
                         <span class="view-options">
                             <a href="javascript:void(0)" class="grid"></a>
                             <a href="javascript:void(0)" class="list"></a>
                         </span>
-                        <form action="post">
-                            <span class="search-box">
-
-                                <input type="search" class="search" />
-
-                            </span>
-                        </form>
+                        <span class="search-box">
+                            <input type="search" class="search" />
+                        </span>
                     </div>
-
-                    <alphabet-filter active-letter="activeLetter"></alphabet-filter>
-                </div>
+                </as-title>
 
                 <div class='gridWrapper'>
-                    <ul class="flexiThumbnails" ng-repeat="song in songs | filter:songStartsWithComparator | songFilterBySinger:singerNameInFilter | songFilterByPoet:poetNameInFilter | filterByScroll:scrollIndex">
+                    <ul class="flexiThumbnails" ng-repeat="song in songs | filterSongByTitle:activeLetter | filterSongBySinger:singerNameInFilter | filterSongByPoet:poetNameInFilter | filterByScroll:scrollIndex">
                         <li>
                             <song-thumbnail-mapper details="song" show-details-service="detailsService" custom-style=""/>
                         </li>

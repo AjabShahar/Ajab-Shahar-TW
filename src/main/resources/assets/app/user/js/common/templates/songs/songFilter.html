@@ -1,0 +1,24 @@
+<ul class='navList filters'>
+    <li class='head'>Filter by</li>
+    <li><a ng-click="showSingers()">Singers</a></li>
+    <li ng-hide="singerNameInFilter==''|| singerNameInFilter.name==''">{{singerNameInFilter.name}}<a ng-click="removeSingerFilter()">[X]</a></li>
+    <li ng-show="shouldShowSingers">
+        <select ng-model="singerNameInFilter"
+                ng-options="singer.name for singer in singers" class="form-control">
+        </select>
+    </li>
+    <li></li>
+    <li><a ng-click="showPoets()">Poets</a></li>
+    <li ng-hide="poetNameInFilter==''|| poetNameInFilter.name==''">{{poetNameInFilter.name}}<a ng-click="removePoetFilter()">[X]</a></li>
+    <li ng-show="shouldShowPoets">
+        <select ng-model="poetNameInFilter"
+                ng-options="poet.name for poet in poets" class="form-control">
+        </select>
+    </li>
+    <li></li>
+    <li><a>Words</a></li>
+    <li><a>Genre</a></li>
+    <li><a>Gathering</a></li>
+    <li><a>Places</a></li>
+    <li><a ng-click="clearFilters()">All</a></li>
+</ul>

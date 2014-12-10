@@ -1,10 +1,10 @@
-var songFilterByPoet = filterModule.filter('songFilterByPoet', function() {
+var filterSongByPoet = filterModule.filter('filterSongByPoet', function() {
    return function( songs, poet) {
-    if(poet==null || poet==='')
+    if(poet==null || poet==='' || poet.name=='')
         return songs;
 
     var filtered = _.reduce(songs, function(filteredList,song){
-        if(_.contains(song.poet, poet))
+        if(_.findWhere(song.poet, poet)!=null)
             filteredList.push(song);
         return filteredList;
     },[]);
