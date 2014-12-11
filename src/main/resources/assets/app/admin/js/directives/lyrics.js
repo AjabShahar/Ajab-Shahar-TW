@@ -1,6 +1,6 @@
 'use strict';
 
-adminApp.directive("lyrics", function() {
+songsAdminApp.directive("lyrics", function() {
     return {
         replace : true,
         restrict: 'E',

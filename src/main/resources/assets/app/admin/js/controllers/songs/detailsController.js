@@ -138,4 +138,4 @@ var songDetailsController = function($scope, $http,$window,$location){
   }
 }
 
-adminApp.controller('songDetailsController',['$scope','$http','$window','$location',songDetailsController]);
+songsAdminApp.controller('songDetailsController',['$scope','$http','$window','$location',songDetailsController]);
