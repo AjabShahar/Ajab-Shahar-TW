@@ -34,6 +34,12 @@ var allSongsController = function($scope,songsContentService,popupService){
         $scope.scrollIndex += 9;
     }
 
+    $scope.loadSongFromRange = function(){
+        if($scope.scrollIndex>$scope.songs.length)
+            return;
+        $scope.scrollIndex += 9;
+    }
+
     $scope.getAllSongs();
 };
 

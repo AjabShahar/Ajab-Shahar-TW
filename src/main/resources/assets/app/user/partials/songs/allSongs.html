@@ -76,11 +76,13 @@
                 </as-title>
 
                 <div class='gridWrapper'>
-                    <ul class="flexiThumbnails" ng-repeat="song in songs | filterSongByTitle:activeLetter | filterSongBySinger:singerNameInFilter | filterSongByPoet:poetNameInFilter | filterByScroll:scrollIndex">
-                        <li>
-                            <song-thumbnail-mapper details="song" show-details-service="detailsService" custom-style=""/>
-                        </li>
-                    </ul>
+                    <div infinite-scroll='loadSongFromRange()' infinite-scroll-distance='1'>
+                        <ul class="flexiThumbnails" ng-repeat="song in (songs | filterSongByTitle:activeLetter | filterSongBySinger:singerNameInFilter | filterSongByPoet:poetNameInFilter | filterByScroll:scrollIndex)">
+                            <li>
+                                <song-thumbnail-mapper details="song" show-details-service="detailsService" custom-style=""/>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
                 <a ng-click="more()">More</a>

@@ -19,7 +19,7 @@ thumbnailModule.directive("songThumbnailMapper", function() {
                 "englishTransliteration":$scope.details.englishTransliterationTitle,
                 "category":$scope.details.category,
                 "duration":$scope.details.duration,
-                "singer":$scope.details.singers[0].name +($scope.details.singers[1]!=null ? ' ......':''),
+                "singer":($scope.details.singers==null || $scope.details.singers.length==0) ? '': $scope.details.singers[0].name +($scope.details.singers[1]!=null ? ' ......':''),
                 "poet":($scope.details.poet==null || $scope.details.poet.length==0)?'Unknown': $scope.details.poet[0].name,
                 "thumbnailUrl":$scope.details.thumbnailUrl
             };
