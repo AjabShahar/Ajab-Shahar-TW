@@ -19,6 +19,7 @@ describe('Content', function() {
 
         it('Should initialize song with details', function() {
             scope.name1='some Name';
+            scope.name2='some Name2';
             scope.singer1='Some Singer';
             scope.imgSrc1='someimg';
             scope.customStyle1='someStyle';
@@ -26,12 +27,12 @@ describe('Content', function() {
             scope.duration1='duration';
             scope.poet1='poet',
 
-            element = angular.element('<song-thumbnail category-name="{{categoryName1}}" duration="{{duration1}}" poet="{{poet1}}" custom-style="{{customStyle1}}" img-src="{{imgSrc1}}" name="{{name1}}" singer="{{singer1}}"></song-thumbnail>');
-            template.put('/user/js/common/templates/thumbnail/songThumbnail.html', '<div>{{categoryName}} {{duration}} {{poet}} {{name}} {{singer}} {{imgSrc}} {{customStyle}}</div>');
+            element = angular.element('<song-thumbnail category-name="{{categoryName1}}" duration="{{duration1}}" poet="{{poet1}}" custom-style="{{customStyle1}}" img-src="{{imgSrc1}}" english-transliteration="{{name1}}" english-translation="{{name2}}" singer="{{singer1}}"></song-thumbnail>');
+            template.put('/user/js/common/templates/thumbnail/songThumbnail.html', '<div>{{categoryName}} {{duration}} {{poet}} {{englishTransliteration}} {{englishTranslation}} {{singer}} {{imgSrc}} {{customStyle}}</div>');
             compile(element)(scope);
             scope.$apply();
 
-            expect(element.html()).toBe('category duration poet some Name Some Singer someimg someStyle');
+            expect(element.html()).toBe('category duration poet some Name some Name2 Some Singer someimg someStyle');
         });
     });
 });
