@@ -15,7 +15,7 @@ thumbnailModule.directive("songThumbnailMapper", function() {
                 "id":$scope.details.id,
                 "contentId":'song_'+$scope.details.id,
                 "customStyle":$scope.customStyle,
-                "englishTranslationTitle":$scope.details.englishTranslationTitle,
+                "englishTranslation":$scope.details.englishTranslationTitle,
                 "englishTransliteration":$scope.details.englishTransliterationTitle,
                 "category":$scope.details.category,
                 "duration":$scope.details.duration,

@@ -6,11 +6,11 @@ filterModule.directive("asTitle", function() {
         replace:true,
         transclude: true,
         scope: {
-            activeLetter:'=',
+            currentAlphabetFilter:'=',
         },
         templateUrl:'/user/js/common/templates/songs/asTitle.html',
-        controller: function($scope) {
-            $scope.isOriginalTitle = false;
+        controller: function($scope,$rootScope) {
+            $scope.contentTextRepresentation = 'Transliteration';
             $scope.alphabetFilters = [
                 {alphabet:'A',isSelected:false},
                 {alphabet:'B',isSelected:false},
@@ -40,11 +40,19 @@ filterModule.directive("asTitle", function() {
                 {alphabet:'Z',isSelected:false}];
 
             $scope.selectOriginalTitle = function(){
-                $scope.isOriginalTitle = true;
+                if($scope.contentTextRepresentation==='Transliteration')
+                    return;
+                $scope.contentTextRepresentation = 'Transliteration';
+                $scope.currentAlphabetFilter = '';
+                $rootScope.$broadcast('contentTextRepresentation',$scope.contentTextRepresentation);
             }
 
             $scope.selectEnglishTitle = function(){
-                $scope.isOriginalTitle = false;
+                if($scope.contentTextRepresentation==='Translation')
+                    return;
+                $scope.contentTextRepresentation = 'Translation';
+                $scope.clearAlphabetFilter();
+                $rootScope.$broadcast('contentTextRepresentation',$scope.contentTextRepresentation);
             }
 
             $scope.clearAlphabetFilter = function(){
@@ -56,15 +64,15 @@ filterModule.directive("asTitle", function() {
             $scope.filterSongsOnLetter = function(currentAlphabetFilter){
                 $scope.clearAlphabetFilter();
                 currentAlphabetFilter.isSelected = true;
-                currentAlphabetFilter.isOriginalTitle = $scope.isOriginalTitle;
-                $scope.activeLetter = currentAlphabetFilter;
+                currentAlphabetFilter.contentTextRepresentation = $scope.contentTextRepresentation;
+                $scope.currentAlphabetFilter = currentAlphabetFilter;
             }
 
             $scope.isSelected = function(alphabet){
                 return alphabet.isSelected ? 'active' : '';
             }
 
-            $scope.$watch('activeLetter', function(newValue, oldValue) {
+            $scope.$watch('currentAlphabetFilter', function(newValue, oldValue) {
                 if(newValue==oldValue)
                     return;
                 if(newValue==='')

@@ -5,7 +5,8 @@ thumbnailModule.directive("songThumbnail", function() {
         replace : true,
         restrict: 'E',
         scope: {
-            name:'@',
+            englishTransliteration:'@',
+            englishTranslation:'@',
             singer:'@',
             imgSrc:'@',
             url:'@',
@@ -19,6 +20,15 @@ thumbnailModule.directive("songThumbnail", function() {
         },
         templateUrl:'/user/js/common/templates/thumbnail/songThumbnail.html',
         controller:function($scope){
+            $scope.textRepresentation = 'Transliteration';
+            $scope.$on('contentTextRepresentation',function(event,data){
+                $scope.textRepresentation = data;
+            });
+
+            $scope.getTitle = function(){
+                return ($scope.textRepresentation === 'Transliteration')? $scope.englishTransliteration : $scope.englishTranslation;
+            }
+
             $scope.shouldShowDetails = false;
 
             $scope.showDetails = function(){

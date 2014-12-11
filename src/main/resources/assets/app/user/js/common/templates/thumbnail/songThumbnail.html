@@ -4,7 +4,7 @@
     </div>
     <div class="desc-wrapper">
         <div class="thumbnail-desc" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
-            <h3 class="item-title">{{name}}</h3>
+            <h3 class="item-title">{{getTitle()}}</h3>
             <small>sings {{singer|uppercase}}</small>
             <div ng-show="shouldShowDetails" class='shouldShowDetails'>
                 <small class="poetDetails">Poet {{poet|uppercase}}</small>
