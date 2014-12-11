@@ -1,6 +1,6 @@
 'use strict';
 
-thumbnailModule.directive("word", function() {
+thumbnailModule.directive("wordThumbnail", function() {
     return {
         replace : true,
         restrict: 'E',
@@ -13,7 +13,7 @@ thumbnailModule.directive("word", function() {
             id:'@',
             categoryName:'@',
         },
-        templateUrl:'/user/js/common/templates/thumbnail/word.html',
+        templateUrl:'/user/js/common/templates/thumbnail/wordThumbnail.html',
         controller:function($scope){
             $scope.shouldBeOpen = false;
             $scope.shouldShowDetails = false;

@@ -1,6 +1,6 @@
 'use strict';
 
-thumbnailModule.directive("wordMapper", function(nameService) {
+thumbnailModule.directive("wordMapper", function() {
     return {
         replace : true,
         restrict: 'E',

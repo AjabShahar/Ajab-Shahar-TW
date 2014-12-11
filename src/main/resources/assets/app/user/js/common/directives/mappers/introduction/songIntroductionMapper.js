@@ -1,6 +1,6 @@
 'use strict';
 
-thumbnailModule.directive("songIntroductionMapper", function(nameService) {
+thumbnailModule.directive("songIntroductionMapper", function() {
     return {
         restrict: 'E',
         scope: {

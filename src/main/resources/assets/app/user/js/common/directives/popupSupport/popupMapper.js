@@ -1,6 +1,6 @@
 'use strict';
 
-popupSupport.directive("popupMapper", function(nameService) {
+popupSupport.directive("popupMapper", function() {
     return {
         restrict: 'E',
         transclude: true,

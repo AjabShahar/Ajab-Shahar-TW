@@ -1,6 +1,6 @@
 'use strict';
 
-thumbnailModule.directive("coupletThumbnailMapper", function(nameService) {
+thumbnailModule.directive("coupletThumbnailMapper", function() {
     return {
         restrict: 'E',
         scope: {

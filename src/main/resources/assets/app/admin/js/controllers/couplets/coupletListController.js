@@ -1,6 +1,5 @@
-var coupletListController = function($scope, contentService,nameService){
+var coupletListController = function($scope, contentService){
     $scope.couplets = [];
-    $scope.nameService = nameService;
     $scope.init = function(){
         contentService.getAllCouplets().then(function(result){
             var allCouplets = result.data;
@@ -9,7 +8,7 @@ var coupletListController = function($scope, contentService,nameService){
                 toBeAdded.title = value.englishTranslation;
                 toBeAdded.categoryName = value.songCategory.name;
                 toBeAdded.id = value.id;
-                toBeAdded.poet = nameService.getName(value.poet);
+                toBeAdded.poet = '';
                 couplets.push(toBeAdded);
                 return couplets;
             },[])
@@ -19,4 +18,4 @@ var coupletListController = function($scope, contentService,nameService){
     $scope.init();
 }
 
-adminApp.controller('coupletListController',['$scope','contentService','nameService',coupletListController]);
+adminApp.controller('coupletListController',['$scope','contentService',coupletListController]);

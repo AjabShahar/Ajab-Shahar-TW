@@ -1,6 +1,6 @@
 'use strict';
 
-thumbnailModule.directive("reflection", function() {
+thumbnailModule.directive("reflectionThumbnail", function() {
     return {
         replace : true,
         restrict: 'E',
@@ -11,7 +11,7 @@ thumbnailModule.directive("reflection", function() {
             customStyle:'@',
             overlayId:'@'
         },
-        templateUrl:'/user/js/common/templates/thumbnail/reflection.html',
+        templateUrl:'/user/js/common/templates/thumbnail/reflectionThumbnail.html',
         controller:function($scope){
             $scope.shouldBeOpen = false;
 

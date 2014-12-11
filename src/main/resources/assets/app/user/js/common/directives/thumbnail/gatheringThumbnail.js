@@ -1,6 +1,6 @@
 'use strict';
 
-thumbnailModule.directive("gathering", function() {
+thumbnailModule.directive("gatheringThumbnail", function() {
     return {
         replace : true,
         restrict: 'E',
@@ -12,7 +12,7 @@ thumbnailModule.directive("gathering", function() {
             customStyle:'@',
             overlayId:'@'
         },
-        templateUrl:'/user/js/common/templates/thumbnail/gathering.html',
+        templateUrl:'/user/js/common/templates/thumbnail/gatheringThumbnail.html',
         controller:function($scope){
             $scope.shouldBeOpen = false;
 

@@ -1,23 +1,19 @@
 'use strict';
 
-thumbnailModule.directive("song", function() {
+thumbnailModule.directive("coupletThumbnail", function() {
     return {
         replace : true,
         restrict: 'E',
         scope: {
-            name:'@',
-            singer:'@',
+            title:'@',
             imgSrc:'@',
-            url:'@',
+            englishTranslationText:'@',
             categoryName:'@',
-            duration:'@',
-            poet:'@',
             customStyle:'@',
-            contentId:'@',
             id:'@',
-            open: '&', //open click handler ~ callback to controller
+            open:'&',
         },
-        templateUrl:'/user/js/common/templates/thumbnail/song.html',
+        templateUrl:'/user/js/common/templates/thumbnail/coupletThumbnail.html',
         controller:function($scope){
             $scope.shouldShowDetails = false;
 

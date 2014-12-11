@@ -56,6 +56,7 @@ filterModule.directive("asTitle", function() {
             $scope.filterSongsOnLetter = function(currentAlphabetFilter){
                 $scope.clearAlphabetFilter();
                 currentAlphabetFilter.isSelected = true;
+                currentAlphabetFilter.isOriginalTitle = $scope.isOriginalTitle;
                 $scope.activeLetter = currentAlphabetFilter;
             }
 

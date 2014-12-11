@@ -1,6 +1,6 @@
 'use strict';
 
-thumbnailModule.directive("wordIntroductionMapper", function(nameService) {
+thumbnailModule.directive("wordIntroductionMapper", function() {
     return {
         restrict: 'E',
         scope: {

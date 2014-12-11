@@ -1,6 +1,6 @@
 'use strict';
 
-thumbnailModule.directive("songContentDetailsMapper", function(nameService) {
+thumbnailModule.directive("songContentDetailsMapper", function() {
     return {
         replace : true,
         restrict: 'E',

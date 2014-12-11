@@ -1,6 +1,6 @@
 'use strict';
 
-thumbnailModule.directive("film", function() {
+thumbnailModule.directive("filmThumbnail", function() {
     return {
         replace : true,
         restrict: 'E',
@@ -11,7 +11,7 @@ thumbnailModule.directive("film", function() {
             customStyle:'@',
             overlayId:'@'
         },
-        templateUrl:'/user/js/common/templates/thumbnail/film.html',
+        templateUrl:'/user/js/common/templates/thumbnail/filmThumbnail.html',
         controller:function($scope){
             $scope.shouldBeOpen = false;
 
