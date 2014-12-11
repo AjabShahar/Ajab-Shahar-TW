@@ -7,12 +7,14 @@ import static java.lang.String.format;
 
 public class PersonRepresentation {
 
+    private long id;
     private String firstName;
     private String middleName;
     private String lastName;
     private List<String> roles;
 
-    public PersonRepresentation(String firstName, String middleName, String lastName, String role) {
+    public PersonRepresentation(long id, String firstName, String middleName, String lastName, String role) {
+        this.id = id;
         this.roles = new ArrayList<>();
         this.firstName = firstName;
         this.middleName = middleName;
@@ -39,5 +41,9 @@ public class PersonRepresentation {
     @Override
     public String toString() {
         return format("first name: %s, middle name: %2s, last name: %3s", getFirstName(), getMiddleName(), getLastName());
+    }
+
+    public long getId() {
+        return id;
     }
 }

@@ -7,7 +7,7 @@ import java.util.List;
 public class PersonRepresentationFactory {
 
     public PersonRepresentation create(PersonDetails personDetails) {
-        PersonRepresentation personRepresentation = new PersonRepresentation(personDetails.getFirstName(), personDetails.getMiddleName(), personDetails.getLastName(), personDetails.getCategory());
+        PersonRepresentation personRepresentation = new PersonRepresentation(personDetails.getId(), personDetails.getFirstName(), personDetails.getMiddleName(), personDetails.getLastName(), personDetails.getCategory());
         return personRepresentation;
     }
 

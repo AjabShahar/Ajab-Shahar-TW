@@ -67,5 +67,6 @@ public class PersonResource {
         PeopleRepresentation peopleRepresentation = personRepresentationFactory.create(personDetailsList);
         logger.debug("Details of people with id {}:  {} ", role, peopleRepresentation.toString());
         return Response.ok(peopleRepresentation, MediaType.APPLICATION_JSON).build();
+//        return Response.ok(personDetailsList, MediaType.APPLICATION_JSON).build();
     }
 }
