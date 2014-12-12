@@ -1,8 +1,10 @@
 package org.ajabshahar.core;
 
 import com.google.gson.Gson;
+import org.ajabshahar.platform.daos.CategoryDAO;
 import org.ajabshahar.platform.daos.SongDAO;
 import org.ajabshahar.platform.daos.TitleDAO;
+import org.ajabshahar.platform.models.Category;
 import org.ajabshahar.platform.models.Song;
 import org.ajabshahar.platform.models.Title;
 
@@ -11,10 +13,12 @@ import java.util.List;
 public class Songs {
     private final SongDAO songsRepository;
     private TitleDAO titleRepository;
+    private final CategoryDAO categoryRepository;
 
-    public Songs(SongDAO songsRepository, TitleDAO titleRepository) {
+    public Songs(SongDAO songsRepository, TitleDAO titleRepository, CategoryDAO categoryRepository) {
         this.songsRepository = songsRepository;
         this.titleRepository = titleRepository;
+        this.categoryRepository = categoryRepository;
     }
 
     public Song findBy(int songId) {
@@ -41,16 +45,26 @@ public class Songs {
 
     public Song save(Song song) {
         if (song.getSongTitle().getId() == 0) {
+
             Title songTitle = song.getSongTitle();
+            songTitle.setCategory(categoryRepository.listSongTitleCategory());
             titleRepository.create(songTitle);
         }
         if (song.getTitle() == null) {
+
             Title umbrellaTitle = song.getSongTitle();
+            umbrellaTitle.setId(0);
+            umbrellaTitle.setCategory(categoryRepository.listUmbrellaTitleCategory());
             titleRepository.create(umbrellaTitle);
+
             song.setTitle(umbrellaTitle);
+
         } else if (song.getTitle().getId() == 0) {
+
             Title umbrellaTitle = song.getTitle();
+            umbrellaTitle.setCategory(categoryRepository.listUmbrellaTitleCategory());
             titleRepository.create(umbrellaTitle);
+
         } else {
 
         }

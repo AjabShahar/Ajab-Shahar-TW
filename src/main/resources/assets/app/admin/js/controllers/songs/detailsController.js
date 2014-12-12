@@ -103,9 +103,9 @@ var songDetailsController = function($scope, $http,$window,$location){
 
   $scope.enableNew = function(){
      $scope.formInfo.title = {"selected":null};
-        $http.get('/api/title/umbrella').success(function(data){
-          $scope.formInfo.title.category = data[0].category;
-        }) ;
+//        $http.get('/api/title/umbrella').success(function(data){
+//          $scope.formInfo.title.category = data[0].category;
+//        }) ;
 
      return $scope.AddNewDiv = true;
   }

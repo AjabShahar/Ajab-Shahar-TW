@@ -1,6 +1,7 @@
 package org.ajabshahar.core;
 
 import com.google.gson.JsonObject;
+import org.ajabshahar.platform.daos.CategoryDAO;
 import org.ajabshahar.platform.daos.SongDAO;
 import org.ajabshahar.platform.daos.TitleDAO;
 import org.ajabshahar.platform.models.Song;
@@ -33,12 +34,14 @@ public class SongsTest {
     private Song song;
     private List<Song> songsList;
     private Songs songs;
+    @Mock
+    private CategoryDAO categoryRepository;
 
     @Before
     public void setup() {
         songsList = new ArrayList<>();
         songsList.add(song);
-        songs = new Songs(songsRepository, titleRepository);
+        songs = new Songs(songsRepository, titleRepository, categoryRepository);
     }
 
     @Test
