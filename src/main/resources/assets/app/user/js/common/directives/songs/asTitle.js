@@ -43,7 +43,7 @@ filterModule.directive("asTitle", function() {
                 if($scope.contentTextRepresentation==='Transliteration')
                     return;
                 $scope.contentTextRepresentation = 'Transliteration';
-                $scope.currentAlphabetFilter = '';
+                $scope.clearAlphabetFilter();
                 $rootScope.$broadcast('contentTextRepresentation',$scope.contentTextRepresentation);
             }
 
@@ -59,6 +59,7 @@ filterModule.directive("asTitle", function() {
                 _.each($scope.alphabetFilters,function(alphabetFilter){
                     alphabetFilter.isSelected = false;
                 });
+                $scope.currentAlphabetFilter = '';
             }
 
             $scope.filterSongsOnLetter = function(currentAlphabetFilter){

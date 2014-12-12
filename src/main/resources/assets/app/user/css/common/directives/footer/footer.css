@@ -5,7 +5,7 @@
 }
 
 .footerArt{
-  background:url(../img/footer1.png) top no-repeat;
+  background:url(../../../../img/common/directives/footer/footer1.png) top no-repeat;
   background-size: cover;
   height: 145px;
   position: relative;
@@ -51,7 +51,7 @@ footer ul.footerExtra{
 }
 
 footer ul.footerExtra li.kabirProject{
- background: url(../img/icons/kabirinit.png) 135px 1px no-repeat;
+ background: url(../../../../img/common/directives/footer/icons/kabirinit.png) 135px 1px no-repeat;
 padding: 10% 0% 0 0%;
 height: 35px;
 width: 200px;

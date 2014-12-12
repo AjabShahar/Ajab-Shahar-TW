@@ -4,7 +4,7 @@ var allSongsController = function($scope,songsContentService,popupService){
     $scope.totalFilteredSongs = 0;
     $scope.detailsService = popupService;
     $scope.activeLetter = '';
-    $scope.scrollIndex = 9;
+    $scope.scrollIndex = 12;
     $scope.singerNameInFilter = {name:''};
     $scope.poetNameInFilter = {name:''};
     $scope.songCount = 0;
@@ -30,14 +30,10 @@ var allSongsController = function($scope,songsContentService,popupService){
         $window.location.href = '/user/partials/songs/details.html?id='+songId;
     }
 
-    $scope.more = function(){
-        $scope.scrollIndex += 9;
-    }
-
     $scope.loadSongFromRange = function(){
         if($scope.scrollIndex>$scope.songs.length)
             return;
-        $scope.scrollIndex += 9;
+        $scope.scrollIndex += 12;
     }
 
     $scope.getAllSongs();
