@@ -56,9 +56,6 @@ var songDetailsController = function($scope, $http,$window,$location){
         return mediaCategory.name == "audio & video";
       })[0];
     }
-    if($scope.formInfo.title == null){
-       $scope.formInfo.title = $scope.formInfo.songTitle;
-    }
     $http.post('/api/songs', $scope.formInfo).success(function(data){
           $window.location.href = '/admin/partials/songs/edit.html?id='+data;
     });
@@ -107,7 +104,7 @@ var songDetailsController = function($scope, $http,$window,$location){
   $scope.enableNew = function(){
      $scope.formInfo.title = {"selected":null};
         $http.get('/api/title/umbrella').success(function(data){
-          $scope.formInfo.title.category = data;
+          $scope.formInfo.title.category = data[0].category;
         }) ;
 
      return $scope.AddNewDiv = true;
@@ -127,7 +124,7 @@ var songDetailsController = function($scope, $http,$window,$location){
   $scope.enableNewSongTitle = function(){
    $scope.formInfo.songTitle ={"selected":null};
       $http.get('/api/title/song').success(function(data){
-         $scope.formInfo.songTitle.category = data;
+         $scope.formInfo.songTitle.category = data[0].category;
       })
    return $scope.AddNewSongTitle = true;
   }

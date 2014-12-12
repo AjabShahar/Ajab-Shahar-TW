@@ -1,17 +1,13 @@
 package org.ajabshahar.platform.resources;
 
-import com.google.gson.Gson;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.jersey.caching.CacheControl;
 import org.ajabshahar.api.SongRepresentation;
 import org.ajabshahar.api.SongsRepresentation;
 import org.ajabshahar.api.SongsRepresentationFactory;
-import org.ajabshahar.api.SongsSummaryRepresentation;
 import org.ajabshahar.core.Songs;
 import org.ajabshahar.platform.daos.SongDAO;
-import org.ajabshahar.platform.daos.TitleDAO;
 import org.ajabshahar.platform.models.Song;
-import org.ajabshahar.platform.models.Title;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,13 +22,11 @@ public class SongResource {
 
     private final static Logger logger = LoggerFactory.getLogger(SongResource.class);
     private final SongDAO songDAO;
-    private final TitleDAO titleDAO;
     private final SongsRepresentationFactory songsRepresentationFactory;
     private final Songs songs;
 
-    public SongResource(SongDAO songDAO, TitleDAO titleDAO, Songs songs, SongsRepresentationFactory songsRepresentationFactory) {
+    public SongResource(SongDAO songDAO, Songs songs, SongsRepresentationFactory songsRepresentationFactory) {
         this.songDAO = songDAO;
-        this.titleDAO = titleDAO;
         this.songsRepresentationFactory = songsRepresentationFactory;
         this.songs = songs;
     }
@@ -41,21 +35,9 @@ public class SongResource {
     @POST
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createSong(String jsonSong) {
-        Song song = new Gson().fromJson(jsonSong, Song.class);
-        try {
-            if (song.getTitle().getId() == 0) {
-                Title umbrellaTitle = titleDAO.create(song.getTitle());
-                song.setTitle(umbrellaTitle);
-            }
-            if (song.getSongTitle().getId() == 0) {
-                Title songTitle = titleDAO.create(song.getSongTitle());
-                song.setSongTitle(songTitle);
-            }
-            songDAO.create(song);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public Response saveSong(String jsonSong) {
+        Song song = songsRepresentationFactory.create(jsonSong);
+        song = songs.save(song);
         return Response.status(200).entity(song.getId()).build();
     }
 
@@ -126,7 +108,7 @@ public class SongResource {
     @GET
     @UnitOfWork
     @Path("/versions")
-    public Response getSongVersions(@QueryParam("songId")int songId) {
+    public Response getSongVersions(@QueryParam("songId") int songId) {
         List<Song> songList = songs.getVersions(songId);
         SongsRepresentation songs = songsRepresentationFactory.createSongsRepresentation(songList);
         return Response.ok(songs, MediaType.APPLICATION_JSON).build();

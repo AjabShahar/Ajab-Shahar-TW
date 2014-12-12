@@ -2,15 +2,19 @@ package org.ajabshahar.core;
 
 import com.google.gson.Gson;
 import org.ajabshahar.platform.daos.SongDAO;
+import org.ajabshahar.platform.daos.TitleDAO;
 import org.ajabshahar.platform.models.Song;
+import org.ajabshahar.platform.models.Title;
 
 import java.util.List;
 
 public class Songs {
     private final SongDAO songsRepository;
+    private TitleDAO titleRepository;
 
-    public Songs(SongDAO songsRepository) {
+    public Songs(SongDAO songsRepository, TitleDAO titleRepository) {
         this.songsRepository = songsRepository;
+        this.titleRepository = titleRepository;
     }
 
     public Song findBy(int songId) {
@@ -33,6 +37,24 @@ public class Songs {
 
     public List<Song> getVersions(int songId) {
         return songsRepository.findSongWithVersions(songId);
+    }
+
+    public Song save(Song song) {
+        if (song.getSongTitle().getId() == 0) {
+            Title songTitle = song.getSongTitle();
+            titleRepository.create(songTitle);
+        }
+        if (song.getTitle() == null) {
+            Title umbrellaTitle = song.getSongTitle();
+            titleRepository.create(umbrellaTitle);
+            song.setTitle(umbrellaTitle);
+        } else if (song.getTitle().getId() == 0) {
+            Title umbrellaTitle = song.getTitle();
+            titleRepository.create(umbrellaTitle);
+        } else {
+
+        }
+        return songsRepository.save(song);
     }
 }
 

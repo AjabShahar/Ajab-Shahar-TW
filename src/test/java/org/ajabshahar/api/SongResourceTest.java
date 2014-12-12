@@ -39,7 +39,7 @@ public class SongResourceTest {
 
     @Before
     public void setUp() {
-        songResource = new SongResource(null, null, songs, songsRepresentationFactory);
+        songResource = new SongResource(null, songs, songsRepresentationFactory);
     }
 
     @Test
@@ -102,5 +102,17 @@ public class SongResourceTest {
         Response actualResult = songResource.getSongVersions(SONG_ID);
 
         assertEquals(expectedResult, actualResult.getEntity());
+    }
+
+    @Test
+    public void shouldSaveSong() throws Exception {
+        String jsongSong = "Song";
+        Song song = new Song();
+        when(songsRepresentationFactory.create(jsongSong)).thenReturn(song);
+        when(songs.save(song)).thenReturn(song);
+
+        Response actualResult = songResource.saveSong(jsongSong);
+
+        assertEquals(song.getId(),actualResult.getEntity());
     }
 }

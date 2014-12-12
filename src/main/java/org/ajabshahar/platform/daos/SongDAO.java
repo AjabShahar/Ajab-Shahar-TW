@@ -26,7 +26,7 @@ public class SongDAO extends AbstractDAO<Song> {
         return (Song) sessionFactory.openSession().get(Song.class, id);
     }
 
-    public Song create(Song song) {
+    public Song save(Song song) {
         return persist(song);
     }
 

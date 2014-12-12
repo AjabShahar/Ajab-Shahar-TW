@@ -1,5 +1,6 @@
 package org.ajabshahar.api;
 
+import com.google.gson.Gson;
 import org.ajabshahar.core.People;
 import org.ajabshahar.platform.models.PersonDetails;
 import org.ajabshahar.platform.models.Song;
@@ -111,5 +112,9 @@ public class SongsRepresentationFactory {
             songsRepresentation.add(songRepresentation);
         }
         return songsRepresentation;
+    }
+
+    public Song create(String jsonSong) {
+        return new Gson().fromJson(jsonSong, Song.class);
     }
 }

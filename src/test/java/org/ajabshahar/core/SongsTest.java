@@ -2,19 +2,21 @@ package org.ajabshahar.core;
 
 import com.google.gson.JsonObject;
 import org.ajabshahar.platform.daos.SongDAO;
+import org.ajabshahar.platform.daos.TitleDAO;
 import org.ajabshahar.platform.models.Song;
+import org.ajabshahar.platform.models.Title;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SongsTest {
@@ -26,6 +28,8 @@ public class SongsTest {
     @Mock
     private SongDAO songsRepository;
     @Mock
+    private TitleDAO titleRepository;
+    @Mock
     private Song song;
     private List<Song> songsList;
     private Songs songs;
@@ -34,7 +38,7 @@ public class SongsTest {
     public void setup() {
         songsList = new ArrayList<>();
         songsList.add(song);
-        songs = new Songs(songsRepository);
+        songs = new Songs(songsRepository, titleRepository);
     }
 
     @Test
@@ -57,7 +61,7 @@ public class SongsTest {
         Song dummySong = new Song();
         dummySong.setId(SONG_ID);
         json.addProperty("", dummySong.toString());
-        when(songsRepository.updateSong(Mockito.any(Song.class))).thenReturn(song);
+        when(songsRepository.updateSong(any(Song.class))).thenReturn(song);
 
         Song result = songs.update(json.toString());
 
@@ -72,4 +76,79 @@ public class SongsTest {
 
         assertEquals(songsList, result);
     }
+
+    @Test
+    public void shouldTestExistingRenditionAndExistingVersion() throws Exception {
+        Song song = new Song();
+        Title umbrellaTitle = new Title();
+        umbrellaTitle.setId(1L);
+        song.setTitle(umbrellaTitle);
+        Title songTitle = new Title();
+        songTitle.setId(1L);
+        song.setSongTitle(songTitle);
+        when(songsRepository.save(song)).thenReturn(song);
+
+        Song result = songs.save(song);
+
+        assertEquals(song, result);
+    }
+
+    @Test
+    public void shouldTestNewRenditionAndExistingVersion() throws Exception {
+        Song song = new Song();
+        Title songTitle = new Title();
+        songTitle.setOriginalTitle("songTitleOriginal");
+        song.setSongTitle(songTitle);
+        Title umbrellaTitle = new Title();
+        umbrellaTitle.setId(1L);
+        song.setTitle(umbrellaTitle);
+        when(songsRepository.save(song)).thenReturn(song);
+
+        Song result = songs.save(song);
+        verify(titleRepository).create(songTitle);
+    }
+
+    @Test
+    public void shouldTestNewRenditionAndNoVersion() throws Exception {
+        Song song = new Song();
+        Title songTitle = new Title();
+        songTitle.setOriginalTitle("songTitleOriginal");
+        song.setSongTitle(songTitle);
+        when(songsRepository.save(song)).thenReturn(song);
+
+        Song result = songs.save(song);
+        verify(titleRepository, atLeast(2)).create(songTitle);
+    }
+
+    @Test
+    public void shouldTestNewRenditionAndNewVersion() throws Exception {
+        Song song = new Song();
+        Title umbrellaTitle = new Title();
+        umbrellaTitle.setOriginalTitle("UmbrellaTitleOriginal");
+        song.setTitle(umbrellaTitle);
+        Title songTitle = new Title();
+        songTitle.setOriginalTitle("songTitleOriginal");
+        song.setSongTitle(songTitle);
+        when(songsRepository.save(song)).thenReturn(song);
+
+        Song result = songs.save(song);
+        verify(titleRepository).create(umbrellaTitle);
+        verify(titleRepository).create(songTitle);
+    }
+
+    @Test
+    public void shouldTestExistingRenditionNoVersion() throws Exception {
+        Song song = new Song();
+        Title songTitle = new Title();
+        songTitle.setId(1L);
+        song.setSongTitle(songTitle);
+        song.setTitle(null);
+        when(songsRepository.save(song)).thenReturn(song);
+
+        Song result = songs.save(song);
+        verify(titleRepository).create(songTitle);
+
+        assertEquals(result.getTitle(), songTitle);
+    }
+
 }
