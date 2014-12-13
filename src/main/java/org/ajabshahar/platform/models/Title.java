@@ -23,18 +23,26 @@ public class Title {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "ORIGINAL_TITLE",nullable = true)
+    @Column(name = "ORIGINAL_TITLE", nullable = true)
     private String originalTitle;
 
-    @Column(name = "ENGLISH_TRANSLATION",nullable = true)
+    @Column(name = "ENGLISH_TRANSLATION", nullable = true)
     private String englishTranslation;
 
     @Column(name = "ENGLISH_TRANSLITERATION", nullable = true)
     private String englishTransliteration;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "CATEGORY_ID")
     private Category category;
+    public Title(){
+
+    }
+    public Title(Title songTitle) {
+        originalTitle = songTitle.getOriginalTitle();
+        englishTranslation = songTitle.getEnglishTranslation();
+        englishTransliteration = songTitle.getEnglishTransliteration();
+    }
 
     public long getId() {
         return id;

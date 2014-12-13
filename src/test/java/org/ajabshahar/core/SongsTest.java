@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import org.ajabshahar.platform.daos.CategoryDAO;
 import org.ajabshahar.platform.daos.SongDAO;
 import org.ajabshahar.platform.daos.TitleDAO;
+import org.ajabshahar.platform.models.Category;
 import org.ajabshahar.platform.models.Song;
 import org.ajabshahar.platform.models.Title;
 import org.junit.Before;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
 
@@ -118,9 +120,12 @@ public class SongsTest {
         songTitle.setOriginalTitle("songTitleOriginal");
         song.setSongTitle(songTitle);
         when(songsRepository.save(song)).thenReturn(song);
+        when(categoryRepository.listUmbrellaTitleCategory()).thenReturn(new Category());
 
         Song result = songs.save(song);
-        verify(titleRepository, atLeast(2)).create(songTitle);
+        verify(titleRepository,atLeast(2)).create(any(Title.class));
+
+        assertNotNull(song.getTitle());
     }
 
     @Test
@@ -147,11 +152,12 @@ public class SongsTest {
         song.setSongTitle(songTitle);
         song.setTitle(null);
         when(songsRepository.save(song)).thenReturn(song);
+        when(categoryRepository.listUmbrellaTitleCategory()).thenReturn(new Category());
 
         Song result = songs.save(song);
-        verify(titleRepository).create(songTitle);
+        verify(titleRepository).create(any(Title.class));
 
-        assertEquals(result.getTitle(), songTitle);
+        assertNotNull(song.getTitle());
     }
 
 }

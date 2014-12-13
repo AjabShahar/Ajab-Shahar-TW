@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import org.ajabshahar.platform.daos.CategoryDAO;
 import org.ajabshahar.platform.daos.SongDAO;
 import org.ajabshahar.platform.daos.TitleDAO;
-import org.ajabshahar.platform.models.Category;
 import org.ajabshahar.platform.models.Song;
 import org.ajabshahar.platform.models.Title;
 
@@ -52,11 +51,9 @@ public class Songs {
         }
         if (song.getTitle() == null) {
 
-            Title umbrellaTitle = song.getSongTitle();
-            umbrellaTitle.setId(0);
+            Title umbrellaTitle = new Title(song.getSongTitle());
             umbrellaTitle.setCategory(categoryRepository.listUmbrellaTitleCategory());
             titleRepository.create(umbrellaTitle);
-
             song.setTitle(umbrellaTitle);
 
         } else if (song.getTitle().getId() == 0) {
