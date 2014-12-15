@@ -39,8 +39,8 @@
 
     &6{
        background: url(../../img/mainLandingPage/parallax/clouds.png);
-       /*margin-top: -30%;*/
-       -webkit-animation: moveclouds 15s linear infinite;
+       margin-top: -30%;
+       -webkit-animation: moveclouds 30s linear infinite;
        -moz-animation: moveclouds 15s linear infinite;
        -o-animation: moveclouds 15s linear infinite;
     }
@@ -75,16 +75,18 @@
 
 /* clouds animation begins */
 @-webkit-keyframes moveclouds {
-  0% {margin-left: 1000px;}
-  100% {margin-left: -1000px;}
+  0% { transform: translate(100%, 0); }
+  100% { transform: translate(-100%, 0); }
 }
+
 @-moz-keyframes moveclouds {
-  0% {margin-left: 1000px;}
-  100% {margin-left: -1000px;}
+  0% {transform: translate(1440px, 0);}
+  100% {transform: translate(-1440px, 0);   }
 }
+
 @-o-keyframes moveclouds {
-  0% {margin-left: 1000px;}
-  100% {margin-left: -1000px;}
+  0% {transform: translate(1440px, 0);}
+  100% {transform: translate(-1440px, 0);   }
 }
 
 /* clouds animation ends */
