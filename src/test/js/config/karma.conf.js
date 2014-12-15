@@ -7,7 +7,7 @@ module.exports = function (config) {
       'common/lib/underscore/underscore-min.js',
       'common/lib/angular/angular.js',
       'common/lib/angular-mocks/angular-mocks.js',
-      'common/modules/headerModule.js',
+      'user/js/common/modules/headerModule.js',
       'user/js/common/modules/thumbnailModule.js',
       'user/js/common/modules/PopupSupport.js',
       'user/js/common/modules/mediaPlayer.js',
