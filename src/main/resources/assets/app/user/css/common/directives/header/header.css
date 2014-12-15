@@ -48,7 +48,7 @@ header img.logo{
 
 
 .logoContainer{float:left;display:inline-block;}
-.menuContainer{float:left;display:inline-block;width:90.6%;}
+.menuContainer{ width: auto; margin-left: 131px; }
 header ul{text-transform:uppercase;display:inline-block;width:100%;clear:right;padding:1% 0;border-bottom: solid 1px #eee;color:#444;}
 header ul:last-child{border:0;}
 header ul li{padding:0% 1.5%;border-left:solid 1px #ddd;display:inline-block;float:left;}

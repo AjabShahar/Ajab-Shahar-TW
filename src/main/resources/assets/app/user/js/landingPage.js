@@ -4,8 +4,10 @@
 
     		var _domReady = function(){
     		    _bindEvents();
+
     		    _initialiseScrolling();
                 _setBgImage();
+                _lazyLoadImages();
 
     		}
 
@@ -19,15 +21,22 @@
     		    bgBodyImage.css({ 'left' : (viewPortWidth - imageWidth)/2});
     		}
 
+    		var _lazyLoadImages =  function() {
+    		    $('.px-layer1').lazyload();
+                $('.px-layer2').lazyload();
+                $('.px-layer3').lazyload();
+
+    		}
+
     		var _bindEvents = function() {
     		    $(window).on('resize', _.throttle(_setBgImage, 1000));
     		}
 
     		var _initialiseScrolling = function() {
-                $.stellar({
-                    horizontalScrolling: false,
-                    responsive: true
-                });
+//                $.stellar({
+//                    horizontalScrolling: false,
+//                    responsive: true
+//                });
     		}
 
             this.init = (function(){
