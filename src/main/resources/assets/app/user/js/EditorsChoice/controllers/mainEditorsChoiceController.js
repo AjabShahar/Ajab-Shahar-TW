@@ -5,6 +5,7 @@ var mainEditorsChoiceController = function($scope,contentService,popupService, $
         $scope.url = $location.absUrl();
         contentService.getMainLandingPageThumbnails().then(function(result){
             $scope.thumbnailDetails = result.data;
+            $scope.totalNumberOfThumbnails = $scope.thumbnailDetails.songs.length>9 ?9 :$scope.thumbnailDetails.songs.length;
         });
     }
 
