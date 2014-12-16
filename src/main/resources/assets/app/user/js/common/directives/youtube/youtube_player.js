@@ -40,7 +40,7 @@ mediaPlayer.directive('youtube', function($window, YT_event) {
                 modesbranding: 0,
                 color: "white",
                 iv_load_policy: 3,
-                //showinfo: 0, //to hide youtube logo
+                showinfo: 0, //to hide youtube logo
                 controls: (scope.showcontrols)?2:0
               },
 
