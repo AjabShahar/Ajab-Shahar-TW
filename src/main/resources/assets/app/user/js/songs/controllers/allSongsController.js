@@ -1,8 +1,11 @@
-var allSongsController = function($scope,songsContentService,popupService){
+var allSongsController = function($scope,$window,songsContentService){
     $scope.songs=[];
     $scope.allSongs = null;
     $scope.totalFilteredSongs = 0;
-    $scope.detailsService = popupService;
+    $scope.detailsService = {open:function(id){
+//                                          var songId = $scope.getSongId(id);
+                                          $window.location.href = '/user/partials/songs/details.html?id='+id;
+                                      }};
     $scope.activeLetter = '';
     $scope.scrollIndex = 12;
     $scope.singerNameInFilter = {name:''};
@@ -25,11 +28,6 @@ var allSongsController = function($scope,songsContentService,popupService){
        return $scope.strStartsWith(actual.englishTransliterationTitle.toUpperCase(),$scope.activeLetter.toUpperCase());
     };
 
-    $scope.open = function(id){
-        var songId = $scope.getSongId(id);
-        $window.location.href = '/user/partials/songs/details.html?id='+songId;
-    }
-
     $scope.loadSongFromRange = function(){
         if($scope.scrollIndex>$scope.songs.length)
             return;
@@ -39,4 +37,4 @@ var allSongsController = function($scope,songsContentService,popupService){
     $scope.getAllSongs();
 };
 
-allSongsApp.controller('allSongsController',['$scope','songsContentService','popupService',allSongsController]);
+allSongsApp.controller('allSongsController',['$scope','$window','songsContentService',allSongsController]);
