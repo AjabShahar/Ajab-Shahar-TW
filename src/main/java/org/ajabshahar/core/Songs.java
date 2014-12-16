@@ -65,7 +65,7 @@ public class Songs {
         } else {
 
         }
-        return songsRepository.save(song);
+        return songsRepository.saveSong(song);
     }
 }
 

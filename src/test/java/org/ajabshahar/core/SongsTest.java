@@ -91,7 +91,7 @@ public class SongsTest {
         Title songTitle = new Title();
         songTitle.setId(1L);
         song.setSongTitle(songTitle);
-        when(songsRepository.save(song)).thenReturn(song);
+        when(songsRepository.saveSong(song)).thenReturn(song);
 
         Song result = songs.save(song);
 
@@ -107,7 +107,7 @@ public class SongsTest {
         Title umbrellaTitle = new Title();
         umbrellaTitle.setId(1L);
         song.setTitle(umbrellaTitle);
-        when(songsRepository.save(song)).thenReturn(song);
+        when(songsRepository.saveSong(song)).thenReturn(song);
 
         Song result = songs.save(song);
         verify(titleRepository).create(songTitle);
@@ -119,7 +119,7 @@ public class SongsTest {
         Title songTitle = new Title();
         songTitle.setOriginalTitle("songTitleOriginal");
         song.setSongTitle(songTitle);
-        when(songsRepository.save(song)).thenReturn(song);
+        when(songsRepository.saveSong(song)).thenReturn(song);
         when(categoryRepository.listUmbrellaTitleCategory()).thenReturn(new Category());
 
         Song result = songs.save(song);
@@ -137,7 +137,7 @@ public class SongsTest {
         Title songTitle = new Title();
         songTitle.setOriginalTitle("songTitleOriginal");
         song.setSongTitle(songTitle);
-        when(songsRepository.save(song)).thenReturn(song);
+        when(songsRepository.saveSong(song)).thenReturn(song);
 
         Song result = songs.save(song);
         verify(titleRepository).create(umbrellaTitle);
@@ -151,7 +151,7 @@ public class SongsTest {
         songTitle.setId(1L);
         song.setSongTitle(songTitle);
         song.setTitle(null);
-        when(songsRepository.save(song)).thenReturn(song);
+        when(songsRepository.saveSong(song)).thenReturn(song);
         when(categoryRepository.listUmbrellaTitleCategory()).thenReturn(new Category());
 
         Song result = songs.save(song);

@@ -26,16 +26,14 @@ public class SongDAO extends AbstractDAO<Song> {
         return (Song) sessionFactory.openSession().get(Song.class, id);
     }
 
-    public Song save(Song song) {
-        return persist(song);
+    public Song saveSong(Song song) {
+        currentSession().update(song.getTitle());
+        currentSession().save(song);
+        return song;
     }
 
     public List<Song> findAll() {
         return list(namedQuery("org.ajabshahar.platform.models.Song.findAll"));
-    }
-
-    public List<Song> findAllOnLandingPage() {
-        return list(namedQuery("org.ajabshahar.platform.models.Song.findAllOnLandingPage").setMaxResults(15));
     }
 
     public Song invokeAllSetters(Song originalSongData, Song updatableSongData) {
