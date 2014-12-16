@@ -17,6 +17,7 @@ var songDetailsController = function($scope, $http,$window,$location){
   $scope.urlId = $location.search().id;
   $scope.lyricsTextList = [];
   $scope.coupletList = [];
+  $scope.selectedLyricsText;
 
   $http.get('/api/title/umbrella').success(function(umbrellaTitleList){
     $scope.umbrellaTitleList = umbrellaTitleList;
@@ -80,6 +81,18 @@ var songDetailsController = function($scope, $http,$window,$location){
       $scope.lyricsTextList.push($scope.lyricsText);
     }
     $scope.lyricsText = "";
+  }
+
+  Array.prototype.insert = function (index, item) {
+    this.splice(index, 0, item);
+  };
+
+  $scope.moveItemUp = function(){
+    var selectedSongIndex = $scope.lyricsTextList.indexOf($scope.selectedLyricsText);
+    var songToBeMovedUp = $scope.lyricsTextList.splice(selectedSongIndex, 1);
+
+    $scope.lyricsTextList.insert(selectedSongIndex - 1, songToBeMovedUp[0].englishTransliteration);
+
   }
 
   $scope.updateSong = function(){

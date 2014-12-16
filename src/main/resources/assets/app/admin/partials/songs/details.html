@@ -269,13 +269,13 @@
                     </div>
                     <div class="form-group col-sm-3" ng-show="lyricsTextList.length != 0">
                         <div class="lyricsBoxMultiSelect">
-                            <select ng-model="lyrics" size="40"
+                            <select ng-model="selectedLyricsText" size="40"
                                     ng-options="songLyrics.englishTransliteration for songLyrics in lyricsTextList" class="form-control">
                             </select>
                         </div>
                         <div class="lyricsBoxComponents">
-                            <span class="glyphicon glyphicon-arrow-up btn-lg"></span>
-                            <span class="glyphicon glyphicon-arrow-down btn-lg"></span>    
+                            <span class="glyphicon glyphicon-arrow-up btn-lg" ng-click="moveItemUp()"></span>
+                            <span class="glyphicon glyphicon-arrow-down btn-lg" ng-click="alert('Test')"></span>
                         </div>
                     </div>
 
