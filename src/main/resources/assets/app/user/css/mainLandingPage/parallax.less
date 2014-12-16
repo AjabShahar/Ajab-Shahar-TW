@@ -50,17 +50,24 @@
 
         -webkit-animation: birdopacity 15s linear infinite;
         -webkit-animation: movebird 55s linear infinite;
-        -moz-animation: movebird 15s linear infinite;
-        -o-animation: movebird 15s linear infinite;
+        -moz-animation: movebird 55s linear infinite;
+        -o-animation: movebird 55s linear infinite;
+        animation: movebird 55s linear infinite;
+
         -webkit-transform-origin: 30em 60em;
+        -moz-transform-origin: 30em 60em;
+        -o-transform-origin: 30em 60em;
+        transform-origin: 30em 60em;
     }
 
     &6{
        background: url(../../img/mainLandingPage/parallax/clouds.png);
        height: 4138px;
+       width: 3050px;
        -webkit-animation: moveclouds 30s linear infinite;
        -moz-animation: moveclouds 30s linear infinite;
        -o-animation: moveclouds 30s linear infinite;
+       animation: moveclouds 30s linear infinite;
     }
   }
 }
@@ -75,17 +82,19 @@
     100%{opacity:1;}
 }
 @-webkit-keyframes movebird {
-  0% {background-position-y: 100px;background-position-x: 0px;-webkit-transform: rotate(80deg); }
+  0% {background-position-y: 100px; background-position-x: 0px; -webkit-transform: rotate(80deg); }
   50% {background-position-y: 500px;background-position-x: 1200px;}
   100% {background-position-y: 200px;background-position-x: 500px;-webkit-transform: rotate(892deg); }
 }
 @-moz-keyframes movebird {
-  0% {background-position-x: 800px;}
-  100% {background-position-y: 500px;}
+  0% {background-position: 0px 100px; -moz-transform: rotate(80deg); }
+  50% { background-position: 1200px 500px; }
+  100% {background-position: 500px 200px; -moz-transform: rotate(892deg)}
 }
 @-o-keyframes movebird {
-  0% {background-position-x: 800px;}
-  100% {background-position-y: 500px;}
+  0% {background-position: 0px 100px; -o-transform: rotate(80deg); }
+  50% { background-position: 1200px 500px; }
+  100% {background-position: 500px 200px; -o-transform: rotate(892deg)}
 }
 /* bird animation ends */
 
@@ -93,18 +102,18 @@
 
 /* clouds animation begins */
 @-webkit-keyframes moveclouds {
-  0% { transform: translate(100%, 0); }
-  100% { transform: translate(-100%, 0); }
+  0% { -webkit-transform: translate(100%, 0); }
+  100% { -webkit-transform: translate(-100%, 0); }
 }
 
 @-moz-keyframes moveclouds {
-  0% { transform: translate(100%, 0); }
-  100% { transform: translate(-100%, 0); }
+  0% { -moz-transform: translate(100%, 0); }
+  100% { -moz-transform: translate(-100%, 0); }
 }
 
 @-o-keyframes moveclouds {
-  0% { transform: translate(100%, 0); }
-  100% { transform: translate(-100%, 0); }
+  0% { -o-transform: translate(100%, 0); }
+  100% { -o-transform: translate(-100%, 0); }
 }
 
 /* clouds animation ends */
