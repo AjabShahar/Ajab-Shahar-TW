@@ -34,14 +34,13 @@ mediaPlayer.directive('youtube', function($window, YT_event) {
         scope.$on('onYouTubeIframeAPIReady', function (event, data) {
             scope.player = new YT.Player(element.children()[0], {
               playerVars: {
+                modesbranding: 1,
                 autoplay: (scope.autoplay)? 1:0,
                 html5: 1,
                 theme: "light",
-                modesbranding: 0,
                 color: "white",
                 iv_load_policy: 3,
-                showinfo: 0, //to hide youtube logo
-                controls: (scope.showcontrols)?2:0
+                controls: (scope.showcontrols)?2:0,
               },
 
               height: scope.height,
