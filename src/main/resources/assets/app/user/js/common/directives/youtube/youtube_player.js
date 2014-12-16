@@ -35,12 +35,13 @@ mediaPlayer.directive('youtube', function($window, YT_event) {
             scope.player = new YT.Player(element.children()[0], {
               playerVars: {
                 modesbranding: 1,
+                showinfo: 0,
+                controls: (scope.showcontrols)?2:0,
                 autoplay: (scope.autoplay)? 1:0,
                 html5: 1,
                 theme: "light",
                 color: "white",
                 iv_load_policy: 3,
-                controls: (scope.showcontrols)?2:0,
               },
 
               height: scope.height,
