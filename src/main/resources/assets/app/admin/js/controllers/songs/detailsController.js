@@ -139,21 +139,6 @@ var songDetailsController = function($scope, $http,$window,$location){
        });
      return $scope.AddNewDiv = false;
   }
-  $scope.enableNewSongTitle = function(){
-   $scope.formInfo.songTitle ={"selected":null};
-      $http.get('/api/title/song').success(function(data){
-         $scope.formInfo.songTitle.category = data[0].category;
-      })
-   return $scope.AddNewSongTitle = true;
-  }
-  $scope.disableNewSongTitle = function(){
-   $http.get('/api/songs/'+$scope.urlId)
-                    .success(function (data,status) {
-                                  $scope.formInfo = data;
-
-   });
-   return $scope.AddNewSongTitle = false;
-  }
 }
 
 songsAdminApp.controller('songDetailsController',['$scope','$http','$window','$location',songDetailsController]);

@@ -67,13 +67,13 @@ public class CategoryResource {
     @UnitOfWork
     @Path("/umbrellaTitle")
     public  Category listUmbrellaTitleCategory(){
-        return categoryDAO.listUmbrellaTitleCategory();
+        return categoryDAO.getUmbrellaTitleCategory();
     }
 
     @GET
     @UnitOfWork
     @Path("/songTitle")
     public Category listSongTitleCategory(){
-        return categoryDAO.listSongTitleCategory();
+        return categoryDAO.getSongTitleCategory();
     }
 }

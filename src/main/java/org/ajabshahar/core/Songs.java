@@ -46,20 +46,20 @@ public class Songs {
         if (song.getSongTitle().getId() == 0) {
 
             Title songTitle = song.getSongTitle();
-            songTitle.setCategory(categoryRepository.listSongTitleCategory());
+            songTitle.setCategory(categoryRepository.getSongTitleCategory());
             titleRepository.create(songTitle);
         }
         if (song.getTitle() == null) {
 
             Title umbrellaTitle = new Title(song.getSongTitle());
-            umbrellaTitle.setCategory(categoryRepository.listUmbrellaTitleCategory());
+            umbrellaTitle.setCategory(categoryRepository.getUmbrellaTitleCategory());
             titleRepository.create(umbrellaTitle);
             song.setTitle(umbrellaTitle);
 
         } else if (song.getTitle().getId() == 0) {
 
             Title umbrellaTitle = song.getTitle();
-            umbrellaTitle.setCategory(categoryRepository.listUmbrellaTitleCategory());
+            umbrellaTitle.setCategory(categoryRepository.getUmbrellaTitleCategory());
             titleRepository.create(umbrellaTitle);
 
         } else {

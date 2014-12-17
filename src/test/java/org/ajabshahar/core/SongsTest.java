@@ -120,7 +120,7 @@ public class SongsTest {
         songTitle.setOriginalTitle("songTitleOriginal");
         song.setSongTitle(songTitle);
         when(songsRepository.saveSong(song)).thenReturn(song);
-        when(categoryRepository.listUmbrellaTitleCategory()).thenReturn(new Category());
+        when(categoryRepository.getUmbrellaTitleCategory()).thenReturn(new Category());
 
         Song result = songs.save(song);
         verify(titleRepository,atLeast(2)).create(any(Title.class));
@@ -152,7 +152,7 @@ public class SongsTest {
         song.setSongTitle(songTitle);
         song.setTitle(null);
         when(songsRepository.saveSong(song)).thenReturn(song);
-        when(categoryRepository.listUmbrellaTitleCategory()).thenReturn(new Category());
+        when(categoryRepository.getUmbrellaTitleCategory()).thenReturn(new Category());
 
         Song result = songs.save(song);
         verify(titleRepository).create(any(Title.class));
