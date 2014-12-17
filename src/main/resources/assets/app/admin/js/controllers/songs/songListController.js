@@ -7,8 +7,8 @@ var songListController = function($scope, contentService){
                 var toBeAdded={};
                 toBeAdded.title = value.englishTranslationTitle;
                 toBeAdded.categoryName = value.category;
-                toBeAdded.singerNames = _.reduce(value.singers, function(memo, value, index){ return ((index!=0)?' ,':'')+ memo+ value; },'');
-                toBeAdded.poetNames = _.reduce(value.poets, function(memo, value, index){ return ((index!=0)?' ,':'')+ memo+ value; },'');
+                toBeAdded.singerNames = _.reduce(value.singers, function(memo, value, index){ return ((index!=0)?' ,':'')+ memo+ value.name; },'');
+                toBeAdded.poetNames = _.reduce(value.poet, function(memo, value, index){ return ((index!=0)?' ,':'')+ memo+ value.name; },'');
                 toBeAdded.id = value.id;
                 songs.push(toBeAdded);
                 return songs;
