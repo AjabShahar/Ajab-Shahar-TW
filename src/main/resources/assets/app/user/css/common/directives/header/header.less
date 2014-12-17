@@ -49,26 +49,76 @@ header img.logo{
 
 .logoContainer{float:left;display:inline-block;}
 .menuContainer{ width: auto; margin-left: 131px; }
-header ul{text-transform:uppercase;display:inline-block;width:100%;clear:right;padding:1% 0;border-bottom: solid 1px #eee;color:#444;}
-header ul:last-child{border:0;}
-header ul li{padding:0% 1.5%;border-left:solid 1px #ddd;display:inline-block;float:left;}
-header ul.topLine li.selected{border-left: solid 1px #ddd;}
-header ul li:first-child{border:0;}
 
-header ul.firstLine{font-size:1.5em;margin-top:0%;color:#666;}
-header ul.secondLine{font-size:0.8em;color:#999;}
-header ul.thirdLine{font-size:1em;color:#ccc;}
 
-header ul.topLine{
-float: right;
-text-align: right;
-border: 0;
-font-size: 0.8em;
-color:#ccc;
+header ul {
+    text-transform:uppercase;
+    display:inline-block;
+    width:100%;
+    clear:right;
+    padding:1% 0;
+    border-bottom: solid 1px #eee;color:#444;
+
+    &:last-child {
+        border:0;
+    }
+
+    li {
+        padding:0% 1.5%;
+        border-left:solid 1px #ddd;
+        display:inline-block;
+        float:left;
+
+        &:first-child {
+            border:0;
+        }
+
+        @media screen and (max-width: 770px) {
+            padding: 0 1%;
+        }
+    }
+
+    &.topLine {
+        float: right;
+        text-align: right;
+        border: 0;
+        font-size: 0.8em;
+        color:#ccc;
+
+        li {
+            float:right;
+            padding:0 1%;
+
+            &:last-child {
+                border:0;
+            }
+
+            &.selected {
+                 border-left: solid 1px #ddd;
+            }
+        }
+
+
+    }
+
+    &.firstLine {
+        font-size:1.5em;
+        margin-top:0%;
+        color:#666;
+    }
+
+    &.secondLine {
+        font-size:0.8em;
+        color:#999;
+    }
+
+    &.thirdLine {
+        font-size:1em;
+        color:#ccc;
+    }
 }
 
-header ul.topLine li{float:right;padding:0 1%;}
-header ul.topLine li:last-child{border:0;}
+
 
 
 li.searchBox{float:right;width:40%;border:0;}
