@@ -4,20 +4,23 @@ songsAdminApp.directive("asAdminTitle", function() {
     return {
         restrict: 'E',
         scope: {
-            songTitle:'=',
+            title:'@',
+            titleData:'=',
             titleList:'=',
         },
         templateUrl:'/admin/js/templates/asAdminTitle.html',
         controller:function($scope){
-            $scope.AddNewSongTitle = false;
+            $scope.AddNewTitle = false;
 
             $scope.enableNewSongTitle = function(){
-                $scope.songTitle ={"selected":null};
-                return $scope.AddNewSongTitle = true;
+                $scope.titleData ={"selected":null};
+                $scope.AddNewTitle = true;
             }
 
             $scope.disableNewSongTitle = function(){
-                return $scope.AddNewSongTitle = false;
+                $scope.titleData ={"selected":null};
+                $scope.EditDiv = false;
+                $scope.AddNewTitle = false;
             }
 
         }
