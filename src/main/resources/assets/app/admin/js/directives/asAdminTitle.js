@@ -11,6 +11,7 @@ songsAdminApp.directive("asAdminTitle", function() {
         templateUrl:'/admin/js/templates/asAdminTitle.html',
         controller:function($scope){
             $scope.AddNewTitle = false;
+            $scope.EditDiv = false;
 
             $scope.enableNewSongTitle = function(){
                 $scope.titleData ={"selected":null};

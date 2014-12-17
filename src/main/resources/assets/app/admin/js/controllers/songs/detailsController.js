@@ -14,7 +14,6 @@ var songDetailsController = function($scope, $http,$window,$location){
   $scope.mediaCategoryList = [];
   $scope.umbrellaTitleList = [];
   $scope.songTitleList = [];
-  $scope.urlId = $location.search().id;
   $scope.lyricsTextList = [];
   $scope.coupletList = [];
   $scope.selectedLyricsText;
@@ -69,7 +68,10 @@ var songDetailsController = function($scope, $http,$window,$location){
 
 
   $scope.getSongData = function(){
-      $http.get('/api/songs/'+$scope.urlId)
+        $location.url($location.absUrl());
+        $scope.url = $location.absUrl();
+        $scope.urlId = $location.search().id;
+        $http.get('/api/songs/'+$scope.urlId)
             .success(function (data,status) {
                           $scope.formInfo = data;
 
@@ -118,27 +120,6 @@ var songDetailsController = function($scope, $http,$window,$location){
    alert('This data is not updated');
     $window.location.href = '/admin/partials/songs/details.html';
   };
-
-  $scope.enableNew = function(){
-     $scope.formInfo.title = {"selected":null};
-//        $http.get('/api/title/umbrella').success(function(data){
-//          $scope.formInfo.title.category = data[0].category;
-//        }) ;
-
-     return $scope.AddNewDiv = true;
-  }
-
-  $scope.disableNew = function (){
-//     $http.get('/api/songs/'+$scope.urlId)
-//                 .success(function (data,status) {
-//                               $scope.formInfo = data;
-//
-//     });
-       $http.get('/api/title/umbrella').success(function(umbrellaTitleList){
-           $scope.umbrellaTitleList = umbrellaTitleList;
-       });
-     return $scope.AddNewDiv = false;
-  }
 }
 
 songsAdminApp.controller('songDetailsController',['$scope','$http','$window','$location',songDetailsController]);
