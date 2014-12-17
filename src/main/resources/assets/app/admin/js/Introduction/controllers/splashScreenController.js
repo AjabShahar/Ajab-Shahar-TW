@@ -2,6 +2,7 @@ var splashScreenController = function($scope,$location,$http,contentService){
     $scope.formInfo = {};
     $scope.option = {"url":"","imageUrl":""};
     $scope.splashScreenOptions;
+    $scope.optionsFormatList = [{'id':'audio','name':'Audio'},{'id':'video','name':'Video'}];
     $scope.getVideoUrl = function(){
         contentService.getScreenOptions().then(function(result){
                 splashScreenOptions = result
@@ -35,9 +36,15 @@ var splashScreenController = function($scope,$location,$http,contentService){
     $scope.showEnterButton = function(){
         $scope.expand = true;
     }
-     $scope.getRandomIntWithRange = function(min, max) {
-         return Math.floor(Math.random() * (max - min)) + min;
-     };
+
+    $scope.getRandomIntWithRange = function(min, max) {
+     return Math.floor(Math.random() * (max - min)) + min;
+    };
+
+    $scope.shouldShowImageUrl = function(){
+        return ($scope.formInfo.FORMAT=='audio');
+    }
+
     $scope.getVideoUrl();
  };
 
