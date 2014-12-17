@@ -1,4 +1,8 @@
 var contentService = function ($http) {
+  var getAllCategories = function (type) {
+    return $http.get('/api/category/'+type);
+  };
+
   var getAllSongs = function () {
     return $http.get('/api/songs/getsongs');
   };
@@ -12,6 +16,7 @@ var contentService = function ($http) {
   };
 
   return {
+    getAllCategories:getAllCategories,
     getAllSongs: getAllSongs,
     getAllCouplets:getAllCouplets,
     getAllWords:getAllWords,
