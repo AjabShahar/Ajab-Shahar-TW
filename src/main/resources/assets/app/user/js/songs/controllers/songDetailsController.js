@@ -1,5 +1,4 @@
 var songDetailsController = function($scope,$location,songsContentService){
-    $scope.detailsService = this;
     $scope.detailsService = $scope;
     $scope.showContentDetails = {};
     $scope.prevId = null;
@@ -56,8 +55,7 @@ var songDetailsController = function($scope,$location,songsContentService){
     }
 
     $scope.isClosed = function(id){
-        var songId = $scope.getSongId(id);
-        return $scope.showContentDetails[songId];
+        return !$scope.isOpen(id);
     }
 
     $scope.init();

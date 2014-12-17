@@ -26,7 +26,7 @@ thumbnailModule.directive("songContentDetails", function() {
             };
 
             $scope.shouldStopVideo = function(){
-                return detailsService.isClosed(id);
+                return $scope.detailsService.isClosed($scope.id);
             }
         }
     }
