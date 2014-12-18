@@ -46,8 +46,11 @@
     <div class="page-header">
         <div class="light-bg"></div>
         <div class="ajab-wrapper">
-            <div class="page-logo"></div>
-            <a href="/user/partials/songs/allSongs.html">All Songs</a>
+            <div class="logo-container">
+                <span class="page-logo"></span>
+                <a href="/user/partials/songs/allSongs.html" class="all-songs-link">All Songs</a>
+            </div>
+
             <div class="page-title">
                 <span class="main">{{umbrellaTitleEnglishTransliteration}}</span>
                 <span class="sub-main">{{umbrellaTitleEnglishTranslation}}</span>
@@ -90,12 +93,14 @@
 
             <div class="main-content">
                 <div id="song_container">
-                    <div class="rendition-wrapper">
-                        <ul ng-hide="true">
-                            <li><a href="javascript:void(0)" class="active">01</a>|</li>
-                            <li><a href="javascript:void(0)">02</a>|</li>
-                            <li><a href="javascript:void(0)">03</a></li>
-                        </ul>
+                    <div>
+                        <div class="rendition-wrapper">
+                            <ul ng-hide="true">
+                                <li><a href="javascript:void(0)" class="active">01</a>|</li>
+                                <li><a href="javascript:void(0)">02</a>|</li>
+                                <li><a href="javascript:void(0)">03</a></li>
+                            </ul>
+                        </div>
                         <div ng-repeat="song in renditions" ng-show="isOpen({{song.id}})">
                             <song-content-details-mapper details="song" details-service="detailsService"></song-content-details-mapper>
                         </div>

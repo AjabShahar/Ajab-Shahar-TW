@@ -6,29 +6,33 @@
         <sound-cloud audio-url="{{audioUrl}}" id="snd_{{id}}"></sound-cloud>
     </div>
 
-    <ul class="slide-info">
-        <li>
-            <a href="javascript:void(0)" data-slide="slide-about">about</a>
-        </li>
-        <li>
-            <a href="javascript:void(0)" data-slide="slide-notes">notes</a>
-        </li>
-    </ul>
+    <div class="video-options">
+        <ul class="slide-info">
+            <li>
+                <a href="javascript:void(0)" data-slide="slide-about">about</a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" data-slide="slide-notes">notes</a>
+            </li>
+        </ul>
+        <ul class="share-options">
+            <li>
+                <a href="javascript:void(0)" class="favorite"></a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" class="share" ng-click="dropDownVisible='true'"></a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" class="comment"></a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" class="download"></a>
+            </li>
+        </ul>
+    </div>
 
-    <ul class="share-options">
-        <li>
-            <a href="javascript:void(0)" class="favorite"></a>
-        </li>
-        <li>
-            <a href="javascript:void(0)" class="share" ng-click="dropDownVisible='true'"></a>
-        </li>
-        <li>
-            <a href="javascript:void(0)" class="comment"></a>
-        </li>
-        <li>
-            <a href="javascript:void(0)" class="download"></a>
-        </li>
-    </ul>
+
+
 
     <div class='shareItemsDropDown' ng-show="dropDownVisible" ng-mouseleave="dropDownVisible='false'">
         <ul class='shareItems'>

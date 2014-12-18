@@ -16,13 +16,25 @@ body.page-songs {
         display: inline-block;
 
 
-        .page-logo {
-            background: transparent url(../../img/songs/songslogo.png) 0 0 no-repeat;
-            width: 106px;
-            height: 106px;
+        .logo-container {
             float: left;
             margin-left: 2%;
+            text-align: center;
+
+            .page-logo {
+                background: transparent url(../../img/songs/songslogo.png) 0 0 no-repeat;
+                width: 106px;
+                height: 106px;
+                float: left;
+                clear: both;
+            }
+            .all-songs-link {
+                clear: both;
+                float: left;
+                margin-left: 23px;
+            }
         }
+
 
         .page-title {
             float: left;
@@ -40,7 +52,7 @@ body.page-songs {
         }
 
         .light-bg {
-            height: 121px;
+            height: 131px;
             top: -16px;
         }
 
@@ -130,11 +142,13 @@ body.page-songs {
     #song_container {
 
         youtube {
-            border: solid 10px #fff;
-            .box-shadow(#000);
-            height: 460px;
+            width: 853px;
+            display: inline-block;
+            height: 480px;
 
             iframe {
+                border: solid 5px #fff;
+                .box-shadow(#777, 10px);
                 height: 100%;
             }
         }
@@ -169,46 +183,53 @@ body.page-songs {
             text-align: left;
         }
 
-        &>ul {
-            text-align: left;
-            float: left;
-            position: relative;
-            width: 164px;
+        .video-options {
+            width: 100%;
+            display: inline-block;
+            &>ul {
+                text-align: left;
+                float: left;
+                position: relative;
+                /*width: 164px;*/
+                width: auto;
 
-            &>li {
-                float:left;
-                padding: 10px 5px;
-            }
-        }
-
-
-        ul.share-options {
-            li {
-                a {
-                    background: transparent url(../../img/songs/songs_sprite.png) 0  0 no-repeat;
-                    display: inline-block;
-                    width: 32px;
-                    height: 27px;
-
-                    &.favorite {
-                        background-position: 0 -87px;
-                        width: 32px;
-                        height: 26px;
-                    }
-                    &.share {
-                        background-position: 0 -29px;
-                        width: 29px;
-                        height: 27px;
-                    }
-                    &.download {
-                        background-position: 0 -55px;
-                        width: 30px;
-                        height: 30px;
-                    }
+                &>li {
+                    float:left;
+                    padding: 10px 5px;
                 }
+            }
 
+            ul.share-options {
+                li {
+                    a {
+                        background: transparent url(../../img/songs/songs_sprite.png) 0  0 no-repeat;
+                        display: inline-block;
+                        width: 32px;
+                        height: 27px;
+
+                        &.favorite {
+                            background-position: 0 -87px;
+                            width: 32px;
+                            height: 26px;
+                        }
+                        &.share {
+                            background-position: 0 -29px;
+                            width: 29px;
+                            height: 27px;
+                        }
+                        &.download {
+                            background-position: 0 -55px;
+                            width: 30px;
+                            height: 30px;
+                        }
+                    }
+
+                }
             }
         }
+
+
+
 
         .song-details {
             width: 873px;
