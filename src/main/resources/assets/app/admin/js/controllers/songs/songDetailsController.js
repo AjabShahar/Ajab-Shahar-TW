@@ -13,6 +13,7 @@ var songDetailsController = function($scope, $http,$window,$location){
   $scope.songCategoryList = [];
   $scope.mediaCategoryList = [];
   $scope.umbrellaTitleList = [];
+  $scope.poets = [];
   $scope.songTitleList = [];
   $scope.coupletList = [];
   $scope.selectedLyricsText;
@@ -31,8 +32,8 @@ var songDetailsController = function($scope, $http,$window,$location){
   });
 
   $http.get('/api/people?role=Poet').success(function(allPoets){
-    $scope.poets = allPoets;
-    $scope.poetsList = $scope.poets.people;
+    $scope.poets = allPoets.people;
+    $scope.poetsList = $scope.poets;
   });
 
   $http.get('/api/couplets/all').success(function(allCouplets){
@@ -70,6 +71,13 @@ var songDetailsController = function($scope, $http,$window,$location){
         $scope.urlId = $location.search().id;
         $http.get('/api/songs/'+$scope.urlId)
             .success(function (data,status) {
+                          angular.forEach($scope.singersList,function(singer){
+                              angular.forEach(data.singers,function(selectedSinger){
+                                 if(selectedSinger.id === singer.id)
+                                   singer.ticked=true;
+                              });
+
+                          });
                           $scope.formInfo = data;
 
       });
