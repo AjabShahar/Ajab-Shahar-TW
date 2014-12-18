@@ -47,6 +47,13 @@ songsAdminApp.directive("lyrics", function() {
                 $scope.lyricsTextList.move(selectedSongIndex, selectedSongIndex+1);
             }
 
+            $scope.showLyrics = function(){
+                return $scope.lyricsTextList.length != 0;
+            }
+
+            $scope.showAddLyricsText = function(){
+                return $scope.lyricsComponent != '' &&  $scope.lyricsComponent != null;
+            }
         }
     }
 });
