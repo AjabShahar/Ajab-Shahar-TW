@@ -5,17 +5,18 @@ songsAdminApp.directive("lyrics", function() {
         replace : true,
         restrict: 'E',
         scope: {
-            lyricsComponent:'=',
-            originalText:'=',
+            lyricsText:'=',
             coupletList:'=',
         },
         templateUrl:'/admin/js/templates/lyrics.html',
         controller:function($scope){
+            $scope.lyricsComponent = 'stanza';
             $scope.lyricsTextList = [];
 
             $scope.addLyricsText = function(){
                 if($scope.lyricsText != ""){
                     $scope.lyricsTextList.push($scope.lyricsText);
+                    $scope.selectedLyricsText = $scope.lyricsText;
                 }
                 $scope.lyricsText = "";
             }
@@ -49,10 +50,6 @@ songsAdminApp.directive("lyrics", function() {
 
             $scope.showLyrics = function(){
                 return $scope.lyricsTextList.length != 0;
-            }
-
-            $scope.showAddLyricsText = function(){
-                return $scope.lyricsComponent != '' &&  $scope.lyricsComponent != null;
             }
         }
     }
