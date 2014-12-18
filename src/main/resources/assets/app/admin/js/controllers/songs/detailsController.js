@@ -68,8 +68,6 @@ var songDetailsController = function($scope, $http,$window,$location){
 
 
   $scope.getSongData = function(){
-        $location.url($location.absUrl());
-        $scope.url = $location.absUrl();
         $scope.urlId = $location.search().id;
         $http.get('/api/songs/'+$scope.urlId)
             .success(function (data,status) {
