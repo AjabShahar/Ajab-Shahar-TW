@@ -14,7 +14,6 @@ var songDetailsController = function($scope, $http,$window,$location){
   $scope.mediaCategoryList = [];
   $scope.umbrellaTitleList = [];
   $scope.songTitleList = [];
-  $scope.lyricsTextList = [];
   $scope.coupletList = [];
   $scope.selectedLyricsText;
 
@@ -75,25 +74,6 @@ var songDetailsController = function($scope, $http,$window,$location){
 
       });
     };
-
-  $scope.addLyricsText = function(){
-    if($scope.lyricsText != ""){
-      $scope.lyricsTextList.push($scope.lyricsText);
-    }
-    $scope.lyricsText = "";
-  }
-
-  Array.prototype.insert = function (index, item) {
-    this.splice(index, 0, item);
-  };
-
-  $scope.moveItemUp = function(){
-    var selectedSongIndex = $scope.lyricsTextList.indexOf($scope.selectedLyricsText);
-    var songToBeMovedUp = $scope.lyricsTextList.splice(selectedSongIndex, 1);
-
-    $scope.lyricsTextList.insert(selectedSongIndex - 1, songToBeMovedUp[0].englishTransliteration);
-
-  }
 
   $scope.updateSong = function(){
      var youtubeIdIsNull = $scope.formInfo.youtubeVideoId == undefined || $scope.formInfo.youtubeVideoId == "";

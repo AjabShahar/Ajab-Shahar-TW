@@ -1,21 +1,42 @@
 <div>
-    <div>
-        <label>Lyrics</label>
-    </div>
-    <div>
-        <select name="format" ng-model="lyricsComponent" class="form-control">
-            <option value="stanza">Stanza</option>
-            <option value="couplet">Couplet</option>
-        </select>
-    </div>
-    <div>
-        <textarea name="originalTitle" ng-model="originalText"></textarea>
-    </div>
+    <div class="row">
+        <div class="form-group col-sm-2">
+            <label>Lyrics</label>
+        </div>
+        <div class="form-group col-sm-1">
+            <select name="format" ng-model="formInfo.lyricsComponent" class="form-control">
+                <option value="stanza">Stanza</option>
+                <option value="couplet">Couplet</option>
+            </select>
+        </div>
+        <br/>
 
-    <button class="btn btn-info">Add</button>
+        <div class="form-group col-sm-3" ng-show=" formInfo.lyricsComponent == 'stanza' ">
+            <textarea class="form-control" rows="6" name="lyricsTextPlaceholder" ng-model="lyricsText.englishTransliteration"></textarea>
+        </div>
 
-    <div class="form-group col-sm-3">
-        <textarea class="form-control lyricsBox" rows="30" name="originalTitle" ng-model="formInfo.originalText"></textarea>
+        <div class="form-group col-sm-2" ng-show=" formInfo.lyricsComponent == 'couplet' ">
+            <select  ng-model="lyricsText"
+                     ng-options="couplet.englishTransliteration for couplet in coupletList" class="form-control">
+            </select>
+        </div>
+
+        <br/>
+
+        <button class="btn btn-info" ng-click="addLyricsText()" ng-show="formInfo.lyricsComponent != '' &&  formInfo.lyricsComponent != null " >Add</button>
+
+        <br/>
+
     </div>
-
+    <div class="form-group col-sm-3" ng-show="lyricsTextList.length != 0">
+        <div class="lyricsBoxMultiSelect">
+            <select ng-model="selectedLyricsText" size="40"
+                    ng-options="songLyrics.englishTransliteration for songLyrics in lyricsTextList" class="form-control">
+            </select>
+        </div>
+        <div class="lyricsBoxComponents">
+            <span class="glyphicon glyphicon-arrow-up btn-lg" ng-click="moveItemUp()"></span>
+            <span class="glyphicon glyphicon-arrow-down btn-lg" ng-click="alert('Test')"></span>
+        </div>
+    </div>
 </div>

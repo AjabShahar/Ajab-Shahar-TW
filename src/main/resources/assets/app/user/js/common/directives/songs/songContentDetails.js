@@ -11,7 +11,7 @@ thumbnailModule.directive("songContentDetails", function() {
             id:'@',
             detailsService:'='
         },
-        templateUrl:'/user/js/common/templates/songs/contentDetails.html',
+        templateUrl:'/user/js/common/templates/songs/songContentDetails.html',
         controller: function($scope) {
             $scope.hideContents = function(){
                 return $scope.detailsService.shouldHideDetails;

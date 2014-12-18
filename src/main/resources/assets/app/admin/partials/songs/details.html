@@ -10,7 +10,7 @@
     <script type="text/javascript" src="../../../common/lib/textAngular/dist/textAngular.min.js"></script>
     <script type="text/javascript" src="../../js/services/contentService.js"></script>
     <script type="text/javascript" src="../../js/Songs/songsAdminApp.js"></script>
-    <script type="text/javascript" src="../../js/controllers/songs/detailsController.js"></script>
+    <script type="text/javascript" src="../../js/controllers/songs/songDetailsController.js"></script>
     <script type="text/javascript" src="../../js/directives/lyrics.js"></script>
     <script type="text/javascript" src="../../js/directives/asAdminTitle.js"></script>
     <link href="../../../common/css/header.css" rel="stylesheet" type="text/css">
@@ -39,6 +39,9 @@
 
                         <div class="row">
                             <as-admin-title title="Umbrella Title" title-data="formInfo.title" title-list="umbrellaTitleList"></as-admin-title>
+                        </div>
+
+                        <div class="row">
                             <as-admin-title title="Song Title" title-data="formInfo.songTitle" title-list="songTitleList"></as-admin-title>
                         </div>
 
@@ -141,49 +144,7 @@
                         </div>
 
 
-                        <!-- <lyrics lyrics-component="formInfo.lyricsComponent" original-text="formInfo.originalText"></lyrics> -->
-
-                        <div class="row">
-                            <div class="form-group col-sm-2">
-                                <label>Lyrics</label>
-                            </div>
-                            <div class="form-group col-sm-1">
-                                <select name="format" ng-model="formInfo.lyricsComponent" class="form-control">
-                                    <option value="stanza">Stanza</option>
-                                    <option value="couplet">Couplet</option>
-                                </select>
-                            </div>
-                            <br/>
-
-                            <div class="form-group col-sm-3" ng-show=" formInfo.lyricsComponent == 'stanza' ">
-                                <textarea class="form-control" rows="6" name="lyricsTextPlaceholder" ng-model="lyricsText.englishTransliteration"></textarea>
-                            </div>
-
-                            <div class="form-group col-sm-2" ng-show=" formInfo.lyricsComponent == 'couplet' ">
-                                <select  ng-model="lyricsText"
-                                         ng-options="couplet.englishTransliteration for couplet in coupletList" class="form-control">
-                                </select>
-                            </div>
-
-                            <br/>
-
-                            <button class="btn btn-info" ng-click="addLyricsText()" ng-show="formInfo.lyricsComponent != '' &&  formInfo.lyricsComponent != null " >Add</button>
-
-                            <br/>
-
-                        </div>
-                        <div class="form-group col-sm-3" ng-show="lyricsTextList.length != 0">
-                            <div class="lyricsBoxMultiSelect">
-                                <select ng-model="selectedLyricsText" size="40"
-                                        ng-options="songLyrics.englishTransliteration for songLyrics in lyricsTextList" class="form-control">
-                                </select>
-                            </div>
-                            <div class="lyricsBoxComponents">
-                                <span class="glyphicon glyphicon-arrow-up btn-lg" ng-click="moveItemUp()"></span>
-                                <span class="glyphicon glyphicon-arrow-down btn-lg" ng-click="alert('Test')"></span>
-                            </div>
-                        </div>
-
+                         <lyrics lyrics-component="formInfo.lyricsComponent" original-text="formInfo.originalText"></lyrics>
 
                         <br/>
 
