@@ -7,6 +7,7 @@ songsAdminApp.directive("lyrics", function() {
         scope: {
             lyricsComponent:'=',
             originalText:'=',
+            coupletList:'=',
         },
         templateUrl:'/admin/js/templates/lyrics.html',
         controller:function($scope){
