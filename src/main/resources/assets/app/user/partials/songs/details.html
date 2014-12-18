@@ -61,7 +61,9 @@
 
     <div class="versions toggleBySlide" ng-show="showVersion && shouldShowVersions()">
         <div class="carousel-wrapper jcarousel-wrapper">
-        <div as-carousel class="carousel-box jcarousel">
+            <div class="light-bg"></div>
+
+            <div as-carousel class="carousel-box jcarousel">
             <ul>
                 <li ng-repeat="song in versions track by $index">
                     <song-thumbnail-mapper details="song" show-details-service="detailsService" custom-style=""/>
@@ -75,9 +77,8 @@
     <div class="see-more" ng-show="shouldShowVersions()" ng-click="toggleVersion()">
         <a class="version" href="javascript:void(0)">
             {{numberOfVersions}} versions
-            <span class="arrow"></span>
+            <span class="arrow" ng-class="showVersion ? 'up-arrow' : ''"></span>
         </a>
-        <div class="light-bg"></div>
     </div>
 
     <div class='ajab-container'>
@@ -107,6 +108,35 @@
                     </div>
                 </div>
                 <div id="poem_container">
+                    <h2 class="song-heading">Dummy heading with data</h2>
+                    <div class="lyrics">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                    </div>
+
                 </div>
             </div>
             
