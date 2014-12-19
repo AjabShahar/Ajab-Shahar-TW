@@ -31,7 +31,7 @@ var songDetailsController = function($scope, $window,$location,songContentServic
             $scope.singers = allSingers;
             $scope.singersList = $scope.singers.people;
             angular.forEach($scope.singersList,function(singer){
-              if(singer.lastName == "null")
+              if(singer.lastName == null)
                 singer.lastName = '';
             });
         });
