@@ -34,7 +34,7 @@
     <br/>
         <div class="left">
             <div>
-                <div ng-controller="songDetailsController" ng-init="AddNewDiv=false;EditDiv=false">
+                <div ng-controller="songDetailsController">
                     <form>
 
                         <div class="row">
@@ -144,7 +144,7 @@
                         </div>
 
 
-                         <lyrics couplet-list="coupletList" lyrics-text="formInfo.lyricsText"></lyrics>
+                         <lyrics couplet-list="coupletList" lyrics-data="formInfo.lyricsData"></lyrics>
 
                         <br/>
 

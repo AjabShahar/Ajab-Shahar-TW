@@ -27,7 +27,22 @@ var songContentService = function ($http) {
         return $http.get('/api/category/media');
     }
 
+    var getSong = function (id) {
+        return $http.get('/api/songs/'+id);
+    }
+
+    var createSong = function (song) {
+        return $http.post('/api/songs', song);
+    }
+
+    var editSong = function (song) {
+        return $http.put('/api/songs/edit',song);
+    }
+
   return {
+    getSong:getSong,
+    createSong:createSong,
+    editSong:editSong,
     getAllUmbrellaTitles:getAllUmbrellaTitles,
     getAllSongTitles:getAllSongTitles,
     getAllSingers:getAllSingers,

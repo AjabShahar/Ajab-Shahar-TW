@@ -5,17 +5,17 @@ songsAdminApp.directive("lyrics", function() {
         replace : true,
         restrict: 'E',
         scope: {
-            lyricsText:'=',
+            lyricsData:'=',
             coupletList:'=',
         },
         templateUrl:'/admin/js/templates/lyrics.html',
         controller:function($scope){
             $scope.lyricsComponent = 'stanza';
-            $scope.lyricsTextList = [];
+            $scope.lyricsText = "";
 
             $scope.addLyricsText = function(){
                 if($scope.lyricsText != ""){
-                    $scope.lyricsTextList.push($scope.lyricsText);
+                    $scope.lyricsData.push($scope.lyricsText);
                     $scope.selectedLyricsText = $scope.lyricsText;
                 }
                 $scope.lyricsText = "";
@@ -33,23 +33,23 @@ songsAdminApp.directive("lyrics", function() {
             };
 
             $scope.moveItemUp = function(){
-                var selectedSongIndex = $scope.lyricsTextList.indexOf($scope.selectedLyricsText);
+                var selectedSongIndex = $scope.lyricsData.indexOf($scope.selectedLyricsText);
                 if(selectedSongIndex<=0)
                     return;
 
-                $scope.lyricsTextList.move(selectedSongIndex, selectedSongIndex-1);
+                $scope.lyricsData.move(selectedSongIndex, selectedSongIndex-1);
             }
 
             $scope.moveItemDown = function(){
-                var selectedSongIndex = $scope.lyricsTextList.indexOf($scope.selectedLyricsText);
-                if(selectedSongIndex>=$scope.lyricsTextList.length-1)
+                var selectedSongIndex = $scope.lyricsData.indexOf($scope.selectedLyricsText);
+                if(selectedSongIndex>=$scope.lyricsData.length-1)
                     return;
 
-                $scope.lyricsTextList.move(selectedSongIndex, selectedSongIndex+1);
+                $scope.lyricsData.move(selectedSongIndex, selectedSongIndex+1);
             }
 
             $scope.showLyrics = function(){
-                return $scope.lyricsTextList.length != 0;
+                return $scope.lyricsData.length != 0;
             }
         }
     }

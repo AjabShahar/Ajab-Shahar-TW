@@ -1,4 +1,4 @@
-var songDetailsController = function($scope, $http,$window,$location,songContentService){
+var songDetailsController = function($scope, $window,$location,songContentService){
     $scope.formInfo = {
     singers:[]
     };
@@ -15,7 +15,7 @@ var songDetailsController = function($scope, $http,$window,$location,songContent
     $scope.poets = [];
     $scope.songTitleList = [];
     $scope.coupletList = [];
-    $scope.selectedLyricsText;
+    $scope.formInfo.lyricsData=[];
 
     $scope.init = function(){
         songContentService.getAllUmbrellaTitles().success(function(umbrellaTitleList){
@@ -63,7 +63,7 @@ var songDetailsController = function($scope, $http,$window,$location,songContent
             return mediaCategory.name == "audio & video";
           })[0];
         }
-        $http.post('/api/songs', $scope.formInfo).success(function(data){
+        songContentService.createSong($scope.formInfo).success(function(data){
               $window.location.href = '/admin/partials/songs/edit.html?id='+data;
         });
     };
@@ -71,7 +71,7 @@ var songDetailsController = function($scope, $http,$window,$location,songContent
 
     $scope.getSongData = function(){
         $scope.urlId = $location.search().id;
-        $http.get('/api/songs/'+$scope.urlId)
+        songContentService.getSong($scope.urlId)
             .success(function (data,status) {
                           angular.forEach($scope.singersList,function(singer){
                               angular.forEach(data.singers,function(selectedSinger){
@@ -99,9 +99,9 @@ var songDetailsController = function($scope, $http,$window,$location,songContent
            })[0];
          }
 
-     $http.put('/api/songs/edit',$scope.formInfo).success(function(data){
-        alert('data updated');
-     });
+         songContentService.editSong($scope.formInfo).success(function(data){
+            alert('data updated');
+         });
     };
 
     $scope.redirectToEnterPage= function(isDirty){
@@ -115,4 +115,4 @@ var songDetailsController = function($scope, $http,$window,$location,songContent
     $scope.init();
 }
 
-songsAdminApp.controller('songDetailsController',['$scope','$http','$window','$location','songContentService',songDetailsController]);
+songsAdminApp.controller('songDetailsController',['$scope','$window','$location','songContentService',songDetailsController]);
