@@ -10,15 +10,34 @@ songsAdminApp.directive("lyrics", function() {
         },
         templateUrl:'/admin/js/templates/lyrics.html',
         controller:function($scope){
-            $scope.lyricsComponent = 'stanza';
             $scope.lyricsText = "";
 
+            $scope.initializeContent = function(){
+                $scope.current = {
+                    "contentType":"stanza",
+                    "englishTranslation":"","englishTransliteration":"","original":"",
+                };
+            }
+
+            $scope.initializeContent();
+
+            $scope.shouldShowStanzaDetails = function(){
+                return $scope.current.contentType == 'stanza' ;
+            }
+
+            $scope.shouldShowCoupletDetails = function(){
+                return $scope.current.contentType == 'couplet' ;
+            }
+
             $scope.addLyricsText = function(){
-                if($scope.lyricsText != ""){
-                    $scope.lyricsData.push($scope.lyricsText);
-                    $scope.selectedLyricsText = $scope.lyricsText;
-                }
-                $scope.lyricsText = "";
+                if($scope.current.englishTranslation == "" &&
+                $scope.current.englishTransliteration == "" &&
+                $scope.current.original == "")
+                    return;
+                var newElement = {};
+                angular.copy($scope.current,newElement);
+                $scope.lyricsData.content.push(newElement);
+                $scope.initializeContent();
             }
 
             Array.prototype.move = function (old_index, new_index) {
@@ -33,23 +52,23 @@ songsAdminApp.directive("lyrics", function() {
             };
 
             $scope.moveItemUp = function(){
-                var selectedSongIndex = $scope.lyricsData.indexOf($scope.selectedLyricsText);
+                var selectedSongIndex = $scope.lyricsData.content.indexOf($scope.selectedLyricsContent.content);
                 if(selectedSongIndex<=0)
                     return;
 
-                $scope.lyricsData.move(selectedSongIndex, selectedSongIndex-1);
+                $scope.lyricsData.content.move(selectedSongIndex, selectedSongIndex-1);
             }
 
             $scope.moveItemDown = function(){
-                var selectedSongIndex = $scope.lyricsData.indexOf($scope.selectedLyricsText);
-                if(selectedSongIndex>=$scope.lyricsData.length-1)
+                var selectedSongIndex = $scope.lyricsData.content.indexOf($scope.selectedLyricsContent.content);
+                if(selectedSongIndex>=$scope.lyricsData.content.length-1)
                     return;
 
-                $scope.lyricsData.move(selectedSongIndex, selectedSongIndex+1);
+                $scope.lyricsData.content.move(selectedSongIndex, selectedSongIndex+1);
             }
 
             $scope.showLyrics = function(){
-                return $scope.lyricsData.length != 0;
+                return $scope.lyricsData.content.length != 0;
             }
         }
     }
