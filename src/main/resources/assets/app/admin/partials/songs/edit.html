@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <title></title>
     <title></title>
-    <script src="../../../common/lib/angular/angular.js"></script>
-    <script src="../../../common/lib/angular-multi-select/angular-multi-select.js"></script>
+    <script type="text/javascript" src="../../../common/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="../../../common/lib/angular-multi-select/angular-multi-select.js"></script>
+    <script type="text/javascript" src="../../../common/lib/underscore/underscore.js"></script>
     <script type="text/javascript" src="../../../common/lib/angular-filter/dist/angular-filter.js"></script>
     <script type="text/javascript" src="../../../common/lib/textAngular/dist/textAngular-sanitize.min.js"></script>
     <script type="text/javascript" src="../../../common/lib/textAngular/dist/textAngular.min.js"></script>
@@ -26,14 +27,14 @@
 <div class="left">
     <h2>Edit song details</h2>
     <div class="left">
-        <div ng-controller="songDetailsController" ng-init="getSongData()" ng-init="AddNewDiv=false;EditDiv=false" >
+        <div ng-controller="songDetailsController" ng-init="getSongData()">
             <form name="songForm">
                 <div class="row">
-                    <as-admin-title title="Umbrella Title" title-data="formInfo.title" title-list="umbrellaTitleList"></as-admin-title>
+                    <as-admin-title title="Umbrella Title" title-data="formInfo.title" title-list="umbrellaTitleList" title-id="formInfo.title.id"></as-admin-title>
                 </div>
 
                 <div class="row">
-                    <as-admin-title title="Song Title" title-data="formInfo.songTitle" title-list="songTitleList"></as-admin-title>
+                    <as-admin-title title="Song Title" title-data="formInfo.songTitle" title-list="songTitleList" title-id="formInfo.songTitle.id"></as-admin-title>
                 </div>
 
                 <div class="row">

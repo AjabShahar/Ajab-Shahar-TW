@@ -5,6 +5,7 @@ songsAdminApp.directive("asAdminTitle", function() {
         restrict: 'E',
         scope: {
             title:'@',
+            titleId:'=',
             titleData:'=',
             titleList:'=',
         },
@@ -24,6 +25,11 @@ songsAdminApp.directive("asAdminTitle", function() {
                 $scope.AddNewTitle = false;
             }
 
+            $scope.$watch('titleId',function(newValue,oldValue){
+                if(newValue==oldValue)
+                    return;
+                $scope.titleData = _.findWhere($scope.titleList,{"id":$scope.titleId});
+            });
         }
     }
 });

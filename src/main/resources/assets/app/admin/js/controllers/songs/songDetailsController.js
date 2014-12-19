@@ -81,7 +81,6 @@ var songDetailsController = function($scope, $window,$location,songContentServic
 
                           });
                           $scope.formInfo = data;
-
       });
     };
 

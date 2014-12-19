@@ -4,7 +4,7 @@
     </div>
     <div class="form-group col-sm-2"  >
         <select ng-model="titleData" ng-disabled="AddNewTitle"
-                ng-options="sTitle.originalTitle for sTitle in titleList" class="form-control">
+                ng-options="sTitle as sTitle.originalTitle for sTitle in titleList" class="form-control">
         </select>
     </div>
 
