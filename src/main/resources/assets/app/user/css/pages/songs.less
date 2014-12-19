@@ -219,15 +219,15 @@ body.page-songs {
                         height: 23px;
 
                         &.favorite {
-                            background-position: 0 -69px;
+                            background-position: 0 -25px;
                             height: 22px;
                         }
                         &.share {
-                            background-position: 0 -22px;
-                            height: 24px;
+                            background-position: -26px 0;
+                            height: 23px;
                         }
                         &.download {
-                            background-position: 0 -45px;
+                            background-position: -26px -23px;
                         }
                     }
 
@@ -282,6 +282,54 @@ body.page-songs {
             line-height: 25px;
         }
 
+    }
+
+     .lyrics-footer {
+        background: transparent url(../../img/songs/song_bottom.png) 0  0 no-repeat;
+        height: 100px;
+        width: 100%;
+        display: inline-block;
+        position: relative;
+        ul {
+            margin: 15px auto 0px;
+            display: inline-block;
+            width: 12%;
+            &>li {
+                &>a {
+                    float: left;
+                    width: 48px;
+                    height: 49px;
+                    background: transparent url(../../img/songs/songs_sprite.png) 0  0 no-repeat;
+                    margin-left: 0.5%;
+                }
+
+
+                &.original {
+                    &>a {
+                        background-position: 1px -51px;
+                    }
+                }
+                &.transliteration {
+                    &>a {
+                        background-position: 1px -99px;
+                    }
+                }
+                &.translation {
+                    &>a {
+                        background-position: 1px -147px;
+                    }
+                }
+            }
+        }
+        .play-icon {
+            position: absolute;
+            right: 13%;
+            bottom: 40px;
+            background: transparent url(../../img/songs/songs_sprite.png) -52px  0px no-repeat;
+            width: 50px;
+            height: 102px;
+            display: inline-block;
+        }
     }
 
 
