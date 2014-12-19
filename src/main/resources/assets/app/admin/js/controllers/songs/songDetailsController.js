@@ -30,6 +30,10 @@ var songDetailsController = function($scope, $window,$location,songContentServic
         songContentService.getAllSingers().success(function(allSingers){
             $scope.singers = allSingers;
             $scope.singersList = $scope.singers.people;
+            angular.forEach($scope.singersList,function(singer){
+              if(singer.lastName == "null")
+                singer.lastName = '';
+            });
         });
 
         songContentService.getAllPoets().success(function(allPoets){

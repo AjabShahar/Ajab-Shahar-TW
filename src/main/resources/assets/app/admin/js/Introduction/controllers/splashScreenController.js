@@ -1,4 +1,4 @@
-var splashScreenController = function($scope,$location,$http,contentService){
+var splashScreenController = function($scope,$window,$location,$http,contentService){
     $scope.formInfo = {};
     $scope.option = {"url":"","imageUrl":""};
     $scope.splashScreenOptions;
@@ -31,6 +31,7 @@ var splashScreenController = function($scope,$location,$http,contentService){
     $scope.saveData = function(){
        $http.post('/api/SplashScreenOptions',$scope.formInfo).success(function(){
              alert("Data added");
+             $window.location.href = '/admin/partials/splashScreenOptions.html';
        });
     };
     $scope.showEnterButton = function(){
@@ -48,4 +49,4 @@ var splashScreenController = function($scope,$location,$http,contentService){
     $scope.getVideoUrl();
  };
 
-introductionApp.controller('splashScreenController',['$scope','$location','$http','contentService',splashScreenController]);
+introductionApp.controller('splashScreenController',['$scope','$window','$location','$http','contentService',splashScreenController]);
