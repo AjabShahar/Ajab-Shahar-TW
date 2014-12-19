@@ -1,35 +1,42 @@
 <div>
-    <div class="row">
-        <div class="form-group col-sm-2">
-            <label>Lyrics</label>
-        </div>
-        <div class="form-group col-sm-1">
-            <select name="format" ng-model="current.contentType" class="form-control">
-                <option value="stanza">Stanza</option>
-                <option value="couplet">Couplet</option>
-            </select>
-        </div>
-        <br/>
-
-        <div class="form-group col-sm-3" ng-show="shouldShowStanzaDetails()">
-            <textarea class="form-control" rows="6" ng-model="current.original"></textarea>
-            <textarea class="form-control" rows="6" ng-model="current.englishTranslation"></textarea>
-            <textarea class="form-control" rows="6" ng-model="current.englishTransliteration"></textarea>
-        </div>
-
-        <div class="form-group col-sm-2" ng-show="shouldShowCoupletDetails()">
-            <select  ng-model="current.content"
-                     ng-options="couplet.englishTransliteration for couplet in coupletList" class="form-control">
-            </select>
-        </div>
-
-        <br/>
-
-        <button class="btn btn-info" ng-click="addLyricsText()" >Add To Lyrics</button>
-
-        <br/>
-
+    <div class="form-group col-sm-2">
+        <label>Lyrics</label>
     </div>
+    <div>
+        <div class="form-group col-sm-2">
+            <label>Chorus</label>
+        </div>
+        <div class="form-group col-sm-3">
+            <input type="text" name="chorus" ng-model="lyricsData.chorus" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group col-sm-1">
+        <select name="format" ng-model="current.contentType" class="form-control">
+            <option value="stanza">Stanza</option>
+            <option value="couplet">Couplet</option>
+        </select>
+    </div>
+    <br/>
+
+    <div class="form-group col-sm-3" ng-show="shouldShowStanzaDetails()">
+        <textarea class="form-control" rows="6" ng-model="current.original"></textarea>
+        <textarea class="form-control" rows="6" ng-model="current.englishTranslation"></textarea>
+        <textarea class="form-control" rows="6" ng-model="current.englishTransliteration"></textarea>
+    </div>
+
+    <div class="form-group col-sm-2" ng-show="shouldShowCoupletDetails()">
+        <select  ng-model="current.content"
+                 ng-options="couplet.englishTransliteration for couplet in coupletList" class="form-control">
+        </select>
+    </div>
+
+    <br/>
+
+    <button class="btn btn-info" ng-click="addLyricsText()" >Add To Lyrics</button>
+
+    <br/>
+
     <div class="form-group col-sm-3" ng-show="showLyrics()">
         <div class="lyricsBoxMultiSelect">
             <select ng-model="selectedLyricsContent.content" size="40"
