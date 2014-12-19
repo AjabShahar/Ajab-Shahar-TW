@@ -1,7 +1,7 @@
 
 --liquibase formatted sql
 
-
+--changeset Soumya:2
 CREATE TABLE category
 (
   id serial NOT NULL,

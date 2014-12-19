@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset PADMA:5
+--changeset PADMA:6
 CREATE TABLE couplet
 (
   id serial NOT NULL,

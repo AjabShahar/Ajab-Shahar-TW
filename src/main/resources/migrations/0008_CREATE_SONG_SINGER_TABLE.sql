@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset PADMA:7
+--changeset PADMA:8
 CREATE TABLE song_singer
 (
   id serial NOT NULL,

@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset PADMA:6
+--changeset PADMA:7
 CREATE TABLE splash_screen
 (
   id serial NOT NULL,

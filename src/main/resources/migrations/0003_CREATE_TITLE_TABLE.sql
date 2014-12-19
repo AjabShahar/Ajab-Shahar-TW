@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset PADMA:32
+--changeset PADMA:3
 CREATE TABLE title
 (
   id serial NOT NULL,

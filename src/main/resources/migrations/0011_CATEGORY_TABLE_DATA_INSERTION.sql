@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset PADMA:10
+--changeset PADMA:11
 INSERT INTO CATEGORY(
   NAME, CATEGORY_TYPE
 )

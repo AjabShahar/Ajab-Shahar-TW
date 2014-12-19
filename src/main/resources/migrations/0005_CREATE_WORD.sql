@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset PADMA:4
+--changeset PADMA:5
 CREATE TABLE word
 (
   id serial NOT NULL,
