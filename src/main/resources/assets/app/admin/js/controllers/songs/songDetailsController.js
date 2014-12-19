@@ -17,36 +17,38 @@ var songDetailsController = function($scope, $http,$window,$location,songContent
     $scope.coupletList = [];
     $scope.selectedLyricsText;
 
-    songContentService.getAllUmbrellaTitles().success(function(umbrellaTitleList){
-        $scope.umbrellaTitleList = umbrellaTitleList;
-    });
+    $scope.init = function(){
+        songContentService.getAllUmbrellaTitles().success(function(umbrellaTitleList){
+            $scope.umbrellaTitleList = umbrellaTitleList;
+        });
 
-    songContentService.getAllSongTitles().success(function(songTitleList){
-        $scope.songTitleList= songTitleList;
-    });
+        songContentService.getAllSongTitles().success(function(songTitleList){
+            $scope.songTitleList= songTitleList;
+        });
 
 
-    songContentService.getAllSingers().success(function(allSingers){
-        $scope.singers = allSingers;
-        $scope.singersList = $scope.singers.people;
-    });
+        songContentService.getAllSingers().success(function(allSingers){
+            $scope.singers = allSingers;
+            $scope.singersList = $scope.singers.people;
+        });
 
-    songContentService.getAllPoets().success(function(allPoets){
-        $scope.poets = allPoets.people;
-        $scope.poetsList = $scope.poets;
-    });
+        songContentService.getAllPoets().success(function(allPoets){
+            $scope.poets = allPoets.people;
+            $scope.poetsList = $scope.poets;
+        });
 
-    songContentService.getAllCouplets().success(function(allCouplets){
-        $scope.coupletList = allCouplets;
-    });
+        songContentService.getAllCouplets().success(function(allCouplets){
+            $scope.coupletList = allCouplets;
+        });
 
-    songContentService.getSongCategories().success(function(categoryList){
-        $scope.songCategoryList = categoryList;
-    });
+        songContentService.getSongCategories().success(function(categoryList){
+            $scope.songCategoryList = categoryList;
+        });
 
-    songContentService.getMediaCategories().success(function(categoryList){
-        $scope.mediaCategoryList = categoryList;
-    });
+        songContentService.getMediaCategories().success(function(categoryList){
+            $scope.mediaCategoryList = categoryList;
+        });
+    }
 
     $scope.saveData = function(){
         var youtubeIdIsNull = $scope.formInfo.youtubeVideoId == undefined || $scope.formInfo.youtubeVideoId == "";
@@ -102,10 +104,15 @@ var songDetailsController = function($scope, $http,$window,$location,songContent
      });
     };
 
-    $scope.redirectToEnterPage= function(){
-        alert('This data is not updated');
+    $scope.redirectToEnterPage= function(isDirty){
+        if(isDirty)
+        {
+            alert('This data is not updated');
+        }
         $window.location.href = '/admin/partials/songs/details.html';
     };
+
+    $scope.init();
 }
 
 songsAdminApp.controller('songDetailsController',['$scope','$http','$window','$location','songContentService',songDetailsController]);
