@@ -39,6 +39,9 @@ public class Song {
     @Column(name = "THUMBNAIL_URL")
     private String thumbnail_url;
 
+    @Column(name = "DOWNLOAD_URL")
+    private String download_url;
+
     @Column(name = "IS_AUTHORING_COMPLETE")
     private Boolean isAuthoringComplete;
 
@@ -163,6 +166,14 @@ public class Song {
 
     public void setSongTitle(Title songTitle) {
         this.songTitle = songTitle;
+    }
+
+    public String getDownload_url() {
+        return download_url;
+    }
+
+    public void setDownload_url(String download_url) {
+        this.download_url = download_url;
     }
 }
 
