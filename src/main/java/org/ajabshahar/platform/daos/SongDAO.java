@@ -37,10 +37,13 @@ public class SongDAO extends AbstractDAO<Song> {
     }
 
     public Song invokeAllSetters(Song originalSongData, Song updatableSongData) {
-
-        originalSongData.setDownload_url(updatableSongData.getDownload_url());
+        originalSongData.setTitle(updatableSongData.getTitle());
+        originalSongData.setSongTitle(updatableSongData.getSongTitle());
         originalSongData.setAbout(updatableSongData.getAbout());
         originalSongData.setNotes(updatableSongData.getNotes());
+        originalSongData.setDownload_url(updatableSongData.getDownload_url());
+
+
         originalSongData.setShowOnLandingPage(updatableSongData.getShowOnLandingPage());
         originalSongData.setDuration(updatableSongData.getDuration());
         originalSongData.setYoutubeVideoId(updatableSongData.getYoutubeVideoId());
@@ -50,8 +53,6 @@ public class SongDAO extends AbstractDAO<Song> {
         originalSongData.setPoets(updatableSongData.getPoets());
         originalSongData.setSongCategory(updatableSongData.getSongCategory());
         originalSongData.setMediaCategory(updatableSongData.getMediaCategory());
-        originalSongData.setTitle(updatableSongData.getTitle());
-        originalSongData.setSongTitle(updatableSongData.getSongTitle());
         return originalSongData;
     }
 

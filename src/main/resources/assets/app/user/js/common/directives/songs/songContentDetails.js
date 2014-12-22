@@ -10,6 +10,8 @@ thumbnailModule.directive("songContentDetails", function() {
             poet:'@',
             id:'@',
             downloadurl:'@',
+            about:'@',
+            notes:'@',
             detailsService:'='
         },
         templateUrl:'/user/js/common/templates/songs/songContentDetails.html',

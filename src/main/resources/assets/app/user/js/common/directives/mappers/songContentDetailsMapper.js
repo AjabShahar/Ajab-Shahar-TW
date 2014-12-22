@@ -30,7 +30,9 @@ thumbnailModule.directive("songContentDetailsMapper", function() {
             "audioUrl":$scope.details.soundCloudTrackID,
             "singer":getSingers($scope.details.singers),
             "poet":$scope.details.poets[0].firstName,
-            "downloadURL":$scope.details.download_url
+            "downloadURL":$scope.details.download_url,
+            "about":$scope.details.about,
+            "notes":$scope.details.notes
             };
         }
     }
