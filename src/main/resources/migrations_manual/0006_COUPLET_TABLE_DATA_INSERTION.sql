@@ -1,6 +1,4 @@
-﻿--liquibase formatted sql
-
---changeset PADMA:27
+﻿
 INSERT INTO COUPLET (
    ORIGINAL_TITLE,
    ENGLISH_TRANSLATION,

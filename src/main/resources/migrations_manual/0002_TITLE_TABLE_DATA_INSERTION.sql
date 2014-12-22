@@ -1,6 +1,4 @@
-﻿--liquibase formatted sql
-
---changeset PADMA:38
+﻿
 INSERT INTO TITLE(
    ORIGINAL_TITLE,
    ENGLISH_TRANSLATION,

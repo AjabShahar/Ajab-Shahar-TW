@@ -1,6 +1,4 @@
-﻿--liquibase formatted sql
-
---changeset PADMA:11
+﻿
 INSERT INTO SONG(
     SHOW_ON_LANDING_PAGE,
     DURATION,

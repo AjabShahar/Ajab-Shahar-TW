@@ -1,6 +1,4 @@
---liquibase formatted sql
 
---changeset PADMA:9
 INSERT INTO PERSON(
  FIRST_NAME,
  MIDDLE_NAME,

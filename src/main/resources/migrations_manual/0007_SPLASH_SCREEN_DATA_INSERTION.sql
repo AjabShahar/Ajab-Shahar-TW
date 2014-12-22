@@ -1,6 +1,4 @@
---liquibase formatted sql
 
---changeset JAIDEEP:14
 INSERT INTO SPLASH_SCREEN (
     URL,
 	IMAGE_URL,
