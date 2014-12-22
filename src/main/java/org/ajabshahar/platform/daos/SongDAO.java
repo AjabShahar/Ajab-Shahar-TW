@@ -38,6 +38,7 @@ public class SongDAO extends AbstractDAO<Song> {
 
     public Song invokeAllSetters(Song originalSongData, Song updatableSongData) {
 
+        originalSongData.setDownload_url(updatableSongData.getDownload_url());
         originalSongData.setShowOnLandingPage(updatableSongData.getShowOnLandingPage());
         originalSongData.setDuration(updatableSongData.getDuration());
         originalSongData.setYoutubeVideoId(updatableSongData.getYoutubeVideoId());
