@@ -86,7 +86,7 @@ public class SongDAO extends AbstractDAO<Song> {
 
     public Song updateSong(Song updatableSong) {
         Long id = updatableSong.getId();
-        Song originalSongData = (Song) sessionFactory.openSession().get(Song.class, id);
+        Song originalSongData = (Song) sessionFactory.openStatelessSession().get(Song.class, id);
         if (updatableSong.getSongTitle().getId() == 0) {
             TitleDAO titleDAO = new TitleDAO(sessionFactory);
             titleDAO.create(updatableSong.getSongTitle());
