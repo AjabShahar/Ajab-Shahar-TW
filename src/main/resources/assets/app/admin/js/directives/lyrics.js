@@ -30,9 +30,9 @@ songsAdminApp.directive("lyrics", function() {
             }
 
             $scope.addLyricsText = function(){
-                if($scope.current.englishTranslation == "" &&
+                if(($scope.current.englishTranslation == "" &&
                 $scope.current.englishTransliteration == "" &&
-                $scope.current.original == "")
+                $scope.current.original == "") && $scope.current.content == null)
                     return;
                 var newElement = {};
                 angular.copy($scope.current,newElement);
