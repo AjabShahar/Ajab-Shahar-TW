@@ -64,7 +64,8 @@ header ul {
     width:100%;
     clear:right;
     padding:1% 0;
-    border-bottom: solid 1px #eee;color:#444;
+    border-bottom: solid 1px #d9d9d9;
+    color:#444;
 
     &:last-child {
         border:0;
@@ -72,7 +73,7 @@ header ul {
 
     li {
         padding:0% 1.5%;
-        border-left:solid 1px #ddd;
+        border-left:solid 1px #c7c6c5;
         display:inline-block;
         float:left;
         line-height: 18px;
@@ -100,6 +101,7 @@ header ul {
             font-size: 12px;
             color:#b3b3b3;
             font-weight: 300;
+            border-left: solid 1px #b3b3b3;
 
             &:last-child {
                 border:0;
@@ -107,6 +109,10 @@ header ul {
 
             &.selected {
                  border-left: solid 1px #ddd;
+            }
+
+            &.hindi {
+                font-size: 14px;
             }
 
             @media screen and (max-width: 770px) {
@@ -121,7 +127,7 @@ header ul {
     &.firstLine {
         margin-top:0%;
         color:#666;
-        padding: 5px 0 10px;
+        padding: 10px 0;
 
         li>a {
             font-weight: 300;
@@ -135,14 +141,21 @@ header ul {
     }
 
     &.secondLine {
-        li>a {
-            font-weight: 300;
-            color: #7F8080;
-            font-size: 13px;
-            @media screen and (max-width: 770px) {
-                font-size: 11px;
+        li {
+            padding: 0 1%;
+            &:first-child {
+                padding-left: 0;
+            }
+            &>a {
+                font-weight: 300;
+                color: #7F8080;
+                font-size: 13px;
+                @media screen and (max-width: 770px) {
+                    font-size: 11px;
+                }
             }
         }
+
     }
 
     &.thirdLine {
