@@ -31,8 +31,8 @@ thumbnailModule.directive("songContentDetailsMapper", function() {
             "singer":getSingers($scope.details.singers),
             "poet":$scope.details.poets[0].firstName,
             "downloadURL":$scope.details.download_url,
-            "about":$scope.details.about,
-            "notes":$scope.details.notes
+            "about": '\"' + $scope.details.about + '\"',
+            "notes": '\"' + $scope.details.notes + '\"'
             };
         }
     }
