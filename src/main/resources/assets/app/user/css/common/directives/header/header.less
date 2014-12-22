@@ -1,14 +1,13 @@
 /* header */
 header{
   display:inline-block;
-  /*max-width:1000px;*/
   width:98%;
-  padding: 1% 0 10px 0;
+  padding: 10px 0 20px;
   margin: 0 auto;
-}
-header img.logo{
-    content:url("../../../../img/common/directives/header/logo.png");
-    float:left;
+
+  img.logo{
+      float:left;
+  }
 }
 
 .headerBox{
@@ -47,8 +46,16 @@ header img.logo{
 .headerWrapper.fixed{position:fixed;width:100%;top:0;display:block;}
 
 
-.logoContainer{float:left;display:inline-block;}
-.menuContainer{ width: auto; margin-left: 131px; }
+.logoContainer {
+    float:left;
+    display:inline-block;
+}
+
+.menuContainer {
+    width: auto;
+    margin-left: 140px;
+    margin-top: 5px;
+}
 
 
 header ul {
@@ -68,26 +75,31 @@ header ul {
         border-left:solid 1px #ddd;
         display:inline-block;
         float:left;
+        line-height: 18px;
 
         &:first-child {
             border:0;
+            padding-left: 0;
         }
 
         @media screen and (max-width: 770px) {
             padding: 0 1%;
         }
+
     }
 
     &.topLine {
         float: right;
         text-align: right;
         border: 0;
-        font-size: 0.8em;
-        color:#ccc;
+        padding: 0;
 
         li {
             float:right;
             padding:0 1%;
+            font-size: 12px;
+            color:#b3b3b3;
+            font-weight: 300;
 
             &:last-child {
                 border:0;
@@ -96,20 +108,41 @@ header ul {
             &.selected {
                  border-left: solid 1px #ddd;
             }
+
+            @media screen and (max-width: 770px) {
+                font-size: 10px;
+            }
+
         }
 
 
     }
 
     &.firstLine {
-        font-size:1.5em;
         margin-top:0%;
         color:#666;
+        padding: 5px 0 10px;
+
+        li>a {
+            font-weight: 300;
+            color: #333;
+            font-size: 22px;
+
+            @media screen and (max-width: 770px) {
+                font-size: 18px;
+            }
+        }
     }
 
     &.secondLine {
-        font-size:0.8em;
-        color:#999;
+        li>a {
+            font-weight: 300;
+            color: #7F8080;
+            font-size: 13px;
+            @media screen and (max-width: 770px) {
+                font-size: 11px;
+            }
+        }
     }
 
     &.thirdLine {
