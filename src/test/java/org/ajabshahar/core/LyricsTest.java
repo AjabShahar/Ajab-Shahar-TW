@@ -3,6 +3,7 @@ package org.ajabshahar.core;
 import com.google.gson.JsonObject;
 import org.ajabshahar.platform.daos.LyricDAO;
 import org.ajabshahar.platform.models.Lyric;
+import org.ajabshahar.platform.models.Song;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,19 +17,25 @@ import static org.mockito.Mockito.verify;
 public class LyricsTest {
 
     private Lyrics lyrics;
+    private JsonObject lyric;
+    private Song song;
     @Mock
     private LyricDAO lyricRepository;
+
     @Before
     public void setUp() throws Exception {
+        lyric = new JsonObject();
         lyrics = new Lyrics(lyricRepository);
+        song = new Song();
     }
+
     @Test
     public void shouldTestSaveLyrics() throws Exception {
 
-        JsonObject lyric =new JsonObject();
         lyrics.save(lyric);
 
-         verify(lyricRepository).create(any(Lyric.class));
+        verify(lyricRepository).create(any(Lyric.class));
 
     }
+
 }

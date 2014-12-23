@@ -41,7 +41,7 @@ public class SongResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response saveSong(String jsonSong) {
         Song song = songsRepresentationFactory.create(jsonSong);
-        JsonObject lyricsData = lyricsRepresentationFactory.create(jsonSong);
+        JsonObject lyricsData = lyricsRepresentationFactory.getLyricsDataFromJson(jsonSong);
         song = songs.save(song,lyricsData);
         return Response.status(200).entity(song.getId()).build();
     }

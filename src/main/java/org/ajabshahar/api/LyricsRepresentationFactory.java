@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 
 public class LyricsRepresentationFactory {
 
-    public JsonObject create(String jsonSong) {
+    public JsonObject getLyricsDataFromJson(String jsonSong) {
         JsonObject jsonObject = new Gson().fromJson(jsonSong, JsonObject.class);
         JsonObject object = jsonObject.getAsJsonObject("lyricsData");
 

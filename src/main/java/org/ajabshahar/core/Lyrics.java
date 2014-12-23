@@ -49,8 +49,7 @@ public class Lyrics {
     }
 
     private Stanza getStanza(JsonObject stanzaJson) {
-        Stanza stanza = new Gson().fromJson(stanzaJson.toString(), Stanza.class);
-        return stanza;
+        return new Gson().fromJson(stanzaJson.toString(), Stanza.class);
     }
 
     public Couplet getCouplet(JsonObject coupletJson) {

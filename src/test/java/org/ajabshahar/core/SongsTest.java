@@ -100,6 +100,7 @@ public class SongsTest {
         Song result = songs.save(song, lyricsData);
 
         assertEquals(song, result);
+        verify(lyrics).create(lyricsData,song);
     }
 
     @Test
@@ -115,6 +116,7 @@ public class SongsTest {
 
         Song result = songs.save(song, lyricsData);
         verify(titleRepository).create(songTitle);
+        verify(lyrics).create(lyricsData,song);
     }
 
     @Test
@@ -127,8 +129,9 @@ public class SongsTest {
         when(categoryRepository.getUmbrellaTitleCategory()).thenReturn(new Category());
 
         Song result = songs.save(song, lyricsData);
-        verify(titleRepository, atLeast(2)).create(any(Title.class));
 
+        verify(titleRepository, atLeast(2)).create(any(Title.class));
+        verify(lyrics).create(lyricsData,song);
         assertNotNull(song.getTitle());
     }
 
@@ -144,8 +147,10 @@ public class SongsTest {
         when(songsRepository.saveSong(song)).thenReturn(song);
 
         Song result = songs.save(song, lyricsData);
+
         verify(titleRepository).create(umbrellaTitle);
         verify(titleRepository).create(songTitle);
+        verify(lyrics).create(lyricsData,song);
     }
 
     @Test
@@ -159,8 +164,9 @@ public class SongsTest {
         when(categoryRepository.getUmbrellaTitleCategory()).thenReturn(new Category());
 
         Song result = songs.save(song, lyricsData);
-        verify(titleRepository).create(any(Title.class));
 
+        verify(titleRepository).create(any(Title.class));
+        verify(lyrics).create(lyricsData,song);
         assertNotNull(song.getTitle());
     }
 
