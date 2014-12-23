@@ -37,7 +37,7 @@ public class CoupletResource {
 
     }
 
-    @PUT
+    @POST
     @Path("/edit")
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)

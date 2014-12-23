@@ -30,7 +30,7 @@ public class WordDAO extends AbstractDAO<Word> {
         return (Word) sessionFactory.openSession().get(Word.class,id);
     }
 
-    public void updateSong(Long id, Word updatableWord) {
+    public void updateWord(Long id, Word updatableWord) {
          Word originalWord = (Word) sessionFactory.openSession().get(Word.class,id);
          originalWord = invokeSetters(originalWord,updatableWord);
         try{

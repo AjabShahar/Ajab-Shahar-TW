@@ -36,8 +36,8 @@ public class WordResource {
     @Path("/edit")
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateSong(String  jsonSong){
-        JsonElement jsonElement = new Gson().fromJson(jsonSong, JsonElement.class);
+    public Response updateWord(String  jsonWord){
+        JsonElement jsonElement = new Gson().fromJson(jsonWord, JsonElement.class);
         JsonObject jsonObject = jsonElement.getAsJsonObject();
         Long id = jsonObject.get("id").getAsLong();
         Word word = new Gson().fromJson(jsonObject.get("data"),Word.class);
@@ -61,7 +61,7 @@ public class WordResource {
     @GET
     @Path("/edit")
     @Produces(MediaType.APPLICATION_JSON)
-    public Word getSongById(@QueryParam("id") Long id){
+    public Word getWordById(@QueryParam("id") Long id){
         try {
             return wordDAO.findById(id);
         }
