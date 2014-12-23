@@ -48,7 +48,7 @@ public class SongResourceTest {
         when(songs.findBy(SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER)).thenReturn(songList);
         when(songsRepresentationFactory.createSongsRepresentation(songList)).thenReturn(songsRepresentation);
 
-        Response response = songResource.getSongs(SINGER_ID, POET_ID, 1, FILTERED_LETTER);
+        Response response = songResource.getPublishedSongs(SINGER_ID, POET_ID, 1, FILTERED_LETTER);
         assertEquals(songsRepresentation, response.getEntity());
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
     }
@@ -58,7 +58,7 @@ public class SongResourceTest {
         when(songList.size()).thenReturn(0);
         when(songs.findBy(SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER)).thenReturn(songList);
 
-        Response response = songResource.getSongs(SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER);
+        Response response = songResource.getPublishedSongs(SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER);
         assertEquals(Response.Status.NOT_FOUND.getStatusCode(), response.getStatus());
     }
 
@@ -67,7 +67,7 @@ public class SongResourceTest {
         when(songs.findBy(SONG_ID)).thenReturn(song);
         when(songsRepresentationFactory.create(song)).thenReturn(songRepresentation);
 
-        Response response = songResource.getSong(SONG_ID);
+        Response response = songResource.getPublishedSong(SONG_ID);
 
         assertEquals(songRepresentation, response.getEntity());
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
@@ -77,7 +77,7 @@ public class SongResourceTest {
     public void shouldGet404IfSongNotFound() throws Exception {
         when(songs.findBy(SONG_ID)).thenReturn(null);
 
-        Response response = songResource.getSong(SONG_ID);
+        Response response = songResource.getPublishedSong(SONG_ID);
 
         assertEquals(Response.Status.NOT_FOUND.getStatusCode(), response.getStatus());
     }

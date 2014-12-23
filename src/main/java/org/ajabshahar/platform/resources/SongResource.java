@@ -80,8 +80,8 @@ public class SongResource {
 
     @GET
     @UnitOfWork
-    @Path("/getsongs")
-    public Response getSongs(@QueryParam("singerId") int singerId, @QueryParam("poetId") int poetId, @QueryParam("startFrom") int startFrom, @QueryParam("filteredLetter") String filteredLetter) {
+    @Path("/getPublishedSongs")
+    public Response getPublishedSongs(@QueryParam("singerId") int singerId, @QueryParam("poetId") int poetId, @QueryParam("startFrom") int startFrom, @QueryParam("filteredLetter") String filteredLetter) {
         List<Song> songList = songs.findBy(singerId, poetId, startFrom, filteredLetter);
         if (songList == null || songList.size() == 0) {
             return Response.status(Response.Status.NOT_FOUND).build();
@@ -92,8 +92,8 @@ public class SongResource {
 
     @GET
     @UnitOfWork
-    @Path("/getsongs/{id}")
-    public Response getSong(@PathParam("id") int songId) {
+    @Path("/getPublishedSongs/{id}")
+    public Response getPublishedSong(@PathParam("id") int songId) {
         logger.debug("Get song with id: {}", songId);
         Song song = songs.findBy(songId);
         if (song == null) {

@@ -1,6 +1,6 @@
 var contentService = function ($http) {
   var getMainLandingPageThumbnails = function () {
-    return $http.get('/api/songs/getsongs');
+    return $http.get('/api/songs/getPublishedSongs');
   };
 
   var getSongsLandingPageThumbnails = function () {
