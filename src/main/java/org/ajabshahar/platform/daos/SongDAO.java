@@ -33,7 +33,9 @@ public class SongDAO extends AbstractDAO<Song> {
     }
 
     public List<Song> findAll() {
-        return list(namedQuery("org.ajabshahar.platform.models.Song.findAll"));
+        Session currentSession = sessionFactory.getCurrentSession();
+        Criteria findSongs = currentSession.createCriteria(Song.class);
+        return findSongs.list();
     }
 
     public Song invokeAllSetters(Song originalSongData, Song updatableSongData) {
@@ -63,33 +65,25 @@ public class SongDAO extends AbstractDAO<Song> {
     public List<Song> findBy(int songId, int singerId, int poetId, int startFrom, String filteredLetter) {
         Session currentSession = sessionFactory.getCurrentSession();
         Criteria findSongs = currentSession.createCriteria(Song.class);
-        boolean conditionApplied = false;
         if (songId != 0) {
             findSongs.add(Restrictions.eq("id", Long.valueOf(songId)));
-            conditionApplied = true;
         }
         if (singerId != 0) {
             findSongs.createAlias("singers", "singersAlias");
             findSongs.add(Restrictions.eq("singersAlias.id", Long.valueOf(singerId)));
-            conditionApplied = true;
         }
         if (poetId != 0) {
             findSongs.createAlias("poets", "poetsAlias");
             findSongs.add(Restrictions.eq("poetsAlias.id", Long.valueOf(poetId)));
-            conditionApplied = true;
         }
         if (startFrom != 0) {
             findSongs.setFirstResult(startFrom);
-            conditionApplied = true;
         }
         if (filteredLetter != null) {
             findSongs.createAlias("songTitle", "songTitleAlias");
             findSongs.add(Restrictions.like("songTitleAlias.englishTranslation", filteredLetter, MatchMode.START));
-            conditionApplied = true;
         }
-        if (conditionApplied) {
-            findSongs.add(Restrictions.eq("isAuthoringComplete", true));
-        }
+        findSongs.add(Restrictions.eq("isAuthoringComplete",true));
         findSongs.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return findSongs.list();
     }

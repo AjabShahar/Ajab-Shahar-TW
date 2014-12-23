@@ -123,7 +123,7 @@ public class SongsTest {
         when(categoryRepository.getUmbrellaTitleCategory()).thenReturn(new Category());
 
         Song result = songs.save(song);
-        verify(titleRepository,atLeast(2)).create(any(Title.class));
+        verify(titleRepository, atLeast(2)).create(any(Title.class));
 
         assertNotNull(song.getTitle());
     }
@@ -160,4 +160,11 @@ public class SongsTest {
         assertNotNull(song.getTitle());
     }
 
+    @Test
+    public void shouldGetAllSongs() throws Exception {
+        when(songsRepository.findAll()).thenReturn(songsList);
+        List<Song> result = songs.findAll();
+
+        assertEquals(songsList, result);
+    }
 }

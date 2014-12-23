@@ -67,5 +67,9 @@ public class Songs {
         }
         return songsRepository.saveSong(song);
     }
+
+    public List<Song> findAll() {
+        return songsRepository.findAll();
+    }
 }
 

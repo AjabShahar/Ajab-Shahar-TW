@@ -113,4 +113,13 @@ public class SongResource {
         SongsRepresentation songs = songsRepresentationFactory.createSongsRepresentation(songList);
         return Response.ok(songs, MediaType.APPLICATION_JSON).build();
     }
+
+    @GET
+    @UnitOfWork
+    @Path("/editing")
+    public Response getSongs(){
+        List<Song> songList = songs.findAll();
+        SongsRepresentation songsRepresentation = songsRepresentationFactory.createSongsRepresentation(songList);
+        return Response.ok(songsRepresentation, MediaType.APPLICATION_JSON).build();
+    }
 }

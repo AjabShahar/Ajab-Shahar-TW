@@ -115,4 +115,16 @@ public class SongResourceTest {
 
         assertEquals(song.getId(),actualResult.getEntity());
     }
+
+    @Test
+    public void shouldGetAllSongs() throws Exception {
+        SongsRepresentation expectedResult = new SongsRepresentation();
+        when(songs.findAll()).thenReturn(songList);
+        when(songsRepresentationFactory.createSongsRepresentation(songList)).thenReturn(expectedResult);
+
+        Response actualResult = songResource.getSongs();
+
+        assertEquals(expectedResult, actualResult.getEntity());
+
+    }
 }

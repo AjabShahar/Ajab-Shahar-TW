@@ -7,10 +7,6 @@ import java.util.Set;
 @Table(name = "SONG")
 @NamedQueries({
         @NamedQuery(
-                name = "org.ajabshahar.platform.models.Song.findAll",
-                query = "SELECT p FROM Song p"
-        ),
-        @NamedQuery(
                 name = "org.ajabshahar.platform.models.Song.findAllOnLandingPage",
                 query = "SELECT p FROM Song p where p.showOnLandingPage=true and p.isAuthoringComplete=true"
         )
