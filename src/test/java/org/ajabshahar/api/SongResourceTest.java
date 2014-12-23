@@ -113,6 +113,7 @@ public class SongResourceTest {
         Song song = new Song();
         JsonObject lyricsData = new JsonObject();
         when(songsRepresentationFactory.create(jsongSong)).thenReturn(song);
+        when(lyricsRepresentationFactory.create(jsongSong)).thenReturn(lyricsData);
         when(songs.save(song, lyricsData)).thenReturn(song);
 
         Response actualResult = songResource.saveSong(jsongSong);
