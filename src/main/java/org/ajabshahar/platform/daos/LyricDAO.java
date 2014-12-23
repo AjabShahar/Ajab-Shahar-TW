@@ -11,7 +11,7 @@ public class LyricDAO extends AbstractDAO<Lyric>{
         super(sessionFactory);
     }
 
-    public void create(Lyric lyric) {
-      persist(lyric);
+    public Lyric create(Lyric lyric) {
+      return persist(lyric);
     }
 }

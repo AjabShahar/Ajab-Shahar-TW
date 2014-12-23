@@ -5,6 +5,7 @@ import io.dropwizard.jersey.caching.CacheControl;
 import org.ajabshahar.api.SongRepresentation;
 import org.ajabshahar.api.SongsRepresentation;
 import org.ajabshahar.api.SongsRepresentationFactory;
+import org.ajabshahar.core.Lyrics;
 import org.ajabshahar.core.Songs;
 import org.ajabshahar.platform.daos.SongDAO;
 import org.ajabshahar.platform.models.Song;
@@ -24,11 +25,13 @@ public class SongResource {
     private final SongDAO songDAO;
     private final SongsRepresentationFactory songsRepresentationFactory;
     private final Songs songs;
+    private final Lyrics lyrics;
 
-    public SongResource(SongDAO songDAO, Songs songs, SongsRepresentationFactory songsRepresentationFactory) {
+    public SongResource(SongDAO songDAO, Songs songs, SongsRepresentationFactory songsRepresentationFactory, Lyrics lyrics) {
         this.songDAO = songDAO;
         this.songsRepresentationFactory = songsRepresentationFactory;
         this.songs = songs;
+        this.lyrics = lyrics;
     }
 
 
@@ -38,6 +41,7 @@ public class SongResource {
     public Response saveSong(String jsonSong) {
         Song song = songsRepresentationFactory.create(jsonSong);
         song = songs.save(song);
+        lyrics.create(jsonSong,song);
         return Response.status(200).entity(song.getId()).build();
     }
 

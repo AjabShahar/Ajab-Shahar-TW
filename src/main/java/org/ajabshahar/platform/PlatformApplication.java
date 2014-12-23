@@ -12,6 +12,7 @@ import org.ajabshahar.api.CoupletsRepresentationFactory;
 import org.ajabshahar.api.PersonRepresentationFactory;
 import org.ajabshahar.api.SongsRepresentationFactory;
 import org.ajabshahar.core.Couplets;
+import org.ajabshahar.core.Lyrics;
 import org.ajabshahar.core.People;
 import org.ajabshahar.core.Songs;
 import org.ajabshahar.platform.daos.*;
@@ -29,7 +30,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
     };
 
     private final HibernateBundle<PlatformConfiguration> hibernate = new HibernateBundle<PlatformConfiguration>(SplashScreenOptions.class, Word.class,
-            Couplet.class, Song.class, PersonDetails.class, Category.class, Title.class) {
+            Couplet.class, Song.class, PersonDetails.class, Category.class, Title.class, Lyric.class, Stanza.class) {
         @Override
         public DataSourceFactory getDataSourceFactory(PlatformConfiguration configuration) {
             return configuration.getDataSourceFactory();
@@ -75,8 +76,10 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         picoContainer.addComponent(PersonDAO.class);
         picoContainer.addComponent(CategoryDAO.class);
         picoContainer.addComponent(TitleDAO.class);
+        picoContainer.addComponent(LyricDAO.class);
 
         picoContainer.addComponent(Songs.class);
+        picoContainer.addComponent(Lyrics.class);
         picoContainer.addComponent(Couplets.class);
         picoContainer.addComponent(People.class);
         picoContainer.addComponent(SongsRepresentationFactory.class);

@@ -1,5 +1,6 @@
 package org.ajabshahar.api;
 
+import org.ajabshahar.core.Lyrics;
 import org.ajabshahar.core.Songs;
 import org.ajabshahar.platform.models.Song;
 import org.ajabshahar.platform.resources.SongResource;
@@ -36,10 +37,12 @@ public class SongResourceTest {
     private Song song;
     @Mock
     private SongRepresentation songRepresentation;
+    @Mock
+    private Lyrics lyrics;
 
     @Before
     public void setUp() {
-        songResource = new SongResource(null, songs, songsRepresentationFactory);
+        songResource = new SongResource(null, songs, songsRepresentationFactory, lyrics);
     }
 
     @Test

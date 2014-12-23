@@ -3,6 +3,8 @@ package org.ajabshahar.platform.models;
 
 import javax.persistence.*;
 
+@Entity
+@Table(name = "LYRICS")
 public class Lyric {
 
     @Id
@@ -16,12 +18,12 @@ public class Lyric {
     @JoinColumn(name = "SONG_ID")
     private Song song;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "COUPLET_ID")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "COUPLET_ID",nullable = false)
     private Couplet couplet;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "STANZA_ID")
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(name = "STANZA_ID",nullable = true)
     private Stanza stanza;
 
     public String getChorus() {
