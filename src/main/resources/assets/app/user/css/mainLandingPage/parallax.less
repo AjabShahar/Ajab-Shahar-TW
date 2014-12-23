@@ -72,6 +72,18 @@
        -o-animation: moveclouds 60s linear infinite;
        animation: moveclouds 60s linear infinite;
     }
+
+    &7{
+       background: transparent url(../../img/mainLandingPage/parallax/03_whiteString.png) 50% 0px;
+       background-repeat: no-repeat repeat;
+       width: 622px;
+       display: inline-block;
+       -webkit-animation-duration: 10s;
+       -webkit-animation-name: moveString;
+       -webkit-animation-iteration-count: infinite;
+       -webkit-animation-direction: alternate;
+       -webkit-transform-origin: -50% -50%;
+    }
   }
 }
 
@@ -120,3 +132,10 @@
 }
 
 /* clouds animation ends */
+
+
+@-webkit-keyframes moveString {
+    0% { -webkit-transform: rotate(2deg); }
+
+    100% { -webkit-transform: rotate(-2deg); }
+}
