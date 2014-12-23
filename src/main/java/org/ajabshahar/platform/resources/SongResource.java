@@ -41,7 +41,7 @@ public class SongResource {
         return Response.status(200).entity(song.getId()).build();
     }
 
-    @PUT
+    @POST
     @Path("/edit")
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
