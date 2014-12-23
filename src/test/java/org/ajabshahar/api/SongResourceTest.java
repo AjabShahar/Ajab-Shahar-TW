@@ -1,6 +1,5 @@
 package org.ajabshahar.api;
 
-import com.google.gson.JsonObject;
 import org.ajabshahar.core.Songs;
 import org.ajabshahar.platform.models.Song;
 import org.ajabshahar.platform.resources.SongResource;
@@ -111,10 +110,8 @@ public class SongResourceTest {
     public void shouldSaveSong() throws Exception {
         String jsongSong = "Song";
         Song song = new Song();
-        JsonObject lyricsData = new JsonObject();
         when(songsRepresentationFactory.create(jsongSong)).thenReturn(song);
-        when(lyricsRepresentationFactory.getLyricsDataFromJson(jsongSong)).thenReturn(lyricsData);
-        when(songs.save(song, lyricsData)).thenReturn(song);
+        when(songs.save(song)).thenReturn(song);
 
         Response actualResult = songResource.saveSong(jsongSong);
 

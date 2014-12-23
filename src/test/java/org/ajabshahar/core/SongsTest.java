@@ -2,6 +2,7 @@ package org.ajabshahar.core;
 
 import com.google.gson.JsonObject;
 import org.ajabshahar.platform.daos.CategoryDAO;
+import org.ajabshahar.platform.daos.LyricDAO;
 import org.ajabshahar.platform.daos.SongDAO;
 import org.ajabshahar.platform.daos.TitleDAO;
 import org.ajabshahar.platform.models.Category;
@@ -33,21 +34,20 @@ public class SongsTest {
     @Mock
     private TitleDAO titleRepository;
     @Mock
+    private LyricDAO lyricsRepository;
+    @Mock
     private Song song;
     private List<Song> songsList;
     private Songs songs;
-    private JsonObject lyricsData;
     @Mock
     private CategoryDAO categoryRepository;
-    @Mock
-    private Lyrics lyrics;
+
 
     @Before
     public void setup() {
         songsList = new ArrayList<>();
-        lyricsData = new JsonObject();
         songsList.add(song);
-        songs = new Songs(songsRepository, titleRepository, categoryRepository, lyrics);
+        songs = new Songs(songsRepository, titleRepository, categoryRepository,lyricsRepository);
     }
 
     @Test
@@ -97,10 +97,9 @@ public class SongsTest {
         song.setSongTitle(songTitle);
         when(songsRepository.saveSong(song)).thenReturn(song);
 
-        Song result = songs.save(song, lyricsData);
+        Song result = songs.save(song);
 
         assertEquals(song, result);
-        verify(lyrics).create(lyricsData,song);
     }
 
     @Test
@@ -114,9 +113,8 @@ public class SongsTest {
         song.setTitle(umbrellaTitle);
         when(songsRepository.saveSong(song)).thenReturn(song);
 
-        Song result = songs.save(song, lyricsData);
+        Song result = songs.save(song);
         verify(titleRepository).create(songTitle);
-        verify(lyrics).create(lyricsData,song);
     }
 
     @Test
@@ -128,10 +126,9 @@ public class SongsTest {
         when(songsRepository.saveSong(song)).thenReturn(song);
         when(categoryRepository.getUmbrellaTitleCategory()).thenReturn(new Category());
 
-        Song result = songs.save(song, lyricsData);
+        Song result = songs.save(song);
 
         verify(titleRepository, atLeast(2)).create(any(Title.class));
-        verify(lyrics).create(lyricsData,song);
         assertNotNull(song.getTitle());
     }
 
@@ -146,11 +143,10 @@ public class SongsTest {
         song.setSongTitle(songTitle);
         when(songsRepository.saveSong(song)).thenReturn(song);
 
-        Song result = songs.save(song, lyricsData);
+        Song result = songs.save(song);
 
         verify(titleRepository).create(umbrellaTitle);
         verify(titleRepository).create(songTitle);
-        verify(lyrics).create(lyricsData,song);
     }
 
     @Test
@@ -163,10 +159,9 @@ public class SongsTest {
         when(songsRepository.saveSong(song)).thenReturn(song);
         when(categoryRepository.getUmbrellaTitleCategory()).thenReturn(new Category());
 
-        Song result = songs.save(song, lyricsData);
+        Song result = songs.save(song);
 
         verify(titleRepository).create(any(Title.class));
-        verify(lyrics).create(lyricsData,song);
         assertNotNull(song.getTitle());
     }
 

@@ -1,6 +1,5 @@
 package org.ajabshahar.platform.resources;
 
-import com.google.gson.JsonObject;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.jersey.caching.CacheControl;
 import org.ajabshahar.api.LyricsRepresentationFactory;
@@ -41,8 +40,7 @@ public class SongResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response saveSong(String jsonSong) {
         Song song = songsRepresentationFactory.create(jsonSong);
-        JsonObject lyricsData = lyricsRepresentationFactory.getLyricsDataFromJson(jsonSong);
-        song = songs.save(song,lyricsData);
+        song = songs.save(song);
         return Response.status(200).entity(song.getId()).build();
     }
 

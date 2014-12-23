@@ -1,6 +1,7 @@
 package org.ajabshahar.platform.models;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -22,9 +23,6 @@ public class Song {
     @Column(name = "DURATION", nullable = true)
     private String duration;
 
-    public long getId() {
-        return id;
-    }
 
     @Column(name = "YOUTUBE_VIDEO_ID", nullable = true)
     private String youtubeVideoId;
@@ -73,6 +71,12 @@ public class Song {
     @JoinColumn(name = "SONG_TITLE_ID")
     private Title songTitle;
 
+    @OneToMany
+    @JoinTable(name = "SONG_LYRICS", joinColumns = @JoinColumn(name = "SONG_ID"),
+            inverseJoinColumns = @JoinColumn(name = "LYRICS_ID"))
+    private List<Lyric> lyrics;
+
+
     public Set<PersonDetails> getPoets(){return poets;}
 
     public void setPoets(Set<PersonDetails> poets){this.poets = poets;}
@@ -119,6 +123,9 @@ public class Song {
 
     public void setId(long id) {
         this.id = id;
+    }
+    public long getId() {
+        return id;
     }
 
     public Category getSongCategory() {
@@ -192,6 +199,14 @@ public class Song {
 
     public void setAbout(String about) {
         this.about = about;
+    }
+
+    public List<Lyric> getLyrics() {
+        return lyrics;
+    }
+
+    public void setLyrics(List<Lyric> lyrics) {
+        this.lyrics = lyrics;
     }
 }
 

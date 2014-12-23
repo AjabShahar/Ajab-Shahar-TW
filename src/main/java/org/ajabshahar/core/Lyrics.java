@@ -2,13 +2,9 @@ package org.ajabshahar.core;
 
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import org.ajabshahar.platform.daos.LyricDAO;
-import org.ajabshahar.platform.models.Couplet;
 import org.ajabshahar.platform.models.Lyric;
-import org.ajabshahar.platform.models.Song;
-import org.ajabshahar.platform.models.Stanza;
 
 public class Lyrics {
 
@@ -22,36 +18,4 @@ public class Lyrics {
         Lyric lyric = new Gson().fromJson(lyrics, Lyric.class);
         lyricRepository.create(lyric);
     }
-
-    public void create(JsonObject lyrics, Song song) {
-
-        JsonArray lyricsData = lyrics.getAsJsonArray("content");
-        for (int i = 0; i < lyricsData.size(); i++) {
-            JsonObject stanzaOrCouplet = lyricsData.get(i).getAsJsonObject();
-            Lyric lyric = getLyric(stanzaOrCouplet, song);
-            lyric.setChorus(lyrics.get("chorus").getAsString());
-            lyric.setSequenceNumber(i+1);
-            lyric = lyricRepository.create(lyric);
-        }
-    }
-
-    private Lyric getLyric(JsonObject lyricJson, Song song) {
-        Lyric lyric = new Lyric();
-        if (lyricJson.get("contentType").getAsString().equalsIgnoreCase("couplet")) {
-            lyric.setCouplet(getCouplet(lyricJson.get("content").getAsJsonObject()));
-            lyric = lyricRepository.create(lyric);
-        } else if (lyricJson.get("contentType").getAsString().equalsIgnoreCase("stanza")) {
-            lyric.setStanza(getStanza(lyricJson));
-        }
-        return lyric;
-    }
-
-    private Stanza getStanza(JsonObject stanzaJson) {
-        return new Gson().fromJson(stanzaJson.toString(), Stanza.class);
-    }
-
-    public Couplet getCouplet(JsonObject coupletJson) {
-        return new Gson().fromJson(coupletJson.toString(), Couplet.class);
-    }
-
 }

@@ -1,8 +1,8 @@
 package org.ajabshahar.core;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import org.ajabshahar.platform.daos.CategoryDAO;
+import org.ajabshahar.platform.daos.LyricDAO;
 import org.ajabshahar.platform.daos.SongDAO;
 import org.ajabshahar.platform.daos.TitleDAO;
 import org.ajabshahar.platform.models.Song;
@@ -14,13 +14,13 @@ public class Songs {
     private final SongDAO songsRepository;
     private TitleDAO titleRepository;
     private final CategoryDAO categoryRepository;
-    private final Lyrics lyrics;
+    private final LyricDAO lyricRepository;
 
-    public Songs(SongDAO songsRepository, TitleDAO titleRepository, CategoryDAO categoryRepository, Lyrics lyrics) {
+    public Songs(SongDAO songsRepository, TitleDAO titleRepository, CategoryDAO categoryRepository, LyricDAO lyricRepository) {
         this.songsRepository = songsRepository;
         this.titleRepository = titleRepository;
         this.categoryRepository = categoryRepository;
-        this.lyrics = lyrics;
+        this.lyricRepository = lyricRepository;
     }
 
     public Song findBy(int songId) {
@@ -45,7 +45,7 @@ public class Songs {
         return songsRepository.findSongWithVersions(songId);
     }
 
-    public Song save(Song song, JsonObject lyricsData) {
+    public Song save(Song song) {
         if (song.getSongTitle().getId() == 0) {
 
             Title songTitle = song.getSongTitle();
@@ -65,12 +65,14 @@ public class Songs {
             umbrellaTitle.setCategory(categoryRepository.getUmbrellaTitleCategory());
             titleRepository.create(umbrellaTitle);
 
-        } else {
-
         }
-        song = songsRepository.saveSong(song);
-        lyrics.create(lyricsData,song);
-        return song;
+        if (song.getLyrics() != null) {
+            for (int index = 0; index < song.getLyrics().size(); index++) {
+                if (song.getLyrics().get(index).getId() == 0)
+                    lyricRepository.create(song.getLyrics().get(index));
+            }
+        }
+        return songsRepository.saveSong(song);
     }
 
     public List<Song> findAll() {

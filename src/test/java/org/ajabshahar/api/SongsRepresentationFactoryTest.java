@@ -28,11 +28,13 @@ public class SongsRepresentationFactoryTest {
     private People people;
     @Mock
     private PersonDetails personDetails;
+    @Mock
+    private LyricsRepresentationFactory lyricsRepresentationFactory;
     private Song song;
 
     @Before
     public void setUp() {
-        songsRepresentationFactory = new SongsRepresentationFactory(people);
+        songsRepresentationFactory = new SongsRepresentationFactory(people, lyricsRepresentationFactory);
 
         songsList = new ArrayList<>();
 
@@ -153,4 +155,17 @@ public class SongsRepresentationFactoryTest {
         assertThat(songsRepresentation.get(0).getPoets().get(0).toString(), IsEqual.equalTo("id: 2001, name: Poet1"));
 
     }
+
+//    @Test
+//    public void shouldTestCreateSong() throws Exception {
+//        String jsonSong = "";
+//        JsonObject jsonObject = new JsonObject();
+//        List<Lyric> lyricList = new ArrayList<>();
+//        when(lyricsRepresentationFactory.getLyricsDataFromJson(jsonSong)).thenReturn(jsonObject);
+//        when(lyricsRepresentationFactory.create(jsonObject)).thenReturn(lyricList);
+//
+//        Song song = songsRepresentationFactory.create(jsonSong);
+//
+//        verify(any(Song.class)).setLyrics(lyricList);
+//    }
 }
