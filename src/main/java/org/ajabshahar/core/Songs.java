@@ -1,6 +1,7 @@
 package org.ajabshahar.core;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import org.ajabshahar.platform.daos.CategoryDAO;
 import org.ajabshahar.platform.daos.SongDAO;
 import org.ajabshahar.platform.daos.TitleDAO;
@@ -13,11 +14,13 @@ public class Songs {
     private final SongDAO songsRepository;
     private TitleDAO titleRepository;
     private final CategoryDAO categoryRepository;
+    private final Lyrics lyrics;
 
-    public Songs(SongDAO songsRepository, TitleDAO titleRepository, CategoryDAO categoryRepository) {
+    public Songs(SongDAO songsRepository, TitleDAO titleRepository, CategoryDAO categoryRepository, Lyrics lyrics) {
         this.songsRepository = songsRepository;
         this.titleRepository = titleRepository;
         this.categoryRepository = categoryRepository;
+        this.lyrics = lyrics;
     }
 
     public Song findBy(int songId) {
@@ -42,7 +45,7 @@ public class Songs {
         return songsRepository.findSongWithVersions(songId);
     }
 
-    public Song save(Song song) {
+    public Song save(Song song, JsonObject lyricsData) {
         if (song.getSongTitle().getId() == 0) {
 
             Title songTitle = song.getSongTitle();
@@ -65,7 +68,9 @@ public class Songs {
         } else {
 
         }
-        return songsRepository.saveSong(song);
+        song = songsRepository.saveSong(song);
+        lyrics.create(lyricsData,song);
+        return song;
     }
 
     public List<Song> findAll() {

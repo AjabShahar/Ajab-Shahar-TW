@@ -1,6 +1,6 @@
 package org.ajabshahar.api;
 
-import org.ajabshahar.core.Lyrics;
+import com.google.gson.JsonObject;
 import org.ajabshahar.core.Songs;
 import org.ajabshahar.platform.models.Song;
 import org.ajabshahar.platform.resources.SongResource;
@@ -38,11 +38,11 @@ public class SongResourceTest {
     @Mock
     private SongRepresentation songRepresentation;
     @Mock
-    private Lyrics lyrics;
+    private LyricsRepresentationFactory lyricsRepresentationFactory;
 
     @Before
     public void setUp() {
-        songResource = new SongResource(null, songs, songsRepresentationFactory, lyrics);
+        songResource = new SongResource(null, songs, songsRepresentationFactory, lyricsRepresentationFactory);
     }
 
     @Test
@@ -111,12 +111,13 @@ public class SongResourceTest {
     public void shouldSaveSong() throws Exception {
         String jsongSong = "Song";
         Song song = new Song();
+        JsonObject lyricsData = new JsonObject();
         when(songsRepresentationFactory.create(jsongSong)).thenReturn(song);
-        when(songs.save(song)).thenReturn(song);
+        when(songs.save(song, lyricsData)).thenReturn(song);
 
         Response actualResult = songResource.saveSong(jsongSong);
 
-        assertEquals(song.getId(),actualResult.getEntity());
+        assertEquals(song.getId(), actualResult.getEntity());
     }
 
     @Test

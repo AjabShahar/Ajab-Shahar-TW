@@ -23,14 +23,13 @@ public class Lyrics {
         lyricRepository.create(lyric);
     }
 
-    public void create(String jsonSong, Song song) {
-        JsonObject jsonObject = new Gson().fromJson(jsonSong, JsonObject.class);
-        JsonObject object = jsonObject.getAsJsonObject("lyricsData");
-        JsonArray lyricsData = object.getAsJsonArray("content");
+    public void create(JsonObject lyrics, Song song) {
+
+        JsonArray lyricsData = lyrics.getAsJsonArray("content");
         for (int i = 0; i < lyricsData.size(); i++) {
             JsonObject stanzaOrCouplet = lyricsData.get(i).getAsJsonObject();
             Lyric lyric = getLyric(stanzaOrCouplet, song);
-            lyric.setChorus(object.get("chorus").getAsString());
+            lyric.setChorus(lyrics.get("chorus").getAsString());
             lyric.setSequenceNumber(i+1);
             lyric = lyricRepository.create(lyric);
         }

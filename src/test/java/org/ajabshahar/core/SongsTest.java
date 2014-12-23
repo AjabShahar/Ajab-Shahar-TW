@@ -36,14 +36,18 @@ public class SongsTest {
     private Song song;
     private List<Song> songsList;
     private Songs songs;
+    private JsonObject lyricsData;
     @Mock
     private CategoryDAO categoryRepository;
+    @Mock
+    private Lyrics lyrics;
 
     @Before
     public void setup() {
         songsList = new ArrayList<>();
+        lyricsData = new JsonObject();
         songsList.add(song);
-        songs = new Songs(songsRepository, titleRepository, categoryRepository);
+        songs = new Songs(songsRepository, titleRepository, categoryRepository, lyrics);
     }
 
     @Test
@@ -93,7 +97,7 @@ public class SongsTest {
         song.setSongTitle(songTitle);
         when(songsRepository.saveSong(song)).thenReturn(song);
 
-        Song result = songs.save(song);
+        Song result = songs.save(song, lyricsData);
 
         assertEquals(song, result);
     }
@@ -109,7 +113,7 @@ public class SongsTest {
         song.setTitle(umbrellaTitle);
         when(songsRepository.saveSong(song)).thenReturn(song);
 
-        Song result = songs.save(song);
+        Song result = songs.save(song, lyricsData);
         verify(titleRepository).create(songTitle);
     }
 
@@ -122,7 +126,7 @@ public class SongsTest {
         when(songsRepository.saveSong(song)).thenReturn(song);
         when(categoryRepository.getUmbrellaTitleCategory()).thenReturn(new Category());
 
-        Song result = songs.save(song);
+        Song result = songs.save(song, lyricsData);
         verify(titleRepository, atLeast(2)).create(any(Title.class));
 
         assertNotNull(song.getTitle());
@@ -139,7 +143,7 @@ public class SongsTest {
         song.setSongTitle(songTitle);
         when(songsRepository.saveSong(song)).thenReturn(song);
 
-        Song result = songs.save(song);
+        Song result = songs.save(song, lyricsData);
         verify(titleRepository).create(umbrellaTitle);
         verify(titleRepository).create(songTitle);
     }
@@ -154,7 +158,7 @@ public class SongsTest {
         when(songsRepository.saveSong(song)).thenReturn(song);
         when(categoryRepository.getUmbrellaTitleCategory()).thenReturn(new Category());
 
-        Song result = songs.save(song);
+        Song result = songs.save(song, lyricsData);
         verify(titleRepository).create(any(Title.class));
 
         assertNotNull(song.getTitle());

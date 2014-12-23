@@ -1,11 +1,12 @@
 package org.ajabshahar.platform.resources;
 
+import com.google.gson.JsonObject;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.jersey.caching.CacheControl;
+import org.ajabshahar.api.LyricsRepresentationFactory;
 import org.ajabshahar.api.SongRepresentation;
 import org.ajabshahar.api.SongsRepresentation;
 import org.ajabshahar.api.SongsRepresentationFactory;
-import org.ajabshahar.core.Lyrics;
 import org.ajabshahar.core.Songs;
 import org.ajabshahar.platform.daos.SongDAO;
 import org.ajabshahar.platform.models.Song;
@@ -25,13 +26,13 @@ public class SongResource {
     private final SongDAO songDAO;
     private final SongsRepresentationFactory songsRepresentationFactory;
     private final Songs songs;
-    private final Lyrics lyrics;
+    private final LyricsRepresentationFactory lyricsRepresentationFactory;
 
-    public SongResource(SongDAO songDAO, Songs songs, SongsRepresentationFactory songsRepresentationFactory, Lyrics lyrics) {
+    public SongResource(SongDAO songDAO, Songs songs, SongsRepresentationFactory songsRepresentationFactory,LyricsRepresentationFactory lyricsRepresentationFactory) {
         this.songDAO = songDAO;
         this.songsRepresentationFactory = songsRepresentationFactory;
         this.songs = songs;
-        this.lyrics = lyrics;
+        this.lyricsRepresentationFactory = lyricsRepresentationFactory;
     }
 
 
@@ -40,8 +41,8 @@ public class SongResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response saveSong(String jsonSong) {
         Song song = songsRepresentationFactory.create(jsonSong);
-        song = songs.save(song);
-        lyrics.create(jsonSong,song);
+        JsonObject lyricsData = lyricsRepresentationFactory.create(jsonSong);
+        song = songs.save(song,lyricsData);
         return Response.status(200).entity(song.getId()).build();
     }
 
