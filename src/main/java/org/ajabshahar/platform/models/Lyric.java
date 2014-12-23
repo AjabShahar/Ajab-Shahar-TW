@@ -14,6 +14,9 @@ public class Lyric {
     @Column(name = "CHORUS", nullable = false)
     private String chorus;
 
+    @Column(name="SEQUENCEORDER",nullable = false)
+    private int sequenceNumber;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "SONG_ID")
     private Song song;
@@ -64,5 +67,13 @@ public class Lyric {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public int getSequenceNumber() {
+        return sequenceNumber;
+    }
+
+    public void setSequenceNumber(int sequenceNumber) {
+        this.sequenceNumber = sequenceNumber;
     }
 }

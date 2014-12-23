@@ -15,7 +15,7 @@ songsAdminApp.directive("lyrics", function() {
             $scope.initializeContent = function(){
                 $scope.current = {
                     "contentType":"stanza",
-                    "englishTranslation":"","englishTransliteration":"","original":"",
+                    "englishTranslationText":"","englishTransliterationText":"","originalText":"",
                 };
             }
 

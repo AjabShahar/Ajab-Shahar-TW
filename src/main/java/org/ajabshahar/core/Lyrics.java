@@ -31,6 +31,7 @@ public class Lyrics {
             JsonObject stanzaOrCouplet = lyricsData.get(i).getAsJsonObject();
             Lyric lyric = getLyric(stanzaOrCouplet, song);
             lyric.setChorus(object.get("chorus").getAsString());
+            lyric.setSequenceNumber(i+1);
             lyric = lyricRepository.create(lyric);
         }
     }
@@ -49,7 +50,8 @@ public class Lyrics {
     }
 
     private Stanza getStanza(JsonObject stanzaJson) {
-        return new Gson().fromJson(stanzaJson.toString(), Stanza.class);
+        Stanza stanza = new Gson().fromJson(stanzaJson.toString(), Stanza.class);
+        return stanza;
     }
 
     public Couplet getCouplet(JsonObject coupletJson) {
