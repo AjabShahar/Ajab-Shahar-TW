@@ -38,11 +38,9 @@ public class Lyrics {
     private Lyric getLyric(JsonObject lyricJson, Song song) {
         Lyric lyric = new Lyric();
         if (lyricJson.get("contentType").getAsString().equalsIgnoreCase("couplet")) {
-            lyric.setSong(song);
             lyric.setCouplet(getCouplet(lyricJson.get("content").getAsJsonObject()));
             lyric = lyricRepository.create(lyric);
         } else if (lyricJson.get("contentType").getAsString().equalsIgnoreCase("stanza")) {
-            lyric.setSong(song);
             lyric.setStanza(getStanza(lyricJson));
         }
         return lyric;

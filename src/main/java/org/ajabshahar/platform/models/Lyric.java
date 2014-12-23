@@ -18,10 +18,6 @@ public class Lyric {
     private int sequenceNumber;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "SONG_ID")
-    private Song song;
-
-    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "COUPLET_ID",nullable = false)
     private Couplet couplet;
 
@@ -35,14 +31,6 @@ public class Lyric {
 
     public void setChorus(String chorus) {
         this.chorus = chorus;
-    }
-
-    public Song getSong() {
-        return song;
-    }
-
-    public void setSong(Song song) {
-        this.song = song;
     }
 
     public Couplet getCouplet() {
