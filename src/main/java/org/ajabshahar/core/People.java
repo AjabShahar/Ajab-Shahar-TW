@@ -1,5 +1,6 @@
 package org.ajabshahar.core;
 
+import com.google.gson.Gson;
 import org.ajabshahar.platform.daos.PersonDAO;
 import org.ajabshahar.platform.models.PersonDetails;
 
@@ -23,5 +24,10 @@ public class People {
 
     private List<PersonDetails> findBy(int id, String role) {
         return personRepository.findBy(id, role);
+    }
+
+    public PersonDetails update(String jsonPersonDetails) {
+        PersonDetails personDetails = new Gson().fromJson(jsonPersonDetails, PersonDetails.class);
+        return personRepository.updatePerson(personDetails);
     }
 }

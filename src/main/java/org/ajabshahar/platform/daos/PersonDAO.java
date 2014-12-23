@@ -12,8 +12,11 @@ import org.hibernate.criterion.Restrictions;
 import java.util.List;
 
 public class PersonDAO extends AbstractDAO<PersonDetails> {
-  public PersonDAO(SessionFactory sessionFactory) {
-    super(sessionFactory);
+    private final SessionFactory sessionFactory;
+
+    public PersonDAO(SessionFactory sessionFactory) {
+      super(sessionFactory);
+      this.sessionFactory = sessionFactory;
   }
 
     public Optional<PersonDetails> findById(Long id) {
@@ -38,5 +41,21 @@ public class PersonDAO extends AbstractDAO<PersonDetails> {
             criteria.add(Restrictions.eq("category", role));
         }
         return criteria.list();
+    }
+
+    public PersonDetails updatePerson(PersonDetails updatablePerson) {
+        Long id = updatablePerson.getId();
+        PersonDetails originalPersonData = (PersonDetails) sessionFactory.openStatelessSession().get(PersonDetails.class, id);
+        originalPersonData = invokeAllSetters(originalPersonData, updatablePerson);
+        sessionFactory.getCurrentSession().update(originalPersonData);
+        return originalPersonData;
+    }
+
+    private PersonDetails invokeAllSetters(PersonDetails originalPersonData, PersonDetails updatablePerson) {
+        originalPersonData.setCategory(updatablePerson.getCategory());
+        originalPersonData.setFirstName(updatablePerson.getFirstName());
+        originalPersonData.setLastName(updatablePerson.getLastName());
+        originalPersonData.setMiddleName(updatablePerson.getMiddleName());
+        return originalPersonData;
     }
 }

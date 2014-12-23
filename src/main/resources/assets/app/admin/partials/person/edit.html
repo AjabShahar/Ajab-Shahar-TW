@@ -2,7 +2,7 @@
 <html ng-app="adminApp">
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Person details - admin</title>
+    <title>Edit person details</title>
     <script src="../../../common/lib/angular/angular.js"></script>
     <script type="text/javascript" src="../../../common/lib/angular-filter/dist/angular-filter.js"></script>
     <script type="text/javascript" src="../../../common/lib/textAngular/dist/textAngular-sanitize.min.js"></script>
@@ -19,8 +19,8 @@
 <div class="left">
     <h2>Edit Person details</h2>
     <div class="left">
-        <div ng-controller="personDetailsController">
-            <form >
+        <div ng-controller="personDetailsController" ng-init="getPersonData()">
+            <form name="personForm">
                 <div class="row">
                     <div class="form-group col-sm-2">
                         <label>First Name</label>
@@ -60,8 +60,8 @@
                     </div>
                 </div>
 
-                <button type="submit" ng-click="saveData()" class="btn btn-primary btn-lg">Save</button>
-
+                <button type="submit" ng-click="updatePerson()" class="btn btn-primary btn-lg">Save</button>
+                <button type="reset"  ng-click="redirectToEnterPage(personForm.$dirty)" class="btn btn-info">Add New Person</button>
             </form>
         </div>
     </div>

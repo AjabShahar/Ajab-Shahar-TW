@@ -40,6 +40,15 @@ public class PersonResource {
         return Response.status(200).entity(personDetails.toString()).build();
     }
 
+    @POST
+    @Path("/edit")
+    @UnitOfWork
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response updatePersonDetails(String jsonPersonDetails) {
+        PersonDetails personDetails = people.update(jsonPersonDetails);
+        return Response.ok(personDetails).build();
+    }
+
     @GET
     @UnitOfWork
     @Path("/{id}")
