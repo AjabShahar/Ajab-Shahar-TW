@@ -7,6 +7,10 @@ var contentService = function ($http) {
     return $http.get('/api/songs/getsongs');
   };
 
+  var getAllPeople = function () {
+    return $http.get('/api/people');
+  };
+
   var getAllCouplets = function () {
     return $http.get('/api/couplets');
   };
@@ -16,6 +20,7 @@ var contentService = function ($http) {
   };
 
   return {
+    getAllPeople:getAllPeople,
     getAllCategories:getAllCategories,
     getAllSongs: getAllSongs,
     getAllCouplets:getAllCouplets,

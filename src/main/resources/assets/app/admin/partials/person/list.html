@@ -2,8 +2,38 @@
 <html ng-app="adminApp">
 <head lang="en">
     <meta charset="UTF-8">
-    <title>People list page</title>
+    <title>People page</title>
+    <script src="../../../common/lib/angular/angular.js"></script>
+    <script src="../../../common/lib/underscore/underscore.js"></script>
+    <script type="text/javascript" src="../../js/services/contentService.js"></script>
+    <script type="text/javascript" src="../../js/app.js"></script>
+    <script type="text/javascript" src="../../js/controllers/person/personListController.js"></script>
+    <link href="../../../common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div ng-controller="personListController">
+    <table>
+        <tr>
+            <td>First Name</td>
+            <td>Middle Category</td>
+            <td>Last Name</td>
+            <td>Roles</td>
+            <td>edit</td>
+        </tr>
+        <tr>
+            <td><input ng-model="search.firstName"><br></td>
+            <td><input ng-model="search.middleName"><br></td>
+            <td><input ng-model="search.lastName"><br></td>
+            <td><input ng-model="search.roles"><br></td>
+        </tr>
+        <tr ng-repeat="person in people| filter:search">
+            <td>{{person.firstName}}</td>
+            <td>{{person.middleName}}</td>
+            <td>{{person.lastName}}</td>
+            <td>{{person.roles}}</td>
+            <td><a href="edit.html?id={{person.id}}">edit</a></td>
+        </tr>
+    </table>
+</div>
 </body>
 </html>
