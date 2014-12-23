@@ -41,7 +41,7 @@ public class WordResource {
         JsonObject jsonObject = jsonElement.getAsJsonObject();
         Long id = jsonObject.get("id").getAsLong();
         Word word = new Gson().fromJson(jsonObject.get("data"),Word.class);
-        wordDAO.updateSong(id,word);
+        wordDAO.updateWord(id,word);
         return Response.status(200).entity(word.toString()).build();
     }
 
