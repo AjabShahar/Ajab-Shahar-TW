@@ -1,4 +1,9 @@
 /* footer */
+
+.footer-bg {
+    background-color: #000;
+}
+
 .footerBox{
   margin-top: -5%;
   position: relative;
@@ -8,6 +13,7 @@
     height: 249px;
     position: relative;
     z-index: 8;
+    margin-top: -14%;
 
     footer{
       position: relative;
@@ -46,6 +52,10 @@
             text-transform: uppercase;
             padding: 3px 5px 3px 10px;
             line-height: 18px;
+
+            &:first-child {
+                padding-top: 10px;
+            }
         }
 
         &.footerExtra{
@@ -65,15 +75,15 @@
 
             li.kabirProject {
              padding-top: 20px;
+             position: relative;
                  &:after {
                     content: '';
                     display: inline-block;
-                    background: url(../../../../img/common/directives/footer/icons/kabirinit.png) 0 0 no-repeat;
-                    height: 50px;
-                    width: 51px;
+                    background: url(../../../../img/common/directives/footer/icons/kabirinit.jpg) 0 0 no-repeat;
+                    height: 42px;
+                    width: 42px;
                     position: absolute;
-                    right: 1%;
-                    bottom: -6px;
+                    top: 6px;
                  }
              }
         }

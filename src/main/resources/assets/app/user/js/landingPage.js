@@ -33,10 +33,10 @@
     		}
 
     		var _initialiseScrolling = function() {
-//                $.stellar({
-//                    horizontalScrolling: false,
-//                    responsive: true
-//                });
+                $.stellar({
+                    horizontalScrolling: false,
+                    responsive: true
+                });
     		}
 
             this.init = (function(){
