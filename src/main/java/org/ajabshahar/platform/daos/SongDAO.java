@@ -63,25 +63,33 @@ public class SongDAO extends AbstractDAO<Song> {
     public List<Song> findBy(int songId, int singerId, int poetId, int startFrom, String filteredLetter) {
         Session currentSession = sessionFactory.getCurrentSession();
         Criteria findSongs = currentSession.createCriteria(Song.class);
+        boolean conditionApplied = false;
         if (songId != 0) {
             findSongs.add(Restrictions.eq("id", Long.valueOf(songId)));
+            conditionApplied = true;
         }
         if (singerId != 0) {
             findSongs.createAlias("singers", "singersAlias");
             findSongs.add(Restrictions.eq("singersAlias.id", Long.valueOf(singerId)));
+            conditionApplied = true;
         }
         if (poetId != 0) {
             findSongs.createAlias("poets", "poetsAlias");
             findSongs.add(Restrictions.eq("poetsAlias.id", Long.valueOf(poetId)));
+            conditionApplied = true;
         }
         if (startFrom != 0) {
             findSongs.setFirstResult(startFrom);
+            conditionApplied = true;
         }
         if (filteredLetter != null) {
             findSongs.createAlias("songTitle", "songTitleAlias");
             findSongs.add(Restrictions.like("songTitleAlias.englishTranslation", filteredLetter, MatchMode.START));
+            conditionApplied = true;
         }
-        findSongs.add(Restrictions.eq("isAuthoringComplete",true));
+        if (conditionApplied) {
+            findSongs.add(Restrictions.eq("isAuthoringComplete", true));
+        }
         findSongs.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return findSongs.list();
     }
@@ -110,7 +118,7 @@ public class SongDAO extends AbstractDAO<Song> {
         if (song != null) {
             findSongs.createAlias("title", "titleAlias");
             findSongs.add(Restrictions.eq("titleAlias.id", song.getTitle().getId()));
-            findSongs.add(Restrictions.eq("publish",true));
+            findSongs.add(Restrictions.eq("publish", true));
         } else {
             return new ArrayList<>();
         }
