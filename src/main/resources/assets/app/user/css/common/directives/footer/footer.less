@@ -1,6 +1,6 @@
 /* footer */
 .footerBox{
-  margin-top: -15%;
+  margin-top: -5%;
   position: relative;
 
   .footerArt{
@@ -13,30 +13,69 @@
       position: relative;
       width: 70%;
       display: inline-block;
+      margin-top: 40px;
+
+      @media screen and (max-width: 1140px) {
+        width: 88%;
+      }
 
       ul{
         display: table-cell;
         vertical-align: bottom;
         padding:0 3%;
-        margin-right:2%;
         text-align: left;
+
+        @media screen and (max-width: 1300px) {
+            padding: 0 1%;
+        }
+        @media screen and (max-width: 768px) {
+            padding: 0;
+        }
+
+        &>li {
+            color: #b3b3b3;
+            background: transparent url(../../../../img/common/directives/footer/dotted.png) left top;
+            background-repeat: no-repeat repeat;
+            font-family:'Merriweather Sans','Merriweather';
+            font-weight: 300;
+            font-size: 12px;
+        }
+
 
         &.footerList li {
             text-transform: uppercase;
-            border-left: dotted 1px #555;
-            font-family:'Merriweather Sans','Merriweather';
-            font-weight: 300;
-            color: #b3b3b3;
-            font-size: 13px;
-            padding: 3px 5px;
-            line-height: 15px;
+            padding: 3px 5px 3px 10px;
+            line-height: 18px;
         }
 
         &.footerExtra{
-            width:20%;
-            li{
-                padding: 5% 0;
+            width: 25%;
+
+            @media screen and (max-width: 880px) {
+                width: 30%;
             }
+
+            @media screen and (max-width: 768px) {
+                width: 32%;
+            }
+
+            li {
+                padding: 10px 0 10px 10px;
+            }
+
+            li.kabirProject {
+             padding-top: 20px;
+                 &:after {
+                    content: '';
+                    display: inline-block;
+                    background: url(../../../../img/common/directives/footer/icons/kabirinit.png) 0 0 no-repeat;
+                    height: 50px;
+                    width: 51px;
+                    position: absolute;
+                    right: 1%;
+                    bottom: -6px;
+                 }
+             }
         }
       }
 
@@ -53,18 +92,3 @@ position:relative;
 z-index:8;
 }*/
 
-
-
-
-
-footer ul.footerExtra li.kabirProject{
- background: url(../../../../img/common/directives/footer/icons/kabirinit.png) 135px 1px no-repeat;
-padding: 10% 0% 0 0%;
-height: 35px;
-width: 200px;
-margin-top: 10%;
-}
-
-footer ul li{
-color:#999;
-}
