@@ -49,7 +49,7 @@ public class LyricsRepresentationFactory {
     public LyricsRepresentation getLyrics(Set<Lyric> lyrics) {
 
         return new LyricsRepresentation(getLyricSummary(lyrics, "Original"),
-                getLyricSummary(lyrics, "EnglishTranslation"), getLyricSummary(lyrics, "EnglishTransliteration"));
+                getLyricSummary(lyrics, "EnglishTranslation"), getLyricSummary(lyrics, "EnglishTransliteration"),lyrics.iterator().next().getChorus());
     }
 
     private LyricsSummaryRepresentation getLyricSummary(Set<Lyric> lyrics, String type) {
