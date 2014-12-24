@@ -21,6 +21,7 @@
                 <td>Category</td>
                 <td>Singer</td>
                 <td>Poet</td>
+                <td>Published</td>
                 <td>Edit</td>
             </tr>
             <tr>
@@ -28,12 +29,15 @@
                 <td></td>
                 <td><input ng-model="search.singerNames" class="form-control" ><br></td>
                 <td><input ng-model="search.poetNames" class="form-control" ><br></td>
+                <td><input ng-model="search.poetNames" class="form-control" ><br></td>
+                <td><input ng-model="search.publish" class="form-control" ><br></td>
             </tr>
             <tr ng-repeat="song in songs| filter:search">
                 <td>{{song.title}}</td>
                 <td>{{song.categoryName}}</td>
                 <td>{{song.singerNames}}</td>
                 <td>{{song.poetNames}}</td>
+                <td>{{song.publish}}</td>
                 <td><a href="edit.html?id={{song.id}}" class="btn btn-info">edit</a></td>
             </tr>
         </table>
