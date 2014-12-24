@@ -35,6 +35,7 @@ public class SongDAO extends AbstractDAO<Song> {
     public List<Song> findAll() {
         Session currentSession = sessionFactory.getCurrentSession();
         Criteria findSongs = currentSession.createCriteria(Song.class);
+        findSongs.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return findSongs.list();
     }
 

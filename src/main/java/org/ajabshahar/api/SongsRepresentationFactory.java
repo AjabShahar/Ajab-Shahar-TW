@@ -48,6 +48,7 @@ public class SongsRepresentationFactory {
         Title umbrellaTitle = song.getTitle() == null ? new Title() : song.getTitle();
         Title songTitle = song.getSongTitle() == null ? new Title() : song.getSongTitle();
         List<PersonSummaryRepresentation> singers = new ArrayList<>(), poets = new ArrayList<>();
+        LyricsRepresentation lyrics = lyricsRepresentationFactory.getLyrics(song.getLyrics());
 
         song.getSingers().forEach(singer -> {
             PersonDetails personDetails = people.findBy((int) singer.getId());
@@ -75,7 +76,8 @@ public class SongsRepresentationFactory {
                 song.getThumbnail_url(),
                 song.getDuration(),
                 singers,
-                poets);
+                poets,
+                lyrics);
     }
 
     public SongsRepresentation createSongsRepresentation(List<Song> songList) {
@@ -85,6 +87,7 @@ public class SongsRepresentationFactory {
             Title umbrellaTitle = song.getTitle() == null ? new Title() : song.getTitle();
             Title songTitle = song.getSongTitle() == null ? new Title() : song.getSongTitle();
             List<PersonSummaryRepresentation> singers = new ArrayList<>(), poets = new ArrayList<>();
+            LyricsRepresentation lyrics = lyricsRepresentationFactory.getLyrics(song.getLyrics());
 
             song.getSingers().forEach(singer -> {
                 PersonDetails personDetails = people.findBy((int) singer.getId());
@@ -94,6 +97,7 @@ public class SongsRepresentationFactory {
                 PersonDetails personDetails = people.findBy((int) poet.getId());
                 poets.add(new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName()));
             });
+
 
             SongRepresentation songRepresentation = new SongRepresentation(song.getId(),
                     umbrellaTitle.getId(),
@@ -112,7 +116,8 @@ public class SongsRepresentationFactory {
                     song.getThumbnail_url(),
                     song.getDuration(),
                     singers,
-                    poets);
+                    poets,
+                    lyrics);
             songsRepresentation.add(songRepresentation);
         }
         return songsRepresentation;

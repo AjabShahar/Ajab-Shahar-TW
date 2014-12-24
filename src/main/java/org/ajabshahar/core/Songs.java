@@ -67,10 +67,10 @@ public class Songs {
 
         }
         if (song.getLyrics() != null) {
-            for (int index = 0; index < song.getLyrics().size(); index++) {
-                if (song.getLyrics().get(index).getId() == 0)
-                    lyricRepository.create(song.getLyrics().get(index));
-            }
+            song.getLyrics().forEach(lyric ->{
+               if(lyric.getId()==0)
+                   lyricRepository.create(lyric);
+            });
         }
         return songsRepository.saveSong(song);
     }

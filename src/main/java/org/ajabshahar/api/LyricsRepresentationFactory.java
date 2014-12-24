@@ -9,15 +9,9 @@ import org.ajabshahar.platform.models.Stanza;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class LyricsRepresentationFactory {
-
-    public JsonObject getLyricsDataFromJson(String jsonSong) {
-        JsonObject jsonObject = new Gson().fromJson(jsonSong, JsonObject.class);
-        JsonObject object = jsonObject.getAsJsonObject("lyricsData");
-
-        return object;
-    }
 
     public List<Lyric> create(JsonObject lyrics) {
 
@@ -27,7 +21,7 @@ public class LyricsRepresentationFactory {
             JsonObject stanzaOrCouplet = lyricsData.get(i).getAsJsonObject();
             Lyric lyric = getLyric(stanzaOrCouplet);
             lyric.setChorus(lyrics.get("chorus").getAsString());
-            lyric.setSequenceNumber(i+1);
+            lyric.setSequenceNumber(i + 1);
             lyricList.add(lyric);
         }
         return lyricList;
@@ -51,4 +45,53 @@ public class LyricsRepresentationFactory {
         return new Gson().fromJson(coupletJson.toString(), Couplet.class);
     }
 
+    public LyricsRepresentation getLyrics(Set<Lyric> lyrics) {
+
+        return new LyricsRepresentation(getLyricSummary(lyrics, "Original"),
+                getLyricSummary(lyrics, "EnglishTranslation"), getLyricSummary(lyrics, "EnglishTransliteration"));
+    }
+
+    private LyricsSummaryRepresentation getLyricSummary(Set<Lyric> lyrics, String type) {
+
+        LyricsSummaryRepresentation lyricsSummaryRepresentation = new LyricsSummaryRepresentation();
+        lyrics.forEach(lyric -> {
+            UnitOfLyricsRepresentation unitOfLyricsRepresentation = getUnitOfLyric(lyric, type);
+            lyricsSummaryRepresentation.add(unitOfLyricsRepresentation);
+        });
+
+        return lyricsSummaryRepresentation;
+    }
+
+
+    private UnitOfLyricsRepresentation getUnitOfLyric(Lyric lyric, String type) {
+        Couplet couplet = lyric.getCouplet();
+        Stanza stanza = lyric.getStanza();
+
+        List<String> unitOfLyric = getText(couplet, stanza, type);
+        return new UnitOfLyricsRepresentation(unitOfLyric.get(0), unitOfLyric.get(1));
+
+    }
+
+    private List<String> getText(Couplet couplet, Stanza stanza, String type) {
+        List<String> unitOfLyrics = new ArrayList<>();
+        if (couplet != null) {
+            if (type.equalsIgnoreCase("Original"))
+                unitOfLyrics.add(couplet.getOriginalText());
+            else if (type.equalsIgnoreCase("EnglishTranslation"))
+                unitOfLyrics.add(couplet.getEnglishTranslationText());
+            else
+                unitOfLyrics.add(couplet.getEnglishTransliterationText());
+            unitOfLyrics.add("Couplet");
+        } else {
+            if (type.equalsIgnoreCase("Original"))
+                unitOfLyrics.add(stanza.getOriginalText());
+            else if (type.equalsIgnoreCase("EnglishTranslation"))
+                unitOfLyrics.add(stanza.getEnglishTranslationText());
+            else
+                unitOfLyrics.add(stanza.getEnglishTransliterationText());
+            unitOfLyrics.add("Stanza");
+        }
+        return unitOfLyrics;
+
+    }
 }
