@@ -42,9 +42,7 @@
         background-color: #fff;
 
         @media screen and (max-width: 1140px) {
-
             display: none;
-
         }
     }
 
@@ -78,11 +76,16 @@
        background-repeat: no-repeat repeat;
        width: 622px;
        display: inline-block;
-       -webkit-animation-duration: 10s;
-       -webkit-animation-name: moveString;
-       -webkit-animation-iteration-count: infinite;
-       -webkit-animation-direction: alternate;
+       left: auto;
+       right: 25%;
+       -webkit-animation: moveString 5s ease-in-out 0s infinite alternate;
+       -moz-animation: moveString 5s ease-in-out 0s infinite alternate;
+       -o-animation: moveString 5s ease-in-out 0s infinite alternate;
        -webkit-transform-origin: -50% -50%;
+       -moz-transform-origin: -50% -50%;
+       -o-transform-origin: -50% -50%;
+       animation: moveString 10s alternate infinite;
+       transform-origin: -50% -50%;
     }
   }
 }
@@ -135,7 +138,15 @@
 
 
 @-webkit-keyframes moveString {
-    0% { -webkit-transform: rotate(2deg); }
+    0% { -webkit-transform: rotate(1deg); }
+    100% { -webkit-transform: rotate(0deg); }
+}
+@-moz-keyframes moveString {
+  0% { -moz-transform: rotate(1deg); }
+  100% { -moz-transform: rotate(0deg); }
+}
 
-    100% { -webkit-transform: rotate(-2deg); }
+@-o-keyframes moveString {
+  0% { -o-transform: rotate(1deg); }
+  100% { -o-transform: rotate(0deg); }
 }
