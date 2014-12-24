@@ -37,7 +37,7 @@ public class PersonResource {
     public Response createPersonDetails(String jsonPersonDetails) {
         PersonDetails personDetails = new Gson().fromJson(jsonPersonDetails, PersonDetails.class);
         personDAO.create(personDetails);
-        return Response.status(200).entity(personDetails.toString()).build();
+        return Response.status(200).entity(personDetails.getId()).build();
     }
 
     @POST
