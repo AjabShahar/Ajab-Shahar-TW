@@ -92,7 +92,7 @@ public class SongsRepresentationFactoryTest {
 
         when(people.findBy(id + 1000)).thenReturn(singer);
         when(people.findBy(id + 2000)).thenReturn(poet);
-        when(lyricsRepresentationFactory.getLyrics(song.getLyrics())).thenReturn(new LyricsRepresentation());
+        when(lyricsRepresentationFactory.getLyrics(song.getLyrics())).thenReturn(new LyricsRepresentation(""));
 
     }
 

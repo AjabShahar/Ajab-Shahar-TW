@@ -1,42 +1,27 @@
 package org.ajabshahar.api;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LyricsRepresentation {
-    private LyricsSummaryRepresentation originalLyrics;
-    private LyricsSummaryRepresentation englishTranslationLyrics;
-    private LyricsSummaryRepresentation englishTransliterationLyrics;
+
+    private List<LyricsSummaryRepresentation> lyrics;
     private String chorus;
 
-
-    public LyricsRepresentation(LyricsSummaryRepresentation originalLyrics, LyricsSummaryRepresentation englishTranslationLyrics, LyricsSummaryRepresentation englishTransliterationLyrics, String chorus) {
-        this.originalLyrics = originalLyrics;
-        this.englishTranslationLyrics = englishTranslationLyrics;
-        this.englishTransliterationLyrics = englishTransliterationLyrics;
+    public LyricsRepresentation(String chorus) {
         this.chorus = chorus;
+        lyrics = new ArrayList<>();
     }
 
-    public LyricsRepresentation() {
-
+    public List<LyricsSummaryRepresentation> getLyrics() {
+        return lyrics;
     }
 
-    @JsonProperty("originalLyrics")
-    public LyricsSummaryRepresentation getOriginalLyrics() {
-        return originalLyrics;
+    public void add(LyricsSummaryRepresentation lyricsSummaryRepresentation) {
+        lyrics.add(lyricsSummaryRepresentation);
     }
 
-    @JsonProperty("englishTranslationLyrics")
-    public LyricsSummaryRepresentation getEnglishTranslationLyrics() {
-        return englishTranslationLyrics;
-    }
-
-    @JsonProperty("englishTransliterationLyrics")
-    public LyricsSummaryRepresentation getEnglishTransliterationLyrics() {
-        return englishTransliterationLyrics;
-    }
-
-    @JsonProperty("chorus")
     public String getChorus() {
         return chorus;
     }

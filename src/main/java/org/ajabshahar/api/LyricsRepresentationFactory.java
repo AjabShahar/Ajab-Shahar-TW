@@ -7,9 +7,7 @@ import org.ajabshahar.platform.models.Couplet;
 import org.ajabshahar.platform.models.Lyric;
 import org.ajabshahar.platform.models.Stanza;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class LyricsRepresentationFactory {
@@ -47,52 +45,20 @@ public class LyricsRepresentationFactory {
     }
 
     public LyricsRepresentation getLyrics(Set<Lyric> lyrics) {
-
-        return new LyricsRepresentation(getLyricSummary(lyrics, "Original"),
-                getLyricSummary(lyrics, "EnglishTranslation"), getLyricSummary(lyrics, "EnglishTransliteration"),lyrics.iterator().next().getChorus());
-    }
-
-    private LyricsSummaryRepresentation getLyricSummary(Set<Lyric> lyrics, String type) {
-
-        LyricsSummaryRepresentation lyricsSummaryRepresentation = new LyricsSummaryRepresentation();
+        LyricsRepresentation lyricsRepresentation = new LyricsRepresentation(lyrics.iterator().next().getChorus());
         lyrics.forEach(lyric -> {
-            UnitOfLyricsRepresentation unitOfLyricsRepresentation = getUnitOfLyric(lyric, type);
-            lyricsSummaryRepresentation.add(unitOfLyricsRepresentation);
+            lyricsRepresentation.add(new LyricsSummaryRepresentation((int) lyric.getId(), lyric.getCouplet(), lyric.getStanza(), lyric.getSequenceNumber(), getType(lyric)));
         });
 
-        return lyricsSummaryRepresentation;
+        return lyricsRepresentation;
     }
 
-
-    private UnitOfLyricsRepresentation getUnitOfLyric(Lyric lyric, String type) {
-        Couplet couplet = lyric.getCouplet();
-        Stanza stanza = lyric.getStanza();
-
-        List<String> unitOfLyric = getText(couplet, stanza, type);
-        return new UnitOfLyricsRepresentation(unitOfLyric.get(0), unitOfLyric.get(1));
-
+    private String getType(Lyric lyric) {
+        if (lyric.getCouplet() != null)
+            return "Couplet";
+        else if (lyric.getStanza() != null)
+            return "Stanza";
+        return "";
     }
 
-    private List<String> getText(Couplet couplet, Stanza stanza, String type) {
-        List<String> unitOfLyrics = new ArrayList<>();
-        if (couplet != null) {
-            if (type.equalsIgnoreCase("Original"))
-                unitOfLyrics.add(couplet.getOriginalText());
-            else if (type.equalsIgnoreCase("EnglishTranslation"))
-                unitOfLyrics.add(couplet.getEnglishTranslationText());
-            else
-                unitOfLyrics.add(couplet.getEnglishTransliterationText());
-            unitOfLyrics.add("Couplet");
-        } else {
-            if (type.equalsIgnoreCase("Original"))
-                unitOfLyrics.add(stanza.getOriginalText());
-            else if (type.equalsIgnoreCase("EnglishTranslation"))
-                unitOfLyrics.add(stanza.getEnglishTranslationText());
-            else
-                unitOfLyrics.add(stanza.getEnglishTransliterationText());
-            unitOfLyrics.add("Stanza");
-        }
-        return unitOfLyrics;
-
-    }
 }
