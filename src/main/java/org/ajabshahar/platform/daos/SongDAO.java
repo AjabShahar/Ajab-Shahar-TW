@@ -101,6 +101,8 @@ public class SongDAO extends AbstractDAO<Song> {
             titleDAO.create(updatableSong.getTitle());
         }
         originalSongData = invokeAllSetters(originalSongData, updatableSong);
+        sessionFactory.getCurrentSession().update(originalSongData.getTitle());
+        sessionFactory.getCurrentSession().update(originalSongData.getSongTitle());
         sessionFactory.getCurrentSession().update(originalSongData);
         return originalSongData;
     }
