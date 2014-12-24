@@ -6,6 +6,7 @@ var songListController = function($scope, contentService){
             $scope.songs = _.reduce(allSongs,function(songs, value,index) {
                 var toBeAdded={};
                 toBeAdded.title = value.englishTransliterationTitle;
+                toBeAdded.translatedTitle = value.englishTranslationTitle;
                 toBeAdded.categoryName = value.category;
                 toBeAdded.publish = value.publish;
                 toBeAdded.singerNames = _.reduce(value.singers, function(memo, value, index){ return ((index!=0)?' ,':'')+ memo+ value.name; },'');

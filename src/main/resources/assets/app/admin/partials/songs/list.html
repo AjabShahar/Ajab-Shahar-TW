@@ -17,15 +17,17 @@
     <div ng-controller="songListController">
         <table class="table">
             <tr>
-                <td>Name</td>
-                <td>Category</td>
-                <td>Singer</td>
-                <td>Poet</td>
-                <td>Published</td>
-                <td>Edit</td>
+                <td><b>English-transliterated name</b></b></td>
+                <td><b>English-translated name</b></td>
+                <td><b>Category</b></td>
+                <td><b>Singer</b></td>
+                <td><b>Poet</b></td>
+                <td><b>Published</b></td>
+                <td><b>Edit</b></td>
             </tr>
             <tr>
                 <td><input ng-model="search.title" class="form-control" ><br></td>
+                <td><input ng-model="search.translatedTitle" class="form-control" ><br></td>
                 <td></td>
                 <td><input ng-model="search.singerNames" class="form-control" ><br></td>
                 <td><input ng-model="search.poetNames" class="form-control" ><br></td>
@@ -33,6 +35,7 @@
             </tr>
             <tr ng-repeat="song in songs| filter:search">
                 <td>{{song.title}}</td>
+                <td>{{song.translatedTitle}}</td>
                 <td>{{song.categoryName}}</td>
                 <td>{{song.singerNames}}</td>
                 <td>{{song.poetNames}}</td>
