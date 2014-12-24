@@ -45,7 +45,10 @@ public class LyricsRepresentationFactory {
     }
 
     public LyricsRepresentation getLyrics(Set<Lyric> lyrics) {
-        LyricsRepresentation lyricsRepresentation = new LyricsRepresentation(lyrics.iterator().next().getChorus());
+        String chorus = null;
+        if(!lyrics.isEmpty())
+            chorus = lyrics.iterator().next().getChorus();
+        LyricsRepresentation lyricsRepresentation = new LyricsRepresentation(chorus);
         lyrics.forEach(lyric -> {
             lyricsRepresentation.add(new LyricsSummaryRepresentation((int) lyric.getId(), lyric.getCouplet(), lyric.getStanza(), lyric.getSequenceNumber(), getType(lyric)));
         });
