@@ -113,7 +113,7 @@ public class SongDAO extends AbstractDAO<Song> {
         if (song != null) {
             findSongs.createAlias("title", "titleAlias");
             findSongs.add(Restrictions.eq("titleAlias.id", song.getTitle().getId()));
-            findSongs.add(Restrictions.eq("publish", true));
+            findSongs.add(Restrictions.eq("isAuthoringComplete", true));
         } else {
             return new ArrayList<>();
         }

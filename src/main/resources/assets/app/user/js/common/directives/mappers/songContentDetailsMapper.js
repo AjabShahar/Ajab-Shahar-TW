@@ -15,7 +15,7 @@ thumbnailModule.directive("songContentDetailsMapper", function() {
                 {
                     var value = "" + singers[0].firstName;
                     
-                    for(var index=0;index< singers.length;index++){
+                    for(var index=1;index< singers.length;index++){
                         value += ' & '+singers[index].firstName;
                     }
                 }
