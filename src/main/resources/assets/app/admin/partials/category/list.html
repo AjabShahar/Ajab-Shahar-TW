@@ -15,17 +15,17 @@
 </head>
 <body>
 <div ng-controller="categoryListController">
-    <table>
+    <table class="table">
         <tr>
             <td>Name</td>
-            <td>edit</td>
+            <td>Edit</td>
         </tr>
         <tr>
-            <td><input ng-model="search.name"><br></td>
+            <td><input ng-model="search.name" class="form-control" ><br></td>
         </tr>
         <tr ng-repeat="category in categories| filter:search">
             <td>{{category.name}}</td>
-            <td><a href="edit.html?id={{category.id}}">edit</a></td>
+            <td><a href="edit.html?id={{category.id}}" class="btn btn-info">Edit</a></td>
         </tr>
     </table>
 </div>

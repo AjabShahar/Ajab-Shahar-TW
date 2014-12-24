@@ -12,26 +12,26 @@
 </head>
 <body>
 <div ng-controller="personListController">
-    <table>
+    <table class="table">
         <tr>
             <td>First Name</td>
             <td>Middle Category</td>
             <td>Last Name</td>
             <td>Roles</td>
-            <td>edit</td>
+            <td>Edit</td>
         </tr>
         <tr>
-            <td><input ng-model="search.firstName"><br></td>
-            <td><input ng-model="search.middleName"><br></td>
-            <td><input ng-model="search.lastName"><br></td>
-            <td><input ng-model="search.roles"><br></td>
+            <td><input ng-model="search.firstName" class="form-control" ><br></td>
+            <td><input ng-model="search.middleName" class="form-control" ><br></td>
+            <td><input ng-model="search.lastName" class="form-control" ><br></td>
+            <td><input ng-model="search.roles" class="form-control" ><br></td>
         </tr>
         <tr ng-repeat="person in people| filter:search">
             <td>{{person.firstName}}</td>
             <td>{{person.middleName}}</td>
             <td>{{person.lastName}}</td>
             <td>{{person.roles}}</td>
-            <td><a href="edit.html?id={{person.id}}">edit</a></td>
+            <td><a href="edit.html?id={{person.id}}" class="btn btn-info">Edit</a></td>
         </tr>
     </table>
 </div>

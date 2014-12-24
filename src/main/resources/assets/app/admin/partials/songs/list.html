@@ -15,26 +15,26 @@
 </head>
 <body>
     <div ng-controller="songListController">
-        <table>
+        <table class="table">
             <tr>
                 <td>Name</td>
                 <td>Category</td>
                 <td>Singer</td>
                 <td>Poet</td>
-                <td>edit</td>
+                <td>Edit</td>
             </tr>
             <tr>
-                <td><input ng-model="search.title"><br></td>
+                <td><input ng-model="search.title" class="form-control" ><br></td>
                 <td></td>
-                <td><input ng-model="search.singerNames"><br></td>
-                <td><input ng-model="search.poetNames"><br></td>
+                <td><input ng-model="search.singerNames" class="form-control" ><br></td>
+                <td><input ng-model="search.poetNames" class="form-control" ><br></td>
             </tr>
             <tr ng-repeat="song in songs| filter:search">
                 <td>{{song.title}}</td>
                 <td>{{song.categoryName}}</td>
                 <td>{{song.singerNames}}</td>
                 <td>{{song.poetNames}}</td>
-                <td><a href="edit.html?id={{song.id}}">edit</a></td>
+                <td><a href="edit.html?id={{song.id}}" class="btn btn-info">edit</a></td>
             </tr>
         </table>
     </div>

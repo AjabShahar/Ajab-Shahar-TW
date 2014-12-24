@@ -15,18 +15,18 @@
 </head>
 <body>
 <div ng-controller="coupletListController">
-    <table>
+    <table class="table">
         <tr>
             <td>Name</td>
             <td>Category</td>
             <td>Poet</td>
-            <td>edit</td>
+            <td>Edit</td>
         </tr>
         <tr ng-repeat="song in songs">
             <td>{{song.title}}</td>
             <td>{{song.categoryName}}</td>
             <td>{{song.poetName}}</td>
-            <td><a href="edit.html?id={{song.id}}">edit</a></td>
+            <td><a href="edit.html?id={{song.id}}" class="btn btn-info">Edit</a></td>
         </tr>
     </table>
 </div>
