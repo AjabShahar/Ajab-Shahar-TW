@@ -18,7 +18,11 @@
     		        imageWidth = bgImage.width();
 
     		    bgImage.css({ 'left' : (viewPortWidth - imageWidth)/2});
-    		    bgBodyImage.css({ 'left' : (viewPortWidth - imageWidth)/2});
+    		    bgBodyImage.css({ 'left' : (viewPortWidth - imageWidth)/2 + 20});
+
+    		    if (bgBodyImage <= 1140) {
+    		        bgBodyImage.css({ 'left' : (viewPortWidth - imageWidth)/2});
+    		    }
     		}
 
     		var _lazyLoadImages =  function() {

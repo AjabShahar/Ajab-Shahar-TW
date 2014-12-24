@@ -47,24 +47,30 @@
     }
 
     &5{
-        background: url(../../img/mainLandingPage/parallax/bird.png) 0px no-repeat;
+        background: url(../../img/mainLandingPage/parallax/bird1.png) 0px no-repeat;
 
-        -webkit-animation: birdopacity 15s linear infinite;
-        -webkit-animation: movebird 55s linear infinite;
-        -moz-animation: movebird 55s linear infinite;
-        -o-animation: movebird 55s linear infinite;
-        animation: movebird 55s linear infinite;
+        -webkit-animation: movebird 60s linear infinite;
+        -moz-animation: movebird 60s linear infinite;
+        -o-animation: movebird 60s linear infinite;
+        animation: movebird 60s linear infinite;
 
         -webkit-transform-origin: 30em 60em;
         -moz-transform-origin: 30em 60em;
         -o-transform-origin: 30em 60em;
         transform-origin: 30em 60em;
+
+        &.second {
+            -webkit-animation: moveSecondBird 55s ease-in-out 0s infinite normal;
+            -moz-animation: moveSecondBird 55s ease-in-out 0s infinite normal;
+            -o-animation: moveSecondBird 55s ease-in-out 0s infinite normal;
+            animation: moveSecondBird 55s ease-in-out 0s infinite normal;
+        }
     }
 
     &6{
        background: url(../../img/mainLandingPage/parallax/clouds.png);
-       height: 4138px;
-       /*width: 3050px; */
+       width: 1981px;
+       background-repeat: no-repeat repeat;
        -webkit-animation: moveclouds 60s linear infinite;
        -moz-animation: moveclouds 60s linear infinite;
        -o-animation: moveclouds 60s linear infinite;
@@ -84,7 +90,7 @@
        -webkit-transform-origin: -50% -50%;
        -moz-transform-origin: -50% -50%;
        -o-transform-origin: -50% -50%;
-       animation: moveString 10s alternate infinite;
+       animation: moveString 5s ease-in-out 0s infinite alternate;
        transform-origin: -50% -50%;
     }
   }
@@ -94,11 +100,6 @@
 
 /* bird animation begins */
 
-@-webkit-keyframes birdopacity {
-    0%{opacity:0.4;}
-    50% {opacity: 1}
-    100%{opacity:1;}
-}
 @-webkit-keyframes movebird {
   0% {background-position-y: 100px; background-position-x: 0px; -webkit-transform: rotate(80deg); }
   50% {background-position-y: 500px;background-position-x: 1200px;}
@@ -113,6 +114,24 @@
   0% {background-position: 0px 100px; -o-transform: rotate(80deg); }
   50% { background-position: 1200px 500px; }
   100% {background-position: 500px 200px; -o-transform: rotate(892deg)}
+}
+
+@-webkit-keyframes moveSecondBird {
+    0% {background-position: 1400px 800px; -webkit-transform: rotate(892deg); }
+    50% { background-position: 600px 500px; }
+    100% {background-position: 10px 200px; -webkit-transform: rotate(900deg)}
+}
+
+@-moz-keyframes moveSecondBird {
+    0% {background-position: 1400px 800px; -moz-transform: rotate(892deg); }
+    50% { background-position: 600px 500px; }
+    100% {background-position: 10px 200px; -moz-transform: rotate(900deg)}
+}
+
+@-o-keyframes moveSecondBird {
+    0% {background-position: 1400px 800px; -o-transform: rotate(892deg); }
+    50% { background-position: 600px 500px; }
+    100% {background-position: 10px 200px; -o-transform: rotate(900deg)}
 }
 /* bird animation ends */
 
