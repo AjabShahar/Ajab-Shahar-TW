@@ -9,6 +9,7 @@ import org.ajabshahar.platform.models.Song;
 import org.ajabshahar.platform.models.Title;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class SongsRepresentationFactory {
@@ -125,10 +126,10 @@ public class SongsRepresentationFactory {
 
     public Song create(String jsonSong) {
 
-        JsonObject song = new Gson().fromJson(jsonSong, JsonObject.class);
-        List<Lyric> lyrics = lyricsRepresentationFactory.create(song.getAsJsonObject("lyricsData"));
-        Song songObject = new Gson().fromJson(song.toString(), Song.class);
-        songObject.setLyrics(lyrics);
-        return songObject;
+        JsonObject jsonSongObject = new Gson().fromJson(jsonSong, JsonObject.class);
+        HashSet<Lyric> lyrics = lyricsRepresentationFactory.create(jsonSongObject.getAsJsonObject("lyricsData"));
+        Song song = new Gson().fromJson(jsonSong, Song.class);
+        song.setLyrics(lyrics);
+        return song;
     }
 }

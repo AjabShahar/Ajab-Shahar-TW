@@ -8,14 +8,15 @@ import org.ajabshahar.platform.models.Lyric;
 import org.ajabshahar.platform.models.Stanza;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class LyricsRepresentationFactory {
 
-    public List<Lyric> create(JsonObject lyrics) {
+    public HashSet<Lyric> create(JsonObject lyrics) {
 
-        List<Lyric> lyricList = new ArrayList<>();
+        HashSet<Lyric> lyricList = new HashSet<>();
         JsonArray lyricsData = lyrics.getAsJsonArray("content");
         for (int i = 0; i < lyricsData.size(); i++) {
             JsonObject stanzaOrCouplet = lyricsData.get(i).getAsJsonObject();

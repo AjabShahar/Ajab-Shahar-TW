@@ -1,7 +1,7 @@
 package org.ajabshahar.platform.models;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -46,13 +46,13 @@ public class Song {
     private Boolean isAuthoringComplete;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "SONG_SINGER", joinColumns = { @JoinColumn(name = "SONG_ID", referencedColumnName = "ID") },
-            inverseJoinColumns = { @JoinColumn(name = "SINGER_ID", referencedColumnName = "ID")})
+    @JoinTable(name = "SONG_SINGER", joinColumns = {@JoinColumn(name = "SONG_ID", referencedColumnName = "ID")},
+            inverseJoinColumns = {@JoinColumn(name = "SINGER_ID", referencedColumnName = "ID")})
     private Set<PersonDetails> singers;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "SONG_POET", joinColumns = { @JoinColumn(name = "SONG_ID", referencedColumnName = "ID") },
-            inverseJoinColumns = { @JoinColumn(name = "POET_ID", referencedColumnName = "ID") })
+    @JoinTable(name = "SONG_POET", joinColumns = {@JoinColumn(name = "SONG_ID", referencedColumnName = "ID")},
+            inverseJoinColumns = {@JoinColumn(name = "POET_ID", referencedColumnName = "ID")})
     private Set<PersonDetails> poets;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -77,9 +77,13 @@ public class Song {
     private Set<Lyric> lyrics;
 
 
-    public Set<PersonDetails> getPoets(){return poets;}
+    public Set<PersonDetails> getPoets() {
+        return poets;
+    }
 
-    public void setPoets(Set<PersonDetails> poets){this.poets = poets;}
+    public void setPoets(Set<PersonDetails> poets) {
+        this.poets = poets;
+    }
 
     public Boolean getShowOnLandingPage() {
         return showOnLandingPage;
@@ -124,6 +128,7 @@ public class Song {
     public void setId(long id) {
         this.id = id;
     }
+
     public long getId() {
         return id;
     }
@@ -205,8 +210,8 @@ public class Song {
         return lyrics;
     }
 
-    public void setLyrics(List<Lyric> lyrics) {
-        this.lyrics = (Set<Lyric>) lyrics;
+    public void setLyrics(HashSet<Lyric> lyrics) {
+        this.lyrics = lyrics;
     }
 }
 

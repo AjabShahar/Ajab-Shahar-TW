@@ -15,6 +15,10 @@ public class LyricsRepresentation {
         this.englishTransliterationLyrics = englishTransliterationLyrics;
     }
 
+    public LyricsRepresentation() {
+
+    }
+
     @JsonProperty("originalLyrics")
     public LyricsSummaryRepresentation getOriginalLyrics() {
         return originalLyrics;
