@@ -25,6 +25,19 @@
     		    }
     		}
 
+    		var _setStringAnimation = function() {
+                var whiteString = $('.px-layer7');
+                var xPos = $(window).scrollTop();
+
+                if (xPos < 800) {
+                    whiteString.css('background-position', parseInt(-xPos / 10) + 'px ' + '0%');
+                }
+                if (xPos >= 800 ) {
+                    whiteString.css('background-position', parseInt(xPos / 10) + 'px ' + '0%');
+                }
+
+    		}
+
     		var _lazyLoadImages =  function() {
     		    $('.px-layer1').lazyload();
                 $('.px-layer2').lazyload();
@@ -34,6 +47,7 @@
 
     		var _bindEvents = function() {
     		    $(window).on('resize', _.throttle(_setBgImage, 1000));
+    		    $(window).on('scroll', _setStringAnimation);
     		}
 
     		var _initialiseScrolling = function() {
