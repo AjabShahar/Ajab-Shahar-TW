@@ -49,7 +49,8 @@ public class SongResource {
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updateSong(String jsonSong) {
-        Song song = songs.update(jsonSong);
+        Song song = songsRepresentationFactory.create(jsonSong);
+        song = songs.update(song);
         return Response.ok(song).build();
     }
 

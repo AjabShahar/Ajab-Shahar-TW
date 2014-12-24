@@ -1,6 +1,5 @@
 package org.ajabshahar.core;
 
-import com.google.gson.Gson;
 import org.ajabshahar.platform.daos.CategoryDAO;
 import org.ajabshahar.platform.daos.LyricDAO;
 import org.ajabshahar.platform.daos.SongDAO;
@@ -36,8 +35,7 @@ public class Songs {
         return songsRepository.findBy(songId, singerId, poetId, startFrom, filteredLetter);
     }
 
-    public Song update(String jsonSong) {
-        Song song = new Gson().fromJson(jsonSong, Song.class);
+    public Song update(Song song) {
         return songsRepository.updateSong(song);
     }
 
