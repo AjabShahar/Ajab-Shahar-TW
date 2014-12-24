@@ -16,6 +16,9 @@ thumbnailModule.directive("songContentDetails", function() {
         },
         templateUrl:'/user/js/common/templates/songs/songContentDetails.html',
         controller: function($scope) {
+            $scope.isAboutVisible = false;
+            $scope.isNotesVisible = false;
+
             $scope.hideContents = function(){
                 return $scope.detailsService.shouldHideDetails;
             }
@@ -30,6 +33,16 @@ thumbnailModule.directive("songContentDetails", function() {
 
             $scope.shouldStopVideo = function(){
                 return $scope.detailsService.isClosed($scope.id);
+            }
+
+            $scope.showAbout = function(){
+                $scope.isAboutVisible = true;
+                $scope.isNotesVisible = false;
+            }
+
+            $scope.showNotes = function(){
+                $scope.isNotesVisible = true;
+                $scope.isAboutVisible = false;
             }
         }
     }
