@@ -29,11 +29,13 @@
                 var whiteString = $('.px-layer7');
                 var xPos = $(window).scrollTop();
 
-                if (xPos < 1000) {
-                    whiteString.css('background-position', parseInt(-xPos / 10) + 'px ' + '0%');
+
+                if (xPos < 750 || (xPos >= 2500 && xPos < 4300)) {
+                    whiteString.css('background-position', parseInt(-xPos / 50) + 'px ' + '0%');
+
                 }
-                if (xPos >= 1000 ) {
-                    whiteString.css('background-position', parseInt(xPos / 10) + 'px ' + '0%');
+                else if ((xPos >= 750 && xPos < 2500) || (xPos >= 4300)) {
+                    whiteString.css('background-position', parseInt(xPos / 50) + 'px ' + '0%');
                 }
 
     		}
