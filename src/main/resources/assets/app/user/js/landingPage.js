@@ -29,10 +29,10 @@
                 var whiteString = $('.px-layer7');
                 var xPos = $(window).scrollTop();
 
-                if (xPos < 800) {
+                if (xPos < 1000) {
                     whiteString.css('background-position', parseInt(-xPos / 10) + 'px ' + '0%');
                 }
-                if (xPos >= 800 ) {
+                if (xPos >= 1000 ) {
                     whiteString.css('background-position', parseInt(xPos / 10) + 'px ' + '0%');
                 }
 
