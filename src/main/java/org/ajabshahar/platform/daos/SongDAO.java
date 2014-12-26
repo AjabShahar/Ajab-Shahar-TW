@@ -39,25 +39,6 @@ public class SongDAO extends AbstractDAO<Song> {
         return findSongs.list();
     }
 
-    public Song invokeAllSetters(Song originalSongData, Song updatableSongData) {
-        originalSongData.setTitle(updatableSongData.getTitle());
-        originalSongData.setSongTitle(updatableSongData.getSongTitle());
-        originalSongData.setAbout(updatableSongData.getAbout());
-        originalSongData.setNotes(updatableSongData.getNotes());
-        originalSongData.setDownload_url(updatableSongData.getDownload_url());
-
-
-        originalSongData.setShowOnLandingPage(updatableSongData.getShowOnLandingPage());
-        originalSongData.setDuration(updatableSongData.getDuration());
-        originalSongData.setYoutubeVideoId(updatableSongData.getYoutubeVideoId());
-        originalSongData.setThumbnail_url(updatableSongData.getThumbnail_url());
-        originalSongData.setIsAuthoringComplete(updatableSongData.getIsAuthoringComplete());
-        originalSongData.setSingers(updatableSongData.getSingers());
-        originalSongData.setPoets(updatableSongData.getPoets());
-        originalSongData.setSongCategory(updatableSongData.getSongCategory());
-        originalSongData.setMediaCategory(updatableSongData.getMediaCategory());
-        return originalSongData;
-    }
 
     public int getCountOfSongsThatStartWith(String letter) {
         return list(namedQuery("org.ajabshahar.platform.models.Song.findAllFilteredBy").setParameter("letter", letter + "%")).size();
@@ -84,27 +65,16 @@ public class SongDAO extends AbstractDAO<Song> {
             findSongs.createAlias("songTitle", "songTitleAlias");
             findSongs.add(Restrictions.like("songTitleAlias.englishTranslation", filteredLetter, MatchMode.START));
         }
-        findSongs.add(Restrictions.eq("isAuthoringComplete",true));
+        findSongs.add(Restrictions.eq("isAuthoringComplete", true));
         findSongs.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return findSongs.list();
     }
 
     public Song updateSong(Song updatableSong) {
-        Long id = updatableSong.getId();
-        Song originalSongData = (Song) sessionFactory.openStatelessSession().get(Song.class, id);
-        if (updatableSong.getSongTitle().getId() == 0) {
-            TitleDAO titleDAO = new TitleDAO(sessionFactory);
-            titleDAO.create(updatableSong.getSongTitle());
-        }
-        if (updatableSong.getTitle().getId() == 0) {
-            TitleDAO titleDAO = new TitleDAO(sessionFactory);
-            titleDAO.create(updatableSong.getTitle());
-        }
-        originalSongData = invokeAllSetters(originalSongData, updatableSong);
-        sessionFactory.getCurrentSession().update(originalSongData.getTitle());
-        sessionFactory.getCurrentSession().update(originalSongData.getSongTitle());
-        sessionFactory.getCurrentSession().update(originalSongData);
-        return originalSongData;
+        sessionFactory.getCurrentSession().update(updatableSong.getTitle());
+        sessionFactory.getCurrentSession().update(updatableSong.getSongTitle());
+        sessionFactory.getCurrentSession().update(updatableSong);
+        return updatableSong;
     }
 
     public List<Song> findSongWithVersions(int songId) {

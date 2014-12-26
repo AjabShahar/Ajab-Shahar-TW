@@ -1,7 +1,6 @@
 package org.ajabshahar.platform.models;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -210,7 +209,7 @@ public class Song {
         return lyrics;
     }
 
-    public void setLyrics(HashSet<Lyric> lyrics) {
+    public void setLyrics(Set<Lyric> lyrics) {
         this.lyrics = lyrics;
     }
 }

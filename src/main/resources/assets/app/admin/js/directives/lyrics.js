@@ -87,9 +87,12 @@ songsAdminApp.directive("lyrics", function() {
             }
 
             $scope.getLyricsForDisplay = function(content){
-                if(content.contentType=='stanza')
-                    return content.stanza.englishTransliterationText;
-                return content.couplet.englishTransliterationText;
+                if(content.stanza!=null)
+                     return content.stanza.englishTransliterationText;
+                return content.couplet.englishTranslationText;
+//                if(content.contentType=='stanza')
+//                    return content.stanza.englishTransliterationText;
+//                return content.couplet.englishTransliterationText;
             }
         }
     }

@@ -85,6 +85,9 @@ var songDetailsController = function($scope, $window,$location,songContentServic
 
                           });
                           $scope.formInfo = data;
+                          $scope.formInfo.lyrics = data.lyrics;
+                          $scope.formInfo.lyricsData = data.lyrics;
+                          $scope.formInfo.lyrics.chorus = data.lyrics[0].chorus;
       });
     };
 

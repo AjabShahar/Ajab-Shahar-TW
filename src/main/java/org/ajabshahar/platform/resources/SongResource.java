@@ -44,19 +44,20 @@ public class SongResource {
         return Response.status(200).entity(song.getId()).build();
     }
 
+    @GET
+    @UnitOfWork
+    public List<Song> listAllSongValues() {
+        return songDAO.findAll();
+    }
+
     @POST
     @Path("/edit")
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updateSong(String jsonSong) {
-        Song song = songs.update(jsonSong);
+        Song song = songsRepresentationFactory.create(jsonSong);
+        song = songs.update(song);
         return Response.ok(song).build();
-    }
-
-    @GET
-    @UnitOfWork
-    public List<Song> listAllSongValues() {
-        return songDAO.findAll();
     }
 
     @GET
@@ -119,7 +120,7 @@ public class SongResource {
 
     @GET
     @UnitOfWork
-    @Path("/editing")
+    @Path("/getAllSongs")
     public Response getSongs(){
         List<Song> songList = songs.findAll();
         SongsRepresentation songsRepresentation = songsRepresentationFactory.createSongsRepresentation(songList);
