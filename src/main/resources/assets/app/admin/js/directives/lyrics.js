@@ -47,7 +47,7 @@ songsAdminApp.directive("lyrics", function() {
                     newElement.contentType = 'couplet';
                     newElement.couplet = $scope.newContent.content;
                 }
-                $scope.lyricsData.content.push(newElement);
+                $scope.lyricsData.push(newElement);
                 $scope.selectedLyricsContent = newElement;
                 $scope.initializeContent();
             }
@@ -64,23 +64,23 @@ songsAdminApp.directive("lyrics", function() {
             };
 
             $scope.moveItemUp = function(){
-                var selectedSongIndex = $scope.lyricsData.content.indexOf($scope.selectedLyricsContent);
+                var selectedSongIndex = $scope.lyricsData.indexOf($scope.selectedLyricsContent);
                 if(selectedSongIndex<=0)
                     return;
 
-                $scope.lyricsData.content.move(selectedSongIndex, selectedSongIndex-1);
+                $scope.lyricsData.move(selectedSongIndex, selectedSongIndex-1);
             }
 
             $scope.moveItemDown = function(){
-                var selectedSongIndex = $scope.lyricsData.content.indexOf($scope.selectedLyricsContent);
-                if(selectedSongIndex>=$scope.lyricsData.content.length-1)
+                var selectedSongIndex = $scope.lyricsData.indexOf($scope.selectedLyricsContent);
+                if(selectedSongIndex>=$scope.lyricsData.length-1)
                     return;
 
-                $scope.lyricsData.content.move(selectedSongIndex, selectedSongIndex+1);
+                $scope.lyricsData.move(selectedSongIndex, selectedSongIndex+1);
             }
 
             $scope.showLyrics = function(){
-                return $scope.lyricsData.content.length != 0;
+                return $scope.lyricsData.length != 0;
             }
 
             $scope.getLyricsForDisplay = function(content){
