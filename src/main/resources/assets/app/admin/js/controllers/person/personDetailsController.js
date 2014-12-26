@@ -1,6 +1,6 @@
 var personDetailsController = function($scope, $http,$window,$location){
   $scope.formInfo = {};
-
+  $scope.categoryList = [{"occupation":"Poet"},{"occupation":"Singer"}];
   $scope.saveData = function(){
   $http.post('/api/people',$scope.formInfo).success(function(data){
           $window.location.href = '/admin/partials/person/edit.html?id=' + data;
