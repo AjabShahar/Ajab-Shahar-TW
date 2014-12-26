@@ -24,17 +24,37 @@
     		}
 
     		var _setStringAnimation = function() {
-                var whiteString = $('.px-layer7');
-                var xPos = $(window).scrollTop();
+                var whiteString = $('.px-layer7'),
+                    xPos = $(window).scrollTop();
 
 
-                if (xPos < 750 || (xPos >= 2500 && xPos < 4300)) {
-                    whiteString.css('background-position', parseInt(-xPos / 50) + 'px ' + '0%');
+
+
+                if (xPos < 750) {
+                      whiteString.css('background-position', parseInt(-xPos / 3) + 'px ' + '0%');
+//                    $('.thumbnailWrapper').each(function() {
+//                        $(this).css('-moz-transform', 'translate(-' + (xPos/10) + 'px, 0px)');
+//                    });
+
+
 
                 }
-                else if ((xPos >= 750 && xPos < 2500) || (xPos >= 4300)) {
-                    whiteString.css('background-position', parseInt(xPos / 50) + 'px ' + '0%');
+                else if (xPos >= 750 && xPos < 2500) {
+                    whiteString.css('background-position', parseInt(xPos / 10) + 'px ' + '0%');
                 }
+                else if (xPos >= 2500 && xPos <3000) {
+                    whiteString.css('background-position', '0px ' + '0%');
+                    whiteString.css('background-position', parseInt(-xPos / 500) + 'px ' + '0%');
+                }
+                else if (xPos >= 3000 || xPos < 4300) {
+                    //whiteString.css('background-position', '0px ' + '0%');
+                    whiteString.css('background-position', parseInt(xPos / 10) + 'px ' + '0%');
+                }
+                else if (xPos >= 4300) {
+                    whiteString.css('background-position', '0px ' + '0%');
+                    whiteString.css('background-position', parseInt(xPos / 100) + 'px ' + '0%');
+                }
+
 
     		}
 
