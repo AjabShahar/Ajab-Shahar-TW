@@ -36,138 +36,138 @@
     <br/>
         <div class="left">
             <div>
-                <div ng-controller="songDetailsController">
-                    <form>
+                <form name="songForm" novalidate ng-controller="songDetailsController">
 
-                        <div class="row">
-                            <as-admin-title title="Umbrella Title" title-data="formInfo.title" title-list="umbrellaTitleList"></as-admin-title>
+                    <div class="row">
+                        <as-admin-title title="Umbrella Title" title-data="formInfo.title" title-list="umbrellaTitleList"></as-admin-title>
+                    </div>
+
+                    <div class="row">
+                        <as-admin-title title="Song Title" title-data="formInfo.songTitle" title-list="songTitleList"></as-admin-title>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>Singer</label>
                         </div>
+                        <div class="form-group col-sm-2" multi-select input-model="singersList" button-label="firstName lastName" item-label="firstName lastName" tick-property="selected" output-model="formInfo.singers"></div>
+                        <input name="singers" ng-model="formInfo.singers" ng-show="false" required="true">
+                        <span ng-show="songForm.singers.$error.required">Required</span>
+                    </div>
 
-                        <div class="row">
-                            <as-admin-title title="Song Title" title-data="formInfo.songTitle" title-list="songTitleList"></as-admin-title>
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>Poet</label>
                         </div>
-
-                        <div class="row">
-                            <div class="form-group col-sm-2">
-                                <label>Singer</label>
-                            </div>
-                            <div class="form-group col-sm-2" multi-select input-model="singersList" button-label="firstName lastName" item-label="firstName lastName" tick-property="selected" output-model="formInfo.singers"></div>
+                        <div class="form-group col-sm-2">
+                            <select  ng-model="formInfo.poets[0]"
+                                     ng-options="poet.firstName for poet in poetsList" class="form-control">
+                            </select>
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="form-group col-sm-2">
-                                <label>Poet</label>
-                            </div>
-                            <div class="form-group col-sm-2">
-                                <select  ng-model="formInfo.poets[0]"
-                                         ng-options="poet.firstName for poet in poetsList" class="form-control">
-                                </select>
-                            </div>
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>Show On LandingPage</label>
                         </div>
-
-                        <div class="row">
-                            <div class="form-group col-sm-2">
-                                <label>Show On LandingPage</label>
-                            </div>
-                            <div class="form-group col-sm-2">
-                                <select name="format" ng-model="formInfo.showOnLandingPage" class="form-control">
-                                    <option value="true">Yes</option>
-                                    <option value="false">No</option>
-                                </select>
-                            </div>
+                        <div class="form-group col-sm-2">
+                            <select name="format" ng-model="formInfo.showOnLandingPage" class="form-control">
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="form-group col-sm-2">
-                                <label>Song Category</label>
-                            </div>
-                            <div class="form-group col-sm-2">
-                                <select ng-model="formInfo.songCategory"
-                                        ng-options="category.name for category in songCategoryList" class="form-control">
-                                </select>
-                            </div>
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>Song Category</label>
                         </div>
-
-                        <div class="row">
-                            <div class="form-group col-sm-2">
-                                <label>Duration</label>
-                            </div>
-                            <div class="form-group col-sm-2">
-                                <input type="text" name="duration" ng-model="formInfo.duration" class="form-control">
-                            </div>
+                        <div class="form-group col-sm-2">
+                            <select ng-model="formInfo.songCategory"
+                                    ng-options="category.name for category in songCategoryList" class="form-control">
+                            </select>
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="form-group col-sm-2">
-                                <label>Youtube Video ID for video</label>
-                            </div>
-                            <div class="form-group col-sm-2">
-                                <input type="text" name="youtubeVideoId" ng-model="formInfo.youtubeVideoId" class="form-control">
-                            </div>
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>Duration</label>
                         </div>
-
-                        <div class="row">
-                            <div class="form-group col-sm-2">
-                                <label>SoundCloud track ID for audio</label>
-                            </div>
-                            <div class="form-group col-sm-2">
-                                <input type="text" name="soundCloudTrackID" ng-model="formInfo.soundCloudTrackID" class="form-control">
-                            </div>
+                        <div class="form-group col-sm-2">
+                            <input type="text" name="duration" ng-model="formInfo.duration" class="form-control">
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="form-group col-sm-2">
-                                <label>Thumbnail Url</label>
-                            </div>
-                            <div class="form-group col-sm-2">
-                                <input type="text" name="thumbnailUrl" ng-model="formInfo.thumbnail_url" class="form-control">
-                            </div>
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>Youtube Video ID for video</label>
                         </div>
-
-                        <div class="row">
-                            <div class="form-group col-sm-2">
-                                <label>Download Url for the song</label>
-                            </div>
-                            <div class="form-group col-sm-2">
-                                <input type="text" name="downloadUrl" ng-model="formInfo.download_url" class="form-control">
-                            </div>
+                        <div class="form-group col-sm-2">
+                            <input type="text" name="youtubeVideoId" ng-model="formInfo.youtubeVideoId" class="form-control">
                         </div>
+                    </div>
 
-                         <lyrics couplet-list="coupletList" lyrics-data="formInfo.lyrics"></lyrics>
-
-                        <div class="row">
-                            <div class="form-group col-sm-2">
-                                <label>About</label>
-                            </div>
-                            <div class="form-group col-sm-8">
-                                <text-angular name="htmlcontent" ng-model="formInfo.about"></text-angular>
-                            </div>
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>SoundCloud track ID for audio</label>
                         </div>
-
-                        <div class="row">
-                            <div class="form-group col-sm-2">
-                                <label>Notes</label>
-                            </div>
-                            <div class="form-group col-sm-8">
-                                <text-angular name="htmlcontent2" ng-model="formInfo.notes"></text-angular>
-                            </div>
+                        <div class="form-group col-sm-2">
+                            <input type="text" name="soundCloudTrackID" ng-model="formInfo.soundCloudTrackID" class="form-control">
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="form-group col-sm-2">
-                                <label>Publish</label>
-                            </div>
-                            <div class="form-group col-sm-1">
-                                <select name="format" ng-model="formInfo.isAuthoringComplete" class="form-control">
-                                    <option value="true">Yes</option>
-                                    <option value="false">No</option>
-                                </select>
-                            </div>
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>Thumbnail Url</label>
                         </div>
-                        <br/>
-                        <button type="submit" ng-click="saveData()" class="btn btn-primary btn-lg">Save</button>
-                    </form>
-               </div>
+                        <div class="form-group col-sm-2">
+                            <input type="text" name="thumbnailUrl" ng-model="formInfo.thumbnail_url" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>Download Url for the song</label>
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <input type="text" name="downloadUrl" ng-model="formInfo.download_url" class="form-control">
+                        </div>
+                    </div>
+
+                     <lyrics couplet-list="coupletList" lyrics-data="formInfo.lyrics"></lyrics>
+
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>About</label>
+                        </div>
+                        <div class="form-group col-sm-8">
+                            <text-angular name="htmlcontent" ng-model="formInfo.about"></text-angular>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>Notes</label>
+                        </div>
+                        <div class="form-group col-sm-8">
+                            <text-angular name="htmlcontent2" ng-model="formInfo.notes"></text-angular>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>Publish</label>
+                        </div>
+                        <div class="form-group col-sm-1">
+                            <select name="format" ng-model="formInfo.isAuthoringComplete" class="form-control">
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br/>
+                    <button type="submit" ng-click="saveData()"  ng-disabled="!songForm.$valid" class="btn btn-primary btn-lg">Save</button>
+                </form>
             </div>
         </div>
 </div>

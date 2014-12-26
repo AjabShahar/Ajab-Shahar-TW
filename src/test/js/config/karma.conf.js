@@ -12,6 +12,7 @@ module.exports = function (config) {
       'user/js/common/modules/PopupSupport.js',
       'user/js/common/modules/mediaPlayer.js',
       'user/js/common/modules/filterModule.js',
+      'user/js/common/modules/lazyLoadModule.js',
       'user/js/common/**/*.js',
       'admin/js/Introduction/**/*.js',
       'user/js/EditorsChoice/**/*.js',
