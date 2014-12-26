@@ -112,6 +112,7 @@
                 </div>
                 <div id="poem_container">
                     <h2 class="song-heading">{{songTitle.englishTransliteration}}</h2>
+                    Poet <span class='selected'>{{poet.firstName}}</span>
                     
                      <div ng-repeat="songLyrics in lyrics track by $index">
                         <p>{{songLyrics.couplet.englishTransliteration}}</p>

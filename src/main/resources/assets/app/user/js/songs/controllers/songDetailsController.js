@@ -11,6 +11,7 @@ var songDetailsController = function($scope,$location,songsContentService){
     $scope.numberOfVersions = 0;
     $scope.lyrics = [];
     $scope.songTitle = '';
+    $scope.poet = '';
 
     $scope.toggleVersion = function(){
         $scope.showVersion = !$scope.showVersion;
@@ -32,6 +33,7 @@ var songDetailsController = function($scope,$location,songsContentService){
             $scope.renditions = result.data;
         });
         songsContentService.getSong($scope.songId).then(function(result){
+            $scope.poet = result.data.poets[0];
             $scope.songTitle = result.data.songTitle;
             $scope.getSongsLyrics(result.data.lyrics);
         });
