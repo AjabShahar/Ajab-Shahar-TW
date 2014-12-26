@@ -67,9 +67,9 @@ public class Songs {
 
         }
         if (song.getLyrics() != null) {
-            song.getLyrics().forEach(lyric ->{
-               if(lyric.getId()==0)
-                   lyricRepository.create(lyric);
+            song.getLyrics().forEach(lyric -> {
+                if (lyric.getId() == 0)
+                    lyricRepository.create(lyric);
             });
         }
         return songsRepository.saveSong(song);

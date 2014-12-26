@@ -38,15 +38,16 @@ songsAdminApp.directive("lyrics", function() {
                 var newElement = {};
                 newElement.contentType = $scope.newContent.contentType;
                 newElement.sequenceNumber = $scope.lyricsData.length;
-
                 if($scope.newContent.contentType == 'stanza'){
                     newElement.stanza = {};
+                    newElement.chorus = $scope.lyricsData.chorus;
                     newElement.stanza.englishTranslationText = $scope.newContent.englishTranslationText;
                     newElement.stanza.englishTransliterationText = $scope.newContent.englishTransliterationText;
                     newElement.stanza.originalText = $scope.newContent.originalText;
                 }
                 if($scope.newContent.contentType == 'couplet'){
                     newElement.couplet = $scope.newContent.content;
+                    newElement.chorus = $scope.lyricsData.chorus;
                 }
                 $scope.lyricsData.push(newElement);
                 $scope.selectedLyricsContent = newElement;

@@ -1,15 +1,12 @@
 package org.ajabshahar.api;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import org.ajabshahar.core.People;
-import org.ajabshahar.platform.models.Lyric;
 import org.ajabshahar.platform.models.PersonDetails;
 import org.ajabshahar.platform.models.Song;
 import org.ajabshahar.platform.models.Title;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 public class SongsRepresentationFactory {
@@ -126,10 +123,9 @@ public class SongsRepresentationFactory {
 
     public Song create(String jsonSong) {
 
-        JsonObject jsonSongObject = new Gson().fromJson(jsonSong, JsonObject.class);
-        HashSet<Lyric> lyrics = lyricsRepresentationFactory.create(jsonSongObject.getAsJsonObject("lyricsData"));
-        Song song = new Gson().fromJson(jsonSong, Song.class);
-        song.setLyrics(lyrics);
-        return song;
+//        JsonObject jsonSongObject = new Gson().fromJson(jsonSong, JsonObject.class);
+//        HashSet<Lyric> lyrics = lyricsRepresentationFactory.create(jsonSongObject.getAsJsonObject("lyricsData"));
+        return new Gson().fromJson(jsonSong, Song.class);
+//        song.setLyrics(lyrics);
     }
 }
