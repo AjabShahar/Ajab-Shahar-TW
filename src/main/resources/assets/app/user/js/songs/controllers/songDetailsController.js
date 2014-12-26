@@ -9,6 +9,7 @@ var songDetailsController = function($scope,$location,songsContentService){
     $scope.umbrellaTitleEnglishTranslation = '';
     $scope.umbrellaTitleEnglishTransliteration='';
     $scope.numberOfVersions = 0;
+    $scope.lyrics = [];
 
     $scope.toggleVersion = function(){
         $scope.showVersion = !$scope.showVersion;
@@ -28,6 +29,9 @@ var songDetailsController = function($scope,$location,songsContentService){
 
         $scope.detailContents = songsContentService.getSongRenditions($scope.songId).then(function(result){
             $scope.renditions = result.data;
+        });
+        songsContentService.getSong($scope.songId).then(function(result){
+            $scope.getSongsLyrics(result.data.lyrics);
         });
     }
 
@@ -56,6 +60,15 @@ var songDetailsController = function($scope,$location,songsContentService){
 
     $scope.isClosed = function(id){
         return !$scope.isOpen(id);
+    }
+
+    $scope.getSongsLyrics = function(songTextComponents){
+        sortedSongTextComponents = _.sortBy(songTextComponents, function(songTextComponent) { return songTextComponent.sequenceNumber;});
+        
+        for(index in sortedSongTextComponents){
+            var item = sortedSongTextComponents[index];
+                $scope.lyrics.push(item);
+        }
     }
 
     $scope.init();

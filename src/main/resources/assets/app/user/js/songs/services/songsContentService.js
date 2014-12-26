@@ -21,11 +21,16 @@ var songsContentService = function ($http) {
         return $http.get('/api/songs/count/startingWith?letter=' + letter);
     }
 
+    var getSong = function (id) {
+        return $http.get('/api/songs/'+id);
+    }
+
     return {
         getAllSongs: getAllSongs,
         getSongsVersions:getSongsVersions,
         getSongRenditions:getSongRenditions,
         getSongsInRangeAndFilteredBy:getSongsInRangeAndFilteredBy,
-        getSongsStartingWith:getSongsStartingWith
+        getSongsStartingWith:getSongsStartingWith,
+        getSong: getSong
     };
 };
