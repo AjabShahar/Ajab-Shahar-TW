@@ -38,7 +38,7 @@
     <div class="form-group col-sm-3">
         <div>
             <select ng-model="selectedLyricsContent" size="40"
-                    ng-options="songLyrics.englishTransliterationText for songLyrics in lyricsData.content" class="form-control">
+                    ng-options="getLyricsForDisplay(songLyrics) for songLyrics in lyricsData.content" class="form-control">
             </select>
         </div>
         <div>
