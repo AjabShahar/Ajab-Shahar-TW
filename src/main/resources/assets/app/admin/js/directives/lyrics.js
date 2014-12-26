@@ -36,15 +36,16 @@ songsAdminApp.directive("lyrics", function() {
                 $scope.newContent.originalText == "") && $scope.newContent.content == null)
                     return;
                 var newElement = {};
+                newElement.contentType = $scope.newContent.contentType;
+                newElement.sequenceNumber = $scope.lyricsData.length;
+
                 if($scope.newContent.contentType == 'stanza'){
-                    newElement.contentType = 'stanza';
                     newElement.stanza = {};
                     newElement.stanza.englishTranslationText = $scope.newContent.englishTranslationText;
                     newElement.stanza.englishTransliterationText = $scope.newContent.englishTransliterationText;
                     newElement.stanza.originalText = $scope.newContent.originalText;
                 }
                 if($scope.newContent.contentType == 'couplet'){
-                    newElement.contentType = 'couplet';
                     newElement.couplet = $scope.newContent.content;
                 }
                 $scope.lyricsData.push(newElement);
@@ -69,6 +70,7 @@ songsAdminApp.directive("lyrics", function() {
                     return;
 
                 $scope.lyricsData.move(selectedSongIndex, selectedSongIndex-1);
+//                _.each($scope.lyricsData, function(){});
             }
 
             $scope.moveItemDown = function(){
