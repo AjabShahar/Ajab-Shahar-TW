@@ -13,7 +13,7 @@ songsAdminApp.directive("lyrics", function() {
             $scope.lyricsText = "";
 
             $scope.initializeContent = function(){
-                $scope.current = {
+                $scope.newContent = {
                     "contentType":"stanza",
                     "englishTranslationText":"","englishTransliterationText":"","originalText":"",
                 };
@@ -22,20 +22,20 @@ songsAdminApp.directive("lyrics", function() {
             $scope.initializeContent();
 
             $scope.shouldShowStanzaDetails = function(){
-                return $scope.current.contentType == 'stanza' ;
+                return $scope.newContent.contentType == 'stanza' ;
             }
 
             $scope.shouldShowCoupletDetails = function(){
-                return $scope.current.contentType == 'couplet' ;
+                return $scope.newContent.contentType == 'couplet' ;
             }
 
             $scope.addLyricsText = function(){
-                if(($scope.current.englishTranslation == "" &&
-                $scope.current.englishTransliteration == "" &&
-                $scope.current.original == "") && $scope.current.content == null)
+                if(($scope.newContent.englishTranslationText == "" &&
+                $scope.newContent.englishTransliterationText == "" &&
+                $scope.newContent.originalText == "") && $scope.newContent.content == null)
                     return;
                 var newElement = {};
-                angular.copy($scope.current,newElement);
+                angular.copy($scope.newContent,newElement);
                 $scope.lyricsData.content.push(newElement);
                 $scope.initializeContent();
             }
