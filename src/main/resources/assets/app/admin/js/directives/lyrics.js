@@ -11,6 +11,7 @@ songsAdminApp.directive("lyrics", function() {
         templateUrl:'/admin/js/templates/lyrics.html',
         controller:function($scope){
             $scope.lyricsText = "";
+            $scope.selectedLyricsContent = {};
 
             $scope.initializeContent = function(){
                 $scope.newContent = {
@@ -37,6 +38,7 @@ songsAdminApp.directive("lyrics", function() {
                 var newElement = {};
                 angular.copy($scope.newContent,newElement);
                 $scope.lyricsData.content.push(newElement);
+                $scope.selectedLyricsContent = newElement;
                 $scope.initializeContent();
             }
 
@@ -52,7 +54,7 @@ songsAdminApp.directive("lyrics", function() {
             };
 
             $scope.moveItemUp = function(){
-                var selectedSongIndex = $scope.lyricsData.content.indexOf($scope.selectedLyricsContent.content);
+                var selectedSongIndex = $scope.lyricsData.content.indexOf($scope.selectedLyricsContent);
                 if(selectedSongIndex<=0)
                     return;
 
@@ -60,7 +62,7 @@ songsAdminApp.directive("lyrics", function() {
             }
 
             $scope.moveItemDown = function(){
-                var selectedSongIndex = $scope.lyricsData.content.indexOf($scope.selectedLyricsContent.content);
+                var selectedSongIndex = $scope.lyricsData.content.indexOf($scope.selectedLyricsContent);
                 if(selectedSongIndex>=$scope.lyricsData.content.length-1)
                     return;
 

@@ -33,16 +33,15 @@
     <br/>
 
     <button type="button" class="btn btn-info" ng-click="addLyricsText()" >Add To Lyrics</button>
-
     <br/>
 
     <div class="form-group col-sm-3">
-        <div class="lyricsBoxMultiSelect">
-            <select ng-model="selectedLyricsContent.content" size="40"
+        <div>
+            <select ng-model="selectedLyricsContent" size="40"
                     ng-options="songLyrics.englishTransliterationText for songLyrics in lyricsData.content" class="form-control">
             </select>
         </div>
-        <div class="lyricsBoxComponents">
+        <div>
             <span class="glyphicon glyphicon-arrow-up btn-lg" ng-click="moveItemUp()"></span>
             <span class="glyphicon glyphicon-arrow-down btn-lg" ng-click="moveItemDown()"></span>
         </div>
