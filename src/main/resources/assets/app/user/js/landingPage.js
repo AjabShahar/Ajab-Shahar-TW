@@ -7,8 +7,6 @@
 
     		    _initialiseScrolling();
                 _setBgImage();
-                _lazyLoadImages();
-
     		}
 
     		var _setBgImage = function() {
@@ -37,13 +35,6 @@
                 else if ((xPos >= 750 && xPos < 2500) || (xPos >= 4300)) {
                     whiteString.css('background-position', parseInt(xPos / 50) + 'px ' + '0%');
                 }
-
-    		}
-
-    		var _lazyLoadImages =  function() {
-    		    $('.px-layer1').lazyload();
-                $('.px-layer2').lazyload();
-                $('.px-layer3').lazyload();
 
     		}
 
