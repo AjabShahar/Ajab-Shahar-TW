@@ -9,6 +9,13 @@ var songListController = function($scope, contentService){
                 toBeAdded.translatedTitle = value.englishTranslationTitle;
                 toBeAdded.categoryName = value.category;
                 toBeAdded.publish = value.publish;
+
+                if(value.publish)
+                    toBeAdded.publish = "Yes";
+                
+                else 
+                    toBeAdded.publish = "No"
+                
                 toBeAdded.singerNames = _.reduce(value.singers, function(memo, value, index){ return ((index!=0)?' ,':'')+ memo+ value.name; },'');
                 toBeAdded.poetNames = _.reduce(value.poet, function(memo, value, index){ return ((index!=0)?' ,':'')+ memo+ value.name; },'');
                 toBeAdded.id = value.id;
