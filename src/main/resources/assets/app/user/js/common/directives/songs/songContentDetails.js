@@ -36,11 +36,21 @@ thumbnailModule.directive("songContentDetails", function() {
             }
 
             $scope.showAbout = function(){
+                if($scope.isAboutVisible){
+                    $scope.isAboutVisible = false;
+                    return;
+                }
+
                 $scope.isAboutVisible = true;
                 $scope.isNotesVisible = false;
             }
 
             $scope.showNotes = function(){
+                if($scope.isNotesVisible){
+                    $scope.isNotesVisible = false;
+                    return;
+                }
+                
                 $scope.isNotesVisible = true;
                 $scope.isAboutVisible = false;
             }
