@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import org.ajabshahar.core.People;
 import org.ajabshahar.platform.models.PersonDetails;
 import org.ajabshahar.platform.models.Song;
+import org.ajabshahar.platform.models.SongText;
 import org.ajabshahar.platform.models.Title;
 
 import java.util.ArrayList;
@@ -11,11 +12,11 @@ import java.util.List;
 
 public class SongsRepresentationFactory {
     private final People people;
-    private final LyricsRepresentationFactory lyricsRepresentationFactory;
+    private final SongTextRepresentationFactory songTextRepresentationFactory;
 
-    public SongsRepresentationFactory(People people, LyricsRepresentationFactory lyricsRepresentationFactory) {
+    public SongsRepresentationFactory(People people, SongTextRepresentationFactory songTextRepresentationFactory) {
         this.people = people;
-        this.lyricsRepresentationFactory = lyricsRepresentationFactory;
+        this.songTextRepresentationFactory = songTextRepresentationFactory;
     }
 
 
@@ -46,7 +47,7 @@ public class SongsRepresentationFactory {
         Title umbrellaTitle = song.getTitle() == null ? new Title() : song.getTitle();
         Title songTitle = song.getSongTitle() == null ? new Title() : song.getSongTitle();
         List<PersonSummaryRepresentation> singers = new ArrayList<>(), poets = new ArrayList<>();
-        LyricsRepresentation lyrics = lyricsRepresentationFactory.getLyrics(song.getLyrics());
+        SongTextRepresentation lyrics = songTextRepresentationFactory.getSongText(song.getSongText());
 
         song.getSingers().forEach(singer -> {
             PersonDetails personDetails = people.findBy((int) singer.getId());
@@ -85,7 +86,8 @@ public class SongsRepresentationFactory {
             Title umbrellaTitle = song.getTitle() == null ? new Title() : song.getTitle();
             Title songTitle = song.getSongTitle() == null ? new Title() : song.getSongTitle();
             List<PersonSummaryRepresentation> singers = new ArrayList<>(), poets = new ArrayList<>();
-            LyricsRepresentation lyrics = lyricsRepresentationFactory.getLyrics(song.getLyrics());
+            SongText songText = song.getSongText() == null ? new SongText() : song.getSongText();
+            SongTextRepresentation songTextRepresentation = songTextRepresentationFactory.getSongText(songText);
 
             song.getSingers().forEach(singer -> {
                 PersonDetails personDetails = people.findBy((int) singer.getId());
@@ -115,7 +117,7 @@ public class SongsRepresentationFactory {
                     song.getDuration(),
                     singers,
                     poets,
-                    lyrics);
+                    songTextRepresentation);
             songsRepresentation.add(songRepresentation);
         }
         return songsRepresentation;

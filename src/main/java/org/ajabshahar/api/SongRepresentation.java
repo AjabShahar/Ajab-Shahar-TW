@@ -27,13 +27,13 @@ public class SongRepresentation {
     private List<PersonSummaryRepresentation> singers;
     private List<PersonSummaryRepresentation> poet;
     private List<LinkRepresentation> links;
-    private LyricsRepresentation lyrics;
+    private SongTextRepresentation lyrics;
 
     public SongRepresentation() {
         this.links = new ArrayList<>();
     }
 
-    public SongRepresentation(long id, long umbrellaTitleId, String umbrellaTitleOriginal, String umbrellaTitleEnglishTransliteration, String umbrellaTitleEnglishTranslation, long titleId, String titleOriginal, String titleEnglishTransliteration, String titleEnglishTranslation, boolean publish, String type, boolean featured, String youTubeVideoId, String soundCloudTrackId, String thumbnailUrl, String duration, List<PersonSummaryRepresentation> singers, List<PersonSummaryRepresentation> poet, LyricsRepresentation lyrics) {
+    public SongRepresentation(long id, long umbrellaTitleId, String umbrellaTitleOriginal, String umbrellaTitleEnglishTransliteration, String umbrellaTitleEnglishTranslation, long titleId, String titleOriginal, String titleEnglishTransliteration, String titleEnglishTranslation, boolean publish, String type, boolean featured, String youTubeVideoId, String soundCloudTrackId, String thumbnailUrl, String duration, List<PersonSummaryRepresentation> singers, List<PersonSummaryRepresentation> poet, SongTextRepresentation lyrics) {
         this();
         this.id = id;
         this.umbrellaTitleId = umbrellaTitleId;
@@ -154,7 +154,7 @@ public class SongRepresentation {
     }
 
     @JsonProperty("lyrics")
-    public LyricsRepresentation getLyrics() {
+    public SongTextRepresentation getLyrics() {
         return lyrics;
     }
 }

@@ -37,11 +37,11 @@ public class SongResourceTest {
     @Mock
     private SongRepresentation songRepresentation;
     @Mock
-    private LyricsRepresentationFactory lyricsRepresentationFactory;
+    private SongTextRepresentationFactory songTextRepresentationFactory;
 
     @Before
     public void setUp() {
-        songResource = new SongResource(null, songs, songsRepresentationFactory, lyricsRepresentationFactory);
+        songResource = new SongResource(null, songs, songsRepresentationFactory, songTextRepresentationFactory);
     }
 
     @Test

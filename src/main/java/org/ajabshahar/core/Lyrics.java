@@ -4,7 +4,7 @@ package org.ajabshahar.core;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import org.ajabshahar.platform.daos.LyricDAO;
-import org.ajabshahar.platform.models.Lyric;
+import org.ajabshahar.platform.models.SongText;
 
 public class Lyrics {
 
@@ -15,7 +15,7 @@ public class Lyrics {
     }
 
     public void save(JsonObject lyrics) {
-        Lyric lyric = new Gson().fromJson(lyrics, Lyric.class);
-        lyricRepository.create(lyric);
+        SongText songText = new Gson().fromJson(lyrics, SongText.class);
+        lyricRepository.create(songText);
     }
 }

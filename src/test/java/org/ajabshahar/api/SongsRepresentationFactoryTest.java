@@ -27,12 +27,12 @@ public class SongsRepresentationFactoryTest {
     @Mock
     private PersonDetails personDetails;
     @Mock
-    private LyricsRepresentationFactory lyricsRepresentationFactory;
+    private SongTextRepresentationFactory songTextRepresentationFactory;
     private Song song;
 
     @Before
     public void setUp() {
-        songsRepresentationFactory = new SongsRepresentationFactory(people, lyricsRepresentationFactory);
+        songsRepresentationFactory = new SongsRepresentationFactory(people, songTextRepresentationFactory);
 
         songsList = new ArrayList<>();
 
@@ -78,21 +78,17 @@ public class SongsRepresentationFactoryTest {
         poets.add(poet);
         song.setPoets(poets);
 
-        Lyric lyric = new Lyric();
-        HashSet<Lyric> lyrics = new HashSet<>();
+        SongText songText = new SongText();
 
-        lyric.setId(1);
-        lyric.setCouplet(new Couplet());
-        lyric.setChorus("This is chorus");
-        lyric.setSequenceNumber(1);
-        lyrics.add(lyric);
-        song.setLyrics(lyrics);
+        songText.setId(1);
+        songText.setRefrainOriginal("This is chorus");
+        song.setSongText(songText);
 
         songsList.add(song);
 
         when(people.findBy(id + 1000)).thenReturn(singer);
         when(people.findBy(id + 2000)).thenReturn(poet);
-        when(lyricsRepresentationFactory.getLyrics(song.getLyrics())).thenReturn(new LyricsRepresentation(""));
+        when(songTextRepresentationFactory.getSongText(song.getSongText())).thenReturn(new SongTextRepresentation("", "", ""));
 
     }
 
@@ -178,6 +174,6 @@ public class SongsRepresentationFactoryTest {
 //
 //        Song song = songsRepresentationFactory.create(jsonObject.toString());
 //
-//        assertEquals(lyricList, song.getLyrics());
+//        assertEquals(lyricList, song.getSongText());
 //    }
 }

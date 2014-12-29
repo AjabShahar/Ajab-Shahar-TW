@@ -9,7 +9,7 @@ import io.dropwizard.migrations.MigrationsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import org.ajabshahar.api.CoupletsRepresentationFactory;
-import org.ajabshahar.api.LyricsRepresentationFactory;
+import org.ajabshahar.api.SongTextRepresentationFactory;
 import org.ajabshahar.api.PersonRepresentationFactory;
 import org.ajabshahar.api.SongsRepresentationFactory;
 import org.ajabshahar.core.Couplets;
@@ -31,7 +31,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
     };
 
     private final HibernateBundle<PlatformConfiguration> hibernate = new HibernateBundle<PlatformConfiguration>(SplashScreenOptions.class, Word.class,
-            Couplet.class, Song.class, PersonDetails.class, Category.class, Title.class, Lyric.class, Stanza.class) {
+            Couplet.class, Song.class, PersonDetails.class, Category.class, Title.class, SongText.class, SongTextContent.class) {
         @Override
         public DataSourceFactory getDataSourceFactory(PlatformConfiguration configuration) {
             return configuration.getDataSourceFactory();
@@ -86,7 +86,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         picoContainer.addComponent(SongsRepresentationFactory.class);
         picoContainer.addComponent(PersonRepresentationFactory.class);
         picoContainer.addComponent(CoupletsRepresentationFactory.class);
-        picoContainer.addComponent(LyricsRepresentationFactory.class);
+        picoContainer.addComponent(SongTextRepresentationFactory.class);
 
         picoContainer.addComponent(SplashScreenOptionsResource.class);
         picoContainer.addComponent(WordResource.class);

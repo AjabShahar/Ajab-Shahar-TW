@@ -2,7 +2,7 @@ package org.ajabshahar.platform.resources;
 
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.jersey.caching.CacheControl;
-import org.ajabshahar.api.LyricsRepresentationFactory;
+import org.ajabshahar.api.SongTextRepresentationFactory;
 import org.ajabshahar.api.SongRepresentation;
 import org.ajabshahar.api.SongsRepresentation;
 import org.ajabshahar.api.SongsRepresentationFactory;
@@ -25,13 +25,13 @@ public class SongResource {
     private final SongDAO songDAO;
     private final SongsRepresentationFactory songsRepresentationFactory;
     private final Songs songs;
-    private final LyricsRepresentationFactory lyricsRepresentationFactory;
+    private final SongTextRepresentationFactory songTextRepresentationFactory;
 
-    public SongResource(SongDAO songDAO, Songs songs, SongsRepresentationFactory songsRepresentationFactory,LyricsRepresentationFactory lyricsRepresentationFactory) {
+    public SongResource(SongDAO songDAO, Songs songs, SongsRepresentationFactory songsRepresentationFactory,SongTextRepresentationFactory songTextRepresentationFactory) {
         this.songDAO = songDAO;
         this.songsRepresentationFactory = songsRepresentationFactory;
         this.songs = songs;
-        this.lyricsRepresentationFactory = lyricsRepresentationFactory;
+        this.songTextRepresentationFactory = songTextRepresentationFactory;
     }
 
 

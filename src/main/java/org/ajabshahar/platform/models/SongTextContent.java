@@ -4,21 +4,31 @@ package org.ajabshahar.platform.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "STANZA")
-public class Stanza {
+@Table(name = "SONG_TEXT_CONTENT")
+public class SongTextContent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "ORIGINAL_TEXT", nullable = false)
-    private  String originalText;
+    private String originalText;
 
-    @Column(name = "ENGLISH_TRANSLATION_TEXT",nullable = true)
+    @Column(name = "ENGLISH_TRANSLATION_TEXT", nullable = true)
     private String englishTranslationText;
 
-    @Column(name ="ENGLISH_TRANSLITERATION_TEXT", nullable = true)
+    @Column(name = "ENGLISH_TRANSLITERATION_TEXT", nullable = true)
     private String englishTransliterationText;
+
+    @Column(name = "CONTENT_TYPE", nullable = false)
+    private String contentType;
+
+    @Column(name = "SEQUENCE_NUMBER", nullable = false)
+    private int sequenceNumber;
+
+    @OneToOne(fetch = FetchType.EAGER, optional = true)
+    @JoinColumn(name ="poet_id")
+    private PersonDetails personDetails;
 
     public String getOriginalText() {
         return originalText;
@@ -50,5 +60,29 @@ public class Stanza {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
+    }
+
+    public int getSequenceNumber() {
+        return sequenceNumber;
+    }
+
+    public void setSequenceNumber(int sequenceNumber) {
+        this.sequenceNumber = sequenceNumber;
+    }
+
+    public PersonDetails getPersonDetails() {
+        return personDetails;
+    }
+
+    public void setPersonDetails(PersonDetails personDetails) {
+        this.personDetails = personDetails;
     }
 }

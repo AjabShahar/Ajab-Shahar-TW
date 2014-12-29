@@ -70,10 +70,9 @@ public class Song {
     @JoinColumn(name = "SONG_TITLE_ID")
     private Title songTitle;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "SONG_LYRICS", joinColumns = @JoinColumn(name = "SONG_ID"),
-            inverseJoinColumns = @JoinColumn(name = "LYRICS_ID"))
-    private Set<Lyric> lyrics;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "SONG_TEXT_ID")
+    private SongText songText;
 
 
     public Set<PersonDetails> getPoets() {
@@ -205,12 +204,12 @@ public class Song {
         this.about = about;
     }
 
-    public Set<Lyric> getLyrics() {
-        return lyrics;
+    public SongText getSongText() {
+        return songText;
     }
 
-    public void setLyrics(Set<Lyric> lyrics) {
-        this.lyrics = lyrics;
+    public void setSongText(SongText songText) {
+        this.songText = songText;
     }
 }
 

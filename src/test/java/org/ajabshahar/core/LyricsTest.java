@@ -2,7 +2,7 @@ package org.ajabshahar.core;
 
 import com.google.gson.JsonObject;
 import org.ajabshahar.platform.daos.LyricDAO;
-import org.ajabshahar.platform.models.Lyric;
+import org.ajabshahar.platform.models.SongText;
 import org.ajabshahar.platform.models.Song;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,7 +34,7 @@ public class LyricsTest {
 
         lyrics.save(lyric);
 
-        verify(lyricRepository).create(any(Lyric.class));
+        verify(lyricRepository).create(any(SongText.class));
 
     }
 

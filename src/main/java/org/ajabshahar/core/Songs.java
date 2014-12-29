@@ -44,11 +44,8 @@ public class Songs {
         if (updatableSong.getTitle() != null && updatableSong.getTitle().getId() == 0) {
             titleRepository.create(updatableSong.getTitle());
         }
-        if (updatableSong.getLyrics() != null) {
-            updatableSong.getLyrics().forEach(lyric -> {
-                if (lyric.getId() == 0)
-                    lyricRepository.create(lyric);
-            });
+        if (updatableSong.getSongText() != null) {
+              lyricRepository.create(updatableSong.getSongText());
         }
         originalSongData = invokeAllSetters(originalSongData, updatableSong);
         return songsRepository.updateSong(originalSongData);
@@ -79,11 +76,8 @@ public class Songs {
             titleRepository.create(umbrellaTitle);
 
         }
-        if (song.getLyrics() != null) {
-            song.getLyrics().forEach(lyric -> {
-                if (lyric.getId() == 0)
-                    lyricRepository.create(lyric);
-            });
+        if (song.getSongText() != null) {
+            lyricRepository.create(song.getSongText());
         }
         return songsRepository.saveSong(song);
     }
@@ -94,7 +88,7 @@ public class Songs {
         originalSongData.setAbout(updatableSongData.getAbout());
         originalSongData.setNotes(updatableSongData.getNotes());
         originalSongData.setDownload_url(updatableSongData.getDownload_url());
-        originalSongData.setLyrics(updatableSongData.getLyrics());
+        originalSongData.setSongText(updatableSongData.getSongText());
         originalSongData.setShowOnLandingPage(updatableSongData.getShowOnLandingPage());
         originalSongData.setDuration(updatableSongData.getDuration());
         originalSongData.setYoutubeVideoId(updatableSongData.getYoutubeVideoId());
