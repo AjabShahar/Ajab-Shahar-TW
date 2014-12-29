@@ -1,6 +1,6 @@
 'use strict';
 
-songsAdminApp.directive("lyrics", function() {
+songsAdminApp.directive("songText", function() {
     return {
         replace : true,
         restrict: 'E',
@@ -8,7 +8,7 @@ songsAdminApp.directive("lyrics", function() {
             lyricsData:'=',
             coupletList:'=',
         },
-        templateUrl:'/admin/js/templates/lyrics.html',
+        templateUrl:'/admin/js/templates/songText.html',
         controller:function($scope){
             $scope.lyricsText = "";
             $scope.selectedLyricsContent = {};
