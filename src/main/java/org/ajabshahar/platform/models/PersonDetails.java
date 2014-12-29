@@ -4,6 +4,8 @@ import com.google.common.base.Strings;
 
 import javax.persistence.*;
 
+import java.util.Set;
+
 import static java.lang.String.format;
 
 @Entity
@@ -28,8 +30,12 @@ public class PersonDetails {
     @Column(name = "LAST_NAME", nullable = true)
     private String lastName;
 
-    @Column(name = "CATEGORY", nullable = false)
-    private String category;
+
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "person_category", joinColumns = @JoinColumn(name = "person_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private Set<Category> category;
 
     public String getFirstName() {
         return firstName;
@@ -55,14 +61,6 @@ public class PersonDetails {
         this.lastName = lastName;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category= category;
-    }
-
     public long getId() {
         return id;
     }
@@ -73,5 +71,13 @@ public class PersonDetails {
 
     public String getName() {
         return format("%s %2s %3s", Strings.nullToEmpty(getFirstName()), Strings.nullToEmpty(getMiddleName()), Strings.nullToEmpty(getLastName())).replaceAll("\\s+", " ").trim();
+    }
+
+    public Set<Category> getCategory() {
+        return category;
+    }
+
+    public void setCategory(Set<Category> category) {
+        this.category = category;
     }
 }

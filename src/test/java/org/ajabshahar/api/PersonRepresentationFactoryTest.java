@@ -1,5 +1,6 @@
 package org.ajabshahar.api;
 
+import org.ajabshahar.platform.models.Category;
 import org.ajabshahar.platform.models.PersonDetails;
 import org.hamcrest.core.IsEqual;
 import org.junit.Before;
@@ -8,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -19,9 +21,17 @@ public class PersonRepresentationFactoryTest {
     private List<PersonDetails> personDetailsList;
     private PersonRepresentationFactory personRepresentationFactory;
     private PersonDetails personDetails;
+    HashSet<Category> categories = new HashSet<>();
+    Category personCategory = new Category();
 
     @Before
     public void setUp() {
+        personCategory.setId(1);
+        personCategory.setCategoryType("person");
+        personCategory.setName("Singer");
+
+        categories.add(personCategory);
+
         personRepresentationFactory = new PersonRepresentationFactory();
 
         personDetailsList = new ArrayList<>();
@@ -29,7 +39,7 @@ public class PersonRepresentationFactoryTest {
         personDetails.setFirstName("FirstName");
         personDetails.setMiddleName("MiddleName");
         personDetails.setLastName("LastName");
-        personDetails.setCategory("Singer");
+        personDetails.setCategory(categories);
 
         personDetailsList.add(personDetails);
     }

@@ -1,13 +1,21 @@
 package org.ajabshahar.api;
 
+import org.ajabshahar.platform.models.Category;
 import org.ajabshahar.platform.models.PersonDetails;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PersonRepresentationFactory {
 
     public PersonRepresentation create(PersonDetails personDetails) {
-        PersonRepresentation personRepresentation = new PersonRepresentation(personDetails.getId(), personDetails.getFirstName(), personDetails.getMiddleName(), personDetails.getLastName(), personDetails.getCategory());
+        List<String> categoryName = new ArrayList<>();
+
+        for(Category category: personDetails.getCategory()){
+            categoryName.add(category.getName());
+        }
+
+        PersonRepresentation personRepresentation = new PersonRepresentation(personDetails.getId(), personDetails.getFirstName(), personDetails.getMiddleName(), personDetails.getLastName(), categoryName);
         return personRepresentation;
     }
 

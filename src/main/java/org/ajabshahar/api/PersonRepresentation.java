@@ -1,7 +1,10 @@
 package org.ajabshahar.api;
 
+import org.ajabshahar.platform.models.Category;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import static java.lang.String.format;
 
@@ -13,13 +16,13 @@ public class PersonRepresentation {
     private String lastName;
     private List<String> roles;
 
-    public PersonRepresentation(long id, String firstName, String middleName, String lastName, String role) {
+    public PersonRepresentation(long id, String firstName, String middleName, String lastName, List<String> roles) {
         this.id = id;
         this.roles = new ArrayList<>();
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
-        this.roles.add(role);
+        this.roles = roles;
     }
 
     public String getFirstName() {
