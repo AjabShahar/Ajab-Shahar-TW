@@ -27,13 +27,13 @@ public class SongRepresentation {
     private List<PersonSummaryRepresentation> singers;
     private List<PersonSummaryRepresentation> poet;
     private List<LinkRepresentation> links;
-    private SongTextRepresentation lyrics;
+    private SongTextRepresentation songText;
 
     public SongRepresentation() {
         this.links = new ArrayList<>();
     }
 
-    public SongRepresentation(long id, long umbrellaTitleId, String umbrellaTitleOriginal, String umbrellaTitleEnglishTransliteration, String umbrellaTitleEnglishTranslation, long titleId, String titleOriginal, String titleEnglishTransliteration, String titleEnglishTranslation, boolean publish, String type, boolean featured, String youTubeVideoId, String soundCloudTrackId, String thumbnailUrl, String duration, List<PersonSummaryRepresentation> singers, List<PersonSummaryRepresentation> poet, SongTextRepresentation lyrics) {
+    public SongRepresentation(long id, long umbrellaTitleId, String umbrellaTitleOriginal, String umbrellaTitleEnglishTransliteration, String umbrellaTitleEnglishTranslation, long titleId, String titleOriginal, String titleEnglishTransliteration, String titleEnglishTranslation, boolean publish, String type, boolean featured, String youTubeVideoId, String soundCloudTrackId, String thumbnailUrl, String duration, List<PersonSummaryRepresentation> singers, List<PersonSummaryRepresentation> poet, SongTextRepresentation songText) {
         this();
         this.id = id;
         this.umbrellaTitleId = umbrellaTitleId;
@@ -55,7 +55,7 @@ public class SongRepresentation {
         this.poet = poet;
         this.singers.forEach(singer -> links.add(new LinkRepresentation("singer", format("/api/people/%s", singer.getId()))));
         this.poet.forEach(p -> links.add(new LinkRepresentation("poet", format("/api/people/%s", p.getId()))));
-        this.lyrics = lyrics;
+        this.songText = songText;
     }
 
     @JsonProperty("id")
@@ -153,9 +153,9 @@ public class SongRepresentation {
         return links;
     }
 
-    @JsonProperty("lyrics")
-    public SongTextRepresentation getLyrics() {
-        return lyrics;
+    @JsonProperty("songText")
+    public SongTextRepresentation getSongText() {
+        return songText;
     }
 }
 

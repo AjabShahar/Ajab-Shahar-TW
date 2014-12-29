@@ -5,9 +5,9 @@ import io.dropwizard.hibernate.AbstractDAO;
 import org.ajabshahar.platform.models.SongText;
 import org.hibernate.SessionFactory;
 
-public class LyricDAO extends AbstractDAO<SongText>{
+public class SongTextDAO extends AbstractDAO<SongText>{
 
-    public LyricDAO(SessionFactory sessionFactory) {
+    public SongTextDAO(SessionFactory sessionFactory) {
         super(sessionFactory);
     }
 

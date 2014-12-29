@@ -1,7 +1,7 @@
 package org.ajabshahar.core;
 
 import com.google.gson.JsonObject;
-import org.ajabshahar.platform.daos.LyricDAO;
+import org.ajabshahar.platform.daos.SongTextDAO;
 import org.ajabshahar.platform.models.SongText;
 import org.ajabshahar.platform.models.Song;
 import org.junit.Before;
@@ -20,7 +20,7 @@ public class LyricsTest {
     private JsonObject lyric;
     private Song song;
     @Mock
-    private LyricDAO lyricRepository;
+    private SongTextDAO lyricRepository;
 
     @Before
     public void setUp() throws Exception {

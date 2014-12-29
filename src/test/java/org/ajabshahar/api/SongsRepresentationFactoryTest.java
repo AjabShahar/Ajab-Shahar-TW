@@ -1,5 +1,6 @@
 package org.ajabshahar.api;
 
+import com.google.gson.Gson;
 import org.ajabshahar.core.People;
 import org.ajabshahar.platform.models.*;
 import org.hamcrest.core.IsEqual;
@@ -12,9 +13,11 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static java.lang.String.format;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -78,12 +81,22 @@ public class SongsRepresentationFactoryTest {
         poets.add(poet);
         song.setPoets(poets);
 
+        Set<SongTextContent> songTextContents = new HashSet<>();
+
         SongText songText = new SongText();
+        SongTextContent songTextContent = new SongTextContent();
+        songTextContent.setContentType("Stanza");
+        songTextContent.setSequenceNumber(1);
+        songTextContent.setEnglishTranslationText("Stanza English Translation");
+        songTextContents.add(songTextContent);
 
         songText.setId(1);
-        songText.setRefrainOriginal("This is chorus");
-        song.setSongText(songText);
+        songText.setRefrainOriginal("Original Refrain");
+        songText.setRefrainEnglishTranslation("English Translation Refrain");
+        songText.setRefrainEnglishTransliteration("English Translation Refrain");
+        songText.setSongTextContentSet(songTextContents);
 
+        song.setSongText(songText);
         songsList.add(song);
 
         when(people.findBy(id + 1000)).thenReturn(singer);
@@ -130,7 +143,7 @@ public class SongsRepresentationFactoryTest {
 
         assertThat(songRepresentation.getSingers().get(0).toString(), IsEqual.equalTo("id: 1001, name: Singer1"));
         assertThat(songRepresentation.getPoets().get(0).toString(), IsEqual.equalTo("id: 2001, name: Poet1"));
-        assertNotNull(songRepresentation.getLyrics());
+        assertNotNull(songRepresentation.getSongText());
     }
 
     @Test
@@ -160,20 +173,15 @@ public class SongsRepresentationFactoryTest {
 
         assertThat(songsRepresentation.get(0).getSingers().get(0).toString(), IsEqual.equalTo("id: 1001, name: Singer1"));
         assertThat(songsRepresentation.get(0).getPoets().get(0).toString(), IsEqual.equalTo("id: 2001, name: Poet1"));
-        assertNotNull(songsRepresentation.get(0).getLyrics());
+        assertNotNull(songsRepresentation.get(0).getSongText());
 
     }
 
-//    @Test
-//    public void shouldTestCreateSong() throws Exception {
-//        JsonObject jsonObject = new JsonObject();
-//        Lyric lyric = new Lyric();
-//        jsonObject.addProperty("lyricsData",lyric.toString());
-//        List<Lyric> lyricList = new ArrayList<>();
-//        when(lyricsRepresentationFactory.create(jsonObject.getAsJsonObject("lyricsData"))).thenReturn(lyricList);
-//
-//        Song song = songsRepresentationFactory.create(jsonObject.toString());
-//
-//        assertEquals(lyricList, song.getSongText());
-//    }
+    @Test
+    public void shouldTestCreateSong() throws Exception {
+        String jsonSong = new Gson().toJson(song);
+        Song expected = songsRepresentationFactory.create(jsonSong);
+
+        assertEquals(expected.getId(), song.getId());
+    }
 }

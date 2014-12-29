@@ -1,7 +1,7 @@
 package org.ajabshahar.core;
 
 import org.ajabshahar.platform.daos.CategoryDAO;
-import org.ajabshahar.platform.daos.LyricDAO;
+import org.ajabshahar.platform.daos.SongTextDAO;
 import org.ajabshahar.platform.daos.SongDAO;
 import org.ajabshahar.platform.daos.TitleDAO;
 import org.ajabshahar.platform.models.Category;
@@ -33,7 +33,7 @@ public class SongsTest {
     @Mock
     private TitleDAO titleRepository;
     @Mock
-    private LyricDAO lyricsRepository;
+    private SongTextDAO lyricsRepository;
     @Mock
     private Song song;
     private List<Song> songsList;

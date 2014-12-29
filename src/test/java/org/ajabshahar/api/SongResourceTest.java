@@ -109,12 +109,12 @@ public class SongResourceTest {
 
     @Test
     public void shouldSaveSong() throws Exception {
-        String jsongSong = "Song";
+        String jsonSong = "Song";
         Song song = new Song();
-        when(songsRepresentationFactory.create(jsongSong)).thenReturn(song);
+        when(songsRepresentationFactory.create(jsonSong)).thenReturn(song);
         when(songs.save(song)).thenReturn(song);
 
-        Response actualResult = songResource.saveSong(jsongSong);
+        Response actualResult = songResource.saveSong(jsonSong);
 
         assertEquals(song.getId(), actualResult.getEntity());
     }

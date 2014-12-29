@@ -1,7 +1,7 @@
 package org.ajabshahar.core;
 
 import org.ajabshahar.platform.daos.CategoryDAO;
-import org.ajabshahar.platform.daos.LyricDAO;
+import org.ajabshahar.platform.daos.SongTextDAO;
 import org.ajabshahar.platform.daos.SongDAO;
 import org.ajabshahar.platform.daos.TitleDAO;
 import org.ajabshahar.platform.models.Song;
@@ -13,13 +13,13 @@ public class Songs {
     private final SongDAO songsRepository;
     private TitleDAO titleRepository;
     private final CategoryDAO categoryRepository;
-    private final LyricDAO lyricRepository;
+    private final SongTextDAO songTextDAO;
 
-    public Songs(SongDAO songsRepository, TitleDAO titleRepository, CategoryDAO categoryRepository, LyricDAO lyricRepository) {
+    public Songs(SongDAO songsRepository, TitleDAO titleRepository, CategoryDAO categoryRepository, SongTextDAO songTextDAO) {
         this.songsRepository = songsRepository;
         this.titleRepository = titleRepository;
         this.categoryRepository = categoryRepository;
-        this.lyricRepository = lyricRepository;
+        this.songTextDAO = songTextDAO;
     }
 
     public Song findBy(int songId) {
@@ -45,7 +45,7 @@ public class Songs {
             titleRepository.create(updatableSong.getTitle());
         }
         if (updatableSong.getSongText() != null) {
-              lyricRepository.create(updatableSong.getSongText());
+              songTextDAO.create(updatableSong.getSongText());
         }
         originalSongData = invokeAllSetters(originalSongData, updatableSong);
         return songsRepository.updateSong(originalSongData);
@@ -77,7 +77,7 @@ public class Songs {
 
         }
         if (song.getSongText() != null) {
-            lyricRepository.create(song.getSongText());
+            songTextDAO.create(song.getSongText());
         }
         return songsRepository.saveSong(song);
     }

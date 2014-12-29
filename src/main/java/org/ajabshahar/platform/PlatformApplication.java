@@ -77,7 +77,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         picoContainer.addComponent(PersonDAO.class);
         picoContainer.addComponent(CategoryDAO.class);
         picoContainer.addComponent(TitleDAO.class);
-        picoContainer.addComponent(LyricDAO.class);
+        picoContainer.addComponent(SongTextDAO.class);
 
         picoContainer.addComponent(Songs.class);
         picoContainer.addComponent(Lyrics.class);
