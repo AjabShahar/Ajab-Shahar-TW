@@ -86,13 +86,22 @@ songsAdminApp.directive("lyrics", function() {
                 return $scope.lyricsData.length != 0;
             }
 
-            $scope.getLyricsForDisplay = function(content){
+            $scope.getEnglishTransliterationText = function(content){
                 if(content.stanza!=null)
                      return content.stanza.englishTransliterationText;
+                return content.couplet.englishTransliterationText;
+            }
+
+            $scope.getEnglishTranslationText = function(content){
+                if(content.stanza!=null)
+                     return content.stanza.englishTranslationText;
                 return content.couplet.englishTranslationText;
-//                if(content.contentType=='stanza')
-//                    return content.stanza.englishTransliterationText;
-//                return content.couplet.englishTransliterationText;
+            }
+
+            $scope.getOriginalText = function(content){
+                if(content.stanza!=null)
+                     return content.stanza.originalText;
+                return content.couplet.originalText;
             }
         }
     }
