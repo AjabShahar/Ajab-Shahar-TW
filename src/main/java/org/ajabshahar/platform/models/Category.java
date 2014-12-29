@@ -32,6 +32,10 @@ import javax.persistence.*;
         @NamedQuery(
                 name = "org.ajabshahar.platform.models.Category.findSongTitleCategory",
                 query = "SELECT p FROM Category p where p.categoryType='Song Title'"
+        ),
+        @NamedQuery(
+                name = "org.ajabshahar.platform.models.Category.findAllPersonCategories",
+                query = "SELECT p FROM Category p where p.categoryType='person'"
         )
 
 })

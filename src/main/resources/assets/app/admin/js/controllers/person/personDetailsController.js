@@ -1,6 +1,14 @@
-var personDetailsController = function($scope, $http,$window,$location){
+var personDetailsController = function($scope, $http,$window,$location, contentService){
   $scope.formInfo = {};
-  $scope.categoryList = [{"occupation":"Poet"},{"occupation":"Singer"}];
+  $scope.categoryList = null;
+
+  $scope.init = function(){
+    contentService.getAllCategories('person').then(function(result){
+      $scope.categoryList = result.data;
+    });
+  }
+
+
   $scope.saveData = function(){
   $http.post('/api/people',$scope.formInfo).success(function(data){
           $window.location.href = '/admin/partials/person/edit.html?id=' + data;
@@ -12,8 +20,14 @@ var personDetailsController = function($scope, $http,$window,$location){
 
   	$http.get('/api/people/'+id).success(function(data){
         $scope.formInfo = data;
-        $scope.formInfo.category = data.roles[0];
-        console.log(data.roles[0]);
+
+        angular.forEach($scope.categoryList,function(category){
+          angular.forEach(data.roles,function(selectedCategories){
+             if(selectedCategories == category.name)
+               category.ticked=true;
+          });
+        });
+
     });
   };
 
@@ -31,6 +45,8 @@ var personDetailsController = function($scope, $http,$window,$location){
 		$window.location.href = '/admin/partials/person/details.html';
 	};
 
+  $scope.init();
+
 };
 
-adminApp.controller('personDetailsController',['$scope','$http','$window','$location',personDetailsController]);
+personAdminApp.controller('personDetailsController',['$scope','$http','$window','$location', 'contentService',personDetailsController]);

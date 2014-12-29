@@ -76,4 +76,11 @@ public class CategoryResource {
     public Category listSongTitleCategory(){
         return categoryDAO.getSongTitleCategory();
     }
+
+    @GET
+    @UnitOfWork
+    @Path("/person")
+    public List<Category> listAllPersonCategory(){
+        return categoryDAO.findAllPersonCategory();
+    }
 }
