@@ -9,7 +9,7 @@
 
 
     <div class='arrows right'>
-        <a href='#' class='close' ng-click="onClose()"></a>
-        <span  ng-repeat="i in getPopupCount() track by $index" ng-click="onSelect($index)" ng-class="isActive($index) ? 'active' : ''" class="bubble"></span>
+        <a href='#' class='close' ng-click="onClose()">x</a>
+        <span  ng-repeat="i in getPopupCount() track by $index" ng-click="onSelect($index)" ng-class="isActive($index) ? 'active' : 'bubble'"></span>
     </div>
 </div>
