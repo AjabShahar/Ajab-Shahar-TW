@@ -10,6 +10,7 @@ var popUp = function() {
                 width: '@', //width of the popup
                 popupCount: '@',
                 id: '@',//an id for the background overlay for manipulation via jquery
+                index: '@',
             },
             templateUrl: '/user/js/common/templates/popupSupport/popup.html',
             controller: function($scope,$rootScope) {
@@ -28,6 +29,10 @@ var popUp = function() {
 
                 $scope.onSelect = function(index){
                     $rootScope.$broadcast('popupSelectionChanged',index);
+                }
+
+                $scope.isActive = function(index){
+                    return $scope.index == index;
                 }
 
                 $scope.isClosed = function(){
