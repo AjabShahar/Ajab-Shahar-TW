@@ -10,9 +10,9 @@ body.page-songs {
         position: absolute;
     }
     .page-header {
-        background: transparent url(../../img/songs/song-detail-hdr-shadow.png) bottom center no-repeat;
+        background: transparent url(../../img/songs/song-detail-hdr-shadow1.png) bottom center no-repeat;
         width: 100%;
-        height: 148px;
+        height: 145px;
         padding-top: 10px;
         display: inline-block;
 
@@ -40,15 +40,15 @@ body.page-songs {
         .page-title {
             float: left;
             margin: 35px 0 0 2%;
-            font-family: 'Merriweather', serif;
-            font-weight: lighter;
+            font-family: 'Merriweather Sans', 'Merriweather';
+            font-weight: 300;
             .main {
                 font-size: 21px;
                 margin-right: 10px;
                 color: #333;
             }
             .sub-main {
-                font-size: 16px;
+                font-size: 18px;
                 color: #999;
                 font-style: italic;
 
@@ -58,7 +58,7 @@ body.page-songs {
         }
 
         .light-bg {
-            height: 124px;
+            height: 121px;
             top: -16px;
         }
 
@@ -66,7 +66,7 @@ body.page-songs {
 
 
     .see-more {
-        background: transparent url(../../img/songs/song-detail-hdr-shadow.png) bottom center no-repeat;
+        background: transparent url(../../img/songs/song-detail-hdr-shadow1.png) bottom center no-repeat;
         height: 68px;
         width: 100%;
         display: inline-block;
@@ -75,7 +75,7 @@ body.page-songs {
         text-align: center;
         .version {
             position: absolute;
-            top: 29px;
+            top: 18px;
             left: 48%;
         }
         .arrow {
@@ -106,14 +106,14 @@ body.page-songs {
         }
 
         .light-bg {
-            height: 328px;
-            top: -16px;
+            height: 281px;
+            top: -33px;
         }
 
         .jcarousel {
 
             &>ul {
-                height: 304px;
+                height: 240px;
                 display: inline-block;
                 li {
                     margin-left: 63px;
@@ -142,6 +142,18 @@ body.page-songs {
 
         .jcarousel-control-next {
             background-image: url(../../img/songs/carousel-right.png);
+        }
+        /*UI: WIP */
+        .thumbnailWrapper {
+            margin: 0;
+            .thumbnail-media {
+               height: 139px;
+            }
+            .desc-wrapper {
+                .thumbnail-desc {
+                    /*width: 200px;*/
+                }
+            }
         }
     }
 
