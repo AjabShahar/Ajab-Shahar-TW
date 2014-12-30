@@ -16,8 +16,12 @@ var songListController = function($scope, contentService){
                 else 
                     toBeAdded.publish = "No"
                 
-                toBeAdded.singerNames = _.reduce(value.singers, function(memo, value, index){ return ((index!=0)?' ,':'')+ memo+ value.name; },'');
-                toBeAdded.poetNames = _.reduce(value.poet, function(memo, value, index){ return ((index!=0)?' ,':'')+ memo+ value.name; },'');
+                toBeAdded.singerNames = _.reduce(value.singers, function(memo, value, index){
+                 return (memo + ((index!=0)?', ':'') + value.name);
+                 },'');
+                toBeAdded.poetNames = _.reduce(value.poet, function(memo, value, index){
+                return (memo + ((index!=0)?', ':'') + value.name);
+                 },'');
                 toBeAdded.id = value.id;
                 songs.push(toBeAdded);
                 return songs;
