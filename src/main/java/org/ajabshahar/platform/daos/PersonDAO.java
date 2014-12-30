@@ -58,4 +58,8 @@ public class PersonDAO extends AbstractDAO<PersonDetails> {
         originalPersonData.setMiddleName(updatablePerson.getMiddleName());
         return originalPersonData;
     }
+
+    public List<PersonDetails> findByRole(String role) {
+        return list(namedQuery("org.ajabshahar.platform.models.PersonDetails.findAllByRole").setParameter("role", role));
+    }
 }

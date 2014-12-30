@@ -14,6 +14,10 @@ import static java.lang.String.format;
         @NamedQuery(
                 name = "org.ajabshahar.platform.models.PersonDetails.findAll",
                 query = "SELECT p FROM PersonDetails p"
+        ),
+        @NamedQuery(
+                name = "org.ajabshahar.platform.models.PersonDetails.findAllByRole",
+                query = "SELECT p FROM PersonDetails p join p.category pc where pc.name = :role)"
         )
 })
 public class PersonDetails {

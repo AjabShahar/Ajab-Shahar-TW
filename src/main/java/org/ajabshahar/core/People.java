@@ -19,7 +19,8 @@ public class People {
     }
 
     public List<PersonDetails> findBy(String role) {
-        return findBy(0, role);
+//        return findBy(0, role);
+        return personRepository.findByRole(role);
     }
 
     private List<PersonDetails> findBy(int id, String role) {
