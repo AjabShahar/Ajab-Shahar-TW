@@ -165,7 +165,7 @@
                     </div>
                 </div>
 
-                <button type="submit" ng-click="updateSong()" class="btn btn-primary btn-lg">Save</button>
+                <button type="submit" ng-click="updateSong()" ng-disabled="!songForm.$valid" class="btn btn-primary btn-lg">Save</button>
             </form>
         </div>
     </div>

@@ -71,8 +71,10 @@ public class SongDAO extends AbstractDAO<Song> {
     }
 
     public Song updateSong(Song updatableSong) {
-        sessionFactory.getCurrentSession().update(updatableSong.getTitle());
-        sessionFactory.getCurrentSession().update(updatableSong.getSongTitle());
+        if (updatableSong.getTitle() != null)
+            sessionFactory.getCurrentSession().update(updatableSong.getTitle());
+        if (updatableSong.getSongTitle() != null)
+            sessionFactory.getCurrentSession().update(updatableSong.getSongTitle());
         sessionFactory.getCurrentSession().update(updatableSong);
         return updatableSong;
     }
