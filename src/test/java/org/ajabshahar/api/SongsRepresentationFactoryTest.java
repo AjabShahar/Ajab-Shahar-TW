@@ -94,7 +94,7 @@ public class SongsRepresentationFactoryTest {
         songText.setRefrainOriginal("Original Refrain");
         songText.setRefrainEnglishTranslation("English Translation Refrain");
         songText.setRefrainEnglishTransliteration("English Translation Refrain");
-        songText.setSongTextContentSet(songTextContents);
+        songText.setSongTextContents(songTextContents);
 
         song.setSongText(songText);
         songsList.add(song);

@@ -58,12 +58,12 @@ public class SongText {
         this.refrainEnglishTransliteration = refrainEnglishTransliteration;
     }
 
-    public Set<SongTextContent> getSongTextContentSet() {
+    public Set<SongTextContent> getSongTextContents() {
         return songTextContents;
     }
 
-    public void setSongTextContentSet(Set<SongTextContent> songTextContentSet) {
-        this.songTextContents = songTextContentSet;
+    public void setSongTextContents(Set<SongTextContent> songTextContents) {
+        this.songTextContents = songTextContents;
     }
 
 }
