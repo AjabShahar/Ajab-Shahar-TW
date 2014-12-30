@@ -33,12 +33,13 @@ public class PersonDAO extends AbstractDAO<PersonDetails> {
 
     public List<PersonDetails> findBy(int personId, String role) {
         Session session = currentSession();
-        Criteria criteria = session.createCriteria(PersonDetails.class);
+        Criteria criteria = session.createCriteria(PersonDetails.class, "personDetails");
         if (personId > 0) {
             criteria.add(Restrictions.eq("id", Long.valueOf(personId)));
         }
         if (!Strings.isNullOrEmpty(role)) {
-            criteria.add(Restrictions.eq("category", role));
+            criteria.createAlias("personDetails.category", "category");
+            criteria.add(Restrictions.eq("category.name", role));
         }
         return criteria.list();
     }
@@ -57,9 +58,5 @@ public class PersonDAO extends AbstractDAO<PersonDetails> {
         originalPersonData.setLastName(updatablePerson.getLastName());
         originalPersonData.setMiddleName(updatablePerson.getMiddleName());
         return originalPersonData;
-    }
-
-    public List<PersonDetails> findByRole(String role) {
-        return list(namedQuery("org.ajabshahar.platform.models.PersonDetails.findAllByRole").setParameter("role", role));
     }
 }
