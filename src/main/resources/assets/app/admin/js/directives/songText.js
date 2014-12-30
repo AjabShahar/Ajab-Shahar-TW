@@ -6,7 +6,7 @@ songsAdminApp.directive("songText", function() {
         restrict: 'E',
         scope: {
             songText:'=',
-            coupletList:'=',
+            poets:'=',
         },
         templateUrl:'/admin/js/templates/songText.html',
         controller:function($scope){
@@ -48,6 +48,7 @@ songsAdminApp.directive("songText", function() {
                 newElement.englishTranslationText = $scope.newContent.englishTranslationText;
                 newElement.englishTransliterationText = $scope.newContent.englishTransliterationText;
                 newElement.originalText = $scope.newContent.originalText;
+                newElement.poet = $scope.newContent.poet;
 
                 $scope.songText.songTextContents.push(newElement);
                 $scope.selectedLyricsContent = newElement;

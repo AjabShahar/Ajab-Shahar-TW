@@ -28,7 +28,7 @@ public class SongTextContent {
 
     @OneToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name ="poet_id")
-    private PersonDetails personDetails;
+    private PersonDetails poet;
 
     public String getOriginalText() {
         return originalText;
@@ -78,11 +78,11 @@ public class SongTextContent {
         this.sequenceNumber = sequenceNumber;
     }
 
-    public PersonDetails getPersonDetails() {
-        return personDetails;
+    public PersonDetails getPoet() {
+        return poet;
     }
 
-    public void setPersonDetails(PersonDetails personDetails) {
-        this.personDetails = personDetails;
+    public void setPoet(PersonDetails personDetails) {
+        this.poet = personDetails;
     }
 }
