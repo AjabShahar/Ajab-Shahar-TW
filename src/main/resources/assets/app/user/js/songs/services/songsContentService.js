@@ -5,7 +5,7 @@ var songsContentService = function ($http) {
     };
 
     var getSongRenditions = function (id) {
-        return $http.get('/api/songs');
+        return $http.get('/api/songs/versions?songId='+id);
         //return $http.get('/api/songs/'+id+"/versions");
     };
 
@@ -22,7 +22,7 @@ var songsContentService = function ($http) {
     }
 
     var getSong = function (id) {
-        return $http.get('/api/songs/'+id);
+        return $http.get('/api/songs/versions?songId='+id);
     }
 
     return {

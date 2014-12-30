@@ -6,7 +6,7 @@ import java.util.List;
 
 public class SongTextRepresentation {
 
-    private List<SongTextSummaryRepresentation> songText;
+    private List<SongTextSummaryRepresentation> songTextContents;
     private String refrainOriginal;
     private String refrainEnglishTranslation;
     private String refrainEnglishTransliteration;
@@ -15,15 +15,15 @@ public class SongTextRepresentation {
         this.refrainOriginal = refrainOriginal;
         this.refrainEnglishTranslation = refrainEnglishTranslation;
         this.refrainEnglishTransliteration = refrainEnglishTransliteration;
-        songText = new ArrayList<>();
+        songTextContents = new ArrayList<>();
     }
 
-    public List<SongTextSummaryRepresentation> getSongText() {
-        return songText;
+    public List<SongTextSummaryRepresentation> getSongTextContents() {
+        return songTextContents;
     }
 
     public void add(SongTextSummaryRepresentation songTextSummaryRepresentation) {
-        songText.add(songTextSummaryRepresentation);
+        songTextContents.add(songTextSummaryRepresentation);
     }
 
     public String getRefrainOriginal() {

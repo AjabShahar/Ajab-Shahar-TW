@@ -28,12 +28,15 @@ public class SongRepresentation {
     private List<PersonSummaryRepresentation> poet;
     private List<LinkRepresentation> links;
     private SongTextRepresentation songText;
+    private String downloadUrl;
+    private String about;
+    private String notes;
 
     public SongRepresentation() {
         this.links = new ArrayList<>();
     }
 
-    public SongRepresentation(long id, long umbrellaTitleId, String umbrellaTitleOriginal, String umbrellaTitleEnglishTransliteration, String umbrellaTitleEnglishTranslation, long titleId, String titleOriginal, String titleEnglishTransliteration, String titleEnglishTranslation, boolean publish, String type, boolean featured, String youTubeVideoId, String soundCloudTrackId, String thumbnailUrl, String duration, List<PersonSummaryRepresentation> singers, List<PersonSummaryRepresentation> poet, SongTextRepresentation songText) {
+    public SongRepresentation(long id, long umbrellaTitleId, String umbrellaTitleOriginal, String umbrellaTitleEnglishTransliteration, String umbrellaTitleEnglishTranslation, long titleId, String titleOriginal, String titleEnglishTransliteration, String titleEnglishTranslation, boolean publish, String type, boolean featured, String youTubeVideoId, String soundCloudTrackId, String thumbnailUrl, String duration, List<PersonSummaryRepresentation> singers, List<PersonSummaryRepresentation> poet, SongTextRepresentation songText, String downloadUrl, String about, String notes) {
         this();
         this.id = id;
         this.umbrellaTitleId = umbrellaTitleId;
@@ -56,6 +59,10 @@ public class SongRepresentation {
         this.singers.forEach(singer -> links.add(new LinkRepresentation("singer", format("/api/people/%s", singer.getId()))));
         this.poet.forEach(p -> links.add(new LinkRepresentation("poet", format("/api/people/%s", p.getId()))));
         this.songText = songText;
+        this.downloadUrl = downloadUrl;
+        this.about = about;
+        this.notes = notes;
+
     }
 
     @JsonProperty("id")
@@ -156,6 +163,21 @@ public class SongRepresentation {
     @JsonProperty("songText")
     public SongTextRepresentation getSongText() {
         return songText;
+    }
+
+    @JsonProperty("downloadUrl")
+    public String getDownloadUrl() {
+        return downloadUrl;
+    }
+
+    @JsonProperty("about")
+    public String getAbout() {
+        return about;
+    }
+
+    @JsonProperty("notes")
+    public String getNotes() {
+        return notes;
     }
 }
 

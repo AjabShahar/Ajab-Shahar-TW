@@ -9,7 +9,7 @@ var songDetailsController = function($scope,$location,songsContentService){
     $scope.umbrellaTitleEnglishTranslation = '';
     $scope.umbrellaTitleEnglishTransliteration='';
     $scope.numberOfVersions = 0;
-    $scope.lyrics = [];
+    $scope.songText = {"refrainOriginal":'',"refrainEnglishTranslation":'',"refrainEnglishTransliteration":'',songTextContents:[]};
     $scope.songTitle = '';
     $scope.poet = '';
 
@@ -30,12 +30,13 @@ var songDetailsController = function($scope,$location,songsContentService){
         });
 
         $scope.detailContents = songsContentService.getSongRenditions($scope.songId).then(function(result){
-            $scope.renditions = result.data;
+            $scope.renditions = result.data.songs;
         });
         songsContentService.getSong($scope.songId).then(function(result){
-            $scope.poet = result.data.poets[0];
-            $scope.songTitle = result.data.songTitle;
-            $scope.getSongsLyrics(result.data.lyrics);
+            $scope.poet = result.data.songs[0].poet[0];
+            $scope.songTitle = result.data.songs[0].englishTranslationTitle;
+            $scope.songText.refrainEnglishTranslation = result.data.songs[0].songText.refrainEnglishTranslation;
+            $scope.getSongsLyrics(result.data.songs[0].songText.songTextContents);
         });
     }
 
@@ -68,10 +69,9 @@ var songDetailsController = function($scope,$location,songsContentService){
 
     $scope.getSongsLyrics = function(songTextComponents){
         sortedSongTextComponents = _.sortBy(songTextComponents, function(songTextComponent) { return songTextComponent.sequenceNumber;});
-        
         for(index in sortedSongTextComponents){
             var item = sortedSongTextComponents[index];
-                $scope.lyrics.push(item);
+                $scope.songText.songTextContents.push(item);
         }
     }
 

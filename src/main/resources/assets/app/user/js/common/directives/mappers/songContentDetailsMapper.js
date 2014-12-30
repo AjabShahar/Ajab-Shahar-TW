@@ -13,10 +13,10 @@ thumbnailModule.directive("songContentDetailsMapper", function() {
             var getSingers = function(singers){
                 if(singers.length != 0)
                 {
-                    var value = "" + singers[0].firstName;
+                    var value = "" + singers[0].name;
                     
                     for(var index=1;index< singers.length;index++){
-                        value += ' & '+singers[index].firstName;
+                        value += ' & '+singers[index].name;
                     }
                 }
                 
@@ -29,8 +29,8 @@ thumbnailModule.directive("songContentDetailsMapper", function() {
             "videoId":$scope.details.youtubeVideoId,
             "audioUrl":$scope.details.soundCloudTrackID,
             "singer":getSingers($scope.details.singers),
-            "poet":$scope.details.poets[0].firstName,
-            "downloadURL":$scope.details.download_url,
+            "poet":$scope.details.poet[0].name,
+            "downloadURL":$scope.details.downloadUrl,
             "about": '\'' + $scope.details.about + '\'',
             "notes": '\'' + $scope.details.notes + '\''
             };

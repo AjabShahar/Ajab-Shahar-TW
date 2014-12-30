@@ -111,13 +111,12 @@
                     </div>
                 </div>
                 <div id="poem_container">
-                    <h2 class="song-heading">{{songTitle.englishTransliteration}}</h2>
+                    <h2 class="song-heading">{{songText.refrainEnglishTranslation}}</h2>
                     Poet <span class='selected'>{{poet.firstName}}</span>
                     
-                     <div ng-repeat="songLyrics in lyrics track by $index">
-                        <p>{{songLyrics.couplet.englishTransliteration}}</p>
-                        <p>{{songLyrics.stanza.englishTransliterationText}}</p>
-                        <p>{{songLyrics.chorus}}</p>
+                     <div ng-repeat="songLyrics in songText.songTextContents track by $index">
+                        <p style=" white-space: pre-line">{{songLyrics.songTextContent.englishTranslationText}}</p>
+                        <!--<p>{{songLyrics.chorus}}</p>-->
                     </div>
 
                 </div>
