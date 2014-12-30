@@ -140,8 +140,9 @@
                         <div class="form-group col-sm-2">
                             <label>About</label>
                         </div>
+                        <span>The number of characters should be less that 1000, else the submit will be disabled</span>
                         <div class="form-group col-sm-8">
-                            <text-angular name="htmlcontent" ng-model="formInfo.about"></text-angular>
+                            <text-angular name="htmlcontent" ng-model="formInfo.about" ta-max-text="1000"></text-angular>
                         </div>
                     </div>
 
@@ -149,8 +150,9 @@
                         <div class="form-group col-sm-2">
                             <label>Notes</label>
                         </div>
+                        <span>The number of characters should be less that 1000, else the submit will be disabled</span>
                         <div class="form-group col-sm-8">
-                            <text-angular name="htmlcontent2" ng-model="formInfo.notes"></text-angular>
+                            <text-angular name="htmlcontent2" ng-model="formInfo.notes" ta-max-text="1000"></text-angular>
                         </div>
                     </div>
 
