@@ -18,6 +18,9 @@ songsAdminApp.directive("songText", function() {
                     "contentType":"stanza",
                     "englishTranslationText":"","englishTransliterationText":"","originalText":"",
                 };
+
+                if($scope.songText.songTextContents==null)
+                    $scope.songText.songTextContents = [];
             }
 
             $scope.initializeContent();
@@ -40,40 +43,21 @@ songsAdminApp.directive("songText", function() {
                     return;
                 var newElement = {};
                 newElement.contentType = $scope.newContent.contentType;
-                newElement.sequenceNumber = $scope.songText.length;
-                newElement.stanza = {};
-                newElement.stanza.contentType = $scope.newContent.contentType;
-                newElement.chorus = $scope.songText.chorus;
-                newElement.stanza.englishTranslationText = $scope.newContent.englishTranslationText;
-                newElement.stanza.englishTransliterationText = $scope.newContent.englishTransliterationText;
-                newElement.stanza.originalText = $scope.newContent.originalText;
+                newElement.sequenceNumber = $scope.songText.songTextContents.length;
 
-                $scope.songText.push(newElement);
+                newElement.englishTranslationText = $scope.newContent.englishTranslationText;
+                newElement.englishTransliterationText = $scope.newContent.englishTransliterationText;
+                newElement.originalText = $scope.newContent.originalText;
+
+                $scope.songText.songTextContents.push(newElement);
                 $scope.selectedLyricsContent = newElement;
                 $scope.initializeContent();
             }
 
             $scope.showLyrics = function(){
-                return $scope.songText.length != 0;
+                return $scope.songText.songTextContents.length != 0;
             }
 
-            $scope.getEnglishTransliterationText = function(content){
-                if(content.stanza!=null)
-                     return content.stanza.englishTransliterationText;
-                return content.couplet.englishTransliterationText;
-            }
-
-            $scope.getEnglishTranslationText = function(content){
-                if(content.stanza!=null)
-                     return content.stanza.englishTranslationText;
-                return content.couplet.englishTranslationText;
-            }
-
-            $scope.getOriginalText = function(content){
-                if(content.stanza!=null)
-                     return content.stanza.originalText;
-                return content.couplet.originalText;
-            }
         }
     }
 });

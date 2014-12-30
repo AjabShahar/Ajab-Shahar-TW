@@ -9,7 +9,9 @@
             <label>Refrain</label>
         </div>
         <div class="form-group col-sm-3">
-            <input type="text" name="refrain" ng-model="songText.chorus" class="form-control">
+            <input type="text" name="refrain" ng-model="songText.refrainOriginal" placeholder="Enter original text" class="form-control">
+            <input type="text" name="refrain" ng-model="songText.refrainEnglishTranslation" placeholder="Enter english-translation text" class="form-control">
+            <input type="text" name="refrain" ng-model="songText.refrainEnglishTransliteration" placeholder="Enter english-transliteration text" class="form-control">
         </div>
     </div>
     <div class="row">
@@ -27,44 +29,43 @@
         <div class="form-group">
             <div class="form-group col-sm-1" ng-show="shouldShowStanzaDetails()">
                 <textarea class="form-control" rows="6" ng-model="newContent.originalText" placeholder=" Enter original text ..."></textarea>
-                <textarea class="form-control" rows="6" ng-model="newContent.englishTranslationText" placeholder=" Enter english-translated text ..."></textarea>
-                <textarea class="form-control" rows="6" ng-model="newContent.englishTransliterationText" placeholder=" Enter english-transliterated text ..."></textarea>
+                <textarea class="form-control" rows="6" ng-model="newContent.englishTranslationText" placeholder="Enter english-translated text ..."></textarea>
+                <textarea class="form-control" rows="6" ng-model="newContent.englishTransliterationText" placeholder="Enter english-transliterated text ..."></textarea>
                 <input type="text" name="poet" ng-show="shouldShowCoupletDetails()" ng-model="newContent.poet" class="form-control">
                 <button type="button" class="btn btn-info" ng-click="addLyricsText()" >Add To Lyrics</button>
             </div>
 
             <div class="form-group col-sm-2">
                 <ul>
-                    <li ng-repeat="songLyrics in songText">
-                        <div>{{getOriginalText(songLyrics)}}</div>
+                    <li ng-repeat="songTextContent in songText.songTextContents">
+                        <div>{{songTextContent.originalText}}</div>
                     </li>
                 </ul>
                 <!--<select ng-model="selectedLyricsContent" size="40" ng-options="getLyricsForDisplay(songLyrics) for songLyrics in songText" class="form-control"></select>-->
             </div>
             <div class="form-group col-sm-3">
                 <ul>
-                    <li ng-repeat="songLyrics in songText">
-                        <div>{{getEnglishTranslationText(songLyrics)}}</div>
+                    <li ng-repeat="songTextContent in songText.songTextContents">
+                        <div>{{songTextContent.englishTransliterationText}}</div>
                     </li>
                 </ul>
                 <!--<select ng-model="selectedLyricsContent" size="40" ng-options="getLyricsForDisplay(songLyrics) for songLyrics in songText" class="form-control"></select>-->
             </div>
             <div class="form-group col-sm-4">
                 <ul>
-                    <li ng-repeat="songLyrics in songText">
-                        <div>{{getEnglishTransliterationText(songLyrics)}}</div>
+                    <li ng-repeat="songTextContent in songText.songTextContents">
+                        <div>{{songTextContent.englishTranslationText}}</div>
                     </li>
                 </ul>
                 <!--<select ng-model="selectedLyricsContent" size="40" ng-options="getLyricsForDisplay(songLyrics) for songLyrics in songText" class="form-control"></select>-->
             </div>
-            <div class="form-group col-sm-4">
-                <ul>
-                    <li ng-repeat="songLyrics in songText">
-                        <button type="button" class="btn btn-info" ng-click="edit(songLyrics)" >Edit</button>
-                    </li>
-                </ul>
-                <!--<select ng-model="selectedLyricsContent" size="40" ng-options="getLyricsForDisplay(songLyrics) for songLyrics in songText" class="form-control"></select>-->
-            </div>
+            <!--<div class="form-group col-sm-4">-->
+                <!--<ul>-->
+                    <!--<li ng-repeat="songTextContent in songText.songTextContents">-->
+                        <!--<button type="button" class="btn btn-info" ng-click="edit(songTextContent)" >Edit</button>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
             <!--<div class="form-group col-sm-4">-->
                 <!--<span class="glyphicon glyphicon-arrow-up btn-lg" ng-click="moveItemUp()"></span>-->
                 <!--<span class="glyphicon glyphicon-arrow-down btn-lg" ng-click="moveItemDown()"></span>-->

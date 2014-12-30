@@ -24,7 +24,7 @@ public class SongText {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "SONG_TEXT_SONG_TEXT_CONTENT", joinColumns = @JoinColumn(name = "SONG_TEXT_ID"),
             inverseJoinColumns = @JoinColumn(name = "SONG_TEXT_CONTENT_ID"))
-    private Set<SongTextContent> songTextContentSet;
+    private Set<SongTextContent> songTextContents;
 
     public String getRefrainOriginal() {
         return refrainOriginal;
@@ -59,11 +59,11 @@ public class SongText {
     }
 
     public Set<SongTextContent> getSongTextContentSet() {
-        return songTextContentSet;
+        return songTextContents;
     }
 
     public void setSongTextContentSet(Set<SongTextContent> songTextContentSet) {
-        this.songTextContentSet = songTextContentSet;
+        this.songTextContents = songTextContentSet;
     }
 
 }
