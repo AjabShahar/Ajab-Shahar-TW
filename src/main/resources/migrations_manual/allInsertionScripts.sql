@@ -1,4 +1,8 @@
-INSERT INTO PERSON(FIRST_NAME,MIDDLE_NAME,LAST_NAME,CATEGORY)VALUES('Parvathy','','Baul','Singer'),('Roshik','','','Poet'),('Gavra Devi','','','Singer'),('Fakru','','','Poet'),('Mooralala','','Marwada','Singer'),('Kabir','','','Poet'),('Unknown','','','Unknown');
+INSERT INTO CATEGORY(name, category_type) VALUES('Poet','person'),('Singer','person');
+
+INSERT INTO PERSON(FIRST_NAME,MIDDLE_NAME,LAST_NAME)VALUES('Parvathy','','Baul'),('Roshik','',''),('Gavra Devi','',''),('Fakru','',''),('Mooralala','','Marwada'),('Kabir','',''),('Unknown','','');
+
+INSERT INTO PERSON_CATEGORY(PERSON_ID, CATEGORY_ID) VALUES(1, 9),(2, 9), (3, 9),(4,10), (5,10),(6,10);
 
 INSERT INTO TITLE(ORIGINAL_TITLE,ENGLISH_TRANSLATION,ENGLISH_TRANSLITERATION,CATEGORY_ID)VALUES('किछु दिन मोने मोने','For a few days,O Heart','Kichhu din mone mone',7),('भजन रो गुड़क रहयो गाड़ो','The Cart of Meditation is Tottering','Bhajan Ro Guḍak Rahyo Gaaḍo',7),('हिए काया में','In This Body','Hiye Kaaya Mein',7);
 
