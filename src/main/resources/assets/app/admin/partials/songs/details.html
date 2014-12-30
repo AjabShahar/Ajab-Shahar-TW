@@ -61,7 +61,7 @@
                         </div>
                         <div class="form-group col-sm-2">
                             <select  ng-model="formInfo.poets[0]"
-                                     ng-options="poet.firstName for poet in poetsList" class="form-control">
+                                     ng-options="poet.firstName + ' ' + poet.lastName for poet in poetsList" class="form-control">
                             </select>
                         </div>
                     </div>
