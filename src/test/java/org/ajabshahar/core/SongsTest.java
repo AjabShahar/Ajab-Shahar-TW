@@ -51,14 +51,14 @@ public class SongsTest {
 
     @Test
     public void shouldGetSongsForSingerAndPoet() {
-        when(songsRepository.findBy(0, SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER)).thenReturn(songsList);
-        List<Song> result = songs.findBy(SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER);
+        when(songsRepository.findBy(0, SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER, false)).thenReturn(songsList);
+        List<Song> result = songs.findBy(SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER,false);
         assertEquals(songsList, result);
     }
 
     @Test
     public void shouldGetPersonById() throws Exception {
-        when(songsRepository.findBy(SONG_ID, 0, 0, 0, null)).thenReturn(songsList);
+        when(songsRepository.findBy(SONG_ID, 0, 0, 0, null,false)).thenReturn(songsList);
         Song result = songs.findBy(SONG_ID);
         assertEquals(song, result);
     }

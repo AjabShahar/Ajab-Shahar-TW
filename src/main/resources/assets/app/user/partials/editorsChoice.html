@@ -95,13 +95,13 @@
     <div class='ajab-container'>
         <div class='ajab-wrapper'>
             <div class='homepage-content'>
-                <div ng-repeat="song in thumbnailDetails.songs | limitTo: 9">
+                <div ng-repeat="song in thumbnailDetails.songs">
                     <song-thumbnail-mapper details="song" show-details-service="detailsService" custom-style="{{getSongCustomStyle(song)}}"/>
                 </div>
             </div>
         </div>
     </div>
-    <div ng-repeat="song in thumbnailDetails.songs | limitTo: 9">
+    <div ng-repeat="song in thumbnailDetails.songs">
         <song-introduction-mapper total-count="{{totalNumberOfThumbnails}}" index="{{$index}}" details="song" show-details-service="detailsService"/>
     </div>
 </div>

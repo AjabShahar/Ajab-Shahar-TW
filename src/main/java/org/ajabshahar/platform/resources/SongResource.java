@@ -85,8 +85,11 @@ public class SongResource {
     @GET
     @UnitOfWork
     @Path("/getPublishedSongs")
-    public Response getPublishedSongs(@QueryParam("singerId") int singerId, @QueryParam("poetId") int poetId, @QueryParam("startFrom") int startFrom, @QueryParam("filteredLetter") String filteredLetter) {
-        List<Song> songList = songs.findBy(singerId, poetId, startFrom, filteredLetter);
+    public Response getPublishedSongs(@QueryParam("singerId") int singerId, @QueryParam("poetId") int poetId, @QueryParam("startFrom") int startFrom, @QueryParam("filteredLetter") String filteredLetter, @QueryParam("randomSongsEnabled") Boolean randomSongsEnabled) {
+        if(randomSongsEnabled == null){
+            randomSongsEnabled = false;
+        }
+        List<Song> songList = songs.findBy(singerId, poetId, startFrom, filteredLetter, randomSongsEnabled);
         if (songList == null || songList.size() == 0) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
