@@ -8,7 +8,12 @@ public class SongTextRepresentationFactory {
         SongTextRepresentation songTextRepresentation = new SongTextRepresentation(songTexts.getRefrainOriginal(), songTexts.getRefrainEnglishTranslation(), songTexts.getRefrainEnglishTransliteration());
         if (songTexts.getSongTextContents() != null) {
             songTexts.getSongTextContents().forEach(content -> {
-                songTextRepresentation.add(new SongTextSummaryRepresentation((int) content.getId(), content, content.getSequenceNumber()));
+                songTextRepresentation.addSongTextContents(new SongTextSummaryRepresentation((int) content.getId(), content, content.getSequenceNumber()));
+            });
+        }
+        if (songTexts.getOpeningCouplets() != null) {
+            songTexts.getOpeningCouplets().forEach(openingCouplet -> {
+                songTextRepresentation.addOpeningCouplet(new SongTextSummaryRepresentation((int) openingCouplet.getId(),openingCouplet,openingCouplet.getSequenceNumber()));
             });
         }
         return songTextRepresentation;

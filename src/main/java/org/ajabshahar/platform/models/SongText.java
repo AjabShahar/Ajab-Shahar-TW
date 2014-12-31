@@ -26,6 +26,11 @@ public class SongText {
             inverseJoinColumns = @JoinColumn(name = "SONG_TEXT_CONTENT_ID"))
     private Set<SongTextContent> songTextContents;
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "SONG_TEXT_OPENING_COUPLET", joinColumns = @JoinColumn(name = "SONG_TEXT_ID"),
+            inverseJoinColumns = @JoinColumn(name = "OPENING_COUPLET_ID"))
+    private Set<SongTextContent> openingCouplets;
+
     public String getRefrainOriginal() {
         return refrainOriginal;
     }
@@ -66,4 +71,11 @@ public class SongText {
         this.songTextContents = songTextContents;
     }
 
+    public Set<SongTextContent> getOpeningCouplets() {
+        return openingCouplets;
+    }
+
+    public void setOpeningCouplets(Set<SongTextContent> openingCouplets) {
+        this.openingCouplets = openingCouplets;
+    }
 }
