@@ -10,8 +10,51 @@
         </div>
         <div class="form-group col-sm-3">
             <input type="text" name="refrain" ng-model="songText.refrainOriginal" placeholder="Enter original text" class="form-control">
-            <input type="text" name="refrain" ng-model="songText.refrainEnglishTranslation" placeholder="Enter english-translation text" class="form-control">
             <input type="text" name="refrain" ng-model="songText.refrainEnglishTransliteration" placeholder="Enter english-transliteration text" class="form-control">
+            <input type="text" name="refrain" ng-model="songText.refrainEnglishTranslation" placeholder="Enter english-translation text" class="form-control">
+        </div>
+    </div>
+    <div class="row" >
+        <div class="form-group col-sm-2" ng-init="showOpenCouplet = false">
+            <label>Opening Couplet</label>
+        </div>
+        <div class="form-group col-sm-3">
+            <input type="checkbox" ng-click="showOpenCouplet = !showOpenCouplet">
+        </div>
+        <div class="row" ng-show="showOpenCouplet">
+            <div class="form-group">
+                <div class="form-group col-sm-1">
+                    <textarea class="form-control" rows="6" ng-model="openingCouplet.originalText" placeholder="Enter original text ..."></textarea>
+                    <textarea class="form-control" rows="6" ng-model="openingCouplet.englishTransliterationText" placeholder="Enter english-transliterated text ..."></textarea>
+                    <textarea class="form-control" rows="6" ng-model="openingCouplet.englishTranslationText" placeholder="Enter english-translated text ..."></textarea>
+                    <select  ng-model="openingCouplet.poet" ng-options="poet.firstName for poet in poets" class="form-control"></select>
+
+                    <button type="button" class="btn btn-info" ng-click="addOpeningCouplet()">Add to Opening Couplet</button>
+                </div>
+
+                <div class="form-group col-sm-2">
+                    <ul>
+                        <li ng-repeat="openingCouplet in songText.openingCouplets">
+                            <div>{{openingCouplet.originalText}}</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="form-group col-sm-3">
+                    <ul>
+                        <li ng-repeat="openingCouplet in songText.openingCouplets">
+                            <div>{{openingCouplet.englishTransliterationText}}</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="form-group col-sm-4">
+                    <ul>
+                        <li ng-repeat="openingCouplet in songText.openingCouplets">
+                            <div>{{openingCouplet.englishTranslationText}}</div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
         </div>
     </div>
     <div class="row">
@@ -29,8 +72,8 @@
         <div class="form-group">
             <div class="form-group col-sm-1" ng-show="shouldShowStanzaDetails() || shouldShowCoupletDetails()">
                 <textarea class="form-control" rows="6" ng-model="newContent.originalText" placeholder=" Enter original text ..."></textarea>
-                <textarea class="form-control" rows="6" ng-model="newContent.englishTranslationText" placeholder="Enter english-translated text ..."></textarea>
                 <textarea class="form-control" rows="6" ng-model="newContent.englishTransliterationText" placeholder="Enter english-transliterated text ..."></textarea>
+                <textarea class="form-control" rows="6" ng-model="newContent.englishTranslationText" placeholder="Enter english-translated text ..."></textarea>
                 <select ng-show="shouldShowCoupletDetails()" ng-model="newContent.poet" ng-options="poet.firstName for poet in poets" class="form-control"></select>
 
                 <button type="button" class="btn btn-info" ng-click="addLyricsText()">Add To Lyrics</button>

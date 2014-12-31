@@ -183,5 +183,6 @@ public class SongsRepresentationFactoryTest {
         Song expected = songsRepresentationFactory.create(jsonSong);
 
         assertEquals(expected.getId(), song.getId());
+        assertNotNull(expected.getSongText().getSongTextContents());
     }
 }

@@ -12,10 +12,15 @@ songsAdminApp.directive("songText", function() {
         controller:function($scope){
             $scope.lyricsText = "";
             $scope.selectedLyricsContent = {};
+            $scope.songText.openingCouplets = [];
 
             $scope.initializeContent = function(){
                 $scope.newContent = {
                     "contentType":"stanza",
+                    "englishTranslationText":"","englishTransliterationText":"","originalText":"",
+                };
+                $scope.openingCouplet = {
+                    "contentType":"couplet",
                     "englishTranslationText":"","englishTransliterationText":"","originalText":"",
                 };
             }
@@ -50,6 +55,16 @@ songsAdminApp.directive("songText", function() {
                 $scope.getSongContents().push(newElement);
                 $scope.selectedLyricsContent = newElement;
                 $scope.initializeContent();
+            }
+
+            $scope.addOpeningCouplet = function(){
+               if(($scope.openingCouplet.englishTranslationText == "" &&
+                   $scope.openingCouplet.englishTransliterationText == "" &&
+                   $scope.openingCouplet.originalText == ""))
+                           return;
+               $scope.openingCouplet.sequenceNumber = $scope.songText.openingCouplets.length;
+               $scope.songText.openingCouplets.push($scope.openingCouplet);
+               $scope.initializeContent();
             }
 
             $scope.getSongContents = function(){
