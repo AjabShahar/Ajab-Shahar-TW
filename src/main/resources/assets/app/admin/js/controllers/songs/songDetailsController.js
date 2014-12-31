@@ -103,6 +103,8 @@ var songDetailsController = function($scope, $window,$location,songContentServic
            })[0];
          }
 
+         $scope.formInfo.publishedDate = null;
+
          songContentService.editSong($scope.formInfo).success(function(data){
             $window.location.href = '/admin/partials/home.html';
          });

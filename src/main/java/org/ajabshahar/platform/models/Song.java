@@ -1,6 +1,7 @@
 package org.ajabshahar.platform.models;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Set;
 
 @Entity
@@ -43,6 +44,9 @@ public class Song {
 
     @Column(name = "IS_AUTHORING_COMPLETE")
     private Boolean isAuthoringComplete;
+
+    @Column(name = "published_date")
+    private Timestamp publishedDate;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "SONG_SINGER", joinColumns = {@JoinColumn(name = "SONG_ID", referencedColumnName = "ID")},
@@ -163,7 +167,6 @@ public class Song {
         this.isAuthoringComplete = isAuthoringComplete;
     }
 
-
     public Title getTitle() {
         return title;
     }
@@ -210,6 +213,14 @@ public class Song {
 
     public void setSongText(SongText songText) {
         this.songText = songText;
+    }
+
+    public Timestamp getPublishedDate() {
+        return publishedDate;
+    }
+
+    public void setPublishedDate(Timestamp publishedDate) {
+        this.publishedDate = publishedDate;
     }
 }
 

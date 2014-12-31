@@ -10,7 +10,10 @@ import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class SongDAO extends AbstractDAO<Song> {
@@ -27,8 +30,15 @@ public class SongDAO extends AbstractDAO<Song> {
     }
 
     public Song saveSong(Song song) {
+        Calendar calendar = Calendar.getInstance();
+        java.util.Date now = calendar.getTime();
+
         currentSession().update(song.getTitle());
         currentSession().save(song);
+
+        if(song.getIsAuthoringComplete()) {
+            song.setPublishedDate(new Timestamp(now.getTime()));
+        }
         return song;
     }
 

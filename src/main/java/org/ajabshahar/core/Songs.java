@@ -7,6 +7,9 @@ import org.ajabshahar.platform.daos.TitleDAO;
 import org.ajabshahar.platform.models.Song;
 import org.ajabshahar.platform.models.Title;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class Songs {
@@ -83,6 +86,9 @@ public class Songs {
     }
 
     public Song invokeAllSetters(Song originalSongData, Song updatableSongData) {
+        Calendar calendar = Calendar.getInstance();
+        Date now = calendar.getTime();
+
         originalSongData.setTitle(updatableSongData.getTitle());
         originalSongData.setSongTitle(updatableSongData.getSongTitle());
         originalSongData.setAbout(updatableSongData.getAbout());
@@ -98,6 +104,10 @@ public class Songs {
         originalSongData.setPoets(updatableSongData.getPoets());
         originalSongData.setSongCategory(updatableSongData.getSongCategory());
         originalSongData.setMediaCategory(updatableSongData.getMediaCategory());
+
+        if(updatableSongData.getIsAuthoringComplete()) {
+            originalSongData.setPublishedDate(new Timestamp(now.getTime()));
+        }
         return originalSongData;
     }
 
