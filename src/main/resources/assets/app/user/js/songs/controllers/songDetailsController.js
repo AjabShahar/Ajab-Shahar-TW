@@ -12,6 +12,9 @@ var songDetailsController = function($scope,$location,songsContentService){
     $scope.songText = {"refrainOriginal":'',"refrainEnglishTranslation":'',"refrainEnglishTransliteration":'',songTextContents:[]};
     $scope.songTitle = '';
     $scope.poet = '';
+    $scope.englishTranslationVisible = true;
+    $scope.originalVisible = false;
+    $scope.englishTransliterationVisible = false;
 
     $scope.toggleVersion = function(){
         $scope.showVersion = !$scope.showVersion;
@@ -36,6 +39,8 @@ var songDetailsController = function($scope,$location,songsContentService){
             $scope.poet = result.data.songs[0].poet[0];
             $scope.songTitle = result.data.songs[0].englishTranslationTitle;
             $scope.songText.refrainEnglishTranslation = result.data.songs[0].songText.refrainEnglishTranslation;
+            $scope.songText.refrainOriginal = result.data.songs[0].songText.refrainOriginal;
+            $scope.songText.refrainEnglishTransliteration = result.data.songs[0].songText.refrainEnglishTransliteration;
             $scope.getSongsLyrics(result.data.songs[0].songText.songTextContents);
         });
     }
@@ -73,6 +78,27 @@ var songDetailsController = function($scope,$location,songsContentService){
             var item = sortedSongTextComponents[index];
                 $scope.songText.songTextContents.push(item);
         }
+    }
+
+    $scope.showEnglishTranslation = function(){
+        $scope.englishTransliterationVisible = false;
+        $scope.englishTranslationVisible = true;
+        $scope.originalVisible = false;
+        console.log("showEnglishTranslation");
+    }
+
+    $scope.showEnglishTransliteration = function(){
+        $scope.englishTransliterationVisible = true;
+        $scope.englishTranslationVisible = false;
+        $scope.originalVisible = false;
+        console.log("showEnglishTransliteration");
+    }
+
+    $scope.showOriginal = function(){
+        $scope.englishTransliterationVisible = false;
+        $scope.englishTranslationVisible = false;
+        $scope.originalVisible = true;
+        console.log("showOriginal");
     }
 
     $scope.init();
