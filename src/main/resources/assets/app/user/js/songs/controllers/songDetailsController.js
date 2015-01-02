@@ -84,21 +84,18 @@ var songDetailsController = function($scope,$location,songsContentService){
         $scope.englishTransliterationVisible = false;
         $scope.englishTranslationVisible = true;
         $scope.originalVisible = false;
-        console.log("showEnglishTranslation");
     }
 
     $scope.showEnglishTransliteration = function(){
         $scope.englishTransliterationVisible = true;
         $scope.englishTranslationVisible = false;
         $scope.originalVisible = false;
-        console.log("showEnglishTransliteration");
     }
 
     $scope.showOriginal = function(){
         $scope.englishTransliterationVisible = false;
         $scope.englishTranslationVisible = false;
         $scope.originalVisible = true;
-        console.log("showOriginal");
     }
 
     $scope.init();

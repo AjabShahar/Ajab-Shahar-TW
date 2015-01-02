@@ -1,5 +1,6 @@
 @import '../main.less';
 @import url(http://fonts.googleapis.com/css?family=Merriweather:400,300italic,300);
+@import url(http://fonts.googleapis.com/css?family=Ek+Mukta:200,300,400,500,700&subset=latin,devanagari);
 /* styles for songs details page */
 
 body.page-songs {
@@ -159,6 +160,7 @@ body.page-songs {
 
     .main-content {
         margin-top: 60px;
+        min-height:  500px;
     }
 
     #song_container {
@@ -291,6 +293,14 @@ body.page-songs {
         .song-heading {
             color: #ccc;
             font-size: 30px;
+            line-height: 27px;
+            padding: 0 0 20px;
+            font-weight: 300;
+
+            &.hindi {
+                font-family: 'Ek Mukta', sans-serif;
+                font-size: 65px;
+            }
         }
 
         .poet-details {
@@ -301,13 +311,6 @@ body.page-songs {
         .initial-couplets {
             color: #999;
             font-size: 15px;
-        }
-        .lyrics {
-            color: #333;
-            font-size: 18px;
-            /*width: 35%;
-            margin: 0 auto;
-            line-height: 25px;*/
         }
 
     }
