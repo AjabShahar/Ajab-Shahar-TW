@@ -12,6 +12,18 @@ thumbnailModule.directive("songIntroductionMapper", function() {
         },
         templateUrl:'/user/js/common/templates/mappers/introduction/songIntroductionMapper.html',
         controller:function($scope){
+            $scope.multipleSingers = false;
+            $scope.noun = "";
+
+            if($scope.details.singers.length > 1){
+                $scope.noun = "sing";
+            }
+            else {
+                $scope.noun = "sings";
+            }
+
+            if($scope.details.singers.length > 1)
+              $scope.multipleSingers = true;
             var getSingers = function(singers){
                 var value = "" + singers[0].name;
                 for(var index=1;index< singers.length;index++){
@@ -28,7 +40,8 @@ thumbnailModule.directive("songIntroductionMapper", function() {
                 "englishTransliteration":$scope.details.englishTransliterationTitle,
                 "singer":getSingers($scope.details.singers),
                 "audioId":$scope.details.soundCloudTrackID,
-                "poet":($scope.details.poet==null || $scope.details.poet.length==0)?'Unknown': $scope.details.poet[0].name
+                "poet":($scope.details.poet==null || $scope.details.poet.length==0)?'Unknown': $scope.details.poet[0].name,
+                "noun": $scope.noun
             };
 
 

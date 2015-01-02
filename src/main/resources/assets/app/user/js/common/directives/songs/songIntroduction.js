@@ -11,7 +11,8 @@ thumbnailModule.directive("songIntroduction", function() {
             videoUrl:'@',
             id:'@',
             audioUrl:'@',
-            closeVideo:'&'
+            closeVideo:'&',
+            noun: '@'
         },
         templateUrl:'/user/js/common/templates/songs/introduction.html',
         controller: function($scope) {
