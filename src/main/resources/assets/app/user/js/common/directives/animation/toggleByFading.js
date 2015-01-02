@@ -2,7 +2,7 @@ animationModule.animation('.toggleByFading', function () {
   return {
     beforeAddClass: function (element, className, done) {
       if (className == 'ng-hide') {
-        element.fadeOut("fast");
+        element.hide();
       }
       else {
              done();
@@ -11,7 +11,7 @@ animationModule.animation('.toggleByFading', function () {
       beforeRemoveClass: function (element, className, done) {
         if (className == 'ng-hide') {
             element.removeClass('ng-hide');
-            element.fadeIn(2000);
+            element.fadeIn(800);
           }
           else {
                  done();
