@@ -2,7 +2,9 @@ animationModule.animation('.toggleByFading', function () {
   return {
     beforeAddClass: function (element, className, done) {
       if (className == 'ng-hide') {
-        element.fadeOut();
+        element.fadeOut(800, function() {
+            $(this).addClass('ng-hide');
+        });
       }
       else {
              done();
@@ -10,8 +12,9 @@ animationModule.animation('.toggleByFading', function () {
       },
       beforeRemoveClass: function (element, className, done) {
         if (className == 'ng-hide') {
-            element.removeClass('ng-hide');
-            element.fadeIn(800);
+              element.fadeIn(800, function() {
+                  $(this).removeClass('ng-hide');
+              });
           }
           else {
                  done();
