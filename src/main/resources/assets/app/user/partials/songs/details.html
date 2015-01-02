@@ -29,6 +29,7 @@
     <script type="text/javascript" src="../../js/common/directives/header/sticky.js"></script>
     <script type="text/javascript" src="../../js/common/directives/header/ajabShaharHeader.js"></script>
     <script type="text/javascript" src="../../js/common/directives/animation/toggleBySlide.js"></script>
+    <script type="text/javascript" src="../../js/common/directives/animation/toggleByFading.js"></script>
     <script type="text/javascript" src="../../js/common/directives/songs/songContentDetails.js"></script>
     <script type="text/javascript" src="../../js/common/directives/carouselSupport/asCarousel.js"></script>
     <script type="text/javascript" src="../../../js/common/directives/htmlGenerator/bindDynamicHtml.js"></script>
@@ -112,31 +113,31 @@
                 </div>
 
                 <div id="poem_container">
-                    <div ng-show="originalVisible">
+                    <div ng-show="originalVisible" class="toggleByFading">
                         <h2 class="song-heading hindi">{{songText.refrainOriginal}}</h2>
                         <h5 class="poet-details">Poet <span class='selected'>{{poet.name}}</span></h5>
 
                         <div ng-repeat="songLyrics in songText.songTextContents track by $index" class="initial-couplets">
-                            <p class="toggleBySlide" style=" white-space: pre-line">{{songLyrics.songTextContent.originalText}}</p>
+                            <p style=" white-space: pre-line">{{songLyrics.songTextContent.originalText}}</p>
                             <!--<p>{{songLyrics.chorus}}</p>-->
                         </div>
                     </div>
-                    <div ng-show="englishTransliterationVisible">
+                    <div ng-show="englishTransliterationVisible" class="toggleByFading">
                         <h2 class="song-heading">{{songText.refrainEnglishTransliteration}}</h2>
                         <h5 class="poet-details">Poet <span class='selected'>{{poet.name}}</span></h5>
 
                         <div ng-repeat="songLyrics in songText.songTextContents track by $index" class="initial-couplets">
-                            <p class="toggleBySlide" style=" white-space: pre-line">{{songLyrics.songTextContent.englishTransliterationText}}</p>
+                            <p style=" white-space: pre-line">{{songLyrics.songTextContent.englishTransliterationText}}</p>
                             <!--<p>{{songLyrics.chorus}}</p>-->
                         </div>
 
                     </div>
-                    <div ng-show="englishTranslationVisible">
+                    <div ng-show="englishTranslationVisible" class="toggleByFading">
                         <h2 class="song-heading">{{songText.refrainEnglishTranslation}}</h2>
                         <h5 class="poet-details">Poet <span class='selected'>{{poet.name}}</span></h5>
 
                         <div ng-repeat="songLyrics in songText.songTextContents track by $index" class="initial-couplets">
-                            <p class="toggleBySlide" style=" white-space: pre-line">{{songLyrics.songTextContent.englishTranslationText}}</p>
+                            <p style=" white-space: pre-line">{{songLyrics.songTextContent.englishTranslationText}}</p>
                             <!--<p>{{songLyrics.chorus}}</p>-->
                         </div>
                         
