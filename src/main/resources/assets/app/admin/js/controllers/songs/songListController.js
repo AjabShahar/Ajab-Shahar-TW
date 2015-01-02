@@ -1,5 +1,7 @@
 var songListController = function($scope, contentService){
     $scope.songs = [];
+    $scope.songToBeDeleted = null;
+
     $scope.init = function(){
         contentService.getAllSongs().then(function(result){
             var allSongs = result.data.songs;
@@ -27,6 +29,23 @@ var songListController = function($scope, contentService){
                 return songs;
             },[])
         });
+    }
+
+    $scope.confirmDeletionFor = function(songId){
+        $scope.songToBeDeleted = songId;
+    }
+
+    $scope.deletionConfirmedFor = function(songId){
+        return $scope.songToBeDeleted == songId;   
+    }
+
+    $scope.removeSong = function(confirmed){
+        if(confirmed){
+            console.log($scope.songToBeDeleted + " Song removed");
+        }
+        else{
+            console.log("Canceled for " + $scope.songToBeDeleted);
+        }
     }
 
     $scope.init();
