@@ -6,8 +6,11 @@
         <div class="thumbnail-desc" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
             <h3 class="item-title">{{getTitle()}}</h3>
             <div class="sub-title"></div>
-            <small>sings {{singer|uppercase}}</small>
+            <small ng-hide="multipleSingers">sings {{singer|uppercase}}</small>
             <div ng-show="shouldShowDetails" class='shouldShowDetails'>
+                <div class="" ng-show="multipleSingers">
+                <small class="">sing {{singers|uppercase}}</small>
+                </div>
                 <small class="poetDetails">Poet {{poet|uppercase}}</small>
                 <div class='categoryDetails'>
                     <small class="categoryName">{{categoryName}}</small>

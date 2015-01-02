@@ -8,6 +8,7 @@ thumbnailModule.directive("songThumbnail", function() {
             englishTransliteration:'@',
             englishTranslation:'@',
             singer:'@',
+            singers:'@',
             imgSrc:'@',
             url:'@',
             categoryName:'@',
@@ -30,13 +31,16 @@ thumbnailModule.directive("songThumbnail", function() {
             }
 
             $scope.shouldShowDetails = false;
-
+            $scope.multipleSingers = false;
             $scope.showDetails = function(){
                 $scope.shouldShowDetails = true;
+                if($scope.singers.length > 1)
+                  $scope.multipleSingers = true;
             }
 
             $scope.hideDetails = function(){
                 $scope.shouldShowDetails = false;
+                $scope.multipleSingers = false;
             }
         }
     }
