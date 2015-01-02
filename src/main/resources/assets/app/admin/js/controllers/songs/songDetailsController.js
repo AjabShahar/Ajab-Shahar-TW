@@ -34,6 +34,7 @@ var songDetailsController = function($scope, $window,$location,songContentServic
               if(singer.lastName == null)
                 singer.lastName = '';
             });
+            $scope.singersList = $filter('orderBy')($scope.singersList, 'firstName');
         });
 
         songContentService.getAllPoets().success(function(allPoets){
