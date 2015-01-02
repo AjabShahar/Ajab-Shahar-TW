@@ -28,6 +28,7 @@
                 <td><b>Poet</b></td>
                 <td><b>Published</b></td>
                 <td><b>Edit</b></td>
+                <td><b>Delete</b></td>
             </tr>
             <tr>
                 <td><input ng-model="search.title" class="form-control" ><br></td>
@@ -44,7 +45,8 @@
                 <td>{{song.singerNames}}</td>
                 <td>{{song.poetNames}}</td>
                 <td>{{song.publish}}</td>
-                <td><a href="edit.html?id={{song.id}}" class="btn btn-info">edit</a></td>
+                <td><a href="edit.html?id={{song.id}}" class="btn btn-info">Edit</a></td>
+                <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
             </tr>
         </table>
     </div>

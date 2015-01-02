@@ -1,4 +1,4 @@
-var songDetailsController = function($scope, $window,$location,songContentService){
+var songDetailsController = function($scope, $window,$location,songContentService, $filter){
     $scope.formInfo = {
     singers:[]
     };
@@ -122,4 +122,4 @@ var songDetailsController = function($scope, $window,$location,songContentServic
     $scope.init();
 }
 
-songsAdminApp.controller('songDetailsController',['$scope','$window','$location','songContentService',songDetailsController]);
+songsAdminApp.controller('songDetailsController',['$scope','$window','$location','songContentService', '$filter',songDetailsController]);
