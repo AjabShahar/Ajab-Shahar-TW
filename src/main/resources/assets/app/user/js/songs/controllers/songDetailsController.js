@@ -36,12 +36,12 @@ var songDetailsController = function($scope,$location,songsContentService){
             $scope.renditions = result.data.songs;
         });
         songsContentService.getSong($scope.songId).then(function(result){
-            $scope.poet = result.data.songs[0].poet[0];
-            $scope.songTitle = result.data.songs[0].englishTranslationTitle;
-            $scope.songText.refrainEnglishTranslation = result.data.songs[0].songText.refrainEnglishTranslation;
-            $scope.songText.refrainOriginal = result.data.songs[0].songText.refrainOriginal;
-            $scope.songText.refrainEnglishTransliteration = result.data.songs[0].songText.refrainEnglishTransliteration;
-            $scope.getSongsLyrics(result.data.songs[0].songText.songTextContents);
+            $scope.poet = result.data.poet[0];
+            $scope.songTitle = result.data.englishTranslationTitle;
+            $scope.songText.refrainEnglishTranslation = result.data.songText.refrainEnglishTranslation;
+            $scope.songText.refrainOriginal = result.data.songText.refrainOriginal;
+            $scope.songText.refrainEnglishTransliteration = result.data.songText.refrainEnglishTransliteration;
+            $scope.getSongsLyrics(result.data.songText.songTextContents);
         });
     }
 

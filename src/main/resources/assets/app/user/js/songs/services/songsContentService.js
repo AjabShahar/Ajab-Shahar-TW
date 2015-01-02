@@ -22,7 +22,7 @@ var songsContentService = function ($http) {
     }
 
     var getSong = function (id) {
-        return $http.get('/api/songs/versions?songId='+id);
+        return $http.get('/api/songs/getPublishedSongs/'+id);
     }
 
     return {
