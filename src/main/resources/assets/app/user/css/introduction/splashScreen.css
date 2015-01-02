@@ -33,4 +33,9 @@ color: #fff;
 width: 70px;
 height: 20px;
 cursor: pointer;
-}	
+}
+
+.splash_screen {
+	position: absolute;
+	z-index: -999;
+}
