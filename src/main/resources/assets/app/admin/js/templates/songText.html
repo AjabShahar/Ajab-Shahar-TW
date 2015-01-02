@@ -82,21 +82,21 @@
             <div class="form-group col-sm-2">
                 <ul>
                     <li ng-repeat="songTextContent in songText.songTextContents">
-                        <div>{{songTextContent.originalText}}</div>
+                        <textarea class="form-control" rows="6" ng-model="songTextContent.originalText" placeholder=" Enter original text ..."></textarea>
                     </li>
                 </ul>
             </div>
             <div class="form-group col-sm-3">
                 <ul>
                     <li ng-repeat="songTextContent in songText.songTextContents">
-                        <div>{{songTextContent.englishTransliterationText}}</div>
+                        <textarea class="form-control" rows="6" ng-model="songTextContent.englishTransliterationText" placeholder=" Enter original text ..."></textarea>
                     </li>
                 </ul>
             </div>
             <div class="form-group col-sm-4">
                 <ul>
                     <li ng-repeat="songTextContent in songText.songTextContents">
-                        <div>{{songTextContent.englishTranslationText}}</div>
+                        <textarea class="form-control" rows="6" ng-model="songTextContent.englishTranslationText" placeholder=" Enter original text ..."></textarea>
                     </li>
                 </ul>
             </div>
