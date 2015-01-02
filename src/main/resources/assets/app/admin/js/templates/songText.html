@@ -10,8 +10,8 @@
         </div>
         <div class="form-group col-sm-3">
             <input type="text" name="refrain" ng-model="songText.refrainOriginal" placeholder="Enter original text" class="form-control">
-            <input type="text" name="refrain" ng-model="songText.refrainEnglishTransliteration" placeholder="Enter english-transliteration text" class="form-control">
             <input type="text" name="refrain" ng-model="songText.refrainEnglishTranslation" placeholder="Enter english-translation text" class="form-control">
+            <input type="text" name="refrain" ng-model="songText.refrainEnglishTransliteration" placeholder="Enter english-transliteration text" class="form-control">
         </div>
     </div>
     <div class="row" >
@@ -25,8 +25,8 @@
             <div class="form-group">
                 <div class="form-group col-sm-1">
                     <textarea class="form-control" rows="6" ng-model="openingCouplet.originalText" placeholder="Enter original text ..."></textarea>
-                    <textarea class="form-control" rows="6" ng-model="openingCouplet.englishTransliterationText" placeholder="Enter english-transliterated text ..."></textarea>
                     <textarea class="form-control" rows="6" ng-model="openingCouplet.englishTranslationText" placeholder="Enter english-translated text ..."></textarea>
+                    <textarea class="form-control" rows="6" ng-model="openingCouplet.englishTransliterationText" placeholder="Enter english-transliterated text ..."></textarea>
                     <select  ng-model="openingCouplet.poet" ng-options="poet.firstName for poet in poets" class="form-control"></select>
 
                     <button type="button" class="btn btn-info" ng-click="addOpeningCouplet()">Add to Opening Couplet</button>
@@ -35,25 +35,31 @@
                 <div class="form-group col-sm-2">
                     <ul>
                         <li ng-repeat="openingCouplet in songText.openingCouplets">
-                            <div>{{openingCouplet.originalText}}</div>
+                            <textarea class="form-control" rows="6" ng-model="openingCouplet.originalText" placeholder=" Enter original text ..."></textarea>
                         </li>
                     </ul>
                 </div>
                 <div class="form-group col-sm-3">
                     <ul>
                         <li ng-repeat="openingCouplet in songText.openingCouplets">
-                            <div>{{openingCouplet.englishTransliterationText}}</div>
+                            <textarea class="form-control" rows="6" ng-model="openingCouplet.englishTranslationText" placeholder=" Enter original text ..."></textarea>
                         </li>
                     </ul>
                 </div>
                 <div class="form-group col-sm-4">
                     <ul>
                         <li ng-repeat="openingCouplet in songText.openingCouplets">
-                            <div>{{openingCouplet.englishTranslationText}}</div>
+                            <textarea class="form-control" rows="6" ng-model="openingCouplet.englishTransliterationText" placeholder=" Enter original text ..."></textarea>
                         </li>
                     </ul>
                 </div>
-
+                <div class="form-group col-sm-5">
+                    <ul>
+                        <li ng-repeat="openingCouplet in songText.openingCouplets">
+                            <select ng-model="openingCouplet.poet" ng-options="poet.firstName for poet in poets" class="form-control"></select>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -72,8 +78,8 @@
         <div class="form-group">
             <div class="form-group col-sm-1" ng-show="shouldShowStanzaDetails() || shouldShowCoupletDetails()">
                 <textarea class="form-control" rows="6" ng-model="newContent.originalText" placeholder=" Enter original text ..."></textarea>
-                <textarea class="form-control" rows="6" ng-model="newContent.englishTransliterationText" placeholder="Enter english-transliterated text ..."></textarea>
                 <textarea class="form-control" rows="6" ng-model="newContent.englishTranslationText" placeholder="Enter english-translated text ..."></textarea>
+                <textarea class="form-control" rows="6" ng-model="newContent.englishTransliterationText" placeholder="Enter english-transliterated text ..."></textarea>
                 <select ng-show="shouldShowCoupletDetails()" ng-model="newContent.poet" ng-options="poet.firstName for poet in poets" class="form-control"></select>
 
                 <button type="button" class="btn btn-info" ng-click="addLyricsText()">Add To Lyrics</button>
@@ -89,21 +95,21 @@
             <div class="form-group col-sm-3">
                 <ul>
                     <li ng-repeat="songTextContent in songText.songTextContents">
-                        <textarea class="form-control" rows="6" ng-model="songTextContent.englishTransliterationText" placeholder=" Enter original text ..."></textarea>
+                        <textarea class="form-control" rows="6" ng-model="songTextContent.englishTranslationText" placeholder=" Enter original text ..."></textarea>
                     </li>
                 </ul>
             </div>
             <div class="form-group col-sm-4">
                 <ul>
                     <li ng-repeat="songTextContent in songText.songTextContents">
-                        <textarea class="form-control" rows="6" ng-model="songTextContent.englishTranslationText" placeholder=" Enter original text ..."></textarea>
+                        <textarea class="form-control" rows="6" ng-model="songTextContent.englishTransliterationText" placeholder=" Enter original text ..."></textarea>
                     </li>
                 </ul>
             </div>
             <div class="form-group col-sm-5">
                 <ul>
                     <li ng-repeat="songTextContent in songText.songTextContents">
-                        <div>{{songTextContent.poet.firstName}} {{songTextContent.poet.middleName}} {{songTextContent.poet.lastName}}</div>
+                        <select ng-show="shouldShowCoupletDetails()" ng-model="songTextContent.poet" ng-options="poet.firstName for poet in poets" class="form-control"></select>
                     </li>
                 </ul>
             </div>
