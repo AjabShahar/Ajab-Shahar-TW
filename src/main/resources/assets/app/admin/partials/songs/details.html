@@ -162,9 +162,9 @@
                             <label>Publish</label>
                         </div>
                         <div class="form-group col-sm-1">
-                            <select name="format" ng-model="formInfo.isAuthoringComplete" class="form-control">
+                            <select name="format" ng-model="formInfo.isAuthoringComplete" class="form-control" ng-init="formInfo.isAuthoringComplete=false">
                                 <option value="true">Yes</option>
-                                <option value="false">No</option>
+                                <option value="false" ng-selected="true">No</option>
                             </select>
                         </div>
                     </div>
