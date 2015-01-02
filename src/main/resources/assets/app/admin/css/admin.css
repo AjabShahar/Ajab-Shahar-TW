@@ -38,6 +38,10 @@ margin-bottom: 50%;
   margin-left: 91%;
 }
 
+.inl-blk {
+    display: inline-block;
+}
+
 .form-group .textarea.form-control {
     width: 400px;
     float: left;
