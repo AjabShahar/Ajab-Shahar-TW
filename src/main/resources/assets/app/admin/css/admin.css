@@ -31,3 +31,9 @@ margin-bottom: 50%;
 	margin-left: 57%;
 	margin-top: -42%;
 }
+
+.adminHome{
+  position: absolute;
+  display: inline-block;
+  margin-left: 91%;
+}
