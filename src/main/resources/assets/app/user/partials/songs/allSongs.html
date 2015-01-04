@@ -49,13 +49,10 @@
     <link href="../../css/pages/gridview.css" rel="stylesheet" type="text/css">
 </head>
 <body ng-controller="allSongsController" class="page-songs ng-scope" style="" ng-init="getTotalSongsCount()">
-    <ajab-shahar-header></ajab-shahar-header>
-
 
     <div class="ajab-container headerfixOuter all-songs">
+        <ajab-shahar-header></ajab-shahar-header>
         <div class="ajab-wrapper">
-      
-
             <div class='leftnav headerfixInner'>
                 <div class='navElementsWrapper'>
                     <h1 class='categoryLogo'></h1>
@@ -65,9 +62,10 @@
             </div>
 
             <div class='gridView' infinite-scroll="loadSongFromRange()">
-                <as-title current-alphabet-filter="activeLetter">
-                    <div class="upper">
-                        <span class='numericCount'>{{songCount}}</span>
+
+                        <as-title current-alphabet-filter="activeLetter">
+
+                        <span class='numericCount'>{{songCount}} SONGS</span>
 
                         <span class="view-options">
                             <a href="javascript:void(0)" class="grid"></a>
@@ -76,7 +74,6 @@
                         <span class="search-box">
                             <input type="search" class="search" />
                         </span>
-                    </div>
                 </as-title>
 
                 <div class='gridWrapper'>

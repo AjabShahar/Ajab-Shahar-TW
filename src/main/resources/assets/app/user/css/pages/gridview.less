@@ -7,27 +7,33 @@
 
 
 .leftnav{
-  float: left;
-width: 16%;
-height: 100%;
-text-align: left;
-padding: 0 2%;
-color:#666;
+    float: left;
+    width: 16%;
+    height: 100%;
+    text-align: left;
+    padding: 0 2%;
+    color:#666;
 }
 /* Styles for grid View page for all songs */
 
 .all-songs {
     margin: 90px 0 0 0;
 
+    .headerBox {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
 }
 .gridView{
-  float: right;
-width: 80%;
-color:#666;
+    float: right;
+    width: 80%;
+    color:#666;
 }
 
 .gridWrapper{
-  text-align: left;
+    text-align: left;
 }
 
 .paginationHead {
@@ -38,7 +44,7 @@ color:#666;
     &>.upper {
         display: inline-block;
         width: 100%;
-        border-bottom: solid 1px #ccc;
+
         padding-bottom: 10px;
 
         .breadcrumb {
@@ -103,9 +109,12 @@ color:#666;
     }
 
     .alphabets {
+        border-bottom: solid 1px #ccc;
+        display: inline-block;
         text-transform: uppercase;
         clear: both;
         text-align: left;
+        padding: 10px 0;
         width: 100%;
         li {
             float: left;

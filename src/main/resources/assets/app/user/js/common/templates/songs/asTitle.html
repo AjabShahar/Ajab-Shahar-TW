@@ -1,16 +1,18 @@
 <div class='paginationHead'>
-    <ul class="breadcrumb">
-        <li>
-            <span ng-click="selectOriginalTitle()">Original</span>
-        </li>
-        <li>
-            <span ng-click="selectEnglishTitle()" class="active">English</span>
-        </li>
-    </ul>
-    <div ng-transclude></div>
-    <ul class='alphabets'>
-        <li ng-repeat="alphabetFilter in alphabetFilters">
-            <a ng-click="filterSongsOnLetter(alphabetFilter)" ng-class="isSelected(alphabetFilter)">{{alphabetFilter.alphabet}}</a>
-        </li>
-    </ul>
+    <div class="upper">
+        <ul class="breadcrumb">
+            <li>
+                <span ng-click="selectOriginalTitle()">Original</span>
+            </li>
+            <li>
+                <span ng-click="selectEnglishTitle()" class="active">English</span>
+            </li>
+        </ul>
+        <div ng-transclude></div>
+        <ul class='alphabets'>
+            <li ng-repeat="alphabetFilter in alphabetFilters">
+                <a ng-click="filterSongsOnLetter(alphabetFilter)" ng-class="isSelected(alphabetFilter)">{{alphabetFilter.alphabet}}</a>
+            </li>
+        </ul>
+    </div>
 </div>
