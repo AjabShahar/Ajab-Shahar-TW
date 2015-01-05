@@ -114,8 +114,8 @@
 
                 <div id="poem_container">
                     <div ng-show="originalVisible" class="toggleByFading">
-                        <h2 class="song-heading hindi">{{songText.refrainOriginal}}</h2>
-                        <h5 class="poet-details">Poet <span class='selected'>{{poet.name}}</span></h5>
+                        <h2 class="song-heading hindi">{{song.titleOriginal}}</h2>
+                        <!--<h5 class="poet-details">Poet <span class='selected'>{{poet.name}}</span></h5>-->
 
                         <div ng-repeat="songLyrics in songText.songTextContents track by $index" class="initial-couplets">
                             <p style=" white-space: pre-line">{{songLyrics.songTextContent.originalText}}</p>
@@ -123,7 +123,7 @@
                         </div>
                     </div>
                     <div ng-show="englishTransliterationVisible" class="toggleByFading">
-                        <h2 class="song-heading">{{songText.refrainEnglishTransliteration}}</h2>
+                        <h2 class="song-heading">{{song.englishTranslationTitle}}</h2>
                         <h5 class="poet-details">Poet <span class='selected'>{{poet.name}}</span></h5>
 
                         <div ng-repeat="songLyrics in songText.songTextContents track by $index" class="initial-couplets">
@@ -133,7 +133,7 @@
 
                     </div>
                     <div ng-show="englishTranslationVisible" class="toggleByFading">
-                        <h2 class="song-heading">{{songText.refrainEnglishTranslation}}</h2>
+                        <h2 class="song-heading">{{song.englishTransliterationTitle}}</h2>
                         <h5 class="poet-details">Poet <span class='selected'>{{poet.name}}</span></h5>
 
                         <div ng-repeat="songLyrics in songText.songTextContents track by $index" class="initial-couplets">

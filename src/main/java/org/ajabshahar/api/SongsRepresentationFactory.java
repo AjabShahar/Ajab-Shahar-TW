@@ -47,7 +47,8 @@ public class SongsRepresentationFactory {
         Title umbrellaTitle = song.getTitle() == null ? new Title() : song.getTitle();
         Title songTitle = song.getSongTitle() == null ? new Title() : song.getSongTitle();
         List<PersonSummaryRepresentation> singers = new ArrayList<>(), poets = new ArrayList<>();
-        SongTextRepresentation lyrics = songTextRepresentationFactory.getSongText(song.getSongText());
+        SongText songText = song.getSongText() == null ? new SongText() : song.getSongText();
+        SongTextRepresentation lyrics = songTextRepresentationFactory.getSongText(songText);
 
         song.getSingers().forEach(singer -> {
             PersonDetails personDetails = people.findBy((int) singer.getId());
@@ -76,7 +77,7 @@ public class SongsRepresentationFactory {
                 song.getDuration(),
                 singers,
                 poets,
-                lyrics, song.getDownload_url(),song.getAbout(), song.getNotes());
+                lyrics, song.getDownload_url(), song.getAbout(), song.getNotes());
     }
 
     public SongsRepresentation createSongsRepresentation(List<Song> songList) {
