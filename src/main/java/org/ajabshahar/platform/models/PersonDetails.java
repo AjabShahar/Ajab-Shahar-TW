@@ -110,4 +110,8 @@ public class PersonDetails {
     public void setLastNameInHindi(String lastNameInHindi) {
         this.lastNameInHindi = lastNameInHindi;
     }
+
+    public String getHindiName() {
+        return format("%s %2s %3s", Strings.nullToEmpty(getFirstNameInHindi()), Strings.nullToEmpty(getMiddleNameInHindi()), Strings.nullToEmpty(getLastNameInHindi())).replaceAll("\\s+", " ").trim();
+    }
 }

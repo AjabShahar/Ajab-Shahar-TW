@@ -115,7 +115,7 @@
                 <div id="poem_container">
                     <div ng-show="originalVisible" class="toggleByFading">
                         <h2 class="song-heading hindi">{{song.titleOriginal}}</h2>
-                        <!--<h5 class="poet-details">Poet <span class='selected'>{{poet.name}}</span></h5>-->
+                        <h5 class="poet-details"> कवि <span class='selected'>{{poet.hindiName}}</span></h5>
                         <div ng-repeat="openCouplet in songText.openingCouplets track by $index" class="initial-couplets">
                             <p style=" white-space: pre-line">{{openCouplet.songTextContent.originalText}}</p>
                         </div>
@@ -125,7 +125,6 @@
                         <div ng-repeat="songLyrics in songText.songTextContents track by $index" class="initial-couplets">
                             <p style=" white-space: pre-line">{{songLyrics.songTextContent.originalText}}</p>
                             <p>{{songText.refrainOriginal}}....</p>
-                            <!--<p>{{songLyrics.chorus}}</p>-->
                         </div>
                     </div>
                     <div ng-show="englishTranslationVisible" class="toggleByFading">
@@ -141,7 +140,6 @@
                         <div ng-repeat="songLyrics in songText.songTextContents track by $index" class="initial-couplets">
                             <p style=" white-space: pre-line">{{songLyrics.songTextContent.englishTransliterationText}}</p>
                             <p>{{songText.refrainEnglishTranslation}}....</p>
-                            <!--<p>{{songLyrics.chorus}}</p>-->
                         </div>
 
                     </div>
@@ -158,7 +156,6 @@
                         <div ng-repeat="songLyrics in songText.songTextContents track by $index" class="initial-couplets">
                             <p style=" white-space: pre-line">{{songLyrics.songTextContent.englishTranslationText}}</p>
                             <p>{{songText.refrainEnglishTransliteration}}....</p>
-                            <!--<p>{{songLyrics.chorus}}</p>-->
                         </div>
                         
                     </div>
