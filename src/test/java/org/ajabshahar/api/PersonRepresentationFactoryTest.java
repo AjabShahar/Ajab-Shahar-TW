@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -39,6 +39,7 @@ public class PersonRepresentationFactoryTest {
         personDetails.setFirstName("FirstName");
         personDetails.setMiddleName("MiddleName");
         personDetails.setLastName("LastName");
+        personDetails.setFirstNameInHindi("जीवन मंत्र");
         personDetails.setCategory(categories);
 
         personDetailsList.add(personDetails);
@@ -52,6 +53,9 @@ public class PersonRepresentationFactoryTest {
         assertThat(personRepresentation.getMiddleName(), IsEqual.equalTo("MiddleName"));
         assertThat(personRepresentation.getLastName(), IsEqual.equalTo("LastName"));
         assertThat(personRepresentation.getRoles().get(0), IsEqual.equalTo("Singer"));
+        assertThat(personRepresentation.getFirstNameInHindi(), IsEqual.equalTo("जीवन मंत्र"));
+        assertNull(personRepresentation.getMiddleNameInHindi());
+        assertNull(personRepresentation.getLastNameInHindi());
     }
 
     @Test
@@ -62,5 +66,8 @@ public class PersonRepresentationFactoryTest {
         assertThat(peopleRepresentation.getPeople().get(0).getMiddleName(), IsEqual.equalTo("MiddleName"));
         assertThat(peopleRepresentation.getPeople().get(0).getLastName(), IsEqual.equalTo("LastName"));
         assertThat(peopleRepresentation.getPeople().get(0).getRoles().get(0), IsEqual.equalTo("Singer"));
+        assertThat(peopleRepresentation.getPeople().get(0).getFirstNameInHindi(), IsEqual.equalTo("जीवन मंत्र"));
+        assertNull(peopleRepresentation.getPeople().get(0).getMiddleNameInHindi());
+        assertNull(peopleRepresentation.getPeople().get(0).getLastNameInHindi());
     }
 }

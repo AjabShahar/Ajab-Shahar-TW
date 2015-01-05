@@ -11,11 +11,11 @@ public class PersonRepresentationFactory {
     public PersonRepresentation create(PersonDetails personDetails) {
         List<String> categoryName = new ArrayList<>();
 
-        for(Category category: personDetails.getCategory()){
+        for (Category category : personDetails.getCategory()) {
             categoryName.add(category.getName());
         }
 
-        PersonRepresentation personRepresentation = new PersonRepresentation(personDetails.getId(), personDetails.getFirstName(), personDetails.getMiddleName(), personDetails.getLastName(), categoryName);
+        PersonRepresentation personRepresentation = new PersonRepresentation(personDetails.getId(), personDetails.getFirstName(), personDetails.getMiddleName(), personDetails.getLastName(), personDetails.getFirstNameInHindi(), personDetails.getMiddleNameInHindi(), personDetails.getLastNameInHindi(), categoryName);
         return personRepresentation;
     }
 

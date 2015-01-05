@@ -3,7 +3,6 @@ package org.ajabshahar.platform.models;
 import com.google.common.base.Strings;
 
 import javax.persistence.*;
-
 import java.util.Set;
 
 import static java.lang.String.format;
@@ -30,7 +29,14 @@ public class PersonDetails {
     @Column(name = "LAST_NAME", nullable = true)
     private String lastName;
 
+    @Column(name = "FIRST_NAME_IN_HINDI", nullable = true)
+    private String firstNameInHindi;
 
+    @Column(name = "MIDDLE_NAME_IN_HINDI", nullable = true)
+    private String middleNameInHindi;
+
+    @Column(name = "LAST_NAME_IN_HINDI", nullable = true)
+    private String lastNameInHindi;
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "person_category", joinColumns = @JoinColumn(name = "person_id"),
@@ -79,5 +85,29 @@ public class PersonDetails {
 
     public void setCategory(Set<Category> category) {
         this.category = category;
+    }
+
+    public String getFirstNameInHindi() {
+        return firstNameInHindi;
+    }
+
+    public void setFirstNameInHindi(String firstNameInHindi) {
+        this.firstNameInHindi = firstNameInHindi;
+    }
+
+    public String getMiddleNameInHindi() {
+        return middleNameInHindi;
+    }
+
+    public void setMiddleNameInHindi(String middleNameInHindi) {
+        this.middleNameInHindi = middleNameInHindi;
+    }
+
+    public String getLastNameInHindi() {
+        return lastNameInHindi;
+    }
+
+    public void setLastNameInHindi(String lastNameInHindi) {
+        this.lastNameInHindi = lastNameInHindi;
     }
 }
