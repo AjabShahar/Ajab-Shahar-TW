@@ -124,6 +124,7 @@
 
                         <div ng-repeat="songLyrics in songText.songTextContents track by $index" class="initial-couplets">
                             <p style=" white-space: pre-line">{{songLyrics.songTextContent.originalText}}</p>
+                            <p>{{songText.refrainOriginal}}....</p>
                             <!--<p>{{songLyrics.chorus}}</p>-->
                         </div>
                     </div>
@@ -139,6 +140,7 @@
 
                         <div ng-repeat="songLyrics in songText.songTextContents track by $index" class="initial-couplets">
                             <p style=" white-space: pre-line">{{songLyrics.songTextContent.englishTransliterationText}}</p>
+                            <p>{{songText.refrainEnglishTranslation}}....</p>
                             <!--<p>{{songLyrics.chorus}}</p>-->
                         </div>
 
@@ -155,6 +157,7 @@
 
                         <div ng-repeat="songLyrics in songText.songTextContents track by $index" class="initial-couplets">
                             <p style=" white-space: pre-line">{{songLyrics.songTextContent.englishTranslationText}}</p>
+                            <p>{{songText.refrainEnglishTransliteration}}....</p>
                             <!--<p>{{songLyrics.chorus}}</p>-->
                         </div>
                         
