@@ -9,7 +9,7 @@ var songDetailsController = function($scope,$location,songsContentService){
     $scope.umbrellaTitleEnglishTranslation = '';
     $scope.umbrellaTitleEnglishTransliteration='';
     $scope.numberOfVersions = 0;
-    $scope.songText = {"refrainOriginal":'',"refrainEnglishTranslation":'',"refrainEnglishTransliteration":'',songTextContents:[]};
+    $scope.songText = {"refrainOriginal":'',"refrainEnglishTranslation":'',"refrainEnglishTransliteration":'',songTextContents:[],openingCouplets:[]};
     $scope.song = {};
     $scope.poet = '';
     $scope.englishTranslationVisible = true;
@@ -41,7 +41,7 @@ var songDetailsController = function($scope,$location,songsContentService){
             $scope.songText.refrainEnglishTranslation = result.data.songText.refrainEnglishTranslation;
             $scope.songText.refrainOriginal = result.data.songText.refrainOriginal;
             $scope.songText.refrainEnglishTransliteration = result.data.songText.refrainEnglishTransliteration;
-            $scope.getSongsLyrics(result.data.songText.songTextContents);
+            $scope.getSongsLyrics(result.data.songText.songTextContents,result.data.songText.openingCouplets);
         });
     }
 
@@ -72,11 +72,17 @@ var songDetailsController = function($scope,$location,songsContentService){
         return !$scope.isOpen(id);
     }
 
-    $scope.getSongsLyrics = function(songTextComponents){
+    $scope.getSongsLyrics = function(songTextComponents, openingCouplets){
         sortedSongTextComponents = _.sortBy(songTextComponents, function(songTextComponent) { return songTextComponent.sequenceNumber;});
         for(index in sortedSongTextComponents){
             var item = sortedSongTextComponents[index];
                 $scope.songText.songTextContents.push(item);
+        }
+
+        sortedSongTextComponents = _.sortBy(openingCouplets, function(openingCouplet) { return openingCouplet.sequenceNumber;});
+        for(index in sortedSongTextComponents){
+             var item = sortedSongTextComponents[index];
+             $scope.songText.openingCouplets.push(item);
         }
     }
 
