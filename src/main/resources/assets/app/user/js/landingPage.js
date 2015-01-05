@@ -24,31 +24,14 @@
     		}
 
     		var _setStringAnimation = function() {
-                var whiteString = $('.px-layer7'),
-                    xPos = $(window).scrollTop();
-
-                if (xPos < 550) {
-                      whiteString.css('background-position', parseInt(-xPos / 3) + 'px ' + '0%');
-                }
-                else if (xPos >= 550 && xPos < 2500) {
-                    whiteString.css('background-position', parseInt(xPos / 10) + 'px ' + '0%');
-                }
-                else if (xPos >= 2500 && xPos <3000) {
-                    whiteString.css('background-position', parseInt(-xPos / 1000) + 'px ' + '0%');
-                }
-                else if (xPos >= 3000 || xPos < 5000) {
-                    whiteString.css('background-position', parseInt(xPos / 10) + 'px ' + '0%');
-                }
-                else if (xPos >= 5000) {
-                    whiteString.css('background-position', parseInt(xPos / 10) + 'px ' + '0%');
-                }
-
-
-    		}
+                var whiteString = $('.px-layer7');
+                $(whiteString).toggleClass('move-string');
+            }
 
     		var _bindEvents = function() {
     		    $(window).on('resize', _.throttle(_setBgImage, 1000));
-    		    $(window).on('scroll', _setStringAnimation);
+    		    $(window).on('scroll', _.throttle(_setStringAnimation, 1500));
+//                $(window).on('scroll', _setStringAnimation);
     		}
 
     		var _initialiseScrolling = function() {
