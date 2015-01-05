@@ -40,6 +40,12 @@ var songDetailsController = function($scope, $window,$location,songContentServic
         songContentService.getAllPoets().success(function(allPoets){
             $scope.poets = allPoets.people;
             $scope.poetsList = $scope.poets;
+            angular.forEach($scope.poetsList,function(poet){
+               if(poet.lastName == null)
+                 poet.lastName = '';
+            });
+            $scope.poetsList = $filter('orderBy')($scope.poetsList, 'firstName');
+
         });
 
         songContentService.getAllCouplets().success(function(allCouplets){
