@@ -4,10 +4,10 @@ package org.ajabshahar.api;
 public class SongTextSummaryRepresentation {
 
     private int id;
-    private Object songTextContent;
+    private SongTextContentSummaryRepresentation songTextContent;
     private int sequenceNumber;
 
-    public SongTextSummaryRepresentation(int id, Object songTextContent, int sequenceNumber) {
+    public SongTextSummaryRepresentation(int id, SongTextContentSummaryRepresentation songTextContent, int sequenceNumber) {
         this.id = id;
         this.songTextContent = songTextContent;
         this.sequenceNumber = sequenceNumber;

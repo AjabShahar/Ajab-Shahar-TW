@@ -118,6 +118,7 @@
                         <h5 class="poet-details"> कवि <span class='selected'>{{poet.hindiName}}</span></h5>
                         <div ng-repeat="openCouplet in songText.openingCouplets track by $index" class="initial-couplets">
                             <p style=" white-space: pre-line">{{openCouplet.songTextContent.originalText}}</p>
+                            <p>{{openCouplet.songTextContent.poet.hindiName}}</p>
                         </div>
 
                         <div ng-if="songText.openingCouplets.length!=0"><p>.....</p></div>
@@ -125,6 +126,9 @@
                         <div ng-repeat="songLyrics in songText.songTextContents track by $index" class="initial-couplets">
                             <p style=" white-space: pre-line">{{songLyrics.songTextContent.originalText}}</p>
                             <p>{{songText.refrainOriginal}}....</p>
+                            <div ng-show="songLyrics.songTextContent.poet!=null">
+                                <p>{{songLyrics.songTextContent.poet.hindiName}}</p>
+                            </div>
                         </div>
                     </div>
                     <div ng-show="englishTranslationVisible" class="toggleByFading">
@@ -133,6 +137,7 @@
 
                         <div ng-repeat="openCouplet in songText.openingCouplets track by $index" class="initial-couplets">
                             <p style=" white-space: pre-line">{{openCouplet.songTextContent.englishTranslationText}}</p>
+                            <p>{{openCouplet.songTextContent.poet.name}}</p>
                         </div>
 
                         <div ng-if="songText.openingCouplets.length!=0"><p>.....</p></div>
@@ -140,6 +145,9 @@
                         <div ng-repeat="songLyrics in songText.songTextContents track by $index" class="initial-couplets">
                             <p style=" white-space: pre-line">{{songLyrics.songTextContent.englishTransliterationText}}</p>
                             <p>{{songText.refrainEnglishTranslation}}....</p>
+                            <div ng-show="songLyrics.songTextContent.poet!=null">
+                                <p>{{songLyrics.songTextContent.poet.name}}</p>
+                            </div>
                         </div>
 
                     </div>
@@ -149,6 +157,7 @@
 
                         <div ng-repeat="openCouplet in songText.openingCouplets track by $index" class="initial-couplets">
                             <p style=" white-space: pre-line">{{openCouplet.songTextContent.englishTransliterationText}}</p>
+                            <p>{{openCouplet.songTextContent.poet.name}}</p>
                         </div>
 
                         <div ng-if="songText.openingCouplets.length!=0"><p>.....</p></div>
@@ -156,6 +165,9 @@
                         <div ng-repeat="songLyrics in songText.songTextContents track by $index" class="initial-couplets">
                             <p style=" white-space: pre-line">{{songLyrics.songTextContent.englishTranslationText}}</p>
                             <p>{{songText.refrainEnglishTransliteration}}....</p>
+                            <div ng-show="songLyrics.songTextContent.poet!=null">
+                                <p>{{songLyrics.songTextContent.poet.name}}</p>
+                            </div>
                         </div>
                         
                     </div>

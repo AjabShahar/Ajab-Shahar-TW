@@ -1,5 +1,6 @@
 package org.ajabshahar.api;
 
+import org.ajabshahar.platform.models.PersonDetails;
 import org.ajabshahar.platform.models.SongText;
 
 public class SongTextRepresentationFactory {
@@ -8,12 +9,18 @@ public class SongTextRepresentationFactory {
         SongTextRepresentation songTextRepresentation = new SongTextRepresentation(songTexts.getRefrainOriginal(), songTexts.getRefrainEnglishTranslation(), songTexts.getRefrainEnglishTransliteration());
         if (songTexts.getSongTextContents() != null) {
             songTexts.getSongTextContents().forEach(content -> {
-                songTextRepresentation.addSongTextContents(new SongTextSummaryRepresentation((int) content.getId(), content, content.getSequenceNumber()));
+                PersonDetails poetDetails = content.getPoet() == null ? new PersonDetails() : content.getPoet();
+                SongTextContentSummaryRepresentation songTextContentSummaryRepresentation = new SongTextContentSummaryRepresentation(content.getOriginalText(), content.getEnglishTranslationText(), content.getEnglishTransliterationText(),
+                        new PersonSummaryRepresentation(poetDetails.getId(), poetDetails.getName(), poetDetails.getHindiName()));
+                songTextRepresentation.addSongTextContents(new SongTextSummaryRepresentation((int) content.getId(), songTextContentSummaryRepresentation, content.getSequenceNumber()));
             });
         }
         if (songTexts.getOpeningCouplets() != null) {
             songTexts.getOpeningCouplets().forEach(openingCouplet -> {
-                songTextRepresentation.addOpeningCouplet(new SongTextSummaryRepresentation((int) openingCouplet.getId(),openingCouplet,openingCouplet.getSequenceNumber()));
+                PersonDetails poetDetails = openingCouplet.getPoet() == null ? new PersonDetails() : openingCouplet.getPoet();
+                SongTextContentSummaryRepresentation openingCoupletSummaryRepresentation = new SongTextContentSummaryRepresentation(openingCouplet.getOriginalText(), openingCouplet.getEnglishTranslationText(), openingCouplet.getEnglishTransliterationText(),
+                        new PersonSummaryRepresentation(poetDetails.getId(), poetDetails.getName(), poetDetails.getHindiName()));
+                songTextRepresentation.addOpeningCouplet(new SongTextSummaryRepresentation((int) openingCouplet.getId(), openingCoupletSummaryRepresentation, openingCouplet.getSequenceNumber()));
             });
         }
         return songTextRepresentation;
