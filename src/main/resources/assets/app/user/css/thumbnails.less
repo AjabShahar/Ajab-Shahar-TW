@@ -84,24 +84,80 @@ background-size: cover;
 }
 }
 
+.desc-wrapper {
+    position: absolute;
+    font-family:'Merriweather Sans','Merriweather';
 
-.shouldShowDetails{
-color:#868686;
-.categoryDetails{
-text-align: right;
-.play{
-background: url(../img/common/icons/gray_play.png) left center no-repeat;
-float: right;
-position: relative;
-right: 4%;
-padding:2px 0 3px 14px;
-margin-left: 7%;
-color: #888;
-text-transform: uppercase;
+    .thumbnail-desc {
+        z-index: 1;
+        margin: 0 0 0 38px;
+        width: 239px;
+        background: #fff;
+        padding: 0 10px;
+        min-height: 55px;
+        cursor: pointer;
+        text-align: left;
+        position: relative;
+        box-shadow: 0 -6px 7px #a7a7a7;
+
+        &:before {
+            content: '';
+            width: 266px;
+            background-size: cover;
+            display: inline-block;
+            height: 19px;
+            background: rgba(255, 255, 255, 0) url(../img/common/directives/thumbnail/top.png) left top no-repeat;
+            /*margin: -22px 0 0 -14px;*/
+            top: -19px;
+            left: 0;
+            position:absolute;
+        }
+
+
+        .item-title {
+            font-weight: 300;
+            color: #E61B72;
+            font-size: 16px;
+        }
+        .sub-title {
+            font-weight: 300;
+            font-style: italic;
+            font-size: 14px;
+            color: #9C9B9B;
+        }
+        small {
+            color: #575756;
+            line-height: 11px;
+            font-size: 12px;
+            font-weight: 300;
+        }
+    }
+
+    .lower-curve {
+        width: 272px;
+        display: inline-block;
+        height: 20px;
+        background: rgba(255, 255, 255, 0) url(../img/common/directives/thumbnail/bottom.png) left -5px no-repeat;
+        float: left;
+        margin: 0 0 0 33px;
+        background-size: cover;
+    }
+ }
+
+
+.thumbnailDetails{
+    color:#868686;
+    .categoryDetails{
+        text-align: right;
+        .play{
+            background: url(../img/common/icons/gray_play.png) left center no-repeat;
+            float: right;
+            position: relative;
+            right: 4%;
+            padding:2px 0 3px 14px;
+            margin-left: 7%;
+            color: #888;
+            text-transform: uppercase;
+        }
+    }
 }
-}
-}
-
-
-
-

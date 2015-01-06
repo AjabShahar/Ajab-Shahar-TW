@@ -7,7 +7,7 @@
             <h3 class="item-title">{{getTitle()}}</h3>
             <div class="sub-title">{{getSecondTitle()}}</div>
             <small ng-hide="multipleSingers">sings {{singer|uppercase}}</small>
-            <div ng-show="shouldShowDetails" class='shouldShowDetails toggleBySlide'>
+            <div ng-hide="!shouldShowDetails" class='thumbnailDetails toggleBySlide'>
                 <div class="" ng-show="multipleSingers">
                 <small class="">sing {{singers|uppercase}}</small>
                 </div>

@@ -49,11 +49,11 @@ margin-top:-10px;
 font-family: merriweather;
 }
 
-.shouldShowDetails{
+.thumbnailDetails{
 	color:#888;
 }
 
-.shouldShowDetails .categoryDetails{
+.thumbnailDetails .categoryDetails{
 text-align: right;
 }
 

@@ -22,6 +22,8 @@ thumbnailModule.directive("songThumbnail", function() {
         templateUrl:'/user/js/common/templates/thumbnail/songThumbnail.html',
         controller:function($scope){
             $scope.textRepresentation = 'Transliteration';
+            $scope.shouldShowDetails = true;
+
             $scope.$on('contentTextRepresentation',function(event,data){
                 $scope.textRepresentation = data;
             });
@@ -34,7 +36,6 @@ thumbnailModule.directive("songThumbnail", function() {
                 return ($scope.textRepresentation === 'Transliteration')? $scope.englishTranslation : $scope.englishTransliteration;
             }
 
-            $scope.shouldShowDetails = false;
             $scope.multipleSingers = false;
             $scope.showDetails = function(){
                 $scope.shouldShowDetails = true;
@@ -46,6 +47,8 @@ thumbnailModule.directive("songThumbnail", function() {
                 $scope.shouldShowDetails = false;
                 $scope.multipleSingers = false;
             }
+
+            $scope.hideDetails();
         }
     }
 });
