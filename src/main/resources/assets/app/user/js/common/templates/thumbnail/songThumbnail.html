@@ -1,13 +1,13 @@
-<div class="thumbnailWrapper {{customStyle}}" ng-click="open('{{id}}')">
-    <div class="thumbnail-media">
+<div class="thumbnailWrapper {{customStyle}}">
+    <div class="thumbnail-media" ng-click="open('{{id}}')">
         <img src="{{imgSrc}}"/>
     </div>
-    <div class="desc-wrapper">
+    <div class="desc-wrapper" ng-click="open('{{id}}')">
         <div class="thumbnail-desc" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
             <h3 class="item-title">{{getTitle()}}</h3>
             <div class="sub-title"></div>
             <small ng-hide="multipleSingers">sings {{singer|uppercase}}</small>
-            <div ng-show="shouldShowDetails" class='shouldShowDetails'>
+            <div ng-show="shouldShowDetails" class='shouldShowDetails toggleBySlide'>
                 <div class="" ng-show="multipleSingers">
                 <small class="">sing {{singers|uppercase}}</small>
                 </div>
