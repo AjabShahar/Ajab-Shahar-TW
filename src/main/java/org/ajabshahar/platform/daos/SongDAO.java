@@ -13,7 +13,6 @@ import org.slf4j.LoggerFactory;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class SongDAO extends AbstractDAO<Song> {
@@ -76,12 +75,18 @@ public class SongDAO extends AbstractDAO<Song> {
             findSongs.add(Restrictions.like("songTitleAlias.englishTranslation", filteredLetter, MatchMode.START));
         }
         findSongs.add(Restrictions.eq("isAuthoringComplete", true));
+        findSongs.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 
         if(randomSongsEnabled){
             findSongs.add(Restrictions.sqlRestriction("1=1 order by random()"));
-            findSongs.setMaxResults(9);
-        }
-        findSongs.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+            List<Song> songs = new ArrayList<>();
+            List<Song> allSongs = findSongs.list();
+            for(int i=0;i<9;i++){
+                songs.add(allSongs.get(i));
+            }
+            return songs;
+       }
+
         return findSongs.list();
     }
 
