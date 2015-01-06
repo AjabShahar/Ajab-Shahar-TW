@@ -3,7 +3,7 @@ var songsEditorsChoiceController = function($scope,contentService,popupService, 
     $scope.init = function(){
         $scope.url = $location.absUrl();
         contentService.getSongsLandingPageThumbnails().then(function(result){
-            $scope.songs = result.data;
+            $scope.thumbnailDetails = result.data;
         });
     }
 
