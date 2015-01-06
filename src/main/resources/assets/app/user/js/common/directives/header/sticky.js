@@ -4,13 +4,13 @@ headerModule.directive('sticky', [ function () {
         scope: {
             onScroll: "&onScroll",
             onTop: "&onTop",
-          },
+        },
         link: function ($scope, $elem, $attrs) {
             var offsetTop = 0,
-                $window = angular.element(window),
-                initialPositionStyle = $elem.css('position'),
-                stickyLine,
-                scrollTop;
+            $window = angular.element(window),
+            initialPositionStyle = $elem.css('position'),
+            stickyLine,
+            scrollTop;
 
             // Set the top offset
             $elem.css('top', '0');
