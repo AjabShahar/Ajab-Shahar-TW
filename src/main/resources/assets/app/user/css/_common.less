@@ -11,24 +11,24 @@
 /* Common Styles */
 
 .box-shadow(@color, @spread: 7px) {
-    -webkit-box-shadow: 1px 1px @spread @color;
-    -moz-box-shadow: 1px 1px @spread @color;
-    box-shadow: 1px 1px @spread @color;
+-webkit-box-shadow: 1px 1px @spread @color;
+-moz-box-shadow: 1px 1px @spread @color;
+box-shadow: 1px 1px @spread @color;
 
 }
 
 /* global rules starts */
 html {
-    overflow-x: hidden;
+overflow-x: hidden;
 }
 
 body{
-    width: 100%;
-    overflow: hidden;
-    background:#eee;
-    margin:0;padding:0;
-    font-family: 'Merriweather Sans','Merriweather',lucida grande,arial,tahoma,verdana,sans serif;
-    font-size: 0.8em;
+width: 100%;
+overflow: hidden;
+background:#eee;
+margin:0;padding:0;
+font-family: 'Merriweather Sans','Merriweather',lucida grande,arial,tahoma,verdana,sans serif;
+font-size: 0.8em;
 }
 
 
@@ -42,46 +42,46 @@ body{
 
 /* app containers and boxes */
 .ajab-container{
-  width:100%;
-  text-align: center;
-  display:inline-block;
+width:100%;
+text-align: center;
+display:inline-block;
 }
 
 .ajab-wrapper{
-  width:98%;
-  text-align: center;
-  display:block;
-  margin:0 auto;
+width:98%;
+text-align: center;
+display:block;
+margin:0 auto;
 }
 
 
 /* wrapper rules */
 .mainContentWrapper {
-    overflow: hidden;
-    margin-top: -11%;
+overflow: hidden;
+margin-top: -5%;
 }
 
 .noParallaxPage {
-    padding-top:11%;
-    padding-bottom: 250px;
+padding-top:11%;
+padding-bottom: 250px;
 }
 
 
 
 /* under construction */
 .underConstruction {
-    background: #fff;
-    padding: 3%;
-    border-radius: 10px;
-    border: solid 1px #ccc;
-    color: #ccc;
-    margin-top: 5%;
-    display: inline-block;
-    .box-shadow(#BDBDBD, 15px);
+background: #fff;
+padding: 3%;
+border-radius: 10px;
+border: solid 1px #ccc;
+color: #ccc;
+margin-top: 5%;
+display: inline-block;
+.box-shadow(#BDBDBD, 15px);
 
-    h1.ucText {
-        font-size: 4em;
-    }
+h1.ucText {
+font-size: 4em;
+}
 }
 
 
@@ -108,36 +108,36 @@ body{
 
 /***************************************/
 .light-bg {
-        position: absolute;
-        width: inherit;
-        background: #fff;
-        top: 0;
-        z-index: -1;
-        opacity: 0.6;
+position: absolute;
+width: inherit;
+background: #fff;
+top: 0;
+z-index: -1;
+opacity: 0.6;
 
 }
 
 #left_nav {
-    width: 15%;
-    position: fixed;
-    left: 4%;
-    top: 29%;
-    text-align: left;
+width: 15%;
+position: fixed;
+left: 4%;
+top: 29%;
+text-align: left;
 
-    li {
-        &>a {
-            line-height: 27px;
-            font-size: 14px;
-            color: #b3b3b3;
-            &.active {
-                color: #7AC943;
-            }
-        }
-    }
+li {
+&>a {
+line-height: 27px;
+font-size: 14px;
+color: #b3b3b3;
+&.active {
+color: #7AC943;
+}
+}
+}
 }
 
 .main-content {
-    width: 80%;
-    float: left;
-    margin-left: 20%;
+width: 80%;
+float: left;
+margin-left: 20%;
 }
