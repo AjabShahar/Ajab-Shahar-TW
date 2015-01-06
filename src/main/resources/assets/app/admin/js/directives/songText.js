@@ -38,6 +38,17 @@ songsAdminApp.directive("songText", function() {
             $scope.edit = function(songText){
             }
 
+            // var getParagraphFromText = function(){
+            //     var englishTransliterationText = $scope.newContent.englishTransliterationText;
+            //     var totalParagraphInEnglishTranlisteraion = (englishTransliterationText.match(/\n\n/g) || []).length;
+
+            //     var englishTranslationText = $scope.newContent.englishTranslationText;
+            //     var totalParagraphInEnglishTranslation = (englishTranslationText.match(/\n\n/g) || []).length;
+
+            //     var originalText = $scope.newContent.originalText;
+            //     var totalParagraphInOriginal = (originalText.match(/\n\n/g) || []).length;
+            // }
+
             $scope.addLyricsText = function(){
                 if(($scope.newContent.englishTranslationText == "" &&
                 $scope.newContent.englishTransliterationText == "" &&
@@ -45,16 +56,30 @@ songsAdminApp.directive("songText", function() {
                     return;
                 var newElement = {};
                 newElement.contentType = $scope.newContent.contentType;
-                newElement.sequenceNumber = $scope.getSongContents().length;
 
-                newElement.englishTranslationText = $scope.newContent.englishTranslationText;
-                newElement.englishTransliterationText = $scope.newContent.englishTransliterationText;
-                newElement.originalText = $scope.newContent.originalText;
-                newElement.poet = $scope.newContent.poet;
 
-                $scope.getSongContents().push(newElement);
-                $scope.selectedLyricsContent = newElement;
-                $scope.initializeContent();
+                var englishTranslationTexts = $scope.newContent.englishTranslationText.split(/[\n\n]+/);
+                var originalTexts = $scope.newContent.originalText.split(/[\n\n]+/);
+                var englishTransliterationTexts = $scope.newContent.englishTransliterationText.split(/[\n\n]+/);
+
+                var totalIterations = Math.max(englishTranslationTexts.length, originalTexts.length, englishTransliterationTexts.length);
+
+                for(var i = 0 ; i < totalIterations; i++){
+                    var newElement = {};
+                    newElement.contentType = $scope.newContent.contentType;
+
+                    newElement.sequenceNumber = $scope.getSongContents().length;
+
+                    newElement.englishTranslationText = englishTranslationTexts[i];
+                    newElement.englishTransliterationText = englishTransliterationTexts[i];
+                    newElement.originalText = originalTexts[i];
+
+                    newElement.poet = $scope.newContent.poet;
+
+                    $scope.getSongContents().push(newElement);
+                    $scope.selectedLyricsContent = newElement;
+                    $scope.initializeContent();
+                }
             }
 
             $scope.addOpeningCouplet = function(){
