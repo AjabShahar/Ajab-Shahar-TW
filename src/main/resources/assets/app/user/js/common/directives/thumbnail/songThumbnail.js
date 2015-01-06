@@ -30,6 +30,10 @@ thumbnailModule.directive("songThumbnail", function() {
                 return ($scope.textRepresentation === 'Transliteration')? $scope.englishTransliteration : $scope.englishTranslation;
             }
 
+            $scope.getSecondTitle = function(){
+                return ($scope.textRepresentation === 'Transliteration')? $scope.englishTranslation : $scope.englishTransliteration;
+            }
+
             $scope.shouldShowDetails = false;
             $scope.multipleSingers = false;
             $scope.showDetails = function(){
