@@ -1,8 +1,8 @@
 package org.ajabshahar.core;
 
 import org.ajabshahar.platform.daos.CategoryDAO;
-import org.ajabshahar.platform.daos.SongTextDAO;
 import org.ajabshahar.platform.daos.SongDAO;
+import org.ajabshahar.platform.daos.SongTextDAO;
 import org.ajabshahar.platform.daos.TitleDAO;
 import org.ajabshahar.platform.models.Song;
 import org.ajabshahar.platform.models.Title;
@@ -42,13 +42,19 @@ public class Songs {
         Long id = updatableSong.getId();
         Song originalSongData = songsRepository.findById(id);
         if (updatableSong.getSongTitle() != null && updatableSong.getSongTitle().getId() == 0) {
+            Title songTitle = new Title(updatableSong.getSongTitle());
+            songTitle.setCategory(categoryRepository.getSongTitleCategory());
             titleRepository.create(updatableSong.getSongTitle());
+            updatableSong.setSongTitle(songTitle);
         }
         if (updatableSong.getTitle() != null && updatableSong.getTitle().getId() == 0) {
-            titleRepository.create(updatableSong.getTitle());
+            Title umbrellaTitle = new Title(updatableSong.getTitle());
+            umbrellaTitle.setCategory(categoryRepository.getUmbrellaTitleCategory());
+            titleRepository.create(umbrellaTitle);
+            updatableSong.setTitle(umbrellaTitle);
         }
         if (updatableSong.getSongText() != null) {
-              songTextDAO.create(updatableSong.getSongText());
+            songTextDAO.create(updatableSong.getSongText());
         }
         originalSongData = invokeAllSetters(originalSongData, updatableSong);
         return songsRepository.updateSong(originalSongData);
@@ -105,7 +111,7 @@ public class Songs {
         originalSongData.setSongCategory(updatableSongData.getSongCategory());
         originalSongData.setMediaCategory(updatableSongData.getMediaCategory());
 
-        if(updatableSongData.getIsAuthoringComplete()) {
+        if (updatableSongData.getIsAuthoringComplete()) {
             originalSongData.setPublishedDate(new Timestamp(now.getTime()));
         }
         return originalSongData;

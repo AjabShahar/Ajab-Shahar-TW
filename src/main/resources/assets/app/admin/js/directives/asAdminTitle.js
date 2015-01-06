@@ -13,15 +13,18 @@ songsAdminApp.directive("asAdminTitle", function() {
         controller:function($scope){
             $scope.AddNewTitle = false;
             $scope.EditDiv = false;
+            $scope.oldTitle = {};
 
             $scope.enableNewSongTitle = function(){
+                $scope.oldTitle = angular.copy($scope.titleData);
                 $scope.titleData ={"selected":null};
                 $scope.AddNewTitle = true;
             }
 
             $scope.disableNewSongTitle = function(){
-                $scope.titleData ={"selected":null};
                 $scope.EditDiv = false;
+                if($scope.AddNewTitle)
+                  $scope.titleData = angular.copy($scope.oldTitle);
                 $scope.AddNewTitle = false;
             }
 
