@@ -30,7 +30,7 @@
 
     		var _bindEvents = function() {
     		    $(window).on('resize', _.throttle(_setBgImage, 1000));
-    		    $(window).on('scroll', _.throttle(_setStringAnimation, 1500));
+    		    $(window).on('scroll', _.throttle(_setStringAnimation, 1000));
 //                $(window).on('scroll', _setStringAnimation);
     		}
 
