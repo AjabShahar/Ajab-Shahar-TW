@@ -26,7 +26,7 @@ var songDetailsController = function($scope,$location,songsContentService){
         $scope.open($scope.songId);
 
         songsContentService.getSongsVersions($scope.songId).then(function(result){
-            $scope.versions = result.data.songs;
+            $scope.versions = $scope.getSongsVersions(result.data.songs, $scope.songId);
             $scope.numberOfVersions = result.data.songs.length;
             $scope.umbrellaTitleEnglishTransliteration = result.data.songs[0].umbrellaTitleEnglishTransliteration;
             $scope.umbrellaTitleEnglishTranslation = result.data.songs[0].umbrellaTitleEnglishTranslation;
@@ -43,6 +43,17 @@ var songDetailsController = function($scope,$location,songsContentService){
             $scope.songText.refrainEnglishTransliteration = result.data.songText.refrainEnglishTransliteration;
             $scope.getSongsLyrics(result.data.songText.songTextContents,result.data.songText.openingCouplets);
         });
+
+        $scope.getSongsVersions = function(songs, songId){
+            for(index in songs){
+               if (songs[index].id == songId){
+                 var dummyVar = songs[index];
+                 songs.splice(index,1);
+                 songs.splice(0,0,dummyVar);
+               }
+            }
+            return songs;
+        }
     }
 
     $scope.shouldShowVersions = function(){
