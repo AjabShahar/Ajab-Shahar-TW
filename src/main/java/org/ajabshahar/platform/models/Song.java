@@ -39,9 +39,6 @@ public class Song {
     @Column(name = "ABOUT")
     private String about;
 
-    @Column(name = "NOTES")
-    private String notes;
-
     @Column(name = "IS_AUTHORING_COMPLETE")
     private Boolean isAuthoringComplete;
 
@@ -189,14 +186,6 @@ public class Song {
 
     public void setDownload_url(String download_url) {
         this.download_url = download_url;
-    }
-
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
     }
 
     public String getAbout() {

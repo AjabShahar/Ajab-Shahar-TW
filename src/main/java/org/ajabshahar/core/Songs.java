@@ -98,7 +98,6 @@ public class Songs {
         originalSongData.setTitle(updatableSongData.getTitle());
         originalSongData.setSongTitle(updatableSongData.getSongTitle());
         originalSongData.setAbout(updatableSongData.getAbout());
-        originalSongData.setNotes(updatableSongData.getNotes());
         originalSongData.setDownload_url(updatableSongData.getDownload_url());
         originalSongData.setSongText(updatableSongData.getSongText());
         originalSongData.setShowOnLandingPage(updatableSongData.getShowOnLandingPage());

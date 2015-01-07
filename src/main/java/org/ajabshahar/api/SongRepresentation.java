@@ -30,13 +30,12 @@ public class SongRepresentation {
     private SongTextRepresentation songText;
     private String downloadUrl;
     private String about;
-    private String notes;
 
     public SongRepresentation() {
         this.links = new ArrayList<>();
     }
 
-    public SongRepresentation(long id, long umbrellaTitleId, String umbrellaTitleOriginal, String umbrellaTitleEnglishTransliteration, String umbrellaTitleEnglishTranslation, long titleId, String titleOriginal, String titleEnglishTransliteration, String titleEnglishTranslation, boolean publish, String type, boolean featured, String youTubeVideoId, String soundCloudTrackId, String thumbnailUrl, String duration, List<PersonSummaryRepresentation> singers, List<PersonSummaryRepresentation> poet, SongTextRepresentation songText, String downloadUrl, String about, String notes) {
+    public SongRepresentation(long id, long umbrellaTitleId, String umbrellaTitleOriginal, String umbrellaTitleEnglishTransliteration, String umbrellaTitleEnglishTranslation, long titleId, String titleOriginal, String titleEnglishTransliteration, String titleEnglishTranslation, boolean publish, String type, boolean featured, String youTubeVideoId, String soundCloudTrackId, String thumbnailUrl, String duration, List<PersonSummaryRepresentation> singers, List<PersonSummaryRepresentation> poet, SongTextRepresentation songText, String downloadUrl, String about) {
         this();
         this.id = id;
         this.umbrellaTitleId = umbrellaTitleId;
@@ -61,7 +60,6 @@ public class SongRepresentation {
         this.songText = songText;
         this.downloadUrl = downloadUrl;
         this.about = about;
-        this.notes = notes;
 
     }
 
@@ -175,10 +173,6 @@ public class SongRepresentation {
         return about;
     }
 
-    @JsonProperty("notes")
-    public String getNotes() {
-        return notes;
-    }
 }
 
 

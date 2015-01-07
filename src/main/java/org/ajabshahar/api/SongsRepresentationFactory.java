@@ -77,7 +77,7 @@ public class SongsRepresentationFactory {
                 song.getDuration(),
                 singers,
                 poets,
-                lyrics, song.getDownload_url(), song.getAbout(), song.getNotes());
+                lyrics, song.getDownload_url(), song.getAbout());
     }
 
     public SongsRepresentation createSongsRepresentation(List<Song> songList) {
@@ -118,7 +118,7 @@ public class SongsRepresentationFactory {
                     song.getDuration(),
                     singers,
                     poets,
-                    songTextRepresentation, song.getDownload_url(), song.getAbout(), song.getNotes());
+                    songTextRepresentation, song.getDownload_url(), song.getAbout());
             songsRepresentation.add(songRepresentation);
         }
         return songsRepresentation;
