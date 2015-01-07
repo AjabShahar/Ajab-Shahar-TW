@@ -4,15 +4,16 @@
             <li>
                 <span ng-click="selectOriginalTitle()">Original</span>
             </li>
+            <li>|</li>
             <li>
                 <span ng-click="selectEnglishTitle()" class="active">English</span>
             </li>
         </ul>
         <div ng-transclude></div>
-        <ul class='alphabets'>
-            <li ng-repeat="alphabetFilter in alphabetFilters">
-                <a ng-click="filterSongsOnLetter(alphabetFilter)" ng-class="isSelected(alphabetFilter)">{{alphabetFilter.alphabet}}</a>
-            </li>
-        </ul>
     </div>
+    <ul class='alphabets'>
+        <li ng-repeat="alphabetFilter in alphabetFilters">
+            <a ng-click="filterSongsOnLetter(alphabetFilter)" ng-class="isSelected(alphabetFilter)">{{alphabetFilter.alphabet}}</a>
+        </li>
+    </ul>
 </div>

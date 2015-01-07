@@ -40,6 +40,7 @@
     <link href="../../css/reset.css" rel="stylesheet" type="text/css">
     <link href="../../css/common.css" rel="stylesheet" type="text/css">
     <link href="../../css/common/directives/header/header.css" rel="stylesheet" type="text/css">
+    <link href="../../css/common/directives/header/header.css" rel="stylesheet" type="text/css">
     <link href="../../css/common/directives/footer/footer.css" rel="stylesheet" type="text/css">
     <link href="../../css/main.css" rel="stylesheet" type="text/css">
     <!--<link href="../../css/mainLandingPage/parallax.css" rel="stylesheet" type="text/css">-->
@@ -58,6 +59,7 @@
             <div class='leftnav headerfixInner'>
                 <div class='navElementsWrapper'>
                     <h1 class='categoryLogo'></h1>
+                    <a href="javascript:void(0);" class="filter">Filter +</a>
                 </div>
 
                 <song-filter songs="songs" song-count="songCount" on-clear-filter="clearFilters()" active-letter="activeLetter" poet-name-in-filter="poetNameInFilter" singer-name-in-filter="singerNameInFilter"></song-filter>
@@ -65,31 +67,34 @@
 
             <div class='gridView' infinite-scroll="loadSongFromRange()">
 
-                        <as-title current-alphabet-filter="activeLetter">
+                <as-title current-alphabet-filter="activeLetter">
 
-                        <span class='numericCount'>{{songCount}} SONGS</span>
+                <span class='numericCount'>{{songCount}} SONGS</span>
 
-                        <span class="view-options">
-                            <a href="javascript:void(0)" class="grid"></a>
-                            <a href="javascript:void(0)" class="list"></a>
-                        </span>
-                        <span class="search-box">
-                            <input type="search" class="search" />
-                        </span>
-                </as-title>
-
-                <div class='gridWrapper'>
-                    <div infinite-scroll='loadSongFromRange()' infinite-scroll-distance='1'>
-                        <ul class="flexiThumbnails" ng-repeat="song in (songs | filterSongByTitle:activeLetter | filterSongBySinger:singerNameInFilter | filterSongByPoet:poetNameInFilter | filterByScroll:scrollIndex)">
-                            <li>
-                                <song-thumbnail-mapper details="song" show-details-service="detailsService" custom-style=""/>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="upper-right">
+                    <span class="search-box">
+                        <input type="search" class="search" />
+                    </span>
+                    <span class="view-options">
+                        <a href="javascript:void(0)" class="grid"></a>
+                        <a href="javascript:void(0)" class="list"></a>
+                    </span>
                 </div>
 
+            </as-title>
+
+            <div class='gridWrapper'>
+                <div infinite-scroll='loadSongFromRange()' infinite-scroll-distance='1'>
+                    <ul class="flexiThumbnails" ng-repeat="song in (songs | filterSongByTitle:activeLetter | filterSongBySinger:singerNameInFilter | filterSongByPoet:poetNameInFilter | filterByScroll:scrollIndex)">
+                        <li>
+                            <song-thumbnail-mapper details="song" show-details-service="detailsService" custom-style=""/>
+                        </li>
+                    </ul>
+                </div>
             </div>
+
         </div>
     </div>
+</div>
 </body>
 </html>
