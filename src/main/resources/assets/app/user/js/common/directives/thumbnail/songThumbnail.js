@@ -39,6 +39,8 @@ thumbnailModule.directive("songThumbnail", function() {
             }
 
             $scope.init = function(){
+                $scope.hideDetails();
+
                 if($scope.singers == null || $scope.singers.length<=0)
                 {
                     $scope.multipleSingers = false;
@@ -47,7 +49,6 @@ thumbnailModule.directive("songThumbnail", function() {
                 }
                 $scope.multipleSingers = true;
                 $scope.noun = "sing";
-                $scope.hideDetails();
             }
 
             $scope.showDetails = function(){
