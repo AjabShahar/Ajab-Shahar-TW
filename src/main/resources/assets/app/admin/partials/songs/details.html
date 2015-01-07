@@ -50,7 +50,7 @@
                     <div class="row">
                         <div class="row">
                         <div class="form-group col-sm-2">
-                            <label>Singer</label>
+                            <label>* Singer</label>
                         </div>
                         <div class="form-group col-sm-2" multi-select input-model="singersList" button-label="firstName lastName" item-label="firstName lastName" tick-property="selected" output-model="formInfo.singers"></div>
                         <input name="singers" ng-model="formInfo.singers" ng-show="false" required="true">
@@ -59,7 +59,7 @@
 
                     <div class="row">
                         <div class="form-group col-sm-2">
-                            <label>Poet</label>
+                            <label>* Poet</label>
                         </div>
                         <div class="form-group col-sm-2">
                             <select  ng-model="formInfo.poets[0]"
@@ -70,7 +70,7 @@
 
                     <div class="row">
                         <div class="form-group col-sm-2">
-                            <label>Show On LandingPage</label>
+                            <label>* Show On LandingPage</label>
                         </div>
                         <div class="form-group col-sm-2">
                             <select name="format" ng-model="formInfo.showOnLandingPage" class="form-control">
@@ -82,7 +82,7 @@
 
                     <div class="row">
                         <div class="form-group col-sm-2">
-                            <label>Song Category</label>
+                            <label>* Song Category</label>
                         </div>
                         <div class="form-group col-sm-2">
                             <select ng-model="formInfo.songCategory"
@@ -93,7 +93,7 @@
 
                     <div class="row">
                         <div class="form-group col-sm-2">
-                            <label>Duration</label>
+                            <label>* Duration</label>
                         </div>
                         <div class="form-group col-sm-2">
                             <input type="text" name="duration" ng-model="formInfo.duration" class="form-control">
@@ -102,7 +102,7 @@
 
                     <div class="row">
                         <div class="form-group col-sm-2">
-                            <label>Youtube Video ID for video</label>
+                            <label>* Youtube Video ID for video</label>
                         </div>
                         <div class="form-group col-sm-2">
                             <input type="text" name="youtubeVideoId" ng-model="formInfo.youtubeVideoId" class="form-control">
@@ -120,7 +120,7 @@
 
                     <div class="row">
                         <div class="form-group col-sm-2">
-                            <label>Thumbnail Url</label>
+                            <label>* Thumbnail Url</label>
                         </div>
                         <div class="form-group col-sm-2">
                             <input type="text" name="thumbnailUrl" ng-model="formInfo.thumbnail_url" class="form-control">
@@ -140,7 +140,7 @@
 
                     <div class="row">
                         <div class="form-group col-sm-2">
-                            <label>About</label>
+                            <label>* About</label>
                         </div>
                         <span>The number of characters should be less that 1500, else the submit will be disabled</span>
                         <div class="form-group col-sm-8">
