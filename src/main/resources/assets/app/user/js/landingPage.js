@@ -23,14 +23,8 @@
     		    }
     		}
 
-    		var _setStringAnimation = function() {
-                var whiteString = $('.px-layer7');
-                $(whiteString).toggleClass('move-string');
-            }
-
     		var _bindEvents = function() {
     		    $(window).on('resize', _.throttle(_setBgImage, 1000));
-    		    /*$(window).on('scroll', _.throttle(_setStringAnimation, 1000));*/
     		}
 
     		var _initialiseScrolling = function() {
