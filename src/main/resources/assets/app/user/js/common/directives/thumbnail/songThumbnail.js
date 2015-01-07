@@ -36,6 +36,15 @@ thumbnailModule.directive("songThumbnail", function() {
                 return ($scope.textRepresentation === 'Transliteration')? $scope.englishTranslation : $scope.englishTransliteration;
             }
 
+            $scope.noun = "";
+
+            if($scope.singers.length > 1){
+               $scope.noun = "sing";
+            }
+            else {
+                $scope.noun = "sings";
+            }
+
             $scope.multipleSingers = false;
             $scope.showDetails = function(){
                 $scope.shouldShowDetails = true;

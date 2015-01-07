@@ -35,7 +35,7 @@ public class SongDAO extends AbstractDAO<Song> {
         currentSession().update(song.getTitle());
         currentSession().save(song);
 
-        if(song.getIsAuthoringComplete()) {
+        if (song.getIsAuthoringComplete()) {
             song.setPublishedDate(new Timestamp(now.getTime()));
         }
         return song;
@@ -77,15 +77,15 @@ public class SongDAO extends AbstractDAO<Song> {
         findSongs.add(Restrictions.eq("isAuthoringComplete", true));
         findSongs.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 
-        if(randomSongsEnabled){
+        if (randomSongsEnabled) {
             findSongs.add(Restrictions.sqlRestriction("1=1 order by random()"));
             List<Song> songs = new ArrayList<>();
             List<Song> allSongs = findSongs.list();
-            for(int i=0;i<9;i++){
+            for (int i = 0; i < 9 && i < allSongs.size(); i++) {
                 songs.add(allSongs.get(i));
             }
             return songs;
-       }
+        }
 
         return findSongs.list();
     }
