@@ -39,17 +39,6 @@ songsAdminApp.directive("songText", function() {
             $scope.edit = function(songText){
             }
 
-            // var getParagraphFromText = function(){
-            //     var englishTransliterationText = $scope.newContent.englishTransliterationText;
-            //     var totalParagraphInEnglishTranlisteraion = (englishTransliterationText.match(/\n\n/g) || []).length;
-
-            //     var englishTranslationText = $scope.newContent.englishTranslationText;
-            //     var totalParagraphInEnglishTranslation = (englishTranslationText.match(/\n\n/g) || []).length;
-
-            //     var originalText = $scope.newContent.originalText;
-            //     var totalParagraphInOriginal = (originalText.match(/\n\n/g) || []).length;
-            // }
-
             $scope.addLyricsText = function(){
                 if(($scope.newContent.englishTranslationText == "" &&
                 $scope.newContent.englishTransliterationText == "" &&
