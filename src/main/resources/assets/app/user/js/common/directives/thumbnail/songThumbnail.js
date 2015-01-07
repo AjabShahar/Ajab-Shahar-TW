@@ -1,6 +1,6 @@
 'use strict';
 
-thumbnailModule.directive("songThumbnail", function() {
+thumbnailModule.directive("songThumbnail", function($timeout) {
     return {
         replace : true,
         restrict: 'E',
@@ -26,6 +26,12 @@ thumbnailModule.directive("songThumbnail", function() {
             $scope.noun = "";
             $scope.multipleSingers = false;
 
+            $scope.onTimeOut = function(){
+                $scope.hideDetails();
+            }
+
+            $timeout($scope.onTimeOut,1000);
+
             $scope.$on('contentTextRepresentation',function(event,data){
                 $scope.textRepresentation = data;
             });
@@ -39,8 +45,6 @@ thumbnailModule.directive("songThumbnail", function() {
             }
 
             $scope.init = function(){
-                $scope.hideDetails();
-
                 if($scope.singers == null || $scope.singers.length<=0)
                 {
                     $scope.multipleSingers = false;
