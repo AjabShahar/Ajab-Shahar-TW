@@ -115,6 +115,11 @@ var songDetailsController = function($scope,$location,songsContentService){
         $scope.originalVisible = true;
     }
 
+     $scope.getCustomStyle =  function(songId){
+        if(songId == $scope.songId)
+           return 'active';
+        return '';
+     }
     $scope.init();
 };
 

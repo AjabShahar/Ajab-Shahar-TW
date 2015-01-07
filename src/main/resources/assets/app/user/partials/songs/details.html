@@ -74,7 +74,7 @@
             <div as-carousel class="carousel-box jcarousel">
             <ul>
                 <li ng-repeat="song in versions track by $index">
-                    <song-thumbnail-mapper details="song" show-details-service="detailsService" custom-style=""/>
+                    <song-thumbnail-mapper details="song" show-details-service="detailsService" custom-style="{{getCustomStyle(song.id)}}"/>
                 </li>
             </ul>
             <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true"></a>
