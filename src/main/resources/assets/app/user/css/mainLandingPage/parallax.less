@@ -1,5 +1,13 @@
 .parallax-container {
     position: relative;
+    /*display: inline-block;*/
+    margin: 0 auto;
+    width: 1140px;
+
+    /*@media screen and (max-width: 1140px) {
+        width: 1140px;
+    }*/
+
 }
 
 .pxLayers {
@@ -14,7 +22,7 @@
 
     &.px-layer {
 
-    /*body layer*/
+        /*body layer*/
         &1 {
             background-image: url(../../img/mainLandingPage/parallax/body.png);
             width: 1140px;
@@ -27,22 +35,32 @@
 
         /*background-effects layer*/
         &3 {
-            background-image: url(../../img/mainLandingPage/parallax/check_img.png);
-            width: 1180px;
-            @media screen and (max-width: 1140px) {
             background-image: url(../../img/mainLandingPage/parallax/check_img1.png);
             width: 1140px;
-        }
 
-        }
-
-        &4 {
-            display: block;
-            background-color: #fff;
-
-            @media screen and (max-width: 1140px) {
-                display: none;
+            &:before, &:after {
+                content: '';
+                display: inline-block;
+                background: transparent url(../../img/mainLandingPage/parallax/side_pattern.png) 0 0;
+                width: 30px;
+                background-repeat: no-repeat repeat;
+                height: 100%;
+                @media screen and (max-width: 1140px) {
+                    display: none;
+                }
             }
+
+            &:before {
+                float: left;
+            }
+            &:after {
+                float: right;
+                -webkit-transform: rotate(180deg);
+                -moz-transform: rotate(180deg);
+                -o-transform: rotate(180deg);
+                transform: rotate(180deg);
+            }
+
         }
 
         &5{
@@ -66,7 +84,7 @@
             height: 800px;
             top: 120px;
 
-            animation-name: hide, moveclouds;
+            animation-name: moveclouds;
             animation-duration: 70s;
             animation-timing-function: linear;
             animation-iteration-count: infinite;
@@ -147,14 +165,9 @@
         &7 {
             background: transparent url(../../img/mainLandingPage/parallax/03_whiteString.png) 0 0px;
             background-repeat: no-repeat repeat;
-            width: 750px;
+            width: 622px;
             display: inline-block;
             left: 20%;
-            -webkit-transition: -webkit-transform 1s ease-in-out;
-            -moz-transition: -moz-transform 1s ease-in-out;
-            -o-transition: -o-transform 1s ease-in-out;
-            transition: transform 1s ease-in-out;
-
             top: 45px;
 
         }
@@ -181,23 +194,6 @@
     100% {background-position: 500px 200px; -o-transform: rotate(892deg)}
 }
 
-@-webkit-keyframes moveSecondBird {
-    0% {background-position: 1400px 800px; -webkit-transform: rotate(892deg); }
-    50% { background-position: 600px 500px; }
-    100% {background-position: 10px 200px; -webkit-transform: rotate(900deg)}
-}
-
-@-moz-keyframes moveSecondBird {
-    0% {background-position: 1400px 800px; -moz-transform: rotate(892deg); }
-    50% { background-position: 600px 500px; }
-    100% {background-position: 10px 200px; -moz-transform: rotate(900deg)}
-}
-
-@-o-keyframes moveSecondBird {
-    0% {background-position: 1400px 800px; -o-transform: rotate(892deg); }
-    50% { background-position: 600px 500px; }
-    100% {background-position: 10px 200px; -o-transform: rotate(900deg)}
-}
 /* bird animation ends */
 
 
@@ -218,28 +214,4 @@
     100% { -o-transform: translate(-100%, 0); }
 }
 
-@keyframes hide
-{
-    from { opacity: 0; } to { opacity: 0 }
-}
-@-moz-keyframes hide
-{
-    from { opacity: 0; } to { opacity: 0 }
-}
-@-webkit-keyframes hide
-{
-    from { opacity: 0; } to { opacity: 0 }
-}
-@-o-keyframes hide
-{
-    from { opacity: 0; } to { opacity: 0 }
-}
 /* clouds animation ends */
-
-
-.move-string {
-    -webkit-transform: translate(30px);
-    -moz-transform: translate(30px);
-    -o-transform: translate(30px);
-    transform: translate(30px);
-}
