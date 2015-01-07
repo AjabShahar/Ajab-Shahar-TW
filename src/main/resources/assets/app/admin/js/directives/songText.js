@@ -58,9 +58,9 @@ songsAdminApp.directive("songText", function() {
                 newElement.contentType = $scope.newContent.contentType;
 
 
-                var englishTranslationTexts = $scope.newContent.englishTranslationText.split(/[\n\n]+/);
-                var originalTexts = $scope.newContent.originalText.split(/[\n\n]+/);
-                var englishTransliterationTexts = $scope.newContent.englishTransliterationText.split(/[\n\n]+/);
+                var englishTranslationTexts = $scope.newContent.englishTranslationText.split("\n\n");
+                var originalTexts = $scope.newContent.originalText.split("\n\n");
+                var englishTransliterationTexts = $scope.newContent.englishTransliterationText.split("\n\n");
 
                 var totalIterations = Math.max(englishTranslationTexts.length, originalTexts.length, englishTransliterationTexts.length);
 
