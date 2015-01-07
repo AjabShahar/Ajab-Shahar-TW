@@ -23,14 +23,12 @@
 
     <script type="text/javascript" src="../../js/common/directives/thumbnail/songThumbnail.js"></script>
     <script type="text/javascript" src="../../js/common/directives/mappers/songThumbnailMapper.js"></script>
-    <script type="text/javascript" src="../../js/common/directives/mappers/introduction/songIntroductionMapper.js"></script>
 
     <script type="text/javascript" src="../../js/common/directives/thumbnail/wordThumbnail.js"></script>
     <script type="text/javascript" src="../../js/common/directives/mappers/wordMapper.js"></script>
 
     <script type="text/javascript" src="../../js/common/directives/thumbnail/coupletThumbnail.js"></script>
     <script type="text/javascript" src="../../js/common/directives/mappers/coupletThumbnailMapper.js"></script>
-    <script type="text/javascript" src="../../js/common/directives/mappers/introduction/coupletIntroductionMapper.js"></script>
     <script type="text/javascript" src="../../js/common/directives/thumbnail/filmThumbnail.js"></script>
     <script type="text/javascript" src="../../js/common/directives/thumbnail/gatheringThumbnail.js"></script>
     <script type="text/javascript" src="../../js/common/directives/thumbnail/reflectionThumbnail.js"></script>
@@ -43,9 +41,6 @@
     <script type="text/javascript" src="../../js/common/modules/mediaPlayer.js"></script>
     <script type="text/javascript" src="../../js/common/directives/soundCloud/soundcloud_player.js"></script>
     <script type="text/javascript" src="../../js/common/directives/youtube/youtube_player.js"></script>
-    <script type="text/javascript" src="../../js/common/directives/couplets/coupletIntroduction.js"></script>
-
-    <script type="text/javascript" src="../../js/common/directives/songs/songIntroduction.js"></script>
 
     <script type="text/javascript" src="../../js/common/config/resourceUrlWhiteList.js"></script>
     <script type="text/javascript" src="../../js/common/modules/headerModule.js"></script>
@@ -87,9 +82,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div ng-repeat="song in thumbnailDetails.songs">
-        <song-introduction-mapper total-count="{{totalNumberOfThumbnails}}" index="{{$index}}" details="song" show-details-service="detailsService"/>
     </div>
 </div>
 

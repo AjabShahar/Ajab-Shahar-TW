@@ -1,5 +1,8 @@
-var songsEditorsChoiceController = function($scope,contentService,popupService, $location){
-    $scope.detailsService=popupService;
+var songsEditorsChoiceController = function($scope,contentService, $location, $window){
+    $scope.detailsService={open:function(id){
+//                                          var songId = $scope.getSongId(id);
+                                          $window.location.href = '/user/partials/songs/details.html?id='+id;
+                                      }};;
     $scope.init = function(){
         $scope.url = $location.absUrl();
         contentService.getSongsLandingPageThumbnails().then(function(result){
@@ -29,4 +32,4 @@ var songsEditorsChoiceController = function($scope,contentService,popupService, 
     $scope.init();
 }
 
-editorsChoiceApp.controller('songsEditorsChoiceController',['$scope','contentService','popupService', '$location',songsEditorsChoiceController]);
+editorsChoiceApp.controller('songsEditorsChoiceController',['$scope','contentService','$location', '$window',songsEditorsChoiceController]);
