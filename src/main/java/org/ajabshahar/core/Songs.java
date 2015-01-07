@@ -44,7 +44,7 @@ public class Songs {
         if (updatableSong.getSongTitle() != null && updatableSong.getSongTitle().getId() == 0) {
             Title songTitle = new Title(updatableSong.getSongTitle());
             songTitle.setCategory(categoryRepository.getSongTitleCategory());
-            titleRepository.create(updatableSong.getSongTitle());
+            titleRepository.create(songTitle);
             updatableSong.setSongTitle(songTitle);
         }
         if (updatableSong.getTitle() != null && updatableSong.getTitle().getId() == 0) {
