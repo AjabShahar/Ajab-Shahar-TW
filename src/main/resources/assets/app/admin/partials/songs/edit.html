@@ -31,11 +31,11 @@
         <div ng-controller="songDetailsController" ng-init="getSongData()">
             <form name="songForm">
                 <div class="row">
-                    <as-admin-title title="Umbrella Title" title-data="formInfo.title" title-list="umbrellaTitleList" title-id="formInfo.title.id"></as-admin-title>
+                    <as-admin-title title="Umbrella Title" title-data="formInfo.title" title-list="umbrellaTitleList" title-id="formInfo.title.id" authoring-complete="false"></as-admin-title>
                 </div>
 
                 <div class="row">
-                    <as-admin-title title="Song Title" title-data="formInfo.songTitle" title-list="songTitleList" title-id="formInfo.songTitle.id"></as-admin-title>
+                    <as-admin-title title="Song Title" title-data="formInfo.songTitle" title-list="songTitleList" title-id="formInfo.songTitle.id" authoring-complete="formInfo.isAuthoringComplete"></as-admin-title>
                 </div>
 
                 <div class="row">
@@ -59,7 +59,7 @@
                     </div>
                     <div class="form-group col-sm-2">
                         <select ng-model="formInfo.poets[0].id"
-                                ng-options="poet.id as poet.firstName + ' ' + poet.lastName for poet in poets" class="form-control">
+                                ng-options="poet.id as poet.firstName + ' ' + poet.lastName for poet in poets" class="form-control" ng-required="formInfo.isAuthoringComplete">
                         </select>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                         <label>* Show On LandingPage</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <select name="format" ng-model="formInfo.showOnLandingPage" class="form-control">
+                        <select name="format" ng-model="formInfo.showOnLandingPage" class="form-control" ng-required="formInfo.isAuthoringComplete">
                             <option value="true">Yes</option>
                             <option value="false">No</option>
                         </select>
@@ -82,7 +82,7 @@
                     </div>
                     <div class="form-group col-sm-2">
                         <select ng-model="formInfo.songCategory.id"
-                                ng-options="category.id as category.name for category in songCategoryList" class="form-control">
+                                ng-options="category.id as category.name for category in songCategoryList" class="form-control" ng-required="formInfo.isAuthoringComplete">
                         </select>
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                         <label>* Duration</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <input type="text" name="duration" ng-model="formInfo.duration" class="form-control">
+                        <input type="text" name="duration" ng-model="formInfo.duration" class="form-control" ng-required="formInfo.isAuthoringComplete">
                     </div>
                 </div>
 
@@ -101,7 +101,7 @@
                         <label>* Youtube Video ID for video</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <input type="text" name="youtubeVideoId" ng-model="formInfo.youtubeVideoId" class="form-control">
+                        <input type="text" name="youtubeVideoId" ng-model="formInfo.youtubeVideoId" class="form-control" ng-required="formInfo.isAuthoringComplete">
                     </div>
                 </div>
 
@@ -119,7 +119,7 @@
                         <label>* Thumbnail Url</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <input type="text" name="thumbnailUrl" ng-model="formInfo.thumbnail_url" class="form-control">
+                        <input type="text" name="thumbnailUrl" ng-model="formInfo.thumbnail_url" class="form-control" ng-required="formInfo.isAuthoringComplete">
                     </div>
                 </div>
 

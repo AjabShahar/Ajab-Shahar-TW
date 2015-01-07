@@ -16,6 +16,7 @@ var songDetailsController = function($scope, $window,$location,songContentServic
     $scope.songTitleList = [];
     $scope.coupletList = [];
     $scope.formInfo.songText={};
+    $scope.formInfo.isAuthoringComplete = false;
 
     $scope.init = function(){
         songContentService.getAllUmbrellaTitles().success(function(umbrellaTitleList){

@@ -10,8 +10,8 @@
                 <label>Refrain</label>
             </div>
             <div class="form-group col-sm-3">
-                <input type="text" name="refrain" ng-model="songText.refrainOriginal" placeholder="Enter original text" class="form-control">
-                <input type="text" name="refrain" ng-model="songText.refrainEnglishTransliteration" placeholder="Enter english-transliteration text" class="form-control">
+                <input type="text" name="refrain" ng-model="songText.refrainOriginal" placeholder="Enter original text" class="form-control" ng-required="authoringComplete">
+                <input type="text" name="refrain" ng-model="songText.refrainEnglishTransliteration" placeholder="Enter english-transliteration text" class="form-control" ng-required="authoringComplete">
                 <input type="text" name="refrain" ng-model="songText.refrainEnglishTranslation" placeholder="Enter english-translation text" class="form-control">
             </div>
         </div>
@@ -92,14 +92,14 @@
                 <div class="form-group col-sm-2">
                     <ul>
                         <li ng-repeat="songTextContent in songText.songTextContents track by $index">
-                            <textarea class="form-control" rows="6" ng-model="songTextContent.originalText" placeholder=" Enter original text ..."></textarea>
+                            <textarea class="form-control" rows="6" ng-model="songTextContent.originalText" placeholder=" Enter original text ..."  ng-required="authoringComplete"></textarea>
                         </li>
                     </ul>
                 </div>
                 <div class="form-group col-sm-2">
                     <ul>
                         <li ng-repeat="songTextContent in songText.songTextContents track by $index">
-                            <textarea class="form-control" rows="6" ng-model="songTextContent.englishTransliterationText" placeholder=" Enter original text ..."></textarea>
+                            <textarea class="form-control" rows="6" ng-model="songTextContent.englishTransliterationText" placeholder=" Enter original text ..."  ng-required="authoringComplete"></textarea>
                         </li>
                     </ul>
                 </div>
