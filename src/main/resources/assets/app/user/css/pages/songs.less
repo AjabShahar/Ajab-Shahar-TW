@@ -374,5 +374,61 @@ body.page-songs {
 
 }
 
+.navList.show {
+    display: block;
+}
+
+.ajab-wrapper {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+.left-menu-open {
+    -webkit-transform: translateX(150px);
+    -ms-transform: translateX(150px);
+    transform: translateX(150px);
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.song-grid {
+    width: 97%;
+
+    .flexiThumbnails {
+        width: 292px;
+
+        li {
+            width: 220px;
+            margin-left: 0;
+
+            .songs {
+                margin-top: 0;
+
+                .thumbnail-media {
+                    width: 220px;
+                }
+
+                .desc-wrapper {
+                    .thumbnail-desc {
+                        margin: 0 0 0 4px;
+                        box-shadow: none;
+                        width: 189px;
+
+                        &:before {
+                            background: rgba(255,255,255,0) url(../../img/songs/top-all-song.png) left top no-repeat;
+                            top: -16px;
+                            left: -1px;
+                        }
+                    }
+                    .lower-curve {
+                        margin: 0 0 0 3px;
+                        background: rgba(255,255,255,0) url(../../img/songs/bottom-all-song.png) left top no-repeat;
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 

@@ -35,6 +35,7 @@
     <script type="text/javascript" src="../../js/EditorsChoice/services/contentService.js"></script>
     <script type="text/javascript" src="../../js/songs/services/songsContentService.js"></script>
     <script type="text/javascript" src="../../js/songs/app.js"></script>
+    <script type="text/javascript" src="../../js/songs/songPages.js"></script>
     <script type="text/javascript" src="../../js/songs/controllers/allSongsController.js"></script>
     <script type="text/javascript" src="../../js/common/modules/htmlGenerator.js"></script>
     <link href="../../css/reset.css" rel="stylesheet" type="text/css">
@@ -55,6 +56,7 @@
 
     <div class="ajab-container headerfixOuter all-songs">
         <ajab-shahar-header></ajab-shahar-header>
+        <song-filter songs="songs" song-count="songCount" on-clear-filter="clearFilters()" active-letter="activeLetter" poet-name-in-filter="poetNameInFilter" singer-name-in-filter="singerNameInFilter"></song-filter>
         <div class="ajab-wrapper">
             <div class='leftnav headerfixInner'>
                 <div class='navElementsWrapper'>
@@ -62,7 +64,7 @@
                     <a href="javascript:void(0);" class="filter">Filter +</a>
                 </div>
 
-                <song-filter songs="songs" song-count="songCount" on-clear-filter="clearFilters()" active-letter="activeLetter" poet-name-in-filter="poetNameInFilter" singer-name-in-filter="singerNameInFilter"></song-filter>
+
             </div>
 
             <div class='gridView' infinite-scroll="loadSongFromRange()">
@@ -84,7 +86,7 @@
             </as-title>
 
             <div class='gridWrapper'>
-                <div infinite-scroll='loadSongFromRange()' infinite-scroll-distance='1'>
+                <div infinite-scroll='loadSongFromRange()' infinite-scroll-distance='1' class="song-grid">
                     <ul class="flexiThumbnails" ng-repeat="song in (songs | filterSongByTitle:activeLetter | filterSongBySinger:singerNameInFilter | filterSongByPoet:poetNameInFilter | filterByScroll:scrollIndex)">
                         <li>
                             <song-thumbnail-mapper details="song" show-details-service="detailsService" custom-style=""/>
