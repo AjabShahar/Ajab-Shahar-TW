@@ -1,13 +1,7 @@
 .parallax-container {
     position: relative;
-    /*display: inline-block;*/
     margin: 0 auto;
     width: 1140px;
-
-    /*@media screen and (max-width: 1140px) {
-        width: 1140px;
-    }*/
-
 }
 
 .pxLayers {
@@ -168,10 +162,15 @@
         &7 {
             background: transparent url(../../img/mainLandingPage/parallax/string.png) 0 0px;
             background-repeat: no-repeat repeat;
-            width: 622px;
-            display: inline-block;
-            left: 300px;
+            left: 36.3%;
             top: 45px;
+            width: 356px;
+            @media screen and (max-width: 1024px) {
+                left: 29%;
+            }
+            @media screen and (max-width: 768px) {
+                left: 17%;
+            }
         }
     }
 }
