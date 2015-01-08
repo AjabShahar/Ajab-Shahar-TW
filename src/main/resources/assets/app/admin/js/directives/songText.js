@@ -28,6 +28,11 @@ songsAdminApp.directive("songText", function() {
 
             $scope.initializeContent();
 
+            $scope.clearSongText = function(){
+                $scope.songText.openingCouplets = [];
+                $scope.songText.songTextContents = [];
+            }
+
             $scope.shouldShowStanzaDetails = function(){
                 return $scope.newContent.contentType == 'stanza' ;
             }

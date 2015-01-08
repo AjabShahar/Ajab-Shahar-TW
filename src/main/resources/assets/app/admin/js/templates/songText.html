@@ -83,6 +83,8 @@
                     <select ng-show="shouldShowCoupletDetails()" ng-model="newContent.poet" ng-options="poet.firstName for poet in poets" class="form-control"></select>
 
                     <button type="button" class="btn btn-info" ng-click="addLyricsText()">Add To Lyrics</button>
+
+                    <button type="button" class="btn btn-danger dangerButton" ng-click="clearSongText()">Clear Lyrics</button>
                 </div>
             </div>
         </div>

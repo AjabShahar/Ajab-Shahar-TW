@@ -49,3 +49,8 @@ margin-bottom: 50%;
     resize: none;
     overflow: auto;
 }
+
+.dangerButton {
+  margin-top: 4%;
+  position: absolute;
+}
