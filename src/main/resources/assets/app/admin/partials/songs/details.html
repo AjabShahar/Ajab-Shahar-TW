@@ -151,11 +151,8 @@
                         <div class="form-group col-sm-2">
                             <label>Publish</label>
                         </div>
-                        <div class="form-group col-sm-1">
-                            <select name="format" ng-model="formInfo.isAuthoringComplete" class="form-control" ng-init="formInfo.isAuthoringComplete=false">
-                                <option value="true">Yes</option>
-                                <option value="false" ng-selected="true">No</option>
-                            </select>
+                        <div class="form-group col-sm-1" ng-init='authoringOptions=[{ "value": true, "text": "Yes" }, { "value": false, "text": "No" }]'>
+                            <select class="form-control" ng-init="formInfo.isAuthoringComplete = formInfo.isAuthoringComplete || authoringOptions[1].value" ng-model="formInfo.isAuthoringComplete" ng-options="authoringOption.value as authoringOption.text for authoringOption in authoringOptions"></select>
                         </div>
                     </div>
                     <br/>
