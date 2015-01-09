@@ -43,7 +43,7 @@ public class WordDAO extends AbstractDAO<Word> {
 
     private Word invokeSetters(Word originalWord, Word updatableWord) {
           originalWord.setWordOrPhrase(updatableWord.getWordOrPhrase());
-          originalWord.setSynonym(updatableWord.getSynonym());
+          originalWord.setMeaning(updatableWord.getMeaning());
           originalWord.setThumbnailUrl(updatableWord.getThumbnailUrl());
           originalWord.setShowOnLandingPage(updatableWord.getShowOnLandingPage());
           originalWord.setCategory(updatableWord.getCategory());

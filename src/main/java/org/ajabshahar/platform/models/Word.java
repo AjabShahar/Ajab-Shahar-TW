@@ -24,8 +24,8 @@ public class Word {
     @Column(name = "WORD_OR_PHRASE", nullable = false)
     private String wordOrPhrase;
 
-    @Column(name = "synonym", nullable = false)
-    private String synonym;
+    @Column(name = "meaning", nullable = false)
+    private String meaning;
 
     @Column(name = "THUMBNAIL_URL", nullable = false)
     private String thumbnailUrl;
@@ -42,12 +42,12 @@ public class Word {
     }
 
 
-    public String getSynonym() {
-        return synonym;
+    public String getMeaning() {
+        return meaning;
     }
 
-    public void setSynonym(String synonym) {
-        this.synonym = synonym;
+    public void setMeaning(String meaning) {
+        this.meaning = meaning;
     }
 
 
