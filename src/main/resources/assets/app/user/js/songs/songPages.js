@@ -72,7 +72,7 @@
  	$(document).ready(function() {
 
  		$(".filter").on("click", function() {
- 			$(".navList").toggleClass("show");
+ 			$(".nav-list").toggleClass("show");
  			$(".ajab-wrapper").toggleClass("left-menu-open");
  			return false;
  		});

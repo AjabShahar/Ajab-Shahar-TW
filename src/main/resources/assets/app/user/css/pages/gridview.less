@@ -3,11 +3,11 @@
 .line{display:inline-block;width:100%;height:1px;clear:both;}
 .newline{clear:both;display:block;}
 
-.leftnav{
+.left-nav{
     float: left;
-    width: 11%;
-    text-align: left;
-    padding: 0;
+    width: 10%;
+    text-align: center;
+    margin: 0 auot;
     color:#666;
 }
 /* Styles for grid View page for all songs */
@@ -22,8 +22,8 @@
     }
 
     .ajab-wrapper {
-        width: 94%;
-        margin: 0 3%;
+        width: 98%;
+        margin: 0 1%;
     }
 
     .ajab-wrapper:before,
@@ -41,7 +41,7 @@
 
 .gridView{
     float: left;
-    width: 89%;
+    width: 90%;
     color:#666;
 }
 
@@ -49,15 +49,15 @@
     text-align: left;
 }
 
-.paginationHead {
+.pagination-head {
     display: inline-block;
-    width: 93.5%;
+    width: 100%;
     padding: 0% 0 2%;
     float: left;
 
     &>.upper {
         display: inline-block;
-        width: 97%;
+        width: 96%;
         float: left;
         padding-bottom: 5px;
         border-bottom: solid 1px #ccc;
@@ -93,16 +93,17 @@
 
     .search {
         width: 150px;
-        border-radius: 0;
+        border-radius: 3px;
         border: solid 1px #ccc;
         height: 28px;
         line-height: 18px;
         outline: 0;
         float: left;
-        margin: 0;
-        background: transparent;
-        margin-right: 8px;
+        background: #FFF;
+        margin-top: -5px 8px 5px 0;
         display: none;
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
     }
     &:after {
         content: '';
@@ -110,6 +111,7 @@
         width: 20px;
         height: 19px;
         background: transparent url('../../img/songs/icons/search.png') 0 0 no-repeat;
+        cursor: pointer;
     }
 }
 
@@ -145,7 +147,7 @@
     width: 100%;
     li {
     float: left;
-    width: 3.84%;
+    width: 3.8%;
         a {
             color: #888;
             cursor: pointer;
@@ -181,14 +183,12 @@
 .navElementsWrapper {
     position: relative;
     .categoryLogo {
-        display: inline-block;
-        padding: 0;
-        line-height: 0;
         background: transparent url('../../img/songs/songs-logo.png');
         position: absolute;
         top: -20px;
         width: 93px;
         height: 86px;
+        left: 15%;
         img{
             border-radius: 100px;
         }
@@ -199,55 +199,62 @@
         display: block;
         font-size: 10px;
         text-transform: uppercase;
-        padding-left: 26px;
         color: #e61b72;
     }
 }
 
-.navList {
+.nav-list {
     float: left;
     position: absolute;
     display: none;
     left: 0;
     top: 0;
-    width: 150px;
-    background: #FFF;
+    width: 200px;
     padding: 160px 0 0 25px;
     text-align: left;
     height: 100%;
+    background: #FFF url('../../img/songs/filter.png') right 0 repeat-y;
     li {
-        margin: 0 2%;
+    margin: 0 2%;
         &.original {
-        border-right: solid 1px #666;
-        padding-right: 10px;
-        margin-right: 7px;
+            border-right: solid 1px #666;
+            padding-right: 10px;
+            margin-right: 7px;
+        }
     }
 
-    &.head {
-        display: inline-block;
-        width:100%;
-        margin-bottom: 1%;
-        font-size: 0.6em;
-        text-transform: uppercase;
+    &.titles {
+        li {
+            float:left;
+        }
+    }
+
+    &.filters {
+        li {
+            margin: 0 2% 15px 0%;
+            display: inline-block;
+            width: 100%;
+            font-size: 18px;
+            font-weight: 300;
+            font-family: 'Merriweather';
+            color: #666;
+
+            &.head {
+                display: inline-block;
+                width:100%;
+                margin-bottom: 10px;
+                font-size: 10px;
+                color: #999;
+                text-transform: uppercase;
+                font-family: 'Merriweather Sans';
+            }
+
+            a.active {
+                color: #00a199;
+            }
+        }
     }
 }
-
-&.titles {
-    li {
-        float:left;
-    }
-}
-
-&.filters {
-    li {
-        margin: 0 2% 4% 0%;
-        display: inline-block;
-        width: 100%;
-    }
-}
-}
-
-
 
 .flexiThumbnails {
     display: inline-block;
@@ -258,9 +265,9 @@
         margin: 0 23px 7% 23px;
     }
 
-.thumbnail{
-    width:100%;
-}
+    .thumbnail{
+        width:100%;
+    }
 }
 
 
