@@ -1,6 +1,7 @@
 package org.ajabshahar.platform.models;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "WORD")
@@ -26,11 +27,13 @@ public class Word {
     @Column(name = "meaning", nullable = false)
     private String meaning;
 
-    @Column(name = "THUMBNAIL_URL", nullable = false)
-    private String thumbnailUrl;
-
     @Column(name = "SHOW_ON_LANDING_PAGE", nullable = false)
     private boolean showOnLandingPage;
+
+//    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JoinTable(name = "WORD_WORD_INTRODUCTION", joinColumns = @JoinColumn(name = "WORD_ID"),
+//            inverseJoinColumns = @JoinColumn(name = "WORD_INTRODUCTION_ID"))
+//    private Set<SongTextContent> wordIntroductions;
 
     public long getId() {
         return id;
@@ -60,11 +63,11 @@ public class Word {
         this.wordOrPhrase = wordOrPhrase;
     }
 
-    public String getThumbnailUrl() {
-        return thumbnailUrl;
-    }
-
-    public void setThumbnailUrl(String thumbnailUrl) {
-        this.thumbnailUrl = thumbnailUrl;
-    }
+//    public Set<SongTextContent> getWordIntroductions() {
+//        return wordIntroductions;
+//    }
+//
+//    public void setWordIntroductions(Set<SongTextContent> wordIntroductions) {
+//        this.wordIntroductions = wordIntroductions;
+//    }
 }
