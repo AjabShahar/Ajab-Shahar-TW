@@ -14,7 +14,6 @@ import javax.persistence.*;
                 query = "SELECT p FROM Word p where p.showOnLandingPage=true"
         )
 })
-
 public class Word {
 
     @Id
@@ -33,14 +32,9 @@ public class Word {
     @Column(name = "SHOW_ON_LANDING_PAGE", nullable = false)
     private boolean showOnLandingPage;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "CATEGORY_ID")
-    private Category category;
-
     public long getId() {
         return id;
     }
-
 
     public String getMeaning() {
         return meaning;
@@ -49,8 +43,6 @@ public class Word {
     public void setMeaning(String meaning) {
         this.meaning = meaning;
     }
-
-
 
     public boolean getShowOnLandingPage() {
         return showOnLandingPage;
@@ -74,13 +66,5 @@ public class Word {
 
     public void setThumbnailUrl(String thumbnailUrl) {
         this.thumbnailUrl = thumbnailUrl;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
     }
 }

@@ -46,7 +46,6 @@ public class WordDAO extends AbstractDAO<Word> {
           originalWord.setMeaning(updatableWord.getMeaning());
           originalWord.setThumbnailUrl(updatableWord.getThumbnailUrl());
           originalWord.setShowOnLandingPage(updatableWord.getShowOnLandingPage());
-          originalWord.setCategory(updatableWord.getCategory());
           return originalWord;
     }
 }
