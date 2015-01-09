@@ -48,14 +48,13 @@
     <link href="../../css/pages/songs.css" rel="stylesheet" type="text/css">
 </head>
 
-<body ng-controller="songDetailsController" class="page-songs">
+<body ng-controller="songDetailsController" class="page-songs details-page">
     <ajab-shahar-header></ajab-shahar-header>
     <div class="page-header">
-        <div class="light-bg"></div>
         <div class="ajab-wrapper">
             <div class="logo-container">
-                <a href="/user/partials/songs/allSongs.html" target="_self" class="all-songs-link">
-                    <span class="page-logo"></span>
+                <a href="/user/partials/songs/allSongs.html" target="_self">
+                    <span class="page-logo">songs</span>
                 </a>
             </div>
 
@@ -69,7 +68,6 @@
 
     <div class="versions toggleBySlide" ng-show="showVersion && shouldShowVersions()">
         <div class="carousel-wrapper jcarousel-wrapper">
-            <div class="light-bg"></div>
 
             <div as-carousel class="carousel-box jcarousel">
             <ul>

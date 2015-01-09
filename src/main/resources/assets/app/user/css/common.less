@@ -149,3 +149,149 @@ body{
     float: left;
     margin-left: 20%;
 }
+
+
+
+/* Common Header Design for details page */
+
+.details-page {
+    .headerBox {
+        position: absolute;
+    }
+    .page-header {
+        background: transparent url(../../img/songs/pardah_long.png) -800px bottom no-repeat;
+        width: 100%;
+        height: 155px;
+        padding-top: 10px;
+        display: inline-block;
+
+        .logo-container {
+            float: left;
+
+            .page-logo {
+                background: transparent url(../../img/songs/songs_logo.png) 0 0 no-repeat;
+                width: 85px;
+                height: 58px;
+                float: left;
+                clear: both;
+                padding: 30px 0 0 0;
+                color: #999;
+                font-family: 'Merriweather';
+                font-size: 18px;
+                font-weight: 300;
+            }
+        }
+
+
+        .page-title {
+            float: left;
+            margin: 29px 0 0 1.2%;
+            font-family: 'Merriweather';
+            font-weight: 300;
+            .main {
+                font-size: 21px;
+                margin-right: 5px;
+                color: #333;
+            }
+            .sub-main {
+                font-size: 18px;
+                color: #999;
+                font-style: italic;
+
+            }
+
+
+        }
+    }
+
+
+    .see-more {
+        background: transparent url(../../img/songs/pardah_long.png) -800px bottom no-repeat;
+        height: 68px;
+        width: 100%;
+        display: inline-block;
+        position: relative;
+        top: -38px;
+        text-align: center;
+        .version {
+            position: absolute;
+            top: 16px;
+            left: 48%;
+            font-family: 'Merriweather';
+            font-size: 12px;
+            color: #999;
+            font-weight: 300;
+
+        }
+        .arrow {
+            background: transparent url(../../img/songs/down-arrow.png) 0 0 no-repeat;
+            height: 12px;
+            width: 19px;
+            display: inline-block;
+            &.up-arrow {
+                background-image: url(../../img/songs/up-arrow.png);
+            }
+        }
+
+    }
+
+
+    .carousel-wrapper.jcarousel-wrapper {
+        border: none;
+        box-shadow: none;
+        margin: 0;
+        border-radius: 0;
+        width: 100%;
+
+        .carousel-box {
+            width: 90%;
+            text-align: center;
+            margin: 0 auto;
+            padding: 12px 0 0;
+        }
+
+        .jcarousel {
+
+            &>ul {
+                height: 240px;
+                display: inline-block;
+                li {
+                    margin-left: 63px;
+                    margin-right: 28px;
+                    border: none;
+                    position: relative;
+                    max-width: 255px !important;
+                }
+            }
+
+        }
+
+        .jcarousel-control-prev, .jcarousel-control-next {
+            background: transparent url(../../img/songs/carousel-left.png) 0 0 no-repeat;
+            width: 28px;
+            height: 39px;
+            display: inline-block;
+            text-shadow: none;
+            border-radius: 0;
+            box-shadow: none;
+            top: 40%;
+        }
+        .jcarousel-control-prev {
+            left: -10px;
+        }
+
+        .jcarousel-control-next {
+            background-image: url(../../img/songs/carousel-right.png);
+            right: 0;
+        }
+        /*UI: WIP */
+        .thumbnailWrapper {
+            margin: 0;
+            .thumbnail-media {
+               height: 139px;
+            }
+        }
+    }
+}
+
+/* Common Header Design for details page end here*/
