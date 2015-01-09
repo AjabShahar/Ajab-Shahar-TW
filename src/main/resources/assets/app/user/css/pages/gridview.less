@@ -89,7 +89,7 @@
 
 .search-box {
     float: left;
-    margin-right: 5%;
+    margin: 3px 20px 0 0;
 
     .search {
         width: 150px;
@@ -118,7 +118,7 @@
 .view-options {
     float: right;
     &>a {
-        background: transparent url('../../img/songs/icons/grid.png') 0 0 no-repeat;
+        background: transparent url('../../img/songs/icons/grid.png') 0 -1px no-repeat;
         width: 20px;
         height: 18px;
         display: inline-block;
@@ -132,7 +132,7 @@
 
 .upper-right {
     float: right;
-    width: 85px;
+    width: 110px;
 }
 
 
@@ -205,15 +205,15 @@
 
 .nav-list {
     float: left;
+    padding: 0;
+    text-align: left;
     position: absolute;
     display: none;
     left: 0;
     top: 0;
     width: 200px;
-    padding: 160px 0 0 25px;
-    text-align: left;
     height: 100%;
-    background: #FFF url('../../img/songs/filter.png') right 0 repeat-y;
+    background: transparent url('../../img/songs/filter.png') right 0 repeat-y;
     li {
     margin: 0 2%;
         &.original {
@@ -229,11 +229,15 @@
         }
     }
 
-    &.filters {
+    .filters {
+        background: #FFF;
+        height: 100%;
+        padding: 165px 0 0 25px;
+        width: 160px;
         li {
             margin: 0 2% 15px 0%;
             display: inline-block;
-            width: 100%;
+            width: 150px;
             font-size: 18px;
             font-weight: 300;
             font-family: 'Merriweather';
@@ -268,6 +272,13 @@
     .thumbnail{
         width:100%;
     }
+}
+
+.separator {
+    font-size: 22px;
+    font-weight: 300;
+    color: #ccc;
+    padding-left: 5px;
 }
 
 

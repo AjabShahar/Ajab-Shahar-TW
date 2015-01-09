@@ -1,4 +1,5 @@
-<ul class='nav-list filters'>
+<div class="nav-list">
+<ul class='filters'>
     <li class='head'>Filter by</li>
     <li><a ng-click="showSingers()" class="active">Singers</a></li>
     <li ng-hide="singerNameInFilter==''|| singerNameInFilter.name==''">{{singerNameInFilter.name}}<a ng-click="removeSingerFilter()">[X]</a></li>
@@ -22,3 +23,4 @@
     <li><a>Places</a></li>
     <li><a ng-click="clearFilters()">All</a></li>
 </ul>
+</div>
