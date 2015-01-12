@@ -26,6 +26,9 @@ public class SongTextContent {
     @Column(name = "SEQUENCE_NUMBER", nullable = false)
     private int sequenceNumber;
 
+    @Column(name = "SHOW_REFRAIN")
+    private Boolean showRefrain;
+
     @OneToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name ="poet_id")
     private PersonDetails poet;
@@ -84,5 +87,13 @@ public class SongTextContent {
 
     public void setPoet(PersonDetails personDetails) {
         this.poet = personDetails;
+    }
+
+    public Boolean getShowRefrain() {
+        return showRefrain;
+    }
+
+    public void setShowRefrain(Boolean showRefrain) {
+        this.showRefrain = showRefrain;
     }
 }

@@ -127,7 +127,7 @@
 
                         <div ng-repeat="songLyrics in songText.songTextContents track by $index" class="initial-couplets">
                             <p style=" white-space: pre-line">{{songLyrics.songTextContent.originalText}}</p>
-                            <p>{{songText.refrainOriginal}}....</p>
+                            <p ng-if="songLyrics.songTextContent.showRefrain">{{songText.refrainOriginal}}....</p>
                             <div ng-show="songLyrics.songTextContent.poet!=null">
                                 <p>{{songLyrics.songTextContent.poet.hindiName}}</p>
                             </div>
@@ -146,12 +146,11 @@
 
                         <div ng-repeat="songLyrics in songText.songTextContents track by $index" class="initial-couplets">
                             <p style=" white-space: pre-line">{{songLyrics.songTextContent.englishTransliterationText}}</p>
-                            <p>{{songText.refrainEnglishTranslation}}....</p>
+                            <p ng-if="songLyrics.songTextContent.showRefrain">{{songText.refrainEnglishTranslation}}....</p>
                             <div ng-show="songLyrics.songTextContent.poet!=null">
                                 <p>{{songLyrics.songTextContent.poet.name}}</p>
                             </div>
                         </div>
-
                     </div>
                     <div ng-show="englishTransliterationVisible" class="toggleByFading">
                         <h2 class="song-heading">{{song.englishTransliterationTitle}}</h2>
@@ -166,17 +165,13 @@
 
                         <div ng-repeat="songLyrics in songText.songTextContents track by $index" class="initial-couplets">
                             <p style=" white-space: pre-line">{{songLyrics.songTextContent.englishTranslationText}}</p>
-                            <p>{{songText.refrainEnglishTransliteration}}....</p>
+                            <p ng-if="songLyrics.songTextContent.showRefrain">{{songText.refrainEnglishTransliteration}}....</p>
                             <div ng-show="songLyrics.songTextContent.poet!=null">
                                 <p>{{songLyrics.songTextContent.poet.name}}</p>
                             </div>
                         </div>
-                        
                     </div>
-
-
                 </div>
-
             </div>
         </div>
         <div class="lyrics-footer">
