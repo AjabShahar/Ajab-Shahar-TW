@@ -13,6 +13,10 @@ public class WordIntroduction {
     @Column(name = "INTRODUCTION_TEXT", nullable = false)
     private String introduction_text;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "word_id", nullable = false)
+    private Word word;
+
     public long getId() {
         return id;
     }
@@ -23,5 +27,13 @@ public class WordIntroduction {
 
     public void setIntroduction_text(String introduction_text) {
         this.introduction_text = introduction_text;
+    }
+
+    public Word getWord() {
+        return word;
+    }
+
+    public void setWord(Word word) {
+        this.word = word;
     }
 }

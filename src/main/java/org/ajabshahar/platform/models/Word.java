@@ -30,10 +30,8 @@ public class Word {
     @Column(name = "SHOW_ON_LANDING_PAGE", nullable = false)
     private boolean showOnLandingPage;
 
-//    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    @JoinTable(name = "WORD_WORD_INTRODUCTION", joinColumns = @JoinColumn(name = "WORD_ID"),
-//            inverseJoinColumns = @JoinColumn(name = "WORD_INTRODUCTION_ID"))
-//    private Set<SongTextContent> wordIntroductions;
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "word")
+//    private Set<WordIntroduction> wordIntroductions;
 
     public long getId() {
         return id;
@@ -63,11 +61,11 @@ public class Word {
         this.wordOrPhrase = wordOrPhrase;
     }
 
-//    public Set<SongTextContent> getWordIntroductions() {
+//    public Set<WordIntroduction> getWordIntroductions() {
 //        return wordIntroductions;
 //    }
-//
-//    public void setWordIntroductions(Set<SongTextContent> wordIntroductions) {
+
+//    public void setWordIntroductions(Set<WordIntroduction> wordIntroductions) {
 //        this.wordIntroductions = wordIntroductions;
 //    }
 }
