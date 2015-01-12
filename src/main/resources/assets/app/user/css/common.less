@@ -144,11 +144,11 @@ body{
     }
 }
 
-.main-content {
+/*.main-content {
     width: 80%;
     float: left;
     margin-left: 20%;
-}
+}*/
 
 
 
@@ -254,6 +254,7 @@ body{
             text-align: center;
             margin: 0 auto;
             padding: 12px 0 0;
+
         }
 
         .jcarousel {
@@ -262,11 +263,29 @@ body{
                 height: 240px;
                 display: inline-block;
                 li {
-                    margin-left: 63px;
-                    margin-right: 28px;
+                    /*margin-left: 63px;
+                    margin-right: 28px;*/
                     border: none;
-                    position: relative;
-                    max-width: 255px !important;
+                    width: auto !important;
+                    margin: 0 0.014% 0 0.015%;
+                    /*position: relative;
+                    max-width: 255px !important;*/
+                    @media screen and (max-width: 1380px) {
+                        margin-right: 0.01%;
+                    }
+                    @media screen and (max-width: 1280px) {
+                        margin-right: 0.03%;
+                        margin-left: 0.02%;
+                    }
+                    @media screen and (max-width: 1024px) {
+                        margin-right: 0.01%;
+                        margin-left: 0.14%;
+                    }
+                    @media screen and (max-width: 768px) {
+                        margin-right: 0.02%;
+                        margin-left: 0.015%;
+                    }
+
                 }
             }
 
@@ -294,7 +313,23 @@ body{
         .thumbnailWrapper {
             margin: 0;
             .thumbnail-media {
-               height: 139px;
+               height: 120px;
+               width: 215px;
+            }
+
+            .desc-wrapper {
+                .thumbnail-desc {
+                    margin: 0 0 0 17px;
+                    width: 215px;
+                    &:before {
+                        background: rgba(255,255,255,0) url(../../img/common/directives/thumbnail/top-small.png) -1px top no-repeat;
+                        width: 236px;
+                    }
+                }
+                .lower-curve {
+                    background: rgba(255,255,255,0) url(../../img/common/directives/thumbnail/bottom-small.png) left -5px no-repeat;
+                    margin-left: 15px;
+                }
             }
         }
     }
