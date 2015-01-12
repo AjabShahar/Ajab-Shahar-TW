@@ -3,6 +3,7 @@ var wordDetailsController = function($scope, $http,$window,$location){
   $scope.formInfo = {};
   $scope.categoryList = [];
   $scope.urlId = $location.search().id;
+  $scope.formInfo.wordIntroductionArray = [];
 
   $http.get('/api/category/word').success(function(categoryList){
           $scope.categoryList = categoryList;
@@ -39,6 +40,16 @@ var wordDetailsController = function($scope, $http,$window,$location){
    $scope.redirectToEnterPage= function(){
      alert('This data is not updated');
       $window.location.href = '/admin/partials/words/details.html';
+   };
+
+   $scope.addToWordIntroduction = function(){
+      var wordIntroduction = {};
+      for(var i=0,j=0;i<$scope.formInfo.wordIntroduction.length;){
+         wordIntroduction.introduction_text = $scope.formInfo.wordIntroduction.split(500);
+         $scope.formInfo.wordIntroductionArray[j] = wordIntroduction;
+         i=i+500;
+         j=j+1;
+      }
    };
 };
 

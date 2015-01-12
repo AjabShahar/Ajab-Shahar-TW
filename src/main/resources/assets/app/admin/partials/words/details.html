@@ -13,6 +13,8 @@
     <script type="text/javascript" src="../../js/controllers/words/detailsController.js"></script>
     <link href="../../css/admin.css" rel="stylesheet" type="text/css">
     <link href="../../../common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link rel='stylesheet' href='https://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css'>
+
 </head>
 <body>
 <a ng-href="/admin/partials/home.html" target="_self"><button type="button" class="btn btn-info adminHome">Admin home</button></a>
@@ -60,7 +62,29 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Word Introduction</label>
+                    </div>
+                    <div class="form-group col-sm-8">
+                        <text-angular name="htmlcontent" ng-model="formInfo.wordIntroduction" ></text-angular>
+                    </div>
+
+                <button type="button" class="btn btn-info" ng-click="addToWordIntroduction()">Add to Word Introduction</button>
+                </div>
+
+                <div>
+                    <div class="form-group col-sm-2">
+                      <ul>
+                        <li ng-repeat="word in formInfo.wordIntroductionArray">
+                            <textarea class="form-control" rows="6" cols="50" ng-model="word" placeholder=" Enter original text ..."></textarea>
+                        </li>
+                      </ul>
+                    </div>
+                </div>
+                <div>
                 <button type="submit" ng-click="saveData()" class="btn btn-primary btn-lg">Save</button>
+                </div>
 
             </form>
         </div>
