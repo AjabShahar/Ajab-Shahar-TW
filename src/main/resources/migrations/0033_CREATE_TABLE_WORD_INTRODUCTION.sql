@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset Jaideep:33
+--changeset Jaideep:19
 
 CREATE TABLE word_introduction
 (
