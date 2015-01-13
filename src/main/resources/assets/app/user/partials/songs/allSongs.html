@@ -39,30 +39,24 @@
     <script type="text/javascript" src="../../js/songs/songPages.js"></script>
     <script type="text/javascript" src="../../js/songs/controllers/allSongsController.js"></script>
     <script type="text/javascript" src="../../js/common/modules/htmlGenerator.js"></script>
-    <link href="../../css/reset.css" rel="stylesheet" type="text/css">
-    <link href="../../css/common.css" rel="stylesheet" type="text/css">
-    <link href="../../css/common/directives/header/header.css" rel="stylesheet" type="text/css">
     <link href="../../css/common/directives/header/header.css" rel="stylesheet" type="text/css">
     <link href="../../css/common/directives/footer/footer.css" rel="stylesheet" type="text/css">
-    <link href="../../css/main.css" rel="stylesheet" type="text/css">
-    <!--<link href="../../css/mainLandingPage/parallax.css" rel="stylesheet" type="text/css">-->
     <link href="../../css/thumbnails.css" rel="stylesheet" type="text/css">
-    <!--<link href="../../css/common/directives/thumbnail.css" rel="stylesheet" type="text/css">-->
     <link href="../../css/common/directives/popup.css" rel="stylesheet" type="text/css">
     <link href="../../css/common/directives/introduction.css" rel="stylesheet" type="text/css">
     <link href="../../css/pages/songs.css" rel="stylesheet" type="text/css">
     <link href="../../css/pages/gridview.css" rel="stylesheet" type="text/css">
 </head>
-<body ng-controller="allSongsController" class="page-songs ng-scope" style="" ng-init="getTotalSongsCount()">
+<body ng-controller="allSongsController" class="all-songs ng-scope" style="" ng-init="getTotalSongsCount()">
 
-    <div class="ajab-container headerfixOuter all-songs">
+    <div class="ajab-container headerfixOuter">
         <ajab-shahar-header></ajab-shahar-header>
         <song-filter songs="songs" song-count="songCount" on-clear-filter="clearFilters()" active-letter="activeLetter" poet-name-in-filter="poetNameInFilter" singer-name-in-filter="singerNameInFilter"></song-filter>
         <div class="ajab-wrapper">
             <div class='left-nav headerfixInner'>
-                <div class='navElementsWrapper'>
-                    <h1 class='categoryLogo'></h1>
-                    <a href="javascript:void(0);" class="filter">Filter +</a>
+                <div class='nav-elements-wrapper'>
+                    <h1 class='category-logo'></h1>
+                    <a href="javascript:void(0);" class="filter-button">Filter +</a>
                 </div>
             </div>
 
@@ -80,7 +74,7 @@
                 </ul>
             </div>
 
-            <div class='gridView' infinite-scroll="loadSongFromRange()">
+            <div class='grid-view' infinite-scroll="loadSongFromRange()">
 
                 <as-title current-alphabet-filter="activeLetter">
 
@@ -99,9 +93,9 @@
 
             </as-title>
 
-            <div class='gridWrapper'>
+            <div class='grid-wrapper'>
                 <div infinite-scroll='loadSongFromRange()' infinite-scroll-distance='1' class="song-grid">
-                    <ul class="flexiThumbnails" ng-repeat="song in (songs | filterSongByTitle:activeLetter | filterSongBySinger:singerNameInFilter | filterSongByPoet:poetNameInFilter | filterByScroll:scrollIndex)">
+                    <ul class="flexi-thumbnails" ng-repeat="song in (songs | filterSongByTitle:activeLetter | filterSongBySinger:singerNameInFilter | filterSongByPoet:poetNameInFilter | filterByScroll:scrollIndex)">
                         <li>
                             <song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}" open="detailsService.open(song.id)" custom-style="{{song.customStyle}}" img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}" english-transliteration="{{song.englishTransliteration}}" english-translation="{{song.englishTranslation}}" category-name="{{song.category}}" duration="{{song.duration}}" singer="{{song.singer}}" class = "songs" poet="{{song.poet}}" singers="{{song.singers}}"></song-thumbnail>
                         </li>

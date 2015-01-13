@@ -36,7 +36,6 @@ body{
     background:#fff;
     margin:0;padding:0;
     font-family:'Merriweather Sans','Merriweather',lucida grande,arial,tahoma,verdana,sans serif;
-    /*font-size: 0.8em;*/
 }
 
 
@@ -60,6 +59,10 @@ body{
     text-align: center;
     display:block;
     margin:0 auto;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 
@@ -108,20 +111,16 @@ body{
 
 }
 
+.show {
+    display: block !important;
+}
+
 
 
 /* global rules ends*/
 
 /***************************************/
-.light-bg {
-    position: absolute;
-    width: inherit;
-    background: #fff;
-    top: 0;
-    z-index: -1;
-    opacity: 0.6;
 
-}
 
 #left_nav {
     width: 15%;

@@ -1,16 +1,13 @@
-/* reset tools */
+@import "../reset";
+@import "../common";
 
-.line{display:inline-block;width:100%;height:1px;clear:both;}
-.newline{clear:both;display:block;}
 
-.left-nav{
-    float: left;
-    width: 10%;
-    text-align: center;
-    margin: 0 auot;
-    color:#666;
-}
 /* Styles for grid View page for all songs */
+
+.ajab-wrapper {
+    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}
+
 
 .all-songs {
     margin: 125px 0 0 0;
@@ -21,33 +18,70 @@
         left: 0;
     }
 
-    .ajab-wrapper {
-        width: 98%;
-        margin: 0 1%;
+    .left-nav{
+        float: left;
+        width: 10%;
+        text-align: center;
+        margin: 0 auto;
+        color:#666;
     }
 
-    .ajab-wrapper:before,
+
+    .song-grid {
+        width: 100%;
+
+        .flexi-thumbnails {
+            width: 250px;
+            display: inline-block;
+
+
+            li {
+                width: 220px;
+                float: left;
+                margin: 0 23px 7% 23px;
+
+                .songs {
+                    margin-top: 0;
+
+                    .thumbnail-media {
+                        width:100%;
+                    }
+
+                    .desc-wrapper {
+                        .thumbnail-desc {
+                            margin: 0 0 0 4px;
+                            box-shadow: none;
+                            width: 189px;
+
+                            &:before {
+                                background: rgba(255,255,255,0) url(../../img/songs/top-all-song.png) left top no-repeat;
+                                top: -16px;
+                                left: -1px;
+                            }
+                        }
+                        .lower-curve {
+                            margin: 0 0 0 3px;
+                            background: rgba(255,255,255,0) url(../../img/songs/bottom-all-song.png) left top no-repeat;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /*UI to-do need to check their relevance */
+    /*.ajab-wrapper:before,
     .ajab-wrapper:after {
         content: "";
         display: table;
     }
     .ajab-wrapper:after {
         clear: both;
-    }
-    .ajab-wrapper {
-        zoom: 1; /* For IE 6/7 (trigger hasLayout) */
-    }
+    }*/
+
 }
 
-.gridView{
-    float: left;
-    width: 90%;
-    color:#666;
-}
 
-.gridWrapper{
-    text-align: left;
-}
 
 .pagination-head {
     display: inline-block;
@@ -161,28 +195,24 @@
 }
 }
 
-.gridView {
-    .gridWrapper {
+.grid-view {
+    float: left;
+    width: 90%;
+    color:#666;
+    .grid-wrapper {
+        text-align: left;
         .songs{
             width:100%;
-            /*height:200px;
-            margin:3.5%;*/
             margin-bottom: 120px;
             float:left;
         }
     }
 }
 
-.navInfoBar {
-    display: inline-block;
-    width: 100%;
-    border-bottom: solid 1px #ccc;
-    text-transform: uppercase;
-}
 
-.navElementsWrapper {
+.nav-elements-wrapper {
     position: relative;
-    .categoryLogo {
+    .category-logo {
         background: transparent url('../../img/songs/songs-logo.png');
         position: absolute;
         top: -20px;
@@ -194,7 +224,7 @@
         }
     }
 
-    .filter {
+    .filter-button {
         padding-top: 85px;
         display: block;
         font-size: 10px;
@@ -215,7 +245,7 @@
     height: 100%;
     background: transparent url('../../img/songs/filter.png') right 0 repeat-y;
     li {
-    margin: 0 2%;
+        margin: 0 2%;
         &.original {
             border-right: solid 1px #666;
             padding-right: 10px;
@@ -260,19 +290,7 @@
     }
 }
 
-.flexiThumbnails {
-    display: inline-block;
 
-    li {
-        width: 220px;
-        float: left;
-        margin: 0 23px 7% 23px;
-    }
-
-    .thumbnail{
-        width:100%;
-    }
-}
 
 .separator {
     font-size: 22px;

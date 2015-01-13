@@ -1,18 +1,30 @@
-/*@import '../reset';
-@import '../common';
+@import "../reset";
+@import "../common";
+
 /* styles for songs details page */
 
-body.page-songs {
+body.songs-details {
 
     background: transparent url(../../../user/img/songs/song_details_bg.jpg) center center no-repeat;
     background-size: cover;
-
-
 
     .main-content {
         margin-top: 60px;
         min-height:  500px;
     }
+
+    #song_container, #poem_container {
+            clear: both;
+            width: 853px;
+            margin: 0 auto;
+            @media screen and (max-width: 1280px) {
+                width: 640px;
+            }
+
+            @media screen and (max-width: 768px) {
+                width: 530px;
+            }
+        }
 
     #song_container {
 
@@ -33,11 +45,9 @@ body.page-songs {
 
             iframe {
                 border: solid 5px #fff;
-                .box-shadow(#777, 10px);
-                /*height: 470px;
-                width: 843px;*/
                 width: inherit;
                 height: inherit;
+                .box-shadow(#777, 10px);
             }
 
         }
@@ -71,7 +81,6 @@ body.page-songs {
             font-family: 'Merriweather';
             font-weight: 300;
             overflow: auto;
-            text-align: left;
         }
 
         .video-options {
@@ -119,7 +128,6 @@ body.page-songs {
         .song-details {
             width: auto;
             margin: 45px 0 40px;
-            /*float: left;*/
 
             dl {
                 margin: 4px auto;
@@ -142,20 +150,6 @@ body.page-songs {
             }
         }
     }
-
-    #song_container, #poem_container {
-        clear: both;
-        width: 853px;
-        margin: 0 auto;
-        @media screen and (max-width: 1280px) {
-            width: 640px;
-        }
-
-        @media screen and (max-width: 768px) {
-            width: 530px;
-        }
-    }
-
 
     #poem_container {
         text-align: center;
@@ -209,7 +203,6 @@ body.page-songs {
                     width: 36px;
                     height: 36px;
                     background: transparent url(../../img/songs/songs_sprite.png) 0  0 no-repeat;
-                    /*margin-left: 0.5%;*/
                 }
 
 
@@ -241,63 +234,11 @@ body.page-songs {
         }
     }
 
-
 }
 
-.nav-list.show {
-    display: block;
-}
+/* Song details page styles end */
 
-.ajab-wrapper {
-    -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-}
 
-.left-menu-open {
-    -webkit-transform: translateX(200px);
-    -ms-transform: translateX(200px);
-    transform: translateX(200px);
-}
-
-.song-grid {
-    width: 100%;
-
-    .flexiThumbnails {
-        width: 250px;
-
-        li {
-            width: 220px;
-            margin-left: 0;
-            marging-bottom: 40px;
-
-            .songs {
-                margin-top: 0;
-
-                .thumbnail-media {
-                    width: 220px;
-                }
-
-                .desc-wrapper {
-                    .thumbnail-desc {
-                        margin: 0 0 0 4px;
-                        box-shadow: none;
-                        width: 189px;
-
-                        &:before {
-                            background: rgba(255,255,255,0) url(../../img/songs/top-all-song.png) left top no-repeat;
-                            top: -16px;
-                            left: -1px;
-                        }
-                    }
-                    .lower-curve {
-                        margin: 0 0 0 3px;
-                        background: rgba(255,255,255,0) url(../../img/songs/bottom-all-song.png) left top no-repeat;
-                    }
-                }
-            }
-        }
-    }
-}
 
 .singer-list-container {
     background: rgba(255, 255, 255, 0.9);
