@@ -1,4 +1,4 @@
-var mainEditorsChoiceController = function($scope,contentService,popupService, $location){
+var mainEditorsChoiceController = function($scope,contentService,popupService, songThumbnailMapper, $location){
     $scope.detailsService = popupService;
     $scope.url = null;
     $scope.init = function(){
@@ -6,6 +6,7 @@ var mainEditorsChoiceController = function($scope,contentService,popupService, $
         contentService.getMainLandingPageThumbnails().then(function(result){
             $scope.thumbnailDetails = result.data;
             $scope.totalNumberOfThumbnails = $scope.thumbnailDetails.songs.length>9 ?9 :$scope.thumbnailDetails.songs.length;
+            $scope.thumbnailDetails.thumbnails = songThumbnailMapper.getSongs($scope.thumbnailDetails.songs,$scope.getSongCustomStyle);
         });
     }
 
@@ -22,22 +23,14 @@ var mainEditorsChoiceController = function($scope,contentService,popupService, $
     }
 
     $scope.getCustomStyle =function(id){
-//        var index = ((4+id) % 6) == 0 ? 6 : ((4+id) % 6);
           var index = id + 1;
-//        console.log(id);
         return "shift"+index;
     }
 
-    $scope.setPageHeight = function(){
-//        var homepageContent = jQuery('.' + 'homepage-content')[0];
-//        var pxLayers = jQuery('.' + 'pxLayers');
-//
-//        _.each(pxLayers, function(pxLayer){
-//            pxLayer.style.height = (homepageContent.offsetHeight+400)+"px";
-//        });
-//        homepageContent.style.height = (homepageContent.offsetHeight+300)+"px";
+    $scope.open = function(id){
+        $scope.detailsService.open(id);
     }
     $scope.init();
 }
 
-editorsChoiceApp.controller('mainEditorsChoiceController',['$scope','contentService','popupService', '$location',mainEditorsChoiceController]);
+editorsChoiceApp.controller('mainEditorsChoiceController',['$scope','contentService','popupService','songThumbnailMapper', '$location',mainEditorsChoiceController]);
