@@ -7,7 +7,7 @@ thumbnailModule.directive("wordThumbnail", function() {
         scope: {
             name:'@',
             imgSrc:'@',
-            contextualMeaning:'@',
+            introductionSummary:'@',
             customStyle:'@',
             overlayId:'@',
             id:'@',
