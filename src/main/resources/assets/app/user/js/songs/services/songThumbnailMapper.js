@@ -27,3 +27,5 @@ var songThumbnailMapper = function ($http) {
         getSongs: getSongs
     };
 };
+
+thumbnailModule.factory('songThumbnailMapper', [songThumbnailMapper]);

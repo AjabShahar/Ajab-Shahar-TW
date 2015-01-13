@@ -18,6 +18,9 @@ module.exports = function (config) {
       'user/js/common/**/*.js',
       'admin/js/Introduction/**/*.js',
       'user/js/EditorsChoice/**/*.js',
+      'user/js/songs/services/songsContentService.js',
+      'user/js/songs/songDetailsApp.js',
+      'user/js/songs/**/*.js',
       '../../../../test/js/unit/**/*.js'
     ],
     autoWatch: true,
