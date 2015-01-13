@@ -37,10 +37,10 @@ var wordDetailsController = function($scope, $http,$window,$location){
    };
 
    $scope.addToWordIntroduction = function(){
-      var wordIntroduction = {};
-      var wordIntroductions = $scope.formInfo.wordIntroduction.replace(/(<([^>]+)>)/ig,"\n").split(/\n{2,}/g);
+      var wordIntroductions = $scope.formInfo.wordIntroduction.split(/\n{2,}/g);
       for(var i=0;i<wordIntroductions.length;){
-         wordIntroduction.introduction_text = "<p>"+wordIntroductions[i].replace("\n","")+"</p>";
+         var wordIntroduction = {};
+         wordIntroduction.introduction_text = wordIntroductions[i];
          $scope.formInfo.wordIntroductions[i] = wordIntroduction;
          i=i+1;
       }
