@@ -10,8 +10,8 @@ var filterSongByTitle = filterModule.filter('filterSongByTitle', function($windo
 
         var filtered = _.reduce(songs, function(filteredList,song){
             var title = (filterCriteria.contentTextRepresentation === 'Transliteration')?
-                song.englishTransliterationTitle :
-                song.englishTranslationTitle;
+                song.englishTransliteration :
+                song.englishTranslation;
             if(strStartsWith(title.toUpperCase(),filterCriteria.alphabet.toUpperCase()))
                 filteredList.push(song);
 

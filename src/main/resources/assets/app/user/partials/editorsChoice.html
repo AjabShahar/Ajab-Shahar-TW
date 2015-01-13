@@ -99,8 +99,11 @@
                     </div>
                 </div>
             </div>
-            <div ng-repeat="song in thumbnailDetails.songs">
-                <song-introduction-mapper total-count="{{totalNumberOfThumbnails}}" index="{{$index}}" details="song" show-details-service="detailsService"/>
+            <div ng-repeat="song in thumbnailDetails.thumbnails">
+                <popup-mapper total-count="{{totalNumberOfThumbnails}}" id="{{song.id}}" index="{{$index}}" show-details-service="detailsService">
+                    <song-introduction id="{{song.id}}" singer="{{song.singer}}" poet="{{song.poet}}" english-translation="{{song.englishTranslation}}" audio-Url="{{song.audioId}}" video-Url="{{song.videoId}}" close-video="detailsService.isClosed"
+                                       english-transliteration="{{song.englishTransliteration}}" noun="{{song.noun}}"></song-introduction>
+                </popup-mapper>
             </div>
         </div>
 
