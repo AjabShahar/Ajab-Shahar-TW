@@ -2,6 +2,7 @@ var songDetailsApp = angular.module('songDetailsApp',['thumbnailModule','mediaPl
 
 songDetailsApp.config(resourceUrlWhiteList);
 songDetailsApp.factory('songsContentService', ['$http', songsContentService]);
+songDetailsApp.factory('songThumbnailMapper', [songThumbnailMapper]);
 
 songDetailsApp.directive('bindDynamicHtml', ['$compile', bindDynamicHtml]);
 

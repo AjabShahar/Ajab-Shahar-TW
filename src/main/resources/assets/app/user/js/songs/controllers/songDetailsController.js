@@ -1,4 +1,4 @@
-var songDetailsController = function($scope,$location,songsContentService){
+var songDetailsController = function($scope,$location,songsContentService,songThumbnailMapper){
     $scope.detailsService = $scope;
     $scope.showContentDetails = {};
     $scope.prevId = null;
@@ -26,7 +26,7 @@ var songDetailsController = function($scope,$location,songsContentService){
         $scope.open($scope.songId);
 
         songsContentService.getSongsVersions($scope.songId).then(function(result){
-            $scope.versions = $scope.getSongsVersions(result.data.songs, $scope.songId);
+            $scope.versions = songThumbnailMapper.getSongs($scope.getSongsVersions(result.data.songs, $scope.getCustomStyle));
             $scope.numberOfVersions = result.data.songs.length;
             $scope.umbrellaTitleEnglishTransliteration = result.data.songs[0].umbrellaTitleEnglishTransliteration;
             $scope.umbrellaTitleEnglishTranslation = result.data.songs[0].umbrellaTitleEnglishTranslation;
@@ -115,8 +115,8 @@ var songDetailsController = function($scope,$location,songsContentService){
         $scope.originalVisible = true;
     }
 
-     $scope.getCustomStyle =  function(songId){
-        if(songId == $scope.songId)
+     $scope.getCustomStyle =  function(song){
+        if(song.id == $scope.songId)
            return 'active';
         return '';
      }
@@ -124,4 +124,4 @@ var songDetailsController = function($scope,$location,songsContentService){
 };
 
 songDetailsApp
-.controller('songDetailsController',['$scope','$location','songsContentService',songDetailsController]);
+.controller('songDetailsController',['$scope','$location','songsContentService','songThumbnailMapper',songDetailsController]);
