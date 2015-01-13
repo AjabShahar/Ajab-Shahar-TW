@@ -1,4 +1,4 @@
-var mainEditorsChoiceController = function($scope,contentService,popupService, songThumbnailMapper, $location){
+var mainEditorsChoiceController = function($scope,contentService,popupService, songMapper, $location){
     $scope.detailsService = popupService;
     $scope.url = null;
     $scope.init = function(){
@@ -6,7 +6,7 @@ var mainEditorsChoiceController = function($scope,contentService,popupService, s
         contentService.getMainLandingPageThumbnails().then(function(result){
             $scope.thumbnailDetails = result.data;
             $scope.totalNumberOfThumbnails = $scope.thumbnailDetails.songs.length>9 ?9 :$scope.thumbnailDetails.songs.length;
-            $scope.thumbnailDetails.thumbnails = songThumbnailMapper.getSongs($scope.thumbnailDetails.songs,$scope.getSongCustomStyle);
+            $scope.thumbnailDetails.thumbnails = songMapper.getSongs($scope.thumbnailDetails.songs,$scope.getSongCustomStyle);
         });
     }
 
@@ -33,4 +33,4 @@ var mainEditorsChoiceController = function($scope,contentService,popupService, s
     $scope.init();
 }
 
-editorsChoiceApp.controller('mainEditorsChoiceController',['$scope','contentService','popupService','songThumbnailMapper', '$location',mainEditorsChoiceController]);
+editorsChoiceApp.controller('mainEditorsChoiceController',['$scope','contentService','popupService','songMapper', '$location',mainEditorsChoiceController]);

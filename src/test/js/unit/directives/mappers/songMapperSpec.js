@@ -2,17 +2,17 @@
 //
 //describe('Mapper', function() {
 //    describe('song mapper', function() {
-//        var songThumbnailMapper;
+//        var songMapper;
 //        beforeEach(function(){
 //            module('thumbnailModule');
 //        });
 //
-//        beforeEach(inject(function(songThumbnailMapper) {
-//            songThumbnailMapper = songThumbnailMapper;
+//        beforeEach(inject(function(songMapper) {
+//            songMapper = songMapper;
 //        }));
 //
 //        it('Should map song with details from service', function() {
-//            var songs = songThumbnailMapper.getSongs([{
+//            var songs = songMapper.getSongs([{
 //                                                                          "id":0,
 //                                                                          "englishTransliterationTitle": "Kichhu din mone mone",
 //                                                                          "category":"Song & Reflection",

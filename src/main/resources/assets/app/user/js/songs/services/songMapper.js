@@ -1,11 +1,15 @@
-var songThumbnailMapper = function ($http) {
+var songMapper = function ($http) {
     var getSingers = function(singers){
        var value = "" + singers[0].name;
          for(var index=1;index< singers.length;index++){
-             value += ', '+singers[index].name;
+            if(index==singers.length-1)
+                value += '& '+singers[index].name;
+            else
+                value += ', '+singers[index].name;
          }
        return value;
     };
+
     getSongs = function(songs,customStyle) {
         return _.reduce(songs,function(thumbnails, song,index) {
             thumbnails.push({"id":song.id,
@@ -23,9 +27,24 @@ var songThumbnailMapper = function ($http) {
         },[]);
     };
 
+    getSongDetails = function(songs){
+        return _.reduce(songs,function(details, song,index) {
+            details.push({"id":song.id,
+            "contentId":"song_"+song.id,
+            "videoId":song.youtubeVideoId,
+            "audioUrl":song.soundCloudTrackID,
+            "singer":getSingers(song.singers),
+            "poet":song.poet[0].name,
+            "downloadURL":song.downloadUrl,
+            "about": '\'' + song.about + '\''});
+            return details;
+        },[]);
+    }
+
     return {
-        getSongs: getSongs
+        getSongs: getSongs,
+        getSongDetails: getSongDetails
     };
 };
 
-thumbnailModule.factory('songThumbnailMapper', [songThumbnailMapper]);
+thumbnailModule.factory('songMapper', [songMapper]);
