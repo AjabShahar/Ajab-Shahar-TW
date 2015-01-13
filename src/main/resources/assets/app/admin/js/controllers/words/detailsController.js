@@ -43,12 +43,11 @@ var wordDetailsController = function($scope, $http,$window,$location){
 
    $scope.addToWordIntroduction = function(){
       var wordIntroduction = {};
-      for(var i=0,j=0;i<$scope.formInfo.wordIntroduction.length;){
-         var str = $scope.formInfo.wordIntroduction.substring(i,500);
-         wordIntroduction.introduction_text = str;
-         $scope.formInfo.wordIntroductions[j] = wordIntroduction;
-         i=i+500;
-         j=j+1;
+      var wordIntroductions = $scope.formInfo.wordIntroduction.replace(/(<([^>]+)>)/ig,"\n").split(/\n{2,}/g);
+      for(var i=0;i<wordIntroductions.length;){
+         wordIntroduction.introduction_text = "<p>"+wordIntroductions[i].replace("\n","")+"</p>";
+         $scope.formInfo.wordIntroductions[i] = wordIntroduction;
+         i=i+1;
       }
    };
 };
