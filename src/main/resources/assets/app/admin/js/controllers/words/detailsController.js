@@ -27,14 +27,9 @@ var wordDetailsController = function($scope, $http,$window,$location){
   };
 
   $scope.updateWord = function(){
-       $http.put('/api/words/edit',
-              {
-                id:$scope.urlId,
-                data:$scope.formInfo
-              }
-       ).success(function(data){
-       });
-       $scope.redirectToEnterPage();
+     $http.post($scope.formInfo).success(function(data){
+         $window.location.href = '/admin/partials/home.html';
+     });
   };
 
    $scope.redirectToEnterPage= function(){

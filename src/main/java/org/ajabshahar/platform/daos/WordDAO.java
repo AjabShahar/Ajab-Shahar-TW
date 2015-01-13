@@ -3,7 +3,10 @@ package org.ajabshahar.platform.daos;
 import io.dropwizard.hibernate.AbstractDAO;
 import org.ajabshahar.platform.models.Word;
 import org.ajabshahar.platform.models.WordIntroduction;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
@@ -25,32 +28,22 @@ public class WordDAO extends AbstractDAO<Word> {
         return word;
     }
 
-    public List<Word> findAll() {
-        return list(namedQuery("org.ajabshahar.platform.models.Word.findAll"));
-    }
-
-    public List<Word> findAllOnLandingPage() {
-        return list(namedQuery("org.ajabshahar.platform.models.Word.findAllOnLandingPage"));
-    }
-
-    public Word findById(Long id) {
-        return (Word) sessionFactory.openSession().get(Word.class, id);
-    }
-
-    public void updateWord(Long id, Word updatableWord) {
-        Word originalWord = (Word) sessionFactory.openSession().get(Word.class, id);
-        originalWord = invokeSetters(originalWord, updatableWord);
-        try {
-            sessionFactory.openStatelessSession().update(originalWord);
-        } catch (Exception e) {
-            e.printStackTrace();
+    public List<Word> findBy(Boolean showOnLandingPage, int wordId) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Criteria allWords = currentSession.createCriteria(Word.class);
+        if (showOnLandingPage) {
+            allWords.add(Restrictions.eq("showOnLandingPage", true));
         }
+        if (wordId != 0) {
+            allWords.add(Restrictions.eq("id", Long.valueOf(wordId)));
+        }
+        return allWords.list();
     }
 
-    private Word invokeSetters(Word originalWord, Word updatableWord) {
-        originalWord.setWordOrPhrase(updatableWord.getWordOrPhrase());
-        originalWord.setMeaning(updatableWord.getMeaning());
-        originalWord.setShowOnLandingPage(updatableWord.getShowOnLandingPage());
-        return originalWord;
+    public Word update(Word updatableWord) {
+        sessionFactory.getCurrentSession().update(updatableWord);
+        return updatableWord;
     }
+
+
 }

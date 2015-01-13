@@ -2,7 +2,6 @@ package org.ajabshahar.platform.resources;
 
 import org.ajabshahar.api.WordRepresentationFactory;
 import org.ajabshahar.core.Words;
-import org.ajabshahar.platform.daos.WordDAO;
 import org.ajabshahar.platform.models.Word;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,8 +18,6 @@ import static org.mockito.Mockito.when;
 public class WordResourceTest {
     public static final long WORD_ID = 1L;
     @Mock
-    private WordDAO wordDAO;
-    @Mock
     private Words words;
     @Mock
     private WordRepresentationFactory wordRepresentationFactory;
@@ -30,7 +27,7 @@ public class WordResourceTest {
 
     @Before
     public void setUp() {
-        wordResource = new WordResource(wordDAO, words, wordRepresentationFactory);
+        wordResource = new WordResource(words, wordRepresentationFactory);
         word = new Word();
 
         word.setId(WORD_ID);

@@ -16,7 +16,29 @@ public class Words {
         return wordRepository.create(word);
     }
 
-    public List<Word> findAll() {
-        return wordRepository.findAll();
+    public List<Word> findBy(Boolean showOnLandingPage) {
+        return findBy(showOnLandingPage, 0);
+    }
+
+    public Word findBy(int id) {
+        return findBy(false, id).get(0);
+    }
+
+    private List<Word> findBy(boolean showOnLandingPage, int wordId) {
+        return wordRepository.findBy(showOnLandingPage, wordId);
+    }
+
+    public Word update(Word word) {
+        Word originalWord = findBy(false, (int) word.getId()).get(0);
+        originalWord = invokeSetters(originalWord, word);
+        return wordRepository.update(originalWord);
+    }
+
+    private Word invokeSetters(Word originalWord, Word updatableWord) {
+        originalWord.setWordOrPhrase(updatableWord.getWordOrPhrase());
+        originalWord.setMeaning(updatableWord.getMeaning());
+        originalWord.setShowOnLandingPage(updatableWord.getShowOnLandingPage());
+        originalWord.setWordIntroductions(updatableWord.getWordIntroductions());
+        return originalWord;
     }
 }
