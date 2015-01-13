@@ -7,6 +7,7 @@
 /* Variables */
 
 @activeLink: #7bd0ca;
+@greenLink: #00a99d;
 
 /* Mixins */
 
@@ -33,7 +34,13 @@ body{
 
 
 /* color */
-.selected { color:#e83785 !important; }
+.selected {
+    color:#e83785 !important;
+}
+
+.active-link {
+    color: @greenLink !important;
+}
 
 .show {
     display: block !important;
