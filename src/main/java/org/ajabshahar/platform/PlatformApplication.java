@@ -8,14 +8,8 @@ import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.migrations.MigrationsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-import org.ajabshahar.api.CoupletsRepresentationFactory;
-import org.ajabshahar.api.SongTextRepresentationFactory;
-import org.ajabshahar.api.PersonRepresentationFactory;
-import org.ajabshahar.api.SongsRepresentationFactory;
-import org.ajabshahar.core.Couplets;
-import org.ajabshahar.core.Lyrics;
-import org.ajabshahar.core.People;
-import org.ajabshahar.core.Songs;
+import org.ajabshahar.api.*;
+import org.ajabshahar.core.*;
 import org.ajabshahar.platform.daos.*;
 import org.ajabshahar.platform.models.*;
 import org.ajabshahar.platform.resources.*;
@@ -31,7 +25,8 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
     };
 
     private final HibernateBundle<PlatformConfiguration> hibernate = new HibernateBundle<PlatformConfiguration>(SplashScreenOptions.class, Word.class,
-            Couplet.class, Song.class, PersonDetails.class, Category.class, Title.class, SongText.class, SongTextContent.class,OpeningCouplet.class) {
+            Couplet.class, Song.class, PersonDetails.class, Category.class, Title.class, SongText.class, SongTextContent.class, OpeningCouplet.class,
+            WordIntroduction.class) {
         @Override
         public DataSourceFactory getDataSourceFactory(PlatformConfiguration configuration) {
             return configuration.getDataSourceFactory();
@@ -83,10 +78,12 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         picoContainer.addComponent(Lyrics.class);
         picoContainer.addComponent(Couplets.class);
         picoContainer.addComponent(People.class);
+        picoContainer.addComponent(Words.class);
         picoContainer.addComponent(SongsRepresentationFactory.class);
         picoContainer.addComponent(PersonRepresentationFactory.class);
         picoContainer.addComponent(CoupletsRepresentationFactory.class);
         picoContainer.addComponent(SongTextRepresentationFactory.class);
+        picoContainer.addComponent(WordRepresentationFactory.class);
 
         picoContainer.addComponent(SplashScreenOptionsResource.class);
         picoContainer.addComponent(WordResource.class);

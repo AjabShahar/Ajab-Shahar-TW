@@ -30,8 +30,8 @@ public class Word {
     @Column(name = "SHOW_ON_LANDING_PAGE", nullable = false)
     private boolean showOnLandingPage;
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "word")
-//    private Set<WordIntroduction> wordIntroductions;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "word")
+    private Set<WordIntroduction> wordIntroductions;
 
     public long getId() {
         return id;
@@ -61,11 +61,15 @@ public class Word {
         this.wordOrPhrase = wordOrPhrase;
     }
 
-//    public Set<WordIntroduction> getWordIntroductions() {
-//        return wordIntroductions;
-//    }
+    public Set<WordIntroduction> getWordIntroductions() {
+        return wordIntroductions;
+    }
 
-//    public void setWordIntroductions(Set<WordIntroduction> wordIntroductions) {
-//        this.wordIntroductions = wordIntroductions;
-//    }
+    public void setWordIntroductions(Set<WordIntroduction> wordIntroductions) {
+        this.wordIntroductions = wordIntroductions;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 }
