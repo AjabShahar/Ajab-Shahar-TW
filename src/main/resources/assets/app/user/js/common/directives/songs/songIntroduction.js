@@ -14,7 +14,7 @@ thumbnailModule.directive("songIntroduction", function() {
             closeVideo:'&',
             noun: '@'
         },
-        templateUrl:'/user/js/common/templates/songs/introduction.html',
+        templateUrl:'/user/js/common/templates/songs/songIntroduction.html',
         controller: function($scope) {
             $scope.$watch(function() { return $scope.closeVideo(); }, function(newValue, oldValue) {
                 $scope.shouldStopVideo = !newValue;

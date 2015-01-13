@@ -5,17 +5,14 @@ thumbnailModule.directive("wordIntroduction", function() {
         restrict: 'E',
         scope: {
             id:'@',
-            originalText:'@',
-            englishTranslationText:'@',
-            englishTransliterationText:'@',
-            poet:'@',
-            closeVideo:'&'
+            wordOrPhrase:'@',
+            originalIntro:'@',
+            translationIntro:'@',
+            transliterationIntro:'@',
+            showWordIntro:'@'
         },
-        templateUrl:'/user/js/common/templates/words/introduction.html',
+        templateUrl:'/user/js/common/templates/words/wordIntroduction.html',
         controller: function($scope) {
-            $scope.$watch(function() { return $scope.closeVideo(); }, function(newValue, oldValue) {
-                $scope.shouldStopVideo = !newValue;
-            });
         }
     }
 });
