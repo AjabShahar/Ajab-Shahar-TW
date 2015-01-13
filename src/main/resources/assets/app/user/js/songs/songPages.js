@@ -3,7 +3,7 @@
 
  	$(document).ready(function() {
  		$(".filter-button").on("click", function() {
- 			$(".nav-list").toggleClass("show");
+ 			$(".slide-nav-list").toggleClass("show");
 
  			return false;
  		});
