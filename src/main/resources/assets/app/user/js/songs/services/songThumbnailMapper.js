@@ -11,7 +11,7 @@ var songThumbnailMapper = function ($http) {
             thumbnails.push({"id":song.id,
             "contentId":'song_'+song.id,
             "englishTranslation":song.englishTranslationTitle,
-            "customStyle":customStyle(song),
+            "customStyle": (customStyle)? customStyle(song):'',
             "englishTransliteration":song.englishTransliterationTitle,
             "category":song.category,
             "duration":song.duration,

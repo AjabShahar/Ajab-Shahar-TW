@@ -33,6 +33,7 @@
     <script type="text/javascript" src="../../js/common/directives/header/ajabShaharHeader.js"></script>
     <script type="text/javascript" src="../../js/common/directives/header/sticky.js"></script>
     <script type="text/javascript" src="../../js/EditorsChoice/services/contentService.js"></script>
+    <script type="text/javascript" src="../../js/songs/services/songThumbnailMapper.js"></script>
     <script type="text/javascript" src="../../js/songs/services/songsContentService.js"></script>
     <script type="text/javascript" src="../../js/songs/app.js"></script>
     <script type="text/javascript" src="../../js/songs/songPages.js"></script>
@@ -102,7 +103,7 @@
                 <div infinite-scroll='loadSongFromRange()' infinite-scroll-distance='1' class="song-grid">
                     <ul class="flexiThumbnails" ng-repeat="song in (songs | filterSongByTitle:activeLetter | filterSongBySinger:singerNameInFilter | filterSongByPoet:poetNameInFilter | filterByScroll:scrollIndex)">
                         <li>
-                            <song-thumbnail-mapper details="song" show-details-service="detailsService" custom-style=""/>
+                            <song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}" open="detailsService.open(song.id)" custom-style="{{song.customStyle}}" img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}" english-transliteration="{{song.englishTransliteration}}" english-translation="{{song.englishTranslation}}" category-name="{{song.category}}" duration="{{song.duration}}" singer="{{song.singer}}" class = "songs" poet="{{song.poet}}" singers="{{song.singers}}"></song-thumbnail>
                         </li>
                     </ul>
                 </div>

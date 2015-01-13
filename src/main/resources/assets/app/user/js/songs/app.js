@@ -2,3 +2,4 @@ var allSongsApp = angular.module('allSongsApp',['thumbnailModule','mediaPlayer',
 
 allSongsApp.config(resourceUrlWhiteList);
 allSongsApp.factory('songsContentService', ['$http', songsContentService]);
+allSongsApp.factory('songThumbnailMapper', [songThumbnailMapper]);

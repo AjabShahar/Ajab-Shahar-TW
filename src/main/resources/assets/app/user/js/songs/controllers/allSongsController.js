@@ -1,4 +1,4 @@
-var allSongsController = function($scope,$window,songsContentService){
+var allSongsController = function($scope,$window,songsContentService,songThumbnailMapper){
     $scope.songs=[];
     $scope.allSongs = null;
     $scope.totalFilteredSongs = 0;
@@ -16,7 +16,7 @@ var allSongsController = function($scope,$window,songsContentService){
 
     $scope.getAllSongs = function(){
         songsContentService.getAllSongs().then(function(songsList){
-            $scope.songs = songsList.data.songs;
+            $scope.songs = songThumbnailMapper.getSongs(songsList.data.songs);
             $scope.songCount = songsList.data.songs.length;
         });
     }
@@ -37,4 +37,4 @@ var allSongsController = function($scope,$window,songsContentService){
     $scope.getAllSongs();
 };
 
-allSongsApp.controller('allSongsController',['$scope','$window','songsContentService',allSongsController]);
+allSongsApp.controller('allSongsController',['$scope','$window','songsContentService','songThumbnailMapper',allSongsController]);
