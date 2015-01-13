@@ -100,11 +100,11 @@
                     </div>
                 </div>
             </div>
-            <div ng-repeat="song in thumbnailDetails.thumbnails">
-                <popup-mapper total-count="{{totalNumberOfThumbnails}}" id="{{song.id}}" index="{{$index}}" show-details-service="detailsService">
-                    <song-introduction id="{{song.id}}" singer="{{song.singer}}" poet="{{song.poet}}" english-translation="{{song.englishTranslation}}" audio-Url="{{song.audioId}}" video-Url="{{song.videoId}}" close-video="detailsService.isClosed"
+            <div ng-repeat="song in thumbnailDetails.introductions">
+                <pop-up popup-count="{{totalNumberOfThumbnails}}" ng-init="detailsService.init(song.id)" id="{{song.id}}" width="100" details-service="detailsService" show="detailsService.shouldShow(song.id)" index="{{$index}}" close-button="true">
+                    <song-introduction id="{{song.id}}" singer="{{song.singer}}" poet="{{song.poet}}" english-translation="{{song.englishTranslation}}" audio-Url="{{song.audioId}}" video-Url="{{song.videoId}}" close-video="detailsService.isClosed(song.id)"
                                        english-transliteration="{{song.englishTransliteration}}" noun="{{song.noun}}"></song-introduction>
-                </popup-mapper>
+                </pop-up>
             </div>
         </div>
 

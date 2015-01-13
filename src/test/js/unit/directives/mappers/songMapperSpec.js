@@ -12,7 +12,7 @@
 //        }));
 //
 //        it('Should map song with details from service', function() {
-//            var songs = songMapper.getSongs([{
+//            var songs = songMapper.getThumbnails([{
 //                                                                          "id":0,
 //                                                                          "englishTransliterationTitle": "Kichhu din mone mone",
 //                                                                          "category":"Song & Reflection",

@@ -16,7 +16,7 @@ var allSongsController = function($scope,$window,songsContentService,songMapper)
 
     $scope.getAllSongs = function(){
         songsContentService.getAllSongs().then(function(songsList){
-            $scope.songs = songMapper.getSongs(songsList.data.songs);
+            $scope.songs = songMapper.getThumbnails(songsList.data.songs);
             $scope.songCount = songsList.data.songs.length;
         });
     }

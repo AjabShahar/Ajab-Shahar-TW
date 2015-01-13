@@ -5,12 +5,11 @@ var popUp = function() {
             replace: true,
             scope: {
                 show: '&', //true/false - displays popup
-                onClose: '&', //close click handler ~ callback to controller
-                closeButton: '@', //true-false ~ displays/hides close option
                 width: '@', //width of the popup
                 popupCount: '@',
                 id: '@',//an id for the background overlay for manipulation via jquery
                 index: '@',
+                detailsService:'=',
             },
             templateUrl: '/user/js/common/templates/popupSupport/popup.html',
             controller: function($scope,$rootScope) {
@@ -28,7 +27,11 @@ var popUp = function() {
                 }
 
                 $scope.onSelect = function(index){
-                    $rootScope.$broadcast('popupSelectionChanged',index);
+                    $scope.detailsService.select(parseInt($scope.index),index);
+                }
+
+                $scope.onClose = function(index){
+                    $scope.detailsService.onClose($scope.id);
                 }
 
                 $scope.isActive = function(index){

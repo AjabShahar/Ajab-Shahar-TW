@@ -6,7 +6,8 @@ var mainEditorsChoiceController = function($scope,contentService,popupService, s
         contentService.getMainLandingPageThumbnails().then(function(result){
             $scope.thumbnailDetails = result.data;
             $scope.totalNumberOfThumbnails = $scope.thumbnailDetails.songs.length>9 ?9 :$scope.thumbnailDetails.songs.length;
-            $scope.thumbnailDetails.thumbnails = songMapper.getSongs($scope.thumbnailDetails.songs,$scope.getSongCustomStyle);
+            $scope.thumbnailDetails.thumbnails = songMapper.getThumbnails($scope.thumbnailDetails.songs,$scope.getSongCustomStyle);
+            $scope.thumbnailDetails.introductions = songMapper.getIntroductions($scope.thumbnailDetails.songs);
         });
     }
 

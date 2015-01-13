@@ -6,7 +6,7 @@ var songsEditorsChoiceController = function($scope,contentService,songMapper, $l
     $scope.init = function(){
         $scope.url = $location.absUrl();
         contentService.getSongsLandingPageThumbnails().then(function(result){
-            $scope.songs = songMapper.getSongs(result.data.songs,$scope.getSongCustomStyle);
+            $scope.songs = songMapper.getThumbnails(result.data.songs,$scope.getSongCustomStyle);
         });
     }
 

@@ -10,7 +10,7 @@ var songMapper = function ($http) {
        return value;
     };
 
-    getSongs = function(songs,customStyle) {
+    getThumbnails = function(songs,customStyle) {
         return _.reduce(songs,function(thumbnails, song,index) {
             thumbnails.push({"id":song.id,
             "contentId":'song_'+song.id,
@@ -24,6 +24,21 @@ var songMapper = function ($http) {
             "poet":(song.poet==null || song.poet.length==0)?'Unknown': song.poet[0].name,
             "thumbnailUrl":song.thumbnailUrl});
             return thumbnails;
+        },[]);
+    };
+
+    getIntroductions = function(songs,customStyle) {
+        return _.reduce(songs,function(allIntroductions, song,index) {
+            allIntroductions.push({"id":song.id,
+                "contentId":"song_"+song.id,
+                "videoId":song.youTubeVideoId,
+                "englishTranslation":song.englishTranslationTitle,
+                "englishTransliteration":song.englishTransliterationTitle,
+                "singer":getSingers(song.singers),
+                "audioId":song.soundCloudTrackID,
+                "poet":(song.poet==null || song.poet.length==0)?'Unknown': song.poet[0].name,
+                "noun": song.singers.length>1? 'sing':'sings'});
+            return allIntroductions;
         },[]);
     };
 
@@ -42,8 +57,9 @@ var songMapper = function ($http) {
     }
 
     return {
-        getSongs: getSongs,
-        getSongDetails: getSongDetails
+        getThumbnails: getThumbnails,
+        getSongDetails: getSongDetails,
+        getIntroductions:getIntroductions
     };
 };
 

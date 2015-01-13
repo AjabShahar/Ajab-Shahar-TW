@@ -26,7 +26,7 @@ var songDetailsController = function($scope,$location,songsContentService,songMa
         $scope.open($scope.songId);
 
         songsContentService.getSongsVersions($scope.songId).then(function(result){
-            $scope.versions = songMapper.getSongs($scope.getSongsVersions(result.data.songs, $scope.getCustomStyle));
+            $scope.versions = songMapper.getThumbnails($scope.getSongsVersions(result.data.songs, $scope.getCustomStyle));
             $scope.numberOfVersions = result.data.songs.length;
             $scope.umbrellaTitleEnglishTransliteration = result.data.songs[0].umbrellaTitleEnglishTransliteration;
             $scope.umbrellaTitleEnglishTranslation = result.data.songs[0].umbrellaTitleEnglishTranslation;
