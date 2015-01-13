@@ -4,12 +4,14 @@
     padding: 0;
     text-align: left;
     position: fixed;
-    display: none;
-    left: 0;
+    left: -190px;
     top: 0;
     width: 200px;
-    /*height: 100%;*/
     background: transparent url('../../img/songs/filter.png') right 0 repeat-y;
+    -webkit-transition: 1s ease;
+    -moz-transition: 2s ease -1s;
+    -o-transition: 2s ease -1s;
+    transition: 1s ease;
     li {
         margin: 0 2%;
         &.original {
@@ -52,5 +54,10 @@
                 color: #00a199;
             }
         }
+    }
+
+    &.show {
+        transition: 1s ease;
+        left: 0;
     }
 }
