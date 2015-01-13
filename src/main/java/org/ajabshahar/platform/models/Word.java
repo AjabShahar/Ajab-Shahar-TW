@@ -1,5 +1,7 @@
 package org.ajabshahar.platform.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -20,7 +22,8 @@ public class Word {
     @Column(name = "SHOW_ON_LANDING_PAGE", nullable = false)
     private boolean showOnLandingPage;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "word")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "word")
+    @JsonManagedReference
     private Set<WordIntroduction> wordIntroductions;
 
     public long getId() {

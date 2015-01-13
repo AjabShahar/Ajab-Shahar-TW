@@ -29,7 +29,7 @@ public class WordDAO extends AbstractDAO<Word> {
     }
 
     public List<Word> findBy(Boolean showOnLandingPage, int wordId) {
-        Session currentSession = sessionFactory.getCurrentSession();
+        Session currentSession = sessionFactory.openSession();
         Criteria allWords = currentSession.createCriteria(Word.class);
         if (showOnLandingPage) {
             allWords.add(Restrictions.eq("showOnLandingPage", true));
@@ -37,6 +37,7 @@ public class WordDAO extends AbstractDAO<Word> {
         if (wordId != 0) {
             allWords.add(Restrictions.eq("id", Long.valueOf(wordId)));
         }
+        allWords.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return allWords.list();
     }
 

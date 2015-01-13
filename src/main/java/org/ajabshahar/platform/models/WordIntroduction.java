@@ -1,5 +1,7 @@
 package org.ajabshahar.platform.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,8 +15,9 @@ public class WordIntroduction {
     @Column(name = "INTRODUCTION_TEXT", nullable = false)
     private String introduction_text;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "word_id", nullable = false)
+    @JsonBackReference
     private Word word;
 
     public long getId() {
