@@ -35,16 +35,6 @@ var wordDetailsController = function($scope, $http,$window,$location){
    $scope.redirectToEnterPage= function(){
       $window.location.href = '/admin/partials/home.html';
    };
-
-   $scope.addToWordIntroduction = function(){
-      var wordIntroductions = $scope.formInfo.wordIntroduction.split(/\n{2,}/g);
-      for(var i=0;i<wordIntroductions.length;){
-         var wordIntroduction = {};
-         wordIntroduction.introduction_text = wordIntroductions[i];
-         $scope.formInfo.wordIntroductions[i] = wordIntroduction;
-         i=i+1;
-      }
-   };
 };
 
-adminApp.controller('wordDetailsController',['$scope','$http','$window','$location',wordDetailsController]);
+wordsAdminApp.controller('wordDetailsController',['$scope','$http','$window','$location',wordDetailsController]);

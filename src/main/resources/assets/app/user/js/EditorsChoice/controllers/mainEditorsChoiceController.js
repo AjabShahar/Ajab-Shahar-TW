@@ -1,11 +1,12 @@
 var mainEditorsChoiceController = function($scope,contentService,popupService, songMapper, $location){
     $scope.detailsService = popupService;
     $scope.url = null;
+    $scope.thumbnailDetails={};
     $scope.init = function(){
         $scope.url = $location.absUrl();
         contentService.getMainLandingPageThumbnails().then(function(result){
             $scope.thumbnailDetails = result.data;
-            $scope.totalNumberOfThumbnails = $scope.thumbnailDetails.songs.length>9 ?9 :$scope.thumbnailDetails.songs.length;
+            $scope.totalNumberOfThumbnails = result.data.length>9 ?9 :result.data.length;
             $scope.thumbnailDetails.thumbnails = songMapper.getThumbnails($scope.thumbnailDetails.songs,$scope.getSongCustomStyle);
             $scope.thumbnailDetails.introductions = songMapper.getIntroductions($scope.thumbnailDetails.songs);
         });

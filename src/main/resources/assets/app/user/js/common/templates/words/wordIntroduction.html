@@ -1,6 +1,11 @@
 <div class="mediaIntroduction">
-    <h3 class="context">{{wordOrPhrase}}</h3>
-    <h3 class="context">{{transliterationIntro}}</h3>
-    <p ng-if="showWordIntro">WORD INTRO</p>
-    <p ng-if="!showWordIntro">For reflections, strings, echos & more enter COUPLET</p>
+    <h3 class="context">{{wordOrPhraseTransliteration}}</h3>
+    <h3 class="context">{{wordOrPhraseTranslation}}</h3>
+    <div>
+        <h3 class="context">{{wordOrPhraseTransliteration}}</h3>
+        <h3 class="context">{{wordOrPhraseTranslation}}</h3>
+        <h3 class="context">{{transliterationIntro}}</h3>
+        <p ng-if="showWordIntro">WORD INTRO</p>
+        <p ng-if="!showWordIntro">For reflections, strings, echos & more enter COUPLET</p>
+    </div>
 </div>

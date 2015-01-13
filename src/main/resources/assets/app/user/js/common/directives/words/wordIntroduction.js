@@ -5,7 +5,8 @@ thumbnailModule.directive("wordIntroduction", function() {
         restrict: 'E',
         scope: {
             id:'@',
-            wordOrPhrase:'@',
+            wordOrPhraseTransliteration:'@',
+            wordOrPhraseTranslation:'@',
             originalIntro:'@',
             translationIntro:'@',
             transliterationIntro:'@',
