@@ -8,7 +8,7 @@
 
 @activeLink: #7bd0ca;
 
-/* Common Styles */
+/* Mixins */
 
 .box-shadow(@color, @spread: 7px) {
     -webkit-box-shadow: 1px 1px @spread @color;
@@ -16,13 +16,6 @@
     box-shadow: 1px 1px @spread @color;
 
 }
-
-
-/* animate tags to create smooth transition */
-/*{
--webkit-transition: all 2s; /* For Safari 3.1 to 6.0 */
-/*    transition: all 2s;
-}*/
 
 
 /* global rules starts */
@@ -41,10 +34,10 @@ body{
 
 /* color */
 .selected { color:#e83785 !important; }
-.selectedGreen { color: #18a398; }
 
-/* display rule */
-.hidethis{display:none !important;}
+.show {
+    display: block !important;
+}
 
 
 /* app containers and boxes */
@@ -65,63 +58,26 @@ body{
     transition: all 0.3s ease;
 }
 
-
-/* wrapper rules */
-.mainContentWrapper {
+.main-content-wrapper {
     overflow: hidden;
     margin-top: -5%;
 }
 
-.noParallaxPage {
-    padding-top:11%;
-    padding-bottom: 250px;
-}
-
-
-
-/* under construction */
-.underConstruction {
-    background: #fff;
-    padding: 3%;
-    border-radius: 10px;
-    border: solid 1px #ccc;
-    color: #ccc;
-    margin-top: 5%;
-    display: inline-block;
-    .box-shadow(#BDBDBD, 15px);
-
-    h1.ucText {
-        font-size: 4em;
-    }
-}
-
-#loader_wrapper {
-    width: 100%;
-    min-height: 1000px;
-    background-color: #fff;
-    display: inline-block;
-
-    &>span {
-        background: #fff url(../img/common/icons/spinner.gif) 0 0px;
-        height: 128px;
-        width: 128px;
-        display: block;
-        margin: 10% auto 0;
-    }
-
-}
-
-.show {
-    display: block !important;
-}
-
-
 
 /* global rules ends*/
 
-/***************************************/
+
+/* vertical separator like A|B */
+
+.separator {
+    font-size: 22px;
+    font-weight: 300;
+    color: #ccc;
+    padding-left: 5px;
+}
 
 
+/* Fixed left navigation bar */
 #left_nav {
     width: 15%;
     position: fixed;
@@ -141,12 +97,28 @@ body{
     }
 }
 
-/*.main-content {
-    width: 80%;
-    float: left;
-    margin-left: 20%;
-}*/
+/* Fixed left navigation bar ends */
 
+
+/* loader design */
+
+#loader_wrapper {
+    width: 100%;
+    min-height: 1000px;
+    background-color: #fff;
+    display: inline-block;
+
+    &>span {
+        background: #fff url(../img/common/icons/spinner.gif) 0 0px;
+        height: 128px;
+        width: 128px;
+        display: block;
+        margin: 10% auto 0;
+    }
+
+}
+
+/* loader design ends */
 
 
 /* Common Header Design for details page */
@@ -185,7 +157,6 @@ body{
 
         }
 
-
         .page-title {
             float: left;
             margin: 29px 0 0 1.2%;
@@ -202,8 +173,6 @@ body{
                 font-style: italic;
 
             }
-
-
         }
     }
 
@@ -334,4 +303,104 @@ body{
     }
 }
 
-//* Common Header Design for details page end here*/
+/* Common Header Design for details page end here*/
+
+
+/* Sort by alphabets structure */
+
+.alphabets {
+    display: inline-block;
+    text-transform: uppercase;
+    clear: both;
+    text-align: left;
+    padding: 5px 0;
+    width: 100%;
+    li {
+    float: left;
+    width: 3.8%;
+        a {
+            color: #888;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 300;
+        }
+        &>.active {
+            color: #00A199;
+        }
+    }
+}
+
+/* under construction */
+.underConstruction {
+    background: #fff;
+    padding: 3%;
+    border-radius: 10px;
+    border: solid 1px #ccc;
+    color: #ccc;
+    margin-top: 5%;
+    display: inline-block;
+    .box-shadow(#BDBDBD, 15px);
+
+    h1.ucText {
+        font-size: 4em;
+    }
+}
+
+
+/* slide from left pardah */
+.nav-list {
+    float: left;
+    padding: 0;
+    text-align: left;
+    position: absolute;
+    display: none;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    background: transparent url('../../img/songs/filter.png') right 0 repeat-y;
+    li {
+        margin: 0 2%;
+        &.original {
+            border-right: solid 1px #666;
+            padding-right: 10px;
+            margin-right: 7px;
+        }
+    }
+
+    &.titles {
+        li {
+            float:left;
+        }
+    }
+
+    .filters {
+        background: #FFF;
+        height: 100%;
+        padding: 165px 0 0 25px;
+        width: 160px;
+        li {
+            margin: 0 2% 15px 0%;
+            display: inline-block;
+            width: 150px;
+            font-size: 18px;
+            font-weight: 300;
+            font-family: 'Merriweather';
+            color: #666;
+
+            &.head {
+                display: inline-block;
+                width:100%;
+                margin-bottom: 10px;
+                font-size: 10px;
+                color: #999;
+                text-transform: uppercase;
+                font-family: 'Merriweather Sans';
+            }
+
+            a.active {
+                color: #00a199;
+            }
+        }
+    }
+}
