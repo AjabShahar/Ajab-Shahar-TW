@@ -1,6 +1,6 @@
 'use strict';
 
-thumbnailModule.directive("wordIntroduction", function() {
+thumbnailModule.directive("wordPopup", function() {
     return {
         restrict: 'E',
         scope: {
@@ -12,7 +12,7 @@ thumbnailModule.directive("wordIntroduction", function() {
             transliterationIntro:'@',
             showWordIntro:'@'
         },
-        templateUrl:'/user/js/common/templates/words/wordIntroduction.html',
+        templateUrl:'/user/js/common/templates/words/wordPopup.html',
         controller: function($scope) {
         }
     }
