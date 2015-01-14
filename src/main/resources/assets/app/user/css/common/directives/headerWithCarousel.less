@@ -161,6 +161,10 @@
                 .thumbnail-desc {
                     margin: 0 0 0 17px;
                     width: 215px;
+                    .item-title {
+                        color: #333;
+                        font-size: 16px;
+                    }
                     &:before {
                         background: rgba(255,255,255,0) url(../../img/common/directives/thumbnail/top-small.png) -1px top no-repeat;
                         width: 236px;
@@ -175,13 +179,13 @@
             &.active {
                  .desc-wrapper {
                     .thumbnail-desc {
-
+                        background-color: #f2f2f2;
                         &:before {
-                            background: rgba(255,255,255,0) url(../../img/common/directives/thumbnail/top-small-grey.png) -1px top no-repeat;
+                            background: transparent url(../../img/common/directives/thumbnail/top-small-grey.png) -1px top no-repeat;
                         }
                     }
                     .lower-curve {
-                        background: rgba(255,255,255,0) url(../../img/common/directives/thumbnail/bottom-small-grey.png) left -5px no-repeat;
+                        background: transparent url(../../img/common/directives/thumbnail/bottom-small-grey.png) left -5px no-repeat;
                     }
                  }
             }
