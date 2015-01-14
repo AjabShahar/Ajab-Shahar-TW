@@ -1,6 +1,6 @@
 'use strict';
 
-thumbnailModule.directive("songIntroduction", function() {
+thumbnailModule.directive("songPopup", function() {
     return {
         restrict: 'E',
         scope: {
@@ -14,7 +14,7 @@ thumbnailModule.directive("songIntroduction", function() {
             closeVideo:'&',
             noun: '@'
         },
-        templateUrl:'/user/js/common/templates/songs/songIntroduction.html',
+        templateUrl:'/user/js/common/templates/songs/songPopup.html',
         controller: function($scope) {
             $scope.$watch(function() { return $scope.closeVideo(); }, function(newValue, oldValue) {
                 $scope.shouldStopVideo = !newValue;

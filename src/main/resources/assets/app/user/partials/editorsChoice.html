@@ -22,7 +22,7 @@
     <script type="text/javascript" src="../js/common/directives/popupSupport/popupMapper.js"></script>
 
     <script type="text/javascript" src="../js/common/directives/thumbnail/songThumbnail.js"></script>
-    <script type="text/javascript" src="../js/common/directives/mappers/introduction/songIntroductionMapper.js"></script>
+    <script type="text/javascript" src="../js/common/directives/mappers/introduction/songPopupMapper.js"></script>
 
     <script type="text/javascript" src="../js/common/directives/thumbnail/wordThumbnail.js"></script>
     <script type="text/javascript" src="../js/common/directives/mappers/wordMapper.js"></script>
@@ -43,7 +43,7 @@
     <script type="text/javascript" src="../js/common/directives/youtube/youtube_player.js"></script>
     <script type="text/javascript" src="../js/common/directives/couplets/coupletIntroduction.js"></script>
 
-    <script type="text/javascript" src="../js/common/directives/songs/songIntroduction.js"></script>
+    <script type="text/javascript" src="../js/common/directives/songs/songPopup.js"></script>
 
     <script type="text/javascript" src="../js/common/config/resourceUrlWhiteList.js"></script>
     <script type="text/javascript" src="../js/common/modules/headerModule.js"></script>
@@ -93,7 +93,7 @@
             <div class='ajab-container'>
                 <div class='ajab-wrapper'>
                     <div class='homepage-content'>
-                        <div ng-repeat="song in thumbnailDetails.thumbnails">
+                        <div ng-repeat="song in thumbnailDetails.songThumbnails">
                             <song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}" open="detailsService.open(song.id)" custom-style="{{song.customStyle}}" img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}" english-transliteration="{{song.englishTransliteration}}" english-translation="{{song.englishTranslation}}" category-name="{{song.category}}" duration="{{song.duration}}" singer="{{song.singer}}" class = "songs" poet="{{song.poet}}" singers="{{song.singers}}"></song-thumbnail>
                         </div>
                     </div>
@@ -101,8 +101,8 @@
             </div>
             <div ng-repeat="song in thumbnailDetails.introductions">
                 <pop-up popup-count="{{totalNumberOfThumbnails}}" ng-init="detailsService.init(song.id)" id="{{song.id}}" width="100" details-service="detailsService" show="detailsService.shouldShow(song.id)" index="{{$index}}" close-button="true">
-                    <song-introduction id="{{song.id}}" singer="{{song.singer}}" poet="{{song.poet}}" english-translation="{{song.englishTranslation}}" audio-Url="{{song.audioId}}" video-Url="{{song.videoId}}" close-video="detailsService.isClosed(song.id)"
-                                       english-transliteration="{{song.englishTransliteration}}" noun="{{song.noun}}"></song-introduction>
+                    <song-popup id="{{song.id}}" singer="{{song.singer}}" poet="{{song.poet}}" english-translation="{{song.englishTranslation}}" audio-Url="{{song.audioId}}" video-Url="{{song.videoId}}" close-video="detailsService.isClosed(song.id)"
+                                       english-transliteration="{{song.englishTransliteration}}" noun="{{song.noun}}"></song-popup>
                 </pop-up>
             </div>
         </div>
