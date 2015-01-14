@@ -45,11 +45,11 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         bootstrap.addBundle(new AssetsBundle("/assets/app/user/js", "/user-js", null, "user-js"));
         bootstrap.addBundle(new AssetsBundle("/assets/app/user/img", "/user-img", null, "user-img"));
 
-//        bootstrap.addBundle(new AssetsBundle("/assets/app/admin/css", "/admin-css", null,"admin-css"));
-//        bootstrap.addBundle(new AssetsBundle("/assets/app/admin/js", "/admin-js", null,"admin-js"));
-//        bootstrap.addBundle(new AssetsBundle("/assets/app/admin/img", "/admin-img", null, "admin-img"));
+        bootstrap.addBundle(new AssetsBundle("/assets/app/admin/css", "/admin-css", null,"admin-css"));
+        bootstrap.addBundle(new AssetsBundle("/assets/app/admin/js", "/admin-js", null,"admin-js"));
+        bootstrap.addBundle(new AssetsBundle("/assets/app/admin/img", "/admin-img", null, "admin-img"));
 
-        bootstrap.addBundle(new AssetsBundle("/assets/app/admin/partials", "/admin", "home.html"));
+        bootstrap.addBundle(new AssetsBundle("/assets/app/admin/partials", "/admin", null,"admin"));
 
         bootstrap.addBundle(new AssetsBundle("/assets/app/common", "/common", null, "common"));
         bootstrap.addBundle(new AssetsBundle("/assets/app/user/partials", "/", "index.html"));

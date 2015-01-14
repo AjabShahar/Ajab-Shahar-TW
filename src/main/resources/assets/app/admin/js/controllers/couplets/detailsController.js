@@ -19,7 +19,7 @@ var coupletDetailsController = function($scope, $http,$window,$location){
     $scope.saveData = function(){
     $scope.formInfo.poet.category = $scope.formInfo.poet.roles[0];
     $http.post('/api/couplets',$scope.formInfo).success(function(data){
-         $window.location.href = '/admin/partials/couplets/edit.html?id='+data;
+         $window.location.href = '/admin/couplets/edit.html?id='+data;
            });
     };
 
@@ -42,7 +42,7 @@ var coupletDetailsController = function($scope, $http,$window,$location){
 
        $scope.redirectToEnterPage= function(){
          alert('This data is not updated');
-          $window.location.href = '/admin/partials/couplets/details.html';
+          $window.location.href = '/admin/couplets/details.html';
        };
  };
 adminApp.controller('coupletDetailsController',['$scope','$http','$window','$location',coupletDetailsController]);

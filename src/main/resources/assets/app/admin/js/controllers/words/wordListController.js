@@ -9,7 +9,7 @@ var wordListController = function($scope, contentService){
                 toBeAdded.meaning = value.meaning;
                 toBeAdded.id = value.id;
                 words.push(toBeAdded);
-                return couplets;
+                return words;
             },[])
         });
     }

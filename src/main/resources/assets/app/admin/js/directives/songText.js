@@ -9,7 +9,7 @@ songsAdminApp.directive("songText", function() {
             poets:'=',
             authoringComplete: '=',
         },
-        templateUrl:'/admin/js/templates/songText.html',
+        templateUrl:'/admin-js/templates/songText.html',
         controller:function($scope){
             $scope.lyricsText = "";
             $scope.selectedLyricsContent = {};

@@ -10,7 +10,7 @@ songsAdminApp.directive("asAdminTitle", function() {
             titleList:'=',
             authoringComplete: '=',
         },
-        templateUrl:'/admin/js/templates/asAdminTitle.html',
+        templateUrl:'/admin-js/templates/asAdminTitle.html',
         controller:function($scope){
             $scope.AddNewTitle = false;
             $scope.EditDiv = false;

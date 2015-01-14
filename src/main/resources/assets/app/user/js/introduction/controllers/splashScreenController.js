@@ -31,7 +31,7 @@ var splashScreenController = function($scope,$window,$location,$http,contentServ
     $scope.saveData = function(){
        $http.post('/api/SplashScreenOptions',$scope.formInfo).success(function(){
              alert("Data added");
-             $window.location.href = '/admin/partials/splashScreenOptions.html';
+             $window.location.href = '/admin/splashScreenOptions.html';
        });
     };
     $scope.showEnterButton = function(){

@@ -8,7 +8,7 @@ wordsAdminApp.directive("adminWordIntroduction", function() {
             wordIntroduction:'@',
             wordIntroductions:'=',
         },
-        templateUrl:'/admin/js/templates/adminWordIntroduction.html',
+        templateUrl:'/admin-js/templates/adminWordIntroduction.html',
         controller:function($scope){
             $scope.addToWordIntroduction = function(){
                 var wordIntroductions = $scope.wordIntroduction.split(/\n{2,}/g);

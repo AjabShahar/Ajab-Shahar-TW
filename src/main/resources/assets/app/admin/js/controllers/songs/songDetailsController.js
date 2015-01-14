@@ -76,7 +76,7 @@ var songDetailsController = function($scope, $window,$location,songContentServic
           })[0];
         }
         songContentService.createSong($scope.formInfo).success(function(data){
-              $window.location.href = '/admin/partials/songs/edit.html?id='+data;
+              $window.location.href = '/admin/songs/edit.html?id='+data;
         });
     };
 
@@ -115,7 +115,7 @@ var songDetailsController = function($scope, $window,$location,songContentServic
          $scope.formInfo.publishedDate = null;
 
          songContentService.editSong($scope.formInfo).success(function(data){
-            $window.location.href = '/admin/partials/home.html';
+            $window.location.href = '/admin/home.html';
          });
     };
 
@@ -124,7 +124,7 @@ var songDetailsController = function($scope, $window,$location,songContentServic
         {
             alert('This data is not updated');
         }
-        $window.location.href = '/admin/partials/songs/details.html';
+        $window.location.href = '/admin/songs/details.html';
     };
 
     $scope.init();

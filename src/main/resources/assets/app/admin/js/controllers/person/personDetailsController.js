@@ -11,7 +11,7 @@ var personDetailsController = function($scope, $http,$window,$location, contentS
 
   $scope.saveData = function(){
   $http.post('/api/people',$scope.formInfo).success(function(data){
-          $window.location.href = '/admin/partials/person/edit.html?id=' + data;
+          $window.location.href = '/admin/person/edit.html?id=' + data;
        });
   };
 
@@ -33,7 +33,7 @@ var personDetailsController = function($scope, $http,$window,$location, contentS
 
   $scope.updatePerson = function(){
   	$http.post('/api/people/edit', $scope.formInfo).success(function(data){
-            $window.location.href = '/admin/partials/home.html';
+            $window.location.href = '/admin/home.html';
      });
   }
 
@@ -42,7 +42,7 @@ var personDetailsController = function($scope, $http,$window,$location, contentS
 		{
 		    alert('This data is not updated');
 		}
-		$window.location.href = '/admin/partials/person/details.html';
+		$window.location.href = '/admin/person/details.html';
 	};
 
   $scope.init();

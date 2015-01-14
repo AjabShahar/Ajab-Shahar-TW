@@ -11,7 +11,7 @@ var wordDetailsController = function($scope, $http,$window,$location){
 
   $scope.saveData = function(){
   $http.post('/api/words',$scope.formInfo).success(function(data){
-      $window.location.href = '/admin/partials/words/edit.html?id='+data;
+      $window.location.href = '/admin/words/edit.html?id='+data;
        });
   };
 
@@ -28,12 +28,12 @@ var wordDetailsController = function($scope, $http,$window,$location){
 
   $scope.updateWord = function(){
      $http.post($scope.formInfo).success(function(data){
-         $window.location.href = '/admin/partials/home.html';
+         $window.location.href = '/admin/home.html';
      });
   };
 
    $scope.redirectToEnterPage= function(){
-      $window.location.href = '/admin/partials/home.html';
+      $window.location.href = '/admin/home.html';
    };
 };
 
