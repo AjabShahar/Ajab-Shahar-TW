@@ -12,12 +12,12 @@ wordsAdminApp.directive("adminWordIntroduction", function() {
         controller:function($scope){
             $scope.addToWordIntroduction = function(){
                 var wordIntroductions = $scope.wordIntroduction.split(/\n{2,}/g);
-                for(var i=0;i<wordIntroductions.length;){
+                for(var i=0; i < wordIntroductions.length; i++){
                     var wordIntroduction = {};
-                    wordIntroduction.introduction_text = wordIntroductions[i];
-                    $scope.wordIntroductions[i] = wordIntroduction;
-                    i=i+1;
+                    wordIntroduction.introduction_text ="<p>" + wordIntroductions[i].split("\n").join("<br />") +"</p>";
+                    $scope.wordIntroductions.push(wordIntroduction)
                 }
+                $scope.wordIntroduction = "";
             };
         }
     }
