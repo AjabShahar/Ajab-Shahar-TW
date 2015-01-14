@@ -16,7 +16,7 @@ var contentService = function ($http) {
   };
 
   var getAllWords = function () {
-    return $http.get('/api/couplets');
+    return $http.get('/api/words');
   };
 
   return {
