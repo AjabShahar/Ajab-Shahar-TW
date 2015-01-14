@@ -72,6 +72,10 @@
         color: #666;
         margin: 20px 5% 0 0;
 
+        @media screen and (max-width: 1280px) {
+            margin-right: 1%;
+        }
+
         .pagination-head {
             display: inline-block;
             width: 100%;
@@ -80,7 +84,7 @@
 
             &>.upper {
                 display: inline-block;
-                width: 96%;
+                width: 100%;
                 float: left;
                 padding-bottom: 5px;
                 border-bottom: solid 1px #ccc;
@@ -164,6 +168,7 @@
 
         .grid-wrapper {
             text-align: left;
+            width: 100%;
             .songs{
                 width:100%;
                 margin-bottom: 120px;
@@ -177,17 +182,32 @@
             .flexi-thumbnails {
                 width: 250px;
                 display: inline-block;
+                margin: 10px 1.5%;
+                /*margin: 10px 4.7% 10px 0;*/
+
+                @media screen and (max-width: 1380px) {
+                    margin: 10px 1%;
+                }
+                @media screen and (max-width: 1280px) {
+                    margin: 10px 4.5%;
+                }
+                @media screen and (max-width: 1024px) {
+                    margin: 10px 1.5%;
+                }
+                @media screen and (max-width: 768px) {
+                    margin: 10px 4.5%;
+                }
 
 
                 li {
-                    width: 220px;
-                    float: left;
-                    margin: 0 23px 7% 23px;
+                    /*width: 220px;*/
+                    /*float: left;*/
 
                     .songs {
                         margin-top: 0;
                         .thumbnail-media {
                             width:100%;
+                            height: auto;
                         }
 
                         .desc-wrapper {
