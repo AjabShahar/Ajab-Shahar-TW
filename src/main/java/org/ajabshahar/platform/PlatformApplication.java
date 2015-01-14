@@ -1,5 +1,6 @@
 package org.ajabshahar.platform;
 
+import com.bazaarvoice.dropwizard.assets.ConfiguredAssetsBundle;
 import com.bazaarvoice.dropwizard.caching.CachingBundle;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
@@ -40,8 +41,18 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         bootstrap.addBundle(hibernate);
         bootstrap.addBundle(migrationsBundle);
         bootstrap.addBundle(cachingBundle);
+        bootstrap.addBundle(new AssetsBundle("/assets/app/user/css", "/user-css", null, "user-css"));
+        bootstrap.addBundle(new AssetsBundle("/assets/app/user/js", "/user-js", null, "user-js"));
+        bootstrap.addBundle(new AssetsBundle("/assets/app/user/img", "/user-img", null, "user-img"));
 
-        bootstrap.addBundle(new AssetsBundle("/assets/app", "/", "index.html"));
+//        bootstrap.addBundle(new AssetsBundle("/assets/app/admin/css", "/admin-css", null,"admin-css"));
+//        bootstrap.addBundle(new AssetsBundle("/assets/app/admin/js", "/admin-js", null,"admin-js"));
+//        bootstrap.addBundle(new AssetsBundle("/assets/app/admin/img", "/admin-img", null, "admin-img"));
+
+        bootstrap.addBundle(new AssetsBundle("/assets/app/admin/partials", "/admin", "home.html"));
+
+        bootstrap.addBundle(new AssetsBundle("/assets/app/common", "/common", null, "common"));
+        bootstrap.addBundle(new AssetsBundle("/assets/app/user/partials", "/", "index.html"));
     }
 
     @Override

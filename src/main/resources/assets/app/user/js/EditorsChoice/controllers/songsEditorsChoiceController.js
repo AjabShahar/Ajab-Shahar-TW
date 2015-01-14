@@ -1,7 +1,7 @@
 var songsEditorsChoiceController = function($scope,contentService,songMapper, $location, $window){
     $scope.detailsService={open:function(id){
 //                                          var songId = $scope.getSongId(id);
-                                          $window.location.href = '/user/partials/songs/details.html?id='+id;
+                                          $window.location.href = '/songs/details.html?id='+id;
                                       }};;
     $scope.init = function(){
         $scope.url = $location.absUrl();

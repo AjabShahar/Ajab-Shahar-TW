@@ -4,7 +4,7 @@ var allSongsController = function($scope,$window,songsContentService,songMapper)
     $scope.totalFilteredSongs = 0;
     $scope.detailsService = {open:function(id){
 //                                          var songId = $scope.getSongId(id);
-                                          $window.location.href = '/user/partials/songs/details.html?id='+id;
+                                          $window.location.href = '/songs/details.html?id='+id;
                                       }};
     $scope.activeLetter = '';
     $scope.scrollIndex = 12;

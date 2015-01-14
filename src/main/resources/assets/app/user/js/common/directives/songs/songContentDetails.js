@@ -14,7 +14,7 @@ thumbnailModule.directive("songContentDetails", function() {
             notes:'@',
             detailsService:'='
         },
-        templateUrl:'/user/js/common/templates/songs/songContentDetails.html',
+        templateUrl:'/user-js/common/templates/songs/songContentDetails.html',
         controller: function($scope) {
             $scope.isAboutVisible = false;
             $scope.isNotesVisible = false;

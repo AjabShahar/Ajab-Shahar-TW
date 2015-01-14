@@ -16,7 +16,7 @@ module.exports = function (config) {
       'user/js/common/modules/filterModule.js',
       'user/js/common/modules/lazyLoadModule.js',
       'user/js/common/**/*.js',
-      'admin/js/Introduction/**/*.js',
+      'user/js/introduction/**/*.js',
       'user/js/EditorsChoice/**/*.js',
       'user/js/songs/services/songsContentService.js',
       'user/js/songs/songDetailsApp.js',

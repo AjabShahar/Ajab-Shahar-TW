@@ -11,7 +11,7 @@ thumbnailModule.directive("coupletIntroduction", function() {
             poet:'@',
             closeVideo:'&'
         },
-        templateUrl:'/user/js/common/templates/couplets/coupletIntroduction.html',
+        templateUrl:'/user-js/common/templates/couplets/coupletIntroduction.html',
         controller: function($scope) {
             $scope.$watch(function() { return $scope.closeVideo(); }, function(newValue, oldValue) {
                 $scope.shouldStopVideo = !newValue;

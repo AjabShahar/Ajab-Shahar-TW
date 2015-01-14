@@ -6,10 +6,10 @@ introductionApp.config(['$routeProvider',
 function($routeProvider) {
      $routeProvider.
        when('/splashScreenVideo', {
-         templateUrl: 'user/partials/splashScreen/video.html',
+         templateUrl: 'splashScreen/video.html',
        }).
        when('/splashScreenAudio', {
-         templateUrl: 'user/partials/splashScreen/audio.html',
+         templateUrl: 'splashScreen/audio.html',
        });
    }]);
 

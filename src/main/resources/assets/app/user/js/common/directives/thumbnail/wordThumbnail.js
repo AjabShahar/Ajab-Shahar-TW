@@ -6,14 +6,12 @@ thumbnailModule.directive("wordThumbnail", function() {
         restrict: 'E',
         scope: {
             name:'@',
-            imgSrc:'@',
             introductionSummary:'@',
             customStyle:'@',
             overlayId:'@',
             id:'@',
-            categoryName:'@',
         },
-        templateUrl:'/user/js/common/templates/thumbnail/wordThumbnail.html',
+        templateUrl:'/user-js/common/templates/thumbnail/wordThumbnail.html',
         controller:function($scope){
             $scope.shouldBeOpen = false;
             $scope.shouldShowDetails = false;

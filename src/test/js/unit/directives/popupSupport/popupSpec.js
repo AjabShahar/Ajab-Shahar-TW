@@ -18,7 +18,7 @@ describe('Popup Support', function() {
 
         it('Should initialize couplet with details', function() {
             element = angular.element('<pop-up>content is here</pop-up>');
-            template.put('/user/js/common/templates/popupSupport/popup.html', '<div ng-transclude></div>');
+            template.put('/user-js/common/templates/popupSupport/popup.html', '<div ng-transclude></div>');
             compile(element)(scope);
             scope.$apply();
 

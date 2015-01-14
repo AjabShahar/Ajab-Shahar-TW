@@ -11,7 +11,7 @@ var popUp = function() {
                 index: '@',
                 detailsService:'=',
             },
-            templateUrl: '/user/js/common/templates/popupSupport/popup.html',
+            templateUrl: '/user-js/common/templates/popupSupport/popup.html',
             controller: function($scope,$rootScope) {
                 $scope.$watch(function() { return $scope.show(); }, function(newValue, oldValue) {
                     if (newValue != true)

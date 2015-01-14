@@ -12,7 +12,7 @@ thumbnailModule.directive("gatheringThumbnail", function() {
             customStyle:'@',
             overlayId:'@'
         },
-        templateUrl:'/user/js/common/templates/thumbnail/gatheringThumbnail.html',
+        templateUrl:'/user-js/common/templates/thumbnail/gatheringThumbnail.html',
         controller:function($scope){
             $scope.shouldBeOpen = false;
 

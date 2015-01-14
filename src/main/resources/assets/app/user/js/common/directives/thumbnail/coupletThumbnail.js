@@ -13,7 +13,7 @@ thumbnailModule.directive("coupletThumbnail", function() {
             id:'@',
             open:'&',
         },
-        templateUrl:'/user/js/common/templates/thumbnail/coupletThumbnail.html',
+        templateUrl:'/user-js/common/templates/thumbnail/coupletThumbnail.html',
         controller:function($scope){
             $scope.shouldShowDetails = false;
 

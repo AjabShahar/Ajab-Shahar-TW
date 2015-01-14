@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" ng-app="introductionApp">
+<head>
+    <meta charset="utf-8">
+    <title>Welcome</title>
+    <script src="../common/lib/angular/angular.js"></script>
+    <script src="../common/lib/underscore/underscore.js"></script>
+    <script src="../common/lib/angular-route/angular-route.js"></script>
+    <script src="../common/lib/angular-animate/angular-animate.js"></script>
+    <script src="../common/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="user-js/common/config/resourceUrlWhiteList.js"></script>
+    <script type="text/javascript" src="user-js/introduction/app.js"></script>
+    <script type="text/javascript" src="user-js/introduction/services/contentService.js"></script>
+    <script type="text/javascript" src="user-js/introduction/controllers/splashScreenController.js"></script>
+    <script type="text/javascript" src="user-js/common/modules/mediaPlayer.js"></script>
+    <script type="text/javascript" src="user-js/common/directives/soundCloud/soundcloud_player.js"></script>
+    <script type="text/javascript" src="user-js/common/directives/youtube/youtube_player.js"></script>
+    <script type="text/javascript" src="user-js/splashScreen.js"></script>
+
+    <link href="user-css/introduction/splashScreen.css" rel="stylesheet" type="text/css">
+</head>
+<body ng-controller="splashScreenController" ng-mouseover="showEnterButton()">
+<div class="slide slide_bottom" ng-show="expand">
+    <a class='enter' title='Enter English Site' href='/editorsChoice.html'></a>
+    <a class='pravesh' title='हिन्दी वेबसाइट में प्रवेश करें' href='#prevesh'></a>
+</div>
+<div ng-view></div>
+</body>
+</html>

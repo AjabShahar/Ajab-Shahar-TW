@@ -11,7 +11,7 @@ thumbnailModule.directive("filmThumbnail", function() {
             customStyle:'@',
             overlayId:'@'
         },
-        templateUrl:'/user/js/common/templates/thumbnail/filmThumbnail.html',
+        templateUrl:'/user-js/common/templates/thumbnail/filmThumbnail.html',
         controller:function($scope){
             $scope.shouldBeOpen = false;
 

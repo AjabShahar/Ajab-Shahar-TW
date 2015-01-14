@@ -8,7 +8,7 @@ filterModule.directive("asTitle", function() {
         scope: {
             currentAlphabetFilter:'=',
         },
-        templateUrl:'/user/js/common/templates/songs/asTitle.html',
+        templateUrl:'/user-js/common/templates/songs/asTitle.html',
         controller: function($scope,$rootScope) {
             $scope.contentTextRepresentation = 'Transliteration';
             $scope.alphabetFilters = [

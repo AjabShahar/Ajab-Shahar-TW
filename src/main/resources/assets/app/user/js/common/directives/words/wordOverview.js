@@ -12,7 +12,7 @@ thumbnailModule.directive("wordOverview", function() {
             transliterationIntro:'@',
             showWordIntro:'@'
         },
-        templateUrl:'/user/js/common/templates/words/wordOverview.html',
+        templateUrl:'/user-js/common/templates/words/wordOverview.html',
         controller: function($scope) {
         }
     }
