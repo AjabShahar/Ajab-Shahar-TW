@@ -19,17 +19,10 @@
     <script type="text/javascript" src="../js/common/modules/thumbnailModule.js"></script>
     <script type="text/javascript" src="../js/common/modules/PopupSupport.js"></script>
     <script type="text/javascript" src="../js/common/directives/popupSupport/popup.js"></script>
-    <script type="text/javascript" src="../js/common/directives/popupSupport/popupMapper.js"></script>
 
     <script type="text/javascript" src="../js/common/directives/thumbnail/songThumbnail.js"></script>
-    <script type="text/javascript" src="../js/common/directives/mappers/introduction/songPopupMapper.js"></script>
-
     <script type="text/javascript" src="../js/common/directives/thumbnail/wordThumbnail.js"></script>
-    <script type="text/javascript" src="../js/common/directives/mappers/wordMapper.js"></script>
-
     <script type="text/javascript" src="../js/common/directives/thumbnail/coupletThumbnail.js"></script>
-    <script type="text/javascript" src="../js/common/directives/mappers/coupletThumbnailMapper.js"></script>
-    <script type="text/javascript" src="../js/common/directives/mappers/introduction/coupletIntroductionMapper.js"></script>
     <script type="text/javascript" src="../js/common/directives/thumbnail/filmThumbnail.js"></script>
     <script type="text/javascript" src="../js/common/directives/thumbnail/gatheringThumbnail.js"></script>
     <script type="text/javascript" src="../js/common/directives/thumbnail/reflectionThumbnail.js"></script>
@@ -43,7 +36,7 @@
     <script type="text/javascript" src="../js/common/directives/youtube/youtube_player.js"></script>
     <script type="text/javascript" src="../js/common/directives/couplets/coupletIntroduction.js"></script>
 
-    <script type="text/javascript" src="../js/common/directives/songs/songPopup.js"></script>
+    <script type="text/javascript" src="../js/common/directives/songs/songOverview.js"></script>
 
     <script type="text/javascript" src="../js/common/config/resourceUrlWhiteList.js"></script>
     <script type="text/javascript" src="../js/common/modules/headerModule.js"></script>
@@ -101,8 +94,8 @@
             </div>
             <div ng-repeat="song in thumbnailDetails.introductions">
                 <pop-up popup-count="{{totalNumberOfThumbnails}}" ng-init="detailsService.init(song.id)" id="{{song.id}}" width="100" details-service="detailsService" show="detailsService.shouldShow(song.id)" index="{{$index}}" close-button="true">
-                    <song-popup id="{{song.id}}" singer="{{song.singer}}" poet="{{song.poet}}" english-translation="{{song.englishTranslation}}" audio-Url="{{song.audioId}}" video-Url="{{song.videoId}}" close-video="detailsService.isClosed(song.id)"
-                                       english-transliteration="{{song.englishTransliteration}}" noun="{{song.noun}}"></song-popup>
+                    <song-overview id="{{song.id}}" singer="{{song.singer}}" poet="{{song.poet}}" english-translation="{{song.englishTranslation}}" audio-Url="{{song.audioId}}" video-Url="{{song.videoId}}" close-video="detailsService.isClosed(song.id)"
+                                       english-transliteration="{{song.englishTransliteration}}" noun="{{song.noun}}"></song-overview>
                 </pop-up>
             </div>
         </div>
