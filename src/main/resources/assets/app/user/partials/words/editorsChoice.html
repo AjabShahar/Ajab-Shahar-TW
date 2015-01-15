@@ -31,13 +31,14 @@
 </head>
 <body ng-app="editorsChoiceApp">
 	<div  ng-controller="wordsEditorsChoiceController">
-		<ajab-shahar-header show-menu-details="true" call-back="setPageHeight()"></ajab-shahar-header>
+		<ajab-shahar-header show-menu-details="false" call-back="setPageHeight()"></ajab-shahar-header>
 
 		<!-- thumbnail and middle content starts -->
 	    <div class='ajab-container'>
 	        <div class='ajab-wrapper'>
 	            <div class='homepage-content'>
 	                <div ng-repeat="word in words">
+                        {{word.wordOrPhrase}}
     					<word-bubble wordTransliteration="{{word.wordOrPhrase}}" wordTranslation="{{word.meaning}}" transliterationIntro="{{word.wordIntroductions[0].introduction_text}}"></word-bubble>
 	                </div>
 	            </div>
