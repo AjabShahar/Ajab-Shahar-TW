@@ -67,25 +67,28 @@
 
     </div>
 
-    <div class="versions toggleBySlide" ng-show="showVersion && shouldShowVersions()">
-        <div class="carousel-wrapper jcarousel-wrapper">
+    <div class="lower-pardah">
 
-            <div as-carousel class="carousel-box jcarousel">
-            <ul>
-                <li ng-repeat="song in versions track by $index">
-                    <song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}" open="detailsService.open(song.id)" custom-style="{{song.customStyle}}" img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}" english-transliteration="{{song.englishTransliteration}}" english-translation="{{song.englishTranslation}}" category-name="{{song.category}}" duration="{{song.duration}}" singer="{{song.singer}}" class = "songs" poet="{{song.poet}}" singers="{{song.singers}}"></song-thumbnail>
-                </li>
-            </ul>
-            <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true"></a>
-            <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true"></a>
+        <div class="versions toggleBySlide" ng-show="showVersion && shouldShowVersions()">
+            <div class="carousel-wrapper jcarousel-wrapper">
+
+                <div as-carousel class="carousel-box jcarousel">
+                <ul>
+                    <li ng-repeat="song in versions track by $index">
+                        <song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}" open="detailsService.open(song.id)" custom-style="{{song.customStyle}}" img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}" english-transliteration="{{song.englishTransliteration}}" english-translation="{{song.englishTranslation}}" category-name="{{song.category}}" duration="{{song.duration}}" singer="{{song.singer}}" class = "songs" poet="{{song.poet}}" singers="{{song.singers}}"></song-thumbnail>
+                    </li>
+                </ul>
+                <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true"></a>
+                <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true"></a>
+            </div>
         </div>
-    </div>
-    </div>
-    <div class="see-more" ng-show="shouldShowVersions()" ng-click="toggleVersion()">
-        <a class="version" href="javascript:void(0)">
-            {{numberOfVersions}} versions
-            <span class="arrow" ng-class="showVersion ? 'up-arrow' : ''"></span>
-        </a>
+        </div>
+        <div class="see-more" ng-show="shouldShowVersions()" ng-click="toggleVersion()">
+            <a class="version" href="javascript:void(0)">
+                {{numberOfVersions}} versions
+                <span class="arrow" ng-class="showVersion ? 'up-arrow' : ''"></span>
+            </a>
+        </div>
     </div>
 
     <div class='ajab-container'>
