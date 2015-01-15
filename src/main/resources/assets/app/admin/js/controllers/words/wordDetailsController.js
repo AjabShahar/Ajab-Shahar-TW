@@ -10,12 +10,13 @@ var wordDetailsController = function($scope, $http,$window,$location){
   });
 
   $scope.saveData = function(){
-  $http.post('/api/words',$scope.formInfo).success(function(data){
-      $window.location.href = '/admin/words/edit.html?id='+data;
-       });
+      $http.post('/api/words',$scope.formInfo).success(function(data){
+          $window.location.href = '/admin/words/edit.html?id='+data;
+      });
   };
 
-  $scope.getWordData = function(){
+  $scope.init = function(){
+    if($scope.urlId!=null && $scope.urlId!=''){
         $http.get('/api/words/edit', {
                           params: {
                              id:$scope.urlId
@@ -24,17 +25,19 @@ var wordDetailsController = function($scope, $http,$window,$location){
                        .success(function (data) {
                             $scope.formInfo = data;
         });
-  };
-
-  $scope.updateWord = function(){
-     $http.post($scope.formInfo).success(function(data){
-         $window.location.href = '/admin/home.html';
-     });
+    }
   };
 
    $scope.redirectToEnterPage= function(){
       $window.location.href = '/admin/home.html';
    };
+
+  $scope.updateWord = function(){
+    $http.post($scope.formInfo).success(function(data){
+     $window.location.href = '/admin/home.html';
+    });
+  }
+   $scope.init();
 };
 
 wordsAdminApp.controller('wordDetailsController',['$scope','$http','$window','$location',wordDetailsController]);

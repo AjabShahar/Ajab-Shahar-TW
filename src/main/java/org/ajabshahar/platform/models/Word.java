@@ -8,16 +8,27 @@ import java.util.Set;
 @Entity
 @Table(name = "WORD")
 public class Word {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "WORD_OR_PHRASE", nullable = false)
-    private String wordOrPhrase;
+    @Column(name = "WORD_ORIGINAL", nullable = false)
+    private String wordOriginal;
 
-    @Column(name = "meaning", nullable = false)
-    private String meaning;
+    @Column(name = "WORD_TRANSLATION", nullable = false)
+    private String wordTranslation;
+
+    @Column(name = "WORD_TRANSLITERATION", nullable = false)
+    private String wordTransliteration;
+
+    @Column(name = "INTR_SUMMARY_ORIGINAL", nullable = false)
+    private String introSummaryOriginal;
+
+    @Column(name = "INTR_SUMMARY_TRANSLATION", nullable = false)
+    private String introSummaryTranslation;
+
+    @Column(name = "INTR_SUMMARY_TRANSLITERATION", nullable = false)
+    private String introSummaryTransliteration;
 
     @Column(name = "SHOW_ON_LANDING_PAGE", nullable = false)
     private boolean showOnLandingPage;
@@ -30,28 +41,12 @@ public class Word {
         return id;
     }
 
-    public String getMeaning() {
-        return meaning;
-    }
-
-    public void setMeaning(String meaning) {
-        this.meaning = meaning;
-    }
-
     public boolean getShowOnLandingPage() {
         return showOnLandingPage;
     }
 
     public void setShowOnLandingPage(boolean showOnLandingPage) {
         this.showOnLandingPage = showOnLandingPage;
-    }
-
-    public String getWordOrPhrase() {
-        return wordOrPhrase;
-    }
-
-    public void setWordOrPhrase(String wordOrPhrase) {
-        this.wordOrPhrase = wordOrPhrase;
     }
 
     public Set<WordIntroduction> getWordIntroductions() {
@@ -64,5 +59,53 @@ public class Word {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getWordOriginal() {
+        return wordOriginal;
+    }
+
+    public void setWordOriginal(String wordOriginal) {
+        this.wordOriginal = wordOriginal;
+    }
+
+    public String getWordTranslation() {
+        return wordTranslation;
+    }
+
+    public void setWordTranslation(String wordTranslation) {
+        this.wordTranslation = wordTranslation;
+    }
+
+    public String getWordTransliteration() {
+        return wordTransliteration;
+    }
+
+    public void setWordTransliteration(String wordTransliteration) {
+        this.wordTransliteration = wordTransliteration;
+    }
+
+    public String getIntroSummaryOriginal() {
+        return introSummaryOriginal;
+    }
+
+    public void setIntroSummaryOriginal(String introSummaryOriginal) {
+        this.introSummaryOriginal = introSummaryOriginal;
+    }
+
+    public String getIntroSummaryTranslation() {
+        return introSummaryTranslation;
+    }
+
+    public void setIntroSummaryTranslation(String introSummaryTranslation) {
+        this.introSummaryTranslation = introSummaryTranslation;
+    }
+
+    public String getIntroSummaryTransliteration() {
+        return introSummaryTransliteration;
+    }
+
+    public void setIntroSummaryTransliteration(String introSummaryTransliteration) {
+        this.introSummaryTransliteration = introSummaryTransliteration;
     }
 }

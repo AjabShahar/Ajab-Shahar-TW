@@ -1,20 +1,40 @@
 <div>
     <div class="row">
         <div class="form-group col-sm-2">
-            <label>Word Introduction</label>
+            <label>Word Introduction Original</label>
         </div>
         <div class="form-group col-sm-8">
-            <textarea class="form-control" rows="6" ng-model="wordIntroduction" placeholder=" Enter original text ..."></textarea>
+            <textarea class="form-control" rows="6" ng-model="introTextOriginal" placeholder=" Enter original text ..."></textarea>
         </div>
-
-        <button type="button" class="btn btn-info" ng-click="addToWordIntroduction()">Add to Word Introduction</button>
     </div>
+
+    <div class="row">
+        <div class="form-group col-sm-2">
+            <label>Word Introduction Translation</label>
+        </div>
+        <div class="form-group col-sm-8">
+            <textarea class="form-control" rows="6" ng-model="introTextTranslation" placeholder=" Enter original text ..."></textarea>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-sm-2">
+            <label>Word Introduction Transliteration</label>
+        </div>
+        <div class="form-group col-sm-8">
+            <textarea class="form-control" rows="6" ng-model="introTextTransliteration" placeholder=" Enter original text ..."></textarea>
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-info" ng-click="addToWordIntroduction()">Add to Word Introduction</button>
 
     <div>
         <div class="form-group col-sm-2">
             <ul>
                 <li ng-repeat="word in wordIntroductions track by $index">
-                    <text-angular name="htmlcontent{{$index}}" ng-model="word.introduction_text" ></text-angular>
+                    <text-angular name="originalContent{{$index}}" ng-model="word.introTextOriginal" ></text-angular>
+                    <text-angular name="translationContent{{$index}}" ng-model="word.introTextTranslation" ></text-angular>
+                    <text-angular name="transliterationContent{{$index}}" ng-model="word.introTextTransliteration" ></text-angular>
                 </li>
             </ul>
         </div>

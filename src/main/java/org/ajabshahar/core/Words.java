@@ -35,8 +35,12 @@ public class Words {
     }
 
     private Word invokeSetters(Word originalWord, Word updatableWord) {
-        originalWord.setWordOrPhrase(updatableWord.getWordOrPhrase());
-        originalWord.setMeaning(updatableWord.getMeaning());
+        originalWord.setWordOriginal(updatableWord.getWordOriginal());
+        originalWord.setWordTranslation(updatableWord.getWordTranslation());
+        originalWord.setWordTransliteration(updatableWord.getWordTransliteration());
+        originalWord.setIntroSummaryOriginal(updatableWord.getIntroSummaryOriginal());
+        originalWord.setIntroSummaryTranslation(updatableWord.getIntroSummaryTranslation());
+        originalWord.setIntroSummaryTransliteration(updatableWord.getIntroSummaryTransliteration());
         originalWord.setShowOnLandingPage(updatableWord.getShowOnLandingPage());
         originalWord.setWordIntroductions(updatableWord.getWordIntroductions());
         return originalWord;

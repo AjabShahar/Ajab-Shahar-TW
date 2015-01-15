@@ -26,8 +26,13 @@ public class WordsTest {
         word = new Word();
 
         word.setId(1L);
-        word.setWordOrPhrase("WordOrPhrase");
+        word.setWordOriginal("WordOrPhrase");
+        word.setWordTranslation("WordOrPhrase1");
+        word.setWordTransliteration("WordOrPhrase2");
 
+        word.setIntroSummaryOriginal("something");
+        word.setIntroSummaryTranslation("something1");
+        word.setIntroSummaryTransliteration("something2");
     }
 
     @Test
@@ -37,6 +42,12 @@ public class WordsTest {
         Word expected = words.create(word);
 
         assertEquals(expected.getId(), 1L);
-        assertEquals(expected.getWordOrPhrase(), "WordOrPhrase");
+        assertEquals(expected.getWordOriginal(), "WordOrPhrase");
+        assertEquals(expected.getWordTranslation(), "WordOrPhrase1");
+        assertEquals(expected.getWordTransliteration(), "WordOrPhrase2");
+
+        assertEquals(expected.getIntroSummaryOriginal(), "something");
+        assertEquals(expected.getIntroSummaryTranslation(), "something1");
+        assertEquals(expected.getIntroSummaryTransliteration(), "something2");
     }
 }

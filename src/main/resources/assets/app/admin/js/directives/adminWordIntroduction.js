@@ -5,16 +5,21 @@ wordsAdminApp.directive("adminWordIntroduction", function() {
         replace : true,
         restrict: 'E',
         scope: {
-            wordIntroduction:'@',
             wordIntroductions:'=',
         },
         templateUrl:'/admin-js/templates/adminWordIntroduction.html',
         controller:function($scope){
             $scope.addToWordIntroduction = function(){
-                var wordIntroductions = $scope.wordIntroduction.split(/\n{2,}/g);
-                for(var i=0; i < wordIntroductions.length; i++){
+                var introTextOriginals = $scope.introTextOriginal.split(/\n{2,}/g);
+                var introTextTranslations = $scope.introTextTranslation.split(/\n{2,}/g);
+                var introTextTransliterations = $scope.introTextTransliteration.split(/\n{2,}/g);
+                var total =  introTextOriginals.length>0 ? introTextOriginals.length :
+                    (introTextTranslations.length>0? introTextTranslations.length : introTextTransliterations.length);
+                for(var i=0; i < total; i++){
                     var wordIntroduction = {};
-                    wordIntroduction.introduction_text ="<p>" + wordIntroductions[i].split("\n").join("<br />") +"</p>";
+                    wordIntroduction.introTextOriginal ="<p>" + introTextOriginals[i].split("\n").join("<br />") +"</p>";
+                    wordIntroduction.introTextTranslation ="<p>" + introTextTranslations[i].split("\n").join("<br />") +"</p>";
+                    wordIntroduction.introTextTransliteration ="<p>" + introTextTransliterations[i].split("\n").join("<br />") +"</p>";
                     $scope.wordIntroductions.push(wordIntroduction)
                 }
                 $scope.wordIntroduction = "";
