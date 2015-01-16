@@ -21,8 +21,8 @@
     		}
 
     		var _setLeftNavHeight = function() {
-    		    var windowHeight = $(window).height();
-    		    $('.slide-nav-list .filters').height(windowHeight);
+    		    var windowHeight = $(document).height();
+    		    $('.slide-nav-list').height(windowHeight);
     		}
 
             this.init = (function(){

@@ -64,21 +64,31 @@
     }
 
     .singer-list-container {
-        background: rgba(255, 255, 255, 0.9);
-        position: absolute;
+        background: rgba(255, 255, 255, 0.7);
+        position: fixed;
         left: 0;
-        top: -125px;
+        top: 0;
         height: 100%;
         width: 100%;
         text-align: left;
-        z-index: 1000;
-        padding-top: 115px;
-        padding-left: 20px;
+        z-index: -1;
+        padding: 55px 50px 50px 235px;
         color: #999;
         font-weight: 300;
         text-transform: uppercase;
         font-size: 12px;
+        box-sizing: border-box;
         /*display: none;*/
+        .singer-list {
+            width: 20%;
+            padding-right: 10%;
+            float: left;
+            height: 100%;
+            &>li {
+                float: left;
+                margin: 10px;
+            }
+        }
     }
 
     .grid-view {

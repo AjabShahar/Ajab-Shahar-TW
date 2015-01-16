@@ -1,22 +1,31 @@
 <div class="slide-nav-list">
 <ul class='filters'>
     <!--<li class='head'>Filter by</li>-->
-    <li><a ng-click="toggleSingers()" ng-class="shouldShowSingers ? 'active' : ''">Singers</a></li>
-    <li ng-hide="singerNameInFilter==''|| singerNameInFilter.name==''">{{singerNameInFilter.name}}<a ng-click="removeSingerFilter()">[X]</a></li>
-    <li ng-show="shouldShowSingers">
-        <select ng-model="singerNameInFilter"
-                ng-options="singer.name for singer in singers" class="form-control">
-        </select>
+    <li>
+        <a ng-click="toggleSingers()" ng-class="shouldShowSingers ? 'active' : ''">Singers</a>
+        <ul>
+            <li ng-hide="singerNameInFilter==''|| singerNameInFilter.name==''">{{singerNameInFilter.name}}<a ng-click="removeSingerFilter()">[X]</a></li>
+            <li ng-show="shouldShowSingers">
+                <select ng-model="singerNameInFilter"
+                        ng-options="singer.name for singer in singers" class="form-control">
+                </select>
+            </li>
+        </ul>
     </li>
-    <li></li>
-    <li><a ng-click="showPoets()">Poets</a></li>
-    <li ng-hide="poetNameInFilter==''|| poetNameInFilter.name==''">{{poetNameInFilter.name}}<a ng-click="removePoetFilter()">[X]</a></li>
-    <li ng-show="shouldShowPoets">
-        <select ng-model="poetNameInFilter"
-                ng-options="poet.name for poet in poets" class="form-control">
-        </select>
+
+    <li>
+        <a ng-click="showPoets()">Poets</a>
+        <ul>
+            <li ng-hide="poetNameInFilter==''|| poetNameInFilter.name==''">{{poetNameInFilter.name}}<a ng-click="removePoetFilter()">[X]</a></li>
+            <li ng-show="shouldShowPoets">
+                <select ng-model="poetNameInFilter"
+                        ng-options="poet.name for poet in poets" class="form-control">
+                </select>
+            </li>
+        </ul>
     </li>
-    <li></li>
+
+
     <li><a>Words</a></li>
     <li><a>Genre</a></li>
     <li><a>Gathering</a></li>
@@ -35,6 +44,120 @@
             <li>
                 <a href="javascript:void(0);">Prahlad Tipanya</a>
             </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
         </ul>
+        <ul class="singer-list">
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+        </ul>
+
     </div>
 </div>
