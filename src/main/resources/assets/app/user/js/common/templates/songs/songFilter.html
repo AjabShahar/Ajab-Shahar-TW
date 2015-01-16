@@ -1,7 +1,7 @@
 <div class="slide-nav-list">
 <ul class='filters'>
     <!--<li class='head'>Filter by</li>-->
-    <li><a ng-click="showSingers()" class="active">Singers</a></li>
+    <li><a ng-click="toggleSingers()" ng-class="shouldShowSingers ? 'active' : ''">Singers</a></li>
     <li ng-hide="singerNameInFilter==''|| singerNameInFilter.name==''">{{singerNameInFilter.name}}<a ng-click="removeSingerFilter()">[X]</a></li>
     <li ng-show="shouldShowSingers">
         <select ng-model="singerNameInFilter"
@@ -23,4 +23,18 @@
     <li><a>Places</a></li>
     <li><a ng-click="clearFilters()">All</a></li>
 </ul>
+
+    <div class="singer-list-container" ng-show="shouldShowSingers">
+        <ul class="singer-list">
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Prahlad Tipanya</a>
+            </li>
+        </ul>
+    </div>
 </div>

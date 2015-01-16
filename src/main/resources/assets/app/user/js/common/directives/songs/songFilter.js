@@ -101,6 +101,19 @@ filterModule.directive("songFilter", function() {
                 $scope.shouldShowSingers = true;
             }
 
+            $scope.toggleSingers = function(){
+                if($scope.shouldShowSingers)
+                 {
+                    $scope.shouldShowSingers = false;
+
+                    return;
+                 }
+                  else {
+                    $scope.shouldShowSingers = true;
+                    $scope.filterSingers();
+                 }
+            }
+
             $scope.hideSingers = function(){
                 $scope.shouldShowSingers = false;
             }
