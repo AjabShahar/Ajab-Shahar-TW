@@ -1,4 +1,4 @@
-var songDetailsController = function($scope,$location,songsContentService,songMapper){
+var songDetailsController = function($scope,$location,songsContentService,songMapper) {
     $scope.detailsService = $scope;
     $scope.showContentDetails = {};
     $scope.prevId = null;

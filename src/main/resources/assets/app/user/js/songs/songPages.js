@@ -9,10 +9,15 @@
 
     		var _bindEvents = function() {
     		    $(".filter-button").on("click", function() {
-                    $(".slide-nav-list").toggleClass("show");
-                     _setLeftNavHeight();
+                    _slideLeftNav($(this));
                     return false;
                 });
+    		}
+
+    		var _slideLeftNav = function(element) {
+    		    $(".slide-nav-list").toggleClass("show");
+                element.find(".collapse").toggleClass("expand");
+                 _setLeftNavHeight();
     		}
 
     		var _setLeftNavHeight = function() {
