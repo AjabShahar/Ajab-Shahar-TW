@@ -197,20 +197,20 @@
             .flexi-thumbnails {
                 width: 250px;
                 display: inline-block;
-                margin: 10px 1.5%;
+                margin: 10px 3.5% 10px 0;
                 /*margin: 10px 4.7% 10px 0;*/
 
                 @media screen and (max-width: 1380px) {
-                    margin: 10px 1%;
+                    margin: 10px 2.5% 10px 0;
                 }
                 @media screen and (max-width: 1280px) {
-                    margin: 10px 4.5%;
+                    margin: 10px 0.5% 10px 0;
                 }
                 @media screen and (max-width: 1024px) {
-                    margin: 10px 1.5%;
+                    margin: 10px 2.5% 10px 0;
                 }
                 @media screen and (max-width: 768px) {
-                    margin: 10px 4.5%;
+                    margin: 10px 7.5% 10px 0;
                 }
 
 
@@ -221,27 +221,30 @@
                     .songs {
                         margin-top: 0;
                         .thumbnail-media {
-                            width:100%;
-                            /*height: auto;*/
+                            width: 215px;
+                            height: 120px;
                         }
 
                         .desc-wrapper {
                             z-index: 1;
                             .thumbnail-desc {
-                                margin: 0 0 0 4px;
+                                margin: 0;
                                 box-shadow: none;
-                                width: 189px;
+                                width: 203px;
 
                                 &:before {
-                                    background: rgba(255,255,255,0) url(../../user-img/songs/top-all-song.png) left top no-repeat;
+                                    background: rgba(255,255,255,0) url(../../user-img/common/directives/thumbnail/top.png) left top no-repeat;
                                     top: -16px;
-                                    left: -1px;
+                                    width: 223px;
+                                    background-size: contain;
                                 }
                             }
                             .lower-curve {
-                                margin: 0 0 0 3px;
-                                background: rgba(255,255,255,0) url(../../user-img/songs/bottom-all-song.png) left top no-repeat;
-                            }
+                                margin: -3px 0 0 0;
+                                background: rgba(255,255,255,0) url(../../user-img/common/directives/thumbnail/bottom.png) left top no-repeat;
+                                background-size: cover;
+                                width: 223px;
+}
                         }
                     }
                 }
