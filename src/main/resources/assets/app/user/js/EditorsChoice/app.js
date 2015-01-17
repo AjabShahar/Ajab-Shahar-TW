@@ -3,6 +3,8 @@ var editorsChoiceApp = angular.module('editorsChoiceApp',['thumbnailModule','med
 editorsChoiceApp.config(resourceUrlWhiteList);
 editorsChoiceApp.factory('contentService', ['$http', contentService]);
 
+editorsChoiceApp.directive('bindDynamicHtml', ['$compile', bindDynamicHtml]);
+
 editorsChoiceApp.run(function($FB){
   $FB.init('714039208665351');
 });
