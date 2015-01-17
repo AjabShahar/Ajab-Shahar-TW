@@ -38,9 +38,7 @@
 	        <div class='ajab-wrapper'>
 	            <div class='homepage-content'>
 	                <div ng-repeat="word in words">
-
-    					<word-bubble wordTransliteration="{{word.wordOrPhrase}}" wordTranslation="{{word.meaning}}" transliterationIntro="{{word.wordIntroductions[0].introTextOriginal}}"></word-bubble>
-    					<word-bubble word-transliteration="{{word.wordOrPhrase}}" word-translation="{{word.meaning}}" transliteration-intro="{{word.wordIntroductions[0].introduction_text}}"></word-bubble>
+    					<word-bubble word-transliteration="{{word.wordOriginal}}" word-translation="{{word.wordTranslation}}" transliteration-intro="{{word.wordIntroductions[0].introTextTransliteration}}"></word-bubble>
 	                </div>
 	            </div>
 	        </div>
