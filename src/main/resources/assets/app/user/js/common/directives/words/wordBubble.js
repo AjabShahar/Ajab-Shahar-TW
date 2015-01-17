@@ -8,6 +8,7 @@ thumbnailModule.directive("wordBubble", function() {
             wordTransliteration:'@',
             wordTranslation:'@',
             transliterationIntro:'@',
+            wordOriginal:'@',
         },
         templateUrl:'/user-js/common/templates/words/wordBubble.html',
         controller: function($scope) {

@@ -17,15 +17,16 @@ describe('Unit testing word bubble', function() {
 
     scope.word.wordOriginal = "Original word";
     scope.word.wordTranslation = "Word meaning";
+    scope.word.wordTransliteration = "transliterated word";
     scope.word.wordIntroductions[0].introTextTransliteration = "Text with HTML";
 
-    var wordBubbleDirective = '<word-bubble word-transliteration="{{word.wordOriginal}}" word-translation="{{word.wordTranslation}}" transliteration-intro="{{word.wordIntroductions[0].introTextTransliteration}}"></word-bubble>';
+    var wordBubbleDirective = '<word-bubble word-transliteration="{{word.wordTransliteration}}" word-translation="{{word.wordTranslation}}" transliteration-intro="{{word.wordIntroductions[0].introTextTransliteration}}" word-original="{{word.wordOriginal}}"></word-bubble>';
     element =  angular.element(wordBubbleDirective);
 
-    template.put('/user-js/common/templates/words/wordBubble.html', '<div>{{wordTransliteration}} {{wordTranslation}} {{transliterationIntro}} </div>');
+    template.put('/user-js/common/templates/words/wordBubble.html', '<div> {{wordOriginal}} {{wordTransliteration}} {{wordTranslation}} {{transliterationIntro}} </div>');
     $compile(element)(scope);
     scope.$apply();
     
-    expect(element.html()).toContain('<div class="ng-binding">Original word Word meaning Text with HTML </div>');
+    expect(element.html()).toContain('<div class="ng-binding"> Original word transliterated word Word meaning Text with HTML </div>');
   });
 });
