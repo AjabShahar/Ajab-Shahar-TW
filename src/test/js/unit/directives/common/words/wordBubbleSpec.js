@@ -1,6 +1,4 @@
-describe('Unit testing word bubble', function() {
-  var $compile,
-      $rootScope;
+describe('Word bubble specs', function() {
 
   beforeEach(module('thumbnailModule'));
 
@@ -10,7 +8,7 @@ describe('Unit testing word bubble', function() {
     template = $templateCache;
   }));
 
-  it('Replaces the element with the appropriate content', function() {
+  it('Should replace the element with the appropriate content', function() {
     scope.dummyData = {
       word : {
         wordOriginal: "Original",
