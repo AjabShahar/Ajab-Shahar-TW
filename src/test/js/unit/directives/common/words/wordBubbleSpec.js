@@ -11,22 +11,25 @@ describe('Unit testing word bubble', function() {
   }));
 
   it('Replaces the element with the appropriate content', function() {
-    scope.word = {};
-    scope.word.wordIntroductions = [];
-    scope.word.wordIntroductions[0] = {};
+    scope.dummyData = {
+      word : {
+        wordOriginal: "Original",
+        wordTranslation: "Translated",
+        wordTransliteration: "Transliterated",
+        wordIntroductions: [
+            {
+            introTextTransliteration: "IntroTextTransliteration"
+            }
+          ]
+      }
+    };
 
-    scope.word.wordOriginal = "Original word";
-    scope.word.wordTranslation = "Word meaning";
-    scope.word.wordTransliteration = "transliterated word";
-    scope.word.wordIntroductions[0].introTextTransliteration = "Text with HTML";
-
-    var wordBubbleDirective = '<word-bubble word-transliteration="{{word.wordTransliteration}}" word-translation="{{word.wordTranslation}}" transliteration-intro="{{word.wordIntroductions[0].introTextTransliteration}}" word-original="{{word.wordOriginal}}"></word-bubble>';
-    element =  angular.element(wordBubbleDirective);
-
+    var wordBubbleDirective = '<word-bubble word-transliteration="{{dummyData.word.wordTransliteration}}" word-translation="{{dummyData.word.wordTranslation}}" transliteration-intro="{{dummyData.word.wordIntroductions[0].introTextTransliteration}}" word-original="{{dummyData.word.wordOriginal}}"></word-bubble>';
     template.put('/user-js/common/templates/words/wordBubble.html', '<div> {{wordOriginal}} {{wordTransliteration}} {{wordTranslation}} {{transliterationIntro}} </div>');
-    $compile(element)(scope);
+
+    var element = $compile(wordBubbleDirective)(scope);
     scope.$apply();
     
-    expect(element.html()).toContain('<div class="ng-binding"> Original word transliterated word Word meaning Text with HTML </div>');
+    expect(element.html()).toContain('<div class="ng-binding"> Original Transliterated Translated IntroTextTransliteration </div>');
   });
 });
