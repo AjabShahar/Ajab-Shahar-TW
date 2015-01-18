@@ -18,4 +18,4 @@ var wordsEditorsChoiceController = function($scope,contentService, $location, $w
 	$scope.init();
 }
 
-editorsChoiceApp.controller('songsEditorsChoiceController',['$scope','contentService','$location', '$window',wordsEditorsChoiceController]);
+editorsChoiceBasicApp.controller('songsEditorsChoiceController',['$scope','contentService','$location', '$window',wordsEditorsChoiceController]);
