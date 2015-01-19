@@ -81,7 +81,7 @@ public class SongDAO extends AbstractDAO<Song> {
             findSongs.add(Restrictions.sqlRestriction("1=1 order by random()"));
             List<Song> songs = new ArrayList<>();
             List<Song> allSongs = findSongs.list();
-            for (int i = 0; i < 9 && i < allSongs.size(); i++) {
+            for (int i = 0; i < 5 && i < allSongs.size(); i++) {
                 songs.add(allSongs.get(i));
             }
             return songs;

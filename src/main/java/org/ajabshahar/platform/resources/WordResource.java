@@ -44,8 +44,8 @@ public class WordResource {
 
     @GET
     @UnitOfWork
-    public List<Word> listAllWordDetails(@DefaultValue("false") @QueryParam("landingPage") Boolean showOnLandingPage) {
-        return words.findBy(showOnLandingPage);
+    public List<Word> listAllWordDetails(@DefaultValue("false") @QueryParam("landingPage") Boolean showOnWordLandingPage, @DefaultValue("false") @QueryParam("landingPage") Boolean showOnMainLandingPage) {
+        return words.findBy(showOnWordLandingPage);
     }
 
 
