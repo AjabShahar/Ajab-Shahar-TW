@@ -117,6 +117,10 @@ filterModule.directive("songFilter", function() {
             $scope.hideSingers = function(){
                 $scope.shouldShowSingers = false;
             }
+
+            $scope.initialiseSingerNameInFilter = function(singer){
+                $scope.singerNameInFilter = singer
+            }
         }
     }
 });

@@ -4,7 +4,7 @@ var filterSongBySinger = filterModule.filter('filterSongBySinger', function() {
        return songs;
 
     var filtered = _.reduce(songs, function(filteredList,song){
-        if(_.findWhere(song.searchableCriteria.singers, singer)!=null)
+        if(_.findWhere(song.searchableCriteria.singers, {id:singer.id})!=null)
             filteredList.push(song);
         return filteredList;
     },[]);
