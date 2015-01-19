@@ -21,13 +21,13 @@ public class Word {
     @Column(name = "WORD_TRANSLITERATION", nullable = false)
     private String wordTransliteration;
 
-    @Column(name = "INTR_SUMMARY_ORIGINAL", nullable = false)
+    @Column(name = "INTR_SUMMARY_ORIGINAL", nullable = true)
     private String introSummaryOriginal;
 
-    @Column(name = "INTR_SUMMARY_TRANSLATION", nullable = false)
+    @Column(name = "INTR_SUMMARY_TRANSLATION", nullable = true)
     private String introSummaryTranslation;
 
-    @Column(name = "INTR_SUMMARY_TRANSLITERATION", nullable = false)
+    @Column(name = "INTR_SUMMARY_TRANSLITERATION", nullable = true)
     private String introSummaryTransliteration;
 
     @Column(name = "SHOW_ON_LANDING_PAGE", nullable = false)

@@ -12,13 +12,13 @@ public class WordIntroduction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "intro_text_original", nullable = false)
+    @Column(name = "intro_text_original", nullable = true)
     private String introTextOriginal;
 
-    @Column(name = "intro_text_translation", nullable = false)
+    @Column(name = "intro_text_translation", nullable = true)
     private String introTextTranslation;
 
-    @Column(name = "intro_text_transliteration", nullable = false)
+    @Column(name = "intro_text_transliteration", nullable = true)
     private String introTextTransliteration;
 
     @ManyToOne(fetch = FetchType.EAGER)

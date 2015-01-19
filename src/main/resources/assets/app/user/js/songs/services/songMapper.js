@@ -1,4 +1,4 @@
-var songMapper = function ($http) {
+var songMapper = function () {
     var getSingers = function(singers){
         var value = "";
 

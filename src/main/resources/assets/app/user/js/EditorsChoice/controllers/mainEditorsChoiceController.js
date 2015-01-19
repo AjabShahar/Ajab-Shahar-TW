@@ -1,4 +1,4 @@
-var mainEditorsChoiceController = function($scope,contentService,popupService, songMapper, $location){
+var mainEditorsChoiceController = function($scope,contentService,popupService, mappers, $location){
     $scope.detailsService = popupService;
     $scope.url = null;
     $scope.thumbnailDetails={};
@@ -11,13 +11,17 @@ var mainEditorsChoiceController = function($scope,contentService,popupService, s
         content.songs.then(function(result){
             $scope.thumbnailDetails = result.data;
             $scope.totalNumberOfThumbnails = result.data.songs.length>9 ?9 :result.data.songs.length;
-            $scope.thumbnailDetails.songThumbnails = songMapper.getThumbnails($scope.thumbnailDetails.songs,$scope.getSongCustomStyle);
-            $scope.thumbnailDetails.introductions = songMapper.getIntroductions($scope.thumbnailDetails.songs);
+
+            $scope.thumbnailDetails.songThumbnails = mappers.getSongMapper().getThumbnails($scope.thumbnailDetails.songs,$scope.getSongCustomStyle);
+            $scope.thumbnailDetails.introductions = mappers.getSongMapper().getIntroductions($scope.thumbnailDetails.songs);
 
         });
 
         content.words.then(function(result){
             $scope.words = result.data;
+
+            $scope.thumbnailDetails.wordThumbnails = mappers.getWordMapper().getThumbnails($scope.thumbnailDetails.words,$scope.getSongCustomStyle);
+            $scope.thumbnailDetails.wordIntroductions = mappers.getWordMapper().getIntroductions($scope.thumbnailDetails.words);
         });
     }
 
@@ -44,4 +48,4 @@ var mainEditorsChoiceController = function($scope,contentService,popupService, s
     $scope.init();
 }
 
-editorsChoiceApp.controller('mainEditorsChoiceController',['$scope','contentService','popupService','songMapper', '$location',mainEditorsChoiceController]);
+editorsChoiceApp.controller('mainEditorsChoiceController',['$scope','contentService','popupService','mappers', '$location',mainEditorsChoiceController]);
