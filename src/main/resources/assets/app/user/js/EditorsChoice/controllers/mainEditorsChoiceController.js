@@ -18,10 +18,9 @@ var mainEditorsChoiceController = function($scope,contentService,popupService, m
         });
 
         content.words.then(function(result){
-            $scope.words = result.data;
-
-            $scope.thumbnailDetails.wordThumbnails = mappers.getWordMapper().getThumbnails($scope.thumbnailDetails.words,$scope.getSongCustomStyle);
-            $scope.thumbnailDetails.wordIntroductions = mappers.getWordMapper().getIntroductions($scope.thumbnailDetails.words);
+            $scope.thumbnailDetailsForWord = result.data;
+            $scope.thumbnailDetailsForWord.wordThumbnails = mappers.getWordMapper().getThumbnails($scope.thumbnailDetailsForWord,$scope.getSongCustomStyle);
+            $scope.thumbnailDetailsForWord.wordIntroductions = mappers.getWordMapper().getIntroductions($scope.thumbnailDetailsForWord);
         });
     }
 
@@ -34,7 +33,7 @@ var mainEditorsChoiceController = function($scope,contentService,popupService, m
     }
 
     $scope.getWordCustomStyle = function(thumbnail){
-        return $scope.getCustomStyle(_.indexOf($scope.thumbnailDetails.words, thumbnail));
+        return $scope.getCustomStyle(_.indexOf($scope.thumbnailDetailsForWord.words, thumbnail));
     }
 
     $scope.getCustomStyle =function(id){

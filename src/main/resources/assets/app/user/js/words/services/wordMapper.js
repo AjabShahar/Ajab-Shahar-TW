@@ -8,6 +8,7 @@ var wordMapper = function () {
                 "introSummaryOriginal":word.introSummaryOriginal,
                 "introSummaryTranslation":word.introSummaryTranslation,
                 "introSummaryTransliteration":word.introSummaryTransliteration,
+                "customStyle": (customStyle)? customStyle(word):'',
             });
             return thumbnails;
         },[]);

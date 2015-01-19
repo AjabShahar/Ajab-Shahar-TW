@@ -12,6 +12,54 @@
     <link href="../user-css/thumbnails.css" rel="stylesheet" type="text/css">
     <link href="../user-css/common/directives/popup.css" rel="stylesheet" type="text/css">
     <link href="../user-css/common/directives/introduction.css" rel="stylesheet" type="text/css">
+<body ng-controller="mainEditorsChoiceController">
+    <div id="ajab_container">
+        <ajab-shahar-header show-menu-details="true" call-back="setPageHeight()"></ajab-shahar-header>
+
+        <div class='main-content-wrapper'>
+
+            <div class='parallax-container'>
+                <div class='pxLayers px-layer1' as-lazy-load data-name='body' data-stellar-background-ratio="1" data-original="../../user-img/mainLandingPage/parallax/body.png"></div>
+                <div class='pxLayers px-layer2' as-lazy-load data-name='map' data-stellar-background-ratio="2" data-original="../../user-img/mainLandingPage/parallax/map.png"></div>
+                <div class='pxLayers px-layer3' as-lazy-load data-name='water' data-stellar-background-ratio="1" data-original="../../user-img/mainLandingPage/parallax/check_img.png"></div>
+                <div class='pxLayers px-layer5' data-name='bird'></div>
+                <div class='pxLayers px-layer6' data-name='clouds'></div>
+                <div class='pxLayers px-layer6 second' data-name='clouds'></div>
+                <div class='pxLayers px-layer6 third' data-name='clouds'></div>
+                <div class='pxLayers px-layer6 fourth' data-name='clouds'></div>
+                <div class='pxLayers px-layer7' data-name='whiteString' data-stellar-background-ratio="3" data-original="../../user-img/mainLandingPage/parallax/03_whiteString.png"></div>
+            </div>
+
+            <div class='ajab-container'>
+                <div class='ajab-wrapper'>
+                    <div class='homepage-content'>
+                        <div ng-repeat="song in thumbnailDetails.songThumbnails">
+                            <song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}" open="detailsService.open(song.id)" custom-style="{{song.customStyle}}" img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}" english-transliteration="{{song.englishTransliteration}}" english-translation="{{song.englishTranslation}}" category-name="{{song.category}}" duration="{{song.duration}}" singer="{{song.singer}}" class = "songs" poet="{{song.poet}}" singers="{{song.singers}}"></song-thumbnail>
+                        </div>
+
+                        <div ng-repeat="word in thumbnailDetailsForWord.wordThumbnails">
+                            <word-thumbnail id="{{word.id}}" transliteration="{{word.wordTranslation}}" translation="{{word.wordTranslation}}" introduction-summary="{{word.introSummaryTransliteration}}" custom-style="{{word.customStyle}}" img-src="https://yt3.ggpht.com/-JtqzFmOGDiI/AAAAAAAAAAI/AAAAAAAAAAA/McQLKmfBpqg/s900-c-k-no/photo.jpg"></word-thumbnail>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-repeat="song in thumbnailDetails.introductions">
+                <pop-up popup-count="{{totalNumberOfThumbnails}}" ng-init="detailsService.init(song.id)" id="{{song.id}}" width="100" details-service="detailsService" show="detailsService.shouldShow(song.id)" index="{{$index}}" close-button="true">
+                    <song-overview id="{{song.id}}" singer="{{song.singer}}" poet="{{song.poet}}" english-translation="{{song.englishTranslation}}" audio-Url="{{song.audioId}}" video-Url="{{song.videoId}}" close-video="detailsService.isClosed(song.id)" english-transliteration="{{song.englishTransliteration}}" noun="{{song.noun}}"></song-overview>
+                </pop-up>
+            </div>
+            <div ng-repeat="word in thumbnailDetails.wordIntroductions">
+                <pop-up popup-count="{{totalNumberOfThumbnails}}" ng-init="detailsService.init(word.id)" id="{{word.id}}" width="100" details-service="detailsService" show="detailsService.shouldShow(word.id)" index="{{$index}}" close-button="true">
+                    <word-overview id="{{word.id}}"></word-overview>
+                </pop-up>
+            </div>
+
+        </div>
+
+        <ajab-shahar-footer></ajab-shahar-footer>
+    </div>
+
     <script type="text/javascript" src="../user-js/common/directives/soundCloud/sdk.js"></script>
     <script type="text/javascript" src="../user-js/common/directives/soundCloud/api.js"></script>
     <script type="text/javascript" src="../../common/lib/underscore/underscore.js"></script>
@@ -25,7 +73,6 @@
     <script type="text/javascript" src="../user-js/common/directives/animation/animationModule.js"></script>
     <script type="text/javascript" src="../user-js/common/directives/animation/toggleBySlide.js"></script>
     <script type="text/javascript" src="../user-js/common/modules/thumbnailModule.js"></script>
-    <script type="text/javascript" src="../../user-js/common/directives/words/wordBubble.js"></script>
     <script type="text/javascript" src="../user-js/common/modules/PopupSupport.js"></script>
     <script type="text/javascript" src="../user-js/common/directives/popupSupport/popup.js"></script>
 
@@ -66,55 +113,7 @@
     <script type="text/javascript" src="../user-js/common/directives/header/sticky.js"></script>
     <script type="text/javascript" src="../user-js/common/modules/lazyLoadModule.js"></script>
     <script type="text/javascript" src="../user-js/common/directives/lazyload/lazyload.js"></script>
-</head>
 
-<body ng-controller="mainEditorsChoiceController">
-    <div id="ajab_container">
-        <ajab-shahar-header show-menu-details="true" call-back="setPageHeight()"></ajab-shahar-header>
-
-        <div class='main-content-wrapper'>
-
-            <div class='parallax-container'>
-                <div class='pxLayers px-layer1' as-lazy-load data-name='body' data-stellar-background-ratio="1" data-original="../../user-img/mainLandingPage/parallax/body.png"></div>
-                <div class='pxLayers px-layer2' as-lazy-load data-name='map' data-stellar-background-ratio="2" data-original="../../user-img/mainLandingPage/parallax/map.png"></div>
-                <div class='pxLayers px-layer3' as-lazy-load data-name='water' data-stellar-background-ratio="1" data-original="../../user-img/mainLandingPage/parallax/check_img.png"></div>
-                <div class='pxLayers px-layer5' data-name='bird'></div>
-                <div class='pxLayers px-layer6' data-name='clouds'></div>
-                <div class='pxLayers px-layer6 second' data-name='clouds'></div>
-                <div class='pxLayers px-layer6 third' data-name='clouds'></div>
-                <div class='pxLayers px-layer6 fourth' data-name='clouds'></div>
-                <div class='pxLayers px-layer7' data-name='whiteString' data-stellar-background-ratio="3" data-original="../../user-img/mainLandingPage/parallax/03_whiteString.png"></div>
-            </div>
-
-            <div class='ajab-container'>
-                <div class='ajab-wrapper'>
-                    <div class='homepage-content'>
-                        <div ng-repeat="song in thumbnailDetails.songThumbnails">
-                            <song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}" open="detailsService.open(song.id)" custom-style="{{song.customStyle}}" img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}" english-transliteration="{{song.englishTransliteration}}" english-translation="{{song.englishTranslation}}" category-name="{{song.category}}" duration="{{song.duration}}" singer="{{song.singer}}" class = "songs" poet="{{song.poet}}" singers="{{song.singers}}"></song-thumbnail>
-                        </div>
-
-                        <div ng-repeat="word in thumbnailDetails.wordThumbnails">
-                            <word-thumbnail id="{{word.id}}" name="{{word.name}}" introduction-summary="{{word.introductionSummary}}" custom-style="{{word.customStyle}}"></word-thumbnail>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div ng-repeat="song in thumbnailDetails.introductions">
-                <pop-up popup-count="{{totalNumberOfThumbnails}}" ng-init="detailsService.init(song.id)" id="{{song.id}}" width="100" details-service="detailsService" show="detailsService.shouldShow(song.id)" index="{{$index}}" close-button="true">
-                    <song-overview id="{{song.id}}" singer="{{song.singer}}" poet="{{song.poet}}" english-translation="{{song.englishTranslation}}" audio-Url="{{song.audioId}}" video-Url="{{song.videoId}}" close-video="detailsService.isClosed(song.id)" english-transliteration="{{song.englishTransliteration}}" noun="{{song.noun}}"></song-overview>
-                </pop-up>
-            </div>
-            <div ng-repeat="word in thumbnailDetails.wordIntroductions">
-                <pop-up popup-count="{{totalNumberOfThumbnails}}" ng-init="detailsService.init(word.id)" id="{{word.id}}" width="100" details-service="detailsService" show="detailsService.shouldShow(word.id)" index="{{$index}}" close-button="true">
-                    <word-overview id="{{word.id}}"></word-overview>
-                </pop-up>
-            </div>
-
-        </div>
-
-        <ajab-shahar-footer></ajab-shahar-footer>
-    </div>
     <div id="loader_wrapper"><span></span></div>
         <script type="text/javascript">
             $('#ajab_container').css('display', 'none');
