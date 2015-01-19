@@ -11,6 +11,7 @@ var allSongsController = function($scope,$window,songsContentService,songMapper)
     $scope.singerNameInFilter = {name:''};
     $scope.poetNameInFilter = {name:''};
     $scope.songCount = 0;
+    $scope.songsList = [];
 
     var i = 0;
 
@@ -33,7 +34,6 @@ var allSongsController = function($scope,$window,songsContentService,songMapper)
             return;
         $scope.scrollIndex += 12;
     }
-
     $scope.getAllSongs();
 };
 

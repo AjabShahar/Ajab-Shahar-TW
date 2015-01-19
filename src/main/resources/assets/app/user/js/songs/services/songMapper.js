@@ -27,7 +27,11 @@ var songMapper = function ($http) {
             "singer":(song.singers==null || song.singers.length==0) ? '': song.singers[0].name +(song.singers[1]!=null ? ' ......':''),
             "singers":(song.singers!=null && song.singers.length > 1)? getSingers(song.singers):'',
             "poet":(song.poet==null || song.poet.length==0)?'Unknown': song.poet[0].name,
-            "thumbnailUrl":song.thumbnailUrl});
+            "thumbnailUrl":song.thumbnailUrl,
+            "searchableCriteria":{
+                               "singers":song.singers,
+                               "poets":song.poet,
+                            }});
             return thumbnails;
         },[]);
     };
@@ -43,6 +47,7 @@ var songMapper = function ($http) {
                 "audioId":song.soundCloudTrackID,
                 "poet":(song.poet==null || song.poet.length==0)?'Unknown': song.poet[0].name,
                 "noun": song.singers.length>1? 'sing':'sings'});
+
             return allIntroductions;
         },[]);
     };
@@ -59,12 +64,12 @@ var songMapper = function ($http) {
             "about": '\'' + song.about + '\''});
             return details;
         },[]);
-    }
+    };
 
     return {
         getThumbnails: getThumbnails,
         getSongDetails: getSongDetails,
-        getIntroductions:getIntroductions
+        getIntroductions:getIntroductions,
     };
 };
 

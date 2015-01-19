@@ -45,7 +45,7 @@ filterModule.directive("songFilter", function() {
 
                 $scope.poets.splice(0, $scope.poets.length);
                 _.each(songsWithPoetNameResult,function(song){
-                    _.each(song.poet, function(poet){
+                    _.each(song.searchableCriteria.poets, function(poet){
                         if(_.findWhere($scope.poets,{name:poet.name})==null)
                             $scope.poets.push(poet);
                     });
@@ -58,7 +58,7 @@ filterModule.directive("songFilter", function() {
 
                 $scope.singers.splice(0, $scope.singers.length);
                 _.each(songsWithSongNameResult,function(song){
-                    _.each(song.singers, function(singer){
+                    _.each(song.searchableCriteria.singers, function(singer){
                         if(_.findWhere($scope.singers,{name:singer.name})==null)
                             $scope.singers.push(singer);
                     });
