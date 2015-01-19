@@ -8,7 +8,7 @@ var contentService = function ($http) {
   };
 
   var getWordsLandingPageContent = function () {
-    return $http.get('/api/words?landingPage=true');
+    return $http.get('/api/words?showOnWordsLandingPage=true');
   };
 
   return {
