@@ -2,13 +2,22 @@ var mainEditorsChoiceController = function($scope,contentService,popupService, s
     $scope.detailsService = popupService;
     $scope.url = null;
     $scope.thumbnailDetails={};
+    $scope.words = {};
+
     $scope.init = function(){
         $scope.url = $location.absUrl();
-        contentService.getMainLandingPageThumbnails().then(function(result){
+        var content = contentService.getMainLandingPageThumbnails();
+        
+        content.songs.then(function(result){
             $scope.thumbnailDetails = result.data;
             $scope.totalNumberOfThumbnails = result.data.songs.length>9 ?9 :result.data.songs.length;
             $scope.thumbnailDetails.songThumbnails = songMapper.getThumbnails($scope.thumbnailDetails.songs,$scope.getSongCustomStyle);
             $scope.thumbnailDetails.introductions = songMapper.getIntroductions($scope.thumbnailDetails.songs);
+
+        });
+
+        content.words.then(function(result){
+            $scope.words = result.data;
         });
     }
 

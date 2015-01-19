@@ -1,6 +1,10 @@
 var contentService = function ($http) {
   var getMainLandingPageThumbnails = function () {
-    return $http.get('/api/songs/getPublishedSongs?randomSongsEnabled=true');
+    var content = {
+      songs: $http.get('/api/songs/getPublishedSongs?randomSongsEnabled=true'),
+      words: $http.get('/api/words?showOnMainLandingPage=true')
+    };
+    return content;
   };
 
   var getSongsLandingPageThumbnails = function () {
