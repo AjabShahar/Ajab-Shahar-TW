@@ -1,12 +1,17 @@
 var songMapper = function ($http) {
     var getSingers = function(singers){
-       var value = "" + singers[0].name;
+        var value = "";
+
+        if(singers.length == 0) return value;
+
+        value = "" + singers[0].name;
          for(var index=1;index< singers.length;index++){
             if(index==singers.length-1)
                 value += '& '+singers[index].name;
             else
                 value += ', '+singers[index].name;
-         }
+        } 
+       
        return value;
     };
 
