@@ -33,7 +33,7 @@ var wordDetailsController = function($scope, $http,$window,$location){
    };
 
   $scope.updateWord = function(){
-    $http.post($scope.formInfo).success(function(data){
+    $http.post('/api/words/edit',$scope.formInfo).success(function(data){
      $window.location.href = '/admin/home.html';
     });
   }
