@@ -114,12 +114,26 @@ filterModule.directive("songFilter", function() {
                  }
             }
 
+            $scope.togglePoets = function(){
+               if($scope.shouldShowPoets){
+                   $scope.shouldShowPoets = false;
+               }
+               else{
+                   $scope.shouldShowPoets = true;
+                   $scope.filterPoets();
+               }
+            }
+
             $scope.hideSingers = function(){
                 $scope.shouldShowSingers = false;
             }
 
             $scope.initialiseSingerNameInFilter = function(singer){
-                $scope.singerNameInFilter = singer
+                $scope.singerNameInFilter = singer;
+            }
+
+            $scope.initialisePoetNameInFilter = function(poet){
+                $scope.poetNameInFilter = poet;
             }
         }
     }

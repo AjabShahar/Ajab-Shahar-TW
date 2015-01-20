@@ -16,17 +16,18 @@
     </li>
 
     <li>
-        <a ng-click="showPoets()">Poets</a>
+        <a ng-click="togglePoets()" ng-class="shouldShowPoets ? 'active' : ''">Poets</a>
         <ul>
             <li ng-hide="poetNameInFilter==''|| poetNameInFilter.name==''">{{poetNameInFilter.name}}<a ng-click="removePoetFilter()">[X]</a></li>
-            <li ng-show="shouldShowPoets">
-                <select ng-model="poetNameInFilter"
-                        ng-options="poet.name for poet in poets" class="form-control">
-                </select>
-            </li>
+            <div class="singer-list-container" ng-show="shouldShowPoets">
+
+                <ul class="singer-list" ng-repeat = "poet in poets">
+                    <a ng-click="initialisePoetNameInFilter(poet);hidePoets()">{{poet.name}}</a>
+                </ul>
+                
+            </div>
         </ul>
     </li>
-
 
     <li><a>Words</a></li>
     <li><a>Genre</a></li>
