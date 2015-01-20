@@ -19,7 +19,7 @@ var mainEditorsChoiceController = function($scope,contentService,popupService, m
 
         content.words.then(function(result){
             $scope.thumbnailDetailsForWord = result.data;
-            $scope.thumbnailDetailsForWord.wordThumbnails = mappers.getWordMapper().getThumbnails($scope.thumbnailDetailsForWord,$scope.getSongCustomStyle);
+            $scope.thumbnailDetailsForWord.wordThumbnails = mappers.getWordMapper().getThumbnails($scope.thumbnailDetailsForWord,$scope.getWordCustomStyle);
             $scope.thumbnailDetailsForWord.wordIntroductions = mappers.getWordMapper().getIntroductions($scope.thumbnailDetailsForWord);
         });
     }
