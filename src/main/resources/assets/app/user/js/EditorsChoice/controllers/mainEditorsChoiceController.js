@@ -8,23 +8,24 @@ var mainEditorsChoiceController = function($scope,contentService,popupService, m
     $scope.wordIntroductions = [];
 
     $scope.init = function(){
-        var content = contentService.getMainLandingPageThumbnails();
-        
-        content.songs.then(function(result){
-            $scope.songThumbnails = mappers.getSongMapper().getThumbnails(result.data.songs,$scope.getCustomStyleForThumbnail);
-            $scope.introductions = mappers.getSongMapper().getIntroductions(result.data.songs);
+        var wordMapper = mappers.getWordMapper(),
+            songMapper = mappers.getSongMapper(),
+            content = contentService.getMainLandingPageThumbnails();
 
+        content.songs.then(function(result){
+            $scope.songThumbnails = songMapper.getThumbnails(result.data.songs, $scope.shiftThumbnailBy);
+            $scope.introductions = songMapper.getIntroductions(result.data.songs);
         });
 
         content.words.then(function(result){
-            $scope.wordThumbnails = mappers.getWordMapper().getThumbnails(result.data, $scope.getCustomStyleForThumbnail);
-            $scope.wordIntroductions = mappers.getWordMapper().getIntroductions(result.data);
+            $scope.wordThumbnails = wordMapper.getThumbnails(result.data, $scope.shiftThumbnailBy);
+            $scope.wordIntroductions = wordMapper.getIntroductions(result.data);
         });
     }();
 
-    $scope.getCustomStyleForThumbnail = function(thumbnails, thumbnail){
-        var thumbnailId = _.indexOf(thumbnails, thumbnail);
-        var index = thumbnailId + 1;
+    $scope.shiftThumbnailBy = function(thumbnails, thumbnail){
+        var index = _.indexOf(thumbnails, thumbnail);
+        index = index + 1;
         return "shift"+index;
     }
 
