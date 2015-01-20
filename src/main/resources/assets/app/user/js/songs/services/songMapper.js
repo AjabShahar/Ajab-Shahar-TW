@@ -20,7 +20,7 @@ var songMapper = function () {
             thumbnails.push({"id":song.id,
             "contentId":'song_'+song.id,
             "englishTranslation":song.englishTranslationTitle,
-            "customStyle": (customStyle)? customStyle(song):'',
+            "customStyle": (customStyle)? customStyle(songs, song):'',
             "englishTransliteration":song.englishTransliterationTitle,
             "category":song.category,
             "duration":song.duration,
