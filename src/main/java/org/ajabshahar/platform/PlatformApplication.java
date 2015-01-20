@@ -52,6 +52,9 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         bootstrap.addBundle(new AssetsBundle("/assets/app/admin/partials", "/admin", null,"admin"));
 
         bootstrap.addBundle(new AssetsBundle("/assets/app/common", "/common", null, "common"));
+
+        bootstrap.addBundle(new AssetsBundle("/assets/app/user/partials/common", "/pendingPages", null, "pendingPages"));
+
         bootstrap.addBundle(new AssetsBundle("/assets/app/user/partials", "/", "index.html"));
     }
 
