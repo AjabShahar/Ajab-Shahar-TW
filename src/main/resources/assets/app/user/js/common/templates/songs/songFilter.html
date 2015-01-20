@@ -6,9 +6,10 @@
         <ul>
             <li ng-hide="singerNameInFilter==''|| singerNameInFilter.name==''">{{singerNameInFilter.name}}<a ng-click="removeSingerFilter()">[X]</a></li>
             <div class="singer-list-container" ng-show="shouldShowSingers">
-
-                <ul class="singer-list" ng-repeat="singer in singers" >
-                    <a ng-click="initialiseSingerNameInFilter(singer);hideSingers()">{{singer.name}}</a>
+                <ul  ng-repeat="singer in singers" >
+                    <li class="singer-list">
+                        <a ng-click="initialiseSingerNameInFilter(singer);hideSingers()">{{singer.name}}</a>
+                    </li>
                 </ul>
 
             </div>
@@ -20,11 +21,12 @@
         <ul>
             <li ng-hide="poetNameInFilter==''|| poetNameInFilter.name==''">{{poetNameInFilter.name}}<a ng-click="removePoetFilter()">[X]</a></li>
             <div class="singer-list-container" ng-show="shouldShowPoets">
-
-                <ul class="singer-list" ng-repeat = "poet in poets">
+               <ul  ng-repeat = "poet in poets">
+                <li class="singer-list">
                     <a ng-click="initialisePoetNameInFilter(poet);hidePoets()">{{poet.name}}</a>
-                </ul>
-                
+                </li>
+               </ul>
+
             </div>
         </ul>
     </li>
