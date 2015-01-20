@@ -31,7 +31,7 @@ public class SplashScreenOptionsResource {
 
     @GET
     @UnitOfWork
-    public List<SplashScreenOptions> listAllSpashScreenValues() {
+    public List<SplashScreenOptions> listAllSplashScreenValues() {
         return splashScreenOptionsDAO.findAll();
     }
 

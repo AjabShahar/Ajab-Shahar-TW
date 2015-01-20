@@ -1,6 +1,10 @@
 template: Hello, %s!
 defaultName: Stranger
 server:
+  gzip:
+    enabled: true
+    minimumEntitySize: 256B
+    bufferSize: 8KB
   applicationConnectors:
   - type: http 
     port: 9000
