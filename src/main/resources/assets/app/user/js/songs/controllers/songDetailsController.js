@@ -32,17 +32,8 @@ var songDetailsController = function($scope,$location,songsContentService,songMa
             $scope.umbrellaTitleEnglishTranslation = result.data.songs[0].umbrellaTitleEnglishTranslation;
         });
 
-        $scope.detailContents = songsContentService.getSongRenditions($scope.songId).then(function(result){
-            $scope.renditions = songMapper.getSongDetails(result.data.songs);
-        });
-        songsContentService.getSong($scope.songId).then(function(result){
-            $scope.poet = result.data.poet[0];
-            $scope.song = result.data;
-            $scope.songText.refrainEnglishTranslation = result.data.songText.refrainEnglishTranslation;
-            $scope.songText.refrainOriginal = result.data.songText.refrainOriginal;
-            $scope.songText.refrainEnglishTransliteration = result.data.songText.refrainEnglishTransliteration;
-            $scope.getSongsLyrics(result.data.songText.songTextContents,result.data.songText.openingCouplets);
-        });
+        $scope.getRenditions($scope.songId);
+        $scope.getSong($scope.songId);
 
         $scope.getSongsVersions = function(songs, songId){
             for(index in songs){
@@ -54,6 +45,23 @@ var songDetailsController = function($scope,$location,songsContentService,songMa
             }
             return songs;
         }
+    }
+
+    $scope.getRenditions = function(songId){
+      songsContentService.getSongRenditions($scope.songId).then(function(result){
+            $scope.renditions = songMapper.getSongDetails(result.data.songs);
+       });
+    }
+
+    $scope.getSong = function(songId){
+       songsContentService.getSong(songId).then(function(result){
+             $scope.poet = result.data.poet[0];
+             $scope.song = result.data;
+             $scope.songText.refrainEnglishTranslation = result.data.songText.refrainEnglishTranslation;
+             $scope.songText.refrainOriginal = result.data.songText.refrainOriginal;
+             $scope.songText.refrainEnglishTransliteration = result.data.songText.refrainEnglishTransliteration;
+             $scope.getSongsLyrics(result.data.songText.songTextContents,result.data.songText.openingCouplets);
+       });
     }
 
     $scope.shouldShowVersions = function(){
@@ -72,6 +80,8 @@ var songDetailsController = function($scope,$location,songsContentService,songMa
 
         $scope.prevId = songId;
         $scope.showContentDetails[songId] = true;
+        $scope.getRenditions(songId);
+        $scope.getSong(songId);
     }
 
     $scope.isOpen = function(id){
