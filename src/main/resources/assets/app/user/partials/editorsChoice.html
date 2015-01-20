@@ -45,12 +45,12 @@
             </div>
 
             <div ng-repeat="song in thumbnailDetails.introductions">
-                <pop-up popup-count="{{totalNumberOfThumbnails}}" ng-init="detailsService.init(song.id)" id="{{song.id}}" width="100" details-service="detailsService" show="detailsService.shouldShow(song.id)" index="{{$index}}" close-button="true">
+                <pop-up popup-count="{{thumbnailDetails.introductions.length}}" ng-init="detailsService.init(song.id)" id="{{song.id}}" width="100" details-service="detailsService" show="detailsService.shouldShow(song.id)" index="{{$index}}" close-button="true">
                     <song-overview id="{{song.id}}" singer="{{song.singer}}" poet="{{song.poet}}" english-translation="{{song.englishTranslation}}" audio-Url="{{song.audioId}}" video-Url="{{song.videoId}}" close-video="detailsService.isClosed(song.id)" english-transliteration="{{song.englishTransliteration}}" noun="{{song.noun}}"></song-overview>
                 </pop-up>
             </div>
-            <div ng-repeat="word in thumbnailDetails.wordIntroductions">
-                <pop-up popup-count="{{totalNumberOfThumbnails}}" ng-init="detailsService.init(word.id)" id="{{word.id}}" width="100" details-service="detailsService" show="detailsService.shouldShow(word.id)" index="{{$index}}" close-button="true">
+            <div ng-repeat="word in thumbnailDetailsForWord.wordIntroductions">
+                <pop-up popup-count="{{thumbnailDetailsForWord.wordThumbnails.length}}" ng-init="detailsService.init(word.id)" id="{{word.id}}" width="100" details-service="detailsService" show="detailsService.shouldShow(word.id)" index="{{$index}}" close-button="true">
                     <word-overview id="{{word.id}}"></word-overview>
                 </pop-up>
             </div>
