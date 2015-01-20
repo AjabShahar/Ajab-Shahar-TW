@@ -1,8 +1,6 @@
 var mainEditorsChoiceController = function($scope,contentService,popupService, mappers){
     $scope.detailsService = popupService;
-    $scope.url = null;
     $scope.thumbnailDetails={};
-    $scope.words = {};
 
     $scope.init = function(){
         var content = contentService.getMainLandingPageThumbnails();
