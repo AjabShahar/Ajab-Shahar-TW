@@ -13,6 +13,10 @@
     z-index: -1;
     margin: 0 auto;
 
+    @media screen and (max-width: 1024px) {
+        width: 1024px;
+    }
+
     .pxSongLayers {
         width:100%;
         top: 0;
@@ -94,6 +98,9 @@
             top: 45px;
             opacity: 0.7;
             background-size: contain;
+            @media screen and (max-width: 768px) {
+                left: 4%;
+            }
        }
 
        &8 {
