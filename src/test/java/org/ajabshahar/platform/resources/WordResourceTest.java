@@ -53,7 +53,7 @@ public class WordResourceTest {
     public void shouldGetWordVersions() throws Exception {
         WordsRepresentation expected = new WordsRepresentation();
         when(words.findVersions((int) WORD_ID)).thenReturn(wordList);
-        when(wordRepresentationFactory.create(wordList)).thenReturn(expected);
+        when(wordRepresentationFactory.createWordsRepresentation(wordList)).thenReturn(expected);
 
         Response actual = wordResource.getVersions((int) WORD_ID);
 

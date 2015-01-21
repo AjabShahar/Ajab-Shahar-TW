@@ -2,29 +2,23 @@ package org.ajabshahar.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class WordRepresentation {
+public class WordSummaryRepresentation {
     private int id;
-    private String wordOriginal;
+    private String originalWord;
     private String wordTranslation;
     private String wordTransliteration;
     private String wordIntroSummaryOriginal;
     private String wordIntroSummaryTranslation;
     private String wordIntroSummaryTransliteration;
-    private String WordIntroOriginal;
-    private String WordIntroTranslation;
-    private String wordIntroTransliteration;
 
-    public WordRepresentation(int id, String wordOriginal, String wordTranslation, String wordTransliteration, String wordIntroSummaryOriginal, String wordIntroSummaryTranslation, String wordIntroSummaryTransliteration, String wordIntroOriginal, String wordIntroTranslation, String wordIntroTransliteration) {
+    public WordSummaryRepresentation(int id, String originalWord, String wordTranslation, String wordTransliteration, String wordIntroSummaryOriginal, String wordIntroSummaryTranslation, String wordIntroSummaryTransliteration) {
         this.id = id;
-        this.wordOriginal = wordOriginal;
+        this.originalWord = originalWord;
         this.wordTranslation = wordTranslation;
         this.wordTransliteration = wordTransliteration;
         this.wordIntroSummaryOriginal = wordIntroSummaryOriginal;
         this.wordIntroSummaryTranslation = wordIntroSummaryTranslation;
         this.wordIntroSummaryTransliteration = wordIntroSummaryTransliteration;
-        WordIntroOriginal = wordIntroOriginal;
-        WordIntroTranslation = wordIntroTranslation;
-        this.wordIntroTransliteration = wordIntroTransliteration;
     }
 
     @JsonProperty("id")
@@ -33,8 +27,8 @@ public class WordRepresentation {
     }
 
     @JsonProperty("wordOriginal")
-    public String getWordOriginal() {
-        return wordOriginal;
+    public String getOriginalWord() {
+        return originalWord;
     }
 
     @JsonProperty("wordTranslation")
@@ -45,21 +39,6 @@ public class WordRepresentation {
     @JsonProperty("wordTransliteration")
     public String getWordTransliteration() {
         return wordTransliteration;
-    }
-
-    @JsonProperty("wordIntroOriginal")
-    public String getWordIntroOriginal() {
-        return WordIntroOriginal;
-    }
-
-    @JsonProperty("wordIntroTranslation")
-    public String getWordIntroTranslation() {
-        return WordIntroTranslation;
-    }
-
-    @JsonProperty("wordIntroTransliteration")
-    public String getWordIntroTransliteration() {
-        return wordIntroTransliteration;
     }
 
     @JsonProperty("introSummaryOriginal")

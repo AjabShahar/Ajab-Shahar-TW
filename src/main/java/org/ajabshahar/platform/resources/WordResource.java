@@ -63,7 +63,7 @@ public class WordResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getVersions(@QueryParam("id") int wordId) {
         List<Word> wordsList = words.findVersions(wordId);
-        WordsRepresentation wordsRepresentation = wordRepresentationFactory.create(wordsList);
+        WordsRepresentation wordsRepresentation = wordRepresentationFactory.createWordsRepresentation(wordsList);
         return Response.ok(wordsRepresentation).build();
     }
 }
