@@ -1,38 +1,8 @@
-body.admin-pages{
-margin-top:20%;
-margin-bottom: 50%;
-}
-
-.admin-container{
-  width:100%;
-  text-align: center;
-  display:inline-block;
-}
-
-.admin-wrapper{
-  max-width:1000px;
-  width:100%;
-  text-align: center;
-  display:inline-block;
-  margin:0 auto;
-}
-
 .left{
 	margin-left: 2%;
 }
 
-.lyricsBoxComponents{
-	margin-left: 246%;
-	margin-top: -190%;
-}
-
-.lyricsBoxMultiSelect{
-	position: fixed;
-	margin-left: 57%;
-	margin-top: -42%;
-}
-
-.adminHome{
+.admin-home{
   position: absolute;
   display: inline-block;
   margin-left: 91%;
@@ -40,14 +10,6 @@ margin-bottom: 50%;
 
 .inl-blk {
     display: inline-block;
-}
-
-.form-group .textarea.form-control {
-    width: 400px;
-    float: left;
-    margin: 0 10px 20px;
-    resize: none;
-    overflow: auto;
 }
 
 .songTextTable {
