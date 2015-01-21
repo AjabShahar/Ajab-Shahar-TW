@@ -1,4 +1,4 @@
-var personDetailsController = function($scope, $http,$window,$location, contentService){
+var personDetailsController = function( $scope, $http, $window, $location, contentService ){
   $scope.pageHeading = "";
   $scope.pageTitle = "";
   $scope.formInfo = {};
@@ -9,66 +9,50 @@ var personDetailsController = function($scope, $http,$window,$location, contentS
     contentService.getAllCategories('person').then(function(result){
       $scope.categoryList = result.data;
     });
-  }
+  }()
 
   var savePerson = function(){
     $http.post('/api/people',$scope.formInfo).success(function(data){
-          $window.location.href = '/admin/person/details.html?id=' + data;
-       });
+        $window.location.href = '/admin/person/details.html?id=' + data;
+    });
   }
 
+  var updatePerson = function(){
+    $http.post('/api/people/edit', $scope.formInfo).success(function(data){
+      $window.location.href = '/admin/home.html';
+    });
+  }
 
   $scope.saveData = function(){
-    if (isAddNewPersonPage){
-        savePerson();
-    }
-    else {
-      updatePerson();
-    }
+    (isAddNewPersonPage) ? savePerson() : updatePerson();
   };
 
+  var getPersonDetails = function(personId){
+    $http.get( '/api/people/' + personId ).success(function(data){
+        $scope.formInfo = data;
+
+        angular.forEach($scope.categoryList, function(category){
+          angular.forEach(data.roles, function(selectedCategoryName){
+            ( selectedCategoryName == category.name ) ? category.ticked = true : category.ticked = false;
+          });
+        });
+    });
+  }
+
   $scope.getPersonData = function(){
-  	var id = $location.search().id;
-    isAddNewPersonPage = (id == undefined);
+  	var personId = $location.search().id;
+    isAddNewPersonPage = (personId == undefined);
 
     if(isAddNewPersonPage){
       $scope.pageTitle = "Person details - admin";
       $scope.pageHeading = "Add Person details";
-      return;
     }
-
-    $scope.pageTitle = "Edit person details";
-    $scope.pageHeading = "Edit Person details";
-
-  	$http.get('/api/people/'+id).success(function(data){
-        $scope.formInfo = data;
-
-        angular.forEach($scope.categoryList,function(category){
-          angular.forEach(data.roles,function(selectedCategories){
-             if(selectedCategories == category.name)
-               category.ticked=true;
-          });
-        });
-
-    });
+    else{
+      $scope.pageTitle = "Edit person details";
+      $scope.pageHeading = "Edit Person details";
+      getPersonDetails(personId);  
+    }
   };
-
-  var updatePerson = function(){
-  	$http.post('/api/people/edit', $scope.formInfo).success(function(data){
-            $window.location.href = '/admin/home.html';
-     });
-  }
-
-	$scope.redirectToEnterPage= function(isDirty){
-		if(isDirty)
-		{
-		    alert('This data is not updated');
-		}
-		$window.location.href = '/admin/person/details.html';
-	};
-
-  $scope.init();
-
 };
 
-personAdminApp.controller('personDetailsController',['$scope','$http','$window','$location', 'contentService',personDetailsController]);
+personAdminApp.controller('personDetailsController', ['$scope', '$http', '$window', '$location', 'contentService', personDetailsController] );
