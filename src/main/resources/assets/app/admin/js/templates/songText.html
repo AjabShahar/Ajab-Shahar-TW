@@ -99,17 +99,24 @@
                     </tr>
                 </tbody>
             </table>
+        
+            <div class="col-md-1" ng-show="shouldShowCoupletDetails()">
+                <strong>Couplet's poet</strong>
+            </div>
+            <div class="col-md-1" ng-show="shouldShowCoupletDetails()">
+                <select ng-model="newContent.poet" ng-options="poet.firstName for poet in poets" class="form-control"></select>
+            </div>
             
-            <button type="button" class="btn btn-info" ng-click="addLyricsText()">Add To Lyrics</button>
-            <button type="button" class="btn btn-danger" ng-click="clearSongText()">Clear Lyrics</button>
+            <div class="col-md-1">
+                <button type="button" class="btn btn-info" ng-click="addLyricsText()">Add To Lyrics</button>
+            </div>
 
-
-            <select ng-show="shouldShowCoupletDetails()" ng-model="newContent.poet" ng-options="poet.firstName for poet in poets" class="form-control"></select>
-
-            
+            <div class="col-md-1">
+                <button type="button" class="btn btn-danger" ng-click="clearSongText()">Clear Lyrics</button>
+            </div>
         </div>
-        <div class="row">
-            <table class="songTextTable" ng-repeat="songTextContent in songText.songTextContents track by $index">
+        <div class="row" ng-repeat="songTextContent in songText.songTextContents track by $index">
+            <table class="songTextTable">
                 <td>
                     <textarea class="form-control" rows="6" ng-model="songTextContent.originalText" placeholder=" Enter original text ..."  ng-required="authoringComplete"></textarea>
                 </td>
@@ -120,7 +127,9 @@
                     <textarea class="form-control" rows="6" ng-model="songTextContent.englishTranslationText" placeholder=" Enter original text ..."></textarea>
                 </td>
             </table>
-            <select ng-show="shouldShowCoupletDetails()" ng-model="songTextContent.poet" ng-options="poet.firstName for poet in poets" class="form-control"></select>
+            <div class="col-sm-1">
+                <strong>Couplet's poet</strong> <select ng-show="songTextContent.poet != undefined" ng-model="songTextContent.poet" ng-options="poet.firstName for poet in poets" class="form-control"></select>
+            </div>
         </div>
     </div>
 </div>
