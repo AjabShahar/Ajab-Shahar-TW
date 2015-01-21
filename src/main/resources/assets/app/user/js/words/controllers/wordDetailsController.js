@@ -2,6 +2,7 @@ var wordDetailsController = function($scope, $location, wordMapper, wordService)
 
     $scope.wordVersions = {"wordThumbnails":[]};
     $scope.words = [];
+    $scope.showVersion = true;
     $scope.wordId ='';
 
     $scope.init = function(){
@@ -12,6 +13,10 @@ var wordDetailsController = function($scope, $location, wordMapper, wordService)
          $scope.wordVersions.wordThumbnails = wordMapper.getThumbnails($scope.words,'');
         });
     }();
+
+    $scope.toggleVersion = function(){
+       $scope.showVersion = !$scope.showVersion;
+    }
 
 }
 

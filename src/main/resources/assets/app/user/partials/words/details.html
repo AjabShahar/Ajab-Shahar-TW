@@ -39,13 +39,22 @@
     <link href="../../user-css/common/directives/header/header.css" rel="stylesheet" type="text/css">
     <link href="../../user-css/common/directives/introduction.css" rel="stylesheet" type="text/css">
     <link href="../../user-css/thumbnails.css" rel="stylesheet" type="text/css">
+    <link href="../../user-css/pages/songs.css" rel="stylesheet" type="text/css">
 
 </head>
 <body ng-controller="wordDetailsController" class="songs-details header-with-carousel">
 <ajab-shahar-header></ajab-shahar-header>
+    <div class="page-header">
+        <div class="ajab-wrapper">
+            <div class="page-title">
+                <span class="main">{{words[0].wordOriginal}}</span>
+                <span class="sub-main">{{words[0].wordTransliteration}}</span>
+            </div>
+        </div>
+    </div>
     <div class="lower-pardah">
 
-            <div class="carousel-wrapper jcarousel-wrapper">
+            <div class="carousel-wrapper jcarousel-wrapper" ng-show="showVersion">
 
                 <div as-carousel class="carousel-box jcarousel">
                     <ul>
@@ -56,7 +65,13 @@
                     <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true"></a>
                     <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true"></a>
                 </div>
-          </div>
+           </div>
+           <div class="see-more"  ng-click="toggleVersion()">
+             <a class="version" href="javascript:void(0)">
+                {{numberOfVersions}} versions
+                <span class="arrow" ng-class="showVersion ? 'up-arrow' : ''"></span>
+             </a>
+           </div>
     </div>
 </body>
 </html>
