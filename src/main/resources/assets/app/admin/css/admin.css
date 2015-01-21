@@ -50,7 +50,11 @@ margin-bottom: 50%;
     overflow: auto;
 }
 
-.dangerButton {
-  margin-top: 4%;
-  position: absolute;
+.songTextTable {
+  width: 80%;
+  margin: 2% 0;
+}
+
+.songTextTable td{
+  padding-right: 2%;
 }
