@@ -28,15 +28,28 @@
 
     <button type="button" class="btn btn-info" ng-click="addToWordIntroduction()">Add to Word Introduction</button>
 
-    <div>
-        <div class="form-group col-sm-2">
-            <ul>
-                <li ng-repeat="word in wordIntroductions track by $index">
-                    <text-angular name="originalContent{{$index}}" ng-model="word.introTextOriginal" ></text-angular>
-                    <text-angular name="translationContent{{$index}}" ng-model="word.introTextTranslation" ></text-angular>
-                    <text-angular name="transliterationContent{{$index}}" ng-model="word.introTextTransliteration" ></text-angular>
-                </li>
-            </ul>
-        </div>
+    <div ng-repeat="word in wordIntroductions track by $index">
+        <table class="word-introduction-table">
+            <thead>
+                <tr>
+                    <th>Original</th>
+                    <th>English translation</th>       
+                    <th>English transliteration</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <text-angular name="originalContent{{$index}}" ng-model="word.introTextOriginal" ></text-angular>
+                    </td>
+                    <td>
+                        <text-angular name="translationContent{{$index}}" ng-model="word.introTextTranslation" ></text-angular>
+                    </td>
+                    <td>
+                        <text-angular name="transliterationContent{{$index}}" ng-model="word.introTextTransliteration" ></text-angular>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
