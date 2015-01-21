@@ -5,8 +5,8 @@ var wordListController = function($scope, contentService){
             var allWords = result.data;
             $scope.words = _.reduce(allWords,function(words, value,index) {
                 var toBeAdded={};
-                toBeAdded.wordOrPhase = value.wordOrPhase;
-                toBeAdded.meaning = value.meaning;
+                toBeAdded.wordOrPhrase = value.wordTransliteration;
+                toBeAdded.meaning = value.wordTranslation;
                 toBeAdded.id = value.id;
                 words.push(toBeAdded);
                 return words;

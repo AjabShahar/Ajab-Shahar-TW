@@ -12,34 +12,34 @@
     <link href="../../admin-css/admin.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<a ng-href="/admin/home.html" target="_self"><button type="button" class="btn btn-info admin-home">Admin home</button></a>
-<br>
-<br>
-<div ng-controller="personListController">
-    <table class="table">
-        <tr>
-            <td><b>First Name</b></td>
-            <td><b>Middle Category</b></td>
-            <td><b>Last Name</b></td>
-            <td><b>Roles</b></td>
-            <td><b>Edit</b></td>
-            <td><b>Delete</b></td>
-        </tr>
-        <tr>
-            <td><input ng-model="search.firstName" class="form-control" ><br></td>
-            <td><input ng-model="search.middleName" class="form-control" ><br></td>
-            <td><input ng-model="search.lastName" class="form-control" ><br></td>
-            <td><input ng-model="search.roles" class="form-control" ><br></td>
-        </tr>
-        <tr ng-repeat="person in people | orderBy:'firstName' | filter:search">
-            <td>{{person.firstName}}</td>
-            <td>{{person.middleName}}</td>
-            <td>{{person.lastName}}</td>
-            <td>{{person.roles}}</td>
-            <td><a href="details.html?id={{person.id}}" class="btn btn-info">Edit</a></td>
-            <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
-        </tr>
-    </table>
-</div>
+    <a ng-href="/admin/home.html" target="_self"><button type="button" class="btn btn-info admin-home">Admin home</button></a>
+    <br>
+    <br>
+    <div ng-controller="personListController">
+        <table class="table">
+            <tr>
+                <td><b>First Name</b></td>
+                <td><b>Middle Category</b></td>
+                <td><b>Last Name</b></td>
+                <td><b>Roles</b></td>
+                <td><b>Edit</b></td>
+                <td><b>Delete</b></td>
+            </tr>
+            <tr>
+                <td><input ng-model="search.firstName" class="form-control" ><br></td>
+                <td><input ng-model="search.middleName" class="form-control" ><br></td>
+                <td><input ng-model="search.lastName" class="form-control" ><br></td>
+                <td><input ng-model="search.roles" class="form-control" ><br></td>
+            </tr>
+            <tr ng-repeat="person in people | orderBy:'firstName' | filter:search">
+                <td>{{person.firstName}}</td>
+                <td>{{person.middleName}}</td>
+                <td>{{person.lastName}}</td>
+                <td>{{person.roles}}</td>
+                <td><a href="details.html?id={{person.id}}" class="btn btn-info">Edit</a></td>
+                <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>
