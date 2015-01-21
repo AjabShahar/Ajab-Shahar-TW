@@ -6,13 +6,17 @@
         <div class="thumbnail-desc" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
             <h3 class="selected" >{{transliteration}}</h3>
             <small>{{translation}}</small>
-            <small>{{introductionSummary}}</small>
+            <div>
+                <small>{{introductionSummary}}....</small>
+            </div>
 
             <div ng-show="shouldShowDetails" class='thumbnailDetails toggleBySlide'>
-                <div class='categoryDetails'>
-                <small class="categoryName">WORD INTRO</small>
+                <div>
+                    <small>{{introTransliteration}}</small>
                 </div>
-                <a href="/words/details.html?id={{id}}">Click for more info.</a>
+                <div class='categoryDetails'>
+                    <a href="/words/details.html?id={{id}}">Word Intro</a>
+                </div>
             </div>
         </div>
         <div class="lower-curve"></div>

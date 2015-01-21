@@ -12,6 +12,7 @@ thumbnailModule.directive("wordThumbnail", function() {
             overlayId:'@',
             imgSrc:'@',
             id:'@',
+            introTransliteration:'@',
         },
         templateUrl:'/user-js/common/templates/thumbnail/wordThumbnail.html',
         controller:function($scope){
