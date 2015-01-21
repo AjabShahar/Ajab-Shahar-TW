@@ -1,5 +1,6 @@
 var wordDetailsApp = angular.module('wordDetailsApp',['thumbnailModule','htmlGenerator', 'headerModule', 'animationModule']);
 
+wordDetailsApp.factory('wordService', ['$http', wordService]);
 
 wordDetailsApp.config(function($locationProvider) {
        $locationProvider.html5Mode({

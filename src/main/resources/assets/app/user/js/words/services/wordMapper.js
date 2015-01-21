@@ -2,6 +2,7 @@ var wordMapper = function () {
     getThumbnails = function(words,customStyle) {
         return _.reduce(words,function(thumbnails, word,index) {
             thumbnails.push({
+                "id":word.id,
                 "wordOriginal":word.wordOriginal,
                 "wordTranslation":word.wordTranslation,
                 "wordTransliteration":word.wordTransliteration,

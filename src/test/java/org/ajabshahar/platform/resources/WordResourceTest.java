@@ -1,6 +1,7 @@
 package org.ajabshahar.platform.resources;
 
 import org.ajabshahar.api.WordRepresentationFactory;
+import org.ajabshahar.api.WordsRepresentation;
 import org.ajabshahar.core.Words;
 import org.ajabshahar.platform.models.Word;
 import org.junit.Before;
@@ -10,6 +11,8 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
@@ -24,11 +27,13 @@ public class WordResourceTest {
 
     private WordResource wordResource;
     private Word word;
+    private List<Word> wordList;
 
     @Before
     public void setUp() {
         wordResource = new WordResource(words, wordRepresentationFactory);
         word = new Word();
+        wordList = new ArrayList<>();
 
         word.setId(WORD_ID);
     }
@@ -39,8 +44,19 @@ public class WordResourceTest {
         when(wordRepresentationFactory.create(jsonWord)).thenReturn(word);
         when(words.create(word)).thenReturn(word);
 
-        Response expected = wordResource.createWord(jsonWord);
+        Response actual = wordResource.createWord(jsonWord);
 
-        assertEquals(expected.getEntity(), WORD_ID);
+        assertEquals(actual.getEntity(), WORD_ID);
+    }
+
+    @Test
+    public void shouldGetWordVersions() throws Exception {
+        WordsRepresentation expected = new WordsRepresentation();
+        when(words.findVersions((int) WORD_ID)).thenReturn(wordList);
+        when(wordRepresentationFactory.create(wordList)).thenReturn(expected);
+
+        Response actual = wordResource.getVersions((int) WORD_ID);
+
+        assertEquals(expected, actual.getEntity());
     }
 }

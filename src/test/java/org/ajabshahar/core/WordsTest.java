@@ -8,6 +8,9 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
@@ -15,6 +18,7 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class WordsTest {
     private Words words;
+    private int WORD_ID = 1;
 
     @Mock
     private WordDAO wordRepository;
@@ -49,5 +53,17 @@ public class WordsTest {
         assertEquals(expected.getIntroSummaryOriginal(), "something");
         assertEquals(expected.getIntroSummaryTranslation(), "something1");
         assertEquals(expected.getIntroSummaryTransliteration(), "something2");
+    }
+
+    @Test
+    public void shouldFindVersions() throws Exception {
+
+        List<Word> expected = new ArrayList<>();
+        when(wordRepository.findVersions(WORD_ID)).thenReturn(expected);
+
+        List<Word> actual = words.findVersions(WORD_ID);
+
+        assertEquals(expected, actual);
+
     }
 }

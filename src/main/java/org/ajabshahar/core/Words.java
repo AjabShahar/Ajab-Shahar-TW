@@ -45,4 +45,8 @@ public class Words {
         originalWord.setWordIntroductions(updatableWord.getWordIntroductions());
         return originalWord;
     }
+
+    public List<Word> findVersions(int wordId) {
+        return wordRepository.findVersions(wordId);
+    }
 }

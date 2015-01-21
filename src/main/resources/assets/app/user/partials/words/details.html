@@ -12,7 +12,10 @@
     <script type="text/javascript" src="../../../common/lib/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="../../../common/lib/angular/angular.js"></script>
     <script type="text/javascript" src="../../../common/lib/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="../../../common/lib/underscore/underscore.js"></script>
     <script type="text/javascript" src="../../user-js/common/directives/animation/animationModule.js"></script>
+    <script type="text/javascript" src="../../../common/lib/jcarousel/dist/jquery.jcarousel.min.js"></script>
+    <script type="text/javascript" src="../../../common/jquery/jcarousel/jcarousel.responsive.js"></script>
     <script type="text/javascript" src="../../user-js/common/modules/thumbnailModule.js"></script>
     <script type="text/javascript" src="../../user-js/common/directives/animation/toggleBySlide.js"></script>
     <script type="text/javascript" src="../../user-js/common/modules/htmlGenerator.js"></script>
@@ -20,19 +23,40 @@
     <script type="text/javascript" src="../../user-js/common/directives/header/sticky.js"></script>
     <script type="text/javascript" src="../../user-js/common/directives/header/ajabShaharHeader.js"></script>
     <script type="text/javascript" src="../../user-js/common/directives/animation/toggleByFading.js"></script>
+    <script type="text/javascript" src="../../user-js/common/directives/carouselSupport/asCarousel.js"></script>
     <script type="text/javascript" src="../../user-js/common/bindDynamicHtml.js"></script>
 
+    <script type="text/javascript" src="../../user-js/words/services/wordService.js"></script>
     <script type="text/javascript" src="../../user-js/words/wordDetailsApp.js"></script>
     <script type="text/javascript" src="../../user-js/words/controllers/wordDetailsController.js"></script>
+    <script type="text/javascript" src="../user-js/words/services/wordMapper.js"></script>
+    <script type="text/javascript" src="../user-js/common/directives/thumbnail/wordThumbnail.js"></script>
+
 
     <link href="../../user-css/common.css" rel="stylesheet" type="text/css">
     <link href="../../user-css/reset.css" rel="stylesheet" type="text/css">
+    <link href="../../../common/jquery/jcarousel/jcarousel.responsive.css" rel="stylesheet" type="text/css">
     <link href="../../user-css/common/directives/header/header.css" rel="stylesheet" type="text/css">
     <link href="../../user-css/common/directives/introduction.css" rel="stylesheet" type="text/css">
+    <link href="../../user-css/thumbnails.css" rel="stylesheet" type="text/css">
 
 </head>
-<body ng-controller="wordDetailsController">
+<body ng-controller="wordDetailsController" class="songs-details header-with-carousel">
 <ajab-shahar-header></ajab-shahar-header>
+    <div class="lower-pardah">
 
+            <div class="carousel-wrapper jcarousel-wrapper">
+
+                <div as-carousel class="carousel-box jcarousel">
+                    <ul>
+                        <li ng-repeat="word in wordVersions.wordThumbnails track by $index">
+                                <word-thumbnail id="{{word.id}}" transliteration="{{word.wordTranslation}}" translation="{{word.wordTranslation}}" introduction-summary="{{word.introSummaryTransliteration}}" custom-style="{{word.customStyle}}" img-src="https://yt3.ggpht.com/-JtqzFmOGDiI/AAAAAAAAAAI/AAAAAAAAAAA/McQLKmfBpqg/s900-c-k-no/photo.jpg"></word-thumbnail>
+                        </li>
+                    </ul>
+                    <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true"></a>
+                    <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true"></a>
+                </div>
+          </div>
+    </div>
 </body>
 </html>

@@ -38,7 +38,7 @@ public class WordDAO extends AbstractDAO<Word> {
             allWords.add(Restrictions.eq("id", Long.valueOf(wordId)));
         }
 
-        if(showOnMainLandingPage) {
+        if (showOnMainLandingPage) {
             allWords.setMaxResults(4);
         }
         allWords.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
@@ -51,4 +51,13 @@ public class WordDAO extends AbstractDAO<Word> {
     }
 
 
+    public List<Word> findVersions(int wordId) {
+        Session currentSession = sessionFactory.openSession();
+        Criteria wordVersions = currentSession.createCriteria(Word.class);
+        if (wordId != 0) {
+            wordVersions.add(Restrictions.eq("id", Long.valueOf(wordId)));
+        }
+        wordVersions.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        return wordVersions.list();
+    }
 }

@@ -2,6 +2,7 @@ package org.ajabshahar.platform.resources;
 
 import io.dropwizard.hibernate.UnitOfWork;
 import org.ajabshahar.api.WordRepresentationFactory;
+import org.ajabshahar.api.WordsRepresentation;
 import org.ajabshahar.core.Words;
 import org.ajabshahar.platform.models.Word;
 
@@ -57,4 +58,12 @@ public class WordResource {
     }
 
 
+    @GET
+    @Path("/versions")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getVersions(@QueryParam("id") int wordId) {
+        List<Word> wordsList = words.findVersions(wordId);
+        WordsRepresentation wordsRepresentation = wordRepresentationFactory.create(wordsList);
+        return Response.ok(wordsRepresentation).build();
+    }
 }
