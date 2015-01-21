@@ -77,7 +77,9 @@
                     <option value="false">No</option>
                 </select>
             </div>
-            
+        </div>
+        <div class="row">
+            <hr>
             <table class="songTextTable">
                 <thead>
                       <tr>
@@ -115,6 +117,7 @@
                 <button type="button" class="btn btn-danger" ng-click="clearSongText()">Clear Lyrics</button>
             </div>
         </div>
+        <hr>
         <div class="row" ng-repeat="songTextContent in songText.songTextContents track by $index">
             <table class="songTextTable">
                 <td>
@@ -127,9 +130,13 @@
                     <textarea class="form-control" rows="6" ng-model="songTextContent.englishTranslationText" placeholder=" Enter original text ..."></textarea>
                 </td>
             </table>
-            <div class="col-sm-1">
-                <strong>Couplet's poet</strong> <select ng-show="songTextContent.poet != undefined" ng-model="songTextContent.poet" ng-options="poet.firstName for poet in poets" class="form-control"></select>
+            <div class="col-md-1" ng-show="songTextContent.poet != undefined" >
+                <strong>Couplet's poet</strong>
+            </div>
+            <div class="col-md-1" ng-show="songTextContent.poet != undefined">
+                <select ng-model="songTextContent.poet" ng-options="poet.firstName for poet in poets" class="form-control"></select>
             </div>
         </div>
+        <hr>
     </div>
 </div>
