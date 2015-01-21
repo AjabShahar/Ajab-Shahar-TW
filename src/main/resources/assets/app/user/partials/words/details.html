@@ -77,8 +77,8 @@
         <div>
             <h2 class="song-heading">{{wordVersions.wordCompleteInfo[0].wordOriginal}}</h2>
 
-            <div  class="lyrics">
-                <p style=" white-space: pre-line">{{wordVersions.wordCompleteInfo[0].wordIntroOriginal}}</p>
+            <div  class="lyrics" >
+                <div bind-dynamic-html="wordVersions.wordCompleteInfo[0].wordIntroOriginal"></div>
             </div>
         </div>
     </div>

@@ -7,3 +7,5 @@ wordDetailsApp.config(function($locationProvider) {
          enabled: true,
        });
  });
+
+ wordDetailsApp.directive('bindDynamicHtml', ['$compile', bindDynamicHtml]);
