@@ -4,7 +4,7 @@
 .homepage-content {
     width: 70%;
     position: relative;
-    height: 3203px !important;
+    height: 2500px !important;
     margin: 24% auto 0;
 }
 .song-parallax-container{
@@ -17,7 +17,7 @@
         width:100%;
         top: 0;
         left: 0;
-        height: 3543px;
+        height: 4600px;
         position: absolute;
     }
 
@@ -25,7 +25,7 @@
 
 
        &1 {
-            background: url(../../user-img/songs/parallax/main_bg.png)  0px 0px no-repeat;
+            background: url(../../user-img/songs/parallax/main_bg_white.png)  0px 0px no-repeat;
             &:before, &:after {
                     content: '';
                     display: inline-block;
@@ -63,26 +63,37 @@
        &4 {
             background: url(../../user-img/songs/parallax/triangles.png) 0px  0px;
             opacity: 0.7;
+            left: 24px;
        }
 
        &5 {
             background: url(../../user-img/songs/parallax/vibration.png) 0px  0px repeat;
             opacity: 0.2;
+            /*left: 20px;*/
+
+            /*alternate for scrolling
+            -webkit-animation: moveUpwards 60s linear infinite;*/
+
+
        }
 
        &6 {
           background: url(../../user-img/songs/parallax/ingla.png) 0px  0px no-repeat;
           width: 992px;
           top: 45px;
-          opacity: 0.6;
+          left: 12%;
+          opacity: 0.7;
+          background-size: contain;
+
        }
 
        &7 {
             background: url(../../user-img/songs/parallax/pingla.png) 0px  0px no-repeat;
             width: 933px;
-            left: 2%;
+            left: 30%;
             top: 45px;
-            opacity: 0.5;
+            opacity: 0.7;
+            background-size: contain;
        }
 
        &8 {
@@ -91,6 +102,7 @@
             left: 40%;
             top: 45px;
             opacity: 0.7;
+            background-size: contain;
        }
 
        &9 {
@@ -102,5 +114,12 @@
        }
     }
  }
+
+/*Alternate for scrolling*/
+ @-webkit-keyframes moveUpwards {
+     0% { background-position: 0 0; }
+     100% { background-position: 0 -4800px; }
+ }
+
 
 
