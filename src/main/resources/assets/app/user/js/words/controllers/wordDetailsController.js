@@ -1,6 +1,6 @@
 var wordDetailsController = function($scope, $location, wordMapper, wordService){
 
-    $scope.wordVersions = {"wordThumbnails":[]};
+    $scope.wordVersions = {"wordThumbnails":[],"wordCompleteInfo":[]};
     $scope.words = [];
     $scope.showVersion = true;
     $scope.wordId ='';
@@ -11,6 +11,7 @@ var wordDetailsController = function($scope, $location, wordMapper, wordService)
         wordService.getVersions($scope.wordId).then(function(result){
          $scope.words = result.data.words;
          $scope.wordVersions.wordThumbnails = wordMapper.getThumbnails($scope.words,'');
+         $scope.wordVersions.wordCompleteInfo = wordMapper.getWordCompleteInfo($scope.words);
         });
     }();
 
