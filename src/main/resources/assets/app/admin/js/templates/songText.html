@@ -23,7 +23,7 @@
         <div class="row" ng-show="showOpenCouplet">
             <div class="form-group">
                 <div>
-                    <table class="songTextTable">
+                    <table class="song-text-table">
                         <thead>
                               <tr>
                                 <th>Original</th>
@@ -52,7 +52,7 @@
                 </div>
 
                 <div>
-                    <table class="songTextTable" ng-repeat="openingCouplet in songText.openingCouplets">
+                    <table class="song-text-table" ng-repeat="openingCouplet in songText.openingCouplets">
                             <td>
                                 <textarea class="form-control" rows="6" ng-model="openingCouplet.originalText" placeholder=" Enter original text ..."></textarea>
                             </td>
@@ -89,7 +89,7 @@
         </div>
         <div class="row">
             <hr>
-            <table class="songTextTable">
+            <table class="song-text-table">
                 <thead>
                       <tr>
                         <th>Original</th>
@@ -128,7 +128,7 @@
         </div>
         <hr>
         <div class="row" ng-repeat="songTextContent in songText.songTextContents track by $index">
-            <table class="songTextTable">
+            <table class="song-text-table">
                 <td>
                     <textarea class="form-control" rows="6" ng-model="songTextContent.originalText" placeholder=" Enter original text ..."  ng-required="authoringComplete"></textarea>
                 </td>
