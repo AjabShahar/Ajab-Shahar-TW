@@ -11,7 +11,7 @@ var wordDetailsController = function($scope, $http,$window,$location){
 
   $scope.saveData = function(){
       $http.post('/api/words',$scope.formInfo).success(function(data){
-          $window.location.href = '/admin/words/edit.html?id='+data;
+          $window.location.href = '/admin/home.html';
       });
   };
 
