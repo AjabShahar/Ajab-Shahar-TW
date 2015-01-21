@@ -9,7 +9,6 @@ var wordMapper = function () {
                 "introSummaryOriginal":word.introSummaryOriginal,
                 "introSummaryTranslation":word.introSummaryTranslation,
                 "introSummaryTransliteration":word.introSummaryTransliteration,
-                "introTransliteration":word.wordIntroTransliteration,
                 "customStyle": (customStyle)? customStyle():'',
             });
             return thumbnails;
