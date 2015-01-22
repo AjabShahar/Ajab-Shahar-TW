@@ -17,11 +17,13 @@ var wordMapper = function () {
     getIntroductions = function(words,customStyle) {
         return _.reduce(words,function(introductions, word,index) {
             introductions.push({
+                "id":word.id,
                 "wordOriginal":word.wordOriginal,
                 "wordTranslation":word.wordTranslation,
                 "wordTransliteration":word.wordTransliteration,
                 "hindiIntroExcerpt":word.hindiIntroExcerpt,
                 "englishIntroExcerpt":word.englishIntroExcerpt,
+                "wordIntroEnglish":word.wordIntroEnglish,
             });
             return introductions;
         },[]);

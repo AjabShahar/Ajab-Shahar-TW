@@ -23,8 +23,8 @@ var mainEditorsChoiceController = function($scope,contentService,popupService, m
             $scope.introductions = songMapper.getIntroductions(result.data.songs);
 
             content.words.then(function(result){
-                $scope.wordThumbnails = wordMapper.getThumbnails(result.data, shiftThumbnail);
-                $scope.wordIntroductions = wordMapper.getIntroductions(result.data);
+                $scope.wordThumbnails = wordMapper.getThumbnails(result.data.words, shiftThumbnail);
+                $scope.wordIntroductions = wordMapper.getIntroductions(result.data.words);
             });
         });
     }();

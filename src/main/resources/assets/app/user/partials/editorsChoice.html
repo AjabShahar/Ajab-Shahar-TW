@@ -40,7 +40,7 @@
                         </div>
 
                         <div ng-repeat="word in wordThumbnails">
-                            <word-thumbnail id="{{word.id}}" transliteration="{{word.wordTransliteration}}" translation="{{word.wordTranslation}}" english-intro-excerpt="{{word.englishIntroExcerpt}}" custom-style="{{word.customStyle}}" img-src="https://yt3.ggpht.com/-JtqzFmOGDiI/AAAAAAAAAAI/AAAAAAAAAAA/McQLKmfBpqg/s900-c-k-no/photo.jpg"></word-thumbnail>
+                            <word-thumbnail id="{{word.id}}" open="detailsService.open(word.id)" transliteration="{{word.wordTransliteration}}" translation="{{word.wordTranslation}}" english-intro-excerpt="{{word.englishIntroExcerpt}}" custom-style="{{word.customStyle}}" img-src="https://yt3.ggpht.com/-JtqzFmOGDiI/AAAAAAAAAAI/AAAAAAAAAAA/McQLKmfBpqg/s900-c-k-no/photo.jpg"></word-thumbnail>
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
             </div>
             <div ng-repeat="word in wordIntroductions">
                 <pop-up popup-count="{{wordThumbnails.length}}" ng-init="detailsService.init(word.id)" id="{{word.id}}" width="100" details-service="detailsService" show="detailsService.shouldShow(word.id)" index="{{$index}}" close-button="true">
-                    <word-overview id="{{word.id}}"></word-overview>
+                    <word-overview id="{{word.id}}" word-transliteraiton="{{word.wordTransliteration}}" word-translation="{{word.wordTranslation}}" word-intro-english="{{word.wordIntroEnglish}}"></word-overview>
                 </pop-up>
             </div>
 
@@ -95,6 +95,7 @@
     <script type="text/javascript" src="../user-js/common/directives/couplets/coupletIntroduction.js"></script>
 
     <script type="text/javascript" src="../user-js/common/directives/songs/songOverview.js"></script>
+    <script type="text/javascript" src="../user-js/common/directives/words/wordOverview.js"></script>
 
     <script type="text/javascript" src="../user-js/common/config/resourceUrlWhiteList.js"></script>
     <script type="text/javascript" src="../user-js/common/modules/headerModule.js"></script>

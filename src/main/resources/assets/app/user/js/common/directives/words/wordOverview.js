@@ -5,12 +5,9 @@ thumbnailModule.directive("wordOverview", function() {
         restrict: 'E',
         scope: {
             id:'@',
-            wordOrPhraseTransliteration:'@',
-            wordOrPhraseTranslation:'@',
-            originalIntro:'@',
-            translationIntro:'@',
-            transliterationIntro:'@',
-            showWordIntro:'@'
+            wordTransliteration:'@',
+            wordTranslation:'@',
+            wordIntroEnglish:'@',
         },
         templateUrl:'/user-js/common/templates/words/wordOverview.html',
         controller: function($scope) {

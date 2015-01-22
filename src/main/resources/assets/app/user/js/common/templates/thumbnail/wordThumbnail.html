@@ -1,8 +1,8 @@
 <div class="thumbnailWrapper {{customStyle}}">
-    <div class="thumbnail-media" ng-click="open()">
+    <div class="thumbnail-media" ng-click="open('{{id}}')">
         <img src="{{imgSrc}}"/>
     </div>
-    <div class="desc-wrapper" ng-click="open()">
+    <div class="desc-wrapper" ng-click="open('{{id}}')">
         <div class="thumbnail-desc" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
             <h3 class="item-title" >{{transliteration}}</h3>
             <h3 class="item-title-translation sub-title">{{translation}}</h3>
@@ -10,7 +10,7 @@
 
             <div ng-show="shouldShowDetails" class='thumbnailDetails toggleBySlide'>
                 <div class='categoryDetails'>
-                    <a href="/words/details.html?id={{id}}" class="categoryName">WORD INTRO</a>
+                    <p class="categoryName">WORD INTRO</p>
                     <small class="more-info">T</small>
                 </div>
 

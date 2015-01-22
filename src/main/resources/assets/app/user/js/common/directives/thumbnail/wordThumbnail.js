@@ -12,19 +12,20 @@ thumbnailModule.directive("wordThumbnail", function() {
             overlayId:'@',
             imgSrc:'@',
             id:'@',
+            open:'&',
         },
         templateUrl:'/user-js/common/templates/thumbnail/wordThumbnail.html',
         controller:function($scope, $window){
             $scope.shouldBeOpen = false;
             $scope.shouldShowDetails = false;
 
-            $scope.open = function(){
-                $scope.shouldBeOpen = true;
-            }
-
-            $scope.onClose = function(){
-                $scope.shouldBeOpen = false;
-            }
+//            $scope.open = function(){
+//                $scope.shouldBeOpen = true;
+//            }
+//
+//            $scope.onClose = function(){
+//                $scope.shouldBeOpen = false;
+//            }
 
             $scope.showDetails = function(){
                 $scope.shouldShowDetails = true;
@@ -32,10 +33,6 @@ thumbnailModule.directive("wordThumbnail", function() {
 
             $scope.hideDetails = function(){
                 $scope.shouldShowDetails = false;
-            }
-
-            $scope.open = function(){
-               $window.location.href = '/words/details.html?id='+$scope.id;
             }
         }
     }
