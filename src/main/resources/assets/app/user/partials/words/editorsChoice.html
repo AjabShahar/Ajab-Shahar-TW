@@ -1,20 +1,33 @@
 <!DOCTYPE html>
-<html>
-<head lang="en" >
+<html lang="en" ng-app="editorsChoiceBasicApp">
+<head>
     <meta charset="UTF-8">
     <title>Words landing page</title>
     <!-- A few css might be removed or be added depending upon what the UI person feels -->
-    <link href="../../user-css/common.css" rel="stylesheet" type="text/css">
     <link href="../../user-css/common/directives/header/header.css" rel="stylesheet" type="text/css">
     <link href="../../user-css/common/directives/footer/footer.css" rel="stylesheet" type="text/css">
-    <link href="../../user-css/reset.css" rel="stylesheet" type="text/css">
+    <link href="../../user-css/pages/wordsLandingPage.css" rel="stylesheet" type="text/css">
 </head>
-<body ng-app="editorsChoiceBasicApp">
-	<div  ng-controller="wordsEditorsChoiceController">
+<body ng-controller="wordsEditorsChoiceController">
 		<ajab-shahar-header show-menu-details="false" call-back="setPageHeight()"></ajab-shahar-header>
 
-	    <div class='ajab-container'>
+	    <div class='ajab-container words-wrapper'>
+
 	        <div class='ajab-wrapper'>
+                <div class="page-header">
+                    <span class="logo-container">
+                        <a href="javascript:void(0)">words</a>
+                    </span>
+                    <ul>
+                        <li class="language">
+                            <span>Original</span>
+                            <span class="active">English</span>
+                        </li>
+                        <li>
+                            <span><span>{{Number}}</span>words</span>
+                        </li>
+                    </ul>
+                </div>
 	            <div class='homepage-content'>
 	                <div ng-repeat="word in words">
     					<word-bubble word-transliteration="{{word.wordTransliteration}}" word-translation="{{word.wordTranslation}}" transliteration-intro="{{word.wordIntroductions[0].introTextTransliteration}}" word-original="{{word.wordOriginal}}"></word-bubble>
@@ -24,7 +37,6 @@
 	    </div>
 
         <ajab-shahar-footer></ajab-shahar-footer>
-    </div>
 
     <script type="text/javascript" src="../../../common/lib/underscore/underscore-min.js"></script>
     <script type="text/javascript" src="../../../common/lib/jquery/dist/jquery.min.js"></script>

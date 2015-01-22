@@ -1,0 +1,62 @@
+@import '../reset';
+@import '../common';
+
+body {
+        background: transparent url(../../user-img/words/words_bg.png)  0px 0px no-repeat;
+        background-size: contain;
+
+        .words-wrapper {
+            height: 1200px;
+
+            .page-header {
+                width: 100%;
+                padding: 20px 0 0;
+                display: inline-block;
+
+                .logo-container {
+                    &>a {
+                        background: transparent url(../../user-img/songs/songs_logo.png) 0 0 no-repeat;
+                        width: 85px;
+                        height: 58px;
+                        float: left;
+                        clear: both;
+                        padding: 30px 0 0 0;
+                        color: #999;
+                        font-family: 'Merriweather';
+                        font-size: 18px;
+                        font-weight: 300;
+                    }
+                }
+                &>ul {
+                    float: left;
+                    margin: 28px 0 0 55px;
+
+                    &>li {
+                        float: left;
+                        margin-right: 55px;
+                        text-transform: uppercase;
+
+                        &.language {
+                            &>span {
+                                padding: 0 10px;
+                                float: left;
+                                border-right: solid 1px #575756;
+
+                                &:last-child {
+                                    border: none;
+                                }
+
+                                &.active {
+                                    color: @greenLink;
+                                }
+                            }
+
+                        }
+
+
+                    }
+                }
+            }
+        }
+
+}
