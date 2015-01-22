@@ -23,8 +23,8 @@ describe('Content', function() {
             scope.introduction1='meaning';
             scope.overlay1='overlayId',
 
-            element = angular.element('<word-thumbnail overlay-id="{{overlay1}}" custom-style="{{customStyle1}}" transliteration="{{name1}}" introduction-summary="{{introduction1}}"></word-thumbnail>');
-            template.put('/user-js/common/templates/thumbnail/wordThumbnail.html', '<div>{{overlayId}} {{customStyle}} {{transliteration}} {{introductionSummary}}</div>');
+            element = angular.element('<word-thumbnail overlay-id="{{overlay1}}" custom-style="{{customStyle1}}" transliteration="{{name1}}" english-intro-excerpt="{{introduction1}}"></word-thumbnail>');
+            template.put('/user-js/common/templates/thumbnail/wordThumbnail.html', '<div>{{overlayId}} {{customStyle}} {{transliteration}} {{englishIntroExcerpt}}</div>');
             compile(element)(scope);
             scope.$apply();
 
