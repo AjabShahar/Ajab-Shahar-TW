@@ -68,4 +68,10 @@ public class WordResource {
         WordsRepresentation wordsRepresentation = wordRepresentationFactory.createWordsRepresentation(wordsList);
         return Response.ok(wordsRepresentation).build();
     }
+
+    @GET
+    @Path("/getAllWords")
+    public List<Word> getWords(){
+        return words.findAll();
+    }
 }

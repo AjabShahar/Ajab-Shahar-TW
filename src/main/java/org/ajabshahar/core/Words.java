@@ -48,4 +48,8 @@ public class Words {
     public List<Word> findVersions(int wordId) {
         return wordRepository.findVersions(wordId);
     }
+
+    public List<Word> findAll() {
+        return wordRepository.findAll();
+    }
 }

@@ -60,4 +60,11 @@ public class WordDAO extends AbstractDAO<Word> {
         wordVersions.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return wordVersions.list();
     }
+
+    public List<Word> findAll() {
+        Session currentSession = sessionFactory.openSession();
+        Criteria wordVersions = currentSession.createCriteria(Word.class);
+        wordVersions.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        return wordVersions.list();
+    }
 }
