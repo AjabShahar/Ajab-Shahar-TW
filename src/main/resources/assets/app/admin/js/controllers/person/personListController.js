@@ -8,7 +8,7 @@ var personListController = function($scope, contentService){
                 toBeAdded.firstName = value.firstName;
                 toBeAdded.middleName = value.middleName;
                 toBeAdded.lastName = value.lastName;
-                toBeAdded.roles = _.reduce(value.roles, function(memo, value, index){ return ((index!=0)?' ,':'')+ memo+ value; },'');
+                toBeAdded.roles = _.reduce(value.roles, function(memo, value, index){ return memo + ((index!=0)?', ':'')+ value; },'');
                 toBeAdded.id = value.id;
                 people.push(toBeAdded);
                 return people;
