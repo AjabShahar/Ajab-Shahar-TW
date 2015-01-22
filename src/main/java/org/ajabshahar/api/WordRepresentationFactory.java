@@ -20,10 +20,9 @@ public class WordRepresentationFactory {
             String wordOriginal = word.getWordOriginal() != null ? word.getWordOriginal() : "";
             String wordTranslation = word.getWordTranslation() != null ? word.getWordTranslation() : "";
             String wordTransliteration = word.getWordTransliteration() != null ? word.getWordTransliteration() : "";
-            String wordIntroSummaryOriginal = word.getIntroSummaryOriginal() != null ? word.getIntroSummaryOriginal() : "";
-            String wordIntroSummaryTranslation = word.getIntroSummaryTranslation() != null ? word.getIntroSummaryTranslation() : "";
-            String wordIntroSummaryTransliteration = word.getIntroSummaryTransliteration() != null ? word.getIntroSummaryTransliteration() : "";
-            WordSummaryRepresentation wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), wordOriginal, wordTranslation, wordTransliteration, wordIntroSummaryOriginal, wordIntroSummaryTranslation, wordIntroSummaryTransliteration);
+            String hindiIntroExcerpt = word.getEnglishIntroExcerpt() != null ? word.getEnglishIntroExcerpt() : "";
+            String englishIntroExcerpt = word.getHindiIntroExcerpt() != null ? word.getHindiIntroExcerpt() : "";
+            WordSummaryRepresentation wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), wordOriginal, wordTranslation, wordTransliteration, hindiIntroExcerpt, englishIntroExcerpt);
 
             wordsSummaryRepresentation.add(wordSummaryRepresentation);
         });
@@ -37,7 +36,7 @@ public class WordRepresentationFactory {
             String wordIntroOriginal = getWordIntroOriginal(wordIntroductionSet);
             String wordIntroTranslation = getWordIntroTranslation(wordIntroductionSet);
             String wordIntroTransliteration = getWordIntroTransliteration(wordIntroductionSet);
-            WordRepresentation wordRepresentation = new WordRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(), word.getWordTransliteration(), word.getIntroSummaryOriginal(), word.getIntroSummaryTranslation(), word.getIntroSummaryTransliteration(), wordIntroOriginal, wordIntroTranslation, wordIntroTransliteration);
+            WordRepresentation wordRepresentation = new WordRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(), word.getWordTransliteration(), word.getEnglishIntroExcerpt(), word.getHindiIntroExcerpt(), wordIntroOriginal, wordIntroTranslation, wordIntroTransliteration);
             wordsRepresentation.add(wordRepresentation);
         }
         return wordsRepresentation;

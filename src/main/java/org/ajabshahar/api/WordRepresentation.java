@@ -7,23 +7,21 @@ public class WordRepresentation {
     private String wordOriginal;
     private String wordTranslation;
     private String wordTransliteration;
-    private String wordIntroSummaryOriginal;
-    private String wordIntroSummaryTranslation;
-    private String wordIntroSummaryTransliteration;
-    private String WordIntroOriginal;
-    private String WordIntroTranslation;
+    private String hindiIntroExcerpt;
+    private String englishIntroExcerpt;
+    private String wordIntroOriginal;
+    private String wordIntroTranslation;
     private String wordIntroTransliteration;
 
-    public WordRepresentation(int id, String wordOriginal, String wordTranslation, String wordTransliteration, String wordIntroSummaryOriginal, String wordIntroSummaryTranslation, String wordIntroSummaryTransliteration, String wordIntroOriginal, String wordIntroTranslation, String wordIntroTransliteration) {
+    public WordRepresentation(int id, String wordOriginal, String wordTranslation, String wordTransliteration, String hindiIntroExcerpt, String englishIntroExcerpt, String wordIntroOriginal, String wordIntroTranslation, String wordIntroTransliteration) {
         this.id = id;
         this.wordOriginal = wordOriginal;
         this.wordTranslation = wordTranslation;
         this.wordTransliteration = wordTransliteration;
-        this.wordIntroSummaryOriginal = wordIntroSummaryOriginal;
-        this.wordIntroSummaryTranslation = wordIntroSummaryTranslation;
-        this.wordIntroSummaryTransliteration = wordIntroSummaryTransliteration;
-        WordIntroOriginal = wordIntroOriginal;
-        WordIntroTranslation = wordIntroTranslation;
+        this.hindiIntroExcerpt = hindiIntroExcerpt;
+        this.englishIntroExcerpt = englishIntroExcerpt;
+        this.wordIntroOriginal = wordIntroOriginal;
+        this.wordIntroTranslation = wordIntroTranslation;
         this.wordIntroTransliteration = wordIntroTransliteration;
     }
 
@@ -49,12 +47,12 @@ public class WordRepresentation {
 
     @JsonProperty("wordIntroOriginal")
     public String getWordIntroOriginal() {
-        return WordIntroOriginal;
+        return wordIntroOriginal;
     }
 
     @JsonProperty("wordIntroTranslation")
     public String getWordIntroTranslation() {
-        return WordIntroTranslation;
+        return wordIntroTranslation;
     }
 
     @JsonProperty("wordIntroTransliteration")
@@ -62,18 +60,13 @@ public class WordRepresentation {
         return wordIntroTransliteration;
     }
 
-    @JsonProperty("introSummaryOriginal")
-    public String getWordIntroSummaryOriginal() {
-        return wordIntroSummaryOriginal;
+    @JsonProperty("hindiIntroExcerpt")
+    public String getHindiIntroExcerpt() {
+        return hindiIntroExcerpt;
     }
 
-    @JsonProperty("introSummaryTranslation")
-    public String getWordIntroSummaryTranslation() {
-        return wordIntroSummaryTranslation;
-    }
-
-    @JsonProperty("introSummaryTransliteration")
-    public String getWordIntroSummaryTransliteration() {
-        return wordIntroSummaryTransliteration;
+    @JsonProperty("englishIntroExcerpt")
+    public String getEnglishIntroExcerpt() {
+        return englishIntroExcerpt;
     }
 }

@@ -7,7 +7,7 @@ thumbnailModule.directive("wordThumbnail", function() {
         scope: {
             transliteration:'@',
             translation:'@',
-            introductionSummary:'@',
+            englishIntroExcerpt:'@',
             customStyle:'@',
             overlayId:'@',
             imgSrc:'@',

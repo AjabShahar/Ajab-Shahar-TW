@@ -38,9 +38,8 @@ public class Words {
         originalWord.setWordOriginal(updatableWord.getWordOriginal());
         originalWord.setWordTranslation(updatableWord.getWordTranslation());
         originalWord.setWordTransliteration(updatableWord.getWordTransliteration());
-        originalWord.setIntroSummaryOriginal(updatableWord.getIntroSummaryOriginal());
-        originalWord.setIntroSummaryTranslation(updatableWord.getIntroSummaryTranslation());
-        originalWord.setIntroSummaryTransliteration(updatableWord.getIntroSummaryTransliteration());
+        originalWord.setEnglishIntroExcerpt(updatableWord.getEnglishIntroExcerpt());
+        originalWord.setHindiIntroExcerpt(updatableWord.getHindiIntroExcerpt());
         originalWord.setShowOnLandingPage(updatableWord.getShowOnLandingPage());
         originalWord.setWordIntroductions(updatableWord.getWordIntroductions());
         return originalWord;

@@ -34,9 +34,8 @@ public class WordsTest {
         word.setWordTranslation("WordOrPhrase1");
         word.setWordTransliteration("WordOrPhrase2");
 
-        word.setIntroSummaryOriginal("something");
-        word.setIntroSummaryTranslation("something1");
-        word.setIntroSummaryTransliteration("something2");
+        word.setEnglishIntroExcerpt("something");
+        word.setHindiIntroExcerpt("something1");
     }
 
     @Test
@@ -50,9 +49,8 @@ public class WordsTest {
         assertEquals(expected.getWordTranslation(), "WordOrPhrase1");
         assertEquals(expected.getWordTransliteration(), "WordOrPhrase2");
 
-        assertEquals(expected.getIntroSummaryOriginal(), "something");
-        assertEquals(expected.getIntroSummaryTranslation(), "something1");
-        assertEquals(expected.getIntroSummaryTransliteration(), "something2");
+        assertEquals(expected.getEnglishIntroExcerpt(), "something");
+        assertEquals(expected.getHindiIntroExcerpt(), "something1");
     }
 
     @Test

@@ -6,9 +6,8 @@ var wordMapper = function () {
                 "wordOriginal":word.wordOriginal,
                 "wordTranslation":word.wordTranslation,
                 "wordTransliteration":word.wordTransliteration,
-                "introSummaryOriginal":word.introSummaryOriginal,
-                "introSummaryTranslation":word.introSummaryTranslation,
-                "introSummaryTransliteration":word.introSummaryTransliteration,
+                "hindiIntroExcerpt":word.hindiIntroExcerpt,
+                "englishIntroExcerpt":word.englishIntroExcerpt,
                 "customStyle": (customStyle)? customStyle():'',
             });
             return thumbnails;
@@ -21,9 +20,8 @@ var wordMapper = function () {
                 "wordOriginal":word.wordOriginal,
                 "wordTranslation":word.wordTranslation,
                 "wordTransliteration":word.wordTransliteration,
-                "introSummaryOriginal":word.introSummaryOriginal,
-                "introSummaryTranslation":word.introSummaryTranslation,
-                "introSummaryTransliteration":word.introSummaryTransliteration,
+                "hindiIntroExcerpt":word.hindiIntroExcerpt,
+                "englishIntroExcerpt":word.englishIntroExcerpt,
             });
             return introductions;
         },[]);
@@ -35,9 +33,8 @@ var wordMapper = function () {
                 "wordOriginal":word.wordOriginal,
                 "wordTranslation":word.wordTranslation,
                 "wordTransliteration":word.wordTransliteration,
-                "introSummaryOriginal":word.introSummaryOriginal,
-                "introSummaryTranslation":word.introSummaryTranslation,
-                "introSummaryTransliteration":word.introSummaryTransliteration,
+                "hindiIntroExcerpt":word.hindiIntroExcerpt,
+                "englishIntroExcerpt":word.englishIntroExcerpt,
             });
             return details;
         },[]);
@@ -48,9 +45,8 @@ var wordMapper = function () {
                 "wordOriginal":word.wordOriginal,
                 "wordTranslation":word.wordTranslation,
                 "wordTransliteration":word.wordTransliteration,
-                "introSummaryOriginal":word.introSummaryOriginal,
-                "introSummaryTranslation":word.introSummaryTranslation,
-                "introSummaryTransliteration":word.introSummaryTransliteration,
+                "hindiIntroExcerpt":word.hindiIntroExcerpt,
+                "englishIntroExcerpt":word.englishIntroExcerpt,
                 "wordIntroOriginal":word.wordIntroOriginal,
                 "wordIntroTranslation":word.wordIntroTranslation,
                 "wordIntroTransliteration":word.wordIntroTransliteration,

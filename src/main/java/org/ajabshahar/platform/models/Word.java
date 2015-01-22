@@ -21,14 +21,11 @@ public class Word {
     @Column(name = "WORD_TRANSLITERATION", nullable = false)
     private String wordTransliteration;
 
-    @Column(name = "INTR_SUMMARY_ORIGINAL", nullable = true)
-    private String introSummaryOriginal;
+    @Column(name = "ENGLISH_INTRO_EXCERPT", nullable = true)
+    private String englishIntroExcerpt;
 
-    @Column(name = "INTR_SUMMARY_TRANSLATION", nullable = true)
-    private String introSummaryTranslation;
-
-    @Column(name = "INTR_SUMMARY_TRANSLITERATION", nullable = true)
-    private String introSummaryTransliteration;
+    @Column(name = "HINDI_INTRO_EXCERPT", nullable = true)
+    private String hindiIntroExcerpt;
 
     @Column(name = "SHOW_ON_LANDING_PAGE", nullable = false)
     private boolean showOnLandingPage;
@@ -85,27 +82,20 @@ public class Word {
         this.wordTransliteration = wordTransliteration;
     }
 
-    public String getIntroSummaryOriginal() {
-        return introSummaryOriginal;
+    public String getEnglishIntroExcerpt() {
+        return englishIntroExcerpt;
     }
 
-    public void setIntroSummaryOriginal(String introSummaryOriginal) {
-        this.introSummaryOriginal = introSummaryOriginal;
+    public void setEnglishIntroExcerpt(String englishIntroExcerpt) {
+        this.englishIntroExcerpt = englishIntroExcerpt;
     }
 
-    public String getIntroSummaryTranslation() {
-        return introSummaryTranslation;
+    public String getHindiIntroExcerpt() {
+        return hindiIntroExcerpt;
     }
 
-    public void setIntroSummaryTranslation(String introSummaryTranslation) {
-        this.introSummaryTranslation = introSummaryTranslation;
+    public void setHindiIntroExcerpt(String hindiIntroExcerpt) {
+        this.hindiIntroExcerpt = hindiIntroExcerpt;
     }
 
-    public String getIntroSummaryTransliteration() {
-        return introSummaryTransliteration;
-    }
-
-    public void setIntroSummaryTransliteration(String introSummaryTransliteration) {
-        this.introSummaryTransliteration = introSummaryTransliteration;
-    }
 }
