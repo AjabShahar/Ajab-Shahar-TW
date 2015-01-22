@@ -1,9 +1,8 @@
 <div class="thumbnailWrapper {{customStyle}}">
-    <div class="thumbnail-media">
+    <div class="thumbnail-media" ng-click="open()">
         <img src="{{imgSrc}}"/>
     </div>
-    <a href="/words/details.html?id={{id}}">
-    <div class="desc-wrapper">
+    <div class="desc-wrapper" ng-click="open()">
         <div class="thumbnail-desc" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
             <h3 class="item-title" >{{transliteration}}</h3>
             <h3 class="item-title-translation sub-title">{{translation}}</h3>
@@ -19,5 +18,4 @@
         </div>
         <div class="lower-curve"></div>
     </div>
-    </a>
 </div>

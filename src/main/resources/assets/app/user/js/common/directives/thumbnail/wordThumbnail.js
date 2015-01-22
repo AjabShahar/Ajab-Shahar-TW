@@ -14,7 +14,7 @@ thumbnailModule.directive("wordThumbnail", function() {
             id:'@',
         },
         templateUrl:'/user-js/common/templates/thumbnail/wordThumbnail.html',
-        controller:function($scope){
+        controller:function($scope, $window){
             $scope.shouldBeOpen = false;
             $scope.shouldShowDetails = false;
 
@@ -32,6 +32,10 @@ thumbnailModule.directive("wordThumbnail", function() {
 
             $scope.hideDetails = function(){
                 $scope.shouldShowDetails = false;
+            }
+
+            $scope.open = function(){
+               $window.location.href = '/words/details.html?id='+$scope.id;
             }
         }
     }
