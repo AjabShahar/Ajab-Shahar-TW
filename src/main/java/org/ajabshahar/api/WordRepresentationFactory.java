@@ -33,27 +33,18 @@ public class WordRepresentationFactory {
         WordsRepresentation wordsRepresentation = new WordsRepresentation();
         for (Word word : wordsList) {
             Set<WordIntroduction> wordIntroductionSet = word.getWordIntroductions() != null ? word.getWordIntroductions() : new HashSet<WordIntroduction>();
-            String wordIntroOriginal = getWordIntroOriginal(wordIntroductionSet);
-            String wordIntroTranslation = getWordIntroTranslation(wordIntroductionSet);
-            String wordIntroTransliteration = getWordIntroTransliteration(wordIntroductionSet);
-            WordRepresentation wordRepresentation = new WordRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(), word.getWordTransliteration(), word.getEnglishIntroExcerpt(), word.getHindiIntroExcerpt(), wordIntroOriginal, wordIntroTranslation, wordIntroTransliteration);
+            String wordIntroHindi = getWordIntroOriginal(wordIntroductionSet);
+            String wordIntroEnglish = getWordIntroTranslation(wordIntroductionSet);
+            WordRepresentation wordRepresentation = new WordRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(), word.getWordTransliteration(), word.getEnglishIntroExcerpt(), word.getHindiIntroExcerpt(), wordIntroHindi, wordIntroEnglish);
             wordsRepresentation.add(wordRepresentation);
         }
         return wordsRepresentation;
     }
 
-    private String getWordIntroTransliteration(Set<WordIntroduction> wordIntroductionSet) {
-        String wordIntro = "";
-        for (WordIntroduction wordIntroduction : wordIntroductionSet) {
-            wordIntro += wordIntroduction.getIntroTextTransliteration();
-        }
-        return wordIntro;
-    }
-
     private String getWordIntroTranslation(Set<WordIntroduction> wordIntroductionSet) {
         String wordIntro = "";
         for (WordIntroduction wordIntroduction : wordIntroductionSet) {
-            wordIntro += wordIntroduction.getIntroTextTranslation();
+            wordIntro += wordIntroduction.getWordIntroEnglish();
         }
         return wordIntro;
     }
@@ -61,7 +52,7 @@ public class WordRepresentationFactory {
     private String getWordIntroOriginal(Set<WordIntroduction> wordIntroductionSet) {
         String wordIntro = "";
         for (WordIntroduction wordIntroduction : wordIntroductionSet) {
-            wordIntro += wordIntroduction.getIntroTextOriginal();
+            wordIntro += wordIntroduction.getWordIntroHindi();
         }
         return wordIntro;
     }

@@ -47,9 +47,8 @@ var wordMapper = function () {
                 "wordTransliteration":word.wordTransliteration,
                 "hindiIntroExcerpt":word.hindiIntroExcerpt,
                 "englishIntroExcerpt":word.englishIntroExcerpt,
-                "wordIntroOriginal":word.wordIntroOriginal,
-                "wordIntroTranslation":word.wordIntroTranslation,
-                "wordIntroTransliteration":word.wordIntroTransliteration,
+                "wordIntroHindi":word.wordIntroHindi,
+                "wordIntroEnglish":word.wordIntroEnglish,
             });
             return details;
        },[]);

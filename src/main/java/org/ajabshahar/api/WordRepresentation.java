@@ -9,20 +9,18 @@ public class WordRepresentation {
     private String wordTransliteration;
     private String hindiIntroExcerpt;
     private String englishIntroExcerpt;
-    private String wordIntroOriginal;
-    private String wordIntroTranslation;
-    private String wordIntroTransliteration;
+    private String wordIntroHindi;
+    private String wordIntroEnglish;
 
-    public WordRepresentation(int id, String wordOriginal, String wordTranslation, String wordTransliteration, String hindiIntroExcerpt, String englishIntroExcerpt, String wordIntroOriginal, String wordIntroTranslation, String wordIntroTransliteration) {
+    public WordRepresentation(int id, String wordOriginal, String wordTranslation, String wordTransliteration, String hindiIntroExcerpt, String englishIntroExcerpt, String wordIntroHindi, String wordIntroEnglish) {
         this.id = id;
         this.wordOriginal = wordOriginal;
         this.wordTranslation = wordTranslation;
         this.wordTransliteration = wordTransliteration;
         this.hindiIntroExcerpt = hindiIntroExcerpt;
         this.englishIntroExcerpt = englishIntroExcerpt;
-        this.wordIntroOriginal = wordIntroOriginal;
-        this.wordIntroTranslation = wordIntroTranslation;
-        this.wordIntroTransliteration = wordIntroTransliteration;
+        this.wordIntroHindi = wordIntroHindi;
+        this.wordIntroEnglish = wordIntroEnglish;
     }
 
     @JsonProperty("id")
@@ -45,19 +43,14 @@ public class WordRepresentation {
         return wordTransliteration;
     }
 
-    @JsonProperty("wordIntroOriginal")
-    public String getWordIntroOriginal() {
-        return wordIntroOriginal;
+    @JsonProperty("wordIntroHindi")
+    public String getWordIntroHindi() {
+        return wordIntroHindi;
     }
 
-    @JsonProperty("wordIntroTranslation")
-    public String getWordIntroTranslation() {
-        return wordIntroTranslation;
-    }
-
-    @JsonProperty("wordIntroTransliteration")
-    public String getWordIntroTransliteration() {
-        return wordIntroTransliteration;
+    @JsonProperty("wordIntroEnglish")
+    public String getWordIntroEnglish() {
+        return wordIntroEnglish;
     }
 
     @JsonProperty("hindiIntroExcerpt")

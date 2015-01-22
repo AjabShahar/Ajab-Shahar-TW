@@ -12,14 +12,11 @@ public class WordIntroduction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "intro_text_original", nullable = true)
-    private String introTextOriginal;
+    @Column(name = "word_intro_hindi", nullable = true)
+    private String wordIntroHindi;
 
-    @Column(name = "intro_text_translation", nullable = true)
-    private String introTextTranslation;
-
-    @Column(name = "intro_text_transliteration", nullable = true)
-    private String introTextTransliteration;
+    @Column(name = "word_intro_english", nullable = true)
+    private String wordIntroEnglish;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "word_id", nullable = false)
@@ -30,12 +27,12 @@ public class WordIntroduction {
         return id;
     }
 
-    public String getIntroTextOriginal() {
-        return introTextOriginal;
+    public String getWordIntroHindi() {
+        return wordIntroHindi;
     }
 
-    public void setIntroTextOriginal(String introTextOriginal) {
-        this.introTextOriginal = introTextOriginal;
+    public void setWordIntroHindi(String wordIntroHindi) {
+        this.wordIntroHindi = wordIntroHindi;
     }
 
     public Word getWord() {
@@ -46,19 +43,11 @@ public class WordIntroduction {
         this.word = word;
     }
 
-    public String getIntroTextTranslation() {
-        return introTextTranslation;
+    public String getWordIntroEnglish() {
+        return wordIntroEnglish;
     }
 
-    public void setIntroTextTranslation(String introTextTranslation) {
-        this.introTextTranslation = introTextTranslation;
-    }
-
-    public String getIntroTextTransliteration() {
-        return introTextTransliteration;
-    }
-
-    public void setIntroTextTransliteration(String introTextTransliteration) {
-        this.introTextTransliteration = introTextTransliteration;
+    public void setWordIntroEnglish(String wordIntroEnglish) {
+        this.wordIntroEnglish = wordIntroEnglish;
     }
 }
