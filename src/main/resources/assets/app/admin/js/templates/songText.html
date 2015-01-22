@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="row" >
-            <div class="form-group col-sm-2" ng-init="showOpenCouplet = false">
+            <div class="form-group col-sm-2">
                 <label>
                     <input type="checkbox" ng-click="showOpenCouplet = !showOpenCouplet">  Opening Couplet
                 </label>
@@ -50,25 +50,23 @@
 
                     <button type="button" class="btn btn-info" ng-click="addOpeningCouplet()">Add to Opening Couplet</button>
                 </div>
-
-                <div>
-                    <table class="song-text-table" ng-repeat="openingCouplet in songText.openingCouplets">
-                            <td>
-                                <textarea class="form-control" rows="6" ng-model="openingCouplet.originalText" placeholder=" Enter original text ..."></textarea>
-                            </td>
-                            <td>
-                                <textarea class="form-control" rows="6" ng-model="openingCouplet.englishTransliterationText" placeholder=" Enter original text ..."></textarea>
-                            </td>
-                            <td>
-                                <textarea class="form-control" rows="6" ng-model="openingCouplet.englishTranslationText" placeholder=" Enter original text ..."></textarea>
-                            </td>
-                            <td>
-                                <select ng-model="openingCouplet.poet" ng-options="poet.firstName for poet in poets" class="form-control"></select>
-                            </td>
-                    </table>
-                </div>
             </div>
+            <table class="song-text-table" ng-repeat="openingCouplet in songText.openingCouplets">
+                    <td>
+                        <textarea class="form-control" rows="6" ng-model="openingCouplet.originalText" placeholder=" Enter original text ..."></textarea>
+                    </td>
+                    <td>
+                        <textarea class="form-control" rows="6" ng-model="openingCouplet.englishTransliterationText" placeholder=" Enter original text ..."></textarea>
+                    </td>
+                    <td>
+                        <textarea class="form-control" rows="6" ng-model="openingCouplet.englishTranslationText" placeholder=" Enter original text ..."></textarea>
+                    </td>
+                    <td>
+                        <select ng-model="openingCouplet.poet" ng-options="poet.firstName for poet in poets" class="form-control"></select>
+                    </td>
+            </table>
         </div>
+
         <div class="row">
             <label class="col-sm-2">Content Type</label>
             <div class="form-group col-sm-1">

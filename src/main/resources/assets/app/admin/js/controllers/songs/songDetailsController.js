@@ -94,6 +94,7 @@ var songDetailsController = function($scope, $window,$location,songContentServic
                           });
                           $scope.formInfo = data;
                           $scope.formInfo.songText = data.songText;
+                          $scope.formInfo.songText.openingCouplets = data.songText.openingCouplets;
                           $scope.formInfo.songText.songTextContents = $filter('orderBy')($scope.formInfo.songText.songTextContents, 'sequenceNumber');
       });
     };

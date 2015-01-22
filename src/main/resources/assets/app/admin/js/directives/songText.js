@@ -8,6 +8,7 @@ songsAdminApp.directive("songText", function() {
             songText:'=',
             poets:'=',
             authoringComplete: '=',
+            showOpenCouplet: '='
         },
         templateUrl:'/admin-js/templates/songText.html',
         controller:function($scope){
@@ -24,9 +25,7 @@ songsAdminApp.directive("songText", function() {
                     "contentType":"couplet",
                     "englishTranslationText":"","englishTransliterationText":"","originalText":"",
                 };
-            }
-
-            $scope.initializeContent();
+            }()
 
             $scope.clearSongText = function(){
                 $scope.songText.openingCouplets = [];
@@ -41,9 +40,6 @@ songsAdminApp.directive("songText", function() {
                 return $scope.newContent.contentType == 'couplet' ;
             }
 
-            $scope.edit = function(songText){
-            }
-
             $scope.addLyricsText = function(){
                 if(($scope.newContent.englishTranslationText == "" &&
                 $scope.newContent.englishTransliterationText == "" &&
@@ -51,7 +47,6 @@ songsAdminApp.directive("songText", function() {
                     return;
                 var newElement = {};
                 newElement.contentType = $scope.newContent.contentType;
-
 
                 var englishTranslationTexts = $scope.newContent.englishTranslationText.split(/\n{2,}/g);
                 var originalTexts = $scope.newContent.originalText.split(/\n{2,}/g);
@@ -62,7 +57,6 @@ songsAdminApp.directive("songText", function() {
                 for(var i = 0 ; i < totalIterations; i++){
                     var newElement = {};
                     newElement.contentType = $scope.newContent.contentType;
-
                     newElement.sequenceNumber = $scope.getSongContents().length;
 
                     newElement.englishTranslationText = englishTranslationTexts[i];
@@ -86,17 +80,6 @@ songsAdminApp.directive("songText", function() {
                $scope.songText.openingCouplets.push($scope.openingCouplet);
                $scope.initializeContent();
             }
-
-            $scope.getSongContents = function(){
-                if($scope.songText.songTextContents==null)
-                    $scope.songText.songTextContents = [];
-                return $scope.songText.songTextContents;
-            }
-
-            $scope.showLyrics = function(){
-                return $scope.getSongContents().length != 0;
-            }
-
         }
     }
 });
