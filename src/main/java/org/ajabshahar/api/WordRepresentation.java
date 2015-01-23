@@ -12,7 +12,7 @@ public class WordRepresentation {
     private String wordIntroHindi;
     private String wordIntroEnglish;
 
-    public WordRepresentation(int id, String wordOriginal, String wordTranslation, String wordTransliteration, String hindiIntroExcerpt, String englishIntroExcerpt, String wordIntroHindi, String wordIntroEnglish) {
+    public WordRepresentation(int id, String wordOriginal, String wordTranslation, String wordTransliteration, String englishIntroExcerpt, String hindiIntroExcerpt, String wordIntroHindi, String wordIntroEnglish) {
         this.id = id;
         this.wordOriginal = wordOriginal;
         this.wordTranslation = wordTranslation;
