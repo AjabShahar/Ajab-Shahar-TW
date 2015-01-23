@@ -53,7 +53,7 @@
             </div>
             <div ng-repeat="word in wordIntroductions">
                 <pop-up popup-count="{{wordThumbnails.length}}" ng-init="detailsService.init(word.id)" id="{{word.id}}" width="100" details-service="detailsService" show="detailsService.shouldShow(word.id)" index="{{$index}}" close-button="true">
-                    <word-overview id="{{word.id}}" word-transliteraiton="{{word.wordTransliteration}}" word-translation="{{word.wordTranslation}}" word-intro-english="{{word.wordIntroEnglish}}"></word-overview>
+                    <word-overview id="{{word.id}}" word-transliteration="{{word.wordTransliteration}}" word-translation="{{word.wordTranslation}}" word-intro-english="{{word.wordIntroEnglish}}"></word-overview>
                 </pop-up>
             </div>
 
