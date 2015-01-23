@@ -23,11 +23,11 @@ describe('Word bubble specs', function() {
     };
 
     var wordBubbleDirective = '<word-bubble word-transliteration="{{dummyData.word.wordTransliteration}}" word-translation="{{dummyData.word.wordTranslation}}" transliteration-intro="{{dummyData.word.wordIntroductions[0].introTextTransliteration}}" word-original="{{dummyData.word.wordOriginal}}"></word-bubble>';
-    template.put('/user-js/common/templates/words/wordBubble.html', '<div> {{wordOriginal}} {{wordTransliteration}} {{wordTranslation}} {{transliterationIntro}} </div>');
+    template.put('/user-js/common/templates/words/wordBubble.html', '<div> {{wordTransliteration}} {{wordTranslation}} {{transliterationIntro}} </div>');
 
     var element = $compile(wordBubbleDirective)(scope);
     scope.$apply();
     
-    expect(element.html()).toContain('<div class="ng-binding"> Original Transliterated Translated IntroTextTransliteration </div>');
+    expect(element.html()).toContain('<div class="ng-binding"> Transliterated Translated IntroTextTransliteration </div>');
   });
 });
