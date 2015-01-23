@@ -1,3 +1,8 @@
+body {
+	margin-top: 0;
+	margin-left: 0;
+	margin-right: 0;
+}
 .splash_screen {
     height: 100%;
     width: 100%;
