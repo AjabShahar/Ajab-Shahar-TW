@@ -8,7 +8,6 @@ songsAdminApp.directive("songText", function() {
             songText:'=',
             poets:'=',
             authoringComplete: '=',
-            showOpenCouplet: '='
         },
         templateUrl:'/admin-js/templates/songText.html',
         controller:function($scope){

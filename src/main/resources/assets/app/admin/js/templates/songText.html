@@ -13,6 +13,7 @@
                 <input type="text" name="refrain" ng-model="songText.refrainEnglishTranslation" placeholder="Enter english-translation text" class="form-control">
             </div>
         </div>
+        <div ng-init="showOpenCouplet = false">
         <div class="row" >
             <div class="form-group col-sm-2">
                 <label>
@@ -20,14 +21,14 @@
                 </label>
             </div>
         </div>
-        <div class="row" ng-show="showOpenCouplet">
-            <div class="form-group">
+        <div class="row" >
+            <div class="form-group" ng-show="showOpenCouplet">
                 <div>
                     <table class="song-text-table">
                         <thead>
                               <tr>
                                 <th>Original</th>
-                                <th>English transliteration</th>       
+                                <th>English transliteration</th>
                                 <th>English translation</th>
                               </tr>
                         <tbody>
@@ -51,7 +52,7 @@
                     <button type="button" class="btn btn-info" ng-click="addOpeningCouplet()">Add to Opening Couplet</button>
                 </div>
             </div>
-            <table class="song-text-table" ng-repeat="openingCouplet in songText.openingCouplets">
+            <table class="song-text-table" ng-show="songText.openingCouplets.length>0" ng-repeat="openingCouplet in songText.openingCouplets">
                     <td>
                         <textarea class="form-control" rows="6" ng-model="openingCouplet.originalText" placeholder=" Enter original text ..."></textarea>
                     </td>
@@ -66,7 +67,9 @@
                     </td>
             </table>
         </div>
+        </div>
 
+         <hr>
         <div class="row">
             <label class="col-sm-2">Content Type</label>
             <div class="form-group col-sm-1">
@@ -86,7 +89,6 @@
             </div>
         </div>
         <div class="row">
-            <hr>
             <table class="song-text-table">
                 <thead>
                       <tr>
