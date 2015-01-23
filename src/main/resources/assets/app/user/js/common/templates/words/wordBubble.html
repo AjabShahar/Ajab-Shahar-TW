@@ -1,12 +1,17 @@
-<div class="word-bubble">
-	<div>{{wordOriginal}}</div>
-	<div>
-	    {{wordTransliteration}}
+<div class="thumbnailWrapper" ng-mouseEnter="showStaticText = true" ng-mouseleave="showStaticText = false">
+	<div class="desc-wrapper thumbnail-desc">
+		<div>
+		    {{wordTransliteration}}
+		</div>
+		<div>
+		    {{wordTranslation}}
+		</div>
+		<div bind-dynamic-html="transliterationIntro"></div>
+
+		<div>
+			<div ng-show="showStaticText">
+				For more info. enter
+			</div>
+		<div>
 	</div>
-	<div>
-	    {{wordTranslation}}
-	</div>
-	
-	<div bind-dynamic-html="transliterationIntro"></div>
-    
 </div>
