@@ -1,15 +1,32 @@
-<div class="mediaIntroduction">
-    <h3 class="context">{{wordTransliteration}}</h3>
-    <h3 class="context">{{wordTranslation}}</h3>
-    <span>By Todo</span>
-    <div>
-        <div>
-            <div bind-dynamic-html="wordIntroEnglish"></div>
+<div class="mediaIntroduction word">
+
+    <!--<h3 class="context"></h3>-->
+
+    <div class="content-wrapper">
+        <div class="content-bg">
+            <h3 class="context">{{wordTransliteration}} {{wordTranslation}}</h3>
+            <h5 class="artistName">
+                <small>By </small>
+                <span class="selected">Todo</span>,
+                <small>Ajab Shahar Team </small>
+            </h5>
+            <div bind-dynamic-html="wordIntroEnglish" class="word-intro">
+            </div>
         </div>
-        <div>
-            <h3 class='infoText'>For reflections, strings, echos & more enter
-                <a href="/words/details.html?id={{id}}">WORD</a>
-            </h3>
+    </div>
+
+    <div class="mediaFooter">
+        <h3 class='infoText'>For reflections, strings, echos & more enter
+            <a href="/words/details.html?id={{id}}">WORD</a>
+        </h3>
+        <div class="creditCont">
+            <div class="creditBox"><span class="selected ng-binding">Roshik</span> POET</div>
+            <div class="creditBox"><span class="selected ng-binding">Mooralala Marwada</span> SINGER</div>
+            <div class="creditBox"><span class="selected ng-binding"></span></div>
+            <br>
+            <div class="creditBox"><span class="selected ng-binding"></span> </div>
+            <div class="creditBox"><span class="selected ng-binding"></span> </div>
+            <div class="creditBox"><span class="selected ng-binding"></span></div>
         </div>
     </div>
 </div>

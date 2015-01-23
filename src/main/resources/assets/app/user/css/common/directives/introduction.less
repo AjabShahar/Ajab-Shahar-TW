@@ -7,7 +7,7 @@
     display:inline-block;
     text-align: left;
     width:100%;
-    font-family: 'Merriweather Sans','Merriweather';
+    /*font-family: 'Merriweather Sans','Merriweather';*/
     line-height: 23px;
 
     youtube {
@@ -44,6 +44,28 @@
     	line-height: 27px;
     	font-family: 'Merriweather';
     }
+
+    .artistName {
+         text-transform: uppercase;
+        font-weight: 300;
+        font-size: 14px;;
+        small{
+            color: #999;
+            font-size: 12px;
+            margin-left: 1px;
+            text-transform: lowercase;
+
+        }
+    }
+
+    &.word {
+        .artistName {
+            small {
+                text-transform: capitalize;
+            }
+        }
+    }
+
 }
 
 
@@ -67,16 +89,7 @@
 }
 
 .artistName {
-    text-transform: uppercase;
-    font-weight: 300;
-    font-size: 14px;;
-    small{
-        color: #999;
-        font-size: 12px;
-        margin-left: 1px;
-        text-transform: lowercase;
 
-    }
 }
 
 .context {
@@ -132,14 +145,14 @@
         font-weight: 300;
         a {
             font-size: 16px;
-            color: #B10D5B;
+            color: #e83785;
         }
     }
 }
 
 
 /* social media icons */
-.twitterPlug {
+/*.twitterPlug {
     display:inline-block;
 }
 
@@ -166,6 +179,35 @@
         display: block;
         a{
             text-decoration: none;
+        }
+    }
+}*/
+
+.content-wrapper {
+    background: transparent url(../../../user-img/words/content_border.png) 0 0 no-repeat;
+    height: 597px;
+    width: 887px;
+    padding: 15px 0;
+    .content-bg {
+        background: #fff;
+        padding: 10px 8% 10px 3%;
+        margin: 0 1%;
+        overflow: auto;
+        height: 565px;
+        box-sizing: border-box;
+    }
+    .word-intro {
+        &>p {
+            font-family: 'Merriweather';
+            font-size: 13px;
+            font-weight: 300;
+            color: #4d4d4d;
+
+            &:first-child:first-letter {
+                font-size: 20px;
+                font-weight: 700;
+                line-height: 27px;
+            }
         }
     }
 }
