@@ -1,4 +1,4 @@
-var mainEditorsChoiceController = function($scope,contentService,popupService, mappers){
+var featuredContentController = function($scope,contentService,popupService, mappers){
     $scope.detailsService = popupService;
 
     $scope.songThumbnails = [];
@@ -34,4 +34,4 @@ var mainEditorsChoiceController = function($scope,contentService,popupService, m
     }
 }
 
-editorsChoiceApp.controller('mainEditorsChoiceController',['$scope','contentService','popupService','mappers',mainEditorsChoiceController]);
+featuredContentApp.controller('featuredContentController',['$scope','contentService','popupService','mappers',featuredContentController]);

@@ -1,4 +1,4 @@
-var songsEditorsChoiceController = function($scope,contentService,songMapper, $location, $window){
+var songsFeaturedContentController = function($scope,contentService,songMapper, $location, $window){
     $scope.detailsService={open:function(id){
 //                                          var songId = $scope.getSongId(id);
                                           $window.location.href = '/songs/details.html?id='+id;
@@ -32,4 +32,4 @@ var songsEditorsChoiceController = function($scope,contentService,songMapper, $l
     $scope.init();
 }
 
-editorsChoiceApp.controller('songsEditorsChoiceController',['$scope','contentService','songMapper','$location', '$window',songsEditorsChoiceController]);
+featuredContentApp.controller('songsFeaturedContentController',['$scope','contentService','songMapper','$location', '$window',songsFeaturedContentController]);

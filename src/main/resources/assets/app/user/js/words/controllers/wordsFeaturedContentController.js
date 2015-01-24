@@ -1,4 +1,4 @@
-var wordsEditorsChoiceController = function($scope,contentService, $location, $window){
+var wordsFeaturedContentController = function($scope,contentService, $location, $window){
 	$scope.init = function(){
         contentService.getWordsLandingPageContent().then(function(result){
             $scope.words = result.data.words;
@@ -18,4 +18,4 @@ var wordsEditorsChoiceController = function($scope,contentService, $location, $w
 	$scope.init();
 }
 
-editorsChoiceBasicApp.controller('songsEditorsChoiceController',['$scope','contentService','$location', '$window',wordsEditorsChoiceController]);
+wordsFeaturedContentApp.controller('wordsFeaturedContentController',['$scope','contentService','$location', '$window',wordsFeaturedContentController]);
