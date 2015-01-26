@@ -1,6 +1,6 @@
 The application contains:
 
-An angular js web front end : src/main/resources/assets
+An angular js web front end : src/main/resources/assets/app
 Dropwizard REST api
 
 STEPS TO RUN/SET-UP THE APP:
@@ -15,6 +15,7 @@ Setting up postgres
 -------------------
 create user pg-dev(no password) with ability to create databases
 create a platform-dev database
+grant all privileges on database "platform-dev" to "pg-dev";
 
 
 mvn clean install 
@@ -30,16 +31,9 @@ this starts the server with configuration specified in development.yml
 read about dropwizard here - http://dropwizard.io/getting-started.html
 ----------------------------
 
-cd src/main/resources/assets && npm install
+npm install
 -------------------------------------------
 This pulls all the js dependancies, it also runs bower install in the end to pull bower dependancies
-
-developing client side code
----------------------------
-npm test | run tests
-npm start | start the development server
-npm run-script dev |  start in dev-mode which will keep running tests as code is edited 
-see package.json for script implementations
 
 developing server side code
 ---------------------------
@@ -54,24 +48,3 @@ java -jar target/platform-1.0-SNAPSHOT.jar server development.yml
 This runs the migration against the connection string specified in developer.yml file
 
 ########
-
-Rolling back your migration scripts
------------------------------------
-
-"To roll back change sets which have already been applied, run the db rollback command. You will need to specify either a tag, a date, or a number of change sets to roll back to."
-Link - http://dropwizard.readthedocs.org/en/latest/manual/migrations.html
-
-In case you get an error like this - "No inverse to liquibase.change.core.RawSQLChange created"
-
-You need the fix this via adding a rollback comment to each of your scripts, like this:
-–liquibase formatted sql
-–changeset henkbl:PROD111111
-CREATE VIEW all_employees AS
-SELECT *
-FROM employee;
-–rollback DROP VIEW all_employees;
-
-Testing rolling back scripts
-----------------------------
-​To test your migration whether the syntax is correct for them to rollback, run the command:
-java -jar target/platform-1.0-SNAPSHOT.jar db test development.yml​
