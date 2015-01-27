@@ -7,7 +7,6 @@
     display:inline-block;
     text-align: left;
     width:100%;
-    /*font-family: 'Merriweather Sans','Merriweather';*/
     line-height: 23px;
 
     youtube {
@@ -66,6 +65,9 @@
         }
     }
 
+    @media screen and (max-width: 990px) {
+        margin-top: 10%;
+    }
 }
 
 
@@ -131,13 +133,14 @@
     text-align: center;
     position: absolute;
     bottom: 1%;
-    left: 20%;
+    width: 100%;
+    /*left: 20%;
     @media screen and (max-width: 1280px) {
         left: 10%;
     }
     @media screen and (max-width: 769px) {
         left: 0;
-    }
+    }*/
 
     .infoText{
         color: #808080;
@@ -184,17 +187,22 @@
 }*/
 
 .content-wrapper {
-    background: transparent url(../../../user-img/words/content_border.png) 0 0 no-repeat;
+    background: transparent url(../../../user-img/words/content_border.png) -4px 0 no-repeat;
     height: 597px;
     width: 887px;
-    padding: 15px 0;
+    padding: 1.5%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
     .content-bg {
         background: #fff;
-        padding: 10px 8% 10px 3%;
-        margin: 0 1%;
         overflow: auto;
         height: 565px;
-        box-sizing: border-box;
+        @media screen and (max-width: 990px) {
+           height: 413px;
+        }
+
     }
     .word-intro {
         &>p {
@@ -209,6 +217,11 @@
                 line-height: 27px;
             }
         }
+    }
+
+    @media screen and (max-width: 990px) {
+        width: 650px;
+        background-size: contain;
     }
 }
 
