@@ -17,12 +17,16 @@ songsAdminApp.directive("songText", function() {
 
             $scope.initializeContent = function(){
                 $scope.newContent = {
-                    "contentType":"stanza",
-                    "englishTranslationText":"","englishTransliterationText":"","originalText":"",
+                    "contentType": "stanza",
+                    "englishTranslationText": "",
+                    "englishTransliterationText": "",
+                    "originalText": "",
                 };
                 $scope.openingCouplet = {
-                    "contentType":"couplet",
-                    "englishTranslationText":"","englishTransliterationText":"","originalText":"",
+                    "contentType": "couplet",
+                    "englishTranslationText": "",
+                    "englishTransliterationText": "",
+                    "originalText": "",
                 };
             }()
 
@@ -44,8 +48,6 @@ songsAdminApp.directive("songText", function() {
                 $scope.newContent.englishTransliterationText == "" &&
                 $scope.newContent.originalText == "") && $scope.newContent.content == null)
                     return;
-                var newElement = {};
-                newElement.contentType = $scope.newContent.contentType;
 
                 var englishTranslationTexts = $scope.newContent.englishTranslationText.split(/\n{2,}/g);
                 var originalTexts = $scope.newContent.originalText.split(/\n{2,}/g);

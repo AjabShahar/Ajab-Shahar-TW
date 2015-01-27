@@ -21,7 +21,7 @@ thumbnailModule.directive("songOverview", function() {
             });
 
             $scope.isVideo = function(){
-                return $scope.videoUrl!=null && $scope.videoUrl != "null";
+                return Boolean($scope.videoUrl);
             };
 
             $scope.isAudio = function(){

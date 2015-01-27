@@ -44,7 +44,7 @@ var songMapper = function () {
                 "englishTranslation":song.englishTranslationTitle,
                 "englishTransliteration":song.englishTransliterationTitle,
                 "singer":getSingers(song.singers),
-                "audioId":song.soundCloudTrackID,
+                "audioId":song.soundCloudTrackId,
                 "poet":(song.poet==null || song.poet.length==0)?'Unknown': song.poet[0].name,
                 "noun": song.singers.length>1? 'sing':'sings'});
 
@@ -57,7 +57,7 @@ var songMapper = function () {
             details.push({"id":song.id,
             "contentId":"song_"+song.id,
             "videoId":song.youtubeVideoId,
-            "audioUrl":song.soundCloudTrackID,
+            "audioUrl":song.soundCloudTrackId,
             "singer":getSingers(song.singers),
             "poet":song.poet[0].name,
             "downloadURL":song.downloadUrl,
