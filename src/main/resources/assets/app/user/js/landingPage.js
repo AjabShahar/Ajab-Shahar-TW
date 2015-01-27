@@ -3,6 +3,7 @@
     	function homePage(){
 
     		var _domReady = function(){
+    		    _loadWindow();
     		    _initialiseScrolling();
     		}
 
@@ -14,10 +15,17 @@
                 });
     		}
 
+    		var _loadWindow = function() {
+    		    $('#ajab_container').css('display', 'none');
+                $(window).load(function() {
+                  $('#ajab_container').css('display', 'block');
+                  $("#loader_wrapper").css('display', 'none');
+                });
+            }
+
             this.init = (function(){
     			$(function(){
     				_domReady();
-
     			});
 
     		})();
