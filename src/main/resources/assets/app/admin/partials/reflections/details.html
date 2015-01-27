@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html ng-app="adminApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Reflections</title>
+    <script src="../../common/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="../../common/lib/angular-filter/dist/angular-filter.js"></script>
+    <script type="text/javascript" src="../../common/lib/textAngular/dist/textAngular-sanitize.min.js"></script>
+    <script type="text/javascript" src="../../common/lib/textAngular/dist/textAngular.min.js"></script>
+    <script src="../../common/lib/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="../../admin-js/services/contentService.js"></script>
+    <script type="text/javascript" src="../../admin-js/app.js"></script>
+    <script type="text/javascript" src="../../admin-js/controllers/reflections/reflectionDetailsController.js"></script>
+    <link href="../../admin-css/admin.css" rel="stylesheet" type="text/css">
+    <link href="../../common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link rel='stylesheet' href='https://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css'>
+</head>
+<body>
+<a ng-href="/admin/home.html" target="_self"><button type="button" class="btn btn-info admin-home">Admin home</button></a>
+<div class="left">
+    <h2>Enter Reflection details</h2>
+    <div class="left">
+        <div ng-controller="reflectionDetailsController">
+            <form >
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Name of the speaker</label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <select ng-model = "formInfo.speaker"
+                                ng-options = "speaker.firstName for speaker in people">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Title</label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <input type="text" name="reflection" ng-model="formInfo.title" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Reflection Type</label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <select name="reflection" ng-model="formInfo.type" class="form-control">
+                            <option value="audio">Audio</option>
+                            <option value="video">Video</option>
+                            <option value="text">Text</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row" ng-show="formInfo.type == 'audio'">
+                    <div class="form-group col-sm-2">
+                        <label>Sound Cloud Track Id</label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <input type="text" name="reflection" ng-model="formInfo.reflectionContent" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row" ng-show="formInfo.type == 'video'">
+                    <div class="form-group col-sm-2">
+                        <label>Youtube Video</label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <input type="text" name="reflection" ng-model="formInfo.reflectionContent" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row" ng-show="formInfo.type == 'text'">
+                    <div class="form-group col-sm-2">
+                        <label>Text</label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <textarea name="reflection" rows="20" cols="100" ng-model="formInfo.reflectionContent">
+
+                        </textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Show On LandingPage</label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <select name="reflection" ng-model="formInfo.showOnLandingPage" class="form-control">
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" ng-click="saveData()" class="btn btn-primary btn-lg">Save</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
