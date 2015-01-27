@@ -1,17 +1,20 @@
-<div class="thumbnailWrapper" ng-mouseEnter="showStaticText = true" ng-mouseleave="showStaticText = false">
-	<div class="desc-wrapper thumbnail-desc">
-		<div>
-		    {{wordTransliteration}}
-		</div>
-		<div>
-		    {{wordTranslation}}
-		</div>
-		<div bind-dynamic-html="transliterationIntro"></div>
+<div class="thumbnailWrapper">
+    <div class="thumbnail-desc" ng-mouseEnter="showStaticText = true" ng-mouseleave="showStaticText = false">
+        <div class="title">
+            {{wordTransliteration}}
+        </div>
+        <div class="sub-title">
+            {{wordTranslation}}
+        </div>
 
-		<div>
-			<div ng-show="showStaticText">
-				For more info. enter
-			</div>
-		<div>
-	</div>
+        <div class="show-desc"  ng-show="showStaticText">
+            <div class="bubble">
+                <div bind-dynamic-html="transliterationIntro"></div>
+                For more info. enter
+            </div>
+        </div>
+
+
+    </div>
+
 </div>

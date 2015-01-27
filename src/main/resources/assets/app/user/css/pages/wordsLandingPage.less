@@ -15,7 +15,6 @@ body {
                 width: 100%;
              }
 
-
              &:before, &:after {
                  content: '';
                  display: inline-block;
@@ -40,6 +39,7 @@ body {
                  -o-transform: rotate(180deg);
                  transform: rotate(180deg);
              }
+
              .page-header {
                     width: 100%;
                     padding: 20px 0 0;
@@ -88,7 +88,78 @@ body {
 
                         }
                     }
+             }
+
+
+             .thumbnailWrapper {
+                padding-bottom: 20px;
+
+                .thumbnail-desc {
+                    position: relative;
+                    cursor: pointer;
+                    width: 30%;
+                    margin: 0 auto;
+                    .title {
+                                        font-family: 'Merriweather';
+                                        font-size: 24px;
+                                        font-weight: 300;
+                                        color: #4d4d4e;
+                                        &:hover {
+                                            color: #ee2a7b;
+                                        }
+                                    }
+                    .sub-title {
+                        font-family: 'Merriweather';
+                        font-size: 18px;
+                        font-weight: 300;
+                        font-style: italic;
+                        color: #989798;
+                    }
+
+                    .show-desc {
+                        position: absolute;
+                        bottom: -20px;
+                        right: -125px;
+
+                    }
+                    .bubble {
+                        position: relative;
+                        z-index: 1;
+                        width: 229px;
+                        background: #fff;
+                        padding: 0 10px 3px 10px;
+                        cursor: pointer;
+                        text-align: left;
+                        box-shadow: 0 -6px 7px #a7a7a7;
+                        font-weight: 200;
+                        font-size: 12px;
+                        color: #868686;
+                        &:before, &:after {
+                            content: '';
+                            background-size: cover;
+                            display: inline-block;
+                            height: 20px;
+                            left: 0;
+                            width: 265px;
+                            position: absolute;
+
+                        }
+                        &:before {
+                            background: rgba(255,255,255,0) url(../../user-img/common/directives/thumbnail/top.png) left top no-repeat;
+                            top: -19px;
+                        }
+                        &:after {
+                            content: '';
+                            background: rgba(255,255,255,0) url(../../user-img/common/directives/thumbnail/bottom.png) left -5px no-repeat;
+                            bottom: -20px;
+                        }
+                    }
+
                 }
+
+
+
+             }
         }
 
 }
