@@ -54,7 +54,16 @@ songsAdminApp.directive("songText", function() {
                 var totalIterations = Math.max(englishTranslationTexts.length, originalTexts.length, englishTransliterationTexts.length);
 
                 for(var i = 0 ; i < totalIterations; i++){
-                    var newElement = {};
+
+                    var newElement = {
+                        contentType: "",
+                        sequenceNumber: "",
+                        englishTranslationText: "",
+                        englishTransliterationText: "",
+                        originalText: "",
+                        poet: ""
+                    };
+
                     newElement.contentType = $scope.newContent.contentType;
                     newElement.sequenceNumber = $scope.getSongContents().length;
 
@@ -78,6 +87,16 @@ songsAdminApp.directive("songText", function() {
                $scope.openingCouplet.sequenceNumber = $scope.songText.openingCouplets.length;
                $scope.songText.openingCouplets.push($scope.openingCouplet);
                $scope.initializeContent();
+            }
+
+            $scope.getSongContents = function(){
+                if($scope.songText.songTextContents==null)
+                    $scope.songText.songTextContents = [];
+                return $scope.songText.songTextContents;
+            }
+
+            $scope.showLyrics = function(){
+                return $scope.getSongContents().length != 0;
             }
         }
     }
