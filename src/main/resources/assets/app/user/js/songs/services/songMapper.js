@@ -58,7 +58,7 @@ var songMapper = function () {
 
             details.push({"id":song.id,
             "contentId":"song_"+song.id,
-            "videoId":song.youtubeVideoId,
+            "videoId":song.youTubeVideoId,
             "audioUrl":song.soundCloudTrackId,
             "singer":getSingers(song.singers),
             "poet": poet,

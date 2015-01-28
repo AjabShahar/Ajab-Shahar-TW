@@ -18,18 +18,36 @@ thumbnailModule.directive("songContentDetails", function() {
         controller: function($scope) {
             $scope.isAboutVisible = false;
             $scope.isNotesVisible = false;
+            $scope.isVideoSong = false;
+            $scope.showVideo = false;
+            $scope.showAudio = false;
 
             $scope.hideContents = function(){
                 return $scope.detailsService.shouldHideDetails;
             }
 
-            $scope.isVideo = function(){
-                return Boolean($scope.videoId);
-            };
+            $scope.isAudioOrVideo = function(){
+                if(Boolean($scope.videoId)){
+                    $scope.showVideo = true;
+                    $scope.isVideoSong = true;
+                }
+                else {
+                    $scope.showAudio = true;
+                }
+            }
 
-            $scope.isAudio = function(){
-                return !$scope.isVideo();
-            };
+            $scope.toggleVideoOrAudio = function(){
+                if($scope.showVideo){
+                    $scope.showAudio = true;
+                    $scope.showVideo = false;
+                    $scope.shouldStopVideo();
+                    return;
+                }
+                else{
+                    $scope.showAudio = false;
+                    $scope.showVideo = true;
+                }
+            }
 
             $scope.shouldStopVideo = function(){
                 return $scope.detailsService.isClosed($scope.id);
