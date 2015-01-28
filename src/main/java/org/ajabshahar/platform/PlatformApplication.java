@@ -1,6 +1,5 @@
 package org.ajabshahar.platform;
 
-import com.bazaarvoice.dropwizard.assets.ConfiguredAssetsBundle;
 import com.bazaarvoice.dropwizard.caching.CachingBundle;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
@@ -27,7 +26,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
 
     private final HibernateBundle<PlatformConfiguration> hibernate = new HibernateBundle<PlatformConfiguration>(SplashScreenOptions.class, Word.class,
             Couplet.class, Song.class, PersonDetails.class, Category.class, Title.class, SongText.class, SongTextContent.class, OpeningCouplet.class,
-            WordIntroduction.class) {
+            WordIntroduction.class, Reflection.class, ReflectionTranscript.class) {
         @Override
         public DataSourceFactory getDataSourceFactory(PlatformConfiguration configuration) {
             return configuration.getDataSourceFactory();
@@ -45,11 +44,11 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         bootstrap.addBundle(new AssetsBundle("/assets/app/user/js", "/user-js", null, "user-js"));
         bootstrap.addBundle(new AssetsBundle("/assets/app/user/img", "/user-img", null, "user-img"));
 
-        bootstrap.addBundle(new AssetsBundle("/assets/app/admin/css", "/admin-css", null,"admin-css"));
-        bootstrap.addBundle(new AssetsBundle("/assets/app/admin/js", "/admin-js", null,"admin-js"));
+        bootstrap.addBundle(new AssetsBundle("/assets/app/admin/css", "/admin-css", null, "admin-css"));
+        bootstrap.addBundle(new AssetsBundle("/assets/app/admin/js", "/admin-js", null, "admin-js"));
         bootstrap.addBundle(new AssetsBundle("/assets/app/admin/img", "/admin-img", null, "admin-img"));
 
-        bootstrap.addBundle(new AssetsBundle("/assets/app/admin/partials", "/admin", null,"admin"));
+        bootstrap.addBundle(new AssetsBundle("/assets/app/admin/partials", "/admin", null, "admin"));
 
         bootstrap.addBundle(new AssetsBundle("/assets/app/common", "/common", null, "common"));
 
@@ -72,6 +71,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         environment.jersey().register(picoContainer.getComponent(PersonResource.class));
         environment.jersey().register(picoContainer.getComponent(CategoryResource.class));
         environment.jersey().register(picoContainer.getComponent(TitleResource.class));
+        environment.jersey().register(picoContainer.getComponent(ReflectionResource.class));
         environment.healthChecks().register("template", templateHealthCheck);
     }
 
@@ -87,17 +87,20 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         picoContainer.addComponent(CategoryDAO.class);
         picoContainer.addComponent(TitleDAO.class);
         picoContainer.addComponent(SongTextDAO.class);
+        picoContainer.addComponent(ReflectionDAO.class);
 
         picoContainer.addComponent(Songs.class);
         picoContainer.addComponent(Lyrics.class);
         picoContainer.addComponent(Couplets.class);
         picoContainer.addComponent(People.class);
         picoContainer.addComponent(Words.class);
+        picoContainer.addComponent(Reflections.class);
         picoContainer.addComponent(SongsRepresentationFactory.class);
         picoContainer.addComponent(PersonRepresentationFactory.class);
         picoContainer.addComponent(CoupletsRepresentationFactory.class);
         picoContainer.addComponent(SongTextRepresentationFactory.class);
         picoContainer.addComponent(WordRepresentationFactory.class);
+        picoContainer.addComponent(ReflectionRepresentationFactory.class);
 
         picoContainer.addComponent(SplashScreenOptionsResource.class);
         picoContainer.addComponent(WordResource.class);
@@ -106,6 +109,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         picoContainer.addComponent(PersonResource.class);
         picoContainer.addComponent(CategoryResource.class);
         picoContainer.addComponent(TitleResource.class);
+        picoContainer.addComponent(ReflectionResource.class);
 
         return picoContainer;
     }
