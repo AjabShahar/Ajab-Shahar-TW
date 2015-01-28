@@ -4,41 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
     <title>Song details page</title>
-
-    <script type="text/javascript" src="../../../common/lib/underscore/underscore.js"></script>
-    <script type="text/javascript" src="../../../common/lib/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="../../../common/lib/angular/angular.js"></script>
-    <script type="text/javascript" src="../../../common/lib/angular-animate/angular-animate.min.js"></script>
-    <script type="text/javascript" src="../../../common/lib/angular-touch/angular-touch.min.js"></script>
-    <script type="text/javascript" src="../../../common/lib/jcarousel/dist/jquery.jcarousel.min.js"></script>
-    <script type="text/javascript" src="../../../common/jquery/jcarousel/jcarousel.responsive.js"></script>
-    <script type="text/javascript" src="../../user-js/common/config/resourceUrlWhiteList.js"></script>
-    <script type="text/javascript" src="../../user-js/songs/services/songsContentService.js"></script>
-    <script type="text/javascript" src="../../user-js/common/directives/animation/animationModule.js"></script>
-    <script type="text/javascript" src="../../user-js/common/directives/animation/toggleBySlide.js"></script>
-    <script type="text/javascript" src="../../user-js/common/modules/thumbnailModule.js"></script>
-    <script type="text/javascript" src="../../user-js/songs/services/songMapper.js"></script>
-    <script type="text/javascript" src="../../user-js/common/modules/mediaPlayer.js"></script>
-    <script type="text/javascript" src="../../user-js/common/modules/htmlGenerator.js"></script>
-    <script type="text/javascript" src="../../user-js/common/modules/headerModule.js"></script>
-    <script type="text/javascript" src="../../user-js/common/directives/header/sticky.js"></script>
-    <script type="text/javascript" src="../../user-js/common/directives/header/ajabShaharHeader.js"></script>
-    <script type="text/javascript" src="../../user-js/common/directives/footer/ajabShaharFooter.js"></script>
-    <script type="text/javascript" src="../../user-js/common/directives/animation/toggleByFading.js"></script>
-    <script type="text/javascript" src="../../user-js/common/directives/songs/songContentDetails.js"></script>
-    <script type="text/javascript" src="../../user-js/common/directives/carouselSupport/asCarousel.js"></script>
-    <script type="text/javascript" src="../../user-js/common/bindDynamicHtml.js"></script>
-
-    <script type="text/javascript" src="../../user-js/songs/songDetailsApp.js"></script>
-
-    <script type="text/javascript" src="../../user-js/songs/controllers/songDetailsController.js"></script>
-    <script type="text/javascript" src="../../user-js/common/directives/mappers/songContentDetailsMapper.js"></script>
-    <!--<script type="text/javascript" src="../../user-js/common/directives/soundCloud/soundcloud_player.js"></script>-->
-    <script type="text/javascript" src="../../user-js/common/directives/youtube/youtube_player.js"></script>
-    <script type="text/javascript" src="../../user-js/common/directives/thumbnail/songThumbnail.js"></script>
-
     <link href="../../user-css/common.css" rel="stylesheet" type="text/css">
     <link href="../../user-css/reset.css" rel="stylesheet" type="text/css">
     <link href="../../user-css/common/directives/header/header.css" rel="stylesheet" type="text/css">
@@ -58,17 +24,14 @@
                     <span class="page-logo">songs</span>
                 </a>
             </div>
-
             <div class="page-title">
                 <span class="main">{{umbrellaTitleEnglishTransliteration}}</span>
                 <span class="sub-main">{{umbrellaTitleEnglishTranslation}}</span>
             </div>
         </div>
-
     </div>
 
     <div class="lower-pardah">
-
         <div class="versions toggleBySlide" ng-show="showVersion && shouldShowVersions()">
             <div class="carousel-wrapper jcarousel-wrapper">
 
@@ -90,18 +53,8 @@
             </a>
         </div>
     </div>
-
     <div class='ajab-container'>
         <div class='ajab-wrapper'>
-
-            <!--<div id="left_nav">-->
-                <!--<ul>-->
-                    <!--<li><a href="#song_container" class="active">song</a></li>-->
-                    <!--<li><a href="#poem_container">poem</a></li>-->
-                <!--</ul>-->
-                <!--<a href="javascript:void(0)">explore</a>-->
-            <!--</div>-->
-
             <div class="main-content">
                 <div id="song_container">
                     <div>
@@ -117,7 +70,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div id="poem_container">
                     <div ng-show="originalVisible" class="toggleByFading  hindi">
                         <h2 class="song-heading">{{song.titleOriginal}}</h2>
@@ -145,9 +97,7 @@
                             <p style=" white-space: pre-line">{{openCouplet.songTextContent.englishTranslationText}}</p>
                             <p>{{openCouplet.songTextContent.poet.name}}</p>
                         </div>
-
                         <div ng-if="songText.openingCouplets.length!=0"><p>.....</p></div>
-
                         <div ng-repeat="songLyrics in songText.songTextContents track by $index" class="lyrics">
                             <p style=" white-space: pre-line">{{songLyrics.songTextContent.englishTransliterationText}}</p>
                             <p ng-if="songLyrics.songTextContent.showRefrain">{{songText.refrainEnglishTranslation}}....</p>
@@ -184,9 +134,40 @@
                 <li class="transliteration" ng-click="showEnglishTransliteration()"><a href="javascript:void(0)"></a></li>
                 <li class="translation" ng-click="showEnglishTranslation()"><a href="javascript:void(0)"></a></li>
             </ul>
-            <!--<div class="play-icon"></div>-->
-
         </div>
     </div>
+
+    <script type="text/javascript" src="../user-js/common/directives/soundCloud/sdk.js"></script>
+    <script type="text/javascript" src="../user-js/common/directives/soundCloud/api.js"></script>
+    <script type="text/javascript" src="../../../common/lib/underscore/underscore-min.js"></script>
+    <script type="text/javascript" src="../../../common/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../common/lib/angular/angular.min.js"></script>
+    <script type="text/javascript" src="../../../common/lib/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="../../../common/lib/angular-touch/angular-touch.min.js"></script>
+    <script type="text/javascript" src="../../../common/lib/jcarousel/dist/jquery.jcarousel.min.js"></script>
+    <script type="text/javascript" src="../../../common/jquery/jcarousel/jcarousel.responsive.js"></script>
+    <script type="text/javascript" src="../../user-js/common/config/resourceUrlWhiteList.js"></script>
+    <script type="text/javascript" src="../../user-js/songs/services/songsContentService.js"></script>
+    <script type="text/javascript" src="../../user-js/common/directives/animation/animationModule.js"></script>
+    <script type="text/javascript" src="../../user-js/common/directives/animation/toggleBySlide.js"></script>
+    <script type="text/javascript" src="../../user-js/common/modules/thumbnailModule.js"></script>
+    <script type="text/javascript" src="../../user-js/songs/services/songMapper.js"></script>
+    <script type="text/javascript" src="../../user-js/common/modules/mediaPlayer.js"></script>
+    <script type="text/javascript" src="../../user-js/common/modules/htmlGenerator.js"></script>
+    <script type="text/javascript" src="../../user-js/common/modules/headerModule.js"></script>
+    <script type="text/javascript" src="../../user-js/common/directives/header/sticky.js"></script>
+    <script type="text/javascript" src="../../user-js/common/directives/header/ajabShaharHeader.js"></script>
+    <script type="text/javascript" src="../../user-js/common/directives/footer/ajabShaharFooter.js"></script>
+    <script type="text/javascript" src="../../user-js/common/directives/animation/toggleByFading.js"></script>
+    <script type="text/javascript" src="../../user-js/common/directives/songs/songContentDetails.js"></script>
+    <script type="text/javascript" src="../../user-js/common/directives/carouselSupport/asCarousel.js"></script>
+    <script type="text/javascript" src="../../user-js/common/bindDynamicHtml.js"></script>
+
+    <script type="text/javascript" src="../../user-js/songs/songDetailsApp.js"></script>
+
+    <script type="text/javascript" src="../../user-js/songs/controllers/songDetailsController.js"></script>
+    <script type="text/javascript" src="../../user-js/common/directives/soundCloud/soundcloud_player.js"></script>
+    <script type="text/javascript" src="../../user-js/common/directives/youtube/youtube_player.js"></script>
+    <script type="text/javascript" src="../../user-js/common/directives/thumbnail/songThumbnail.js"></script>
 </body>
 </html>

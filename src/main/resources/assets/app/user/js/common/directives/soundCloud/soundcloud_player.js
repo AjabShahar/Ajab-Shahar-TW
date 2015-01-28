@@ -19,7 +19,6 @@ mediaPlayer.directive('soundCloud', function($window, YT_event) {
 
         scope.loadTrack = function(trackID){
               SC.get("/tracks/" + trackID, {limit: 1}, function(track){
-                console.log("Track URL: "+ track.uri);
                 SC.oEmbed(track.uri, document.getElementById(scope.id));
               });
         }
@@ -37,14 +36,12 @@ mediaPlayer.directive('soundCloud', function($window, YT_event) {
         scope.pauseTrack = function(){
             var iframeElement = element.find('iframe');
             var widget1         = SC.Widget(iframeElement[0]);
-            console.log("working" + widget1);
             widget1.pause();
         }
 
         scope.playTracks = function(){
             var iframeElement = element.find('iframe');
             var widget1         = SC.Widget(iframeElement[0]);
-            console.log("working" + widget1);
             widget1.play();
         }
 

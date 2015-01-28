@@ -54,12 +54,14 @@ var songMapper = function () {
 
     getSongDetails = function(songs){
         return _.reduce(songs,function(details, song,index) {
+            var poet = (Boolean(song.poet[0])) ? song.poet[0].name : '';
+
             details.push({"id":song.id,
             "contentId":"song_"+song.id,
             "videoId":song.youtubeVideoId,
             "audioUrl":song.soundCloudTrackId,
             "singer":getSingers(song.singers),
-            "poet":song.poet[0].name,
+            "poet": poet,
             "downloadURL":song.downloadUrl,
             "about": '\'' + song.about + '\''});
             return details;
