@@ -57,15 +57,21 @@
 
        &2 {
             background: url(../../user-img/songs/parallax/tambura_white.png) 0 0 no-repeat;
-            opacity: 0.7;
             width: 475px;
-            -webkit-animation: rotation 10s linear infinite;
-            height: 655px;
+            -webkit-animation: rotation 100s linear infinite;
+            height: 800px;
+            left: 57%;
+            top: 800px;
        }
 
        &3 {
-            background: url(../../user-img/songs/parallax/tambura2.png) 0px  0px;
-            opacity: 0.3;
+            background: url(../../user-img/songs/parallax/tambura_small.png) 0px  0px no-repeat;
+            opacity: 0.25;
+            top: 285px;
+            left: 10%;
+            width: 356px;
+            height: 600px;
+            -webkit-animation: antirotation 60s linear 5s infinite;
        }
 
        &4 {
@@ -125,6 +131,10 @@
      0% { -webkit-transform: rotate3d(0,1,0,0); }
      100% { -webkit-transform: rotate3d(0,1,0,360deg); }
  }
+  @-webkit-keyframes antirotation {
+      0% { -webkit-transform: rotate3d(0,1,0,0); }
+      100% { -webkit-transform: rotate3d(0,-1,0,360deg); }
+  }
 
 
 
