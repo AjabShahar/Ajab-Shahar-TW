@@ -9,6 +9,9 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -16,6 +19,7 @@ import static org.mockito.Mockito.when;
 public class ReflectionsTest {
 
     private Reflections reflections;
+    private List<Reflection> reflectionList;
 
     @Mock
     private ReflectionDAO reflectionRepository;
@@ -23,6 +27,7 @@ public class ReflectionsTest {
     @Before
     public void setUp() {
         reflections = new Reflections(reflectionRepository);
+        reflectionList = new ArrayList<>();
     }
 
     @Test
@@ -33,5 +38,13 @@ public class ReflectionsTest {
         Reflection actual = reflections.create(reflection);
 
         assertEquals(reflection, actual);
+    }
+
+    @Test
+    public void shouldGetReflections() throws Exception {
+        when(reflectionRepository.findAll()).thenReturn(reflectionList);
+        List<Reflection> actual = reflections.getAll();
+
+        assertEquals(reflectionList, actual);
     }
 }

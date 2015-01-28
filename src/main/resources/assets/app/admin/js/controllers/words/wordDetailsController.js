@@ -2,11 +2,17 @@ var wordDetailsController = function($scope, $http,$window,$location){
 
   $scope.formInfo = {};
   $scope.categoryList = [];
+  $scope.reflectionsList = [];
+  $scope.formInfo.reflections = [];
   $scope.urlId = $location.search().id;
   $scope.formInfo.wordIntroductions = [];
 
   $http.get('/api/category/word').success(function(categoryList){
           $scope.categoryList = categoryList;
+  });
+
+  $http.get('/api/reflections').success(function(data){
+          $scope.reflectionsList = data.reflections;
   });
 
   $scope.saveData = function(){

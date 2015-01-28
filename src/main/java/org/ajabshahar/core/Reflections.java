@@ -3,6 +3,8 @@ package org.ajabshahar.core;
 import org.ajabshahar.platform.daos.ReflectionDAO;
 import org.ajabshahar.platform.models.Reflection;
 
+import java.util.List;
+
 public class Reflections {
 
     private final ReflectionDAO reflectionRepository;
@@ -13,5 +15,10 @@ public class Reflections {
 
     public Reflection create(Reflection reflection) {
         return reflectionRepository.create(reflection);
+    }
+
+    public List<Reflection> getAll() {
+
+        return reflectionRepository.findAll();
     }
 }

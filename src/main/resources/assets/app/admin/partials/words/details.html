@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title></title>
     <script src="../../common/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="../../common/lib/angular-multi-select/angular-multi-select.js"></script>
     <script type="text/javascript" src="../../common/lib/angular-filter/dist/angular-filter.js"></script>
     <script type="text/javascript" src="../../common/lib/textAngular/dist/textAngular-sanitize.min.js"></script>
     <script type="text/javascript" src="../../common/lib/textAngular/dist/textAngular.min.js"></script>
@@ -14,6 +15,7 @@
     <script type="text/javascript" src="../../admin-js/controllers/words/wordDetailsController.js"></script>
     <link href="../../admin-css/admin.css" rel="stylesheet" type="text/css">
     <link href="../../common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../../common/lib/angular-multi-select/angular-multi-select.css">
     <link rel='stylesheet' href='https://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css'>
 
 </head>
@@ -79,6 +81,13 @@
                             <option value="false">No</option>
                         </select>
                     </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Reflections</label>
+                    </div>
+                    <div class="form-group col-sm-2" multi-select input-model="reflectionsList" button-label="title" item-label="title" tick-property="selected" output-model="formInfo.reflections"></div>
                 </div>
 
                 <admin-word-introduction word-introduction="{{formInfo.wordIntroduction}}" word-introductions="formInfo.wordIntroductions"></admin-word-introduction>

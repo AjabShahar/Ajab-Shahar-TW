@@ -3,9 +3,13 @@ package org.ajabshahar.platform.daos;
 import io.dropwizard.hibernate.AbstractDAO;
 import org.ajabshahar.platform.models.Reflection;
 import org.ajabshahar.platform.models.ReflectionTranscript;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
 
 public class ReflectionDAO extends AbstractDAO<Reflection> {
     private final static Logger logger = LoggerFactory.getLogger(ReflectionDAO.class);
@@ -24,5 +28,12 @@ public class ReflectionDAO extends AbstractDAO<Reflection> {
             currentSession().save(reflectionTranscript);
         }
        return reflection;
+    }
+
+    public List<Reflection> findAll() {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Criteria findReflections = currentSession.createCriteria(Reflection.class);
+        findReflections.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        return findReflections.list();
     }
 }
