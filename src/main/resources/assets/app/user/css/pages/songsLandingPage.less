@@ -21,7 +21,7 @@
         width:100%;
         top: 0;
         left: 0;
-        height: 4600px;
+        height: 4000px;
         position: absolute;
     }
 
@@ -29,7 +29,8 @@
 
 
        &1 {
-            background: url(../../user-img/songs/parallax/main_bg_white.png)  0px 0px no-repeat;
+            background: url(../../user-img/songs/parallax/background_song.jpg)  0px 0px;
+            background-repeat: no-repeat repeat;
             &:before, &:after {
                     content: '';
                     display: inline-block;
@@ -55,8 +56,11 @@
        }
 
        &2 {
-            background: url(../../user-img/songs/parallax//tambura.png) 0px repeat-y;
-            opacity: 0.3;
+            background: url(../../user-img/songs/parallax/tambura_white.png) 0 0 no-repeat;
+            opacity: 0.7;
+            width: 475px;
+            -webkit-animation: rotation 10s linear infinite;
+            height: 655px;
        }
 
        &3 {
@@ -65,15 +69,15 @@
        }
 
        &4 {
-            background: url(../../user-img/songs/parallax/triangles.png) 0px  0px;
-            opacity: 0.7;
-            left: 24px;
+            background: url(../../user-img/songs/parallax/triangles_new.png) 0px  0px;
+            opacity: 0.5;
        }
 
        &5 {
-            background: url(../../user-img/songs/parallax/vibration.png) 0px  0px repeat;
+            background: url(../../user-img/songs/parallax/viberations_new.png) 0px  0px repeat;
             opacity: 0.2;
-            /*left: 20px;*/
+            left: -4%;
+            background-size: contain;
 
             /*alternate for scrolling
             -webkit-animation: moveUpwards 60s linear infinite;*/
@@ -82,21 +86,18 @@
        }
 
        &6 {
-          background: url(../../user-img/songs/parallax/ingla.png) 0px  0px no-repeat;
-          width: 992px;
-          top: 45px;
-          left: 12%;
-          opacity: 0.7;
+          background: url(../../user-img/songs/parallax/ingla_new.png) 0px  0px;
+          background-repeat: no-repeat repeat;
           background-size: contain;
-
+          width: 992px;
+          left: 19%;
        }
 
        &7 {
-            background: url(../../user-img/songs/parallax/pingla.png) 0px  0px no-repeat;
+            background: url(../../user-img/songs/parallax/pingla_new.png) 0px  0px;
+            background-repeat: no-repeat repeat;
+            left: 28%;
             width: 933px;
-            left: 30%;
-            top: 45px;
-            opacity: 0.7;
             background-size: contain;
             @media screen and (max-width: 768px) {
                 left: 4%;
@@ -104,28 +105,25 @@
        }
 
        &8 {
-            background: url(../../user-img/songs/parallax/sushamna.png) 0 0 no-repeat;
+            background: url(../../user-img/songs/parallax/sushamna_new.png) 0 0;
+            background-repeat: no-repeat repeat;
             width: 323px;
-            left: 40%;
-            top: 45px;
-            opacity: 0.7;
+            left: 42%;
             background-size: contain;
        }
 
        &9 {
-            background: url(../../user-img/songs/parallax/snake.png) 0px  -185px no-repeat;
+            background: url(../../user-img/songs/parallax/snake.png) 0px  0 no-repeat;
+            top: 2318px;
+            left: 40%;
        }
 
-       &10 {
-            background: url(../../user-img/songs/parallax/snake.png) 0px  -185px no-repeat;
-       }
     }
  }
 
-/*Alternate for scrolling*/
- @-webkit-keyframes moveUpwards {
-     0% { background-position: 0 0; }
-     100% { background-position: 0 -4800px; }
+ @-webkit-keyframes rotation {
+     0% { -webkit-transform: rotate3d(0,1,0,0); }
+     100% { -webkit-transform: rotate3d(0,1,0,360deg); }
  }
 
 
