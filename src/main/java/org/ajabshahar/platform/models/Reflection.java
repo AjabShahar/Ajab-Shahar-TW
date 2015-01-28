@@ -26,7 +26,7 @@ public class Reflection {
     @OneToOne(fetch = FetchType.EAGER)
     private PersonDetails speaker;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "reflection")
     @JsonManagedReference
     private Set<ReflectionTranscript> reflectionTranscripts;
 

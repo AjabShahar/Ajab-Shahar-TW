@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 
 @Entity
-@Table(name="REFLECTION_TRANSCRIPT")
+@Table(name = "TRANSCRIPT")
 public class ReflectionTranscript {
 
     @Id

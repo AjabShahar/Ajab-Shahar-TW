@@ -2,6 +2,7 @@ package org.ajabshahar.platform.daos;
 
 import io.dropwizard.hibernate.AbstractDAO;
 import org.ajabshahar.platform.models.Reflection;
+import org.ajabshahar.platform.models.ReflectionTranscript;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +18,11 @@ public class ReflectionDAO extends AbstractDAO<Reflection> {
 
     public Reflection create(Reflection reflection) {
        logger.debug("Not working .....");
-       return persist(reflection);
+       reflection = persist(reflection);
+       for (ReflectionTranscript reflectionTranscript : reflection.getReflectionTranscripts()) {
+            reflectionTranscript.setReflection(reflection);
+            currentSession().save(reflectionTranscript);
+        }
+       return reflection;
     }
 }

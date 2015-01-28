@@ -4,6 +4,8 @@ import io.dropwizard.hibernate.UnitOfWork;
 import org.ajabshahar.api.ReflectionRepresentationFactory;
 import org.ajabshahar.core.Reflections;
 import org.ajabshahar.platform.models.Reflection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -18,6 +20,8 @@ public class ReflectionResource {
 
     private final Reflections reflections;
     private final ReflectionRepresentationFactory reflectionRepresentationFactory;
+    private final static Logger logger = LoggerFactory.getLogger(ReflectionResource.class);
+
 
     public ReflectionResource(Reflections reflections, ReflectionRepresentationFactory reflectionRepresentationFactory) {
         this.reflections = reflections;
