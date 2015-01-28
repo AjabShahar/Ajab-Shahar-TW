@@ -1,4 +1,4 @@
 --liquibase formatted sql
 
---changeset sswaroop:36
+--changeset sswaroop:41
 ALTER TABLE word_introduction ALTER COLUMN introduction_text type  varchar(600);

@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset Jaideep:26
+--changeset Jaideep:30
 
 ALTER TABLE SONG ADD
 	published_date TIMESTAMP;

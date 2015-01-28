@@ -1,4 +1,4 @@
 --liquibase formatted sql
 
---changeset sswaroop:30
+--changeset sswaroop:35
 ALTER TABLE Word DROP COLUMN synonym;

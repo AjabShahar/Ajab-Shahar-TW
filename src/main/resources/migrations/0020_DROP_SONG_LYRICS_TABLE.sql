@@ -1,4 +1,5 @@
 --liquibase formatted sql
 
 --changeset Padma:20
-DROP TABLE lyrics;
+
+DROP TABLE song_lyrics;

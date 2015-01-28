@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset Padma:43
+--changeset Padma:48
 CREATE TABLE transcript(
   id serial NOT NULL,
   text character varying(1500),

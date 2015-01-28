@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset Padma:26
+--changeset Padma:31
 CREATE TABLE opening_couplet(
    id serial not null,
    original_text character varying(500),

@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset Jaideep:25
+--changeset Jaideep:29
 
 ALTER TABLE SONG ALTER COLUMN about TYPE character varying(1500);
 

@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset Padma:40
+--changeset Padma:45
 
 ALTER TABLE word DROP COLUMN intr_summary_transliteration;
 ALTER TABLE word RENAME COLUMN intr_summary_original TO hindi_intro_excerpt;

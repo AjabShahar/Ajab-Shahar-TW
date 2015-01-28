@@ -1,4 +1,4 @@
-var splashScreenController = function($scope,$window,contentService){
+var splashScreenController = function($scope,$window,$http,contentService){
     $scope.formInfo = {};
     $scope.option = {"url":"","imageUrl":""};
     $scope.splashScreenOptions;
@@ -20,4 +20,4 @@ var splashScreenController = function($scope,$window,contentService){
     }
  };
 
-introductionApp.controller('splashScreenController',['$scope','$window','contentService',splashScreenController]);
+introductionApp.controller('splashScreenController',['$scope','$window','$http','contentService',splashScreenController]);

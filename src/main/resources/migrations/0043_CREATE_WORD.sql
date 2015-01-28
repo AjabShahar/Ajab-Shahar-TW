@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset SSWAROOP:38
+--changeset SSWAROOP:43
 CREATE TABLE word
 (
 

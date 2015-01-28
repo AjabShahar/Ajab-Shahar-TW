@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset Padma:23
+--changeset Padma:27
 ALTER TABLE stanza RENAME TO song_text_content;
 ALTER TABLE song_text_content ADD COLUMN content_type varchar(100);
 ALTER TABLE song_text_content ADD COLUMN sequence_number integer;

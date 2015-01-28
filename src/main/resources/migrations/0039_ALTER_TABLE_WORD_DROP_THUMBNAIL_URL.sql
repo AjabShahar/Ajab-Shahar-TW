@@ -1,4 +1,4 @@
 --liquibase formatted sql
 
---changeset sswaroop:34
+--changeset sswaroop:39
 ALTER TABLE Word DROP COLUMN thumbnail_url;

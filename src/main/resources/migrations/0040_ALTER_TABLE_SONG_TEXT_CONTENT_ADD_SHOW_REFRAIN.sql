@@ -1,4 +1,4 @@
 --liquibase formatted sql
 
---changeset sswaroop:35
+--changeset sswaroop:40
 ALTER TABLE SONG_TEXT_CONTENT ADD show_refrain boolean;

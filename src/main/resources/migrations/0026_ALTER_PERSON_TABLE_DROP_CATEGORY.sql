@@ -1,6 +1,6 @@
 
 --liquibase formatted sql
 
---changeset Jaideep:22
+--changeset Jaideep:26
 
 ALTER TABLE person drop column category;
