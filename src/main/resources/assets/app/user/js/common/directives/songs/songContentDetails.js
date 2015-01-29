@@ -18,7 +18,7 @@ thumbnailModule.directive("songContentDetails", function() {
         controller: function($scope) {
             $scope.isAboutVisible = false;
             $scope.isNotesVisible = false;
-            $scope.isVideoSong = false;
+            $scope.hasAudioAndVideo = false;
             $scope.showVideo = false;
             $scope.showAudio = false;
 
@@ -29,7 +29,7 @@ thumbnailModule.directive("songContentDetails", function() {
             $scope.isAudioOrVideo = function(){
                 if(Boolean($scope.videoId)){
                     $scope.showVideo = true;
-                    $scope.isVideoSong = true;
+                    (Boolean($scope.audioUrl)) ? $scope.hasAudioAndVideo = true : $scope.hasAudioAndVideo = false;
                 }
                 else {
                     $scope.showAudio = true;
