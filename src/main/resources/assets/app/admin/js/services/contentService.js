@@ -19,11 +19,16 @@ var contentService = function ($http) {
     return $http.get('/api/words/getAllWords');
   };
 
+  var getAllGenres = function () {
+    return $http.get('/api/genres');
+  };
+
   return {
     getAllPeople:getAllPeople,
     getAllCategories:getAllCategories,
     getAllSongs: getAllSongs,
     getAllCouplets:getAllCouplets,
     getAllWords:getAllWords,
+    getAllGenres:getAllGenres,
   };
 };

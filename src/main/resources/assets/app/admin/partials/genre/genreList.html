@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="adminApp">
+	<head lang="en">
+	    <meta charset="UTF-8">
+	    <title>Genres page</title>
+	    <link href="../../common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+	    <link href="../../admin-css/admin.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<a ng-href="/admin/home.html" target="_self"><button type="button" class="btn btn-info admin-home">Admin home</button></a>
+	    <br>
+	    <br>
+	    <div ng-controller="genreListController">
+	        <table class="table">
+	            <tr>
+	                <td><b>English text</b></td>
+	                <td><b>Original text</b></td>
+	                <td><b>Edit</b></td>
+	            </tr>
+	            <tr>
+	                <td><input ng-model="search.firstName" class="form-control" ><br></td>
+	                <td><input ng-model="search.middleName" class="form-control" ><br></td>
+	            </tr>
+	            <tr ng-repeat="genre in genres | orderBy:'englishText' | filter:search">
+	                <td>{{genre.englishText}}</td>
+	                <td>{{genre.originalText}}</td>
+	                <td><a href="details.html?id={{genre.id}}" class="btn btn-info">Edit</a></td>
+	            </tr>
+	        </table>
+	    </div>
+	    <script src="../../common/lib/angular/angular.min.js"></script>
+	    <script type="text/javascript" src="../../admin-js/services/contentService.js"></script>
+	    <script type="text/javascript" src="../../admin-js/app.js"></script>
+	    <script type="text/javascript" src="../../admin-js/controllers/genre/genreListController.js"></script>
+	</body>
+</html>
