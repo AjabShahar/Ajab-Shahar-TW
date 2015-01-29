@@ -19,7 +19,7 @@ thumbnailModule.directive("songThumbnail", function($timeout) {
             id:'@',
             open: '&', //open click handler ~ callback to controller
         },
-        templateUrl:'/user-js/common/templates/thumbnail/songThumbnail.html',
+        templateUrl:'/user-js/common/templates/songs/songThumbnail.html',
         controller:function($scope){
             $scope.textRepresentation = 'Transliteration';
             $scope.shouldShowDetails = true;
