@@ -61,7 +61,7 @@
             -webkit-animation: rotation 100s linear 5s infinite;
             height: 800px;
             left: 38%;
-            top: 1800px;
+            top: 1900px;
        }
 
        &3 {
@@ -92,14 +92,14 @@
 
        &5 {
             background: url(../../user-img/songs/parallax/viberations_new.png) 0px  0px repeat;
-            opacity: 0.2;
+            opacity: 0.15;
             left: -4%;
             background-size: contain;
+            -webkit-animation: moveUp 60s linear infinite;
 
-            /*alternate for scrolling
-            -webkit-animation: moveUpwards 60s linear infinite;*/
-
-
+           &.top-to-bottom {
+                -webkit-animation: moveDown 60s linear 2s infinite;
+           }
        }
 
        &6 {
@@ -146,6 +146,68 @@
       0% { -webkit-transform: rotate(0); }
       100% { -webkit-transform: rotate(-360deg); }
   }
+
+  @-moz-keyframes rotation {
+       0% { -webkit-transform: rotate(0); }
+       100% { -webkit-transform: rotate(360deg); }
+  }
+  @-moz-keyframes antirotation {
+       0% { -webkit-transform: rotate(0); }
+       100% { -webkit-transform: rotate(-360deg); }
+  }
+
+  @-o-keyframes rotation {
+        0% { -webkit-transform: rotate(0); }
+        100% { -webkit-transform: rotate(360deg); }
+  }
+  @-o-keyframes antirotation {
+        0% { -webkit-transform: rotate(0); }
+        100% { -webkit-transform: rotate(-360deg); }
+  }
+
+  @keyframes rotation {
+        0% { -webkit-transform: rotate(0); }
+        100% { -webkit-transform: rotate(360deg); }
+  }
+  @keyframes antirotation {
+        0% { -webkit-transform: rotate(0); }
+        100% { -webkit-transform: rotate(-360deg); }
+  }
+
+  @-webkit-keyframes moveUp {
+        0% {  background-position: 0 0; }
+        100% { background-position: 0 -4000px; }
+  }
+  @-webkit-keyframes moveDown {
+        0% {  background-position: 0 0; }
+        100% { background-position: 0 4000px; }
+  }
+
+  @-moz-keyframes moveUp {
+        0% {  background-position: 0 0; }
+        100% { background-position: 0 -4000px; }
+  }
+  @-moz-keyframes moveDown {
+        0% {  background-position: 0 0; }
+        100% { background-position: 0 4000px; }
+  }
+   @-o-keyframes moveUp {
+          0% {  background-position: 0 0; }
+          100% { background-position: 0 -4000px; }
+    }
+   @-o-keyframes moveDown {
+          0% {  background-position: 0 0; }
+          100% { background-position: 0 4000px; }
+   }
+
+   @keyframes moveUp {
+          0% {  background-position: 0 0; }
+          100% { background-position: 0 -4000px; }
+   }
+   @keyframes moveDown {
+          0% {  background-position: 0 0; }
+          100% { background-position: 0 4000px; }
+   }
 
 
 
