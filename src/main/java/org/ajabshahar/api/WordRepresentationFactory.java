@@ -1,6 +1,8 @@
 package org.ajabshahar.api;
 
 import com.google.gson.Gson;
+import org.ajabshahar.platform.models.Reflection;
+import org.ajabshahar.platform.models.ReflectionTranscript;
 import org.ajabshahar.platform.models.Word;
 import org.ajabshahar.platform.models.WordIntroduction;
 
@@ -55,5 +57,32 @@ public class WordRepresentationFactory {
             wordIntro += wordIntroduction.getWordIntroHindi();
         }
         return wordIntro;
+    }
+
+    public WordReflectionRepresentation createWordReflections(List<Word> wordsList) {
+        WordReflectionRepresentation wordReflections = new WordReflectionRepresentation();
+        Word word = wordsList.get(0);
+
+        Set<WordIntroduction> wordIntroductionSet = word.getWordIntroductions() != null ? word.getWordIntroductions() : new HashSet<WordIntroduction>();
+        String wordIntroHindi = getWordIntroOriginal(wordIntroductionSet);
+        String wordIntroEnglish = getWordIntroTranslation(wordIntroductionSet);
+        WordRepresentation wordRepresentation = new WordRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(), word.getWordTransliteration(), word.getEnglishIntroExcerpt(), word.getHindiIntroExcerpt(), wordIntroHindi, wordIntroEnglish);
+        wordReflections.setWord(wordRepresentation);
+        for (Reflection reflection : word.getReflections()) {
+            String transcript = getTranscript(reflection);
+            ReflectionRepresentation representation = new ReflectionRepresentation((int) reflection.getId(), reflection.getTitle(), reflection.getSoundCloudId(), reflection.getYoutubeVideo(), transcript);
+            wordReflections.add(representation);
+        }
+
+        return wordReflections;
+
+    }
+
+    private String getTranscript(Reflection reflection) {
+        String transcript = "";
+        for (ReflectionTranscript reflectionTranscript : reflection.getReflectionTranscripts()) {
+            transcript += reflectionTranscript.getText();
+        }
+        return transcript;
     }
 }

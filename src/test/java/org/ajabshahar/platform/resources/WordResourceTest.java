@@ -1,7 +1,7 @@
 package org.ajabshahar.platform.resources;
 
+import org.ajabshahar.api.WordReflectionRepresentation;
 import org.ajabshahar.api.WordRepresentationFactory;
-import org.ajabshahar.api.WordsRepresentation;
 import org.ajabshahar.core.Words;
 import org.ajabshahar.platform.models.Word;
 import org.junit.Before;
@@ -51,11 +51,11 @@ public class WordResourceTest {
 
     @Test
     public void shouldGetWordVersions() throws Exception {
-        WordsRepresentation expected = new WordsRepresentation();
-        when(words.findVersions((int) WORD_ID)).thenReturn(wordList);
-        when(wordRepresentationFactory.createWordsRepresentation(wordList)).thenReturn(expected);
+        WordReflectionRepresentation expected = new WordReflectionRepresentation();
+        when(words.findReflections((int) WORD_ID)).thenReturn(wordList);
+        when(wordRepresentationFactory.createWordReflections(wordList)).thenReturn(expected);
 
-        Response actual = wordResource.getVersions((int) WORD_ID);
+        Response actual = wordResource.getReflections((int) WORD_ID);
 
         assertEquals(expected, actual.getEntity());
     }

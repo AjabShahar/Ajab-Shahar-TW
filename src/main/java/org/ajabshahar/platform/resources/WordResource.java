@@ -1,6 +1,7 @@
 package org.ajabshahar.platform.resources;
 
 import io.dropwizard.hibernate.UnitOfWork;
+import org.ajabshahar.api.WordReflectionRepresentation;
 import org.ajabshahar.api.WordRepresentationFactory;
 import org.ajabshahar.api.WordsRepresentation;
 import org.ajabshahar.core.Words;
@@ -61,12 +62,12 @@ public class WordResource {
 
 
     @GET
-    @Path("/versions")
+    @Path("/reflections")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getVersions(@QueryParam("id") int wordId) {
-        List<Word> wordsList = words.findVersions(wordId);
-        WordsRepresentation wordsRepresentation = wordRepresentationFactory.createWordsRepresentation(wordsList);
-        return Response.ok(wordsRepresentation).build();
+    public Response getReflections(@QueryParam("id") int wordId) {
+        List<Word> wordsList = words.findReflections(wordId);
+        WordReflectionRepresentation wordReflections = wordRepresentationFactory.createWordReflections(wordsList);
+        return Response.ok(wordReflections).build();
     }
 
     @GET

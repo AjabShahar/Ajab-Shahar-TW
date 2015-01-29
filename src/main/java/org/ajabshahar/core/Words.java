@@ -45,8 +45,8 @@ public class Words {
         return originalWord;
     }
 
-    public List<Word> findVersions(int wordId) {
-        return wordRepository.findVersions(wordId);
+    public List<Word> findReflections(int wordId) {
+        return wordRepository.findReflections(wordId);
     }
 
     public List<Word> findAll() {

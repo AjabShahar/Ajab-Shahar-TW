@@ -23,6 +23,10 @@ public class WordRepresentation {
         this.wordIntroEnglish = wordIntroEnglish;
     }
 
+    public WordRepresentation() {
+
+    }
+
     @JsonProperty("id")
     public int getId() {
         return id;

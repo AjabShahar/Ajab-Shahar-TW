@@ -57,9 +57,9 @@ public class WordsTest {
     public void shouldFindVersions() throws Exception {
 
         List<Word> expected = new ArrayList<>();
-        when(wordRepository.findVersions(WORD_ID)).thenReturn(expected);
+        when(wordRepository.findReflections(WORD_ID)).thenReturn(expected);
 
-        List<Word> actual = words.findVersions(WORD_ID);
+        List<Word> actual = words.findReflections(WORD_ID);
 
         assertEquals(expected, actual);
 

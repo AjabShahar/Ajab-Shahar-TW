@@ -51,7 +51,7 @@ public class WordDAO extends AbstractDAO<Word> {
     }
 
 
-    public List<Word> findVersions(int wordId) {
+    public List<Word> findReflections(int wordId) {
         Session currentSession = sessionFactory.openSession();
         Criteria wordVersions = currentSession.createCriteria(Word.class);
         if (wordId != 0) {
