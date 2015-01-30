@@ -14,7 +14,7 @@ mediaPlayer.directive('soundCloud', function($window, YT_event) {
 
     link: function(scope, element, attrs, $rootScope) {
         SC.initialize({
-            client_id: "694f15bbffd7ae8e6e399f49dd228725"
+            client_id: "c55e7ed7134a3271082f6ea920e9d7d6"
         });
 
         scope.loadTrack = function(trackID){
