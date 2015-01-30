@@ -11,8 +11,22 @@ var reflectionMapper = function () {
         },[]);
     };
 
+    getReflectionsCompleteInfo = function(reflections){
+         return _.reduce(reflections,function(completeInfo, reflection,index) {
+             completeInfo.push({
+                 "id":reflection.id,
+                 "title":reflection.title,
+                 "speaker":reflection.speaker,
+                 "text":reflection.transcript,
+              });
+              return completeInfo;
+          },[]);
+
+    };
+
     return {
         getThumbnails: getThumbnails,
+        getReflectionsCompleteInfo: getReflectionsCompleteInfo,
     };
 };
 

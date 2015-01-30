@@ -61,10 +61,10 @@
                 <div as-carousel class="carousel-box jcarousel">
                     <ul>
                         <li ng-repeat="word in wordReflections.wordThumbnails track by $index">
-                                <word-thumbnail id="{{word.id}}" transliteration="{{word.wordTranslation}}" translation="{{word.wordTranslation}}" english-intro-excerpt="{{word.englishIntroExcerpt}}" custom-style="{{word.customStyle}}" img-src="https://yt3.ggpht.com/-JtqzFmOGDiI/AAAAAAAAAAI/AAAAAAAAAAA/McQLKmfBpqg/s900-c-k-no/photo.jpg"></word-thumbnail>
+                            <word-thumbnail id="{{word.id}}" transliteration="{{word.wordTransliteration}}" open="detailsService.openWord(word.id)" translation="{{word.wordTranslation}}" english-intro-excerpt="{{word.englishIntroExcerpt}}" custom-style="{{word.customStyle}}" img-src="https://yt3.ggpht.com/-JtqzFmOGDiI/AAAAAAAAAAI/AAAAAAAAAAA/McQLKmfBpqg/s900-c-k-no/photo.jpg"></word-thumbnail>
                         </li>
                         <li ng-repeat="reflection in wordReflections.reflections track by $index">
-                            <reflection-thumbnail id="{{reflection.id}}" title="{{reflection.title}}" speaker="{{reflection.speaker}}"></reflection-thumbnail>
+                            <reflection-thumbnail id="{{reflection.id}}" title="{{reflection.title}}" open="detailsService.openReflection(reflection.id)" speaker="{{reflection.speaker}}"></reflection-thumbnail>
                         </li>
                     </ul>
                     <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true"></a>
@@ -79,11 +79,19 @@
            </div>
     </div>
     <div id="poem_container">
-        <div>
-            <h2 class="song-heading">{{wordReflectionsCompleteInfo.wordCompleteInfo[0].wordOriginal}}</h2>
+        <div ng-show="showWord">
+            <h2 class="song-heading">{{currentWord.wordOriginal}}</h2>
 
             <div  class="lyrics" >
-                <div bind-dynamic-html="wordReflectionsCompleteInfo.wordCompleteInfo[0].wordIntroEnglish"></div>
+                <div bind-dynamic-html="currentWord.wordIntroEnglish"></div>
+            </div>
+        </div>
+
+        <div ng-show="showReflection">
+            <h2 class="song-heading">{{currentReflection.title}}</h2>
+
+            <div  class="lyrics" >
+                <div bind-dynamic-html="currentReflection.text"></div>
             </div>
         </div>
     </div>

@@ -10,7 +10,8 @@ thumbnailModule.directive("reflectionThumbnail", function() {
             imgSrc:'@',
             speaker:'@',
             customStyle:'@',
-            overlayId:'@'
+            overlayId:'@',
+            open: '&',
         },
         templateUrl:'/user-js/common/templates/reflections/reflectionThumbnail.html',
         controller:function($scope){

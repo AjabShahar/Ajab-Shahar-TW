@@ -1,8 +1,8 @@
 <div class="thumbnailWrapper reflection {{customStyle}}">
-    <div class="thumbnail-media">
+    <div class="thumbnail-media" ng-click="open('{{id}}')">
           <img src="../user-img/reflections/bw_background2b.jpg">
     </div>
-    <div class="desc-wrapper">
+    <div class="desc-wrapper" ng-click="open('{{id}}')">
        <div class="thumbnail-desc" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
             <h3 class="item-title" >{{title}}</h3>
             <h3 class="item-title-translation sub-title">by {{speaker}}</h3>
