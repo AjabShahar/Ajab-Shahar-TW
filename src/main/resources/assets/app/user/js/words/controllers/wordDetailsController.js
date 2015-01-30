@@ -1,4 +1,4 @@
-var wordDetailsController = function($scope, $location, wordMapper, wordService){
+var wordDetailsController = function($scope, $location, wordMapper,reflectionMapper, wordService){
 
     $scope.wordReflections = {"wordThumbnails":[],"reflections":[]};
     $scope.wordReflectionsCompleteInfo = {"wordCompleteInfo":[],"reflectionsCompleteInfo":[]};
@@ -11,7 +11,7 @@ var wordDetailsController = function($scope, $location, wordMapper, wordService)
 
         wordService.getVersions($scope.wordId).then(function(result){
          $scope.words.push(result.data.word);
-         $scope.wordReflections.reflections = result.data.reflections;
+         $scope.wordReflections.reflections = reflectionMapper.getThumbnails(result.data.reflections);
          $scope.wordReflections.wordThumbnails = wordMapper.getThumbnails($scope.words,'');
          $scope.wordReflectionsCompleteInfo.wordCompleteInfo = wordMapper.getWordCompleteInfo($scope.words);
         });
@@ -23,4 +23,4 @@ var wordDetailsController = function($scope, $location, wordMapper, wordService)
 
 }
 
-wordDetailsApp.controller('wordDetailsController',['$scope','$location','wordMapper','wordService',wordDetailsController]);
+wordDetailsApp.controller('wordDetailsController',['$scope','$location','wordMapper','reflectionMapper','wordService',wordDetailsController]);

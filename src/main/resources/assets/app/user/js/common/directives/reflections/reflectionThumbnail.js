@@ -5,22 +5,23 @@ thumbnailModule.directive("reflectionThumbnail", function() {
         replace : true,
         restrict: 'E',
         scope: {
-            name:'@',
+            id:'@',
+            title:'@',
             imgSrc:'@',
-            by:'@',
+            speaker:'@',
             customStyle:'@',
             overlayId:'@'
         },
         templateUrl:'/user-js/common/templates/reflections/reflectionThumbnail.html',
         controller:function($scope){
-            $scope.shouldBeOpen = false;
+            $scope.shouldShowDetails = false;
 
-            $scope.open = function(){
-                $scope.shouldBeOpen = true;
+            $scope.showDetails = function(){
+                $scope.shouldShowDetails = true;
             }
 
-            $scope.onClose = function(){
-                $scope.shouldBeOpen = false;
+            $scope.hideDetails = function(){
+                $scope.shouldShowDetails = false;
             }
         }
     }

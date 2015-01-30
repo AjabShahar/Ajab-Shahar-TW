@@ -1,12 +1,21 @@
-<div class="thumbnailWrapper reflection">
-    <div class="thumbnail {{customStyle}}">
-        <div class="thumbnail-media">
-            <img src="../user-img/reflections/bw_background2b.jpg">
-            <h5>I am not a scholar or  expert on Kabir, I am just like you, I am not a scholar or  expert on Kabir, I am just like you, I am just like</h5>
-        </div>
-        <div class="thumbnail-desc" ng-click="open()">
-            <h3 class="selected" >{{name}}</h3>
-            <small>by {{by}}</small>
-        </div>
+<div class="thumbnailWrapper reflection {{customStyle}}">
+    <div class="thumbnail-media">
+          <img src="../user-img/reflections/bw_background2b.jpg">
     </div>
+    <div class="desc-wrapper">
+       <div class="thumbnail-desc" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
+            <h3 class="item-title" >{{title}}</h3>
+            <h3 class="item-title-translation sub-title">by {{speaker}}</h3>
+
+            <div ng-show="shouldShowDetails" class='thumbnailDetails toggleBySlide'>
+                <div class='categoryDetails'>
+                    <p class="categoryName">REFLECTION
+                        <small class="more-info">T</small>
+                    </p>
+                </div>
+            </div>
+       </div>
+       <div class="lower-curve"></div>
+    </div>
+
 </div>
