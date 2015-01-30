@@ -56,12 +56,27 @@
        }
 
        &2 {
-            background: url(../../user-img/songs/parallax/tambura_white.png) 0 0 no-repeat;
-            width: 475px;
-            -webkit-animation: rotation 100s linear 5s infinite;
-            height: 800px;
-            left: 38%;
-            top: 1900px;
+            background: url(../../user-img/songs/parallax/tambura_white_med.png) 0 0 no-repeat;
+            width: 356px;
+            -webkit-animation: rotation 100s linear -5s infinite;
+            -moz-animation: rotation 100s linear -5s infinite;
+            -o-animation: rotation 100s linear -5s infinite;
+            animation: rotation 100s linear -5s infinite;
+            height: 495px;
+            top: 600px;
+            left: 58%;
+            &.tambura-small-1 {
+                top: 2050px;
+                left: 12%;
+                opacity: 0.8;
+                background: url(../../user-img/songs/parallax/tambura_white_small.png) 0 0 no-repeat;
+                width: 238px;
+                height: 500px;
+                -webkit-animation: antirotation 80s linear 2s infinite;
+                -moz-animation: antirotation 80s linear 2s infinite;
+                -o-animation: antirotation 80s linear 2s infinite;
+                animation: antirotation 80s linear 2s infinite;
+            }
        }
 
        &3 {
@@ -72,16 +87,25 @@
             width: 356px;
             height: 400px;
             -webkit-animation: antirotation 60s linear infinite;
+            -moz-animation: antirotation 60s linear infinite;
+            -o-animation: antirotation 60s linear infinite;
+            animation: antirotation 60s linear infinite;
 
             &.tambura-small-1 {
-                top: 800px;
-                left: 65%;
-                -webkit-animation: rotation 40s linear 1s infinite;
+                left: 55%;
+                top: 1850px;
+                -webkit-animation: rotation 70s linear 1s infinite;
+                -moz-animation: rotation 70s linear 1s infinite;
+                -o-animation: rotation 70s linear 1s infinite;
+                animation: rotation 70s linear 1s infinite;
             }
             &.tambura-small-2 {
-                top: 1400px;
+                top: 1300px;
                 left: 8%;
-                -webkit-animation: rotation 30s linear 3s infinite;
+                -webkit-animation: antirotation 70s linear 3s infinite;
+                -moz-animation: antirotation 70s linear 3s infinite;
+                -o-animation: antirotation 70s linear 3s infinite;
+                animation: antirotation 70s linear 3s infinite;
             }
        }
 
@@ -96,9 +120,15 @@
             left: -4%;
             background-size: contain;
             -webkit-animation: moveUp 60s linear infinite;
+            -moz-animation: moveUp 60s linear infinite;
+            -o-animation: moveUp 60s linear infinite;
+            animation: moveUp 60s linear infinite;
 
            &.top-to-bottom {
                 -webkit-animation: moveDown 60s linear 2s infinite;
+                -moz-animation: moveDown 60s linear 2s infinite;
+                -o-animation: moveDown 60s linear 2s infinite;
+                animation: moveDown 60s linear 2s infinite;
            }
        }
 
@@ -133,6 +163,12 @@
             background: url(../../user-img/songs/parallax/snake.png) 0px  0 no-repeat;
             top: 2318px;
             left: 40%;
+       }
+
+       &10 {
+           background: url(../../user-img/songs/parallax/vignette.png) 0px  0 no-repeat;
+           opacity: 0.2;
+           position: fixed;
        }
 
     }
