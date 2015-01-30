@@ -1,4 +1,4 @@
-var wordDetailsApp = angular.module('wordDetailsApp',['thumbnailModule','htmlGenerator', 'headerModule', 'animationModule']);
+var wordDetailsApp = angular.module('wordDetailsApp',['thumbnailModule','htmlGenerator', 'headerModule', 'animationModule','popupSupport']);
 
 wordDetailsApp.factory('wordService', ['$http', wordService]);
 

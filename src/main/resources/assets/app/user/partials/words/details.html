@@ -27,6 +27,8 @@
     <script type="text/javascript" src="../../user-js/common/bindDynamicHtml.js"></script>
     <script type="text/javascript" src="../../user-js/common/directives/reflections/reflectionThumbnail.js"></script>
     <script type="text/javascript" src="../../user-js/common/directives/reflections/reflectionContentDetails.js"></script>
+    <script type="text/javascript" src="../../user-js/common/modules/PopupSupport.js"></script>
+    <script type="text/javascript" src="../../user-js/common/services/popupService.js"></script>
 
     <script type="text/javascript" src="../../user-js/words/services/wordService.js"></script>
     <script type="text/javascript" src="../../user-js/words/wordDetailsApp.js"></script>
@@ -92,7 +94,7 @@
             <h2 class="song-heading">{{currentReflection.title}}</h2>
 
             <div  class="lyrics" >
-                <reflection-content-details video-id="currentReflection.videoId" audio-url="currentReflection.audioUrl" id="currentReflection.id" details-service="detailsService"></reflection-content-details>
+                <reflection-content-details video-id="currentReflection.videoId" audio-url="currentReflection.audioUrl" id="currentReflection.id" details-service="popupService"></reflection-content-details>
                 <div bind-dynamic-html="currentReflection.text"></div>
             </div>
         </div>

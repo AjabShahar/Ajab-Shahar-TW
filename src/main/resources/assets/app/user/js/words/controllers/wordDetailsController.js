@@ -1,4 +1,5 @@
-var wordDetailsController = function($scope, $location, wordMapper,reflectionMapper, wordService){
+var wordDetailsController = function($scope, $location, wordMapper,popupService, reflectionMapper, wordService){
+    $scope.popupService = popupService;
     $scope.detailsService = $scope;
     $scope.wordReflections = {"wordThumbnails":[],"reflections":[]};
     $scope.wordReflectionsCompleteInfo = {"wordCompleteInfo":[],"reflectionsCompleteInfo":[]};
@@ -49,4 +50,4 @@ var wordDetailsController = function($scope, $location, wordMapper,reflectionMap
 
 }
 
-wordDetailsApp.controller('wordDetailsController',['$scope','$location','wordMapper','reflectionMapper','wordService',wordDetailsController]);
+wordDetailsApp.controller('wordDetailsController',['$scope','$location','wordMapper','popupService','reflectionMapper','wordService',wordDetailsController]);
