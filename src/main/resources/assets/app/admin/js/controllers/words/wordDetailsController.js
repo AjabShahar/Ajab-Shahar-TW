@@ -1,9 +1,8 @@
 var wordDetailsController = function($scope, $http,$window,$location){
 
-  $scope.formInfo = {};
+  $scope.formInfo = {reflections:[]};
   $scope.categoryList = [];
   $scope.reflectionsList = [];
-  $scope.formInfo.reflections = [];
   $scope.urlId = $location.search().id;
   $scope.formInfo.wordIntroductions = [];
 
@@ -29,7 +28,13 @@ var wordDetailsController = function($scope, $http,$window,$location){
                           }
                        })
                        .success(function (data) {
-                            $scope.formInfo = data;
+                         angular.forEach($scope.reflectionsList,function(reflection){
+                           angular.forEach(data.reflections,function(selectedReflection){
+                               if(selectedReflection.id === reflection.id)
+                                      reflection.ticked=true;
+                            });
+                         });
+                         $scope.formInfo = data;
         });
     }
   };
