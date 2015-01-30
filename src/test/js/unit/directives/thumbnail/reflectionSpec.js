@@ -24,8 +24,8 @@ describe('Content', function() {
             scope.by1='by';
             scope.overlay1='overlayId',
 
-            element = angular.element('<reflection-thumbnail overlay-id="{{overlay1}}" custom-style="{{customStyle1}}" img-src="{{imgSrc1}}" name="{{name1}}" by="{{by1}}"></reflection-thumbnail>');
-            template.put('/user-js/common/templates/reflections/reflectionThumbnail.html', '<div>{{overlayId}} {{customStyle}} {{imgSrc}} {{name}} {{by}}</div>');
+            element = angular.element('<reflection-thumbnail overlay-id="{{overlay1}}" custom-style="{{customStyle1}}" img-src="{{imgSrc1}}" title="{{name1}}" speaker="{{by1}}"></reflection-thumbnail>');
+            template.put('/user-js/common/templates/reflections/reflectionThumbnail.html', '<div>{{overlayId}} {{customStyle}} {{imgSrc}} {{title}} {{speaker}}</div>');
             compile(element)(scope);
             scope.$apply();
 
