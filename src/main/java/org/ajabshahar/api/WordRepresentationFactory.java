@@ -78,6 +78,33 @@ public class WordRepresentationFactory {
 
     }
 
+    public WordSynonymRepresentation createWordSynonyms(List<Word> wordsList) {
+        WordSynonymRepresentation synonyms = new WordSynonymRepresentation();
+        Word word = wordsList.get(0);
+
+        Set<WordIntroduction> wordIntroductionSet = word.getWordIntroductions() != null ? word.getWordIntroductions() : new HashSet<WordIntroduction>();
+        String wordIntroHindi = getWordIntroOriginal(wordIntroductionSet);
+        String wordIntroEnglish = getWordIntroTranslation(wordIntroductionSet);
+        WordRepresentation wordRepresentation = new WordRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(), word.getWordTransliteration(), word.getEnglishIntroExcerpt(), word.getHindiIntroExcerpt(), wordIntroHindi, wordIntroEnglish);
+        synonyms.setWord(wordRepresentation);
+        for (Word synonym : word.getSynonyms()) {
+            Set<WordIntroduction> synonymIntroductionSet = synonym.getWordIntroductions() != null ?
+                    synonym.getWordIntroductions() : new HashSet<WordIntroduction>();
+
+            String synonymIntroHindi = getWordIntroOriginal(synonymIntroductionSet);
+            String synonymIntroEnglish = getWordIntroTranslation(synonymIntroductionSet);
+
+            WordRepresentation representation = new WordRepresentation((int) synonym.getId(),
+                    synonym.getWordOriginal(), synonym.getWordTranslation(),
+                    synonym.getWordTransliteration(), synonym.getEnglishIntroExcerpt(),
+                    synonym.getHindiIntroExcerpt(),synonymIntroHindi,synonymIntroEnglish);
+            synonyms.add(representation);
+        }
+
+        return synonyms;
+
+    }
+
     private String getTranscript(Reflection reflection) {
         String transcript = "";
         for (ReflectionTranscript reflectionTranscript : reflection.getReflectionTranscripts()) {

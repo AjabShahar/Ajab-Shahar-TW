@@ -39,6 +39,16 @@ public class Word {
             inverseJoinColumns = {@JoinColumn(name = "REFLECTION_ID", referencedColumnName = "ID")})
     private Set<Reflection> reflections;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "RELATED_WORDS", joinColumns = {@JoinColumn(name = "WORD_ID", referencedColumnName = "ID")},
+            inverseJoinColumns = {@JoinColumn(name = "RELATED_WORD_ID", referencedColumnName = "ID")})
+    private Set<Word> relatedWords;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "WORD_SYNONYMS", joinColumns = {@JoinColumn(name = "WORD_ID", referencedColumnName = "ID")},
+            inverseJoinColumns = {@JoinColumn(name = "SYNONYM_WORD_ID", referencedColumnName = "ID")})
+    private Set<Word> synonyms;
+
     public long getId() {
         return id;
     }
@@ -109,5 +119,21 @@ public class Word {
 
     public void setReflections(Set<Reflection> reflections) {
         this.reflections = reflections;
+    }
+
+    public Set<Word> getRelatedWords() {
+        return relatedWords;
+    }
+
+    public void setRelatedWords(Set<Word> relatedWords) {
+        this.relatedWords = relatedWords;
+    }
+
+    public Set<Word> getSynonyms() {
+        return synonyms;
+    }
+
+    public void setSynonyms(Set<Word> synonyms) {
+        this.synonyms = synonyms;
     }
 }

@@ -59,7 +59,7 @@ public class WordsTest {
         List<Word> expected = new ArrayList<>();
         when(wordRepository.findReflections(WORD_ID)).thenReturn(expected);
 
-        List<Word> actual = words.findReflections(WORD_ID);
+        List<Word> actual = words.findWords(WORD_ID);
 
         assertEquals(expected, actual);
 

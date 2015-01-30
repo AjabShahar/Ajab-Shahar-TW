@@ -45,7 +45,7 @@ public class Words {
         return originalWord;
     }
 
-    public List<Word> findReflections(int wordId) {
+    public List<Word> findWords(int wordId) {
         return wordRepository.findReflections(wordId);
     }
 

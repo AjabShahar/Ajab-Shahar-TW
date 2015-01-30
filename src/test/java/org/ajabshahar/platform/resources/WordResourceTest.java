@@ -1,7 +1,9 @@
 package org.ajabshahar.platform.resources;
 
 import org.ajabshahar.api.WordReflectionRepresentation;
+import org.ajabshahar.api.WordRepresentation;
 import org.ajabshahar.api.WordRepresentationFactory;
+import org.ajabshahar.api.WordSynonymRepresentation;
 import org.ajabshahar.core.Words;
 import org.ajabshahar.platform.models.Word;
 import org.junit.Before;
@@ -50,12 +52,23 @@ public class WordResourceTest {
     }
 
     @Test
-    public void shouldGetWordVersions() throws Exception {
+    public void shouldGetWordReflections() throws Exception {
         WordReflectionRepresentation expected = new WordReflectionRepresentation();
-        when(words.findReflections((int) WORD_ID)).thenReturn(wordList);
+        when(words.findWords((int) WORD_ID)).thenReturn(wordList);
         when(wordRepresentationFactory.createWordReflections(wordList)).thenReturn(expected);
 
         Response actual = wordResource.getReflections((int) WORD_ID);
+
+        assertEquals(expected, actual.getEntity());
+    }
+
+    @Test
+    public void shouldGetWordSynonyms() throws Exception {
+        WordSynonymRepresentation expected = new WordSynonymRepresentation();
+        when(words.findWords((int) WORD_ID)).thenReturn(wordList);
+        when(wordRepresentationFactory.createWordSynonyms(wordList)).thenReturn(expected);
+
+        Response actual = wordResource.getSynonyms((int) WORD_ID);
 
         assertEquals(expected, actual.getEntity());
     }
