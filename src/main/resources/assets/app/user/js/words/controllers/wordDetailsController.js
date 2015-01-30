@@ -5,6 +5,7 @@ var wordDetailsController = function($scope, $location, wordMapper,popupService,
     $scope.wordReflectionsCompleteInfo = {"wordCompleteInfo":[],"reflectionsCompleteInfo":[]};
     $scope.words = [];
     $scope.showVersion = true;
+    $scope.numberOfReflections = 0;
     $scope.wordId ='';
     $scope.showReflection = false;
     $scope.currentReflection = {};
@@ -22,6 +23,8 @@ var wordDetailsController = function($scope, $location, wordMapper,popupService,
          $scope.currentWord = $scope.wordReflectionsCompleteInfo.wordCompleteInfo[0];
          $scope.wordReflectionsCompleteInfo.reflectionsCompleteInfo = reflectionMapper.getReflectionsCompleteInfo(result.data.reflections);
         });
+
+        $scope.numberOfReflections = $scope.wordReflections.reflections.length;
     }();
 
     $scope.openReflection = function(id){
@@ -47,6 +50,13 @@ var wordDetailsController = function($scope, $location, wordMapper,popupService,
     $scope.toggleVersion = function(){
        $scope.showVersion = !$scope.showVersion;
     }
+
+    $scope.shouldShowReflections = function(){
+       if($scope.wordReflections.reflections.length > 0)
+          return true;
+       return false;
+    }
+
 
 }
 

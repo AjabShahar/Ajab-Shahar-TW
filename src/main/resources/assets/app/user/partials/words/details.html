@@ -7,7 +7,69 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <title>Song details page</title>
+    <link href="../../user-css/common.css" rel="stylesheet" type="text/css">
+    <link href="../../user-css/reset.css" rel="stylesheet" type="text/css">
+    <link href="../../../common/jquery/jcarousel/jcarousel.responsive.css" rel="stylesheet" type="text/css">
+    <link href="../../user-css/common/directives/header/header.css" rel="stylesheet" type="text/css">
+    <link href="../../user-css/common/directives/introduction.css" rel="stylesheet" type="text/css">
+    <link href="../../user-css/thumbnails.css" rel="stylesheet" type="text/css">
+    <link href="../../user-css/pages/songs.css" rel="stylesheet" type="text/css">
+
+</head>
+<body ng-controller="wordDetailsController" class="songs-details header-with-carousel">
+<ajab-shahar-header></ajab-shahar-header>
+    <div class="page-header">
+        <div class="ajab-wrapper">
+            <div class="page-title">
+                <span class="main">{{words[0].wordTransliteration}}</span>
+            </div>
+            <div class="page-title">
+                <span class="sub-main">{{words[0].wordTranslation}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="lower-pardah">
+
+            <div class="carousel-wrapper jcarousel-wrapper" ng-show="showVersion && shouldShowReflections()">
+
+                <div as-carousel class="carousel-box jcarousel">
+                    <ul>
+                        <li ng-repeat="word in wordReflections.wordThumbnails track by $index">
+                            <word-thumbnail id="{{word.id}}" transliteration="{{word.wordTransliteration}}" open="detailsService.openWord(word.id)" translation="{{word.wordTranslation}}" english-intro-excerpt="{{word.englishIntroExcerpt}}" custom-style="{{word.customStyle}}" img-src="https://yt3.ggpht.com/-JtqzFmOGDiI/AAAAAAAAAAI/AAAAAAAAAAA/McQLKmfBpqg/s900-c-k-no/photo.jpg"></word-thumbnail>
+                        </li>
+                        <li ng-repeat="reflection in wordReflections.reflections track by $index">
+                            <reflection-thumbnail id="{{reflection.id}}" title="{{reflection.title}}" open="detailsService.openReflection(reflection.id)" speaker="{{reflection.speaker}}"></reflection-thumbnail>
+                        </li>
+                    </ul>
+                    <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true"></a>
+                    <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true"></a>
+                </div>
+           </div>
+           <div class="see-more"  ng-click="toggleVersion()">
+             <a class="version" href="javascript:void(0)">
+                intro + {{numberOfReflections}} reflections
+                <span class="arrow" ng-class="showVersion ? 'up-arrow' : ''"></span>
+             </a>
+           </div>
+    </div>
+    <div id="poem_container">
+        <div ng-show="showWord">
+            <h2 class="song-heading">{{currentWord.wordOriginal}}</h2>
+
+            <div  class="lyrics" >
+                <div bind-dynamic-html="currentWord.wordIntroEnglish"></div>
+            </div>
+        </div>
+
+        <div ng-show="showReflection">
+            <h2 class="song-heading">{{currentReflection.title}}</h2>
+
+            <div  class="lyrics" >
+                <reflection-content-details video-id="currentReflection.videoId" audio-url="currentReflection.audioUrl" id="currentReflection.id" details-service="popupService"></reflection-content-details>
+                <div bind-dynamic-html="currentReflection.text"></div>
+            </div>
+        </div>
+    </div>
 
     <script type="text/javascript" src="../../../common/lib/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="../../../common/lib/angular/angular.js"></script>
@@ -37,67 +99,5 @@
     <script type="text/javascript" src="../user-js/reflections/services/reflectionMapper.js"></script>
     <script type="text/javascript" src="../user-js/common/directives/words/wordThumbnail.js"></script>
 
-
-    <link href="../../user-css/common.css" rel="stylesheet" type="text/css">
-    <link href="../../user-css/reset.css" rel="stylesheet" type="text/css">
-    <link href="../../../common/jquery/jcarousel/jcarousel.responsive.css" rel="stylesheet" type="text/css">
-    <link href="../../user-css/common/directives/header/header.css" rel="stylesheet" type="text/css">
-    <link href="../../user-css/common/directives/introduction.css" rel="stylesheet" type="text/css">
-    <link href="../../user-css/thumbnails.css" rel="stylesheet" type="text/css">
-    <link href="../../user-css/pages/songs.css" rel="stylesheet" type="text/css">
-
-</head>
-<body ng-controller="wordDetailsController" class="songs-details header-with-carousel">
-<ajab-shahar-header></ajab-shahar-header>
-    <div class="page-header">
-        <div class="ajab-wrapper">
-            <div class="page-title">
-                <span class="main">{{words[0].wordOriginal}}</span>
-                <span class="sub-main">{{words[0].wordTransliteration}}</span>
-            </div>
-        </div>
-    </div>
-    <div class="lower-pardah">
-
-            <div class="carousel-wrapper jcarousel-wrapper" ng-show="showVersion">
-
-                <div as-carousel class="carousel-box jcarousel">
-                    <ul>
-                        <li ng-repeat="word in wordReflections.wordThumbnails track by $index">
-                            <word-thumbnail id="{{word.id}}" transliteration="{{word.wordTransliteration}}" open="detailsService.openWord(word.id)" translation="{{word.wordTranslation}}" english-intro-excerpt="{{word.englishIntroExcerpt}}" custom-style="{{word.customStyle}}" img-src="https://yt3.ggpht.com/-JtqzFmOGDiI/AAAAAAAAAAI/AAAAAAAAAAA/McQLKmfBpqg/s900-c-k-no/photo.jpg"></word-thumbnail>
-                        </li>
-                        <li ng-repeat="reflection in wordReflections.reflections track by $index">
-                            <reflection-thumbnail id="{{reflection.id}}" title="{{reflection.title}}" open="detailsService.openReflection(reflection.id)" speaker="{{reflection.speaker}}"></reflection-thumbnail>
-                        </li>
-                    </ul>
-                    <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true"></a>
-                    <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true"></a>
-                </div>
-           </div>
-           <div class="see-more"  ng-click="toggleVersion()">
-             <a class="version" href="javascript:void(0)">
-                {{numberOfVersions}} versions
-                <span class="arrow" ng-class="showVersion ? 'up-arrow' : ''"></span>
-             </a>
-           </div>
-    </div>
-    <div id="poem_container">
-        <div ng-show="showWord">
-            <h2 class="song-heading">{{currentWord.wordOriginal}}</h2>
-
-            <div  class="lyrics" >
-                <div bind-dynamic-html="currentWord.wordIntroEnglish"></div>
-            </div>
-        </div>
-
-        <div ng-show="showReflection">
-            <h2 class="song-heading">{{currentReflection.title}}</h2>
-
-            <div  class="lyrics" >
-                <reflection-content-details video-id="currentReflection.videoId" audio-url="currentReflection.audioUrl" id="currentReflection.id" details-service="popupService"></reflection-content-details>
-                <div bind-dynamic-html="currentReflection.text"></div>
-            </div>
-        </div>
-    </div>
 </body>
 </html>
