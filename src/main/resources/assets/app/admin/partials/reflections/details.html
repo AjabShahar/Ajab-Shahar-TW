@@ -28,7 +28,7 @@
                     </div>
                     <div class="form-group col-sm-2">
                         <select ng-model = "formInfo.speaker"
-                                ng-options = "speaker.firstName for speaker in people">
+                                ng-options = "speaker.firstName + ' '+speaker.lastName for speaker in people | orderBy:'firstName'">
                         </select>
                     </div>
                 </div>
