@@ -16,10 +16,10 @@ public class Genre {
     private long id;
 
     @Column(name = "ORIGINAL_TEXT", nullable = false)
-    private String originalText;
+    private String original;
 
     @Column(name = "ENGLISH_TEXT", nullable = false)
-    private String englishText;
+    private String english;
 
     public long getId() {
         return id;
@@ -30,18 +30,18 @@ public class Genre {
     }
 
     public String getOriginal() {
-        return originalText;
+        return original;
     }
 
     public void setOriginal(String originalText) {
-        this.originalText = originalText;
+        this.original = originalText;
     }
 
     public String getEnglish() {
-        return englishText;
+        return english;
     }
 
     public void setEnglish(String englishText) {
-        this.englishText = englishText;
+        this.english = englishText;
     }
 }

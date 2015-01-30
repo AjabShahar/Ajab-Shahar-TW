@@ -33,4 +33,17 @@ public class GenreResource {
         genreDAO.create(genre);
         return Response.status(200).entity(genre.toString()).build();
     }
+
+
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Genre getGenreById(@PathParam("id") Long id) {
+        try {
+            return genreDAO.findById(id);
+        } catch (Exception e) {
+            System.out.println(e.getStackTrace());
+        }
+        return null;
+    }
 }
