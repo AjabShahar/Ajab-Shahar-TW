@@ -44,11 +44,8 @@
     <script type="text/javascript" src="../../user-js/common/modules/lazyLoadModule.js"></script>
     <script type="text/javascript" src="../../user-js/common/directives/lazyload/lazyload.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../common/lib/angular-socialshare/angular-socialshare.css">
-    <link href="../../user-css/common.css" rel="stylesheet" type="text/css">
-    <link href="../../user-css/reset.css" rel="stylesheet" type="text/css">
     <link href="../../user-css/common/directives/header/header.css" rel="stylesheet" type="text/css">
     <link href="../../user-css/common/directives/footer/footer.css" rel="stylesheet" type="text/css">
-    <link href="../../user-css/mainLandingPage/main.css" rel="stylesheet" type="text/css">
     <link href="../../user-css/pages/songsLandingPage.css" rel="stylesheet" type="text/css">
     <link href="../../user-css/thumbnails.css" rel="stylesheet" type="text/css">
     <link href="../../user-css/common/directives/popup.css" rel="stylesheet" type="text/css">
@@ -82,6 +79,12 @@
         <div class='ajab-container'>
             <div class='ajab-wrapper'>
                 <div class='homepage-content'>
+                    <div class="page-header">
+                        <span class="logo-container">
+                            <a href="javascript:void(0)">songs</a>
+                        </span>
+                    </div>
+
                     <!--<div ng-repeat="song in songs">-->
                         <!--<song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}" open="detailsService.open(song.id)" custom-style="{{song.customStyle}}" img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}" english-transliteration="{{song.englishTransliteration}}" english-translation="{{song.englishTranslation}}" category-name="{{song.category}}" duration="{{song.duration}}" singer="{{song.singer}}" class = "songs" poet="{{song.poet}}" singers="{{song.singers}}"></song-thumbnail>-->
                     <!--</div>-->

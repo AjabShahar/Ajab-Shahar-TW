@@ -1,11 +1,18 @@
+@import '../reset';
+@import '../common';
+
 #songs_landing {
     background-color: #000;
+
+    .page-header {
+        .page-header-with-logo();
+    }
 }
 .homepage-content {
     width: 70%;
     position: relative;
     height: 2500px !important;
-    margin: 24% auto 0;
+    margin: 18% auto 0;
 }
 .song-parallax-container{
     width: 1140px;
@@ -82,7 +89,7 @@
        &3 {
             background: url(../../user-img/songs/parallax/tambura_small.png) 0px  0px no-repeat;
             opacity: 0.25;
-            top: 250px;
+            top: 470px;
             left: 10%;
             width: 356px;
             height: 400px;
@@ -173,6 +180,8 @@
 
     }
  }
+
+ /* Animation */
 
  @-webkit-keyframes rotation {
      0% { -webkit-transform: rotate(0); }
