@@ -17,6 +17,8 @@ var reflectionMapper = function () {
                  "id":reflection.id,
                  "title":reflection.title,
                  "speaker":reflection.speaker,
+                 "videoId":reflection.youtubeVideoId,
+                 "audioUrl":reflection.soundCloudId,
                  "text":reflection.transcript,
               });
               return completeInfo;
