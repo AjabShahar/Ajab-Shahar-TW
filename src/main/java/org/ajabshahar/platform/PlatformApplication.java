@@ -26,7 +26,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
 
     private final HibernateBundle<PlatformConfiguration> hibernate = new HibernateBundle<PlatformConfiguration>(SplashScreenOptions.class, Word.class,
             Couplet.class, Song.class, PersonDetails.class, Category.class, Title.class, SongText.class, SongTextContent.class, OpeningCouplet.class,
-            WordIntroduction.class, Reflection.class, ReflectionTranscript.class) {
+            WordIntroduction.class, Reflection.class, ReflectionTranscript.class, Genre.class) {
         @Override
         public DataSourceFactory getDataSourceFactory(PlatformConfiguration configuration) {
             return configuration.getDataSourceFactory();
@@ -72,6 +72,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         environment.jersey().register(picoContainer.getComponent(CategoryResource.class));
         environment.jersey().register(picoContainer.getComponent(TitleResource.class));
         environment.jersey().register(picoContainer.getComponent(ReflectionResource.class));
+        environment.jersey().register(picoContainer.getComponent(GenreResource.class));
         environment.healthChecks().register("template", templateHealthCheck);
     }
 
@@ -88,6 +89,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         picoContainer.addComponent(TitleDAO.class);
         picoContainer.addComponent(SongTextDAO.class);
         picoContainer.addComponent(ReflectionDAO.class);
+        picoContainer.addComponent(GenreDAO.class);
 
         picoContainer.addComponent(Songs.class);
         picoContainer.addComponent(Lyrics.class);
@@ -110,6 +112,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         picoContainer.addComponent(CategoryResource.class);
         picoContainer.addComponent(TitleResource.class);
         picoContainer.addComponent(ReflectionResource.class);
+        picoContainer.addComponent(GenreResource.class);
 
         return picoContainer;
     }
