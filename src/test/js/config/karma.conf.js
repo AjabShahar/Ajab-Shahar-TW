@@ -28,7 +28,7 @@ module.exports = function (config) {
     browsers: ['PhantomJS'],
     reporters: ['dots', 'junit', 'coverage'],
     preprocessors: {
-      'js/app/**/*.js': ['coverage']
+      '**/*.js': ['coverage']
     },
     logLevel: config.LOG_INFO,
     singleRun: true,
@@ -39,7 +39,7 @@ module.exports = function (config) {
       threshold: 85,
       reporters: [
         {
-          type: 'cobertura',
+          type: 'html',
           dir: 'coverage/'
         },
         {
