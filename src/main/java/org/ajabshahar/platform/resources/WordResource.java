@@ -1,10 +1,7 @@
 package org.ajabshahar.platform.resources;
 
 import io.dropwizard.hibernate.UnitOfWork;
-import org.ajabshahar.api.WordReflectionRepresentation;
-import org.ajabshahar.api.WordRepresentationFactory;
-import org.ajabshahar.api.WordSynonymRepresentation;
-import org.ajabshahar.api.WordsRepresentation;
+import org.ajabshahar.api.*;
 import org.ajabshahar.core.Words;
 import org.ajabshahar.platform.models.Word;
 
@@ -78,6 +75,15 @@ public class WordResource {
         List<Word> wordsList = words.findWords(wordId);
         WordSynonymRepresentation wordSynonyms = wordRepresentationFactory.createWordSynonyms(wordsList);
         return Response.ok(wordSynonyms).build();
+    }
+
+    @GET
+    @Path("/relatedWords")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getRelatedWords(@QueryParam("id") int wordId) {
+        List<Word> wordsList = words.findWords(wordId);
+        RelatedWordRepresentation relatedWords = wordRepresentationFactory.createRelatedWords(wordsList);
+        return Response.ok(relatedWords).build();
     }
 
     @GET

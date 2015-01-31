@@ -5,14 +5,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WordSynonymRepresentation {
+public class RelatedWordRepresentation {
 
     private WordRepresentation word;
-    private List<WordRepresentation> synonyms;
+    private List<WordRepresentation> relatedWords;
 
-    public WordSynonymRepresentation() {
+    public RelatedWordRepresentation() {
         word = new WordRepresentation();
-        synonyms = new ArrayList<>();
+        relatedWords = new ArrayList<>();
     }
 
     @JsonProperty("word")
@@ -20,9 +20,9 @@ public class WordSynonymRepresentation {
         return word;
     }
 
-    @JsonProperty("synonyms")
-    public List<WordRepresentation> getSynonyms() {
-        return synonyms;
+    @JsonProperty("relatedWords")
+    public List<WordRepresentation> getRelatedWords() {
+        return relatedWords;
     }
 
     public void setWord(WordRepresentation word) {
@@ -30,7 +30,6 @@ public class WordSynonymRepresentation {
     }
 
     public void add(WordRepresentation representation) {
-        synonyms.add(representation);
+        relatedWords.add(representation);
     }
 }
-

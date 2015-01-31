@@ -112,4 +112,30 @@ public class WordRepresentationFactory {
         }
         return transcript;
     }
+
+    public RelatedWordRepresentation createRelatedWords(List<Word> wordsList) {
+        RelatedWordRepresentation relatedWords = new RelatedWordRepresentation();
+        Word word = wordsList.get(0);
+
+        Set<WordIntroduction> wordIntroductionSet = word.getWordIntroductions() != null ? word.getWordIntroductions() : new HashSet<WordIntroduction>();
+        String wordIntroHindi = getWordIntroOriginal(wordIntroductionSet);
+        String wordIntroEnglish = getWordIntroTranslation(wordIntroductionSet);
+        WordRepresentation wordRepresentation = new WordRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(), word.getWordTransliteration(), word.getEnglishIntroExcerpt(), word.getHindiIntroExcerpt(), wordIntroHindi, wordIntroEnglish);
+        relatedWords.setWord(wordRepresentation);
+        for (Word relatedWord : word.getRelatedWords()) {
+            Set<WordIntroduction> relatedWordsIntroductionSet = relatedWord.getWordIntroductions() != null ?
+                    relatedWord.getWordIntroductions() : new HashSet<WordIntroduction>();
+
+            String relatedWordIntroHindi = getWordIntroOriginal(relatedWordsIntroductionSet);
+            String relatedWordIntroEnglish = getWordIntroTranslation(relatedWordsIntroductionSet);
+
+            WordRepresentation representation = new WordRepresentation((int) relatedWord.getId(),
+                    relatedWord.getWordOriginal(), relatedWord.getWordTranslation(),
+                    relatedWord.getWordTransliteration(), relatedWord.getEnglishIntroExcerpt(),
+                    relatedWord.getHindiIntroExcerpt(),relatedWordIntroHindi,relatedWordIntroEnglish);
+            relatedWords.add(representation);
+        }
+
+        return relatedWords;
+    }
 }
