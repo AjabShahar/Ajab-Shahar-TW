@@ -8,6 +8,7 @@ import org.ajabshahar.platform.models.Genre;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.Arrays;
 import java.util.List;
 
 @Path("/genres")
@@ -21,7 +22,7 @@ public class GenreResource {
 
     @GET
     @UnitOfWork
-    public List<Genre> listAllGenres() {
+    public List listAllGenres() {
         return genreDAO.findAll();
     }
 
@@ -37,12 +38,11 @@ public class GenreResource {
 
     @GET
     @Path("/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
     public Genre getGenreById(@PathParam("id") Long id) {
         try {
             return genreDAO.findById(id);
         } catch (Exception e) {
-            System.out.println(e.getStackTrace());
+            System.out.println(Arrays.toString(e.getStackTrace()));
         }
         return null;
     }
