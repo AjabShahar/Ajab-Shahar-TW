@@ -1,4 +1,4 @@
-var genreDetailsController = function($scope, $http, $window, $location, genreContentService){
+var genreDetailsController = function($scope, $window, $location, genreContentService){
 	$scope.formInfo = {};
 	$scope.pageName = {};
 
@@ -6,7 +6,7 @@ var genreDetailsController = function($scope, $http, $window, $location, genreCo
 		var genreId = $location.search().id;
 
 		if(Boolean(genreId)){
-			genreContentService.getGenre(genreId).success(function (data, status) {
+			genreContentService.getGenre(genreId).success(function (data) {
 			  $scope.formInfo = data;
 			  $scope.pageName = "Edit";
 			});
@@ -16,10 +16,12 @@ var genreDetailsController = function($scope, $http, $window, $location, genreCo
 		}
 	}
 
+	var redirectToAdminHome = function(){
+		$window.location.href = '/admin/home.html';
+	}
+
     $scope.saveData = function(){
-    	genreContentService.saveGenre($scope.formInfo).success(function(data){
-          $window.location.href = '/admin/home.html';
-      });
+    	genreContentService.saveGenre($scope.formInfo).success(redirectToAdminHome);
     }
  };
-genresAdminApp.controller('genreDetailsController',['$scope', '$http', '$window', '$location', 'genreContentService', genreDetailsController]);
+genresAdminApp.controller('genreDetailsController',['$scope', '$window', '$location', 'genreContentService', genreDetailsController]);

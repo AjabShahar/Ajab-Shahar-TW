@@ -20,4 +20,4 @@ var splashScreenController = function($scope,$window,$http,contentService){
     }
  };
 
-introductionApp.controller('splashScreenController',['$scope','$window','$http','contentService',splashScreenController]);
+splashScreenOptionsApp.controller('splashScreenController',['$scope','$window','$http','contentService',splashScreenController]);

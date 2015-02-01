@@ -1,4 +1,9 @@
+'use strict';
+
 describe('Word bubble specs', function() {
+  var $compile,
+      scope,
+      template;
 
   beforeEach(module('thumbnailModule'));
 

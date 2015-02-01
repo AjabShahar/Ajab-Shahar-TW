@@ -8,4 +8,4 @@ var contentService = function ($http) {
    };
 };
 
-introductionApp.factory('contentService', ['$http', contentService]);
+splashScreenOptionsApp.factory('contentService', ['$http', contentService]);

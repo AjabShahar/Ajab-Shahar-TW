@@ -1,1 +1,1 @@
-var introductionApp = angular.module('introductionApp',[]);
+var splashScreenOptionsApp = angular.module('splashScreenOptionsApp',[]);

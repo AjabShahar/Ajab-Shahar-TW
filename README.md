@@ -48,3 +48,6 @@ java -jar target/platform-1.0-SNAPSHOT.jar server development.yml
 This runs the migration against the connection string specified in developer.yml file
 
 ########
+
+Coverage report file(index.html) location:
+	Ajab-Shahar-TW ▸ src ▸ main ▸ resources ▸ assets ▸ app ▸ coverage ▸ PhantomJS 1.9.8 (Mac OS X)
