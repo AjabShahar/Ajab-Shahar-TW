@@ -2,6 +2,8 @@ package org.ajabshahar.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.List;
+
 public class WordSummaryRepresentation {
     private int id;
     private String originalWord;
@@ -9,14 +11,16 @@ public class WordSummaryRepresentation {
     private String wordTransliteration;
     private String hindiIntroExcerpt;
     private String englishIntroExcerpt;
+    private List<PersonSummaryRepresentation> writers;
 
-    public WordSummaryRepresentation(int id, String originalWord, String wordTranslation, String wordTransliteration, String hindiIntroExcerpt, String englishIntroExcerpt) {
+    public WordSummaryRepresentation(int id, String originalWord, String wordTranslation, String wordTransliteration, String hindiIntroExcerpt, String englishIntroExcerpt, List<PersonSummaryRepresentation> writers) {
         this.id = id;
         this.originalWord = originalWord;
         this.wordTranslation = wordTranslation;
         this.wordTransliteration = wordTransliteration;
         this.hindiIntroExcerpt = hindiIntroExcerpt;
         this.englishIntroExcerpt = englishIntroExcerpt;
+        this.writers = writers;
     }
 
     @JsonProperty("id")
@@ -47,5 +51,10 @@ public class WordSummaryRepresentation {
     @JsonProperty("englishIntroExcerpt")
     public String getEnglishIntroExcerpt() {
         return englishIntroExcerpt;
+    }
+
+    @JsonProperty("writers")
+    public List<PersonSummaryRepresentation> getWriters() {
+        return writers;
     }
 }

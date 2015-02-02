@@ -24,6 +24,7 @@ var wordMapper = function () {
                 "hindiIntroExcerpt":word.hindiIntroExcerpt,
                 "englishIntroExcerpt":word.englishIntroExcerpt,
                 "wordIntroEnglish":word.wordIntroEnglish,
+                "writers":word.writers,
             });
             return introductions;
         },[]);
