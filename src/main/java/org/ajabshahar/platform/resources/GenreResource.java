@@ -18,13 +18,17 @@ public class GenreResource {
         this.genreDAO = genreDAO;
     }
 
+    private Response createPOST_Response(Genre genre){
+        return (genre != null) ? Response.status(200).entity(genre.toString()).build() : Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+    }
+
     @POST
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createGenre(String jsonGenre) {
         Genre genre = new Gson().fromJson(jsonGenre, Genre.class);
         genreDAO.create(genre);
-        return Response.status(200).entity(genre.toString()).build();
+        return createPOST_Response(genre);
     }
 
     private Response createResponseFor(Object object){

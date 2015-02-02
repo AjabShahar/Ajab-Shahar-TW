@@ -1,5 +1,6 @@
 package org.ajabshahar.platform.resources;
 
+import com.google.gson.JsonObject;
 import org.ajabshahar.platform.daos.GenreDAO;
 import org.ajabshahar.platform.models.Genre;
 import org.junit.Before;
@@ -32,21 +33,19 @@ public class GenreResourceTest {
 
     @Test
     public void shouldGetGenreById() {
-        long mockedId = 1;
         when(mockedGenreDAO.findById(MOCKED_ID)).thenReturn(mockedGenre);
 
-        Response response = genreResource.getGenreById(mockedId);
+        Response response = genreResource.getGenreById(MOCKED_ID);
 
         assertEquals(response.getEntity(), mockedGenre);
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
     }
 
     @Test
-    public void shouldReturn_NOT_FOUND_ErrorCodeIfPersonNotFound() {
-        long mockedId = 1;
+    public void shouldReturn_NOT_FOUND_ErrorCodeIfGenreNotFound() {
         when(mockedGenreDAO.findById(MOCKED_ID)).thenReturn(null);
 
-        Response response = genreResource.getGenreById(mockedId);
+        Response response = genreResource.getGenreById(MOCKED_ID);
 
         assertEquals(Response.Status.NOT_FOUND.getStatusCode(), response.getStatus());
     }
@@ -68,5 +67,21 @@ public class GenreResourceTest {
         Response response = genreResource.listAllGenres();
 
         assertEquals(Response.Status.NOT_FOUND.getStatusCode(), response.getStatus());
+    }
+
+    @Test
+    public void shouldCreateAGenre(){
+        JsonObject genreJson = new JsonObject();
+
+        Response response = genreResource.createGenre(genreJson.toString());
+
+        assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
+    }
+
+    @Test
+    public void shouldReturnINTERNAL_SERVER_ERROR_If_Cannot_CreateAGenre(){
+        Response response = genreResource.createGenre(null);
+
+        assertEquals(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), response.getStatus());
     }
 }
