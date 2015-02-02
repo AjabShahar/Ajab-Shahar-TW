@@ -6,14 +6,16 @@ public class ReflectionRepresentation {
 
     private int id;
     private String title;
+    private String verb;
     private String speaker;
     private String soundCloudId;
     private String youtubeVideoId;
     private String transcript;
 
-    public ReflectionRepresentation(int id, String title, String speaker, String soundCloudId, String youtubeVideoId, String transcript) {
+    public ReflectionRepresentation(int id, String title, String verb, String speaker, String soundCloudId, String youtubeVideoId, String transcript) {
         this.id = id;
         this.title = title;
+        this.verb = verb;
         this.speaker = speaker;
         this.soundCloudId = soundCloudId;
         this.youtubeVideoId = youtubeVideoId;
@@ -48,5 +50,10 @@ public class ReflectionRepresentation {
     @JsonProperty("speaker")
     public String getSpeaker() {
         return speaker;
+    }
+
+    @JsonProperty("verb")
+    public String getVerb() {
+        return verb;
     }
 }

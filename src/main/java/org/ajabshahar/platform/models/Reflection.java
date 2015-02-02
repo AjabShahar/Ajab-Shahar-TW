@@ -17,6 +17,9 @@ public class Reflection {
     @Column(name = "TITLE")
     private String title;
 
+    @Column(name = "VERB")
+    private String verb;
+
     @Column(name = "YOUTUBE_VIDEO_ID")
     private String youtubeVideo;
 
@@ -77,5 +80,13 @@ public class Reflection {
 
     public void setReflectionTranscripts(Set<ReflectionTranscript> reflectionTranscripts) {
         this.reflectionTranscripts = reflectionTranscripts;
+    }
+
+    public String getVerb() {
+        return verb;
+    }
+
+    public void setVerb(String verb) {
+        this.verb = verb;
     }
 }

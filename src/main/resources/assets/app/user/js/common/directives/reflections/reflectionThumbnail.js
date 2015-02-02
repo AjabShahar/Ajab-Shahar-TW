@@ -7,6 +7,7 @@ thumbnailModule.directive("reflectionThumbnail", function() {
         scope: {
             id:'@',
             title:'@',
+            verb:'@',
             imgSrc:'@',
             speaker:'@',
             customStyle:'@',

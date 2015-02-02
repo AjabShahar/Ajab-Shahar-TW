@@ -4,6 +4,7 @@ var reflectionMapper = function () {
             thumbnails.push({
                 "id":reflection.id,
                 "title":reflection.title,
+                "verb":reflection.verb,
                 "speaker":reflection.speaker,
                 "customStyle": (customStyle)? customStyle():'',
             });
@@ -16,6 +17,7 @@ var reflectionMapper = function () {
              completeInfo.push({
                  "id":reflection.id,
                  "title":reflection.title,
+                 "verb":reflection.verb,
                  "speaker":reflection.speaker,
                  "videoId":reflection.youtubeVideoId,
                  "audioUrl":reflection.soundCloudId,

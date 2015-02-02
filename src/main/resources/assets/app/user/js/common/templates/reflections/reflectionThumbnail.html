@@ -5,7 +5,7 @@
     <div class="desc-wrapper" ng-click="open('{{id}}')">
        <div class="thumbnail-desc" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
             <h3 class="item-title" >{{title}}</h3>
-            <h3 class="item-title-translation sub-title">by {{speaker}}</h3>
+            <h3 class="item-title-translation sub-title">{{verb}} {{speaker}}</h3>
 
             <div ng-show="shouldShowDetails" class='thumbnailDetails toggleBySlide'>
                 <div class='categoryDetails'>

@@ -26,7 +26,7 @@ public class ReflectionRepresentationFactory {
         List<ReflectionRepresentation> reflectionRepresentations = new ArrayList<>();
         for (Reflection reflection : reflections) {
             String transcript = getTranscript(reflection);
-            ReflectionRepresentation representation = new ReflectionRepresentation((int) reflection.getId(), reflection.getTitle(), reflection.getSpeaker().getName(), reflection.getSoundCloudId(), reflection.getYoutubeVideo(), transcript);
+            ReflectionRepresentation representation = new ReflectionRepresentation((int) reflection.getId(), reflection.getTitle(), reflection.getVerb(), reflection.getSpeaker().getName(), reflection.getSoundCloudId(), reflection.getYoutubeVideo(), transcript);
             reflectionRepresentations.add(representation);
         }
 

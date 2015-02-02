@@ -38,7 +38,7 @@
                             <word-thumbnail id="{{word.id}}" transliteration="{{word.wordTransliteration}}" open="detailsService.openWord(word.id)" translation="{{word.wordTranslation}}" english-intro-excerpt="{{word.englishIntroExcerpt}}" custom-style="{{word.customStyle}}" img-src="https://yt3.ggpht.com/-JtqzFmOGDiI/AAAAAAAAAAI/AAAAAAAAAAA/McQLKmfBpqg/s900-c-k-no/photo.jpg"></word-thumbnail>
                         </li>
                         <li ng-repeat="reflection in wordReflections.reflections track by $index">
-                            <reflection-thumbnail id="{{reflection.id}}" title="{{reflection.title}}" open="detailsService.openReflection(reflection.id)" speaker="{{reflection.speaker}}"></reflection-thumbnail>
+                            <reflection-thumbnail id="{{reflection.id}}" title="{{reflection.title}}" verb="{{reflection.verb}}" open="detailsService.openReflection(reflection.id)" speaker="{{reflection.speaker}}"></reflection-thumbnail>
                         </li>
                     </ul>
                     <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true"></a>
