@@ -6,9 +6,11 @@
         <div class="thumbnail-desc" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
             <h3 class="item-title" >{{transliteration}}</h3>
             <h3 class="item-title-translation sub-title">{{translation}}</h3>
-            <small class="desc">{{englishIntroExcerpt}}...</small>
 
             <div ng-show="shouldShowDetails" class='thumbnailDetails toggleBySlide'>
+               <div class="desc">
+                   <small>{{englishIntroExcerpt| limitTo : 100 }} ...</small>
+               </div>
                 <div class='categoryDetails'>
                     <p class="categoryName">WORD INTRO
                         <small class="more-info">T</small>
