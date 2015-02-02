@@ -29,7 +29,7 @@ public class WordReflectionRepresentation {
         this.word = word;
     }
 
-    public void add(ReflectionRepresentation representation) {
-        reflections.add(representation);
+    public void setReflections(List<ReflectionRepresentation> reflections) {
+        this.reflections = reflections;
     }
 }

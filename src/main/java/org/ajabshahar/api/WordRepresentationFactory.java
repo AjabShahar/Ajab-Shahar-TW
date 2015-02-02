@@ -1,8 +1,6 @@
 package org.ajabshahar.api;
 
 import com.google.gson.Gson;
-import org.ajabshahar.platform.models.Reflection;
-import org.ajabshahar.platform.models.ReflectionTranscript;
 import org.ajabshahar.platform.models.Word;
 import org.ajabshahar.platform.models.WordIntroduction;
 
@@ -11,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 public class WordRepresentationFactory {
+    private ReflectionRepresentationFactory reflectionRepresentationFactory = new ReflectionRepresentationFactory();
     public Word create(String jsonWord) {
         return new Gson().fromJson(jsonWord, Word.class);
     }
@@ -68,11 +67,8 @@ public class WordRepresentationFactory {
         String wordIntroEnglish = getWordIntroTranslation(wordIntroductionSet);
         WordRepresentation wordRepresentation = new WordRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(), word.getWordTransliteration(), word.getEnglishIntroExcerpt(), word.getHindiIntroExcerpt(), wordIntroHindi, wordIntroEnglish);
         wordReflections.setWord(wordRepresentation);
-        for (Reflection reflection : word.getReflections()) {
-            String transcript = getTranscript(reflection);
-            ReflectionRepresentation representation = new ReflectionRepresentation((int) reflection.getId(), reflection.getTitle(), reflection.getSpeaker().getName(), reflection.getSoundCloudId(), reflection.getYoutubeVideo(), transcript);
-            wordReflections.add(representation);
-        }
+
+        wordReflections.setReflections(reflectionRepresentationFactory.create(word.getReflections()));
 
         return wordReflections;
 
@@ -103,14 +99,6 @@ public class WordRepresentationFactory {
 
         return synonyms;
 
-    }
-
-    private String getTranscript(Reflection reflection) {
-        String transcript = "";
-        for (ReflectionTranscript reflectionTranscript : reflection.getReflectionTranscripts()) {
-            transcript += reflectionTranscript.getText();
-        }
-        return transcript;
     }
 
     public RelatedWordRepresentation createRelatedWords(List<Word> wordsList) {

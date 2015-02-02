@@ -22,9 +22,9 @@ var wordDetailsController = function($scope, $location, wordMapper,popupService,
          $scope.wordReflectionsCompleteInfo.wordCompleteInfo = wordMapper.getWordCompleteInfo($scope.words);
          $scope.currentWord = $scope.wordReflectionsCompleteInfo.wordCompleteInfo[0];
          $scope.wordReflectionsCompleteInfo.reflectionsCompleteInfo = reflectionMapper.getReflectionsCompleteInfo(result.data.reflections);
+         $scope.numberOfReflections = $scope.wordReflections.reflections.length;
         });
 
-        $scope.numberOfReflections = $scope.wordReflections.reflections.length;
     }();
 
     $scope.openReflection = function(id){
