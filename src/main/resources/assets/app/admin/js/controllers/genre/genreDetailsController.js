@@ -1,6 +1,7 @@
 var genreDetailsController = function($scope, $window, $location, genreContentService){
 	$scope.formInfo = {};
 	$scope.pageName = {};
+	$scope.alert = "";
 
 	$scope.getGenreData = function(){
 		var genreId = $location.search().id;
@@ -20,8 +21,15 @@ var genreDetailsController = function($scope, $window, $location, genreContentSe
 		$window.location.href = '/admin/home.html';
 	}
 
+	var isValidData = function(){
+		return ((Boolean($scope.formInfo.original)) && (Boolean($scope.formInfo.english)));
+	}
+
     $scope.saveData = function(){
-    	genreContentService.saveGenre($scope.formInfo).success(redirectToAdminHome);
+    	if(isValidData())
+    		genreContentService.saveGenre($scope.formInfo).success(redirectToAdminHome);
+    	else
+    		$scope.alert = "Please fill in all the fields";
     }
  };
 genresAdminApp.controller('genreDetailsController',['$scope', '$window', '$location', 'genreContentService', genreDetailsController]);

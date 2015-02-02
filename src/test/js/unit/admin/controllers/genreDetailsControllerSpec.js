@@ -23,14 +23,28 @@ describe("Genre betails controller specs", function(){
 		});
 	}));
 
-	describe("When successfully saved genre", function(){
-		it("Then should redirect to admin-home", function(){
+	describe("When saving a  genre", function(){
+		it("Then should redirect to admin-home if saved successfully", function(){
+			scope.formInfo.original = "data";
+			scope.formInfo.english = "data";
+
 			$httpBackend.expectPOST('/api/genres', scope.formInfo).respond(200);
 
 			scope.saveData();
 			$httpBackend.flush();
 
 			expect(fakeWindow.location.href).toBe('/admin/home.html');
+		});
+		it("Then should have alert if fields are empty", function(){
+			scope.saveData();
+
+			expect(scope.alert).toBe('Please fill in all the fields');
+		});
+		it("Then should not redirect if either of the fields are empty", function(){
+			scope.formInfo.original = "data";
+			scope.saveData();
+
+			expect(fakeWindow.location.href).toBe('');
 		});
 	});
 
