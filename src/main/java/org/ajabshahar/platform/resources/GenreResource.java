@@ -4,11 +4,9 @@ import com.google.gson.Gson;
 import io.dropwizard.hibernate.UnitOfWork;
 import org.ajabshahar.platform.daos.GenreDAO;
 import org.ajabshahar.platform.models.Genre;
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.Arrays;
 import java.util.List;
 
 @Path("/genres")
@@ -20,30 +18,30 @@ public class GenreResource {
         this.genreDAO = genreDAO;
     }
 
-    @GET
-    @UnitOfWork
-    public List listAllGenres() {
-        return genreDAO.findAll();
-    }
-
     @POST
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createSplashScreen(String jsonSplashScreenOptions) {
-        Genre genre = new Gson().fromJson(jsonSplashScreenOptions, Genre.class);
+    public Response createGenre(String jsonGenre) {
+        Genre genre = new Gson().fromJson(jsonGenre, Genre.class);
         genreDAO.create(genre);
         return Response.status(200).entity(genre.toString()).build();
     }
 
+    private Response createResponseFor(Object object){
+        return (object != null) ? Response.ok(object, MediaType.APPLICATION_JSON).build() : Response.status(Response.Status.NOT_FOUND).build();
+    }
+
+    @GET
+    @UnitOfWork
+    public Response listAllGenres() {
+        List genres = genreDAO.findAll();
+        return createResponseFor(genres);
+    }
 
     @GET
     @Path("/{id}")
-    public Genre getGenreById(@PathParam("id") Long id) {
-        try {
-            return genreDAO.findById(id);
-        } catch (Exception e) {
-            System.out.println(Arrays.toString(e.getStackTrace()));
-        }
-        return null;
+    public Response getGenreById(@PathParam("id") Long id) {
+        Genre genre = genreDAO.findById(id);
+        return createResponseFor(genre);
     }
 }
