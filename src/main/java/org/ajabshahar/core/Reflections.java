@@ -17,8 +17,8 @@ public class Reflections {
         return reflectionRepository.create(reflection);
     }
 
-    public List<Reflection> getAll() {
+    public List<Reflection> getAll(Boolean showOnLandingPage) {
 
-        return reflectionRepository.findAll();
+        return reflectionRepository.findAll(showOnLandingPage);
     }
 }

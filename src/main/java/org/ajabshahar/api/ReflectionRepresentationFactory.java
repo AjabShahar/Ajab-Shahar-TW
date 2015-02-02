@@ -5,6 +5,7 @@ import org.ajabshahar.platform.models.Reflection;
 import org.ajabshahar.platform.models.ReflectionTranscript;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -39,5 +40,15 @@ public class ReflectionRepresentationFactory {
             transcript += reflectionTranscript.getText();
         }
         return transcript;
+    }
+
+    public ReflectionsRepresentation createReflections(List<Reflection> reflectionList) {
+        Set<Reflection> reflectionSet = reflectionList.size() > 0 ? new HashSet<>(reflectionList) : new HashSet<>();
+        List<ReflectionRepresentation> reflectionRepresentations = create(reflectionSet);
+
+        ReflectionsRepresentation reflectionsRepresentation = new ReflectionsRepresentation();
+        reflectionsRepresentation.setReflections(reflectionRepresentations);
+
+        return reflectionsRepresentation;
     }
 }

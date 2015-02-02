@@ -20,6 +20,7 @@ public class ReflectionsTest {
 
     private Reflections reflections;
     private List<Reflection> reflectionList;
+    private Boolean SHOW_ON_LANDING_PAGE = false;
 
     @Mock
     private ReflectionDAO reflectionRepository;
@@ -42,8 +43,8 @@ public class ReflectionsTest {
 
     @Test
     public void shouldGetReflections() throws Exception {
-        when(reflectionRepository.findAll()).thenReturn(reflectionList);
-        List<Reflection> actual = reflections.getAll();
+        when(reflectionRepository.findAll(SHOW_ON_LANDING_PAGE)).thenReturn(reflectionList);
+        List<Reflection> actual = reflections.getAll(SHOW_ON_LANDING_PAGE);
 
         assertEquals(reflectionList, actual);
     }

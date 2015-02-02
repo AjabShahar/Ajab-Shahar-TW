@@ -22,6 +22,10 @@ public class ReflectionRepresentation {
         this.transcript = transcript;
     }
 
+    public ReflectionRepresentation() {
+
+    }
+
     @JsonProperty("id")
     public int getId() {
         return id;

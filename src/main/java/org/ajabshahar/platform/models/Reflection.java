@@ -33,6 +33,8 @@ public class Reflection {
     @JsonManagedReference
     private Set<ReflectionTranscript> reflectionTranscripts;
 
+    @Column(name = "IS_AUTHORING_COMPLETE")
+    private Boolean isAuthoringComplete;
 
     public long getId() {
         return id;
@@ -88,5 +90,13 @@ public class Reflection {
 
     public void setVerb(String verb) {
         this.verb = verb;
+    }
+
+    public Boolean getIsAuthoringComplete() {
+        return isAuthoringComplete;
+    }
+
+    public void setIsAuthoringComplete(Boolean isAuthoringComplete) {
+        this.isAuthoringComplete = isAuthoringComplete;
     }
 }

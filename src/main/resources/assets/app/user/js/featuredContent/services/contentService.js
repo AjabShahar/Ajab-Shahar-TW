@@ -3,6 +3,7 @@ var contentService = function ($http) {
     var content = {
       songs: $http.get('/api/songs/getPublishedSongs'),
       words: $http.get('/api/words?showOnMainLandingPage=true')
+      reflections: $http.get('/api/reflections/completeInfo?landingPage=true')
     };
     return content;
   };

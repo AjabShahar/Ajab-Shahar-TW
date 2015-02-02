@@ -1,6 +1,7 @@
 package org.ajabshahar.platform.resources;
 
 import org.ajabshahar.api.ReflectionRepresentationFactory;
+import org.ajabshahar.api.ReflectionsRepresentation;
 import org.ajabshahar.api.ReflectionsSummaryRepresentation;
 import org.ajabshahar.core.Reflections;
 import org.ajabshahar.platform.models.Reflection;
@@ -21,6 +22,7 @@ import static org.mockito.Mockito.when;
 public class ReflectionResourceTest {
     private ReflectionResource reflectionResource;
     private List<Reflection> reflectionList;
+    private Boolean SHOW_ON_LANDING_PAGE = false;
 
     @Mock
     private Reflections reflections;
@@ -49,12 +51,23 @@ public class ReflectionResourceTest {
     @Test
     public void shouldTestGetAllReflections() throws Exception {
         ReflectionsSummaryRepresentation expected = new ReflectionsSummaryRepresentation();
-        when(reflections.getAll()).thenReturn(reflectionList);
+        when(reflections.getAll(SHOW_ON_LANDING_PAGE)).thenReturn(reflectionList);
         when(reflectionRepresentationFactory.create(reflectionList)).thenReturn(expected);
 
-        Response actual = reflectionResource.getReflections();
+        Response actual = reflectionResource.getReflections(SHOW_ON_LANDING_PAGE);
 
         assertEquals(actual.getEntity(), expected);
+
+    }
+
+    @Test
+    public void shouldGetAllReflectionsWithAllInfo() throws Exception {
+        ReflectionsRepresentation expected = new ReflectionsRepresentation();
+        when(reflections.getAll(SHOW_ON_LANDING_PAGE)).thenReturn(reflectionList);
+        when(reflectionRepresentationFactory.createReflections(reflectionList)).thenReturn(expected);
+        Response actual = reflectionResource.getReflectionsWithCompleteInfo(SHOW_ON_LANDING_PAGE);
+
+        assertEquals(expected, actual.getEntity());
 
     }
 }

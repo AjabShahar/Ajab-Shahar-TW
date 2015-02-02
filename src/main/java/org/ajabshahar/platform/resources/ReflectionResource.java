@@ -2,6 +2,7 @@ package org.ajabshahar.platform.resources;
 
 import io.dropwizard.hibernate.UnitOfWork;
 import org.ajabshahar.api.ReflectionRepresentationFactory;
+import org.ajabshahar.api.ReflectionsRepresentation;
 import org.ajabshahar.api.ReflectionsSummaryRepresentation;
 import org.ajabshahar.core.Reflections;
 import org.ajabshahar.platform.models.Reflection;
@@ -38,9 +39,19 @@ public class ReflectionResource {
 
     @GET
     @UnitOfWork
-    public Response getReflections() {
-        List<Reflection> reflectionList = reflections.getAll();
+    public Response getReflections(@DefaultValue("false") @QueryParam("landingPage") Boolean showOnLandingPage) {
+        List<Reflection> reflectionList = reflections.getAll(showOnLandingPage);
         ReflectionsSummaryRepresentation reflectionsSummaryRepresentation = reflectionRepresentationFactory.create(reflectionList);
         return Response.ok(reflectionsSummaryRepresentation).build();
+    }
+
+
+    @GET
+    @UnitOfWork
+    @Path("/completeInfo")
+    public Response getReflectionsWithCompleteInfo(@DefaultValue("false") @QueryParam("landingPage") Boolean showOnLandingPage) {
+        List<Reflection> reflectionList = reflections.getAll(showOnLandingPage);
+        ReflectionsRepresentation reflectionsRepresentation = reflectionRepresentationFactory.createReflections(reflectionList);
+        return Response.ok(reflectionsRepresentation).build();
     }
 }
