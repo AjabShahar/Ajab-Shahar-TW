@@ -8,8 +8,13 @@ var genreContentService = function ($http) {
     return $http.get('/api/genres/' + genreId);
   };
 
+  var getAllGenres = function () {
+    return $http.get('/api/genres');
+  };
+
   return {
     saveGenre:saveGenre,
-    getGenre: getGenre
+    getGenre: getGenre,
+    getAllGenres: getAllGenres
   };
 };

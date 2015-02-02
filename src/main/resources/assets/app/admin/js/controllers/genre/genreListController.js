@@ -1,7 +1,7 @@
-var genreListController = function($scope, contentService){
+var genreListController = function($scope, genreContentService){
     $scope.genres = [];
     $scope.init = function(){
-        contentService.getAllGenres().then(function(result){
+        genreContentService.getAllGenres().then(function(result){
             $scope.genres = result.data;
         });
     }
@@ -9,4 +9,4 @@ var genreListController = function($scope, contentService){
     $scope.init();
 }
 
-adminApp.controller('genreListController',['$scope','contentService',genreListController]);
+genresAdminApp.controller('genreListController',['$scope','genreContentService',genreListController]);
