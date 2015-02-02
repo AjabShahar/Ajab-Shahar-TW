@@ -2,8 +2,8 @@ package org.ajabshahar.platform.resources;
 
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.jersey.caching.CacheControl;
-import org.ajabshahar.api.SongTextRepresentationFactory;
 import org.ajabshahar.api.SongRepresentation;
+import org.ajabshahar.api.SongTextRepresentationFactory;
 import org.ajabshahar.api.SongsRepresentation;
 import org.ajabshahar.api.SongsRepresentationFactory;
 import org.ajabshahar.core.Songs;
@@ -27,7 +27,7 @@ public class SongResource {
     private final Songs songs;
     private final SongTextRepresentationFactory songTextRepresentationFactory;
 
-    public SongResource(SongDAO songDAO, Songs songs, SongsRepresentationFactory songsRepresentationFactory,SongTextRepresentationFactory songTextRepresentationFactory) {
+    public SongResource(SongDAO songDAO, Songs songs, SongsRepresentationFactory songsRepresentationFactory, SongTextRepresentationFactory songTextRepresentationFactory) {
         this.songDAO = songDAO;
         this.songsRepresentationFactory = songsRepresentationFactory;
         this.songs = songs;
@@ -85,8 +85,8 @@ public class SongResource {
     @GET
     @UnitOfWork
     @Path("/getPublishedSongs")
-    public Response getPublishedSongs(@QueryParam("singerId") int singerId, @QueryParam("poetId") int poetId, @QueryParam("startFrom") int startFrom, @QueryParam("filteredLetter") String filteredLetter,@DefaultValue("false") @QueryParam("randomSongsEnabled") Boolean randomSongsEnabled) {
-        List<Song> songList = songs.findBy(singerId, poetId, startFrom, filteredLetter, randomSongsEnabled);
+    public Response getPublishedSongs(@QueryParam("singerId") int singerId, @QueryParam("poetId") int poetId, @QueryParam("startFrom") int startFrom, @QueryParam("filteredLetter") String filteredLetter) {
+        List<Song> songList = songs.findBy(singerId, poetId, startFrom, filteredLetter);
         if (songList == null || songList.size() == 0) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
@@ -121,7 +121,7 @@ public class SongResource {
     @GET
     @UnitOfWork
     @Path("/getAllSongs")
-    public Response getSongs(){
+    public Response getSongs() {
         List<Song> songList = songs.findAll();
         SongsRepresentation songsRepresentation = songsRepresentationFactory.createSongsRepresentation(songList);
         return Response.ok(songsRepresentation, MediaType.APPLICATION_JSON).build();

@@ -6,7 +6,8 @@ var songsFeaturedContentController = function($scope,contentService,songMapper, 
     $scope.init = function(){
         $scope.url = $location.absUrl();
         contentService.getSongsLandingPageThumbnails().then(function(result){
-            $scope.songs = songMapper.getThumbnails(result.data.songs,$scope.getSongCustomStyle);
+            var songs = _.shuffle(result.data.songs).slice(9);
+            $scope.songs = songMapper.getThumbnails(songs,$scope.getSongCustomStyle);
         });
     }
 

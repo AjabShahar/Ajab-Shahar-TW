@@ -47,10 +47,10 @@ public class SongResourceTest {
     @Test
     public void shouldGetSongsFilteredBySingerAndPoet() {
         when(songList.size()).thenReturn(1);
-        when(songs.findBy(SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER,false)).thenReturn(songList);
+        when(songs.findBy(SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER)).thenReturn(songList);
         when(songsRepresentationFactory.createSongsRepresentation(songList)).thenReturn(songsRepresentation);
 
-        Response response = songResource.getPublishedSongs(SINGER_ID, POET_ID, 1, FILTERED_LETTER,false);
+        Response response = songResource.getPublishedSongs(SINGER_ID, POET_ID, 1, FILTERED_LETTER);
         assertEquals(songsRepresentation, response.getEntity());
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
     }
@@ -58,9 +58,9 @@ public class SongResourceTest {
     @Test
     public void shouldGet404IfSongsNotFound() {
         when(songList.size()).thenReturn(0);
-        when(songs.findBy(SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER,false)).thenReturn(songList);
+        when(songs.findBy(SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER)).thenReturn(songList);
 
-        Response response = songResource.getPublishedSongs(SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER,false);
+        Response response = songResource.getPublishedSongs(SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER);
         assertEquals(Response.Status.NOT_FOUND.getStatusCode(), response.getStatus());
     }
 

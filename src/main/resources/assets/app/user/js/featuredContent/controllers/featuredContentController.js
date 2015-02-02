@@ -19,12 +19,14 @@ var featuredContentController = function($scope,contentService,popupService, map
             content = contentService.getMainLandingPageThumbnails();
 
         content.songs.then(function(result){
-            $scope.songThumbnails = songMapper.getThumbnails(result.data.songs, shiftThumbnail);
-            $scope.introductions = songMapper.getIntroductions(result.data.songs);
+            var songs = _.shuffle(result.data.songs).slice(0,4);
+            $scope.songThumbnails = songMapper.getThumbnails(songs, shiftThumbnail);
+            $scope.introductions = songMapper.getIntroductions(songs);
 
             content.words.then(function(result){
-                $scope.wordThumbnails = wordMapper.getThumbnails(result.data.words, shiftThumbnail);
-                $scope.wordIntroductions = wordMapper.getIntroductions(result.data.words);
+                var words = _.shuffle(result.data.words).slice(0,4);
+                $scope.wordThumbnails = wordMapper.getThumbnails(words, shiftThumbnail);
+                $scope.wordIntroductions = wordMapper.getIntroductions(words);
             });
         });
     }();

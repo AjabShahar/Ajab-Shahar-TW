@@ -16,20 +16,20 @@ public class Words {
         return wordRepository.create(word);
     }
 
-    public List<Word> findBy(Boolean showOnWordsLandingPage, boolean showOnMainLandingPage) {
-        return findBy(showOnWordsLandingPage, 0, showOnMainLandingPage);
+    public List<Word> findBy(boolean showOnMainLandingPage) {
+        return findBy(0, showOnMainLandingPage);
     }
 
     public Word findBy(int id) {
-        return findBy(false, id, false).get(0);
+        return findBy(id, false).get(0);
     }
 
-    private List<Word> findBy(boolean showOnWordsLandingPage, int wordId, boolean showOnMainLandingPage) {
-        return wordRepository.findBy(showOnWordsLandingPage, wordId, showOnMainLandingPage);
+    private List<Word> findBy(int wordId, boolean showOnMainLandingPage) {
+        return wordRepository.findBy(wordId, showOnMainLandingPage);
     }
 
     public Word update(Word word) {
-        Word originalWord = findBy(false, (int) word.getId(), false).get(0);
+        Word originalWord = findBy((int) word.getId(), false).get(0);
         originalWord = invokeSetters(originalWord, word);
         return wordRepository.update(originalWord);
     }

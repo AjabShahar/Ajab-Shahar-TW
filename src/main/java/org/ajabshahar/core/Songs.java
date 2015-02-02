@@ -26,16 +26,16 @@ public class Songs {
     }
 
     public Song findBy(int songId) {
-        List<Song> songList = findBy(songId, 0, 0, 0, null, false);
+        List<Song> songList = findBy(songId, 0, 0, 0, null);
         return songList.size() > 0 ? songList.get(0) : null;
     }
 
-    public List<Song> findBy(int singerId, int poetId, int startFrom, String filteredLetter, Boolean randomSongsEnabled) {
-        return findBy(0, singerId, poetId, startFrom, filteredLetter, randomSongsEnabled);
+    public List<Song> findBy(int singerId, int poetId, int startFrom, String filteredLetter) {
+        return findBy(0, singerId, poetId, startFrom, filteredLetter);
     }
 
-    private List<Song> findBy(int songId, int singerId, int poetId, int startFrom, String filteredLetter, Boolean randomSongsEnabled) {
-        return songsRepository.findBy(songId, singerId, poetId, startFrom, filteredLetter, randomSongsEnabled);
+    private List<Song> findBy(int songId, int singerId, int poetId, int startFrom, String filteredLetter) {
+        return songsRepository.findBy(songId, singerId, poetId, startFrom, filteredLetter);
     }
 
     public Song update(Song updatableSong) {

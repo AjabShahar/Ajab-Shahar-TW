@@ -53,7 +53,7 @@ public class SongDAO extends AbstractDAO<Song> {
         return list(namedQuery("org.ajabshahar.platform.models.Song.findAllFilteredBy").setParameter("letter", letter + "%")).size();
     }
 
-    public List<Song> findBy(int songId, int singerId, int poetId, int startFrom, String filteredLetter, Boolean randomSongsEnabled) {
+    public List<Song> findBy(int songId, int singerId, int poetId, int startFrom, String filteredLetter) {
         Session currentSession = sessionFactory.getCurrentSession();
         Criteria findSongs = currentSession.createCriteria(Song.class);
         if (songId != 0) {
@@ -76,16 +76,6 @@ public class SongDAO extends AbstractDAO<Song> {
         }
         findSongs.add(Restrictions.eq("isAuthoringComplete", true));
         findSongs.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-
-        if (randomSongsEnabled) {
-            findSongs.add(Restrictions.sqlRestriction("1=1 order by random()"));
-            List<Song> songs = new ArrayList<>();
-            List<Song> allSongs = findSongs.list();
-            for (int i = 0; i < 5 && i < allSongs.size(); i++) {
-                songs.add(allSongs.get(i));
-            }
-            return songs;
-        }
 
         return findSongs.list();
     }

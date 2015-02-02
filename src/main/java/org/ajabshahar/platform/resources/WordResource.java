@@ -44,8 +44,8 @@ public class WordResource {
 
     @GET
     @UnitOfWork
-    public Response listAllWordDetails(@DefaultValue("false") @QueryParam("showOnWordsLandingPage") Boolean showOnWordLandingPage, @DefaultValue("false") @QueryParam("showOnMainLandingPage") Boolean showOnMainLandingPage) {
-        List<Word> wordsList = words.findBy(showOnWordLandingPage, showOnMainLandingPage);
+    public Response listAllWordDetails(@DefaultValue("false") @QueryParam("showOnMainLandingPage") Boolean showOnMainLandingPage) {
+        List<Word> wordsList = words.findBy(showOnMainLandingPage);
         WordsRepresentation wordsRepresentation = wordRepresentationFactory.createWordsRepresentation(wordsList);
         return Response.ok(wordsRepresentation).build();
     }

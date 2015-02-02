@@ -28,18 +28,14 @@ public class WordDAO extends AbstractDAO<Word> {
         return word;
     }
 
-    public List<Word> findBy(Boolean showOnWordsLandingPage, int wordId, Boolean showOnMainLandingPage) {
+    public List<Word> findBy(int wordId, Boolean showOnMainLandingPage) {
         Session currentSession = sessionFactory.openSession();
         Criteria allWords = currentSession.createCriteria(Word.class);
-        if (showOnWordsLandingPage) {
+        if (showOnMainLandingPage) {
             allWords.add(Restrictions.eq("showOnLandingPage", true));
         }
         if (wordId != 0) {
             allWords.add(Restrictions.eq("id", Long.valueOf(wordId)));
-        }
-
-        if (showOnMainLandingPage) {
-            allWords.setMaxResults(4);
         }
         allWords.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return allWords.list();
