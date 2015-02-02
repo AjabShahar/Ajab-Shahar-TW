@@ -49,6 +49,11 @@ public class Word {
             inverseJoinColumns = {@JoinColumn(name = "SYNONYM_WORD_ID", referencedColumnName = "ID")})
     private Set<Word> synonyms;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "WORD_WRITER", joinColumns = {@JoinColumn(name = "WORD_ID",referencedColumnName = "ID")},
+            inverseJoinColumns = {@JoinColumn(name="WRITER_ID", referencedColumnName = "ID")})
+    private Set<PersonDetails> writers;
+
     public long getId() {
         return id;
     }
@@ -135,5 +140,13 @@ public class Word {
 
     public void setSynonyms(Set<Word> synonyms) {
         this.synonyms = synonyms;
+    }
+
+    public Set<PersonDetails> getWriters() {
+        return writers;
+    }
+
+    public void setWriters(Set<PersonDetails> writers) {
+        this.writers = writers;
     }
 }

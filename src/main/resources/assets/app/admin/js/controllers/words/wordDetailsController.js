@@ -3,6 +3,7 @@ var wordDetailsController = function($scope, $http,$window,$location){
   $scope.formInfo = {reflections:[]};
   $scope.categoryList = [];
   $scope.reflectionsList = [];
+  $scope.peopleList = [];
   $scope.urlId = $location.search().id;
   $scope.formInfo.wordIntroductions = [];
 
@@ -12,6 +13,10 @@ var wordDetailsController = function($scope, $http,$window,$location){
 
   $http.get('/api/reflections').success(function(data){
           $scope.reflectionsList = data.reflections;
+  });
+
+  $http.get('/api/people').success(function(peopleList){
+            $scope.peopleList = peopleList.people;
   });
 
   $scope.saveData = function(){
@@ -33,6 +38,12 @@ var wordDetailsController = function($scope, $http,$window,$location){
                                if(selectedReflection.id === reflection.id)
                                       reflection.ticked=true;
                             });
+                         });
+                         angular.forEach($scope.peopleList,function(person){
+                           angular.forEach(data.writers,function(writer){
+                              if(writer.id == person.id)
+                                person.ticked = true;
+                           });
                          });
                          $scope.formInfo = data;
         });

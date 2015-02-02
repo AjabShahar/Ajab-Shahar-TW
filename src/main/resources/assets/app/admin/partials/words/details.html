@@ -3,16 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <script src="../../common/lib/angular/angular.js"></script>
-    <script type="text/javascript" src="../../common/lib/angular-multi-select/angular-multi-select.js"></script>
-    <script type="text/javascript" src="../../common/lib/angular-filter/dist/angular-filter.js"></script>
-    <script type="text/javascript" src="../../common/lib/textAngular/dist/textAngular-sanitize.min.js"></script>
-    <script type="text/javascript" src="../../common/lib/textAngular/dist/textAngular.min.js"></script>
-    <script src="../../common/lib/angular-route/angular-route.js"></script>
-    <script type="text/javascript" src="../../admin-js/services/contentService.js"></script>
-    <script type="text/javascript" src="../../admin-js/words/wordsAdminApp.js"></script>
-    <script type="text/javascript" src="../../admin-js/directives/adminWordIntroduction.js"></script>
-    <script type="text/javascript" src="../../admin-js/controllers/words/wordDetailsController.js"></script>
+
     <link href="../../admin-css/admin.css" rel="stylesheet" type="text/css">
     <link href="../../common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="../../common/lib/angular-multi-select/angular-multi-select.css">
@@ -90,14 +81,35 @@
                     <div class="form-group col-sm-2" multi-select input-model="reflectionsList" button-label="title" item-label="title" tick-property="selected" output-model="formInfo.reflections"></div>
                 </div>
 
-                <admin-word-introduction word-introduction="{{formInfo.wordIntroduction}}" word-introductions="formInfo.wordIntroductions"></admin-word-introduction>
-                <div>
-                <button type="submit" ng-click="saveData()" class="btn btn-primary btn-lg">Save</button>
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label>Writer</label>
+                    </div>
+                    <div class="col-sm-2" multi-select input-model="peopleList" button-label="firstName lastName" item-label="firstName lastName" tick-property="selected" output-model="formInfo.writers"></div>
                 </div>
+
+                <admin-word-introduction word-introduction="{{formInfo.wordIntroduction}}" word-introductions="formInfo.wordIntroductions"></admin-word-introduction>
+
+                <div>
+                  <button type="submit" ng-click="saveData()" class="btn btn-primary btn-lg">Save</button>
+                </div>
+
+
 
             </form>
         </div>
     </div>
 </div>
+
+    <script src="../../common/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="../../common/lib/angular-multi-select/angular-multi-select.js"></script>
+    <script type="text/javascript" src="../../common/lib/angular-filter/dist/angular-filter.js"></script>
+    <script type="text/javascript" src="../../common/lib/textAngular/dist/textAngular-sanitize.min.js"></script>
+    <script type="text/javascript" src="../../common/lib/textAngular/dist/textAngular.min.js"></script>
+    <script src="../../common/lib/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="../../admin-js/services/contentService.js"></script>
+    <script type="text/javascript" src="../../admin-js/words/wordsAdminApp.js"></script>
+    <script type="text/javascript" src="../../admin-js/directives/adminWordIntroduction.js"></script>
+    <script type="text/javascript" src="../../admin-js/controllers/words/wordDetailsController.js"></script>
 </body>
 </html>
