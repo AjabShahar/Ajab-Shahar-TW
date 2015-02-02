@@ -8,14 +8,15 @@ thumbnailModule.directive("wordOverview", function() {
             wordTransliteration:'@',
             wordTranslation:'@',
             wordIntroEnglish:'@',
-            writers:'@',
+            writers:'=',
         },
         templateUrl:'/user-js/common/templates/words/wordOverview.html',
         controller: function($scope) {
-           $scope.people = "";
-           angular.forEach($scope.writers,function(writer){
-              $scope.people += " " + writer.englishName ;
-           })
+           $scope.people = $scope.writers[0].name;
+           for(var i=1;i<$scope.writers.length;i++){
+              $scope.people += " & " +$scope.writers[i].name;
+           }
+
         }
     }
 });
