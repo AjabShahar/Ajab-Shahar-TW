@@ -17,8 +17,15 @@ public class Reflections {
         return reflectionRepository.create(reflection);
     }
 
-    public List<Reflection> getAll(Boolean showOnLandingPage) {
+    public List<Reflection> getAll(String criteria) {
 
-        return reflectionRepository.findAll(showOnLandingPage);
+        boolean landingPage = false, authoringComplete = false;
+        if (criteria.equalsIgnoreCase("featured")) {
+            landingPage = true;
+        } else if (criteria.equalsIgnoreCase("authoringComplete")) {
+            landingPage = true;
+            authoringComplete = true;
+        }
+        return reflectionRepository.findAll(landingPage, authoringComplete);
     }
 }

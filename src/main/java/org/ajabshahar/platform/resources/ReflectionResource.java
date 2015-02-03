@@ -39,8 +39,9 @@ public class ReflectionResource {
 
     @GET
     @UnitOfWork
-    public Response getReflections(@DefaultValue("false") @QueryParam("landingPage") Boolean showOnLandingPage) {
-        List<Reflection> reflectionList = reflections.getAll(showOnLandingPage);
+    @Path("/summary")
+    public Response getReflections(@DefaultValue("") @QueryParam("content") String criteria) {
+        List<Reflection> reflectionList = reflections.getAll(criteria);
         ReflectionsSummaryRepresentation reflectionsSummaryRepresentation = reflectionRepresentationFactory.create(reflectionList);
         return Response.ok(reflectionsSummaryRepresentation).build();
     }
@@ -48,9 +49,8 @@ public class ReflectionResource {
 
     @GET
     @UnitOfWork
-    @Path("/completeInfo")
-    public Response getReflectionsWithCompleteInfo(@DefaultValue("false") @QueryParam("landingPage") Boolean showOnLandingPage) {
-        List<Reflection> reflectionList = reflections.getAll(showOnLandingPage);
+    public Response getReflectionsWithCompleteInfo(@DefaultValue("") @QueryParam("content") String criteria) {
+        List<Reflection> reflectionList = reflections.getAll(criteria);
         ReflectionsRepresentation reflectionsRepresentation = reflectionRepresentationFactory.createReflections(reflectionList);
         return Response.ok(reflectionsRepresentation).build();
     }

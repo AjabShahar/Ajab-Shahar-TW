@@ -22,7 +22,7 @@ import static org.mockito.Mockito.when;
 public class ReflectionResourceTest {
     private ReflectionResource reflectionResource;
     private List<Reflection> reflectionList;
-    private Boolean SHOW_ON_LANDING_PAGE = false;
+    private String CRITERIA = "";
 
     @Mock
     private Reflections reflections;
@@ -51,10 +51,10 @@ public class ReflectionResourceTest {
     @Test
     public void shouldTestGetAllReflections() throws Exception {
         ReflectionsSummaryRepresentation expected = new ReflectionsSummaryRepresentation();
-        when(reflections.getAll(SHOW_ON_LANDING_PAGE)).thenReturn(reflectionList);
+        when(reflections.getAll(CRITERIA)).thenReturn(reflectionList);
         when(reflectionRepresentationFactory.create(reflectionList)).thenReturn(expected);
 
-        Response actual = reflectionResource.getReflections(SHOW_ON_LANDING_PAGE);
+        Response actual = reflectionResource.getReflections(CRITERIA);
 
         assertEquals(actual.getEntity(), expected);
 
@@ -63,9 +63,9 @@ public class ReflectionResourceTest {
     @Test
     public void shouldGetAllReflectionsWithAllInfo() throws Exception {
         ReflectionsRepresentation expected = new ReflectionsRepresentation();
-        when(reflections.getAll(SHOW_ON_LANDING_PAGE)).thenReturn(reflectionList);
+        when(reflections.getAll(CRITERIA)).thenReturn(reflectionList);
         when(reflectionRepresentationFactory.createReflections(reflectionList)).thenReturn(expected);
-        Response actual = reflectionResource.getReflectionsWithCompleteInfo(SHOW_ON_LANDING_PAGE);
+        Response actual = reflectionResource.getReflectionsWithCompleteInfo(CRITERIA);
 
         assertEquals(expected, actual.getEntity());
 

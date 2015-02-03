@@ -31,11 +31,14 @@ public class ReflectionDAO extends AbstractDAO<Reflection> {
         return reflection;
     }
 
-    public List<Reflection> findAll(Boolean showOnLandingPage) {
+    public List<Reflection> findAll(Boolean showOnLandingPage, boolean authoringComplete) {
         Session currentSession = sessionFactory.getCurrentSession();
         Criteria findReflections = currentSession.createCriteria(Reflection.class);
-        if (showOnLandingPage) {
+        if (authoringComplete) {
             findReflections.add(Restrictions.eq("isAuthoringComplete", true));
+        }
+        if (showOnLandingPage) {
+            findReflections.add(Restrictions.eq("showOnLandingPage", true));
         }
         findReflections.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return findReflections.list();

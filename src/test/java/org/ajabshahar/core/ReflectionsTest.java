@@ -21,6 +21,7 @@ public class ReflectionsTest {
     private Reflections reflections;
     private List<Reflection> reflectionList;
     private Boolean SHOW_ON_LANDING_PAGE = false;
+    private Boolean IS_AUTHORING_COMPLETE = false;
 
     @Mock
     private ReflectionDAO reflectionRepository;
@@ -43,8 +44,8 @@ public class ReflectionsTest {
 
     @Test
     public void shouldGetReflections() throws Exception {
-        when(reflectionRepository.findAll(SHOW_ON_LANDING_PAGE)).thenReturn(reflectionList);
-        List<Reflection> actual = reflections.getAll(SHOW_ON_LANDING_PAGE);
+        when(reflectionRepository.findAll(SHOW_ON_LANDING_PAGE, IS_AUTHORING_COMPLETE)).thenReturn(reflectionList);
+        List<Reflection> actual = reflections.getAll("");
 
         assertEquals(reflectionList, actual);
     }

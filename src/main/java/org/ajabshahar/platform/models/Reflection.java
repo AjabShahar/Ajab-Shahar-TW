@@ -36,6 +36,9 @@ public class Reflection {
     @Column(name = "IS_AUTHORING_COMPLETE")
     private Boolean isAuthoringComplete;
 
+    @Column(name="SHOW_ON_LANDING_PAGE")
+    private Boolean showOnLandingPage;
+
     public long getId() {
         return id;
     }
@@ -98,5 +101,13 @@ public class Reflection {
 
     public void setIsAuthoringComplete(Boolean isAuthoringComplete) {
         this.isAuthoringComplete = isAuthoringComplete;
+    }
+
+    public Boolean getShowOnLandingPage() {
+        return showOnLandingPage;
+    }
+
+    public void setShowOnLandingPage(Boolean showOnLandingPage) {
+        this.showOnLandingPage = showOnLandingPage;
     }
 }
