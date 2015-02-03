@@ -10,6 +10,7 @@ filterModule.directive("songFilter", function() {
             activeLetter: '=',
             poetNameInFilter : '=',
             singerNameInFilter : '=',
+            expandFilter: '=',
             onClearFilter : '&',
         },
         templateUrl:'/user-js/common/templates/songs/songFilter.html',
