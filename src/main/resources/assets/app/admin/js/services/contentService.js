@@ -23,6 +23,10 @@ var contentService = function ($http) {
     return $http.get('/api/genres');
   };
 
+  var getAllReflections = function(){
+     return $http.get('/api/reflections/edit');
+  }
+
   return {
     getAllPeople:getAllPeople,
     getAllCategories:getAllCategories,
@@ -30,5 +34,6 @@ var contentService = function ($http) {
     getAllCouplets:getAllCouplets,
     getAllWords:getAllWords,
     getAllGenres:getAllGenres,
+    getAllReflections:getAllReflections,
   };
 };
