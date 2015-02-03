@@ -1,4 +1,4 @@
-var mappers = function (songMapper,wordMapper) {
+var mappers = function (songMapper,wordMapper,reflectionMapper) {
     getSongMapper = function(){
         return songMapper;
     }
@@ -7,10 +7,15 @@ var mappers = function (songMapper,wordMapper) {
         return wordMapper;
     }
 
+    getReflectionMapper = function(){
+        return reflectionMapper;
+    }
+
     return {
         getSongMapper: getSongMapper,
         getWordMapper: getWordMapper,
+        getReflectionMapper : getReflectionMapper,
     };
 };
 
-thumbnailModule.factory('mappers', ['songMapper','wordMapper',mappers]);
+thumbnailModule.factory('mappers', ['songMapper','wordMapper','reflectionMapper',mappers]);

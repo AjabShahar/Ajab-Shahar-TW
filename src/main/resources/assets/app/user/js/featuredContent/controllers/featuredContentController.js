@@ -7,6 +7,8 @@ var featuredContentController = function($scope,contentService,popupService, map
     $scope.wordThumbnails = [];
     $scope.wordIntroductions = [];
 
+    $scope.reflectionThumbnails = [];
+
     var index = 0;
     var shiftThumbnail = function(){
         ++index;
@@ -16,6 +18,7 @@ var featuredContentController = function($scope,contentService,popupService, map
     $scope.init = function(){
         var wordMapper = mappers.getWordMapper(),
             songMapper = mappers.getSongMapper(),
+            reflectionMapper = mappers.getReflectionMapper(),
             content = contentService.getMainLandingPageThumbnails();
 
         content.songs.then(function(result){
@@ -29,6 +32,12 @@ var featuredContentController = function($scope,contentService,popupService, map
                 $scope.wordIntroductions = wordMapper.getIntroductions(words);
             });
         });
+
+        content.reflections.then(function(result){
+           var reflections = _.shuffle(result.data.reflections).slice(0,1);
+           $scope.reflectionThumbnails = reflectionMapper.getThumbnails(reflections,shiftThumbnail);
+
+        })
     }();
 
     $scope.open = function(id){

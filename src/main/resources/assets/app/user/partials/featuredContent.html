@@ -43,6 +43,10 @@
                         <div ng-repeat="word in wordThumbnails">
                             <word-thumbnail id="{{word.id}}" open="detailsService.open(word.id)" transliteration="{{word.wordTransliteration}}" translation="{{word.wordTranslation}}" english-intro-excerpt="{{word.englishIntroExcerpt}}" custom-style="{{word.customStyle}}" img-src="https://yt3.ggpht.com/-JtqzFmOGDiI/AAAAAAAAAAI/AAAAAAAAAAA/McQLKmfBpqg/s900-c-k-no/photo.jpg"></word-thumbnail>
                         </div>
+
+                        <div ng-repeat="reflection in reflectionThumbnails">
+                            <reflection-thumbnail id="{{reflection.id}}" title="{{reflection.title}}" verb="{{reflection.verb}}"  speaker="{{reflection.speaker}}"></reflection-thumbnail>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -104,6 +108,7 @@
     <script type="text/javascript" src="../user-js/featuredContent/services/contentService.js"></script>
     <script type="text/javascript" src="../user-js/songs/services/songMapper.js"></script>
     <script type="text/javascript" src="../user-js/words/services/wordMapper.js"></script>
+    <script type="text/javascript" src="../user-js/reflections/services/reflectionMapper.js"></script>
     <script type="text/javascript" src="../user-js/mappers.js"></script>
     <script type="text/javascript" src="../user-js/common/services/popupService.js"></script>
 
