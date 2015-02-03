@@ -3,6 +3,7 @@ package org.ajabshahar.core;
 import org.ajabshahar.platform.daos.WordDAO;
 import org.ajabshahar.platform.models.Word;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class Words {
@@ -42,6 +43,10 @@ public class Words {
         originalWord.setHindiIntroExcerpt(updatableWord.getHindiIntroExcerpt());
         originalWord.setShowOnLandingPage(updatableWord.getShowOnLandingPage());
         originalWord.setWordIntroductions(updatableWord.getWordIntroductions());
+        originalWord.setReflections(updatableWord.getReflections());
+        originalWord.setWriters(updatableWord.getWriters());
+        originalWord.setRelatedWords(new HashSet<>()); //temporary fix
+        originalWord.setSynonyms(new HashSet<>()); //temporary fix
         return originalWord;
     }
 

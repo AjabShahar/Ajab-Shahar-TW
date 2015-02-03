@@ -7,6 +7,7 @@ thumbnailModule.directive("reflectionContentDetails", function() {
             videoId:'@',
             audioUrl:'@',
             id:'@',
+            transcript:'@',
             detailsService:'='
         },
         templateUrl:'/user-js/common/templates/reflections/reflectionContentDetails.html',
@@ -14,6 +15,7 @@ thumbnailModule.directive("reflectionContentDetails", function() {
             $scope.isVideoSong = false;
             $scope.showVideo = false;
             $scope.showAudio = false;
+            $scope.showTranscript = false;
 
             $scope.isAudioOrVideo = function(){
                 if(Boolean($scope.videoId)){
@@ -23,6 +25,8 @@ thumbnailModule.directive("reflectionContentDetails", function() {
                 else {
                     $scope.showAudio = true;
                 }
+                if($scope.transcript.length > 0)
+                   $scope.showTranscript = true;
             }
 
             $scope.toggleVideoOrAudio = function(){
@@ -37,6 +41,7 @@ thumbnailModule.directive("reflectionContentDetails", function() {
                     $scope.showVideo = true;
                 }
             }
+
 
             $scope.shouldStopVideo = function(){
                 return $scope.detailsService.isClosed($scope.id);

@@ -54,4 +54,11 @@ public class ReflectionResource {
         ReflectionsRepresentation reflectionsRepresentation = reflectionRepresentationFactory.createReflections(reflectionList);
         return Response.ok(reflectionsRepresentation).build();
     }
+
+    @GET
+    @UnitOfWork
+    @Path("/edit")
+    public List<Reflection> getAllReflections(){
+        return reflections.findAll();
+    }
 }

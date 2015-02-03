@@ -28,4 +28,9 @@ public class Reflections {
         }
         return reflectionRepository.findAll(landingPage, authoringComplete);
     }
+
+    public List<Reflection> findAll() {
+
+        return getAll("");
+    }
 }

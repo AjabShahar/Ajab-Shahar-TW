@@ -6,6 +6,10 @@
         <sound-cloud audio-url="{{audioUrl}}" id="snd_{{id}}"></sound-cloud>
     </div>
 
+    <div ng-show="showTranscript">
+         <div bind-dynamic-html="transcript"></div>
+    </div>
+
     <div class="video-options">
         <div>
             <button ng-click="toggleVideoOrAudio()" ng-show="isVideoSong">Toggle between audio and video</button>

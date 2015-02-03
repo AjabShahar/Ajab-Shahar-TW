@@ -65,8 +65,7 @@
             <h2 class="song-heading">{{currentReflection.title}}</h2>
 
             <div  class="lyrics" >
-                <reflection-content-details video-id="currentReflection.videoId" audio-url="currentReflection.audioUrl" id="currentReflection.id" details-service="popupService"></reflection-content-details>
-                <div bind-dynamic-html="currentReflection.text"></div>
+                <reflection-content-details video-id="{{currentReflection.videoId}}" audio-url="{{currentReflection.audioUrl}}" id="{{currentReflection.id}}" details-service="popupService" transcript="{{currentReflection.text}}"></reflection-content-details>
             </div>
         </div>
     </div>

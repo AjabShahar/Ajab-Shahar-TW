@@ -1,6 +1,6 @@
 var wordDetailsController = function($scope, $http,$window,$location){
 
-  $scope.formInfo = {reflections:[]};
+  $scope.formInfo = {"reflections":[]};
   $scope.categoryList = [];
   $scope.reflectionsList = [];
   $scope.peopleList = [];
@@ -11,8 +11,8 @@ var wordDetailsController = function($scope, $http,$window,$location){
           $scope.categoryList = categoryList;
   });
 
-  $http.get('/api/reflections').success(function(data){
-          $scope.reflectionsList = data.reflections;
+  $http.get('/api/reflections/edit').success(function(data){
+          $scope.reflectionsList = data;
   });
 
   $http.get('/api/people').success(function(peopleList){
