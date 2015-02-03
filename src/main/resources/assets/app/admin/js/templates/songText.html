@@ -13,6 +13,13 @@
                 <input type="text" name="refrain" ng-model="songText.refrainEnglishTranslation" placeholder="Enter english-translation text" class="form-control">
             </div>
         </div>
+        <div class="row form-group">
+            <div class="col-sm-2">
+                <label>* Genres</label>
+            </div>
+            <div class="col-sm-2" multi-select input-model="genres" button-label="english" item-label="english" tick-property="selected" output-model="formInfo.genres"></div>
+            <input name="genreList" ng-model="formInfo.genres" ng-show="false" required="true">
+        </div>
         <div ng-init="showOpenCouplet = false">
         <div class="row" >
             <div class="form-group col-sm-2">

@@ -8,6 +8,7 @@ songsAdminApp.directive("songText", function() {
             songText:'=',
             poets:'=',
             authoringComplete: '=',
+            genres: '=',
         },
         templateUrl:'/admin-js/templates/songText.html',
         controller:function($scope){
@@ -28,7 +29,7 @@ songsAdminApp.directive("songText", function() {
                     "englishTransliterationText": "",
                     "originalText": "",
                 };
-            }()
+            };
 
             $scope.clearSongText = function(){
                 $scope.songText.openingCouplets = [];
@@ -100,6 +101,8 @@ songsAdminApp.directive("songText", function() {
             $scope.showLyrics = function(){
                 return $scope.getSongContents().length != 0;
             }
+
+            $scope.initializeContent();
         }
     }
 });

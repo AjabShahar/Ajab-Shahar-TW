@@ -19,6 +19,10 @@ var songContentService = function ($http) {
         return $http.get('/api/couplets/all');
     }
 
+    var getAllGenres = function () {
+        return $http.get('/api/genres');
+    }
+
     var getSongCategories = function () {
         return $http.get('/api/category/song');
     }
@@ -50,5 +54,6 @@ var songContentService = function ($http) {
     getAllCouplets:getAllCouplets,
     getSongCategories:getSongCategories,
     getMediaCategories:getMediaCategories,
+    getAllGenres: getAllGenres
   };
 };

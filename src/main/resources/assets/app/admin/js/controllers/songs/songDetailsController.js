@@ -17,6 +17,7 @@ var songDetailsController = function($scope, $window,$location,songContentServic
     $scope.coupletList = [];
     $scope.formInfo.songText={};
     $scope.formInfo.isAuthoringComplete;
+    $scope.genreList = [];
 
     $scope.init = function(){
         songContentService.getAllUmbrellaTitles().success(function(umbrellaTitleList){
@@ -26,7 +27,6 @@ var songDetailsController = function($scope, $window,$location,songContentServic
         songContentService.getAllSongTitles().success(function(songTitleList){
             $scope.songTitleList= songTitleList;
         });
-
 
         songContentService.getAllSingers().success(function(allSingers){
             $scope.singers = allSingers;
@@ -51,6 +51,10 @@ var songDetailsController = function($scope, $window,$location,songContentServic
 
         songContentService.getAllCouplets().success(function(allCouplets){
             $scope.coupletList = allCouplets;
+        });
+
+        songContentService.getAllGenres().success(function(genres){
+            $scope.genreList = genres;
         });
 
         songContentService.getSongCategories().success(function(categoryList){
