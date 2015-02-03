@@ -25,6 +25,7 @@ module.exports = function (config) {
       'user/js/featuredContent/**/*.js',
       'user/js/songs/services/songsContentService.js',
       'user/js/songs/songDetailsApp.js',
+      'user/js/songs/songsApp.js',
       'user/js/songs/**/*.js',
       '../../../../test/js/unit/**/*.js'
     ],
