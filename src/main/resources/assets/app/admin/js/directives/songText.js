@@ -7,8 +7,7 @@ songsAdminApp.directive("songText", function() {
         scope: {
             songText:'=',
             poets:'=',
-            authoringComplete: '=',
-            genres: '=',
+            authoringComplete: '='
         },
         templateUrl:'/admin-js/templates/songText.html',
         controller:function($scope){

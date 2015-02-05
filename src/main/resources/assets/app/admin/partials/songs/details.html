@@ -108,7 +108,16 @@
                                 <input type="text" name="downloadUrl" ng-model="formInfo.download_url" class="form-control">
                             </div>
                         </div>
-                         <song-text poets="poetsList" song-text="formInfo.songText" authoring-complete="formInfo.isAuthoringComplete" genres="genreList"></song-text>
+
+                        <div class="row form-group">
+                            <div class="col-sm-2">
+                                <label>* Genres</label>
+                            </div>
+                            <div class="col-sm-2" multi-select input-model="genreList" button-label="english" item-label="english" tick-property="selected" output-model="formInfo.songGenre"></div>
+                            <input name="genreList" ng-model="formInfo.songGenre" ng-show="false" required="true">
+                        </div>
+
+                         <song-text poets="poetsList" song-text="formInfo.songText" authoring-complete="formInfo.isAuthoringComplete"></song-text>
 
                         <div class="row form-group ">
                             <div class="col-sm-2">

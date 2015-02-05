@@ -86,20 +86,28 @@ var songDetailsController = function($scope, $window,$location,songContentServic
 
 
     $scope.getSongData = function(){
-        $scope.urlId = $location.search().id;
-        songContentService.getSong($scope.urlId)
-            .success(function (data,status) {
-                          angular.forEach($scope.singersList,function(singer){
-                              angular.forEach(data.singers,function(selectedSinger){
-                                 if(selectedSinger.id === singer.id)
-                                   singer.ticked=true;
-                              });
+      $scope.urlId = $location.search().id;
 
-                          });
-                          $scope.formInfo = data;
-                          $scope.formInfo.songText = data.songText;
-                          $scope.formInfo.songText.openingCouplets = data.songText.openingCouplets;
-                          $scope.formInfo.songText.songTextContents = $filter('orderBy')($scope.formInfo.songText.songTextContents, 'sequenceNumber');
+      songContentService.getSong($scope.urlId).success(function (data,status) {
+        angular.forEach($scope.genreList,function(genre){
+            angular.forEach(data.songGenre,function(selectedGenre){
+               if(selectedGenre.id === genre.id)
+                 genre.ticked=true;
+            });
+        });
+      });
+
+      songContentService.getSong($scope.urlId).success(function (data,status) {
+        angular.forEach($scope.singersList,function(singer){
+            angular.forEach(data.singers,function(selectedSinger){
+               if(selectedSinger.id === singer.id)
+                 singer.ticked=true;
+            });
+        });
+        $scope.formInfo = data;
+        $scope.formInfo.songText = data.songText;
+        $scope.formInfo.songText.openingCouplets = data.songText.openingCouplets;
+        $scope.formInfo.songText.songTextContents = $filter('orderBy')($scope.formInfo.songText.songTextContents, 'sequenceNumber');
       });
     };
 

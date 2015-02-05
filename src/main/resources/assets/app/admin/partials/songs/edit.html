@@ -130,6 +130,14 @@
                     </div>
                 </div>
 
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label>* Genres</label>
+                    </div>
+                    <div class="col-sm-2" multi-select input-model="genreList" button-label="english" item-label="english" tick-property="ticked" output-model="formInfo.songGenre"></div>
+                    <input name="genreList" ng-model="formInfo.songGenre" ng-show="false" required="true">
+                </div>
+
                 <song-text poets="poetsList" song-text="formInfo.songText" ></song-text>
 
                 <div class="row">

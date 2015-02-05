@@ -51,6 +51,11 @@ public class Song {
     private Set<PersonDetails> singers;
 
     @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "SONG_GENRE", joinColumns = {@JoinColumn(name = "SONG_ID", referencedColumnName = "ID")},
+            inverseJoinColumns = {@JoinColumn(name = "GENRE_ID", referencedColumnName = "ID")})
+    private Set<Genre> songGenre;
+
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "SONG_POET", joinColumns = {@JoinColumn(name = "SONG_ID", referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(name = "POET_ID", referencedColumnName = "ID")})
     private Set<PersonDetails> poets;
@@ -210,6 +215,14 @@ public class Song {
 
     public void setPublishedDate(Timestamp publishedDate) {
         this.publishedDate = publishedDate;
+    }
+
+    public Set<Genre> getSongGenre() {
+        return songGenre;
+    }
+
+    public void setSongGenre(Set<Genre> songGenre) {
+        this.songGenre = songGenre;
     }
 }
 

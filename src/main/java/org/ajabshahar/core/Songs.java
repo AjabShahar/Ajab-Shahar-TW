@@ -109,6 +109,7 @@ public class Songs {
         originalSongData.setPoets(updatableSongData.getPoets());
         originalSongData.setSongCategory(updatableSongData.getSongCategory());
         originalSongData.setMediaCategory(updatableSongData.getMediaCategory());
+        originalSongData.setSongGenre(updatableSongData.getSongGenre());
 
         if (updatableSongData.getIsAuthoringComplete()) {
             originalSongData.setPublishedDate(new Timestamp(now.getTime()));
