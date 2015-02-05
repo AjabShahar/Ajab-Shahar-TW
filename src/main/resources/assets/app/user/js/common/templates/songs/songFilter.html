@@ -1,42 +1,43 @@
 <div class="slide-nav-list">
-<ul class='filters'>
-    <!--<li class='head'>Filter by</li>-->
-    <li>
-        <a ng-click="toggleSingers()" ng-class="shouldShowSingers ? 'active' : ''">Singers</a>
+    <ul class='filters'>
+        <!--<li class='head'>Filter by</li>-->
+        <li>
+            <a ng-click="toggleSingers()" ng-class="shouldShowSingers ? 'active' : ''">singer</a>
+            <ul class="child-list">
+                <li ng-hide="singerNameInFilter==''|| singerNameInFilter.name==''">{{singerNameInFilter.name}}<a ng-click="removeSingerFilter()">x</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a ng-click="togglePoets()" ng-class="shouldShowPoets ? 'active' : ''">Poet</a>
+            <ul class="child-list">
+                <li ng-hide="poetNameInFilter==''|| poetNameInFilter.name==''">{{poetNameInFilter.name}}<a ng-click="removePoetFilter()">x</a></li>
+            </ul>
+        </li>
+
+        <li><a>Word</a></li>
+        <li><a>Genre</a></li>
+        <li><a>Gathering</a></li>
+        <li><a>Place</a></li>
+        <li><a ng-click="clearFilters()">All</a></li>
+    </ul>
+
+
+
+    <div class="second-layer-list" ng-show="shouldShowSingers">
         <ul>
-            <li ng-hide="singerNameInFilter==''|| singerNameInFilter.name==''">{{singerNameInFilter.name}}<a ng-click="removeSingerFilter()">[X]</a></li>
-            <div class="singer-list-container" ng-show="shouldShowSingers">
-                <ul  ng-repeat="singer in singers" >
-                    <li class="singer-list">
-                        <a ng-click="initialiseSingerNameInFilter(singer);hideSingers()">{{singer.name}}</a>
-                    </li>
-                </ul>
-
-            </div>
+            <li ng-repeat="singer in singers" class="list-item">
+                <a ng-click="initialiseSingerNameInFilter(singer);hideSingers()">{{singer.name}}</a>
+            </li>
         </ul>
-    </li>
-
-    <li>
-        <a ng-click="togglePoets()" ng-class="shouldShowPoets ? 'active' : ''">Poets</a>
+    </div>
+    <div class="second-layer-list" ng-show="shouldShowPoets">
         <ul>
-            <li ng-hide="poetNameInFilter==''|| poetNameInFilter.name==''">{{poetNameInFilter.name}}<a ng-click="removePoetFilter()">[X]</a></li>
-            <div class="singer-list-container" ng-show="shouldShowPoets">
-               <ul  ng-repeat = "poet in poets">
-                <li class="singer-list">
-                    <a ng-click="initialisePoetNameInFilter(poet);hidePoets()">{{poet.name}}</a>
-                </li>
-               </ul>
-
-            </div>
+            <li ng-repeat = "poet in poets" class="list-item">
+                <a href="javascript:void(0)" ng-click="initialisePoetNameInFilter(poet);hidePoets()">{{poet.name}}</a>
+            </li>
         </ul>
-    </li>
-
-    <li><a>Words</a></li>
-    <li><a>Genre</a></li>
-    <li><a>Gathering</a></li>
-    <li><a>Places</a></li>
-    <li><a ng-click="clearFilters()">All</a></li>
-</ul>
+    </div>
 
 
 
