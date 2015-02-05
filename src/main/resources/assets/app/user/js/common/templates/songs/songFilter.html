@@ -25,6 +25,7 @@
 
 
     <div class="second-layer-list" ng-show="shouldShowSingers">
+        <div class="overlay"></div>
         <ul>
             <li ng-repeat="singer in singers" class="list-item">
                 <a ng-click="initialiseSingerNameInFilter(singer);hideSingers()">{{singer.name}}</a>
@@ -32,6 +33,7 @@
         </ul>
     </div>
     <div class="second-layer-list" ng-show="shouldShowPoets">
+        <div class="overlay"></div>
         <ul>
             <li ng-repeat = "poet in poets" class="list-item">
                 <a href="javascript:void(0)" ng-click="initialisePoetNameInFilter(poet);hidePoets()">{{poet.name}}</a>
