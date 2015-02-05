@@ -1,5 +1,5 @@
 var songDetailsController = function($scope, $window,$location,songContentService, $filter){
-    $scope.formInfo = {
+    $scope.song = {
       singers:[],
       poets: [],
       songText: {},
@@ -14,6 +14,17 @@ var songDetailsController = function($scope, $window,$location,songContentServic
     $scope.coupletList = [];
     $scope.genreList = [];
 
+    var sortList = function(list, sortCriteria){
+      return $filter('orderBy')(list, sortCriteria);
+    }
+
+    var sortAndRemoveNullsFromLastname = function(personList){
+      var result = angular.forEach(personList, function(person){
+        person.lastName = (Boolean(person.lastName)) ? person.lastName : '';
+      });
+      return sortList(result, 'firstName');
+    }
+
     $scope.init = function(){
       songContentService.getAllUmbrellaTitles().success(function(umbrellaTitleList){
           $scope.umbrellaTitleList = umbrellaTitleList;
@@ -23,25 +34,12 @@ var songDetailsController = function($scope, $window,$location,songContentServic
           $scope.songTitleList= songTitleList;
       });
 
-      songContentService.getAllSingers().success(function(allSingers){
-          $scope.singers = allSingers;
-          $scope.singersList = $scope.singers.people;
-          angular.forEach($scope.singersList,function(singer){
-            if(singer.lastName == null)
-              singer.lastName = '';
-          });
-          $scope.singersList = $filter('orderBy')($scope.singersList, 'firstName');
+      songContentService.getAllSingers().success(function(singers){
+          $scope.singersList = sortAndRemoveNullsFromLastname(singers.people);
       });
 
-      songContentService.getAllPoets().success(function(allPoets){
-          $scope.poets = allPoets.people;
-          $scope.poetsList = $scope.poets;
-          angular.forEach($scope.poetsList,function(poet){
-             if(poet.lastName == null)
-               poet.lastName = '';
-          });
-          $scope.poetsList = $filter('orderBy')($scope.poetsList, 'firstName');
-
+      songContentService.getAllPoets().success(function(poets){
+          $scope.poetsList = sortAndRemoveNullsFromLastname(poets.people);
       });
 
       songContentService.getAllCouplets().success(function(allCouplets){
@@ -62,15 +60,15 @@ var songDetailsController = function($scope, $window,$location,songContentServic
     };
 
     var isVideoOrAudioSong = function(){
-      var youtubeIdIsNull = $scope.formInfo.youtubeVideoId == undefined || $scope.formInfo.youtubeVideoId == "";
+      var youtubeIdIsNull = $scope.song.youtubeVideoId == undefined || $scope.song.youtubeVideoId == "";
 
       if(youtubeIdIsNull){
-        $scope.formInfo["mediaCategory"] =  $scope.mediaCategoryList.filter(function( mediaCategory ) {
+        $scope.song["mediaCategory"] =  $scope.mediaCategoryList.filter(function( mediaCategory ) {
           return mediaCategory.name == "audio only";
         })[0];
       }
       else {
-        $scope.formInfo["mediaCategory"] =  $scope.mediaCategoryList.filter(function( mediaCategory ) {
+        $scope.song["mediaCategory"] =  $scope.mediaCategoryList.filter(function( mediaCategory ) {
           return mediaCategory.name == "audio & video";
         })[0];
       }
@@ -79,7 +77,7 @@ var songDetailsController = function($scope, $window,$location,songContentServic
     $scope.saveData = function(){
       isVideoOrAudioSong();
       
-      songContentService.createSong($scope.formInfo).success(function(data){
+      songContentService.createSong($scope.song).success(function(data){
             $window.location.href = '/admin/songs/edit.html?id='+data;
       });
     };
@@ -99,18 +97,18 @@ var songDetailsController = function($scope, $window,$location,songContentServic
       songContentService.getSong($scope.urlId).success(function (data) {
         $scope.genreList   =  getSelectedContent(data.songGenre, $scope.genreList);
         $scope.singersList =  getSelectedContent(data.singers, $scope.singersList);
-        $scope.formInfo = data;
-        $scope.formInfo.songText = data.songText;
-        $scope.formInfo.songText.openingCouplets = data.songText.openingCouplets;
-        $scope.formInfo.songText.songTextContents = $filter('orderBy')($scope.formInfo.songText.songTextContents, 'sequenceNumber');
+        $scope.song = data;
+        $scope.song.songText = data.songText;
+        $scope.song.songText.openingCouplets = data.songText.openingCouplets;
+        $scope.song.songText.songTextContents = sortList($scope.song.songText.songTextContents, 'sequenceNumber');
       });
     };
 
     $scope.updateSong = function(){
       isVideoOrAudioSong();
-      $scope.formInfo.publishedDate = null;
+      $scope.song.publishedDate = null;
 
-      songContentService.editSong($scope.formInfo).success(function(data){
+      songContentService.editSong($scope.song).success(function(data){
         $window.location.href = '/admin/home.html';
       });
     };

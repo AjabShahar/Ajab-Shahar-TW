@@ -29,11 +29,11 @@
         <div ng-controller="songDetailsController" ng-init="getSongData()">
             <form name="songForm">
                 <div class="row">
-                    <as-admin-title title="Umbrella Title" title-data="formInfo.title" title-list="umbrellaTitleList" title-id="formInfo.title.id" authoring-complete="false"></as-admin-title>
+                    <as-admin-title title="Umbrella Title" title-data="song.title" title-list="umbrellaTitleList" title-id="song.title.id" authoring-complete="false"></as-admin-title>
                 </div>
 
                 <div class="row">
-                    <as-admin-title title="Song Title" title-data="formInfo.songTitle" title-list="songTitleList" title-id="formInfo.songTitle.id" authoring-complete="formInfo.isAuthoringComplete"></as-admin-title>
+                    <as-admin-title title="Song Title" title-data="song.songTitle" title-list="songTitleList" title-id="song.songTitle.id" authoring-complete="song.isAuthoringComplete"></as-admin-title>
                 </div>
 
                 <div class="row">
@@ -46,7 +46,7 @@
                            button-label="firstName lastName"
                            item-label="firstName lastName"
                            tick-property="ticked"
-                           output-model="formInfo.singers"
+                           output-model="song.singers"
                             >
                     </div>
                 </div>
@@ -56,8 +56,8 @@
                         <label>* Poet</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <select ng-model="formInfo.poets[0].id"
-                                ng-options="poet.id as poet.firstName + ' ' + poet.lastName for poet in poets" class="form-control" ng-required="formInfo.isAuthoringComplete">
+                        <select ng-model="song.poets[0].id"
+                                ng-options="poet.id as poet.firstName + ' ' + poet.lastName for poet in poetsList" class="form-control" ng-required="song.isAuthoringComplete">
                         </select>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                         <label>* Show On LandingPage</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <select name="format" ng-model="formInfo.showOnLandingPage" class="form-control" ng-required="formInfo.isAuthoringComplete">
+                        <select name="format" ng-model="song.showOnLandingPage" class="form-control" ng-required="song.isAuthoringComplete">
                             <option value="true">Yes</option>
                             <option value="false">No</option>
                         </select>
@@ -79,8 +79,8 @@
                         <label>* Song Category</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <select ng-model="formInfo.songCategory.id"
-                                ng-options="category.id as category.name for category in songCategoryList" class="form-control" ng-required="formInfo.isAuthoringComplete">
+                        <select ng-model="song.songCategory.id"
+                                ng-options="category.id as category.name for category in songCategoryList" class="form-control" ng-required="song.isAuthoringComplete">
                         </select>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                         <label>* Duration</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <input type="text" name="duration" ng-model="formInfo.duration" class="form-control" ng-required="formInfo.isAuthoringComplete">
+                        <input type="text" name="duration" ng-model="song.duration" class="form-control" ng-required="song.isAuthoringComplete">
                     </div>
                 </div>
 
@@ -99,7 +99,7 @@
                         <label>* Youtube Video ID for video</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <input type="text" name="youtubeVideoId" ng-model="formInfo.youtubeVideoId" class="form-control">
+                        <input type="text" name="youtubeVideoId" ng-model="song.youtubeVideoId" class="form-control">
                     </div>
                 </div>
 
@@ -108,7 +108,7 @@
                         <label>SoundCloud track ID for audio</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <input type="text" name="soundCloudTrackID" ng-model="formInfo.soundCloudTrackID" class="form-control">
+                        <input type="text" name="soundCloudTrackID" ng-model="song.soundCloudTrackID" class="form-control">
                     </div>
                 </div>
 
@@ -117,7 +117,7 @@
                         <label>* Thumbnail Url</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <input type="text" name="thumbnailUrl" ng-model="formInfo.thumbnail_url" class="form-control" ng-required="formInfo.isAuthoringComplete">
+                        <input type="text" name="thumbnailUrl" ng-model="song.thumbnail_url" class="form-control" ng-required="song.isAuthoringComplete">
                     </div>
                 </div>
 
@@ -126,7 +126,7 @@
                         <label>Download Url</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <input type="text" name="downloadUrl" ng-model="formInfo.download_url" class="form-control">
+                        <input type="text" name="downloadUrl" ng-model="song.download_url" class="form-control">
                     </div>
                 </div>
 
@@ -134,11 +134,11 @@
                     <div class="col-sm-2">
                         <label>* Genres</label>
                     </div>
-                    <div class="col-sm-2" multi-select input-model="genreList" button-label="english" item-label="english" tick-property="ticked" output-model="formInfo.songGenre"></div>
-                    <input name="genreList" ng-model="formInfo.songGenre" ng-show="false" required="true">
+                    <div class="col-sm-2" multi-select input-model="genreList" button-label="english" item-label="english" tick-property="ticked" output-model="song.songGenre"></div>
+                    <input name="genreList" ng-model="song.songGenre" ng-show="false" required="true">
                 </div>
 
-                <song-text poets="poetsList" song-text="formInfo.songText" ></song-text>
+                <song-text poets="poetsList" song-text="song.songText" ></song-text>
 
                 <div class="row">
                     <div class="form-group col-sm-2">
@@ -146,7 +146,7 @@
                     </div>
                     <span>The number of characters should be less that 1000, else the submit will be disabled</span>
                     <div class="form-group col-sm-8">
-                        <text-angular name="htmlcontent" ng-model="formInfo.about" ta-max-text="1000"></text-angular>
+                        <text-angular name="htmlcontent" ng-model="song.about" ta-max-text="1000"></text-angular>
                     </div>
                 </div>
 
@@ -155,7 +155,7 @@
                         <label>Publish</label>
                     </div>
                     <div class="form-group col-sm-2" ng-init='authoringOptions=[{ "value": true, "text": "Yes" }, { "value": false, "text": "No" }]'>
-                        <select class="form-control" ng-model="formInfo.isAuthoringComplete" ng-options="authoringOption.value as authoringOption.text for authoringOption in authoringOptions"></select>
+                        <select class="form-control" ng-model="song.isAuthoringComplete" ng-options="authoringOption.value as authoringOption.text for authoringOption in authoringOptions"></select>
                     </div>
                 </div>
 
