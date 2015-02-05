@@ -106,11 +106,11 @@ filterModule.directive("songFilter", function() {
                 if($scope.shouldShowSingers)
                  {
                     $scope.shouldShowSingers = false;
-
                     return;
                  }
                   else {
                     $scope.shouldShowSingers = true;
+                    $scope.shouldShowPoets = false;
                     $scope.filterSingers();
                  }
             }
@@ -121,6 +121,7 @@ filterModule.directive("songFilter", function() {
                }
                else{
                    $scope.shouldShowPoets = true;
+                   $scope.shouldShowSingers = false;
                    $scope.filterPoets();
                }
             }

@@ -4,7 +4,6 @@
 
     		var _domReady = function(){
     		   _bindEvents();
-
     		}
 
     		var _bindEvents = function() {
@@ -16,8 +15,9 @@
 
     		var _slideLeftNav = function(element) {
     		    $(".slide-nav-list").toggleClass("show");
-                element.find(".collapse").toggleClass("expand");
-                 _setLeftNavHeight();
+    		    element.find(".collapse").toggleClass("expand");
+    		    _setLeftNavHeight();
+
     		}
 
     		var _setLeftNavHeight = function() {
@@ -28,7 +28,6 @@
             this.init = (function(){
     			$(function(){
     				_domReady();
-
     			});
 
     		})();
