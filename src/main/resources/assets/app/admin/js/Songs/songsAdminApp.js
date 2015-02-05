@@ -7,5 +7,8 @@ songsAdminApp.config(function($locationProvider) {
        });
  });
 
-
-
+songsAdminApp.constant("PAGES", {
+    "ADMIN_HOME": "/admin/home.html",
+    "EDIT": "/admin/songs/edit.html",
+    "DETAILS": "/admin/songs/details.html"
+});
