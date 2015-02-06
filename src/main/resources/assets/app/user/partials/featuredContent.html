@@ -14,9 +14,10 @@
     <link href="../user-css/common/directives/introduction.css" rel="stylesheet" type="text/css">
     <link href="../user-css/wordThumbnail.css" rel="stylesheet" type="text/css">
     <link href="../user-css/reflectionThumbnail.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../user-css/jquery.jscrollpane.css"/>
 
 <body ng-controller="featuredContentController">
-    <div ng-class="detailsService.isThumbnailOpen ? 'active' : ''" id="ajab_container">
+    <div id="ajab_container">
         <ajab-shahar-header show-menu-details="true" call-back="setPageHeight()"></ajab-shahar-header>
 
         <div class='main-content-wrapper'>
@@ -82,6 +83,8 @@
     <script type="text/javascript" src="../user-js/common/modules/thumbnailModule.js"></script>
     <script type="text/javascript" src="../user-js/common/modules/PopupSupport.js"></script>
     <script type="text/javascript" src="../user-js/common/directives/popupSupport/popup.js"></script>
+    <script type="text/javascript" src="../user-js/jquery.jscrollpane.min.js"></script>
+    <script type="text/javascript" src="../user-js/jquery.mousewheel.js"></script>
 
     <script type="text/javascript" src="../user-js/common/directives/songs/songThumbnail.js"></script>
     <script type="text/javascript" src="../user-js/common/directives/words/wordThumbnail.js"></script>

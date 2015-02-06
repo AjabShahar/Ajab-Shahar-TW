@@ -26,6 +26,7 @@
             this.init = (function(){
     			$(function(){
     				_domReady();
+
     			});
 
     		})();
