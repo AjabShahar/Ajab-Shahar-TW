@@ -15,6 +15,7 @@ module.exports = function (config) {
       'admin/js/services/**/*.js',
       'admin/js/person/**/*.js',
       'admin/js/words/**/*.js',
+      'admin/js/reflections/**/*.js',
       'admin/js/**/*.js',
       'user/js/common/modules/headerModule.js',
       'user/js/common/directives/animation/animationModule.js',
