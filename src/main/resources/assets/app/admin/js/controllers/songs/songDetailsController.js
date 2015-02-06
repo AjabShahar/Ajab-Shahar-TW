@@ -6,68 +6,49 @@ var songDetailsController = function($scope, $window, $location, songContentServ
     isAuthoringComplete: false,
     mediaCategory: {}
   };
-  $scope.singersList = [];
-  $scope.poetsList = [];
-  $scope.songCategoryList = [];
-  $scope.mediaCategoryList = [];
-  $scope.umbrellaTitleList = [];
-  $scope.songTitleList = [];
-  $scope.coupletList = [];
-  $scope.genreList = [];
+  $scope.singers = [];
+  $scope.poets = [];
+  $scope.songCategories = [];
+  $scope.mediaCategories = [];
+  $scope.umbrellaTitles = [];
+  $scope.songTitles = [];
+  $scope.genres = [];
 
   var sortList = function(list, sortCriteria){
     return $filter('orderBy')(list, sortCriteria);
   }
 
-  var sortAndRemoveNullsFromLastname = function(personList){
-    var result = angular.forEach(personList, function(person){
+  var removeNulls = function(personList){
+    var persons = angular.forEach(personList, function(person){
       person.lastName = (Boolean(person.lastName)) ? person.lastName : '';
     });
-    return sortList(result, 'firstName');
+    return sortList(persons, 'firstName');
   }
 
   $scope.init = function(){
-    songContentService.getAllUmbrellaTitles().success(function(umbrellaTitleList){
-        $scope.umbrellaTitleList = umbrellaTitleList;
-    });
+    songContentService.getGenres().success(function(genres){ $scope.genres = genres; });
 
-    songContentService.getAllSongTitles().success(function(songTitleList){
-        $scope.songTitleList= songTitleList;
-    });
+    songContentService.getSongTitles().success(function(titles){ $scope.songTitles= titles; });
 
-    songContentService.getAllSingers().success(function(singers){
-        $scope.singersList = sortAndRemoveNullsFromLastname(singers.people);
-    });
+    songContentService.getSongCategories().success(function(categories){ $scope.songCategories = categories; });
 
-    songContentService.getAllPoets().success(function(poets){
-        $scope.poetsList = sortAndRemoveNullsFromLastname(poets.people);
-    });
+    songContentService.getMediaCategories().success(function(categories){ $scope.mediaCategories = categories; });
 
-    songContentService.getAllCouplets().success(function(allCouplets){
-        $scope.coupletList = allCouplets;
-    });
+    songContentService.getUmbrellaTitles().success(function(umbrellaTitles){ $scope.umbrellaTitles = umbrellaTitles; });
 
-    songContentService.getAllGenres().success(function(genres){
-        $scope.genreList = genres;
-    });
+    songContentService.getSingers().success(function(singers){ $scope.singers = removeNulls(singers.people); });
 
-    songContentService.getSongCategories().success(function(categoryList){
-        $scope.songCategoryList = categoryList;
-    });
-
-    songContentService.getMediaCategories().success(function(categoryList){
-        $scope.mediaCategoryList = categoryList;
-    });
+    songContentService.getPoets().success(function(poets){ $scope.poets = removeNulls(poets.people); });
   };
 
   var setSongCategory = function(){
     if(Boolean($scope.song.youtubeVideoId )){
-      $scope.song["mediaCategory"] =  $scope.mediaCategoryList.filter(function( mediaCategory ) {
+      $scope.song["mediaCategory"] =  $scope.mediaCategories.filter(function( mediaCategory ) {
         return mediaCategory.name == "audio & video";
       })[0];
     }
     else {
-      $scope.song["mediaCategory"] =  $scope.mediaCategoryList.filter(function( mediaCategory ) {
+      $scope.song["mediaCategory"] =  $scope.mediaCategories.filter(function( mediaCategory ) {
         return mediaCategory.name == "audio only";        
       })[0];
     }
@@ -97,8 +78,8 @@ var songDetailsController = function($scope, $window, $location, songContentServ
     var songId = $location.search().id;
 
     songContentService.getSong(songId).success(function ( data ) {
-      $scope.genreList   =  getSelectedContent( data.songGenre, $scope.genreList );
-      $scope.singersList =  getSelectedContent( data.singers, $scope.singersList );
+      $scope.genres   =  getSelectedContent( data.songGenre, $scope.genres );
+      $scope.singers =  getSelectedContent( data.singers, $scope.singers );
       $scope.song = data;
       $scope.song.songText.songTextContents = sortList($scope.song.songText.songTextContents, 'sequenceNumber');
     });

@@ -27,7 +27,7 @@ describe("Song details controller specs", function() {
 	}));
 
 	var insertTestData = function(){
-		scope.mediaCategoryList = [{"name":"audio & video"}, {"name":"audio only"}];
+		scope.mediaCategories = [{"name":"audio & video"}, {"name":"audio only"}];
 		scope.song = {'youtubeVideoId': '1e1', 'publishedDate': 'someDate'};
 	};
 

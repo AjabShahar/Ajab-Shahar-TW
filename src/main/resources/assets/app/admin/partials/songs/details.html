@@ -17,16 +17,16 @@
         <br/>
         <div class="left">
             <form name="songForm" novalidate ng-controller="songDetailsController" ng-init="init()">
-                <as-admin-title title="Umbrella Title" title-data="song.title" title-list="umbrellaTitleList" authoring-complete="false"></as-admin-title>
+                <as-admin-title title="Umbrella Title" title-data="song.title" title-list="umbrellaTitles" authoring-complete="false"></as-admin-title>
 
-                <as-admin-title title="Song Title" title-data="song.songTitle" title-list="songTitleList" authoring-complete="song.isAuthoringComplete"></as-admin-title>
+                <as-admin-title title="Song Title" title-data="song.songTitle" title-list="songTitles" authoring-complete="song.isAuthoringComplete"></as-admin-title>
                     
                 <div class="row form-group">
                     <div class="col-sm-2">
                         <label>* Singer</label>
                     </div>
-                    <div class="col-sm-2" multi-select input-model="singersList" button-label="firstName lastName" item-label="firstName lastName" tick-property="selected" output-model="song.singers"></div>
-                    <input name="singersList" ng-model="song.singers" ng-show="false" required="true">
+                    <div class="col-sm-2" multi-select input-model="singers" button-label="firstName lastName" item-label="firstName lastName" tick-property="selected" output-model="song.singers"></div>
+                    <input name="singers" ng-model="song.singers" ng-show="false" required="true">
                 </div>
 
                 <div class="row form-group">
@@ -35,7 +35,7 @@
                     </div>
                     <div class="col-sm-2">
                         <select  ng-model="song.poets[0]"
-                                 ng-options="poet.firstName + ' ' + poet.lastName for poet in poetsList  | orderBy:'firstName'" class="form-control" ng-required="song.isAuthoringComplete">
+                                 ng-options="poet.firstName + ' ' + poet.lastName for poet in poets  | orderBy:'firstName'" class="form-control" ng-required="song.isAuthoringComplete">
                         </select>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                     </div>
                     <div class="col-sm-2">
                         <select ng-model="song.songCategory"
-                                ng-options="category.name for category in songCategoryList" class="form-control" ng-required="song.isAuthoringComplete">
+                                ng-options="category.name for category in songCategories" class="form-control" ng-required="song.isAuthoringComplete">
                         </select>
                     </div>
                 </div>
@@ -112,11 +112,11 @@
                     <div class="col-sm-2">
                         <label>* Genres</label>
                     </div>
-                    <div class="col-sm-2" multi-select input-model="genreList" button-label="english" item-label="english" tick-property="selected" output-model="song.songGenre"></div>
-                    <input name="genreList" ng-model="song.songGenre" ng-show="false" required="true">
+                    <div class="col-sm-2" multi-select input-model="genres" button-label="english" item-label="english" tick-property="selected" output-model="song.songGenre"></div>
+                    <input name="genres" ng-model="song.songGenre" ng-show="false" required="true">
                 </div>
 
-                 <song-text poets="poetsList" song-text="song.songText" authoring-complete="song.isAuthoringComplete"></song-text>
+                 <song-text poets="poets" song-text="song.songText" authoring-complete="song.isAuthoringComplete"></song-text>
 
                 <div class="row form-group ">
                     <div class="col-sm-2">

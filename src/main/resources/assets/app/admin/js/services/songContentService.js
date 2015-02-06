@@ -1,25 +1,25 @@
 var songContentService = function ($http) {
-    var getAllUmbrellaTitles = function () {
+    var getUmbrellaTitles = function () {
         return $http.get('/api/title/umbrella');
     }
 
-    var getAllSongTitles = function () {
+    var getSongTitles = function () {
         return $http.get('/api/title/song');
     }
 
-    var getAllSingers = function () {
+    var getSingers = function () {
         return $http.get('/api/people?role=Singer');
     }
 
-    var getAllPoets = function () {
+    var getPoets = function () {
         return $http.get('/api/people?role=Poet');
     }
 
-    var getAllCouplets = function () {
+    var getCouplets = function () {
         return $http.get('/api/couplets/all');
     }
 
-    var getAllGenres = function () {
+    var getGenres = function () {
         return $http.get('/api/genres');
     }
 
@@ -31,8 +31,8 @@ var songContentService = function ($http) {
         return $http.get('/api/category/media');
     }
 
-    var getSong = function (id) {
-        return $http.get('/api/songs/'+id);
+    var getSong = function (songId) {
+        return $http.get('/api/songs/'+songId);
     }
 
     var createSong = function (song) {
@@ -47,13 +47,13 @@ var songContentService = function ($http) {
     getSong:getSong,
     createSong:createSong,
     editSong:editSong,
-    getAllUmbrellaTitles:getAllUmbrellaTitles,
-    getAllSongTitles:getAllSongTitles,
-    getAllSingers:getAllSingers,
-    getAllPoets:getAllPoets,
-    getAllCouplets:getAllCouplets,
+    getUmbrellaTitles:getUmbrellaTitles,
+    getSongTitles:getSongTitles,
+    getSingers:getSingers,
+    getPoets:getPoets,
+    getCouplets:getCouplets,
     getSongCategories:getSongCategories,
     getMediaCategories:getMediaCategories,
-    getAllGenres: getAllGenres
+    getGenres: getGenres
   };
 };
