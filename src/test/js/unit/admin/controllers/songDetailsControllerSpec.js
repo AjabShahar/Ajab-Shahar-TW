@@ -26,15 +26,59 @@ describe("Song details controller specs", function() {
 		});
 	}));
 
+	var insertTestData = function(){
+		scope.mediaCategoryList = [{"name":"audio & video"}, {"name":"audio only"}];
+		scope.song = {'youtubeVideoId': '1e1', 'publishedDate': 'someDate'};
+	};
+
+	beforeEach(insertTestData);
+
 	describe("When saving a song", function() {
 		it("then should redirect to the edit of song admin", function() {
-			scope.song = {'youtubeVideoId': '1e1'};
 			$httpBackend.expectPOST('/api/songs', scope.song).respond(200, '1');
 
 			scope.saveData();
 			$httpBackend.flush();
 
 			expect(fakeWindow.location.href).toBe('/admin/songs/edit.html?id=1');
+		});
+		it("then should set audio & video as media category, if it has a youtube id", function() {
+			$httpBackend.expectPOST('/api/songs', scope.song).respond(200, '1');
+
+			scope.saveData();
+			$httpBackend.flush();
+
+			expect(scope.song.mediaCategory.name).toBe('audio & video');
+		});
+		it("then should set audio only as media category, if it does not have a youtube id", function() {
+			scope.song = {};
+			$httpBackend.expectPOST('/api/songs', scope.song).respond(200, '1');
+
+			scope.saveData();
+			$httpBackend.flush();
+
+			expect(scope.song.mediaCategory.name).toBe('audio only');
+		});
+	});
+
+	describe("When updating a song", function() {
+		it("then should redirect to the admin homepage", function() {
+			$httpBackend.expectPOST('/api/songs/edit', scope.song).respond(200);
+
+			scope.updateSong();
+			$httpBackend.flush();
+
+			expect(fakeWindow.location.href).toBe('/admin/home.html');
+			
+			expect(scope.song.mediaCategory.name).toBe('audio & video');
+		});
+		it("then should have published date as null", function() {
+			$httpBackend.expectPOST('/api/songs/edit', scope.song).respond(200);
+
+			scope.updateSong();
+			$httpBackend.flush();
+
+			expect(scope.song.publishedDate).toBe(null);
 		});
 	});
 });

@@ -3,7 +3,8 @@ var songDetailsController = function($scope, $window, $location, songContentServ
     singers:[],
     poets: [],
     songText: {},
-    isAuthoringComplete: false
+    isAuthoringComplete: false,
+    mediaCategory: {}
   };
   $scope.singersList = [];
   $scope.poetsList = [];
@@ -62,12 +63,12 @@ var songDetailsController = function($scope, $window, $location, songContentServ
   var setSongCategory = function(){
     if(Boolean($scope.song.youtubeVideoId )){
       $scope.song["mediaCategory"] =  $scope.mediaCategoryList.filter(function( mediaCategory ) {
-        return mediaCategory.name == "audio only";
+        return mediaCategory.name == "audio & video";
       })[0];
     }
     else {
       $scope.song["mediaCategory"] =  $scope.mediaCategoryList.filter(function( mediaCategory ) {
-        return mediaCategory.name == "audio & video";
+        return mediaCategory.name == "audio only";        
       })[0];
     }
   };
@@ -86,7 +87,7 @@ var songDetailsController = function($scope, $window, $location, songContentServ
 
   var getSelectedContent = function(data, list){
     return angular.forEach(list, function( item ){
-      angular.forEach(data,function(selectedItem){
+      angular.forEach(data, function(selectedItem){
         item.ticked = (selectedItem.id === item.id) ? true : false;
       });
     });
