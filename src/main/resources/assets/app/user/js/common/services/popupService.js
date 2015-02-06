@@ -40,7 +40,7 @@ var popupService = function (){
         shouldShow: shouldShow,
         isClosed: isClosed,
         init:init,
-        anyOpen: anyOpen
+        isThumbnailOpen: isThumbnailOpen
     };
 }
 popupSupport.factory('popupService',[popupService]);
