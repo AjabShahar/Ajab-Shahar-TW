@@ -23,6 +23,7 @@ public class ReflectionResourceTest {
     private ReflectionResource reflectionResource;
     private List<Reflection> reflectionList;
     private String CRITERIA = "";
+    private String jsonReflection = "";
 
     @Mock
     private Reflections reflections;
@@ -38,12 +39,12 @@ public class ReflectionResourceTest {
 
     @Test
     public void shouldTestCreateReflection() throws Exception {
-        String jsonWord = "";
+
         Reflection expected = new Reflection();
-        when(reflectionRepresentationFactory.create(jsonWord)).thenReturn(expected);
+        when(reflectionRepresentationFactory.create(jsonReflection)).thenReturn(expected);
         when(reflections.create(expected)).thenReturn(expected);
 
-        Response actual = reflectionResource.createReflection(jsonWord);
+        Response actual = reflectionResource.createReflection(jsonReflection);
 
         assertEquals(expected, actual.getEntity());
     }
@@ -68,6 +69,20 @@ public class ReflectionResourceTest {
         Response actual = reflectionResource.getReflectionsWithCompleteInfo(CRITERIA);
 
         assertEquals(expected, actual.getEntity());
+
+    }
+
+    @Test
+    public void shouldUpdateReflection() throws Exception {
+
+        Reflection expected = new Reflection();
+        when(reflectionRepresentationFactory.create(jsonReflection)).thenReturn(expected);
+        when(reflections.update(expected)).thenReturn(expected);
+
+        Response actual = reflectionResource.updateReflection(jsonReflection);
+
+        assertEquals(expected, actual.getEntity());
+
 
     }
 }

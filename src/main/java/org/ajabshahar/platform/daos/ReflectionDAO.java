@@ -43,4 +43,17 @@ public class ReflectionDAO extends AbstractDAO<Reflection> {
         findReflections.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return findReflections.list();
     }
+
+    public List<Reflection> find(int id) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Criteria findReflections = currentSession.createCriteria(Reflection.class);
+        findReflections.add(Restrictions.eq("id", Long.valueOf(id)));
+
+        return findReflections.list();
+    }
+
+    public Reflection update(Reflection updatableReflection) {
+        sessionFactory.getCurrentSession().update(updatableReflection);
+        return updatableReflection;
+    }
 }

@@ -22,6 +22,7 @@ public class ReflectionsTest {
     private List<Reflection> reflectionList;
     private Boolean SHOW_ON_LANDING_PAGE = false;
     private Boolean IS_AUTHORING_COMPLETE = false;
+    private Reflection reflection;
 
     @Mock
     private ReflectionDAO reflectionRepository;
@@ -30,11 +31,11 @@ public class ReflectionsTest {
     public void setUp() {
         reflections = new Reflections(reflectionRepository);
         reflectionList = new ArrayList<>();
+        reflection = new Reflection();
     }
 
     @Test
     public void shouldCreateReflection() throws Exception {
-        Reflection reflection = new Reflection();
         when(reflectionRepository.create(reflection)).thenReturn(reflection);
 
         Reflection actual = reflections.create(reflection);
@@ -49,4 +50,5 @@ public class ReflectionsTest {
 
         assertEquals(reflectionList, actual);
     }
+
 }
