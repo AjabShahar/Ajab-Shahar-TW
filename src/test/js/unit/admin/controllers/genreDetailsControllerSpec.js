@@ -1,6 +1,6 @@
 'use strict';
 
-describe("Genre betails controller specs", function(){
+describe("Genre details controller specs", function(){
 	var scope,
 		$location,
 		$httpBackend,
@@ -27,7 +27,6 @@ describe("Genre betails controller specs", function(){
 		it("Then should redirect to admin-home if saved successfully", function(){
 			scope.formInfo.original = "data";
 			scope.formInfo.english = "data";
-
 			$httpBackend.expectPOST('/api/genres', scope.formInfo).respond(200);
 
 			scope.saveData();

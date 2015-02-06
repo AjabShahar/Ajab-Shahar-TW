@@ -16,7 +16,7 @@
         <h2>Enter song details</h2>
         <br/>
         <div class="left">
-            <form name="songForm" novalidate ng-controller="songDetailsController">
+            <form name="songForm" novalidate ng-controller="songDetailsController" ng-init="init()">
                 <as-admin-title title="Umbrella Title" title-data="song.title" title-list="umbrellaTitleList" authoring-complete="false"></as-admin-title>
 
                 <as-admin-title title="Song Title" title-data="song.songTitle" title-list="songTitleList" authoring-complete="song.isAuthoringComplete"></as-admin-title>

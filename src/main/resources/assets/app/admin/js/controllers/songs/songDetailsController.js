@@ -111,8 +111,6 @@ var songDetailsController = function($scope, $window, $location, songContentServ
       redirectToURL(PAGES.ADMIN_HOME);
     });
   };
-
-  $scope.init();
 }
 
 songsAdminApp.controller('songDetailsController',['$scope', '$window', '$location', 'songContentService', 'PAGES', '$filter', songDetailsController]);

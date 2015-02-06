@@ -26,8 +26,8 @@
 <div class="left">
     <h2>Edit song details</h2>
     <div class="left">
-        <div ng-controller="songDetailsController" ng-init="getSongData()">
-            <form name="songForm">
+        <div ng-controller="songDetailsController" ng-init="init()">
+            <form name="songForm" ng-init="getSongData()">
                 <div class="row">
                     <as-admin-title title="Umbrella Title" title-data="song.title" title-list="umbrellaTitleList" title-id="song.title.id" authoring-complete="false"></as-admin-title>
                 </div>
