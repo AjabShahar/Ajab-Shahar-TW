@@ -1,11 +1,12 @@
-<div ng-show="show('{{id}}')" class="overlay" style="z-index:2147483647">
-    <div class='arrows left'>
-    </div>
+<div ng-show="show('{{id}}')" class="popup-wrapper" style="z-index:2147483647">
+    <div class="overlay"></div>
+    <!--<div class='arrows left'>-->
+    <!--</div>-->
 
-    <div class='popupWrapper fullHeight '>
-        <div ng-transclude class='popupContainer'>
-        </div>
+    <!--<div class='fullHeight '>-->
+    <div ng-transclude class='popup-container'>
     </div>
+    <!--</div>-->
 
 
     <div class='arrows right'>

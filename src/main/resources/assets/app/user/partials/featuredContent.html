@@ -16,7 +16,7 @@
     <link href="../user-css/reflectionThumbnail.css" rel="stylesheet" type="text/css">
 
 <body ng-controller="featuredContentController">
-    <div id="ajab_container">
+    <div ng-class="detailsService.isThumbnailOpen ? 'active' : ''" id="ajab_container">
         <ajab-shahar-header show-menu-details="true" call-back="setPageHeight()"></ajab-shahar-header>
 
         <div class='main-content-wrapper'>

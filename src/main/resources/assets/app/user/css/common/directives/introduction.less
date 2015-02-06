@@ -3,11 +3,14 @@
     display:none;
 }
 
-.mediaIntroduction {
+.media-introduction {
     display:inline-block;
     text-align: left;
     width:100%;
     line-height: 23px;
+
+    position: absolute;
+    left: 0;
 
     youtube {
         display: inline-block;
@@ -63,6 +66,12 @@
                 text-transform: capitalize;
             }
         }
+    }
+
+    &.song {
+        position: static;
+        margin: 0 auto;
+        width: auto;
     }
 
     @media screen and (max-width: 990px) {
@@ -131,16 +140,11 @@
 
 .mediaFooter {
     text-align: center;
-    position: absolute;
+    position: fixed;
     bottom: 1%;
     width: 100%;
-    /*left: 20%;
-    @media screen and (max-width: 1280px) {
-        left: 10%;
-    }
-    @media screen and (max-width: 769px) {
-        left: 0;
-    }*/
+    left: 0;
+    z-index: 99;
 
     .infoText{
         color: #808080;
@@ -187,9 +191,10 @@
 }*/
 
 .content-wrapper {
-    background: transparent url(../../../user-img/words/content_border.png) -4px 0 no-repeat;
-    height: 597px;
-    width: 887px;
+    /*background: transparent url(../../../user-img/words/content_border.png) -4px 0 no-repeat;*/
+    border-image: url(../../../user-img/words/content_border.png) 30 repeat round;
+    /*height: 597px;
+    width: 80%;*/
     padding: 1.5%;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;

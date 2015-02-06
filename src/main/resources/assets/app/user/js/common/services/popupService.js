@@ -1,13 +1,17 @@
 var popupService = function (){
     shouldBeOpen = {};
     popups = [];
+    isThumbnailOpen = false;
 
     open = function(id){
         shouldBeOpen[id] = true;
+        isThumbnailOpen = true;
+        isThumbnailOpen;
     }
 
     onClose = function(id){
         shouldBeOpen[id] = false;
+        isThumbnailOpen = false;
     }
 
     shouldShow = function(id){
@@ -36,6 +40,7 @@ var popupService = function (){
         shouldShow: shouldShow,
         isClosed: isClosed,
         init:init,
+        anyOpen: anyOpen
     };
 }
 popupSupport.factory('popupService',[popupService]);
