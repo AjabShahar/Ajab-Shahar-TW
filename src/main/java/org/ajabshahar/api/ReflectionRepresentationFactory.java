@@ -37,7 +37,7 @@ public class ReflectionRepresentationFactory {
     private String getTranscript(Reflection reflection) {
         String transcript = "";
         for (ReflectionTranscript reflectionTranscript : reflection.getReflectionTranscripts()) {
-            transcript += reflectionTranscript.getText();
+            transcript += reflectionTranscript.getEnglishTranscript();
         }
         return transcript;
     }

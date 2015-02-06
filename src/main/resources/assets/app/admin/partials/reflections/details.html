@@ -1,16 +1,9 @@
 <!DOCTYPE html>
-<html ng-app="adminApp">
+<html ng-app="reflectionsAdminApp">
 <head lang="en">
     <meta charset="UTF-8">
     <title>Reflections</title>
-    <script src="../../common/lib/angular/angular.js"></script>
-    <script type="text/javascript" src="../../common/lib/angular-filter/dist/angular-filter.js"></script>
-    <script type="text/javascript" src="../../common/lib/textAngular/dist/textAngular-sanitize.min.js"></script>
-    <script type="text/javascript" src="../../common/lib/textAngular/dist/textAngular.min.js"></script>
-    <script src="../../common/lib/angular-route/angular-route.js"></script>
-    <script type="text/javascript" src="../../admin-js/services/contentService.js"></script>
-    <script type="text/javascript" src="../../admin-js/app.js"></script>
-    <script type="text/javascript" src="../../admin-js/controllers/reflections/reflectionDetailsController.js"></script>
+
     <link href="../../admin-css/admin.css" rel="stylesheet" type="text/css">
     <link href="../../common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link rel='stylesheet' href='https://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css'>
@@ -82,16 +75,8 @@
                         <input type="text" name="reflection" ng-model="formInfo.youtubeVideo" class="form-control">
                     </div>
                 </div>
-
-                <div class="row" ng-show="formInfo.type == 'text'">
-                    <div class="form-group col-sm-2">
-                        <label>Text</label>
-                    </div>
-                    <div class="form-group col-sm-2">
-                        <textarea name="reflection" rows="20" cols="100" ng-model="formInfo.transcript">
-
-                        </textarea>
-                    </div>
+                <div ng-show ="formInfo.type == 'text'">
+                  <reflection-transcript reflection-transcript="{{formInfo.reflectionTranscript}}" reflection-transcripts="formInfo.reflectionTranscripts"></reflection-transcript>
                 </div>
 
                 <div class="row">
@@ -126,5 +111,15 @@
         </div>
     </div>
 </div>
+
+    <script src="../../common/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="../../common/lib/angular-filter/dist/angular-filter.js"></script>
+    <script type="text/javascript" src="../../common/lib/textAngular/dist/textAngular-sanitize.min.js"></script>
+    <script type="text/javascript" src="../../common/lib/textAngular/dist/textAngular.min.js"></script>
+    <script src="../../common/lib/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="../../admin-js/services/contentService.js"></script>
+    <script type="text/javascript" src="../../admin-js/reflections/reflectionsAdminApp.js"></script>
+    <script type="text/javascript" src="../../admin-js/directives/reflectionTranscript.js"></script>
+    <script type="text/javascript" src="../../admin-js/controllers/reflections/reflectionDetailsController.js"></script>
 </body>
 </html>

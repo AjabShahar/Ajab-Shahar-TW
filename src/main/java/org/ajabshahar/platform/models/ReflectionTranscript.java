@@ -13,8 +13,11 @@ public class ReflectionTranscript {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "TEXT")
-    private String text;
+    @Column(name = "HINDI_TRANSCRIPT")
+    private String hindiTranscript;
+
+    @Column(name = "ENGLISH_TRANSCRIPT")
+    private String englishTranscript;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "reflection_id", nullable = false)
@@ -29,12 +32,12 @@ public class ReflectionTranscript {
         this.id = id;
     }
 
-    public String getText() {
-        return text;
+    public String getHindiTranscript() {
+        return hindiTranscript;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setHindiTranscript(String hindiTranscript) {
+        this.hindiTranscript = hindiTranscript;
     }
 
     public Reflection getReflection() {
@@ -43,5 +46,13 @@ public class ReflectionTranscript {
 
     public void setReflection(Reflection reflection) {
         this.reflection = reflection;
+    }
+
+    public String getEnglishTranscript() {
+        return englishTranscript;
+    }
+
+    public void setEnglishTranscript(String englishTranscript) {
+        this.englishTranscript = englishTranscript;
     }
 }

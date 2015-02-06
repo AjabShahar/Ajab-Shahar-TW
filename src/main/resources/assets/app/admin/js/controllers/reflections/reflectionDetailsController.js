@@ -24,4 +24,4 @@ var reflectionDetailsController = function($scope, $http,$window){
    $scope.init();
 }
 
-adminApp.controller('reflectionDetailsController',['$scope','$http','$window',reflectionDetailsController]);
+reflectionsAdminApp.controller('reflectionDetailsController',['$scope','$http','$window',reflectionDetailsController]);
