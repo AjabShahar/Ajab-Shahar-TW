@@ -99,7 +99,7 @@
                         </div>
                         <div ng-if="songText.openingCouplets.length!=0"><p>.....</p></div>
                         <div ng-repeat="songLyrics in songText.songTextContents track by $index" class="lyrics">
-                            <p style=" white-space: pre-line">{{songLyrics.songTextContent.englishTransliterationText}}</p>
+                            <p style=" white-space: pre-line">{{songLyrics.songTextContent.englishTranslationText}}</p>
                             <p ng-if="songLyrics.songTextContent.showRefrain">{{songText.refrainEnglishTranslation}}....</p>
                             <div ng-show="songLyrics.songTextContent.poet!=null">
                                 <p>{{songLyrics.songTextContent.poet.name}}</p>
@@ -118,7 +118,7 @@
                         <div ng-if="songText.openingCouplets.length!=0"><p>.....</p></div>
 
                         <div ng-repeat="songLyrics in songText.songTextContents track by $index" class="lyrics">
-                            <p style=" white-space: pre-line">{{songLyrics.songTextContent.englishTranslationText}}</p>
+                            <p style=" white-space: pre-line">{{songLyrics.songTextContent.englishTransliterationText}}</p>
                             <p ng-if="songLyrics.songTextContent.showRefrain">{{songText.refrainEnglishTransliteration}}....</p>
                             <div ng-show="songLyrics.songTextContent.poet!=null">
                                 <p>{{songLyrics.songTextContent.poet.name}}</p>
