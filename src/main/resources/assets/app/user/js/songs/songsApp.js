@@ -1,4 +1,4 @@
-var songsApp = angular.module('songsApp',['ngRoute','thumbnailModule','mediaPlayer','popupSupport','htmlGenerator', 'headerModule', 'infinite-scroll','filterModule']);
+var songsApp = angular.module('songsApp',['ngRoute','animationModule','thumbnailModule','mediaPlayer','popupSupport','htmlGenerator', 'headerModule', 'infinite-scroll','filterModule']);
 
 songsApp.config(resourceUrlWhiteList);
 songsApp.config(['$routeProvider',
@@ -12,3 +12,4 @@ function($routeProvider) {
        });
    }]);
 songsApp.factory('songsContentService', ['$http', songsContentService]);
+songsApp.directive('bindDynamicHtml', ['$compile', bindDynamicHtml]);
