@@ -58,8 +58,6 @@
         <div class='main-content-wrapper'>
         <div class='song-parallax-container'>
             <div class='pxSongLayers px-song-layer1' data-name='main-bg'></div>
-            <!--<div class='pxSongLayers px-song-layer10' data-name='vignette'></div>-->
-
             <div class='pxSongLayers px-song-layer2' data-name='tambura'></div>
             <div class='pxSongLayers px-song-layer2 tambura-small-1' data-name='tambura'></div>
             <div class='pxSongLayers px-song-layer3' data-name='small-tambura'></div>
@@ -68,7 +66,7 @@
             <div class='pxSongLayers px-song-layer4' data-name='triangles'></div>
             <div class='pxSongLayers px-song-layer5' data-name='vibrations'></div>
             <div class='pxSongLayers px-song-layer5 top-to-bottom'></div>
-            <div class='pxSongLayers px-song-layer6' data-name='ingla' data-stellar-background-ratio="2" data-original="../../user-img/songs/parallax/string1.png"></div>
+            <div class='pxSongLayers px-song-layer6' data-name='ingla' data-stellar-background-ratio="2.5" data-original="../../user-img/songs/parallax/string1.png"></div>
             <div class='pxSongLayers px-song-layer7' data-name='pingla' data-stellar-background-ratio="2.5" data-original="../../user-img/songs/parallax/string2.png"></div>
             <div class='pxSongLayers px-song-layer8' data-name='sushamna' data-stellar-background-ratio="1.4" data-original="../../user-img/mainLandingPage/parallax/whiteString.png"></div>
             <div class='pxSongLayers px-song-layer9' data-name='snake'></div>
@@ -80,14 +78,14 @@
             <div class='ajab-wrapper'>
                 <div class='homepage-content'>
                     <div class="page-header">
-                        <span class="logo-container" sticky>
+                        <span class="logo-container">
                             <a href="javascript:void(0)">songs</a>
                         </span>
                     </div>
 
-                    <!--<div ng-repeat="song in songs">-->
-                        <!--<song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}" open="detailsService.open(song.id)" custom-style="{{song.customStyle}}" img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}" english-transliteration="{{song.englishTransliteration}}" english-translation="{{song.englishTranslation}}" category-name="{{song.category}}" duration="{{song.duration}}" singer="{{song.singer}}" class = "songs" poet="{{song.poet}}" singers="{{song.singers}}"></song-thumbnail>-->
-                    <!--</div>-->
+                    <div ng-repeat="song in songs">
+                        <song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}" open="detailsService.open(song.id)" custom-style="{{song.customStyle}}" img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}" english-transliteration="{{song.englishTransliteration}}" english-translation="{{song.englishTranslation}}" category-name="{{song.category}}" duration="{{song.duration}}" singer="{{song.singer}}" class = "songs" poet="{{song.poet}}" singers="{{song.singers}}"></song-thumbnail>
+                    </div>
                 </div>
             </div>
         </div>

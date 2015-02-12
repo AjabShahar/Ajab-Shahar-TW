@@ -12,9 +12,15 @@
     height: 2500px !important;
     margin: 18% auto 0;
 
-    .logo-container.fixed {
-        left: 15%;
+    .logo-container {
+        left: 14%;
         top: 45px !important;
+        position: fixed;
+
+        @media screen and (max-width: 1024px) {
+            left: 5%;
+            z-index: 99;
+        }
     }
 }
 .song-parallax-container{
@@ -39,24 +45,28 @@
 
 
        &1 {
-            background: url(../../user-img/songs/parallax/background_song.jpg)  0px 0px;
+            background: url(../../user-img/songs/parallax/background_image.jpg)  0px 0px;
             background-repeat: no-repeat repeat;
 
        }
 
        &2 {
             background: url(../../user-img/songs/parallax/white_tambura.png) 0 0 no-repeat;
-            width: 200px;
+            width: 145px;
             -webkit-animation: antirotation 100s linear -5s infinite;
             -moz-animation: antirotation 100s linear -5s infinite;
             -o-animation: antirotation 100s linear -5s infinite;
             animation: antirotation 100s linear -5s infinite;
+            -webkit-transform-origin: 30% 20%;
+            -moz-transform-origin: 30% 20%;
+            -o-transform-origin: 30% 20%;
+            transform-origin: 30% 20%;
             height: 495px;
-            top: 340px;
-            left: 13%;
+            top: 560px;
+            left: 12%;
             &.tambura-small-1 {
                 background: url(../../user-img/songs/parallax/tambura_small_white.png) 0 0 no-repeat;
-                top: 1500px;
+                top: 1697px;
                 width: 190px;
                 left: 12%;
                 opacity: 0.8;
@@ -71,35 +81,40 @@
 
        &3 {
             background: url(../../user-img/songs/parallax/tambura_small.png) 0px  0px no-repeat;
-            opacity: 0.25;
+            opacity: 0.1;
             top: 1000px;
-            left: 58%;
+            left: 70%;
+            -webkit-transform-origin: 30% 20%;
+            -moz-transform-origin: 30% 20%;
+            -o-transform-origin: 30% 20%;
+            transform-origin: 30% 20%;
             width: 190px;
-            height: 400px;
+            height: 600px;
             -webkit-animation: rotation 60s linear 3s infinite;
             -moz-animation: rotation 60s linear 3s infinite;
             -o-animation: rotation 60s linear 3s infinite;
             animation: rotation 60s linear 3s infinite;
 
             &.tambura-small-1 {
-                left: 62%;
+                left: 67%;
                 top: 2000px;
                 -webkit-animation: rotation 60s linear 1s infinite;
                 -moz-animation: rotation 60s linear 1s infinite;
                 -o-animation: rotation 60s linear 1s infinite;
                 animation: rotation 60s linear 1s infinite;
+                opacity: 0.15;
             }
 
        }
 
        &4 {
             background: url(../../user-img/songs/parallax/triangles_new.png) 0px  0px;
-            opacity: 0.5;
+            opacity: 0.4;
        }
 
        &5 {
             background: url(../../user-img/songs/parallax/viberations_new.png) 0px  0px repeat;
-            opacity: 0.15;
+            opacity: 0.12;
             left: -4%;
             height: 4277px;
             background-size: contain;
@@ -109,10 +124,14 @@
             animation: moveUp 200s linear infinite;
 
            &.top-to-bottom {
-                -webkit-animation: moveDown 200s linear infinite;
-                -moz-animation: moveDown 200s linear infinite;
-                -o-animation: moveDown 200s linear infinite;
-                animation: moveDown 200s linear infinite;
+                 top: -2000px;
+                 opacity: 0.15;
+                 height: 6400px;
+                -webkit-animation: moveDown 500s linear infinite;
+                -moz-animation: moveDown 500s linear infinite;
+                -o-animation: moveDown 500s linear infinite;
+                animation: moveDown 500s linear infinite;
+
            }
        }
 
@@ -122,6 +141,9 @@
           background-size: contain;
           width: 53px;
           left: 22%;
+          @media screen and (max-width: 768px) {
+              left: 16%;
+          }
        }
 
        &7 {
@@ -131,8 +153,9 @@
             width: 112px;
             background-size: contain;
             @media screen and (max-width: 768px) {
-                left: 4%;
+                  left: 47%;
             }
+
        }
 
        &8 {
@@ -141,19 +164,19 @@
             background-size: contain;
             left: 44%;
             width: 144px;
+            @media screen and (max-width: 768px) {
+                left: 29%;
+            }
        }
 
        &9 {
             background: url(../../user-img/songs/parallax/snake.png) 0px  0 no-repeat;
             top: 2244px;
             left: 40%;
-       }
-
-       &10 {
-           background: url(../../user-img/songs/parallax/vignette.png) 0px  0 repeat;
-           opacity: 0.2;
-           /*position: fixed;*/
-           width: 1140px;
+            opacity: 0.5;
+            @media screen and (max-width: 768px) {
+                left: 26%;
+            }
        }
 
        &11 {
@@ -258,6 +281,78 @@
    @keyframes moveDown {
           0% {  background-position: 0 0; }
           100% { background-position: 0 4277px; }
+   }
+
+
+   .shift {
+        &1 {
+            top: -6%;
+            left: 10%;
+            position: absolute;
+            @media screen and (max-width: 1024px) {
+                left: 3%;
+                top: -4%;
+            }
+        }
+        &2 {
+            left: 60%;
+            position: absolute;
+            top: 0%;
+        }
+        &3 {
+            left: 33%;
+            top: 10%;
+            position: absolute;
+            @media screen and (max-width: 1024px) {
+                left: 27%;
+            }
+        }
+        &4 {
+            top: 21%;
+            left: 10%;
+            position: absolute;
+            @media screen and (max-width: 1024px) {
+                left: 2%;
+            }
+        }
+        &5 {
+            left: 39%;
+            top: 32%;
+            position: absolute;
+        }
+        &6 {
+            left: 59%;
+            top: 47%;
+            position: absolute;
+            @media screen and (max-width: 768px) {
+                top: 46%;
+            }
+        }
+        &7 {
+            left: 12%;
+            top: 41%;
+            position: absolute;
+            @media screen and (max-width: 1024px) {
+                left: -5%;
+            }
+        }
+        &8 {
+            left: 33%;
+            top: 56%;
+            position: absolute;
+            @media screen and (max-width: 1024px) {
+                left: 18%;
+            }
+        }
+        &9 {
+            left: 10%;
+            top: 68%;
+            position: absolute;
+            @media screen and (max-width: 1024px) {
+                left: 4%;
+            }
+        }
+
    }
 
 
