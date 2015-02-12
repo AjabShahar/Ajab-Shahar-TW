@@ -38,28 +38,28 @@
                 <div class='ajab-wrapper'>
                     <div class='homepage-content'>
                         <div ng-repeat="song in songThumbnails">
-                            <song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}" open="detailsService.open(song.id)" custom-style="{{song.customStyle}}" img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}" english-transliteration="{{song.englishTransliteration}}" english-translation="{{song.englishTranslation}}" category-name="{{song.category}}" duration="{{song.duration}}" singer="{{song.singer}}" class = "songs" poet="{{song.poet}}" singers="{{song.singers}}"></song-thumbnail>
+                            <song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}" open="detailsService.open(song.contentId)" custom-style="{{song.customStyle}}" img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}" english-transliteration="{{song.englishTransliteration}}" english-translation="{{song.englishTranslation}}" category-name="{{song.category}}" duration="{{song.duration}}" singer="{{song.singer}}" class = "songs" poet="{{song.poet}}" singers="{{song.singers}}"></song-thumbnail>
                         </div>
 
                         <div ng-repeat="word in wordThumbnails">
-                            <word-thumbnail id="{{word.id}}" open="detailsService.open(word.id)" transliteration="{{word.wordTransliteration}}" translation="{{word.wordTranslation}}" english-intro-excerpt="{{word.englishIntroExcerpt}}" custom-style="{{word.customStyle}}" img-src="https://yt3.ggpht.com/-JtqzFmOGDiI/AAAAAAAAAAI/AAAAAAAAAAA/McQLKmfBpqg/s900-c-k-no/photo.jpg"></word-thumbnail>
+                            <word-thumbnail id="{{word.id}}" open="detailsService.open(word.contentId)" transliteration="{{word.wordTransliteration}}" translation="{{word.wordTranslation}}" english-intro-excerpt="{{word.englishIntroExcerpt}}" custom-style="{{word.customStyle}}" img-src="https://yt3.ggpht.com/-JtqzFmOGDiI/AAAAAAAAAAI/AAAAAAAAAAA/McQLKmfBpqg/s900-c-k-no/photo.jpg"></word-thumbnail>
                         </div>
 
                         <div ng-repeat="reflection in reflectionThumbnails">
-                            <reflection-thumbnail id="{{reflection.id}}" title="{{reflection.title}}" verb="{{reflection.verb}}"  speaker="{{reflection.speaker}}"></reflection-thumbnail>
+                            <reflection-thumbnail id="{{reflection.id}}" open="detailsService.open(word.contentId)" title="{{reflection.title}}" verb="{{reflection.verb}}"  speaker="{{reflection.speaker}}"></reflection-thumbnail>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div ng-repeat="song in introductions">
-                <pop-up popup-count="{{introductions.length}}" ng-init="detailsService.init(song.id)" id="{{song.id}}" width="100" details-service="detailsService" show="detailsService.shouldShow(song.id)" index="{{$index}}" close-button="true">
-                    <song-overview id="{{song.id}}" singer="{{song.singer}}" poet="{{song.poet}}" english-translation="{{song.englishTranslation}}" audio-Url="{{song.audioId}}" video-Url="{{song.videoId}}" close-video="detailsService.isClosed(song.id)" english-transliteration="{{song.englishTransliteration}}" noun="{{song.noun}}"></song-overview>
+                <pop-up popup-count="{{introductions.length}}" ng-init="detailsService.init(song.contentId)" id="{{song.contentId}}" width="100" details-service="detailsService" show="detailsService.shouldShow(song.contentId)" index="{{$index}}" close-button="true">
+                    <song-overview id="{{song.contentId}}" singer="{{song.singer}}" poet="{{song.poet}}" english-translation="{{song.englishTranslation}}" audio-Url="{{song.audioId}}" video-Url="{{song.videoId}}" close-video="detailsService.isClosed(song.contentId)" english-transliteration="{{song.englishTransliteration}}" noun="{{song.noun}}"></song-overview>
                 </pop-up>
             </div>
             <div ng-repeat="word in wordIntroductions">
-                <pop-up popup-count="{{wordThumbnails.length}}" ng-init="detailsService.init(word.id)" id="{{word.id}}" width="100" details-service="detailsService" show="detailsService.shouldShow(word.id)" index="{{$index}}" close-button="true">
-                    <word-overview id="{{word.id}}" word-transliteration="{{word.wordTransliteration}}" word-translation="{{word.wordTranslation}}" word-intro-english="{{word.wordIntroEnglish}}" writers="word.writers"></word-overview>
+                <pop-up popup-count="{{wordThumbnails.length}}" ng-init="detailsService.init(word.contentId)" id="{{word.contentId}}" width="100" details-service="detailsService" show="detailsService.shouldShow(word.contentId)" index="{{$index}}" close-button="true">
+                    <word-overview id="{{word.contentId}}" word-transliteration="{{word.wordTransliteration}}" word-translation="{{word.wordTranslation}}" word-intro-english="{{word.wordIntroEnglish}}" writers="word.writers"></word-overview>
                 </pop-up>
             </div>
 

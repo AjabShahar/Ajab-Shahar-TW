@@ -3,6 +3,7 @@ var wordMapper = function () {
         return _.reduce(words,function(thumbnails, word,index) {
             thumbnails.push({
                 "id":word.id,
+                "contentId":'word_'+word.id,
                 "wordOriginal":word.wordOriginal,
                 "wordTranslation":word.wordTranslation,
                 "wordTransliteration":word.wordTransliteration,
@@ -18,6 +19,7 @@ var wordMapper = function () {
         return _.reduce(words,function(introductions, word,index) {
             introductions.push({
                 "id":word.id,
+                "contentId":'word_'+word.id,
                 "wordOriginal":word.wordOriginal,
                 "wordTranslation":word.wordTranslation,
                 "wordTransliteration":word.wordTransliteration,

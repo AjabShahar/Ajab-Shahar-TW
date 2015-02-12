@@ -26,12 +26,12 @@ var featuredContentController = function($scope,contentService,popupService, map
             var songs = _.shuffle(result.data.songs).slice(0,4);
             $scope.songThumbnails = songMapper.getThumbnails(songs, shiftThumbnail);
             $scope.introductions = songMapper.getIntroductions(songs);
+        });
 
-            content.words.then(function(result){
-                var words = _.shuffle(result.data.words).slice(0,4);
-                $scope.wordThumbnails = wordMapper.getThumbnails(words, shiftThumbnail);
-                $scope.wordIntroductions = wordMapper.getIntroductions(words);
-            });
+        content.words.then(function(result){
+            var words = _.shuffle(result.data.words).slice(0,4);
+            $scope.wordThumbnails = wordMapper.getThumbnails(words, shiftThumbnail);
+            $scope.wordIntroductions = wordMapper.getIntroductions(words);
         });
 
         content.reflections.then(function(result){
