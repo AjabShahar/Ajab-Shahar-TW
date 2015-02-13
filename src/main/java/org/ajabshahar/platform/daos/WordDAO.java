@@ -43,6 +43,12 @@ public class WordDAO extends AbstractDAO<Word> {
 
     public Word update(Word updatableWord) {
         sessionFactory.getCurrentSession().update(updatableWord);
+        for (WordIntroduction wordIntroduction : updatableWord.getWordIntroductions()) {
+            if (wordIntroduction.getId() == 0) {
+                wordIntroduction.setWord(updatableWord);
+                currentSession().save(wordIntroduction);
+            }
+        }
         return updatableWord;
     }
 
