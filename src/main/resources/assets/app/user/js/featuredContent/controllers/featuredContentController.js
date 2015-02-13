@@ -1,6 +1,5 @@
 var featuredContentController = function($scope,contentService,popupService, mappers){
     $scope.detailsService = popupService;
-    $scope.thumbnailOpen = false;
 
     $scope.songThumbnails = [];
     $scope.songIntroductions = [];

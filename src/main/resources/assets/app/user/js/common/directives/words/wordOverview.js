@@ -16,7 +16,9 @@ thumbnailModule.directive("wordOverview", function() {
            for(var i=1;i<$scope.writers.length;i++){
               $scope.people += " & " +$scope.writers[i].name;
            }
-
+        $scope.paneConfig = {
+            verticalDragMinHeight: 40
+        }
         }
     }
 });
