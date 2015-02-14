@@ -16,7 +16,7 @@ var wordMapper = function () {
         },[]);
     };
 
-    getIntroductions = function(words,customStyle) {
+    getOverviews = function(words,customStyle) {
         return _.reduce(words,function(introductions, word,index) {
             introductions.push({
                 "id":word.id,
@@ -64,7 +64,7 @@ var wordMapper = function () {
     return {
         getThumbnails: getThumbnails,
         getWordDetails: getWordDetails,
-        getIntroductions:getIntroductions,
+        getOverviews:getOverviews,
         getWordCompleteInfo:getWordCompleteInfo
     };
 };

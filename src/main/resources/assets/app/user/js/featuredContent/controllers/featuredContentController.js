@@ -22,7 +22,7 @@ var featuredContentController = function($scope,contentService,popupService, map
         content.songs.then(function(result){
             var songs = _.shuffle(result.data.songs).slice(0,4);
             var songThumbnails = songMapper.getThumbnails(songs, shiftThumbnail);
-            var introductions = songMapper.getIntroductions(songs);
+            var introductions = songMapper.getOverviews(songs);
 
             _.each(songThumbnails, function(thumbnail){
                 $scope.thumbnails.push(thumbnail);
@@ -36,7 +36,7 @@ var featuredContentController = function($scope,contentService,popupService, map
         content.words.then(function(result){
             var words = _.shuffle(result.data.words).slice(0,4);
             var wordThumbnails = wordMapper.getThumbnails(words, shiftThumbnail);
-            var introductions = wordMapper.getIntroductions(words);
+            var introductions = wordMapper.getOverviews(words);
 
             _.each(wordThumbnails, function(thumbnail){
                 $scope.thumbnails.push(thumbnail);
@@ -50,9 +50,14 @@ var featuredContentController = function($scope,contentService,popupService, map
         content.reflections.then(function(result){
            var reflections = _.shuffle(result.data.reflections).slice(0,1);
            var reflectionThumbnails = reflectionMapper.getThumbnails(reflections,shiftThumbnail);
+           var introductions = reflectionMapper.getOverviews(reflections);
 
             _.each(reflectionThumbnails, function(thumbnail){
                 $scope.thumbnails.push(thumbnail);
+            });
+
+            _.each(introductions, function(introduction){
+                $scope.featureContentOverviews.push(introduction);
             });
         })
     }();

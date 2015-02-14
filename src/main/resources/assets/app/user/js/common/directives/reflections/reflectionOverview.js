@@ -4,10 +4,14 @@ thumbnailModule.directive("reflectionOverview", function() {
     return {
         restrict: 'E',
         scope: {
-            videoUrl:'@',
             id:'@',
-            audioUrl:'@',
-            closeVideo:'&'
+            closeVideo:'&',
+            title:'@',
+            verb:'@',
+            speaker:'@',
+            videoId:'@',
+            audioId:'@',
+            text:'@'
         },
         templateUrl:'/user-js/common/templates/reflections/reflectionOverview.html',
         controller: function($scope) {
@@ -16,7 +20,7 @@ thumbnailModule.directive("reflectionOverview", function() {
             });
 
             $scope.isVideo = function(){
-                return Boolean($scope.videoUrl);
+                return Boolean($scope.videoId);
             };
 
             $scope.isAudio = function(){

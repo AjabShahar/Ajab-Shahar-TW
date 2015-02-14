@@ -37,7 +37,7 @@ var songMapper = function () {
         },[]);
     };
 
-    getIntroductions = function(songs,customStyle) {
+    getOverviews = function(songs,customStyle) {
         return _.reduce(songs,function(allIntroductions, song,index) {
             allIntroductions.push({"id":song.id,
                 "contentId":"song_"+song.id,
@@ -73,7 +73,7 @@ var songMapper = function () {
     return {
         getThumbnails: getThumbnails,
         getSongDetails: getSongDetails,
-        getIntroductions:getIntroductions,
+        getOverviews:getOverviews,
     };
 };
 
