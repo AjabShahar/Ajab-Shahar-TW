@@ -19,6 +19,7 @@ var songMapper = function () {
         return _.reduce(songs,function(thumbnails, song,index) {
             thumbnails.push({"id":song.id,
             "contentId":'song_'+song.id,
+            "isSong":true,
             "englishTranslation":song.englishTranslationTitle,
             "customStyle": (customStyle)? customStyle():'',
             "englishTransliteration":song.englishTransliterationTitle,
@@ -40,6 +41,7 @@ var songMapper = function () {
         return _.reduce(songs,function(allIntroductions, song,index) {
             allIntroductions.push({"id":song.id,
                 "contentId":"song_"+song.id,
+                "isSong":true,
                 "videoId":song.youTubeVideoId,
                 "englishTranslation":song.englishTranslationTitle,
                 "englishTransliteration":song.englishTransliterationTitle,

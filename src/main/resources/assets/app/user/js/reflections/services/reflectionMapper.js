@@ -3,6 +3,7 @@ var reflectionMapper = function () {
         return _.reduce(reflections,function(thumbnails, reflection,index) {
             thumbnails.push({
                 "id":reflection.id,
+                "isReflection":true,
                 "title":reflection.title,
                 "verb":reflection.verb,
                 "speaker":reflection.speaker,
