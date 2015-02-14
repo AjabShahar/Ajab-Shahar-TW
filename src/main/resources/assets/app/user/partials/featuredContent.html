@@ -48,8 +48,8 @@
 
             <div ng-repeat="overview in featureContentOverviews">
                 <pop-up popup-count="{{featureContentOverviews.length}}" ng-init="detailsService.init(overview.contentId)" id="{{overview.contentId}}" width="100" details-service="detailsService" show="detailsService.shouldShow(overview.contentId)" index="{{$index}}" close-button="true">
-                    <song-overview ng-if="overview.isSong" id="{{overview.contentId}}" singer="{{overview.singer}}" poet="{{overview.poet}}" english-translation="{{overview.englishTranslation}}" audio-Url="{{overview.audioId}}" video-Url="{{overview.videoId}}" close-video="detailsService.isClosed(overview.contentId)" english-transliteration="{{overview.englishTransliteration}}" noun="{{overview.noun}}"></song-overview>
-                    <word-overview ng-if="overview.isWord" id="{{overview.contentId}}" word-transliteration="{{overview.wordTransliteration}}" word-translation="{{overview.wordTranslation}}" word-intro-english="{{overview.wordIntroEnglish}}" writers="overview.writers"></word-overview>
+                    <word-overview ng-if="overview.isWord" id="{{overview.id}}" word-transliteration="{{overview.wordTransliteration}}" word-translation="{{overview.wordTranslation}}" word-intro-english="{{overview.wordIntroEnglish}}" writers="overview.writers"></word-overview>
+                    <song-overview ng-if="overview.isSong" id="{{overview.id}}" singer="{{overview.singer}}" poet="{{overview.poet}}" english-translation="{{overview.englishTranslation}}" audio-Url="{{overview.audioId}}" video-Url="{{overview.videoId}}" close-video="detailsService.isClosed(overview.contentId)" english-transliteration="{{overview.englishTransliteration}}" noun="{{overview.noun}}"></song-overview>
                 </pop-up>
             </div>
         </div>
