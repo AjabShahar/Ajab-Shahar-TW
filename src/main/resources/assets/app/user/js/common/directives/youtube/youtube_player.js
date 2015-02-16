@@ -94,6 +94,8 @@ mediaPlayer.directive('youtube', function($window, YT_event) {
         });
 
         scope.stopVideoInPlayer = function(){
+            if(!Boolean(scope.player))
+                return;
             scope.player.seekTo(0);
             scope.player.stopVideo();
         }

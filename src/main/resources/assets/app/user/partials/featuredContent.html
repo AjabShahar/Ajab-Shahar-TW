@@ -40,7 +40,7 @@
                         <div ng-repeat="thumbnail in thumbnails">
                             <song-thumbnail ng-if="thumbnail.isSong" id="{{thumbnail.id}}" content-id="{{thumbnail.contentId}}" open="detailsService.open(thumbnail.contentId)" custom-style="{{thumbnail.customStyle}}" img-src="{{thumbnail.thumbnailUrl}}" url="{{thumbnail.videoId}}" english-transliteration="{{thumbnail.englishTransliteration}}" english-translation="{{thumbnail.englishTranslation}}" category-name="{{thumbnail.category}}" duration="{{thumbnail.duration}}" singer="{{thumbnail.singer}}" class = "songs" poet="{{thumbnail.poet}}" singers="{{thumbnail.singers}}"></song-thumbnail>
                             <word-thumbnail ng-if="thumbnail.isWord" id="{{thumbnail.id}}" open="detailsService.open(thumbnail.contentId)" transliteration="{{thumbnail.wordTransliteration}}" translation="{{thumbnail.wordTranslation}}" english-intro-excerpt="{{thumbnail.englishIntroExcerpt}}" custom-style="{{thumbnail.customStyle}}" img-src="https://yt3.ggpht.com/-JtqzFmOGDiI/AAAAAAAAAAI/AAAAAAAAAAA/McQLKmfBpqg/s900-c-k-no/photo.jpg"></word-thumbnail>
-                            <reflection-thumbnail ng-if="thumbnail.isReflection" id="{{thumbnail.id}}" open="detailsService.open(thumbnail.contentId)" title="{{thumbnail.title}}" verb="{{thumbnail.verb}}"  speaker="{{thumbnail.speaker}}"></reflection-thumbnail>
+                            <reflection-thumbnail ng-if="thumbnail.isReflection" id="{{thumbnail.id}}" open="detailsService.open(thumbnail.contentId)" title="{{thumbnail.title}}" verb="{{thumbnail.verb}}"  speaker="{{thumbnail.speaker}}" custom-style="{{thumbnail.customStyle}}"></reflection-thumbnail>
                         </div>
                     </div>
                 </div>
