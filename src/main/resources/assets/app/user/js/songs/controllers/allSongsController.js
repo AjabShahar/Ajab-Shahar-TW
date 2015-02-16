@@ -12,8 +12,12 @@ var allSongsController = function($scope,$window,songsContentService,songMapper)
     $scope.poetNameInFilter = {name:''};
     $scope.songCount = 0;
     $scope.songsList = [];
-
+    $scope.expandFilter = false;
     var i = 0;
+
+    $scope.toggleExpandFilter = function(){
+        $scope.expandFilter = !$scope.expandFilter;
+    }
 
     $scope.getAllSongs = function(){
         songsContentService.getAllSongs().then(function(songsList){
