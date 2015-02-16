@@ -15,7 +15,7 @@ var songMapper = function () {
        return value;
     };
 
-    getThumbnails = function(songs,customStyle) {
+    var getThumbnails = function(songs,customStyle) {
         return _.reduce(songs,function(thumbnails, song,index) {
             thumbnails.push({"id":song.id,
             "contentId":'song_'+song.id,
@@ -52,7 +52,7 @@ var songMapper = function () {
         },[]);
     };
 
-    getSongDetails = function(songs){
+    var getSongDetails = function(songs){
         return _.reduce(songs,function(details, song,index) {
             var poet = (Boolean(song.poet[0])) ? song.poet[0].name : '';
 
@@ -68,10 +68,37 @@ var songMapper = function () {
         },[]);
     };
 
+    var getSongs = function(songs,customStyle){
+        return _.reduce(songs,function(thumbnails, song,index) {
+            thumbnails.push({"id":song.id,
+                "contentId":'song_'+song.id,
+                "englishTranslation":song.englishTranslationTitle,
+                "customStyle": (customStyle)? customStyle():'',
+                "englishTransliteration":song.englishTransliterationTitle,
+                "category":song.category,
+                "duration":song.duration,
+                "singer":(song.singers==null || song.singers.length==0) ? '': song.singers[0].name +(song.singers[1]!=null ? ' ......':''),
+                "singers":(song.singers!=null && song.singers.length > 1)? getSingers(song.singers):'',
+                "poet":(song.poet==null || song.poet.length==0)?'Unknown': song.poet[0].name,
+                "thumbnailUrl":song.thumbnailUrl,
+                "videoId":song.youTubeVideoId,
+                "audioUrl":song.soundCloudTrackId,
+                "downloadURL":song.downloadUrl,
+                "about": '\'' + song.about + '\'',
+                "searchableCriteria":{
+                    "singers":song.singers,
+                    "poets":song.poet
+                }});
+            
+            return thumbnails;
+        },[]);
+        
+    };
     return {
         getThumbnails: getThumbnails,
         getSongDetails: getSongDetails,
         getIntroductions:getIntroductions,
+        getSongs:getSongs
     };
 };
 

@@ -15,7 +15,7 @@ mediaPlayer.directive('youtube', function($window, YT_event) {
       autoplay:"@",
       showcontrols:"@",
       autoreplay:'@',
-      shouldStopVideo:'&',
+      shouldStopVideo:'&'
     },
 
     template: '<div></div>',
@@ -41,7 +41,7 @@ mediaPlayer.directive('youtube', function($window, YT_event) {
                 html5: 1,
                 theme: "light",
                 color: "white",
-                iv_load_policy: 3,
+                iv_load_policy: 3
               },
 
               height: scope.height,
@@ -49,7 +49,7 @@ mediaPlayer.directive('youtube', function($window, YT_event) {
               videoId: scope.videoid,
               events: {
                     'onStateChange': scope.onPlayerStateChange
-                },
+                }
             });
 
             if(!scope.cueVideoById)

@@ -42,7 +42,9 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         bootstrap.addBundle(cachingBundle);
         bootstrap.addBundle(new AssetsBundle("/assets/app/user/css", "/user-css", null, "user-css"));
         bootstrap.addBundle(new AssetsBundle("/assets/app/user/js", "/user-js", null, "user-js"));
-        bootstrap.addBundle(new AssetsBundle("/assets/app/user/img", "/user-img", null, "user-img"));
+        bootstrap.addBundle(new AssetsBundle("/assets/app/user/img", "/user-img", null,"user-img"));
+        
+        bootstrap.addBundle(new AssetsBundle("/assets/app/mainlanding", "/mainlanding", "mainLandingIndex.html","main-landing"));
 
         bootstrap.addBundle(new AssetsBundle("/assets/app/admin/css", "/admin-css", null, "admin-css"));
         bootstrap.addBundle(new AssetsBundle("/assets/app/admin/js", "/admin-js", null, "admin-js"));

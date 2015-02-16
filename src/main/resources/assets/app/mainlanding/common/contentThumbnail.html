@@ -1,0 +1,27 @@
+<div class="thumbnailWrapper {{content.customStyle}}">
+    <div class="thumbnail-media" ng-click="open()">
+        <img ng-src="{{content.imgSrc}}"/>
+    </div>
+    <div class="desc-wrapper" ng-click="open()">
+        <div class="thumbnail-desc" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
+            <h3 class="item-title">{{content.getTitle(format)}}</h3>
+            <div class="sub-title">{{content.getSecondTitle(format)}}</div>
+            <small ng-show="content.whatAndWhoLong && !content.whatAndWhoLong ">{{content.whatAndWhoShort}}</small>
+            <div ng-hide="!shouldShowDetails" class='thumbnailDetails toggleBySlide'>
+                <div class="" ng-show="content.whatAndWhoLong">
+                    <small class="">{{content.whatAndWhoLong}}</small>
+                </div>
+                <small class="poetDetails">{{content.moreInfo}}</small>
+                <div class='categoryDetails'>
+                    <small class="categoryName">{{content.category}}</small>
+                    <small ng-show="content.duration" class="play">{{content.duration}}</small>
+                </div>
+            </div>
+        </div>
+        <div class="lower-curve"></div>
+    </div>
+</div>
+
+<!--<popup id="{{content.id}}" ng-if="content.showOverlay" popup-count="totalCount" current-index="currentIndex" width="100" on-close="close()" close-button="true">-->
+    <!--<song-overview id="{{content.id}}" singer="{{content.actualContent.singer}}" poet="{{content.actualContent.poet}}" english-translation="{{content.actualContent.englishTranslation}}" audio-Url="{{content.actualContent.audioId}}" video-Url="{{content.actualContent.videoId}}"  english-transliteration="{{content.actualContent.englishTransliteration}}" noun="{{content.actualContent.noun}}"></song-overview>-->
+<!--</popup>-->

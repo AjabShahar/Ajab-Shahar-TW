@@ -1,0 +1,16 @@
+<div class="popup-wrapper" style="z-index:2147483647">
+    <div class="overlay"></div>
+    <!--<div class='arrows left'>-->
+    <!--</div>-->
+
+    <!--<div class='fullHeight '>-->
+    <div ng-transclude class='popup-container'>
+    </div>
+    <!--</div>-->
+
+
+    <div class='arrows right'>
+        <a href='#' class='close' ng-click="close()"></a>
+        <span  ng-repeat="i in getPopupCount() track by $index" ng-click="onSelect($index)" ng-class="isActive($index) ? 'active' : ''" class="bubble"></span>
+    </div>
+</div>
