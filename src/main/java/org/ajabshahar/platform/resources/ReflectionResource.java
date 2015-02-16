@@ -4,8 +4,10 @@ import io.dropwizard.hibernate.UnitOfWork;
 import org.ajabshahar.api.ReflectionRepresentationFactory;
 import org.ajabshahar.api.ReflectionsRepresentation;
 import org.ajabshahar.api.ReflectionsSummaryRepresentation;
+import org.ajabshahar.api.SongsRepresentation;
 import org.ajabshahar.core.Reflections;
 import org.ajabshahar.platform.models.Reflection;
+import org.ajabshahar.platform.models.Song;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -63,6 +65,18 @@ public class ReflectionResource {
         List<Reflection> reflectionList = reflections.getAll(criteria);
         ReflectionsRepresentation reflectionsRepresentation = reflectionRepresentationFactory.createReflections(reflectionList);
         return Response.ok(reflectionsRepresentation).build();
+    }
+
+    @GET
+    @UnitOfWork
+    @Path("/getPublishedReflections")
+    public Response getPublishedReflections(@QueryParam("startFrom") int startFrom, @QueryParam("filteredLetter") String filteredLetter) {
+        List<Reflection> reflectionList = reflections.findBy(startFrom, filteredLetter);
+        if (reflectionList == null || reflectionList.size() == 0) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        ReflectionsRepresentation reflectionsSummaryRepresentation = reflectionRepresentationFactory.createReflections(reflectionList);
+        return Response.ok(reflectionsSummaryRepresentation, MediaType.APPLICATION_JSON).build();
     }
 
     @GET

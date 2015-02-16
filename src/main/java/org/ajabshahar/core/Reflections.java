@@ -1,8 +1,12 @@
 package org.ajabshahar.core;
 
+import org.ajabshahar.api.SongsRepresentation;
 import org.ajabshahar.platform.daos.ReflectionDAO;
 import org.ajabshahar.platform.models.Reflection;
+import org.ajabshahar.platform.models.Song;
 
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 public class Reflections {
@@ -26,7 +30,7 @@ public class Reflections {
             landingPage = true;
             authoringComplete = true;
         }
-        return reflectionRepository.findAll(landingPage, authoringComplete);
+        return reflectionRepository.findBy(landingPage, authoringComplete);
     }
 
 
@@ -50,5 +54,9 @@ public class Reflections {
         originalReflection.setIsAuthoringComplete(reflection.getIsAuthoringComplete());
         originalReflection.setShowOnLandingPage(reflection.getShowOnLandingPage());
         return originalReflection;
+    }
+
+    public List<Reflection> findBy(int startFrom, String filteredLetter) {
+        return reflectionRepository.findBy(startFrom, filteredLetter);
     }
 }
