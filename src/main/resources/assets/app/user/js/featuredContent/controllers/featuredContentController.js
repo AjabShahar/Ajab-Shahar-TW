@@ -59,7 +59,8 @@ var featuredContentController = function($scope,contentService,popupService, map
             _.each(introductions, function(introduction){
                 $scope.featureContentOverviews.push(introduction);
             });
-        })
+        });
+
     }();
 
     $scope.open = function(id){

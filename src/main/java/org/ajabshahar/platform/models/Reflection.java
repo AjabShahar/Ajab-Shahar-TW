@@ -37,7 +37,7 @@ public class Reflection {
     private Boolean isAuthoringComplete;
 
     @Column(name="SHOW_ON_LANDING_PAGE")
-    private Boolean showOnLandingPage;
+    private Boolean showOnFeaturedContentPage;
 
     public long getId() {
         return id;
@@ -103,11 +103,11 @@ public class Reflection {
         this.isAuthoringComplete = isAuthoringComplete;
     }
 
-    public Boolean getShowOnLandingPage() {
-        return showOnLandingPage;
+    public Boolean getShowOnFeaturedContentPage() {
+        return showOnFeaturedContentPage;
     }
 
-    public void setShowOnLandingPage(Boolean showOnLandingPage) {
-        this.showOnLandingPage = showOnLandingPage;
+    public void setShowOnFeaturedContentPage(Boolean showOnFeaturedContentPage) {
+        this.showOnFeaturedContentPage = showOnFeaturedContentPage;
     }
 }
