@@ -6,13 +6,15 @@ var songsFeaturedContentController = function($scope,contentService,songMapper, 
     $scope.init = function(){
         $scope.url = $location.absUrl();
         contentService.getSongsLandingPageThumbnails().then(function(result){
-            var songs = _.shuffle(result.data.songs).slice(9);
+            var songs = _.shuffle(result.data.songs).slice(0,9);
             $scope.songs = songMapper.getThumbnails(songs,$scope.getSongCustomStyle);
         });
     }
 
-    $scope.getSongCustomStyle = function(thumbnail){
-        return "shift" + _.indexOf($scope.songs, thumbnail);
+    var index = 0;
+    $scope.getSongCustomStyle = function(){
+        index++;
+        return "shift" + index;
     }
 
     $scope.setPageHeight = function(){
