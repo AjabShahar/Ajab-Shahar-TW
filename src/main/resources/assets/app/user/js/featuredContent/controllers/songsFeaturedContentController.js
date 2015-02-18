@@ -12,12 +12,7 @@ var songsFeaturedContentController = function($scope,contentService,songMapper, 
     }
 
     $scope.getSongCustomStyle = function(thumbnail){
-        return $scope.getCustomStyle(_.indexOf($scope.songs, thumbnail));
-    }
-
-    $scope.getCustomStyle =function(id){
-        var index = ((4+id) % 6) == 0 ? 6 : ((4+id) % 6);
-        return "shift"+index;
+        return "shift" + _.indexOf($scope.songs, thumbnail);
     }
 
     $scope.setPageHeight = function(){

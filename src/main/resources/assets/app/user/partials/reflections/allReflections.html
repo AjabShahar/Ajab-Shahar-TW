@@ -78,7 +78,7 @@
 
             <div class='grid-wrapper'>
                 <div infinite-scroll='loadReflectionsFromRange()' infinite-scroll-distance='1' class="song-grid">
-                    <ul class="flexi-thumbnails" ng-repeat="reflection in reflections">
+                    <ul class="flexi-thumbnails" ng-repeat="reflection in (reflections | filterReflectionByTitle:activeLetter| filterByScroll:scrollIndex)">
                         <li>
                             <reflection-thumbnail ng-if="reflection.isReflection" id="{{reflection.id}}" open="detailsService.open(reflection.contentId)" title="{{reflection.title}}" verb="{{reflection.verb}}"  speaker="{{reflection.speaker}}" custom-style="{{reflection.customStyle}}"></reflection-thumbnail>
                         </li>
