@@ -13,14 +13,18 @@ mediaPlayer.directive('youtube', function($window, YT_event,$sce) {
       width: "@",
       videoid: "=",
       controls : "@",
-      showinfo: "@"
+      showinfo: "@",
+      autoplay : "@",
+      loop : "@",
+      playlist: "@"
     },
 
     template: '<iframe id="ytplayer" type="text/html" width="{{width}}" height="{{height}}" ng-src="{{videoUrl}}" frameborder="0"/>',
 
     link: function(scope, element, attrs, $rootScope) {
         console.log(scope.videoid);
-        scope.videoUrl = $sce.trustAsResourceUrl("http://www.youtube.com/embed/"+scope.videoid+"?controls="+scope.controls+"&showinfo="+scope.showinfo);
+        scope.videoUrl = $sce.trustAsResourceUrl("http://www.youtube.com/embed/"+scope.videoid+"?controls="+scope.controls+"&showinfo="
+        +scope.showinfo+"&autoplay="+scope.autoplay+"&loop="+scope.loop+"&playlist="+scope.playlist);
     }
   };
 });
