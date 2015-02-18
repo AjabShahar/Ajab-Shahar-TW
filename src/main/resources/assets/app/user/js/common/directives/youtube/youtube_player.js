@@ -13,7 +13,6 @@ mediaPlayer.directive('youtube', function($window, YT_event,$sce) {
       width: "@",
       videoid: "=",
       controls : "@",
-      showinfo: "@",
       autoplay : "@",
       loop : "@",
       playlist: "@"
@@ -23,8 +22,7 @@ mediaPlayer.directive('youtube', function($window, YT_event,$sce) {
 
     link: function(scope, element, attrs, $rootScope) {
         console.log(scope.videoid);
-        scope.videoUrl = $sce.trustAsResourceUrl("http://www.youtube.com/embed/"+scope.videoid+"?controls="+scope.controls+"&showinfo="
-        +scope.showinfo+"&autoplay="+scope.autoplay+"&loop="+scope.loop+"&playlist="+scope.playlist);
+        scope.videoUrl = $sce.trustAsResourceUrl("http://www.youtube.com/embed/"+scope.videoid+"?controls="+scope.controls+"&autoplay="+scope.autoplay+"&loop="+scope.loop+"&playlist="+scope.playlist+"&rel=0&showinfo=0");
     }
   };
 });
