@@ -11,7 +11,9 @@
     		var _initialiseScrolling = function() {
                 $.stellar({
                     horizontalScrolling: false,
-                    responsive: true
+                    responsive: true,
+                    scrollProperty: 'scroll',
+                    positionProperty: 'transform',
                 });
     		}
 
