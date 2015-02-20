@@ -113,11 +113,11 @@ public class SongResourceTest {
         String jsonSong = "Song";
         Song song = new Song();
         when(songsRepresentationFactory.create(jsonSong)).thenReturn(song);
-        when(songs.save(song)).thenReturn(song);
 
-        Response actualResult = songResource.saveSong(jsonSong);
+        Response response = songResource.saveSong(jsonSong);
 
-        assertEquals(song.getId(), actualResult.getEntity());
+        assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
+        verify(songs).save(song);
     }
 
     @Test
