@@ -40,7 +40,7 @@ describe("Song details controller specs", function() {
 			scope.saveData();
 			$httpBackend.flush();
 
-			expect(fakeWindow.location.href).toBe('/admin/songs/edit.html?id=1');
+			expect(fakeWindow.location.href).toBe('/admin/home.html');
 		});
 		it("then should set audio & video as media category, if it has a youtube id", function() {
 			$httpBackend.expectPOST('/api/songs', scope.song).respond(200, '1');

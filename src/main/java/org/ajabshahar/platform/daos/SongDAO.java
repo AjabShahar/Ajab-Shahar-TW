@@ -80,13 +80,12 @@ public class SongDAO extends AbstractDAO<Song> {
         return findSongs.list();
     }
 
-    public Song updateSong(Song updatableSong) {
+    public void updateSong(Song updatableSong) {
         if (updatableSong.getTitle() != null)
             sessionFactory.getCurrentSession().update(updatableSong.getTitle());
         if (updatableSong.getSongTitle() != null)
             sessionFactory.getCurrentSession().update(updatableSong.getSongTitle());
         sessionFactory.getCurrentSession().update(updatableSong);
-        return updatableSong;
     }
 
     public List<Song> findSongWithVersions(int songId) {

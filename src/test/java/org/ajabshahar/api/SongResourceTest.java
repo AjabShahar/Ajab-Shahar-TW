@@ -13,6 +13,8 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -87,13 +89,12 @@ public class SongResourceTest {
     @Test
     public void shouldUpdateSong() throws Exception {
         String jsonSong = "Song";
-        Song expectedResult = new Song();
         when(songsRepresentationFactory.create(jsonSong)).thenReturn(song);
-        when(songs.update(song)).thenReturn(expectedResult);
 
-        Response actualResult = songResource.updateSong(jsonSong);
+        Response response = songResource.updateSong(jsonSong);
 
-        assertEquals(expectedResult, actualResult.getEntity());
+        verify(songs).update(song);
+        assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
     }
 
     @Test

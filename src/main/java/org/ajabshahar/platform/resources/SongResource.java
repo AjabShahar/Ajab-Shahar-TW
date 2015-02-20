@@ -40,8 +40,8 @@ public class SongResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response saveSong(String jsonSong) {
         Song song = songsRepresentationFactory.create(jsonSong);
-        song = songs.save(song);
-        return Response.status(200).entity(song.getId()).build();
+        songs.save(song);
+        return Response.ok().build();
     }
 
     @GET
@@ -56,8 +56,8 @@ public class SongResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updateSong(String jsonSong) {
         Song song = songsRepresentationFactory.create(jsonSong);
-        song = songs.update(song);
-        return Response.ok(song).build();
+        songs.update(song);
+        return Response.ok().build();
     }
 
     @GET

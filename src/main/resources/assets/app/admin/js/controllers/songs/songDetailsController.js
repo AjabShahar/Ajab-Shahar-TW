@@ -4,7 +4,8 @@ var songDetailsController = function($scope, $window, $location, songContentServ
     poets: [],
     songText: {},
     isAuthoringComplete: false,
-    mediaCategory: {}
+    mediaCategory: {},
+    words : []
   };
   $scope.singers = [];
   $scope.poets = [];
@@ -13,6 +14,7 @@ var songDetailsController = function($scope, $window, $location, songContentServ
   $scope.umbrellaTitles = [];
   $scope.songTitles = [];
   $scope.genres = [];
+  $scope.words = [{text: "w1"}, {text: "w2"}];
 
   var sortList = function(list, sortCriteria){
     return $filter('orderBy')(list, sortCriteria);
@@ -61,9 +63,7 @@ var songDetailsController = function($scope, $window, $location, songContentServ
   $scope.saveData = function(){
     setSongCategory();
     
-    songContentService.createSong($scope.song).success(function(data){
-          redirectToURL(PAGES.EDIT + '?id=' + data);
-    });
+    songContentService.createSong($scope.song).success(function(){ redirectToURL(PAGES.ADMIN_HOME); });
   };
 
   var getSelectedContent = function(data, list){
@@ -89,9 +89,7 @@ var songDetailsController = function($scope, $window, $location, songContentServ
     setSongCategory();
     $scope.song.publishedDate = null;
 
-    songContentService.editSong($scope.song).success(function(data){
-      redirectToURL(PAGES.ADMIN_HOME);
-    });
+    songContentService.editSong($scope.song).success(function(){ redirectToURL(PAGES.ADMIN_HOME); });
   };
 }
 

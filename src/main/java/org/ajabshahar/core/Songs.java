@@ -38,7 +38,7 @@ public class Songs {
         return songsRepository.findBy(songId, singerId, poetId, startFrom, filteredLetter);
     }
 
-    public Song update(Song updatableSong) {
+    public void update(Song updatableSong) {
         Long id = updatableSong.getId();
         Song originalSongData = songsRepository.findById(id);
         if (updatableSong.getSongTitle() != null && updatableSong.getSongTitle().getId() == 0) {
@@ -57,7 +57,7 @@ public class Songs {
             songTextDAO.create(updatableSong.getSongText());
         }
         originalSongData = invokeAllSetters(originalSongData, updatableSong);
-        return songsRepository.updateSong(originalSongData);
+        songsRepository.updateSong(originalSongData);
     }
 
     public List<Song> getVersions(int songId) {
@@ -110,6 +110,8 @@ public class Songs {
         originalSongData.setSongCategory(updatableSongData.getSongCategory());
         originalSongData.setMediaCategory(updatableSongData.getMediaCategory());
         originalSongData.setSongGenre(updatableSongData.getSongGenre());
+
+//        TODO: Have the setters for words here
 
         if (updatableSongData.getIsAuthoringComplete()) {
             originalSongData.setPublishedDate(new Timestamp(now.getTime()));

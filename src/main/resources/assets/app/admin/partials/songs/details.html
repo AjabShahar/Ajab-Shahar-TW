@@ -31,6 +31,14 @@
 
                 <div class="row form-group">
                     <div class="col-sm-2">
+                        <label>* Words</label>
+                    </div>
+                    <div class="col-sm-2" multi-select input-model="words" button-label="text" item-label="text" tick-property="selected" output-model="song.words"></div>
+                    <input name="words" ng-model="song.words" ng-show="false" required="true">
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-2">
                         <label>* Poet</label>
                     </div>
                     <div class="col-sm-2">
