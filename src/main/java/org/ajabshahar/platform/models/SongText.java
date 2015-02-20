@@ -2,6 +2,7 @@ package org.ajabshahar.platform.models;
 
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -24,12 +25,12 @@ public class SongText {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "SONG_TEXT_SONG_TEXT_CONTENT", joinColumns = @JoinColumn(name = "SONG_TEXT_ID"),
             inverseJoinColumns = @JoinColumn(name = "SONG_TEXT_CONTENT_ID"))
-    private Set<SongTextContent> songTextContents;
+    private Set<SongTextContent> songTextContents = new HashSet<>();
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "SONG_TEXT_OPENING_COUPLET", joinColumns = @JoinColumn(name = "SONG_TEXT_ID"),
             inverseJoinColumns = @JoinColumn(name = "OPENING_COUPLET_ID"))
-    private Set<OpeningCouplet> openingCouplets;
+    private Set<OpeningCouplet> openingCouplets = new HashSet<>();
 
     public String getRefrainOriginal() {
         return refrainOriginal;

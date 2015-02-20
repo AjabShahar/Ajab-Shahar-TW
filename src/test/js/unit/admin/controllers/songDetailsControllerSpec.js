@@ -96,6 +96,17 @@ describe("Song details controller specs", function() {
 			expect(scope.words[1].ticked).toBe(true);
 			expect(scope.words[2].ticked).toBe(false);
 			expect(scope.words[3].ticked).toBe(false);
+		});
+		it("should not throw exception if empty song text contents", function() {
+			var mockedId = 1;
+			spyOn($location, 'search').andReturn({ id: mockedId });
+			scope.words = [ {"id": 2}, {"id": 1}, {"id": 3}, {"id": 4} ];
+			$httpBackend.when("GET", "/api/songs/1").respond({"words": [ {"id": 1}, {"id": 2} ]});
+
+			scope.getSongData();
+			$httpBackend.flush();
+
+			expect(scope.getSongData).not.toThrow();
 
 		});
 	});

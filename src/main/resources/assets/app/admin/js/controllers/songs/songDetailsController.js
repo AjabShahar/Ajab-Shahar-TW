@@ -86,7 +86,11 @@ var songDetailsController = function($scope, $window, $location, songContentServ
       $scope.singers =  getSelectedContent( data.singers, $scope.singers );
       $scope.words =  getSelectedContent( data.words, $scope.words );
       $scope.song = data;
-      $scope.song.songText.songTextContents = sortList($scope.song.songText.songTextContents, 'sequenceNumber');
+
+        if($scope.song.songText){
+          $scope.song.songText.songTextContents = sortList($scope.song.songText.songTextContents, 'sequenceNumber');
+        }
+      
     });
   };
 
