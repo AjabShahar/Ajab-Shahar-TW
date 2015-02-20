@@ -34,7 +34,6 @@ public class SongsTest {
     private TitleDAO titleRepository;
     @Mock
     private SongTextDAO lyricsRepository;
-    @Mock
     private Song song;
     private List<Song> songsList;
     private Songs songs;
@@ -45,6 +44,8 @@ public class SongsTest {
     @Before
     public void setup() {
         songsList = new ArrayList<>();
+        song = new Song();
+        song.setId(SONG_ID);
         songsList.add(song);
         songs = new Songs(songsRepository, titleRepository, categoryRepository,lyricsRepository);
     }
@@ -63,15 +64,16 @@ public class SongsTest {
         assertEquals(song, result);
     }
 
-//    @Test
-//    public void shouldUpdateSong() throws Exception {
-//        when(songsRepository.findById((long) SONG_ID)).thenReturn(song);
-//        when(songsRepository.updateSong(any(Song.class))).thenReturn(song);
-//
-//        Song result = songs.update(song);
-//
-//        assertEquals(song, result);
-//    }
+    @Test
+    public void shouldUpdateSongForIncompleteAuthoring() throws Exception {
+        when(songsRepository.findById((long) SONG_ID)).thenReturn(song);
+        Song updatedSong = new Song();
+        updatedSong.setDuration("new duration");
+        updatedSong.setIsAuthoringComplete(false);
+        updatedSong.setId(SONG_ID);
+        songs.update(updatedSong);
+        assertEquals(song,updatedSong);
+    }
 
     @Test
     public void shouldGetSongVersions() throws Exception {

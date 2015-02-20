@@ -1,7 +1,9 @@
 package org.ajabshahar.platform.models;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -17,6 +19,8 @@ import java.util.Set;
 })
 @Getter
 @Setter
+@EqualsAndHashCode
+@ToString
 public class Song {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
