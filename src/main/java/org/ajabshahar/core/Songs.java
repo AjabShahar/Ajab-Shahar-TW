@@ -7,9 +7,6 @@ import org.ajabshahar.platform.daos.TitleDAO;
 import org.ajabshahar.platform.models.Song;
 import org.ajabshahar.platform.models.Title;
 
-import java.sql.Timestamp;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class Songs {
@@ -38,26 +35,26 @@ public class Songs {
         return songsRepository.findBy(songId, singerId, poetId, startFrom, filteredLetter);
     }
 
-    public void update(Song updatableSong) {
-        Long id = updatableSong.getId();
-        Song originalSongData = songsRepository.findById(id);
-        if (updatableSong.getSongTitle() != null && updatableSong.getSongTitle().getId() == 0) {
-            Title songTitle = new Title(updatableSong.getSongTitle());
+    public void update(Song song) {
+        Long id = song.getId();
+        Song songFromDB = songsRepository.findById(id);
+        if (song.getSongTitle() != null && song.getSongTitle().getId() == 0) {
+            Title songTitle = new Title(song.getSongTitle());
             songTitle.setCategory(categoryRepository.getSongTitleCategory());
             titleRepository.create(songTitle);
-            updatableSong.setSongTitle(songTitle);
+            song.setSongTitle(songTitle);
         }
-        if (updatableSong.getTitle() != null && updatableSong.getTitle().getId() == 0) {
-            Title umbrellaTitle = new Title(updatableSong.getTitle());
+        if (song.getTitle() != null && song.getTitle().getId() == 0) {
+            Title umbrellaTitle = new Title(song.getTitle());
             umbrellaTitle.setCategory(categoryRepository.getUmbrellaTitleCategory());
             titleRepository.create(umbrellaTitle);
-            updatableSong.setTitle(umbrellaTitle);
+            song.setTitle(umbrellaTitle);
         }
-        if (updatableSong.getSongText() != null) {
-            songTextDAO.create(updatableSong.getSongText());
+        if (song.getSongText() != null) {
+            songTextDAO.create(song.getSongText());
         }
-        originalSongData = invokeAllSetters(originalSongData, updatableSong);
-        songsRepository.updateSong(originalSongData);
+        songFromDB.updateFrom(song);
+        songsRepository.updateSong(songFromDB);
     }
 
     public List<Song> getVersions(int songId) {
@@ -89,33 +86,6 @@ public class Songs {
             songTextDAO.create(song.getSongText());
         }
         return songsRepository.saveSong(song);
-    }
-
-    public Song invokeAllSetters(Song originalSongData, Song updatableSongData) {
-        Calendar calendar = Calendar.getInstance();
-        Date now = calendar.getTime();
-
-        originalSongData.setTitle(updatableSongData.getTitle());
-        originalSongData.setSongTitle(updatableSongData.getSongTitle());
-        originalSongData.setAbout(updatableSongData.getAbout());
-        originalSongData.setDownload_url(updatableSongData.getDownload_url());
-        originalSongData.setSongText(updatableSongData.getSongText());
-        originalSongData.setShowOnLandingPage(updatableSongData.getShowOnLandingPage());
-        originalSongData.setDuration(updatableSongData.getDuration());
-        originalSongData.setYoutubeVideoId(updatableSongData.getYoutubeVideoId());
-        originalSongData.setThumbnail_url(updatableSongData.getThumbnail_url());
-        originalSongData.setIsAuthoringComplete(updatableSongData.getIsAuthoringComplete());
-        originalSongData.setSingers(updatableSongData.getSingers());
-        originalSongData.setPoets(updatableSongData.getPoets());
-        originalSongData.setSongCategory(updatableSongData.getSongCategory());
-        originalSongData.setMediaCategory(updatableSongData.getMediaCategory());
-        originalSongData.setSongGenre(updatableSongData.getSongGenre());
-        originalSongData.setWords(updatableSongData.getWords());
-
-        if (updatableSongData.getIsAuthoringComplete()) {
-            originalSongData.setPublishedDate(new Timestamp(now.getTime()));
-        }
-        return originalSongData;
     }
 
     public List<Song> findAll() {

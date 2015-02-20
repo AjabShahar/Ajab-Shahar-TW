@@ -7,6 +7,8 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -94,5 +96,30 @@ public class Song {
             inverseJoinColumns = {@JoinColumn(name = "WORD_ID", referencedColumnName = "ID")})
     private Set<Word> words;
 
+    public void updateFrom(Song song) {
+        Calendar calendar = Calendar.getInstance();
+        Date now = calendar.getTime();
+
+        this.title= song.title;
+        this.songTitle = song.songTitle;
+        this.about=song.about;
+        this.download_url=song.download_url;
+        this.songText=song.songText;
+        this.showOnLandingPage=song.showOnLandingPage;
+        this.duration=song.duration;
+        this.youtubeVideoId=song.youtubeVideoId;
+        this.thumbnail_url=song.thumbnail_url;
+        this.isAuthoringComplete=song.isAuthoringComplete;
+        this.singers=song.singers;
+        this.poets=song.poets;
+        this.songCategory=song.songCategory;
+        this.mediaCategory=song.mediaCategory;
+        this.songGenre=song.songGenre;
+        this.words=song.words;
+
+        if (song.isAuthoringComplete) {
+            this.publishedDate = new Timestamp(now.getTime());
+        }
+    }
 }
 
