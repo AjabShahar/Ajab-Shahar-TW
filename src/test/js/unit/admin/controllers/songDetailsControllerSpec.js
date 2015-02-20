@@ -81,4 +81,22 @@ describe("Song details controller specs", function() {
 			expect(scope.song.publishedDate).toBe(null);
 		});
 	});
+
+	describe("When getting a song", function() {
+		it("then should have the selected contents", function() {
+			var mockedId = 1;
+			spyOn($location, 'search').andReturn({ id: mockedId });
+			scope.words = [ {"id": 2}, {"id": 1}, {"id": 3}, {"id": 4} ];
+			$httpBackend.when("GET", "/api/songs/1").respond({"words": [ {"id": 1}, {"id": 2} ], "songText" : {"songTextContents": "blah"}});
+
+			scope.getSongData();
+			$httpBackend.flush();
+
+			expect(scope.words[0].ticked).toBe(true);
+			expect(scope.words[1].ticked).toBe(true);
+			expect(scope.words[2].ticked).toBe(false);
+			expect(scope.words[3].ticked).toBe(false);
+
+		});
+	});
 });

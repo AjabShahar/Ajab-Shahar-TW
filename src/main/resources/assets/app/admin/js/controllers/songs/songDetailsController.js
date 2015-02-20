@@ -14,7 +14,7 @@ var songDetailsController = function($scope, $window, $location, songContentServ
   $scope.umbrellaTitles = [];
   $scope.songTitles = [];
   $scope.genres = [];
-  $scope.words = [{text: "w1"}, {text: "w2"}];
+  $scope.words = [];
 
   var sortList = function(list, sortCriteria){
     return $filter('orderBy')(list, sortCriteria);
@@ -41,6 +41,8 @@ var songDetailsController = function($scope, $window, $location, songContentServ
     songContentService.getSingers().success(function(singers){ $scope.singers = removeNulls(singers.people); });
 
     songContentService.getPoets().success(function(poets){ $scope.poets = removeNulls(poets.people); });
+
+    songContentService.getWords().success(function(words){ $scope.words = words.words; });
   };
 
   var setSongCategory = function(){
@@ -69,7 +71,9 @@ var songDetailsController = function($scope, $window, $location, songContentServ
   var getSelectedContent = function(data, list){
     return angular.forEach(list, function( item ){
       angular.forEach(data, function(selectedItem){
-        item.ticked = (selectedItem.id === item.id) ? true : false;
+        if(!item.ticked) {
+          item.ticked = (selectedItem.id === item.id)
+        }
       });
     });
   };
@@ -80,6 +84,7 @@ var songDetailsController = function($scope, $window, $location, songContentServ
     songContentService.getSong(songId).success(function ( data ) {
       $scope.genres   =  getSelectedContent( data.songGenre, $scope.genres );
       $scope.singers =  getSelectedContent( data.singers, $scope.singers );
+      $scope.words =  getSelectedContent( data.words, $scope.words );
       $scope.song = data;
       $scope.song.songText.songTextContents = sortList($scope.song.songText.songTextContents, 'sequenceNumber');
     });

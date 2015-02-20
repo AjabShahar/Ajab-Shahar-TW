@@ -43,6 +43,10 @@ var songContentService = function ($http) {
         return $http.post('/api/songs/edit',song);
     }
 
+    var getWords = function () {
+        return $http.get('/api/words');
+    }
+
   return {
     getSong:getSong,
     createSong:createSong,
@@ -54,6 +58,7 @@ var songContentService = function ($http) {
     getCouplets:getCouplets,
     getSongCategories:getSongCategories,
     getMediaCategories:getMediaCategories,
-    getGenres: getGenres
+    getGenres: getGenres,
+    getWords: getWords
   };
 };

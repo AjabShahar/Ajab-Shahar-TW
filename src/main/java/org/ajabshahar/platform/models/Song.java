@@ -1,5 +1,8 @@
 package org.ajabshahar.platform.models;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Set;
@@ -12,6 +15,8 @@ import java.util.Set;
                 query = "SELECT p FROM Song p where p.showOnLandingPage=true and p.isAuthoringComplete=true"
         )
 })
+@Getter
+@Setter
 public class Song {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -80,149 +85,10 @@ public class Song {
     @JoinColumn(name = "SONG_TEXT_ID")
     private SongText songText;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "SONG_WORD", joinColumns = {@JoinColumn(name = "SONG_ID", referencedColumnName = "ID")},
+            inverseJoinColumns = {@JoinColumn(name = "WORD_ID", referencedColumnName = "ID")})
+    private Set<Word> words;
 
-    public Set<PersonDetails> getPoets() {
-        return poets;
-    }
-
-    public void setPoets(Set<PersonDetails> poets) {
-        this.poets = poets;
-    }
-
-    public Boolean getShowOnLandingPage() {
-        return showOnLandingPage;
-    }
-
-    public void setShowOnLandingPage(Boolean showOnLandingPage) {
-        this.showOnLandingPage = showOnLandingPage;
-    }
-
-    public String getDuration() {
-        return duration;
-    }
-
-    public void setDuration(String duration) {
-        this.duration = duration;
-    }
-
-    public String getYoutubeVideoId() {
-        return youtubeVideoId;
-    }
-
-    public void setYoutubeVideoId(String youtubeVideoId) {
-        this.youtubeVideoId = youtubeVideoId;
-    }
-
-    public Set<PersonDetails> getSingers() {
-        return singers;
-    }
-
-    public void setSingers(Set<PersonDetails> singers) {
-        this.singers = singers;
-    }
-
-    public String getThumbnail_url() {
-        return thumbnail_url;
-    }
-
-    public void setThumbnail_url(String thumbnail_url) {
-        this.thumbnail_url = thumbnail_url;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public Category getSongCategory() {
-        return songCategory;
-    }
-
-    public Category getMediaCategory() {
-        return mediaCategory;
-    }
-
-    public void setMediaCategory(Category mediaCategory) {
-        this.mediaCategory = mediaCategory;
-    }
-
-    public void setSongCategory(Category songCategory) {
-        this.songCategory = songCategory;
-    }
-
-    public String getSoundCloudTrackID() {
-        return soundCloudTrackID;
-    }
-
-    public void setSoundCloudTrackID(String soundCloudTrackID) {
-        this.soundCloudTrackID = soundCloudTrackID;
-    }
-
-    public Boolean getIsAuthoringComplete() {
-        return isAuthoringComplete;
-    }
-
-    public void setIsAuthoringComplete(Boolean isAuthoringComplete) {
-        this.isAuthoringComplete = isAuthoringComplete;
-    }
-
-    public Title getTitle() {
-        return title;
-    }
-
-    public void setTitle(Title title) {
-        this.title = title;
-    }
-
-    public Title getSongTitle() {
-        return songTitle;
-    }
-
-    public void setSongTitle(Title songTitle) {
-        this.songTitle = songTitle;
-    }
-
-    public String getDownload_url() {
-        return download_url;
-    }
-
-    public void setDownload_url(String download_url) {
-        this.download_url = download_url;
-    }
-
-    public String getAbout() {
-        return about;
-    }
-
-    public void setAbout(String about) {
-        this.about = about;
-    }
-
-    public SongText getSongText() {
-        return songText;
-    }
-
-    public void setSongText(SongText songText) {
-        this.songText = songText;
-    }
-
-    public Timestamp getPublishedDate() {
-        return publishedDate;
-    }
-
-    public void setPublishedDate(Timestamp publishedDate) {
-        this.publishedDate = publishedDate;
-    }
-
-    public Set<Genre> getSongGenre() {
-        return songGenre;
-    }
-
-    public void setSongGenre(Set<Genre> songGenre) {
-        this.songGenre = songGenre;
-    }
 }
 
