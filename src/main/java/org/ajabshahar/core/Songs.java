@@ -110,8 +110,7 @@ public class Songs {
         originalSongData.setSongCategory(updatableSongData.getSongCategory());
         originalSongData.setMediaCategory(updatableSongData.getMediaCategory());
         originalSongData.setSongGenre(updatableSongData.getSongGenre());
-
-//        TODO: Have the setters for words here
+        originalSongData.setWords(updatableSongData.getWords());
 
         if (updatableSongData.getIsAuthoringComplete()) {
             originalSongData.setPublishedDate(new Timestamp(now.getTime()));
