@@ -49,11 +49,12 @@
                            output-model="song.singers"
                             >
                     </div>
+                    <error-message name="Singer" show-error="song.isAuthoringComplete && song.singers.length < 1"></error-message>
                 </div>
 
                 <div class="row form-group">
                     <div class="col-sm-2">
-                        <label>* Words</label>
+                        <label>Words</label>
                     </div>
                     <div class="form-group col-sm-2"
                        multi-select
@@ -75,6 +76,7 @@
                                 ng-options="poet.id as poet.firstName + ' ' + poet.lastName for poet in poets" class="form-control" ng-required="song.isAuthoringComplete">
                         </select>
                     </div>
+                    <error-message name="Poet" show-error="song.isAuthoringComplete && isEmpty(song.poets[0])"></error-message>
                 </div>
 
                 <div class="row">
@@ -87,6 +89,7 @@
                             <option value="false">No</option>
                         </select>
                     </div>
+                    <error-message name="Show on landing page" show-error="song.isAuthoringComplete && isEmpty(song.showOnLandingPage)"></error-message>
                 </div>
 
                 <div class="row">
@@ -98,6 +101,7 @@
                                 ng-options="category.id as category.name for category in songCategories" class="form-control" ng-required="song.isAuthoringComplete">
                         </select>
                     </div>
+                    <error-message name="Song category" show-error="song.isAuthoringComplete && isEmpty(song.songCategory)"></error-message>
                 </div>
 
                 <div class="row">
@@ -107,11 +111,12 @@
                     <div class="form-group col-sm-2">
                         <input type="text" name="duration" ng-model="song.duration" class="form-control" ng-required="song.isAuthoringComplete">
                     </div>
+                    <error-message name="Duration" show-error="song.isAuthoringComplete && isEmpty(song.duration)"></error-message>
                 </div>
 
                 <div class="row">
                     <div class="form-group col-sm-2">
-                        <label>* Youtube Video ID for video</label>
+                        <label>Youtube Video ID for video</label>
                     </div>
                     <div class="form-group col-sm-2">
                         <input type="text" name="youtubeVideoId" ng-model="song.youtubeVideoId" class="form-control">
@@ -134,6 +139,7 @@
                     <div class="form-group col-sm-2">
                         <input type="text" name="thumbnailUrl" ng-model="song.thumbnail_url" class="form-control" ng-required="song.isAuthoringComplete">
                     </div>
+                    <error-message name="Thumbnail URL" show-error="song.isAuthoringComplete && isEmpty(song.thumbnail_url)"></error-message>
                 </div>
 
                 <div class="row">
@@ -151,6 +157,7 @@
                     </div>
                     <div class="col-sm-2" multi-select input-model="genres" button-label="english" item-label="english" tick-property="ticked" output-model="song.songGenre"></div>
                     <input name="genres" ng-model="song.songGenre" ng-show="false" required="true">
+                    <error-message name="Genre" show-error="song.isAuthoringComplete && song.songGenre.length < 1"></error-message>
                 </div>
 
                 <song-text poets="poets" song-text="song.songText" ></song-text>
@@ -164,6 +171,7 @@
                         <text-angular name="htmlcontent" ng-model="song.about" ta-max-text="1000"></text-angular>
                     </div>
                 </div>
+                <div class="alert alert-danger" role="alert" ng-show="song.isAuthoringComplete && isEmpty(song.about)"> About is required</div>
 
                 <div class="row">
                     <div class="form-group col-sm-2">
