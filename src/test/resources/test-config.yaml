@@ -1,0 +1,33 @@
+template: Hello, %s!
+defaultName: Stranger
+server:
+  gzip:
+    enabled: true
+    minimumEntitySize: 256B
+    bufferSize: 8KB
+  applicationConnectors:
+  - type: http
+    port: 9000
+  adminConnectors:
+  - type: http
+    port: 9001
+database:
+  driverClass: org.h2.Driver
+  user: sa
+  password:
+  url: jdbc:h2:mem
+  properties:
+    charSet: UTF-8
+    hibernate.dialect: org.hibernate.dialect.H2Dialect
+logging:
+  level: DEBUG
+  loggers:
+    io.dropwizard: INFO
+  appenders:
+    - type: console
+cache:
+  local:
+    maximumSize: 5MB
+    expire: 30m
+cacheControl:
+    - maxAge: 30s
