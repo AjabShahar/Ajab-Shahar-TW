@@ -1,5 +1,6 @@
 @import '../reset';
 @import '../common';
+@import "../common/directives/pageMenu";
 
 body {
          .words-wrapper {
@@ -43,33 +44,12 @@ body {
              .page-header {
                    .page-header-with-logo();
 
-                    &>ul {
-                        float: left;
+                    .pagination-head {
+                        width: auto;
                         margin: 28px 0 0 55px;
 
-                        &>li {
-                            float: left;
-                            margin-right: 55px;
-                            text-transform: uppercase;
-
-                            &.language {
-                                &>span {
-                                    padding: 0 10px;
-                                    float: left;
-                                    border-right: solid 1px #575756;
-
-                                    &:last-child {
-                                        border: none;
-                                    }
-
-                                    &.active {
-                                        color: @greenLink;
-                                    }
-                                }
-
-                            }
-
-
+                        &>.upper {
+                            border-bottom: none;
                         }
                     }
              }

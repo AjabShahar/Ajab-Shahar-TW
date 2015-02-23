@@ -18,15 +18,19 @@
                     <span class="logo-container">
                         <a href="javascript:void(0)">words</a>
                     </span>
-                    <ul>
-                        <li class="language">
-                            <span>Original</span>
-                            <span class="active">English</span>
-                        </li>
-                        <li>
-                            <span><span>{{Number}}</span>words</span>
-                        </li>
-                    </ul>
+                    <div class="pagination-head">
+                        <div class="upper">
+                            <ul class="toggle">
+                                <li>
+                                    <span>Original</span>
+                                </li>
+                                <li>
+                                    <span class="active">English</span>
+                                </li>
+                            </ul>
+                            <span class="numeric-count">{{Number}} words</span>
+                        </div>
+                    </div>
                 </div>
 	            <div class='homepage-content'>
 	                <div ng-repeat="word in words">
