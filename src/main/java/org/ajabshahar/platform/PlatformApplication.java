@@ -10,6 +10,7 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import org.ajabshahar.api.*;
 import org.ajabshahar.core.*;
+import org.ajabshahar.platform.controller.LoginController;
 import org.ajabshahar.platform.daos.*;
 import org.ajabshahar.platform.models.*;
 import org.ajabshahar.platform.resources.*;
@@ -73,6 +74,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         environment.jersey().register(picoContainer.getComponent(TitleResource.class));
         environment.jersey().register(picoContainer.getComponent(ReflectionResource.class));
         environment.jersey().register(picoContainer.getComponent(GenreResource.class));
+        environment.jersey().register(picoContainer.getComponent(LoginController.class));
         environment.healthChecks().register("template", templateHealthCheck);
     }
 
@@ -113,6 +115,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         picoContainer.addComponent(TitleResource.class);
         picoContainer.addComponent(ReflectionResource.class);
         picoContainer.addComponent(GenreResource.class);
+        picoContainer.addComponent(LoginController.class);
 
         return picoContainer;
     }
