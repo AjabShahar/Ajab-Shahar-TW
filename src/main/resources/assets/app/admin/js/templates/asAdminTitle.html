@@ -11,7 +11,7 @@
         <button type="button" ng-click="EditDiv=true" class="btn btn-info">Edit</button>
         <button type="button" ng-click="enableNewSongTitle()" class="btn btn-info">Add New</button>
     </div>
-    <span class="alert alert-danger" role="alert" ng-show="authoringComplete && isEmpty(titleData)"> Title is required</span>
+    <error-message name="Title" show-error="authoringComplete && isEmpty(titleData)"></error-message>
 
     <div ng-show="AddNewTitle || EditDiv">
         <div class="row col-sm-12">
