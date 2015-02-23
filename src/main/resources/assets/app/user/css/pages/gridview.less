@@ -1,6 +1,7 @@
 @import "../reset";
 @import "../common";
 @import "../common/directives/slideLeftNav";
+@import "../common/directives/pageMenu";
 
 
 /* Styles for grid View page for all songs */
@@ -152,95 +153,7 @@
             margin-right: 1%;
         }
 
-        .pagination-head {
-            display: inline-block;
-            width: 100%;
-            padding: 0% 0 2%;
-            float: left;
 
-            &>.upper {
-                display: inline-block;
-                width: 100%;
-                float: left;
-                padding-bottom: 5px;
-                border-bottom: solid 1px #ccc;
-
-                .breadcrumb {
-                font-size: 12px;
-                text-transform: uppercase;
-                li {
-                    float: left;
-                    margin-right: 1%;
-                &>a {
-                    color: #888;
-                    text-transform: uppercase;
-                }
-                &>.active {
-                    text-transform: uppercase;
-                    color: #00A199;
-                }
-            }
-        }
-
-                .numericCount {
-                    float: left;
-                    margin-left: 25px;
-                    font-weight: 300;
-                    font-size: 14px;
-                    color: #888;
-                }
-
-                .search-box {
-                    float: left;
-                    margin: 3px 20px 0 0;
-
-                    .search {
-                        width: 150px;
-                        border-radius: 3px;
-                        border: solid 1px #ccc;
-                        height: 28px;
-                        line-height: 18px;
-                        outline: 0;
-                        float: left;
-                        background: #FFF;
-                        margin-top: -5px 8px 5px 0;
-                        display: none;
-                        -webkit-transition: all 0.3s ease;
-                        transition: all 0.3s ease;
-                    }
-                    &:after {
-                        content: '';
-                        display: inline-block;
-                        width: 20px;
-                        height: 19px;
-                        background: transparent url('../../user-img/songs/icons/search.png') 0 0 no-repeat;
-                        cursor: pointer;
-                    }
-                }
-
-                .view-options {
-                    float: right;
-                    &>a {
-                        background: transparent url('../../user-img/songs/icons/grid.png') 0 -1px no-repeat;
-                        width: 20px;
-                        height: 18px;
-                        display: inline-block;
-
-                        &.list {
-                           background-image: url('../../user-img/songs/icons/list.png');
-                           background-position: 0;
-                        }
-                    }
-                }
-
-                .upper-right {
-                    float: right;
-                    width: 110px;
-                }
-
-            }
-
-        }
 
         .grid-wrapper {
             text-align: left;
