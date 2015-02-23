@@ -1,65 +1,72 @@
-var wordDetailsController = function($scope, $http,$window,$location){
-
+var wordDetailsController = function($scope, $window, $location, contentService, PAGES){
   $scope.formInfo = {"reflections":[]};
   $scope.categoryList = [];
   $scope.reflectionsList = [];
   $scope.peopleList = [];
-  $scope.urlId = $location.search().id;
+  $scope.songs = [];
   $scope.formInfo.wordIntroductions = [];
 
-  $http.get('/api/category/word').success(function(categoryList){
-          $scope.categoryList = categoryList;
-  });
+  var wordCategory = 'word';
 
-  $http.get('/api/reflections/edit').success(function(data){
-          $scope.reflectionsList = data;
-  });
+  $scope.init = function(){
+    contentService.getAllCategories(wordCategory).success(function(wordCategories){
+      $scope.categoryList = wordCategories;
+    });
 
-  $http.get('/api/people').success(function(peopleList){
-            $scope.peopleList = peopleList.people;
-  });
+    contentService.getAllReflections().success(function(reflections){
+      $scope.reflectionsList = reflections;
+    });
+
+    contentService.getAllPeople().success(function(people){
+      $scope.peopleList = people.people;
+    });
+
+    contentService.getAllSongs().success(function(songs){
+      $scope.songs = songs;
+    });    
+  };
 
   $scope.saveData = function(){
-      $http.post('/api/words',$scope.formInfo).success(function(data){
+      contentService.saveWord($scope.formInfo).success(function(){
           $window.location.href = '/admin/home.html';
       });
   };
 
-  $scope.init = function(){
-    if($scope.urlId!=null && $scope.urlId!=''){
-        $http.get('/api/words/edit', {
-                          params: {
-                             id:$scope.urlId
-                          }
-                       })
-                       .success(function (data) {
-                         angular.forEach($scope.reflectionsList,function(reflection){
-                           angular.forEach(data.reflections,function(selectedReflection){
-                               if(selectedReflection.id === reflection.id)
-                                      reflection.ticked=true;
-                            });
-                         });
-                         angular.forEach($scope.peopleList,function(person){
-                           angular.forEach(data.writers,function(writer){
-                              if(writer.id == person.id)
-                                person.ticked = true;
-                           });
-                         });
-                         $scope.formInfo = data;
-        });
+  var getSelectedContent = function(data, list){
+    return angular.forEach(list, function( item ){
+      angular.forEach(data, function(selectedItem){
+        if(!item.ticked) {
+          item.ticked = (selectedItem.id === item.id)
+        }
+      });
+    });
+  };
+
+  $scope.getWordDetails = function(){
+    var wordID = $location.search().id;
+
+    if(wordID){
+      contentService.getWord(wordID).success(function (data) {
+        $scope.reflectionsList   =  getSelectedContent( data.reflection, $scope.reflectionsList );
+        $scope.reflectionsList   =  getSelectedContent( data.writers, $scope.peopleList );
+        $scope.formInfo = data;
+      });
     }
   };
 
-   $scope.redirectToEnterPage= function(){
-      $window.location.href = '/admin/home.html';
-   };
+  var redirectToURL = function(url){
+    $window.location.href = url;
+  };
+
+  $scope.redirectToEnterPage= function(){
+    redirectToURL(PAGES.ADMIN_HOME);
+  };
 
   $scope.updateWord = function(){
-    $http.post('/api/words/edit',$scope.formInfo).success(function(data){
-     $window.location.href = '/admin/home.html';
+    contentService.updateWord($scope.formInfo).success(function(){
+      redirectToURL(PAGES.ADMIN_HOME);
     });
   }
-   $scope.init();
 };
 
-wordsAdminApp.controller('wordDetailsController',['$scope','$http','$window','$location',wordDetailsController]);
+wordsAdminApp.controller('wordDetailsController',['$scope', '$window', '$location', 'contentService', 'PAGES', wordDetailsController]);

@@ -4,15 +4,13 @@ describe("Song details controller specs", function() {
 	var scope,
 		$httpBackend,
 		fakeWindow,
-		$location,
-		ADMIN_PAGES;
+		$location;
 
 	beforeEach(module('songsAdminApp'));
 
 	beforeEach(inject(function(_$controller_, _$rootScope_, _$window_, _$location_, songContentService, PAGES, _$filter_, _$httpBackend_) {
 		scope = _$rootScope_.$new();
 		$location = _$location_;
-		ADMIN_PAGES = PAGES;
 		$httpBackend = _$httpBackend_;
 		fakeWindow = { location: { href: '' } };
 

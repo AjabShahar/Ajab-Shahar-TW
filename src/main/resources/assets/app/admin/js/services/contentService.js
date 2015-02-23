@@ -24,16 +24,31 @@ var contentService = function ($http) {
   };
 
   var getAllReflections = function(){
-     return $http.get('/api/reflections/all');
-  }
+    return $http.get('/api/reflections/all');
+  };
+
+  var saveWord = function(word){
+    return $http.post('/api/words', word);
+  };
+
+  var getWord = function(wordID){
+    return $http.get('/api/words/edit?id=' + wordID);
+  };
+
+  var updateWord = function(word){
+    return $http.post('/api/words/edit', word);
+  };
 
   return {
-    getAllPeople:getAllPeople,
-    getAllCategories:getAllCategories,
+    getAllPeople: getAllPeople,
+    getAllCategories: getAllCategories,
     getAllSongs: getAllSongs,
-    getAllCouplets:getAllCouplets,
-    getAllWords:getAllWords,
-    getAllGenres:getAllGenres,
-    getAllReflections:getAllReflections,
+    getAllCouplets: getAllCouplets,
+    getAllWords: getAllWords,
+    getAllGenres: getAllGenres,
+    getAllReflections: getAllReflections,
+    saveWord: saveWord,
+    getWord: getWord,
+    updateWord: updateWord
   };
 };
