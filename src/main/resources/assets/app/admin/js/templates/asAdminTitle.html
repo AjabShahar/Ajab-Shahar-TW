@@ -7,11 +7,12 @@
                 ng-options="sTitle as sTitle.englishTransliteration for sTitle in titleList" class="form-control"  ng-required="authoringComplete">
         </select>
     </div>
-
     <div class="form-group col-sm-2" >
         <button type="button" ng-click="EditDiv=true" class="btn btn-info">Edit</button>
         <button type="button" ng-click="enableNewSongTitle()" class="btn btn-info">Add New</button>
     </div>
+    <span class="alert alert-danger" role="alert" ng-show="authoringComplete && isEmpty(titleData)"> Title is required</span>
+
     <div ng-show="AddNewTitle || EditDiv">
         <div class="row col-sm-12">
             <div class="form-group col-sm-2">

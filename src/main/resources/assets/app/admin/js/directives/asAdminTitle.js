@@ -16,6 +16,10 @@ songsAdminApp.directive("asAdminTitle", function() {
             $scope.EditDiv = false;
             $scope.oldTitle = {};
 
+            $scope.isEmpty = function(value) {
+                return !Boolean(value);
+            }
+
             $scope.enableNewSongTitle = function(){
                 $scope.oldTitle = angular.copy($scope.titleData);
                 $scope.titleData ={"selected":null};

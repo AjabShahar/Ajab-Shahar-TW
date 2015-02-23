@@ -27,6 +27,10 @@ var songDetailsController = function($scope, $window, $location, songContentServ
     return sortList(persons, 'firstName');
   }
 
+  $scope.isEmpty = function(value){
+    return !Boolean(value);
+  }
+
   $scope.init = function(){
     songContentService.getGenres().success(function(genres){ $scope.genres = genres; });
 

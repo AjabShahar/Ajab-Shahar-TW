@@ -27,11 +27,12 @@
                     </div>
                     <div class="col-sm-2" multi-select input-model="singers" button-label="firstName lastName" item-label="firstName lastName" tick-property="selected" output-model="song.singers"></div>
                     <input name="singers" ng-model="song.singers" ng-show="false" required="true">
+                    <span class="alert alert-danger" role="alert" ng-show="song.isAuthoringComplete && isEmpty(song.singers)"> Singer is required</span>
                 </div>
 
                 <div class="row form-group">
                     <div class="col-sm-2">
-                        <label>* Words</label>
+                        <label>Words</label>
                     </div>
                     <div class="col-sm-2" multi-select input-model="words" button-label="wordTranslation" item-label="wordTranslation" tick-property="selected" output-model="song.words"></div>
                     <input name="words" ng-model="song.words" ng-show="false" required="false">
@@ -46,7 +47,8 @@
                                  ng-options="poet.firstName + ' ' + poet.lastName for poet in poets  | orderBy:'firstName'" class="form-control" ng-required="song.isAuthoringComplete">
                         </select>
                     </div>
-                </div>
+                    <span class="alert alert-danger" role="alert" ng-show="song.isAuthoringComplete && isEmpty(song.poets[0])"> Poet is required</span>
+                </div>                
 
                 <div class="row form-group">
                     <div class="col-sm-2">
@@ -58,6 +60,7 @@
                             <option value="false">No</option>
                         </select>
                     </div>
+                    <span class="alert alert-danger" role="alert" ng-show="song.isAuthoringComplete && isEmpty(song.showOnLandingPage)"> Show on landing page is required</span>
                 </div>
 
                 <div class="row form-group">
@@ -69,6 +72,7 @@
                                 ng-options="category.name for category in songCategories" class="form-control" ng-required="song.isAuthoringComplete">
                         </select>
                     </div>
+                    <span class="alert alert-danger" role="alert" ng-show="song.isAuthoringComplete && isEmpty(song.songCategory)"> Song category is required</span>
                 </div>
 
                 <div class="row form-group ">
@@ -78,6 +82,7 @@
                     <div class="col-sm-2">
                         <input type="text" name="duration" ng-model="song.duration" class="form-control" ng-required="song.isAuthoringComplete">
                     </div>
+                    <span class="alert alert-danger" role="alert" ng-show="song.isAuthoringComplete && isEmpty(song.duration)"> Duration is required</span>
                 </div>
 
                 <div class="row form-group">
@@ -105,6 +110,7 @@
                     <div class="col-sm-2">
                         <input type="text" name="thumbnailUrl" ng-model="song.thumbnail_url" class="form-control" ng-required="song.isAuthoringComplete">
                     </div>
+                    <span class="alert alert-danger" role="alert" ng-show="song.isAuthoringComplete && isEmpty(song.thumbnail_url)"> Thumbnail URL is required</span>
                 </div>
 
                 <div class="row form-group">
@@ -122,6 +128,7 @@
                     </div>
                     <div class="col-sm-2" multi-select input-model="genres" button-label="english" item-label="english" tick-property="selected" output-model="song.songGenre"></div>
                     <input name="genres" ng-model="song.songGenre" ng-show="false" required="true">
+                    <span class="alert alert-danger" role="alert" ng-show="song.isAuthoringComplete && isEmpty(song.songGenre)"> Genre is required</span>
                 </div>
 
                  <song-text poets="poets" song-text="song.songText" authoring-complete="song.isAuthoringComplete"></song-text>
@@ -135,6 +142,7 @@
                         <text-angular name="htmlcontent" ng-model="song.about" ta-max-text="1500" ng-required="song.isAuthoringComplete"></text-angular>
                     </div>
                 </div>
+                <div class="alert alert-danger" role="alert" ng-show="song.isAuthoringComplete && isEmpty(song.about)"> About is required</div>
 
                 <div class="row form-group">
                     <div class="col-sm-2">

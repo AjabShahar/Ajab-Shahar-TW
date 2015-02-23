@@ -12,6 +12,8 @@
                 <input type="text" name="refrain" ng-model="songText.refrainEnglishTransliteration" placeholder="Enter english-transliteration text" class="form-control" ng-required="authoringComplete">
                 <input type="text" name="refrain" ng-model="songText.refrainEnglishTranslation" placeholder="Enter english-translation text" class="form-control">
             </div>
+            <span class="alert alert-danger" role="alert" ng-show="authoringComplete && isEmpty(songText.refrainOriginal)"> Original refrain is required</span>
+            <span class="alert alert-danger" role="alert" ng-show="authoringComplete && isEmpty(songText.refrainEnglishTransliteration)"> Transliterated refrain is required</span>
         </div>
         <div ng-init="showOpenCouplet = false">
         <div class="row" >
@@ -140,6 +142,9 @@
                     <textarea class="form-control" rows="6" ng-model="songTextContent.englishTranslationText" placeholder=" Enter original text ..."></textarea>
                 </td>
             </table>
+            <span class="alert alert-danger" role="alert" ng-show="authoringComplete && isEmpty(songTextContent.originalText)"> Original song text is required</span>
+            <span class="alert alert-danger" role="alert" ng-show="authoringComplete && isEmpty(songTextContent.englishTransliterationText)"> Transliterated song text is required</span>
+
             <div class="col-md-1" ng-show="songTextContent.poet != undefined" >
                 <strong>Couplet's poet</strong>
             </div>
