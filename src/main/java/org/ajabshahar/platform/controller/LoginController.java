@@ -1,9 +1,14 @@
 package org.ajabshahar.platform.controller;
 
+import com.google.common.base.Optional;
 import com.google.gson.Gson;
+import io.dropwizard.auth.AuthenticationException;
+import io.dropwizard.auth.Authenticator;
+import io.dropwizard.auth.basic.BasicCredentials;
 import io.dropwizard.hibernate.UnitOfWork;
-import org.ajabshahar.platform.models.User;
+import org.ajabshahar.authentication.Principle;
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -16,14 +21,29 @@ import javax.ws.rs.core.Response;
 @Produces(MediaType.APPLICATION_JSON)
 public class LoginController {
 
+    private Logger logger = Logger.getLogger(this.getClass());
+    private Authenticator<BasicCredentials,Principle> authenticator;
+
+    public LoginController(Authenticator authenticator) {
+        this.authenticator = authenticator;
+    }
+
     @POST
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response login(String userInfo){
-        User userCredentials = new Gson().fromJson(userInfo, User.class);
-        if(StringUtils.isNotBlank(userCredentials.getUserName()) && StringUtils.isNotBlank(userCredentials.getPassword())){
-            return Response.status(302).entity("Great success \\m/").build();
+    public Response login(String credentials){
+        BasicCredentials userCredentials = new Gson().fromJson(credentials, BasicCredentials.class);
+        if(StringUtils.isNotBlank(userCredentials.getUsername()) && StringUtils.isNotBlank(userCredentials.getPassword())){
+            try {
+                Optional<Principle> authenticatedUser = authenticator.authenticate(userCredentials);
+                if(authenticatedUser.isPresent()){
+                    return Response.status(302).entity("Great success \\m/").build();
+                }
+            } catch (AuthenticationException e) {
+                logger.error("Could not authenticate the user", e);
+                throw new RuntimeException("Error :Could not authenticate the user");
+            }
         }
-        return Response.status(500).entity("Username and password cannot be empty").build();
+        return Response.status(400).entity("Username and password cannot be empty").build();
     }
 }

@@ -9,6 +9,7 @@ import io.dropwizard.migrations.MigrationsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import org.ajabshahar.api.*;
+import org.ajabshahar.authentication.AjabShaharAuthenticator;
 import org.ajabshahar.core.*;
 import org.ajabshahar.platform.controller.LoginController;
 import org.ajabshahar.platform.daos.*;
@@ -27,7 +28,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
 
     private final HibernateBundle<PlatformConfiguration> hibernate = new HibernateBundle<PlatformConfiguration>(SplashScreenOptions.class, Word.class,
             Couplet.class, Song.class, PersonDetails.class, Category.class, Title.class, SongText.class, SongTextContent.class, OpeningCouplet.class,
-            WordIntroduction.class, Reflection.class, ReflectionTranscript.class, Genre.class) {
+            WordIntroduction.class, Reflection.class, ReflectionTranscript.class, Genre.class, User.class) {
         @Override
         public DataSourceFactory getDataSourceFactory(PlatformConfiguration configuration) {
             return configuration.getDataSourceFactory();
@@ -92,6 +93,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         picoContainer.addComponent(SongTextDAO.class);
         picoContainer.addComponent(ReflectionDAO.class);
         picoContainer.addComponent(GenreDAO.class);
+        picoContainer.addComponent(UserDAO.class);
 
         picoContainer.addComponent(Songs.class);
         picoContainer.addComponent(Lyrics.class);
@@ -105,6 +107,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         picoContainer.addComponent(SongTextRepresentationFactory.class);
         picoContainer.addComponent(WordRepresentationFactory.class);
         picoContainer.addComponent(ReflectionRepresentationFactory.class);
+        picoContainer.addComponent(Users.class);
 
         picoContainer.addComponent(SplashScreenOptionsResource.class);
         picoContainer.addComponent(WordResource.class);
@@ -116,6 +119,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         picoContainer.addComponent(ReflectionResource.class);
         picoContainer.addComponent(GenreResource.class);
         picoContainer.addComponent(LoginController.class);
+        picoContainer.addComponent(AjabShaharAuthenticator.class);
 
         return picoContainer;
     }

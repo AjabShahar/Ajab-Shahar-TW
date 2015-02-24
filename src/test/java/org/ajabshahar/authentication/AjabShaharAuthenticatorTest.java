@@ -8,9 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
@@ -26,14 +23,10 @@ public class AjabShaharAuthenticatorTest {
     public void setUp() throws Exception {
         initMocks(this);
         ajabShaharAuthenticator = new AjabShaharAuthenticator(users);
-        when(users.getUser(any(String.class))).thenReturn(new User("admin", getHashedPassword("password")));
+        byte[] password = PasswordEncryptor.getEncryptedPassword("password",AjabShaharAuthenticator.SALT,"SHA-256");
+        when(users.getUser(any(String.class))).thenReturn(new User("admin", new String(password)));
     }
 
-    private String getHashedPassword(String password) throws NoSuchAlgorithmException {
-        MessageDigest digest = MessageDigest.getInstance("SHA-256");
-        digest.update(AjabShaharAuthenticator.SALT.getBytes());
-        return new String(digest.digest(password.getBytes()));
-    }
 
     @Test
     public void shouldReturnAuthenticationStatusForGivenCredentials() throws Exception {

@@ -1,6 +1,7 @@
 #intellij idea
 .idea
 .DS_Store
+platform.iml
 target
 test-results.xml
 src/main/resources/assets/npm-debug.log
