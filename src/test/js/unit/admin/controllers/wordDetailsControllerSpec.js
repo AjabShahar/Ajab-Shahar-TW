@@ -4,7 +4,8 @@ describe("Word details controller spec:", function() {
 	var scope,
 		fakeWindow,
 		$location,
-		$httpBackend;
+		$httpBackend,
+		adminHomePage;
 
 	beforeEach(module('wordsAdminApp'));
 
@@ -23,11 +24,13 @@ describe("Word details controller spec:", function() {
 		});
 	}));
 
+	beforeEach(function() {
+		adminHomePage = '/admin/home.html';
+		scope.formInfo.original = "data";
+	});
+
 	describe("When saving a word,", function() {
 		it("then should redirect to admin-home if saved successfully", function() {
-			var adminHomePage = '/admin/home.html';
-			scope.formInfo.original = "data";
-			scope.formInfo.english = "data";
 			$httpBackend.expectPOST('/api/words', scope.formInfo).respond(200);
 
 			scope.saveData();
@@ -36,14 +39,42 @@ describe("Word details controller spec:", function() {
 			expect(fakeWindow.location.href).toBe(adminHomePage);
 		});
 		it("then shouldn't redirect to admin-home if not saved successfully", function() {
-			scope.formInfo.original = "data";
-			scope.formInfo.english = "data";
 			$httpBackend.expectPOST('/api/words', scope.formInfo).respond(500);
 
 			scope.saveData();
 			$httpBackend.flush();
 
 			expect(fakeWindow.location.href).toBe('');
+		});
+	});
+	describe("When updating a word,", function() {
+		it("then should redirect to admin-home if saved successfully", function() {
+			$httpBackend.expectPOST('/api/words/edit', scope.formInfo).respond(200);
+
+			scope.updateWord();
+			$httpBackend.flush();
+
+			expect(fakeWindow.location.href).toBe(adminHomePage);			
+		});
+		it("then shouldn't redirect to admin-home if not saved successfully", function() {
+			$httpBackend.expectPOST('/api/words/edit', scope.formInfo).respond(500);
+
+			scope.updateWord();
+			$httpBackend.flush();
+
+			expect(fakeWindow.location.href).toBe('');
+		});
+	});
+	describe("When fetching a given word via an ID,", function() {
+		it("then should have the word's details, if the word exist", function() {
+			var mockedId = 1;
+			spyOn($location, 'search').andReturn({ id: mockedId });
+			$httpBackend.when("GET", "/api/words/edit?id=1").respond({'id': 1, 'original': 'dummyOriginalText', 'english': 'dummyEnglishText'});
+
+			scope.getWordDetails();
+			$httpBackend.flush();
+
+			expect(scope.formInfo.original).toBe('dummyOriginalText');
 		});
 	});
 });

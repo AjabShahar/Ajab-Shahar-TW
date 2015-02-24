@@ -50,7 +50,7 @@ var wordDetailsController = function($scope, $window, $location, contentService,
     if(wordID){
       contentService.getWord(wordID).success(function (data) {
         $scope.reflectionsList   =  getSelectedContent( data.reflection, $scope.reflectionsList );
-        $scope.reflectionsList   =  getSelectedContent( data.writers, $scope.peopleList );
+        $scope.peopleList   =  getSelectedContent( data.writers, $scope.peopleList );
         $scope.formInfo = data;
       });
     }
