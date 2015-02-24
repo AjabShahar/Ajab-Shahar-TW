@@ -14,7 +14,7 @@
     "angular-route": "1.2.25",
     "angular-animate": "1.2.25",
     "angular-socialshare": "0.0.5",
-    "angular-multi-select": "latest",
+    "angular-multi-select": "2.0.0",
     "jcarousel":"0.3.1",
     "ngInfiniteScroll": "1.1.2",
     "angular-filter": "0.4.9",
