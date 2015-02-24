@@ -10,6 +10,7 @@ wordsAdminApp.directive("adminWordIntroduction", function() {
         templateUrl:'/admin-js/templates/adminWordIntroduction.html',
         controller:function($scope){
             $scope.addToWordIntroduction = function(){
+                $scope.wordIntroductions = [];
                 var introTextOriginals = $scope.wordIntroHindi !=null ? $scope.wordIntroHindi.split(/\n{2,}/g) : [];
                 var introTextTranslations = $scope.wordIntroEnglish !=null ? $scope.wordIntroEnglish.split(/\n{2,}/g) : [];
                 var total =  introTextOriginals.length > 0 ? introTextOriginals.length : introTextTranslations.length;
