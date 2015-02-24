@@ -25,6 +25,7 @@ describe("Word details controller spec:", function() {
 
 	describe("When saving a word,", function() {
 		it("then should redirect to admin-home if saved successfully", function() {
+			var adminHomePage = '/admin/home.html';
 			scope.formInfo.original = "data";
 			scope.formInfo.english = "data";
 			$httpBackend.expectPOST('/api/words', scope.formInfo).respond(200);
@@ -32,7 +33,17 @@ describe("Word details controller spec:", function() {
 			scope.saveData();
 			$httpBackend.flush();
 
-			expect(fakeWindow.location.href).toBe('/admin/home.html');
+			expect(fakeWindow.location.href).toBe(adminHomePage);
+		});
+		it("then shouldn't redirect to admin-home if not saved successfully", function() {
+			scope.formInfo.original = "data";
+			scope.formInfo.english = "data";
+			$httpBackend.expectPOST('/api/words', scope.formInfo).respond(500);
+
+			scope.saveData();
+			$httpBackend.flush();
+
+			expect(fakeWindow.location.href).toBe('');
 		});
 	});
 });

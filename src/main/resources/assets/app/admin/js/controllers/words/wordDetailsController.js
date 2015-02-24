@@ -1,10 +1,12 @@
 var wordDetailsController = function($scope, $window, $location, contentService, PAGES){
-  $scope.formInfo = {"reflections":[]};
+  $scope.formInfo = {
+    reflections: [],
+    wordIntroductions: []
+  };
   $scope.categoryList = [];
   $scope.reflectionsList = [];
   $scope.peopleList = [];
   $scope.songs = [];
-  $scope.formInfo.wordIntroductions = [];
 
   var wordCategory = 'word';
 
