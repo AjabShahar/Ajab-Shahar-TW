@@ -1,4 +1,5 @@
 var songsFeaturedContentController = function($scope,contentService,songMapper, $location, $window){
+    $scope.publishedSongsCount = 0;
     $scope.detailsService={open:function(id){
 //                                          var songId = $scope.getSongId(id);
                                           $window.location.href = '/songs/details.html?id='+id;
@@ -6,6 +7,7 @@ var songsFeaturedContentController = function($scope,contentService,songMapper, 
     $scope.init = function(){
         $scope.url = $location.absUrl();
         contentService.getSongsLandingPageThumbnails().then(function(result){
+            $scope.publishedSongsCount = result.data.songs.length;
             var songs = _.shuffle(result.data.songs).slice(0,9);
             $scope.songs = songMapper.getThumbnails(songs,$scope.getSongCustomStyle);
         });
