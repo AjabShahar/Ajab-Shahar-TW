@@ -1,9 +1,12 @@
 package org.ajabshahar.platform;
 
 import com.bazaarvoice.dropwizard.caching.CachingBundle;
+import com.codahale.metrics.MetricRegistry;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
+import io.dropwizard.auth.CachingAuthenticator;
 import io.dropwizard.auth.basic.BasicAuthProvider;
+import io.dropwizard.auth.basic.BasicCredentials;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.migrations.MigrationsBundle;
@@ -78,7 +81,9 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         environment.jersey().register(picoContainer.getComponent(ReflectionResource.class));
         environment.jersey().register(picoContainer.getComponent(GenreResource.class));
         environment.jersey().register(picoContainer.getComponent(LoginController.class));
-        environment.jersey().register(new BasicAuthProvider<Principle>(picoContainer.getComponent(AjabShaharAuthenticator.class),"Ajab-shahar"));
+        AjabShaharAuthenticator authenticator = picoContainer.getComponent(AjabShaharAuthenticator.class);
+        CachingAuthenticator<BasicCredentials,Principle> cachingAuthenticator = new CachingAuthenticator<BasicCredentials, Principle>(new MetricRegistry(),authenticator,configuration.getAuthenticationCachePolicy())
+        environment.jersey().register(new BasicAuthProvider<Principle>(authenticator,"Ajab-shahar"));
 
         environment.healthChecks().register("template", templateHealthCheck);
     }
