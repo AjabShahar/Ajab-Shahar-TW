@@ -9,13 +9,13 @@ server:
   - type: http
     port: 9001
 database:
-  driverClass: org.hsqldb.jdbcDriver
+  driverClass: org.h2.Driver
   user: sa
   password:
-  url: jdbc:hsqldb:mem:mymemdb
+  url: jdbc:h2:./test
   properties:
     charSet: UTF-8
-    hibernate.dialect: org.hibernate.dialect.HSQLDialect
+    hibernate.dialect: org.hibernate.dialect.H2Dialect
     hibernate.hbm2ddl.auto: update
 logging:
   level: WARNING

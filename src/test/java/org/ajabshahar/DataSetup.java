@@ -4,15 +4,19 @@ import com.ninja_squad.dbsetup.operation.Operation;
 import org.ajabshahar.authentication.AjabShaharAuthenticator;
 import org.ajabshahar.authentication.PasswordEncryptor;
 
+import static com.ninja_squad.dbsetup.Operations.deleteAllFrom;
 import static com.ninja_squad.dbsetup.Operations.insertInto;
 import static com.ninja_squad.dbsetup.Operations.sequenceOf;
 
 public class DataSetup {
     public static byte[] HASHED_PASSWORD = PasswordEncryptor.getEncryptedPassword("password", AjabShaharAuthenticator.SALT,"SHA-256");
 
+    public static final Operation DELETE_ALL =
+            deleteAllFrom("USER");
+
     public static final Operation INSERT_ADMIN_USER =
             sequenceOf(
-                    insertInto("user")
+                    insertInto("USER")
                             .columns("id", "username", "password")
                             .values(11, "admin", new String(HASHED_PASSWORD))
                             .build());

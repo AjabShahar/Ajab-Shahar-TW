@@ -12,7 +12,7 @@ public class UserDAO extends AbstractDAO<User>{
     }
 
     public User getUser(String username) {
-        Query query = currentSession().createQuery("select u from user u where u.username=:username");
+        Query query = currentSession().createQuery("select u from User u where u.username=:username");
         return (User) query.setParameter("username",username).uniqueResult();
     }
 }

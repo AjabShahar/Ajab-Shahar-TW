@@ -73,14 +73,14 @@ public class GenreResourceTest {
     public void shouldCreateAGenre(){
         JsonObject genreJson = new JsonObject();
 
-        Response response = genreResource.createGenre(genreJson.toString());
+        Response response = genreResource.createGenre(genreJson.toString(),null);
 
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
     }
 
     @Test
     public void shouldReturnINTERNAL_SERVER_ERROR_If_Cannot_CreateAGenre(){
-        Response response = genreResource.createGenre(null);
+        Response response = genreResource.createGenre(null,null);
 
         assertEquals(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), response.getStatus());
     }
