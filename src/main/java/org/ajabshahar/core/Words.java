@@ -45,8 +45,6 @@ public class Words {
         originalWord.setWordIntroductions(updatableWord.getWordIntroductions());
         originalWord.setReflections(updatableWord.getReflections());
         originalWord.setWriters(updatableWord.getWriters());
-        originalWord.setRelatedWords(new HashSet<>()); //temporary fix
-        originalWord.setSynonyms(new HashSet<>()); //temporary fix
         return originalWord;
     }
 

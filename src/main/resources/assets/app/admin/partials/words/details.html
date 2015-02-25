@@ -72,6 +72,14 @@
                         </div>
                     </div>
 
+                    <div class="row form-group">
+                        <div class="col-sm-2">
+                            <label>Related Songs</label>
+                        </div>
+                        <div class="col-sm-2" multi-select input-model="songs" button-label="menuTitle" item-label="menuTitle" tick-property="selected" output-model="formInfo.songs"></div>
+                        <input name="singers" ng-model="formInfo.songs" ng-show="false" required="true">
+                    </div>
+
                     <div class="row">
                         <div class="form-group col-sm-2">
                             <label>Reflections</label>
@@ -95,6 +103,7 @@
             </div>
         </div>
     </div>
+    <script src="../../common/lib/underscore/underscore.js"></script>
     <script src="../../common/lib/angular/angular.min.js"></script>
     <script type="text/javascript" src="../../common/lib/angular-multi-select/angular-multi-select.js"></script>
     <script type="text/javascript" src="../../common/lib/angular-filter/dist/angular-filter.js"></script>
