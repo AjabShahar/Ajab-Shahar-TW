@@ -1,0 +1,42 @@
+body {
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.splash_screen {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -999;
+}
+
+.slide_bottom {
+    position: fixed;
+    bottom: 0;
+    right: 20%;
+
+    display: block;
+    width: 220px;
+    height: 180px;
+    background:url(../img/introduction/enter.png) no-repeat;
+
+    a.enter{
+        display: inline-block;
+        margin: 40px 0px 0 50px;
+        color: #fff;
+        width: 70px;
+        height: 20px;
+        cursor: pointer;
+    }
+
+
+    a.pravesh{
+        display: inline-block;
+        margin: 40px 0px 0 2px;
+        color: #fff;
+        width: 70px;
+        height: 20px;
+        cursor: pointer;
+    }
+}
