@@ -37,4 +37,8 @@ logging:
     org.ajabshahar: DEBUG
     org.hibernate.SQL: ALL
   appenders:
-    - type: console
+    - type: file
+      currentLogFilename: ./server.log
+      archivedLogFilenamePattern: ./server-%d.log.gz
+      archivedFileCount: 5
+      timeZone: UTC
