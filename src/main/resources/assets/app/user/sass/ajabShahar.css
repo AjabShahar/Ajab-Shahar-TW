@@ -263,6 +263,156 @@ header ul {
     font-size: 1em;
     color: #ccc; }
 
+.header-with-carousel .headerBox {
+  position: absolute; }
+.header-with-carousel .page-header {
+  width: 100%;
+  padding: 20px 0 0;
+  display: inline-block;
+  background: transparent url(../img/songs/pardah_long.png) -800px bottom no-repeat;
+  height: 138px;
+  padding-top: 10px;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0; }
+  .header-with-carousel .page-header .logo-container {
+    width: 85px; }
+    .header-with-carousel .page-header .logo-container > a {
+      background: transparent url(../img/songs/songs_logo.png) center center no-repeat;
+      width: inherit;
+      height: 55px;
+      float: left;
+      clear: both;
+      padding: 30px 0 0 0;
+      color: #999;
+      font-family: 'Merriweather';
+      font-size: 18px;
+      font-weight: 300; }
+  .header-with-carousel .page-header .sub-info {
+    width: inherit; }
+    .header-with-carousel .page-header .sub-info .number {
+      font-size: 14px;
+      color: #999;
+      border-bottom: solid 1px #d3135a;
+      padding: 5px; }
+    .header-with-carousel .page-header .sub-info .all-link {
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 16px;
+      padding-top: 5px;
+      display: inline-block;
+      line-height: 27px; }
+  .header-with-carousel .page-header .page-title {
+    float: left;
+    margin: 35px 0 0 1.2%;
+    font-family: 'Merriweather';
+    font-weight: 300; }
+    .header-with-carousel .page-header .page-title .main {
+      font-size: 21px;
+      margin-right: 5px;
+      color: #333; }
+    .header-with-carousel .page-header .page-title .sub-main {
+      font-size: 18px;
+      color: #999;
+      font-style: italic; }
+.header-with-carousel .lower-pardah {
+  background: transparent url(../img/songs/pardah_long.png) -800px bottom no-repeat;
+  min-height: 185px;
+  width: 100%;
+  position: relative; }
+  .header-with-carousel .lower-pardah .versions .carousel-wrapper {
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    border-radius: 0;
+    width: 100%;
+    padding: 137px 0 25px 0;
+    /*UI: WIP */ }
+    .header-with-carousel .lower-pardah .versions .carousel-wrapper .carousel-box {
+      width: 90%;
+      text-align: center;
+      margin: 0 auto;
+      padding: 12px 0 0; }
+      @media screen and (max-width: 1380px) {
+        .header-with-carousel .lower-pardah .versions .carousel-wrapper .carousel-box {
+          width: 94%; } }
+      @media screen and (max-width: 1280px) {
+        .header-with-carousel .lower-pardah .versions .carousel-wrapper .carousel-box {
+          width: 77%; } }
+      @media screen and (max-width: 1024px) {
+        .header-with-carousel .lower-pardah .versions .carousel-wrapper .carousel-box {
+          width: 96%; } }
+      @media screen and (max-width: 768px) {
+        .header-with-carousel .lower-pardah .versions .carousel-wrapper .carousel-box {
+          width: 86%; } }
+    .header-with-carousel .lower-pardah .versions .carousel-wrapper .jcarousel > ul {
+      height: 270px;
+      display: inline-block; }
+      .header-with-carousel .lower-pardah .versions .carousel-wrapper .jcarousel > ul li {
+        border: none;
+        width: auto !important;
+        margin: 0 46px 0 53px; }
+    .header-with-carousel .lower-pardah .versions .carousel-wrapper .jcarousel-control-prev, .header-with-carousel .lower-pardah .versions .carousel-wrapper .jcarousel-control-next {
+      background: transparent url(../img/songs/carousel-left.png) 0 0 no-repeat;
+      width: 28px;
+      height: 39px;
+      display: inline-block;
+      text-shadow: none;
+      border-radius: 0;
+      box-shadow: none;
+      top: 25%; }
+    .header-with-carousel .lower-pardah .versions .carousel-wrapper .jcarousel-control-prev {
+      left: -10px; }
+    .header-with-carousel .lower-pardah .versions .carousel-wrapper .jcarousel-control-next {
+      background-image: url(../img/songs/carousel-right.png);
+      right: 0; }
+    .header-with-carousel .lower-pardah .versions .carousel-wrapper .thumbnailWrapper {
+      margin: 0; }
+      .header-with-carousel .lower-pardah .versions .carousel-wrapper .thumbnailWrapper .thumbnail-media {
+        height: 120px;
+        width: 215px; }
+      .header-with-carousel .lower-pardah .versions .carousel-wrapper .thumbnailWrapper .desc-wrapper .thumbnail-desc {
+        margin: 0 0 0 17px;
+        width: 215px; }
+        .header-with-carousel .lower-pardah .versions .carousel-wrapper .thumbnailWrapper .desc-wrapper .thumbnail-desc .item-title {
+          font-size: 16px; }
+        .header-with-carousel .lower-pardah .versions .carousel-wrapper .thumbnailWrapper .desc-wrapper .thumbnail-desc:before {
+          background: rgba(255, 255, 255, 0) url(../img/common/directives/thumbnail/top-small.png) -1px top no-repeat;
+          width: 236px; }
+      .header-with-carousel .lower-pardah .versions .carousel-wrapper .thumbnailWrapper .desc-wrapper .lower-curve {
+        background: rgba(255, 255, 255, 0) url(../img/common/directives/thumbnail/bottom-small.png) left -5px no-repeat;
+        margin-left: 15px; }
+      .header-with-carousel .lower-pardah .versions .carousel-wrapper .thumbnailWrapper.active .desc-wrapper .thumbnail-desc {
+        background-color: #f2f2f2; }
+        .header-with-carousel .lower-pardah .versions .carousel-wrapper .thumbnailWrapper.active .desc-wrapper .thumbnail-desc .item-title {
+          color: #333; }
+        .header-with-carousel .lower-pardah .versions .carousel-wrapper .thumbnailWrapper.active .desc-wrapper .thumbnail-desc:before {
+          background: transparent url(../img/common/directives/thumbnail/top-small-grey.png) -1px top no-repeat; }
+      .header-with-carousel .lower-pardah .versions .carousel-wrapper .thumbnailWrapper.active .desc-wrapper .lower-curve {
+        background: transparent url(../img/common/directives/thumbnail/bottom-small-grey.png) left -5px no-repeat; }
+  .header-with-carousel .lower-pardah .see-more {
+    width: 100%;
+    display: inline-block;
+    position: absolute;
+    bottom: 67px; }
+    .header-with-carousel .lower-pardah .see-more .version {
+      position: absolute;
+      top: 16px;
+      left: 48%;
+      font-family: 'Merriweather';
+      font-size: 12px;
+      color: #999;
+      font-weight: 300; }
+    .header-with-carousel .lower-pardah .see-more .arrow {
+      background: transparent url(../img/songs/down-arrow1.png) 4px 4px no-repeat;
+      height: 13px;
+      width: 19px;
+      display: inline-block; }
+      .header-with-carousel .lower-pardah .see-more .arrow.up-arrow {
+        background-image: url(../img/songs/up-arrow1.png); }
+
+/* Common Header Design with carousel end here*/
 .page-header-with-logo {
   width: 100%;
   padding: 20px 0 0;
@@ -1100,3 +1250,208 @@ body {
       .homepage-content .logo-container {
         left: 5%;
         z-index: 1; } }
+
+#songs_landing .page-header {
+  width: 100%;
+  padding: 20px 0 0;
+  display: inline-block; }
+  #songs_landing .page-header .logo-container {
+    width: 85px; }
+    #songs_landing .page-header .logo-container > a {
+      background: transparent url(../img/songs/songs_logo.png) center center no-repeat;
+      width: inherit;
+      height: 55px;
+      float: left;
+      clear: both;
+      padding: 30px 0 0 0;
+      color: #999;
+      font-family: 'Merriweather';
+      font-size: 18px;
+      font-weight: 300; }
+  #songs_landing .page-header .sub-info {
+    width: inherit; }
+    #songs_landing .page-header .sub-info .number {
+      font-size: 14px;
+      color: #999;
+      border-bottom: solid 1px #d3135a;
+      padding: 5px; }
+    #songs_landing .page-header .sub-info .all-link {
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 16px;
+      padding-top: 5px;
+      display: inline-block;
+      line-height: 27px; }
+
+body.songs-details {
+  background: transparent url(../img/songs/song_details_bg.jpg) center center no-repeat;
+  background-size: cover; }
+  body.songs-details .main-content {
+    margin-top: 60px;
+    min-height: 500px; }
+  body.songs-details #song_container, body.songs-details #poem_container {
+    clear: both;
+    width: 853px;
+    margin: 0 auto; }
+    @media screen and (max-width: 1280px) {
+      body.songs-details #song_container, body.songs-details #poem_container {
+        width: 640px; } }
+    @media screen and (max-width: 768px) {
+      body.songs-details #song_container, body.songs-details #poem_container {
+        width: 530px; } }
+  body.songs-details #song_container youtube {
+    width: 853px;
+    display: inline-block;
+    height: 480px; }
+    @media screen and (max-width: 1280px) {
+      body.songs-details #song_container youtube {
+        width: 640px;
+        height: 360px; } }
+    @media screen and (max-width: 768px) {
+      body.songs-details #song_container youtube {
+        width: 530px;
+        height: 315px; } }
+    body.songs-details #song_container youtube iframe {
+      -webkit-box-shadow: 1px 1px 10px #777777 ;
+      -moz-box-shadow: 1px 1px 10px #777777 ;
+      box-shadow: 1px 1px 10px #777777 ;
+      border: solid 5px #fff;
+      width: inherit;
+      height: inherit; }
+  body.songs-details #song_container .rendition-wrapper ul {
+    float: right;
+    padding: 0 0 6px; }
+    body.songs-details #song_container .rendition-wrapper ul li {
+      float: left;
+      color: #999; }
+      body.songs-details #song_container .rendition-wrapper ul li > a {
+        color: #999;
+        margin: 0 3px; }
+        body.songs-details #song_container .rendition-wrapper ul li > a.active {
+          color: #7bd0ca; }
+  body.songs-details #song_container .info {
+    width: 843px;
+    display: none;
+    max-height: 260px;
+    margin: 45px 0;
+    color: #666;
+    font-size: 12px;
+    font-family: 'Merriweather';
+    font-weight: 300;
+    overflow: auto; }
+  body.songs-details #song_container .video-options {
+    width: 100%;
+    display: inline-block; }
+    body.songs-details #song_container .video-options > ul {
+      text-align: left;
+      float: left;
+      position: relative;
+      font-size: 16px;
+      width: auto; }
+      body.songs-details #song_container .video-options > ul > li {
+        float: left;
+        padding: 10px 5px;
+        color: #666;
+        font-weight: 200;
+        line-height: 20px; }
+    body.songs-details #song_container .video-options ul.share-options li {
+      padding: 10px; }
+      body.songs-details #song_container .video-options ul.share-options li a {
+        background: transparent url(../img/songs/songs_sprite.png) 0 0 no-repeat;
+        display: inline-block;
+        width: 26px;
+        height: 23px; }
+        body.songs-details #song_container .video-options ul.share-options li a.favorite {
+          background-position: 0 -25px;
+          height: 22px; }
+        body.songs-details #song_container .video-options ul.share-options li a.share {
+          background-position: -26px 0;
+          height: 23px; }
+        body.songs-details #song_container .video-options ul.share-options li a.download {
+          background-position: -26px -23px; }
+  body.songs-details #song_container .song-info {
+    width: auto;
+    margin: 45px 0 40px; }
+    body.songs-details #song_container .song-info dl {
+      margin: 4px auto;
+      clear: both;
+      line-height: 23px;
+      text-align: center;
+      display: block; }
+      body.songs-details #song_container .song-info dl dt {
+        color: #e6257a;
+        text-transform: capitalize;
+        font-weight: 300;
+        display: inline-block;
+        font-size: 13px;
+        font-family: 'Merriweather'; }
+      body.songs-details #song_container .song-info dl dd {
+        color: #7f8080;
+        text-transform: uppercase;
+        display: inline-block;
+        margin: 0 20px 0 0;
+        font-size: 10px;
+        font-weight: 300; }
+  body.songs-details #poem_container {
+    text-align: center;
+    padding: 10px 0 50px;
+    font-weight: 300;
+    line-height: 27px; }
+    body.songs-details #poem_container .song-heading {
+      color: #b3b3b3;
+      font-size: 30px;
+      line-height: 52px;
+      padding: 0 0 20px;
+      font-weight: 300;
+      font-family: 'Merriweather'; }
+    body.songs-details #poem_container .poet-details {
+      color: #676767;
+      font-size: 14px; }
+    body.songs-details #poem_container .initial-couplets {
+      color: #808080;
+      font-size: 14px; }
+    body.songs-details #poem_container .lyrics {
+      font-size: 14px;
+      color: #333; }
+    body.songs-details #poem_container .hindi > * {
+      font-family: 'Lohit Devanagari', serif; }
+    body.songs-details #poem_container .hindi .song-heading {
+      font-size: 32px; }
+    body.songs-details #poem_container .hindi .initial-couplets {
+      font-size: 15px; }
+    body.songs-details #poem_container .hindi .lyrics {
+      font-size: 18px; }
+  body.songs-details .lyrics-footer {
+    background: transparent url(../img/songs/song_bottom.png) 0 0 no-repeat;
+    height: 100px;
+    width: 100%;
+    display: inline-block;
+    position: relative; }
+    body.songs-details .lyrics-footer ul {
+      margin: 20px auto 0px;
+      display: inline-block;
+      width: auto; }
+      body.songs-details .lyrics-footer ul > li {
+        float: left;
+        margin-left: 30px; }
+        body.songs-details .lyrics-footer ul > li:first-child {
+          margin-left: 0; }
+        body.songs-details .lyrics-footer ul > li > a {
+          float: left;
+          width: 36px;
+          height: 36px;
+          background: transparent url(../img/songs/songs_sprite.png) 0 0 no-repeat; }
+        body.songs-details .lyrics-footer ul > li.original > a {
+          background-position: 0px -48px; }
+        body.songs-details .lyrics-footer ul > li.transliteration > a {
+          background-position: 0px -84px; }
+        body.songs-details .lyrics-footer ul > li.translation > a {
+          background-position: 0px -120px; }
+    body.songs-details .lyrics-footer .play-icon {
+      position: absolute;
+      right: 13%;
+      bottom: 40px;
+      background: transparent url(../img/songs/songs_sprite.png) -52px 0px no-repeat;
+      width: 50px;
+      height: 102px;
+      display: inline-block; }

@@ -1,9 +1,13 @@
+// External Libs
+
 @import '../../common/lib/bourbon/app/assets/stylesheets/bourbon';
 @import '../../common/lib/neat/app/assets/stylesheets/neat';
+
 
 // Mixins
 
 @import 'mixins/boxShadow';
+@import 'mixins/pageHeaderWithLogo';
 
 
 // Config
@@ -26,6 +30,7 @@
 @import 'components/headerLogo';
 @import 'components/headerMainNav';
 @import 'components/headerSubNav';
+@import 'components/headerWithCarousal';
 
 @import 'components/innerPageHeader';
 
