@@ -52,7 +52,9 @@ public class Word {
             inverseJoinColumns = {@JoinColumn(name = "RELATED_WORD_ID", referencedColumnName = "ID")})
     private Set<Word> relatedWords = new HashSet<>();
 
-    @ManyToMany(fetch = FetchType.EAGER,mappedBy = "words")
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "SONG_WORD", joinColumns = {@JoinColumn(name = "WORD_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "SONG_ID")})
     private Set<Song> songs;
 
     @ManyToMany(fetch = FetchType.EAGER)
