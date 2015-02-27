@@ -76,5 +76,31 @@ describe("Word details controller spec:", function() {
 
 			expect(scope.formInfo.original).toBe('dummyOriginalText');
 		});
+		it("then should have singers as a comma seperated entries for a song", function() {
+			var mockedSongs =  {"songs" : [ {"englishTransliterationTitle": "some title", "singers": [{"name": "singer1"}, {"name": "singer2"} ] } ,{"englishTransliterationTitle": "some title2", "singers": [{"name": "singer3"}, {"name": "singer4"} ]} ] } ;
+			$httpBackend.when("GET", "/api/category/word").respond(null);
+			$httpBackend.when("GET", "/api/reflections/all").respond(null);
+			$httpBackend.when("GET", "/api/people").respond({"people": ""});
+			$httpBackend.when("GET", "/api/songs/getAllSongs").respond(mockedSongs);
+
+			scope.init();
+			$httpBackend.flush();
+
+			expect(scope.songs[0].menuTitle).toBe('some title - (singer1, singer2)');
+			expect(scope.songs[1].menuTitle).toBe('some title2 - (singer3, singer4)');
+		});
+		it("then shouldn't have singers as a comma seperated entries for a song, if there are no singers", function() {
+			var mockedSongs =  {"songs" : [ {"englishTransliterationTitle": "some title", "singers": [] } ,{"englishTransliterationTitle": "some title2", "singers": []} ] } ;
+			$httpBackend.when("GET", "/api/category/word").respond(null);
+			$httpBackend.when("GET", "/api/reflections/all").respond(null);
+			$httpBackend.when("GET", "/api/people").respond({"people": ""});
+			$httpBackend.when("GET", "/api/songs/getAllSongs").respond(mockedSongs);
+
+			scope.init();
+			$httpBackend.flush();
+
+			expect(scope.songs[0].menuTitle).toBe('some title');
+			expect(scope.songs[1].menuTitle).toBe('some title2');
+		});
 	});
 });

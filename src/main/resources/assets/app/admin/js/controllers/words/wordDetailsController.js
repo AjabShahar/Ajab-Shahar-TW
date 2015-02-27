@@ -10,6 +10,18 @@ var wordDetailsController = function($scope, $window, $location, contentService,
 
   var wordCategory = 'word';
 
+  var createMenuTitleForSongs = function(){
+    angular.forEach($scope.songs, function( song ){
+      var singerNames = _.pluck(song.singers, 'name');
+      if(_.isEmpty(singerNames)) {
+        song.menuTitle = song.englishTransliterationTitle;
+      } else {
+        song.menuTitle = song.englishTransliterationTitle + " - (" + singerNames.join(", ") + ")";  
+      }
+      
+    });
+  };
+
   $scope.init = function(){
     contentService.getAllCategories(wordCategory).success(function(wordCategories){
       $scope.categoryList = wordCategories;
@@ -24,8 +36,10 @@ var wordDetailsController = function($scope, $window, $location, contentService,
     });
 
     contentService.getAllSongs().success(function(songs){
-      $scope.songs = songs;
-    });    
+      $scope.songs = songs.songs;
+      createMenuTitleForSongs();
+    });
+
   };
 
   $scope.saveData = function(){
