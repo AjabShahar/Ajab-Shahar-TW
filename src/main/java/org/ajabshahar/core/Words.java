@@ -45,7 +45,8 @@ public class Words {
         originalWord.setWordIntroductions(updatableWord.getWordIntroductions());
         originalWord.setReflections(updatableWord.getReflections());
         originalWord.setWriters(updatableWord.getWriters());
-        originalWord.setSongs(updatableWord.getSongs());
+        originalWord.getSongs().clear();
+        originalWord.getSongs().addAll(updatableWord.getSongs());
         return originalWord;
     }
 

@@ -28,9 +28,9 @@ public class WordDAO extends AbstractDAO<Word> {
         return word;
     }
 
-    public List<Word> findBy(int wordId, Boolean showOnMainLandingPage) {
-        Session currentSession = sessionFactory.openSession();
-        Criteria allWords = currentSession.createCriteria(Word.class);
+    public List findBy(int wordId, Boolean showOnMainLandingPage) {
+        Session session = this.sessionFactory.openSession();
+        Criteria allWords = session.createCriteria(Word.class);
         if (showOnMainLandingPage) {
             allWords.add(Restrictions.eq("showOnLandingPage", true));
         }
@@ -38,11 +38,13 @@ public class WordDAO extends AbstractDAO<Word> {
             allWords.add(Restrictions.eq("id", Long.valueOf(wordId)));
         }
         allWords.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-        return allWords.list();
+        List words = allWords.list();
+        session.close();
+        return words;
     }
 
     public Word update(Word updatableWord) {
-        sessionFactory.getCurrentSession().update(updatableWord);
+        currentSession().update(updatableWord);
         for (WordIntroduction wordIntroduction : updatableWord.getWordIntroductions()) {
             if (wordIntroduction.getId() == 0) {
                 wordIntroduction.setWord(updatableWord);
@@ -54,8 +56,7 @@ public class WordDAO extends AbstractDAO<Word> {
 
 
     public List<Word> findReflections(int wordId) {
-        Session currentSession = sessionFactory.openSession();
-        Criteria wordReflections = currentSession.createCriteria(Word.class);
+        Criteria wordReflections = currentSession().createCriteria(Word.class);
         if (wordId != 0) {
             wordReflections.add(Restrictions.eq("id", Long.valueOf(wordId)));
         }
@@ -63,10 +64,12 @@ public class WordDAO extends AbstractDAO<Word> {
         return wordReflections.list();
     }
 
-    public List<Word> findAll() {
-        Session currentSession = sessionFactory.openSession();
-        Criteria wordVersions = currentSession.createCriteria(Word.class);
+    public List findAll() {
+        Session session = sessionFactory.openSession();
+        Criteria wordVersions = session.createCriteria(Word.class);
         wordVersions.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-        return wordVersions.list();
+        List wordVersionsList = wordVersions.list();
+        session.close();
+        return wordVersionsList;
     }
 }
