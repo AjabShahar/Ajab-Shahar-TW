@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -49,7 +50,7 @@ public class Word {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "RELATED_WORDS", joinColumns = {@JoinColumn(name = "WORD_ID", referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(name = "RELATED_WORD_ID", referencedColumnName = "ID")})
-    private Set<Word> relatedWords;
+    private Set<Word> relatedWords = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.EAGER,mappedBy = "words")
     private Set<Song> songs;
@@ -57,10 +58,11 @@ public class Word {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "WORD_SYNONYMS", joinColumns = {@JoinColumn(name = "WORD_ID", referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(name = "SYNONYM_WORD_ID", referencedColumnName = "ID")})
-    private Set<Word> synonyms;
+    private Set<Word> synonyms = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "WORD_WRITER", joinColumns = {@JoinColumn(name = "WORD_ID",referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(name="WRITER_ID", referencedColumnName = "ID")})
     private Set<PersonDetails> writers;
+
 }
