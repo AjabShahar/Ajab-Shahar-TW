@@ -67,11 +67,15 @@ describe("Word details controller spec:", function() {
 	});
 	describe("When fetching a given word via an ID,", function() {
 		it("then should have the word's details, if the word exist", function() {
+			$httpBackend.when("GET", "/api/category/word").respond(null);
+			$httpBackend.when("GET", "/api/reflections/all").respond(null);
+			$httpBackend.when("GET", "/api/people").respond({"people": ""});
+			$httpBackend.when("GET", "/api/songs/getAllSongs").respond({"songs" : "blah" });
 			var mockedId = 1;
 			spyOn($location, 'search').andReturn({ id: mockedId });
 			$httpBackend.when("GET", "/api/words/edit?id=1").respond({'id': 1, 'original': 'dummyOriginalText', 'english': 'dummyEnglishText'});
 
-			scope.getWordDetails();
+			scope.init();
 			$httpBackend.flush();
 
 			expect(scope.formInfo.original).toBe('dummyOriginalText');

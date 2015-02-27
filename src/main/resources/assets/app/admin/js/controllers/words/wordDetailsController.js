@@ -1,4 +1,4 @@
-var wordDetailsController = function($scope, $window, $location, contentService, PAGES){
+var wordDetailsController = function($scope, $window, $location, contentService, PAGES, $q){
   $scope.formInfo = {
     reflections: [],
     wordIntroductions: []
@@ -23,23 +23,21 @@ var wordDetailsController = function($scope, $window, $location, contentService,
   };
 
   $scope.init = function(){
-    contentService.getAllCategories(wordCategory).success(function(wordCategories){
-      $scope.categoryList = wordCategories;
-    });
+    var reflectionsPromise = contentService.getAllReflections();
+    var peoplePromise = contentService.getAllPeople();
+    var categoriesPromise = contentService.getAllCategories(wordCategory);
+    var songsPromise = contentService.getAllSongs();
 
-    contentService.getAllReflections().success(function(reflections){
-      $scope.reflectionsList = reflections;
-    });
+    $q.all([categoriesPromise, songsPromise, peoplePromise, reflectionsPromise]).then(function(data){
+      $scope.categoryList = data[0].data;
+      $scope.songs = data[1].data.songs;
+      $scope.peopleList = data[2].data.people;
+      $scope.reflections = data[3].data;
 
-    contentService.getAllPeople().success(function(people){
-      $scope.peopleList = people.people;
-    });
-
-    contentService.getAllSongs().success(function(songs){
-      $scope.songs = songs.songs;
       createMenuTitleForSongs();
+      
+      getWordDetails();
     });
-
   };
 
   $scope.saveData = function(){
@@ -58,7 +56,7 @@ var wordDetailsController = function($scope, $window, $location, contentService,
     });
   };
 
-  $scope.getWordDetails = function(){
+  var getWordDetails = function(){
     var wordID = $location.search().id;
 
     if(wordID){
@@ -86,4 +84,4 @@ var wordDetailsController = function($scope, $window, $location, contentService,
   }
 };
 
-wordsAdminApp.controller('wordDetailsController',['$scope', '$window', '$location', 'contentService', 'PAGES', wordDetailsController]);
+wordsAdminApp.controller('wordDetailsController',['$scope', '$window', '$location', 'contentService', 'PAGES', '$q', wordDetailsController]);
