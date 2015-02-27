@@ -2,6 +2,7 @@ package org.ajabshahar.platform.resources;
 
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.jersey.caching.CacheControl;
+import io.dropwizard.jersey.sessions.Session;
 import org.ajabshahar.api.SongRepresentation;
 import org.ajabshahar.api.SongTextRepresentationFactory;
 import org.ajabshahar.api.SongsRepresentation;
@@ -12,9 +13,11 @@ import org.ajabshahar.platform.models.Song;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
 import java.util.List;
 
 @Path("/songs")
@@ -46,7 +49,9 @@ public class SongResource {
 
     @GET
     @UnitOfWork
-    public List<Song> listAllSongValues() {
+    public List<Song> listAllSongValues(@Session HttpSession httpSession) {
+        if (httpSession.getAttribute("user") == null)
+            return new ArrayList<>();
         return songDAO.findAll();
     }
 
@@ -121,7 +126,9 @@ public class SongResource {
     @GET
     @UnitOfWork
     @Path("/getAllSongs")
-    public Response getSongs() {
+    public Response getSongs(@Session HttpSession httpSession) {
+        if (httpSession.getAttribute("user") == null)
+            return Response.noContent().build();
         List<Song> songList = songs.findAll();
         SongsRepresentation songsRepresentation = songsRepresentationFactory.createSongsRepresentation(songList);
         return Response.ok(songsRepresentation, MediaType.APPLICATION_JSON).build();

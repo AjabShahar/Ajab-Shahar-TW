@@ -13,7 +13,6 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -126,7 +125,7 @@ public class SongResourceTest {
         when(songs.findAll()).thenReturn(songList);
         when(songsRepresentationFactory.createSongsRepresentation(songList)).thenReturn(expectedResult);
 
-        Response actualResult = songResource.getSongs();
+        Response actualResult = songResource.getSongs(null);
 
         assertEquals(expectedResult, actualResult.getEntity());
 

@@ -1,14 +1,12 @@
 package org.ajabshahar.platform;
 
 import com.bazaarvoice.dropwizard.caching.CachingBundle;
-import com.codahale.metrics.MetricRegistry;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
-import io.dropwizard.auth.CachingAuthenticator;
 import io.dropwizard.auth.basic.BasicAuthProvider;
-import io.dropwizard.auth.basic.BasicCredentials;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
+import io.dropwizard.jersey.sessions.HttpSessionProvider;
 import io.dropwizard.migrations.MigrationsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -20,6 +18,7 @@ import org.ajabshahar.platform.controller.LoginController;
 import org.ajabshahar.platform.daos.*;
 import org.ajabshahar.platform.models.*;
 import org.ajabshahar.platform.resources.*;
+import org.eclipse.jetty.server.session.SessionHandler;
 import org.picocontainer.DefaultPicoContainer;
 
 public class PlatformApplication extends Application<PlatformConfiguration> {
@@ -55,7 +54,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         bootstrap.addBundle(new AssetsBundle("/assets/app/admin/js", "/admin-js", null, "admin-js"));
         bootstrap.addBundle(new AssetsBundle("/assets/app/admin/img", "/admin-img", null, "admin-img"));
 
-        bootstrap.addBundle(new AssetsBundle("/assets/app/admin/partials", "/admin", null, "admin"));
+            bootstrap.addBundle(new AssetsBundle("/assets/app/admin/partials", "/admin", null, "admin"));
 
         bootstrap.addBundle(new AssetsBundle("/assets/app/common", "/common", null, "common"));
 
@@ -81,8 +80,10 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         environment.jersey().register(picoContainer.getComponent(ReflectionResource.class));
         environment.jersey().register(picoContainer.getComponent(GenreResource.class));
         environment.jersey().register(picoContainer.getComponent(LoginController.class));
+        environment.jersey().register(HttpSessionProvider.class);
+        environment.servlets().setSessionHandler(new SessionHandler());
         AjabShaharAuthenticator authenticator = picoContainer.getComponent(AjabShaharAuthenticator.class);
-        CachingAuthenticator<BasicCredentials,Principle> cachingAuthenticator = new CachingAuthenticator<BasicCredentials, Principle>(new MetricRegistry(),authenticator,configuration.getAuthenticationCachePolicy())
+//        CachingAuthenticator<BasicCredentials,Principle> cachingAuthenticator = new CachingAuthenticator<BasicCredentials, Principle>(new MetricRegistry(),authenticator,configuration.getAuthenticationCachePolicy())
         environment.jersey().register(new BasicAuthProvider<Principle>(authenticator,"Ajab-shahar"));
 
         environment.healthChecks().register("template", templateHealthCheck);

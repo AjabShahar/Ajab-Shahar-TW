@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-<head lang="en" ng-app="adminApp">
+<html ng-app="adminApp">
+<head lang="en" >
     <meta charset="UTF-8">
     <title>Sign in</title>
     <link rel="stylesheet" href="../../admin-css/admin.css" rel="stylesheet" type="text/css">
@@ -12,11 +12,11 @@
     <button type="button" class="btn btn-info admin-home">Admin home</button>
 </a>
 
-<div class="left">
+<div class="left" >
 
     <h2>Sign In</h2>
 
-    <form name="signInForm">
+    <form name="signInForm" ng-controller="loginController">
         <div class="left">
 
             <div class="row form-group">
@@ -24,7 +24,7 @@
                     <label>User Name</label>
                 </div>
                 <div class="col-sm-2">
-                    <input type="text" name="userName" ng-model="formInfo.userName" class="form-control">
+                    <input type="text" name="userName" ng-model="formInfo.username" class="form-control">
                 </div>
             </div>
 
@@ -36,12 +36,18 @@
                     <input type="password" name="password" ng-model="formInfo.password" class="form-control">
                 </div>
             </div>
+
+            <div>
+                <button type="submit" ng-click="login()">Login</button>
+            </div>
         </div>
 
     </form>
 </div>
  <script type="text/javascript" src="../../common/lib/angular/angular.min.js"></script>
- <script type="text/javascript" src="../js/app.js"></script>
+<script type="text/javascript" src="../admin-js/services/contentService.js"></script>
+ <script type="text/javascript" src="../admin-js/app.js"></script>
+ <script type="text/javascript" src="../admin-js/controllers/loginController.js"></script>
 
 </body>
 </html>
