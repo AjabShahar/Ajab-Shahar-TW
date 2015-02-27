@@ -633,6 +633,22 @@ header ul {
         color: #888;
         text-transform: uppercase; }
 
+.thumbnailWrapper.word .desc-wrapper .thumbnail-desc .sub-title.item-title-translation {
+  font-size: 18px; }
+.thumbnailWrapper.word .desc-wrapper .thumbnail-desc small.desc {
+  color: #868686; }
+.thumbnailWrapper.word .desc-wrapper .thumbnail-desc .categoryName {
+  color: #868686;
+  font-size: 11px;
+  line-height: 18px;
+  text-transform: uppercase; }
+.thumbnailWrapper.word .desc-wrapper .thumbnail-desc .more-info {
+  color: #9c9b9b;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-family: "Merriweather";
+  font-weight: 700; }
+
 .jspVerticalBar {
   width: 5px; }
   .jspVerticalBar .jspTrack {
