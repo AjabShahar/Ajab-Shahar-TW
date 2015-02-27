@@ -15,3 +15,9 @@
         }
     }
 }
+
+#songs_landing {
+    .page-header {
+        @include page-header-with-logo;
+    }
+}
