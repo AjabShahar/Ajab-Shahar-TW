@@ -1,5 +1,7 @@
 package org.ajabshahar.platform.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,6 +25,7 @@ import java.util.Set;
 @Setter
 @EqualsAndHashCode
 @ToString
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
 public class Song {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -92,8 +95,8 @@ public class Song {
     private SongText songText;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "SONG_WORD", joinColumns = {@JoinColumn(name = "SONG_ID", referencedColumnName = "ID")},
-            inverseJoinColumns = {@JoinColumn(name = "WORD_ID", referencedColumnName = "ID")})
+    @JoinTable(name = "SONG_WORD", joinColumns = {@JoinColumn(name = "SONG_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "WORD_ID")})
     private Set<Word> words;
 
     public void updateFrom(Song song) {

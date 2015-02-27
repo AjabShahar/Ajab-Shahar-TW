@@ -51,6 +51,7 @@ var wordDetailsController = function($scope, $window, $location, contentService,
       contentService.getWord(wordID).success(function (data) {
         $scope.reflectionsList   =  getSelectedContent( data.reflection, $scope.reflectionsList );
         $scope.peopleList   =  getSelectedContent( data.writers, $scope.peopleList );
+        $scope.songs = getSelectedContent(data.songs, $scope.songs);
         $scope.formInfo = data;
       });
     }
