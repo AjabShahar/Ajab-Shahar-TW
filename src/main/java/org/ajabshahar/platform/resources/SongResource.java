@@ -127,8 +127,8 @@ public class SongResource {
     @UnitOfWork
     @Path("/getAllSongs")
     public Response getSongs(@Session HttpSession httpSession) {
-        if (httpSession.getAttribute("user") == null)
-            return Response.noContent().build();
+//        if (httpSession.getAttribute("user") == null)
+//            return Response.noContent().build();
         List<Song> songList = songs.findAll();
         SongsRepresentation songsRepresentation = songsRepresentationFactory.createSongsRepresentation(songList);
         return Response.ok(songsRepresentation, MediaType.APPLICATION_JSON).build();

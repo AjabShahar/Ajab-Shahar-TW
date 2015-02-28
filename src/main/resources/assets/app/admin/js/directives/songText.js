@@ -37,15 +37,15 @@ songsAdminApp.directive("songText", function() {
             $scope.clearSongText = function(){
                 $scope.songText.openingCouplets = [];
                 $scope.songText.songTextContents = [];
-            }
+            };
 
             $scope.shouldShowStanzaDetails = function(){
                 return $scope.newContent.contentType == 'stanza' ;
-            }
+            };
 
             $scope.shouldShowCoupletDetails = function(){
                 return $scope.newContent.contentType == 'couplet' ;
-            }
+            };
 
             $scope.addLyricsText = function(){
                 if(($scope.newContent.englishTranslationText == "" &&
@@ -83,7 +83,7 @@ songsAdminApp.directive("songText", function() {
                     $scope.selectedLyricsContent = newElement;
                     $scope.initializeContent();
                 }
-            }
+            };
 
             $scope.addOpeningCouplet = function(){
                if(($scope.openingCouplet.englishTranslationText == "" &&
@@ -93,19 +93,19 @@ songsAdminApp.directive("songText", function() {
                $scope.openingCouplet.sequenceNumber = $scope.songText.openingCouplets.length;
                $scope.songText.openingCouplets.push($scope.openingCouplet);
                $scope.initializeContent();
-            }
+            };
 
             $scope.getSongContents = function(){
                 if($scope.songText.songTextContents==null)
                     $scope.songText.songTextContents = [];
                 return $scope.songText.songTextContents;
-            }
+            };
 
             $scope.showLyrics = function(){
                 return $scope.getSongContents().length != 0;
-            }
+            };
 
             $scope.initializeContent();
         }
-    }
+    };
 });

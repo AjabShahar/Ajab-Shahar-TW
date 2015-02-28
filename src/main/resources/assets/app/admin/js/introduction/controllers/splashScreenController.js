@@ -17,7 +17,7 @@ var splashScreenController = function($scope,$window,$http,contentService){
 
     $scope.shouldShowImageUrl = function(){
         return ($scope.formInfo.FORMAT=='audio');
-    }
+    };
  };
 
 splashScreenOptionsApp.controller('splashScreenController',['$scope','$window','$http','contentService',splashScreenController]);

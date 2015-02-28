@@ -16,22 +16,22 @@ var reflectionDetailsController = function($scope, $http,$window, $location,refl
           });
       }
 
-   }
+   };
 
       $scope.saveData = function(){
        reflectionContentService.saveReflection($scope.formInfo).success(function(data){
            $window.location.href = '/admin/home.html';
         });
-      }
+      };
 
       $scope.updateData = function(){
         reflectionContentService.updateReflection($scope.formInfo).success(function(data){
                    $window.location.href = '/admin/home.html';
         });
 
-      }
+      };
 
    $scope.init();
-}
+};
 
 reflectionsAdminApp.controller('reflectionDetailsController',['$scope','$http','$window','$location','reflectionContentService',reflectionDetailsController]);

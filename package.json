@@ -4,35 +4,39 @@
   },
   "description": "Web interface for the Ajab-Shahar application",
   "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-jshint": "^0.11.0",
+    "grunt-contrib-qunit": "^0.5.2",
+    "grunt-contrib-uglify": "^0.8.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-jssemicoloned": "0.0.6",
     "karma": "0.10.2",
+    "karma-coffee-preprocessor": "0.1.3",
+    "karma-coverage": "~0.1",
     "karma-jasmine": "~0.1.3",
     "karma-junit-reporter": "~0.1",
     "karma-phantomjs-launcher": "~0.1",
-    "karma-coverage":"~0.1",
-    "karma-coffee-preprocessor": "0.1.3"
+    "matchdep": "^0.3.0"
   },
-   "scripts": {
-      "preinstall": "npm i -g http-server",
-      "postinstall": "bower install",
-
-      "prestart": "npm install",
-      "start": "http-server app -o -d false -p 8000",
-
-      "pretest": "npm install",
-      "test": "node node_modules/karma/bin/karma start app/test/js/config/karma.conf.js",
-      "dev": "node node_modules/karma/bin/karma start app/test/js/config/karma.dev.conf.js",
-      "test-single-run": "node node_modules/karma/bin/karma start app/test/js/config/karma.conf.js  --single-run",
-
-      "preupdate-webdriver": "npm install",
-      "update-webdriver": "webdriver-manager update",
-
-      "preprotractor": "npm run update-webdriver",
-      "protractor": "protractor test/protractor-conf.js"
-    },
-    "repository" : {
-     "type" : "git" ,
-      "url" : "https://github.com/AjabShahar/Ajab-Shahar-TW"
-    },
+  "scripts": {
+    "preinstall": "npm i -g http-server",
+    "postinstall": "bower install",
+    "prestart": "npm install",
+    "start": "http-server app -o -d false -p 8000",
+    "pretest": "npm install",
+    "test": "node node_modules/karma/bin/karma start app/test/js/config/karma.conf.js",
+    "dev": "node node_modules/karma/bin/karma start app/test/js/config/karma.dev.conf.js",
+    "test-single-run": "node node_modules/karma/bin/karma start app/test/js/config/karma.conf.js  --single-run",
+    "preupdate-webdriver": "npm install",
+    "update-webdriver": "webdriver-manager update",
+    "preprotractor": "npm run update-webdriver",
+    "protractor": "protractor test/protractor-conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AjabShahar/Ajab-Shahar-TW"
+  },
   "name": "ajab-shahar",
   "version": "0.0.0"
 }

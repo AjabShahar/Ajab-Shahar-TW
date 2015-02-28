@@ -14,11 +14,11 @@ var categoryListController = function($scope, $location, contentService){
                 toBeAdded.id = value.id;
                 categories.push(toBeAdded);
                 return categories;
-            },[])
+            },[]);
         });
-    }
+    };
 
     $scope.init();
-}
+};
 
 adminApp.controller('categoryListController',['$scope','$location','contentService',categoryListController]);

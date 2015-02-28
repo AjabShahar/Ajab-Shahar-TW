@@ -12,15 +12,15 @@ var reflectionListController = function($scope, contentService){
                 if(value.isAuthoringComplete)
                     toBeAdded.publish = "Yes";
                 else
-                    toBeAdded.publish = "No"
+                    toBeAdded.publish = "No";
 
                 reflections.push(toBeAdded);
                 return reflections;
-            },[])
+            },[]);
         });
-    }
+    };
 
     $scope.init();
-}
+};
 
 adminApp.controller('reflectionListController',['$scope','contentService',reflectionListController]);

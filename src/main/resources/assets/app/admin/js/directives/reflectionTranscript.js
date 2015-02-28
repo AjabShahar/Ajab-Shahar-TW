@@ -16,10 +16,10 @@ reflectionsAdminApp.directive("reflectionTranscript", function() {
                var reflectionTranscript = {};
                reflectionTranscript.hindiTranscript = hindiTranscript.length >0 ? "<p>" + hindiTranscript[i].split("\n").join("<br />") +"</p>" : "";
                reflectionTranscript.englishTranscript = englishTranscript.length >0 ?"<p>" + englishTranscript[i].split("\n").join("<br />") +"</p>" : "";
-                $scope.reflectionTranscripts.push(reflectionTranscript)
+                $scope.reflectionTranscripts.push(reflectionTranscript);
              }
              $scope.reflectionTranscript = "";
           };
         }
-    }
-})
+    };
+});
