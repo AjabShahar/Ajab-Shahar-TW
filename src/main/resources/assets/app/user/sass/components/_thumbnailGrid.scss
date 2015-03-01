@@ -1,0 +1,32 @@
+$tab-portrait: new-breakpoint(min-width 768px);
+$tab-landscape: new-breakpoint(min-width 1024px);
+$desktop: new-breakpoint(min-width 1025px);
+
+.thumbnails-grid {
+    .media-list {
+        @include outer-container;
+        .media {
+            min-height: 250px;
+            text-align: center;
+            @include span-columns(12);
+
+            @include media($tab-portrait) {
+              @include span-columns(6);
+              margin-right: 1%; // TBD: hack for tab portrait
+            }
+
+            @include media($tab-landscape) {
+              @include span-columns(4);
+            }
+
+            @include media($desktop) {
+              @include span-columns(3);
+            }
+
+            .thumbnailWrapper {
+              width: 225px;
+              margin: 0 auto;
+            }
+        }
+    }
+}

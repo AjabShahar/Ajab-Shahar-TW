@@ -8,10 +8,6 @@
 
 @import 'mixins/boxShadow';
 @import 'mixins/pageHeaderWithLogo';
-<<<<<<< HEAD
-=======
-
->>>>>>> REFACTORING | Migrate songs details page styles
 
 // Config
 
@@ -34,10 +30,6 @@
 @import 'components/headerMainNav';
 @import 'components/headerSubNav';
 @import 'components/headerWithCarousal';
-<<<<<<< HEAD
-
-=======
->>>>>>> REFACTORING | Migrate songs details page styles
 
 @import 'components/innerPageHeader';
 
@@ -51,11 +43,13 @@
 @import 'components/thumbnailSongs';
 @import 'components/thumbnailWords';
 @import 'components/thumbnailCouplets';
+@import 'components/thumbnailGrid';
 
 @import 'components/lightbox';
 @import 'components/lightboxPaging';
 
 @import 'components/scrollBar';
+@import 'components/pagination';
 
 // Page specific
 
