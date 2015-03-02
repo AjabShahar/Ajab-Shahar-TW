@@ -14,8 +14,10 @@ public class WordRepresentation {
     private String wordIntroHindi;
     private String wordIntroEnglish;
     private List<PersonSummaryRepresentation> writers;
+    private String diacritic;
+    private String meaning;
 
-    public WordRepresentation(int id, String wordOriginal, String wordTranslation, String wordTransliteration, String englishIntroExcerpt, String hindiIntroExcerpt, String wordIntroHindi, String wordIntroEnglish, List<PersonSummaryRepresentation> writers) {
+    public WordRepresentation(int id, String wordOriginal, String wordTranslation, String wordTransliteration, String englishIntroExcerpt, String hindiIntroExcerpt, String wordIntroHindi, String wordIntroEnglish, List<PersonSummaryRepresentation> writers, String diacritic, String meaning) {
         this.id = id;
         this.wordOriginal = wordOriginal;
         this.wordTranslation = wordTranslation;
@@ -25,6 +27,8 @@ public class WordRepresentation {
         this.wordIntroHindi = wordIntroHindi;
         this.wordIntroEnglish = wordIntroEnglish;
         this.writers = writers;
+        this.diacritic = diacritic;
+        this.meaning = meaning;
     }
 
     public WordRepresentation() {
@@ -74,5 +78,15 @@ public class WordRepresentation {
     @JsonProperty("writers")
     public List<PersonSummaryRepresentation> getWriters() {
         return writers;
+    }
+
+    @JsonProperty("diacritic")
+    public String getDiacritic() {
+        return diacritic;
+    }
+
+    @JsonProperty("meaning")
+    public String getMeaning() {
+        return meaning;
     }
 }
