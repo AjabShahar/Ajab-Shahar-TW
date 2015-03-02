@@ -3,10 +3,12 @@ package org.ajabshahar.platform.daos;
 import io.dropwizard.hibernate.AbstractDAO;
 import org.ajabshahar.platform.models.Song;
 import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.sql.JoinType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,7 +45,9 @@ public class SongDAO extends AbstractDAO<Song> {
 
     public List<Song> findAll() {
         Session currentSession = sessionFactory.getCurrentSession();
-        Criteria findSongs = currentSession.createCriteria(Song.class);
+        Criteria findSongs = currentSession.createCriteria(Song.class, "song")
+                .createCriteria("song.words","words", JoinType.LEFT_OUTER_JOIN)
+                .setFetchMode("words", FetchMode.JOIN);
         findSongs.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return findSongs.list();
     }

@@ -4,9 +4,11 @@ import io.dropwizard.hibernate.AbstractDAO;
 import org.ajabshahar.platform.models.Word;
 import org.ajabshahar.platform.models.WordIntroduction;
 import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.sql.JoinType;
 
 import java.util.List;
 
@@ -66,7 +68,9 @@ public class WordDAO extends AbstractDAO<Word> {
 
     public List findAll() {
         Session session = sessionFactory.openSession();
-        Criteria wordVersions = session.createCriteria(Word.class);
+        Criteria wordVersions = session.createCriteria(Word.class, "word")
+                .createCriteria("word.songs","songs", JoinType.LEFT_OUTER_JOIN)
+                .setFetchMode("songs", FetchMode.JOIN);
         wordVersions.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         List wordVersionsList = wordVersions.list();
         session.close();
