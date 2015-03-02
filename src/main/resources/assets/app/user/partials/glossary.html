@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="glossaryApp">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
@@ -12,7 +12,7 @@
     <link href="../user-css/pages/glossary.css" rel="stylesheet" type="text/css">
     <!--<link rel="stylesheet" href="../user-css/jquery.jscrollpane.css"/>-->
 
-    <body>
+    <body ng-controller="glossaryController">
         <!--<ajab-shahar-header show-menu-details="true" call-back="setPageHeight()"></ajab-shahar-header>-->
 
         <div class="ajab_container" id="glossary_page">
@@ -26,369 +26,23 @@
                    <div class="content-wrapper">
                        <div class="pagination-head">
                            <div class="upper">
-                                <span class="numeric-count">20 words</span>
+                                <span class="numeric-count">{{numberOfTerms}} words</span>
                            </div>
                        </div>
-                       <dl>
-                           <dt class="word-title">
-                               Agam Nigam
-                               <span class="related">(<span class="hindi">अगम निगम</span>, agam nigam) n.</span>
-                           </dt>
-                           <dd class="word-meaning">
-                               <p>
-                                   Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                   dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                   nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                                   quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet
-                                   nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae,
-                                   justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
-                                   Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,
-                                   porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in,
-                                   viverra quis, feugiat a, tellus.
-                               </p>
-                               <p>
-                                   Phasellus viverra nulla ut metus varius laoreet.
-                                   Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur
-                                   ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus
-                                   eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed
-                                   ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas
-                                   nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.
-                                   Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed
-                                   fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo
-                                   eget bibendum sodales, augue velit cursus nunc,
-                               </p>
-                           </dd>
-                       </dl>
-                       <dl>
-                           <dt class="word-title">
-                               Agam Nigam
-                               <span class="related">(<span class="hindi">अगम निगम</span>, agam nigam) n.</span>
-                           </dt>
-                           <dd class="word-meaning">
-                               <p>
-                                   Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                   dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                   nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                                   quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet
-                                   nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae,
-                                   justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
-                                   Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,
-                                   porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in,
-                                   viverra quis, feugiat a, tellus.
-                               </p>
-                               <p>
-                                   Phasellus viverra nulla ut metus varius laoreet.
-                                   Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur
-                                   ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus
-                                   eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed
-                                   ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas
-                                   nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.
-                                   Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed
-                                   fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo
-                                   eget bibendum sodales, augue velit cursus nunc,
-                               </p>
-                           </dd>
-                       </dl>
-                       <dl>
-                           <dt class="word-title">
-                               Agam Nigam
-                               <span class="related">(<span class="hindi">अगम निगम</span>, agam nigam) n.</span>
-                           </dt>
-                           <dd class="word-meaning">
-                               <p>
-                                   Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                   dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                   nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                                   quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet
-                                   nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae,
-                                   justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
-                                   Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,
-                                   porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in,
-                                   viverra quis, feugiat a, tellus.
-                               </p>
-                               <p>
-                                   Phasellus viverra nulla ut metus varius laoreet.
-                                   Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur
-                                   ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus
-                                   eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed
-                                   ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas
-                                   nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.
-                                   Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed
-                                   fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo
-                                   eget bibendum sodales, augue velit cursus nunc,
-                               </p>
-                           </dd>
-                       </dl>
-                       <dl>
-                           <dt class="word-title">
-                               Agam Nigam
-                               <span class="related">(<span class="hindi">अगम निगम</span>, agam nigam) n.</span>
-                           </dt>
-                           <dd class="word-meaning">
-                               <p>
-                                   Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                   dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                   nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                                   quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet
-                                   nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae,
-                                   justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
-                                   Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,
-                                   porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in,
-                                   viverra quis, feugiat a, tellus.
-                               </p>
-                               <p>
-                                   Phasellus viverra nulla ut metus varius laoreet.
-                                   Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur
-                                   ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus
-                                   eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed
-                                   ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas
-                                   nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.
-                                   Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed
-                                   fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo
-                                   eget bibendum sodales, augue velit cursus nunc,
-                               </p>
-                           </dd>
-                       </dl>
-                       <dl>
-                           <dt class="word-title">
-                               Agam Nigam
-                               <span class="related">(<span class="hindi">अगम निगम</span>, agam nigam) n.</span>
-                           </dt>
-                           <dd class="word-meaning">
-                               <p>
-                                   Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                   dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                   nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                                   quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet
-                                   nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae,
-                                   justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
-                                   Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,
-                                   porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in,
-                                   viverra quis, feugiat a, tellus.
-                               </p>
-                               <p>
-                                   Phasellus viverra nulla ut metus varius laoreet.
-                                   Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur
-                                   ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus
-                                   eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed
-                                   ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas
-                                   nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.
-                                   Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed
-                                   fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo
-                                   eget bibendum sodales, augue velit cursus nunc,
-                               </p>
-                           </dd>
-                       </dl>
-                       <dl>
-                           <dt class="word-title">
-                               Agam Nigam
-                               <span class="related">(<span class="hindi">अगम निगम</span>, agam nigam) n.</span>
-                           </dt>
-                           <dd class="word-meaning">
-                               <p>
-                                   Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                   dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                   nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                                   quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet
-                                   nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae,
-                                   justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
-                                   Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,
-                                   porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in,
-                                   viverra quis, feugiat a, tellus.
-                               </p>
-                               <p>
-                                   Phasellus viverra nulla ut metus varius laoreet.
-                                   Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur
-                                   ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus
-                                   eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed
-                                   ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas
-                                   nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.
-                                   Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed
-                                   fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo
-                                   eget bibendum sodales, augue velit cursus nunc,
-                               </p>
-                           </dd>
-                       </dl>
-                       <dl>
-                           <dt class="word-title">
-                               Agam Nigam
-                               <span class="related">(<span class="hindi">अगम निगम</span>, agam nigam) n.</span>
-                           </dt>
-                           <dd class="word-meaning">
-                               <p>
-                                   Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                   dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                   nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                                   quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet
-                                   nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae,
-                                   justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
-                                   Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,
-                                   porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in,
-                                   viverra quis, feugiat a, tellus.
-                               </p>
-                               <p>
-                                   Phasellus viverra nulla ut metus varius laoreet.
-                                   Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur
-                                   ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus
-                                   eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed
-                                   ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas
-                                   nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.
-                                   Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed
-                                   fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo
-                                   eget bibendum sodales, augue velit cursus nunc,
-                               </p>
-                           </dd>
-                       </dl>
-                       <dl>
-                           <dt class="word-title">
-                               Agam Nigam
-                               <span class="related">(<span class="hindi">अगम निगम</span>, agam nigam) n.</span>
-                           </dt>
-                           <dd class="word-meaning">
-                               <p>
-                                   Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                   dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                   nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                                   quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet
-                                   nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae,
-                                   justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
-                                   Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,
-                                   porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in,
-                                   viverra quis, feugiat a, tellus.
-                               </p>
-                               <p>
-                                   Phasellus viverra nulla ut metus varius laoreet.
-                                   Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur
-                                   ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus
-                                   eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed
-                                   ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas
-                                   nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.
-                                   Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed
-                                   fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo
-                                   eget bibendum sodales, augue velit cursus nunc,
-                               </p>
-                           </dd>
-                       </dl>
-                       <dl>
-                           <dt class="word-title">
-                               Agam Nigam
-                               <span class="related">(<span class="hindi">अगम निगम</span>, agam nigam) n.</span>
-                           </dt>
-                           <dd class="word-meaning">
-                               <p>
-                                   Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                   dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                   nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                                   quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet
-                                   nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae,
-                                   justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
-                                   Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,
-                                   porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in,
-                                   viverra quis, feugiat a, tellus.
-                               </p>
-                               <p>
-                                   Phasellus viverra nulla ut metus varius laoreet.
-                                   Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur
-                                   ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus
-                                   eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed
-                                   ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas
-                                   nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.
-                                   Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed
-                                   fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo
-                                   eget bibendum sodales, augue velit cursus nunc,
-                               </p>
-                           </dd>
-                       </dl>
-                       <dl>
-                           <dt class="word-title">
-                               Agam Nigam
-                               <span class="related">(<span class="hindi">अगम निगम</span>, agam nigam) n.</span>
-                           </dt>
-                           <dd class="word-meaning">
-                               <p>
-                                   Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                   dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                   nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                                   quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet
-                                   nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae,
-                                   justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
-                                   Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,
-                                   porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in,
-                                   viverra quis, feugiat a, tellus.
-                               </p>
-                               <p>
-                                   Phasellus viverra nulla ut metus varius laoreet.
-                                   Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur
-                                   ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus
-                                   eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed
-                                   ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas
-                                   nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.
-                                   Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed
-                                   fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo
-                                   eget bibendum sodales, augue velit cursus nunc,
-                               </p>
-                           </dd>
-                       </dl>
-                       <dl>
-                           <dt class="word-title">
-                               Agam Nigam
-                               <span class="related">(<span class="hindi">अगम निगम</span>, agam nigam) n.</span>
-                           </dt>
-                           <dd class="word-meaning">
-                               <p>
-                                   Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                   dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                   nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                                   quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet
-                                   nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae,
-                                   justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
-                                   Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,
-                                   porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in,
-                                   viverra quis, feugiat a, tellus.
-                               </p>
-                               <p>
-                                   Phasellus viverra nulla ut metus varius laoreet.
-                                   Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur
-                                   ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus
-                                   eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed
-                                   ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas
-                                   nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.
-                                   Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed
-                                   fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo
-                                   eget bibendum sodales, augue velit cursus nunc,
-                               </p>
-                           </dd>
-                       </dl>
-                       <dl>
-                           <dt class="word-title">
-                               Agam Nigam
-                               <span class="related">(<span class="hindi">अगम निगम</span>, agam nigam) n.</span>
-                           </dt>
-                           <dd class="word-meaning">
-                               <p>
-                                   Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                   dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                   nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                                   quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet
-                                   nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae,
-                                   justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
-                                   Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,
-                                   porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in,
-                                   viverra quis, feugiat a, tellus.
-                               </p>
-                               <p>
-                                   Phasellus viverra nulla ut metus varius laoreet.
-                                   Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur
-                                   ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus
-                                   eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed
-                                   ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas
-                                   nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.
-                                   Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed
-                                   fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo
-                                   eget bibendum sodales, augue velit cursus nunc,
-                               </p>
-                           </dd>
-                       </dl>
+                       <div ng-repeat="term in glossary">
+                           <dl>
+                               <dt class="word-title">
+                                   {{term.wordTransliteration}}
+                                   <span class="related">(<span class="hindi">{{term.wordOriginal}}</span>, {{term.diacritic}})</span>
+                               </dt>
+                               <dd class="word-meaning">
+                                   <p>
+                                       {{term.meaning}}
+                                       meaning comes here
+                                   </p>
+                               </dd>
+                           </dl>
+                       </div>
                    </div>
                </div>
         </div>
@@ -451,6 +105,10 @@
         <script type="text/javascript" src="../user-js/common/directives/header/sticky.js"></script>
         <!--<script type="text/javascript" src="../user-js/common/modules/lazyLoadModule.js"></script>-->
         <!--<script type="text/javascript" src="../user-js/common/directives/lazyload/lazyload.js"></script>-->
+
+        <script type="text/javascript" src="../user-js/featuredContent/services/contentService.js"></script>
+        <script type="text/javascript" src="../user-js/featuredContent/glossaryApp.js"></script>
+        <script type="text/javascript" src="../user-js/words/controllers/glossaryController.js"></script>
 
         <div id="loader_wrapper"><span></span></div>
     </body>
