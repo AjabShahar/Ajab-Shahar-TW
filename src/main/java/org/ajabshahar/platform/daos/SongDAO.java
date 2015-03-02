@@ -27,7 +27,16 @@ public class SongDAO extends AbstractDAO<Song> {
     }
 
     public Song findById(Long id) {
-        return (Song) sessionFactory.openSession().get(Song.class, id);
+        Session session = sessionFactory.openSession();
+        Criteria findSong = session.createCriteria(Song.class, "song")
+                .add(Restrictions.eq("id", id))
+                .createCriteria("song.words", "words", JoinType.LEFT_OUTER_JOIN)
+                .setFetchMode("words", FetchMode.JOIN);
+
+        ArrayList<Song> songs= (ArrayList<Song>) findSong.list();
+
+        session.close();
+        return songs.get(0);
     }
 
     public Song saveSong(Song song) {

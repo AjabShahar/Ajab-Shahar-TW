@@ -32,17 +32,28 @@ public class WordDAO extends AbstractDAO<Word> {
 
     public List findBy(int wordId, Boolean showOnMainLandingPage) {
         Session session = this.sessionFactory.openSession();
-        Criteria allWords = session.createCriteria(Word.class);
+        Criteria allWords = session.createCriteria(Word.class, "word");
         if (showOnMainLandingPage) {
             allWords.add(Restrictions.eq("showOnLandingPage", true));
         }
         if (wordId != 0) {
             allWords.add(Restrictions.eq("id", Long.valueOf(wordId)));
         }
-        allWords.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+
+        allWords.createCriteria("word.songs", "songs", JoinType.LEFT_OUTER_JOIN)
+                .setFetchMode("songs", FetchMode.JOIN)
+                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+
         List words = allWords.list();
         session.close();
         return words;
+    }
+
+    private Criteria allWordsCriteria(Session session) {
+        return session.createCriteria(Word.class, "word")
+                .createCriteria("word.songs", "songs", JoinType.LEFT_OUTER_JOIN)
+                .setFetchMode("songs", FetchMode.JOIN)
+                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
     }
 
     public Word update(Word updatableWord) {
@@ -68,12 +79,8 @@ public class WordDAO extends AbstractDAO<Word> {
 
     public List findAll() {
         Session session = sessionFactory.openSession();
-        Criteria wordVersions = session.createCriteria(Word.class, "word")
-                .createCriteria("word.songs","songs", JoinType.LEFT_OUTER_JOIN)
-                .setFetchMode("songs", FetchMode.JOIN);
-        wordVersions.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-        List wordVersionsList = wordVersions.list();
+        List words = allWordsCriteria(session).list();
         session.close();
-        return wordVersionsList;
+        return words;
     }
 }
