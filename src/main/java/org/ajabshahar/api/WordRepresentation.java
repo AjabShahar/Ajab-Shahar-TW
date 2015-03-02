@@ -16,8 +16,9 @@ public class WordRepresentation {
     private List<PersonSummaryRepresentation> writers;
     private String diacritic;
     private String meaning;
+    private boolean isRootWord;
 
-    public WordRepresentation(int id, String wordOriginal, String wordTranslation, String wordTransliteration, String englishIntroExcerpt, String hindiIntroExcerpt, String wordIntroHindi, String wordIntroEnglish, List<PersonSummaryRepresentation> writers, String diacritic, String meaning) {
+    public WordRepresentation(int id, String wordOriginal, String wordTranslation, String wordTransliteration, String englishIntroExcerpt, String hindiIntroExcerpt, String wordIntroHindi, String wordIntroEnglish, List<PersonSummaryRepresentation> writers, String diacritic, String meaning, boolean isRootWord) {
         this.id = id;
         this.wordOriginal = wordOriginal;
         this.wordTranslation = wordTranslation;
@@ -29,6 +30,7 @@ public class WordRepresentation {
         this.writers = writers;
         this.diacritic = diacritic;
         this.meaning = meaning;
+        this.isRootWord = isRootWord;
     }
 
     public WordRepresentation() {
@@ -88,5 +90,10 @@ public class WordRepresentation {
     @JsonProperty("meaning")
     public String getMeaning() {
         return meaning;
+    }
+
+    @JsonProperty("isRootWord")
+    public boolean isRootWord() {
+        return isRootWord;
     }
 }
