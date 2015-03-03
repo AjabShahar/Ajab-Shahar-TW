@@ -1,6 +1,5 @@
-var adminApp = angular.module('adminApp',[]);
-
-adminApp.factory('contentService', ['$http', contentService]);
+var adminApp = angular.module('adminApp',['adminCommon'])
+.factory('contentService', ['$http', contentService]);
 
 adminApp.config(function($locationProvider) {
        $locationProvider.html5Mode({

@@ -1,4 +1,4 @@
-var wordsAdminApp = angular.module('wordsAdminApp', ['textAngular','multi-select']);
+var wordsAdminApp = angular.module('wordsAdminApp', ['textAngular','multi-select','adminCommon']);
 wordsAdminApp.factory('contentService', ['$http', contentService]);
 
 wordsAdminApp.config(function($locationProvider) {

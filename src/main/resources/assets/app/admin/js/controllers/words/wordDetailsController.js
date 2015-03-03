@@ -1,4 +1,7 @@
-var wordDetailsController = function($scope, $window, $location, contentService, PAGES, $q){
+wordsAdminApp.controller('wordDetailsController',['$scope', '$window', '$location', 'contentService', 'PAGES', '$q',"loginVerifyService",
+function($scope, $window, $location, contentService, PAGES, $q,loginVerifyService){
+  loginVerifyService.redirectIfNotAuthenticated();
+
   $scope.formInfo = {
     reflections: [],
     wordIntroductions: []
@@ -82,6 +85,5 @@ var wordDetailsController = function($scope, $window, $location, contentService,
       redirectToURL(PAGES.ADMIN_HOME);
     });
   };
-};
+}]);
 
-wordsAdminApp.controller('wordDetailsController',['$scope', '$window', '$location', 'contentService', 'PAGES', '$q', wordDetailsController]);
