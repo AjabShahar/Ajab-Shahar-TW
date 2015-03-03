@@ -26,9 +26,9 @@ database:
   checkConnectionWhileIdle: false
 
 logging:
-  level: ERROR
+  level: INFO
   loggers:
-    org.ajabshahar: DEBUG
+    org.ajabshahar: INFO
     org.hibernate.SQL: ALL
   appenders:
     - type: file

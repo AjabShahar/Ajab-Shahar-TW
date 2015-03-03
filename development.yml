@@ -25,7 +25,7 @@ database:
   maxSize: 32
   checkConnectionWhileIdle: false
 logging:
-  level: ERROR
+  level: INFO
   loggers:
     io.dropwizard: INFO
   appenders:

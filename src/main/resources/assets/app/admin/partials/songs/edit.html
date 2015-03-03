@@ -118,11 +118,12 @@
 
                 <div class="row">
                     <div class="form-group col-sm-2">
-                        <label>Youtube Video ID for video</label>
+                        <label>* Youtube Video ID for video</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <input type="text" name="youtubeVideoId" ng-model="song.youtubeVideoId" class="form-control">
+                        <input type="text" name="youtubeVideoId" ng-model="song.youtubeVideoId" class="form-control" ng-required="song.isAuthoringComplete">
                     </div>
+                    <error-message name="Youtube URL" show-error="song.isAuthoringComplete && isEmpty(song.youtubeVideoId)"></error-message>
                 </div>
 
                 <div class="row">
