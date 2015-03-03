@@ -31,7 +31,7 @@
                        </div>
                        <div ng-repeat="term in glossary">
                            <dl>
-                               <dt ng-class="term.isRootWord ? 'word-title' : 'foo-bar'">
+                               <dt class="word-title" ng-class="term.isRootWord ? 'pink-word' : 'grey-word'">
                                    {{term.wordTransliteration}}
                                    <span class="related">(<span class="hindi">{{term.wordOriginal}}</span>, {{term.diacritic}})</span>
                                </dt>
