@@ -31,6 +31,7 @@ public class PasswordAuthenticatorTest {
     @Test
     public void shouldReturnAuthenticationStatusForGivenCredentials() throws Exception {
         Optional<Principle> authenticate = passwordAuthenticator.authenticate(new BasicCredentials("admin", "password"));
+        System.out.println(new String(PasswordEncryptor.getEncryptedPassword("password", PasswordAuthenticator.SALT,PasswordAuthenticator.ALGORITHM)));
         assertNotNull(authenticate);
         assertTrue(authenticate.isPresent());
         assertEquals("admin", authenticate.asSet().iterator().next().getUserName());
