@@ -30,9 +30,3 @@ logging:
     io.dropwizard: INFO
   appenders:
     - type: console
-cache:
-  local:
-    maximumSize: 5MB
-    expire: 30m
-cacheControl:
-    - maxAge: 30s

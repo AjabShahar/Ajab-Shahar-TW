@@ -56,7 +56,7 @@
                         <label>* Show On LandingPage</label>
                     </div>
                     <div class="col-sm-2">
-                        <select name="format" ng-model="song.showOnLandingPage" class="form-control" ng-required="song.isAuthoringComplete">
+                        <select name="format" ng-model="song.showOnLandingPage" ng-init="song.showOnLandingPage = 'false'" class="form-control" ng-required="song.isAuthoringComplete">
                             <option value="true">Yes</option>
                             <option value="false">No</option>
                         </select>

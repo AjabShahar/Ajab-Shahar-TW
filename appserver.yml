@@ -24,12 +24,6 @@ database:
   minSize: 8
   maxSize: 32
   checkConnectionWhileIdle: false
-cache:
-  local:
-    maximumSize: 5MB
-    expire: 30m
-cacheControl:
-    - maxAge: 30s
 
 logging:
   level: ERROR

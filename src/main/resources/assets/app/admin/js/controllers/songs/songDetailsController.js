@@ -5,7 +5,8 @@ var songDetailsController = function($scope, $window, $location, songContentServ
     songText: {},
     isAuthoringComplete: false,
     mediaCategory: {},
-    words : []
+    words : [],
+    songCategory: ""
   };
   $scope.singers = [];
   $scope.poets = [];
@@ -51,7 +52,10 @@ var songDetailsController = function($scope, $window, $location, songContentServ
         $scope.singers = removeNulls(data[5].data.people);
         $scope.poets = removeNulls(data[6].data.people);
         $scope.words = data[7].data.words;
-        $scope.getSongData()
+
+        $scope.song.songCategory = $scope.songCategories[0];
+
+        $scope.getSongData();
     });
   };
 
@@ -100,7 +104,6 @@ var songDetailsController = function($scope, $window, $location, songContentServ
         if($scope.song.songText){
           $scope.song.songText.songTextContents = sortList($scope.song.songText.songTextContents, 'sequenceNumber');
         }
-      
     });
   };
 
