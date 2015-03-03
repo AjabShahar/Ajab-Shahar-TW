@@ -5,30 +5,40 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>Glossary</title>
     <!--<link rel="stylesheet" type="text/css" href="../../common/lib/angular-socialshare/angular-socialshare.css">-->
-    <link href="../user-css/common/directives/header/header.css" rel="stylesheet" type="text/css">
-    <link href="../user-css/common/directives/footer/footer.css" rel="stylesheet" type="text/css">
-    <link href="../user-css/common/directives/popup.css" rel="stylesheet" type="text/css">
-    <link href="../user-css/common/directives/introduction.css" rel="stylesheet" type="text/css">
-    <link href="../user-css/pages/glossary.css" rel="stylesheet" type="text/css">
+    <!--<link href="../user-css/common/directives/header/header.css" rel="stylesheet" type="text/css">-->
+    <!--<link href="../user-css/common/directives/footer/footer.css" rel="stylesheet" type="text/css">-->
+    <!--<link href="../user-css/common/directives/popup.css" rel="stylesheet" type="text/css">-->
+    <!--<link href="../user-css/common/directives/introduction.css" rel="stylesheet" type="text/css">-->
+    <!--<link href="../user-css/pages/glossary.css" rel="stylesheet" type="text/css">-->
     <!--<link rel="stylesheet" href="../user-css/jquery.jscrollpane.css"/>-->
+
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Merriweather:400,300italic,300,400italic,700,700italic" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Merriweather+Sans:400,300italic,300,400italic,700,700italic" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/lohitdevanagari.css" />
+
+    <link rel="stylesheet" type="text/css" href="/user-css/ajabShahar.css" />
 
     <body ng-controller="glossaryController">
 
         <div class="ajab_container" id="glossary_page">
             <ajab-shahar-header></ajab-shahar-header>
                <div class="ajab-wrapper">
-                   <div class="logo-container">
-                       <a href="javascript:void(0)" target="_self">
-                           <span class="page-logo">glossary</span>
-                       </a>
+                   <div class="page-header">
+                       <div class="logo-container">
+                           <a href="javascript:void(0)" target="_self">
+                               <span class="page-logo">glossary</span>
+                           </a>
+                       </div>
+
                    </div>
 
                    <div class="content-wrapper">
                        <div class="pagination-head">
                            <div class="upper">
-                                <span class="numeric-count">{{numberOfTerms}} words</span>
+                               <span class="numeric-count">{{numberOfTerms}} words</span>
                            </div>
                        </div>
+
                        <div ng-repeat="term in glossary">
                            <dl>
                                <dt class="word-title" ng-class="term.isRootWord ? 'root-word' : ''">

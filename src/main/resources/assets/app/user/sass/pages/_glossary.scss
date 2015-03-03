@@ -1,0 +1,73 @@
+#glossary_page {
+    background: transparent url(../../user-img/glossary/glossary_bg.jpg) 0 0 repeat;
+    background-size: contain;
+    min-height: 1210px;
+    width: 100%;
+
+    .ajab-wrapper {
+
+        width: 90%;
+        padding: 0;
+        display: block;
+        margin: 0 auto;
+
+        .logo-container {
+            position: absolute;
+            top: 20px;
+            left: 3%;
+            @media screen and (max-width: 768px) {
+                left: 0.5%;
+            }
+            &>a {
+                font-size: 15px;
+            }
+        }
+
+        .content-wrapper {
+            box-sizing: border-box;
+            padding: 8% 4%;
+            width: 85%;
+            text-align: left;
+            margin: 0 auto;
+            min-height: 1210px;
+            background: transparent url(../../user-img/glossary/white_bg.png) 0 0 no-repeat repeat;
+            background-size: contain;
+
+            dl {
+                margin-bottom: 3em;
+            }
+
+            .word-title {
+                font-family: 'Merriweather';
+                font-size: 21px;
+                color: #333;
+                width: 100%;
+
+                &.root-word {
+                   color: #ed1e79;
+                }
+
+                .related {
+                    font-family: 'Merriweather Sans';
+                    font-weight: 300;
+                    font-size: 16px;
+                    color: #808080;
+                    .hindi {
+                        font-family: 'Lohit Devanagari', serif;
+                        font-size: 18px;
+                        font-weight: 400;
+                    }
+                }
+            }
+
+            .word-meaning {
+                width: 100%;
+                font-size: 12px;
+                line-height: 21px;
+                color: #575756;
+                margin: 0;
+            }
+        }
+    }
+
+}
