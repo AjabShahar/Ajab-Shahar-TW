@@ -170,3 +170,30 @@ body{
     overflow: hidden;
 
 }
+
+.ps-container {
+    &.ps-active-y {
+        &>.ps-scrollbar-y-rail {
+            border-left: dotted 3px #000;
+            background: transparent !important;
+        }
+    }
+
+    &>.ps-scrollbar-y-rail {
+        &>.ps-scrollbar-y {
+            background: #f2f2f2;
+        }
+    }
+
+    &:hover {
+        &>.ps-scrollbar-y-rail {
+            &>.ps-scrollbar-y {
+                background: #f2f2f2 !important;
+                width: 1px;
+            }
+        }
+    }
+}
+.ps-container.ps-in-scrolling.ps-y>.ps-scrollbar-y-rail>.ps-scrollbar-y {
+    background-color: transparent !important;
+}
