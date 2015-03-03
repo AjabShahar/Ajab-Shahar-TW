@@ -83,6 +83,15 @@ a, a:visited, a:link {
   color: inherit;
   outline: 0; }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Merriweather';
+  color: #e83785;
+  font-weight: 100; }
+
+h3 {
+  font-size: 16px;
+  line-height: 20px; }
+
 ul {
   list-style: none; }
 
@@ -1001,87 +1010,81 @@ header ul {
     #songs_landing .shift9 {
       left: 4%; } }
 
-.thumbnailWrapper {
-  display: block;
-  width: auto;
-  margin-top: 15%;
-  margin-bottom: 10%; }
-  .thumbnailWrapper .thumbnail-media {
+.thumbnail {
+  margin: 0 auto;
+  width: 300px;
+  position: relative;
+  cursor: pointer; }
+  .thumbnail .media {
     width: 250px;
-    height: 140px;
-    text-align: center;
-    cursor: pointer; }
-    .thumbnailWrapper .thumbnail-media img {
+    height: 140px; }
+    .thumbnail .media img {
+      border: 3px solid #FFF;
+      box-shadow: 1px 1px 10px #777;
       max-width: 100%;
-      max-height: 100%;
-      border: solid 3px #fff;
-      -webkit-box-shadow: 1px 1px 10px #777777 ;
-      -moz-box-shadow: 1px 1px 10px #777777 ;
-      box-shadow: 1px 1px 10px #777777 ; }
-  .thumbnailWrapper .desc-wrapper {
-    position: absolute; }
-    .thumbnailWrapper .desc-wrapper .thumbnail-desc {
-      z-index: 1;
-      margin: 0 0 0 38px;
-      width: 228px;
-      background: #fff;
-      padding: 0 10px 3px 10px;
-      cursor: pointer;
-      text-align: left;
+      max-height: 100%; }
+  .thumbnail .bubble {
+    background: url(http://localhost:8000/img/common/directives/thumbnail/bubble-250-content.png) scroll repeat-y top left;
+    width: 270px;
+    position: absolute;
+    top: 140px;
+    left: 20px; }
+    .thumbnail .bubble .summary {
       position: relative;
-      box-shadow: 0 -6px 7px #a7a7a7;
-      font-weight: 200; }
-      .thumbnailWrapper .desc-wrapper .thumbnail-desc:before {
-        content: '';
-        width: 249px;
-        background-size: cover;
-        display: inline-block;
-        height: 19px;
-        background: rgba(255, 255, 255, 0) url(../img/common/directives/thumbnail/top.png) left top no-repeat;
-        top: -19px;
-        left: 0px;
-        position: absolute; }
-      .thumbnailWrapper .desc-wrapper .thumbnail-desc .item-title {
-        color: #E61B72;
-        font-family: 'Merriweather';
-        font-size: 18px;
-        font-weight: lighter; }
-      .thumbnailWrapper .desc-wrapper .thumbnail-desc .sub-title {
-        font-style: italic;
-        font-family: 'Merriweather';
-        font-size: 16px;
-        color: #9C9B9B;
-        font-weight: lighter; }
-      .thumbnailWrapper .desc-wrapper .thumbnail-desc small {
-        color: #575756;
-        line-height: 18px;
-        font-size: 12px; }
-      .thumbnailWrapper .desc-wrapper .thumbnail-desc small.poetDetails {
-        color: #9c9b9b;
-        font-size: 14px; }
-      .thumbnailWrapper .desc-wrapper .thumbnail-desc small.categoryName {
-        text-transform: uppercase; }
-    .thumbnailWrapper .desc-wrapper .lower-curve {
-      width: 249px;
-      display: inline-block;
-      height: 20px;
-      background: rgba(255, 255, 255, 0) url(../img/common/directives/thumbnail/bottom.png) left -5px no-repeat;
-      float: left;
-      margin: 0 0 0 37px;
-      background-size: cover; }
-  .thumbnailWrapper .thumbnailDetails {
-    color: #868686; }
-    .thumbnailWrapper .thumbnailDetails .categoryDetails {
-      text-align: right; }
-      .thumbnailWrapper .thumbnailDetails .categoryDetails .play {
-        background: url(../img/common/icons/gray_play.png) left center no-repeat;
-        float: right;
-        position: relative;
-        right: 4%;
-        padding: 2px 0 3px 14px;
-        margin-left: 7%;
-        color: #888;
-        text-transform: uppercase; }
+      left: 0px;
+      padding: 0 20px; }
+      .thumbnail .bubble .summary:before {
+        background: url(http://localhost:8000/img/common/directives/thumbnail/bubble-250-top.png) scroll repeat-y top left;
+        width: 270px;
+        height: 30px;
+        content: " ";
+        position: absolute;
+        top: -30px;
+        left: 0; }
+      .thumbnail .bubble .summary:after {
+        background: url(http://localhost:8000/img/common/directives/thumbnail/bubble-250-bottom.png) scroll repeat-y top left;
+        width: 270px;
+        height: 30px;
+        content: " ";
+        position: absolute;
+        bottom: -30px;
+        left: 0; }
+
+.thumbnail {
+  text-align: left; }
+  .thumbnail .summary {
+    font-weight: 100; }
+    .thumbnail .summary .title {
+      margin-bottom: 3px; }
+    .thumbnail .summary .en-title {
+      color: #9c9b9b;
+      font-style: italic;
+      margin-bottom: 3px; }
+    .thumbnail .summary .footer {
+      margin-top: 10px;
+      color: #666666;
+      line-height: 18px;
+      font-size: 12px;
+      text-align: right;
+      text-transform: uppercase; }
+
+.thumbnail.songs .summary .singers {
+  color: #666666;
+  font-size: 12px;
+  font-weight: 100;
+  line-height: 16px; }
+.thumbnail.songs .summary .poet {
+  font-size: 14px;
+  line-height: 20px;
+  color: #9c9b9b; }
+.thumbnail.songs .summary .categoryName {
+  position: relative;
+  top: 2px; }
+.thumbnail.songs .summary .play {
+  background: url(../img/common/icons/gray_play.png) left bottom no-repeat;
+  padding-left: 12px;
+  margin-left: 3px;
+  color: #888; }
 
 .thumbnailWrapper.word .desc-wrapper .thumbnail-desc .sub-title.item-title-translation {
   font-size: 18px; }

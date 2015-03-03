@@ -1,23 +1,25 @@
-<div class="thumbnailWrapper {{customStyle}}">
-    <div class="thumbnail-media" ng-click="open('{{id}}')">
+<div class="thumbnail {{customStyle}}" ng-click="open('{{id}}')">
+    <div class="media">
         <img src="{{imgSrc}}"/>
     </div>
-    <div class="desc-wrapper" ng-click="open('{{id}}')">
-        <div class="thumbnail-desc" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
-            <h3 class="item-title">{{getTitle()}}</h3>
-            <div class="sub-title">{{getSecondTitle()}}</div>
-            <small ng-hide="multipleSingers">{{noun}} {{singer|uppercase}}</small>
+    <div class="bubble">
+        <div class="summary" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
+            <h3 class="title">{{getTitle()}}</h3>
+            <h4 class="en-title">{{getSecondTitle()}}</h4>
+            <span class="singers" ng-hide="multipleSingers">{{noun}} {{singer|uppercase}}</span>
             <div ng-hide="!shouldShowDetails" class='thumbnailDetails toggleBySlide'>
                 <div class="" ng-show="multipleSingers">
                 <small class="">sing {{singers|uppercase}}</small>
                 </div>
-                <small class="poetDetails">Poet {{poet|uppercase}}</small>
-                <div class='categoryDetails'>
+                <small class="poet">Poet {{poet|uppercase}}</small>
+                <div class='footer'>
                     <small class="categoryName">{{categoryName}}</small>
                     <small class="play">{{duration}}</small>
                 </div>
             </div>
         </div>
-        <div class="lower-curve"></div>
     </div>
 </div>
+
+
+
