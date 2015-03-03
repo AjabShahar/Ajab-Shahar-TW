@@ -3,17 +3,29 @@ package org.ajabshahar.platform;
 import com.bazaarvoice.dropwizard.caching.CachingBundle;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
+import io.dropwizard.auth.basic.BasicAuthProvider;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
+import io.dropwizard.jersey.sessions.HttpSessionProvider;
 import io.dropwizard.migrations.MigrationsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import org.ajabshahar.api.*;
+import org.ajabshahar.authentication.PasswordAuthenticator;
+import org.ajabshahar.authentication.Principle;
+import org.ajabshahar.authentication.SessionAuthenticatorFilter;
 import org.ajabshahar.core.*;
+import org.ajabshahar.platform.controller.LoginController;
 import org.ajabshahar.platform.daos.*;
 import org.ajabshahar.platform.models.*;
 import org.ajabshahar.platform.resources.*;
+import org.eclipse.jetty.server.SessionManager;
+import org.eclipse.jetty.server.session.HashSessionManager;
+import org.eclipse.jetty.server.session.SessionHandler;
 import org.picocontainer.DefaultPicoContainer;
+
+import javax.servlet.DispatcherType;
+import java.util.EnumSet;
 
 public class PlatformApplication extends Application<PlatformConfiguration> {
 
@@ -26,7 +38,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
 
     private final HibernateBundle<PlatformConfiguration> hibernate = new HibernateBundle<PlatformConfiguration>(SplashScreenOptions.class, Word.class,
             Couplet.class, Song.class, PersonDetails.class, Category.class, Title.class, SongText.class, SongTextContent.class, OpeningCouplet.class,
-            WordIntroduction.class, Reflection.class, ReflectionTranscript.class, Genre.class) {
+            WordIntroduction.class, Reflection.class, ReflectionTranscript.class, Genre.class, User.class) {
         @Override
         public DataSourceFactory getDataSourceFactory(PlatformConfiguration configuration) {
             return configuration.getDataSourceFactory();
@@ -48,7 +60,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         bootstrap.addBundle(new AssetsBundle("/assets/app/admin/js", "/admin-js", null, "admin-js"));
         bootstrap.addBundle(new AssetsBundle("/assets/app/admin/img", "/admin-img", null, "admin-img"));
 
-        bootstrap.addBundle(new AssetsBundle("/assets/app/admin/partials", "/admin", null, "admin"));
+            bootstrap.addBundle(new AssetsBundle("/assets/app/admin/partials", "/admin", null, "admin"));
 
         bootstrap.addBundle(new AssetsBundle("/assets/app/common", "/common", null, "common"));
 
@@ -59,6 +71,8 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
 
     @Override
     public void run(PlatformConfiguration configuration, Environment environment) throws Exception {
+        final int _30_MINUTES = 30 * 60;
+
         DefaultPicoContainer picoContainer = addToPicoContainer();
 
         TemplateHealthCheck templateHealthCheck = new TemplateHealthCheck("");
@@ -73,6 +87,15 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         environment.jersey().register(picoContainer.getComponent(TitleResource.class));
         environment.jersey().register(picoContainer.getComponent(ReflectionResource.class));
         environment.jersey().register(picoContainer.getComponent(GenreResource.class));
+        environment.jersey().register(picoContainer.getComponent(LoginController.class));
+        environment.jersey().register(HttpSessionProvider.class);
+        SessionManager sessionManager = new HashSessionManager();
+        sessionManager.setMaxInactiveInterval(_30_MINUTES);
+        environment.servlets().setSessionHandler(new SessionHandler());
+        environment.servlets().addFilter("SessionAuthFilter", new SessionAuthenticatorFilter()).addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class),true,"/*");
+        PasswordAuthenticator authenticator = picoContainer.getComponent(PasswordAuthenticator.class);
+        environment.jersey().register(new BasicAuthProvider<Principle>(authenticator,"Ajab-shahar"));
+
         environment.healthChecks().register("template", templateHealthCheck);
     }
 
@@ -90,6 +113,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         picoContainer.addComponent(SongTextDAO.class);
         picoContainer.addComponent(ReflectionDAO.class);
         picoContainer.addComponent(GenreDAO.class);
+        picoContainer.addComponent(UserDAO.class);
 
         picoContainer.addComponent(Songs.class);
         picoContainer.addComponent(Lyrics.class);
@@ -103,6 +127,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         picoContainer.addComponent(SongTextRepresentationFactory.class);
         picoContainer.addComponent(WordRepresentationFactory.class);
         picoContainer.addComponent(ReflectionRepresentationFactory.class);
+        picoContainer.addComponent(Users.class);
 
         picoContainer.addComponent(SplashScreenOptionsResource.class);
         picoContainer.addComponent(WordResource.class);
@@ -113,6 +138,9 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         picoContainer.addComponent(TitleResource.class);
         picoContainer.addComponent(ReflectionResource.class);
         picoContainer.addComponent(GenreResource.class);
+        picoContainer.addComponent(LoginController.class);
+        picoContainer.addComponent(PasswordAuthenticator.class);
+        picoContainer.addComponent(SessionAuthenticatorFilter.class);
 
         return picoContainer;
     }

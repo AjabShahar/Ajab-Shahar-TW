@@ -18,10 +18,10 @@ wordsAdminApp.directive("adminWordIntroduction", function() {
                     var wordIntroduction = {};
                     wordIntroduction.wordIntroHindi = introTextOriginals.length >0 ? "<p>" + introTextOriginals[i].split("\n").join("<br />") +"</p>" : "";
                     wordIntroduction.wordIntroEnglish = introTextTranslations.length >0 ?"<p>" + introTextTranslations[i].split("\n").join("<br />") +"</p>" : "";
-                    $scope.wordIntroductions.push(wordIntroduction)
+                    $scope.wordIntroductions.push(wordIntroduction);
                 }
                 $scope.wordIntroduction = "";
             };
         }
-    }
+    };
 });

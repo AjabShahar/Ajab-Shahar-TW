@@ -1,6 +1,7 @@
 #intellij idea
 .idea
 .DS_Store
+platform.iml
 target
 test-results.xml
 src/main/resources/assets/npm-debug.log
@@ -9,3 +10,5 @@ node_modules/
 AjabShahar.iml
 AjabShahar.ipr
 AjabShahar.iws
+test.mv.db
+test.trace.db

@@ -11,11 +11,11 @@ var coupletListController = function($scope, contentService){
                 toBeAdded.poet = '';
                 couplets.push(toBeAdded);
                 return couplets;
-            },[])
+            },[]);
         });
-    }
+    };
 
     $scope.init();
-}
+};
 
 adminApp.controller('coupletListController',['$scope','contentService',coupletListController]);

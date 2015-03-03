@@ -9,3 +9,9 @@ adminApp.config(function($locationProvider) {
        });
  });
 
+/*
+Cookie-based Authentication in AngularJS : http://ionicframework.com/blog/angularjs-authentication/
+adminApp.config(['$httpProvider', function($httpProvider) {
+   $httpProvider.defaults.withCredentials = true;
+}])
+*/

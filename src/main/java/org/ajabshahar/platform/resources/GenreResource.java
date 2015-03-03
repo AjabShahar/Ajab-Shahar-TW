@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import io.dropwizard.hibernate.UnitOfWork;
 import org.ajabshahar.platform.daos.GenreDAO;
 import org.ajabshahar.platform.models.Genre;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -18,7 +19,7 @@ public class GenreResource {
         this.genreDAO = genreDAO;
     }
 
-    private Response createPOST_Response(Genre genre){
+    private Response createPOST_Response(Genre genre) {
         return (genre != null) ? Response.status(200).entity(genre.toString()).build() : Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
     }
 
@@ -31,7 +32,7 @@ public class GenreResource {
         return createPOST_Response(genre);
     }
 
-    private Response createResponseFor(Object object){
+    private Response createResponseFor(Object object) {
         return (object != null) ? Response.ok(object, MediaType.APPLICATION_JSON).build() : Response.status(Response.Status.NOT_FOUND).build();
     }
 

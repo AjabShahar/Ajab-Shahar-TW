@@ -81,7 +81,8 @@ var wordDetailsController = function($scope, $window, $location, contentService,
     contentService.updateWord($scope.formInfo).success(function(){
       redirectToURL(PAGES.ADMIN_HOME);
     });
-  }
+  };
+   $scope.init();
 };
 
 wordsAdminApp.controller('wordDetailsController',['$scope', '$window', '$location', 'contentService', 'PAGES', '$q', wordDetailsController]);

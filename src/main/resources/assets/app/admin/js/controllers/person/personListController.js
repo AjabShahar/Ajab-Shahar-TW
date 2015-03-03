@@ -12,11 +12,11 @@ var personListController = function($scope, contentService){
                 toBeAdded.id = value.id;
                 people.push(toBeAdded);
                 return people;
-            },[])
+            },[]);
         });
-    }
+    };
 
     $scope.init();
-}
+};
 
 adminApp.controller('personListController',['$scope','contentService',personListController]);

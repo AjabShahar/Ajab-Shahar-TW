@@ -9,19 +9,19 @@ var personDetailsController = function( $scope, $http, $window, $location, conte
     contentService.getAllCategories('person').then(function(result){
       $scope.categoryList = result.data;
     });
-  }()
+  }();
 
   var savePerson = function(){
     $http.post('/api/people',$scope.formInfo).success(function(data){
         $window.location.href = '/admin/person/details.html?id=' + data;
     });
-  }
+  };
 
   var updatePerson = function(){
     $http.post('/api/people/edit', $scope.formInfo).success(function(data){
       $window.location.href = '/admin/home.html';
     });
-  }
+  };
 
   $scope.saveData = function(){
     (isAddNewPersonPage) ? savePerson() : updatePerson();
@@ -37,7 +37,7 @@ var personDetailsController = function( $scope, $http, $window, $location, conte
           });
         });
     });
-  }
+  };
 
   $scope.getPersonData = function(){
   	var personId = $location.search().id;

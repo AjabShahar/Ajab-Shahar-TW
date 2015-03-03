@@ -16,7 +16,7 @@ var songListController = function($scope, contentService){
                     toBeAdded.publish = "Yes";
                 
                 else 
-                    toBeAdded.publish = "No"
+                    toBeAdded.publish = "No";
                 
                 toBeAdded.singerNames = _.reduce(value.singers, function(memo, value, index){
                  return (memo + ((index!=0)?', ':'') + value.name);
@@ -27,17 +27,17 @@ var songListController = function($scope, contentService){
                 toBeAdded.id = value.id;
                 songs.push(toBeAdded);
                 return songs;
-            },[])
+            },[]);
         });
-    }
+    };
 
     $scope.confirmDeletionFor = function(songId){
         $scope.songToBeDeleted = songId;
-    }
+    };
 
     $scope.deletionConfirmedFor = function(songId){
         return $scope.songToBeDeleted == songId;   
-    }
+    };
 
     $scope.removeSong = function(confirmed){
         if(confirmed){
@@ -46,9 +46,9 @@ var songListController = function($scope, contentService){
         else{
             console.log("Canceled for " + $scope.songToBeDeleted);
         }
-    }
+    };
 
     $scope.init();
-}
+};
 
 adminApp.controller('songListController',['$scope','contentService',songListController]);

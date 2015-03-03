@@ -8,16 +8,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 
-public class AjabShaharAuthenticatorTest {
-    private AjabShaharAuthenticator ajabShaharAuthenticator;
+public class PasswordAuthenticatorTest {
+    private PasswordAuthenticator passwordAuthenticator;
 
     @Mock
     private Users users;
@@ -25,19 +22,15 @@ public class AjabShaharAuthenticatorTest {
     @Before
     public void setUp() throws Exception {
         initMocks(this);
-        ajabShaharAuthenticator = new AjabShaharAuthenticator(users);
-        when(users.getUser(any(String.class))).thenReturn(new User("admin", getHashedPassword("password")));
+        passwordAuthenticator = new PasswordAuthenticator(users);
+        byte[] password = PasswordEncryptor.getEncryptedPassword("password", PasswordAuthenticator.SALT,PasswordAuthenticator.ALGORITHM);
+        when(users.getUser(any(String.class))).thenReturn(new User("admin", new String(password)));
     }
 
-    private String getHashedPassword(String password) throws NoSuchAlgorithmException {
-        MessageDigest digest = MessageDigest.getInstance("SHA-256");
-        digest.update(AjabShaharAuthenticator.SALT.getBytes());
-        return new String(digest.digest(password.getBytes()));
-    }
 
     @Test
     public void shouldReturnAuthenticationStatusForGivenCredentials() throws Exception {
-        Optional<Principle> authenticate = ajabShaharAuthenticator.authenticate(new BasicCredentials("admin", "password"));
+        Optional<Principle> authenticate = passwordAuthenticator.authenticate(new BasicCredentials("admin", "password"));
         assertNotNull(authenticate);
         assertTrue(authenticate.isPresent());
         assertEquals("admin", authenticate.asSet().iterator().next().getUserName());
@@ -45,7 +38,7 @@ public class AjabShaharAuthenticatorTest {
 
     @Test
     public void shouldReturnAbsentPrincipleWhenPasswordMismatch() throws Exception {
-        Optional<Principle> authenticate = ajabShaharAuthenticator.authenticate(new BasicCredentials("admin", "wrong password"));
+        Optional<Principle> authenticate = passwordAuthenticator.authenticate(new BasicCredentials("admin", "wrong password"));
 
         assertFalse(authenticate.isPresent());
 

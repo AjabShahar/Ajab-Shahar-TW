@@ -19,14 +19,14 @@ var songDetailsController = function($scope, $window, $location, songContentServ
 
   var sortList = function(list, sortCriteria){
     return $filter('orderBy')(list, sortCriteria);
-  }
+  };
 
   var removeNulls = function(personList){
     var persons = angular.forEach(personList, function(person){
       person.lastName = (Boolean(person.lastName)) ? person.lastName : '';
     });
     return sortList(persons, 'firstName');
-  }
+  };
 
   $scope.isEmpty = function(value){
     return !Boolean(value);
@@ -86,7 +86,7 @@ var songDetailsController = function($scope, $window, $location, songContentServ
     return angular.forEach(list, function( item ){
       angular.forEach(data, function(selectedItem){
         if(!item.ticked) {
-          item.ticked = (selectedItem.id === item.id)
+          item.ticked = (selectedItem.id === item.id);
         }
       });
     });
@@ -113,6 +113,6 @@ var songDetailsController = function($scope, $window, $location, songContentServ
 
     songContentService.editSong($scope.song).success(function(){ redirectToURL(PAGES.ADMIN_HOME); });
   };
-}
+};
 
 songsAdminApp.controller('songDetailsController',['$scope', '$window', '$location', 'songContentService', 'PAGES', '$filter', '$q', songDetailsController]);

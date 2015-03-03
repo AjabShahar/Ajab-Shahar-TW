@@ -10,11 +10,11 @@ var wordListController = function($scope, contentService){
                 toBeAdded.id = value.id;
                 words.push(toBeAdded);
                 return words;
-            },[])
+            },[]);
         });
-    }
+    };
 
     $scope.init();
-}
+};
 
 adminApp.controller('wordListController',['$scope','contentService',wordListController]);
