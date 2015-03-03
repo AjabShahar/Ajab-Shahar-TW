@@ -1,0 +1,37 @@
+.thumbnails-grid {
+
+	.thumbnail {
+		width: 250px;
+
+		.image {
+            width: 215px;
+            height: 140px;
+        }
+
+        .bubble {
+            background-image: url(http://localhost:8000/img/common/directives/thumbnail/bubble-215-content.png);
+            width: 230px;
+            top: 120px;
+            left: -9px;
+
+            .summary {
+
+                &:before {
+                    background-image: url(http://localhost:8000/img/common/directives/thumbnail/bubble-215-top.png);
+                    width: 230px;
+                    height: 25px;
+                    top: -25px;
+                }
+
+                &:after {
+                    background-image: url(http://localhost:8000/img/common/directives/thumbnail/bubble-215-bottom.png);
+                    width: 230px;
+                    height: 25px;
+                    bottom: -25px;
+                }
+            }
+        }
+
+	}
+
+}

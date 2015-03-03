@@ -5,9 +5,10 @@ $desktop: new-breakpoint(min-width 1025px);
 .thumbnails-grid {
     .media-list {
         @include outer-container;
+
         .media {
             min-height: 250px;
-            text-align: center;
+
             @include span-columns(12);
 
             @include media($tab-portrait) {
@@ -21,11 +22,6 @@ $desktop: new-breakpoint(min-width 1025px);
 
             @include media($desktop) {
               @include span-columns(3);
-            }
-
-            .thumbnailWrapper {
-              width: 225px;
-              margin: 0 auto;
             }
         }
     }
