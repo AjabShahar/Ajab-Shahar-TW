@@ -1,4 +1,4 @@
-var songDetailsController = function($scope, $window, $location, songContentService, PAGES, $filter){
+var songDetailsController = function($scope, $window, $location, songContentService, PAGES, $filter, $q){
   $scope.song = {
     singers:[],
     poets: [],
@@ -32,21 +32,27 @@ var songDetailsController = function($scope, $window, $location, songContentServ
   }
 
   $scope.init = function(){
-    songContentService.getGenres().success(function(genres){ $scope.genres = genres; });
+    var genrePromise = songContentService.getGenres();
+    var titlePromise = songContentService.getSongTitles();
+    var songCategoryPromise = songContentService.getSongCategories();
+    var mediaCategoryPromise = songContentService.getMediaCategories();
+    var umbrellaTitlePromise = songContentService.getUmbrellaTitles();
+    var singerPromise = songContentService.getSingers();
+    var poetPromise = songContentService.getPoets();
+    var wordPromise = songContentService.getWords();
+    var promises = [genrePromise,titlePromise,songCategoryPromise,mediaCategoryPromise,umbrellaTitlePromise,singerPromise,poetPromise,wordPromise];
 
-    songContentService.getSongTitles().success(function(titles){ $scope.songTitles= titles; });
-
-    songContentService.getSongCategories().success(function(categories){ $scope.songCategories = categories; });
-
-    songContentService.getMediaCategories().success(function(categories){ $scope.mediaCategories = categories; });
-
-    songContentService.getUmbrellaTitles().success(function(umbrellaTitles){ $scope.umbrellaTitles = umbrellaTitles; });
-
-    songContentService.getSingers().success(function(singers){ $scope.singers = removeNulls(singers.people); });
-
-    songContentService.getPoets().success(function(poets){ $scope.poets = removeNulls(poets.people); });
-
-    songContentService.getWords().success(function(words){ $scope.words = words.words; });
+    $q.all(promises).then(function (data) {
+        $scope.genres = data[0].data;
+        $scope.songTitles = data[1].data;
+        $scope.songCategories = data[2].data;
+        $scope.mediaCategories = data[3].data;
+        $scope.umbrellaTitles = data[4].data;
+        $scope.singers = removeNulls(data[5].data.people);
+        $scope.poets = removeNulls(data[6].data.people);
+        $scope.words = data[7].data.words;
+        $scope.getSongData()
+    });
   };
 
   var setSongCategory = function(){
@@ -106,4 +112,4 @@ var songDetailsController = function($scope, $window, $location, songContentServ
   };
 }
 
-songsAdminApp.controller('songDetailsController',['$scope', '$window', '$location', 'songContentService', 'PAGES', '$filter', songDetailsController]);
+songsAdminApp.controller('songDetailsController',['$scope', '$window', '$location', 'songContentService', 'PAGES', '$filter', '$q', songDetailsController]);
