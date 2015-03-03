@@ -17,7 +17,7 @@
     }
 
     .bubble {
-        background: url(http://localhost:8000/img/common/directives/thumbnail/bubble-250-content.png) scroll repeat-y top left;
+        background: url(/user-img/common/directives/thumbnail/bubble-250-content.png) scroll repeat-y top left;
         width: 270px;
         position: absolute;
         top: 140px;
@@ -29,7 +29,7 @@
             padding: 0 20px;
 
             &:before {
-                background: url(http://localhost:8000/img/common/directives/thumbnail/bubble-250-top.png) scroll repeat-y top left;
+                background: url(/user-img/common/directives/thumbnail/bubble-250-top.png) scroll repeat-y top left;
                 width: 270px;
                 height: 30px;
                 content: " ";
@@ -39,7 +39,7 @@
             }
 
             &:after {
-                background: url(http://localhost:8000/img/common/directives/thumbnail/bubble-250-bottom.png) scroll repeat-y top left;
+                background: url(/user-img/common/directives/thumbnail/bubble-250-bottom.png) scroll repeat-y top left;
                 width: 270px;
                 height: 30px;
                 content: " ";

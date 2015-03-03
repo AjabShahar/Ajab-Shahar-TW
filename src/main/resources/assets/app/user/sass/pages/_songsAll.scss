@@ -4,7 +4,7 @@
 }
 
 .all-songs {
-    background: transparent url(../img/common/bg/bg_pattern.png) repeat;
+    background: transparent url(/user-img/common/bg/bg_pattern.png) repeat;
     background-size: contain;
     margin: 10px 0 0 0;
 
@@ -26,7 +26,7 @@
         .nav-elements-wrapper {
             position: relative;
             .category-logo {
-                background: transparent url('../img/songs/songs_logo.png') 0 0 no-repeat;
+                background: transparent url('/user-img/songs/songs_logo.png') 0 0 no-repeat;
                 width: 85px;
                 height: 58px;
                 padding-top: 30px;
@@ -43,12 +43,12 @@
                 text-transform: uppercase;
                 color: #e61b72;
                 &>.collapse {
-                    background: transparent url('../img/common/icons/cross.png') 0 0 no-repeat;
+                    background: transparent url('/user-img/common/icons/cross.png') 0 0 no-repeat;
                     display: inline-block;
                     height: 9px;
                     width: 9px;
                     &.expand {
-                        background-image: url('../img/common/icons/minus.png');
+                        background-image: url('/user-img/common/icons/minus.png');
                     }
                 }
 
@@ -150,7 +150,7 @@
                 width: 203px;
 
                 &:before {
-                    background: rgba(255,255,255,0) url(../img/common/directives/thumbnail/top.png) left top no-repeat;
+                    background: rgba(255,255,255,0) url(/user-img/common/directives/thumbnail/top.png) left top no-repeat;
                     top: -16px;
                     width: 223px;
                     background-size: contain;
@@ -158,7 +158,7 @@
             }
             .lower-curve {
                 margin: -3px 0 0 0;
-                background: rgba(255,255,255,0) url(../img/common/directives/thumbnail/bottom.png) left top no-repeat;
+                background: rgba(255,255,255,0) url(/user-img/common/directives/thumbnail/bottom.png) left top no-repeat;
                 background-size: cover;
                 width: 223px;
             }

@@ -71,7 +71,7 @@
     100% { background-position: 0 4277px; }
 }
 
-#songs_landing {
+.featured-songs {
     .song-parallax-container {
         width: 1140px;
         position: relative;
@@ -109,13 +109,13 @@
             }
 
             &1 {
-                background: url(../img/songs/parallax/background_image.jpg)  0px 0px;
+                background: url(/user-img/songs/parallax/background_image.jpg)  0px 0px;
                 background-repeat: no-repeat repeat;
 
             }
 
             &2 {
-                background: url(../img/songs/parallax/white_tambura.png) 0 0 no-repeat;
+                background: url(/user-img/songs/parallax/white_tambura.png) 0 0 no-repeat;
                 width: 145px;
                 -webkit-animation: antirotation 100s linear -5s infinite;
                 -moz-animation: antirotation 100s linear -5s infinite;
@@ -129,12 +129,12 @@
                 top: 560px;
                 left: 12%;
                 &.tambura-small-1 {
-                    background: url(../img/songs/parallax/tambura_small_white.png) 0 0 no-repeat;
+                    background: url(/user-img/songs/parallax/tambura_small_white.png) 0 0 no-repeat;
                     top: 1697px;
                     width: 190px;
                     left: 12%;
                     opacity: 0.8;
-                    background: url(../img/songs/parallax/white_tambura.png) 0 0 no-repeat;
+                    background: url(/user-img/songs/parallax/white_tambura.png) 0 0 no-repeat;
                     height: 500px;
                     -webkit-animation: antirotation 100s linear 2s infinite;
                     -moz-animation: antirotation 100s linear 2s infinite;
@@ -144,7 +144,7 @@
             }
 
             &3 {
-                background: url(../img/songs/parallax/tambura_small.png) 0px  0px no-repeat;
+                background: url(/user-img/songs/parallax/tambura_small.png) 0px  0px no-repeat;
                 opacity: 0.1;
                 top: 1000px;
                 left: 70%;
@@ -171,13 +171,13 @@
             }
 
             &4 {
-                background: url(../img/songs/parallax/triangles_new.png) 0px  0px;
+                background: url(/user-img/songs/parallax/triangles_new.png) 0px  0px;
                 opacity: 0.4;
                 background-size: contain;
             }
 
             &5 {
-                background: url(../img/songs/parallax/viberations_new.png) 0px  0px repeat;
+                background: url(/user-img/songs/parallax/viberations_new.png) 0px  0px repeat;
                 opacity: 0.12;
                 left: -4%;
                 height: 4277px;
@@ -199,7 +199,7 @@
             }
 
             &6 {
-                background: url(../img/songs/parallax/ingla.png) 0px  0px;
+                background: url(/user-img/songs/parallax/ingla.png) 0px  0px;
                 background-repeat: no-repeat repeat;
                 background-size: contain;
                 width: 53px;
@@ -210,7 +210,7 @@
             }
 
             &7 {
-                background: url(../img/songs/parallax/pingla.png) 0px  0px;
+                background: url(/user-img/songs/parallax/pingla.png) 0px  0px;
                 background-repeat: no-repeat repeat;
                 left: 68%;
                 width: 112px;
@@ -222,7 +222,7 @@
             }
 
             &8 {
-                background: url(../img/songs/parallax/sushamna.png) 0 0;
+                background: url(/user-img/songs/parallax/sushamna.png) 0 0;
                 background-repeat: no-repeat repeat;
                 background-size: contain;
                 left: 44%;
@@ -233,7 +233,7 @@
             }
 
             &9 {
-                background: url(../img/songs/parallax/snake.png) 0px  0 no-repeat;
+                background: url(/user-img/songs/parallax/snake.png) 0px  0 no-repeat;
                 top: 2244px;
                 left: 40%;
                 opacity: 0.5;
@@ -247,7 +247,7 @@
                 &:before, &:after {
                     content: '';
                     display: inline-block;
-                    background: transparent url(../img/mainLandingPage/parallax/side_pattern.png) 0 0;
+                    background: transparent url(/user-img/mainLandingPage/parallax/side_pattern.png) 0 0;
                     width: 30px;
                     background-repeat: no-repeat repeat;
                     height: 100%;

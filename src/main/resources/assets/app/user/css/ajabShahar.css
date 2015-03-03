@@ -168,7 +168,7 @@ body {
       padding: 10px 0 20px;
       margin: 0 auto; }
   .headerBox .headerArt {
-    background: url(../img/common/directives/header/header.png) 100% -1px no-repeat;
+    background: url(/user-img/common/directives/header/header.png) 100% -1px no-repeat;
     transition: none;
     margin-top: -1px;
     height: 95px;
@@ -278,7 +278,7 @@ header ul {
   width: 100%;
   padding: 20px 0 0;
   display: inline-block;
-  background: transparent url(../img/songs/pardah_long.png) -800px bottom no-repeat;
+  background: transparent url(/user-img/songs/pardah_long.png) -800px bottom no-repeat;
   height: 138px;
   padding-top: 10px;
   display: inline-block;
@@ -288,7 +288,7 @@ header ul {
   .header-with-carousel .page-header .logo-container {
     width: 85px; }
     .header-with-carousel .page-header .logo-container > a {
-      background: transparent url(../img/songs/songs_logo.png) center center no-repeat;
+      background: transparent url(/user-img/songs/songs_logo.png) center center no-repeat;
       width: inherit;
       height: 55px;
       float: left;
@@ -326,7 +326,7 @@ header ul {
       color: #999;
       font-style: italic; }
 .header-with-carousel .lower-pardah {
-  background: transparent url(../img/songs/pardah_long.png) -800px bottom no-repeat;
+  background: transparent url(/user-img/songs/pardah_long.png) -800px bottom no-repeat;
   min-height: 185px;
   width: 100%;
   position: relative; }
@@ -363,7 +363,7 @@ header ul {
         width: auto !important;
         margin: 0 46px 0 53px; }
     .header-with-carousel .lower-pardah .versions .carousel-wrapper .jcarousel-control-prev, .header-with-carousel .lower-pardah .versions .carousel-wrapper .jcarousel-control-next {
-      background: transparent url(../img/songs/carousel-left.png) 0 0 no-repeat;
+      background: transparent url(/user-img/songs/carousel-left.png) 0 0 no-repeat;
       width: 28px;
       height: 39px;
       display: inline-block;
@@ -374,7 +374,7 @@ header ul {
     .header-with-carousel .lower-pardah .versions .carousel-wrapper .jcarousel-control-prev {
       left: -10px; }
     .header-with-carousel .lower-pardah .versions .carousel-wrapper .jcarousel-control-next {
-      background-image: url(../img/songs/carousel-right.png);
+      background-image: url(/user-img/songs/carousel-right.png);
       right: 0; }
     .header-with-carousel .lower-pardah .versions .carousel-wrapper .thumbnailWrapper {
       margin: 0; }
@@ -387,19 +387,19 @@ header ul {
         .header-with-carousel .lower-pardah .versions .carousel-wrapper .thumbnailWrapper .desc-wrapper .thumbnail-desc .item-title {
           font-size: 16px; }
         .header-with-carousel .lower-pardah .versions .carousel-wrapper .thumbnailWrapper .desc-wrapper .thumbnail-desc:before {
-          background: rgba(255, 255, 255, 0) url(../img/common/directives/thumbnail/top-small.png) -1px top no-repeat;
+          background: rgba(255, 255, 255, 0) url(/user-img/common/directives/thumbnail/top-small.png) -1px top no-repeat;
           width: 236px; }
       .header-with-carousel .lower-pardah .versions .carousel-wrapper .thumbnailWrapper .desc-wrapper .lower-curve {
-        background: rgba(255, 255, 255, 0) url(../img/common/directives/thumbnail/bottom-small.png) left -5px no-repeat;
+        background: rgba(255, 255, 255, 0) url(/user-img/common/directives/thumbnail/bottom-small.png) left -5px no-repeat;
         margin-left: 15px; }
       .header-with-carousel .lower-pardah .versions .carousel-wrapper .thumbnailWrapper.active .desc-wrapper .thumbnail-desc {
         background-color: #f2f2f2; }
         .header-with-carousel .lower-pardah .versions .carousel-wrapper .thumbnailWrapper.active .desc-wrapper .thumbnail-desc .item-title {
           color: #333; }
         .header-with-carousel .lower-pardah .versions .carousel-wrapper .thumbnailWrapper.active .desc-wrapper .thumbnail-desc:before {
-          background: transparent url(../img/common/directives/thumbnail/top-small-grey.png) -1px top no-repeat; }
+          background: transparent url(/user-img/common/directives/thumbnail/top-small-grey.png) -1px top no-repeat; }
       .header-with-carousel .lower-pardah .versions .carousel-wrapper .thumbnailWrapper.active .desc-wrapper .lower-curve {
-        background: transparent url(../img/common/directives/thumbnail/bottom-small-grey.png) left -5px no-repeat; }
+        background: transparent url(/user-img/common/directives/thumbnail/bottom-small-grey.png) left -5px no-repeat; }
   .header-with-carousel .lower-pardah .see-more {
     width: 100%;
     display: inline-block;
@@ -414,12 +414,12 @@ header ul {
       color: #999;
       font-weight: 300; }
     .header-with-carousel .lower-pardah .see-more .arrow {
-      background: transparent url(../img/songs/down-arrow1.png) 4px 4px no-repeat;
+      background: transparent url(/user-img/songs/down-arrow1.png) 4px 4px no-repeat;
       height: 13px;
       width: 19px;
       display: inline-block; }
       .header-with-carousel .lower-pardah .see-more .arrow.up-arrow {
-        background-image: url(../img/songs/up-arrow1.png); }
+        background-image: url(/user-img/songs/up-arrow1.png); }
 
 /* Common Header Design with carousel end here*/
 .page-header-with-logo {
@@ -462,7 +462,7 @@ header ul {
   margin-top: -5%;
   position: relative; }
   .footerBox .footerArt {
-    background: url(../img/common/directives/footer/footer1.png) top no-repeat;
+    background: url(/user-img/common/directives/footer/footer1.png) top no-repeat;
     height: 249px;
     position: relative;
     z-index: 8;
@@ -488,7 +488,7 @@ header ul {
             padding: 0; } }
         .footerBox .footerArt footer ul > li {
           color: #b3b3b3;
-          background: transparent url(../img/common/directives/footer/dotted.png) left top;
+          background: transparent url(/user-img/common/directives/footer/dotted.png) left top;
           background-repeat: no-repeat repeat;
           font-family: 'Merriweather Sans','Merriweather';
           font-weight: 300;
@@ -515,7 +515,7 @@ header ul {
             .footerBox .footerArt footer ul.footerExtra li.kabirProject:after {
               content: '';
               display: inline-block;
-              background: url(../img/common/directives/footer/icons/kabirinit.jpg) 0 0 no-repeat;
+              background: url(/user-img/common/directives/footer/icons/kabirinit.jpg) 0 0 no-repeat;
               height: 42px;
               width: 42px;
               position: absolute;
@@ -540,17 +540,17 @@ header ul {
     /* map layer */
     /*background-effects layer*/ }
     .pxLayers.px-layer1 {
-      background-image: url(../img/mainLandingPage/parallax/body.png);
+      background-image: url(/user-img/mainLandingPage/parallax/body.png);
       width: 1140px; }
     .pxLayers.px-layer2 {
-      background: url(../img/mainLandingPage/parallax/map.png) 50% 0 repeat fixed; }
+      background: url(/user-img/mainLandingPage/parallax/map.png) 50% 0 repeat fixed; }
     .pxLayers.px-layer3 {
-      background-image: url(../img/mainLandingPage/parallax/check_img1.png);
+      background-image: url(/user-img/mainLandingPage/parallax/check_img1.png);
       width: 1140px; }
       .pxLayers.px-layer3:before, .pxLayers.px-layer3:after {
         content: '';
         display: inline-block;
-        background: transparent url(../img/mainLandingPage/parallax/side_pattern.png) 0 0;
+        background: transparent url(/user-img/mainLandingPage/parallax/side_pattern.png) 0 0;
         width: 30px;
         background-repeat: no-repeat repeat;
         height: 100%; }
@@ -566,7 +566,7 @@ header ul {
         -o-transform: rotate(180deg);
         transform: rotate(180deg); }
     .pxLayers.px-layer5 {
-      background: url(../img/mainLandingPage/parallax/bird2.png) 0px no-repeat;
+      background: url(/user-img/mainLandingPage/parallax/bird2.png) 0px no-repeat;
       -webkit-animation: movebird 100s linear infinite;
       -moz-animation: movebird 100s linear infinite;
       -o-animation: movebird 100s linear infinite;
@@ -576,7 +576,7 @@ header ul {
       -o-transform-origin: 30em 60em;
       transform-origin: 30em 60em; }
     .pxLayers.px-layer6 {
-      background: url(../img/mainLandingPage/parallax/clouds.png);
+      background: url(/user-img/mainLandingPage/parallax/clouds.png);
       width: 1981px;
       height: 800px;
       top: 120px;
@@ -601,7 +601,7 @@ header ul {
       -webkit-animation-delay: -2s;
       -o-animation-delay: -2s; }
       .pxLayers.px-layer6.second {
-        background: url(../img/mainLandingPage/parallax/clouds1.png);
+        background: url(/user-img/mainLandingPage/parallax/clouds1.png);
         width: 1290px;
         height: 771px;
         top: 800px;
@@ -614,7 +614,7 @@ header ul {
         -moz-animation-duration: 58s;
         -o-animation-duration: 58s; }
       .pxLayers.px-layer6.third {
-        background: url(../img/mainLandingPage/parallax/clouds2.png);
+        background: url(/user-img/mainLandingPage/parallax/clouds2.png);
         width: 1337px;
         height: 858px;
         top: 1800px;
@@ -627,7 +627,7 @@ header ul {
         -moz-animation-duration: 66s;
         -o-animation-duration: 66s; }
       .pxLayers.px-layer6.fourth {
-        background: url(../img/mainLandingPage/parallax/clouds3.png);
+        background: url(/user-img/mainLandingPage/parallax/clouds3.png);
         width: 1223px;
         height: 855px;
         top: 3200px;
@@ -640,7 +640,7 @@ header ul {
         -moz-animation-duration: 55s;
         -o-animation-duration: 55s; }
     .pxLayers.px-layer7 {
-      background: transparent url(../img/mainLandingPage/parallax/whiteString.png) 0 0px;
+      background: transparent url(/user-img/mainLandingPage/parallax/whiteString.png) 0 0px;
       background-repeat: no-repeat repeat;
       left: 36.3%;
       top: 45px;
@@ -807,36 +807,36 @@ header ul {
 
   100% {
     background-position: 0 4277px; } }
-#songs_landing .song-parallax-container {
+.featured-songs .song-parallax-container {
   width: 1140px;
   position: relative;
   z-index: -1;
   margin: 0 auto; }
   @media screen and (max-width: 1024px) {
-    #songs_landing .song-parallax-container {
+    .featured-songs .song-parallax-container {
       width: 1024px; } }
   @media screen and (max-width: 768px) {
-    #songs_landing .song-parallax-container {
+    .featured-songs .song-parallax-container {
       width: 768px; } }
-  #songs_landing .song-parallax-container .pxSongLayers {
+  .featured-songs .song-parallax-container .pxSongLayers {
     width: 100%;
     top: 0;
     left: 0;
     height: 4000px;
     position: absolute; }
-  #songs_landing .song-parallax-container .px-song-layer:before {
+  .featured-songs .song-parallax-container .px-song-layer:before {
     float: left; }
-  #songs_landing .song-parallax-container .px-song-layer:after {
+  .featured-songs .song-parallax-container .px-song-layer:after {
     float: right;
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
     -o-transform: rotate(180deg);
     transform: rotate(180deg); }
-  #songs_landing .song-parallax-container .px-song-layer1 {
-    background: url(../img/songs/parallax/background_image.jpg) 0px 0px;
+  .featured-songs .song-parallax-container .px-song-layer1 {
+    background: url(/user-img/songs/parallax/background_image.jpg) 0px 0px;
     background-repeat: no-repeat repeat; }
-  #songs_landing .song-parallax-container .px-song-layer2 {
-    background: url(../img/songs/parallax/white_tambura.png) 0 0 no-repeat;
+  .featured-songs .song-parallax-container .px-song-layer2 {
+    background: url(/user-img/songs/parallax/white_tambura.png) 0 0 no-repeat;
     width: 145px;
     -webkit-animation: antirotation 100s linear -5s infinite;
     -moz-animation: antirotation 100s linear -5s infinite;
@@ -849,20 +849,20 @@ header ul {
     height: 495px;
     top: 560px;
     left: 12%; }
-    #songs_landing .song-parallax-container .px-song-layer2.tambura-small-1 {
-      background: url(../img/songs/parallax/tambura_small_white.png) 0 0 no-repeat;
+    .featured-songs .song-parallax-container .px-song-layer2.tambura-small-1 {
+      background: url(/user-img/songs/parallax/tambura_small_white.png) 0 0 no-repeat;
       top: 1697px;
       width: 190px;
       left: 12%;
       opacity: 0.8;
-      background: url(../img/songs/parallax/white_tambura.png) 0 0 no-repeat;
+      background: url(/user-img/songs/parallax/white_tambura.png) 0 0 no-repeat;
       height: 500px;
       -webkit-animation: antirotation 100s linear 2s infinite;
       -moz-animation: antirotation 100s linear 2s infinite;
       -o-animation: antirotation 100s linear 2s infinite;
       animation: antirotation 100s linear 2s infinite; }
-  #songs_landing .song-parallax-container .px-song-layer3 {
-    background: url(../img/songs/parallax/tambura_small.png) 0px 0px no-repeat;
+  .featured-songs .song-parallax-container .px-song-layer3 {
+    background: url(/user-img/songs/parallax/tambura_small.png) 0px 0px no-repeat;
     opacity: 0.1;
     top: 1000px;
     left: 70%;
@@ -876,7 +876,7 @@ header ul {
     -moz-animation: rotation 60s linear 3s infinite;
     -o-animation: rotation 60s linear 3s infinite;
     animation: rotation 60s linear 3s infinite; }
-    #songs_landing .song-parallax-container .px-song-layer3.tambura-small-1 {
+    .featured-songs .song-parallax-container .px-song-layer3.tambura-small-1 {
       left: 67%;
       top: 2000px;
       -webkit-animation: rotation 60s linear 1s infinite;
@@ -884,12 +884,12 @@ header ul {
       -o-animation: rotation 60s linear 1s infinite;
       animation: rotation 60s linear 1s infinite;
       opacity: 0.15; }
-  #songs_landing .song-parallax-container .px-song-layer4 {
-    background: url(../img/songs/parallax/triangles_new.png) 0px 0px;
+  .featured-songs .song-parallax-container .px-song-layer4 {
+    background: url(/user-img/songs/parallax/triangles_new.png) 0px 0px;
     opacity: 0.4;
     background-size: contain; }
-  #songs_landing .song-parallax-container .px-song-layer5 {
-    background: url(../img/songs/parallax/viberations_new.png) 0px 0px repeat;
+  .featured-songs .song-parallax-container .px-song-layer5 {
+    background: url(/user-img/songs/parallax/viberations_new.png) 0px 0px repeat;
     opacity: 0.12;
     left: -4%;
     height: 4277px;
@@ -898,7 +898,7 @@ header ul {
     -moz-animation: moveUp 200s linear infinite;
     -o-animation: moveUp 200s linear infinite;
     animation: moveUp 200s linear infinite; }
-    #songs_landing .song-parallax-container .px-song-layer5.top-to-bottom {
+    .featured-songs .song-parallax-container .px-song-layer5.top-to-bottom {
       top: -2000px;
       opacity: 0.15;
       height: 6400px;
@@ -906,108 +906,108 @@ header ul {
       -moz-animation: moveDown 500s linear infinite;
       -o-animation: moveDown 500s linear infinite;
       animation: moveDown 500s linear infinite; }
-  #songs_landing .song-parallax-container .px-song-layer6 {
-    background: url(../img/songs/parallax/ingla.png) 0px 0px;
+  .featured-songs .song-parallax-container .px-song-layer6 {
+    background: url(/user-img/songs/parallax/ingla.png) 0px 0px;
     background-repeat: no-repeat repeat;
     background-size: contain;
     width: 53px;
     left: 22%; }
     @media screen and (max-width: 768px) {
-      #songs_landing .song-parallax-container .px-song-layer6 {
+      .featured-songs .song-parallax-container .px-song-layer6 {
         left: 25%; } }
-  #songs_landing .song-parallax-container .px-song-layer7 {
-    background: url(../img/songs/parallax/pingla.png) 0px 0px;
+  .featured-songs .song-parallax-container .px-song-layer7 {
+    background: url(/user-img/songs/parallax/pingla.png) 0px 0px;
     background-repeat: no-repeat repeat;
     left: 68%;
     width: 112px;
     background-size: contain; }
     @media screen and (max-width: 768px) {
-      #songs_landing .song-parallax-container .px-song-layer7 {
+      .featured-songs .song-parallax-container .px-song-layer7 {
         left: 65%; } }
-  #songs_landing .song-parallax-container .px-song-layer8 {
-    background: url(../img/songs/parallax/sushamna.png) 0 0;
+  .featured-songs .song-parallax-container .px-song-layer8 {
+    background: url(/user-img/songs/parallax/sushamna.png) 0 0;
     background-repeat: no-repeat repeat;
     background-size: contain;
     left: 44%;
     width: 144px; }
     @media screen and (max-width: 768px) {
-      #songs_landing .song-parallax-container .px-song-layer8 {
+      .featured-songs .song-parallax-container .px-song-layer8 {
         left: 42%; } }
-  #songs_landing .song-parallax-container .px-song-layer9 {
-    background: url(../img/songs/parallax/snake.png) 0px 0 no-repeat;
+  .featured-songs .song-parallax-container .px-song-layer9 {
+    background: url(/user-img/songs/parallax/snake.png) 0px 0 no-repeat;
     top: 2244px;
     left: 40%;
     opacity: 0.5; }
     @media screen and (max-width: 768px) {
-      #songs_landing .song-parallax-container .px-song-layer9 {
+      .featured-songs .song-parallax-container .px-song-layer9 {
         left: 36%; } }
-  #songs_landing .song-parallax-container .px-song-layer11:before, #songs_landing .song-parallax-container .px-song-layer11:after {
+  .featured-songs .song-parallax-container .px-song-layer11:before, .featured-songs .song-parallax-container .px-song-layer11:after {
     content: '';
     display: inline-block;
-    background: transparent url(../img/mainLandingPage/parallax/side_pattern.png) 0 0;
+    background: transparent url(/user-img/mainLandingPage/parallax/side_pattern.png) 0 0;
     width: 30px;
     background-repeat: no-repeat repeat;
     height: 100%; }
     @media screen and (max-width: 1140px) {
-      #songs_landing .song-parallax-container .px-song-layer11:before, #songs_landing .song-parallax-container .px-song-layer11:after {
+      .featured-songs .song-parallax-container .px-song-layer11:before, .featured-songs .song-parallax-container .px-song-layer11:after {
         display: none; } }
-#songs_landing .shift1 {
+.featured-songs .shift1 {
   top: -6%;
   left: 10%;
   position: absolute; }
   @media screen and (max-width: 1024px) {
-    #songs_landing .shift1 {
+    .featured-songs .shift1 {
       left: 3%;
       top: -4%; } }
-#songs_landing .shift2 {
+.featured-songs .shift2 {
   left: 60%;
   position: absolute;
   top: 0%; }
-#songs_landing .shift3 {
+.featured-songs .shift3 {
   left: 33%;
   top: 10%;
   position: absolute; }
   @media screen and (max-width: 1024px) {
-    #songs_landing .shift3 {
+    .featured-songs .shift3 {
       left: 27%; } }
-#songs_landing .shift4 {
+.featured-songs .shift4 {
   top: 21%;
   left: 10%;
   position: absolute; }
   @media screen and (max-width: 1024px) {
-    #songs_landing .shift4 {
+    .featured-songs .shift4 {
       left: 2%; } }
-#songs_landing .shift5 {
+.featured-songs .shift5 {
   left: 39%;
   top: 32%;
   position: absolute; }
-#songs_landing .shift6 {
+.featured-songs .shift6 {
   left: 59%;
   top: 47%;
   position: absolute; }
   @media screen and (max-width: 768px) {
-    #songs_landing .shift6 {
+    .featured-songs .shift6 {
       top: 46%; } }
-#songs_landing .shift7 {
+.featured-songs .shift7 {
   left: 12%;
   top: 41%;
   position: absolute; }
   @media screen and (max-width: 1024px) {
-    #songs_landing .shift7 {
+    .featured-songs .shift7 {
       left: -5%; } }
-#songs_landing .shift8 {
+.featured-songs .shift8 {
   left: 33%;
   top: 56%;
   position: absolute; }
   @media screen and (max-width: 1024px) {
-    #songs_landing .shift8 {
+    .featured-songs .shift8 {
       left: 18%; } }
-#songs_landing .shift9 {
+.featured-songs .shift9 {
   left: 10%;
   top: 68%;
   position: absolute; }
   @media screen and (max-width: 1024px) {
-    #songs_landing .shift9 {
+    .featured-songs .shift9 {
       left: 4%; } }
 
 .thumbnails-grid .media-list {
@@ -1066,7 +1066,7 @@ header ul {
       max-width: 100%;
       max-height: 100%; }
   .thumbnail .bubble {
-    background: url(http://localhost:8000/img/common/directives/thumbnail/bubble-250-content.png) scroll repeat-y top left;
+    background: url(/user-img/common/directives/thumbnail/bubble-250-content.png) scroll repeat-y top left;
     width: 270px;
     position: absolute;
     top: 140px;
@@ -1076,7 +1076,7 @@ header ul {
       left: 0px;
       padding: 0 20px; }
       .thumbnail .bubble .summary:before {
-        background: url(http://localhost:8000/img/common/directives/thumbnail/bubble-250-top.png) scroll repeat-y top left;
+        background: url(/user-img/common/directives/thumbnail/bubble-250-top.png) scroll repeat-y top left;
         width: 270px;
         height: 30px;
         content: " ";
@@ -1084,7 +1084,7 @@ header ul {
         top: -30px;
         left: 0; }
       .thumbnail .bubble .summary:after {
-        background: url(http://localhost:8000/img/common/directives/thumbnail/bubble-250-bottom.png) scroll repeat-y top left;
+        background: url(/user-img/common/directives/thumbnail/bubble-250-bottom.png) scroll repeat-y top left;
         width: 270px;
         height: 30px;
         content: " ";
@@ -1123,7 +1123,7 @@ header ul {
   position: relative;
   top: 2px; }
 .thumbnail.songs .summary .play {
-  background: url(../img/common/icons/gray_play.png) left bottom no-repeat;
+  background: url(/user-img/common/icons/gray_play.png) left bottom no-repeat;
   padding-left: 12px;
   margin-left: 3px;
   color: #888; }
@@ -1150,17 +1150,17 @@ header ul {
     width: 215px;
     height: 140px; }
   .thumbnails-grid .thumbnail .bubble {
-    background-image: url(http://localhost:8000/img/common/directives/thumbnail/bubble-215-content.png);
+    background-image: url(/user-img/common/directives/thumbnail/bubble-215-content.png);
     width: 230px;
     top: 120px;
     left: -9px; }
     .thumbnails-grid .thumbnail .bubble .summary:before {
-      background-image: url(http://localhost:8000/img/common/directives/thumbnail/bubble-215-top.png);
+      background-image: url(/user-img/common/directives/thumbnail/bubble-215-top.png);
       width: 230px;
       height: 25px;
       top: -25px; }
     .thumbnails-grid .thumbnail .bubble .summary:after {
-      background-image: url(http://localhost:8000/img/common/directives/thumbnail/bubble-215-bottom.png);
+      background-image: url(/user-img/common/directives/thumbnail/bubble-215-bottom.png);
       width: 230px;
       height: 25px;
       bottom: -25px; }
@@ -1306,7 +1306,7 @@ body {
   display: block;
   width: 220px;
   height: 180px;
-  background: url(../img/introduction/enter.png) no-repeat; }
+  background: url(/user-img/introduction/enter.png) no-repeat; }
   .slide_bottom a.enter {
     display: inline-block;
     margin: 40px 0px 0 50px;
@@ -1322,98 +1322,97 @@ body {
     height: 20px;
     cursor: pointer; }
 
-.homepage-content {
+.featured-all .homepage-content {
   width: 70%;
   position: relative;
   height: 3910px;
   margin: 24% auto 0; }
   @media screen and (max-width: 1024px) {
-    .homepage-content {
+    .featured-all .homepage-content {
       margin-top: 34%; } }
   @media screen and (max-width: 768px) {
-    .homepage-content {
+    .featured-all .homepage-content {
       margin-top: 42%; } }
-  .homepage-content .thumbnailWrapper {
+  .featured-all .homepage-content .thumbnail {
     margin-bottom: 27%;
     margin-top: 0px; }
     @media screen and (max-width: 1280px) {
-      .homepage-content .thumbnailWrapper {
+      .featured-all .homepage-content .thumbnail {
         margin-bottom: 31%; } }
     @media screen and (max-width: 1024px) {
-      .homepage-content .thumbnailWrapper {
+      .featured-all .homepage-content .thumbnail {
         margin-bottom: 41%; } }
     @media screen and (max-width: 768px) {
-      .homepage-content .thumbnailWrapper {
+      .featured-all .homepage-content .thumbnail {
         margin-bottom: 55%; } }
-
-.shift1 {
+.featured-all .shift1 {
   margin: 0 0 0 35%; }
   @media screen and (max-width: 1024px) {
-    .shift1 {
+    .featured-all .shift1 {
       margin-left: 32%; } }
   @media screen and (max-width: 768px) {
-    .shift1 {
+    .featured-all .shift1 {
       margin-left: 18%; } }
-.shift2 {
+.featured-all .shift2 {
   margin: 0 0 0 42%; }
   @media screen and (max-width: 1024px) {
-    .shift2 {
+    .featured-all .shift2 {
       margin-left: 35%; } }
   @media screen and (max-width: 768px) {
-    .shift2 {
+    .featured-all .shift2 {
       margin-left: 28%; } }
-.shift3 {
+.featured-all .shift3 {
   margin: 0 0 0 35%; }
   @media screen and (max-width: 1024px) {
-    .shift3 {
+    .featured-all .shift3 {
       margin-left: 27%; } }
   @media screen and (max-width: 768px) {
-    .shift3 {
+    .featured-all .shift3 {
       margin-left: 27%; } }
-.shift4 {
+.featured-all .shift4 {
   margin: 0 0 0 38%; }
   @media screen and (max-width: 1024px) {
-    .shift4 {
+    .featured-all .shift4 {
       margin-left: 30%; } }
   @media screen and (max-width: 768px) {
-    .shift4 {
+    .featured-all .shift4 {
       margin-left: 27%; } }
-.shift5 {
+.featured-all .shift5 {
   margin: 0 0 0 42%; }
   @media screen and (max-width: 1024px) {
-    .shift5 {
+    .featured-all .shift5 {
       margin-left: 33%; } }
   @media screen and (max-width: 768px) {
-    .shift5 {
+    .featured-all .shift5 {
       margin-left: 27%; } }
-.shift6 {
+.featured-all .shift6 {
   margin: 0 0 0 30%; }
   @media screen and (max-width: 1024px) {
-    .shift6 {
+    .featured-all .shift6 {
       margin-left: 33%; } }
   @media screen and (max-width: 768px) {
-    .shift6 {
+    .featured-all .shift6 {
       margin-left: 27%; } }
-.shift7 {
+.featured-all .shift7 {
   margin: 0 0 0 40%; }
   @media screen and (max-width: 1024px) {
-    .shift7 {
+    .featured-all .shift7 {
       margin-left: 33%; } }
-.shift8 {
+.featured-all .shift8 {
   margin: 0 0 0 30%; }
   @media screen and (max-width: 1024px) {
-    .shift8 {
+    .featured-all .shift8 {
       margin-left: 25%; } }
   @media screen and (max-width: 768px) {
-    .shift8 {
+    .featured-all .shift8 {
       margin-left: 18%; } }
-.shift9 {
+.featured-all .shift9 {
   margin: 0 0 0 40%; }
   @media screen and (max-width: 1024px) {
-    .shift9 {
+    .featured-all .shift9 {
       margin-left: 33%; } }
   @media screen and (max-width: 768px) {
-    .shift9 {
+    .featured-all .shift9 {
       margin-left: 27%; } }
 
 .ajab-wrapper {
@@ -1422,7 +1421,7 @@ body {
   z-index: 1; }
 
 .all-songs {
-  background: transparent url(../img/common/bg/bg_pattern.png) repeat;
+  background: transparent url(/user-img/common/bg/bg_pattern.png) repeat;
   background-size: contain;
   margin: 10px 0 0 0; }
   .all-songs .headerBox {
@@ -1440,7 +1439,7 @@ body {
     .all-songs .left-nav .nav-elements-wrapper {
       position: relative; }
       .all-songs .left-nav .nav-elements-wrapper .category-logo {
-        background: transparent url("../img/songs/songs_logo.png") 0 0 no-repeat;
+        background: transparent url("/user-img/songs/songs_logo.png") 0 0 no-repeat;
         width: 85px;
         height: 58px;
         padding-top: 30px;
@@ -1455,12 +1454,12 @@ body {
         text-transform: uppercase;
         color: #e61b72; }
         .all-songs .left-nav .nav-elements-wrapper .filter-button > .collapse {
-          background: transparent url("../img/common/icons/cross.png") 0 0 no-repeat;
+          background: transparent url("/user-img/common/icons/cross.png") 0 0 no-repeat;
           display: inline-block;
           height: 9px;
           width: 9px; }
           .all-songs .left-nav .nav-elements-wrapper .filter-button > .collapse.expand {
-            background-image: url("../img/common/icons/minus.png"); }
+            background-image: url("/user-img/common/icons/minus.png"); }
   .all-songs .second-layer-list {
     position: fixed;
     left: 183px;
@@ -1530,13 +1529,13 @@ body {
         box-shadow: none;
         width: 203px; }
         .all-songs .songs .desc-wrapper .thumbnail-desc:before {
-          background: rgba(255, 255, 255, 0) url(../img/common/directives/thumbnail/top.png) left top no-repeat;
+          background: rgba(255, 255, 255, 0) url(/user-img/common/directives/thumbnail/top.png) left top no-repeat;
           top: -16px;
           width: 223px;
           background-size: contain; }
       .all-songs .songs .desc-wrapper .lower-curve {
         margin: -3px 0 0 0;
-        background: rgba(255, 255, 255, 0) url(../img/common/directives/thumbnail/bottom.png) left top no-repeat;
+        background: rgba(255, 255, 255, 0) url(/user-img/common/directives/thumbnail/bottom.png) left top no-repeat;
         background-size: cover;
         width: 223px; }
 
@@ -1602,14 +1601,14 @@ body {
         left: 5%;
         z-index: 1; } }
 
-#songs_landing .page-header {
+.featured-songs .page-header {
   width: 100%;
   padding: 20px 0 0;
   display: inline-block; }
-  #songs_landing .page-header .logo-container {
+  .featured-songs .page-header .logo-container {
     width: 85px; }
-    #songs_landing .page-header .logo-container > a {
-      background: transparent url(../img/songs/songs_logo.png) center center no-repeat;
+    .featured-songs .page-header .logo-container > a {
+      background: transparent url(/user-img/songs/songs_logo.png) center center no-repeat;
       width: inherit;
       height: 55px;
       float: left;
@@ -1619,14 +1618,14 @@ body {
       font-family: 'Merriweather';
       font-size: 18px;
       font-weight: 300; }
-  #songs_landing .page-header .sub-info {
+  .featured-songs .page-header .sub-info {
     width: inherit; }
-    #songs_landing .page-header .sub-info .number {
+    .featured-songs .page-header .sub-info .number {
       font-size: 14px;
       color: #999;
       border-bottom: solid 1px #d3135a;
       padding: 5px; }
-    #songs_landing .page-header .sub-info .all-link {
+    .featured-songs .page-header .sub-info .all-link {
       color: #fff;
       text-transform: uppercase;
       font-size: 16px;
@@ -1635,7 +1634,7 @@ body {
       line-height: 27px; }
 
 body.songs-details {
-  background: transparent url(../img/songs/song_details_bg.jpg) center center no-repeat;
+  background: transparent url(/user-img/songs/song_details_bg.jpg) center center no-repeat;
   background-size: cover; }
   body.songs-details .main-content {
     margin-top: 60px;
@@ -1708,7 +1707,7 @@ body.songs-details {
     body.songs-details #song_container .video-options ul.share-options li {
       padding: 10px; }
       body.songs-details #song_container .video-options ul.share-options li a {
-        background: transparent url(../img/songs/songs_sprite.png) 0 0 no-repeat;
+        background: transparent url(/user-img/songs/songs_sprite.png) 0 0 no-repeat;
         display: inline-block;
         width: 26px;
         height: 23px; }
@@ -1773,7 +1772,7 @@ body.songs-details {
     body.songs-details #poem_container .hindi .lyrics {
       font-size: 18px; }
   body.songs-details .lyrics-footer {
-    background: transparent url(../img/songs/song_bottom.png) 0 0 no-repeat;
+    background: transparent url(/user-img/songs/song_bottom.png) 0 0 no-repeat;
     height: 100px;
     width: 100%;
     display: inline-block;
@@ -1791,7 +1790,7 @@ body.songs-details {
           float: left;
           width: 36px;
           height: 36px;
-          background: transparent url(../img/songs/songs_sprite.png) 0 0 no-repeat; }
+          background: transparent url(/user-img/songs/songs_sprite.png) 0 0 no-repeat; }
         body.songs-details .lyrics-footer ul > li.original > a {
           background-position: 0px -48px; }
         body.songs-details .lyrics-footer ul > li.transliteration > a {
@@ -1802,7 +1801,7 @@ body.songs-details {
       position: absolute;
       right: 13%;
       bottom: 40px;
-      background: transparent url(../img/songs/songs_sprite.png) -52px 0px no-repeat;
+      background: transparent url(/user-img/songs/songs_sprite.png) -52px 0px no-repeat;
       width: 50px;
       height: 102px;
       display: inline-block; }

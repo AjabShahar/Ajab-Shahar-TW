@@ -9,7 +9,7 @@
   position: relative;
 
   .footerArt{
-    background:url(../img/common/directives/footer/footer1.png) top no-repeat;
+    background:url(/user-img/common/directives/footer/footer1.png) top no-repeat;
     height: 249px;
     position: relative;
     z-index: 8;
@@ -40,7 +40,7 @@
 
         &>li {
             color: #b3b3b3;
-            background: transparent url(../img/common/directives/footer/dotted.png) left top;
+            background: transparent url(/user-img/common/directives/footer/dotted.png) left top;
             background-repeat: no-repeat repeat;
             font-family:'Merriweather Sans','Merriweather';
             font-weight: 300;
@@ -79,7 +79,7 @@
                  &:after {
                     content: '';
                     display: inline-block;
-                    background: url(../img/common/directives/footer/icons/kabirinit.jpg) 0 0 no-repeat;
+                    background: url(/user-img/common/directives/footer/icons/kabirinit.jpg) 0 0 no-repeat;
                     height: 42px;
                     width: 42px;
                     position: absolute;

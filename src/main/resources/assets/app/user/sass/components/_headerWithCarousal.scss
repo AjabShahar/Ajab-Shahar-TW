@@ -6,7 +6,7 @@
     .page-header {
             @include page-header-with-logo;
 
-            background: transparent url(../img/songs/pardah_long.png) -800px bottom no-repeat;
+            background: transparent url(/user-img/songs/pardah_long.png) -800px bottom no-repeat;
             height: 138px;
             padding-top: 10px;
             display: inline-block;
@@ -34,7 +34,7 @@
         }
 
     .lower-pardah {
-        background: transparent url(../img/songs/pardah_long.png) -800px bottom no-repeat;
+        background: transparent url(/user-img/songs/pardah_long.png) -800px bottom no-repeat;
         min-height: 185px;
         width: 100%;
         position: relative;
@@ -88,7 +88,7 @@
                     }
 
                     .jcarousel-control-prev, .jcarousel-control-next {
-                        background: transparent url(../img/songs/carousel-left.png) 0 0 no-repeat;
+                        background: transparent url(/user-img/songs/carousel-left.png) 0 0 no-repeat;
                         width: 28px;
                         height: 39px;
                         display: inline-block;
@@ -102,7 +102,7 @@
                     }
 
                     .jcarousel-control-next {
-                        background-image: url(../img/songs/carousel-right.png);
+                        background-image: url(/user-img/songs/carousel-right.png);
                         right: 0;
                     }
                     /*UI: WIP */
@@ -121,12 +121,12 @@
                                     font-size: 16px;
                                 }
                                 &:before {
-                                    background: rgba(255,255,255,0) url(../img/common/directives/thumbnail/top-small.png) -1px top no-repeat;
+                                    background: rgba(255,255,255,0) url(/user-img/common/directives/thumbnail/top-small.png) -1px top no-repeat;
                                     width: 236px;
                                 }
                             }
                             .lower-curve {
-                                background: rgba(255,255,255,0) url(../img/common/directives/thumbnail/bottom-small.png) left -5px no-repeat;
+                                background: rgba(255,255,255,0) url(/user-img/common/directives/thumbnail/bottom-small.png) left -5px no-repeat;
                                 margin-left: 15px;
                             }
                         }
@@ -139,11 +139,11 @@
                                         color: #333;
                                     }
                                     &:before {
-                                        background: transparent url(../img/common/directives/thumbnail/top-small-grey.png) -1px top no-repeat;
+                                        background: transparent url(/user-img/common/directives/thumbnail/top-small-grey.png) -1px top no-repeat;
                                     }
                                 }
                                 .lower-curve {
-                                    background: transparent url(../img/common/directives/thumbnail/bottom-small-grey.png) left -5px no-repeat;
+                                    background: transparent url(/user-img/common/directives/thumbnail/bottom-small-grey.png) left -5px no-repeat;
                                 }
                              }
                         }
@@ -167,12 +167,12 @@
 
                 }
                 .arrow {
-                    background: transparent url(../img/songs/down-arrow1.png) 4px 4px no-repeat;
+                    background: transparent url(/user-img/songs/down-arrow1.png) 4px 4px no-repeat;
                     height: 13px;
                     width: 19px;
                     display: inline-block;
                     &.up-arrow {
-                        background-image: url(../img/songs/up-arrow1.png);
+                        background-image: url(/user-img/songs/up-arrow1.png);
                     }
                 }
 

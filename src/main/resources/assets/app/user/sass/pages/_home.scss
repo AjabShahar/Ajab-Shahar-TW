@@ -1,34 +1,35 @@
-.homepage-content{
-    width: 70%;
-    position: relative;
-    height: 3910px;
-    margin: 24% auto 0;
+.featured-all {
+    .homepage-content{
+        width: 70%;
+        position: relative;
+        height: 3910px;
+        margin: 24% auto 0;
 
-    @media screen and (max-width: 1024px) {
-        margin-top: 34%;
-    }
-    @media screen and (max-width: 768px) {
-        margin-top: 42%;
-    }
-
-    .thumbnailWrapper {
-        margin-bottom: 27%;
-        margin-top: 0px;
-
-        @media screen and (max-width: 1280px) {
-            margin-bottom: 31%;
-        }
         @media screen and (max-width: 1024px) {
-            margin-bottom: 41%;
+            margin-top: 34%;
         }
         @media screen and (max-width: 768px) {
-            margin-bottom: 55%;
+            margin-top: 42%;
         }
+
+        .thumbnail {
+            margin-bottom: 27%;
+            margin-top: 0px;
+
+            @media screen and (max-width: 1280px) {
+                margin-bottom: 31%;
+            }
+            @media screen and (max-width: 1024px) {
+                margin-bottom: 41%;
+            }
+            @media screen and (max-width: 768px) {
+                margin-bottom: 55%;
+            }
+        }
+
     }
 
-}
-
-.shift {
+    .shift {
 
         &1 {
             margin:0 0 0 35%;
@@ -110,4 +111,4 @@
         }
 
     }
-
+}
