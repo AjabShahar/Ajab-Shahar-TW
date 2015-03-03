@@ -35,6 +35,12 @@ public class Word {
     @Column(name = "HINDI_INTRO_EXCERPT", nullable = true)
     private String hindiIntroExcerpt;
 
+    @Column(name = "DIACRITIC", nullable = true)
+    private String diacritic;
+
+    @Column(name = "IS_ROOT_WORD", nullable = true)
+    private Boolean isRootWord;
+
     @Column(name = "SHOW_ON_LANDING_PAGE", nullable = false)
     private Boolean showOnLandingPage;
 

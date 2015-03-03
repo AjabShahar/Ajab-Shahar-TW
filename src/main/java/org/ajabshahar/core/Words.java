@@ -41,6 +41,8 @@ public class Words {
         originalWord.setWordTransliteration(updatableWord.getWordTransliteration());
         originalWord.setEnglishIntroExcerpt(updatableWord.getEnglishIntroExcerpt());
         originalWord.setHindiIntroExcerpt(updatableWord.getHindiIntroExcerpt());
+        originalWord.setDiacritic(updatableWord.getDiacritic());
+        originalWord.setIsRootWord(updatableWord.getIsRootWord());
         originalWord.setShowOnLandingPage(updatableWord.getShowOnLandingPage());
         originalWord.setWordIntroductions(updatableWord.getWordIntroductions());
         originalWord.setReflections(updatableWord.getReflections());
