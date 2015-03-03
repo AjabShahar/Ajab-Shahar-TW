@@ -4,10 +4,10 @@ server:
 
   applicationConnectors:
   - type: http
-    port: 9000
+    port: 19000
   adminConnectors:
   - type: http
-    port: 9001
+    port: 19001
 database:
   driverClass: org.h2.Driver
   user: sa
@@ -23,4 +23,3 @@ logging:
     io.dropwizard: WARNING
   appenders:
     - type: console
-authenticationCachePolicy:maximumSize=10000, expireAfterAccess=10m

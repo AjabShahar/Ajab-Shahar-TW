@@ -13,8 +13,8 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 
-public class AjabShaharAuthenticatorTest {
-    private AjabShaharAuthenticator ajabShaharAuthenticator;
+public class PasswordAuthenticatorTest {
+    private PasswordAuthenticator passwordAuthenticator;
 
     @Mock
     private Users users;
@@ -22,15 +22,15 @@ public class AjabShaharAuthenticatorTest {
     @Before
     public void setUp() throws Exception {
         initMocks(this);
-        ajabShaharAuthenticator = new AjabShaharAuthenticator(users);
-        byte[] password = PasswordEncryptor.getEncryptedPassword("password",AjabShaharAuthenticator.SALT,"SHA-256");
+        passwordAuthenticator = new PasswordAuthenticator(users);
+        byte[] password = PasswordEncryptor.getEncryptedPassword("password", PasswordAuthenticator.SALT,PasswordAuthenticator.ALGORITHM);
         when(users.getUser(any(String.class))).thenReturn(new User("admin", new String(password)));
     }
 
 
     @Test
     public void shouldReturnAuthenticationStatusForGivenCredentials() throws Exception {
-        Optional<Principle> authenticate = ajabShaharAuthenticator.authenticate(new BasicCredentials("admin", "password"));
+        Optional<Principle> authenticate = passwordAuthenticator.authenticate(new BasicCredentials("admin", "password"));
         assertNotNull(authenticate);
         assertTrue(authenticate.isPresent());
         assertEquals("admin", authenticate.asSet().iterator().next().getUserName());
@@ -38,7 +38,7 @@ public class AjabShaharAuthenticatorTest {
 
     @Test
     public void shouldReturnAbsentPrincipleWhenPasswordMismatch() throws Exception {
-        Optional<Principle> authenticate = ajabShaharAuthenticator.authenticate(new BasicCredentials("admin", "wrong password"));
+        Optional<Principle> authenticate = passwordAuthenticator.authenticate(new BasicCredentials("admin", "wrong password"));
 
         assertFalse(authenticate.isPresent());
 

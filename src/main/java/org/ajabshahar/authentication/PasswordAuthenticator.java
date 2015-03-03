@@ -8,13 +8,14 @@ import org.ajabshahar.core.Users;
 import org.ajabshahar.platform.models.User;
 import org.apache.log4j.Logger;
 
-public class AjabShaharAuthenticator implements Authenticator<BasicCredentials, Principle> {
+public class PasswordAuthenticator implements Authenticator<BasicCredentials, Principle> {
 
     public static final String SALT = "A very long salt text.";
+    public static final String ALGORITHM = "SHA-512";
     private Users users;
     private Logger logger = Logger.getLogger(this.getClass());
 
-    public AjabShaharAuthenticator(Users users) {
+    public PasswordAuthenticator(Users users) {
         this.users = users;
     }
 
@@ -34,6 +35,6 @@ public class AjabShaharAuthenticator implements Authenticator<BasicCredentials, 
     }
 
     private String getHashedPassword(String password) {
-        return new String(PasswordEncryptor.getEncryptedPassword(password, SALT, "SHA-256"));
+        return new String(PasswordEncryptor.getEncryptedPassword(password, SALT, ALGORITHM));
     }
 }

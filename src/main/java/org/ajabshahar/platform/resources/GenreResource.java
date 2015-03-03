@@ -1,9 +1,7 @@
 package org.ajabshahar.platform.resources;
 
 import com.google.gson.Gson;
-import io.dropwizard.auth.Auth;
 import io.dropwizard.hibernate.UnitOfWork;
-import org.ajabshahar.authentication.Principle;
 import org.ajabshahar.platform.daos.GenreDAO;
 import org.ajabshahar.platform.models.Genre;
 
@@ -28,7 +26,7 @@ public class GenreResource {
     @POST
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createGenre(String jsonGenre, @Auth Principle principle) {
+    public Response createGenre(String jsonGenre) {
         Genre genre = new Gson().fromJson(jsonGenre, Genre.class);
         genreDAO.create(genre);
         return createPOST_Response(genre);

@@ -7,11 +7,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 public class GenreResourceTest {
@@ -73,14 +75,14 @@ public class GenreResourceTest {
     public void shouldCreateAGenre(){
         JsonObject genreJson = new JsonObject();
 
-        Response response = genreResource.createGenre(genreJson.toString(),null);
+        Response response = genreResource.createGenre(genreJson.toString());
 
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
     }
 
     @Test
     public void shouldReturnINTERNAL_SERVER_ERROR_If_Cannot_CreateAGenre(){
-        Response response = genreResource.createGenre(null,null);
+        Response response = genreResource.createGenre(null);
 
         assertEquals(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), response.getStatus());
     }

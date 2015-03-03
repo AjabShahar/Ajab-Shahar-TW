@@ -11,15 +11,21 @@ import io.dropwizard.migrations.MigrationsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import org.ajabshahar.api.*;
-import org.ajabshahar.authentication.AjabShaharAuthenticator;
+import org.ajabshahar.authentication.PasswordAuthenticator;
 import org.ajabshahar.authentication.Principle;
+import org.ajabshahar.authentication.SessionAuthenticatorFilter;
 import org.ajabshahar.core.*;
 import org.ajabshahar.platform.controller.LoginController;
 import org.ajabshahar.platform.daos.*;
 import org.ajabshahar.platform.models.*;
 import org.ajabshahar.platform.resources.*;
+import org.eclipse.jetty.server.SessionManager;
+import org.eclipse.jetty.server.session.HashSessionManager;
 import org.eclipse.jetty.server.session.SessionHandler;
 import org.picocontainer.DefaultPicoContainer;
+
+import javax.servlet.DispatcherType;
+import java.util.EnumSet;
 
 public class PlatformApplication extends Application<PlatformConfiguration> {
 
@@ -65,6 +71,8 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
 
     @Override
     public void run(PlatformConfiguration configuration, Environment environment) throws Exception {
+        final int _30_MINUTES = 30 * 60;
+
         DefaultPicoContainer picoContainer = addToPicoContainer();
 
         TemplateHealthCheck templateHealthCheck = new TemplateHealthCheck("");
@@ -81,9 +89,11 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         environment.jersey().register(picoContainer.getComponent(GenreResource.class));
         environment.jersey().register(picoContainer.getComponent(LoginController.class));
         environment.jersey().register(HttpSessionProvider.class);
+        SessionManager sessionManager = new HashSessionManager();
+        sessionManager.setMaxInactiveInterval(_30_MINUTES);
         environment.servlets().setSessionHandler(new SessionHandler());
-        AjabShaharAuthenticator authenticator = picoContainer.getComponent(AjabShaharAuthenticator.class);
-//        CachingAuthenticator<BasicCredentials,Principle> cachingAuthenticator = new CachingAuthenticator<BasicCredentials, Principle>(new MetricRegistry(),authenticator,configuration.getAuthenticationCachePolicy())
+        environment.servlets().addFilter("SessionAuthFilter", new SessionAuthenticatorFilter()).addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class),true,"/*");
+        PasswordAuthenticator authenticator = picoContainer.getComponent(PasswordAuthenticator.class);
         environment.jersey().register(new BasicAuthProvider<Principle>(authenticator,"Ajab-shahar"));
 
         environment.healthChecks().register("template", templateHealthCheck);
@@ -129,7 +139,8 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         picoContainer.addComponent(ReflectionResource.class);
         picoContainer.addComponent(GenreResource.class);
         picoContainer.addComponent(LoginController.class);
-        picoContainer.addComponent(AjabShaharAuthenticator.class);
+        picoContainer.addComponent(PasswordAuthenticator.class);
+        picoContainer.addComponent(SessionAuthenticatorFilter.class);
 
         return picoContainer;
     }

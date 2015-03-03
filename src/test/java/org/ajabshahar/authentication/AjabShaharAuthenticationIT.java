@@ -15,10 +15,14 @@ import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Test;
 
+import javax.ws.rs.core.NewCookie;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class AjabShaharAuthenticationIT {
+
+
 
     @ClassRule
     public static final DropwizardAppRule<PlatformConfiguration> RULE =
@@ -52,7 +56,7 @@ public class AjabShaharAuthenticationIT {
                 String.format("http://localhost:%d/api/login", RULE.getLocalPort())).header("Content-type", "application/json")
                 .post(ClientResponse.class, userCredentials);
 
-        assertThat(response.getStatus(), is(302));
+        assertThat(response.getStatus(), is(200));
     }
 
     @Test
@@ -75,12 +79,26 @@ public class AjabShaharAuthenticationIT {
                 String.format("http://localhost:%d/api/login", RULE.getLocalPort())).header("Content-type", "application/json")
                 .post(ClientResponse.class, userCredentials);
 
-        String genre = "{}";
+        NewCookie sessionCookie = geCookie(response);
+
+        String genre = "{\"original\":\"test original genre\",\"english\":\"test english genre\"}";
         ClientResponse genreResponse = client.resource(
-                String.format("http://localhost:%d/api/genres", RULE.getLocalPort())).header("Content-type", "application/json")
+                String.format("http://localhost:%d/api/genres", RULE.getLocalPort()))
+                .header("Content-type", "application/json")
+                .cookie(sessionCookie)
                 .post(ClientResponse.class, genre);
 
-        assertThat(genreResponse.getStatus(),is(302));
+        assertThat(genreResponse.getStatus(),is(200));
+    }
+
+    private NewCookie geCookie(ClientResponse response) {
+        NewCookie sessionCookie = null;
+        for (NewCookie cookie : response.getCookies()) {
+            if(cookie.getName().equalsIgnoreCase("JSESSIONID")){
+                sessionCookie = cookie;
+            }
+        }
+        return sessionCookie;
     }
 
     @Test
@@ -118,6 +136,17 @@ public class AjabShaharAuthenticationIT {
                 .post(ClientResponse.class, userCredentials);
 
         assertThat(response.getStatus(), is(400));
+    }
+
+    @Test
+    public void shouldAllowGetRequestForUnauthenticatedUsers(){
+
+        ClientResponse response = client.resource(
+                String.format("http://localhost:%d/api/genres", RULE.getLocalPort())).header("Content-type", "application/json")
+                .get(ClientResponse.class);
+
+        assertThat(response.getStatus(), is(200));
+
     }
 
 }
