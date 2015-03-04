@@ -18,24 +18,27 @@
 
         /*body layer*/
         &1 {
-            background-image: url(/user-img/mainLandingPage/parallax/body.png);
+            @include retina-image("/user-img/mainLandingPage/parallax/body", 1140px 4098px);
             width: 1140px;
         }
 
         /* map layer */
         &2 {
-            background: url(/user-img/mainLandingPage/parallax/map.png) 50% 0 repeat fixed;
+            @include retina-image("/user-img/mainLandingPage/parallax/map", 846px 669px);
+            background-position: 50% 0;
+            background-repeat: repeat;
+            background-attachment: fixed;
         }
 
         /*background-effects layer*/
         &3 {
-            background-image: url(/user-img/mainLandingPage/parallax/check_img1.png);
+            @include retina-image("/user-img/mainLandingPage/parallax/check_img1", 1140px 4204px);
             width: 1140px;
 
             &:before, &:after {
+                @include retina-image("/user-img/mainLandingPage/parallax/side_pattern", 30px 523px);
                 content: '';
                 display: inline-block;
-                background: transparent url(/user-img/mainLandingPage/parallax/side_pattern.png) 0 0;
                 width: 30px;
                 background-repeat: no-repeat repeat;
                 height: 100%;
@@ -58,7 +61,9 @@
         }
 
         &5{
-            background: url(/user-img/mainLandingPage/parallax/bird2.png) 0px no-repeat;
+            @include retina-image("/user-img/mainLandingPage/parallax/bird2", auto auto);
+            background-position: 0 0;
+            background-repeat: no-repeat;
 
             -webkit-animation: movebird 100s linear infinite;
             -moz-animation: movebird 100s linear infinite;
@@ -73,7 +78,7 @@
         }
 
         &6{
-            background: url(/user-img/mainLandingPage/parallax/clouds.png);
+            @include retina-image("/user-img/mainLandingPage/parallax/clouds", 1981px 800px);
             width: 1981px;
             height: 800px;
             top: 120px;
@@ -105,9 +110,9 @@
             -o-animation-delay:-2s;
 
             &.second {
-                background: url(/user-img/mainLandingPage/parallax/clouds1.png);
+                @include retina-image("/user-img/mainLandingPage/parallax/clouds1", 1290px 771px);
                 width: 1290px;
-                height:771px;
+                height: 771px;
 
                 top: 800px;
                 animation-delay: -5s;
@@ -123,7 +128,7 @@
 
 
             &.third {
-                background: url(/user-img/mainLandingPage/parallax/clouds2.png);
+                @include retina-image("/user-img/mainLandingPage/parallax/clouds2", 1337px 858px);
                 width: 1337px;
                 height:858px;
 
@@ -139,7 +144,7 @@
                 -o-animation-duration: 66s;
             }
             &.fourth {
-                background: url(/user-img/mainLandingPage/parallax/clouds3.png);
+                @include retina-image("/user-img/mainLandingPage/parallax/clouds3", 1223px 855px);
                 width: 1223px;
                 height: 855px;
 
@@ -157,7 +162,8 @@
         }
 
         &7 {
-            background: transparent url(/user-img/mainLandingPage/parallax/whiteString.png) 0 0px;
+            @include retina-image("/user-img/mainLandingPage/parallax/whiteString", 285px 5901px);
+            background-position: 0 0;
             background-repeat: no-repeat repeat;
             left: 36.3%;
             top: 45px;
