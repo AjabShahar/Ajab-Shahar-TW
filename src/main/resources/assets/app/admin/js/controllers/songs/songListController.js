@@ -1,4 +1,6 @@
-var songListController = function($scope, contentService){
+adminApp.controller('songListController',['$scope','contentService','loginVerifyService',
+function($scope, contentService,loginVerifyService){
+  loginVerifyService.redirectIfNotAuthenticated();
     $scope.songs = [];
     $scope.songToBeDeleted = null;
 
@@ -49,6 +51,4 @@ var songListController = function($scope, contentService){
     };
 
     $scope.init();
-};
-
-adminApp.controller('songListController',['$scope','contentService',songListController]);
+}]);

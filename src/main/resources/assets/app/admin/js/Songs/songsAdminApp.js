@@ -1,4 +1,4 @@
-var songsAdminApp = angular.module('songsAdminApp', ['multi-select', 'textAngular', 'commonApp']);
+var songsAdminApp = angular.module('songsAdminApp', ['multi-select', 'textAngular', 'commonApp','adminCommon']);
 songsAdminApp.factory('songContentService', ['$http', songContentService]);
 
 songsAdminApp.config(function($locationProvider) {

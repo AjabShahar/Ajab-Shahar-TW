@@ -8,11 +8,12 @@ describe("Song details controller specs", function() {
 
 	beforeEach(module('songsAdminApp'));
 
-	beforeEach(inject(function(_$controller_, _$rootScope_, _$window_, _$location_, songContentService, PAGES, _$filter_, _$httpBackend_) {
+	beforeEach(inject(function(_$controller_, _$rootScope_, _$window_, _$location_, songContentService, PAGES, _$filter_, _$httpBackend_,loginVerifyService,$cookies) {
 		scope = _$rootScope_.$new();
 		$location = _$location_;
 		$httpBackend = _$httpBackend_;
 		fakeWindow = { location: { href: '' } };
+		$cookies.user= "admin";
 
 		_$controller_('songDetailsController', {
 			$scope: scope,
@@ -20,7 +21,8 @@ describe("Song details controller specs", function() {
 			$location: _$location_,
 			songContentService: songContentService,
 			PAGES: PAGES,
-			$filter: _$filter_
+			$filter: _$filter_,
+			loginVerifyService:loginVerifyService
 		});
 	}));
 

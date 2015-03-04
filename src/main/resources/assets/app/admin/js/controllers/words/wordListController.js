@@ -1,4 +1,6 @@
-var wordListController = function($scope, contentService){
+adminApp.controller('wordListController',['$scope','contentService','loginVerifyService',
+function($scope, contentService,loginVerifyService){
+  loginVerifyService.redirectIfNotAuthenticated();
     $scope.words = [];
     $scope.init = function(){
         contentService.getAllWords().then(function(result){
@@ -15,6 +17,5 @@ var wordListController = function($scope, contentService){
     };
 
     $scope.init();
-};
+}]);
 
-adminApp.controller('wordListController',['$scope','contentService',wordListController]);

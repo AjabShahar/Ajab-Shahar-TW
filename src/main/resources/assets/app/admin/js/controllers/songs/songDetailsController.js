@@ -1,4 +1,6 @@
-var songDetailsController = function($scope, $window, $location, songContentService, PAGES, $filter, $q){
+songsAdminApp.controller('songDetailsController',['$scope', '$window', '$location', 'songContentService', 'PAGES', '$filter', '$q',"loginVerifyService",
+function($scope, $window, $location, songContentService, PAGES, $filter, $q,loginVerifyService){
+  loginVerifyService.redirectIfNotAuthenticated();
   $scope.song = {
     singers:[],
     poets: [],
@@ -113,6 +115,6 @@ var songDetailsController = function($scope, $window, $location, songContentServ
 
     songContentService.editSong($scope.song).success(function(){ redirectToURL(PAGES.ADMIN_HOME); });
   };
-};
+}]);
 
-songsAdminApp.controller('songDetailsController',['$scope', '$window', '$location', 'songContentService', 'PAGES', '$filter', '$q', songDetailsController]);
+
