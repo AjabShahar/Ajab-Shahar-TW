@@ -31,6 +31,7 @@ module.exports = function (config) {
       'user/js/songs/songDetailsApp.js',
       'user/js/songs/songsApp.js',
       'user/js/songs/**/*.js',
+      'http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-cookies.js',
       '../../../../test/js/unit/**/*.js'
     ],
     autoWatch: true,

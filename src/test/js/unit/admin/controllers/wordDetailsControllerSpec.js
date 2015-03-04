@@ -9,18 +9,20 @@ describe("Word details controller spec:", function() {
 
 	beforeEach(module('wordsAdminApp'));
 
-	beforeEach(inject(function(_$controller_, _$rootScope_, _$window_, _$location_, contentService, PAGES, _$httpBackend_){
+	beforeEach(inject(function(_$controller_, _$rootScope_, _$window_, _$location_, contentService, PAGES, _$httpBackend_,loginVerifyService,$cookies){
 		scope = _$rootScope_.$new();
 		fakeWindow = { location: { href: '' } };
 		$location = _$location_;
 		$httpBackend = _$httpBackend_;
+		$cookies.user = "admin";
 
 		_$controller_('wordDetailsController', {
 			$scope: scope,
 			$window: fakeWindow,
 			$location: $location,
 			contentService: contentService,
-			PAGES: PAGES
+			PAGES: PAGES,
+			loginVerifyService:loginVerifyService
 		});
 	}));
 
