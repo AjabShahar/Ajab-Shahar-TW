@@ -1,4 +1,6 @@
-var reflectionListController = function($scope, contentService){
+var reflectionListController = adminApp.controller('reflectionListController',['$scope','contentService','loginVerifyService',
+    function($scope, contentService,loginVerifyService){
+    loginVerifyService.redirectIfNotAuthenticated();
     $scope.reflections = [];
     $scope.init = function(){
         contentService.getAllReflections().then(function(result){
@@ -21,6 +23,4 @@ var reflectionListController = function($scope, contentService){
     };
 
     $scope.init();
-};
-
-adminApp.controller('reflectionListController',['$scope','contentService',reflectionListController]);
+}]);

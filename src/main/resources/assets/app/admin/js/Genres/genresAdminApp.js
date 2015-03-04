@@ -1,4 +1,4 @@
-var genresAdminApp = angular.module('genresAdminApp', []);
+var genresAdminApp = angular.module('genresAdminApp', ['adminCommon']);
 
 genresAdminApp.factory('genreContentService', ['$http', genreContentService]);
 

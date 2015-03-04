@@ -4,17 +4,19 @@ describe("reflection details controller specs",function(){
 
    beforeEach(module('reflectionsAdminApp'));
 
-   beforeEach(inject(function(_$controller_, $rootScope, _$window_, _$location_,_$httpBackend_,reflectionContentService) {
+   beforeEach(inject(function(_$controller_, $rootScope, _$window_, _$location_,_$httpBackend_,reflectionContentService,loginVerifyService,$cookies) {
      scope = $rootScope.$new();
      $location = _$location_;
      httpBackend = _$httpBackend_;
      fakeWindow = { location: { href: '' } };
-
+     $cookies.user= "admin";
+       
      _$controller_('reflectionDetailsController', {
      			$scope: scope,
      			$window: fakeWindow,
      			$location: _$location_,
      			reflectionContentService : reflectionContentService,
+                loginVerifyService:loginVerifyService
      });
 
      httpBackend.expectGET('/api/people').respond(200,['people data']);

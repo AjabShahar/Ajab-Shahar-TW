@@ -1,4 +1,7 @@
-var reflectionDetailsController = function($scope, $http,$window, $location,reflectionContentService){
+var reflectionDetailsController =reflectionsAdminApp
+    .controller('reflectionDetailsController',['$scope','$http','$window','$location','reflectionContentService',"loginVerifyService",
+    function($scope, $http,$window, $location,reflectionContentService,loginVerifyService){
+    loginVerifyService.redirectIfNotAuthenticated();
    $scope.formInfo = {"reflectionTranscripts":[],"speaker":{}};
    $scope.people = [];
    $scope.urlId = $location.search().id;
@@ -32,6 +35,5 @@ var reflectionDetailsController = function($scope, $http,$window, $location,refl
       };
 
    $scope.init();
-};
+}]);
 
-reflectionsAdminApp.controller('reflectionDetailsController',['$scope','$http','$window','$location','reflectionContentService',reflectionDetailsController]);

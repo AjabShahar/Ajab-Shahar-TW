@@ -1,4 +1,6 @@
-var genreDetailsController = function($scope, $window, $location, genreContentService){
+var genreDetailsController = genresAdminApp.controller('genreDetailsController',['$scope', '$window', '$location', 'genreContentService','loginVerifyService',
+    function($scope, $window, $location,genreContentService,loginVerifyService){
+    loginVerifyService.redirectIfNotAuthenticated();
 	$scope.formInfo = {};
 	$scope.pageName = {};
 	$scope.alert = "";
@@ -31,5 +33,4 @@ var genreDetailsController = function($scope, $window, $location, genreContentSe
     	else
     		$scope.alert = "Please fill in all the fields";
     };
- };
-genresAdminApp.controller('genreDetailsController',['$scope', '$window', '$location', 'genreContentService', genreDetailsController]);
+ }]);

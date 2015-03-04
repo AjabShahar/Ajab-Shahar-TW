@@ -9,17 +9,19 @@ describe("Genre details controller specs", function(){
 
 	beforeEach(module("genresAdminApp"));
 
-	beforeEach(inject(function(_$controller_, _$rootScope_, _$window_, _$location_, genreContentService, _$httpBackend_){
+	beforeEach(inject(function(_$controller_, _$rootScope_, _$window_, _$location_, genreContentService, _$httpBackend_,$cookies,loginVerifyService){
 		scope = _$rootScope_.$new();
 		$httpBackend = _$httpBackend_;
 		$location = _$location_;
 		fakeWindow = { location: { href: '' } };
+        $cookies.user="admin";
 
 		_$controller_('genreDetailsController', {
 			$scope: scope,
 			$window: fakeWindow,
 			$location: $location,
-			genreContentService: genreContentService
+			genreContentService: genreContentService,
+            loginVerifyService:loginVerifyService
 		});
 	}));
 

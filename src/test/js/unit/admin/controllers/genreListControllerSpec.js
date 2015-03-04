@@ -6,13 +6,15 @@ describe("Genre list controller specs", function() {
 
 	beforeEach(module("genresAdminApp"));
 
-	beforeEach(inject(function(_$controller_, _$rootScope_, genreContentService, _$httpBackend_){
+	beforeEach(inject(function(_$controller_, _$rootScope_, genreContentService, _$httpBackend_,$cookies,loginVerifyService){
 		scope = _$rootScope_.$new();
-		$httpBackend = _$httpBackend_
+		$httpBackend = _$httpBackend_;
+        $cookies.user = "admin";
 
 		_$controller_('genreListController', {
 			$scope: scope,
-			genreContentService: genreContentService
+			genreContentService: genreContentService,
+            loginVerifyService:loginVerifyService
 		});
 	}));
 
