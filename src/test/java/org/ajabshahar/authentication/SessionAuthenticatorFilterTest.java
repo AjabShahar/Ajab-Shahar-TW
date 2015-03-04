@@ -1,5 +1,6 @@
 package org.ajabshahar.authentication;
 
+import org.ajabshahar.platform.controller.LoginController;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -40,8 +41,7 @@ public class SessionAuthenticatorFilterTest {
     @Test
     public void shouldPassFilterForGetRequest() throws IOException, ServletException {
         when(httpServletRequest.getMethod()).thenReturn("GET");
-        when(httpSession.getAttribute("authenticated")).thenReturn(null);
-
+        when(httpSession.getAttribute(LoginController.AUTH_ATTRIBUTE)).thenReturn(null);
 
         sessionAuthenticatorFilter.doFilter(httpServletRequest, httpServletResponse, filterChain);
 
@@ -51,7 +51,7 @@ public class SessionAuthenticatorFilterTest {
     @Test
     public void shouldPassFilterForLoginRequest() throws Exception {
         when(httpServletRequest.getMethod()).thenReturn("POST");
-        when(httpSession.getAttribute("authenticated")).thenReturn(null);
+        when(httpSession.getAttribute(LoginController.AUTH_ATTRIBUTE)).thenReturn(null);
         when(httpServletRequest.getPathInfo()).thenReturn("/login");
 
         sessionAuthenticatorFilter.doFilter(httpServletRequest, httpServletResponse, filterChain);
@@ -62,7 +62,7 @@ public class SessionAuthenticatorFilterTest {
     @Test
     public void shouldPassFilterForAuthenticatedUser() throws Exception {
         when(httpServletRequest.getMethod()).thenReturn("POST");
-        when(httpSession.getAttribute("authenticated")).thenReturn(true);
+        when(httpSession.getAttribute(LoginController.AUTH_ATTRIBUTE)).thenReturn(LoginController.AUTH_VALUE);
         when(httpServletRequest.getPathInfo()).thenReturn("");
 
         sessionAuthenticatorFilter.doFilter(httpServletRequest, httpServletResponse, filterChain);
@@ -74,7 +74,7 @@ public class SessionAuthenticatorFilterTest {
     @Test
     public void shouldNotPassFilterIfItIsNotGetRequest() throws Exception {
         when(httpServletRequest.getMethod()).thenReturn("POST");
-        when(httpSession.getAttribute("authenticated")).thenReturn(null);
+        when(httpSession.getAttribute(LoginController.AUTH_ATTRIBUTE)).thenReturn(null);
         when(httpServletRequest.getPathInfo()).thenReturn("");
 
 

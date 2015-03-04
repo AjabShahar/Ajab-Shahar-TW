@@ -16,6 +16,7 @@ import org.ajabshahar.authentication.Principle;
 import org.ajabshahar.authentication.SessionAuthenticatorFilter;
 import org.ajabshahar.core.*;
 import org.ajabshahar.platform.controller.LoginController;
+import org.ajabshahar.platform.controller.LogoutController;
 import org.ajabshahar.platform.daos.*;
 import org.ajabshahar.platform.models.*;
 import org.ajabshahar.platform.resources.*;
@@ -88,6 +89,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         environment.jersey().register(picoContainer.getComponent(ReflectionResource.class));
         environment.jersey().register(picoContainer.getComponent(GenreResource.class));
         environment.jersey().register(picoContainer.getComponent(LoginController.class));
+        environment.jersey().register(picoContainer.getComponent(LogoutController.class));
         environment.jersey().register(HttpSessionProvider.class);
         SessionManager sessionManager = new HashSessionManager();
         sessionManager.setMaxInactiveInterval(_30_MINUTES);
@@ -139,6 +141,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         picoContainer.addComponent(ReflectionResource.class);
         picoContainer.addComponent(GenreResource.class);
         picoContainer.addComponent(LoginController.class);
+        picoContainer.addComponent(LogoutController.class);
         picoContainer.addComponent(PasswordAuthenticator.class);
         picoContainer.addComponent(SessionAuthenticatorFilter.class);
 

@@ -1,5 +1,6 @@
 package org.ajabshahar.authentication;
 
+import org.ajabshahar.platform.controller.LoginController;
 import org.eclipse.jetty.http.HttpStatus;
 
 import javax.servlet.*;
@@ -23,13 +24,15 @@ public class SessionAuthenticatorFilter implements Filter {
         else {
             HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
             httpResponse.setStatus(HttpStatus.UNAUTHORIZED_401);
+            httpResponse.sendError(HttpStatus.UNAUTHORIZED_401,"Login required");
         }
     }
 
     private boolean isAuthorized(ServletRequest servletRequest) {
         HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
         Boolean authenticated = false;
-        if (httpRequest.getSession().getAttribute("authenticated")!= null)
+        Object authAttributeValue = httpRequest.getSession().getAttribute(LoginController.AUTH_ATTRIBUTE);
+        if (authAttributeValue != null && authAttributeValue.equals(LoginController.AUTH_VALUE))
             authenticated = true;
         return httpRequest.getMethod().equals("GET") || httpRequest.getPathInfo().equals("/login") || authenticated;
     }

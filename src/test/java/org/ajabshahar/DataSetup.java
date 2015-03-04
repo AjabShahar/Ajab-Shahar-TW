@@ -3,6 +3,7 @@ package org.ajabshahar;
 import com.ninja_squad.dbsetup.operation.Operation;
 import org.ajabshahar.authentication.PasswordAuthenticator;
 import org.ajabshahar.authentication.PasswordEncryptor;
+import org.ajabshahar.platform.controller.LoginController;
 
 import static com.ninja_squad.dbsetup.Operations.deleteAllFrom;
 import static com.ninja_squad.dbsetup.Operations.insertInto;
@@ -17,7 +18,7 @@ public class DataSetup {
     public static final Operation INSERT_ADMIN_USER =
             sequenceOf(
                     insertInto("USERS")
-                            .columns("id", "username", "password")
-                            .values(11, "admin", new String(HASHED_PASSWORD))
+                            .columns("id", "username", "password","role")
+                            .values(11, "admin", new String(HASHED_PASSWORD), LoginController.AUTH_VALUE)
                             .build());
 }

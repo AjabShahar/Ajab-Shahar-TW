@@ -24,7 +24,7 @@ public class PasswordAuthenticator implements Authenticator<BasicCredentials, Pr
     public Optional<Principle> authenticate(BasicCredentials credentials) {
         User user = users.getUser(credentials.getUsername());
         if (user != null && passwordsMatch(credentials, user)) {
-            Principle principle = new Principle(user.getUsername());
+            Principle principle = new Principle(user.getUsername(),user.getRole());
             return Optional.fromNullable(principle);
         }
         return Optional.absent();

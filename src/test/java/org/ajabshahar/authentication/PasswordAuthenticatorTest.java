@@ -24,14 +24,13 @@ public class PasswordAuthenticatorTest {
         initMocks(this);
         passwordAuthenticator = new PasswordAuthenticator(users);
         byte[] password = PasswordEncryptor.getEncryptedPassword("password", PasswordAuthenticator.SALT,PasswordAuthenticator.ALGORITHM);
-        when(users.getUser(any(String.class))).thenReturn(new User("admin", new String(password)));
+        when(users.getUser(any(String.class))).thenReturn(new User("admin", new String(password), "admin"));
     }
 
 
     @Test
     public void shouldReturnAuthenticationStatusForGivenCredentials() throws Exception {
         Optional<Principle> authenticate = passwordAuthenticator.authenticate(new BasicCredentials("admin", "password"));
-        System.out.println(new String(PasswordEncryptor.getEncryptedPassword("password", PasswordAuthenticator.SALT,PasswordAuthenticator.ALGORITHM)));
         assertNotNull(authenticate);
         assertTrue(authenticate.isPresent());
         assertEquals("admin", authenticate.asSet().iterator().next().getUserName());

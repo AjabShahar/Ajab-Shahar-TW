@@ -23,6 +23,9 @@ import javax.ws.rs.core.Response;
 @Produces(MediaType.APPLICATION_JSON)
 public class LoginController {
 
+    public static final String AUTH_ATTRIBUTE = "userrole";
+    public static final String AUTH_VALUE = "admin";
+    
     private Logger logger = Logger.getLogger(this.getClass());
     private Authenticator<BasicCredentials, Principle> authenticator;
 
@@ -39,7 +42,8 @@ public class LoginController {
             try {
                 Optional<Principle> authenticatedUser = authenticator.authenticate(userCredentials);
                 if (authenticatedUser.isPresent()) {
-                    httpSession.setAttribute("authenticated", true);
+                    Principle principle = authenticatedUser.asSet().iterator().next();
+                    httpSession.setAttribute(AUTH_ATTRIBUTE, principle.getRole());
                     return Response.status(200).entity("Great success \\m/").build();
                 }
             } catch (AuthenticationException e) {
