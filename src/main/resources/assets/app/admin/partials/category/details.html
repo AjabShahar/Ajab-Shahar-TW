@@ -2,19 +2,10 @@
 <html ng-app="adminApp">
 <head lang="">
     <meta charset="UTF-8">
-    <title></title>
-    <title></title>
-    <script src="../../common/lib/angular/angular.js"></script>
-    <script type="text/javascript" src="../../common/lib/angular-filter/dist/angular-filter.js"></script>
-    <script type="text/javascript" src="../../common/lib/textAngular/dist/textAngular-sanitize.min.js"></script>
-    <script type="text/javascript" src="../../common/lib/textAngular/dist/textAngular.min.js"></script>
-    <script type="text/javascript" src="../../common/lib/checklist-model/checklist-model.js"></script>
-    <script type="text/javascript" src="../../admin-js/services/contentService.js"></script>
-    <script type="text/javascript" src="../../admin-js/app.js"></script>
-    <script type="text/javascript" src="../../admin-js/controllers/category/detailsController.js"></script>
+    <title>Category details</title>
+
     <link href="../../common/css/header.css" rel="stylesheet" type="text/css">
     <link href="../../admin-css/admin.css" rel="stylesheet" type="text/css">
-
     <link href="../../common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -39,8 +30,6 @@
                             </div>
                         </div>
 
-                        
-                        
                         <div class="row col-sm-12" ng-show="AddNewDiv">
                             <div class="form-group col-sm-2">
                                 <label>Category Type</label>
@@ -65,5 +54,15 @@
             </div>
         </div>
     </div>
+    <script src="../../common/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="../../common/lib/angular-filter/dist/angular-filter.js"></script>
+    <script type="text/javascript" src="../../common/lib/angular-ui/modules/filters/unique.js"></script>
+    <script type="text/javascript" src="../../common/lib/textAngular/dist/textAngular-sanitize.min.js"></script>
+    <script type="text/javascript" src="../../common/lib/textAngular/dist/textAngular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-cookies.js"></script>
+    <script type="text/javascript" src="../../admin-js/services/contentService.js"></script>
+    <script type="text/javascript" src="../../admin-js/services/loginVerifyService.js"></script>
+    <script type="text/javascript" src="../../admin-js/app.js"></script>
+    <script type="text/javascript" src="../../admin-js/controllers/category/categoryDetailsController.js"></script>
 </body>
 </html>

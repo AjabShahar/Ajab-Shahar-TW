@@ -1,5 +1,7 @@
-var categoryDetailsController = function($scope, $http){
-  $scope.categoryTypeList = null;
+adminApp.controller('categoryDetailsController',['$scope', '$http',"loginVerifyService",
+function($scope, $http,loginVerifyService){
+  loginVerifyService.redirectIfNotAuthenticated();
+  $scope.categoryTypeList = [];
   $scope.category = {};
   $scope.AddNewDiv = false;
 
@@ -16,7 +18,6 @@ var categoryDetailsController = function($scope, $http){
     $http.post('/api/category', $scope.category).success(function(data){
       alert("data added");
     });
-  };  
-};
+  }
+}]);
 
-adminApp.controller('categoryDetailsController',['$scope', '$http', categoryDetailsController]);

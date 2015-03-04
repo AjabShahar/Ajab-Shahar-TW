@@ -1,4 +1,6 @@
-var categoryListController = function($scope, $location, contentService){
+adminApp.controller('categoryListController',['$scope','$location','contentService','loginVerifyService',
+function($scope, $location, contentService,loginVerifyService){
+    loginVerifyService.redirectIfNotAuthenticated();
     $scope.categories = [];
     $scope.init = function(){
         $location.url($location.absUrl());
@@ -19,6 +21,5 @@ var categoryListController = function($scope, $location, contentService){
     };
 
     $scope.init();
-};
+}]);
 
-adminApp.controller('categoryListController',['$scope','$location','contentService',categoryListController]);
