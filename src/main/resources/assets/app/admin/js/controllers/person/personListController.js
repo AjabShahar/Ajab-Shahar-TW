@@ -1,4 +1,6 @@
-var personListController = function($scope, contentService){
+adminApp.controller('personListController',['$scope','contentService','loginVerifyService',
+ function($scope, contentService,loginVerifyService){
+   loginVerifyService.redirectIfNotAuthenticated();
     $scope.songs = [];
     $scope.init = function(){
         contentService.getAllPeople().then(function(result){
@@ -17,6 +19,5 @@ var personListController = function($scope, contentService){
     };
 
     $scope.init();
-};
+}]);
 
-adminApp.controller('personListController',['$scope','contentService',personListController]);

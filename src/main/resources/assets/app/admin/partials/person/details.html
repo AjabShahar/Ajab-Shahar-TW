@@ -3,31 +3,29 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>{{pageTitle}}</title>
-    <script src="../../common/lib/angular/angular.js"></script>
-    <script type="text/javascript" src="../../common/lib/angular-multi-select/angular-multi-select.js"></script>
-    <script type="text/javascript" src="../../common/lib/angular-filter/dist/angular-filter.js"></script>
-    <script type="text/javascript" src="../../common/lib/textAngular/dist/textAngular-sanitize.min.js"></script>
-    <script type="text/javascript" src="../../common/lib/textAngular/dist/textAngular.min.js"></script>
-    <script type="text/javascript" src="../../admin-js/services/contentService.js"></script>
-    <script type="text/javascript" src="../../admin-js/person/personAdminApp.js"></script>
-    <script type="text/javascript" src="../../admin-js/controllers/person/personDetailsController.js"></script>
+
     <link rel="stylesheet" href="../../common/lib/angular-multi-select/angular-multi-select.css">
     <link href="../../admin-css/admin.css" rel="stylesheet" type="text/css">
     <link href="../../common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<a ng-href="/admin/home.html" target="_self"><button type="button" class="btn btn-info admin-home">Admin home</button></a>
+<a ng-href="/admin/home.html" target="_self">
+    <button type="button" class="btn btn-info admin-home">Admin home</button>
+</a>
+
 <div class="left">
     <h2>{{pageHeading}}</h2>
+
     <div class="left">
         <div>
-            <form >
+            <form>
                 <div class="row form-group">
                     <div class="col-sm-2">
                         <label>First Name</label>
                     </div>
                     <div class="col-sm-2">
-                        <input type="text" name="FirstName" ng-model="formInfo.firstName" maxlength="30" required class="form-control"/>
+                        <input type="text" name="FirstName" ng-model="formInfo.firstName" maxlength="30" required
+                               class="form-control"/>
                     </div>
                 </div>
 
@@ -36,7 +34,8 @@
                         <label>Middle Name</label>
                     </div>
                     <div class="col-sm-2">
-                        <input type="text" name="MiddleName" ng-model="formInfo.middleName" maxlength="30" class="form-control">
+                        <input type="text" name="MiddleName" ng-model="formInfo.middleName" maxlength="30"
+                               class="form-control">
                     </div>
                 </div>
 
@@ -54,7 +53,8 @@
                         <label>First Name In Hindi</label>
                     </div>
                     <div class="col-sm-2">
-                        <input type="text" name="FirstName" ng-model="formInfo.firstNameInHindi" maxlength="30" required class="form-control"/>
+                        <input type="text" name="FirstName" ng-model="formInfo.firstNameInHindi" maxlength="30" required
+                               class="form-control"/>
                     </div>
                 </div>
 
@@ -63,7 +63,8 @@
                         <label>Middle Name In Hindi</label>
                     </div>
                     <div class="col-sm-2">
-                        <input type="text" name="MiddleName" ng-model="formInfo.middleNameInHindi" maxlength="30" class="form-control">
+                        <input type="text" name="MiddleName" ng-model="formInfo.middleNameInHindi" maxlength="30"
+                               class="form-control">
                     </div>
                 </div>
 
@@ -81,7 +82,8 @@
                         <label>Occupation</label>
                     </div>
                     <div class="col-sm-2">
-                        <div class="col-sm-5" multi-select input-model="categoryList" button-label="name" item-label="name" tick-property="ticked" output-model="formInfo.category"></div>
+                        <div class="col-sm-5" multi-select input-model="categoryList" button-label="name"
+                             item-label="name" tick-property="ticked" output-model="formInfo.category"></div>
                     </div>
                 </div>
                 <button type="submit" ng-click="saveData()" class="btn btn-primary btn-lg">Save</button>
@@ -89,5 +91,16 @@
         </div>
     </div>
 </div>
+
+<script src="../../common/lib/angular/angular.js"></script>
+<script type="text/javascript" src="../../common/lib/angular-multi-select/angular-multi-select.js"></script>
+<script type="text/javascript" src="../../common/lib/angular-filter/dist/angular-filter.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-cookies.js"></script>
+<script type="text/javascript" src="../../common/lib/textAngular/dist/textAngular-sanitize.min.js"></script>
+<script type="text/javascript" src="../../common/lib/textAngular/dist/textAngular.min.js"></script>
+<script type="text/javascript" src="../../admin-js/services/contentService.js"></script>
+<script type="text/javascript" src="../../admin-js/services/loginVerifyService.js"></script>
+<script type="text/javascript" src="../../admin-js/person/personAdminApp.js"></script>
+<script type="text/javascript" src="../../admin-js/controllers/person/personDetailsController.js"></script>
 </body>
 </html>

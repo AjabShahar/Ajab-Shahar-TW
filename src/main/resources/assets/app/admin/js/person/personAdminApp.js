@@ -1,4 +1,4 @@
-var personAdminApp = angular.module('personAdminApp', ['multi-select']);
+var personAdminApp = angular.module('personAdminApp', ['multi-select','adminCommon']);
 personAdminApp.factory('contentService', ['$http', contentService]);
 
 personAdminApp.config(function($locationProvider) {

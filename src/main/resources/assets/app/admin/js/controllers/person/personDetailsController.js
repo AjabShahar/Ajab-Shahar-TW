@@ -1,4 +1,6 @@
-var personDetailsController = function( $scope, $http, $window, $location, contentService ){
+personAdminApp.controller('personDetailsController', ['$scope', '$http', '$window', '$location', 'contentService','loginVerifyService',
+ function( $scope, $http, $window, $location, contentService ,loginVerifyService){
+  loginVerifyService.redirectIfNotAuthenticated();
   $scope.pageHeading = "";
   $scope.pageTitle = "";
   $scope.formInfo = {};
@@ -53,6 +55,5 @@ var personDetailsController = function( $scope, $http, $window, $location, conte
       getPersonDetails(personId);  
     }
   };
-};
+}]);
 
-personAdminApp.controller('personDetailsController', ['$scope', '$http', '$window', '$location', 'contentService', personDetailsController] );
