@@ -36,10 +36,7 @@
                                    <span class="related">(<span class="hindi">{{term.wordOriginal}}</span>, {{term.diacritic}})</span>
                                </dt>
                                <dd class="word-meaning">
-                                   <p>
-                                       {{term.meaning}}
-                                       meaning comes here
-                                   </p>
+                                   <div bind-dynamic-html='term.meaning'></div>
                                </dd>
                            </dl>
                        </div>

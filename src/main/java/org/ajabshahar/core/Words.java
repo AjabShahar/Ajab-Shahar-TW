@@ -43,6 +43,7 @@ public class Words {
         originalWord.setHindiIntroExcerpt(updatableWord.getHindiIntroExcerpt());
         originalWord.setDiacritic(updatableWord.getDiacritic());
         originalWord.setIsRootWord(updatableWord.getIsRootWord());
+        originalWord.setMeaning(updatableWord.getMeaning());
         originalWord.setShowOnLandingPage(updatableWord.getShowOnLandingPage());
         originalWord.setWordIntroductions(updatableWord.getWordIntroductions());
         originalWord.setReflections(updatableWord.getReflections());

@@ -114,6 +114,15 @@
                         <div class="col-sm-2" multi-select input-model="peopleList" button-label="firstName lastName" item-label="firstName lastName" tick-property="ticked" output-model="formInfo.writers"></div>
                     </div>
 
+                    <div class="row form-group ">
+                        <div class="col-sm-2">
+                            <label>Meaning</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <text-angular name="htmlcontent" ng-model="formInfo.meaning"></text-angular>
+                        </div>
+                    </div>
+
                     <admin-word-introduction word-introduction="{{formInfo.wordIntroduction}}" word-introductions="formInfo.wordIntroductions"></admin-word-introduction>
                     <div>
                         <button type="submit" ng-click="updateWord()" class="btn btn-primary btn-lg">Save</button>

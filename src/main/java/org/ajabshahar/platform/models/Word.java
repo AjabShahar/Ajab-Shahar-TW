@@ -44,6 +44,9 @@ public class Word {
     @Column(name = "SHOW_ON_LANDING_PAGE", nullable = false)
     private Boolean showOnLandingPage;
 
+    @Column(name = "MEANING", nullable = false)
+    private String meaning;
+
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "word")
     @JsonManagedReference
     private Set<WordIntroduction> wordIntroductions;

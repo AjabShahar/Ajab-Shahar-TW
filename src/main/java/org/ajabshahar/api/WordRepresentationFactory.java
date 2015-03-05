@@ -53,7 +53,7 @@ public class WordRepresentationFactory {
                     writers.add(representation);
                 }
             }
-            WordRepresentation wordRepresentation = new WordRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(), word.getWordTransliteration(), word.getEnglishIntroExcerpt(), word.getHindiIntroExcerpt(), wordIntroHindi, wordIntroEnglish, writers, word.getDiacritic(), null, word.getIsRootWord());
+            WordRepresentation wordRepresentation = new WordRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(), word.getWordTransliteration(), word.getEnglishIntroExcerpt(), word.getHindiIntroExcerpt(), wordIntroHindi, wordIntroEnglish, writers, word.getDiacritic(), word.getMeaning(), word.getIsRootWord());
             wordsRepresentation.add(wordRepresentation);
         }
         return wordsRepresentation;
@@ -89,7 +89,7 @@ public class WordRepresentationFactory {
                 writers.add(representation);
             }
         }
-        WordRepresentation wordRepresentation = new WordRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(), word.getWordTransliteration(), word.getEnglishIntroExcerpt(), word.getHindiIntroExcerpt(), wordIntroHindi, wordIntroEnglish, writers, word.getDiacritic(), null, word.getIsRootWord());
+        WordRepresentation wordRepresentation = new WordRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(), word.getWordTransliteration(), word.getEnglishIntroExcerpt(), word.getHindiIntroExcerpt(), wordIntroHindi, wordIntroEnglish, writers, word.getDiacritic(), word.getMeaning(), word.getIsRootWord());
         wordReflections.setWord(wordRepresentation);
 
         wordReflections.setReflections(reflectionRepresentationFactory.create(word.getReflections()));
@@ -112,7 +112,7 @@ public class WordRepresentationFactory {
                 writers.add(representation);
             }
         }
-        WordRepresentation wordRepresentation = new WordRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(), word.getWordTransliteration(), word.getEnglishIntroExcerpt(), word.getHindiIntroExcerpt(), wordIntroHindi, wordIntroEnglish, writers, word.getDiacritic(), null, word.getIsRootWord());
+        WordRepresentation wordRepresentation = new WordRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(), word.getWordTransliteration(), word.getEnglishIntroExcerpt(), word.getHindiIntroExcerpt(), wordIntroHindi, wordIntroEnglish, writers, word.getDiacritic(), word.getMeaning(), word.getIsRootWord());
         synonyms.setWord(wordRepresentation);
         for (Word synonym : word.getSynonyms()) {
             Set<WordIntroduction> synonymIntroductionSet = synonym.getWordIntroductions() != null ?
@@ -124,7 +124,7 @@ public class WordRepresentationFactory {
             WordRepresentation representation = new WordRepresentation((int) synonym.getId(),
                     synonym.getWordOriginal(), synonym.getWordTranslation(),
                     synonym.getWordTransliteration(), synonym.getEnglishIntroExcerpt(),
-                    synonym.getHindiIntroExcerpt(), synonymIntroHindi, synonymIntroEnglish, writers, synonym.getDiacritic(), null, synonym.getIsRootWord());
+                    synonym.getHindiIntroExcerpt(), synonymIntroHindi, synonymIntroEnglish, writers, synonym.getDiacritic(), synonym.getMeaning(), synonym.getIsRootWord());
             synonyms.add(representation);
         }
 
@@ -146,7 +146,7 @@ public class WordRepresentationFactory {
                 writers.add(representation);
             }
         }
-        WordRepresentation wordRepresentation = new WordRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(), word.getWordTransliteration(), word.getEnglishIntroExcerpt(), word.getHindiIntroExcerpt(), wordIntroHindi, wordIntroEnglish, writers, word.getDiacritic(), null, word.getIsRootWord());
+        WordRepresentation wordRepresentation = new WordRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(), word.getWordTransliteration(), word.getEnglishIntroExcerpt(), word.getHindiIntroExcerpt(), wordIntroHindi, wordIntroEnglish, writers, word.getDiacritic(), word.getMeaning(), word.getIsRootWord());
         relatedWords.setWord(wordRepresentation);
         for (Word relatedWord : word.getRelatedWords()) {
             Set<WordIntroduction> relatedWordsIntroductionSet = relatedWord.getWordIntroductions() != null ?
@@ -158,7 +158,7 @@ public class WordRepresentationFactory {
             WordRepresentation representation = new WordRepresentation((int) relatedWord.getId(),
                     relatedWord.getWordOriginal(), relatedWord.getWordTranslation(),
                     relatedWord.getWordTransliteration(), relatedWord.getEnglishIntroExcerpt(),
-                    relatedWord.getHindiIntroExcerpt(), relatedWordIntroHindi, relatedWordIntroEnglish, writers, relatedWord.getDiacritic(), null, relatedWord.getIsRootWord());
+                    relatedWord.getHindiIntroExcerpt(), relatedWordIntroHindi, relatedWordIntroEnglish, writers, relatedWord.getDiacritic(), relatedWord.getMeaning(), relatedWord.getIsRootWord());
             relatedWords.add(representation);
         }
 
