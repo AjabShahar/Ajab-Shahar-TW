@@ -10,6 +10,7 @@ import io.dropwizard.testing.junit.DropwizardAppRule;
 import org.ajabshahar.DataSetup;
 import org.ajabshahar.platform.PlatformApplication;
 import org.ajabshahar.platform.PlatformConfiguration;
+import org.ajabshahar.platform.controller.LoginController;
 import org.h2.jdbcx.JdbcDataSource;
 import org.junit.Before;
 import org.junit.ClassRule;
@@ -18,6 +19,8 @@ import org.junit.Test;
 import javax.ws.rs.core.NewCookie;
 
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 public class AjabShaharAuthenticationIT {
@@ -91,16 +94,6 @@ public class AjabShaharAuthenticationIT {
         assertThat(genreResponse.getStatus(),is(200));
     }
 
-    private NewCookie geCookie(ClientResponse response) {
-        NewCookie sessionCookie = null;
-        for (NewCookie cookie : response.getCookies()) {
-            if(cookie.getName().equalsIgnoreCase("JSESSIONID")){
-                sessionCookie = cookie;
-            }
-        }
-        return sessionCookie;
-    }
-
     @Test
     public void shouldNotLoginIfUserNameDontMatch() {
 
@@ -158,12 +151,14 @@ public class AjabShaharAuthenticationIT {
                 .post(ClientResponse.class, userCredentials);
 
         NewCookie sessionCookie = geCookie(response);
+        NewCookie userCookie = getCookie(response, LoginController.AUTH_ATTRIBUTE);
 
         String genre = "{\"original\":\"test original genre\",\"english\":\"test english genre\"}";
         ClientResponse genreResponse = client.resource(
                 String.format("http://localhost:%d/api/genres", RULE.getLocalPort()))
                 .header("Content-type", "application/json")
                 .cookie(sessionCookie)
+                .cookie(userCookie)
                 .post(ClientResponse.class, genre);
 
         assertThat(genreResponse.getStatus(),is(200));
@@ -172,17 +167,38 @@ public class AjabShaharAuthenticationIT {
                 String.format("http://localhost:%d/api/logout", RULE.getLocalPort()))
                 .header("Content-type", "application/json")
                 .cookie(sessionCookie)
+                .cookie(userCookie)
                 .post(ClientResponse.class);
 
+
+        userCookie = getCookie(response, LoginController.AUTH_ATTRIBUTE);
+        assertNotNull(userCookie);
+        assertEquals(0, userCookie.getMaxAge());
+       
 
         response = client.resource(
                 String.format("http://localhost:%d/api/genres", RULE.getLocalPort()))
                 .header("Content-type", "application/json")
                 .cookie(sessionCookie)
+                .cookie(userCookie)
                 .post(ClientResponse.class, genre);
 
-        assertThat(response.getStatus(),is(401));
-        
+        assertThat(response.getStatus(), is(401));
+       
+    }
+
+    private NewCookie geCookie(ClientResponse response) {
+        return getCookie(response,"JSESSIONID");
+    }
+
+    private NewCookie getCookie(ClientResponse response,String name) {
+        NewCookie sessionCookie = null;
+        for (NewCookie cookie : response.getCookies()) {
+            if(cookie.getName().equalsIgnoreCase(name)){
+                sessionCookie = cookie;
+            }
+        }
+        return sessionCookie;
     }
 
 }

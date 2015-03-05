@@ -2,7 +2,7 @@ angular.module('adminCommon',['ngCookies'])
 .service('loginVerifyService',['$cookies','$window',function($cookies,$window){
     return {
         redirectIfNotAuthenticated: function(){
-            if(!$cookies.user || $cookies.user !== 'admin'){
+            if($cookies.JSESSIONID !== $cookies.authSessionId){
                 $window.location.href="/admin/signin.html"
             }
         }

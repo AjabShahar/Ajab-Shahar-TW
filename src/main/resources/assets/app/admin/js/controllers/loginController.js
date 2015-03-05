@@ -4,8 +4,8 @@ var loginController = adminApp.controller ('loginController',['$scope', '$http',
     $scope.login = function(){
 
         $http.post('/api/login',$scope.formInfo).success(function(args){
-          $window.location.href = '/admin/home.html';
-          $cookies.user = "admin";
+            $window.location.href = '/admin/home.html';
+            $cookies.authSessionId = $cookies.JSESSIONID;
         }).
         error(function(args){
            alert("error" + args);
