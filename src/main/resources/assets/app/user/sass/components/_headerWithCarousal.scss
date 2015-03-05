@@ -4,34 +4,32 @@
     }
 
     .page-header {
-            @include page-header-with-logo;
 
-            background: transparent url(/user-img/songs/pardah_long.png) -800px bottom no-repeat;
-            height: 138px;
-            padding-top: 10px;
-            display: inline-block;
-            position: absolute;
-            top: 0;
-            left: 0;
+        background: transparent url(/user-img/songs/pardah_long.png) -800px bottom no-repeat;
+        height: 138px;
+        padding-top: 10px;
+        position: absolute;
+        top: 0;
+        left: 0;
 
-            .page-title {
-                float: left;
-                margin: 35px 0 0 1.2%;
-                font-family: 'Merriweather';
-                font-weight: 300;
-                .main {
-                    font-size: 21px;
-                    margin-right: 5px;
-                    color: #333;
-                }
-                .sub-main {
-                    font-size: 18px;
-                    color: #999;
-                    font-style: italic;
+        .page-title {
+            float: left;
+            margin: 35px 0 0 1.2%;
+            font-family: 'Merriweather';
+            font-weight: 300;
+            .main {
+                font-size: 21px;
+                margin-right: 5px;
+                color: #333;
+            }
+            .sub-main {
+                font-size: 18px;
+                color: #999;
+                font-style: italic;
 
-                }
             }
         }
+    }
 
     .lower-pardah {
         background: transparent url(/user-img/songs/pardah_long.png) -800px bottom no-repeat;
