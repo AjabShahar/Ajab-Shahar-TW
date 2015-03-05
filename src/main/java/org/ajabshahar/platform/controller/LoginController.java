@@ -49,10 +49,9 @@ public class LoginController {
                     return Response.status(200).cookie(cookie).entity("Great success \\m/").build();
                 }
             } catch (AuthenticationException e) {
-                logger.error("Could not authenticate the user", e);
-                throw new RuntimeException("Error :Could not authenticate the user");
+                logger.error("Username and password don't match", e);
+                return Response.status(401).entity("Username and password don't match").build();
             }
-
         }
         return Response.status(400).entity("Username and password cannot be empty").build();
     }

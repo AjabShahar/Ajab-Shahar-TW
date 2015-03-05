@@ -2,6 +2,7 @@ package org.ajabshahar.authentication;
 
 
 import com.google.common.base.Optional;
+import io.dropwizard.auth.AuthenticationException;
 import io.dropwizard.auth.Authenticator;
 import io.dropwizard.auth.basic.BasicCredentials;
 import org.ajabshahar.core.Users;
@@ -21,13 +22,13 @@ public class PasswordAuthenticator implements Authenticator<BasicCredentials, Pr
 
 
     @Override
-    public Optional<Principle> authenticate(BasicCredentials credentials) {
+    public Optional<Principle> authenticate(BasicCredentials credentials) throws AuthenticationException {
         User user = users.getUser(credentials.getUsername());
         if (user != null && passwordsMatch(credentials, user)) {
             Principle principle = new Principle(user.getUsername(),user.getRole());
             return Optional.fromNullable(principle);
         }
-        return Optional.absent();
+        throw new AuthenticationException("Username and password don't match");
     }
 
     private boolean passwordsMatch(BasicCredentials credentials, User user)  {
