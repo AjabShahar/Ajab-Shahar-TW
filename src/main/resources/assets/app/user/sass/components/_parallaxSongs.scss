@@ -42,7 +42,7 @@
 }
 @-webkit-keyframes moveDown {
     0% {  background-position: 0 0; }
-    100% { background-position: 0 4277px; }
+    100% { background-position: 0 6400px; }
 }
 
 @-moz-keyframes moveUp {
@@ -51,7 +51,7 @@
 }
 @-moz-keyframes moveDown {
     0% {  background-position: 0 0; }
-    100% { background-position: 0 4277px; }
+    100% { background-position: 0 6400px; }
 }
 @-o-keyframes moveUp {
     0% {  background-position: 0 0; }
@@ -59,7 +59,7 @@
 }
 @-o-keyframes moveDown {
     0% {  background-position: 0 0; }
-    100% { background-position: 0 4277px; }
+    100% { background-position: 0 6400px; }
 }
 
 @keyframes moveUp {
@@ -68,7 +68,7 @@
 }
 @keyframes moveDown {
     0% {  background-position: 0 0; }
-    100% { background-position: 0 4277px; }
+    100% { background-position: 0 6400px; }
 }
 
 .featured-songs {
@@ -182,6 +182,7 @@
                 left: -4%;
                 height: 4277px;
                 background-size: contain;
+                width: 100%;
                 -webkit-animation: moveUp 200s linear infinite;
                 -moz-animation: moveUp 200s linear infinite;
                 -o-animation: moveUp 200s linear infinite;
