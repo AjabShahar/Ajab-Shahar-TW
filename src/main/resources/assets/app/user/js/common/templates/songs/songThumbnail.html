@@ -1,8 +1,8 @@
-<div class="thumbnail {{customStyle}}" ng-click="open('{{id}}')">
-    <div class="image">
+<div class="thumbnail {{customStyle}}">
+    <div class="image" ng-click="open('{{id}}')">
         <img src="{{imgSrc}}"/>
     </div>
-    <div class="bubble">
+    <div class="bubble" ng-click="open('{{id}}')">
         <div class="summary" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
             <h3 class="title">{{getTitle()}}</h3>
             <h4 class="en-title">{{getSecondTitle()}}</h4>

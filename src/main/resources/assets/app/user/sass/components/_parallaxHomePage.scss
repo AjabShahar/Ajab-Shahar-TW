@@ -61,7 +61,7 @@
         }
 
         &5{
-            @include retina-image("/user-img/mainLandingPage/parallax/bird2", auto auto);
+            @include retina-image("/user-img/mainLandingPage/parallax/bird2", 92px 81px);
             background-position: 0 0;
             background-repeat: no-repeat;
 
