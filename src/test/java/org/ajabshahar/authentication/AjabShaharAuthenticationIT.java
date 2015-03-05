@@ -187,6 +187,40 @@ public class AjabShaharAuthenticationIT {
        
     }
 
+    @Test
+    public void shouldLogoutWhenSessionTimesOut() throws InterruptedException {
+        String userCredentials = "{\"username\":\"admin\",\"password\":\"password\"}";
+
+        ClientResponse response = client.resource(
+                String.format("http://localhost:%d/api/login", RULE.getLocalPort())).header("Content-type", "application/json")
+                .post(ClientResponse.class, userCredentials);
+
+        NewCookie sessionCookie = geCookie(response);
+        NewCookie userCookie = getCookie(response, LoginController.AUTH_ATTRIBUTE);
+
+        String genre = "{\"original\":\"test original genre\",\"english\":\"test english genre\"}";
+        ClientResponse genreResponse = client.resource(
+                String.format("http://localhost:%d/api/genres", RULE.getLocalPort()))
+                .header("Content-type", "application/json")
+                .cookie(sessionCookie)
+                .cookie(userCookie)
+                .post(ClientResponse.class, genre);
+
+        assertThat(genreResponse.getStatus(),is(200));
+
+        Thread.sleep(1200);
+        
+        response = client.resource(
+                String.format("http://localhost:%d/api/genres", RULE.getLocalPort()))
+                .header("Content-type", "application/json")
+                .cookie(sessionCookie)
+                .cookie(userCookie)
+                .post(ClientResponse.class, genre);
+
+        assertThat(response.getStatus(), is(401));
+
+    }
+
     private NewCookie geCookie(ClientResponse response) {
         return getCookie(response,"JSESSIONID");
     }

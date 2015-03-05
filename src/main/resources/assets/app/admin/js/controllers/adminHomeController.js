@@ -7,7 +7,7 @@ adminApp.controller('adminHomeController',['$http','$scope','$window','$cookies'
     };
     $scope.logout=function(){
         $http.post('/api/logout').success(function(){
-//            $cookies.user = null;
+            $cookies.user = undefined;
             $window.location.href = '/admin/signin.html';
         }).error(function(response){
             $scope.message.text = "Unable to sign out, make sure you are  signed in";

@@ -1,4 +1,4 @@
-var loginController = adminApp.controller ('loginController',['$scope', '$http','$window','$cookies', function($scope, $http,$window,$cookies) {
+var loginController = adminApp.controller ('loginController',['$scope', '$http','$window', function($scope, $http,$window) {
 
     $scope.formInfo = {};
     $scope.login = function(){

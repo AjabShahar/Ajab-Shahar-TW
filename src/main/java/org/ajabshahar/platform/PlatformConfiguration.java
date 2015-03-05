@@ -25,7 +25,8 @@ public class PlatformConfiguration extends Configuration implements CachingBundl
     @NotNull
     @JsonProperty("database")
     private DataSourceFactory database = new DataSourceFactory();
-    private String authenticationCachePolicy;
+    
+    private String sessionTimeout;
 
     public DataSourceFactory getDataSourceFactory() {
         return database;
@@ -52,13 +53,13 @@ public class PlatformConfiguration extends Configuration implements CachingBundl
     }
 
     @JsonProperty
-    public String getAuthenticationCachePolicy(){
-        return authenticationCachePolicy;
+    public String getSessionTimeout(){
+        return sessionTimeout;
     }
 
     @JsonProperty
-    public void setAuthenticationCachePolicy(String authenticationCachePolicy){
-        this.authenticationCachePolicy = authenticationCachePolicy;
+    public void setSessionTimeout(String sessionTimeout){
+        this.sessionTimeout = sessionTimeout;
     }
 
     @Override

@@ -92,8 +92,10 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         environment.jersey().register(picoContainer.getComponent(LogoutController.class));
         environment.jersey().register(HttpSessionProvider.class);
         SessionManager sessionManager = new HashSessionManager();
-        sessionManager.setMaxInactiveInterval(_30_MINUTES);
-        environment.servlets().setSessionHandler(new SessionHandler());
+        String sessionTimeout = configuration.getSessionTimeout();
+        int timeout = sessionTimeout != null? Integer.parseInt(sessionTimeout) : _30_MINUTES;
+        sessionManager.setMaxInactiveInterval(timeout);
+        environment.servlets().setSessionHandler(new SessionHandler(sessionManager));
         environment.servlets().addFilter("SessionAuthFilter", new SessionAuthenticatorFilter()).addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class),true,"/*");
         PasswordAuthenticator authenticator = picoContainer.getComponent(PasswordAuthenticator.class);
         environment.jersey().register(new BasicAuthProvider<Principle>(authenticator,"Ajab-shahar"));

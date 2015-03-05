@@ -23,3 +23,4 @@ logging:
     io.dropwizard: WARNING
   appenders:
     - type: console
+sessionTimeout: 1
