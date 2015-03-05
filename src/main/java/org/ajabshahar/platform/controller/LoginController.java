@@ -48,9 +48,10 @@ public class LoginController {
                     NewCookie cookie = createCookie(AUTH_ATTRIBUTE,principle.getRole());
                     return Response.status(200).cookie(cookie).entity("Great success \\m/").build();
                 }
-            } catch (AuthenticationException e) {
-                logger.error("Username and password don't match", e);
                 return Response.status(401).entity("Username and password don't match").build();
+            } catch (AuthenticationException e) {
+                logger.error("Could not authenticate the user", e);
+                return Response.status(400).entity("Could not authenticate the user").build();
             }
         }
         return Response.status(400).entity("Username and password cannot be empty").build();

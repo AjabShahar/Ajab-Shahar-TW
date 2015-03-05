@@ -28,7 +28,7 @@ public class PasswordAuthenticator implements Authenticator<BasicCredentials, Pr
             Principle principle = new Principle(user.getUsername(),user.getRole());
             return Optional.fromNullable(principle);
         }
-        throw new AuthenticationException("Username and password don't match");
+        return Optional.absent();
     }
 
     private boolean passwordsMatch(BasicCredentials credentials, User user)  {

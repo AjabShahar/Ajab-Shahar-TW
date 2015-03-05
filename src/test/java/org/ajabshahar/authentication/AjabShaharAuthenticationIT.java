@@ -103,7 +103,7 @@ public class AjabShaharAuthenticationIT {
                 String.format("http://localhost:%d/api/login", RULE.getLocalPort())).header("Content-type", "application/json")
                 .post(ClientResponse.class, userCredentials);
 
-        assertThat(response.getStatus(), is(400));
+        assertThat(response.getStatus(), is(401));
     }
 
     @Test
@@ -115,7 +115,7 @@ public class AjabShaharAuthenticationIT {
                 String.format("http://localhost:%d/api/login", RULE.getLocalPort())).header("Content-type", "application/json")
                 .post(ClientResponse.class, userCredentials);
 
-        assertThat(response.getStatus(), is(400));
+        assertThat(response.getStatus(), is(401));
 
     }
 
