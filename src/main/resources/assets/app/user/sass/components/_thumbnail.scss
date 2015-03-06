@@ -3,6 +3,11 @@
     width: 300px;
     position: relative;
     cursor: pointer;
+    z-index: $zIndex-thumbnail;
+
+    &:hover {
+        z-index: $zIndex-thumbnail-hover;
+    }
 
     .image {
         width: 250px;
