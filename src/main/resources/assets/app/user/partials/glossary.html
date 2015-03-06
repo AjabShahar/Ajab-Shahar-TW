@@ -43,7 +43,7 @@
                            <dl>
                                <dt class="word-title" ng-class="term.isRootWord ? 'root-word' : ''" ng-click="open('{{term.id}}')">
                                    <span ng-if="term.isRootWord">
-                                       <a href="" >{{term.wordTransliteration}}</a>
+                                       <a href="/words/details.html?id={{term.id}}" >{{term.wordTransliteration}}</a>
                                    </span>
                                    <span ng-if="!term.isRootWord">
                                        {{term.wordTransliteration}}
