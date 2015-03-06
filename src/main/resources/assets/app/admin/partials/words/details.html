@@ -74,7 +74,7 @@
                             <label>Is Root Word</label>
                         </div>
                         <div class="form-group col-sm-2">
-                            <select name="format" ng-model="formInfo.isRootWord" class="form-control">
+                            <select name="format" ng-model="formInfo.isRootWord" class="form-control" ng-init="formInfo.isRootWord = formInfo.isRootWord || false">
                                 <option value="true">Yes</option>
                                 <option value="false">No</option>
                             </select>
