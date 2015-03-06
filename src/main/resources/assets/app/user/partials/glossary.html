@@ -42,12 +42,12 @@
                        <div ng-repeat="term in glossary">
                            <dl>
                                <dt class="word-title" ng-class="term.isRootWord ? 'root-word' : ''" ng-click="open('{{term.id}}')">
-                                   <div ng-if="term.isRootWord">
+                                   <span ng-if="term.isRootWord">
                                        <a href="" >{{term.wordTransliteration}}</a>
-                                   </div>
-                                   <div ng-if="!term.isRootWord">
+                                   </span>
+                                   <span ng-if="!term.isRootWord">
                                        {{term.wordTransliteration}}
-                                   </div>
+                                   </span>
                                    <span class="related">(<span class="hindi">{{term.wordOriginal}}</span>, {{term.diacritic}})</span>
                                </dt>
                                <dd class="word-meaning">
