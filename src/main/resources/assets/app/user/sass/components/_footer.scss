@@ -12,7 +12,7 @@
     background:url(/user-img/common/directives/footer/footer1.png) top no-repeat;
     height: 249px;
     position: relative;
-    z-index: 8;
+    z-index: $zIndex-footer;
     margin-top: -14%;
 
     footer{

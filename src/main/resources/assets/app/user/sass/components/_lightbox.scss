@@ -144,7 +144,7 @@
     bottom: 1%;
     width: 100%;
     left: 0;
-    z-index: 99;
+    z-index: $zIndex-lightbox-footer;
 
     .infoText{
         color: #808080;

@@ -12,7 +12,7 @@
         color: #666;
         background-size: contain;
         overflow: hidden;
-        z-index: 99;
+        z-index: $zIndex-lightbox-overlay;
     }
 
     .arrows {
@@ -27,7 +27,7 @@
             position: fixed;
             top: 0;
             right: 0;
-            z-index: 99;
+            z-index: $zIndex-lightbox-arrows;
 
             .close {
                 position: relative;
@@ -65,7 +65,7 @@
         position: fixed;
         top: 5%;
         left: 10%;
-        z-index: 99;
+        z-index: $zIndex-lightbox-container;
     }
 
 }

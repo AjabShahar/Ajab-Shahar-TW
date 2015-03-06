@@ -9,7 +9,7 @@
         width:100%;
         top:0;
         cursor:pointer;
-        z-index: 15
+        z-index: $zIndex-header-fixed;
     }
 
     .headerWrapper {
@@ -17,7 +17,7 @@
         background: #fff;
         padding:0% 0 0% 0;
         position:relative;
-        z-index:9;
+        z-index: $zIndex-headerWrapper;
         box-shadow: #DDD 0 1px 15px;
 
         &.fixed {
@@ -41,7 +41,7 @@
         margin-top:-1px;
         height: 95px;
         position: relative;
-        z-index: 9;
+        z-index: $zIndex-headerart;
 
         &.fixed {
             position:fixed;

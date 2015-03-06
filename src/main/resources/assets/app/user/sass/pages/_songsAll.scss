@@ -1,6 +1,6 @@
 .ajab-wrapper {
     zoom: 1; /* For IE 6/7 (trigger hasLayout) */
-    z-index: 1;
+    z-index: $zIndex-ajabWrapper;
 }
 
 .all-songs {
@@ -21,7 +21,7 @@
         left: 0;
         top: 5%;
         margin-left: 1.5%;
-        z-index: 7;
+        z-index: $zIndex-songs-leftNav;
 
         .nav-elements-wrapper {
             position: relative;
@@ -135,35 +135,35 @@
         }
     }
 
-    .songs {
-        margin-top: 0;
-        .thumbnail-media {
-            width: 215px;
-            height: 120px;
-        }
+    // .songs {
+    //     margin-top: 0;
+    //     .thumbnail-media {
+    //         width: 215px;
+    //         height: 120px;
+    //     }
 
-        .desc-wrapper {
-            z-index: 1;
-            .thumbnail-desc {
-                margin: 0;
-                box-shadow: none;
-                width: 203px;
+    //     .desc-wrapper {
+    //         z-index: 1;
+    //         .thumbnail-desc {
+    //             margin: 0;
+    //             box-shadow: none;
+    //             width: 203px;
 
-                &:before {
-                    background: rgba(255,255,255,0) url(/user-img/common/directives/thumbnail/top.png) left top no-repeat;
-                    top: -16px;
-                    width: 223px;
-                    background-size: contain;
-                }
-            }
-            .lower-curve {
-                margin: -3px 0 0 0;
-                background: rgba(255,255,255,0) url(/user-img/common/directives/thumbnail/bottom.png) left top no-repeat;
-                background-size: cover;
-                width: 223px;
-            }
-        }
-    }
+    //             &:before {
+    //                 background: rgba(255,255,255,0) url(/user-img/common/directives/thumbnail/top.png) left top no-repeat;
+    //                 top: -16px;
+    //                 width: 223px;
+    //                 background-size: contain;
+    //             }
+    //         }
+    //         .lower-curve {
+    //             margin: -3px 0 0 0;
+    //             background: rgba(255,255,255,0) url(/user-img/common/directives/thumbnail/bottom.png) left top no-repeat;
+    //             background-size: cover;
+    //             width: 223px;
+    //         }
+    //     }
+    // }
 
 
 }
