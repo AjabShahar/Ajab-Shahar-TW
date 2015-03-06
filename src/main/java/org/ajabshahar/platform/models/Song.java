@@ -1,10 +1,5 @@
 package org.ajabshahar.platform.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -103,22 +98,23 @@ public class Song {
         Calendar calendar = Calendar.getInstance();
         Date now = calendar.getTime();
 
-        this.title= song.title;
+        this.title = song.title;
         this.songTitle = song.songTitle;
-        this.about=song.about;
-        this.download_url=song.download_url;
-        this.songText=song.songText;
-        this.showOnLandingPage=song.showOnLandingPage;
-        this.duration=song.duration;
-        this.youtubeVideoId=song.youtubeVideoId;
-        this.thumbnail_url=song.thumbnail_url;
-        this.isAuthoringComplete=song.isAuthoringComplete;
-        this.singers=song.singers;
-        this.poets=song.poets;
-        this.songCategory=song.songCategory;
-        this.mediaCategory=song.mediaCategory;
-        this.songGenre=song.songGenre;
-        this.words=song.words;
+        this.about = song.about;
+        this.download_url = song.download_url;
+        this.songText = song.songText;
+        this.showOnLandingPage = song.showOnLandingPage;
+        this.duration = song.duration;
+        this.youtubeVideoId = song.youtubeVideoId;
+        this.thumbnail_url = song.thumbnail_url;
+        this.isAuthoringComplete = song.isAuthoringComplete;
+        this.singers = song.singers;
+        this.poets = song.poets;
+        this.songCategory = song.songCategory;
+        this.mediaCategory = song.mediaCategory;
+        this.songGenre = song.songGenre;
+        this.words = song.words;
+        this.soundCloudTrackID = song.soundCloudTrackID;
 
         if (song.isAuthoringComplete) {
             this.publishedDate = new Timestamp(now.getTime());
