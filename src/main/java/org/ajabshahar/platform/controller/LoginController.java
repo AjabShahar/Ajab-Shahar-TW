@@ -17,7 +17,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response;
 
 @Path("/login")
@@ -45,8 +44,7 @@ public class LoginController {
                 if (authenticatedUser.isPresent()) {
                     Principle principle = authenticatedUser.asSet().iterator().next();
                     httpSession.setAttribute(AUTH_ATTRIBUTE, principle.getRole());
-                    NewCookie cookie = createCookie(AUTH_ATTRIBUTE,principle.getRole());
-                    return Response.status(200).cookie(cookie).entity("Great success \\m/").build();
+                    return Response.status(200).entity("Great success \\m/").build();
                 }
                 return Response.status(401).entity("Username and password don't match").build();
             } catch (AuthenticationException e) {
@@ -57,7 +55,4 @@ public class LoginController {
         return Response.status(400).entity("Username and password cannot be empty").build();
     }
 
-    private NewCookie createCookie(String name,String value){
-            return new NewCookie(name,value,"/",null,null,-1,false);
-    }
 }
