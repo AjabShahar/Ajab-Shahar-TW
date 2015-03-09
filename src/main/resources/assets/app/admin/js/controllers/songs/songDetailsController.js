@@ -109,11 +109,16 @@ function($scope, $window, $location, songContentService, PAGES, $filter, $q,logi
     });
   };
 
+    $scope.isMediaUrlEmpty = function(){
+        return !(Boolean($scope.song.youtubeVideoId) || Boolean($scope.song.soundCloudTrackID));
+    }
+
   $scope.updateSong = function(){
     setSongCategory();
     $scope.song.publishedDate = null;
 
-    songContentService.editSong($scope.song).success(function(){ redirectToURL(PAGES.ADMIN_HOME); });
+    songContentService.editSong($scope.song)
+        .success(function(){ redirectToURL(PAGES.ADMIN_HOME); });
   };
 }]);
 

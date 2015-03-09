@@ -17,9 +17,9 @@
         <br/>
         <div class="left">
             <form name="songForm" novalidate ng-controller="songDetailsController" ng-init="init()">
-                <as-admin-title title="Umbrella Title" title-data="song.title" title-list="umbrellaTitles" ></as-admin-title>
+                <as-admin-title title="Umbrella Title" title-data="song.title" title-list="umbrellaTitles" validation-required="false"></as-admin-title>
 
-                <as-admin-title title="Song Title" title-data="song.songTitle" title-list="songTitles" ></as-admin-title>
+                <as-admin-title title="Song Title" title-data="song.songTitle" title-list="songTitles"  validation-required="song.isAuthoringComplete"></as-admin-title>
 
                 <div class="row form-group">
                     <div class="col-sm-2">
@@ -88,12 +88,12 @@
 
                 <div class="row form-group">
                     <div class="col-sm-2">
-                        <label>* Youtube Video ID for video</label>
+                        <label>Youtube Video ID for video</label>
                     </div>
                     <div class="col-sm-2">
-                        <input type="text" name="youtubeVideoId" ng-model="song.youtubeVideoId" class="form-control" ng-required="song.isAuthoringComplete">
+                        <input type="text" name="youtubeVideoId" ng-model="song.youtubeVideoId" class="form-control" ng-required="song.isAuthoringComplete && isMediaUrlEmpty()">
                     </div>
-                    <error-message name="Youtube URL" show-error="song.isAuthoringComplete && isEmpty(song.youtubeVideoId)"></error-message>
+                    <error-message name="Youtube URL or soundCloud" show-error="song.isAuthoringComplete && isMediaUrlEmpty()"></error-message>
 
                 </div>
 
@@ -102,8 +102,10 @@
                         <label>SoundCloud track ID for audio</label>
                     </div>
                     <div class="col-sm-2">
-                        <input type="text" name="soundCloudTrackID" ng-model="song.soundCloudTrackID" class="form-control" >
+                        <input type="text" name="soundCloudTrackID" ng-model="song.soundCloudTrackID" class="form-control" ng-required="song.isAuthoringComplete && isMediaUrlEmpty()">
                     </div>
+                    <error-message name="Youtube URL or soundCloud" show-error="song.isAuthoringComplete && isMediaUrlEmpty()"></error-message>
+
                 </div>
 
                 <div class="row form-group">
@@ -127,26 +129,23 @@
 
                 <div class="row form-group">
                     <div class="col-sm-2">
-                        <label>* Genres</label>
+                        <label>Genres</label>
                     </div>
                     <div class="col-sm-2" multi-select input-model="genres" button-label="english" item-label="english" tick-property="selected" output-model="song.songGenre"></div>
-                    <input name="genres" ng-model="song.songGenre" ng-show="false" required="true">
-                    <error-message name="Genre" show-error="song.isAuthoringComplete && song.songGenre.length < 1"></error-message>
+                    <input name="genres" ng-model="song.songGenre" ng-show="false">
                 </div>
 
                  <song-text poets="poets" song-text="song.songText" authoring-complete="song.isAuthoringComplete"></song-text>
 
                 <div class="row form-group ">
                     <div class="col-sm-2">
-                        <label>* About</label>
+                        <label>About</label>
                     </div>
                     <span>The number of characters should be less that 1500, else the submit will be disabled</span>
                     <div class="col-sm-8">
-                        <text-angular name="htmlcontent" ng-model="song.about" ta-max-text="1500" ng-required="song.isAuthoringComplete"></text-angular>
+                        <text-angular name="htmlcontent" ng-model="song.about" ta-max-text="1500"></text-angular>
                     </div>
                 </div>
-                <div class="alert alert-danger" role="alert" ng-show="song.isAuthoringComplete && isEmpty(song.about)"> About is required</div>
-
                 <div class="row form-group">
                     <div class="col-sm-2">
                         <label>Publish</label>

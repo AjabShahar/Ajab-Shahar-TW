@@ -8,7 +8,7 @@ songsAdminApp.directive("asAdminTitle", function() {
             titleId:'=',
             titleData:'=',
             titleList:'=',
-            authoringComplete: '=',
+            validationRequired: '@',
         },
         templateUrl:'/admin-js/templates/asAdminTitle.html',
         controller:function($scope){

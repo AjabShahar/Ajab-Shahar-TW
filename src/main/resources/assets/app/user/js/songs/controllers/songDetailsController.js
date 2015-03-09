@@ -126,10 +126,10 @@ var songDetailsController = function($scope,$location,songsContentService,songMa
     }
 
      $scope.getCustomStyle =  function(song){
-    if(Boolean(song)){
+        if(Boolean(song)){
             if(song.id == $scope.songId)
                 return 'active';
-            return ''; 
+            return '';
         }
         return '';
      }
