@@ -19,6 +19,7 @@ import static java.lang.String.format;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.Matchers.anyListOf;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -31,11 +32,13 @@ public class SongsRepresentationFactoryTest {
     private PersonDetails personDetails;
     @Mock
     private SongTextRepresentationFactory songTextRepresentationFactory;
+    @Mock
+    private WordRepresentationFactory wordRepresentationFactory;
     private Song song;
 
     @Before
     public void setUp() {
-        songsRepresentationFactory = new SongsRepresentationFactory(people, songTextRepresentationFactory);
+        songsRepresentationFactory = new SongsRepresentationFactory(people, songTextRepresentationFactory, wordRepresentationFactory);
 
         songsList = new ArrayList<>();
 
@@ -97,11 +100,16 @@ public class SongsRepresentationFactoryTest {
         songText.setSongTextContents(songTextContents);
 
         song.setSongText(songText);
+
+        HashSet<Word> words = new HashSet<>();
+
+        song.setWords(words);
         songsList.add(song);
 
         when(people.findBy(id + 1000)).thenReturn(singer);
         when(people.findBy(id + 2000)).thenReturn(poet);
         when(songTextRepresentationFactory.getSongText(song.getSongText())).thenReturn(new SongTextRepresentation("", "", ""));
+        when(wordRepresentationFactory.create(anyListOf(Word.class))).thenReturn(new WordsSummaryRepresentation());
 
     }
 

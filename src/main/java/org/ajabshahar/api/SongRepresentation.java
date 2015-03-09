@@ -27,6 +27,7 @@ public class SongRepresentation {
     private List<PersonSummaryRepresentation> singers;
     private List<PersonSummaryRepresentation> poet;
     private List<LinkRepresentation> links;
+    private WordsSummaryRepresentation words;
     private SongTextRepresentation songText;
     private String downloadUrl;
     private String about;
@@ -35,7 +36,7 @@ public class SongRepresentation {
         this.links = new ArrayList<>();
     }
 
-    public SongRepresentation(long id, long umbrellaTitleId, String umbrellaTitleOriginal, String umbrellaTitleEnglishTransliteration, String umbrellaTitleEnglishTranslation, long titleId, String titleOriginal, String titleEnglishTransliteration, String titleEnglishTranslation, boolean publish, String type, boolean featured, String youTubeVideoId, String soundCloudTrackId, String thumbnailUrl, String duration, List<PersonSummaryRepresentation> singers, List<PersonSummaryRepresentation> poet, SongTextRepresentation songText, String downloadUrl, String about) {
+    public SongRepresentation(long id, long umbrellaTitleId, String umbrellaTitleOriginal, String umbrellaTitleEnglishTransliteration, String umbrellaTitleEnglishTranslation, long titleId, String titleOriginal, String titleEnglishTransliteration, String titleEnglishTranslation, boolean publish, String type, boolean featured, String youTubeVideoId, String soundCloudTrackId, String thumbnailUrl, String duration, List<PersonSummaryRepresentation> singers, List<PersonSummaryRepresentation> poet, String about, SongTextRepresentation songText, String downloadUrl, WordsSummaryRepresentation words) {
         this();
         this.id = id;
         this.umbrellaTitleId = umbrellaTitleId;
@@ -60,6 +61,7 @@ public class SongRepresentation {
         this.songText = songText;
         this.downloadUrl = downloadUrl;
         this.about = about;
+        this.words = words;
 
     }
 
@@ -173,6 +175,10 @@ public class SongRepresentation {
         return about;
     }
 
+    @JsonProperty("words")
+    public WordsSummaryRepresentation getWords() {
+        return words;
+    }
 }
 
 

@@ -2,10 +2,7 @@ package org.ajabshahar.api;
 
 import com.google.gson.Gson;
 import org.ajabshahar.core.People;
-import org.ajabshahar.platform.models.PersonDetails;
-import org.ajabshahar.platform.models.Song;
-import org.ajabshahar.platform.models.SongText;
-import org.ajabshahar.platform.models.Title;
+import org.ajabshahar.platform.models.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +10,12 @@ import java.util.List;
 public class SongsRepresentationFactory {
     private final People people;
     private final SongTextRepresentationFactory songTextRepresentationFactory;
+    private final WordRepresentationFactory wordRepresentationFactory;
 
-    public SongsRepresentationFactory(People people, SongTextRepresentationFactory songTextRepresentationFactory) {
+    public SongsRepresentationFactory(People people, SongTextRepresentationFactory songTextRepresentationFactory, WordRepresentationFactory wordRepresentationFactory) {
         this.people = people;
         this.songTextRepresentationFactory = songTextRepresentationFactory;
+        this.wordRepresentationFactory = wordRepresentationFactory;
     }
 
 
@@ -49,6 +48,8 @@ public class SongsRepresentationFactory {
         List<PersonSummaryRepresentation> singers = new ArrayList<>(), poets = new ArrayList<>();
         SongText songText = song.getSongText() == null ? new SongText() : song.getSongText();
         SongTextRepresentation lyrics = songTextRepresentationFactory.getSongText(songText);
+        List<Word> wordList = new ArrayList<>(song.getWords());
+        WordsSummaryRepresentation words = wordRepresentationFactory.create(wordList);
 
         song.getSingers().forEach(singer -> {
             PersonDetails personDetails = people.findBy((int) singer.getId());
@@ -77,7 +78,7 @@ public class SongsRepresentationFactory {
                 song.getDuration(),
                 singers,
                 poets,
-                lyrics, song.getDownload_url(), song.getAbout());
+                song.getAbout(), lyrics, song.getDownload_url(), words);
     }
 
     public SongsRepresentation createSongsRepresentation(List<Song> songList) {
@@ -89,6 +90,8 @@ public class SongsRepresentationFactory {
             List<PersonSummaryRepresentation> singers = new ArrayList<>(), poets = new ArrayList<>();
             SongText songText = song.getSongText() == null ? new SongText() : song.getSongText();
             SongTextRepresentation songTextRepresentation = songTextRepresentationFactory.getSongText(songText);
+            List<Word> wordList = new ArrayList<>(song.getWords());
+            WordsSummaryRepresentation words = wordRepresentationFactory.create(wordList);
 
             song.getSingers().forEach(singer -> {
                 PersonDetails personDetails = people.findBy((int) singer.getId());
@@ -118,17 +121,13 @@ public class SongsRepresentationFactory {
                     song.getDuration(),
                     singers,
                     poets,
-                    songTextRepresentation, song.getDownload_url(), song.getAbout());
+                    song.getAbout(), songTextRepresentation, song.getDownload_url(), words);
             songsRepresentation.add(songRepresentation);
         }
         return songsRepresentation;
     }
 
     public Song create(String jsonSong) {
-
-//        JsonObject jsonSongObject = new Gson().fromJson(jsonSong, JsonObject.class);
-//        HashSet<Lyric> lyrics = lyricsRepresentationFactory.create(jsonSongObject.getAsJsonObject("lyricsData"));
         return new Gson().fromJson(jsonSong, Song.class);
-//        song.setLyrics(lyrics);
     }
 }
