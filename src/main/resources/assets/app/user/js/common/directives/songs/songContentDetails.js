@@ -11,7 +11,7 @@ thumbnailModule.directive("songContentDetails", function() {
             id:'@',
             downloadurl:'@',
             about:'@',
-            notes:'@',
+            words:'=',
             detailsService:'='
         },
         templateUrl:'/user-js/common/templates/songs/songContentDetails.html',

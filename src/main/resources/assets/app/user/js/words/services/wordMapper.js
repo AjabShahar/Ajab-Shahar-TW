@@ -66,7 +66,7 @@ var wordMapper = function () {
             wordBasicInfo.push({
                "id" : word.id,
                "transliteration":word.wordTransliteration,
-               "rootWord":word.rootWord,
+               "isRootWord":word.rootWord,
 
             });
             return wordBasicInfo;

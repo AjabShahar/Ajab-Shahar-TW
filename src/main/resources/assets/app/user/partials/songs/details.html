@@ -73,7 +73,7 @@
                             </ul>
                         </div>
                         <div ng-repeat="song in renditions" ng-show="isOpen({{song.id}})">
-                            <song-content-details video-id="{{song.videoId}}" audio-url="{{song.audioUrl}}" id="{{song.id}}" singer="{{song.singer}}" poet="{{song.poet}}" details-service="detailsService" downloadurl="{{song.downloadURL}}" about="{{song.about}}"></song-content-details>
+                            <song-content-details video-id="{{song.videoId}}" audio-url="{{song.audioUrl}}" id="{{song.id}}" singer="{{song.singer}}" poet="{{song.poet}}" details-service="detailsService" downloadurl="{{song.downloadURL}}" about="{{song.about}}" words="song.words"></song-content-details>
                         </div>
                     </div>
                 </div>
