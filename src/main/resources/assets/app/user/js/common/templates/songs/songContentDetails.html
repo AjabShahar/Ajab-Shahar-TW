@@ -1,6 +1,6 @@
 <div ng-init="isAudioOrVideo()">
     <div ng-if="showVideo">
-        <youtube width="100%" height="90%" videoid="videoId"  should-stop-video="shouldStopVideo()"></youtube>
+        <youtube width="100%" height="90%" videoid="videoId" should-stop-video="shouldStopVideo()"></youtube>
     </div>
     <div ng-if="showAudio">
         <sound-cloud audio-url="{{audioUrl}}" id="snd_{{id}}"></sound-cloud>
@@ -9,7 +9,8 @@
     <div class="video-options">
         <ul class="slide-info">
             <li>
-                <a href="javascript:void(0)" ng-click="showAbout()" class="{{isAboutVisible ? 'active-link': ''}}" >about</a>
+                <a href="javascript:void(0)" ng-click="showAbout()"
+                   class="{{isAboutVisible ? 'active-link': ''}}">about</a>
             </li>
         </ul>
         <ul class="share-options">
@@ -23,17 +24,20 @@
                 <a href="javascript:void(0)" class="comment"></a>
             </li>
             <li>
-                <a href="javascript:void(0)" class="download" ng-if="downloadurl"  target="_blank" ng-href="{{downloadurl}}"></a>
+                <a href="javascript:void(0)" class="download" ng-if="downloadurl" target="_blank"
+                   ng-href="{{downloadurl}}"></a>
             </li>
         </ul>
         <ul class="audio-video-options" ng-show="hasAudioAndVideo">
             <li>
-                <a href="javascript:void(0)" ng-show="showVideo" class="video-icon active" ng-click="toggleVideoOrAudio()"></a>
+                <a href="javascript:void(0)" ng-show="showVideo" class="video-icon active"
+                   ng-click="toggleVideoOrAudio()"></a>
                 <a href="javascript:void(0)" ng-hide="showVideo" class="video-icon" ng-click="toggleVideoOrAudio()"></a>
             </li>
             <li>
-                <a href="javascript:void(0)" ng-show="showAudio" class="audio-icon active" ng-click="toggleVideoOrAudio()"></a>
-                <a href="javascript:void(0)"    ng-hide="showAudio" class="audio-icon" ng-click="toggleVideoOrAudio()"></a>
+                <a href="javascript:void(0)" ng-show="showAudio" class="audio-icon active"
+                   ng-click="toggleVideoOrAudio()"></a>
+                <a href="javascript:void(0)" ng-hide="showAudio" class="audio-icon" ng-click="toggleVideoOrAudio()"></a>
             </li>
             <!--<button ng-click="toggleVideoOrAudio()" ng-show="hasAudioAndVideo">Toggle between audio and video</button>-->
         </ul>
@@ -63,10 +67,8 @@
             <dd>Poet</dd>
             <dt>{{singer}}</dt>
             <dd>Singer</dd>
-        </dl>
-    </div>
-    <span ng-repeat="word in words" >
-             <span ng-if="word.isRootWord" >
+    <span ng-repeat="word in words">
+             <span ng-if="word.isRootWord">
                  <a href="/words/details.html?id={{word.id}}" target="_self">{{word.transliteration}}</a>
              </span>
              <span ng-if="!word.isRootWord">
@@ -74,5 +76,7 @@
              </span>
              <span ng-show="!$last">, </span>
     </span>
+        </dl>
+    </div>
 
 </div>
