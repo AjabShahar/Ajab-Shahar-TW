@@ -12,8 +12,9 @@ public class WordSummaryRepresentation {
     private String hindiIntroExcerpt;
     private String englishIntroExcerpt;
     private List<PersonSummaryRepresentation> writers;
+    private Boolean isRootWord;
 
-    public WordSummaryRepresentation(int id, String originalWord, String wordTranslation, String wordTransliteration, String hindiIntroExcerpt, String englishIntroExcerpt, List<PersonSummaryRepresentation> writers) {
+    public WordSummaryRepresentation(int id, String originalWord, String wordTranslation, String wordTransliteration, String hindiIntroExcerpt, String englishIntroExcerpt, List<PersonSummaryRepresentation> writers, Boolean isRootWord) {
         this.id = id;
         this.originalWord = originalWord;
         this.wordTranslation = wordTranslation;
@@ -21,6 +22,7 @@ public class WordSummaryRepresentation {
         this.hindiIntroExcerpt = hindiIntroExcerpt;
         this.englishIntroExcerpt = englishIntroExcerpt;
         this.writers = writers;
+        this.isRootWord = isRootWord;
     }
 
     @JsonProperty("id")
@@ -56,5 +58,10 @@ public class WordSummaryRepresentation {
     @JsonProperty("writers")
     public List<PersonSummaryRepresentation> getWriters() {
         return writers;
+    }
+
+    @JsonProperty("rootWord")
+    public Boolean getIsRootWord() {
+        return isRootWord;
     }
 }

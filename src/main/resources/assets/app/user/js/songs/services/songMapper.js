@@ -1,4 +1,4 @@
-var songMapper = function () {
+thumbnailModule.factory('songMapper',['wordMapper',function(wordMapper){
     var getSingers = function(singers){
         var value = "";
 
@@ -48,7 +48,8 @@ var songMapper = function () {
                 "singer":getSingers(song.singers),
                 "audioId":song.soundCloudTrackId,
                 "poet":(song.poet==null || song.poet.length==0)?'Unknown': song.poet[0].name,
-                "noun": song.singers.length>1? 'sing':'sings'});
+                "noun": song.singers.length>1? 'sing':'sings',
+                "words": wordMapper.getBasicDetails(song.words.words)});
 
             return allIntroductions;
         },[]);
@@ -65,7 +66,9 @@ var songMapper = function () {
             "singer":getSingers(song.singers),
             "poet": poet,
             "downloadURL":song.downloadUrl,
-            "about": '\'' + song.about + '\''});
+            "about": '\'' + song.about + '\'',
+            "words": wordMapper.getBasicDetails(song.words.words)
+            });
             return details;
         },[]);
     };
@@ -75,6 +78,5 @@ var songMapper = function () {
         getSongDetails: getSongDetails,
         getOverviews:getOverviews,
     };
-};
+}]);
 
-thumbnailModule.factory('songMapper', [songMapper]);

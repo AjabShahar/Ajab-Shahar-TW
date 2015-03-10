@@ -33,7 +33,7 @@ public class WordRepresentationFactory {
                     writers.add(representation);
                 }
             }
-            WordSummaryRepresentation wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), wordOriginal, wordTranslation, wordTransliteration, hindiIntroExcerpt, englishIntroExcerpt, writers);
+            WordSummaryRepresentation wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), wordOriginal, wordTranslation, wordTransliteration, hindiIntroExcerpt, englishIntroExcerpt, writers, word.getIsRootWord());
 
             wordsSummaryRepresentation.add(wordSummaryRepresentation);
         });

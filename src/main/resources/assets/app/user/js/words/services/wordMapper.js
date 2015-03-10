@@ -61,11 +61,24 @@ var wordMapper = function () {
        },[]);
     }
 
+    getBasicDetails = function(words){
+       return _.reduce(words,function(wordBasicInfo,word,index){
+            wordBasicInfo.push({
+               "id" : word.id,
+               "transliteration":word.wordTransliteration,
+               "rootWord":word.rootWord,
+
+            });
+            return wordBasicInfo;
+       },[]);
+    }
+
     return {
         getThumbnails: getThumbnails,
         getWordDetails: getWordDetails,
         getOverviews:getOverviews,
-        getWordCompleteInfo:getWordCompleteInfo
+        getWordCompleteInfo:getWordCompleteInfo,
+        getBasicDetails:getBasicDetails
     };
 };
 
