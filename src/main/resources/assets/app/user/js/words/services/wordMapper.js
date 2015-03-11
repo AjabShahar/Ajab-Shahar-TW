@@ -69,6 +69,7 @@ var wordMapper = function () {
                "isRootWord":word.rootWord,
 
             });
+            wordBasicInfo = _.sortBy(wordBasicInfo,'transliteration');
             return wordBasicInfo;
        },[]);
     }
