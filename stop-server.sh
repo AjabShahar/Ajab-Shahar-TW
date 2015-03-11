@@ -1,2 +1,8 @@
 #!/bin/sh
-pgrep -f platform-1.0-SNAPSHOT.jar | xargs kill -9
+
+pid=`pgrep -f platform-1.0-SNAPSHOT.jar`
+
+if [ "$pid" != "" ]
+then
+  kill -9 $pid
+fi
