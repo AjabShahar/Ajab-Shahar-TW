@@ -16,8 +16,8 @@ songsAdminApp.directive("asAdminTitle", function() {
             $scope.EditDiv = false;
             $scope.oldTitle = {};
 
-            $scope.isEmpty = function(value) {
-                return !Boolean(value);
+            $scope.validate = function(value) {
+                return $scope.validationRequired && !Boolean(value);
             }
 
             $scope.enableNewSongTitle = function(){

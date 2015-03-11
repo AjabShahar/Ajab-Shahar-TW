@@ -17,9 +17,9 @@
         <br/>
         <div class="left">
             <form name="songForm" novalidate ng-controller="songDetailsController" ng-init="init()">
-                <as-admin-title title="Umbrella Title" title-data="song.title" title-list="umbrellaTitles" validation-required="false"></as-admin-title>
+                <as-admin-title title="Umbrella Title" title-data="song.title" title-list="umbrellaTitles"></as-admin-title>
 
-                <as-admin-title title="Song Title" title-data="song.songTitle" title-list="songTitles"  validation-required="song.isAuthoringComplete"></as-admin-title>
+                <as-admin-title title="Song Title" title-data="song.songTitle" title-list="songTitles"  validation-required="{{song.isAuthoringComplete}}"></as-admin-title>
 
                 <div class="row form-group">
                     <div class="col-sm-2">
