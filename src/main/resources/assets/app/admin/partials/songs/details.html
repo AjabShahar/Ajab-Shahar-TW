@@ -23,7 +23,7 @@
 
                 <div class="row form-group">
                     <div class="col-sm-2">
-                        <label>* Singer</label>
+                        <label>Singer</label>
                     </div>
                     <div class="col-sm-2" multi-select input-model="singers" button-label="firstName lastName" item-label="firstName lastName" tick-property="selected" output-model="song.singers"></div>
                     <input name="singers" ng-model="song.singers" ng-show="false" required="true">
@@ -41,7 +41,7 @@
 
                 <div class="row form-group">
                     <div class="col-sm-2">
-                        <label>* Poet</label>
+                        <label>Poet</label>
                     </div>
                     <div class="col-sm-2">
                         <select  ng-model="song.poets[0]"
@@ -53,7 +53,7 @@
 
                 <div class="row form-group">
                     <div class="col-sm-2">
-                        <label>* Show On LandingPage</label>
+                        <label>Show On LandingPage</label>
                     </div>
                     <div class="col-sm-2">
                         <select name="format" ng-model="song.showOnLandingPage" ng-init="song.showOnLandingPage = 'false'" class="form-control" ng-required="song.isAuthoringComplete">
@@ -66,7 +66,7 @@
 
                 <div class="row form-group">
                     <div class="col-sm-2">
-                        <label>* Song Category</label>
+                        <label>Song Category</label>
                     </div>
                     <div class="col-sm-2">
                         <select ng-model="song.songCategory"
@@ -78,7 +78,7 @@
 
                 <div class="row form-group ">
                     <div class="col-sm-2">
-                        <label>* Duration</label>
+                        <label>Duration</label>
                     </div>
                     <div class="col-sm-2">
                         <input type="text" name="duration" ng-model="song.duration" class="form-control" ng-required="song.isAuthoringComplete">
@@ -110,7 +110,7 @@
 
                 <div class="row form-group">
                     <div class="col-sm-2">
-                        <label>* Thumbnail Url</label>
+                        <label>Thumbnail Url</label>
                     </div>
                     <div class="col-sm-2">
                         <input type="text" name="thumbnailUrl" ng-model="song.thumbnail_url" class="form-control" ng-required="song.isAuthoringComplete">

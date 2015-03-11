@@ -81,7 +81,9 @@ function($scope, $window, $location, songContentService, PAGES, $filter, $q,logi
   $scope.saveData = function(){
     setSongCategory();
     
-    songContentService.createSong($scope.song).success(function(){ redirectToURL(PAGES.ADMIN_HOME); });
+    songContentService.createSong($scope.song)
+    .error(function(data, status, headers, config) {alert(data);})
+    .success(function(){ redirectToURL(PAGES.ADMIN_HOME); });
   };
 
   var getSelectedContent = function(data, list){
@@ -118,6 +120,7 @@ function($scope, $window, $location, songContentService, PAGES, $filter, $q,logi
     $scope.song.publishedDate = null;
 
     songContentService.editSong($scope.song)
+        .error(function(data, status, headers, config) {alert(data);})
         .success(function(){ redirectToURL(PAGES.ADMIN_HOME); });
   };
 }]);
