@@ -67,15 +67,15 @@
             <dd>Poet</dd>
             <dt>{{singer}}</dt>
             <dd>Singer</dd>
-    <span ng-repeat="word in words">
-             <span ng-if="word.isRootWord">
+            <dt ng-repeat="word in words">
+             <span ng-if="word.isRootWord" >
                  <a href="/words/details.html?id={{word.id}}" target="_self">{{word.transliteration}}</a>
              </span>
              <span ng-if="!word.isRootWord">
                  {{word.transliteration}}
              </span>
-             <span ng-show="!$last">, </span>
-    </span>
+             <p ng-show="!$last" > WORD </p>
+            </dt>
         </dl>
     </div>
 
