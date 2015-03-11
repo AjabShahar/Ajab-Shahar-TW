@@ -1,3 +1,8 @@
+
+--liquibase formatted sql
+
+--context test
+
 INSERT INTO CATEGORY(name, category_type) VALUES('Poet','person'),('Singer','person');
 
 INSERT INTO PERSON(FIRST_NAME,MIDDLE_NAME,LAST_NAME)VALUES('Parvathy','','Baul'),('Roshik','',''),('Gavra Devi','',''),('Fakru','',''),('Mooralala','','Marwada'),('Kabir','',''),('Unknown','','');
