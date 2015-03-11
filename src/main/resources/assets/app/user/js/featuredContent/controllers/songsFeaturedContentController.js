@@ -1,15 +1,25 @@
-var songsFeaturedContentController = function($scope,contentService,songMapper, $location, $window){
+var songsFeaturedContentController = function($scope,contentService,songMapper,popupService, $location, $window){
     $scope.publishedSongsCount = 0;
-    $scope.detailsService={open:function(id){
-//                                          var songId = $scope.getSongId(id);
-                                          $window.location.href = '/songs/details.html?id='+id;
-                                      }};;
+    $scope.thumbnails = [];
+    $scope.featureContentOverviews = [];
+
+    $scope.detailsService = popupService;
     $scope.init = function(){
         $scope.url = $location.absUrl();
         contentService.getSongsLandingPageThumbnails().then(function(result){
             $scope.publishedSongsCount = result.data.songs.length;
             var songs = _.shuffle(result.data.songs).slice(0,9);
-            $scope.songs = songMapper.getThumbnails(songs,$scope.getSongCustomStyle);
+            var songThumbnails = songMapper.getThumbnails(songs, $scope.getSongCustomStyle);
+
+            _.each(songThumbnails, function(thumbnail){
+                $scope.thumbnails.push(thumbnail);
+            });
+
+            var introductions = songMapper.getOverviews(songs);
+            _.each(introductions, function(introduction){
+                $scope.featureContentOverviews.push(introduction);
+            });
+
         });
     }
 
@@ -32,4 +42,4 @@ var songsFeaturedContentController = function($scope,contentService,songMapper, 
     $scope.init();
 }
 
-featuredContentApp.controller('songsFeaturedContentController',['$scope','contentService','songMapper','$location', '$window',songsFeaturedContentController]);
+featuredContentApp.controller('songsFeaturedContentController',['$scope','contentService','songMapper','popupService','$location', '$window',songsFeaturedContentController]);
