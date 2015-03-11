@@ -23,8 +23,8 @@ public class PasswordAuthenticatorTest {
     public void setUp() throws Exception {
         initMocks(this);
         passwordAuthenticator = new PasswordAuthenticator(users);
-        byte[] password = PasswordEncryptor.getEncryptedPassword("password", PasswordAuthenticator.SALT,PasswordAuthenticator.ALGORITHM);
-        when(users.getUser(any(String.class))).thenReturn(new User("admin", new String(password), "admin"));
+        String password = PasswordEncryptor.getEncryptedPassword("password", PasswordAuthenticator.SALT,PasswordAuthenticator.ALGORITHM);
+        when(users.getUser(any(String.class))).thenReturn(new User("admin", password, "admin"));
     }
 
 
@@ -42,5 +42,11 @@ public class PasswordAuthenticatorTest {
 
         assertFalse(authenticate.isPresent());
 
+    }
+
+    @Test
+    public void generatePassword(){
+        String encryptedPassword = PasswordEncryptor.getEncryptedPassword("p@ssw0rd123", PasswordAuthenticator.SALT, PasswordAuthenticator.ALGORITHM);
+        System.out.println(encryptedPassword.toString());
     }
 }

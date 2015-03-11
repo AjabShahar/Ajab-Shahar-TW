@@ -8,7 +8,7 @@ import org.ajabshahar.platform.controller.LoginController;
 import static com.ninja_squad.dbsetup.Operations.*;
 
 public class DataSetup {
-    public static byte[] HASHED_PASSWORD = PasswordEncryptor.getEncryptedPassword("password", PasswordAuthenticator.SALT, PasswordAuthenticator.ALGORITHM);
+    public static String HASHED_PASSWORD = PasswordEncryptor.getEncryptedPassword("password", PasswordAuthenticator.SALT,PasswordAuthenticator.ALGORITHM);
 
     public static final Operation DELETE_ALL =
             deleteAllFrom("USERS");
@@ -16,8 +16,8 @@ public class DataSetup {
     public static final Operation INSERT_ADMIN_USER =
             sequenceOf(
                     insertInto("USERS")
-                            .columns("id", "username", "password", "role")
-                            .values(11, "admin", new String(HASHED_PASSWORD), LoginController.AUTH_VALUE)
+                            .columns("id", "username", "password","role")
+                            .values(11, "admin", HASHED_PASSWORD, LoginController.AUTH_VALUE)
                             .build());
 
     public static final Operation DELETE_SONGS = deleteAllFrom("SONG");
