@@ -152,6 +152,8 @@ public class SongsRepresentationFactoryTest {
         assertThat(songRepresentation.getSingers().get(0).toString(), IsEqual.equalTo("id: 1001, name: Singer1"));
         assertThat(songRepresentation.getPoets().get(0).toString(), IsEqual.equalTo("id: 2001, name: Poet1"));
         assertNotNull(songRepresentation.getSongText());
+        assertNotNull(songRepresentation.getWords());
+
     }
 
     @Test
@@ -182,6 +184,7 @@ public class SongsRepresentationFactoryTest {
         assertThat(songsRepresentation.get(0).getSingers().get(0).toString(), IsEqual.equalTo("id: 1001, name: Singer1"));
         assertThat(songsRepresentation.get(0).getPoets().get(0).toString(), IsEqual.equalTo("id: 2001, name: Poet1"));
         assertNotNull(songsRepresentation.get(0).getSongText());
+        assertNotNull(songsRepresentation.get(0).getWords());
 
     }
 

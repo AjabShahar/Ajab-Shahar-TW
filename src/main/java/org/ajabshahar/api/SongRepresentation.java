@@ -25,7 +25,7 @@ public class SongRepresentation {
     private String thumbnailUrl;
     private String duration;
     private List<PersonSummaryRepresentation> singers;
-    private List<PersonSummaryRepresentation> poet;
+    private List<PersonSummaryRepresentation> poets;
     private List<LinkRepresentation> links;
     private WordsSummaryRepresentation words;
     private SongTextRepresentation songText;
@@ -55,9 +55,9 @@ public class SongRepresentation {
         this.thumbnailUrl = thumbnailUrl;
         this.duration = duration;
         this.singers = singers;
-        this.poet = poet;
+        this.poets = poet;
         this.singers.forEach(singer -> links.add(new LinkRepresentation("singer", format("/api/people/%s", singer.getId()))));
-        this.poet.forEach(p -> links.add(new LinkRepresentation("poet", format("/api/people/%s", p.getId()))));
+        this.poets.forEach(p -> links.add(new LinkRepresentation("poet", format("/api/people/%s", p.getId()))));
         this.songText = songText;
         this.downloadUrl = downloadUrl;
         this.about = about;
@@ -152,7 +152,7 @@ public class SongRepresentation {
 
     @JsonProperty("poet")
     public List<PersonSummaryRepresentation> getPoets() {
-        return poet;
+        return poets;
     }
 
     @JsonProperty("links")

@@ -12,6 +12,11 @@ public class SongTextRepresentation {
     private String refrainEnglishTranslation;
     private String refrainEnglishTransliteration;
 
+    public SongTextRepresentation(){
+        songTextContents = new ArrayList<>();
+        openingCouplets = new ArrayList<>();
+    }
+
     public SongTextRepresentation(String refrainOriginal, String refrainEnglishTranslation, String refrainEnglishTransliteration) {
         this.refrainOriginal = refrainOriginal;
         this.refrainEnglishTranslation = refrainEnglishTranslation;
