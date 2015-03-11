@@ -26,6 +26,7 @@ public class SongResourceIT {
 
     private Client client;
     private JdbcDataSource dataSource;
+
     private static String resourceFilePath(String resource) {
         return ClassLoader.getSystemClassLoader().getResource(resource).getFile();
     }
@@ -43,7 +44,7 @@ public class SongResourceIT {
 
     @Test
     public void shouldGetSongRepresentationWithWords() throws Exception {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_SONG_WORD, DataSetup.DELETE_SONGS,DataSetup.DELETE_CATEGORY,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_SONG_WORD, DataSetup.DELETE_SONGS, DataSetup.DELETE_CATEGORY,
                 DataSetup.DELETE_WORDS, DataSetup.INSERT_CATEGORY, DataSetup.INSERT_SONGS, DataSetup.INSERT_WORDS, DataSetup.INSERT_SONG_WORD);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
@@ -53,12 +54,14 @@ public class SongResourceIT {
                 String.format("http://localhost:%d/api/songs/getPublishedSongs", RULE.getLocalPort())).header("Content-type", "application/json")
                 .get(ClientResponse.class);
 
-        assertEquals(200, response.getStatus());
+        SongsRepresentation responseEntity = getSongsRepresentation(response);
+
+        assertEquals(1, responseEntity.getSongs().get(0).getWords().getWords().size());
     }
 
     @Test
     public void shouldGetSongIfItIsNotRelatedWithAnyWord() throws Exception {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_SONG_WORD, DataSetup.DELETE_SONGS,DataSetup.DELETE_CATEGORY,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_SONG_WORD, DataSetup.DELETE_SONGS, DataSetup.DELETE_CATEGORY,
                 DataSetup.INSERT_CATEGORY, DataSetup.INSERT_SONGS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
@@ -67,11 +70,33 @@ public class SongResourceIT {
         ClientResponse response = client.resource(
                 String.format("http://localhost:%d/api/songs/getPublishedSongs", RULE.getLocalPort())).header("Content-type", "application/json")
                 .get(ClientResponse.class);
+
+        SongsRepresentation responseEntity = getSongsRepresentation(response);
+
+        assertEquals(0, responseEntity.getSongs().get(0).getWords().getWords().size());
+
+    }
+
+    @Test
+    public void shouldGiveEmptyResponseIfSongNotFound() throws Exception {
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_SONG_WORD, DataSetup.DELETE_SONGS, DataSetup.DELETE_CATEGORY,
+                DataSetup.INSERT_CATEGORY, DataSetup.INSERT_SONGS);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        ClientResponse response = client.resource(
+                String.format("http://localhost:%d/api/songs/getPublishedSongs?singerId=1", RULE.getLocalPort())).header("Content-type", "application/json")
+                .get(ClientResponse.class);
+
+
+        assertEquals(204,response.getStatus());
+
+    }
+
+    private SongsRepresentation getSongsRepresentation(ClientResponse response) {
         Class<SongsRepresentation> songsRepresentationClass = SongsRepresentation.class;
-        SongsRepresentation responseEntity = response.getEntity(songsRepresentationClass);
-
-        assertEquals(200, response.getStatus());
-
+        return response.getEntity(songsRepresentationClass);
     }
 
 }

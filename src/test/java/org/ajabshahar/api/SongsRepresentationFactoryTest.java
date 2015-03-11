@@ -141,7 +141,7 @@ public class SongsRepresentationFactoryTest {
         assertThat(songRepresentation.getTitleEnglishTranslation(), IsEqual.equalTo("Song1EnglishTranslation"));
         assertThat(songRepresentation.getTitleEnglishTransliteration(), IsEqual.equalTo("Song1EnglishTransliteration"));
 
-        assertThat(songRepresentation.canPublish(), IsEqual.equalTo(true));
+        assertThat(songRepresentation.getPublish(), IsEqual.equalTo(true));
         assertThat(songRepresentation.getType(), IsEqual.equalTo("Song & Reflection"));
         assertThat(songRepresentation.isFeatured(), IsEqual.equalTo(true));
         assertThat(songRepresentation.getYouTubeVideoId(), IsEqual.equalTo("12345"));
@@ -173,7 +173,7 @@ public class SongsRepresentationFactoryTest {
         assertThat(songsRepresentation.get(0).getTitleEnglishTranslation(), IsEqual.equalTo("Song1EnglishTranslation"));
         assertThat(songsRepresentation.get(0).getTitleEnglishTransliteration(), IsEqual.equalTo("Song1EnglishTransliteration"));
 
-        assertThat(songsRepresentation.get(0).canPublish(), IsEqual.equalTo(true));
+        assertThat(songsRepresentation.get(0).getPublish(), IsEqual.equalTo(true));
         assertThat(songsRepresentation.get(0).getType(), IsEqual.equalTo("Song & Reflection"));
         assertThat(songsRepresentation.get(0).isFeatured(), IsEqual.equalTo(true));
         assertThat(songsRepresentation.get(0).getYouTubeVideoId(), IsEqual.equalTo("12345"));

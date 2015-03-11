@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,7 +94,7 @@ public class SongResource {
     public Response getPublishedSongs(@QueryParam("singerId") int singerId, @QueryParam("poetId") int poetId, @QueryParam("startFrom") int startFrom, @QueryParam("filteredLetter") String filteredLetter) {
         List<Song> songList = songs.findBy(singerId, poetId, startFrom, filteredLetter);
         if (songList == null || songList.size() == 0) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.status(Status.NO_CONTENT).build();
         }
         SongsRepresentation songsSummaryRepresentation = songsRepresentationFactory.createSongsRepresentation(songList);
         return Response.ok(songsSummaryRepresentation, MediaType.APPLICATION_JSON).build();

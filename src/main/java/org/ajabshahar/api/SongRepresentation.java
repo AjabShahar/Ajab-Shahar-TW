@@ -111,7 +111,7 @@ public class SongRepresentation {
     }
 
     @JsonProperty("publish")
-    public boolean canPublish() {
+    public boolean getPublish() {
         return publish;
     }
 

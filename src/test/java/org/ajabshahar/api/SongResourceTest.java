@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -57,12 +58,12 @@ public class SongResourceTest {
     }
 
     @Test
-    public void shouldGet404IfSongsNotFound() {
+    public void shouldGet204IfSongsNotFound() {
         when(songList.size()).thenReturn(0);
         when(songs.findBy(SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER)).thenReturn(songList);
 
         Response response = songResource.getPublishedSongs(SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER);
-        assertEquals(Response.Status.NOT_FOUND.getStatusCode(), response.getStatus());
+        assertEquals(Status.NO_CONTENT.getStatusCode(), response.getStatus());
     }
 
     @Test

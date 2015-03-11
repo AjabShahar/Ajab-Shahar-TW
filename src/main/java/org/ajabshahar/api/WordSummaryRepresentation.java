@@ -14,6 +14,9 @@ public class WordSummaryRepresentation {
     private List<PersonSummaryRepresentation> writers;
     private Boolean isRootWord;
 
+    public WordSummaryRepresentation() {
+    }
+
     public WordSummaryRepresentation(int id, String originalWord, String wordTranslation, String wordTransliteration, String hindiIntroExcerpt, String englishIntroExcerpt, List<PersonSummaryRepresentation> writers, Boolean isRootWord) {
         this.id = id;
         this.originalWord = originalWord;
