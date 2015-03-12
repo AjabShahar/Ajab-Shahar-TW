@@ -77,6 +77,23 @@
     @media screen and (max-width: 990px) {
         margin-top: 10%;
     }
+
+    .audio-video-options{
+      li {
+              padding: 0px;
+              a {
+                  background: transparent url(/user-img/songs/songs_sprite.png) 0  0 no-repeat;
+                  display: inline-block;
+                  width: 26px;
+                  height: 23px;
+                  &.download {
+                      background-position: -26px -23px;
+                  }
+              }
+
+      }
+    }
+
 }
 
 
@@ -168,7 +185,6 @@
     margin-right: 1%;
     cursor: pointer;
 }
-
 
 .shareItemsDropDown{
 	position: absolute;

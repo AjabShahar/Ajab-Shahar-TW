@@ -49,6 +49,7 @@ thumbnailModule.factory('songMapper',['wordMapper',function(wordMapper){
                 "audioId":song.soundCloudTrackId,
                 "poet":(song.poet==null || song.poet.length==0)?'Unknown': song.poet[0].name,
                 "noun": song.singers.length>1? 'sing':'sings',
+                "downloadUrl":song.downloadUrl,
                 "words": wordMapper.getBasicDetails(song.words.words)});
 
             return allIntroductions;

@@ -25,7 +25,8 @@ describe('Mapper', function() {
                  },
                  "youTubeVideoId":"123456",
                  "soundCloudTrackId":"sound cloud track",
-                 "about":"about song"
+                 "about":"about song",
+                 "downloadUrl":"download link"
            }];
         });
 
@@ -57,6 +58,7 @@ describe('Mapper', function() {
             expect(songs[0].englishTranslation).toBe('For a few days,O heart');
             expect(songs[0].videoId).toBe('123456');
             expect(songs[0].audioId).toBe('sound cloud track');
+            expect(songs[0].downloadUrl).toBe('download link');
             expect(songs[0].singer).toBe('Parvathy Baul');
             expect(songs[0].noun).toBe('sings');
             expect(songs[0].poet).toBe('Sharath');

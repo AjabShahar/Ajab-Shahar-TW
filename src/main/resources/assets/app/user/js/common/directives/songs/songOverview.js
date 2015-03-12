@@ -13,6 +13,7 @@ thumbnailModule.directive("songOverview", function() {
             audioUrl:'@',
             closeVideo:'&',
             noun: '@',
+            downloadurl:'@',
             words:'=',
         },
         templateUrl:'/user-js/common/templates/songs/songOverview.html',

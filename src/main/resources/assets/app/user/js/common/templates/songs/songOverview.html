@@ -22,7 +22,11 @@
                    ng-click="toggleVideoOrAudio()">Text to be deleted</a>
                 <a href="javascript:void(0)" ng-hide="showAudio" class="audio-icon" ng-click="toggleVideoOrAudio()">Text to be deleted</a>
             </li> -->
-            <button ng-click="toggleVideoOrAudio()">Toggle between audio and video</button>
+            <li>
+                <a href="#" class="download" ng-if="downloadurl" target="_blank"
+                   ng-href="{{downloadurl}}"></a>
+                <button ng-click="toggleVideoOrAudio()">Toggle between audio and video</button>
+            </li>
         </ul>
 
         <div class="mediaFooter">

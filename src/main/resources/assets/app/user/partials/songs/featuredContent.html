@@ -67,7 +67,7 @@
 
                     <div ng-repeat="overview in featureContentOverviews">
                         <pop-up popup-count="{{featureContentOverviews.length}}" ng-init="detailsService.init(overview.contentId)" id="{{overview.contentId}}" width="100" details-service="detailsService" show="detailsService.shouldShow(overview.contentId)" index="{{$index}}" close-button="true">
-                            <song-overview id="{{overview.id}}" singer="{{overview.singer}}" poet="{{overview.poet}}" english-translation="{{overview.englishTranslation}}" audio-Url="{{overview.audioId}}" video-Url="{{overview.videoId}}" close-video="detailsService.isClosed(overview.contentId)" english-transliteration="{{overview.englishTransliteration}}" noun="{{overview.noun}}" words="overview.words"></song-overview>
+                            <song-overview id="{{overview.id}}" singer="{{overview.singer}}" poet="{{overview.poet}}" english-translation="{{overview.englishTranslation}}" audio-Url="{{overview.audioId}}" video-Url="{{overview.videoId}}" close-video="detailsService.isClosed(overview.contentId)" english-transliteration="{{overview.englishTransliteration}}" noun="{{overview.noun}}" words="overview.words" downloadurl="{{overview.downloadUrl}}"></song-overview>
                         </pop-up>
                     </div>
 
