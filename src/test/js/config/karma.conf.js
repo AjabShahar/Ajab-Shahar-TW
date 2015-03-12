@@ -30,6 +30,9 @@ module.exports = function (config) {
       'user/js/songs/services/songsContentService.js',
       'user/js/songs/songDetailsApp.js',
       'user/js/songs/songsApp.js',
+      'user/js/words/services/*.js',
+      'user/js/words/*.js',
+      'user/js/words/**/*.js',
       'user/js/songs/**/*.js',
       'http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-cookies.js',
       '../../../../test/js/unit/**/*.js'
