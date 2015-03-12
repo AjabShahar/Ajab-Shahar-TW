@@ -68,13 +68,13 @@
             <dt>{{singer}}</dt>
             <dd>Singer</dd>
             <dt ng-repeat="word in words">
-             <span ng-if="word.isRootWord" >
+             <span ng-if="word.isRootWord">
                  <a href="/words/details.html?id={{word.id}}" target="_self">{{word.transliteration}}</a>
              </span>
              <span ng-if="!word.isRootWord">
                  {{word.transliteration}}
              </span>
-             <p ng-show="!$last" > WORD </p>
+            <p> WORD </p>
             </dt>
         </dl>
     </div>

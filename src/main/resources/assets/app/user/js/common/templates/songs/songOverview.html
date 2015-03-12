@@ -10,7 +10,7 @@
         <div ng-if="showAudio">
             <sound-cloud audio-url="{{audioUrl}}" id="snd_{{id}}"></sound-cloud>
         </div>
-        
+
         <ul class="audio-video-options" ng-init="isAudioOrVideo()" ng-show="hasAudioAndVideo">
             <!-- <li>
                 <a href="javascript:void(0)" ng-show="showVideo" class="video-icon active"
@@ -33,19 +33,15 @@
             <div class='creditCont'>
                 <div class='creditBox'><span class='selected'>{{poet}}</span> POET</div>
                 <div class='creditBox'><span class='selected'>{{singer}}</span> SINGER</div>
-            <span ng-repeat="word in words">
-             <span ng-if="word.isRootWord">
-                 <a href="/words/details.html?id={{word.id}}" target="_self">{{word.transliteration}}</a>
-             </span>
-             <span ng-if="!word.isRootWord">
-                 {{word.transliteration}}
-             </span>
-             <span ng-show="!$last"> WORD  </span>
-            </span>
-                <br/>
-                <div class='creditBox'><span class='selected'>{{word}}</span></div>
-                <div class='creditBox'><span class='selected'>{{place}}</span></div>
-                <div class='creditBox'><span class='selected'>{{gathering}}</span></div>
+                <span ng-repeat="word in words" class="creditBox">
+                 <span ng-if="word.isRootWord" class="selected">
+                     <a href="/words/details.html?id={{word.id}}" target="_self">{{word.transliteration}}</a>
+                 </span>
+                 <span ng-if="!word.isRootWord" class="selected">
+                     {{word.transliteration}}
+                 </span>
+                 <span> WORD  </span>
+              </span>
             </div>
         </div>
 </div>
