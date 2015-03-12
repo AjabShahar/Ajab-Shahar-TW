@@ -74,7 +74,7 @@
              <span ng-if="!word.isRootWord">
                  {{word.transliteration}}
              </span>
-             <p > WORD </p>
+             <p ng-show="!$last" > WORD </p>
             </dt>
         </dl>
     </div>
