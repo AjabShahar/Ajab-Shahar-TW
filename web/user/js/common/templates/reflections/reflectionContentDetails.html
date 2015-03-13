@@ -1,0 +1,49 @@
+<div ng-init="isAudioOrVideo()">
+    <div ng-show="showVideo">
+        <youtube width="100%" height="90%" videoid="{{videoId}}" showcontrols="true" should-stop-video="shouldStopVideo()"></youtube>
+    </div>
+    <div ng-if="showAudio">
+        <sound-cloud audio-url="{{audioUrl}}" id="snd_{{id}}"></sound-cloud>
+    </div>
+
+    <div ng-show="showTranscript">
+         <div bind-dynamic-html="transcript"></div>
+    </div>
+
+    <div class="video-options">
+        <div>
+            <button ng-click="toggleVideoOrAudio()" ng-show="isVideoSong">Toggle between audio and video</button>
+        </div>
+        <ul class="share-options">
+            <li>
+                <a href="javascript:void(0)" class="favorite"></a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" class="share" ng-click="dropDownVisible='true'"></a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" class="comment"></a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" class="download"  target="_blank" ng-href="{{downloadurl}}"></a>
+            </li>
+        </ul>
+    </div>
+
+    <div class='shareItemsDropDown' ng-show="dropDownVisible" ng-mouseleave="dropDownVisible='false'">
+        <ul class='shareItems'>
+            <li><a href='http://www.facebook.com/share.php?u={{url}}' target="_blank">Share on facebook</a></li>
+            <li><a class="twitter-share-button"
+                   href="https://twitter.com/share"
+                   data-size="large"
+                   data-url="https://dev.twitter.com/web/tweet-button"
+                   data-count-url="https://dev.twitter.com/web/tweet-button"
+                   data-via="twitterdev"
+                   data-related="twitterapi,twitter"
+                   data-hashtags="example,demo"
+                   data-text="custom share text" target="_blank">Share on twitter</a></li>
+            <li><a href="//pinterest.com/pin/create%2Fbutton/?url={{url}}" target="_blank">Share on pinterest</a></li>
+            <li><a href="https://plus.google.com/share?url={{url}}" target="_blank">Share on google+</a></li>
+        </ul>
+    </div>
+</div>

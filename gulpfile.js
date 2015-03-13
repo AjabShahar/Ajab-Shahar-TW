@@ -1,10 +1,12 @@
 var gulp = require("gulp"),
 		sass = require("gulp-sass"),
 		path = require("path"),
+		del = require("del"),
+		zip = require("gulp-zip"),
 		sourcemaps = require('gulp-sourcemaps');
 
 
-var userModule = "./src/main/resources/assets/app/user";
+var userModule = "./web/user";
 
 
 
@@ -41,3 +43,20 @@ gulp.task("sass:watch", function() {
 gulp.task("default", ["sass:compile"]);
 
 gulp.task("watch", ["sass:watch"]);
+
+gulp.task('js', function () {
+    return gulp.src('web/**/*.js')
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'))
+        .pipe(gulp.dest('dist'));
+});
+
+gulp.task ("clean",function(){
+    del(['dist/*']);
+});
+
+gulp.task("zip",["clean","sass:compile"],function(){
+    return gulp.src('web/**')
+        .pipe(zip('ajabshahar.zip'))
+        .pipe(gulp.dest('dist'))
+});

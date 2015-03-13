@@ -1,0 +1,14 @@
+<div class="mediaIntroduction">
+    <div ng-if="isVideo()" class='youtubeVideo'>
+        <youtube width="100%" height="90%" videoid="{{videoId}}" showcontrols="true" should-stop-video="closeVideo()"></youtube>
+    </div>
+    <div ng-if="isAudio()">
+        <sound-cloud audio-url="{{audioId}}" id="snd_{{id}}" should-stop-video="closeVideo()"></sound-cloud>
+    </div>
+
+    <div class="mediaFooter">
+        <h3 class='infoText'>For lyrics, translations, versions, reflections, echoes and more enter
+            <a href="/user/partials/reflections/details.html?id={{id}}">REFLECTION</a>
+        </h3>
+    </div>
+</div>

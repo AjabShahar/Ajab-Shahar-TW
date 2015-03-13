@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" ng-app="allReflectionsApp">
+<head>
+    <meta charset="utf-8">
+    <title>All Reflections Page</title>
+    <script type="text/javascript" src="/common/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/common/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="/common/lib/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="/common/lib/angular-touch/angular-touch.min.js"></script>
+    <script type="text/javascript" src="/common/lib/underscore/underscore.js"></script>
+    <script type="text/javascript" src="/common/lib/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/animation/animationModule.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/animation/toggleBySlide.js"></script>
+    <script type="text/javascript" src="/user/js/common/modules/thumbnailModule.js"></script>
+    <script type="text/javascript" src="/user/js/common/modules/PopupSupport.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/popupSupport/popup.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/popupSupport/popupMapper.js"></script>
+    <script type="text/javascript" src="/user/js/common/services/popupService.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/reflections/reflectionThumbnail.js"></script>
+    <script type="text/javascript" src="/user/js/common/modules/filterModule.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/common/asTitle.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/reflections/reflectionFilter.js"></script>
+    <script type="text/javascript" src="/user/js/common/filters/filterByScroll.js"></script>
+    <script type="text/javascript" src="/user/js/common/filters/filterReflectionByTitle.js"></script>
+    <script type="text/javascript" src="/user/js/common/modules/mediaPlayer.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/soundCloud/soundcloud_player.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/youtube/youtube_player.js"></script>
+    <script type="text/javascript" src="/user/js/common/config/resourceUrlWhiteList.js"></script>
+    <script type="text/javascript" src="/user/js/common/modules/headerModule.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/header/ajabShaharHeader.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/footer/ajabShaharFooter.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/header/sticky.js"></script>
+    <script type="text/javascript" src="/user/js/featuredContent/services/contentService.js"></script>
+    <script type="text/javascript" src="/user/js/reflections/services/reflectionMapper.js"></script>
+    <script type="text/javascript" src="/user/js/reflections/services/reflectionsContentService.js"></script>
+    <script type="text/javascript" src="/user/js/reflections/allReflectionsApp.js"></script>
+    <script type="text/javascript" src="/user/js/reflections/controllers/allReflectionsController.js"></script>
+    <script type="text/javascript" src="/user/js/common/modules/htmlGenerator.js"></script>
+    <link href="/user/css/common/directives/header/header.css" rel="stylesheet" type="text/css">
+    <link href="/user/css/common/directives/footer/footer.css" rel="stylesheet" type="text/css">
+    <link href="/user/css/thumbnails.css" rel="stylesheet" type="text/css">
+    <link href="/user/css/common/directives/popup.css" rel="stylesheet" type="text/css">
+    <link href="/user/css/common/directives/introduction.css" rel="stylesheet" type="text/css">
+    <link href="/user/css/pages/gridview.css" rel="stylesheet" type="text/css">
+</head>
+<body ng-controller="allReflectionsController" class="all-songs ng-scope" style="" ng-init="getTotalReflectionsCount()">
+
+    <div class="ajab-container headerfixOuter">
+        <ajab-shahar-header></ajab-shahar-header>
+        <!--<song-filter songs="songs" song-count="songCount" on-clear-filter="clearFilters()" active-letter="activeLetter" poet-name-in-filter="poetNameInFilter" singer-name-in-filter="singerNameInFilter"></song-filter>-->
+        <div class='left-nav headerfixInner'>
+            <div class='nav-elements-wrapper'>
+                <h1 class='category-logo'>reflections</h1>
+                <a href="javascript:void(0);" class="filter-button">Filter <span class="collapse"></span></a>
+            </div>
+        </div>
+        <div class="ajab-wrapper">
+
+
+            <div class='grid-view' infinite-scroll="loadReflectionsFromRange()">
+
+                <as-title current-alphabet-filter="activeLetter">
+
+                <span class='numericCount'>{{reflectionCount}} REFLECTIONS</span>
+
+                <div class="upper-right">
+                    <span class="search-box">
+                        <input type="search" class="search" />
+                    </span>
+                    <span class="view-options">
+                        <a href="javascript:void(0)" class="grid"></a>
+                        <span class="separator">|</span>
+                        <a href="javascript:void(0)" class="list"></a>
+                    </span>
+                </div>
+
+            </as-title>
+
+            <div class='grid-wrapper'>
+                <div infinite-scroll='loadReflectionsFromRange()' infinite-scroll-distance='1' class="song-grid">
+                    <ul class="flexi-thumbnails" ng-repeat="reflection in (reflections | filterReflectionByTitle:activeLetter| filterByScroll:scrollIndex)">
+                        <li>
+                            <reflection-thumbnail ng-if="reflection.isReflection" id="{{reflection.id}}" open="detailsService.open(reflection.contentId)" title="{{reflection.title}}" verb="{{reflection.verb}}"  speaker="{{reflection.speaker}}" custom-style="{{reflection.customStyle}}"></reflection-thumbnail>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

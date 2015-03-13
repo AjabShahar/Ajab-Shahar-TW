@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en" ng-app="featuredContentApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Landing Page</title>
+    <!-- <link href="/user/css/mainLandingPage/homePage.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="/user/partials/common/lib/angular-socialshare/angular-socialshare.css"> -->
+    <!-- <link href="/user/css/common/directives/header/header.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="/user/css/common/directives/footer/footer.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="/user/css/mainLandingPage/parallax.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="/user/css/thumbnails.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="/user/css/common/directives/popup.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="/user/css/common/directives/introduction.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="/user/css/wordThumbnail.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="/user/css/reflectionThumbnail.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link rel="stylesheet" href="/user/css/jquery.jscrollpane.css"/> -->
+
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400,300italic,300,400italic,700,700italic" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather+Sans:400,300italic,300,400italic,700,700italic" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/lohitdevanagari.css" />
+
+    <link rel="stylesheet" type="text/css" href="/user/css/ajabShahar.css" />
+
+<body ng-controller="featuredContentController" class="featured-all">
+    <div id="ajab_container">
+        <ajab-shahar-header show-menu-details="true" call-back="setPageHeight()"></ajab-shahar-header>
+
+        <div class='main-content-wrapper'>
+
+            <div class='parallax-container'>
+                <div class='pxLayers px-layer1' data-name='body' data-stellar-background-ratio="1" data-original="/user/img/mainLandingPage/parallax/body.png"></div>
+                <div class='pxLayers px-layer2' data-name='map' data-stellar-background-ratio="2" data-original="/user/img/mainLandingPage/parallax/map.png"></div>
+                <div class='pxLayers px-layer3' data-name='water' data-stellar-background-ratio="1" data-original="/user/img/mainLandingPage/parallax/check_img.png"></div>
+                <div class='pxLayers px-layer5' data-name='bird'></div>
+                <div class='pxLayers px-layer6' data-name='clouds'></div>
+                <div class='pxLayers px-layer6 second' data-name='clouds'></div>
+                <div class='pxLayers px-layer6 third' data-name='clouds'></div>
+                <div class='pxLayers px-layer6 fourth' data-name='clouds'></div>
+                <div class='pxLayers px-layer7' data-name='whiteString' data-stellar-background-ratio="3" data-original="/user/img/mainLandingPage/parallax/03_whiteString.png"></div>
+            </div>
+
+            <div class='ajab-container'>
+                <div class='ajab-wrapper'>
+                    <div class='homepage-content'>
+                        <div ng-repeat="thumbnail in thumbnails">
+                            <song-thumbnail ng-if="thumbnail.isSong" id="{{thumbnail.id}}" content-id="{{thumbnail.contentId}}" open="detailsService.open(thumbnail.contentId)" custom-style="{{thumbnail.customStyle}}" img-src="{{thumbnail.thumbnailUrl}}" url="{{thumbnail.videoId}}" english-transliteration="{{thumbnail.englishTransliteration}}" english-translation="{{thumbnail.englishTranslation}}" category-name="{{thumbnail.category}}" duration="{{thumbnail.duration}}" singer="{{thumbnail.singer}}" class = "songs" poet="{{thumbnail.poet}}" singers="{{thumbnail.singers}}"></song-thumbnail>
+                            <word-thumbnail ng-if="thumbnail.isWord" id="{{thumbnail.id}}" open="detailsService.open(thumbnail.contentId)" transliteration="{{thumbnail.wordTransliteration}}" translation="{{thumbnail.wordTranslation}}" english-intro-excerpt="{{thumbnail.englishIntroExcerpt}}" custom-style="{{thumbnail.customStyle}}" img-src="https://yt3.ggpht.com/-JtqzFmOGDiI/AAAAAAAAAAI/AAAAAAAAAAA/McQLKmfBpqg/s900-c-k-no/photo.jpg"></word-thumbnail>
+                            <reflection-thumbnail ng-if="thumbnail.isReflection" id="{{thumbnail.id}}" open="detailsService.open(thumbnail.contentId)" title="{{thumbnail.title}}" verb="{{thumbnail.verb}}"  speaker="{{thumbnail.speaker}}" custom-style="{{thumbnail.customStyle}}"></reflection-thumbnail>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-repeat="overview in featureContentOverviews">
+                <pop-up popup-count="{{featureContentOverviews.length}}" ng-init="detailsService.init(overview.contentId)" id="{{overview.contentId}}" width="100" details-service="detailsService" show="detailsService.shouldShow(overview.contentId)" index="{{$index}}" close-button="true">
+                    <song-overview ng-if="overview.isSong" id="{{overview.id}}" singer="{{overview.singer}}" poet="{{overview.poet}}" english-translation="{{overview.englishTranslation}}" audio-Url="{{overview.audioId}}" video-Url="{{overview.videoId}}" close-video="detailsService.isClosed(overview.contentId)" english-transliteration="{{overview.englishTransliteration}}" noun="{{overview.noun}}" words="overview.words" downloadurl="{{overview.downloadUrl}}"></song-overview>
+                    <word-overview ng-if="overview.isWord" id="{{overview.id}}" word-transliteration="{{overview.wordTransliteration}}" word-translation="{{overview.wordTranslation}}" word-intro-english="{{overview.wordIntroEnglish}}" writers="overview.writers"></word-overview>
+                    <reflection-overview ng-if="overview.isReflection" id="{{overview.id}}" title="{{overview.title}}" verb="{{overview.verb}}" speaker="{{overview.speaker}}" video-id="{{overview.videoId}}" audio-id="{{overview.audioUrl}}" text="{{overview.text}}"></reflection-overview>
+                </pop-up>
+            </div>
+        </div>
+
+        <ajab-shahar-footer></ajab-shahar-footer>
+    </div>
+
+    <script type="text/javascript" src="/user/js/common/directives/soundCloud/sdk.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/soundCloud/api.js"></script>
+    <script type="text/javascript" src="/common/lib/underscore/underscore-min.js"></script>
+    <script type="text/javascript" src="/common/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/common/lib/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/common/lib/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="/common/lib/angular-touch/angular-touch.min.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/socialMedia/widgets.js"></script>
+    <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+    <script type="text/javascript" src="/common/lib/angular-socialshare/angular-socialshare.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/animation/animationModule.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/animation/toggleBySlide.js"></script>
+    <script type="text/javascript" src="/user/js/common/modules/thumbnailModule.js"></script>
+    <script type="text/javascript" src="/user/js/common/modules/PopupSupport.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/popupSupport/popup.js"></script>
+    <script type="text/javascript" src="/user/js/angular-jscrollpane.min.js"></script>
+    <script type="text/javascript" src="/user/js/jquery.mousewheel.js"></script>
+
+    <script type="text/javascript" src="/user/js/common/directives/songs/songThumbnail.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/words/wordThumbnail.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/thumbnail/coupletThumbnail.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/thumbnail/filmThumbnail.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/thumbnail/gatheringThumbnail.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/reflections/reflectionThumbnail.js"></script>
+    <script type="text/javascript" src="/user/js/scrollability.min.js"></script>
+    <script type="text/javascript" src="/user/js/jquery.stellar.js"></script>
+    <script type="text/javascript" src="/user/js/landingPage.js"></script>
+
+    <script type="text/javascript" src="/user/js/common/modules/mediaPlayer.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/soundCloud/soundcloud_player.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/youtube/youtube_player.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/couplets/coupletIntroduction.js"></script>
+
+    <script type="text/javascript" src="/user/js/common/directives/songs/songOverview.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/words/wordOverview.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/reflections/reflectionOverview.js"></script>
+
+    <script type="text/javascript" src="/user/js/common/config/resourceUrlWhiteList.js"></script>
+    <script type="text/javascript" src="/user/js/common/modules/headerModule.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/header/ajabShaharHeader.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/footer/ajabShaharFooter.js"></script>
+    <script type="text/javascript" src="/user/js/featuredContent/services/contentService.js"></script>
+    <script type="text/javascript" src="/user/js/words/services/wordMapper.js"></script>
+    <script type="text/javascript" src="/user/js/songs/services/songMapper.js"></script>
+    <script type="text/javascript" src="/user/js/words/services/wordMapper.js"></script>
+    <script type="text/javascript" src="/user/js/reflections/services/reflectionMapper.js"></script>
+    <script type="text/javascript" src="/user/js/mappers.js"></script>
+    <script type="text/javascript" src="/user/js/common/services/popupService.js"></script>
+
+    <script type="text/javascript" src="/user/js/common/bindDynamicHtml.js"></script>
+    <script type="text/javascript" src="/user/js/featuredContent/app.js"></script>
+
+    <script type="text/javascript" src="/user/js/common/modules/htmlGenerator.js"></script>
+    <script type="text/javascript" src="/user/js/featuredContent/controllers/featuredContentController.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/header/sticky.js"></script>
+
+    <div id="loader_wrapper"><span></span></div>
+</body>
+</html>

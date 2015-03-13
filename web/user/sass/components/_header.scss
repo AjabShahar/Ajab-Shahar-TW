@@ -1,0 +1,62 @@
+
+.headerBox {
+    margin-top: 0%;
+    position:absolute !important;
+    left: 0;
+
+    &.fixed {
+        position:fixed !important;
+        width:100%;
+        top:0;
+        cursor:pointer;
+        z-index: $zIndex-header-fixed;
+    }
+
+    .headerWrapper {
+        transition: none;
+        background: #fff;
+        padding:0% 0 0% 0;
+        position:relative;
+        z-index: $zIndex-headerWrapper;
+        box-shadow: #DDD 0 1px 15px;
+
+        &.fixed {
+            position:fixed;
+            width:100%;
+            top:0;
+            display:block;
+        }
+
+        header {
+            display:inline-block;
+            width:98%;
+            padding: 10px 0 20px;
+            margin: 0 auto;
+        }
+    }
+
+    .headerArt {
+        background:url(/user/img/common/directives/header/header.png) 100% -1px no-repeat;
+        transition: none;
+        margin-top:-1px;
+        height: 95px;
+        position: relative;
+        z-index: $zIndex-headerart;
+
+        &.fixed {
+            position:fixed;
+            width:100%;
+            top:0;
+            cursor:pointer;
+        }
+
+        .menuTree {
+            display: inline-block;
+            width: 130px;
+            height: 70px;
+            float: right;
+            margin: 28px 115px 0 -100px;
+            cursor: pointer;
+        }
+    }
+}

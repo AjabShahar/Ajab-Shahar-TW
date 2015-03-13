@@ -1,0 +1,21 @@
+<div class="thumbnailWrapper reflection {{customStyle}}">
+    <div class="thumbnail-media" ng-click="open('{{id}}')">
+          <img src="/user/img/reflections/bw_background2b.jpg">
+    </div>
+    <div class="desc-wrapper" ng-click="open('{{id}}')">
+       <div class="thumbnail-desc" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
+            <h3 class="item-title" >{{title}}</h3>
+            <h3 class="item-title-translation sub-title">{{verb}} {{speaker}}</h3>
+
+            <div ng-show="shouldShowDetails" class='thumbnailDetails toggleBySlide'>
+                <div class='categoryDetails'>
+                    <p class="categoryName">REFLECTION
+                        <small class="more-info">T</small>
+                    </p>
+                </div>
+            </div>
+       </div>
+       <div class="lower-curve"></div>
+    </div>
+
+</div>

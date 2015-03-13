@@ -1,0 +1,305 @@
+@import "../reset";
+@import "../common";
+@import "../common/directives/headerWithCarousel";
+@import "../common/directives/fixedLeftNav";
+
+/* styles for songs details page */
+
+body.songs-details {
+
+    background: transparent url(../../../user-img/songs/song_details_bg.jpg) left top no-repeat;
+    background-size: cover;
+
+    .main-content {
+        margin-top: 60px;
+        min-height:  500px;
+    }
+
+    #song_container, #poem_container {
+            clear: both;
+            width: 853px;
+            margin: 0 auto;
+            @media screen and (max-width: 1280px) {
+                width: 640px;
+            }
+
+            @media screen and (max-width: 768px) {
+                width: 530px;
+            }
+        }
+
+    #song_container {
+
+        youtube {
+            width: 853px;
+            display: inline-block;
+            height: 480px;
+
+            @media screen and (max-width: 1280px) {
+                width: 640px;
+                height: 360px;
+            }
+
+            @media screen and (max-width: 768px) {
+                width: 530px;
+                height: 315px;
+            }
+
+            iframe {
+                border: solid 5px #fff;
+                width: 843px;
+                height: inherit;
+                .box-shadow(#777, 10px);
+            }
+
+        }
+
+        .rendition-wrapper {
+            ul {
+                float: right;
+                padding: 0 0 6px;
+                li {
+                    float: left;
+                    color: #999;
+                    &>a {
+                        color: #999;
+                        margin: 0 3px;
+
+                        &.active {
+                            color: @activeLink;
+                        }
+                    }
+                }
+            }
+        }
+
+        .info {
+            width: 843px;
+            display: none;
+            max-height: 260px;
+            margin: 45px 0;
+            color: #666;
+            font-size: 12px;
+            font-family: 'Merriweather';
+            font-weight: 300;
+            overflow: auto;
+        }
+
+        .video-options {
+            width: 100%;
+            display: inline-block;
+            &>ul {
+                text-align: left;
+                float: left;
+                position: relative;
+                font-size: 16px;
+                width: auto;
+
+                &>li {
+                    float:left;
+                    padding: 5px;
+                    color: #666;
+                    font-weight: 200;
+                    line-height: 20px;
+                }
+            }
+
+            ul.share-options {
+                li {
+                    padding: 5px 10px;
+                    a {
+                        background: transparent url(../../user-img/songs/songs_sprite.png) 0  0 no-repeat;
+                        display: inline-block;
+                        width: 26px;
+                        height: 23px;
+
+                        &.favorite {
+                            background-position: 0 -25px;
+                            height: 22px;
+                        }
+                        &.share {
+                            background-position: -26px 0;
+                            height: 23px;
+                        }
+                        &.download {
+                            background-position: -26px -23px;
+                        }
+                    }
+
+                }
+            }
+
+            ul.audio-video-options {
+                float: right;
+                &>li {
+                    border-right: solid 1px #666;
+                    line-height: 2px;
+                    margin: 7px 0 0;
+                    padding: 0 7px;
+
+                    &:last-child {
+                        border: none;
+                        padding-right: 0;
+                    }
+                    &>a {
+                        background: transparent url('../../user-img/songs/av_sprite.png') 0 0 no-repeat;
+                        width: 12px;
+                        height: 15px;
+                        display: inline-block;
+
+                        &.video-icon {
+                            background-position: -13px 3px;
+                            &.active {
+                                background-position: 0 3px;
+                            }
+                        }
+
+                        &.audio-icon {
+                            background-position: -13px -12px;
+                            width: 20px;
+                            height: 20px;
+                            &.active {
+                                background-position: 0 -12px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .song-info {
+            width: auto;
+            margin: 45px 0 40px;
+
+            dl {
+                margin: 4px auto;
+                clear: both;
+                line-height: 23px;
+                text-align: center;
+                display: block;
+
+                dt {
+                    color: #e6257a;
+                    text-transform: capitalize;
+                    font-weight: 300;
+                    display: inline-block;
+                    font-size: 13px;
+                    font-family: 'Merriweather';
+                }
+                dd {
+                    color: #7f8080;
+                    text-transform: uppercase;
+                    display: inline-block;
+                    margin: 0 20px 0 0;
+                    font-size: 10px;
+                    font-weight: 300;
+                }
+            }
+        }
+    }
+
+    #poem_container {
+        text-align: center;
+        padding: 10px 0 50px;
+        font-weight: 300;
+        line-height: 27px;
+
+        .song-heading {
+            color: #b3b3b3;
+            font-size: 30px;
+            line-height: 52px;
+            padding: 0 0 20px;
+            font-weight: 300;
+            font-family: 'Merriweather';
+
+
+        }
+
+        .poet-details {
+            color: #676767;
+            font-size: 14px;
+        }
+
+        .initial-couplets {
+            color: #808080;
+            font-size: 14px;
+        }
+
+        .lyrics {
+            font-size:14px;
+            color: #333;
+        }
+
+
+        .hindi {
+            &>* {
+                font-family: 'Lohit Devanagari', serif;
+            }
+            .song-heading {
+                font-size: 32px;
+            }
+            .initial-couplets {
+                font-size: 15px;
+            }
+            .lyrics {
+                font-size: 18px;
+            }
+        }
+
+    }
+
+     .lyrics-footer {
+        background: transparent url(../../user-img/songs/song_bottom.png) 0  0 no-repeat;
+        height: 100px;
+        width: 100%;
+        display: inline-block;
+        position: relative;
+        ul {
+            margin: 20px auto 0px;
+            display: inline-block;
+            width: auto;
+            &>li {
+                float: left;
+                margin-left: 30px;
+                &:first-child {
+                    margin-left: 0;
+                }
+                &>a {
+                    float: left;
+                    width: 36px;
+                    height: 36px;
+                    background: transparent url(../../user-img/songs/songs_sprite.png) 0  0 no-repeat;
+                }
+
+
+                &.original {
+                    &>a {
+                        background-position: 0px -48px;
+                    }
+                }
+                &.transliteration {
+                    &>a {
+                        background-position: 0px -84px;
+                    }
+                }
+                &.translation {
+                    &>a {
+                        background-position: 0px -120px;
+                    }
+                }
+            }
+        }
+        .play-icon {
+            position: absolute;
+            right: 13%;
+            bottom: 40px;
+            background: transparent url(../../user-img/songs/songs_sprite.png) -52px  0px no-repeat;
+            width: 50px;
+            height: 102px;
+            display: inline-block;
+        }
+    }
+
+}
+
+/* Song details page styles end */

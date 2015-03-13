@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="adminApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>People page</title>
+
+    <link href="/user/partials/common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="../../admin-css/admin.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <a ng-href="/admin/home.html" target="_self"><button type="button" class="btn btn-info admin-home">Admin home</button></a>
+    <br>
+    <br>
+    <div ng-controller="personListController">
+        <table class="table">
+            <tr>
+                <td><b>First Name</b></td>
+                <td><b>Middle Category</b></td>
+                <td><b>Last Name</b></td>
+                <td><b>Roles</b></td>
+                <td><b>Edit</b></td>
+            </tr>
+            <tr>
+                <td><input ng-model="search.firstName" class="form-control" ><br></td>
+                <td><input ng-model="search.middleName" class="form-control" ><br></td>
+                <td><input ng-model="search.lastName" class="form-control" ><br></td>
+                <td><input ng-model="search.roles" class="form-control" ><br></td>
+            </tr>
+            <tr ng-repeat="person in people | orderBy:'firstName' | filter:search">
+                <td>{{person.firstName}}</td>
+                <td>{{person.middleName}}</td>
+                <td>{{person.lastName}}</td>
+                <td>{{person.roles}}</td>
+                <td><a href="details.html?id={{person.id}}" class="btn btn-info">Edit</a></td>
+            </tr>
+        </table>
+    </div>
+    <script src="/common/lib/angular/angular.js"></script>
+    <script src="/common/lib/underscore/underscore.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-cookies.js"></script>
+    <script type="text/javascript" src="../../admin-js/services/contentService.js"></script>
+    <script type="text/javascript" src="../../admin-js/services/loginVerifyService.js"></script>
+    <script type="text/javascript" src="../../admin-js/app.js"></script>
+    <script type="text/javascript" src="../../admin-js/controllers/person/personListController.js"></script>
+</body>
+</html>

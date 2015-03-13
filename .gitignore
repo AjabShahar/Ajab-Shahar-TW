@@ -15,3 +15,6 @@ AjabShahar.ipr
 AjabShahar.iws
 test.mv.db
 test.trace.db
+dist
+*.css
+web/common/lib

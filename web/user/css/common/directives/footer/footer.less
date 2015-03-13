@@ -1,0 +1,104 @@
+/* footer */
+
+.footer-bg {
+    background-color: #000;
+}
+
+.footerBox{
+  margin-top: -5%;
+  position: relative;
+
+  .footerArt{
+    background:url(../../../../user-img/common/directives/footer/footer1.png) top no-repeat;
+    height: 249px;
+    position: relative;
+    z-index: 8;
+    margin-top: -14%;
+
+    footer{
+      position: relative;
+      width: 70%;
+      display: inline-block;
+      margin-top: 40px;
+
+      @media screen and (max-width: 1140px) {
+        width: 88%;
+      }
+
+      ul{
+        display: table-cell;
+        vertical-align: bottom;
+        padding:0 3%;
+        text-align: left;
+
+        @media screen and (max-width: 1300px) {
+            padding: 0 1%;
+        }
+        @media screen and (max-width: 768px) {
+            padding: 0;
+        }
+
+        &>li {
+            color: #b3b3b3;
+            background: transparent url(../../../../user-img/common/directives/footer/dotted.png) left top;
+            background-repeat: no-repeat repeat;
+            font-family:'Merriweather Sans','Merriweather';
+            font-weight: 300;
+            font-size: 12px;
+        }
+
+
+        &.footerList li {
+            text-transform: uppercase;
+            padding: 3px 5px 3px 10px;
+            line-height: 18px;
+
+            &:first-child {
+                padding-top: 10px;
+            }
+        }
+
+        &.footerExtra{
+            width: 25%;
+
+            @media screen and (max-width: 880px) {
+                width: 30%;
+            }
+
+            @media screen and (max-width: 768px) {
+                width: 32%;
+            }
+
+            li {
+                padding: 10px 0 10px 10px;
+            }
+
+            li.kabirProject {
+             padding-top: 20px;
+             position: relative;
+                 &:after {
+                    content: '';
+                    display: inline-block;
+                    background: url(../../../../user-img/common/directives/footer/icons/kabirinit.jpg) 0 0 no-repeat;
+                    height: 42px;
+                    width: 42px;
+                    position: absolute;
+                    top: 6px;
+                 }
+             }
+        }
+      }
+
+    }
+  }
+}
+
+
+
+/*.footerWrapper{
+background: #000;
+padding:0% 0 1.5% 0;
+position:relative;
+z-index:8;
+}*/
+

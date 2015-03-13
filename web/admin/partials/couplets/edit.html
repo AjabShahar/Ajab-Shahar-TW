@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html ng-app="adminApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="/common/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="/common/lib/angular-filter/dist/angular-filter.js"></script>
+    <script type="text/javascript" src="/common/lib/textAngular/dist/textAngular-sanitize.min.js"></script>
+    <script type="text/javascript" src="/common/lib/textAngular/dist/textAngular.min.js"></script>
+    <script type="text/javascript" src="/common/lib/checklist-model/checklist-model.js"></script>
+    <script type="text/javascript" src="../../admin-js/services/contentService.js"></script>
+    <script type="text/javascript" src="../../admin-js/app.js"></script>
+    <script type="text/javascript" src="../../admin-js/controllers/couplets/detailsController.js"></script>
+    <link href="../../admin-css/admin.css" rel="stylesheet" type="text/css">
+    <link href="/user/partials/common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<a ng-href="/admin/home.html" target="_self"><button type="button" class="btn btn-info admin-home">Admin home</button></a>
+<div class="left">
+    <h2>Edit Couplet details</h2>
+    <div class="left">
+        <div ng-controller="coupletDetailsController" ng-init = "getCoupletData()">
+            <form >
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Original Title</label>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <input type="text" name="originalTitle" ng-model="formInfo.originalTitle" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>English Translation</label>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <input type="text" name="englishTranslation" ng-model="formInfo.englishTranslation" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>English Transliteration</label>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <input type="text" name="englishTransliteration" ng-model="formInfo.englishTransliteration" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Original Text</label>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <input type="textarea" name="originalTitle" ng-model="formInfo.originalText" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>English Translation Text</label>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <input type="textarea" name="englishTranslation" ng-model="formInfo.englishTranslationText" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>English Transliteration Text</label>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <input type="textarea" name="englishTransliteration" ng-model="formInfo.englishTransliterationText" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Thumbnail Url</label>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <input type="text" name="thumbnailUrl" ng-model="formInfo.thumbnailUrl" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Description</label>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <input type="text" name="word" ng-model="formInfo.description" maxlength="30" required class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Show On LandingPage</label>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <select name="format" ng-model="formInfo.showOnLandingPage" class="form-control">
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Poet</label>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <select ng-model="formInfo.poetsList[0].id"
+                                ng-options="poet.id as poet.firstName for poet in poetsList" class="form-control">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Category</label>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <select ng-model="formInfo.category"
+                                ng-options="category.name for category in categoryList" class="form-control">
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" ng-click="updateCouplet()" class="btn btn-primary btn-lg">Submit</button>
+                <button type="reset" ng-click="redirectToEnterPage()" class="btn btn-info">Add More</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

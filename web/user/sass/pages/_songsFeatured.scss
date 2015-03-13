@@ -1,0 +1,19 @@
+.homepage-content {
+    width: 70%;
+    position: relative;
+    height: 2500px !important;
+    margin: 18% auto 0;
+
+    .logo-container {
+        left: 14%;
+        top: 23px !important;
+        position: fixed;
+
+        @media screen and (max-width: 1024px) {
+            left: 5%;
+            z-index: $zIndex-innerpage-logo;
+        }
+    }
+}
+
+
