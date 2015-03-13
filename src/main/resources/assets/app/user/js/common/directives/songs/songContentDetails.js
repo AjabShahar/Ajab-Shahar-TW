@@ -17,7 +17,6 @@ thumbnailModule.directive("songContentDetails", function() {
         templateUrl:'/user-js/common/templates/songs/songContentDetails.html',
         controller: function($scope) {
             $scope.isAboutVisible = false;
-            $scope.isNotesVisible = false;
             $scope.hasAudioAndVideo = false;
             $scope.showVideo = false;
             $scope.showAudio = false;
@@ -60,7 +59,6 @@ thumbnailModule.directive("songContentDetails", function() {
                 }
 
                 $scope.isAboutVisible = true;
-                $scope.isNotesVisible = false;
             }
         }
     }

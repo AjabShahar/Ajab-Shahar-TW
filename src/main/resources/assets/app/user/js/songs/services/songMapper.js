@@ -67,7 +67,7 @@ thumbnailModule.factory('songMapper',['wordMapper',function(wordMapper){
             "singer":getSingers(song.singers),
             "poet": poet,
             "downloadURL":song.downloadUrl,
-            "about": '\'' + song.about + '\'',
+            "about": (song.about == null)? song.about :'\'' + song.about + '\'',
             "words": wordMapper.getBasicDetails(song.words.words)
             });
             return details;
