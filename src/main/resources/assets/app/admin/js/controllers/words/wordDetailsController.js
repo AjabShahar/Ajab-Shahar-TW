@@ -21,7 +21,7 @@ function($scope, $window, $location, contentService, PAGES, $q,loginVerifyServic
       } else {
         song.menuTitle = song.englishTransliterationTitle + " - (" + singerNames.join(", ") + ")";  
       }
-      
+      song.words = song.words.words;
     });
   };
 
