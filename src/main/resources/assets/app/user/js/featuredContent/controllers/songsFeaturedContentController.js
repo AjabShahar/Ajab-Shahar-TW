@@ -23,6 +23,10 @@ var songsFeaturedContentController = function($scope,contentService,songMapper,p
         });
     }
 
+    $scope.openThumbnail = function(elementId){
+        return detailsService.open(elementId);
+    }
+
     var index = 0;
     $scope.getSongCustomStyle = function(){
         index++;

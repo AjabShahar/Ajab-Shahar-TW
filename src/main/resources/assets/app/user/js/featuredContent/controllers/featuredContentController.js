@@ -11,8 +11,6 @@ var featuredContentController = function($scope,contentService,popupService, map
         return "shift"+index;
     }
 
-
-
     $scope.init = function(){
         var wordMapper = mappers.getWordMapper(),
             songMapper = mappers.getSongMapper(),
