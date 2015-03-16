@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="splashScreenOptionsApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Splash screen options - admin</title>
+    <script src="/common/lib/angular/angular.js"></script>
+    <script src="/common/lib/angular-route/angular-route.js"></script>
+    <script src="/common/lib/angular-animate/angular-animate.js"></script>
+    <script type="text/javascript" src="/admin/js/introduction/app.js"></script>
+    <script type="text/javascript" src="/admin/js/introduction/services/contentService.js"></script>
+    <script type="text/javascript" src="/admin/js/introduction/controllers/splashScreenController.js"></script>
+    <link href="/common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="/admin/css/admin.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<a ng-href="/admin/partials/home.html" target="_self"><button type="button" class="btn btn-info admin-home">Admin home</button></a>
+<div class="left">
+    <h2>Enter Splash Screen Options </h2>
+    <br/>
+    <div ng-controller="splashScreenController">
+        <form>
+            <div class="left">
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Format</label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <select name="format" ng-model="formInfo.FORMAT"
+                                ng-options="oFormat.id as oFormat.name for oFormat in optionsFormatList" class="form-control">
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Youtube Id</label>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <input type="text" name="youtubeUrl" ng-model="formInfo.URL" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row" ng-show="shouldShowImageUrl()">
+                    <div class="form-group col-sm-2">
+                        <label>Image Url</label>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <input type="text" name="ImageUrl" ng-model="formInfo.IMAGE_URL" class="form-control">
+                    </div>
+                </div>
+            <button type="submit" ng-click="saveData()" class="btn btn-primary btn-lg">Save</button>
+        </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+
+

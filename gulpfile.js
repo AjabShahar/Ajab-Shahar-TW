@@ -6,7 +6,7 @@ var gulp = require("gulp"),
 		sourcemaps = require('gulp-sourcemaps');
 
 
-var userModule = "./web/user";
+var userModule = "./web/app/user";
 
 
 
@@ -56,7 +56,7 @@ gulp.task ("clean",function(){
 });
 
 gulp.task("zip",["clean","sass:compile"],function(){
-    return gulp.src('web/**')
+    return gulp.src('web/app/**')
         .pipe(zip('ajabshahar.zip'))
         .pipe(gulp.dest('dist'))
 });

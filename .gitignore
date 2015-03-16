@@ -17,4 +17,6 @@ test.mv.db
 test.trace.db
 dist
 *.css
-web/common/lib
+web/app/common/lib
+web/app/coverage
+*.log
