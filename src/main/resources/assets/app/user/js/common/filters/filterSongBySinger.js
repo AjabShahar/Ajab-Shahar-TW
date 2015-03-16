@@ -1,6 +1,6 @@
 var filterSongBySinger = filterModule.filter('filterSongBySinger', function() {
    return function( songs, singer) {
-    if(singer==null || singer==='' || singer.name=='')
+    if(singer==null || singer==='' || singer.id==-1)
        return songs;
 
     var filtered = _.reduce(songs, function(filteredList,song){

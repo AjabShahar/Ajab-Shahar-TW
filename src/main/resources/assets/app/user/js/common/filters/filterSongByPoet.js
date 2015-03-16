@@ -1,6 +1,6 @@
 var filterSongByPoet = filterModule.filter('filterSongByPoet', function() {
    return function( songs, poet) {
-    if(poet==null || poet==='' || poet.name=='')
+    if(poet==null || poet==='' || poet.id==-1)
         return songs;
 
     var filtered = _.reduce(songs, function(filteredList,song){
