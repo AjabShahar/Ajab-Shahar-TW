@@ -37,8 +37,9 @@
             </div>
         </div>
     </div>
-
-    <div class="lower-pardah">
+    <!--TODO Sakunthala : Try removing the extra div-->
+    <div class="vertical-spacer" ng-show="!shouldShowVersions()"></div>
+    <div class="lower-pardah" ng-show="shouldShowVersions()">
         <div class="versions toggleBySlide" ng-show="showVersion && shouldShowVersions()">
             <div class="carousel-wrapper jcarousel-wrapper">
 
