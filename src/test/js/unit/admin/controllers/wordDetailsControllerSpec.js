@@ -72,7 +72,7 @@ describe("Word details controller spec:", function() {
 			$httpBackend.when("GET", "/api/category/word").respond(null);
 			$httpBackend.when("GET", "/api/reflections/all").respond(null);
 			$httpBackend.when("GET", "/api/people").respond({"people": ""});
-			$httpBackend.when("GET", "/api/songs/getAllSongs").respond({"songs" : "blah" });
+			$httpBackend.when("GET", "/api/songs/getAllSongs").respond({"songs" : [{"englishTransliterationTitle": "some title", "singers": [] ,"words":{"words":[]}}]});
 			var mockedId = 1;
 			spyOn($location, 'search').andReturn({ id: mockedId });
 			$httpBackend.when("GET", "/api/words/edit?id=1").respond({'id': 1, 'original': 'dummyOriginalText', 'english': 'dummyEnglishText'});
@@ -83,7 +83,7 @@ describe("Word details controller spec:", function() {
 			expect(scope.formInfo.original).toBe('dummyOriginalText');
 		});
 		it("then should have singers as a comma seperated entries for a song", function() {
-			var mockedSongs =  {"songs" : [ {"englishTransliterationTitle": "some title", "singers": [{"name": "singer1"}, {"name": "singer2"} ] } ,{"englishTransliterationTitle": "some title2", "singers": [{"name": "singer3"}, {"name": "singer4"} ]} ] } ;
+			var mockedSongs =  {"songs" : [ {"englishTransliterationTitle": "some title", "singers": [{"name": "singer1"}, {"name": "singer2"} ],"words":{"words":[]} } ,{"englishTransliterationTitle": "some title2", "singers": [{"name": "singer3"}, {"name": "singer4"} ],"words":{"words":[]}} ] } ;
 			$httpBackend.when("GET", "/api/category/word").respond(null);
 			$httpBackend.when("GET", "/api/reflections/all").respond(null);
 			$httpBackend.when("GET", "/api/people").respond({"people": ""});
@@ -96,7 +96,7 @@ describe("Word details controller spec:", function() {
 			expect(scope.songs[1].menuTitle).toBe('some title2 - (singer3, singer4)');
 		});
 		it("then shouldn't have singers as a comma seperated entries for a song, if there are no singers", function() {
-			var mockedSongs =  {"songs" : [ {"englishTransliterationTitle": "some title", "singers": [] } ,{"englishTransliterationTitle": "some title2", "singers": []} ] } ;
+			var mockedSongs =  {"songs" : [ {"englishTransliterationTitle": "some title", "singers": [] ,"words":{"words":[]}} ,{"englishTransliterationTitle": "some title2", "singers": [],"words":{"words":[]}} ] } ;
 			$httpBackend.when("GET", "/api/category/word").respond(null);
 			$httpBackend.when("GET", "/api/reflections/all").respond(null);
 			$httpBackend.when("GET", "/api/people").respond({"people": ""});
