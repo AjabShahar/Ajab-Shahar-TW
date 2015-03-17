@@ -1,4 +1,4 @@
 {
-  "directory": "src/main/resources/assets/app/common/lib",
+  "directory": "/web/app/common/lib/",
   "interactive": false
 }
