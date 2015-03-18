@@ -17,10 +17,13 @@
     .left-nav {
         /*float: left;
         text-align: center;*/
+        /*
+          Todo: 768px of chrome and all resolutions with mozilla, styles need to be revisited
+        */
         position: absolute;
         left: 0;
-        top: 5%;
-        margin-left: 1.5%;
+        top: 10%;
+        margin-left: 3.5%;
         z-index: $zIndex-songs-leftNav;
 
         .nav-elements-wrapper {
@@ -28,7 +31,7 @@
             .category-logo {
                 background: transparent url('/user/img/songs/songs_logo.png') 0 0 no-repeat;
                 width: 85px;
-                height: 58px;
+                height: 85px;
                 padding-top: 30px;
                 color: #9c9b9b;
                 font-size: 20px;
@@ -38,7 +41,7 @@
 
             .filter-button {
                 display: block;
-                margin-top: 10px;
+                margin-top: 8px;
                 font-size: 10px;
                 text-transform: uppercase;
                 color: #e61b72;

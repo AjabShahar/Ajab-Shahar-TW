@@ -60,16 +60,16 @@
 
     <div class="ajab-container headerfixOuter">
         <ajab-shahar-header></ajab-shahar-header>
-        <song-filter songs="songs" song-count="songCount" expand-filter="expandFilter" on-clear-filter="clearFilters()" active-letter="activeLetter" poet-name-in-filter="poetNameInFilter" singer-name-in-filter="singerNameInFilter"></song-filter>
-        <div class='left-nav headerfixInner'>
-            <div class='nav-elements-wrapper'>
-                <h1 class='category-logo'>songs</h1>
-                <a href="javascript:void(0);" ng-click="toggleExpandFilter()" class="filter-button">Filter <span class="collapse"></span></a>
-            </div>
-        </div>
+
         <div class="ajab-wrapper">
 
-
+            <song-filter songs="songs" song-count="songCount" expand-filter="expandFilter" on-clear-filter="clearFilters()" active-letter="activeLetter" poet-name-in-filter="poetNameInFilter" singer-name-in-filter="singerNameInFilter"></song-filter>
+            <div class='left-nav headerfixInner'>
+                <div class='nav-elements-wrapper'>
+                    <h1 class='category-logo'>songs</h1>
+                    <a href="javascript:void(0);" ng-click="toggleExpandFilter()" class="filter-button">Filter <span class="collapse"></span></a>
+                </div>
+            </div>
             <div class='grid-view' infinite-scroll="loadSongFromRange()">
 
                 <as-title current-alphabet-filter="activeLetter">
