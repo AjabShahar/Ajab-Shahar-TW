@@ -24,7 +24,7 @@ var songsFeaturedContentController = function($scope,contentService,songMapper,p
     }
 
     $scope.openThumbnail = function(elementId){
-        return detailsService.open(elementId);
+        return $scope.detailsService.open(elementId);
     }
 
     var index = 0;
