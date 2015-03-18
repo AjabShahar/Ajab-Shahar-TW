@@ -16,7 +16,8 @@ AjabShahar.iws
 test.mv.db
 test.trace.db
 dist
-*.css
+**/ajabShahar.css
 web/app/common/lib
+web/app/common
 web/app/coverage
 *.log
