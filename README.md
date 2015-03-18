@@ -15,7 +15,7 @@ brew install node
 Setting up postgres
 -------------------
 
-Commands:
+Commands
 create database "platform-dev";
 create user “pg-dev” with password '';
 grant all privileges on database "platform-dev" to "pg-dev";
@@ -26,7 +26,7 @@ This will create a user "pg-dev"(with no password) and "platform-dev" DB and gra
 Compiling the app for server side code
 --------------------------------------
 
-Command:
+Command
 mvn clean install 
 
 Description:
@@ -36,7 +36,7 @@ This is a fat jar file which contains all the dependant jars packaged into it.
 Downloading front-end and other dependencies
 --------------------------------------------
 
-Commands:
+Commands
 npm install(place sudo before the command if installed using brew)
 bower install
 
@@ -46,7 +46,7 @@ This pulls all the js dependancies, it also runs bower install in the end to pul
 Starting the server
 -------------------
 
-Commands:
+Commands
 mvn clean install
 java -jar target/platform-1.0-SNAPSHOT.jar server development.yml
 
@@ -58,7 +58,7 @@ Read more about dropwizard here - http://dropwizard.io/getting-started.html
 Running migrations
 ------------------
 
-Commands:
+Commands
 mvn clean install
 java -jar target/platform-1.0-SNAPSHOT.jar server development.yml
 
@@ -68,7 +68,7 @@ This runs the migration against the connection string specified in developer.yml
 Generating karma test-coverage report
 -------------------------------------
 
-Commands:
+Commands
 cd src/test/js
 sh karmatest.sh
 
@@ -116,12 +116,12 @@ vagrant box add ajabshahar ajabshahar.box
 7) then run :
 vagrant up
 
-8) To ssh into the new VM, use the command:
+8) To ssh into the new VM, use the command
 vagrant ssh
 
 9) The directory ‘/projects’ contains the deployed project.
 
-10) Go inside the scripts folder and run the command:
+10) Go inside the scripts folder and run the command
 sh deploy-ajabshahar.sh
 
 11) deploy-ajabshahar.sh will copy the files(zip file for assets and jar file for server code) from your machine(the path configured in the vagrant file) to the VM.
