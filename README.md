@@ -1,84 +1,102 @@
 TO RUN/SET-UP THE APP:
 ======================
 
-Install maven - brew install maven (osx)
-Install postgres - brew install postgres (osx) 
+#####Install maven (osx)-
+```
+brew install maven
+```
+#####Install postgres(osx)-
+```
+brew install postgres
+```
+#####Installing nodeJS (osx)
 
-Installing nodeJS (osx) :
-a) Using nvm
-install nvm from: https://github.com/creationix/nvm
+a) Using nvm:
+
+Install nvm from: https://github.com/creationix/nvm
 then run this command to install 0.10.31 version of node - nvm install 0.10.31
 
 b) Using brew:
+```
 brew install node
-
+```
 Setting up postgres
 -------------------
 
-Commands
-create database "platform-dev";
-create user “pg-dev” with password '';
-grant all privileges on database "platform-dev" to "pg-dev";
-
-Description:
+#####Commands:
+```sh
+ create database "platform-dev";
+ create user “pg-dev” with password '';
+ grant all privileges on database "platform-dev" to "pg-dev";
+```
+#####Description:
 This will create a user "pg-dev"(with no password) and "platform-dev" DB and grant the privileges on that db to that user.
 
 Compiling the app for server side code
 --------------------------------------
 
-Command
+#####Command:
+```
 mvn clean install 
+```
 
-Description:
+#####Description:
 This will download all java dependencies and build the application and create target/platform-1.0-SNAPSHOT.jar
 This is a fat jar file which contains all the dependant jars packaged into it.
 
 Downloading front-end and other dependencies
 --------------------------------------------
 
-Commands
-npm install(place sudo before the command if installed using brew)
-bower install
-
-Description:
+#####Commands:
+```
+ npm install(place sudo before the command if npm is installed using brew)
+ bower install
+```
+#####Description:
 This pulls all the js dependancies, it also runs bower install in the end to pull bower dependancies.
 
 Starting the server
 -------------------
 
-Commands
-mvn clean install
-java -jar target/platform-1.0-SNAPSHOT.jar server development.yml
-
-Description:
+#####Commands:
+```
+ mvn clean install
+ 
+ java -jar target/platform-1.0-SNAPSHOT.jar server development.yml
+```
+#####Description:
 This starts the server with configuration specified in development.yml and uses the jar file created after maven compilation is done.
 
-Read more about dropwizard here - http://dropwizard.io/getting-started.html
+Read more about dropwizard [here]:dropwizard.io/getting-started.html
 
 Running migrations
 ------------------
 
-Commands
+#####Commands:
+```
 mvn clean install
-java -jar target/platform-1.0-SNAPSHOT.jar server development.yml
 
-Description:
+java -jar target/platform-1.0-SNAPSHOT.jar server development.yml
+```
+
+#####Description:
 This runs the migration against the connection string specified in developer.yml file.
 
 Generating karma test-coverage report
 -------------------------------------
 
-Commands
+#####Commands:
+```
 cd src/test/js
-sh karmatest.sh
 
-Description:
+sh karmatest.sh
+```
+#####Description:
 This will generate the test-coverage report for the files specified in the karma.conf.js configuration file.
 
 Coverage report file(index.html) location:
 	Ajab-Shahar-TW ▸ src ▸ main ▸ resources ▸ assets ▸ app ▸ coverage ▸ PhantomJS 1.9.8 (Mac OS X)
 
-########
 Deployment tasks :
 ==================
 
@@ -116,12 +134,12 @@ vagrant box add ajabshahar ajabshahar.box
 7) then run :
 vagrant up
 
-8) To ssh into the new VM, use the command
+8) To ssh into the new VM, use the command:
 vagrant ssh
 
 9) The directory ‘/projects’ contains the deployed project.
 
-10) Go inside the scripts folder and run the command
+10) Go inside the scripts folder and run the command:
 sh deploy-ajabshahar.sh
 
 11) deploy-ajabshahar.sh will copy the files(zip file for assets and jar file for server code) from your machine(the path configured in the vagrant file) to the VM.
