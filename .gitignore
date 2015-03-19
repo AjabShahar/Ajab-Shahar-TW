@@ -20,4 +20,5 @@ dist
 web/app/common/lib
 web/app/common
 web/app/coverage
+**/coverage
 *.log
