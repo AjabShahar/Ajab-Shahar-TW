@@ -3,11 +3,11 @@
 	<head lang="en">
 	    <meta charset="UTF-8">
 	    <title>Gatherings page</title>
-	    <link href="../../common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
-	    <link href="../../admin-css/admin.css" rel="stylesheet" type="text/css">
+	    <link href="/common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+	    <link href="/admin-css/admin.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
-		<a ng-href="/admin/home.html" target="_self"><button type="button" class="btn btn-info admin-home">Admin home</button></a>
+		<a ng-href="/admin/partials/home.html" target="_self"><button type="button" class="btn btn-info admin-home">Admin home</button></a>
 	    <br>
 	    <br>
 	    <div ng-controller="gatheringListController">
@@ -28,7 +28,7 @@
 	            </tr>
 	        </table>
 	    </div>
-	    <script src="../../common/lib/angular/angular.min.js"></script>
+	    <script src="/common/lib/angular/angular.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-cookies.js"></script>
 	    <script type="text/javascript" src="/admin/js/services/gatheringContentService.js"></script>
         <script type="text/javascript" src="/admin/js/services/loginVerifyService.js"></script>
