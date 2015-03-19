@@ -75,4 +75,6 @@ gulp.task("zip",["clean"],function(){
         .pipe(gulp.dest('dist'))
 });
 
-gulp.task("default", runSequence('test','zip'));
+gulp.task("default", function(callback){
+  runSequence('test','zip')
+});
