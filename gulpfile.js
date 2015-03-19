@@ -4,7 +4,8 @@ var gulp = require("gulp"),
 		del = require("del"),
 		zip = require("gulp-zip"),
         karma = require('gulp-karma'),
-		sourcemaps = require('gulp-sourcemaps');
+		sourcemaps = require('gulp-sourcemaps'),
+    runSequence = require('run-sequence');
 
 
 var userModule = "./web/app/user";
@@ -68,10 +69,10 @@ gulp.task("test",["sass:compile"],function(){
         });
 });
 
-gulp.task("zip",["clean","test"],function(){
+gulp.task("zip",["clean"],function(){
     return gulp.src('web/app/**')
         .pipe(zip('ajabshahar.zip'))
         .pipe(gulp.dest('dist'))
 });
 
-gulp.task("default", ["zip"]);
+gulp.task("default", runSequence('test','zip'));
