@@ -8,8 +8,8 @@ var allSongsController = function($scope,$window,songsContentService,songMapper)
                                       }};
     $scope.activeLetter = '';
     $scope.scrollIndex = 12;
-    $scope.singerNameInFilter = {name:''};
-    $scope.poetNameInFilter = {name:''};
+    $scope.singerNameInFilter = {id:-1};
+    $scope.poetNameInFilter = {id:-1};
     $scope.songCount = 0;
     $scope.songsList = [];
     $scope.expandFilter = false;
