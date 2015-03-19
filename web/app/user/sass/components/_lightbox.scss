@@ -78,22 +78,43 @@
         margin-top: 10%;
     }
 
-    .audio-video-options{
-      li {
-              padding: 0px;
-              a {
-                  background: transparent url(/user/img/songs/songs_sprite.png) 0  0 no-repeat;
-                  display: inline-block;
-                  width: 26px;
-                  height: 23px;
-                  &.download {
-                      background-position: -26px -23px;
-                  }
-              }
+    ul.audio-video-options {
+        float: right;
+        display: inline-flex;
+        &>li {
+            border-right: solid 1px #666;
+            line-height: 2px;
+            margin: 7px 0 0;
+            padding: 0 7px;
 
-      }
+            &:last-child {
+                border: none;
+                padding-right: 0;
+            }
+            &>a {
+                background: transparent url('../../user/img/songs/av_sprite.png') 0 0 no-repeat;
+                width: 12px;
+                height: 15px;
+                display: inline-block;
+
+                &.video-icon {
+                    background-position: -13px 3px;
+                    &.active {
+                        background-position: 0 3px;
+                    }
+                }
+
+                &.audio-icon {
+                    background-position: -13px -12px;
+                    width: 20px;
+                    height: 20px;
+                    &.active {
+                        background-position: 0 -12px;
+                    }
+                }
+            }
+        }
     }
-
 }
 
 

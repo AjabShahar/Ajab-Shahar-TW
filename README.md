@@ -1,5 +1,6 @@
 TO RUN/SET-UP THE APP:
 ======================
+Ensure you have java 1.8 or above installed and environment variable $JAVA_HOME is also pointing to it.
 
 #####Install maven (osx)-
 ```

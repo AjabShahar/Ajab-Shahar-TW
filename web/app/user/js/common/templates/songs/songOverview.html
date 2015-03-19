@@ -12,22 +12,19 @@
         </div>
 
         <ul class="audio-video-options" ng-init="isAudioOrVideo()" ng-show="hasAudioAndVideo">
-            <!-- <li>
+            <li>
                 <a href="javascript:void(0)" ng-show="showVideo" class="video-icon active"
-                   ng-click="toggleVideoOrAudio()">Text to be deleted</a>
-                <a href="javascript:void(0)" ng-hide="showVideo" class="video-icon" ng-click="toggleVideoOrAudio()">Text to be deleted</a>
+                   ng-click="toggleVideoOrAudio()"></a>
+                <a href="javascript:void(0)" ng-hide="showVideo" class="video-icon" ng-click="toggleVideoOrAudio()"></a>
             </li>
             <li>
                 <a href="javascript:void(0)" ng-show="showAudio" class="audio-icon active"
-                   ng-click="toggleVideoOrAudio()">Text to be deleted</a>
-                <a href="javascript:void(0)" ng-hide="showAudio" class="audio-icon" ng-click="toggleVideoOrAudio()">Text to be deleted</a>
-            </li> -->
-            <li>
-                <a href="#" class="download" ng-if="downloadurl" target="_blank"
-                   ng-href="{{downloadurl}}"></a>
-                <button ng-click="toggleVideoOrAudio()">Toggle between audio and video</button>
+                   ng-click="toggleVideoOrAudio()"></a>
+                <a href="javascript:void(0)" ng-hide="showAudio" class="audio-icon" ng-click="toggleVideoOrAudio()"></a>
             </li>
         </ul>
+        <a href="#" class="download" ng-if="downloadurl" target="_blank"
+           ng-href="{{downloadurl}}"></a>
 
         <div class="mediaFooter">
             <h3 class='infoText'>For lyrics, translations, versions, reflections, echoes and more enter
