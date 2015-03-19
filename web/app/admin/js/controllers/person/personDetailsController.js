@@ -15,7 +15,7 @@ personAdminApp.controller('personDetailsController', ['$scope', '$http', '$windo
 
   var savePerson = function(){
     $http.post('/api/people',$scope.formInfo).success(function(data){
-        $window.location.href = '/admin/person/details.html?id=' + data;
+        $window.location.href = '/admin/partials/home.html';
     });
   };
 
