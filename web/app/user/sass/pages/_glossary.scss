@@ -67,6 +67,22 @@
                 color: #575756;
                 margin: 0;
             }
+
+            .pagination-head {
+                display: inline-block;
+                width: 100%;
+                padding: 0% 0 2%;
+                margin-top:0px;
+                margin-left:2px;
+
+                &>.upper {
+                    display: inline-block;
+                    width: 100%;
+                    float: left;
+                    padding-bottom: 5px;
+                    border-bottom: solid 1px #ccc;
+                }
+            }
         }
     }
 
