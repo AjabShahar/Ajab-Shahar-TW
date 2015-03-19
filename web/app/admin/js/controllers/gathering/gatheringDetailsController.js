@@ -20,7 +20,7 @@ var gatheringDetailsController = gatheringsAdminApp.controller('gatheringDetails
 	};
 
 	var redirectToAdminHome = function(){
-		$window.location.href = '/admin/home.html';
+		$window.location.href = '/admin/partials/home.html';
 	};
 
 	var isValidData = function(){
