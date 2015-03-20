@@ -47,9 +47,9 @@ songsAdminApp.directive("songText", function() {
             };
 
             $scope.addLyricsText = function(){
-                if(($scope.newContent.englishTranslationText == "" &&
+                if($scope.newContent.englishTranslationText == "" &&
                 $scope.newContent.englishTransliterationText == "" &&
-                $scope.newContent.originalText == "") && $scope.newContent.content == null)
+                $scope.newContent.originalText == "")
                     return;
 
                 var englishTranslationTexts = $scope.newContent.englishTranslationText.split(/\n{2,}/g);
