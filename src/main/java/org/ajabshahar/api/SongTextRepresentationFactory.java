@@ -11,7 +11,7 @@ public class SongTextRepresentationFactory {
             songTexts.getSongTextContents().forEach(content -> {
                 PersonDetails poetDetails = content.getPoet() == null ? new PersonDetails() : content.getPoet();
                 SongTextContentSummaryRepresentation songTextContentSummaryRepresentation = new SongTextContentSummaryRepresentation(content.getOriginalText(), content.getEnglishTranslationText(), content.getEnglishTransliterationText(),
-                        new PersonSummaryRepresentation(poetDetails.getId(), poetDetails.getName(), poetDetails.getHindiName()));
+                        content.getShowRefrain(), new PersonSummaryRepresentation(poetDetails.getId(), poetDetails.getName(), poetDetails.getHindiName()));
                 songTextRepresentation.addSongTextContents(new SongTextSummaryRepresentation((int) content.getId(), songTextContentSummaryRepresentation, content.getSequenceNumber()));
             });
         }
@@ -19,6 +19,7 @@ public class SongTextRepresentationFactory {
             songTexts.getOpeningCouplets().forEach(openingCouplet -> {
                 PersonDetails poetDetails = openingCouplet.getPoet() == null ? new PersonDetails() : openingCouplet.getPoet();
                 SongTextContentSummaryRepresentation openingCoupletSummaryRepresentation = new SongTextContentSummaryRepresentation(openingCouplet.getOriginalText(), openingCouplet.getEnglishTranslationText(), openingCouplet.getEnglishTransliterationText(),
+                        false,
                         new PersonSummaryRepresentation(poetDetails.getId(), poetDetails.getName(), poetDetails.getHindiName()));
                 songTextRepresentation.addOpeningCouplet(new SongTextSummaryRepresentation((int) openingCouplet.getId(), openingCoupletSummaryRepresentation, openingCouplet.getSequenceNumber()));
             });

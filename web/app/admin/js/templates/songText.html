@@ -139,6 +139,12 @@
                 <td>
                     <textarea class="form-control" rows="6" ng-model="songTextContent.englishTranslationText" placeholder=" Enter original text ..."></textarea>
                 </td>
+                <td>
+                    <select name="format" ng-model="songTextContent.showRefrain" class="form-control">
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                </td>
             </table>
 
             <div class="col-md-1" ng-show="songTextContent.poet != undefined" >
