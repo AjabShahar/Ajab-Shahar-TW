@@ -94,6 +94,8 @@ var songDetailsController = function($scope,$location,songsContentService,songMa
     }
 
     $scope.getSongsLyrics = function(songTextComponents, openingCouplets){
+        $scope.songText.songTextContents = [];
+        $scope.songText.openingCouplets = [];
         sortedSongTextComponents = _.sortBy(songTextComponents, function(songTextComponent) { return songTextComponent.sequenceNumber;});
         for(index in sortedSongTextComponents){
             var item = sortedSongTextComponents[index];
