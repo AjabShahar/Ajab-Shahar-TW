@@ -2,6 +2,7 @@ package org.ajabshahar.platform.daos;
 
 import io.dropwizard.hibernate.AbstractDAO;
 import org.ajabshahar.platform.models.Song;
+import org.ajabshahar.platform.models.Title;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.Session;
@@ -108,7 +109,9 @@ public class SongDAO extends AbstractDAO<Song> {
         Song song = findById(Long.valueOf(songId));
         if (song != null) {
             findSongs.createAlias("title", "titleAlias");
-            findSongs.add(Restrictions.eq("titleAlias.id", song.getTitle().getId()));
+            if(song.getTitle() != null){
+                findSongs.add(Restrictions.eq("titleAlias.id", song.getTitle().getId()));
+            }
             findSongs.add(Restrictions.eq("isAuthoringComplete", true));
         } else {
             return new ArrayList<>();

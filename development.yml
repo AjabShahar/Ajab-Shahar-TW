@@ -24,9 +24,15 @@ database:
   minSize: 8
   maxSize: 32
   checkConnectionWhileIdle: false
+
 logging:
   level: INFO
   loggers:
-    io.dropwizard: INFO
+    org.ajabshahar: INFO
+    org.hibernate.SQL: ALL
   appenders:
-    - type: console
+    - type: file
+      currentLogFilename: ./server.log
+      archivedLogFilenamePattern: ./server-%d.log.gz
+      archivedFileCount: 5
+      timeZone: UTC
