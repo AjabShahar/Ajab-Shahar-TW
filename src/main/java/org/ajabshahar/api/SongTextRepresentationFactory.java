@@ -6,6 +6,7 @@ import org.ajabshahar.platform.models.SongText;
 public class SongTextRepresentationFactory {
 
     public SongTextRepresentation getSongText(SongText songTexts) {
+        songTexts = songTexts == null ? new SongText() : songTexts;
         SongTextRepresentation songTextRepresentation = new SongTextRepresentation(songTexts.getRefrainOriginal(), songTexts.getRefrainEnglishTranslation(), songTexts.getRefrainEnglishTransliteration());
         if (songTexts.getSongTextContents() != null) {
             songTexts.getSongTextContents().forEach(content -> {
