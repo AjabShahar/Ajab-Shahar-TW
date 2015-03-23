@@ -76,4 +76,9 @@ public class Word {
             inverseJoinColumns = {@JoinColumn(name="WRITER_ID", referencedColumnName = "ID")})
     private Set<PersonDetails> writers;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "WORD_SCHOLAR", joinColumns = {@JoinColumn(name = "WORD_ID",referencedColumnName = "ID")},
+            inverseJoinColumns = {@JoinColumn(name="SCHOLAR_ID", referencedColumnName = "ID")})
+    private Set<PersonDetails> scholars;
+
 }

@@ -8,7 +8,8 @@ function($scope, $window, $location, contentService, PAGES, $q,loginVerifyServic
   };
   $scope.categoryList = [];
   $scope.reflectionsList = [];
-  $scope.peopleList = [];
+  $scope.writersList = [];
+  $scope.scholarsList = [];
   $scope.songs = [];
 
   var wordCategory = 'word';
@@ -34,7 +35,8 @@ function($scope, $window, $location, contentService, PAGES, $q,loginVerifyServic
     $q.all([categoriesPromise, songsPromise, peoplePromise, reflectionsPromise]).then(function(data){
       $scope.categoryList = data[0].data;
       $scope.songs = data[1].data.songs;
-      $scope.peopleList = data[2].data.people;
+      $scope.writersList = angular.copy(data[2].data.people);
+      $scope.scholarsList = angular.copy(data[2].data.people);
       $scope.reflections = data[3].data;
 
       createMenuTitleForSongs();
@@ -65,7 +67,8 @@ function($scope, $window, $location, contentService, PAGES, $q,loginVerifyServic
     if(wordID){
       contentService.getWord(wordID).success(function (data) {
         $scope.reflectionsList   =  getSelectedContent( data.reflection, $scope.reflectionsList );
-        $scope.peopleList   =  getSelectedContent( data.writers, $scope.peopleList );
+        $scope.writersList   =  getSelectedContent( data.writers, $scope.writersList );
+        $scope.scholarsList   =  getSelectedContent( data.songs, $scope.scholarsList );
         $scope.songs = getSelectedContent(data.songs, $scope.songs);
         $scope.formInfo = data;
       });
