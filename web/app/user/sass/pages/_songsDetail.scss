@@ -3,15 +3,19 @@ body.songs-details {
     background: transparent url(/user/img/songs/song_details_bg.jpg) left top no-repeat;
     background-size: cover;
 
+
     .main-content {
         margin-top: 60px;
         min-height:  500px;
+        position: relative;
     }
 
     #song_container, #poem_container {
             clear: both;
             width: 853px;
             margin: 0 auto;
+            display: inline-block;
+
             @media screen and (max-width: 1280px) {
                 width: 640px;
             }
@@ -161,7 +165,9 @@ body.songs-details {
 
         .song-info {
             width: auto;
-            margin: 45px 0 40px;
+              padding: 45px 0 40px 15px;
+              background: transparent url('/user/img/songs/relatedlinks_parda.png') 0 0 no-repeat;
+              background-size: 100% 100%;
 
             dl {
                 margin: 4px auto;
@@ -301,5 +307,47 @@ body.songs-details {
             display: inline-block;
         }
     }
+
+    div .left-nav {
+          width: 70px;
+          left: 0%;
+          top: 30px;
+          position: absolute;
+          display: inline-block;
+          text-align: left;
+
+          @media screen and (max-width: 768px) {
+                width: 55px;
+                a {
+                    padding-left: 0px !important;
+                }
+          }
+
+        a {
+              display: block;
+              padding: 20px;
+              padding-left: 10px;
+              font-weight: 300;
+              font-family: 'Merriweather';
+              color: #666;
+
+
+        }
+
+        li:first-child {
+            border-bottom: solid thin;
+            border-bottom-color: white;
+
+
+        }
+        a.active {
+            cursor: default;
+            font-weight: 600;
+        }
+
+
+
+    }
+
 
 }

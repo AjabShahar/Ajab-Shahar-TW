@@ -10,3 +10,22 @@ songDetailsApp.config(function($locationProvider) {
          enabled: true,
        });
  });
+
+songDetailsApp.directive("scroll", function ($window) {
+    return function(scope, element, attrs) {
+        angular.element($window).bind("scroll", function() {
+            var containerTop = $('.main-content').offset().top;
+            var windowTop = $(window).scrollTop();
+            if(windowTop > containerTop) {
+
+                $('.left-nav').css('top', 30 + (windowTop - containerTop) + 30);
+            }
+            else {
+                $('.left-nav').css('top',30);
+            }
+
+            scope.$apply();
+        });
+    };
+
+});
