@@ -9,11 +9,11 @@ public class SongTextContentSummaryRepresentation {
     private PersonSummaryRepresentation poet;
 
 
-    public SongTextContentSummaryRepresentation(String originalText, String englishTranslationText, String englishTransliterationText, boolean showRefrain, PersonSummaryRepresentation poet) {
+    public SongTextContentSummaryRepresentation(String originalText, String englishTranslationText, String englishTransliterationText, Boolean showRefrain, PersonSummaryRepresentation poet) {
         this.originalText = originalText;
         this.englishTranslationText = englishTranslationText;
         this.englishTransliterationText = englishTransliterationText;
-        this.showRefrain = showRefrain;
+        this.showRefrain = showRefrain == null?false:showRefrain;
         this.poet = poet;
     }
 
