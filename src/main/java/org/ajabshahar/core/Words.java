@@ -3,7 +3,6 @@ package org.ajabshahar.core;
 import org.ajabshahar.platform.daos.WordDAO;
 import org.ajabshahar.platform.models.Word;
 
-import java.util.HashSet;
 import java.util.List;
 
 public class Words {
@@ -30,7 +29,7 @@ public class Words {
     }
 
     public Word update(Word word) {
-        Word originalWord = findBy((int) word.getId(), false).get(0);
+        Word originalWord = findBy((int) word.getId());
         originalWord = invokeSetters(originalWord, word);
         return wordRepository.update(originalWord);
     }
@@ -48,6 +47,7 @@ public class Words {
         originalWord.setWordIntroductions(updatableWord.getWordIntroductions());
         originalWord.setReflections(updatableWord.getReflections());
         originalWord.setWriters(updatableWord.getWriters());
+        originalWord.setScholars(updatableWord.getScholars());
         originalWord.getSongs().clear();
         originalWord.getSongs().addAll(updatableWord.getSongs());
         return originalWord;

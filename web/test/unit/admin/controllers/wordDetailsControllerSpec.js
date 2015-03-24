@@ -31,6 +31,21 @@ describe("Word details controller spec:", function() {
 		scope.formInfo.original = "data";
 	});
 
+    describe("When initializing a word", function(){
+       it("then should have scholars and writers", function(){
+           $httpBackend.when("GET", "/api/people").respond({"people": "somePerson"});
+           $httpBackend.when("GET", "/api/category/word").respond(null);
+           $httpBackend.when("GET", "/api/reflections/all").respond(null);
+           $httpBackend.when("GET", "/api/songs/getAllSongs").respond({"songs" : [{"englishTransliterationTitle": "some title", "singers": [] ,"words":{"words":[]}}]});
+
+           scope.init();
+           $httpBackend.flush();
+
+           expect(scope.writers).toBe("somePerson");
+           expect(scope.scholars).toBe("somePerson");
+       });
+    });
+
 	describe("When saving a word,", function() {
 		it("then should redirect to admin-home if saved successfully", function() {
 			$httpBackend.expectPOST('/api/words', scope.formInfo).respond(200);
@@ -82,7 +97,7 @@ describe("Word details controller spec:", function() {
 
 			expect(scope.formInfo.original).toBe('dummyOriginalText');
 		});
-		it("then should have singers as a comma seperated entries for a song", function() {
+		it("then should have singers as a comma separated entries for a song", function() {
 			var mockedSongs =  {"songs" : [ {"englishTransliterationTitle": "some title", "singers": [{"name": "singer1"}, {"name": "singer2"} ],"words":{"words":[]} } ,{"englishTransliterationTitle": "some title2", "singers": [{"name": "singer3"}, {"name": "singer4"} ],"words":{"words":[]}} ] } ;
 			$httpBackend.when("GET", "/api/category/word").respond(null);
 			$httpBackend.when("GET", "/api/reflections/all").respond(null);
@@ -95,7 +110,7 @@ describe("Word details controller spec:", function() {
 			expect(scope.songs[0].menuTitle).toBe('some title - (singer1, singer2)');
 			expect(scope.songs[1].menuTitle).toBe('some title2 - (singer3, singer4)');
 		});
-		it("then shouldn't have singers as a comma seperated entries for a song, if there are no singers", function() {
+		it("then shouldn't have singers as a comma separated entries for a song, if there are no singers", function() {
 			var mockedSongs =  {"songs" : [ {"englishTransliterationTitle": "some title", "singers": [] ,"words":{"words":[]}} ,{"englishTransliterationTitle": "some title2", "singers": [],"words":{"words":[]}} ] } ;
 			$httpBackend.when("GET", "/api/category/word").respond(null);
 			$httpBackend.when("GET", "/api/reflections/all").respond(null);
