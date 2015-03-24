@@ -13,8 +13,7 @@ node_modules/
 AjabShahar.iml
 AjabShahar.ipr
 AjabShahar.iws
-test.mv.db
-test.trace.db
+*.db
 dist
 **/ajabShahar.css
 web/app/common/lib
