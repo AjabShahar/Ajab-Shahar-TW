@@ -14,6 +14,45 @@
         left: 0;
     }
 
+     .slide-nav-list {
+        padding: 0;
+        text-align: left;
+        position: absolute;
+        left: 0px;
+        top: 0;
+        width: 200px;
+        background: transparent url('/user/img/songs/filter.png') right 0 repeat-y;
+        -webkit-transition: 1s ease;
+        -moz-transition: 2s ease -1s;
+        -o-transition: 2s ease -1s;
+        transition: 1s ease;
+
+        .filters {
+            &>li {
+                &>a {
+                    text-transform: lowercase;
+                }
+            }
+            .child-list {
+                margin: 10px 0;
+                 &>li {
+                    color: #878787;
+                    font-size: 12px;
+                    font-family: 'Merriweather Sans';
+                    text-transform: uppercase;
+                    margin: 0;
+                    &>a {
+                        color: #e62379;
+                        line-height: 15px;
+                        margin-left: 10px;
+                        font-weight: 700;
+                    }
+                 }
+            }
+        }
+     }
+
+
     .left-nav {
         /*float: left;
         text-align: center;*/
@@ -114,29 +153,6 @@
 
     }
 
-    .filters {
-        &>li {
-            &>a {
-                text-transform: lowercase;
-            }
-        }
-        .child-list {
-            margin: 10px 0;
-            &>li {
-                color: #878787;
-                font-size: 12px;
-                font-family: 'Merriweather Sans';
-                text-transform: uppercase;
-                margin: 0;
-                &>a {
-                    color: #e62379;
-                    line-height: 15px;
-                    margin-left: 10px;
-                    font-weight: 700;
-                }
-            }
-        }
-    }
 
     // .songs {
     //     margin-top: 0;

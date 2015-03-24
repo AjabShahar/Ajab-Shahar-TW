@@ -1,4 +1,3 @@
-<!doctype html>
 <html lang="en" ng-app="allSongsApp">
 <head>
     <meta charset="utf-8">
@@ -11,7 +10,7 @@
     <script type="text/javascript" src="/common/lib/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
     <script type="text/javascript" src="/user/js/common/directives/animation/animationModule.js"></script>
     <script type="text/javascript" src="/user/js/common/directives/animation/toggleBySlide.js"></script>
-    <!--<script type="text/javascript" src="/user/js/common/directives/animation/slideNavList.js"></script>-->
+    <script type="text/javascript" src="/user/js/common/directives/animation/slideNavList.js"></script>
     <script type="text/javascript" src="/user/js/common/modules/thumbnailModule.js"></script>
     <script type="text/javascript" src="/user/js/common/modules/PopupSupport.js"></script>
     <script type="text/javascript" src="/user/js/common/directives/songs/songThumbnail.js"></script>
@@ -60,7 +59,7 @@
 
         <div class="ajab-wrapper">
 
-            <song-filter songs="songs" song-count="songCount" expand-filter="expandFilter" on-clear-filter="clearFilters()" active-letter="activeLetter" poet-name-in-filter="poetNameInFilter" singer-name-in-filter="singerNameInFilter"></song-filter>
+            <song-filter songs="songs" song-count="songCount" ng-show="expandFilter" expand-filter="expandFilter" on-clear-filter="clearFilters()" active-letter="activeLetter" poet-name-in-filter="poetNameInFilter" singer-name-in-filter="singerNameInFilter"></song-filter>
             <div class='left-nav headerfixInner'>
                 <div class='nav-elements-wrapper'>
                     <h1 class='category-logo'>songs</h1>
