@@ -3,7 +3,7 @@ animationModule.animation('.slide-nav-list', function () {
     beforeAddClass: function (element, className, done) {
       if (className == 'ng-hide') {
         element.removeClass("show");
-        element.find(".collapse").addClass("expand");
+        $(".collapse").addClass("expand");
       }
       else {
              done();
@@ -12,7 +12,7 @@ animationModule.animation('.slide-nav-list', function () {
       beforeRemoveClass: function (element, className, done) {
         if (className == 'ng-hide') {
             element.addClass("show");
-            element.find(".collapse").removeClass("expand");
+            $(".collapse").removeClass("expand");
 
             var windowHeight = $(document).height();
             element.height(windowHeight);
