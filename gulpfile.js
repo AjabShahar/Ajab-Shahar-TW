@@ -69,7 +69,7 @@ gulp.task("test",["sass:compile"],function(){
         });
 });
 
-gulp.task("zip",["clean"],function(){
+gulp.task("zip",["clean", "sass:compile"],function(){
     return gulp.src('web/app/**')
         .pipe(zip('ajabshahar.zip'))
         .pipe(gulp.dest('dist'))
