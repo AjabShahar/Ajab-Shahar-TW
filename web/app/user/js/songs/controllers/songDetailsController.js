@@ -12,9 +12,9 @@ var songDetailsController = function($scope,$location,songsContentService,songMa
     $scope.songText = {"refrainOriginal":'',"refrainEnglishTranslation":'',"refrainEnglishTransliteration":'',songTextContents:[],openingCouplets:[]};
     $scope.song = {};
     $scope.poet = '';
-    $scope.englishTranslationVisible = true;
+    $scope.englishTranslationVisible = false;
     $scope.originalVisible = false;
-    $scope.englishTransliterationVisible = false;
+    $scope.englishTransliterationVisible = true;
 
     $scope.toggleVersion = function(){
         $scope.showVersion = !$scope.showVersion;
