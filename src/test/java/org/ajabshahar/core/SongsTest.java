@@ -7,10 +7,7 @@ import org.ajabshahar.platform.daos.CategoryDAO;
 import org.ajabshahar.platform.daos.SongTextDAO;
 import org.ajabshahar.platform.daos.SongDAO;
 import org.ajabshahar.platform.daos.TitleDAO;
-import org.ajabshahar.platform.models.Category;
-import org.ajabshahar.platform.models.Song;
-import org.ajabshahar.platform.models.Title;
-import org.ajabshahar.platform.models.Word;
+import org.ajabshahar.platform.models.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -78,10 +75,12 @@ public class SongsTest {
         updatedSong.setDuration("new duration");
         updatedSong.setIsAuthoringComplete(false);
         updatedSong.setId(SONG_ID);
+        updatedSong.setGathering(new Gathering());
         songs.update(updatedSong);
         assertEquals(song.getDuration(),updatedSong.getDuration());
         assertEquals(song.getId(),updatedSong.getId());
         assertEquals(song.getIsAuthoringComplete(),updatedSong.getIsAuthoringComplete());
+        assertEquals(song.getGathering(),updatedSong.getGathering());
     }
 
     @Test
@@ -120,7 +119,7 @@ public class SongsTest {
         song.setTitle(umbrellaTitle);
         when(songsRepository.saveSong(song)).thenReturn(song);
 
-        Song result = songs.save(song);
+        songs.save(song);
         verify(titleRepository).create(songTitle);
     }
 
@@ -133,7 +132,7 @@ public class SongsTest {
         when(songsRepository.saveSong(song)).thenReturn(song);
         when(categoryRepository.getUmbrellaTitleCategory()).thenReturn(new Category());
 
-        Song result = songs.save(song);
+        songs.save(song);
 
         verify(titleRepository, atLeast(2)).create(any(Title.class));
         assertNotNull(song.getTitle());
@@ -150,7 +149,7 @@ public class SongsTest {
         song.setSongTitle(songTitle);
         when(songsRepository.saveSong(song)).thenReturn(song);
 
-        Song result = songs.save(song);
+        songs.save(song);
 
         verify(titleRepository).create(umbrellaTitle);
         verify(titleRepository).create(songTitle);
@@ -166,7 +165,7 @@ public class SongsTest {
         when(songsRepository.saveSong(song)).thenReturn(song);
         when(categoryRepository.getUmbrellaTitleCategory()).thenReturn(new Category());
 
-        Song result = songs.save(song);
+        songs.save(song);
 
         verify(titleRepository).create(any(Title.class));
         assertNotNull(song.getTitle());

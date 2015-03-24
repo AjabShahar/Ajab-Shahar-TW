@@ -12,4 +12,3 @@ CREATE TABLE reflection
     CONSTRAINT speaker_id_fkey FOREIGN KEY(speaker_id)
       REFERENCES person(id) MATCH SIMPLE
 );
-

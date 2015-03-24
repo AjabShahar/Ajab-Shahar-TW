@@ -94,6 +94,9 @@ public class Song {
             inverseJoinColumns = {@JoinColumn(name = "WORD_ID")})
     private Set<Word> words;
 
+    @OneToOne(fetch = FetchType.EAGER)
+    private Gathering gathering;
+
     public void updateFrom(Song song) {
         Calendar calendar = Calendar.getInstance();
         Date now = calendar.getTime();
@@ -115,6 +118,7 @@ public class Song {
         this.songGenre = song.songGenre;
         this.words = song.words;
         this.soundCloudTrackID = song.soundCloudTrackID;
+        this.gathering = song.gathering;
 
         if (song.isAuthoringComplete) {
             this.publishedDate = new Timestamp(now.getTime());

@@ -18,6 +18,7 @@ function($scope, $window, $location, songContentService, PAGES, $filter, $q,logi
   $scope.songTitles = [];
   $scope.genres = [];
   $scope.words = [];
+  $scope.gatherings = [];
 
   var sortList = function(list, sortCriteria){
     return $filter('orderBy')(list, sortCriteria);
@@ -43,7 +44,9 @@ function($scope, $window, $location, songContentService, PAGES, $filter, $q,logi
     var singerPromise = songContentService.getSingers();
     var poetPromise = songContentService.getPoets();
     var wordPromise = songContentService.getWords();
-    var promises = [genrePromise,titlePromise,songCategoryPromise,mediaCategoryPromise,umbrellaTitlePromise,singerPromise,poetPromise,wordPromise];
+    var gatheringPromise = songContentService.getGatherings();
+
+    var promises = [genrePromise, titlePromise, songCategoryPromise, mediaCategoryPromise, umbrellaTitlePromise, singerPromise, poetPromise, wordPromise, gatheringPromise];
 
     $q.all(promises).then(function (data) {
         $scope.genres = data[0].data;
@@ -54,7 +57,7 @@ function($scope, $window, $location, songContentService, PAGES, $filter, $q,logi
         $scope.singers = removeNulls(data[5].data.people);
         $scope.poets = removeNulls(data[6].data.people);
         $scope.words = data[7].data.words;
-
+        $scope.gatherings = data[8].data;
         $scope.song.songCategory = $scope.songCategories[0];
 
         $scope.getSongData();

@@ -61,6 +61,26 @@ describe("Song details controller specs", function() {
 		});
 	});
 
+	describe("When initializing a song,", function() {
+		it("then should have list of gatherings", function() {
+			$httpBackend.when("GET", "/api/genres").respond(null);
+			$httpBackend.when("GET", "/api/title/song").respond(null);
+			$httpBackend.when("GET", "/api/category/song").respond([]);
+			$httpBackend.when("GET", "/api/category/media").respond(null);
+			$httpBackend.when("GET", "/api/title/umbrella").respond(null);
+			$httpBackend.when("GET", "/api/people?role=Singer").respond({"people": ""});
+			$httpBackend.when("GET", "/api/people?role=Poet").respond({"people": ""});
+			$httpBackend.when("GET", "/api/words").respond({"words": ""});
+			$httpBackend.when("GET", "/api/gatherings").respond(["someGathering"]);
+            $httpBackend.when("GET", "/api/songs/undefined").respond({"songGenre": ""});
+
+			scope.init();
+			$httpBackend.flush();
+
+			expect(scope.gatherings[0]).toBe("someGathering");
+		});		
+	});
+
 	describe("When updating a song", function() {
 		it("then should redirect to the admin homepage", function() {
 			$httpBackend.expectPOST('/api/songs/edit', scope.song).respond(200);
