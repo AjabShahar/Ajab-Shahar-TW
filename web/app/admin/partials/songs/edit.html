@@ -58,13 +58,13 @@
                                    show-error="song.isAuthoringComplete && isEmpty(song.poets[0])"></error-message>
                 </div>
 
-                <div class="row">
-                    <div class="form-group col-sm-2">
+                <div class="row form-group">
+                    <div class="col-sm-2">
                         <label>Gatherings</label>
                     </div>
-                    <div class="form-group col-sm-2">
-                        <select ng-model = "song.gathering.id"
-                                ng-options = "gathering.id as gathering.english for gathering in gatherings">
+                    <div class="col-sm-2">
+                        <select ng-model = "song.gathering"
+                                ng-options = "gathering.english for gathering in gatherings" class="form-control">
                         </select>
                     </div>
                 </div>
