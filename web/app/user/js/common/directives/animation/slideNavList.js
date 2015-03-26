@@ -4,6 +4,7 @@ animationModule.animation('.slide-nav-list', function () {
       if (className == 'ng-hide') {
         element.removeClass("show");
         $(".collapse").addClass("expand");
+        $('.headerArt').removeClass('stackDown');
       }
       else {
              done();
@@ -13,7 +14,7 @@ animationModule.animation('.slide-nav-list', function () {
         if (className == 'ng-hide') {
             element.addClass("show");
             $(".collapse").removeClass("expand");
-
+            $('.headerArt').addClass('stackDown');
             var windowHeight = $(document).height();
             element.height(windowHeight);
           }
