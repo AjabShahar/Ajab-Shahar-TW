@@ -1,44 +1,62 @@
 var Ajabshahar = Ajabshahar || {};
 Ajabshahar.user = Ajabshahar.user || {};
-Ajabshahar.user.FilterModel = function(filterCategoryNames){
+Ajabshahar.user.FilterModel = function (filterCriteria) {
     var self = {};
     self.selectedFilters = [];
 
-    var createFilterCategory = function(filterCategoryName){
-        return new Ajabshahar.user.FilterCategory(filterCategoryName);
-    }
-    self.filterCategories = filterCategoryNames.map(createFilterCategory);
+    self.filterCriteria = filterCriteria;
 
-    self.getSelectedFilters = function(){
-      return self.selectedFilters;
-    }
+    var substringAfter = function (text, fromChar) {
+        return text.indexOf(fromChar) >= 0 ? text.substring(text.indexOf(fromChar) + 1) : "";
+    };
 
-    self.removeFilter = function(filterItem){
-        var indexToRemove = -1;
-        for(var i=0;i<self.selectedFilters.length;i++){
-            if(_.isEqual(filterItem,self.selectedFilters[i])){
-                indexToRemove = i;
+    var substringUpto = function (text, char) {
+        return text.substring(0, text.indexOf(char));
+    };
+
+    var endsWith = function (text, char) {
+        return text.indexOf('[]') >= 0;
+    };
+
+    var matches = function (item, path, value) {
+        if(value === undefined) return true;
+        var pathIndexes = path.split(".");
+        var pathIndex = pathIndexes[0];
+        if (endsWith(pathIndex, '[]')) {                       // is array
+            pathIndex = substringUpto(pathIndex, '[]');
+            if (_.isArray(item[pathIndex])) {
+
+                return item[pathIndex].some(function (child) {
+                    //console.log("endswith",item[pathIndex],path,substringAfter(path, '.'));
+                    return matches(child, substringAfter(path, '.'), value);
+                })
+            }
+            return false;
+        }
+        else {                                               // is  object
+            if (pathIndexes.length > 1 && item[pathIndexes[0]]) {
+                return matches(item[pathIndexes[0]], substringAfter(path, '.'), value);
             }
         }
-        if(indexToRemove !=-1){
-            self.selectedFilters.splice(indexToRemove,1);
-        }
-    }
 
-    self.addFilter = function(filterItem){
-       self.selectedFilters.push(filterItem);
-    }
+        return path === "" ? item === value : item[path] === value;
+    };
 
-    self.getFilterItems = function(category){
+    self.filter = function (items) {
+        return items.filter(function (item) {
+            return self.filterCriteria.every(function (criteria) {
+                return  matches(item, criteria.name, criteria.value);
+            })
+        })
 
-    }
-
-    self.clearFilters = function(){
-
-    }
-
+    };
+    self.clearFilters = function () {
+        self.filterCriteria.forEach(function (criteria) {
+            criteria["value"] = undefined;
+        });
+    };
 
     return self;
 
-}
+};
 
