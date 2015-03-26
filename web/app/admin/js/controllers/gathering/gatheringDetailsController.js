@@ -23,14 +23,10 @@ var gatheringDetailsController = gatheringsAdminApp.controller('gatheringDetails
 		$window.location.href = '/admin/partials/home.html';
 	};
 
-	var isValidData = function(){
-		return ((Boolean($scope.formInfo.original)) && (Boolean($scope.formInfo.english)));
-	};
-
-    $scope.saveData = function(){
-    	if(isValidData())
+	$scope.saveData = function(){
+    	if((Boolean($scope.formInfo.english)))
     		gatheringContentService.saveGathering($scope.formInfo).success(redirectToAdminHome);
     	else
-    		$scope.alert = "Please fill in all the fields";
+    		$scope.alert = "English Title is mandatory";
     };
  }]);

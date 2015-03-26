@@ -25,9 +25,9 @@ describe("Gathering details controller specs", function(){
 		});
 	}));
 
-	describe("When saving a  gathering", function(){
+	describe("When saving a gathering", function(){
 		it("Then should redirect to admin-home if saved successfully", function(){
-			scope.formInfo.original = "data";
+			scope.formInfo.hindi = "data";
 			scope.formInfo.english = "data";
 			$httpBackend.expectPOST('/api/gatherings', scope.formInfo).respond(200);
 
@@ -36,16 +36,20 @@ describe("Gathering details controller specs", function(){
 
 			expect(fakeWindow.location.href).toBe('/admin/partials/home.html');
 		});
-		it("Then should have alert if fields are empty", function(){
+		it("Then should have alert if english title empty", function(){
+			scope.formInfo.hindi = "data";
 			scope.saveData();
 
-			expect(scope.alert).toBe('Please fill in all the fields');
+			expect(scope.alert).toBe('English Title is mandatory');
 		});
-		it("Then should not redirect if either of the fields are empty", function(){
-			scope.formInfo.original = "data";
-			scope.saveData();
+		it("Then should redirect if english title exist", function(){
+			scope.formInfo.english = "data";
+			$httpBackend.expectPOST('/api/gatherings', scope.formInfo).respond(200);
 
-			expect(fakeWindow.location.href).toBe('');
+			scope.saveData();
+			$httpBackend.flush();
+
+			expect(fakeWindow.location.href).toBe('/admin/partials/home.html');
 		});
 	});
 
@@ -53,7 +57,7 @@ describe("Gathering details controller specs", function(){
 		it("Then should set pageName to edit", function(){
 			var mockedId = 1;
 			spyOn($location, 'search').andReturn({ id: mockedId });
-			$httpBackend.when("GET", "/api/gatherings/1").respond({'id': 1, 'original': 'originalText', 'english': 'englishText'});
+			$httpBackend.when("GET", "/api/gatherings/1").respond({'id': 1, 'hindi': 'hindiText', 'english': 'englishText'});
 
 			scope.getGatheringData();
 			$httpBackend.flush();
@@ -63,12 +67,12 @@ describe("Gathering details controller specs", function(){
 		it("Then should have the filled form values", function(){
 			var mockedId = 1;
 			spyOn($location, 'search').andReturn({ id: mockedId });
-			$httpBackend.when("GET", "/api/gatherings/1").respond({'id': 1, 'original': 'originalText', 'english': 'englishText'});
+			$httpBackend.when("GET", "/api/gatherings/1").respond({'id': 1, 'hindi': 'hindiText', 'english': 'englishText'});
 
 			scope.getGatheringData();
 			$httpBackend.flush();
 
-			expect(scope.formInfo.original).toBe('originalText');
+			expect(scope.formInfo.hindi).toBe('hindiText');
 			expect(scope.formInfo.english).toBe('englishText');
 		});
 	});
@@ -82,7 +86,7 @@ describe("Gathering details controller specs", function(){
 		it("Then should not have filled form values", function(){
 			scope.getGatheringData();
 
-			expect(scope.formInfo.original).toBe(undefined);
+			expect(scope.formInfo.hindi).toBe(undefined);
 			expect(scope.formInfo.english).toBe(undefined);
 		});
 	});

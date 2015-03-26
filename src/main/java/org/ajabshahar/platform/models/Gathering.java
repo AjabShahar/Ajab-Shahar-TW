@@ -15,8 +15,8 @@ public class Gathering {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "original_text", nullable = false)
-    private String original;
+    @Column(name = "hindi_text", nullable = true)
+    private String hindi;
 
     @Column(name = "english_text", nullable = false)
     private String english;
@@ -29,12 +29,12 @@ public class Gathering {
         this.id = id;
     }
 
-    public String getOriginal() {
-        return original;
+    public String getHindi() {
+        return hindi;
     }
 
-    public void setOriginal(String originalText) {
-        this.original = originalText;
+    public void setHindi(String hindiText) {
+        this.hindi = hindiText;
     }
 
     public String getEnglish() {
