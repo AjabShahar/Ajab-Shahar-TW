@@ -35,7 +35,7 @@ var wordDetailsController = function($scope, $location, wordMapper,popupService,
                 $scope.currentReflection = reflection;
         });
 
-    }
+    };
 
     $scope.openWord = function(id){
        $scope.showWord = true;
@@ -45,19 +45,15 @@ var wordDetailsController = function($scope, $location, wordMapper,popupService,
               $scope.currentWord = word;
         });
 
-    }
+    };
 
     $scope.toggleVersion = function(){
        $scope.showVersion = !$scope.showVersion;
-    }
+    };
 
     $scope.shouldShowReflections = function(){
-       if($scope.wordReflections.reflections.length > 0)
-          return true;
-       return false;
-    }
-
-
-}
+       return $scope.wordReflections.reflections.length > 0;
+    };
+};
 
 wordDetailsApp.controller('wordDetailsController',['$scope','$location','wordMapper','popupService','reflectionMapper','wordService',wordDetailsController]);

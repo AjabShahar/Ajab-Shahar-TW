@@ -79,26 +79,14 @@
                             <label>Is Root Word ?</label>
                         </div>
                         <div class="form-group col-sm-2">
-                            <select name="format" ng-model="formInfo.isRootWord" class="form-control" ng-init="formInfo.isRootWord = formInfo.isRootWord || false">
+                            <select name="format" ng-model="formInfo.isRootWord" class="form-control" ng-init="formInfo.isRootWord = false">
                                 <option value="true">Yes</option>
                                 <option value="false">No</option>
                             </select>
                         </div>
                     </div>
 
-                    <div class="row" ng-show="formInfo.isRootWord">
-                        <div class="form-group col-sm-2">
-                            <label>Is there a Word Intro ?</label>
-                        </div>
-                        <div class="form-group col-sm-2">
-                            <select name="format" ng-model="wordIntro" class="form-control" ng-init="wordIntro = wordIntro || false">
-                                <option value="true">Yes</option>
-                                <option value="false">No</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="row" ng-show = "formInfo.isRootWord ==='true' && wordIntro ==='true'">
+                    <div class="row">
                         <div class="form-group col-sm-2">
                             <label>Word Intro Excerpt (English)</label>
                         </div>
@@ -107,7 +95,7 @@
                         </div>
                     </div>
 
-                    <div class="row" ng-show="formInfo.isRootWord ==='true' && wordIntro ==='true' ">
+                    <div class="row">
                         <div class="form-group col-sm-2">
                             <label>Word Intro Excerpt (Hindi)</label>
                         </div>
@@ -116,14 +104,14 @@
                         </div>
                     </div>
 
-                    <div class="row form-group" ng-show="formInfo.isRootWord ==='true' && wordIntro ==='true'">
+                    <div class="row form-group">
                         <div class="col-sm-2">
                             <label>Writer</label>
                         </div>
                         <div class="col-sm-2" multi-select input-model="writers" button-label="firstName lastName" item-label="firstName lastName" tick-property="selected" output-model="formInfo.writers"></div>
                     </div>
 
-                    <div class="row" ng-show="formInfo.isRootWord ==='true' && wordIntro ==='true'">
+                    <div class="row">
                         <div class="form-group col-sm-2">
                             <label>Show On LandingPage</label>
                         </div>
@@ -135,14 +123,14 @@
                         </div>
                     </div>
 
-                    <div class="row form-group" ng-show="formInfo.isRootWord ==='true' && wordIntro ==='true'">
+                    <div class="row form-group">
                         <div class="col-sm-2">
                             <label>Scholar</label>
                         </div>
                         <div class="col-sm-2" multi-select input-model="scholars" button-label="firstName lastName" item-label="firstName lastName" tick-property="selected" output-model="formInfo.scholars"></div>
                     </div>
 
-                    <admin-word-introduction word-introduction="{{formInfo.wordIntroduction}}" word-introductions="formInfo.wordIntroductions" ng-show="formInfo.isRootWord ==='true' && wordIntro ==='true'"></admin-word-introduction>
+                    <admin-word-introduction word-introduction="{{formInfo.wordIntroduction}}" word-introductions="formInfo.wordIntroductions"></admin-word-introduction>
 
                     <div>
                       <button type="submit" ng-click="saveData()" class="btn btn-primary btn-lg">Save</button>
