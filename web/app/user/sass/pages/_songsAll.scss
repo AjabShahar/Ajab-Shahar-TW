@@ -24,8 +24,13 @@
         background: transparent url('/user/img/songs/parda180px.png') right 0 repeat;
         background-size: 100% 100%;
         z-index: $zIndex-allsongs-filter;
-        -webkit-animation: slide 0.5s forwards;
-        animation: slide 0.5s forwards;
+        -webkit-animation: pardah1-slideRight 0.5s forwards;
+        animation: pardah1-slideRight 0.5s forwards;
+
+        &.ng-hide {
+                    -webkit-animation: pardah1-slideLeft 0.5s forwards;
+                    animation: pardah1-slideLeft 0.5s forwards;
+        }
 
 
         .filters {
@@ -110,8 +115,8 @@
             z-index: -1;
             background-attachment: scroll;
             background-size: 100% 100%;
-            -webkit-animation: slide2 0.5s forwards;
-                    animation: slide2 0.5s forwards;
+            -webkit-animation: pardah2-slideRight 0.5s forwards;
+                    animation: pardah2-slideRight 0.5s forwards;
 
         }
         position: absolute;
@@ -127,6 +132,13 @@
         font-size: 12px;
         box-sizing: border-box;
 
+        &.ng-hide {
+            -webkit-animation: pardah2-slideLeft 0.5s forwards;
+            -moz-animation: pardah2-slideLeft 0.5s forwards;
+            -ms-animation: pardah2-slideLeft 0.5s forwards;
+            animation: pardah2-slideLeft 0.5s forwards;
+        }
+        /*display: none;*/
 
         &>ul {
             height: 100%;
@@ -181,23 +193,42 @@
     // }
 
 
+
 }
 
-@-webkit-keyframes slide {
+@-webkit-keyframes pardah1-slideRight {
     100% { left: 0; }
 }
 
-@keyframes slide {
+@keyframes pardah1-slideRight {
     100% { left: 0; }
 }
 
-@-webkit-keyframes slide2 {
+@-webkit-keyframes pardah1-slideLeft {
+    100% { left: -200px; }
+}
+
+@keyframes pardah1-slideLeft {
+    100% { left: -200px; }
+}
+
+
+
+@-webkit-keyframes pardah2-slideRight {
     0% {left: -250px;}
     100% { left: 0px; }
 }
 
-@keyframes slide2 {
+@keyframes pardah2-slideRight {
     0% {left: -250px;}
     100% { left: 0px; }
+}
+
+@-webkit-keyframes pardah2-slideLeft {
+    100% { left: -250px; }
+}
+
+@keyframes pardah2-slideLeft {
+    100% { left: -250px; }
 }
 
