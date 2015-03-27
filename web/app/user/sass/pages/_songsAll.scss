@@ -18,17 +18,15 @@
         padding: 0;
         text-align: center;
         position: absolute;
-        left: 0px;
+        left: -250px;
         top: 0;
         width: 250px;
-
         background: transparent url('/user/img/songs/parda180px.png') right 0 repeat;
-        -webkit-transition: 1s ease;
-        -moz-transition: 2s ease -1s;
-        -o-transition: 2s ease -1s;
-        transition: 1s ease;
-        background-size: cover;
+        background-size: 100% 100%;
         z-index: $zIndex-allsongs-filter;
+        -webkit-animation: slide 0.5s forwards;
+            animation: slide 0.5s forwards;
+
 
         .filters {
             margin-top: 200px;
@@ -125,18 +123,6 @@
         font-size: 12px;
         box-sizing: border-box;
         overflow-y: scroll;
-        -webkit-animation: slideIn 4s ease-in-out -2s;
-        -moz-animation: slideIn 4s ease-in-out -2s;
-        -ms-animation: slideIn 4s ease-in-out -2s;
-        animation: slideIn 4s ease-in-out -2s;
-
-        &.ng-hide {
-            -webkit-animation: slideOut 4s ease-in-out -2s;
-            -moz-animation: slideOut 4s ease-in-out -2s;
-            -ms-animation: slideOut 4s ease-in-out -2s;
-            animation: slideOut 4s ease-in-out -2s;
-        }
-        /*display: none;*/
 
         &>ul {
             height: 100%;
@@ -193,40 +179,11 @@
 
 }
 
-@keyframes slideIn {
-    0% { margin-left: -100%;}
-    100% { margin-left: 0%}
-
-}
-@-webkit-keyframes slideIn {
-    0% { margin-left: -100%;}
-    100% { margin-left: 0%}
-
-}
-@-moz-keyframes slideIn {
-     0% { margin-left: -100%;}
-     100% { margin-left: 0%}
-
-}
-@-ms-keyframes slideIn {
-     0% { margin-left: -100%;}
-     100% { margin-left: 0%}
-
- }
-@keyframes slideOut {
-    0% { margin-left: 0%;}
-    100% { margin-left: -100%}
-}
-@-webkit-keyframes slideOut {
-    0% { margin-left: 0%;}
-    100% { margin-left: -100%}
+@-webkit-keyframes slide {
+    100% { left: 0; }
 }
 
-@-moz-keyframes slideOut {
-     0% { margin-left: 0%;}
-     100% { margin-left: -100%}
- }
- @-ms-keyframes slideOut {
-      0% { margin-left: 0%;}
-      100% { margin-left: -100%}
-  }
+@keyframes slide {
+    100% { left: 0; }
+}
+
