@@ -26,37 +26,10 @@
 
                     <div class="row">
                         <div class="form-group col-sm-2">
-                            <label>Word Translation</label>
-                        </div>
-                        <div class="form-group col-sm-2">
-                            <input type="text" name="word" ng-model="formInfo.wordTranslation" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group col-sm-2">
                             <label>Word Transliteration</label>
                         </div>
                         <div class="form-group col-sm-2">
                             <input type="text" name="word" ng-model="formInfo.wordTransliteration" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group col-sm-2">
-                            <label>Intro Excerpt (English)</label>
-                        </div>
-                        <div class="form-group col-sm-2">
-                            <input type="text" name="translation" ng-model="formInfo.englishIntroExcerpt" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group col-sm-2">
-                            <label>Intro Excerpt (Hindi)</label>
-                        </div>
-                        <div class="form-group col-sm-2">
-                            <input type="text" name="translation" ng-model="formInfo.hindiIntroExcerpt" class="form-control">
                         </div>
                     </div>
 
@@ -71,25 +44,19 @@
 
                     <div class="row">
                         <div class="form-group col-sm-2">
-                            <label>Is Root Word</label>
+                            <label>Word Translation</label>
                         </div>
                         <div class="form-group col-sm-2">
-                            <select name="format" ng-model="formInfo.isRootWord" class="form-control" ng-init="formInfo.isRootWord = formInfo.isRootWord || false">
-                                <option value="true">Yes</option>
-                                <option value="false">No</option>
-                            </select>
+                            <input type="text" name="word" ng-model="formInfo.wordTranslation" class="form-control">
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="form-group col-sm-2">
-                            <label>Show On LandingPage</label>
+                    <div class="row form-group ">
+                        <div class="col-sm-2">
+                            <label>Meaning</label>
                         </div>
-                        <div class="form-group col-sm-2">
-                            <select name="format" ng-model="formInfo.showOnLandingPage" class="form-control" ng-init="formInfo.showOnLandingPage = formInfo.showOnLandingPage || false">
-                                <option value="true">Yes</option>
-                                <option value="false">No</option>
-                            </select>
+                        <div class="col-sm-8">
+                            <text-angular name="htmlcontent" ng-model="formInfo.meaning"></text-angular>
                         </div>
                     </div>
 
@@ -102,35 +69,80 @@
 
                     <div class="row">
                         <div class="form-group col-sm-2">
-                            <label>Reflections</label>
+                            <label>Related Reflections</label>
                         </div>
                         <div class="form-group col-sm-6 rowWiseSelect" multi-select input-model="reflections" button-label="title" item-label="title" tick-property="selected" output-model="formInfo.reflections"></div>
                     </div>
 
-                    <div class="row form-group">
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label>Is Root Word ?</label>
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <select name="format" ng-model="formInfo.isRootWord" class="form-control" ng-init="formInfo.isRootWord = formInfo.isRootWord || false">
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row" ng-show="formInfo.isRootWord">
+                        <div class="form-group col-sm-2">
+                            <label>Is there a Word Intro ?</label>
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <select name="format" ng-model="wordIntro" class="form-control" ng-init="wordIntro = wordIntro || false">
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row" ng-show = "formInfo.isRootWord ==='true' && wordIntro ==='true'">
+                        <div class="form-group col-sm-2">
+                            <label>Word Intro Excerpt (English)</label>
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <input type="text" name="translation" ng-model="formInfo.englishIntroExcerpt" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row" ng-show="formInfo.isRootWord ==='true' && wordIntro ==='true' ">
+                        <div class="form-group col-sm-2">
+                            <label>Word Intro Excerpt (Hindi)</label>
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <input type="text" name="translation" ng-model="formInfo.hindiIntroExcerpt" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row form-group" ng-show="formInfo.isRootWord ==='true' && wordIntro ==='true'">
                         <div class="col-sm-2">
                             <label>Writer</label>
                         </div>
                         <div class="col-sm-2" multi-select input-model="writers" button-label="firstName lastName" item-label="firstName lastName" tick-property="selected" output-model="formInfo.writers"></div>
                     </div>
 
-                    <div class="row form-group">
+                    <div class="row" ng-show="formInfo.isRootWord ==='true' && wordIntro ==='true'">
+                        <div class="form-group col-sm-2">
+                            <label>Show On LandingPage</label>
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <select name="format" ng-model="formInfo.showOnLandingPage" class="form-control" ng-init="formInfo.showOnLandingPage = formInfo.showOnLandingPage || false">
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row form-group" ng-show="formInfo.isRootWord ==='true' && wordIntro ==='true'">
                         <div class="col-sm-2">
                             <label>Scholar</label>
                         </div>
                         <div class="col-sm-2" multi-select input-model="scholars" button-label="firstName lastName" item-label="firstName lastName" tick-property="selected" output-model="formInfo.scholars"></div>
                     </div>
 
-                    <div class="row form-group ">
-                        <div class="col-sm-2">
-                            <label>Meaning</label>
-                        </div>
-                        <div class="col-sm-8">
-                            <text-angular name="htmlcontent" ng-model="formInfo.meaning"></text-angular>
-                        </div>
-                    </div>
-
-                    <admin-word-introduction word-introduction="{{formInfo.wordIntroduction}}" word-introductions="formInfo.wordIntroductions"></admin-word-introduction>
+                    <admin-word-introduction word-introduction="{{formInfo.wordIntroduction}}" word-introductions="formInfo.wordIntroductions" ng-show="formInfo.isRootWord ==='true' && wordIntro ==='true'"></admin-word-introduction>
 
                     <div>
                       <button type="submit" ng-click="saveData()" class="btn btn-primary btn-lg">Save</button>
