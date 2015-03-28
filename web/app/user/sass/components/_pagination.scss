@@ -12,8 +12,8 @@ Todo: 768px of chrome and all resolutions with mozilla, styles need to be revisi
 
 .pagination-head {
     display: inline-block;
-    width: 78%;
-    padding: 0% 0 2%;
+    width: 83%;
+    padding: 0% 0 3% 2%;
     margin-top:86px;
     margin-left:30px;
 
@@ -57,7 +57,7 @@ Todo: 768px of chrome and all resolutions with mozilla, styles need to be revisi
         }
 
         .numeric-count {
-            float: left;
+            float: right;
             line-height: 12px;
             font-weight: 300;
             font-size: 14px;
@@ -126,7 +126,7 @@ Todo: 768px of chrome and all resolutions with mozilla, styles need to be revisi
             width: 100%;
             li {
                 float: left;
-                width: 3.8%;
+                width: 3.7%;
                 text-align: center;
                 a {
                     color: #888;

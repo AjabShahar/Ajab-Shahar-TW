@@ -12,6 +12,7 @@ filterModule.directive("asTitle", function() {
         controller: function($scope,$rootScope) {
             $scope.contentTextRepresentation = 'Transliteration';
             $scope.alphabetFilters = [
+                {alphabet:'ALL',isSelected:true},
                 {alphabet:'A',isSelected:false},
                 {alphabet:'B',isSelected:false},
                 {alphabet:'C',isSelected:false},
