@@ -2,24 +2,23 @@
     <ul class='filters'>
         <li class='head'>Filter by</li>
         <li>
-            <a ng-click="toggleSingers()" ng-class="shouldShowSingers ? 'active' : ''">singer</a>
+            <a ng-click="toggleSingers()" ng-class="shouldShowSingers ? 'active' : 'disable'">singer</a>
             <ul class="child-list">
                 <li ng-hide="singerNameInFilter==''|| singerNameInFilter.name==''">{{singerNameInFilter.name}}<a ng-click="removeSingerFilter()">x</a></li>
             </ul>
         </li>
 
         <li>
-            <a ng-click="togglePoets()" ng-class="shouldShowPoets ? 'active' : ''">Poet</a>
+            <a ng-click="togglePoets()" ng-class="shouldShowPoets ? 'active' : 'disable'">Poet</a>
             <ul class="child-list">
                 <li ng-hide="poetNameInFilter==''|| poetNameInFilter.name==''">{{poetNameInFilter.name}}<a ng-click="removePoetFilter()">x</a></li>
             </ul>
         </li>
 
         <li><a>Word</a></li>
-        <li><a>Genre</a></li>
         <li><a>Gathering</a></li>
-        <li><a>Place</a></li>
-        <li><a ng-click="clearFilters()">All</a></li>
+        <li class="resetImage"> <img src="/user/img/songs/resetline.png" width="200" /> </li>
+        <li ><a ng-click="clearFilters()" >Reset</a></li>
     </ul>
 
     <div class="second-layer-list" ng-show="shouldShowSingers">
