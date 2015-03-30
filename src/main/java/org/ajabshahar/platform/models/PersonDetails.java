@@ -43,6 +43,10 @@ public class PersonDetails {
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> category;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "PRIMARY_OCCUPATION")
+    private Category primaryOccupation;
+
     public String getFirstName() {
         return firstName;
     }
@@ -113,5 +117,13 @@ public class PersonDetails {
 
     public String getHindiName() {
         return format("%s %2s %3s", Strings.nullToEmpty(getFirstNameInHindi()), Strings.nullToEmpty(getMiddleNameInHindi()), Strings.nullToEmpty(getLastNameInHindi())).replaceAll("\\s+", " ").trim();
+    }
+
+    public Category getPrimaryOccupation() {
+        return primaryOccupation;
+    }
+
+    public void setPrimaryOccupation(Category primaryOccupation) {
+        this.primaryOccupation = primaryOccupation;
     }
 }

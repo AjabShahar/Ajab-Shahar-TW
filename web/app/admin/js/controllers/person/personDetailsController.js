@@ -26,6 +26,9 @@ personAdminApp.controller('personDetailsController', ['$scope', '$http', '$windo
   };
 
   $scope.saveData = function(){
+    if($scope.formInfo.primaryOccupationId != $scope.formInfo.primaryOccupation.id)
+        $scope.formInfo.primaryOccupation = _.findWhere($scope.categoryList,{"id":$scope.formInfo.primaryOccupationId});
+
     (isAddNewPersonPage) ? savePerson() : updatePerson();
   };
 
@@ -38,6 +41,8 @@ personAdminApp.controller('personDetailsController', ['$scope', '$http', '$windo
             ( selectedCategoryName == category.name ) ? category.ticked = true : category.ticked = false;
           });
         });
+
+        $scope.formInfo.primaryOccupationId = Boolean($scope.formInfo.primaryOccupation!=null)? $scope.formInfo.primaryOccupation.id : '';
     });
   };
 

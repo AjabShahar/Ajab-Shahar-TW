@@ -53,6 +53,7 @@ public class PersonDAO extends AbstractDAO<PersonDetails> {
     }
 
     private PersonDetails invokeAllSetters(PersonDetails originalPersonData, PersonDetails updatablePerson) {
+        originalPersonData.setPrimaryOccupation(updatablePerson.getPrimaryOccupation());
         originalPersonData.setCategory(updatablePerson.getCategory());
         originalPersonData.setFirstName(updatablePerson.getFirstName());
         originalPersonData.setLastName(updatablePerson.getLastName());

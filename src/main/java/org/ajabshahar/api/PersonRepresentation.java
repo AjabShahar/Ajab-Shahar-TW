@@ -1,5 +1,7 @@
 package org.ajabshahar.api;
 
+import org.ajabshahar.platform.models.Category;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +17,9 @@ public class PersonRepresentation {
     private String middleNameInHindi;
     private String lastNameInHindi;
     private List<String> roles;
+    private Category primaryOccupation;
 
-    public PersonRepresentation(long id, String firstName, String middleName, String lastName, String firstNameInHindi, String middleNameInHindi, String lastNameInHindi, List<String> roles) {
+    public PersonRepresentation(long id, String firstName, String middleName, String lastName, String firstNameInHindi, String middleNameInHindi, String lastNameInHindi, List<String> roles, Category primaryOccupation) {
         this.id = id;
         this.firstNameInHindi = firstNameInHindi;
         this.middleNameInHindi = middleNameInHindi;
@@ -26,6 +29,7 @@ public class PersonRepresentation {
         this.middleName = middleName;
         this.lastName = lastName;
         this.roles = roles;
+        this.primaryOccupation = primaryOccupation;
     }
 
     public String getFirstName() {
@@ -63,5 +67,13 @@ public class PersonRepresentation {
 
     public String getLastNameInHindi() {
         return lastNameInHindi;
+    }
+
+    public Category getPrimaryOccupation() {
+        return primaryOccupation;
+    }
+
+    public void setPrimaryOccupation(Category primaryOccupation) {
+        this.primaryOccupation = primaryOccupation;
     }
 }
