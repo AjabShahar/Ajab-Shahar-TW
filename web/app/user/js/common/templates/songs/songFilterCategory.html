@@ -1,0 +1,8 @@
+<ul class='filters'>
+    <li class='head'>Filter by</li>
+    <li ng-repeat="criteria in criteriaList">
+        <div ng-click="criteriaClicked(criteria)">{{criteria.displayName}}</div>
+        <div ng-show="criteria.value" ng-click="criteriaRemoved(criteria)">{{criteria.value}}</div>
+    </li>
+    <li><a ng-click="resetFilters()">reset all</a></li>
+</ul>
