@@ -2,37 +2,9 @@ describe("Filter model", function () {
 
     var filter;
     beforeEach(inject(function () {
-        filter = new Ajabshahar.user.FilterModel();
+        filter = new Ajabshahar.user.Sieve();
 
     }));
-
-
-    xit("should add filter item", function () {
-        var items = [];
-        items.push(new Ajabshahar.user.FilterItem(["parvati"], "singer", 1));
-        items.push(new Ajabshahar.user.FilterItem(["jaagna"], "word", 2));
-
-        filter.addFilter(items[0]);
-        filter.addFilter(items[1]);
-
-        expect(filter.getSelectedFilters().length).toBe(2);
-        expect(filter.getSelectedFilters()[0].names[0]).toBe("parvati");
-        expect(filter.getSelectedFilters()[1].names[0]).toBe("jaagna");
-    });
-
-    xit("should remove filter item", function () {
-        var items = [];
-        items.push(new Ajabshahar.user.FilterItem(["parvati"], "singer", 1));
-        items.push(new Ajabshahar.user.FilterItem(["jaagna"], "word", 2));
-
-        filter.addFilter(items[0]);
-        filter.addFilter(items[1]);
-
-        filter.removeFilter(items[1]);
-
-        expect(filter.getSelectedFilters().length).toBe(1);
-
-    });
 
     function createSong(title,gathering,singers,words){
         return {
@@ -208,54 +180,32 @@ describe("Filter model", function () {
         expect(result.length).toBe(3);
     });
 
+    it("should be able to remove a particular filter",function(){
+        var filterCriteria = [{
+            name:"gathering",
+            value:"rajasthan"
+        },{
+            name:"singers[].name",
+            value:"parvati"
+        }];
 
-    xit("test object recursion",function(){
-       var titlePath = "song.title.name";
+        filter.filterCriteria = filterCriteria;
+        var songs =[
+            createSong("kichchu din mone","rajasthan",[{name:"parvati"}],[{english:"moon",translit:"chand"}]),
+            createSong("bhajan ro gudak ra jao","delhi",[{name:"laxmi","occupation":["poet","writer"]}],[{english:"sun",translit:"suraj"}]),
+            createSong("nit khair","rajasthan",[{name:"guy","occupation":["poet","dancer"]}],[{english:"moon",translit:"chand"},{english:"sun",translit:"suraj"}])
+        ];
 
-        var item = {
-            song:{
-                title:{
-                    name:"nice"
-                },
-                singer:"mukhtiyar"
-            },
-            words:[
-                {
-                    name:"jaagna",
-                    people:[{
-                        name:"roy"
-                    }]
-                }
-            ]
-        };
+        var result = filter.filter(songs);
+        expect(result.length).toBe(1);
 
-        var value = traverse(item,titlePath);
+        filter.removeFilterCriteria("singers[].name");
+        result = filter.filter(songs);
+        expect(result.length).toBe(2);
 
-        function traverse (item,path){
-            var pathIndexes = path.split(".");
-            var pathIndex = pathIndexes[0];
-            if(pathIndex.indexOf('[]')>0){
-                pathIndex = pathIndex.substring(0,pathIndex.indexOf('['));
-                return item[pathIndex].map(function(child){
-                    var result =traverse(child,path.substring(path.indexOf('.')+1))
-                    console.log(result);
-                    return result;
-                })
-            }
-            else{
-                if(pathIndexes.length>1 && item[pathIndexes[0]]){
-                    return traverse(item[pathIndexes[0]], path.substring(path.indexOf('.')+1))
-                }
-            }
-            return item[pathIndexes[0]];
-        }
-        expect(value).toBe("nice");
-
-        var wordPath = "words[].name";
-        value = traverse(item,wordPath);
-        expect(value[0]).toBe("jaagna");
-
-    })
-
+        filter.removeFilterCriteria("gathering");
+        result = filter.filter(songs);
+        expect(result.length).toBe(3);
+    });
 
 });
