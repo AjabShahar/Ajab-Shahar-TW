@@ -1,30 +1,66 @@
 var allSongsController = function($scope,$window,songsContentService,songMapper){
-    $scope.songs=[];
-    $scope.allSongs = null;
-    $scope.totalFilteredSongs = 0;
+    var songs=[];
+    $scope.filteredSongList=[];
+    //$scope.allSongs = null;
+    //$scope.totalFilteredSongs = 0;
+/*
     $scope.detailsService = {open:function(id){
 //                                          var songId = $scope.getSongId(id);
                                           $window.location.href = '/user/partials/songs/details.html?id='+id;
                                       }};
+*/
     $scope.activeLetter = '';
     $scope.scrollIndex = 12;
-    $scope.singerNameInFilter = {id:-1};
-    $scope.poetNameInFilter = {id:-1};
+    //$scope.singerNameInFilter = {id:-1};
+    //$scope.poetNameInFilter = {id:-1};
     $scope.songCount = 0;
-    $scope.songsList = [];
     $scope.expandFilter = false;
+    $scope.filterItems =[];
+    var filterCategoryClicked = {};
+    $scope.openSecondParda = false;
+    //------------------
+
+    $scope.criteriaList = Ajabshahar.user.SongFilterConfig.filterCategories;
+    var filterItemsLoaderConfig = Ajabshahar.user.SongFilterConfig.filterItemsLoader;
+    var sieve = new Ajabshahar.user.Sieve($scope.criteriaList);
+
+    $scope.filterCategoryClicked = function(criteria){
+        var methodToCall = filterItemsLoaderConfig[criteria.displayName];
+        $scope.filterItems =songsContentService[methodToCall]($scope.filteredSongList);
+        filterCategoryClicked = criteria;
+        $scope.openSecondParda = true;
+    };
+
+    $scope.removeFilterCriteria = function(criteria){
+        sieve.removeFilterCriteria(criteria.name);
+        $scope.filteredSongList = sieve.filter(songs)
+    };
+
+    $scope.clearAllFilters = function(){
+        sieve.clearFilters();
+        $scope.filteredSongList=songs;
+    };
+
+    $scope.filterItemSelected = function(filterValue){
+        sieve.setFilterCriteria(filterCategoryClicked.name,filterValue);
+        $scope.filteredSongList = sieve.filter(songs);
+        console.log($scope.filteredSongList);
+    };
+
+
     var i = 0;
 
     $scope.toggleExpandFilter = function(){
         $scope.expandFilter = !$scope.expandFilter;
-    }
+    };
 
     $scope.getAllSongs = function(){
         songsContentService.getAllSongs().then(function(songsList){
-            $scope.songs = songMapper.getThumbnails(songsList.data.songs);
+            songs = songMapper.getThumbnails(songsList.data.songs);
+            $scope.filteredSongList = songs || [];
             $scope.songCount = songsList.data.songs.length;
         });
-    }
+    };
 
     $scope.songStartsWithComparator = function (actual, expected) {
        if (!$scope.activeLetter && $scope.activeLetter=='') {
@@ -34,10 +70,15 @@ var allSongsController = function($scope,$window,songsContentService,songMapper)
     };
 
     $scope.loadSongFromRange = function(){
-        if($scope.scrollIndex>$scope.songs.length)
+        if($scope.scrollIndex>$scope.filteredSongList.length)
             return;
         $scope.scrollIndex += 12;
-    }
+    };
+
+    $scope.navigateToSong = function(id){
+        $window.location.href = '/user/partials/songs/details.html?id='+id;
+    };
+
     $scope.getAllSongs();
 };
 
