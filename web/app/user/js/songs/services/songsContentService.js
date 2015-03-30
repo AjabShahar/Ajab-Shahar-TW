@@ -15,15 +15,42 @@ var songsContentService = function ($http) {
 
     var getSongsInRangeAndFilteredBy = function(startIndex, letter){
         return $http.get('/api/songs/getPublishedSongs?startFrom=' + startIndex + "&filteredLetter=" + letter);
-    }
+    };
 
     var getSongsStartingWith = function(letter){
         return $http.get('/api/songs/count/startingWith?letter=' + letter);
-    }
+    };
 
     var getSong = function (id) {
         return $http.get('/api/songs/getPublishedSongs/'+id);
-    }
+    };
+
+    //var wordSeen = function(word,wordsList){
+    //    return _.some(wordsList,function(wordInList){
+    //        return wordInList[0] === word.translation;
+    //    })
+    //};
+
+    var getWordsIn = function(songs){
+        var wordsDictionary = {};
+        if(!_.isEmpty(songs)){
+            _.reduce(songs,function(wordsDictionary,song){
+                //console.log(song.words);
+                if(!_.isEmpty(song.words)){
+                    song.words.forEach(function(word){
+                        wordsDictionary[word.id] =[word.transliteration,word.translation];
+                    })
+                }
+                return wordsDictionary;
+            },wordsDictionary )
+        }
+        return _.values(wordsDictionary);
+    };
+
+    var getGatheringsIn = function(){
+
+    };
+
 
     return {
         getAllSongs: getAllSongs,
@@ -31,6 +58,7 @@ var songsContentService = function ($http) {
         getSongRenditions:getSongRenditions,
         getSongsInRangeAndFilteredBy:getSongsInRangeAndFilteredBy,
         getSongsStartingWith:getSongsStartingWith,
-        getSong: getSong
+        getSong: getSong,
+        getWordsIn:getWordsIn
     };
 };

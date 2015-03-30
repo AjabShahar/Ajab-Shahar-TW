@@ -17,22 +17,21 @@ thumbnailModule.factory('songMapper',['wordMapper',function(wordMapper){
 
     getThumbnails = function(songs,customStyle) {
         return _.reduce(songs,function(thumbnails, song,index) {
-            thumbnails.push({"id":song.id,
-            "contentId":'song_'+song.id,
-            "isSong":true,
-            "englishTranslation":song.englishTranslationTitle,
-            "customStyle": (customStyle)? customStyle():'',
-            "englishTransliteration":song.englishTransliterationTitle,
-            "category":song.category,
-            "duration":song.duration,
-            "singer":(song.singers==null || song.singers.length==0) ? '': song.singers[0].name +(song.singers[1]!=null ? ' ......':''),
-            "singers":(song.singers!=null && song.singers.length > 1)? getSingers(song.singers):'',
-            "poet":(song.poet==null || song.poet.length==0)?'Unknown': song.poet[0].name,
-            "thumbnailUrl":song.thumbnailUrl,
-            "searchableCriteria":{
-                               "singers":song.singers,
-                               "poets":song.poet,
-                            }});
+            thumbnails.push({
+                "id":song.id,
+                "contentId":'song_'+song.id,
+                "isSong":true,
+                "englishTranslation":song.englishTranslationTitle,
+                "customStyle": (customStyle)? customStyle():'',
+                "englishTransliteration":song.englishTransliterationTitle,
+                "category":song.category,
+                "duration":song.duration,
+                "singer":(song.singers==null || song.singers.length==0) ? '': song.singers[0].name +(song.singers[1]!=null ? ' ......':''),
+                "singers":(song.singers!=null && song.singers.length > 1)? getSingers(song.singers):'',
+                "poet":(song.poet==null || song.poet.length==0)?'Unknown': song.poet[0].name,
+                "thumbnailUrl":song.thumbnailUrl,
+                "words": wordMapper.getBasicDetails(song.words.words)
+            });
             return thumbnails;
         },[]);
     };
@@ -77,7 +76,7 @@ thumbnailModule.factory('songMapper',['wordMapper',function(wordMapper){
     return {
         getThumbnails: getThumbnails,
         getSongDetails: getSongDetails,
-        getOverviews:getOverviews,
+        getOverviews:getOverviews
     };
 }]);
 

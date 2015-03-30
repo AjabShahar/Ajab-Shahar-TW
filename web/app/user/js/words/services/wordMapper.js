@@ -65,8 +65,9 @@ var wordMapper = function () {
        return _.reduce(words,function(wordBasicInfo,word,index){
             wordBasicInfo.push({
                "id" : word.id,
-               "transliteration":word.wordTransliteration,
-               "isRootWord":word.rootWord,
+                "translation":word.wordTranslation,
+                "transliteration":word.wordTransliteration,
+               "isRootWord":word.rootWord
 
             });
             wordBasicInfo = _.sortBy(wordBasicInfo,'transliteration');

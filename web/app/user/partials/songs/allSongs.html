@@ -29,6 +29,10 @@
     <script type="text/javascript" src="/user/js/common/directives/header/ajabShaharHeader.js"></script>
     <script type="text/javascript" src="/user/js/common/directives/footer/ajabShaharFooter.js"></script>
     <script type="text/javascript" src="/user/js/common/directives/header/sticky.js"></script>
+    <script type="text/javascript" src="/user/js/common/config/filterConfig.js"></script>
+    <script type="text/javascript" src="/user/js/common/models/sieve.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/songs/songFilterCategory.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/songs/songFilterParda.js"></script>
     <script type="text/javascript" src="/user/js/featuredContent/services/contentService.js"></script>
     <script type="text/javascript" src="/user/js/words/services/wordMapper.js"></script>
     <script type="text/javascript" src="/user/js/songs/services/songMapper.js"></script>
@@ -59,7 +63,11 @@
 
         <div class="ajab-wrapper">
 
-            <song-filter songs="songs" song-count="songCount" ng-show="expandFilter" expand-filter="expandFilter" on-clear-filter="clearFilters()" active-letter="activeLetter" poet-name-in-filter="poetNameInFilter" singer-name-in-filter="singerNameInFilter"></song-filter>
+            <!--<song-filter songs="songs" song-count="songCount" ng-show="expandFilter" expand-filter="expandFilter" on-clear-filter="clearFilters()" active-letter="activeLetter" poet-name-in-filter="poetNameInFilter" singer-name-in-filter="singerNameInFilter"></song-filter>-->
+            <div class="slide-nav-list">
+                <song-filter-category criteria-list="criteriaList" select-handler="filterCategoryClicked" deselect-handler="removeFilterCriteria" clear-filters="clearAllFilters"></song-filter-category>
+                <song-filter-parda ng-if="openSecondParda" filter-items="filterItems" select-handler="filterItemSelected" ></song-filter-parda>
+            </div>
             <div class='left-nav headerfixInner'>
                 <div class='nav-elements-wrapper'>
                     <h1 class='category-logo'>songs</h1>
@@ -88,8 +96,11 @@
             <div class='grid-wrapper'>
                 <div infinite-scroll='loadSongFromRange()' infinite-scroll-distance='1' class="thumbnails-grid">
                     <ul class="media-list songs">
-                        <li class="media" ng-repeat="song in (songs | filterSongByTitle:activeLetter | filterSongBySinger:singerNameInFilter | filterSongByPoet:poetNameInFilter | filterByScroll:scrollIndex)">
-                            <song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}" open="detailsService.open(song.id)" custom-style="{{song.customStyle}}" img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}" english-transliteration="{{song.englishTransliteration}}" english-translation="{{song.englishTranslation}}" category-name="{{song.category}}" duration="{{song.duration}}" singer="{{song.singer}}" class = "songs" poet="{{song.poet}}" singers="{{song.singers}}"></song-thumbnail>
+                       <!-- <li class="media" ng-repeat="song in (songs | filterSongByTitle:activeLetter | filterSongBySinger:singerNameInFilter | filterSongByPoet:poetNameInFilter | filterByScroll:scrollIndex)">
+                            <song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}" open="navigateToSong(song.id)" custom-style="{{song.customStyle}}" img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}" english-transliteration="{{song.englishTransliteration}}" english-translation="{{song.englishTranslation}}" category-name="{{song.category}}" duration="{{song.duration}}" singer="{{song.singer}}" class = "songs" poet="{{song.poet}}" singers="{{song.singers}}"></song-thumbnail>
+                        </li>-->
+                        <li class="media" ng-repeat="song in (filteredSongList | filterByScroll:scrollIndex)">
+                            <song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}" open="navigateToSong(song.id)" custom-style="{{song.customStyle}}" img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}" english-transliteration="{{song.englishTransliteration}}" english-translation="{{song.englishTranslation}}" category-name="{{song.category}}" duration="{{song.duration}}" singer="{{song.singer}}" class = "songs" poet="{{song.poet}}" singers="{{song.singers}}"></song-thumbnail>
                         </li>
                     </ul>
                 </div>
