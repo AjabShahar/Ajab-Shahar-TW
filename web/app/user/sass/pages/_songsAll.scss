@@ -5,8 +5,7 @@
 
 .all-songs {
     background: transparent url(/user/img/common/bg/bg_pattern.png) repeat;
-    background-size: contain;
-    margin: 10px 0 0 0;
+    background-size: cover;
 
     .headerBox {
         position: absolute;
@@ -15,116 +14,181 @@
     }
 
      .slide-nav-list {
-        padding: 0;
-        text-align: center;
-        position: absolute;
-        left: -250px;
-        top: 0;
-        width: 250px;
-        background: transparent url('/user/img/songs/parda180px.png') right 0 no-repeat;
-        background-size: 100% 100%;
-        z-index: $zIndex-allsongs-filter;
-        -webkit-animation: pardah1-slideRight 0.5s forwards;
-        animation: pardah1-slideRight 0.5s forwards;
-        -moz-animation: pardah1-slideRight 0.5s forwards;
-        -ms-animation: pardah1-slideRight 0.5s forwards;
-        -webkit-filter: drop-shadow(-267px 0 1px rgba(0,0,0,0.9));
+           position: absolute;
+           margin-top: -5px;
+           margin-left: -18px;
+        .first-layer-list {
+            padding: 0;
+            text-align: center;
+            position: absolute;
+            left: -250px;
+            top: 0;
+            height: 100%;
+            background: transparent url('/user/img/songs/parda180px.png') right 0 repeat-y;
+            background-size: cover;
+            z-index: $zIndex-filter-pardah1;
+            width: 250px;
 
-        &.ng-hide {
-                    -webkit-animation: pardah1-slideLeft 0.5s forwards;
-                    animation: pardah1-slideLeft 0.5s forwards;
-                    -moz-animation: pardah1-slideLeft 0.5s forwards;
-                    -ms-animation: pardah1-slideLeft 0.5s forwards;
-        }
+            @include animation(pardah1-slideRight 0.5s forwards);
+           /* -webkit-animation: pardah1-slideRight 0.5s forwards;
+            animation: pardah1-slideRight 0.5s forwards;
+            -moz-animation: pardah1-slideRight 0.5s forwards;
+            -ms-animation: pardah1-slideRight 0.5s forwards;*/
+            .filters {
+                    margin-top: 175px;
+                    margin-right: 80px;
+                    margin-left: 30px;
+                    text-align: left;
+                    &>li {
+
+                            font-family: 'Merriweather';
+                            color: #666;
+
+                            &.head {
+                              line-height: 1.5em;
+                              font-size: 10px;
+                              text-transform: UPPERCASE;
+                              color: #b3b3b3;
+                            }
+                            &.ng-hide {
+                                display: none;
+                            }
+                            &.resetImage {
+                                margin-top: 50px;
+                                margin-bottom: 10px;
+                            }
 
 
-        .filters {
-            margin-top: 175px;
-            margin-right: 80px;
-            margin-left: 30px;
-            text-align: left;
-            &>li {
+                            &> a {
+                                text-transform: lowercase;
+                                font-weight: 300;
+                                font-family: 'Merriweather';
+                                color: #666;
+                                line-height: 30px;
+                                font-size: 16px;
 
-                font-family: 'Merriweather';
-                color: #666;
+                                cursor: pointer;
 
-                &.head {
-                  line-height: 1.5em;
-                  font-size: 10px;
-                  text-transform: UPPERCASE;
-                  color: #b3b3b3;
+                                &:hover {
+                                    color: #E83785;
+                                }
+
+
+                                &.active {
+                                    font-weight: bold;
+
+
+                                }
+
+                                &.disable {
+                                    cursor: default;
+                                    color: #b3b3b3;
+                                    &:hover {
+                                        color: none;
+                                    }
+                                }
+
+                                &.reset {
+                                    text-transform: uppercase;
+                                    font-weight: 300;
+                                    font-family: 'Merriweather';
+                                    color: #b3b3b3;
+                                    font-size: 10px;
+                                }
+
+
+                            }
+
+                     }
+
+
+
+
+                    .child-list {
+                        margin: 10px 0;
+                         &>li {
+                            color: #999;
+                              font-size: 12px;
+                              font-family: 'Merriweather Sans';
+                              text-transform: capitalize;
+                              margin: 0;
+                              font-weight: 300;
+                            &>a {
+
+                                color: #e62379;
+                                line-height: 15px;
+                                margin-left: 10px;
+                                font-weight: 700;
+
+                            }
+                         }
+                    }
+
+
+
                 }
-                &.ng-hide {
-                    display: none;
-                }
-                &.resetImage {
-                    margin-top: 50px;
-                    margin-bottom: 10px;
-                }
-
-
-                &> a {
-                    text-transform: lowercase;
-                    font-weight: 300;
-                    font-family: 'Merriweather';
-                    color: #666;
-                    line-height: 30px;
-                    font-size: 16px;
-
-                    cursor: pointer;
-
-                    &:hover {
-                        color: #E83785;
-                    }
-
-
-                    &.active {
-                        font-weight: bold;
-
-
-                    }
-
-                    &.disable {
-                        cursor: default;
-                        color: #b3b3b3;
-                        &:hover {
-                            color: none;
-                        }
-                    }
-
-                    &.reset {
-                        text-transform: uppercase;
-                        font-weight: 300;
-                        font-family: 'Merriweather';
-                        color: #b3b3b3;
-                        font-size: 10px;
-                    }
-
-
-                }
-
-            .child-list {
-                margin: 10px 0;
-                 &>li {
-                    color: #999;
-                      font-size: 12px;
-                      font-family: 'Merriweather Sans';
-                      text-transform: capitalize;
-                      margin: 0;
-                      font-weight: 300;
-                    &>a {
-
-                        color: #e62379;
-                        line-height: 15px;
-                        margin-left: 10px;
-                        font-weight: 700;
-
-                    }
-                 }
-            }
-        }
 
      }
+
+
+     .second-layer-list {
+             .overlay {
+                 background: transparent url('/user/img/songs/filter-pardah2.png') right 0 repeat-y;
+                 position: fixed;
+                 width: 300px;
+                 height: 100%;
+                 z-index: -1;
+                 background-size: 100% 100%;
+
+             }
+              position: absolute;
+             left: -700px;
+             top: 0;
+             overflow: scroll;
+             height: 100%;
+             width: 275px;
+             text-align: left;
+             z-index: $zIndex-filter-pardah2;
+             color: #999;
+             font-weight: 300;
+             font-size: 12px;
+             box-sizing: border-box;
+             -webkit-animation: pardah2-slideRight 0.5s forwards;
+             -moz-animation: pardah2-slideRight 0.5s forwards;
+             -ms-animation: pardah2-slideRight 0.5s forwards;
+             animation: pardah2-slideRight 0.5s forwards;
+
+             &.ng-hide {
+
+                 -webkit-animation: pardah2-slideLeft 0.5s forwards;
+                 -moz-animation: pardah2-slideLeft 0.5s forwards;
+                 -ms-animation: pardah2-slideLeft 0.5s forwards;
+                 animation: pardah2-slideLeft 0.5s forwards;
+             }
+             /*display: none;*/
+
+             &>ul {
+                 height: 100%;
+                 display: flex;
+                 flex-direction: column;
+                 margin-top:  30px;
+                 margin-left: 35px;
+                 .list-item {
+                     padding: 5px 2%;
+                         &>a {
+                             line-height: 1.8em;
+                             text-transform: capitalize;
+                             &:hover {
+                                 color: #E83785;
+                             }
+
+                         }
+
+                     }
+             }
+
+         }
+
 
 
 
@@ -178,64 +242,6 @@
         }
     }
 
-    .second-layer-list {
-        .overlay {
-            background: transparent url('/user/img/songs/filter-pardah2.png') right 0 repeat-y;
-            position: fixed;
-            width: 300px;
-            opacity: 0.9;
-            height: 100%;
-            z-index: -1;
-            background-size: 100% 100%;
-
-        }
-         position: absolute;
-        left: -700px;
-        top: 0;
-        overflow: scroll;
-        height: 100%;
-        width: 275px;
-        text-align: left;
-        z-index: -1;
-        color: #999;
-        font-weight: 300;
-        font-size: 12px;
-        box-sizing: border-box;
-        -webkit-animation: pardah2-slideRight 0.5s forwards;
-        -moz-animation: pardah2-slideRight 0.5s forwards;
-        -ms-animation: pardah2-slideRight 0.5s forwards;
-        animation: pardah2-slideRight 0.5s forwards;
-
-        &.ng-hide {
-
-            -webkit-animation: pardah2-slideLeft 0.5s forwards;
-            -moz-animation: pardah2-slideLeft 0.5s forwards;
-            -ms-animation: pardah2-slideLeft 0.5s forwards;
-            animation: pardah2-slideLeft 0.5s forwards;
-        }
-        /*display: none;*/
-
-        &>ul {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            margin-top:  30px;
-            margin-left: 35px;
-            .list-item {
-                padding: 5px 2%;
-                    &>a {
-                        line-height: 1.8em;
-                        text-transform: capitalize;
-                        &:hover {
-                            color: #E83785;
-                        }
-
-                    }
-
-                }
-        }
-
-    }
 
 
     // .songs {
@@ -272,7 +278,7 @@
 
 }
 
-@-webkit-keyframes pardah1-slideRight {
+/*@-webkit-keyframes pardah1-slideRight {
     100% { left: 0; }
 }
 
@@ -287,7 +293,7 @@
 @keyframes pardah1-slideLeft {
     100% { left: -250px; }
 }
-
+*/
 
 
 @-webkit-keyframes pardah2-slideRight {
@@ -307,4 +313,9 @@
 @keyframes pardah2-slideLeft {
     100% { left: -700px; }
 }
+
+@include keyframes(pardah1-slideRight) {
+   100% { left: 0; }
+}
+
 
