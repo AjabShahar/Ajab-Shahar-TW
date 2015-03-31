@@ -21,7 +21,7 @@
         left: -250px;
         top: 0;
         width: 250px;
-        background: transparent url('/user/img/songs/parda180px.png') right 0 repeat;
+        background: transparent url('/user/img/songs/parda180px.png') right 0 no-repeat;
         background-size: 100% 100%;
         z-index: $zIndex-allsongs-filter;
         -webkit-animation: pardah1-slideRight 0.5s forwards;
@@ -45,8 +45,10 @@
                 color: #666;
 
                 &.head {
-                  line-height: 10px;
+                  line-height: 1.5em;
                   font-size: 10px;
+                  text-transform: UPPERCASE;
+                  color: #b3b3b3;
                 }
                 &.ng-hide {
                     display: none;
@@ -55,6 +57,7 @@
                     margin-top: 50px;
                     margin-bottom: 10px;
                 }
+
 
                 &> a {
                     text-transform: lowercase;
@@ -79,10 +82,18 @@
 
                     &.disable {
                         cursor: default;
-                        color: lightgrey;
+                        color: #b3b3b3;
                         &:hover {
                             color: none;
                         }
+                    }
+
+                    &.reset {
+                        text-transform: uppercase;
+                        font-weight: 300;
+                        font-family: 'Merriweather';
+                        color: #b3b3b3;
+                        font-size: 10px;
                     }
 
 
@@ -91,11 +102,12 @@
             .child-list {
                 margin: 10px 0;
                  &>li {
-                    color: #878787;
-                    font-size: 12px;
-                    font-family: 'Merriweather Sans';
-                    text-transform: uppercase;
-                    margin: 0;
+                    color: #999;
+                      font-size: 12px;
+                      font-family: 'Merriweather Sans';
+                      text-transform: capitalize;
+                      margin: 0;
+                      font-weight: 300;
                     &>a {
 
                         color: #e62379;
@@ -167,7 +179,7 @@
             background: transparent url('/user/img/songs/filter-pardah2.png') right 0 repeat-y;
             position: fixed;
             width: 300px;
-            opacity: 0.99;
+            opacity: 0.9;
             height: 100%;
             z-index: -1;
             background-size: 100% 100%;
@@ -183,7 +195,6 @@
         z-index: -1;
         color: #999;
         font-weight: 300;
-        text-transform: uppercase;
         font-size: 12px;
         box-sizing: border-box;
         -webkit-animation: pardah2-slideRight 0.5s forwards;
@@ -207,10 +218,8 @@
             .list-item {
                 padding: 5px 2%;
                     &>a {
-                        font-size: 12px;
-                        color: #6f6f6e;
-                        text-transform: uppercase;
-
+                        line-height: 1.8em;
+                        text-transform: capitalize;
                         &:hover {
                             color: #E83785;
                         }
