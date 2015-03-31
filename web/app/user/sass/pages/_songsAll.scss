@@ -26,11 +26,15 @@
         z-index: $zIndex-allsongs-filter;
         -webkit-animation: pardah1-slideRight 0.5s forwards;
         animation: pardah1-slideRight 0.5s forwards;
+        -moz-animation: pardah1-slideRight 0.5s forwards;
+        -ms-animation: pardah1-slideRight 0.5s forwards;
         -webkit-filter: drop-shadow(-267px 0 1px rgba(0,0,0,0.9));
 
         &.ng-hide {
                     -webkit-animation: pardah1-slideLeft 0.5s forwards;
                     animation: pardah1-slideLeft 0.5s forwards;
+                    -moz-animation: pardah1-slideLeft 0.5s forwards;
+                    -ms-animation: pardah1-slideLeft 0.5s forwards;
         }
 
 
@@ -198,6 +202,8 @@
         font-size: 12px;
         box-sizing: border-box;
         -webkit-animation: pardah2-slideRight 0.5s forwards;
+        -moz-animation: pardah2-slideRight 0.5s forwards;
+        -ms-animation: pardah2-slideRight 0.5s forwards;
         animation: pardah2-slideRight 0.5s forwards;
 
         &.ng-hide {
