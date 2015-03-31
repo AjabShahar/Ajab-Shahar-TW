@@ -26,6 +26,7 @@
         z-index: $zIndex-allsongs-filter;
         -webkit-animation: pardah1-slideRight 0.5s forwards;
         animation: pardah1-slideRight 0.5s forwards;
+        -webkit-filter: drop-shadow(-267px 0 1px rgba(0,0,0,0.9));
 
         &.ng-hide {
                     -webkit-animation: pardah1-slideLeft 0.5s forwards;
@@ -163,20 +164,17 @@
 
     .second-layer-list {
         .overlay {
-            background: transparent url('/user/img/songs/filter-pardah2.png') 0 0 no-repeat;
-            position: absolute;
+            background: transparent url('/user/img/songs/filter-pardah2.png') right 0 repeat-y;
+            position: fixed;
             width: 300px;
-            height: 120%;
+            opacity: 0.99;
+            height: 100%;
             z-index: -1;
-            margin-left: -20px;
-            margin-top: -5px;
             background-size: 100% 100%;
-            -webkit-animation: pardah2-slideRight 0.5s forwards;
-                    animation: pardah2-slideRight 0.5s forwards;
 
         }
          position: absolute;
-        left: 270px;
+        left: -700px;
         top: 0;
         overflow: scroll;
         height: 100%;
@@ -188,13 +186,15 @@
         text-transform: uppercase;
         font-size: 12px;
         box-sizing: border-box;
-        margin-top: -5px;
-        margin-left: -28px;
+        -webkit-animation: pardah2-slideRight 0.5s forwards;
+        animation: pardah2-slideRight 0.5s forwards;
+
         &.ng-hide {
-            -webkit-animation: pardah2-slideLeft 1s forwards;
-            -moz-animation: pardah2-slideLeft 1s forwards;
-            -ms-animation: pardah2-slideLeft 1s forwards;
-            animation: pardah2-slideLeft 1s forwards;
+
+            -webkit-animation: pardah2-slideLeft 0.5s forwards;
+            -moz-animation: pardah2-slideLeft 0.5s forwards;
+            -ms-animation: pardah2-slideLeft 0.5s forwards;
+            animation: pardah2-slideLeft 0.5s forwards;
         }
         /*display: none;*/
 
@@ -203,7 +203,7 @@
             display: flex;
             flex-direction: column;
             margin-top:  30px;
-            margin-left: 10px;
+            margin-left: 35px;
             .list-item {
                 padding: 5px 2%;
                     &>a {
@@ -266,30 +266,30 @@
 }
 
 @-webkit-keyframes pardah1-slideLeft {
-    100% { left: 400px; }
+    100% { left: -250px; }
 }
 
 @keyframes pardah1-slideLeft {
-    100% { left: 200px; }
+    100% { left: -250px; }
 }
 
 
 
 @-webkit-keyframes pardah2-slideRight {
-    0% {left: -250px;}
-    100% { left: 0px; }
+    0% {left: -220px;}
+    100% { left: 220px; }
 }
 
 @keyframes pardah2-slideRight {
-    0% {left: -250px;}
-    100% { left: 0px; }
+    0% {left: -220px;}
+    100% { left: 220px; }
 }
 
 @-webkit-keyframes pardah2-slideLeft {
-    100% { left: -250px; }
+    100% { left: -700px; }
 }
 
 @keyframes pardah2-slideLeft {
-    100% { left: -250px; }
+    100% { left: -700px; }
 }
 
