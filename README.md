@@ -157,5 +157,7 @@ ii. Run ‘sh deploy-ajabshahar.sh’ inside the VM.
 ​13) To see the site use ip(of the VM):9000 i.e http://192.168.33.10:9000​
 
 14) to get hot deployment of the client code, just add the following lines in ~/.bashrc of your vm
+```
 alias rs='rsync -a --delete /projects/Ajab-Shahar-TW/web/app/ /var/www/ajabshahar'
+```
 now to sync the code just type rs after any changes you make
