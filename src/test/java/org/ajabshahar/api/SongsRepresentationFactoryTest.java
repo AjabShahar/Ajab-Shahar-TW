@@ -71,6 +71,11 @@ public class SongsRepresentationFactoryTest {
         song.setThumbnail_url("http://tinyurl.com");
         song.setDuration("1:00");
 
+        Gathering gathering = new Gathering();
+        gathering.setId(id);
+        gathering.setEnglish(format("song%senglishGathering",id));
+        song.setGathering(gathering);
+
         PersonDetails singer = new PersonDetails(), poet = new PersonDetails();
         HashSet<PersonDetails> singers = new HashSet<>(), poets = new HashSet<>();
 
@@ -180,12 +185,12 @@ public class SongsRepresentationFactoryTest {
         assertThat(songsRepresentation.get(0).getSoundCloudTrackId(), IsEqual.equalTo("67890"));
         assertThat(songsRepresentation.get(0).getThumbnailUrl(), IsEqual.equalTo("http://tinyurl.com"));
         assertThat(songsRepresentation.get(0).getDuration(), IsEqual.equalTo("1:00"));
+        assertThat(songsRepresentation.get(0).getGathering(), IsEqual.equalTo("song1englishGathering"));
 
         assertThat(songsRepresentation.get(0).getSingers().get(0).toString(), IsEqual.equalTo("id: 1001, name: Singer1"));
         assertThat(songsRepresentation.get(0).getPoets().get(0).toString(), IsEqual.equalTo("id: 2001, name: Poet1"));
         assertNotNull(songsRepresentation.get(0).getSongText());
         assertNotNull(songsRepresentation.get(0).getWords());
-
     }
 
     @Test
