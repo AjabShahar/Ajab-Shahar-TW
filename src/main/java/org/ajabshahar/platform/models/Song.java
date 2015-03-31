@@ -32,7 +32,6 @@ public class Song {
     @Column(name = "DURATION", nullable = true)
     private String duration;
 
-
     @Column(name = "YOUTUBE_VIDEO_ID", nullable = true)
     private String youtubeVideoId;
 

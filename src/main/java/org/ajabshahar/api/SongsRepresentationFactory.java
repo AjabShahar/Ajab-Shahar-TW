@@ -45,6 +45,7 @@ public class SongsRepresentationFactory {
     public SongRepresentation create(Song song) {
         Title umbrellaTitle = song.getTitle() == null ? new Title() : song.getTitle();
         Title songTitle = song.getSongTitle() == null ? new Title() : song.getSongTitle();
+        Gathering gathering = song.getGathering() == null ? new Gathering() : song.getGathering();
         List<PersonSummaryRepresentation> singers = new ArrayList<>(), poets = new ArrayList<>();
         SongText songText = song.getSongText() == null ? new SongText() : song.getSongText();
         SongTextRepresentation lyrics = songTextRepresentationFactory.getSongText(songText);
@@ -76,6 +77,7 @@ public class SongsRepresentationFactory {
                 song.getSoundCloudTrackID(),
                 song.getThumbnail_url(),
                 song.getDuration(),
+                gathering.getEnglish(),
                 singers,
                 poets,
                 song.getAbout(), lyrics, song.getDownload_url(), words);
@@ -87,6 +89,7 @@ public class SongsRepresentationFactory {
 
             Title umbrellaTitle = song.getTitle() == null ? new Title() : song.getTitle();
             Title songTitle = song.getSongTitle() == null ? new Title() : song.getSongTitle();
+            Gathering gathering = song.getGathering() == null ? new Gathering() : song.getGathering();
             List<PersonSummaryRepresentation> singers = new ArrayList<>(), poets = new ArrayList<>();
             SongText songText = song.getSongText() == null ? new SongText() : song.getSongText();
             SongTextRepresentation songTextRepresentation = songTextRepresentationFactory.getSongText(songText);
@@ -119,6 +122,7 @@ public class SongsRepresentationFactory {
                     song.getSoundCloudTrackID(),
                     song.getThumbnail_url(),
                     song.getDuration(),
+                    gathering.getEnglish(),
                     singers,
                     poets,
                     song.getAbout(), songTextRepresentation, song.getDownload_url(), words);
