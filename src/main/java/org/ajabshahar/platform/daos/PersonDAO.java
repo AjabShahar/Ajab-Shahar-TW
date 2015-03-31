@@ -32,6 +32,9 @@ public class PersonDAO extends AbstractDAO<PersonDetails> {
     }
 
     public List<PersonDetails> findBy(int personId, String role) {
+        if(personId<=0 && Strings.isNullOrEmpty(role))
+            return findAll();
+
         Session session = currentSession();
         Criteria criteria = session.createCriteria(PersonDetails.class, "personDetails");
         if (personId > 0) {
