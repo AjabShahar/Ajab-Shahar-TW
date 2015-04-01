@@ -17,11 +17,11 @@
      .slide-nav-list {
         padding: 0;
         margin-top: -2px;
-          margin-left: -5px;
+        margin-left: -5px;
         position: absolute;
         left: -250px;
         top: 0;
-        min-height: 670px;
+
         z-index: 180;
 
         @include animation(pardah1-slideRight 0.5s forwards);
@@ -35,7 +35,7 @@
             width: 250px;
             background: transparent url('/user/img/songs/parda180px.png') right 0 repeat-y;
             background-size: cover;
-            height: 100%;
+            min-height: 750px;
             position: absolute;
         }
 
