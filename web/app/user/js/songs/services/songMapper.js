@@ -30,7 +30,8 @@ thumbnailModule.factory('songMapper',['wordMapper',function(wordMapper){
                 "singers":(song.singers!=null && song.singers.length > 1)? getSingers(song.singers):'',
                 "poet":(song.poet==null || song.poet.length==0)?'Unknown': song.poet[0].name,
                 "thumbnailUrl":song.thumbnailUrl,
-                "words": wordMapper.getBasicDetails(song.words.words)
+                "words": wordMapper.getBasicDetails(song.words.words),
+                "singersAsList":song.singers
             });
             return thumbnails;
         },[]);
