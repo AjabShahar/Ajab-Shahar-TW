@@ -33,6 +33,7 @@ describe("Word details controller spec:", function() {
 
     describe("When initializing a word", function(){
        it("then should have people and writers", function(){
+		   $httpBackend.when("GET", "/api/people?role=Poet").respond({"people": "somePerson"});
            $httpBackend.when("GET", "/api/people").respond({"people": "somePerson"});
            $httpBackend.when("GET", "/api/category/word").respond(null);
            $httpBackend.when("GET", "/api/reflections/all").respond(null);
@@ -84,6 +85,7 @@ describe("Word details controller spec:", function() {
 	});
 	describe("When fetching a given word via an ID,", function() {
 		it("then should have the word's details, if the word exist", function() {
+			$httpBackend.when("GET", "/api/people?role=Poet").respond({"people": "somePerson"});
 			$httpBackend.when("GET", "/api/category/word").respond(null);
 			$httpBackend.when("GET", "/api/reflections/all").respond(null);
 			$httpBackend.when("GET", "/api/people").respond({"people": ""});
@@ -99,6 +101,7 @@ describe("Word details controller spec:", function() {
 		});
 		it("then should have singers as a comma separated entries for a song", function() {
 			var mockedSongs =  {"songs" : [ {"englishTransliterationTitle": "some title", "singers": [{"name": "singer1"}, {"name": "singer2"} ],"words":{"words":[]} } ,{"englishTransliterationTitle": "some title2", "singers": [{"name": "singer3"}, {"name": "singer4"} ],"words":{"words":[]}} ] } ;
+			$httpBackend.when("GET", "/api/people?role=Poet").respond({"people": "somePerson"});
 			$httpBackend.when("GET", "/api/category/word").respond(null);
 			$httpBackend.when("GET", "/api/reflections/all").respond(null);
 			$httpBackend.when("GET", "/api/people").respond({"people": ""});
@@ -112,6 +115,7 @@ describe("Word details controller spec:", function() {
 		});
 		it("then shouldn't have singers as a comma separated entries for a song, if there are no singers", function() {
 			var mockedSongs =  {"songs" : [ {"englishTransliterationTitle": "some title", "singers": [] ,"words":{"words":[]}} ,{"englishTransliterationTitle": "some title2", "singers": [],"words":{"words":[]}} ] } ;
+			$httpBackend.when("GET", "/api/people?role=Poet").respond({"people": "somePerson"});
 			$httpBackend.when("GET", "/api/category/word").respond(null);
 			$httpBackend.when("GET", "/api/reflections/all").respond(null);
 			$httpBackend.when("GET", "/api/people").respond({"people": ""});
