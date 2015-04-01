@@ -11,6 +11,10 @@ var contentService = function ($http) {
     return $http.get('/api/people');
   };
 
+  var getPoets = function(){
+    return $http.get('/api/people?role=Poet');
+  };
+
   var getAllCouplets = function () {
     return $http.get('/api/couplets');
   };
@@ -49,6 +53,7 @@ var contentService = function ($http) {
     getAllReflections: getAllReflections,
     saveWord: saveWord,
     getWord: getWord,
-    updateWord: updateWord
+    updateWord: updateWord,
+    getPoets: getPoets
   };
 };

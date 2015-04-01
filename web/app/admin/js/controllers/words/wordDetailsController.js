@@ -11,6 +11,7 @@ function($scope, $window, $location, contentService, PAGES, $q,loginVerifyServic
   $scope.writers = [];
   $scope.people = [];
   $scope.songs = [];
+  $scope.poets = [];
 
   var wordCategory = 'word';
 
@@ -31,13 +32,15 @@ function($scope, $window, $location, contentService, PAGES, $q,loginVerifyServic
     var peoplePromise = contentService.getAllPeople();
     var categoriesPromise = contentService.getAllCategories(wordCategory);
     var songsPromise = contentService.getAllSongs();
+    var poetsPromise = contentService.getPoets();
 
-    $q.all([categoriesPromise, songsPromise, peoplePromise, reflectionsPromise]).then(function(data){
+    $q.all([categoriesPromise, songsPromise, peoplePromise, reflectionsPromise, poetsPromise]).then(function(data){
       $scope.categories = data[0].data;
       $scope.songs = data[1].data.songs;
       $scope.writers = angular.copy(data[2].data.people);
       $scope.people = angular.copy(data[2].data.people);
       $scope.reflections = data[3].data;
+      $scope.poets = data[4].data.people;
 
       createMenuTitleForSongs();
       

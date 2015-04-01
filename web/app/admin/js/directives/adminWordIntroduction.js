@@ -6,6 +6,7 @@ wordsAdminApp.directive("adminWordIntroduction", function() {
         restrict: 'E',
         scope: {
             wordIntroductions:'=',
+            poets:'='
         },
         templateUrl:'/admin/js/templates/adminWordIntroduction.html',
         controller:function($scope){

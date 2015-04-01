@@ -20,7 +20,7 @@
     <button type="button" class="btn btn-info" ng-click="addToWordIntroduction()">Add to Word Introduction</button>
     <!--<button type="button" class="btn btn-danger" ng-click="clearWordIntro()">Clear Word Introduction</button>-->
 
-    <div ng-repeat="word in wordIntroductions track by $index">
+    <div class="row" ng-repeat="wordIntroduction in wordIntroductions track by $index">
         <table class="word-introduction-table">
             <thead>
                 <tr>
@@ -31,13 +31,29 @@
             <tbody>
                 <tr>
                     <td width="50%">
-                        <text-angular name="translationContent{{$index}}" ng-model="word.wordIntroEnglish" ></text-angular>
+                        <text-angular name="translationContent{{$index}}" ng-model="wordIntroduction.wordIntroEnglish" ></text-angular>
                     </td>
                     <td width="50%">
-                        <text-angular name="originalContent{{$index}}" ng-model="word.wordIntroHindi" ></text-angular>
+                        <text-angular name="originalContent{{$index}}" ng-model="wordIntroduction.wordIntroHindi" ></text-angular>
                     </td>
                 </tr>
             </tbody>
         </table>
+        <div class="row">
+            <label class="col-sm-2">Content Type</label>
+            <div class="form-group col-sm-1">
+                <select name="format" ng-model="wordIntroduction.contentType" class="form-control">
+                    <option value="text">Text</option>
+                    <option value="couplet">Couplet</option>
+                </select>
+            </div>
+        </div>
+        <div class="row col-md-1" ng-show="wordIntroduction.contentType === 'couplet'">
+            <strong>Couplet's poet</strong>
+
+            <select ng-model="wordIntroduction.poet.id" class="form-control">
+                <option ng-repeat="poet in poets" value="{{poet.id}}" ng-selected="wordIntroduction.poet.id === poet.id">{{poet.firstName}}</option>
+            </select>
+        </div>
     </div>
 </div>
