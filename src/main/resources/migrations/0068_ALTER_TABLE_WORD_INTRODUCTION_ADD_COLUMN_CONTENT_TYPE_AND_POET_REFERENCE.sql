@@ -1,6 +1,6 @@
 --liquibase formatted sql 
 
---changeset chanakya_jaideep:67
+--changeset chanakya_jaideep:68
 
 ALTER TABLE word_introduction ADD COLUMN content_type varchar(200);
 ALTER TABLE word_introduction ALTER COLUMN content_type SET NOT NULL;
