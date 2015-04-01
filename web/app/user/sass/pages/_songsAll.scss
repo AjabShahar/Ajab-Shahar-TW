@@ -27,10 +27,9 @@
         @include animation(pardah1-slideRight 0.5s forwards);
 
 
-        /*&.ng-hide {
-                    -webkit-animation: pardah1-slideLeft 0.5s forwards;
-                    animation: pardah1-slideLeft 0.5s forwards;
-        }*/
+        &.ng-hide {
+            @include animation(pardah1-slideLeft 0.5s forwards);
+        }
 
         .first-layer-list {
             width: 250px;
@@ -269,14 +268,11 @@
 
 }
 
-/*@-webkit-keyframes pardah1-slideLeft {
-    100% { left: -400px; }
+
+@include keyframes(pardah1-slideLeft) {
+   100% { left: -400px; }
 }
 
-@keyframes pardah1-slideLeft {
-    100% { left: -400px; }
-}
-*/
 
 @include keyframes(pardah1-slideRight) {
    100% { left: 0; }
