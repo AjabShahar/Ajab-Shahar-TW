@@ -52,7 +52,7 @@ public class WordsTest {
     public void shouldCreateWord() throws Exception {
         when(wordRepository.create(any(Word.class))).thenReturn(word);
 
-        Word expected = wordgss.create(word);
+        Word expected = word.create(word);
 
         assertEquals(expected.getId(), 1L);
         assertEquals(expected.getWordOriginal(), "WordOrPhrase");
