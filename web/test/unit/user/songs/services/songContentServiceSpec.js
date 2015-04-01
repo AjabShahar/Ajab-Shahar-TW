@@ -19,11 +19,35 @@ describe("Song content service", function () {
         var songsList = songMapper.getThumbnails(test_songsList, null);
         expect(songsList.length).toBe(4);
 
-        var wordsInSongs = songsContentService.getWordsIn(songsList);
+        var wordsInSongs = songsContentService.getWordsFrom(songsList);
         expect(wordsInSongs.length).toBe(4);
         var expectedList = ["bazaar","Jaagna Sona","Gitara","Akath Katha"]
         wordsInSongs.forEach(function(words){
             _.contains(expectedList,words[0]);
+        });
+    });
+
+    it("should extract singers from list of songs", function () {
+        var songsList = songMapper.getThumbnails(test_songsList, null);
+        expect(songsList.length).toBe(4);
+
+        var singersInSongs = songsContentService.getSingersFrom(songsList);
+        expect(singersInSongs.length).toBe(6);
+        var expectedList = ["Sumar Kadu Jat","Mooralala Marwada","Prahlad Singh Tipanya","Mukhtiyar Ali","Kaluram Bamaniya","Parvathy Baul"];
+        singersInSongs.forEach(function(singer){
+            _.contains(expectedList,singer[0]);
+        });
+    });
+
+    it("should extract poets from list of songs", function () {
+        var songsList = songMapper.getThumbnails(test_songsList, null);
+        expect(songsList.length).toBe(4);
+
+        var poetsInSongs = songsContentService.getPoetsFrom(songsList);
+        expect(poetsInSongs.length).toBe(3);
+        var expectedList = ["Shah Abdul Latif Bhitai","Kabir","Badar Muneer"];
+        poetsInSongs.forEach(function(poet){
+            _.contains(expectedList,poet[0]);
         });
     });
 });

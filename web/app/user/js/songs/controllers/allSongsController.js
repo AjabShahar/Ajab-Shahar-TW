@@ -1,18 +1,8 @@
 var allSongsController = function($scope,$window,songsContentService,songMapper){
     var songs=[];
     $scope.filteredSongList=[];
-    //$scope.allSongs = null;
-    //$scope.totalFilteredSongs = 0;
-/*
-    $scope.detailsService = {open:function(id){
-//                                          var songId = $scope.getSongId(id);
-                                          $window.location.href = '/user/partials/songs/details.html?id='+id;
-                                      }};
-*/
     $scope.activeLetter = '';
     $scope.scrollIndex = 12;
-    //$scope.singerNameInFilter = {id:-1};
-    //$scope.poetNameInFilter = {id:-1};
     $scope.songCount = 0;
     $scope.expandFilter = false;
     $scope.filterItems =[];
@@ -37,18 +27,35 @@ var allSongsController = function($scope,$window,songsContentService,songMapper)
     };
 
     $scope.clearAllFilters = function(){
-        sieve.clearFilters();
-        $scope.filteredSongList=songs;
+        sieve.clearFiltersWithDisplayName();
+        $scope.filteredSongList = sieve.filter(songs);
     };
 
     $scope.filterItemSelected = function(filterValue){
         sieve.setFilterCriteria(filterCategoryClicked.name,filterValue);
         $scope.filteredSongList = sieve.filter(songs);
-        console.log($scope.filteredSongList);
+        $scope.closeSecondParda();
     };
 
+    $scope.closeSecondParda = function(){
+        if($scope.openSecondParda){
+            $scope.openSecondParda = false;
+        }
+    };
 
-    var i = 0;
+    $scope.alphabetFilterClicked = function(alphabetFilter){
+        if(!_.isEmpty(alphabetFilter)){
+            var filterCategoryName = alphabetFilter.contentTextRepresentation.toLowerCase() === 'translation'? "englishTranslation":"englishTransliteration";
+            sieve.setFilterCriteria(filterCategoryName,alphabetFilter.alphabet);
+            $scope.filteredSongList =sieve.filter(songs);
+        }
+    };
+
+    $scope.clearAlphabetFilters = function(){
+        sieve.removeFilterCriteria("englishTransliteration");
+        sieve.removeFilterCriteria("englishTranslation");
+        $scope.filteredSongList = sieve.filter(songs);
+    };
 
     $scope.toggleExpandFilter = function(){
         $scope.expandFilter = !$scope.expandFilter;
@@ -62,12 +69,12 @@ var allSongsController = function($scope,$window,songsContentService,songMapper)
         });
     };
 
-    $scope.songStartsWithComparator = function (actual, expected) {
+ /*   $scope.songStartsWithComparator = function (actual, expected) {
        if (!$scope.activeLetter && $scope.activeLetter=='') {
           return true;
        }
        return $scope.strStartsWith(actual.englishTransliterationTitle.toUpperCase(),$scope.activeLetter.toUpperCase());
-    };
+    };*/
 
     $scope.loadSongFromRange = function(){
         if($scope.scrollIndex>$scope.filteredSongList.length)

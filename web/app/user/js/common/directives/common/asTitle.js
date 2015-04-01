@@ -6,7 +6,8 @@ filterModule.directive("asTitle", function() {
         replace:true,
         transclude: true,
         scope: {
-            currentAlphabetFilter:'=',
+            filterClicked:"=",
+            clearFilters:"="
         },
         templateUrl:'/user/js/common/templates/common/asTitle.html',
         controller: function($scope,$rootScope) {
@@ -46,7 +47,7 @@ filterModule.directive("asTitle", function() {
                 $scope.contentTextRepresentation = 'Transliteration';
                 $scope.clearAlphabetFilter();
                 $rootScope.$broadcast('contentTextRepresentation',$scope.contentTextRepresentation);
-            }
+            };
 
             $scope.selectEnglishTitle = function(){
                 if($scope.contentTextRepresentation==='Translation')
@@ -54,32 +55,32 @@ filterModule.directive("asTitle", function() {
                 $scope.contentTextRepresentation = 'Translation';
                 $scope.clearAlphabetFilter();
                 $rootScope.$broadcast('contentTextRepresentation',$scope.contentTextRepresentation);
-            }
+            };
 
             $scope.clearAlphabetFilter = function(){
                 _.each($scope.alphabetFilters,function(alphabetFilter){
                     alphabetFilter.isSelected = false;
                 });
                 $scope.currentAlphabetFilter = '';
-            }
+                $scope.clearFilters();
+            };
 
             $scope.filterSongsOnLetter = function(currentAlphabetFilter){
                 $scope.clearAlphabetFilter();
                 currentAlphabetFilter.isSelected = true;
-                currentAlphabetFilter.contentTextRepresentation = $scope.contentTextRepresentation;
                 $scope.currentAlphabetFilter = currentAlphabetFilter;
-            }
+
+                var filter = angular.extend({},currentAlphabetFilter);
+                filter.contentTextRepresentation = $scope.contentTextRepresentation;
+                if(currentAlphabetFilter.alphabet.toLowerCase() === 'all'){
+                    filter.alphabet = "";
+                }
+                $scope.filterClicked(filter);
+            };
 
             $scope.isSelected = function(alphabet){
                 return alphabet.isSelected ? 'active' : '';
-            }
-
-            $scope.$watch('currentAlphabetFilter', function(newValue, oldValue) {
-                if(newValue==oldValue)
-                    return;
-                if(newValue==='')
-                    $scope.clearAlphabetFilter();
-            });
+            };
         }
     }
 });

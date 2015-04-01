@@ -18,7 +18,7 @@ Ajabshahar.user.Sieve = function (filterCriteria) {
         return text.indexOf('[]') >= 0;
     };
 
-    var matches = function (item, path, value) {
+    var findAndMatch = function (item, path, value,method) {
         if(value === undefined || value === "")  return true;
 
         var pathIndexes = path.split(".");
@@ -27,23 +27,30 @@ Ajabshahar.user.Sieve = function (filterCriteria) {
             pathIndex = substringUpto(pathIndex, '[]');
             if (_.isArray(item[pathIndex])) {
                 return item[pathIndex].some(function (child) {
-                    return matches(child, substringAfter(path, '.'), value);
+                    return findAndMatch(child, substringAfter(path, '.'), value);
                 })
             }
             return false;
         }
         else {                                               // is  object
             if (pathIndexes.length > 1 && item[pathIndexes[0]]) {
-                return matches(item[pathIndexes[0]], substringAfter(path, '.'), value);
+                return findAndMatch(item[pathIndexes[0]], substringAfter(path, '.'), value);
             }
         }
-        return path === "" ? item === value : item[path] === value;
+        return path === "" ? match(value,item,method) : match(value,item[path],method);
+    };
+
+    var match = function(valueInCriteria,valueInObject,method){
+        if( method ==="startsWith"){
+            return valueInObject.toLowerCase().indexOf(valueInCriteria.toLowerCase()) === 0;
+        }
+        return valueInCriteria === valueInObject;
     };
 
     self.filter = function (items) {
         return items.filter(function (item) {
             return self.filterCriteria.every(function (criteria) {
-                var result = matches(item, criteria.name, criteria.value);
+                var result = findAndMatch(item, criteria.name, criteria.value,criteria.method);
                 //console.log("filtermatches : ",result," | ",criteria.name ," | ",criteria.value," | ",item.englishTransliteration);
                 return  result;
             })
@@ -57,6 +64,13 @@ Ajabshahar.user.Sieve = function (filterCriteria) {
         });
     };
 
+    self.clearFiltersWithDisplayName = function () {
+        self.filterCriteria.forEach(function (criteria) {
+            if(!_.isEmpty(criteria.displayName)){
+                criteria["value"] = undefined;
+            }
+        });
+    };
     self.setFilterCriteria = function(name,value){
         var filterCriteria =_.find(self.filterCriteria,function(criteria){
             return criteria.name === name;

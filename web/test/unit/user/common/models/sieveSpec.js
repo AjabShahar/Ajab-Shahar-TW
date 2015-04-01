@@ -208,4 +208,23 @@ describe("Filter model", function () {
         expect(result.length).toBe(3);
     });
 
+
+    it("should be able to apply the given filter method - startsWith",function(){
+        var filterCriteria = [{
+            name:"gathering",
+            value:"a",
+            method:"startsWith"
+        }];
+
+        filter.filterCriteria = filterCriteria;
+        var songs =[
+            createSong("kichchu din mone","Ajasthan",[{name:"parvati"}],[{english:"moon",translit:"chand"}]),
+            createSong("bhajan ro gudak ra jao","latur",[{name:"laxmi","occupation":["poet","writer"]}],[{english:"sun",translit:"suraj"}]),
+            createSong("nit khair","ajasthan",[{name:"guy","occupation":["poet","dancer"]}],[{english:"moon",translit:"chand"},{english:"sun",translit:"suraj"}])
+        ];
+
+        var result = filter.filter(songs);
+        expect(result.length).toBe(2);
+
+    });
 });
