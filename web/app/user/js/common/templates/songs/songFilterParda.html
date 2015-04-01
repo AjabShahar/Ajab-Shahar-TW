@@ -2,7 +2,9 @@
     <div class="overlay"></div>
     <ul>
         <li class="list-item" ng-repeat="filterItem in filterItems" ng-click="itemClicked(filterItem)">
-            <div ng-repeat="value in filterItem">{{value}}</div>
+            <a href="javascript:void(0)">
+                <div ng-repeat="value in filterItem">{{value}}</div>
+            </a>
         </li>
     </ul>
 </div>

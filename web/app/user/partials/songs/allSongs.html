@@ -72,7 +72,7 @@
                     <a href="javascript:void(0);" ng-click="toggleExpandFilter()" class="filter-button">Filter <span class="collapse"></span></a>
                 </div>
             </div>
-            <div on-click-outside="closeSecondParda()" class="slide-nav-list">
+            <div on-click-outside="closeSecondParda()" class="slide-nav-list" ng-show="expandFilter">
                 <song-filter-category criteria-list="criteriaList" select-handler="filterCategoryClicked" deselect-handler="removeFilterCriteria" clear-filters="clearAllFilters"></song-filter-category>
                 <song-filter-parda ng-if="openSecondParda" filter-items="filterItems" select-handler="filterItemSelected" ></song-filter-parda>
             </div>

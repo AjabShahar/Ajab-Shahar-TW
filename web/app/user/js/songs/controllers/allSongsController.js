@@ -41,6 +41,7 @@ var allSongsController = function($scope,$window,songsContentService,songMapper)
         if($scope.openSecondParda){
             $scope.openSecondParda = false;
         }
+        filterCategoryClicked.isActive =false;
     };
 
     $scope.alphabetFilterClicked = function(alphabetFilter){

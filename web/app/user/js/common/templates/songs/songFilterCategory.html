@@ -1,10 +1,15 @@
-<ul class='filters'>
-    <li class='head'>Filter by</li>
-    <li ng-repeat="criteria in criteriaList">
-        <div ng-if="criteria.displayName">
-            <div ng-click="criteriaClicked(criteria)">{{criteria.displayName}}</div>
-            <div ng-show="criteria.value" ng-click="criteriaRemoved(criteria)">{{criteria.value}}</div>
-        </div>
-    </li>
-    <li><a ng-click="resetFilters()">reset all</a></li>
-</ul>
+<div class="first-layer-list">
+    <ul class='filters'>
+        <li class='head'>Filter by</li>
+        <li ng-repeat="criteria in criteriaList">
+            <div ng-if="criteria.displayName">
+                <a href="javascript:void(0)" ng-class="criteria.isActive? 'active':'" ng-click="criteriaClicked(criteria)">{{criteria.displayName}}</a>
+                <div class="child-list" ng-show="criteria.value" >
+                    <span>{{criteria.value}}<a ng-click="criteriaRemoved(criteria)">x</a></span>
+                </div>
+            </div>
+        </li>
+        <li class="resetImage"> <img src="/user/img/songs/resetline.png" width="180" /> </li>
+        <li><a class="reset" ng-click="resetFilters()">reset all</a></li>
+    </ul>
+</div>
