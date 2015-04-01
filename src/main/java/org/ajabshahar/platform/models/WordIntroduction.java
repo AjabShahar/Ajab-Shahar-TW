@@ -1,10 +1,14 @@
 package org.ajabshahar.platform.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
+@Setter
+@Getter
 @Table(name = "WORD_INTRODUCTION")
 public class WordIntroduction {
 
@@ -22,6 +26,12 @@ public class WordIntroduction {
     @JoinColumn(name = "word_id", nullable = false)
     @JsonBackReference
     private Word word;
+
+    @Column(name = "content_type", nullable = false)
+    private String contentType;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    private PersonDetails poet;
 
     public long getId() {
         return id;

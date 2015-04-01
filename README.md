@@ -27,7 +27,7 @@ Setting up postgres
 #####Commands:
 ```sh
  create database "platform-dev";
- create user “pg-dev” with password '';
+ create user "pg-dev" with password '';
  grant all privileges on database "platform-dev" to "pg-dev";
 ```
 #####Description:
