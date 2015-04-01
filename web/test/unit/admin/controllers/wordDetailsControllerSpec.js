@@ -32,7 +32,7 @@ describe("Word details controller spec:", function() {
 	});
 
     describe("When initializing a word", function(){
-       it("then should have scholars and writers", function(){
+       it("then should have people and writers", function(){
            $httpBackend.when("GET", "/api/people").respond({"people": "somePerson"});
            $httpBackend.when("GET", "/api/category/word").respond(null);
            $httpBackend.when("GET", "/api/reflections/all").respond(null);
@@ -42,7 +42,7 @@ describe("Word details controller spec:", function() {
            $httpBackend.flush();
 
            expect(scope.writers).toBe("somePerson");
-           expect(scope.scholars).toBe("somePerson");
+           expect(scope.people).toBe("somePerson");
        });
     });
 

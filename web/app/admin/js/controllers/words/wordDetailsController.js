@@ -9,7 +9,7 @@ function($scope, $window, $location, contentService, PAGES, $q,loginVerifyServic
   $scope.categories = [];
   $scope.reflections = [];
   $scope.writers = [];
-  $scope.scholars = [];
+  $scope.people = [];
   $scope.songs = [];
 
   var wordCategory = 'word';
@@ -36,7 +36,7 @@ function($scope, $window, $location, contentService, PAGES, $q,loginVerifyServic
       $scope.categories = data[0].data;
       $scope.songs = data[1].data.songs;
       $scope.writers = angular.copy(data[2].data.people);
-      $scope.scholars = angular.copy(data[2].data.people);
+      $scope.people = angular.copy(data[2].data.people);
       $scope.reflections = data[3].data;
 
       createMenuTitleForSongs();
@@ -68,7 +68,7 @@ function($scope, $window, $location, contentService, PAGES, $q,loginVerifyServic
       contentService.getWord(wordID).success(function (data) {
         $scope.reflections   =  getSelectedContent( data.reflection, $scope.reflections );
         $scope.writers   =  getSelectedContent( data.writers, $scope.writers );
-        $scope.scholars   =  getSelectedContent( data.scholars, $scope.scholars );
+        $scope.people   =  getSelectedContent( data.people, $scope.people );
         $scope.songs = getSelectedContent(data.songs, $scope.songs);
         $scope.formInfo = data;
       });
