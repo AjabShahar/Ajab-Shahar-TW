@@ -44,7 +44,7 @@ public class WordsTest {
         word.setWordIntroductions(new HashSet<>());
         word.setReflections(new HashSet<>());
         word.setWriters(new HashSet<>());
-        word.setScholars(new HashSet<>());
+        word.setPeople(new HashSet<>());
         word.setSongs(new HashSet<>());
     }
 
@@ -52,7 +52,7 @@ public class WordsTest {
     public void shouldCreateWord() throws Exception {
         when(wordRepository.create(any(Word.class))).thenReturn(word);
 
-        Word expected = words.create(word);
+        Word expected = wordgss.create(word);
 
         assertEquals(expected.getId(), 1L);
         assertEquals(expected.getWordOriginal(), "WordOrPhrase");
@@ -91,7 +91,7 @@ public class WordsTest {
         updatedWord.setWordIntroductions(wordIntroductions);
         updatedWord.setReflections(reflections);
         updatedWord.setWriters(people);
-        updatedWord.setScholars(people);
+        updatedWord.setPeople(people);
         updatedWord.setSongs(songs);
     }
 
@@ -116,7 +116,7 @@ public class WordsTest {
         assertEquals(word.getWordTransliteration(), "transliterated");
         assertEquals(word.getEnglishIntroExcerpt(), "englishIntroExcerpt");
         assertEquals(word.getHindiIntroExcerpt(), "hindiIntroExcerpt");
-        assertEquals(word.getScholars().size(), 1);
+        assertEquals(word.getPeople().size(), 1);
         assertEquals(word.getSongs().size(), 1);
         assertEquals(word.getWriters().size(), 1);
         assertEquals(word.getWordIntroductions().size(), 1);
