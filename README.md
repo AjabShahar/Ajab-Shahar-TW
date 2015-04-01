@@ -141,7 +141,7 @@ vagrant ssh
 9) The directory ‘/projects’ contains the deployed project.
 
 10) Go inside the scripts folder and run the command:
-sh deploy-ajabshahar.sh
+sudo sh deploy-ajabshahar.sh
 
 11) deploy-ajabshahar.sh will copy the files(zip file for assets and jar file for server code) from your machine(the path configured in the vagrant file) to the VM.
 
@@ -152,9 +152,9 @@ ii. Run ‘sh deploy-ajabshahar.sh’ inside the VM.
 
 b) If they are static content changes i.e js, css and images, then:
 i. Run gulp zip
-ii. Run ‘sh deploy-ajabshahar.sh’ inside the VM.
+ii. Run ‘sudo sh client_deployment.sh’ inside the VM.
 
-​13) To see the site use ip(of the VM):9000 i.e http://192.168.33.10:9000​
+​13) To see the site use ip(of the VM) i.e http://192.168.33.10
 
 14) to get hot deployment of the client code, just add the following lines in ~/.bashrc of your vm
 ```
