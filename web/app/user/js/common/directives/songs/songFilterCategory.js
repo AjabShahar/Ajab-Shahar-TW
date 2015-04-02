@@ -15,7 +15,6 @@ filterModule.directive("songFilterCategory", function() {
         link:function(scope,element,attrs){
             scope.criteriaClicked = function(criteria){
                 //console.log("criteria clicked : ",criteria)
-                criteria.isActive = true;
                 scope.selectHandler(criteria);
             };
 
