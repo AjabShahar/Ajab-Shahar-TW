@@ -1,53 +1,42 @@
 .words-wrapper {
 
-         background: transparent url(/user/img/words/words_bg_tile.png)  0px 0px repeat;
+         background: transparent url(/user/img/words/words_bg_tile.jpg)  0px 0px repeat;
 
          min-height: 1200px;
-         width: 93%;
+         width: 1140px;
          margin: 0 auto;
          display: block;
+         position: relative;
+         background-size: contain;
 
-         @media screen and (max-width: 1380px) {
-            width: 100%;
-         }
 
          &:before, &:after {
              content: '';
              display: inline-block;
-             background: transparent url(/user/img/mainLandingPage/parallax/side_pattern.png) 15px 0;
+             background: transparent url(/user/img/mainLandingPage/parallax/side_pattern.png) 0 0;
              width: 45px;
              background-repeat: no-repeat repeat;
              position: absolute;
-             height: inherit;
              top: 0;
+             height: 100%;
+
 
              @media screen and (max-width: 1380px) {
                  display: none;
              }
          }
          &:before {
-             left: 25px;
+             left: 0px;
          }
          &:after {
-             right: 25px;
+             right: 0;
              -webkit-transform: rotate(180deg);
              -moz-transform: rotate(180deg);
              -o-transform: rotate(180deg);
              transform: rotate(180deg);
          }
 
-         .page-header {
-               /*.page-header-with-logo();*/
 
-                .pagination-head {
-                    width: auto;
-                    margin: 28px 0 0 55px;
-
-                    &>.upper {
-                        border-bottom: none;
-                    }
-                }
-         }
 
 
          .thumbnailWrapper {
