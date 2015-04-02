@@ -3,7 +3,9 @@ animationModule.animation('.toggleBySlide', function () {
     beforeAddClass: function (element, className, done) {
       if (className == 'ng-hide') {
         element.slideUp(750,function(){
-            $('.headerArt').addClass('stackDown');
+            if($('.slide-nav-list') !== '' && $('.slide-nav-list').size() != 0) {
+                $('.headerArt').addClass('stackDown');
+            }
         });
 
       }
