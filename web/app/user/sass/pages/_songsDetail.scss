@@ -329,7 +329,7 @@ body.songs-details {
     div .left-nav {
           width: 70px;
           left: 0%;
-          top: 30px;
+          top: 3px;
           position: absolute;
           display: inline-block;
           text-align: left;
@@ -339,12 +339,17 @@ body.songs-details {
                 a {
                     padding-left: 0px !important;
                 }
+                li:first-child {
+                    width: 190px;
+                }
+          }
+          ul {
+            margin-left: -15px;
           }
 
         a {
               display: block;
               padding: 20px;
-              padding-left: 10px;
               font-weight: 300;
               font-family: 'Merriweather';
               color: #666;
@@ -353,8 +358,9 @@ body.songs-details {
         }
 
         li:first-child {
-            border-bottom: solid thin;
-            border-bottom-color: white;
+            background: transparent url(/user/img/songs/menu-separator.png) -100px 46px no-repeat;
+            width: 200px;
+            background-size: contain;
 
 
         }
