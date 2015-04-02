@@ -81,6 +81,7 @@
     ul.audio-video-options {
         float: right;
         display: inline-flex;
+        display: webkit-inline-flex;
         margin-top: -2%;
         &>li {
             border-right: solid 1px #666;
