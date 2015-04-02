@@ -13,12 +13,38 @@ var allSongsController = function($scope,$window,songsContentService,songMapper)
     $scope.criteriaList = Ajabshahar.user.SongFilterConfig.filterCategories;
     var filterItemsLoaderConfig = Ajabshahar.user.SongFilterConfig.filterItemsLoader;
     var sieve = new Ajabshahar.user.Sieve($scope.criteriaList);
+    var contentTextRepresentation = 'Transliteration';
+
+    $scope.$on("contentTextRepresentation",function(event,data){
+        contentTextRepresentation =data;
+        sortSongsList($scope.filteredSongList);
+    });
+
+    var sortSongsList = function(songs){
+        var sortFunction = contentTextRepresentation === 'Transliteration'? compareTranslitTitles:compareEnglishTitles;
+        songs.sort(sortFunction);
+    };
+
+    var compareEnglishTitles = function(firstSong,secondSong){
+        return firstSong.englishTranslation.localeCompare(secondSong.englishTranslation);
+    };
+
+    var compareTranslitTitles = function (firstSong, secondSong){
+        return firstSong.englishTransliteration.localeCompare(secondSong.englishTransliteration);
+    };
+
+    var filterAndLoad = function(songs){
+        $scope.closeSecondParda();
+        $scope.filteredSongList = sieve.filter(songs);
+        loadFilterItemsFrom($scope.filteredSongList);
+    };
 
     $scope.filterCategoryClicked = function(criteria){
-        //var methodToCall = filterItemsLoaderConfig[criteria.displayName];
-        //$scope.filterItems =songsContentService[methodToCall]($scope.filteredSongList);
-        $scope.selectedFilterCategory.active = false;
+        //$scope.openSecondParda = false;
+        //$scope.selectedFilterCategory.active = false;
+        $scope.closeSecondParda();
         $scope.selectedFilterCategory = criteria;
+
         if(!criteria.disabled && _.isEmpty(criteria.value)){
             $scope.openSecondParda = true;
             criteria.active = true;
@@ -27,22 +53,17 @@ var allSongsController = function($scope,$window,songsContentService,songMapper)
 
     $scope.removeFilterCriteria = function(criteria){
         sieve.removeFilterCriteria(criteria.name);
-        $scope.filteredSongList = sieve.filter(songs);
-        loadFilterItemsFrom($scope.filteredSongList);
+        filterAndLoad(songs);
     };
 
     $scope.clearAllFilters = function(){
         sieve.clearFiltersWithDisplayName();
-        $scope.filteredSongList = sieve.filter(songs);
-        $scope.closeSecondParda();
-        loadFilterItemsFrom($scope.filteredSongList);
+        filterAndLoad(songs);
     };
 
     $scope.filterItemSelected = function(filterValue){
         sieve.setFilterCriteria($scope.selectedFilterCategory.name,filterValue);
-        $scope.filteredSongList = sieve.filter(songs);
-        $scope.closeSecondParda();
-        loadFilterItemsFrom($scope.filteredSongList);
+        filterAndLoad(songs);
     };
 
     $scope.closeSecondParda = function(){
@@ -56,16 +77,14 @@ var allSongsController = function($scope,$window,songsContentService,songMapper)
         if(!_.isEmpty(alphabetFilter)){
             var filterCategoryName = alphabetFilter.contentTextRepresentation.toLowerCase() === 'translation'? "englishTranslation":"englishTransliteration";
             sieve.setFilterCriteria(filterCategoryName,alphabetFilter.alphabet);
-            $scope.filteredSongList =sieve.filter(songs);
-            loadFilterItemsFrom($scope.filteredSongList);
+            filterAndLoad(songs);
         }
     };
 
     $scope.clearAlphabetFilters = function(){
         sieve.removeFilterCriteria("englishTransliteration");
         sieve.removeFilterCriteria("englishTranslation");
-        $scope.filteredSongList = sieve.filter(songs);
-        loadFilterItemsFrom($scope.filteredSongList);
+        filterAndLoad(songs);
     };
 
     $scope.toggleExpandFilter = function(){
@@ -76,8 +95,8 @@ var allSongsController = function($scope,$window,songsContentService,songMapper)
         songsContentService.getAllSongs().then(function(songsList){
             songs = songMapper.getThumbnails(songsList.data.songs);
             $scope.filteredSongList = songs || [];
-            //$scope.songCount = songsList.data.songs.length;
             loadFilterItemsFrom(songs);
+            sortSongsList($scope.filteredSongList);
         });
     };
 
@@ -90,13 +109,6 @@ var allSongsController = function($scope,$window,songsContentService,songMapper)
             }
         });
     };
-
- /*   $scope.songStartsWithComparator = function (actual, expected) {
-       if (!$scope.activeLetter && $scope.activeLetter=='') {
-          return true;
-       }
-       return $scope.strStartsWith(actual.englishTransliterationTitle.toUpperCase(),$scope.activeLetter.toUpperCase());
-    };*/
 
     $scope.loadSongFromRange = function(){
         if($scope.scrollIndex>$scope.filteredSongList.length)
