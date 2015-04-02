@@ -10,11 +10,17 @@
 Todo: 768px of chrome and all resolutions with mozilla, styles need to be revisited
 */
 
+$tab-portrait: new-breakpoint(max-width 768px);
+
 .pagination-head {
-    width: 95%;
+    width: 99%;
     padding: 0 0 3% 0;
     margin-top: 6%;
     float: left;
+
+    @include media($tab-portrait) {
+        margin-top: 12%;
+    }
 
     &>.upper {
         display: inline-block;
