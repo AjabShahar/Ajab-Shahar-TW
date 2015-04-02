@@ -4,7 +4,7 @@ $desktop: new-breakpoint(min-width 1025px);
 
 .thumbnails-grid {
     .media-list {
-        @include outer-container;
+        /*@include outer-container;*/
 
         .media {
             min-height: 250px;
