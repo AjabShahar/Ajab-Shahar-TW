@@ -185,7 +185,7 @@ public class SongsRepresentationFactoryTest {
         assertThat(songsRepresentation.get(0).getSoundCloudTrackId(), IsEqual.equalTo("67890"));
         assertThat(songsRepresentation.get(0).getThumbnailUrl(), IsEqual.equalTo("http://tinyurl.com"));
         assertThat(songsRepresentation.get(0).getDuration(), IsEqual.equalTo("1:00"));
-        assertThat(songsRepresentation.get(0).getGathering(), IsEqual.equalTo("song1englishGathering"));
+        assertThat(songsRepresentation.get(0).getSongGathering(), IsEqual.equalTo("song1englishGathering"));
 
         assertThat(songsRepresentation.get(0).getSingers().get(0).toString(), IsEqual.equalTo("id: 1001, name: Singer1"));
         assertThat(songsRepresentation.get(0).getPoets().get(0).toString(), IsEqual.equalTo("id: 2001, name: Poet1"));

@@ -8,7 +8,7 @@ import java.util.List;
 import static java.lang.String.format;
 
 public class SongRepresentation {
-    private String gathering;
+    private String songGathering;
     private long id;
     private long umbrellaTitleId;
     private String umbrellaTitleOriginal;
@@ -37,7 +37,7 @@ public class SongRepresentation {
         this.links = new ArrayList<>();
     }
 
-    public SongRepresentation(long id, long umbrellaTitleId, String umbrellaTitleOriginal, String umbrellaTitleEnglishTransliteration, String umbrellaTitleEnglishTranslation, long titleId, String titleOriginal, String titleEnglishTransliteration, String titleEnglishTranslation, boolean publish, String type, boolean featured, String youTubeVideoId, String soundCloudTrackId, String thumbnailUrl, String duration, String gathering, List<PersonSummaryRepresentation> singers, List<PersonSummaryRepresentation> poet, String about, SongTextRepresentation songText, String downloadUrl, WordsSummaryRepresentation words) {
+    public SongRepresentation(long id, long umbrellaTitleId, String umbrellaTitleOriginal, String umbrellaTitleEnglishTransliteration, String umbrellaTitleEnglishTranslation, long titleId, String titleOriginal, String titleEnglishTransliteration, String titleEnglishTranslation, boolean publish, String type, boolean featured, String youTubeVideoId, String soundCloudTrackId, String thumbnailUrl, String duration, String songGathering, List<PersonSummaryRepresentation> singers, List<PersonSummaryRepresentation> poet, String about, SongTextRepresentation songText, String downloadUrl, WordsSummaryRepresentation words) {
         this();
         this.id = id;
         this.umbrellaTitleId = umbrellaTitleId;
@@ -57,7 +57,7 @@ public class SongRepresentation {
         this.duration = duration;
         this.singers = singers;
         this.poets = poet;
-        this.gathering = gathering;
+        this.songGathering = songGathering;
         this.singers.forEach(singer -> links.add(new LinkRepresentation("singer", format("/api/people/%s", singer.getId()))));
         this.poets.forEach(p -> links.add(new LinkRepresentation("poet", format("/api/people/%s", p.getId()))));
         this.songText = songText;
@@ -147,9 +147,9 @@ public class SongRepresentation {
         return duration;
     }
 
-    @JsonProperty("gathering")
-    public String getGathering() {
-        return gathering;
+    @JsonProperty("songGathering")
+    public String getSongGathering() {
+        return songGathering;
     }
 
     @JsonProperty("singers")
