@@ -24,9 +24,13 @@ public class DataSetup {
 
     public static final Operation DELETE_WORDS = deleteAllFrom("WORD");
 
+    public static final Operation DELETE_WORD_INTRODUCTION = deleteAllFrom("WORD_INTRODUCTION");
+
     public static final Operation DELETE_SONG_WORD = deleteAllFrom("SONG_WORD");
 
     public static final Operation DELETE_CATEGORY = deleteAllFrom("CATEGORY");
+
+    public static final Operation DELETE_PERSON = deleteAllFrom("PERSON");
 
     public static final Operation INSERT_SONGS =
             sequenceOf(
@@ -37,8 +41,20 @@ public class DataSetup {
     public static final Operation INSERT_WORDS =
             sequenceOf(
                     insertInto("WORD")
-                            .columns("id", "word_original", "word_translation","word_transliteration", "meaning","show_on_landing_page")
-                            .values(1, "word original", "word translation", "word transliteration","meaning",true)
+                            .columns("id", "word_original", "word_translation","word_transliteration", "meaning","show_on_landing_page", "hindi_intro_excerpt", "english_intro_excerpt", "is_root_word", "diacritic")
+                            .values(1, "word original", "word translation", "word transliteration","meaning",true, "some Hindi text", "some English text", true, "some diacritic")
+                            .build());
+    public static final Operation INSERT_WORD_INTRODUCTION =
+            sequenceOf(
+                    insertInto("word_introduction")
+                            .columns("word_id", "word_intro_hindi", "word_intro_english", "content_type", "poet_id")
+                            .values( 1, "word intro hindi", "word intro english", "text", null)
+                            .build());
+    public static final Operation INSERT_WORD_INTRODUCTION_WITH_COUPLET_CONTENT_TYPE =
+            sequenceOf(
+                    insertInto("word_introduction")
+                            .columns("word_id", "word_intro_hindi", "word_intro_english", "content_type", "poet_id")
+                            .values( 1, "word intro hindi", "word intro english", "couplet", null)
                             .build());
     public static final Operation INSERT_SONG_WORD =
             sequenceOf(
