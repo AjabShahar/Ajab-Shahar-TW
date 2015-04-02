@@ -16,6 +16,8 @@ import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Test;
 
+import javax.xml.crypto.Data;
+
 import static org.junit.Assert.assertEquals;
 
 public class SongResourceIT {
@@ -44,7 +46,7 @@ public class SongResourceIT {
 
     @Test
     public void shouldGetSongRepresentationWithWords() throws Exception {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_SONG_WORD, DataSetup.DELETE_SONGS, DataSetup.DELETE_CATEGORY,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_WORD_INTRODUCTION, DataSetup.DELETE_SONG_WORD, DataSetup.DELETE_SONGS, DataSetup.DELETE_CATEGORY,
                 DataSetup.DELETE_WORDS, DataSetup.INSERT_CATEGORY, DataSetup.INSERT_SONGS, DataSetup.INSERT_WORDS, DataSetup.INSERT_SONG_WORD);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
