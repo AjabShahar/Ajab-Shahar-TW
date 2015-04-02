@@ -81,6 +81,7 @@
     ul.audio-video-options {
         float: right;
         display: inline-flex;
+        margin-top: -2%;
         &>li {
             border-right: solid 1px #666;
             line-height: 2px;
@@ -183,7 +184,7 @@
 .mediaFooter {
     text-align: center;
     position: fixed;
-    bottom: 1%;
+    bottom: 2.8%;
     width: 100%;
     left: 0;
     z-index: $zIndex-lightbox-footer;
