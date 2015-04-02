@@ -171,12 +171,12 @@
                 text-transform: uppercase;
                 color: #e61b72;
                 &>.collapse {
-                    background: transparent url('/user/img/common/icons/minus.png') 0 0 no-repeat;
+                    background: transparent url('/user/img/common/icons/cross.png') 0 0 no-repeat;
                     display: inline-block;
                     height: 9px;
                     width: 9px;
                     &.expand {
-                        background-image: url('/user/img/common/icons/cross.png');
+                        background-image: url('/user/img/common/icons/minus.png');
                     }
                 }
 
