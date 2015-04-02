@@ -11,11 +11,10 @@ Todo: 768px of chrome and all resolutions with mozilla, styles need to be revisi
 */
 
 .pagination-head {
-    display: inline-block;
-    width: 83%;
-    padding: 0% 0 3% 2%;
-    margin-top:86px;
-    margin-left:30px;
+    width: 95%;
+    padding: 0 0 3% 0;
+    margin-top: 6%;
+    float: left;
 
     &>.upper {
         display: inline-block;

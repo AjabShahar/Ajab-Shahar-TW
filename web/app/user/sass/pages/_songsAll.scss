@@ -8,6 +8,13 @@
     background-size: contain;
     margin: 10px 0 0 0;
 
+    .grid-view {
+        float: left;
+        margin-left: 150px;
+        width: 95%;
+        width: calc(100% - 150px);
+    }
+
     .headerBox {
         position: absolute;
         top: 0;
