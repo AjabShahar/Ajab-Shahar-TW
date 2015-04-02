@@ -1,27 +1,22 @@
-$tab-portrait: new-breakpoint(min-width 768px);
-$tab-landscape: new-breakpoint(min-width 1024px);
+$tab-portrait: new-breakpoint(max-width 768px);
+$tab-landscape: new-breakpoint(max-width 1024px);
 $desktop: new-breakpoint(min-width 1025px);
 
 .thumbnails-grid {
+    @include outer-container;
+    max-width: 100%;
     .media-list {
-        /*@include outer-container;*/
 
         .media {
             min-height: 250px;
-
-            @include span-columns(12);
-
-            @include media($tab-portrait) {
-              @include span-columns(6);
-              margin-right: 1%; // TBD: hack for tab portrait
-            }
+            @include span-columns(3);
 
             @include media($tab-landscape) {
-              @include span-columns(4);
+                @include span-columns(4);
             }
-
-            @include media($desktop) {
-              @include span-columns(3);
+            @include media($tab-portrait) {
+                @include span-columns(6);
+                margin-right: 1%;
             }
         }
     }
