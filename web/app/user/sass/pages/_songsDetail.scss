@@ -262,7 +262,8 @@ body.songs-details {
         width: 100%;
         display: inline-block;
         position: relative;
-        ul {
+        ul
+        {
             margin: 20px auto 0px;
             display: inline-block;
             width: auto;
@@ -272,12 +273,18 @@ body.songs-details {
                 &:first-child {
                     margin-left: 0;
                 }
+
+
                 &>a {
                     float: left;
                     width: 36px;
                     height: 36px;
                     background: transparent url(/user/img/songs/songs_sprite.png) 0  0 no-repeat;
+
+
                 }
+
+
 
 
                 &.original {
@@ -295,6 +302,17 @@ body.songs-details {
                         background-position: 0px -120px;
                     }
                 }
+            }
+        }
+        div {
+            float: right;
+            margin: 25px 35px;
+            &>a {
+                width: 36px;
+                height: 36px;
+                text-transform: UpperCase;
+                color: #E83785;
+                /* TODO:check font size */
             }
         }
         .play-icon {
