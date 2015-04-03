@@ -42,17 +42,14 @@
 
         .first-layer-list {
             width: 250px;
-            background: transparent url('/user/img/songs/parda180px.png') right 0 repeat-y;
+            background: transparent url('/user/img/songs/parda180px.png') right -5px repeat-y;
             background-size: cover;
             height: 100%;
             position: fixed;
-
-
         }
 
-
         .filters {
-            margin-top: 175px;
+            margin-top: 200px;
             margin-right: 80px;
             margin-left: 30px;
             text-align: left;
@@ -142,9 +139,6 @@
         }
 
      }
-
-
-
  }
 
 
@@ -199,7 +193,7 @@
 
     .second-layer-list {
         .overlay {
-            background: transparent url('/user/img/songs/filter-pardah2.png') right 0 repeat-y;
+            background: transparent url('/user/img/songs/filter-pardah2.png') right -5px repeat-y;
             position: fixed;
             width: 300px;
             height: 100%;
