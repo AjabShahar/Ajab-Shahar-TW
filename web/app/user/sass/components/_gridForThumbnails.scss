@@ -1,23 +1,28 @@
-$tab-portrait: new-breakpoint(max-width 768px);
-$tab-landscape: new-breakpoint(max-width 1024px);
-$desktop: new-breakpoint(min-width 1025px);
+$tab-portrait: new-breakpoint(max-width 768px 6);
+$tab-landscape: new-breakpoint(max-width 1024px 4);
+$desktop: new-breakpoint(min-width 1025px 3);
 
 .thumbnails-grid {
-    @include outer-container;
-    max-width: 100%;
-    .media-list {
 
-        .media {
-            min-height: 250px;
-            @include span-columns(3);
+    @include outer-container(100%);
+    @include span-columns(12);
+    .media {
+        min-height: 250px;
 
-            @include media($tab-landscape) {
-                @include span-columns(4);
-            }
-            @include media($tab-portrait) {
-                @include span-columns(6);
-                margin-right: 1%;
-            }
+        @include media($desktop) {
+            @include span-columns(3 of 12);
+            @include omega(4n);
+        }
+
+
+        @include media($tab-landscape) {
+            @include span-columns(4 of 12);
+            @include omega(3n);
+        }
+
+        @include media($tab-portrait) {
+            @include span-columns(6 of 12);
+            @include omega(2n);
         }
     }
 }
