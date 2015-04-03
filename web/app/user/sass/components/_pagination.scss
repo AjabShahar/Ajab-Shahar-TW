@@ -44,6 +44,12 @@ $tab-portrait: new-breakpoint(max-width 768px);
                     line-height: 12px;
                 }
 
+                &:first-child {
+                    &>span {
+                        padding-left: 0;
+                    }
+                }
+
                 &:last-child {
                     &>span {
                         border: none;
