@@ -28,7 +28,7 @@
         position: absolute;
         left: -250px;
         top: 0;
-
+        min-height: 600px;
         z-index: 180;
 
         &.ng-hide-add {
@@ -44,8 +44,10 @@
             width: 250px;
             background: transparent url('/user/img/songs/parda180px.png') right 0 repeat-y;
             background-size: cover;
-            min-height: 750px;
+            height: 100%;
             position: fixed;
+
+
         }
 
 
@@ -209,7 +211,8 @@
         left: 220px;
         top: 0;
         overflow: scroll;
-        height: 100%;
+        min-height: 650px;
+
         width: 275px;
         text-align: left;
         z-index: -1;
