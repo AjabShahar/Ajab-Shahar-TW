@@ -262,8 +262,7 @@ body.songs-details {
         width: 100%;
         display: inline-block;
         position: relative;
-        ul
-        {
+        ul  {
             margin: 20px auto 0px;
             display: inline-block;
             width: auto;
@@ -304,15 +303,19 @@ body.songs-details {
                 }
             }
         }
-        div {
-            float: right;
-            margin: 25px 35px;
+        .glossary-link {
+            position: absolute;
+            right: 30px;
+            bottom: 55px;
+            font-size: 14px;
+            color: #808080;
+            font-weight: 300;
+
             &>a {
-                width: 36px;
-                height: 36px;
-                text-transform: UpperCase;
-                color: #E83785;
-                /* TODO:check font size */
+                font-size: 15px;
+                text-transform: upperCase;
+                color: #ed1e79;
+
             }
         }
         .play-icon {
