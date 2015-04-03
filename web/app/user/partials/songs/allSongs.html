@@ -74,7 +74,7 @@
             </div>
             <div on-click-outside="closeSecondParda()" class="slide-nav-list" ng-show="expandFilter">
                 <song-filter-category criteria-list="criteriaList" select-handler="filterCategoryClicked" deselect-handler="removeFilterCriteria" clear-filters="clearAllFilters"></song-filter-category>
-                <song-filter-parda ng-if="openSecondParda" filter-items="filterItems[selectedFilterCategory.displayName]" select-handler="filterItemSelected" ></song-filter-parda>
+                <song-filter-parda show-this-parda="openSecondParda" filter-items="filterItems[selectedFilterCategory.displayName]" select-handler="filterItemSelected" ></song-filter-parda>
             </div>
             <div class='grid-view' infinite-scroll="loadSongFromRange()">
 

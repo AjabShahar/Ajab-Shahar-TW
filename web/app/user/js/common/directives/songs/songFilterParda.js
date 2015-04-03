@@ -7,7 +7,8 @@ filterModule.directive("songFilterParda", function() {
         templateUrl:'/user/js/common/templates/songs/songFilterParda.html',
         scope:{
             filterItems:"=",
-            selectHandler:"="
+            selectHandler:"=",
+            showThisParda:"="
         },
 
         link:function(scope,element,attrs){
