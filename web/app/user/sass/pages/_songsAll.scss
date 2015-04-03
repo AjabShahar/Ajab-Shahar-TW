@@ -31,11 +31,13 @@
 
         z-index: 180;
 
-        @include animation(pardah1-slideRight 0.5s forwards);
+        &.ng-hide-add {
 
-
-        &.ng-hide {
             @include animation(pardah1-slideLeft 0.5s forwards);
+        }
+
+        &.ng-hide-remove {
+            @include animation(pardah1-slideRight 0.5s forwards);
         }
 
         .first-layer-list {
@@ -182,8 +184,10 @@
                     display: inline-block;
                     height: 9px;
                     width: 9px;
+
                     &.expand {
                         background-image: url('/user/img/common/icons/minus.png');
+
                     }
                 }
 
@@ -214,7 +218,10 @@
         text-transform: uppercase;
         font-size: 12px;
         box-sizing: border-box;
-        @include animation(pardah2-slideRight 0.5s forwards);
+
+
+
+            @include animation(pardah2-slideRight 0.5s forwards);
 
 
         &.ng-hide {
@@ -283,11 +290,13 @@
 
 
 @include keyframes(pardah1-slideLeft) {
-   100% { left: -400px; }
+   0% { left: 0;}
+   100% { left: -250px; }
 }
 
 
 @include keyframes(pardah1-slideRight) {
+ 0% { left: -250px; }
    100% { left: 0; }
 }
 
@@ -297,6 +306,7 @@
 }
 
 @include keyframes(pardah2-slideLeft) {
+    0% { left: 220px; }
    100% { left: -200px; }
 }
 
