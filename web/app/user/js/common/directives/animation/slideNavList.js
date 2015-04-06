@@ -17,6 +17,8 @@ animationModule.animation('.slide-nav-list', function () {
             $('.headerArt').addClass('stackDown');
             var windowHeight = $(document).height();// FF issue
             element.height(windowHeight);
+            $('second-layer-list').css('height',windowHeight);
+            $('overlay').css('height',windowHeight);
           }
           else {
                  done();
