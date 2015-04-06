@@ -18,15 +18,7 @@ thumbnailModule.directive("wordThumbnail", function() {
         controller:function($scope, $window){
             $scope.shouldBeOpen = false;
             $scope.shouldShowDetails = false;
-
-//            $scope.open = function(){
-//                $scope.shouldBeOpen = true;
-//            }
-//
-//            $scope.onClose = function(){
-//                $scope.shouldBeOpen = false;
-//            }
-
+            
             $scope.showDetails = function(){
                 $scope.shouldShowDetails = true;
             }
