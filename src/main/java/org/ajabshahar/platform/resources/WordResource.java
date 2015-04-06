@@ -29,7 +29,7 @@ public class WordResource {
     public Response createWord(String jsonWord) {
         Word word = wordRepresentationFactory.create(jsonWord);
         word = words.create(word);
-        return Response.status(200).entity(word.getId()).build();
+        return Response.status(200).entity(word).build();
     }
 
     @POST
