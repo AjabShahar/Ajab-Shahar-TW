@@ -200,26 +200,27 @@
             z-index: -1;
             background-size: cover;
             height: 100%;
-            overflow-x: hidden;
-            overflow-y: auto;
 
             &>ul {
-                        display: block;
-                        margin-top:  32px;
-                        margin-left: 35px;
-                        .list-item {
-                            padding: 5px 2%;
-                                &>a {
-                                         line-height: 1.8em;
-                                         text-transform: capitalize;
-                                         &:hover {
-                                             color: #E83785;
-                                         }
-
-                                     }
-
-                            }
+                display: block;
+                margin-top:  32px;
+                margin-left: 35px;
+                width: 72%;
+                height: 92%;
+                overflow-x: hidden;
+                overflow-y: auto;
+                
+                .list-item {
+                    padding: 5px 2%;
+                    &>a {
+                         line-height: 1.8em;
+                         text-transform: capitalize;
+                         &:hover {
+                             color: #E83785;
+                         }
                     }
+                }
+            }
 
         }
         position: fixed;
