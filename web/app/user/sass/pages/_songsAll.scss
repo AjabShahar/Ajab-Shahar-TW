@@ -196,11 +196,12 @@
 
             background: transparent url('/user/img/songs/filter-pardah2.png') right -5px repeat-y;
             position: fixed;
-            width: 300px;
+            min-width: 300px;
             z-index: -1;
             background-size: cover;
             height: 100%;
-            overflow: scroll;
+            overflow-x: hidden;
+            overflow-y: auto;
 
             &>ul {
                         display: block;
