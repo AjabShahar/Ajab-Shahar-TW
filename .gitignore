@@ -20,3 +20,5 @@ web/app/common/lib
 web/app/coverage
 **/coverage
 *.log
+*.iml
+gradle*
