@@ -64,8 +64,6 @@
 
         <div class="ajab-wrapper">
 
-            <!--<song-filter songs="songs" song-count="songCount" ng-show="expandFilter" expand-filter="expandFilter" on-clear-filter="clearFilters()" active-letter="activeLetter" poet-name-in-filter="poetNameInFilter" singer-name-in-filter="singerNameInFilter"></song-filter>-->
-
             <div class='left-nav headerfixInner'>
                 <div class='nav-elements-wrapper'>
                     <h1 class='category-logo'>songs</h1>
@@ -79,28 +77,12 @@
             <div class='grid-view' infinite-scroll="loadSongFromRange()">
 
                 <as-title filter-clicked="alphabetFilterClicked" clear-filters="clearAlphabetFilters">
-
                     <span class='numeric-count'>{{filteredSongList.length}} SONGS</span>
-
-                    <!--<div class="upper-right">-->
-                        <!--<span class="search-box">-->
-                            <!--<input type="search" class="search" />-->
-                        <!--</span>-->
-                        <!--<span class="view-options">-->
-                            <!--<a href="javascript:void(0)" class="grid"></a>-->
-                            <!--<span class="separator">|</span>-->
-                            <!--<a href="javascript:void(0)" class="list"></a>-->
-                        <!--</span>-->
-                    <!--</div>-->
-
                 </as-title>
 
             <div class='grid-wrapper'>
                 <div infinite-scroll='loadSongFromRange()' infinite-scroll-distance='1' class="thumbnails-grid">
                     <ul class="media-list songs">
-                       <!-- <li class="media" ng-repeat="song in (songs | filterSongByTitle:activeLetter | filterSongBySinger:singerNameInFilter | filterSongByPoet:poetNameInFilter | filterByScroll:scrollIndex)">
-                            <song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}" open="navigateToSong(song.id)" custom-style="{{song.customStyle}}" img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}" english-transliteration="{{song.englishTransliteration}}" english-translation="{{song.englishTranslation}}" category-name="{{song.category}}" duration="{{song.duration}}" singer="{{song.singer}}" class = "songs" poet="{{song.poet}}" singers="{{song.singers}}"></song-thumbnail>
-                        </li>-->
                         <li class="media" ng-repeat="song in (filteredSongList | filterByScroll:scrollIndex)">
                             <song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}" open="navigateToSong(song.id)" custom-style="{{song.customStyle}}" img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}" english-transliteration="{{song.englishTransliteration}}" english-translation="{{song.englishTranslation}}" category-name="{{song.category}}" duration="{{song.duration}}" singer="{{song.singer}}" class = "songs" poet="{{song.poet}}" singers="{{song.singers}}"></song-thumbnail>
                         </li>

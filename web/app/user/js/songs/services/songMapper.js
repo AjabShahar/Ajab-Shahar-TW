@@ -25,7 +25,7 @@ thumbnailModule.factory('songMapper',['wordMapper',function(wordMapper){
                 "customStyle": (customStyle)? customStyle():'',
                 "englishTransliteration":song.englishTransliterationTitle,
                 "category":song.category,
-                "gathering":song.SongGathering,
+                "gathering":song.songGathering,
                 "duration":song.duration,
                 "singer":(song.singers==null || song.singers.length==0) ? '': song.singers[0].name +(song.singers[1]!=null ? ' ......':''),
                 "singers":(song.singers!=null && song.singers.length > 1)? getSingers(song.singers):'',
