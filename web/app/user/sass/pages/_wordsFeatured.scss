@@ -67,9 +67,11 @@
                 margin: 0 auto;
                 .title {
                     font-family: 'Merriweather';
-                    font-size: 24px;
+                    font-size: 20px;
                     font-weight: 300;
                     color: #4d4d4e;
+                    text-transform: capitalize;
+                    line-height: 1.5em;
                     &:hover {
                         color: #ee2a7b;
                     }
@@ -80,6 +82,8 @@
                     font-weight: 300;
                     font-style: italic;
                     color: #989798;
+                    text-transform: capitalize;
+                    line-height: 1.2em;
                 }
 
                 .show-desc {
