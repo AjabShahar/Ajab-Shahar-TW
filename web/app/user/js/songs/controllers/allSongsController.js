@@ -1,4 +1,4 @@
-var allSongsController = function($scope,$window,songsContentService,songMapper){
+allSongsApp.controller('allSongsController',['$scope','$window','songsContentService','songMapper',function($scope,$window,songsContentService,songMapper){
     var songs=[];
     $scope.filteredSongList=[];
     $scope.activeLetter = '';
@@ -40,8 +40,6 @@ var allSongsController = function($scope,$window,songsContentService,songMapper)
     };
 
     $scope.filterCategoryClicked = function(criteria){
-        //$scope.openSecondParda = false;
-        //$scope.selectedFilterCategory.active = false;
         $scope.closeSecondParda();
         $scope.selectedFilterCategory = criteria;
 
@@ -89,6 +87,9 @@ var allSongsController = function($scope,$window,songsContentService,songMapper)
 
     $scope.toggleExpandFilter = function(){
         $scope.expandFilter = !$scope.expandFilter;
+        if(!$scope.expandFilter){
+            $scope.closeSecondParda()
+        }
     };
 
     $scope.getAllSongs = function(){
@@ -121,6 +122,6 @@ var allSongsController = function($scope,$window,songsContentService,songMapper)
     };
 
     $scope.getAllSongs();
-};
+}]);
 
-allSongsApp.controller('allSongsController',['$scope','$window','songsContentService','songMapper',allSongsController]);
+
