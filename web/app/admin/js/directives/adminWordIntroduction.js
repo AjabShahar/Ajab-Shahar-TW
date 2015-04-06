@@ -15,7 +15,7 @@ wordsAdminApp.directive("adminWordIntroduction", function() {
             };
 
             $scope.addToWordIntroduction = function(){
-                $scope.wordIntroductions = [];
+                $scope.wordIntroductions = $scope.wordIntroductions.length == 0 ? [] : $scope.wordIntroductions;
                 var introTextOriginals = $scope.wordIntroHindi !=null ? $scope.wordIntroHindi.split(/\n{2,}/g) : [];
                 var introTextTranslations = $scope.wordIntroEnglish !=null ? $scope.wordIntroEnglish.split(/\n{2,}/g) : [];
                 var total =  introTextOriginals.length > 0 ? introTextOriginals.length : introTextTranslations.length;

@@ -48,12 +48,14 @@
                 </select>
             </div>
         </div>
-        <div class="row col-md-1" ng-show="wordIntroduction.contentType === 'couplet'">
-            <strong>Couplet's poet</strong>
+        <div class="row" ng-show="wordIntroduction.contentType === 'couplet'">
+            <strong class="col-sm-2">Couplet's poet</strong>
 
-            <select ng-model="wordIntroduction.poet.id" class="form-control">
-                <option ng-repeat="poet in poets" value="{{poet.id}}" ng-selected="wordIntroduction.poet.id === poet.id">{{poet.firstName}}</option>
-            </select>
+            <div class="form-group col-sm-2">
+                <select ng-model="wordIntroduction.poet.id" class="form-control">
+                    <option ng-repeat="poet in poets" value="{{poet.id}}" ng-selected="wordIntroduction.poet.id === poet.id">{{poet.firstName}}</option>
+                </select>
+            </div>
         </div>
     </div>
 </div>
