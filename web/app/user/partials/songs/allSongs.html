@@ -77,7 +77,8 @@
             <div class='grid-view' infinite-scroll="loadSongFromRange()">
 
                 <as-title filter-clicked="alphabetFilterClicked" clear-filters="clearAlphabetFilters">
-                    <span class='numeric-count'>{{filteredSongList.length}} SONGS</span>
+                    <span class='numeric-count' ng-show="filteredSongList.length > 1 || filteredSongList.length == 0">{{filteredSongList.length}} SONGS</span>
+                    <span class='numeric-count' ng-show="filteredSongList.length == 1">{{filteredSongList.length}} SONG</span>
                 </as-title>
 
             <div class='grid-wrapper'>
