@@ -4,23 +4,24 @@ personAdminApp.controller('personDetailsController', ['$scope', '$http', '$windo
   $scope.pageHeading = "";
   $scope.pageTitle = "";
   $scope.formInfo = {};
-  $scope.categoryList = null;
+  $scope.categoryList = [];
   var isAddNewPersonPage = true;
 
   $scope.init = function(){
-    contentService.getAllCategories('person').then(function(result){
-      $scope.categoryList = result.data;
+    contentService.getAllCategories('person').success(function(result){
+      $scope.categoryList = result;
+      getPersonData();
     });
-  }();
+  };
 
   var savePerson = function(){
-    $http.post('/api/people',$scope.formInfo).success(function(data){
+    $http.post('/api/people',$scope.formInfo).success(function(){
         $window.location.href = '/admin/partials/home.html';
     });
   };
 
   var updatePerson = function(){
-    $http.post('/api/people/edit', $scope.formInfo).success(function(data){
+    $http.post('/api/people/edit', $scope.formInfo).success(function(){
       $window.location.href = '/admin/partials/home.html';
     });
   };
@@ -36,9 +37,11 @@ personAdminApp.controller('personDetailsController', ['$scope', '$http', '$windo
     $http.get( '/api/people/' + personId ).success(function(data){
         $scope.formInfo = data;
 
-        angular.forEach($scope.categoryList, function(category){
           angular.forEach(data.roles, function(selectedCategoryName){
-            ( selectedCategoryName == category.name ) ? category.ticked = true : category.ticked = false;
+            angular.forEach($scope.categoryList, function(category){
+                if(!category.ticked){
+                    category.ticked = (selectedCategoryName === category.name)
+                }
           });
         });
 
@@ -46,7 +49,7 @@ personAdminApp.controller('personDetailsController', ['$scope', '$http', '$windo
     });
   };
 
-  $scope.getPersonData = function(){
+  var getPersonData = function(){
   	var personId = $location.search().id;
     isAddNewPersonPage = (personId == undefined);
 

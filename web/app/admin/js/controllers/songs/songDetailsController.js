@@ -33,7 +33,7 @@ function($scope, $window, $location, songContentService, PAGES, $filter, $q,logi
 
   $scope.isEmpty = function(value){
     return !Boolean(value);
-  }
+  };
 
   $scope.init = function(){
     var genrePromise = songContentService.getGenres();
@@ -85,7 +85,7 @@ function($scope, $window, $location, songContentService, PAGES, $filter, $q,logi
     setSongCategory();
     
     songContentService.createSong($scope.song)
-    .error(function(data, status, headers, config) {alert(data);})
+    .error(function(data) {alert(data);})
     .success(function(){ redirectToURL(PAGES.ADMIN_HOME); });
   };
 
@@ -116,14 +116,14 @@ function($scope, $window, $location, songContentService, PAGES, $filter, $q,logi
 
     $scope.isMediaUrlEmpty = function(){
         return !(Boolean($scope.song.youtubeVideoId) || Boolean($scope.song.soundCloudTrackID));
-    }
+    };
 
   $scope.updateSong = function(){
     setSongCategory();
     $scope.song.publishedDate = null;
 
     songContentService.editSong($scope.song)
-        .error(function(data, status, headers, config) {alert(data);})
+        .error(function(data) {alert(data);})
         .success(function(){ redirectToURL(PAGES.ADMIN_HOME); });
   };
 }]);
