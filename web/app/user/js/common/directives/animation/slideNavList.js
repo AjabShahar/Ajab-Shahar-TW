@@ -15,7 +15,7 @@ animationModule.animation('.slide-nav-list', function () {
             element.addClass("show");
             $(".collapse").removeClass("expand");
             $('.headerArt').addClass('stackDown');
-            var windowHeight = $(document).height();
+            var windowHeight = $(document).height();// FF issue
             element.height(windowHeight);
           }
           else {

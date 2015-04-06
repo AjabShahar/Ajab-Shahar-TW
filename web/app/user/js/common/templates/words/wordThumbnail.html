@@ -7,7 +7,7 @@
             <h3 class="title">{{transliteration}}</h3>
             <h4 class="en-title">{{translation}}</h4>
 
-            <div ng-show="shouldShowDetails" class='thumbnailDetails toggleBySlide'>
+            <div ng-hide="!shouldShowDetails" class='thumbnailDetails toggleBySlide'>
                 <div class="desc">
                    <small>{{englishIntroExcerpt| limitTo : 100 }} ...</small>
                 </div>
