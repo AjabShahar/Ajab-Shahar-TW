@@ -14,7 +14,7 @@ thumbnailModule.directive("songOverview", function() {
             closeVideo:'&',
             noun: '@',
             downloadurl:'@',
-            words:'=',
+            words:'='
         },
         templateUrl:'/user/js/common/templates/songs/songOverview.html',
         controller: function($scope) {

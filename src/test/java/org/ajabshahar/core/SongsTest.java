@@ -1,13 +1,13 @@
 package org.ajabshahar.core;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jayway.jsonassert.JsonAssert;
 import org.ajabshahar.platform.daos.CategoryDAO;
-import org.ajabshahar.platform.daos.SongTextDAO;
 import org.ajabshahar.platform.daos.SongDAO;
+import org.ajabshahar.platform.daos.SongTextDAO;
 import org.ajabshahar.platform.daos.TitleDAO;
-import org.ajabshahar.platform.models.*;
+import org.ajabshahar.platform.models.Category;
+import org.ajabshahar.platform.models.Gathering;
+import org.ajabshahar.platform.models.Song;
+import org.ajabshahar.platform.models.Title;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,11 +15,8 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
-import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Matchers.any;

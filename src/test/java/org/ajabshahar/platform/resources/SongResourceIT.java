@@ -16,8 +16,6 @@ import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Test;
 
-import javax.xml.crypto.Data;
-
 import static org.junit.Assert.assertEquals;
 
 public class SongResourceIT {

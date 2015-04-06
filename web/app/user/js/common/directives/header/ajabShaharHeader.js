@@ -5,7 +5,7 @@ headerModule.directive("ajabShaharHeader", function($window) {
         restrict: 'E',
         scope: {
             showMenuDetails:'@',
-            callBack:'&',
+            callBack:'&'
         },
         templateUrl:'/user/js/common/templates/header/ajabShaharHeader.html',
         controller:function($scope){

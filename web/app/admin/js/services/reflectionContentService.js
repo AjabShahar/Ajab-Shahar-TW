@@ -20,7 +20,7 @@ var reflectionContentService = function($http){
     getPeople : getPeople,
     getRefectionById : getRefectionById,
     saveReflection:saveReflection,
-    updateReflection:updateReflection,
+    updateReflection:updateReflection
   };
 
 };

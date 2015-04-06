@@ -26,7 +26,7 @@ public class WordRepresentationFactory {
             String wordTransliteration = word.getWordTransliteration() != null ? word.getWordTransliteration() : "";
             String hindiIntroExcerpt = word.getEnglishIntroExcerpt() != null ? word.getEnglishIntroExcerpt() : "";
             String englishIntroExcerpt = word.getHindiIntroExcerpt() != null ? word.getHindiIntroExcerpt() : "";
-            List<PersonSummaryRepresentation> writers = new ArrayList<PersonSummaryRepresentation>();
+            List<PersonSummaryRepresentation> writers = new ArrayList<>();
             if (word.getWriters().size() > 0) {
                 for (PersonDetails writer : word.getWriters()) {
                     PersonSummaryRepresentation representation = new PersonSummaryRepresentation(writer.getId(), writer.getName(), writer.getHindiName());
@@ -43,10 +43,10 @@ public class WordRepresentationFactory {
     public WordsRepresentation createWordsRepresentation(List<Word> wordsList) {
         WordsRepresentation wordsRepresentation = new WordsRepresentation();
         for (Word word : wordsList) {
-            Set<WordIntroduction> wordIntroductionSet = word.getWordIntroductions() != null ? word.getWordIntroductions() : new HashSet<WordIntroduction>();
+            Set<WordIntroduction> wordIntroductionSet = word.getWordIntroductions() != null ? word.getWordIntroductions() : new HashSet<>();
             String wordIntroHindi = getWordIntroOriginal(wordIntroductionSet);
             String wordIntroEnglish = getWordIntroTranslation(wordIntroductionSet);
-            List<PersonSummaryRepresentation> writers = new ArrayList<PersonSummaryRepresentation>();
+            List<PersonSummaryRepresentation> writers = new ArrayList<>();
             if (word.getWriters().size() > 0) {
                 for (PersonDetails writer : word.getWriters()) {
                     PersonSummaryRepresentation representation = new PersonSummaryRepresentation(writer.getId(), writer.getName(), writer.getHindiName());
@@ -79,10 +79,10 @@ public class WordRepresentationFactory {
         WordReflectionRepresentation wordReflections = new WordReflectionRepresentation();
         Word word = wordsList.get(0);
 
-        Set<WordIntroduction> wordIntroductionSet = word.getWordIntroductions() != null ? word.getWordIntroductions() : new HashSet<WordIntroduction>();
+        Set<WordIntroduction> wordIntroductionSet = word.getWordIntroductions() != null ? word.getWordIntroductions() : new HashSet<>();
         String wordIntroHindi = getWordIntroOriginal(wordIntroductionSet);
         String wordIntroEnglish = getWordIntroTranslation(wordIntroductionSet);
-        List<PersonSummaryRepresentation> writers = new ArrayList<PersonSummaryRepresentation>();
+        List<PersonSummaryRepresentation> writers = new ArrayList<>();
         if (word.getWriters().size() > 0) {
             for (PersonDetails writer : word.getWriters()) {
                 PersonSummaryRepresentation representation = new PersonSummaryRepresentation(writer.getId(), writer.getName(), writer.getHindiName());
@@ -102,10 +102,10 @@ public class WordRepresentationFactory {
         WordSynonymRepresentation synonyms = new WordSynonymRepresentation();
         Word word = wordsList.get(0);
 
-        Set<WordIntroduction> wordIntroductionSet = word.getWordIntroductions() != null ? word.getWordIntroductions() : new HashSet<WordIntroduction>();
+        Set<WordIntroduction> wordIntroductionSet = word.getWordIntroductions() != null ? word.getWordIntroductions() : new HashSet<>();
         String wordIntroHindi = getWordIntroOriginal(wordIntroductionSet);
         String wordIntroEnglish = getWordIntroTranslation(wordIntroductionSet);
-        List<PersonSummaryRepresentation> writers = new ArrayList<PersonSummaryRepresentation>();
+        List<PersonSummaryRepresentation> writers = new ArrayList<>();
         if (word.getWriters().size() > 0) {
             for (PersonDetails writer : word.getWriters()) {
                 PersonSummaryRepresentation representation = new PersonSummaryRepresentation(writer.getId(), writer.getName(), writer.getHindiName());
@@ -116,7 +116,7 @@ public class WordRepresentationFactory {
         synonyms.setWord(wordRepresentation);
         for (Word synonym : word.getSynonyms()) {
             Set<WordIntroduction> synonymIntroductionSet = synonym.getWordIntroductions() != null ?
-                    synonym.getWordIntroductions() : new HashSet<WordIntroduction>();
+                    synonym.getWordIntroductions() : new HashSet<>();
 
             String synonymIntroHindi = getWordIntroOriginal(synonymIntroductionSet);
             String synonymIntroEnglish = getWordIntroTranslation(synonymIntroductionSet);
@@ -136,10 +136,10 @@ public class WordRepresentationFactory {
         RelatedWordRepresentation relatedWords = new RelatedWordRepresentation();
         Word word = wordsList.get(0);
 
-        Set<WordIntroduction> wordIntroductionSet = word.getWordIntroductions() != null ? word.getWordIntroductions() : new HashSet<WordIntroduction>();
+        Set<WordIntroduction> wordIntroductionSet = word.getWordIntroductions() != null ? word.getWordIntroductions() : new HashSet<>();
         String wordIntroHindi = getWordIntroOriginal(wordIntroductionSet);
         String wordIntroEnglish = getWordIntroTranslation(wordIntroductionSet);
-        List<PersonSummaryRepresentation> writers = new ArrayList<PersonSummaryRepresentation>();
+        List<PersonSummaryRepresentation> writers = new ArrayList<>();
         if (word.getWriters().size() > 0) {
             for (PersonDetails writer : word.getWriters()) {
                 PersonSummaryRepresentation representation = new PersonSummaryRepresentation(writer.getId(), writer.getName(), writer.getHindiName());
@@ -150,7 +150,7 @@ public class WordRepresentationFactory {
         relatedWords.setWord(wordRepresentation);
         for (Word relatedWord : word.getRelatedWords()) {
             Set<WordIntroduction> relatedWordsIntroductionSet = relatedWord.getWordIntroductions() != null ?
-                    relatedWord.getWordIntroductions() : new HashSet<WordIntroduction>();
+                    relatedWord.getWordIntroductions() : new HashSet<>();
 
             String relatedWordIntroHindi = getWordIntroOriginal(relatedWordsIntroductionSet);
             String relatedWordIntroEnglish = getWordIntroTranslation(relatedWordsIntroductionSet);

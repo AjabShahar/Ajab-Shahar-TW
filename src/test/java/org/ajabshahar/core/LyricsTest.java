@@ -2,8 +2,8 @@ package org.ajabshahar.core;
 
 import com.google.gson.JsonObject;
 import org.ajabshahar.platform.daos.SongTextDAO;
-import org.ajabshahar.platform.models.SongText;
 import org.ajabshahar.platform.models.Song;
+import org.ajabshahar.platform.models.SongText;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

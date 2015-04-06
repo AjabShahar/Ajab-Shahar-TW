@@ -3,7 +3,7 @@ headerModule.directive('sticky', [ function () {
         restrict: 'A',
         scope: {
             onScroll: "&onScroll",
-            onTop: "&onTop",
+            onTop: "&onTop"
         },
         link: function ($scope, $elem, $attrs) {
             var offsetTop = 0,

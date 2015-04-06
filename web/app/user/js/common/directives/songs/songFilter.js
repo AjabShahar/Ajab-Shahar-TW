@@ -11,7 +11,7 @@ filterModule.directive("songFilter", function() {
             poetNameInFilter : '=',
             singerNameInFilter : '=',
             expandFilter: '=',
-            onClearFilter : '&',
+            onClearFilter : '&'
         },
         templateUrl:'/user/js/common/templates/songs/songFilter.html',
         controller: function($scope,$filter) {
