@@ -150,7 +150,7 @@
         /*
           Todo: 768px of chrome and all resolutions with mozilla, styles need to be revisited
         */
-        position: absolute;
+        position: fixed;
         left: 0;
         top: 7%;
         margin-left: 2%;
@@ -193,19 +193,37 @@
 
     .second-layer-list {
         .overlay {
+
             background: transparent url('/user/img/songs/filter-pardah2.png') right -5px repeat-y;
             position: fixed;
             width: 300px;
-            height: 100%;
             z-index: -1;
             background-size: cover;
+            height: 100%;
+            overflow: scroll;
+
+            &>ul {
+                        display: block;
+                        margin-top:  32px;
+                        margin-left: 35px;
+                        .list-item {
+                            padding: 5px 2%;
+                                &>a {
+                                         line-height: 1.8em;
+                                         text-transform: capitalize;
+                                         &:hover {
+                                             color: #E83785;
+                                         }
+
+                                     }
+
+                            }
+                    }
 
         }
-         position: absolute;
+        position: fixed;
         left: 220px;
         top: 0;
-        overflow-y: auto;
-        oveflow-x: hidden;
         min-height: 650px;
         width: 275px;
         text-align: left;
@@ -226,24 +244,6 @@
         }
 
 
-        &>ul {
-            height: 100%;
-            display: block;
-            margin-top:  32px;
-            margin-left: 35px;
-            .list-item {
-                padding: 5px 2%;
-                    &>a {
-                             line-height: 1.8em;
-                             text-transform: capitalize;
-                             &:hover {
-                                 color: #E83785;
-                             }
-
-                         }
-
-                }
-        }
 
     }
 
