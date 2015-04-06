@@ -215,8 +215,18 @@
                     &>a {
                          line-height: 1.8em;
                          text-transform: capitalize;
+                         color: #666;
                          &:hover {
                              color: #E83785;
+                         }
+                         div {
+                            &:nth-child(2) {
+                                font-family: 'Merriweather';
+                                font-size: 12px;
+                                font-weight: 100;
+                                font-style: italic;
+                                color: #b3b3b3;
+                            }
                          }
                     }
                 }
