@@ -204,9 +204,9 @@
          position: absolute;
         left: 220px;
         top: 0;
-        overflow: scroll;
+        overflow-y: auto;
+        oveflow-x: hidden;
         min-height: 650px;
-
         width: 275px;
         text-align: left;
         z-index: -1;
@@ -216,9 +216,7 @@
         font-size: 12px;
         box-sizing: border-box;
 
-
-
-            @include animation(pardah2-slideRight 0.5s forwards);
+        @include animation(pardah2-slideRight 0.5s forwards);
 
 
         &.ng-hide {
@@ -230,8 +228,7 @@
 
         &>ul {
             height: 100%;
-            display: flex;
-            flex-direction: column;
+            display: block;
             margin-top:  32px;
             margin-left: 35px;
             .list-item {
