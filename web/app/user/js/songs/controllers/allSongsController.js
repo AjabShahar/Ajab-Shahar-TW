@@ -37,6 +37,7 @@ allSongsApp.controller('allSongsController',['$scope','$window','songsContentSer
         $scope.closeSecondParda();
         $scope.filteredSongList = sieve.filter(songs);
         loadFilterItemsFrom($scope.filteredSongList);
+        $scope.selectedFilterCategory.disabled = !!$scope.selectedFilterCategory.value;
     };
 
     $scope.filterCategoryClicked = function(criteria){
