@@ -28,7 +28,7 @@ thumbnailModule.directive("songThumbnail", function($timeout) {
 
             $scope.onTimeOut = function(){
                 $scope.hideDetails();
-            }
+            };
 
             $timeout($scope.onTimeOut,1000);
 
@@ -38,11 +38,11 @@ thumbnailModule.directive("songThumbnail", function($timeout) {
 
             $scope.getTitle = function(){
                 return ($scope.textRepresentation === 'Transliteration')? $scope.englishTransliteration : $scope.englishTranslation;
-            }
+            };
 
             $scope.getSecondTitle = function(){
                 return ($scope.textRepresentation === 'Transliteration')? $scope.englishTranslation : $scope.englishTransliteration;
-            }
+            };
 
             $scope.init = function(){
                 if($scope.singers == null || $scope.singers.length<=0)
@@ -53,15 +53,15 @@ thumbnailModule.directive("songThumbnail", function($timeout) {
                 }
                 $scope.multipleSingers = true;
                 $scope.noun = "sing";
-            }
+            };
 
             $scope.showDetails = function(){
                 $scope.shouldShowDetails = true;
-            }
+            };
 
             $scope.hideDetails = function(){
                 $scope.shouldShowDetails = false;
-            }
+            };
 
             $scope.init();
         }

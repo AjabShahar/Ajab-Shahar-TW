@@ -18,7 +18,7 @@ var songDetailsController = function($scope,$location,songsContentService,songMa
 
     $scope.toggleVersion = function(){
         $scope.showVersion = !$scope.showVersion;
-    }
+    };
 
     $scope.init = function(){
         $scope.url = $location.absUrl();
@@ -45,13 +45,13 @@ var songDetailsController = function($scope,$location,songsContentService,songMa
             }
             return songs;
         }
-    }
+    };
 
     $scope.getRenditions = function(songId){
       songsContentService.getSongRenditions($scope.songId).then(function(result){
             $scope.renditions = songMapper.getSongDetails(result.data.songs);
        });
-    }
+    };
 
     $scope.getSong = function(songId){
        songsContentService.getSong(songId).then(function(result){
@@ -62,15 +62,15 @@ var songDetailsController = function($scope,$location,songsContentService,songMa
              $scope.songText.refrainEnglishTransliteration = result.data.songText.refrainEnglishTransliteration;
              $scope.getSongsLyrics(result.data.songText.songTextContents,result.data.songText.openingCouplets);
        });
-    }
+    };
 
     $scope.shouldShowVersions = function(){
         return $scope.numberOfVersions > 1;
-    }
+    };
 
     $scope.getSongId = function(id){
         return id.toString().match(/[0-9]+/)[0];
-    }
+    };
 
     $scope.open = function(id){
         var songId = $scope.getSongId(id);
@@ -82,16 +82,16 @@ var songDetailsController = function($scope,$location,songsContentService,songMa
         $scope.showContentDetails[songId] = true;
         $scope.getRenditions(songId);
         $scope.getSong(songId);
-    }
+    };
 
     $scope.isOpen = function(id){
         var songId = $scope.getSongId(id);
         return $scope.showContentDetails[songId];
-    }
+    };
 
     $scope.isClosed = function(id){
         return !$scope.isOpen(id);
-    }
+    };
 
     $scope.getSongsLyrics = function(songTextComponents, openingCouplets){
         $scope.songText.songTextContents = [];
@@ -107,25 +107,25 @@ var songDetailsController = function($scope,$location,songsContentService,songMa
              var item = sortedSongTextComponents[index];
              $scope.songText.openingCouplets.push(item);
         }
-    }
+    };
 
     $scope.showEnglishTranslation = function(){
         $scope.englishTransliterationVisible = false;
         $scope.englishTranslationVisible = true;
         $scope.originalVisible = false;
-    }
+    };
 
     $scope.showEnglishTransliteration = function(){
         $scope.englishTransliterationVisible = true;
         $scope.englishTranslationVisible = false;
         $scope.originalVisible = false;
-    }
+    };
 
     $scope.showOriginal = function(){
         $scope.englishTransliterationVisible = false;
         $scope.englishTranslationVisible = false;
         $scope.originalVisible = true;
-    }
+    };
 
      $scope.getCustomStyle =  function(song){
         if(Boolean(song)){
@@ -134,7 +134,7 @@ var songDetailsController = function($scope,$location,songsContentService,songMa
             return '';
         }
         return '';
-     }
+     };
     $scope.init();
 };
 

@@ -35,7 +35,7 @@ gulp.task("sass:watch", function() {
  	gulp.watch(
  		path.join(userModule, "/sass/ajabShahar.scss"),
  		["sass:compile"]
- 	)
+ 	);
 
  	// gutil.log("[watch:sass]", gutil.colors.yellow("Watching SASS files..."));
 

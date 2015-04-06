@@ -5,7 +5,7 @@
     		var _domReady = function(){
     		    _loadWindow();
     		    _initialiseScrolling();
-    		}
+    		};
 
 
     		var _initialiseScrolling = function() {
@@ -15,7 +15,7 @@
                     scrollProperty: 'scroll',
                     positionProperty: 'transform',
                 });
-    		}
+    		};
 
     		var _loadWindow = function() {
     		    $('#ajab_container').css('display', 'none');
@@ -23,7 +23,7 @@
                   $('#ajab_container').css('display', 'block');
                   $("#loader_wrapper").css('display', 'none');
                 });
-            }
+            };
 
             this.init = (function(){
     			$(function(){

@@ -24,19 +24,19 @@ var popUp = function() {
 
                 $scope.getPopupCount = function() {
                     return ($scope.popupCount==null)?new Array(15):new Array(parseInt($scope.popupCount));
-                }
+                };
 
                 $scope.onSelect = function(index){
                     $scope.detailsService.select(parseInt($scope.index),index);
-                }
+                };
 
                 $scope.onClose = function(index){
                     $scope.detailsService.onClose($scope.id);
-                }
+                };
 
                 $scope.isActive = function(index){
                     return $scope.index == index;
-                }
+                };
 
                 $scope.isClosed = function(){
                     return !$scope.show();

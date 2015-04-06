@@ -17,7 +17,7 @@ var allReflectionsController = function($scope,$window,reflectionsContentService
             $scope.reflections = reflectionMapper.getThumbnails(reflectionsList.data.reflections);
             $scope.reflectionCount = reflectionsList.data.reflections.length;
         });
-    }
+    };
 
     $scope.reflectionStartsWithComparator = function (actual, expected) {
        if (!$scope.activeLetter && $scope.activeLetter=='') {
@@ -30,7 +30,7 @@ var allReflectionsController = function($scope,$window,reflectionsContentService
         if($scope.scrollIndex>$scope.reflections.length)
             return;
         $scope.scrollIndex += 12;
-    }
+    };
     $scope.getAllReflections();
 };
 

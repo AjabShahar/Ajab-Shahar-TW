@@ -22,7 +22,7 @@ describe("Song content details page", function() {
 			element = angular.element('<song-content-details downloadurl="{{downloadurl}}"></song-content-details>');
 			template.put('/user/js/common/templates/songs/songContentDetails.html', '<div ng-if="downloadurl">{{downloadurl}}</div>');
 			compile(element)(scope);
-			scope.$apply()
+			scope.$apply();
 
 			expect(element.html()).toBe('<!-- ngIf: downloadurl -->');
 		});
@@ -33,7 +33,7 @@ describe("Song content details page", function() {
 			element = angular.element('<song-content-details downloadurl="{{downloadurl}}"></song-content-details>');
 			template.put('/user/js/common/templates/songs/songContentDetails.html', '<div ng-if="downloadurl">{{downloadurl}}</div>');
 			compile(element)(scope);
-			scope.$apply()
+			scope.$apply();
 
 			expect(element.html()).toBe('<!-- ngIf: downloadurl --><div ng-if="downloadurl" class="ng-binding ng-scope">someurl</div><!-- end ngIf: downloadurl -->');
 		});

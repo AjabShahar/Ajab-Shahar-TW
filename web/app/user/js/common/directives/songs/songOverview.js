@@ -42,19 +42,19 @@ thumbnailModule.directive("songOverview", function() {
                 else {
                     $scope.showAudio = true;
                 }
-            }
+            };
 
             $scope.toggleVideoOrAudio = function(){
                 if($scope.showVideo){
                     $scope.showAudio = true;
                     $scope.showVideo = false;
-                    return;
+
                 }
                 else{
                     $scope.showAudio = false;
                     $scope.showVideo = true;
                 }
-            }
+            };
 
             $scope.shouldStopVideo = function(){
                 return $scope.detailsService.isClosed($scope.id);

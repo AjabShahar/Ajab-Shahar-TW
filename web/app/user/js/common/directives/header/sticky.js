@@ -35,7 +35,7 @@ headerModule.directive('sticky', [ function () {
                     $elem.css('position', 'fixed');
                     $elem.addClass('fixed');
                     $scope.onScroll();
-                    return;
+
                 }
             }
         }

@@ -21,7 +21,7 @@ describe("Song content service", function () {
 
         var wordsInSongs = songsContentService.getWordsFrom(songsList);
         expect(wordsInSongs.length).toBe(4);
-        var expectedList = ["bazaar","Jaagna Sona","Gitara","Akath Katha"]
+        var expectedList = ["bazaar","Jaagna Sona","Gitara","Akath Katha"];
         wordsInSongs.forEach(function(words){
             _.contains(expectedList,words[0]);
         });

@@ -21,17 +21,17 @@ var songsFeaturedContentController = function($scope,contentService,songMapper,p
             });
 
         });
-    }
+    };
 
     $scope.openThumbnail = function(elementId){
         return $scope.detailsService.open(elementId);
-    }
+    };
 
     var index = 0;
     $scope.getSongCustomStyle = function(){
         index++;
         return "shift" + index;
-    }
+    };
 
     $scope.setPageHeight = function(){
         var homepageContent = jQuery('.' + 'homepage-content')[0];
@@ -41,9 +41,9 @@ var songsFeaturedContentController = function($scope,contentService,songMapper,p
             pxLayer.style.height = (homepageContent.offsetHeight+400)+"px";
         });
         homepageContent.style.height = (homepageContent.offsetHeight+300)+"px";
-    }
+    };
 
     $scope.init();
-}
+};
 
 featuredContentApp.controller('songsFeaturedContentController',['$scope','contentService','songMapper','popupService','$location', '$window',songsFeaturedContentController]);

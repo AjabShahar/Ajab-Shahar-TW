@@ -21,7 +21,7 @@ thumbnailModule.directive("wordThumbnail", function() {
             
             $scope.showDetails = function(){
                 $scope.shouldShowDetails = true;
-            }
+            };
 
             $scope.hideDetails = function(){
                 $scope.shouldShowDetails = false;

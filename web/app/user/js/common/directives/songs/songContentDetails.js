@@ -23,7 +23,7 @@ thumbnailModule.directive("songContentDetails", function() {
 
             $scope.hideContents = function(){
                 return $scope.detailsService.shouldHideDetails;
-            }
+            };
 
             $scope.isAudioOrVideo = function(){
                 if(Boolean($scope.videoId)){
@@ -33,24 +33,24 @@ thumbnailModule.directive("songContentDetails", function() {
                 else {
                     $scope.showAudio = true;
                 }
-            }
+            };
 
             $scope.toggleVideoOrAudio = function(){
                 if($scope.showVideo){
                     $scope.showAudio = true;
                     $scope.showVideo = false;
                     $scope.shouldStopVideo();
-                    return;
+
                 }
                 else{
                     $scope.showAudio = false;
                     $scope.showVideo = true;
                 }
-            }
+            };
 
             $scope.shouldStopVideo = function(){
                 return $scope.detailsService.isClosed($scope.id);
-            }
+            };
 
             $scope.showAbout = function(){
                 if($scope.isAboutVisible){

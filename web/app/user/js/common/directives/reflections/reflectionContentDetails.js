@@ -27,20 +27,20 @@ thumbnailModule.directive("reflectionContentDetails", function() {
                 }
                 if($scope.transcript.length > 0)
                    $scope.showTranscript = true;
-            }
+            };
 
             $scope.toggleVideoOrAudio = function(){
                 if($scope.showVideo){
                     $scope.showAudio = true;
                     $scope.showVideo = false;
                     $scope.shouldStopVideo();
-                    return;
+
                 }
                 else{
                     $scope.showAudio = false;
                     $scope.showVideo = true;
                 }
-            }
+            };
 
 
             $scope.shouldStopVideo = function(){

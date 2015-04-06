@@ -7,31 +7,31 @@ var popupService = function (){
         shouldBeOpen[id] = true;
 //        isThumbnailOpen = true;
 //        isThumbnailOpen;
-    }
+    };
 
     onClose = function(id){
         shouldBeOpen[id] = false;
 //        isThumbnailOpen = false;
-    }
+    };
 
     shouldShow = function(id){
         return shouldBeOpen[id];
-    }
+    };
 
     isClosed = function(id){
         return !shouldBeOpen[id];
-    }
+    };
 
     select = function(oldIndex, newIndex){
         shouldBeOpen[popups[oldIndex]] = false;
         if(newIndex>popups.length)
             newIndex = 0;
         shouldBeOpen[popups[newIndex]] = true;
-    }
+    };
 
     init = function(id){
         popups[popups.length] = id;
-    }
+    };
 
     return {
         open: open,
@@ -42,5 +42,5 @@ var popupService = function (){
         init:init
 //        isThumbnailOpen: isThumbnailOpen
     };
-}
+};
 popupSupport.factory('popupService',[popupService]);

@@ -7,4 +7,4 @@ Ajabshahar.user.FilterItem = function(names,category,id){
     self.id = id;
     return self;
 
-}
+};

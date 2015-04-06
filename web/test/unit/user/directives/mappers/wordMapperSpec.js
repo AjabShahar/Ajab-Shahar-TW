@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 describe("Should test word mapper",function(){
    var wordMapper;

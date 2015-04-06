@@ -9,7 +9,7 @@ var loginController = adminApp.controller('loginController', ['$scope', '$http',
                     $window.location.href = '/admin/partials/home.html';
                 }).error(function (args, status) {
                     if(status === 503)
-                        $scope.message = "The server is temporarily unable to service your request due to maintenance downtime or capacity problems. Please try again later."
+                        $scope.message = "The server is temporarily unable to service your request due to maintenance downtime or capacity problems. Please try again later.";
                     else
                         $scope.message = args;
                     $timeout.cancel(timeoutPromise);

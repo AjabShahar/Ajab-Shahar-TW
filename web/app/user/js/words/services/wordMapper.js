@@ -45,7 +45,7 @@ var wordMapper = function () {
             });
             return details;
         },[]);
-    }
+    };
     getWordCompleteInfo = function(words){
        return _.reduce(words,function(details, word,index) {
             details.push({
@@ -59,7 +59,7 @@ var wordMapper = function () {
             });
             return details;
        },[]);
-    }
+    };
 
     getBasicDetails = function(words){
        return _.reduce(words,function(wordBasicInfo,word,index){
@@ -73,7 +73,7 @@ var wordMapper = function () {
             wordBasicInfo = _.sortBy(wordBasicInfo,'transliteration');
             return wordBasicInfo;
        },[]);
-    }
+    };
 
     return {
         getThumbnails: getThumbnails,

@@ -12,26 +12,26 @@ headerModule.directive("ajabShaharHeader", function($window) {
             $scope.initialMenuState = $scope.showMenuDetails;
             $window.onload = function () {
                 $scope.callBack && $scope.callBack();
-            }
+            };
             $scope.getElementsByClassName = function(className){
                 return $window.document.getElementsByClassName(className)[0];
-            }
+            };
 
             $scope.showMenu = function(){
                 if($scope.initialMenuState && !$scope.showMenuDetails)
                     $scope.toggleMenuAndDigest();
-            }
+            };
 
             $scope.hideMenu = function(){
                 if($scope.showMenuDetails)
                     $scope.toggleMenuAndDigest();
-            }
+            };
 
             $scope.toggleMenuAndDigest = function(){
                 $scope.toggleMenu();
                 if(!$scope.$$phase && !$scope.$root.$$phase)
                     $scope.$digest();
-            }
+            };
 
             $scope.toggleMenu = function(){
                 $scope.showMenuDetails = !$scope.showMenuDetails;

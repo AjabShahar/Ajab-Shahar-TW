@@ -5,9 +5,9 @@ var glossaryController = function($scope, contentService) {
             $scope.glossary = result.data.words;
             $scope.numberOfTerms = $scope.glossary.length;
         });
-    }
+    };
 
     $scope.init();
-}
+};
 
 glossaryApp.controller('glossaryController', ['$scope', 'contentService', glossaryController]);

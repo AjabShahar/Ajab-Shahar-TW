@@ -5,15 +5,15 @@ var reflectionsContentService = function ($http) {
 
     var getReflectionsInRangeAndFilteredBy = function(startIndex, letter){
         return $http.get('/api/reflections/getPublishedReflections?startFrom=' + startIndex + "&filteredLetter=" + letter);
-    }
+    };
 
     var getReflectionsStartingWith = function(letter){
         return $http.get('/api/reflections/count/startingWith?letter=' + letter);
-    }
+    };
 
     var getReflection = function (id) {
         return $http.get('/api/reflections/getPublishedReflections/'+id);
-    }
+    };
 
     return {
         getAllReflections: getAllReflections,

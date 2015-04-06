@@ -5,7 +5,7 @@ var soundCloudController = function($scope){
         });
 
         console.log("SoundCloud initialized");
-    }
+    };
 
     $scope.loadTrack = function(trackID){
 
@@ -15,23 +15,23 @@ var soundCloudController = function($scope){
           });
 
           
-    }
+    };
 
     $scope.pauseTrack = function(){
         var iframeElement = document.querySelector('iframe');
         var widget1         = SC.Widget(iframeElement);
         console.log("working" + widget1);
         widget1.pause();
-    }
+    };
 
     $scope.playTracks = function(){
         var iframeElement = document.querySelector('iframe');
         var widget1         = SC.Widget(iframeElement);
         console.log("working" + widget1);
         widget1.play();
-    }
+    };
 
     $scope.init();
-}
+};
 
 soundCloudApp.controller('soundCloudController',['$scope',soundCloudController]);
