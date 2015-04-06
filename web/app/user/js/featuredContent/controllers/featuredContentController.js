@@ -9,7 +9,7 @@ var featuredContentController = function($scope,contentService,popupService, map
     var shiftThumbnail = function(){
         ++index;
         return "shift"+index;
-    }
+    };
 
     $scope.init = function(){
         var wordMapper = mappers.getWordMapper(),
@@ -64,6 +64,6 @@ var featuredContentController = function($scope,contentService,popupService, map
     $scope.open = function(id){
         $scope.detailsService.open(id);
     }
-}
+};
 
 featuredContentApp.controller('featuredContentController',['$scope','contentService','popupService','mappers',featuredContentController]);

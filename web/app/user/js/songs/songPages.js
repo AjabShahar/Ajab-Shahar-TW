@@ -4,7 +4,7 @@
 
     		var _domReady = function(){
     		   _bindEvents();
-    		}
+    		};
 
     		var _bindEvents = function() {
     		    $(".filter-button").on("click", function() {
@@ -12,7 +12,7 @@
                     $('.slide-nav-list').height(windowHeight);
                     return false;
                 });
-    		}
+    		};
 
             this.init = (function(){
     			$(function(){

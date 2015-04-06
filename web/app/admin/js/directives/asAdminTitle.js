@@ -18,7 +18,7 @@ songsAdminApp.directive("asAdminTitle", function() {
 
             $scope.validate = function(value) {
                 return $scope.validationRequired && !Boolean(value);
-            }
+            };
 
             $scope.enableNewSongTitle = function(){
                 $scope.oldTitle = angular.copy($scope.titleData);

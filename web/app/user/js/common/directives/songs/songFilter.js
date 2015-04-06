@@ -51,7 +51,7 @@ filterModule.directive("songFilter", function() {
                             $scope.poets.push(poet);
                     });
                 });
-            }
+            };
 
             $scope.filterSingers = function(){
                 var songsWithTitleResult = $filter('filterSongByTitle')($scope.songs, $scope.activeLetter);
@@ -64,13 +64,13 @@ filterModule.directive("songFilter", function() {
                             $scope.singers.push(singer);
                     });
                 });
-            }
+            };
 
             $scope.clearFilters = function(){
                 $scope.singerNameInFilter = '';
                 $scope.poetNameInFilter = '';
                 $scope.activeLetter = '';
-            }
+            };
 
             $scope.countSongs = function(){
                 var filterSongByTitleResult = $filter('filterSongByTitle')($scope.songs, $scope.activeLetter);
@@ -78,42 +78,42 @@ filterModule.directive("songFilter", function() {
                 var filterSongByPoetResult = $filter('filterSongByPoet')(filterSongBySingerResult, $scope.poetNameInFilter);
 
                 $scope.songCount = filterSongByPoetResult.length;
-            }
+            };
 
             $scope.removeSingerFilter = function(){
                 $scope.singerNameInFilter = '';
-            }
+            };
 
             $scope.removePoetFilter = function(){
                 $scope.poetNameInFilter = '';
-            }
+            };
 
             $scope.showPoets = function(){
                 $scope.filterPoets();
                 $scope.shouldShowPoets = true;
-            }
+            };
 
             $scope.hidePoets = function(){
                 $scope.shouldShowPoets = false;
-            }
+            };
 
             $scope.showSingers = function(){
                 $scope.filterSingers();
                 $scope.shouldShowSingers = true;
-            }
+            };
 
             $scope.toggleSingers = function(){
                 if($scope.shouldShowSingers)
                  {
                     $scope.shouldShowSingers = false;
-                    return;
+
                  }
                   else {
                     $scope.shouldShowSingers = true;
                     $scope.shouldShowPoets = false;
                     $scope.filterSingers();
                  }
-            }
+            };
 
             $scope.togglePoets = function(){
                if($scope.shouldShowPoets){
@@ -124,15 +124,15 @@ filterModule.directive("songFilter", function() {
                    $scope.shouldShowSingers = false;
                    $scope.filterPoets();
                }
-            }
+            };
 
             $scope.hideSingers = function(){
                 $scope.shouldShowSingers = false;
-            }
+            };
 
             $scope.initialiseSingerNameInFilter = function(singer){
                 $scope.singerNameInFilter = singer;
-            }
+            };
 
             $scope.initialisePoetNameInFilter = function(poet){
                 $scope.poetNameInFilter = poet;

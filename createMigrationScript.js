@@ -16,7 +16,7 @@ var pad = function(number, width) {
   var prefix = '0';
   number = number + '';
   return number.length >= width ? number : new Array(width - number.length + 1).join(prefix) + number;
-}
+};
 
 var getFiles = function(dir,files_){
     files_ = files_ || [];
@@ -33,7 +33,7 @@ var getFiles = function(dir,files_){
         }
     }
     return files_;
-}
+};
 
 var createNewMigrationFile = function(authorName, newChangeset, fileName){
     var liquibaseText = "--liquibase formatted sql \n\n--changeset "+ authorName + ":" + newChangeset + "\n\n";
@@ -44,12 +44,12 @@ var createNewMigrationFile = function(authorName, newChangeset, fileName){
         if (err) throw err;
         console.log(liquibaseText);
     });
-}
+};
 
 var getNewChangetSetNumber = function(fileName) {
-    var oldChangeSetNumber = parseInt(fileName.substr(0, fileName.indexOf('_')))
+    var oldChangeSetNumber = parseInt(fileName.substr(0, fileName.indexOf('_')));
     return oldChangeSetNumber + 1;
-}
+};
 
 var files = getFiles(migrationsDir);
 
@@ -59,4 +59,4 @@ var newChangeset = getNewChangetSetNumber(latestMigrationFileName);
 
 (Boolean(authorName)) ? authorName = authorName : authorName = "AuthorName";
 
-createNewMigrationFile(authorName, newChangeset, fileName)
+createNewMigrationFile(authorName, newChangeset, fileName);

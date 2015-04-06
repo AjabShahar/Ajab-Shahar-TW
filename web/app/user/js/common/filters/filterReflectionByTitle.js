@@ -3,7 +3,7 @@ var filterReflectionByTitle = filterModule.filter('filterReflectionByTitle', fun
     return function( reflections, filterCriteria) {
         var strStartsWith = function(str, prefix) {
             return (str+"").indexOf(prefix) === 0;
-        }
+        };
 
         if(filterCriteria==null || filterCriteria==='')
             return reflections;

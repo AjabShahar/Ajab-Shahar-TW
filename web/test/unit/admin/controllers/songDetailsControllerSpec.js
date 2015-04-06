@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 describe("Song details controller specs", function() {
 	var scope,

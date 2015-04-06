@@ -4,14 +4,14 @@
 
     		var _domReady = function() {
     	        _setScreenHeight();
-    		}
+    		};
 
     		var _setScreenHeight =  function() {
     		    var splashScreen = $('.splash_screen');
     		    if (splashScreen.length != 0) {
     		        splashScreen.height($(window).height());
     		    }
-    		}
+    		};
 
             this.init = (function(){
     			$(function(){

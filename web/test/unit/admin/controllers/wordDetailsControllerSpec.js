@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 describe("Word details controller spec:", function() {
 	var scope,

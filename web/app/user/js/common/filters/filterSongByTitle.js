@@ -3,7 +3,7 @@ var filterSongByTitle = filterModule.filter('filterSongByTitle', function($windo
     return function( songs, filterCriteria) {
         var strStartsWith = function(str, prefix) {
             return (str+"").indexOf(prefix) === 0;
-        }
+        };
 
         if(filterCriteria==null || filterCriteria==='')
             return songs;

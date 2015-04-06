@@ -15,4 +15,4 @@ var test = myApp.controller('test', ['$scope', '$location', function($scope, $lo
 	};
 
 	$scope.testingCall();
-}])
+}]);

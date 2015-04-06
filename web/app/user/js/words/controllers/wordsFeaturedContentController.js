@@ -3,7 +3,7 @@ var wordsFeaturedContentController = function($scope,contentService, $location, 
         contentService.getWordsLandingPageContent().then(function(result){
             $scope.words = result.data.words;
         });
-	}
+	};
 
 	$scope.setPageHeight = function(){
     var homepageContent = jQuery('.' + 'homepage-content')[0];
@@ -13,9 +13,9 @@ var wordsFeaturedContentController = function($scope,contentService, $location, 
         pxLayer.style.height = (homepageContent.offsetHeight+400)+"px";
     });
     homepageContent.style.height = (homepageContent.offsetHeight+300)+"px";
-    }
+    };
 
 	$scope.init();
-}
+};
 
 wordsFeaturedContentApp.controller('wordsFeaturedContentController',['$scope','contentService','$location', '$window',wordsFeaturedContentController]);
