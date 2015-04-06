@@ -332,7 +332,7 @@ body.songs-details {
     .left-nav {
           width: 70px;
           left: 0%;
-          top: 3px;
+          top: 0px;
           position: absolute;
           display: inline-block;
           text-align: left;
@@ -358,6 +358,9 @@ body.songs-details {
 
                 &:last-child {
                     background: none;
+                }
+                &:first-child {
+                    padding-top: 0;
                 }
             }
             a {
