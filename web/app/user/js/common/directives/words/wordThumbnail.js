@@ -12,7 +12,7 @@ thumbnailModule.directive("wordThumbnail", function() {
             overlayId:'@',
             imgSrc:'@',
             id:'@',
-            open:'&',
+            open:'&'
         },
         templateUrl:'/user/js/common/templates/words/wordThumbnail.html',
         controller:function($scope, $window){

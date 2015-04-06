@@ -2,7 +2,6 @@ package org.ajabshahar.platform.daos;
 
 import io.dropwizard.hibernate.AbstractDAO;
 import org.ajabshahar.platform.models.Song;
-import org.ajabshahar.platform.models.Title;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.Session;
@@ -10,8 +9,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -19,7 +16,6 @@ import java.util.Calendar;
 import java.util.List;
 
 public class SongDAO extends AbstractDAO<Song> {
-    private final static Logger logger = LoggerFactory.getLogger(SongDAO.class);
     private final SessionFactory sessionFactory;
 
     public SongDAO(SessionFactory sessionFactory) {
@@ -71,15 +67,15 @@ public class SongDAO extends AbstractDAO<Song> {
         Session currentSession = sessionFactory.getCurrentSession();
         Criteria findSongs = currentSession.createCriteria(Song.class);
         if (songId != 0) {
-            findSongs.add(Restrictions.eq("id", Long.valueOf(songId)));
+            findSongs.add(Restrictions.eq("id", (long) songId));
         }
         if (singerId != 0) {
             findSongs.createAlias("singers", "singersAlias");
-            findSongs.add(Restrictions.eq("singersAlias.id", Long.valueOf(singerId)));
+            findSongs.add(Restrictions.eq("singersAlias.id", (long) singerId));
         }
         if (poetId != 0) {
             findSongs.createAlias("poets", "poetsAlias");
-            findSongs.add(Restrictions.eq("poetsAlias.id", Long.valueOf(poetId)));
+            findSongs.add(Restrictions.eq("poetsAlias.id", (long) poetId));
         }
         if (startFrom != 0) {
             findSongs.setFirstResult(startFrom);
@@ -106,7 +102,7 @@ public class SongDAO extends AbstractDAO<Song> {
         Session currentSession = sessionFactory.getCurrentSession();
         Criteria findSongs = currentSession.createCriteria(Song.class);
 
-        Song song = findById(Long.valueOf(songId));
+        Song song = findById((long) songId);
         if (song != null) {
             findSongs.createAlias("title", "titleAlias");
             if(song.getTitle() != null){

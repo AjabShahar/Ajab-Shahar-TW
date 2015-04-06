@@ -5,6 +5,7 @@ import org.ajabshahar.platform.models.Genre;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+
 import java.util.List;
 
 public class GenreDAO extends AbstractDAO<Genre> {

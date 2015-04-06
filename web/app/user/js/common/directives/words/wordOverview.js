@@ -8,7 +8,7 @@ thumbnailModule.directive("wordOverview", function() {
             wordTransliteration:'@',
             wordTranslation:'@',
             wordIntroEnglish:'@',
-            writers:'=',
+            writers:'='
         },
         templateUrl:'/user/js/common/templates/words/wordOverview.html',
         controller: function($scope) {

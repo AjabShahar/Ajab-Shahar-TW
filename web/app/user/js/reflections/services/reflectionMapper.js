@@ -8,7 +8,7 @@ var reflectionMapper = function () {
                 "title":reflection.title,
                 "verb":reflection.verb,
                 "speaker":reflection.speaker,
-                "customStyle": (customStyle)? customStyle():'',
+                "customStyle": (customStyle)? customStyle():''
             });
             return thumbnails;
         },[]);
@@ -25,7 +25,7 @@ var reflectionMapper = function () {
                  "speaker":reflection.speaker,
                  "videoId":reflection.youtubeVideoId,
                  "audioUrl":reflection.soundCloudId,
-                 "text":reflection.transcript,
+                 "text":reflection.transcript
              });
              return overview;
          },[]);
@@ -40,7 +40,7 @@ var reflectionMapper = function () {
                  "speaker":reflection.speaker,
                  "videoId":reflection.youtubeVideoId,
                  "audioUrl":reflection.soundCloudId,
-                 "text":reflection.transcript,
+                 "text":reflection.transcript
               });
               return completeInfo;
           },[]);
@@ -50,7 +50,7 @@ var reflectionMapper = function () {
     return {
         getThumbnails: getThumbnails,
         getOverviews:getOverviews,
-        getReflectionsCompleteInfo: getReflectionsCompleteInfo,
+        getReflectionsCompleteInfo: getReflectionsCompleteInfo
     };
 };
 

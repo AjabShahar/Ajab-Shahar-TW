@@ -4,7 +4,7 @@ var contentService = function ($http) {
   };
 
   return {
-    getScreenOptions: getScreenOptions,
+    getScreenOptions: getScreenOptions
    };
 };
 

@@ -1,11 +1,10 @@
 var contentService = function ($http) {
   var getMainLandingPageThumbnails = function () {
-    var content = {
+    return {
       songs: $http.get('/api/songs/getPublishedSongs'),
       words: $http.get('/api/words?showOnMainLandingPage=true'),
       reflections: $http.get('/api/reflections?content=featured')
     };
-    return content;
   };
 
   var getSongsLandingPageThumbnails = function () {
@@ -24,6 +23,6 @@ var contentService = function ($http) {
     getMainLandingPageThumbnails: getMainLandingPageThumbnails,
     getSongsLandingPageThumbnails: getSongsLandingPageThumbnails,
     getWordsLandingPageContent: getWordsLandingPageContent,
-    getGlossaryPageContent: getGlossaryPageContent,
+    getGlossaryPageContent: getGlossaryPageContent
   };
 };

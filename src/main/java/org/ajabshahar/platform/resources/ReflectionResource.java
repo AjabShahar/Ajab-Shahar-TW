@@ -4,10 +4,8 @@ import io.dropwizard.hibernate.UnitOfWork;
 import org.ajabshahar.api.ReflectionRepresentationFactory;
 import org.ajabshahar.api.ReflectionsRepresentation;
 import org.ajabshahar.api.ReflectionsSummaryRepresentation;
-import org.ajabshahar.api.SongsRepresentation;
 import org.ajabshahar.core.Reflections;
 import org.ajabshahar.platform.models.Reflection;
-import org.ajabshahar.platform.models.Song;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

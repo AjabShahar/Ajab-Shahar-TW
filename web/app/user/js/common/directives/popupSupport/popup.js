@@ -9,7 +9,7 @@ var popUp = function() {
                 popupCount: '@',
                 id: '@',//an id for the background overlay for manipulation via jquery
                 index: '@',
-                detailsService:'=',
+                detailsService:'='
             },
             templateUrl: '/user/js/common/templates/popupSupport/popup.html',
             controller: function($scope,$rootScope) {

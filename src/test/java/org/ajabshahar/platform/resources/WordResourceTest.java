@@ -1,6 +1,9 @@
 package org.ajabshahar.platform.resources;
 
-import org.ajabshahar.api.*;
+import org.ajabshahar.api.RelatedWordRepresentation;
+import org.ajabshahar.api.WordReflectionRepresentation;
+import org.ajabshahar.api.WordRepresentationFactory;
+import org.ajabshahar.api.WordSynonymRepresentation;
 import org.ajabshahar.core.Words;
 import org.ajabshahar.platform.models.Word;
 import org.junit.Before;

@@ -17,7 +17,7 @@ thumbnailModule.directive("songThumbnail", function($timeout) {
             customStyle:'@',
             contentId:'@',
             id:'@',
-            open: '&', //open click handler ~ callback to controller
+            open: '&' //open click handler ~ callback to controller
         },
         templateUrl:'/user/js/common/templates/songs/songThumbnail.html',
         controller:function($scope){
