@@ -27,7 +27,7 @@ public class GenreResourceTest {
     private Genre mockedGenre;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         mockedGenre = Mockito.mock(Genre.class);
         mockedGenreDAO = Mockito.mock(GenreDAO.class);
         genreResource = new GenreResource(mockedGenreDAO);
@@ -72,7 +72,7 @@ public class GenreResourceTest {
     }
 
     @Test
-    public void shouldCreateAGenre(){
+    public void shouldCreateAGenre() {
         JsonObject genreJson = new JsonObject();
 
         Response response = genreResource.createGenre(genreJson.toString());
@@ -81,7 +81,7 @@ public class GenreResourceTest {
     }
 
     @Test
-    public void shouldReturnINTERNAL_SERVER_ERROR_If_Cannot_CreateAGenre(){
+    public void shouldReturnINTERNAL_SERVER_ERROR_If_Cannot_CreateAGenre() {
         Response response = genreResource.createGenre(null);
 
         assertEquals(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), response.getStatus());

@@ -30,7 +30,7 @@ public class SongDAO extends AbstractDAO<Song> {
                 .createCriteria("song.words", "words", JoinType.LEFT_OUTER_JOIN)
                 .setFetchMode("words", FetchMode.JOIN);
 
-        ArrayList<Song> songs= (ArrayList<Song>) findSong.list();
+        ArrayList<Song> songs = (ArrayList<Song>) findSong.list();
 
         session.close();
         return songs.get(0);
@@ -52,7 +52,7 @@ public class SongDAO extends AbstractDAO<Song> {
     public List<Song> findAll() {
         Session currentSession = sessionFactory.getCurrentSession();
         Criteria findSongs = currentSession.createCriteria(Song.class, "song")
-                .createCriteria("song.words","words", JoinType.LEFT_OUTER_JOIN)
+                .createCriteria("song.words", "words", JoinType.LEFT_OUTER_JOIN)
                 .setFetchMode("words", FetchMode.JOIN);
         findSongs.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return findSongs.list();
@@ -105,7 +105,7 @@ public class SongDAO extends AbstractDAO<Song> {
         Song song = findById((long) songId);
         if (song != null) {
             findSongs.createAlias("title", "titleAlias");
-            if(song.getTitle() != null){
+            if (song.getTitle() != null) {
                 findSongs.add(Restrictions.eq("titleAlias.id", song.getTitle().getId()));
             }
             findSongs.add(Restrictions.eq("isAuthoringComplete", true));

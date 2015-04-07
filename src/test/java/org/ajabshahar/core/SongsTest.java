@@ -48,7 +48,7 @@ public class SongsTest {
         song = new Song();
         song.setId(SONG_ID);
         songsList.add(song);
-        songs = new Songs(songsRepository, titleRepository, categoryRepository,lyricsRepository);
+        songs = new Songs(songsRepository, titleRepository, categoryRepository, lyricsRepository);
     }
 
     @Test
@@ -74,10 +74,10 @@ public class SongsTest {
         updatedSong.setId(SONG_ID);
         updatedSong.setGathering(new Gathering());
         songs.update(updatedSong);
-        assertEquals(song.getDuration(),updatedSong.getDuration());
-        assertEquals(song.getId(),updatedSong.getId());
-        assertEquals(song.getIsAuthoringComplete(),updatedSong.getIsAuthoringComplete());
-        assertEquals(song.getGathering(),updatedSong.getGathering());
+        assertEquals(song.getDuration(), updatedSong.getDuration());
+        assertEquals(song.getId(), updatedSong.getId());
+        assertEquals(song.getIsAuthoringComplete(), updatedSong.getIsAuthoringComplete());
+        assertEquals(song.getGathering(), updatedSong.getGathering());
     }
 
     @Test

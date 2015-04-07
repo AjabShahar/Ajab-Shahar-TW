@@ -1,41 +1,41 @@
 'use strict';
 
-describe('Mapper', function() {
-    describe('song mapper', function() {
+describe('Mapper', function () {
+    describe('song mapper', function () {
         var songMapper;
         var wordMapper;
         var songList;
-        beforeEach(function(){
+        beforeEach(function () {
             module('thumbnailModule');
             songList = [{
-                 "id":1,
-                 "englishTranslationTitle":"For a few days,O heart",
-                 "englishTransliterationTitle": "Kichhu din mone mone",
-                 "category":"Song & Reflection",
-                 "poet": [{
-                        "name":"Sharath"
-                     }],
-                 "thumbnailUrl": "imgId",
-                 "singers": [{
-                          "name":"Parvathy Baul"
-                       }],
-                 "duration": "09:11",
-                 "words":{
-                   "words":[]
-                 },
-                 "youTubeVideoId":"123456",
-                 "soundCloudTrackId":"sound cloud track",
-                 "about":"about song",
-                 "downloadUrl":"download link"
-           }];
+                "id": 1,
+                "englishTranslationTitle": "For a few days,O heart",
+                "englishTransliterationTitle": "Kichhu din mone mone",
+                "category": "Song & Reflection",
+                "poet": [{
+                    "name": "Sharath"
+                }],
+                "thumbnailUrl": "imgId",
+                "singers": [{
+                    "name": "Parvathy Baul"
+                }],
+                "duration": "09:11",
+                "words": {
+                    "words": []
+                },
+                "youTubeVideoId": "123456",
+                "soundCloudTrackId": "sound cloud track",
+                "about": "about song",
+                "downloadUrl": "download link"
+            }];
         });
 
-        beforeEach(inject(function(_wordMapper_,_songMapper_) {
+        beforeEach(inject(function (_wordMapper_, _songMapper_) {
             wordMapper = _wordMapper_;
             songMapper = _songMapper_;
         }));
 
-        it('Should get song thumbnail representations', function() {
+        it('Should get song thumbnail representations', function () {
             var songs = songMapper.getThumbnails(songList);
             expect(songs.length).toBe(1);
             expect(songs[0].id).toBe(1);
@@ -48,7 +48,7 @@ describe('Mapper', function() {
             expect(songs[0].poet).toBe('Sharath');
         });
 
-        it('Should get song overviews',function(){
+        it('Should get song overviews', function () {
             spyOn(wordMapper, 'getBasicDetails').andReturn([]);
             var songs = songMapper.getOverviews(songList);
             expect(songs.length).toBe(1);
@@ -65,7 +65,7 @@ describe('Mapper', function() {
             expect(songs[0].words.length).toBe(0);
         });
 
-        it('Should get song details',function(){
+        it('Should get song details', function () {
             spyOn(wordMapper, 'getBasicDetails').andReturn([]);
             var songs = songMapper.getSongDetails(songList);
 

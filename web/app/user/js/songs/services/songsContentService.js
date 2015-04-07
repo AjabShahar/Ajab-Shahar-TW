@@ -1,11 +1,11 @@
 var songsContentService = function ($http) {
     var getSongsVersions = function (id) {
-        return $http.get('/api/songs/versions?songId='+id);
+        return $http.get('/api/songs/versions?songId=' + id);
         //return $http.get('/api/songs/'+id+"/versions");
     };
 
     var getSongRenditions = function (id) {
-        return $http.get('/api/songs/versions?songId='+id);
+        return $http.get('/api/songs/versions?songId=' + id);
         //return $http.get('/api/songs/'+id+"/versions");
     };
 
@@ -13,16 +13,16 @@ var songsContentService = function ($http) {
         return $http.get('/api/songs/getPublishedSongs');
     };
 
-    var getSongsInRangeAndFilteredBy = function(startIndex, letter){
+    var getSongsInRangeAndFilteredBy = function (startIndex, letter) {
         return $http.get('/api/songs/getPublishedSongs?startFrom=' + startIndex + "&filteredLetter=" + letter);
     };
 
-    var getSongsStartingWith = function(letter){
+    var getSongsStartingWith = function (letter) {
         return $http.get('/api/songs/count/startingWith?letter=' + letter);
     };
 
     var getSong = function (id) {
-        return $http.get('/api/songs/getPublishedSongs/'+id);
+        return $http.get('/api/songs/getPublishedSongs/' + id);
     };
 
     //var wordSeen = function(word,wordsList){
@@ -31,69 +31,69 @@ var songsContentService = function ($http) {
     //    })
     //};
 
-    var getWordsFrom = function(songs){
+    var getWordsFrom = function (songs) {
         var wordsDictionary = {};
-        if(!_.isEmpty(songs)){
-            _.reduce(songs,function(wordsDictionary,song){
+        if (!_.isEmpty(songs)) {
+            _.reduce(songs, function (wordsDictionary, song) {
                 //console.log(song.words);
-                if(!_.isEmpty(song.words)){
-                    song.words.forEach(function(word){
-                        wordsDictionary[word.id] =[word.transliteration,word.translation];
+                if (!_.isEmpty(song.words)) {
+                    song.words.forEach(function (word) {
+                        wordsDictionary[word.id] = [word.transliteration, word.translation];
                     })
                 }
                 return wordsDictionary;
-            },wordsDictionary )
+            }, wordsDictionary)
         }
         return _.values(wordsDictionary);
     };
 
-    var getSingersFrom = function(songs){
+    var getSingersFrom = function (songs) {
         var singersMap = {};
 
-        if(!_.isEmpty(songs)){
-            _.reduce(songs,function(singersMap,song){
-                if(!_.isEmpty(song.singersAsList)){
-                    song.singersAsList.forEach(function(singer){
-                        singersMap[singer.id] =[singer.name];
+        if (!_.isEmpty(songs)) {
+            _.reduce(songs, function (singersMap, song) {
+                if (!_.isEmpty(song.singersAsList)) {
+                    song.singersAsList.forEach(function (singer) {
+                        singersMap[singer.id] = [singer.name];
                     })
                 }
                 return singersMap;
-            },singersMap )
+            }, singersMap)
         }
         return _.values(singersMap);
     };
 
-    var _pluckFields = function(songs,field){
+    var _pluckFields = function (songs, field) {
         var valuesMap = {};
-        if(!_.isEmpty(songs)){
-            _.reduce(songs,function(valuesMap,song){
-                if(!_.isEmpty(song[field])){
-                    valuesMap[song[field]] =[song[field]];
+        if (!_.isEmpty(songs)) {
+            _.reduce(songs, function (valuesMap, song) {
+                if (!_.isEmpty(song[field])) {
+                    valuesMap[song[field]] = [song[field]];
                 }
                 return valuesMap;
-            },valuesMap )
+            }, valuesMap)
         }
         return _.values(valuesMap);
     };
-    var getPoetsFrom = function(songs){
-        return _pluckFields(songs,"poet");
+    var getPoetsFrom = function (songs) {
+        return _pluckFields(songs, "poet");
     };
 
-    var getGatheringsFrom = function(songs){
-        return _pluckFields(songs,"gathering");
+    var getGatheringsFrom = function (songs) {
+        return _pluckFields(songs, "gathering");
     };
 
 
     return {
         getAllSongs: getAllSongs,
-        getSongsVersions:getSongsVersions,
-        getSongRenditions:getSongRenditions,
-        getSongsInRangeAndFilteredBy:getSongsInRangeAndFilteredBy,
-        getSongsStartingWith:getSongsStartingWith,
+        getSongsVersions: getSongsVersions,
+        getSongRenditions: getSongRenditions,
+        getSongsInRangeAndFilteredBy: getSongsInRangeAndFilteredBy,
+        getSongsStartingWith: getSongsStartingWith,
         getSong: getSong,
-        getWordsFrom:getWordsFrom,
-        getSingersFrom:getSingersFrom,
-        getPoetsFrom:getPoetsFrom,
-        getGatheringsFrom :getGatheringsFrom
+        getWordsFrom: getWordsFrom,
+        getSingersFrom: getSingersFrom,
+        getPoetsFrom: getPoetsFrom,
+        getGatheringsFrom: getGatheringsFrom
     };
 };

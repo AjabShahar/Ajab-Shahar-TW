@@ -92,7 +92,8 @@
                         <label>Primary Occupation</label>
                     </div>
                     <div class="col-sm-2">
-                        <select class="col-sm-5" ng-model="formInfo.primaryOccupationId" ng-options="occupation.id as occupation.name for occupation in formInfo.category"></select>
+                        <select class="col-sm-5" ng-model="formInfo.primaryOccupationId"
+                                ng-options="occupation.id as occupation.name for occupation in formInfo.category"></select>
                     </div>
                 </div>
                 <button type="submit" ng-click="saveData()" class="btn btn-primary btn-lg">Save</button>

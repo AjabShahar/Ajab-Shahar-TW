@@ -1,48 +1,48 @@
 var Ajabshahar = Ajabshahar || {};
 Ajabshahar.user = Ajabshahar.user || {};
-Ajabshahar.user.SongFilterConfig = (function(){
+Ajabshahar.user.SongFilterConfig = (function () {
     var filterCategories = [
         {
-            name:"singersAsList[].name",
-            value:"",
-            displayName:"Singer"
+            name: "singersAsList[].name",
+            value: "",
+            displayName: "Singer"
         },
         {
-            name:"poet",
-            value:"",
-            displayName:"Poet"
+            name: "poet",
+            value: "",
+            displayName: "Poet"
         },
         {
-            name:"words[].transliteration",
-            value:"",
-            displayName:"Word"
+            name: "words[].transliteration",
+            value: "",
+            displayName: "Word"
         },
         {
-            name:"gathering",
-            value:"",
-            displayName:"Gathering"
+            name: "gathering",
+            value: "",
+            displayName: "Gathering"
         },
         {
-            name:"englishTransliteration",
-            value:"",
-            method:"startsWith"
+            name: "englishTransliteration",
+            value: "",
+            method: "startsWith"
         },
         {
-            name:"englishTranslation",
-            value:"",
-            method:"startsWith"
+            name: "englishTranslation",
+            value: "",
+            method: "startsWith"
         }
     ];
 
-    var filterItemsLoader ={
-        "Word":"getWordsFrom",
-        "Singer":"getSingersFrom",
-        "Poet":"getPoetsFrom",
-        "Gathering":"getGatheringsFrom"
+    var filterItemsLoader = {
+        "Word": "getWordsFrom",
+        "Singer": "getSingersFrom",
+        "Poet": "getPoetsFrom",
+        "Gathering": "getGatheringsFrom"
     };
 
     return {
-        filterCategories:filterCategories,
-        filterItemsLoader:filterItemsLoader
+        filterCategories: filterCategories,
+        filterItemsLoader: filterItemsLoader
     };
 })();

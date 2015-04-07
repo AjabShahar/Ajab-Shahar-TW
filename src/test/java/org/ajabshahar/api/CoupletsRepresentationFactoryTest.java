@@ -40,7 +40,7 @@ public class CoupletsRepresentationFactoryTest {
 
     @Test
     public void shouldGetCoupletsRepresentation() throws Exception {
-       
+
         CoupletsRepresentation coupletsRepresentation = coupletsRepresentationFactory.create(couplets);
         assertThat(coupletsRepresentation.getCouplets().size(), IsEqual.equalTo(1));
         assertThat(coupletsRepresentation.getCouplets().get(0).getId(), IsEqual.equalTo(1L));

@@ -1,21 +1,21 @@
-var mappers = function (songMapper,wordMapper,reflectionMapper) {
-    getSongMapper = function(){
+var mappers = function (songMapper, wordMapper, reflectionMapper) {
+    getSongMapper = function () {
         return songMapper;
     };
 
-    getWordMapper = function(){
+    getWordMapper = function () {
         return wordMapper;
     };
 
-    getReflectionMapper = function(){
+    getReflectionMapper = function () {
         return reflectionMapper;
     };
 
     return {
         getSongMapper: getSongMapper,
         getWordMapper: getWordMapper,
-        getReflectionMapper : getReflectionMapper,
+        getReflectionMapper: getReflectionMapper,
     };
 };
 
-thumbnailModule.factory('mappers', ['songMapper','wordMapper','reflectionMapper',mappers]);
+thumbnailModule.factory('mappers', ['songMapper', 'wordMapper', 'reflectionMapper', mappers]);

@@ -5,10 +5,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "GENRE")
 @NamedQueries({
-    @NamedQuery(
-            name = "org.ajabshahar.platform.models.Genre.findAll",
-            query = "SELECT p FROM Genre p"
-    )
+        @NamedQuery(
+                name = "org.ajabshahar.platform.models.Genre.findAll",
+                query = "SELECT p FROM Genre p"
+        )
 })
 public class Genre {
     @Id

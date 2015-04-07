@@ -30,7 +30,7 @@ public class SongTextContent {
     private Boolean showRefrain;
 
     @OneToOne(fetch = FetchType.EAGER, optional = true)
-    @JoinColumn(name ="poet_id")
+    @JoinColumn(name = "poet_id")
     private PersonDetails poet;
 
     public String getOriginalText() {

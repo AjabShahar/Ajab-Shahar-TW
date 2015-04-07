@@ -2,7 +2,7 @@ package org.ajabshahar.platform.models;
 
 import java.util.List;
 
-public class MainLandingPage{
+public class MainLandingPage {
     private List<Song> songs;
     private List<Couplet> couplets;
     private List<Word> words;

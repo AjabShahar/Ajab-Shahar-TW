@@ -1,28 +1,28 @@
 'use strict';
 
-thumbnailModule.directive("reflectionThumbnail", function() {
+thumbnailModule.directive("reflectionThumbnail", function () {
     return {
-        replace : true,
+        replace: true,
         restrict: 'E',
         scope: {
-            id:'@',
-            title:'@',
-            verb:'@',
-            imgSrc:'@',
-            speaker:'@',
-            customStyle:'@',
-            overlayId:'@',
+            id: '@',
+            title: '@',
+            verb: '@',
+            imgSrc: '@',
+            speaker: '@',
+            customStyle: '@',
+            overlayId: '@',
             open: '&'
         },
-        templateUrl:'/user/js/common/templates/reflections/reflectionThumbnail.html',
-        controller:function($scope){
+        templateUrl: '/user/js/common/templates/reflections/reflectionThumbnail.html',
+        controller: function ($scope) {
             $scope.shouldShowDetails = false;
 
-            $scope.showDetails = function(){
+            $scope.showDetails = function () {
                 $scope.shouldShowDetails = true;
             };
 
-            $scope.hideDetails = function(){
+            $scope.hideDetails = function () {
                 $scope.shouldShowDetails = false;
             }
         }

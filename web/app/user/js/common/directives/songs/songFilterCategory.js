@@ -1,29 +1,29 @@
 'use strict';
 
-filterModule.directive("songFilterCategory", function() {
+filterModule.directive("songFilterCategory", function () {
 
     return {
-        restrict:'EA',
-        templateUrl:'/user/js/common/templates/songs/songFilterCategory.html',
-        scope:{
-            criteriaList:"=",
-            selectHandler:"=",
-            deselectHandler:"=",
-            clearFilters:"="
+        restrict: 'EA',
+        templateUrl: '/user/js/common/templates/songs/songFilterCategory.html',
+        scope: {
+            criteriaList: "=",
+            selectHandler: "=",
+            deselectHandler: "=",
+            clearFilters: "="
         },
 
-        link:function(scope,element,attrs){
-            scope.criteriaClicked = function(criteria){
+        link: function (scope, element, attrs) {
+            scope.criteriaClicked = function (criteria) {
                 //console.log("criteria clicked : ",criteria)
                 scope.selectHandler(criteria);
             };
 
-            scope.criteriaRemoved = function(criteria){
+            scope.criteriaRemoved = function (criteria) {
                 //console.log("criteria removed : ",criteria)
                 scope.deselectHandler(criteria);
             };
 
-            scope.resetFilters = function(){
+            scope.resetFilters = function () {
                 //console.log("reset clicked")
 
                 scope.clearFilters();

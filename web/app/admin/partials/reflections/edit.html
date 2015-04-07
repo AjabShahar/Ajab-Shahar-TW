@@ -10,12 +10,16 @@
 
 </head>
 <body>
-<a ng-href="/admin/partials/home.html" target="_self"><button type="button" class="btn btn-info admin-home">Admin home</button></a>
+<a ng-href="/admin/partials/home.html" target="_self">
+    <button type="button" class="btn btn-info admin-home">Admin home</button>
+</a>
+
 <div class="left">
     <h2>Edit Reflection details</h2>
+
     <div class="left">
         <div ng-controller="reflectionDetailsController">
-            <form >
+            <form>
                 <div class="row form-group">
                     <div class="col-sm-2">
                         <label>Title</label>
@@ -40,8 +44,8 @@
                         <label>Name of the speaker</label>
                     </div>
                     <div class="col-sm-2">
-                        <select ng-model = "formInfo.speaker.id"
-                                ng-options = "speaker.id as speaker.firstName + ' '+speaker.lastName for speaker in people | orderBy:'firstName'">
+                        <select ng-model="formInfo.speaker.id"
+                                ng-options="speaker.id as speaker.firstName + ' '+speaker.lastName for speaker in people | orderBy:'firstName'">
                         </select>
                     </div>
                 </div>
@@ -79,7 +83,8 @@
 
                 <div ng-show="formInfo.type == 'text' || formInfo.reflectionTranscripts.length>1 ">
 
-                 <reflection-transcript reflection-transcript="{{formInfo.reflectionTranscript}}" reflection-transcripts="formInfo.reflectionTranscripts"></reflection-transcript>
+                    <reflection-transcript reflection-transcript="{{formInfo.reflectionTranscript}}"
+                                           reflection-transcripts="formInfo.reflectionTranscripts"></reflection-transcript>
                 </div>
 
 
@@ -115,17 +120,17 @@
         </div>
     </div>
 </div>
-    <script src="/common/lib/angular/angular.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-cookies.js"></script>
-    <script type="text/javascript" src="/common/lib/angular-filter/dist/angular-filter.js"></script>
-    <script type="text/javascript" src="/common/lib/textAngular/dist/textAngular-sanitize.min.js"></script>
-    <script type="text/javascript" src="/common/lib/textAngular/dist/textAngular.min.js"></script>
-    <script src="/common/lib/angular-route/angular-route.js"></script>
-    <script type="text/javascript" src="/admin/js/services/reflectionContentService.js"></script>
-    <script type="text/javascript" src="/admin/js/services/loginVerifyService.js"></script>
-    <script type="text/javascript" src="/admin/js/reflections/reflectionsAdminApp.js"></script>
-    <script type="text/javascript" src="/admin/js/directives/reflectionTranscript.js"></script>
-    <script type="text/javascript" src="/admin/js/controllers/reflections/reflectionDetailsController.js"></script>
+<script src="/common/lib/angular/angular.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-cookies.js"></script>
+<script type="text/javascript" src="/common/lib/angular-filter/dist/angular-filter.js"></script>
+<script type="text/javascript" src="/common/lib/textAngular/dist/textAngular-sanitize.min.js"></script>
+<script type="text/javascript" src="/common/lib/textAngular/dist/textAngular.min.js"></script>
+<script src="/common/lib/angular-route/angular-route.js"></script>
+<script type="text/javascript" src="/admin/js/services/reflectionContentService.js"></script>
+<script type="text/javascript" src="/admin/js/services/loginVerifyService.js"></script>
+<script type="text/javascript" src="/admin/js/reflections/reflectionsAdminApp.js"></script>
+<script type="text/javascript" src="/admin/js/directives/reflectionTranscript.js"></script>
+<script type="text/javascript" src="/admin/js/controllers/reflections/reflectionDetailsController.js"></script>
 </body>
 </html>
 

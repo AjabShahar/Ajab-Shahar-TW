@@ -1,5 +1,5 @@
-(function($) {
-    $(function() {
+(function ($) {
+    $(function () {
         var jcarousel = $('.jcarousel');
         console.log(jcarousel);
 
@@ -30,18 +30,18 @@
             });
 
         $('.jcarousel-pagination')
-            .on('jcarouselpagination:active', 'a', function() {
+            .on('jcarouselpagination:active', 'a', function () {
                 $(this).addClass('active');
             })
-            .on('jcarouselpagination:inactive', 'a', function() {
+            .on('jcarouselpagination:inactive', 'a', function () {
                 $(this).removeClass('active');
             })
-            .on('click', function(e) {
+            .on('click', function (e) {
                 e.preventDefault();
             })
             .jcarouselPagination({
                 perPage: 1,
-                item: function(page) {
+                item: function (page) {
                     return '<a href="#' + page + '">' + page + '</a>';
                 }
             });

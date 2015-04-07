@@ -24,7 +24,7 @@ public class SessionAuthenticatorFilter implements Filter {
         else {
             HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
             httpResponse.setStatus(HttpStatus.UNAUTHORIZED_401);
-            httpResponse.sendError(HttpStatus.UNAUTHORIZED_401,"Login required");
+            httpResponse.sendError(HttpStatus.UNAUTHORIZED_401, "Login required");
         }
     }
 

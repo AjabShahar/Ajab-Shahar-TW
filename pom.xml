@@ -95,10 +95,10 @@
             <scope>test</scope>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>org.hsqldb</groupId>-->
-            <!--<artifactId>hsqldb</artifactId>-->
-            <!--<version>2.3.2</version>-->
-            <!--<scope>test</scope>-->
+        <!--<groupId>org.hsqldb</groupId>-->
+        <!--<artifactId>hsqldb</artifactId>-->
+        <!--<version>2.3.2</version>-->
+        <!--<scope>test</scope>-->
         <!--</dependency>-->
 
         <dependency>
@@ -184,28 +184,28 @@
                     </archive>
                 </configuration>
             </plugin>
-           <!-- <plugin>
-                <groupId>org.lesscss</groupId>
-                <artifactId>lesscss-maven-plugin</artifactId>
-                <version>1.7.0.1.1</version>
-                <configuration>
-                    <sourceDirectory>${project.basedir}/src/main/resources/assets/app</sourceDirectory>
-                    <excludes>
-                        <exclude>
-                            common/lib/bootstrap/less/*.less
-                        </exclude>
-                    </excludes>
-                    <outputDirectory>${project.build.directory}/classes/assets/app</outputDirectory>
-                    <compress>true</compress>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>-->
+            <!-- <plugin>
+                 <groupId>org.lesscss</groupId>
+                 <artifactId>lesscss-maven-plugin</artifactId>
+                 <version>1.7.0.1.1</version>
+                 <configuration>
+                     <sourceDirectory>${project.basedir}/src/main/resources/assets/app</sourceDirectory>
+                     <excludes>
+                         <exclude>
+                             common/lib/bootstrap/less/*.less
+                         </exclude>
+                     </excludes>
+                     <outputDirectory>${project.build.directory}/classes/assets/app</outputDirectory>
+                     <compress>true</compress>
+                 </configuration>
+                 <executions>
+                     <execution>
+                         <goals>
+                             <goal>compile</goal>
+                         </goals>
+                     </execution>
+                 </executions>
+             </plugin>-->
         </plugins>
     </build>
 

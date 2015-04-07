@@ -73,7 +73,7 @@ public class SongsRepresentationFactoryTest {
 
         Gathering gathering = new Gathering();
         gathering.setId(id);
-        gathering.setEnglish(format("song%senglishGathering",id));
+        gathering.setEnglish(format("song%senglishGathering", id));
         song.setGathering(gathering);
 
         PersonDetails singer = new PersonDetails(), poet = new PersonDetails();

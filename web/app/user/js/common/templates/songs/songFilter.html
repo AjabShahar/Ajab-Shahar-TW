@@ -5,20 +5,22 @@
             <li>
                 <a ng-click="toggleSingers()" ng-class="shouldShowSingers ? 'active' : 'disable'">singer</a>
                 <ul class="child-list">
-                    <li ng-hide="singerNameInFilter==''|| singerNameInFilter.name==''">{{singerNameInFilter.name}}<a ng-click="removeSingerFilter()">x</a></li>
+                    <li ng-hide="singerNameInFilter==''|| singerNameInFilter.name==''">{{singerNameInFilter.name}}<a
+                            ng-click="removeSingerFilter()">x</a></li>
                 </ul>
             </li>
 
             <li>
                 <a ng-click="togglePoets()" ng-class="shouldShowPoets ? 'active' : 'disable'">Poet</a>
                 <ul class="child-list">
-                    <li ng-hide="poetNameInFilter==''|| poetNameInFilter.name==''">{{poetNameInFilter.name}}<a ng-click="removePoetFilter()">x</a></li>
+                    <li ng-hide="poetNameInFilter==''|| poetNameInFilter.name==''">{{poetNameInFilter.name}}<a
+                            ng-click="removePoetFilter()">x</a></li>
                 </ul>
             </li>
 
             <li><a>Word</a></li>
             <li><a>Gathering</a></li>
-            <li class="reset-image"><a class="reset"  ng-click="clearFilters()" >Reset</a></li>
+            <li class="reset-image"><a class="reset" ng-click="clearFilters()">Reset</a></li>
         </ul>
     </div>
 
@@ -33,12 +35,11 @@
     <div class="second-layer-list" ng-show="shouldShowPoets">
         <div class="overlay"></div>
         <ul>
-            <li ng-repeat = "poet in poets" class="list-item">
+            <li ng-repeat="poet in poets" class="list-item">
                 <a href="javascript:void(0)" ng-click="initialisePoetNameInFilter(poet);hidePoets()">{{poet.name}}</a>
             </li>
         </ul>
     </div>
-
 
 
 </div>

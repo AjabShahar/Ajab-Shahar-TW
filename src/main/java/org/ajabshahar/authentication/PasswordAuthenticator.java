@@ -25,13 +25,13 @@ public class PasswordAuthenticator implements Authenticator<BasicCredentials, Pr
     public Optional<Principle> authenticate(BasicCredentials credentials) throws AuthenticationException {
         User user = users.getUser(credentials.getUsername());
         if (user != null && passwordsMatch(credentials, user)) {
-            Principle principle = new Principle(user.getUsername(),user.getRole());
+            Principle principle = new Principle(user.getUsername(), user.getRole());
             return Optional.fromNullable(principle);
         }
         return Optional.absent();
     }
 
-    private boolean passwordsMatch(BasicCredentials credentials, User user)  {
+    private boolean passwordsMatch(BasicCredentials credentials, User user) {
         return user.getPassword().equals(getHashedPassword(credentials.getPassword()));
     }
 

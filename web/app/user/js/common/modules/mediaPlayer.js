@@ -1,1 +1,1 @@
-var mediaPlayer = angular.module('mediaPlayer',[]);
+var mediaPlayer = angular.module('mediaPlayer', []);

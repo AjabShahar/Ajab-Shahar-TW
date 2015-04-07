@@ -7,9 +7,13 @@
     <link href="/common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
 </head>
 <body ng-init="getGatheringData()">
-<a ng-href="/admin/partials/home.html" target="_self"><button type="button" class="btn btn-info admin-home">Admin home</button></a>
+<a ng-href="/admin/partials/home.html" target="_self">
+    <button type="button" class="btn btn-info admin-home">Admin home</button>
+</a>
+
 <div class="left">
     <h2>{{pageName}} gathering details</h2>
+
     <div class="alert alert-danger" role="alert" ng-show="alert.length != 0">
         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
         <span class="sr-only">Error:</span>

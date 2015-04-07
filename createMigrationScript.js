@@ -12,21 +12,21 @@ var fs = require("fs"),
 var fileName = args[0];
 var authorName = args[1];
 
-var pad = function(number, width) {
-  var prefix = '0';
-  number = number + '';
-  return number.length >= width ? number : new Array(width - number.length + 1).join(prefix) + number;
+var pad = function (number, width) {
+    var prefix = '0';
+    number = number + '';
+    return number.length >= width ? number : new Array(width - number.length + 1).join(prefix) + number;
 };
 
-var getFiles = function(dir,files_){
+var getFiles = function (dir, files_) {
     files_ = files_ || [];
-    if (typeof files_ === 'undefined') files_=[];
+    if (typeof files_ === 'undefined') files_ = [];
     var files = fs.readdirSync(dir);
-    for(var i in files){
+    for (var i in files) {
         if (!files.hasOwnProperty(i)) continue;
-        var name = dir+'/'+files[i];
-        if (fs.statSync(name).isDirectory()){
-            getFiles(name,files_);
+        var name = dir + '/' + files[i];
+        if (fs.statSync(name).isDirectory()) {
+            getFiles(name, files_);
         } else {
             var fileName = name.replace(dir + '/', "");
             files_.push(fileName);
@@ -35,10 +35,10 @@ var getFiles = function(dir,files_){
     return files_;
 };
 
-var createNewMigrationFile = function(authorName, newChangeset, fileName){
-    var liquibaseText = "--liquibase formatted sql \n\n--changeset "+ authorName + ":" + newChangeset + "\n\n";
+var createNewMigrationFile = function (authorName, newChangeset, fileName) {
+    var liquibaseText = "--liquibase formatted sql \n\n--changeset " + authorName + ":" + newChangeset + "\n\n";
 
-    var newFile =  migrationsDir + pad(newChangeset,4) + "_" + fileName + ".sql";
+    var newFile = migrationsDir + pad(newChangeset, 4) + "_" + fileName + ".sql";
 
     fs.writeFile(newFile, liquibaseText, function (err) {
         if (err) throw err;
@@ -46,7 +46,7 @@ var createNewMigrationFile = function(authorName, newChangeset, fileName){
     });
 };
 
-var getNewChangetSetNumber = function(fileName) {
+var getNewChangetSetNumber = function (fileName) {
     var oldChangeSetNumber = parseInt(fileName.substr(0, fileName.indexOf('_')));
     return oldChangeSetNumber + 1;
 };

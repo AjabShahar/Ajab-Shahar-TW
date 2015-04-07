@@ -8,14 +8,14 @@ import java.util.List;
 
 public class CoupletsRepresentation {
 
-    private  List<CoupletRepresentation> couplets;
+    private List<CoupletRepresentation> couplets;
 
     public CoupletsRepresentation() {
         this.couplets = new ArrayList<>();
     }
 
     @JsonProperty("couplets")
-    public List<CoupletRepresentation> getCouplets(){
+    public List<CoupletRepresentation> getCouplets() {
         return couplets;
     }
 

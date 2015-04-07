@@ -23,7 +23,7 @@ public class TitleResource {
     @UnitOfWork
     @Path("/umbrella")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Title> findAllUmbrellaTitles(){
+    public List<Title> findAllUmbrellaTitles() {
         return titleDAO.findAllUmbrellaTitles();
     }
 
@@ -31,7 +31,7 @@ public class TitleResource {
     @UnitOfWork
     @Path("/song")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Title> findAllSongTitles(){
+    public List<Title> findAllSongTitles() {
         return titleDAO.findAllSongTitles();
     }
 

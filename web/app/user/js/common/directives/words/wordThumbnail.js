@@ -1,29 +1,29 @@
 'use strict';
 
-thumbnailModule.directive("wordThumbnail", function() {
+thumbnailModule.directive("wordThumbnail", function () {
     return {
-        replace : true,
+        replace: true,
         restrict: 'E',
         scope: {
-            transliteration:'@',
-            translation:'@',
-            englishIntroExcerpt:'@',
-            customStyle:'@',
-            overlayId:'@',
-            imgSrc:'@',
-            id:'@',
-            open:'&'
+            transliteration: '@',
+            translation: '@',
+            englishIntroExcerpt: '@',
+            customStyle: '@',
+            overlayId: '@',
+            imgSrc: '@',
+            id: '@',
+            open: '&'
         },
-        templateUrl:'/user/js/common/templates/words/wordThumbnail.html',
-        controller:function($scope, $window){
+        templateUrl: '/user/js/common/templates/words/wordThumbnail.html',
+        controller: function ($scope, $window) {
             $scope.shouldBeOpen = false;
             $scope.shouldShowDetails = false;
-            
-            $scope.showDetails = function(){
+
+            $scope.showDetails = function () {
                 $scope.shouldShowDetails = true;
             };
 
-            $scope.hideDetails = function(){
+            $scope.hideDetails = function () {
                 $scope.shouldShowDetails = false;
             }
         }

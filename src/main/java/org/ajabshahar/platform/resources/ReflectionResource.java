@@ -41,10 +41,10 @@ public class ReflectionResource {
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/edit")
-    public Response updateReflection(String jsonReflection){
+    public Response updateReflection(String jsonReflection) {
         Reflection reflection = reflectionRepresentationFactory.create(jsonReflection);
         reflection = reflections.update(reflection);
-        return Response.ok(reflection,MediaType.APPLICATION_JSON).build();
+        return Response.ok(reflection, MediaType.APPLICATION_JSON).build();
     }
 
     @GET
@@ -80,14 +80,14 @@ public class ReflectionResource {
     @GET
     @UnitOfWork
     @Path("/all")
-    public List<Reflection> getAllReflections(){
+    public List<Reflection> getAllReflections() {
         return reflections.getAll("");
     }
 
     @GET
     @UnitOfWork
     @Path("/edit")
-    public Reflection getReflectionById(@QueryParam("id") int id){
+    public Reflection getReflectionById(@QueryParam("id") int id) {
         return reflections.findReflection(id);
     }
 }

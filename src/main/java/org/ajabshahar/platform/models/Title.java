@@ -35,9 +35,11 @@ public class Title {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "CATEGORY_ID")
     private Category category;
-    public Title(){
+
+    public Title() {
 
     }
+
     public Title(Title songTitle) {
         originalTitle = songTitle.getOriginalTitle();
         englishTranslation = songTitle.getEnglishTranslation();

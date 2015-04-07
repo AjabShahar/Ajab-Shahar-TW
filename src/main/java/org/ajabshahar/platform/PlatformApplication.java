@@ -61,7 +61,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         bootstrap.addBundle(new AssetsBundle("/assets/app/admin/js", "/admin-js", null, "admin-js"));
         bootstrap.addBundle(new AssetsBundle("/assets/app/admin/img", "/admin-img", null, "admin-img"));
 
-            bootstrap.addBundle(new AssetsBundle("/assets/app/admin/partials", "/admin", null, "admin"));
+        bootstrap.addBundle(new AssetsBundle("/assets/app/admin/partials", "/admin", null, "admin"));
 
         bootstrap.addBundle(new AssetsBundle("/assets/app/common", "/common", null, "common"));
 
@@ -94,12 +94,12 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         environment.jersey().register(HttpSessionProvider.class);
         SessionManager sessionManager = new HashSessionManager();
         String sessionTimeout = configuration.getSessionTimeout();
-        int timeout = sessionTimeout != null? Integer.parseInt(sessionTimeout) : _30_MINUTES;
+        int timeout = sessionTimeout != null ? Integer.parseInt(sessionTimeout) : _30_MINUTES;
         sessionManager.setMaxInactiveInterval(timeout);
         environment.servlets().setSessionHandler(new SessionHandler(sessionManager));
-        environment.servlets().addFilter("SessionAuthFilter", new SessionAuthenticatorFilter()).addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class),true,"/*");
+        environment.servlets().addFilter("SessionAuthFilter", new SessionAuthenticatorFilter()).addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
         PasswordAuthenticator authenticator = picoContainer.getComponent(PasswordAuthenticator.class);
-        environment.jersey().register(new BasicAuthProvider<Principle>(authenticator,"Ajab-shahar"));
+        environment.jersey().register(new BasicAuthProvider<Principle>(authenticator, "Ajab-shahar"));
 
         environment.healthChecks().register("template", templateHealthCheck);
     }

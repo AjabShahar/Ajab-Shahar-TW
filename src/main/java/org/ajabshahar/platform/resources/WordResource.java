@@ -89,7 +89,7 @@ public class WordResource {
     @GET
     @Path("/getAllWords")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Word> getWords(){
+    public List<Word> getWords() {
         return words.findAll();
     }
 }

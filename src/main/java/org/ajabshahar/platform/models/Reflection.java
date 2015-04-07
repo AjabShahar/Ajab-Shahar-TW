@@ -36,7 +36,7 @@ public class Reflection {
     @Column(name = "IS_AUTHORING_COMPLETE")
     private Boolean isAuthoringComplete;
 
-    @Column(name="SHOW_ON_LANDING_PAGE")
+    @Column(name = "SHOW_ON_LANDING_PAGE")
     private Boolean showOnFeaturedContentPage;
 
     public long getId() {

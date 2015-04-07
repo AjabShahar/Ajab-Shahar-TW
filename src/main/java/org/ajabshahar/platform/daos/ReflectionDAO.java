@@ -33,7 +33,7 @@ public class ReflectionDAO extends AbstractDAO<Reflection> {
     }
 
     public List<Reflection> findBy(Boolean showOnFeaturedContentPage, boolean authoringComplete) {
-        return findBy(-1,"",showOnFeaturedContentPage,authoringComplete);
+        return findBy(-1, "", showOnFeaturedContentPage, authoringComplete);
     }
 
     public List<Reflection> findBy(int startFrom, String filteredLetter, Boolean showOnFeaturedContentPage, boolean authoringComplete) {
@@ -70,6 +70,6 @@ public class ReflectionDAO extends AbstractDAO<Reflection> {
     }
 
     public List<Reflection> findBy(int startFrom, String filteredLetter) {
-        return findBy(startFrom,filteredLetter,false,true);
+        return findBy(startFrom, filteredLetter, false, true);
     }
 }

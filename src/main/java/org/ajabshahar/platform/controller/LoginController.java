@@ -25,7 +25,7 @@ public class LoginController {
 
     public static final String AUTH_ATTRIBUTE = "user_role";
     public static final String AUTH_VALUE = "admin";
-    
+
     private Logger logger = Logger.getLogger(this.getClass());
     private Authenticator<BasicCredentials, Principle> authenticator;
 

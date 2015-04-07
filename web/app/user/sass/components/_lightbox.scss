@@ -1,143 +1,140 @@
 
 .disabled {
-    display:none;
+  display: none;
 }
 
 .media-introduction {
-    display:inline-block;
-    text-align: left;
-    width:100%;
-    line-height: 23px;
+  display: inline-block;
+  text-align: left;
+  width: 100%;
+  line-height: 23px;
 
-    position: absolute;
-    left: 0;
+  position: absolute;
+  left: 0;
 
-    youtube, sound-cloud {
-        display: inline-block;
-        width: 853px;
-        height: 480px;
+  youtube, sound-cloud {
+    display: inline-block;
+    width: 853px;
+    height: 480px;
 
-        @media screen and (max-width: 1280px) {
-            width: 640px;
-            height: 360px;
-        }
-
-        @media screen and (max-width: 769px) {
-            width: 530px;
-            height: 315px;
-        }
-
-        iframe, .mediaBox {
-            border: solid 5px #fff;
-            box-shadow: #777 0 0 10px;
-            margin: 5px 0;
-        }
-
-        iframe {
-            height: 95%;
-        }
+    @media screen and (max-width: 1280px) {
+      width: 640px;
+      height: 360px;
     }
 
-    .moreDesc{
-    	color: #999;
-    	font-size: 14px;
-    	font-style: italic;
-    	font-weight: 300;
-    	line-height: 27px;
-    	font-family: 'Merriweather';
+    @media screen and (max-width: 769px) {
+      width: 530px;
+      height: 315px;
     }
 
+    iframe, .mediaBox {
+      border: solid 5px #fff;
+      box-shadow: #777 0 0 10px;
+      margin: 5px 0;
+    }
+
+    iframe {
+      height: 95%;
+    }
+  }
+
+  .moreDesc {
+    color: #999;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 27px;
+    font-family: 'Merriweather';
+  }
+
+  .artistName {
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 14px;;
+    small {
+      color: #999;
+      font-size: 12px;
+      margin-left: 1px;
+      text-transform: lowercase;
+
+    }
+  }
+
+  &.word {
     .artistName {
-         text-transform: uppercase;
-        font-weight: 300;
-        font-size: 14px;;
-        small{
-            color: #999;
-            font-size: 12px;
-            margin-left: 1px;
-            text-transform: lowercase;
+      small {
+        text-transform: capitalize;
+      }
+    }
+  }
 
+  &.song {
+    position: static;
+    margin: 0 auto;
+    width: auto;
+  }
+
+  @media screen and (max-width: 990px) {
+    margin-top: 10%;
+  }
+
+  ul.audio-video-options {
+    float: right;
+    display: inline-flex;
+    display: webkit-inline-flex;
+    margin-top: -2%;
+    & > li {
+      border-right: solid 1px #666;
+      line-height: 2px;
+      margin: 7px 0 0;
+      padding: 0 7px;
+      height: 15px;
+
+      &:last-child {
+        border: none;
+        padding-right: 0;
+      }
+      & > a {
+        background: transparent url('../../user/img/songs/av_sprite.png') 0 0 no-repeat;
+        width: 12px;
+        height: 15px;
+        display: inline-block;
+
+        &.video-icon {
+          background-position: -13px 3px;
+          &.active {
+            background-position: 0 3px;
+          }
         }
-    }
 
-    &.word {
-        .artistName {
-            small {
-                text-transform: capitalize;
-            }
+        &.audio-icon {
+          background-position: -13px -12px;
+          width: 20px;
+          height: 20px;
+          &.active {
+            background-position: 0 -12px;
+          }
         }
+      }
     }
-
-    &.song {
-        position: static;
-        margin: 0 auto;
-        width: auto;
-    }
-
-    @media screen and (max-width: 990px) {
-        margin-top: 10%;
-    }
-
-    ul.audio-video-options {
-        float: right;
-        display: inline-flex;
-        display: webkit-inline-flex;
-        margin-top: -2%;
-        &>li {
-            border-right: solid 1px #666;
-            line-height: 2px;
-            margin: 7px 0 0;
-            padding: 0 7px;
-            height: 15px;
-
-            &:last-child {
-                border: none;
-                padding-right: 0;
-            }
-            &>a {
-                background: transparent url('../../user/img/songs/av_sprite.png') 0 0 no-repeat;
-                width: 12px;
-                height: 15px;
-                display: inline-block;
-
-                &.video-icon {
-                    background-position: -13px 3px;
-                    &.active {
-                        background-position: 0 3px;
-                    }
-                }
-
-                &.audio-icon {
-                    background-position: -13px -12px;
-                    width: 20px;
-                    height: 20px;
-                    &.active {
-                        background-position: 0 -12px;
-                    }
-                }
-            }
-        }
-    }
+  }
 }
-
-
 
 .youtubeVideo {
-    height: 100%;
-    margin-top: 5px;
+  height: 100%;
+  margin-top: 5px;
 }
 
-
 .mediaContent {
-    display:inline-block;
-    width:100%;
-    height:90%;
+  display: inline-block;
+  width: 100%;
+  height: 90%;
 }
 
 .mediaPagination {
-    float:right;
-    color:#fff;
-    text-transform: capitalize;
+  float: right;
+  color: #fff;
+  text-transform: capitalize;
 }
 
 .artistName {
@@ -145,11 +142,11 @@
 }
 
 .context {
-    font-size: 20px;
-    text-transform: capitalize;
-    font-weight: 300;
-    color: #666;
-    font-family: 'Merriweather';
+  font-size: 20px;
+  text-transform: capitalize;
+  font-weight: 300;
+  color: #666;
+  font-family: 'Merriweather';
 }
 
 /*.context small {
@@ -158,51 +155,50 @@
     text-transform: capitalize;
 }*/
 .link {
-    color:#fff;
+  color: #fff;
 }
 
 .creditCont {
-    margin-top: 20px;
-    color: #999;
-    width: 95%;
-    padding-left: 300px;
-    padding-right: 225px;
-    text-align:center;
-    .creditBox {
-        display: inline-block;
-        padding: 0 10px;
-        font-size: 10px;
-        font-weight: 300;
-        line-height: 11px;
-        text-transform: uppercase;
-        .selected {
-            font-size: 13px;
-            color: #ED1E79 !important;
-            text-transform: none;
-            font-family: "Merriweather";
-        }
+  margin-top: 20px;
+  color: #999;
+  width: 95%;
+  padding-left: 300px;
+  padding-right: 225px;
+  text-align: center;
+  .creditBox {
+    display: inline-block;
+    padding: 0 10px;
+    font-size: 10px;
+    font-weight: 300;
+    line-height: 11px;
+    text-transform: uppercase;
+    .selected {
+      font-size: 13px;
+      color: #ED1E79 !important;
+      text-transform: none;
+      font-family: "Merriweather";
     }
+  }
 }
 
 .mediaFooter {
-    text-align: center;
-    position: fixed;
-    bottom: 2.8%;
-    width: 100%;
-    left: 0;
-    z-index: $zIndex-lightbox-footer;
+  text-align: center;
+  position: fixed;
+  bottom: 2.8%;
+  width: 100%;
+  left: 0;
+  z-index: $zIndex-lightbox-footer;
 
-    .infoText{
-        color: #808080;
-        font-size: 14px;
-        font-weight: 300;
-        a {
-            font-size: 16px;
-            color: #e83785;
-        }
+  .infoText {
+    color: #808080;
+    font-size: 14px;
+    font-weight: 300;
+    a {
+      font-size: 16px;
+      color: #e83785;
     }
+  }
 }
-
 
 /* social media icons */
 /*.twitterPlug {
@@ -236,34 +232,34 @@
 }*/
 
 #content-wrapper {
-    background: transparent url(/user/img/words/content_bg.png) -4px 0 no-repeat;
-    padding: 2% 3% 5% 5%;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -o-box-sizing: border-box;
-    box-sizing: border-box;
-    .content-bg {
-        overflow: auto;
-        height: 565px;
-        @media screen and (max-width: 768px) {
-           height: 665px;
-        }
-
+  background: transparent url(/user/img/words/content_bg.png) -4px 0 no-repeat;
+  padding: 2% 3% 5% 5%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  .content-bg {
+    overflow: auto;
+    height: 565px;
+    @media screen and (max-width: 768px) {
+      height: 665px;
     }
-    .word-intro {
-        &>p {
-            font-family: 'Merriweather';
-            font-size: 13px;
-            font-weight: 300;
-            color: #4d4d4d;
 
-            &:first-child:first-letter {
-                font-size: 20px;
-                font-weight: 400;
-                line-height: 27px;
-            }
-        }
+  }
+  .word-intro {
+    & > p {
+      font-family: 'Merriweather';
+      font-size: 13px;
+      font-weight: 300;
+      color: #4d4d4d;
+
+      &:first-child:first-letter {
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 27px;
+      }
     }
+  }
 
 }
 

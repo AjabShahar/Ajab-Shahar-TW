@@ -1,32 +1,32 @@
 'use strict';
 
-thumbnailModule.directive("songContentDetails", function() {
+thumbnailModule.directive("songContentDetails", function () {
     return {
         restrict: 'E',
         scope: {
-            videoId:'@',
-            audioUrl:'@',
-            singer:'@',
-            poet:'@',
-            id:'@',
-            downloadurl:'@',
-            about:'@',
-            words:'=',
-            detailsService:'='
+            videoId: '@',
+            audioUrl: '@',
+            singer: '@',
+            poet: '@',
+            id: '@',
+            downloadurl: '@',
+            about: '@',
+            words: '=',
+            detailsService: '='
         },
-        templateUrl:'/user/js/common/templates/songs/songContentDetails.html',
-        controller: function($scope) {
+        templateUrl: '/user/js/common/templates/songs/songContentDetails.html',
+        controller: function ($scope) {
             $scope.isAboutVisible = false;
             $scope.hasAudioAndVideo = false;
             $scope.showVideo = false;
             $scope.showAudio = false;
 
-            $scope.hideContents = function(){
+            $scope.hideContents = function () {
                 return $scope.detailsService.shouldHideDetails;
             };
 
-            $scope.isAudioOrVideo = function(){
-                if(Boolean($scope.videoId)){
+            $scope.isAudioOrVideo = function () {
+                if (Boolean($scope.videoId)) {
                     $scope.showVideo = true;
                     (Boolean($scope.audioUrl)) ? $scope.hasAudioAndVideo = true : $scope.hasAudioAndVideo = false;
                 }
@@ -35,25 +35,25 @@ thumbnailModule.directive("songContentDetails", function() {
                 }
             };
 
-            $scope.toggleVideoOrAudio = function(){
-                if($scope.showVideo){
+            $scope.toggleVideoOrAudio = function () {
+                if ($scope.showVideo) {
                     $scope.showAudio = true;
                     $scope.showVideo = false;
                     $scope.shouldStopVideo();
 
                 }
-                else{
+                else {
                     $scope.showAudio = false;
                     $scope.showVideo = true;
                 }
             };
 
-            $scope.shouldStopVideo = function(){
+            $scope.shouldStopVideo = function () {
                 return $scope.detailsService.isClosed($scope.id);
             };
 
-            $scope.showAbout = function(){
-                if($scope.isAboutVisible){
+            $scope.showAbout = function () {
+                if ($scope.isAboutVisible) {
                     $scope.isAboutVisible = false;
                     return;
                 }

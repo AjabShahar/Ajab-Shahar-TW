@@ -1,3 +1,3 @@
 'use strict';
 
-var headerModule =angular.module("headerModule", ['animationModule']);
+var headerModule = angular.module("headerModule", ['animationModule']);

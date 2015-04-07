@@ -1,141 +1,134 @@
 .words-wrapper {
 
-         background: transparent url(/user/img/words/words_bg_tile.jpg)  0px 0px repeat;
-         min-height: 800px;
-         width: 1140px;
-         margin: 0 auto;
-         display: block;
-         position: relative;
-         background-size: contain;
+  background: transparent url(/user/img/words/words_bg_tile.jpg) 0px 0px repeat;
+  min-height: 800px;
+  width: 1140px;
+  margin: 0 auto;
+  display: block;
+  position: relative;
+  background-size: contain;
 
-         @media screen and (max-width: 1280px) {
-              width: 100%;
-         }
+  @media screen and (max-width: 1280px) {
+    width: 100%;
+  }
 
-         .homepage-content {
-            height: auto !important;
-            min-height: 200px;
-            margin-top: 1em;
-            padding-bottom: 17em;
-         }
+  .homepage-content {
+    height: auto !important;
+    min-height: 200px;
+    margin-top: 1em;
+    padding-bottom: 17em;
+  }
 
-         .page-header {
-            width: 90%;
-            padding-top: 3%;
-         }
-         .pagination-head {
-            width: 85%;
-            margin-left: 2%;
-         }
+  .page-header {
+    width: 90%;
+    padding-top: 3%;
+  }
+  .pagination-head {
+    width: 85%;
+    margin-left: 2%;
+  }
 
-         &:before, &:after {
-             content: '';
-             display: inline-block;
-             background: transparent url(/user/img/mainLandingPage/parallax/side_pattern.png) 0 0;
-             width: 45px;
-             background-repeat: no-repeat repeat;
-             position: absolute;
-             top: 0;
-             height: 100%;
+  &:before, &:after {
+    content: '';
+    display: inline-block;
+    background: transparent url(/user/img/mainLandingPage/parallax/side_pattern.png) 0 0;
+    width: 45px;
+    background-repeat: no-repeat repeat;
+    position: absolute;
+    top: 0;
+    height: 100%;
 
+    @media screen and (max-width: 1280px) {
+      display: none;
+    }
+  }
+  &:before {
+    left: 0px;
+  }
+  &:after {
+    right: 0;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
 
-             @media screen and (max-width: 1280px) {
-                 display: none;
-             }
-         }
-         &:before {
-             left: 0px;
-         }
-         &:after {
-             right: 0;
-             -webkit-transform: rotate(180deg);
-             -moz-transform: rotate(180deg);
-             -o-transform: rotate(180deg);
-             transform: rotate(180deg);
-         }
+  .thumbnailWrapper {
+    padding-bottom: 20px;
 
+    .thumbnail-desc {
+      position: relative;
+      cursor: pointer;
+      width: 30%;
+      margin: 0 auto;
+      .title {
+        font-family: 'Merriweather';
+        font-size: 20px;
+        font-weight: 300;
+        color: #4d4d4e;
+        text-transform: capitalize;
+        line-height: 1.5em;
+        &:hover {
+          color: #ee2a7b;
+        }
+      }
+      .sub-title {
+        font-family: 'Merriweather';
+        font-size: 18px;
+        font-weight: 300;
+        font-style: italic;
+        color: #989798;
+        text-transform: capitalize;
+        line-height: 1.2em;
+      }
 
+      .show-desc {
+        position: absolute;
+        bottom: -20px;
+        right: -125px;
 
+      }
+      .bubble {
+        position: relative;
+        z-index: 1;
+        width: 249px;
+        background: #fff;
+        padding: 0 10px 3px 10px;
+        cursor: pointer;
+        text-align: left;
+        box-shadow: 0 -6px 7px #a7a7a7;
+        font-weight: 200;
+        font-size: 12px;
+        color: #868686;
+        line-height: 18px;
 
-         .thumbnailWrapper {
-            padding-bottom: 20px;
+        &:before, &:after {
+          content: '';
+          background-size: cover;
+          display: inline-block;
+          height: 20px;
+          left: 0;
+          width: 265px;
+          position: absolute;
 
-            .thumbnail-desc {
-                position: relative;
-                cursor: pointer;
-                width: 30%;
-                margin: 0 auto;
-                .title {
-                    font-family: 'Merriweather';
-                    font-size: 20px;
-                    font-weight: 300;
-                    color: #4d4d4e;
-                    text-transform: capitalize;
-                    line-height: 1.5em;
-                    &:hover {
-                        color: #ee2a7b;
-                    }
-                }
-                .sub-title {
-                    font-family: 'Merriweather';
-                    font-size: 18px;
-                    font-weight: 300;
-                    font-style: italic;
-                    color: #989798;
-                    text-transform: capitalize;
-                    line-height: 1.2em;
-                }
+        }
+        &:before {
+          background: rgba(255, 255, 255, 0) url(/user/img/common/directives/thumbnail/top.png) left top no-repeat;
+          top: -19px;
+        }
+        &:after {
+          content: '';
+          background: rgba(255, 255, 255, 0) url(/user/img/common/directives/thumbnail/bottom.png) left -5px no-repeat;
+          bottom: -20px;
+        }
 
-                .show-desc {
-                    position: absolute;
-                    bottom: -20px;
-                    right: -125px;
+        .more-info {
+          color: #a7a9ac;
+          font-size: 10px;
+        }
+      }
 
-                }
-                .bubble {
-                    position: relative;
-                    z-index: 1;
-                    width: 249px;
-                    background: #fff;
-                    padding: 0 10px 3px 10px;
-                    cursor: pointer;
-                    text-align: left;
-                    box-shadow: 0 -6px 7px #a7a7a7;
-                    font-weight: 200;
-                    font-size: 12px;
-                    color: #868686;
-                    line-height: 18px;
+    }
 
-
-                    &:before, &:after {
-                        content: '';
-                        background-size: cover;
-                        display: inline-block;
-                        height: 20px;
-                        left: 0;
-                        width: 265px;
-                        position: absolute;
-
-                    }
-                    &:before {
-                        background: rgba(255,255,255,0) url(/user/img/common/directives/thumbnail/top.png) left top no-repeat;
-                        top: -19px;
-                    }
-                    &:after {
-                        content: '';
-                        background: rgba(255,255,255,0) url(/user/img/common/directives/thumbnail/bottom.png) left -5px no-repeat;
-                        bottom: -20px;
-                    }
-
-                    .more-info {
-                        color: #a7a9ac;
-                        font-size: 10px;
-                    }
-                }
-
-            }
-
-
-
-         }
+  }
 }

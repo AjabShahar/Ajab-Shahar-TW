@@ -66,21 +66,21 @@ public class CategoryResource {
     @GET
     @UnitOfWork
     @Path("/umbrellaTitle")
-    public  Category listUmbrellaTitleCategory(){
+    public Category listUmbrellaTitleCategory() {
         return categoryDAO.getUmbrellaTitleCategory();
     }
 
     @GET
     @UnitOfWork
     @Path("/songTitle")
-    public Category listSongTitleCategory(){
+    public Category listSongTitleCategory() {
         return categoryDAO.getSongTitleCategory();
     }
 
     @GET
     @UnitOfWork
     @Path("/person")
-    public List<Category> listAllPersonCategory(){
+    public List<Category> listAllPersonCategory() {
         return categoryDAO.findAllPersonCategory();
     }
 }

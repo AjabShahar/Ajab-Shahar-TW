@@ -32,7 +32,7 @@ var songContentService = function ($http) {
     };
 
     var getSong = function (songId) {
-        return $http.get('/api/songs/'+songId);
+        return $http.get('/api/songs/' + songId);
     };
 
     var createSong = function (song) {
@@ -40,30 +40,30 @@ var songContentService = function ($http) {
     };
 
     var editSong = function (song) {
-        return $http.post('/api/songs/edit',song);
+        return $http.post('/api/songs/edit', song);
     };
 
     var getWords = function () {
         return $http.get('/api/words');
     };
 
-    var getGatherings = function() {
+    var getGatherings = function () {
         return $http.get('/api/gatherings');
     };
 
-  return {
-    getSong:getSong,
-    createSong:createSong,
-    editSong:editSong,
-    getUmbrellaTitles:getUmbrellaTitles,
-    getSongTitles:getSongTitles,
-    getSingers:getSingers,
-    getPoets:getPoets,
-    getCouplets:getCouplets,
-    getSongCategories:getSongCategories,
-    getMediaCategories:getMediaCategories,
-    getGenres: getGenres,
-    getWords: getWords,
-    getGatherings: getGatherings
-  };
+    return {
+        getSong: getSong,
+        createSong: createSong,
+        editSong: editSong,
+        getUmbrellaTitles: getUmbrellaTitles,
+        getSongTitles: getSongTitles,
+        getSingers: getSingers,
+        getPoets: getPoets,
+        getCouplets: getCouplets,
+        getSongCategories: getSongCategories,
+        getMediaCategories: getMediaCategories,
+        getGenres: getGenres,
+        getWords: getWords,
+        getGatherings: getGatherings
+    };
 };

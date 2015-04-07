@@ -1,7 +1,7 @@
-var glossaryController = function($scope, contentService) {
+var glossaryController = function ($scope, contentService) {
 
-    $scope.init = function() {
-        contentService.getGlossaryPageContent().then(function(result) {
+    $scope.init = function () {
+        contentService.getGlossaryPageContent().then(function (result) {
             $scope.glossary = result.data.words;
             $scope.numberOfTerms = $scope.glossary.length;
         });
