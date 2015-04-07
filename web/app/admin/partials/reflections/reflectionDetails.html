@@ -2,12 +2,11 @@
 <html ng-app="reflectionsAdminApp">
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Edit reflection details</title>
+    <title>Reflections</title>
+
     <link href="/admin/css/admin.css" rel="stylesheet" type="text/css">
-    <link href="/common/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link rel='stylesheet' href='https://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css'>
-
-
 </head>
 <body>
 <a ng-href="/admin/partials/home.html" target="_self">
@@ -15,47 +14,46 @@
 </a>
 
 <div class="left">
-    <h2>Edit Reflection details</h2>
+    <h2>Enter Reflection details</h2>
 
     <div class="left">
         <div ng-controller="reflectionDetailsController">
             <form>
-                <div class="row form-group">
-                    <div class="col-sm-2">
+                <div class="row">
+                    <div class="form-group col-sm-2">
                         <label>Title</label>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="form-group col-sm-2">
                         <input type="text" name="reflection" ng-model="formInfo.title" class="form-control">
                     </div>
                 </div>
 
-                <div class="row form-group">
-                    <div class="col-sm-2">
+                <div class="row">
+                    <div class="form-group col-sm-2">
                         <label>Verb</label>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="form-group col-sm-2">
                         <input type="text" name="verb" ng-model="formInfo.verb" class="form-control">
                     </div>
                 </div>
 
 
-                <div class="row form-group">
-                    <div class="col-sm-2">
+                <div class="row">
+                    <div class="form-group col-sm-2">
                         <label>Name of the speaker</label>
                     </div>
-                    <div class="col-sm-2">
-                        <select ng-model="formInfo.speaker.id"
-                                ng-options="speaker.id as speaker.firstName + ' '+speaker.lastName for speaker in people | orderBy:'firstName'">
+                    <div class="form-group col-sm-2">
+                        <select ng-model="formInfo.speaker" class="form-control"
+                                ng-options="speaker.firstName + ' '+speaker.lastName for speaker in people | orderBy:'firstName'">
                         </select>
                     </div>
                 </div>
 
-
-                <div class="row form-group ">
-                    <div class="col-sm-2">
+                <div class="row">
+                    <div class="form-group col-sm-2">
                         <label>Reflection Type</label>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="form-group col-sm-2">
                         <select name="reflection" ng-model="formInfo.type" class="form-control">
                             <option value="audio">Audio</option>
                             <option value="video">Video</option>
@@ -63,36 +61,33 @@
                         </select>
                     </div>
                 </div>
-                <div class="row form-group" ng-show='formInfo.type == "audio" || formInfo.soundCloudId !=null '>
-                    <div class=" col-sm-2">
+                <div class="row" ng-show="formInfo.type == 'audio'">
+                    <div class="form-group col-sm-2">
                         <label>Sound Cloud Track Id</label>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="form-group col-sm-2">
                         <input type="text" name="reflection" ng-model="formInfo.soundCloudId" class="form-control">
                     </div>
                 </div>
 
-                <div class="row form-group " ng-show="formInfo.type == 'video' || formInfo.youtubeVideo !=null ">
-                    <div class="col-sm-2">
+                <div class="row" ng-show="formInfo.type == 'video'">
+                    <div class="form-group col-sm-2">
                         <label>Youtube Video Id</label>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="form-group col-sm-2">
                         <input type="text" name="reflection" ng-model="formInfo.youtubeVideo" class="form-control">
                     </div>
                 </div>
-
-                <div ng-show="formInfo.type == 'text' || formInfo.reflectionTranscripts.length>1 ">
-
+                <div ng-show="formInfo.type == 'text'">
                     <reflection-transcript reflection-transcript="{{formInfo.reflectionTranscript}}"
                                            reflection-transcripts="formInfo.reflectionTranscripts"></reflection-transcript>
                 </div>
 
-
-                <div class="row form-group ">
-                    <div class="col-sm-2">
+                <div class="row">
+                    <div class="form-group col-sm-2">
                         <label>Show On LandingPage</label>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="form-group col-sm-2">
                         <select name="reflection" ng-model="formInfo.showOnFeaturedContentPage" class="form-control">
                             <option value="true">Yes</option>
                             <option value="false">No</option>
@@ -100,11 +95,11 @@
                     </div>
                 </div>
 
-                <div class="row form-group ">
-                    <div class="col-sm-2">
+                <div class="row">
+                    <div class="form-group col-sm-2">
                         <label>Publish</label>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="form-group col-sm-2">
                         <select name="reflection" ng-model="formInfo.isAuthoringComplete" class="form-control">
                             <option value="true">Yes</option>
                             <option value="false">No</option>
@@ -113,13 +108,14 @@
                 </div>
 
                 <div>
-                    <button type="submit" ng-click="updateData()" class="btn btn-primary btn-lg">Save</button>
+                    <button type="submit" ng-click="saveData()" class="btn btn-primary btn-lg">Save</button>
                 </div>
 
             </form>
         </div>
     </div>
 </div>
+
 <script src="/common/lib/angular/angular.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-cookies.js"></script>
 <script type="text/javascript" src="/common/lib/angular-filter/dist/angular-filter.js"></script>
@@ -133,9 +129,3 @@
 <script type="text/javascript" src="/admin/js/controllers/reflections/reflectionDetailsController.js"></script>
 </body>
 </html>
-
-
-
-
-
-
