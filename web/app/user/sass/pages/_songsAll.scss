@@ -57,6 +57,7 @@
 
                 font-family: 'Merriweather';
                 color: #666;
+                padding: 5px 0;
 
                 &.head {
                   line-height: 1.5em;
@@ -67,7 +68,7 @@
                 &.ng-hide {
                     display: none;
                 }
-                &.resetImage {
+                &.reset-image {
                     background: transparent url('/user/img/songs/underline_curved.png') no-repeat;
                     margin-top: 50px;
                     width: 14em;
@@ -76,25 +77,21 @@
 
                 }
 
-                & a {
+                &>a {
                     text-transform: lowercase;
                     font-weight: 300;
                     font-family: 'Merriweather';
                     color: #666;
                     line-height: 30px;
-                    font-size: 16px;
-
+                    font-size: 18px;
                     cursor: pointer;
 
                     &:hover {
                         color: #E83785;
                     }
 
-
                     &.active {
-                        font-weight: bold;
-
-
+                        font-weight: 700;
                     }
 
                     &.disable {
@@ -113,8 +110,6 @@
                         padding-top: 2em;
                         display: block;
                     }
-
-
                 }
 
             .child-list {
