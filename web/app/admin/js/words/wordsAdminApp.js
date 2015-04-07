@@ -1,11 +1,11 @@
-var wordsAdminApp = angular.module('wordsAdminApp', ['textAngular','multi-select','adminCommon']);
+var wordsAdminApp = angular.module('wordsAdminApp', ['textAngular', 'multi-select', 'adminCommon']);
 wordsAdminApp.factory('contentService', ['$http', contentService]);
 
-wordsAdminApp.config(function($locationProvider) {
-       $locationProvider.html5Mode({
-         enabled: true,
-       });
- });
+wordsAdminApp.config(function ($locationProvider) {
+    $locationProvider.html5Mode({
+        enabled: true,
+    });
+});
 
 wordsAdminApp.constant("PAGES", {
     "ADMIN_HOME": "/admin/partials/home.html",

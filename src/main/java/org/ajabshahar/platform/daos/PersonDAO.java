@@ -15,9 +15,9 @@ public class PersonDAO extends AbstractDAO<PersonDetails> {
     private final SessionFactory sessionFactory;
 
     public PersonDAO(SessionFactory sessionFactory) {
-      super(sessionFactory);
-      this.sessionFactory = sessionFactory;
-  }
+        super(sessionFactory);
+        this.sessionFactory = sessionFactory;
+    }
 
     public Optional<PersonDetails> findById(Long id) {
         return Optional.fromNullable(get(id));
@@ -32,7 +32,7 @@ public class PersonDAO extends AbstractDAO<PersonDetails> {
     }
 
     public List<PersonDetails> findBy(int personId, String role) {
-        if(personId<=0 && Strings.isNullOrEmpty(role))
+        if (personId <= 0 && Strings.isNullOrEmpty(role))
             return findAll();
 
         Session session = currentSession();

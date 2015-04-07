@@ -7,9 +7,10 @@
             <h3 class="title">{{getTitle()}}</h3>
             <h4 class="en-title">{{getSecondTitle()}}</h4>
             <span class="singers" ng-hide="multipleSingers">{{noun}} {{singer|uppercase}}</span>
+
             <div ng-hide="!shouldShowDetails" class='thumbnailDetails toggleBySlide'>
                 <div class="singers" ng-show="multipleSingers">
-                <small class="">sing {{singers|uppercase}}</small>
+                    <small class="">sing {{singers|uppercase}}</small>
                 </div>
                 <small class="poet">Poet {{poet|uppercase}}</small>
                 <div class='footer'>

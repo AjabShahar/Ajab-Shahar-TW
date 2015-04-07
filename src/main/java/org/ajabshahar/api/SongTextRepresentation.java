@@ -12,7 +12,7 @@ public class SongTextRepresentation {
     private String refrainEnglishTranslation;
     private String refrainEnglishTransliteration;
 
-    public SongTextRepresentation(){
+    public SongTextRepresentation() {
         songTextContents = new ArrayList<>();
         openingCouplets = new ArrayList<>();
     }

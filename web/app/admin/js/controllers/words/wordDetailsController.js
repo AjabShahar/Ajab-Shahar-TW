@@ -1,95 +1,95 @@
-wordsAdminApp.controller('wordDetailsController',['$scope', '$window', '$location', 'contentService', 'PAGES', '$q',"loginVerifyService",
-function($scope, $window, $location, contentService, PAGES, $q,loginVerifyService){
-  loginVerifyService.redirectIfNotAuthenticated();
+wordsAdminApp.controller('wordDetailsController', ['$scope', '$window', '$location', 'contentService', 'PAGES', '$q', "loginVerifyService",
+    function ($scope, $window, $location, contentService, PAGES, $q, loginVerifyService) {
+        loginVerifyService.redirectIfNotAuthenticated();
 
-  $scope.formInfo = {
-    reflections: [],
-    wordIntroductions: []
-  };
-  $scope.categories = [];
-  $scope.reflections = [];
-  $scope.writers = [];
-  $scope.people = [];
-  $scope.songs = [];
-  $scope.poets = [];
+        $scope.formInfo = {
+            reflections: [],
+            wordIntroductions: []
+        };
+        $scope.categories = [];
+        $scope.reflections = [];
+        $scope.writers = [];
+        $scope.people = [];
+        $scope.songs = [];
+        $scope.poets = [];
 
-  var wordCategory = 'word';
+        var wordCategory = 'word';
 
-  var createMenuTitleForSongs = function(){
-    angular.forEach($scope.songs, function( song ){
-      var singerNames = _.pluck(song.singers, 'name');
-      if(_.isEmpty(singerNames)) {
-        song.menuTitle = song.englishTransliterationTitle;
-      } else {
-        song.menuTitle = song.englishTransliterationTitle + " - (" + singerNames.join(", ") + ")";  
-      }
-      song.words = song.words.words;
-    });
-  };
+        var createMenuTitleForSongs = function () {
+            angular.forEach($scope.songs, function (song) {
+                var singerNames = _.pluck(song.singers, 'name');
+                if (_.isEmpty(singerNames)) {
+                    song.menuTitle = song.englishTransliterationTitle;
+                } else {
+                    song.menuTitle = song.englishTransliterationTitle + " - (" + singerNames.join(", ") + ")";
+                }
+                song.words = song.words.words;
+            });
+        };
 
-  $scope.init = function(){
-    var reflectionsPromise = contentService.getAllReflections();
-    var peoplePromise = contentService.getAllPeople();
-    var categoriesPromise = contentService.getAllCategories(wordCategory);
-    var songsPromise = contentService.getAllSongs();
-    var poetsPromise = contentService.getPoets();
+        $scope.init = function () {
+            var reflectionsPromise = contentService.getAllReflections();
+            var peoplePromise = contentService.getAllPeople();
+            var categoriesPromise = contentService.getAllCategories(wordCategory);
+            var songsPromise = contentService.getAllSongs();
+            var poetsPromise = contentService.getPoets();
 
-    $q.all([categoriesPromise, songsPromise, peoplePromise, reflectionsPromise, poetsPromise]).then(function(data){
-      $scope.categories = data[0].data;
-      $scope.songs = data[1].data.songs;
-      $scope.writers = angular.copy(data[2].data.people);
-      $scope.people = angular.copy(data[2].data.people);
-      $scope.reflections = data[3].data;
-      $scope.poets = data[4].data.people;
+            $q.all([categoriesPromise, songsPromise, peoplePromise, reflectionsPromise, poetsPromise]).then(function (data) {
+                $scope.categories = data[0].data;
+                $scope.songs = data[1].data.songs;
+                $scope.writers = angular.copy(data[2].data.people);
+                $scope.people = angular.copy(data[2].data.people);
+                $scope.reflections = data[3].data;
+                $scope.poets = data[4].data.people;
 
-      createMenuTitleForSongs();
-      
-      getWordDetails();
-    });
-  };
+                createMenuTitleForSongs();
 
-  $scope.saveData = function(){
-      contentService.saveWord($scope.formInfo).success(function(){
-          $window.location.href = '/admin/partials/home.html';
-      });
-  };
+                getWordDetails();
+            });
+        };
 
-  var getSelectedContent = function(data, list){
-    return angular.forEach(list, function( item ){
-      angular.forEach(data, function(selectedItem){
-        if(!item.ticked) {
-          item.ticked = (selectedItem.id === item.id)
-        }
-      });
-    });
-  };
+        $scope.saveData = function () {
+            contentService.saveWord($scope.formInfo).success(function () {
+                $window.location.href = '/admin/partials/home.html';
+            });
+        };
 
-  var getWordDetails = function(){
-    var wordID = $location.search().id;
+        var getSelectedContent = function (data, list) {
+            return angular.forEach(list, function (item) {
+                angular.forEach(data, function (selectedItem) {
+                    if (!item.ticked) {
+                        item.ticked = (selectedItem.id === item.id)
+                    }
+                });
+            });
+        };
 
-    if(wordID){
-      contentService.getWord(wordID).success(function (data) {
-        $scope.reflections   =  getSelectedContent( data.reflection, $scope.reflections );
-        $scope.writers   =  getSelectedContent( data.writers, $scope.writers );
-        $scope.people   =  getSelectedContent( data.people, $scope.people );
-        $scope.songs = getSelectedContent(data.songs, $scope.songs);
-        $scope.formInfo = data;
-      });
-    }
-  };
+        var getWordDetails = function () {
+            var wordID = $location.search().id;
 
-  var redirectToURL = function(url){
-    $window.location.href = url;
-  };
+            if (wordID) {
+                contentService.getWord(wordID).success(function (data) {
+                    $scope.reflections = getSelectedContent(data.reflection, $scope.reflections);
+                    $scope.writers = getSelectedContent(data.writers, $scope.writers);
+                    $scope.people = getSelectedContent(data.people, $scope.people);
+                    $scope.songs = getSelectedContent(data.songs, $scope.songs);
+                    $scope.formInfo = data;
+                });
+            }
+        };
 
-  $scope.redirectToEnterPage= function(){
-    redirectToURL(PAGES.ADMIN_HOME);
-  };
+        var redirectToURL = function (url) {
+            $window.location.href = url;
+        };
 
-  $scope.updateWord = function(){
-    contentService.updateWord($scope.formInfo).success(function(){
-      redirectToURL(PAGES.ADMIN_HOME);
-    });
-  };
-}]);
+        $scope.redirectToEnterPage = function () {
+            redirectToURL(PAGES.ADMIN_HOME);
+        };
+
+        $scope.updateWord = function () {
+            contentService.updateWord($scope.formInfo).success(function () {
+                redirectToURL(PAGES.ADMIN_HOME);
+            });
+        };
+    }]);
 

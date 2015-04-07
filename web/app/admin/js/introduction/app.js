@@ -1,1 +1,1 @@
-var splashScreenOptionsApp = angular.module('splashScreenOptionsApp',[]);
+var splashScreenOptionsApp = angular.module('splashScreenOptionsApp', []);

@@ -69,13 +69,13 @@ public class Word {
     private Set<Word> synonyms = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "WORD_WRITER", joinColumns = {@JoinColumn(name = "WORD_ID",referencedColumnName = "ID")},
-            inverseJoinColumns = {@JoinColumn(name="WRITER_ID", referencedColumnName = "ID")})
+    @JoinTable(name = "WORD_WRITER", joinColumns = {@JoinColumn(name = "WORD_ID", referencedColumnName = "ID")},
+            inverseJoinColumns = {@JoinColumn(name = "WRITER_ID", referencedColumnName = "ID")})
     private Set<PersonDetails> writers;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "WORD_PERSON", joinColumns = {@JoinColumn(name = "WORD_ID",referencedColumnName = "ID")},
-            inverseJoinColumns = {@JoinColumn(name="PERSON_ID", referencedColumnName = "ID")})
+    @JoinTable(name = "WORD_PERSON", joinColumns = {@JoinColumn(name = "WORD_ID", referencedColumnName = "ID")},
+            inverseJoinColumns = {@JoinColumn(name = "PERSON_ID", referencedColumnName = "ID")})
     private Set<PersonDetails> people;
 
 }

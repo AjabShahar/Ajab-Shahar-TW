@@ -66,7 +66,7 @@ public class CoupletResource {
     @Path("/edit")
     @Produces(MediaType.APPLICATION_JSON)
     public Couplet getCoupletById(@QueryParam("id") Long id) {
-            return coupletDAO.findById(id);
+        return coupletDAO.findById(id);
 
     }
 

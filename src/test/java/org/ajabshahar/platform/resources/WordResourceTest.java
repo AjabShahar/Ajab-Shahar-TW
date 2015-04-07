@@ -10,7 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.internal.matchers.Any;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.ws.rs.core.Response;
@@ -49,7 +48,7 @@ public class WordResourceTest {
 
         Response actual = wordResource.createWord(jsonWord);
 
-        assertEquals(actual.getEntity(),word);
+        assertEquals(actual.getEntity(), word);
     }
 
     @Test

@@ -1,6 +1,6 @@
 'use strict';
 
-thumbnailModule.directive("asCarousel", function() {
+thumbnailModule.directive("asCarousel", function () {
     return {
         restrict: 'A',
         scope: {},

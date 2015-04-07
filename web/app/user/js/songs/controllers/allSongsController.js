@@ -1,11 +1,11 @@
-allSongsApp.controller('allSongsController',['$scope','$window','songsContentService','songMapper',function($scope,$window,songsContentService,songMapper){
-    var songs=[];
-    $scope.filteredSongList=[];
+allSongsApp.controller('allSongsController', ['$scope', '$window', 'songsContentService', 'songMapper', function ($scope, $window, songsContentService, songMapper) {
+    var songs = [];
+    $scope.filteredSongList = [];
     $scope.activeLetter = '';
     $scope.scrollIndex = 12;
     $scope.songCount = 0;
     $scope.expandFilter = false;
-    $scope.filterItems ={};
+    $scope.filterItems = {};
     $scope.selectedFilterCategory = {};
     $scope.openSecondParda = false;
     //------------------
@@ -15,86 +15,86 @@ allSongsApp.controller('allSongsController',['$scope','$window','songsContentSer
     var sieve = new Ajabshahar.user.Sieve($scope.criteriaList);
     var contentTextRepresentation = 'Transliteration';
 
-    $scope.$on("contentTextRepresentation",function(event,data){
-        contentTextRepresentation =data;
+    $scope.$on("contentTextRepresentation", function (event, data) {
+        contentTextRepresentation = data;
         sortSongsList($scope.filteredSongList);
     });
 
-    var sortSongsList = function(songs){
-        var sortFunction = contentTextRepresentation === 'Transliteration'? compareTranslitTitles:compareEnglishTitles;
+    var sortSongsList = function (songs) {
+        var sortFunction = contentTextRepresentation === 'Transliteration' ? compareTranslitTitles : compareEnglishTitles;
         songs.sort(sortFunction);
     };
 
-    var compareEnglishTitles = function(firstSong,secondSong){
+    var compareEnglishTitles = function (firstSong, secondSong) {
         return firstSong.englishTranslation.localeCompare(secondSong.englishTranslation);
     };
 
-    var compareTranslitTitles = function (firstSong, secondSong){
+    var compareTranslitTitles = function (firstSong, secondSong) {
         return firstSong.englishTransliteration.localeCompare(secondSong.englishTransliteration);
     };
 
-    var filterAndLoad = function(songs){
+    var filterAndLoad = function (songs) {
         $scope.closeSecondParda();
         $scope.filteredSongList = sieve.filter(songs);
         loadFilterItemsFrom($scope.filteredSongList);
         $scope.selectedFilterCategory.disabled = !!$scope.selectedFilterCategory.value;
     };
 
-    $scope.filterCategoryClicked = function(criteria){
+    $scope.filterCategoryClicked = function (criteria) {
         $scope.closeSecondParda();
         $scope.selectedFilterCategory = criteria;
 
-        if(!criteria.disabled && _.isEmpty(criteria.value)){
+        if (!criteria.disabled && _.isEmpty(criteria.value)) {
             $scope.openSecondParda = true;
             criteria.active = true;
         }
     };
 
-    $scope.removeFilterCriteria = function(criteria){
+    $scope.removeFilterCriteria = function (criteria) {
         sieve.removeFilterCriteria(criteria.name);
         filterAndLoad(songs);
     };
 
-    $scope.clearAllFilters = function(){
+    $scope.clearAllFilters = function () {
         sieve.clearFiltersWithDisplayName();
         filterAndLoad(songs);
     };
 
-    $scope.filterItemSelected = function(filterValue){
-        sieve.setFilterCriteria($scope.selectedFilterCategory.name,filterValue);
+    $scope.filterItemSelected = function (filterValue) {
+        sieve.setFilterCriteria($scope.selectedFilterCategory.name, filterValue);
         filterAndLoad(songs);
     };
 
-    $scope.closeSecondParda = function(){
-        if($scope.openSecondParda){
+    $scope.closeSecondParda = function () {
+        if ($scope.openSecondParda) {
             $scope.openSecondParda = false;
         }
-        $scope.selectedFilterCategory.active =false;
+        $scope.selectedFilterCategory.active = false;
     };
 
-    $scope.alphabetFilterClicked = function(alphabetFilter){
-        if(!_.isEmpty(alphabetFilter)){
-            var filterCategoryName = alphabetFilter.contentTextRepresentation.toLowerCase() === 'translation'? "englishTranslation":"englishTransliteration";
-            sieve.setFilterCriteria(filterCategoryName,alphabetFilter.alphabet);
+    $scope.alphabetFilterClicked = function (alphabetFilter) {
+        if (!_.isEmpty(alphabetFilter)) {
+            var filterCategoryName = alphabetFilter.contentTextRepresentation.toLowerCase() === 'translation' ? "englishTranslation" : "englishTransliteration";
+            sieve.setFilterCriteria(filterCategoryName, alphabetFilter.alphabet);
             filterAndLoad(songs);
         }
     };
 
-    $scope.clearAlphabetFilters = function(){
+    $scope.clearAlphabetFilters = function () {
         sieve.removeFilterCriteria("englishTransliteration");
         sieve.removeFilterCriteria("englishTranslation");
         filterAndLoad(songs);
     };
 
-    $scope.toggleExpandFilter = function(){
+    $scope.toggleExpandFilter = function () {
         $scope.expandFilter = !$scope.expandFilter;
-        if(!$scope.expandFilter){
+        if (!$scope.expandFilter) {
             $scope.closeSecondParda()
         }
     };
 
-    $scope.getAllSongs = function(){
-        songsContentService.getAllSongs().then(function(songsList){
+    $scope.getAllSongs = function () {
+        songsContentService.getAllSongs().then(function (songsList) {
             songs = songMapper.getThumbnails(songsList.data.songs);
             $scope.filteredSongList = songs || [];
             loadFilterItemsFrom(songs);
@@ -102,9 +102,9 @@ allSongsApp.controller('allSongsController',['$scope','$window','songsContentSer
         });
     };
 
-    var loadFilterItemsFrom = function(songs){
-        $scope.criteriaList.forEach(function(criterion){
-            if(!_.isEmpty(criterion.displayName)){
+    var loadFilterItemsFrom = function (songs) {
+        $scope.criteriaList.forEach(function (criterion) {
+            if (!_.isEmpty(criterion.displayName)) {
                 var methodToCall = filterItemsLoaderConfig[criterion.displayName];
                 $scope.filterItems[criterion.displayName] = songsContentService[methodToCall]($scope.filteredSongList);
                 criterion.disabled = !!_.isEmpty($scope.filterItems[criterion.displayName]);
@@ -112,14 +112,14 @@ allSongsApp.controller('allSongsController',['$scope','$window','songsContentSer
         });
     };
 
-    $scope.loadSongFromRange = function(){
-        if($scope.scrollIndex>$scope.filteredSongList.length)
+    $scope.loadSongFromRange = function () {
+        if ($scope.scrollIndex > $scope.filteredSongList.length)
             return;
         $scope.scrollIndex += 12;
     };
 
-    $scope.navigateToSong = function(id){
-        $window.location.href = '/user/partials/songs/details.html?id='+id;
+    $scope.navigateToSong = function (id) {
+        $window.location.href = '/user/partials/songs/details.html?id=' + id;
     };
 
     $scope.getAllSongs();

@@ -15,119 +15,130 @@
     <link href="/admin/css/admin.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<a ng-href="/admin/partials/home.html" target="_self"><button type="button" class="btn btn-info admin-home">Admin home</button></a>
+<a ng-href="/admin/partials/home.html" target="_self">
+    <button type="button" class="btn btn-info admin-home">Admin home</button>
+</a>
+
 <div class="left">
     <h2>Enter Couplet details</h2>
     <br/>
+
     <div ng-controller="coupletDetailsController">
         <form>
             <div class="left">
-            <div class="row">
-                <div class="form-group col-sm-2">
-                    <label>Original Title</label>
-                </div>
-                <div class="form-group col-sm-3">
-                    <input type="text" name="originalTitle" ng-model="formInfo.originalTitle" class="form-control">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="form-group col-sm-2">
-                    <label>English Translation</label>
-                </div>
-                <div class="form-group col-sm-3">
-                    <input type="text" name="englishTranslation" ng-model="formInfo.englishTranslation" class="form-control">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="form-group col-sm-2">
-                    <label>English Transliteration</label>
-                </div>
-                <div class="form-group col-sm-3">
-                    <input type="text" name="englishTransliteration" ng-model="formInfo.englishTransliteration" class="form-control">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="form-group col-sm-2">
-                    <label>Original Text</label>
-                </div>
-                <div class="form-group col-sm-3">
-                    <textarea class="form-control" rows="3" name="originalTitle" ng-model="formInfo.originalText"></textarea>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="form-group col-sm-2">
-                    <label>English Translation Text</label>
-                </div>
-                <div class="form-group col-sm-3">
-                    <textarea class="form-control" rows="3" name="englishTranslation" ng-model="formInfo.englishTranslationText"></textarea>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="form-group col-sm-2">
-                    <label>English Transliteration Text</label>
-                </div>
-                <div class="form-group col-sm-3">
-                    <textarea class="form-control" rows="3" name="englishTransliteration" ng-model="formInfo.englishTransliterationText"></textarea>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="form-group col-sm-2">
-                    <label>Thumbnail Url</label>
-                </div>
-                <div class="form-group col-sm-2">
-                    <input type="text" name="thumbnailUrl" ng-model="formInfo.thumbnailUrl" class="form-control">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="form-group col-sm-2">
-                    <label>Description</label>
-                </div>
-                <div class="form-group col-sm-3">
-                    <textarea class="form-control" rows="3" required name="englishTransliteration" name="word" ng-model="formInfo.description" ></textarea>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="form-group col-sm-2">
-                    <label>Show On LandingPage</label>
-                </div>
-                <div class="form-group col-sm-2">
-                    <select name="format" ng-model="formInfo.showOnLandingPage" class="form-control">
-                        <option value="true">Yes</option>
-                        <option value="false">No</option>
-                    </select>
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Original Title</label>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <input type="text" name="originalTitle" ng-model="formInfo.originalTitle" class="form-control">
+                    </div>
                 </div>
 
-            </div>
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>English Translation</label>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <input type="text" name="englishTranslation" ng-model="formInfo.englishTranslation"
+                               class="form-control">
+                    </div>
+                </div>
 
-            <div class="row">
-                <div class="form-group col-sm-2">
-                    <label>Poet</label>
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>English Transliteration</label>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <input type="text" name="englishTransliteration" ng-model="formInfo.englishTransliteration"
+                               class="form-control">
+                    </div>
                 </div>
-                <div class="form-group col-sm-2">
-                    <select  ng-model="formInfo.poet"
-                             ng-options="poet.firstName for poet in poetsList | orderBy:'firstName'" class="form-control">
-                    </select>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="form-group col-sm-2">
-                    <label>Category</label>
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Original Text</label>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <textarea class="form-control" rows="3" name="originalTitle"
+                                  ng-model="formInfo.originalText"></textarea>
+                    </div>
                 </div>
-                <div class="form-group col-sm-2">
-                    <select ng-model="formInfo.category"
-                            ng-options="category.name for category in categoryList" class="form-control">
-                    </select>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>English Translation Text</label>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <textarea class="form-control" rows="3" name="englishTranslation"
+                                  ng-model="formInfo.englishTranslationText"></textarea>
+                    </div>
                 </div>
-            </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>English Transliteration Text</label>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <textarea class="form-control" rows="3" name="englishTransliteration"
+                                  ng-model="formInfo.englishTransliterationText"></textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Thumbnail Url</label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <input type="text" name="thumbnailUrl" ng-model="formInfo.thumbnailUrl" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Description</label>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <textarea class="form-control" rows="3" required name="englishTransliteration" name="word"
+                                  ng-model="formInfo.description"></textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Show On LandingPage</label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <select name="format" ng-model="formInfo.showOnLandingPage" class="form-control">
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Poet</label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <select ng-model="formInfo.poet"
+                                ng-options="poet.firstName for poet in poetsList | orderBy:'firstName'"
+                                class="form-control">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Category</label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <select ng-model="formInfo.category"
+                                ng-options="category.name for category in categoryList" class="form-control">
+                        </select>
+                    </div>
+                </div>
 
             </div>
 

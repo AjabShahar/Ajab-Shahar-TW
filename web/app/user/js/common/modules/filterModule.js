@@ -1,3 +1,3 @@
 'use strict';
 
-var filterModule =angular.module("filterModule", []);
+var filterModule = angular.module("filterModule", []);

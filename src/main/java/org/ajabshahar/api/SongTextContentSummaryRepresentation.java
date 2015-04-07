@@ -13,7 +13,7 @@ public class SongTextContentSummaryRepresentation {
         this.originalText = originalText;
         this.englishTranslationText = englishTranslationText;
         this.englishTransliterationText = englishTransliterationText;
-        this.showRefrain = showRefrain == null?false:showRefrain;
+        this.showRefrain = showRefrain == null ? false : showRefrain;
         this.poet = poet;
     }
 

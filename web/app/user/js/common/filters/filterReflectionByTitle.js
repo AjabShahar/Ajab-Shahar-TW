@@ -1,22 +1,22 @@
-var filterReflectionByTitle = filterModule.filter('filterReflectionByTitle', function($window) {
+var filterReflectionByTitle = filterModule.filter('filterReflectionByTitle', function ($window) {
 
-    return function( reflections, filterCriteria) {
-        var strStartsWith = function(str, prefix) {
-            return (str+"").indexOf(prefix) === 0;
+    return function (reflections, filterCriteria) {
+        var strStartsWith = function (str, prefix) {
+            return (str + "").indexOf(prefix) === 0;
         };
 
-        if(filterCriteria==null || filterCriteria==='')
+        if (filterCriteria == null || filterCriteria === '')
             return reflections;
 
-        var filtered = _.reduce(reflections, function(filteredList,reflection){
-            var title = (filterCriteria.contentTextRepresentation === 'Transliteration')?
+        var filtered = _.reduce(reflections, function (filteredList, reflection) {
+            var title = (filterCriteria.contentTextRepresentation === 'Transliteration') ?
                 reflection.title :
                 reflection.title;
-            if(strStartsWith(title.toUpperCase(),filterCriteria.alphabet.toUpperCase()))
+            if (strStartsWith(title.toUpperCase(), filterCriteria.alphabet.toUpperCase()))
                 filteredList.push(reflection);
 
             return filteredList;
-        },[]);
+        }, []);
 
         return filtered;
     }

@@ -1,4 +1,4 @@
-headerModule.directive('sticky', [ function () {
+headerModule.directive('sticky', [function () {
     return {
         restrict: 'A',
         scope: {
@@ -7,10 +7,10 @@ headerModule.directive('sticky', [ function () {
         },
         link: function ($scope, $elem, $attrs) {
             var offsetTop = 0,
-            $window = angular.element(window),
-            initialPositionStyle = $elem.css('position'),
-            stickyLine,
-            scrollTop;
+                $window = angular.element(window),
+                initialPositionStyle = $elem.css('position'),
+                stickyLine,
+                scrollTop;
 
             // Set the top offset
             $elem.css('top', '0');
@@ -24,7 +24,7 @@ headerModule.directive('sticky', [ function () {
 
             function checkSticky() {
                 scrollTop = window.pageYOffset;
-                if(scrollTop <= stickyLine) {
+                if (scrollTop <= stickyLine) {
                     $elem.removeClass('fixed');
                     $elem.css('position', initialPositionStyle);
                     $scope.onTop();

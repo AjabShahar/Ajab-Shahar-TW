@@ -1,47 +1,30 @@
 // External Libs
-
 @import '../../common/lib/bourbon/app/assets/stylesheets/bourbon';
 @import '../../common/lib/neat/app/assets/stylesheets/neat';
-
-
 // Mixins
-
 @import 'mixins/boxShadow';
-
 // Config
-
 @import 'config/colors';
 @import 'config/zIndex';
-
 // Common
-
 @import 'common/reset';
 @import 'common/typography';
 @import 'common/icons';
 @import 'common/common';
-
 // AS Specific
-
 @import 'components/enterSite';
 @import 'components/loading';
-
 @import 'components/header';
 @import 'components/headerLogo';
 @import 'components/headerMainNav';
 @import 'components/headerSubNav';
 @import 'components/headerWithCarousal';
-
 @import 'components/innerPageHeader';
-
 @import 'components/footer';
 @import 'components/footerNav';
-
 @import 'components/parallaxHomePage';
 @import 'components/parallaxSongs';
-
-
 @import 'components/gridForThumbnails';
-
 @import 'components/thumbnail';
 @import 'components/thumbnailContent';
 @import 'components/thumbnailSongs';
@@ -49,19 +32,14 @@
 @import 'components/thumbnailCouplets';
 @import 'components/thumbnailForGrid';
 @import 'components/thumbnailForCarousel';
-
 @import 'components/lightbox';
 @import 'components/lightboxContent';
 @import 'components/lightboxPaging';
-
 @import 'components/scrollBar';
 @import 'components/pagination';
-
 // Page specific
-
 @import 'pages/splash';
 @import 'pages/home';
-
 @import 'pages/songsAll';
 @import 'pages/songsFeatured';
 @import 'pages/songsDetail';

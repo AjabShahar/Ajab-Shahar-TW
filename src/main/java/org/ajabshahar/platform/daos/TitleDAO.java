@@ -9,7 +9,7 @@ import java.util.List;
 
 public class TitleDAO extends AbstractDAO<Title> {
 
-    public TitleDAO(SessionFactory sessionFactory){
+    public TitleDAO(SessionFactory sessionFactory) {
         super(sessionFactory);
     }
 
@@ -19,13 +19,12 @@ public class TitleDAO extends AbstractDAO<Title> {
 
     public List<Title> findAll() {
 
-     try{
-         return list(namedQuery("org.ajabshahar.platform.models.Title.findAll"));
-     }
-     catch (Exception e){
-         e.printStackTrace();
-     }
-     return null;
+        try {
+            return list(namedQuery("org.ajabshahar.platform.models.Title.findAll"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public List<Title> findAllSongTitles() {

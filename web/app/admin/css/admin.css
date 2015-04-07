@@ -1,26 +1,28 @@
-.left{
-	margin-left: 2%;
+.left {
+    margin-left: 2%;
 }
 
-.admin-home{
-  position: absolute;
-  display: inline-block;
-  margin-left: 91%;
+.admin-home {
+    position: absolute;
+    display: inline-block;
+    margin-left: 91%;
 }
 
 .song-text-table {
-  width: 80%;
-  margin: 2% 0;
+    width: 80%;
+    margin: 2% 0;
 }
 
 .word-introduction-table {
-	width: 100%;
-	margin: 2% 0;
+    width: 100%;
+    margin: 2% 0;
 }
-.song-text-table td, .word-introduction-table td{
-  padding-right: 2%;
+
+.song-text-table td, .word-introduction-table td {
+    padding-right: 2%;
 }
+
 .rowWiseSelect.multiSelect .buttonLabel {
-    text-align:left;
-    width:99%;
- }
+    text-align: left;
+    width: 99%;
+}

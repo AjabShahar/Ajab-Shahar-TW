@@ -23,7 +23,6 @@ import static org.junit.Assert.assertThat;
 public class AjabShaharAuthenticationIT {
 
 
-
     @ClassRule
     public static final DropwizardAppRule<PlatformConfiguration> RULE =
             new DropwizardAppRule<>(PlatformApplication.class, resourceFilePath("test-config.yaml"));
@@ -67,7 +66,7 @@ public class AjabShaharAuthenticationIT {
                 String.format("http://localhost:%d/api/genres", RULE.getLocalPort())).header("Content-type", "application/json")
                 .post(ClientResponse.class, genre);
 
-        assertThat(response.getStatus(),is(401));
+        assertThat(response.getStatus(), is(401));
     }
 
     @Test
@@ -88,7 +87,7 @@ public class AjabShaharAuthenticationIT {
                 .cookie(sessionCookie)
                 .post(ClientResponse.class, genre);
 
-        assertThat(genreResponse.getStatus(),is(200));
+        assertThat(genreResponse.getStatus(), is(200));
     }
 
     @Test
@@ -129,7 +128,7 @@ public class AjabShaharAuthenticationIT {
     }
 
     @Test
-    public void shouldAllowGetRequestForUnauthenticatedUsers(){
+    public void shouldAllowGetRequestForUnauthenticatedUsers() {
 
         ClientResponse response = client.resource(
                 String.format("http://localhost:%d/api/genres", RULE.getLocalPort())).header("Content-type", "application/json")
@@ -138,9 +137,9 @@ public class AjabShaharAuthenticationIT {
         assertThat(response.getStatus(), is(200));
 
     }
-    
+
     @Test
-    public void shouldLogoutASignedInUser(){
+    public void shouldLogoutASignedInUser() {
         String userCredentials = "{\"username\":\"admin\",\"password\":\"password\"}";
 
         ClientResponse response = client.resource(
@@ -156,7 +155,7 @@ public class AjabShaharAuthenticationIT {
                 .cookie(sessionCookie)
                 .post(ClientResponse.class, genre);
 
-        assertThat(genreResponse.getStatus(),is(200));
+        assertThat(genreResponse.getStatus(), is(200));
 
         response = client.resource(
                 String.format("http://localhost:%d/api/logout", RULE.getLocalPort()))
@@ -171,7 +170,7 @@ public class AjabShaharAuthenticationIT {
                 .post(ClientResponse.class, genre);
 
         assertThat(response.getStatus(), is(401));
-       
+
     }
 
     @Test
@@ -191,10 +190,10 @@ public class AjabShaharAuthenticationIT {
                 .cookie(sessionCookie)
                 .post(ClientResponse.class, genre);
 
-        assertThat(genreResponse.getStatus(),is(200));
+        assertThat(genreResponse.getStatus(), is(200));
 
         Thread.sleep(1200);
-        
+
         response = client.resource(
                 String.format("http://localhost:%d/api/genres", RULE.getLocalPort()))
                 .header("Content-type", "application/json")
@@ -206,13 +205,13 @@ public class AjabShaharAuthenticationIT {
     }
 
     private NewCookie geCookie(ClientResponse response) {
-        return getCookie(response,"JSESSIONID");
+        return getCookie(response, "JSESSIONID");
     }
 
-    private NewCookie getCookie(ClientResponse response,String name) {
+    private NewCookie getCookie(ClientResponse response, String name) {
         NewCookie sessionCookie = null;
         for (NewCookie cookie : response.getCookies()) {
-            if(cookie.getName().equalsIgnoreCase(name)){
+            if (cookie.getName().equalsIgnoreCase(name)) {
                 sessionCookie = cookie;
             }
         }

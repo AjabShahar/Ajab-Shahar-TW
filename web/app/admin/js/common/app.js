@@ -1,1 +1,1 @@
-var commonApp = angular.module('commonApp',[]);
+var commonApp = angular.module('commonApp', []);

@@ -5,10 +5,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "GATHERING")
 @NamedQueries({
-    @NamedQuery(
-            name = "org.ajabshahar.platform.models.Gathering.findAll",
-            query = "SELECT p FROM Gathering p"
-    )
+        @NamedQuery(
+                name = "org.ajabshahar.platform.models.Gathering.findAll",
+                query = "SELECT p FROM Gathering p"
+        )
 })
 public class Gathering {
     @Id

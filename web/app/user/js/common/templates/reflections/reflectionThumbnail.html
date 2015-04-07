@@ -1,10 +1,11 @@
 <div class="thumbnail reflection {{customStyle}}">
     <div class="thumbnail-media image" ng-click="open('{{id}}')">
-          <img src="/user/img/reflections/bw_background2b.jpg">
+        <img src="/user/img/reflections/bw_background2b.jpg">
     </div>
     <div class="bubble" ng-click="open('{{id}}')">
-       <div class="summary" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
-            <h3 class="title" >{{title}}</h3>
+        <div class="summary" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
+            <h3 class="title">{{title}}</h3>
+
             <h3 class="singers">{{verb}} {{speaker}}</h3>
 
             <div ng-show="shouldShowDetails" class='thumbnailDetails toggleBySlide'>
@@ -14,7 +15,7 @@
                     </p>
                 </div>
             </div>
-       </div>
+        </div>
     </div>
 
 </div>

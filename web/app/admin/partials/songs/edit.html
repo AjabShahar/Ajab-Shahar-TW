@@ -26,7 +26,9 @@
                 </div>
 
                 <div class="row">
-                    <as-admin-title title="Song Title" title-data="song.songTitle" title-list="songTitles" title-id="song.songTitle.id" validation-required="{{song.isAuthoringComplete}}"></as-admin-title>
+                    <as-admin-title title="Song Title" title-data="song.songTitle" title-list="songTitles"
+                                    title-id="song.songTitle.id"
+                                    validation-required="{{song.isAuthoringComplete}}"></as-admin-title>
                 </div>
 
                 <div class="row">
@@ -34,7 +36,8 @@
                         <label>Singer</label>
                     </div>
                     <div class="form-group col-sm-2"
-                         multi-select input-model="singers" button-label="firstName lastName" item-label="firstName lastName" tick-property="ticked" output-model="song.singers">
+                         multi-select input-model="singers" button-label="firstName lastName"
+                         item-label="firstName lastName" tick-property="ticked" output-model="song.singers">
                     </div>
                     <error-message name="Singer"
                                    show-error="song.isAuthoringComplete && song.singers.length < 1"></error-message>
@@ -44,7 +47,8 @@
                     <div class="col-sm-2">
                         <label>Words</label>
                     </div>
-                    <div class="form-group col-sm-2" multi-select input-model="words" button-label="wordTransliteration" item-label="wordTransliteration" tick-property="ticked" output-model="song.words"></div>
+                    <div class="form-group col-sm-2" multi-select input-model="words" button-label="wordTransliteration"
+                         item-label="wordTransliteration" tick-property="ticked" output-model="song.words"></div>
                 </div>
 
                 <div class="row">
@@ -52,7 +56,9 @@
                         <label>Poet</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <select ng-model="song.poets[0].id" ng-options="poet.id as poet.firstName + ' ' + poet.lastName for poet in poets" class="form-control" ng-required="song.isAuthoringComplete"></select>
+                        <select ng-model="song.poets[0].id"
+                                ng-options="poet.id as poet.firstName + ' ' + poet.lastName for poet in poets"
+                                class="form-control" ng-required="song.isAuthoringComplete"></select>
                     </div>
                     <error-message name="Poet"
                                    show-error="song.isAuthoringComplete && isEmpty(song.poets[0])"></error-message>
@@ -63,8 +69,9 @@
                         <label>Gatherings</label>
                     </div>
                     <div class="col-sm-2">
-                        <select ng-model = "song.gathering.id"
-                                ng-options = "gathering.id as gathering.english for gathering in gatherings" class="form-control">
+                        <select ng-model="song.gathering.id"
+                                ng-options="gathering.id as gathering.english for gathering in gatherings"
+                                class="form-control">
                         </select>
                     </div>
                 </div>
@@ -80,7 +87,8 @@
                             <option value="false">No</option>
                         </select>
                     </div>
-                    <error-message name="Show on landing page" show-error="song.isAuthoringComplete && isEmpty(song.showOnLandingPage)"></error-message>
+                    <error-message name="Show on landing page"
+                                   show-error="song.isAuthoringComplete && isEmpty(song.showOnLandingPage)"></error-message>
                 </div>
 
                 <div class="row">
@@ -88,9 +96,12 @@
                         <label>Song Category</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <select ng-model="song.songCategory.id" ng-options="category.id as category.name for category in songCategories" class="form-control" ng-required="song.isAuthoringComplete"></select>
+                        <select ng-model="song.songCategory.id"
+                                ng-options="category.id as category.name for category in songCategories"
+                                class="form-control" ng-required="song.isAuthoringComplete"></select>
                     </div>
-                    <error-message name="Song category" show-error="song.isAuthoringComplete && isEmpty(song.songCategory)"></error-message>
+                    <error-message name="Song category"
+                                   show-error="song.isAuthoringComplete && isEmpty(song.songCategory)"></error-message>
                 </div>
 
                 <div class="row">
@@ -110,9 +121,11 @@
                         <label>Youtube Video ID for video</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <input type="text" name="youtubeVideoId" ng-model="song.youtubeVideoId" class="form-control" ng-required="song.isAuthoringComplete && isMediaUrlEmpty()">
+                        <input type="text" name="youtubeVideoId" ng-model="song.youtubeVideoId" class="form-control"
+                               ng-required="song.isAuthoringComplete && isMediaUrlEmpty()">
                     </div>
-                    <error-message name="Youtube URL or soundCloud" show-error="song.isAuthoringComplete && isMediaUrlEmpty()"></error-message>
+                    <error-message name="Youtube URL or soundCloud"
+                                   show-error="song.isAuthoringComplete && isMediaUrlEmpty()"></error-message>
                 </div>
 
                 <div class="row">
@@ -120,9 +133,11 @@
                         <label>SoundCloud track ID for audio</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <input type="text" name="soundCloudTrackID" ng-model="song.soundCloudTrackID" class="form-control" ng-required="song.isAuthoringComplete && isMediaUrlEmpty()">
+                        <input type="text" name="soundCloudTrackID" ng-model="song.soundCloudTrackID"
+                               class="form-control" ng-required="song.isAuthoringComplete && isMediaUrlEmpty()">
                     </div>
-                    <error-message name="Youtube URL or soundCloud" show-error="song.isAuthoringComplete && isMediaUrlEmpty()"></error-message>
+                    <error-message name="Youtube URL or soundCloud"
+                                   show-error="song.isAuthoringComplete && isMediaUrlEmpty()"></error-message>
                 </div>
 
                 <div class="row">
@@ -150,7 +165,8 @@
                     <div class="col-sm-2">
                         <label>Genres</label>
                     </div>
-                    <div class="col-sm-2" multi-select input-model="genres" button-label="english" item-label="english" tick-property="ticked" output-model="song.songGenre"></div>
+                    <div class="col-sm-2" multi-select input-model="genres" button-label="english" item-label="english"
+                         tick-property="ticked" output-model="song.songGenre"></div>
                     <input name="genres" ng-model="song.songGenre" ng-show="false">
                 </div>
 

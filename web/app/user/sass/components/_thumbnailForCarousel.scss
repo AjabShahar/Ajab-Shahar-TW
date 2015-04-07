@@ -1,28 +1,28 @@
 .header-with-carousel {
-   .vertical-spacer {
-        min-height: 155px;
-        width: 100%;
-        position: relative;
-    }
+  .vertical-spacer {
+    min-height: 155px;
+    width: 100%;
+    position: relative;
+  }
 
-    .lower-pardah {
+  .lower-pardah {
 
-        .versions {
-             .carousel-wrapper {
-                .jcarousel.thumbnail-carousel {
+    .versions {
+      .carousel-wrapper {
+        .jcarousel.thumbnail-carousel {
 
-                    > ul li {
-                        margin: 0 0 0 47px;
+          > ul li {
+            margin: 0 0 0 47px;
 
-                        .thumbnail {
-                            width: 270px;
+            .thumbnail {
+              width: 270px;
 
-                        }
-                    }
-                }
-             }
+            }
+          }
         }
+      }
     }
+  }
 }
 
 

@@ -1,1 +1,1 @@
-var soundCloudApp = angular.module ('soundCloudApp', [ ]);
+var soundCloudApp = angular.module('soundCloudApp', []);

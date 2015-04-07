@@ -50,42 +50,57 @@
     <!--<link href="/user/css/pages/songs.css" rel="stylesheet" type="text/css">-->
     <!-- <link href="/user/css/pages/gridview.css" rel="stylesheet" type="text/css"> -->
 
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400,300italic,300,400italic,700,700italic" />
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather+Sans:400,300italic,300,400italic,700,700italic" />
-    <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/lohitdevanagari.css" />
+    <link rel="stylesheet"
+          href="//fonts.googleapis.com/css?family=Merriweather:400,300italic,300,400italic,700,700italic"/>
+    <link rel="stylesheet"
+          href="//fonts.googleapis.com/css?family=Merriweather+Sans:400,300italic,300,400italic,700,700italic"/>
+    <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/lohitdevanagari.css"/>
 
-    <link rel="stylesheet" type="text/css" href="/user/css/ajabShahar.css" />
+    <link rel="stylesheet" type="text/css" href="/user/css/ajabShahar.css"/>
 
 </head>
 <body ng-controller="allSongsController" class="all-songs ng-scope" style="" ng-init="getTotalSongsCount()">
 
-    <div class="ajab-container headerfixOuter">
-        <ajab-shahar-header></ajab-shahar-header>
+<div class="ajab-container headerfixOuter">
+    <ajab-shahar-header></ajab-shahar-header>
 
-        <div class="ajab-wrapper">
+    <div class="ajab-wrapper">
 
-            <div class='left-nav headerfixInner'>
-                <div class='nav-elements-wrapper'>
-                    <h1 class='category-logo'>songs</h1>
-                    <a href="javascript:void(0);" ng-click="toggleExpandFilter()" class="filter-button">Filter <span class="collapse expand"></span></a>
-                </div>
+        <div class='left-nav headerfixInner'>
+            <div class='nav-elements-wrapper'>
+                <h1 class='category-logo'>songs</h1>
+                <a href="javascript:void(0);" ng-click="toggleExpandFilter()" class="filter-button">Filter <span
+                        class="collapse expand"></span></a>
             </div>
-            <div on-click-outside="closeSecondParda()" class="slide-nav-list" ng-show="expandFilter">
-                <song-filter-category criteria-list="criteriaList" select-handler="filterCategoryClicked" deselect-handler="removeFilterCriteria" clear-filters="clearAllFilters"></song-filter-category>
-                <song-filter-parda show-this-parda="openSecondParda" filter-items="filterItems[selectedFilterCategory.displayName]" select-handler="filterItemSelected" ng-show="expandFilter"></song-filter-parda>
-            </div>
-            <div class='grid-view' infinite-scroll="loadSongFromRange()">
+        </div>
+        <div on-click-outside="closeSecondParda()" class="slide-nav-list" ng-show="expandFilter">
+            <song-filter-category criteria-list="criteriaList" select-handler="filterCategoryClicked"
+                                  deselect-handler="removeFilterCriteria"
+                                  clear-filters="clearAllFilters"></song-filter-category>
+            <song-filter-parda show-this-parda="openSecondParda"
+                               filter-items="filterItems[selectedFilterCategory.displayName]"
+                               select-handler="filterItemSelected" ng-show="expandFilter"></song-filter-parda>
+        </div>
+        <div class='grid-view' infinite-scroll="loadSongFromRange()">
 
-                <as-title filter-clicked="alphabetFilterClicked" clear-filters="clearAlphabetFilters">
-                    <span class='numeric-count' ng-show="filteredSongList.length > 1 || filteredSongList.length == 0">{{filteredSongList.length}} SONGS</span>
-                    <span class='numeric-count' ng-show="filteredSongList.length == 1">{{filteredSongList.length}} SONG</span>
-                </as-title>
+            <as-title filter-clicked="alphabetFilterClicked" clear-filters="clearAlphabetFilters">
+                <span class='numeric-count' ng-show="filteredSongList.length > 1 || filteredSongList.length == 0">{{filteredSongList.length}} SONGS</span>
+                <span class='numeric-count'
+                      ng-show="filteredSongList.length == 1">{{filteredSongList.length}} SONG</span>
+            </as-title>
 
             <div class='grid-wrapper'>
                 <div infinite-scroll='loadSongFromRange()' infinite-scroll-distance='1' class="thumbnails-grid">
                     <ul class="media-list songs">
                         <li class="media" ng-repeat="song in (filteredSongList | filterByScroll:scrollIndex)">
-                            <song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}" open="navigateToSong(song.id)" custom-style="{{song.customStyle}}" img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}" english-transliteration="{{song.englishTransliteration}}" english-translation="{{song.englishTranslation}}" category-name="{{song.category}}" duration="{{song.duration}}" singer="{{song.singer}}" class = "songs" poet="{{song.poet}}" singers="{{song.singers}}"></song-thumbnail>
+                            <song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}"
+                                            open="navigateToSong(song.id)" custom-style="{{song.customStyle}}"
+                                            img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}"
+                                            english-transliteration="{{song.englishTransliteration}}"
+                                            english-translation="{{song.englishTranslation}}"
+                                            category-name="{{song.category}}" duration="{{song.duration}}"
+                                            singer="{{song.singer}}" class="songs" poet="{{song.poet}}"
+                                            singers="{{song.singers}}"></song-thumbnail>
                         </li>
                     </ul>
                 </div>

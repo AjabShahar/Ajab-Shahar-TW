@@ -18,8 +18,8 @@ Ajabshahar.user.Sieve = function (filterCriteria) {
         return text.indexOf('[]') >= 0;
     };
 
-    var findAndMatch = function (item, path, value,method) {
-        if(value === undefined || value === "")  return true;
+    var findAndMatch = function (item, path, value, method) {
+        if (value === undefined || value === "")  return true;
 
         var pathIndexes = path.split(".");
         var pathIndex = pathIndexes[0];
@@ -37,11 +37,11 @@ Ajabshahar.user.Sieve = function (filterCriteria) {
                 return findAndMatch(item[pathIndexes[0]], substringAfter(path, '.'), value);
             }
         }
-        return path === "" ? match(value,item,method) : match(value,item[path],method);
+        return path === "" ? match(value, item, method) : match(value, item[path], method);
     };
 
-    var match = function(valueInCriteria,valueInObject,method){
-        if( method ==="startsWith"){
+    var match = function (valueInCriteria, valueInObject, method) {
+        if (method === "startsWith") {
             return valueInObject.toLowerCase().indexOf(valueInCriteria.toLowerCase()) === 0;
         }
         return valueInCriteria === valueInObject;
@@ -50,9 +50,9 @@ Ajabshahar.user.Sieve = function (filterCriteria) {
     self.filter = function (items) {
         return items.filter(function (item) {
             return self.filterCriteria.every(function (criteria) {
-                var result = findAndMatch(item, criteria.name, criteria.value,criteria.method);
+                var result = findAndMatch(item, criteria.name, criteria.value, criteria.method);
                 //console.log("filtermatches : ",result," | ",criteria.name ," | ",criteria.value," | ",item.englishTransliteration);
-                return  result;
+                return result;
             })
         })
 
@@ -66,20 +66,20 @@ Ajabshahar.user.Sieve = function (filterCriteria) {
 
     self.clearFiltersWithDisplayName = function () {
         self.filterCriteria.forEach(function (criteria) {
-            if(!_.isEmpty(criteria.displayName)){
+            if (!_.isEmpty(criteria.displayName)) {
                 criteria["value"] = undefined;
             }
         });
     };
-    self.setFilterCriteria = function(name,value){
-        var filterCriteria =_.find(self.filterCriteria,function(criteria){
+    self.setFilterCriteria = function (name, value) {
+        var filterCriteria = _.find(self.filterCriteria, function (criteria) {
             return criteria.name === name;
         });
-        filterCriteria.value=value;
+        filterCriteria.value = value;
     };
 
-    self.removeFilterCriteria = function(filterName){
-        self.setFilterCriteria(filterName,undefined);
+    self.removeFilterCriteria = function (filterName) {
+        self.setFilterCriteria(filterName, undefined);
     };
 
 

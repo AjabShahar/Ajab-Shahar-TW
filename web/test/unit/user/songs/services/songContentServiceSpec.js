@@ -21,9 +21,9 @@ describe("Song content service", function () {
 
         var wordsInSongs = songsContentService.getWordsFrom(songsList);
         expect(wordsInSongs.length).toBe(4);
-        var expectedList = ["bazaar","Jaagna Sona","Gitara","Akath Katha"];
-        wordsInSongs.forEach(function(words){
-            _.contains(expectedList,words[0]);
+        var expectedList = ["bazaar", "Jaagna Sona", "Gitara", "Akath Katha"];
+        wordsInSongs.forEach(function (words) {
+            _.contains(expectedList, words[0]);
         });
     });
 
@@ -33,9 +33,9 @@ describe("Song content service", function () {
 
         var singersInSongs = songsContentService.getSingersFrom(songsList);
         expect(singersInSongs.length).toBe(6);
-        var expectedList = ["Sumar Kadu Jat","Mooralala Marwada","Prahlad Singh Tipanya","Mukhtiyar Ali","Kaluram Bamaniya","Parvathy Baul"];
-        singersInSongs.forEach(function(singer){
-            _.contains(expectedList,singer[0]);
+        var expectedList = ["Sumar Kadu Jat", "Mooralala Marwada", "Prahlad Singh Tipanya", "Mukhtiyar Ali", "Kaluram Bamaniya", "Parvathy Baul"];
+        singersInSongs.forEach(function (singer) {
+            _.contains(expectedList, singer[0]);
         });
     });
 
@@ -45,9 +45,9 @@ describe("Song content service", function () {
 
         var poetsInSongs = songsContentService.getPoetsFrom(songsList);
         expect(poetsInSongs.length).toBe(3);
-        var expectedList = ["Shah Abdul Latif Bhitai","Kabir","Badar Muneer"];
-        poetsInSongs.forEach(function(poet){
-            _.contains(expectedList,poet[0]);
+        var expectedList = ["Shah Abdul Latif Bhitai", "Kabir", "Badar Muneer"];
+        poetsInSongs.forEach(function (poet) {
+            _.contains(expectedList, poet[0]);
         });
     });
 });

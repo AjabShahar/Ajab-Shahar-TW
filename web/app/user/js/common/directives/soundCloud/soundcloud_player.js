@@ -1,4 +1,4 @@
-mediaPlayer.directive('soundCloud', function($http,$compile) {
+mediaPlayer.directive('soundCloud', function ($http, $compile) {
     return {
         restrict: "E",
 
@@ -6,15 +6,15 @@ mediaPlayer.directive('soundCloud', function($http,$compile) {
             height: "@",
             width: "@",
             audioUrl: '@',
-            shouldStopVideo:'&'
+            shouldStopVideo: '&'
         },
 
-        link: function(scope, element) {
+        link: function (scope, element) {
             scope.maxHeight = scope.maxHeight || "";
             scope.maxWidth = scope.maxWidth || "";
-            var soundcloudOembedUrl="https://soundcloud.com/oembed.json?show_comments=false&";
-            var embedOptions="url="+scope.audioUrl +"&maxheight=" +scope.maxHeight  +"&maxwidth="+scope.maxWidth;
-            $http.get(soundcloudOembedUrl+embedOptions).success(function(response){
+            var soundcloudOembedUrl = "https://soundcloud.com/oembed.json?show_comments=false&";
+            var embedOptions = "url=" + scope.audioUrl + "&maxheight=" + scope.maxHeight + "&maxwidth=" + scope.maxWidth;
+            $http.get(soundcloudOembedUrl + embedOptions).success(function (response) {
                 element.html(response.html).show();
                 $compile(element.contents())(scope);
             });

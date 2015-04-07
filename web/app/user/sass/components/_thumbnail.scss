@@ -1,60 +1,59 @@
 .thumbnail {
-    margin: 0 auto;
-    width: 300px;
-    position: relative;
-    cursor: pointer;
-    z-index: $zIndex-thumbnail;
+  margin: 0 auto;
+  width: 300px;
+  position: relative;
+  cursor: pointer;
+  z-index: $zIndex-thumbnail;
 
-    &:hover {
-        z-index: $zIndex-thumbnail-hover;
+  &:hover {
+    z-index: $zIndex-thumbnail-hover;
+  }
+
+  .image {
+    width: 250px;
+    height: 140px;
+
+    img {
+      border: 3px solid #FFF;
+      box-shadow: 1px 1px 10px #777;
+      max-width: 100%;
+      max-height: 100%;
     }
+  }
 
-    .image {
-        width: 250px;
-        height: 140px;
+  .bubble {
+    background: url(/user/img/common/directives/thumbnail/bubble-250-content.png) scroll repeat-y top left;
+    width: 270px;
+    position: absolute;
+    top: 140px;
+    left: 20px;
 
-        img {
-            border: 3px solid #FFF;
-            box-shadow: 1px 1px 10px #777;
-            max-width: 100%;
-            max-height: 100%;
-        }
-    }
+    .summary {
+      position: relative; //for the title to move closer to top border
+      left: 0px;
+      padding: 0 20px;
 
-    .bubble {
-        background: url(/user/img/common/directives/thumbnail/bubble-250-content.png) scroll repeat-y top left;
+      &:before {
+        background: url(/user/img/common/directives/thumbnail/bubble-250-top.png) scroll repeat-y top left;
         width: 270px;
+        height: 30px;
+        content: " ";
         position: absolute;
-        top: 140px;
-        left: 20px;
+        top: -30px;
+        left: 0;
+      }
 
-        .summary {
-            position: relative; //for the title to move closer to top border
-            left: 0px;
-            padding: 0 20px;
-
-            &:before {
-                background: url(/user/img/common/directives/thumbnail/bubble-250-top.png) scroll repeat-y top left;
-                width: 270px;
-                height: 30px;
-                content: " ";
-                position: absolute;
-                top: -30px;
-                left: 0;
-            }
-
-            &:after {
-                background: url(/user/img/common/directives/thumbnail/bubble-250-bottom.png) scroll repeat-y top left;
-                width: 270px;
-                height: 30px;
-                content: " ";
-                position: absolute;
-                bottom: -30px;
-                left: 0;
-            }
-
-
-        }
+      &:after {
+        background: url(/user/img/common/directives/thumbnail/bubble-250-bottom.png) scroll repeat-y top left;
+        width: 270px;
+        height: 30px;
+        content: " ";
+        position: absolute;
+        bottom: -30px;
+        left: 0;
+      }
 
     }
+
+  }
 }

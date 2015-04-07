@@ -1,4 +1,4 @@
-var wordsFeaturedContentApp = angular.module('wordsFeaturedContentApp',['thumbnailModule', 'headerModule']);
+var wordsFeaturedContentApp = angular.module('wordsFeaturedContentApp', ['thumbnailModule', 'headerModule']);
 
 wordsFeaturedContentApp.config(resourceUrlWhiteList);
 wordsFeaturedContentApp.factory('contentService', ['$http', contentService]);

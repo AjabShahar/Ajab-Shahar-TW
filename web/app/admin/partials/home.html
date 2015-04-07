@@ -7,11 +7,13 @@
     <link href="/common/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 </head>
 <body ng-controller="adminHomeController">
-    <button type="button" ng-click="logout()" class="btn btn-danger pull-right">Log Out</button>
-    <span ng-show="message.text" class="bg-danger panel panel-danger">{{message.text}}</span>
-    <h3>Add new</h3>
-    <div class="left">
-        <h5><a href="/admin/partials/songs/details.html" class="btn btn-info">Song</a>
+<button type="button" ng-click="logout()" class="btn btn-danger pull-right">Log Out</button>
+<span ng-show="message.text" class="bg-danger panel panel-danger">{{message.text}}</span>
+
+<h3>Add new</h3>
+
+<div class="left">
+    <h5><a href="/admin/partials/songs/details.html" class="btn btn-info">Song</a>
         <a href="/admin/partials/couplets/details.html" class="btn btn-info">Couplet</a>
         <a href="/admin/partials/words/details.html" class="btn btn-info">Word</a>
         <a href="/admin/partials/reflections/details.html" class="btn btn-info">Reflection</a>
@@ -19,11 +21,12 @@
         <a href="/admin/partials/splashScreenOptions.html" class="btn btn-info">SplashScreen Options</a>
         <a href="/admin/partials/genre/genreDetails.html" class="btn btn-info">Genre</a>
         <a href="/admin/partials/gathering/gatheringDetails.html" class="btn btn-info">Gathering</a></h5>
-    </div>
+</div>
 
-    <h3>List of </h3>
-    <div class="left">
-        <h5><a href="/admin/partials/songs/list.html" class="btn btn-info">Songs</a>
+<h3>List of </h3>
+
+<div class="left">
+    <h5><a href="/admin/partials/songs/list.html" class="btn btn-info">Songs</a>
         <a href="/admin/partials/couplets/list.html" class="btn btn-info">Couplets</a>
         <a href="/admin/partials/words/list.html" class="btn btn-info">Words</a>
         <a href="/admin/partials/reflections/list.html" class="btn btn-info">Reflection</a>
@@ -32,12 +35,12 @@
         <a href="/admin/partials/category/list.html?type=media" class="btn btn-info">Media Category</a>
         <a href="/admin/partials/genre/genreList.html" class="btn btn-info">Genres</a>
         <a href="/admin/partials/gathering/gatheringList.html" class="btn btn-info">Gatherings</a></h5>
-    </div>
-    <script type="text/javascript" src="/common/lib/angular/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-cookies.js"></script>
-    <script type="text/javascript" src="/admin/js/services/contentService.js"></script>
-    <script type="text/javascript" src="/admin/js/services/loginVerifyService.js"></script>
-    <script type="text/javascript" src="/admin/js/app.js"></script>
-    <script type="text/javascript" src="/admin/js/controllers/adminHomeController.js"></script>
+</div>
+<script type="text/javascript" src="/common/lib/angular/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-cookies.js"></script>
+<script type="text/javascript" src="/admin/js/services/contentService.js"></script>
+<script type="text/javascript" src="/admin/js/services/loginVerifyService.js"></script>
+<script type="text/javascript" src="/admin/js/app.js"></script>
+<script type="text/javascript" src="/admin/js/controllers/adminHomeController.js"></script>
 </body>
 </html>

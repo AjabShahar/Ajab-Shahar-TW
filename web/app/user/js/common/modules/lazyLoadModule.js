@@ -1,3 +1,3 @@
 'use strict';
 
-var lazyLoadModule =angular.module("lazyLoadModule", []);
+var lazyLoadModule = angular.module("lazyLoadModule", []);

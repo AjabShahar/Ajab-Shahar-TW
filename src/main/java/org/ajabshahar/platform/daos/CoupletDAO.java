@@ -8,8 +8,9 @@ import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
-public class CoupletDAO  extends AbstractDAO<Couplet>{
+public class CoupletDAO extends AbstractDAO<Couplet> {
     private final SessionFactory sessionFactory;
+
     public CoupletDAO(SessionFactory sessionFactory) {
         super(sessionFactory);
         this.sessionFactory = sessionFactory;
@@ -23,12 +24,12 @@ public class CoupletDAO  extends AbstractDAO<Couplet>{
         return list(namedQuery("org.ajabshahar.platform.models.Couplet.findAllOnLandingPage"));
     }
 
-    public List<Couplet> findAll(){
-        return list(namedQuery("org.ajabshahar.platform.models.Couplet.findAll"));   
+    public List<Couplet> findAll() {
+        return list(namedQuery("org.ajabshahar.platform.models.Couplet.findAll"));
     }
 
     public Couplet findById(Long id) {
-        return (Couplet)sessionFactory.openSession().get(Couplet.class,id);
+        return (Couplet) sessionFactory.openSession().get(Couplet.class, id);
     }
 
     private Couplet invokeSetters(Couplet originalCouplet, Couplet updatableCouplet) {
@@ -51,10 +52,10 @@ public class CoupletDAO  extends AbstractDAO<Couplet>{
         return couplet.list();
     }
 
-    public Couplet updateCouplet( Couplet updatableCouplet) {
+    public Couplet updateCouplet(Couplet updatableCouplet) {
         Long id = updatableCouplet.getId();
-        Couplet originalCouplet = (Couplet) sessionFactory.openSession().get(Couplet.class,id);
-        originalCouplet = invokeSetters(originalCouplet,updatableCouplet);
+        Couplet originalCouplet = (Couplet) sessionFactory.openSession().get(Couplet.class, id);
+        originalCouplet = invokeSetters(originalCouplet, updatableCouplet);
         sessionFactory.openStatelessSession().update(originalCouplet);
         return originalCouplet;
     }

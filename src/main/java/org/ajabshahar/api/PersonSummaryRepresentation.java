@@ -8,6 +8,7 @@ public class PersonSummaryRepresentation {
     private long id;
     private String name;
     private String hindiName;
+
     public PersonSummaryRepresentation() {
     }
 

@@ -63,7 +63,7 @@ public class WordsTest {
         assertEquals(expected.getHindiIntroExcerpt(), "something1");
     }
 
-    private void setUpWord(){
+    private void setUpWord() {
         updatedWord = new Word();
 
         HashSet<PersonDetails> people = new HashSet<>();
@@ -96,7 +96,7 @@ public class WordsTest {
     }
 
     @Test
-    public void shouldUpdateTheWord(){
+    public void shouldUpdateTheWord() {
         setUpWord();
 
         ArrayList wordsList = new ArrayList();

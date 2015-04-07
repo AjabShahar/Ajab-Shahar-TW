@@ -15,12 +15,15 @@
     <script type="text/javascript" src="/admin/js/services/loginVerifyService.js"></script>
     <script type="text/javascript" src="/admin/js/app.js"></script>
     <script type="text/javascript" src="/admin/js/controllers/reflections/reflectionListController.js"></script>
-    
+
 </head>
 <body>
-<a ng-href="/admin/partials/home.html" target="_self"><button type="button" class="btn btn-info admin-home">Admin home</button></a>
+<a ng-href="/admin/partials/home.html" target="_self">
+    <button type="button" class="btn btn-info admin-home">Admin home</button>
+</a>
 <br>
 <br>
+
 <div ng-controller="reflectionListController">
     <table class="table">
         <tr>
@@ -30,9 +33,9 @@
             <td><b>Edit</b></td>
         </tr>
         <tr>
-            <td><input ng-model="search.title" class="form-control" ><br></td>
-            <td><input ng-model="search.speakerName" class="form-control" ><br></td>
-            <td><input ng-model="search.publish" class="form-control" ><br></td>
+            <td><input ng-model="search.title" class="form-control"><br></td>
+            <td><input ng-model="search.speakerName" class="form-control"><br></td>
+            <td><input ng-model="search.publish" class="form-control"><br></td>
         </tr>
         <tr ng-repeat="reflection in reflections| orderBy:'title' |filter:search">
             <td>{{reflection.title}}</td>

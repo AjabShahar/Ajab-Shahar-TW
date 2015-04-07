@@ -1,21 +1,19 @@
-
-$font-stack: 'Merriweather Sans','Merriweather',lucida grande,arial,tahoma,verdana,sans serif;
-
+$font-stack: 'Merriweather Sans', 'Merriweather', lucida grande, arial, tahoma, verdana, sans serif;
 
 body {
-    font-family: $font-stack;
+  font-family: $font-stack;
 }
 
 a, a:visited, a:link {
-    text-decoration: none;
-    color: inherit;
-    outline: 0;
+  text-decoration: none;
+  color: inherit;
+  outline: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Merriweather';
-	color: $color-primary;
-	font-weight: 100;
+  font-family: 'Merriweather';
+  color: $color-primary;
+  font-weight: 100;
 }
 
 h1 {
@@ -27,8 +25,8 @@ h2 {
 }
 
 h3 {
-	font-size: 16px;
-	line-height: 20px;
+  font-size: 16px;
+  line-height: 20px;
 }
 
 h4 {
@@ -36,17 +34,17 @@ h4 {
 }
 
 ul {
-	list-style: none;
+  list-style: none;
 }
 
 .selected {
-    color:#e83785;
+  color: #e83785;
 }
 
 .active-link {
-    color: $color-link-green;
+  color: $color-link-green;
 }
 
 .active-link-pink {
-    color: $color-link-pink;
+  color: $color-link-pink;
 }

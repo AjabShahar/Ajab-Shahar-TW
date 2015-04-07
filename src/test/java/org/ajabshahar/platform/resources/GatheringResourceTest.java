@@ -27,7 +27,7 @@ public class GatheringResourceTest {
     private Gathering mockedGathering;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         mockedGathering = Mockito.mock(Gathering.class);
         mockedGatheringDAO = Mockito.mock(GatheringDAO.class);
         gatheringResource = new GatheringResource(mockedGatheringDAO);
@@ -72,7 +72,7 @@ public class GatheringResourceTest {
     }
 
     @Test
-    public void shouldCreateAGathering(){
+    public void shouldCreateAGathering() {
         JsonObject gatheringJson = new JsonObject();
 
         Response response = gatheringResource.createGathering(gatheringJson.toString());
@@ -81,7 +81,7 @@ public class GatheringResourceTest {
     }
 
     @Test
-    public void shouldReturnINTERNAL_SERVER_ERROR_If_Cannot_CreateAGathering(){
+    public void shouldReturnINTERNAL_SERVER_ERROR_If_Cannot_CreateAGathering() {
         Response response = gatheringResource.createGathering(null);
 
         assertEquals(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), response.getStatus());

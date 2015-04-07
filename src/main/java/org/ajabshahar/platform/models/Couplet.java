@@ -36,19 +36,19 @@ public class Couplet {
     private boolean showOnLandingPage;
 
     @Column(name = "ORIGINAL_TEXT", nullable = false)
-    private  String originalText;
+    private String originalText;
 
-    @Column(name = "ENGLISH_TRANSLATION_TEXT",nullable = true)
+    @Column(name = "ENGLISH_TRANSLATION_TEXT", nullable = true)
     private String englishTranslationText;
 
-    @Column(name ="ENGLISH_TRANSLITERATION_TEXT", nullable = true)
+    @Column(name = "ENGLISH_TRANSLITERATION_TEXT", nullable = true)
     private String englishTransliterationText;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "CATEGORY_ID")
     private Category category;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "POET_ID")
     private PersonDetails poet;
 

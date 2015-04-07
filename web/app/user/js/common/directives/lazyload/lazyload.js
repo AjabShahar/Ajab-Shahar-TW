@@ -1,6 +1,6 @@
 'use strict';
 
-lazyLoadModule.directive("asLazyLoad", function() {
+lazyLoadModule.directive("asLazyLoad", function () {
     return {
         restrict: 'A',
         scope: {},

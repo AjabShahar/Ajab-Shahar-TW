@@ -90,7 +90,7 @@ public class SongResourceIT {
                 .get(ClientResponse.class);
 
 
-        assertEquals(204,response.getStatus());
+        assertEquals(204, response.getStatus());
 
     }
 
