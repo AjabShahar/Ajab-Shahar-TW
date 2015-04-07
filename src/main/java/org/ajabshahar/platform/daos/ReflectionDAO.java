@@ -27,7 +27,7 @@ public class ReflectionDAO extends AbstractDAO<Reflection> {
         reflection = persist(reflection);
         for (ReflectionTranscript reflectionTranscript : reflection.getReflectionTranscripts()) {
             reflectionTranscript.setReflection(reflection);
-            currentSession().save(reflectionTranscript);
+            currentSession().saveOrUpdate(reflectionTranscript);
         }
         return reflection;
     }
@@ -62,11 +62,6 @@ public class ReflectionDAO extends AbstractDAO<Reflection> {
         findReflections.add(Restrictions.eq("id", Long.valueOf(id)));
 
         return findReflections.list();
-    }
-
-    public Reflection update(Reflection updatableReflection) {
-        sessionFactory.getCurrentSession().update(updatableReflection);
-        return updatableReflection;
     }
 
     public List<Reflection> findBy(int startFrom, String filteredLetter) {

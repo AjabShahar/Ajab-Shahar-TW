@@ -34,24 +34,6 @@ public class Reflections {
         return reflectionRepository.find(id).get(0);
     }
 
-    public Reflection update(Reflection updatableReflection) {
-        Reflection originalReflection = findReflection((int) updatableReflection.getId());
-
-        return reflectionRepository.update(invokeSetters(originalReflection, updatableReflection));
-    }
-
-    private Reflection invokeSetters(Reflection originalReflection, Reflection reflection) {
-        originalReflection.setTitle(reflection.getTitle());
-        originalReflection.setVerb(reflection.getVerb());
-        originalReflection.setSpeaker(reflection.getSpeaker());
-        originalReflection.setSoundCloudId(reflection.getSoundCloudId());
-        originalReflection.setYoutubeVideo(reflection.getYoutubeVideo());
-        originalReflection.setReflectionTranscripts(reflection.getReflectionTranscripts());
-        originalReflection.setIsAuthoringComplete(reflection.getIsAuthoringComplete());
-        originalReflection.setShowOnFeaturedContentPage(reflection.getShowOnFeaturedContentPage());
-        return originalReflection;
-    }
-
     public List<Reflection> findBy(int startFrom, String filteredLetter) {
         return reflectionRepository.findBy(startFrom, filteredLetter);
     }

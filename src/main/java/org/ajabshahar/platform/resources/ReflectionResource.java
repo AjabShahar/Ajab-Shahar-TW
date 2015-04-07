@@ -37,16 +37,6 @@ public class ReflectionResource {
         return Response.ok(reflection, MediaType.APPLICATION_JSON).build();
     }
 
-    @POST
-    @UnitOfWork
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/edit")
-    public Response updateReflection(String jsonReflection) {
-        Reflection reflection = reflectionRepresentationFactory.create(jsonReflection);
-        reflection = reflections.update(reflection);
-        return Response.ok(reflection, MediaType.APPLICATION_JSON).build();
-    }
-
     @GET
     @UnitOfWork
     @Path("/summary")

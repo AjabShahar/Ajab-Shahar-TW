@@ -39,7 +39,6 @@ public class ReflectionResourceTest {
 
     @Test
     public void shouldTestCreateReflection() throws Exception {
-
         Reflection expected = new Reflection();
         when(reflectionRepresentationFactory.create(jsonReflection)).thenReturn(expected);
         when(reflections.create(expected)).thenReturn(expected);
@@ -72,17 +71,4 @@ public class ReflectionResourceTest {
 
     }
 
-    @Test
-    public void shouldUpdateReflection() throws Exception {
-
-        Reflection expected = new Reflection();
-        when(reflectionRepresentationFactory.create(jsonReflection)).thenReturn(expected);
-        when(reflections.update(expected)).thenReturn(expected);
-
-        Response actual = reflectionResource.updateReflection(jsonReflection);
-
-        assertEquals(expected, actual.getEntity());
-
-
-    }
 }
