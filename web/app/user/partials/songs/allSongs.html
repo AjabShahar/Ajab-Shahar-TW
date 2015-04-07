@@ -1,6 +1,7 @@
 <html lang="en" ng-app="allSongsApp">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>All Songs Page</title>
     <script type="text/javascript" src="/common/lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/common/lib/angular/angular.js"></script>
@@ -42,13 +43,6 @@
     <script type="text/javascript" src="/user/js/songs/songPages.js"></script>
     <script type="text/javascript" src="/user/js/songs/controllers/allSongsController.js"></script>
     <script type="text/javascript" src="/user/js/common/modules/htmlGenerator.js"></script>
-    <!-- <link href="/user/css/common/directives/header/header.css" rel="stylesheet" type="text/css">
-    <link href="/user/css/common/directives/footer/footer.css" rel="stylesheet" type="text/css">
-    <link href="/user/css/thumbnails.css" rel="stylesheet" type="text/css">
-    <link href="/user/css/common/directives/popup.css" rel="stylesheet" type="text/css">
-    <link href="/user/css/common/directives/introduction.css" rel="stylesheet" type="text/css"> -->
-    <!--<link href="/user/css/pages/songs.css" rel="stylesheet" type="text/css">-->
-    <!-- <link href="/user/css/pages/gridview.css" rel="stylesheet" type="text/css"> -->
 
     <link rel="stylesheet"
           href="//fonts.googleapis.com/css?family=Merriweather:400,300italic,300,400italic,700,700italic"/>
@@ -92,15 +86,39 @@
             <div class='grid-wrapper'>
                 <div infinite-scroll='loadSongFromRange()' infinite-scroll-distance='1' class="thumbnails-grid">
                     <ul class="media-list songs">
-                        <li class="media" ng-repeat="song in (filteredSongList | filterByScroll:scrollIndex)">
-                            <song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}"
-                                            open="navigateToSong(song.id)" custom-style="{{song.customStyle}}"
-                                            img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}"
-                                            english-transliteration="{{song.englishTransliteration}}"
-                                            english-translation="{{song.englishTranslation}}"
-                                            category-name="{{song.category}}" duration="{{song.duration}}"
-                                            singer="{{song.singer}}" class="songs" poet="{{song.poet}}"
-                                            singers="{{song.singers}}"></song-thumbnail>
+                        <!--<li class="media" ng-repeat="song in (filteredSongList | filterByScroll:scrollIndex)">-->
+                            <!--<song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}"-->
+                                            <!--open="navigateToSong(song.id)" custom-style="{{song.customStyle}}"-->
+                                            <!--img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}"-->
+                                            <!--english-transliteration="{{song.englishTransliteration}}"-->
+                                            <!--english-translation="{{song.englishTranslation}}"-->
+                                            <!--category-name="{{song.category}}" duration="{{song.duration}}"-->
+                                            <!--singer="{{song.singer}}" class="songs" poet="{{song.poet}}"-->
+                                            <!--singers="{{song.singers}}"></song-thumbnail>-->
+                        <!--</li>-->
+                        <li class="media ng-scope" ng-repeat="song in (filteredSongList | filterByScroll:scrollIndex)">
+                            <div class="songs thumbnail  thumbnail " id="6" content-id="song_6" open="open" custom-style="" img-src="https://farm9.staticflickr.com/8588/15609516253_155aac2066_o.jpg" url="" english-transliteration="Bhajan Ro Gudak Rahyo Gaado" english-translation="The Cart of Meditation is Tottering" category-name="Songs" duration="05:10" singer="Parvathy Baul" poet="Fakru" singers="">
+                                <div class="image" ng-click="open('6')">
+                                    <img src="/user/img/songs/sample-img.png">
+                                </div>
+                                <div class="bubble" ng-click="open('6')">
+                                    <div class="summary" ng-mouseenter="showDetails()" ng-mouseleave="hideDetails()">
+                                        <h3 class="title ng-binding">Bhajan Ro Gudak Rahyo Gaado</h3>
+                                        <h4 class="en-title ng-binding">The Cart of Meditation is Tottering</h4>
+                                        <span class="singers ng-binding" ng-hide="multipleSingers">sings PARVATHY BAUL</span>
+                                        <div ng-hide="!shouldShowDetails" class="thumbnailDetails toggleBySlide ng-animate" style="display: none;">
+                                            <div class="singers ng-hide" ng-show="multipleSingers">
+                                                <small class="ng-binding">sing </small>
+                                            </div>
+                                            <small class="poet ng-binding">Poet FAKRU</small>
+                                            <div class="footer">
+                                                <small class="categoryName ng-binding">Songs</small>
+                                                <small class="play ng-binding">05:10</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </div>
