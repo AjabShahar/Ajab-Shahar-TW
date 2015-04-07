@@ -7,4 +7,36 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <includeAll path="migrations"/>
+    <changeSet id="67" author="CHANAKYA">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="word_scholar"></tableExists>
+            </not>
+        </preConditions>
+        <sql>
+            ALTER TABLE IF EXISTS word_scholar RENAME COLUMN scholar_id TO person_id;
+            ALTER TABLE IF EXISTS word_scholar DROP CONSTRAINT word_scholar_pkey;
+            ALTER TABLE IF EXISTS word_scholar ADD PRIMARY KEY (word_person_id);
+            ALTER TABLE IF EXISTS word_scholar DROP CONSTRAINT scholar_id_fkey;
+            ALTER TABLE IF EXISTS word_scholar ADD CONSTRAINT person_id_fkey FOREIGN KEY (person_id) REFERENCES person (id);
+            ALTER TABLE IF EXISTS word_scholar RENAME TO word_person;
+        </sql>
+    </changeSet>
+    <changeSet id="68" author="chanakya_jaideep">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="word_introduction" columnName="content_type"></columnExists>
+            </not>
+        </preConditions>
+        <sql>
+            ALTER TABLE word_introduction ADD COLUMN content_type varchar(200);
+            ALTER TABLE word_introduction ADD COLUMN poet_id integer;
+            ALTER TABLE word_introduction ADD CONSTRAINT poet_id_fkey FOREIGN KEY (poet_id) REFERENCES person (id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION;
+        </sql>
+    </changeSet>
+    <changeSet id="69" author="JAIDEEP">
+        <sql>
+            update word_introduction set content_type = 'text' where content_type is null;
+        </sql>
+    </changeSet>
 </databaseChangeLog>
