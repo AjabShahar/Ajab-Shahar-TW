@@ -12,15 +12,10 @@ var reflectionContentService = function ($http) {
         return $http.post('/api/reflections', data);
     };
 
-    var updateReflection = function (data) {
-        return $http.post('/api/reflections/edit', data);
-    };
-
     return {
         getPeople: getPeople,
         getRefectionById: getRefectionById,
-        saveReflection: saveReflection,
-        updateReflection: updateReflection
+        saveReflection: saveReflection
     };
 
 };

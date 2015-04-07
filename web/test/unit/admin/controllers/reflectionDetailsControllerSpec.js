@@ -39,9 +39,9 @@ describe("reflection details controller specs", function () {
     describe("should test updating of reflection", function () {
         it("after updating should redirect to admin page", function () {
 
-            httpBackend.expectPOST('/api/reflections/edit').respond(200, {'id': 1});
+            httpBackend.expectPOST('/api/reflections').respond(200, {'id': 1});
 
-            scope.updateData();
+            scope.saveData();
             httpBackend.flush();
 
             expect(fakeWindow.location.href).toBe('/admin/partials/home.html');
