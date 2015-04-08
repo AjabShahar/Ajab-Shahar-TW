@@ -76,6 +76,24 @@
                         <!--</ul>-->
                     <!--</div>-->
 
+                    <div class="audio-video-info">
+                        <dl>
+                            <dt>{{poet}}</dt>
+                            <dd>Poet</dd>
+                            <dt>{{singer}}</dt>
+                            <dd>Singer</dd>
+                            <dt ng-repeat="word in words">
+                             <span ng-if="word.isRootWord">
+                                 <a href="/user/partials/words/details.html?id={{word.id}}" target="_self">{{word.transliteration}}</a>
+                             </span>
+                             <span ng-if="!word.isRootWord">
+                                 {{word.transliteration}}
+                             </span>
+                                            <p> WORD </p>
+                                            </dt>
+                                        </dl>
+                                    </div>
+
                 </div>
 
             </div>
