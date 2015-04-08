@@ -1,8 +1,10 @@
+'use strict';
 reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$window', '$location', 'reflectionContentService', "loginVerifyService",
     function ($scope, $window, $location, reflectionContentService, loginVerifyService) {
         loginVerifyService.redirectIfNotAuthenticated();
-        $scope.formInfo = {"reflectionTranscripts": [], "speaker": {}};
+        $scope.reflection = {"reflectionTranscripts": [], "speaker": {}};
         $scope.people = [];
+        $scope.words = [];
         var urlId = $location.search().id;
 
         var init = function () {
@@ -10,17 +12,21 @@ reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$windo
                 $scope.people = data.people;
             });
 
+            reflectionContentService.getWords().success(function(data){
+                $scope.words = data.words;
+            });
+
             if (urlId != null && urlId != ''){
                 reflectionContentService.getRefectionById(urlId).success(function (data) {
-                        $scope.formInfo = data;
-                        $scope.formInfo.speaker = data.speaker;
+                        $scope.reflection = data;
+                        $scope.reflection.speaker = data.speaker;
                 });
             }
 
         };
 
         $scope.saveData = function () {
-            reflectionContentService.saveReflection($scope.formInfo).success(function (data) {
+            reflectionContentService.saveReflection($scope.reflection).success(function (data) {
                 $window.location.href = '/admin/partials/home.html';
             });
         };

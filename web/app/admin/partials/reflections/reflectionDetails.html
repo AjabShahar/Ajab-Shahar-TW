@@ -6,6 +6,7 @@
 
     <link href="/admin/css/admin.css" rel="stylesheet" type="text/css">
     <link href="/common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/common/lib/angular-multi-select/angular-multi-select.css">
     <link rel='stylesheet' href='https://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css'>
 </head>
 <body>
@@ -24,7 +25,7 @@
                         <label>Title</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <input type="text" name="reflection" ng-model="formInfo.title" class="form-control">
+                        <input type="text" name="reflection" ng-model="reflection.title" class="form-control">
                     </div>
                 </div>
 
@@ -33,7 +34,7 @@
                         <label>Verb</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <input type="text" name="verb" ng-model="formInfo.verb" class="form-control">
+                        <input type="text" name="verb" ng-model="reflection.verb" class="form-control">
                     </div>
                 </div>
 
@@ -43,10 +44,19 @@
                         <label>Name of the speaker</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <select ng-model="formInfo.speaker.id" class="form-control"
+                        <select ng-model="reflection.speaker.id" class="form-control"
                                 ng-options="speaker.id as speaker.firstName + ' '+speaker.lastName for speaker in people | orderBy:'firstName'">
                         </select>
                     </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label>Words</label>
+                    </div>
+                    <div class="col-sm-2" multi-select input-model="words" button-label="wordTransliteration"
+                         item-label="wordTransliteration" tick-property="ticked" output-model="reflection.words"></div>
+
                 </div>
 
                 <div class="row">
@@ -54,33 +64,33 @@
                         <label>Reflection Type</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <select name="reflection" ng-model="formInfo.type" class="form-control">
+                        <select name="reflection" ng-model="reflection.type" class="form-control">
                             <option value="audio">Audio</option>
                             <option value="video">Video</option>
                             <option value="text">Text</option>
                         </select>
                     </div>
                 </div>
-                <div class="row" ng-show="formInfo.type == 'audio' || formInfo.soundCloudId !=null ">
+                <div class="row" ng-show="reflection.type == 'audio' || reflection.soundCloudId !=null ">
                     <div class="form-group col-sm-2">
                         <label>Sound Cloud Track Id</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <input type="text" name="reflection" ng-model="formInfo.soundCloudId" class="form-control">
+                        <input type="text" name="reflection" ng-model="reflection.soundCloudId" class="form-control">
                     </div>
                 </div>
 
-                <div class="row" ng-show="formInfo.type == 'video' || formInfo.youtubeVideo !=null ">
+                <div class="row" ng-show="reflection.type == 'video' || reflection.youtubeVideo !=null ">
                     <div class="form-group col-sm-2">
                         <label>Youtube Video Id</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <input type="text" name="reflection" ng-model="formInfo.youtubeVideo" class="form-control">
+                        <input type="text" name="reflection" ng-model="reflection.youtubeVideo" class="form-control">
                     </div>
                 </div>
-                <div ng-show="formInfo.type == 'text' || formInfo.reflectionTranscripts.length>1 ">
-                    <reflection-transcript reflection-transcript="{{formInfo.reflectionTranscript}}"
-                                           reflection-transcripts="formInfo.reflectionTranscripts"></reflection-transcript>
+                <div ng-show="reflection.type == 'text' || reflection.reflectionTranscripts.length>1 ">
+                    <reflection-transcript reflection-transcript="{{reflection.reflectionTranscript}}"
+                                           reflection-transcripts="reflection.reflectionTranscripts"></reflection-transcript>
                 </div>
 
                 <div class="row">
@@ -88,7 +98,7 @@
                         <label>Show On LandingPage</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <select name="reflection" ng-model="formInfo.showOnFeaturedContentPage" class="form-control">
+                        <select name="reflection" ng-model="reflection.showOnFeaturedContentPage" class="form-control">
                             <option value="true">Yes</option>
                             <option value="false">No</option>
                         </select>
@@ -100,7 +110,7 @@
                         <label>Publish</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <select name="reflection" ng-model="formInfo.isAuthoringComplete" class="form-control">
+                        <select name="reflection" ng-model="reflection.isAuthoringComplete" class="form-control">
                             <option value="true">Yes</option>
                             <option value="false">No</option>
                         </select>
@@ -119,6 +129,7 @@
 <script src="/common/lib/angular/angular.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-cookies.js"></script>
 <script type="text/javascript" src="/common/lib/angular-filter/dist/angular-filter.js"></script>
+<script type="text/javascript" src="/common/lib/angular-multi-select/angular-multi-select.js"></script>
 <script type="text/javascript" src="/common/lib/textAngular/dist/textAngular-sanitize.min.js"></script>
 <script type="text/javascript" src="/common/lib/textAngular/dist/textAngular.min.js"></script>
 <script src="/common/lib/angular-route/angular-route.js"></script>

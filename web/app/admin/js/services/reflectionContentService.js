@@ -12,10 +12,15 @@ var reflectionContentService = function ($http) {
         return $http.post('/api/reflections', data);
     };
 
+    var getWords = function(){
+       return $http.get('/api/words');
+    };
+
     return {
         getPeople: getPeople,
         getRefectionById: getRefectionById,
-        saveReflection: saveReflection
+        saveReflection: saveReflection,
+        getWords: getWords
     };
 
 };
