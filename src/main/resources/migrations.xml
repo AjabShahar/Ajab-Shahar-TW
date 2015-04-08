@@ -9,9 +9,7 @@
     <includeAll path="migrations"/>
     <changeSet id="67" author="CHANAKYA">
         <preConditions onFail="MARK_RAN">
-            <not>
-                <tableExists tableName="word_scholar"></tableExists>
-            </not>
+            <tableExists tableName="word_scholar"></tableExists>
         </preConditions>
         <sql>
             ALTER TABLE IF EXISTS word_scholar RENAME COLUMN scholar_id TO person_id;
