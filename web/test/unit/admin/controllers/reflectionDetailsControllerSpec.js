@@ -1,3 +1,4 @@
+'use strict';
 describe("reflection details controller specs", function () {
 
     var scope, $location, fakeWindow, httpBackend;
@@ -20,7 +21,7 @@ describe("reflection details controller specs", function () {
         });
 
         httpBackend.expectGET('/api/people').respond(200, ['people data']);
-
+        httpBackend.expectGET('/api/words').respond(200, ['word data']);
     }));
 
     describe("should test save of reflection", function () {
