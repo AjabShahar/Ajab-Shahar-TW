@@ -114,6 +114,11 @@ songsAdminApp.controller('songDetailsController', ['$scope', '$window', '$locati
 
                 if ($scope.song.songText) {
                     $scope.song.songText.songTextContents = sortList($scope.song.songText.songTextContents, 'sequenceNumber');
+                } else {
+                    $scope.song.songText = {
+                        songTextContents: [],
+                        openingCouplets: []
+                    }
                 }
             });
         };

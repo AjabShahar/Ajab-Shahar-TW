@@ -19,13 +19,13 @@ songsAdminApp.directive("songText", function () {
                     "contentType": "stanza",
                     "englishTranslationText": "",
                     "englishTransliterationText": "",
-                    "originalText": "",
+                    "originalText": ""
                 };
                 $scope.openingCouplet = {
                     "contentType": "couplet",
                     "englishTranslationText": "",
                     "englishTransliterationText": "",
-                    "originalText": "",
+                    "originalText": ""
                 };
             };
 
@@ -105,6 +105,12 @@ songsAdminApp.directive("songText", function () {
             };
 
             $scope.initializeContent();
+
+            $scope.$watch('songText', function () {
+                if ($scope.songText.openingCouplets.length > 0) {
+                    $scope.isDataPresent = true;
+                }
+            });
         }
     };
 });
