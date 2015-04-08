@@ -39,11 +39,10 @@
                    ng-click="toggleVideoOrAudio()"></a>
                 <a href="javascript:void(0)" ng-hide="showAudio" class="audio-icon" ng-click="toggleVideoOrAudio()"></a>
             </li>
-            <!--<button ng-click="toggleVideoOrAudio()" ng-show="hasAudioAndVideo">Toggle between audio and video</button>-->
         </ul>
     </div>
 
-    <div class="toggleBySlide info" bind-dynamic-html="{{about}}" ng-show="isAboutVisible"></div>
+    <div class="toggleBySlide about-info" bind-dynamic-html="{{about}}" ng-show="isAboutVisible"></div>
     <div class='shareItemsDropDown' ng-show="dropDownVisible" ng-mouseleave="dropDownVisible='false'">
         <ul class='shareItems'>
             <li><a href='http://www.facebook.com/share.php?u={{url}}' target="_blank">Share on facebook</a></li>
@@ -61,7 +60,7 @@
         </ul>
     </div>
 
-    <div class="song-info">
+    <div class="audio-video-info">
         <dl>
             <dt>{{poet}}</dt>
             <dd>Poet</dd>

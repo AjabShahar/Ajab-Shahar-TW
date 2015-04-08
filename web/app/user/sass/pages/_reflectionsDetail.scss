@@ -1,0 +1,28 @@
+.reflections {
+    .page-header {
+        .logo-container {
+            &>a {
+                font-size: 12px;
+            }
+        }
+
+        .page-title {
+            margin-top: 22px;
+            .sub-main {
+                text-align: left;
+                color: #666;
+                line-height: 26px;
+
+                .name {
+                    font-family: 'Merriweather Sans';
+                    font-size: 14px;
+                    color: #ed1e79;
+                    text-transform: uppercase;
+                    font-style: normal;
+                }
+            }
+        }
+
+    }
+
+}
