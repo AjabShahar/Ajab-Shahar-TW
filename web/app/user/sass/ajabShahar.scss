@@ -12,6 +12,8 @@
 @import 'common/typography';
 @import 'common/icons';
 @import 'common/common';
+@import 'common/fonts';
+
 // AS Specific
 @import 'components/enterSite';
 @import 'components/loading';
@@ -38,6 +40,7 @@
 @import 'components/lightboxPaging';
 @import 'components/scrollBar';
 @import 'components/pagination';
+@import 'components/detailsLayout';
 // Page specific
 @import 'pages/splash';
 @import 'pages/home';
@@ -46,3 +49,4 @@
 @import 'pages/songsDetail';
 @import 'pages/glossary';
 @import 'pages/wordsFeatured';
+@import 'pages/reflectionsDetail';

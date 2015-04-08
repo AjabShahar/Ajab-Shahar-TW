@@ -1,0 +1,246 @@
+.details {
+    background: transparent url(/user/img/songs/song_details_bg.jpg) left top;
+    background-repeat: no-repeat repeat;
+    width: 100%;
+
+    .main-content {
+        margin-top: 60px;
+        min-height: 500px;
+        position: relative;
+    }
+
+    #audio_video_container {
+        clear: both;
+        width: 853px;
+        margin: 0 auto;
+        display: inline-block;
+
+        @media screen and (max-width: 1280px) {
+          width: 640px;
+        }
+
+        @media screen and (max-width: 768px) {
+          width: 530px;
+        }
+
+
+
+        youtube {
+          width: 853px;
+          display: inline-block;
+          height: 480px;
+
+          @media screen and (max-width: 1280px) {
+            width: 640px;
+            height: 360px;
+          }
+
+          @media screen and (max-width: 768px) {
+            width: 530px;
+            height: 315px;
+          }
+
+          iframe {
+            @include box-shadow(10px, #777);
+            border: solid 5px #fff;
+            width: inherit;
+            height: inherit;
+          }
+
+        }
+
+        .about-info {
+            display: none;
+            max-height: 260px;
+            margin: 45px 0;
+            color: #666;
+            font-size: 12px;
+            font-family: 'Merriweather';
+            font-weight: 300;
+            overflow: auto;
+            line-height: 21px;
+        }
+
+
+    /* video or audio container*/
+    .video-options {
+          width: 100%;
+          display: inline-block;
+          & > ul {
+            text-align: left;
+            float: left;
+            position: relative;
+            font-size: 16px;
+            width: auto;
+
+            & > li {
+              float: left;
+              padding: 10px 5px;
+              color: #666;
+              font-weight: 200;
+              line-height: 20px;
+            }
+          }
+
+          ul.share-options {
+            li {
+              padding: 10px;
+              a {
+                background: transparent url(/user/img/songs/songs_sprite.png) 0 0 no-repeat;
+                display: inline-block;
+                width: 26px;
+                height: 23px;
+
+                &.favorite {
+                  background-position: 0 -25px;
+                  height: 22px;
+                }
+                &.share {
+                  background-position: -26px 0;
+                  height: 23px;
+                }
+                &.download {
+                  background-position: -26px -23px;
+                }
+              }
+
+            }
+          }
+
+          ul.audio-video-options {
+            float: right;
+            & > li {
+              border-right: solid 1px #666;
+              line-height: 2px;
+              margin: 7px 0 0;
+              padding: 0 7px;
+
+              &:last-child {
+                border: none;
+                padding-right: 0;
+              }
+              & > a {
+                background: transparent url('/user/img/songs/av_sprite.png') 0 0 no-repeat;
+                width: 12px;
+                height: 15px;
+                display: inline-block;
+
+                &.video-icon {
+                  background-position: -13px 3px;
+                  &.active {
+                    background-position: 0 3px;
+                  }
+                }
+
+                &.audio-icon {
+                  background-position: -13px -12px;
+                  width: 20px;
+                  height: 20px;
+                  &.active {
+                    background-position: 0 -12px;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+
+        /* Pardah links */
+        .audio-video-info {
+          width: auto;
+          padding: 45px 0 40px 15px;
+          background: transparent url('/user/img/songs/relatedlinks_parda.png') 0 0 no-repeat;
+          background-size: 100% 100%;
+
+          dl {
+            margin: 4px auto;
+            clear: both;
+            line-height: 23px;
+            text-align: center;
+            display: block;
+
+            dt {
+              color: #e6257a;
+              text-transform: capitalize;
+              font-weight: 300;
+              display: inline-block;
+              font-size: 13px;
+              font-family: 'Merriweather';
+
+              p {
+                color: #7f8080;
+                text-transform: uppercase;
+                display: inline-block;
+                margin: 0 20px 0 0;
+                font-size: 10px;
+                font-weight: 300;
+              }
+            }
+            dd {
+              color: #7f8080;
+              text-transform: uppercase;
+              display: inline-block;
+              margin: 0 20px 0 0;
+              font-size: 10px;
+              font-weight: 300;
+            }
+
+          }
+        }
+
+
+    }
+
+    /*Left fixed nav*/
+
+    .left-nav {
+        width: 70px;
+        left: 0%;
+        top: 0px;
+        position: absolute;
+        display: inline-block;
+        text-align: left;
+
+        @media screen and (max-width: 768px) {
+          width: 55px;
+          a {
+            padding-left: 0px !important;
+          }
+        }
+        ul {
+          margin-left: -15px;
+          li {
+            @include retina-image("/user/img/songs/separator", 300px);
+            background-size: contain;
+            background-position: left bottom;
+            background-repeat: no-repeat;
+            width: 95px;
+            padding: 15px 20px 20px;
+
+            &:last-child {
+              background: none;
+            }
+            &:first-child {
+              padding-top: 0;
+            }
+          }
+          a {
+            display: block;
+            font-weight: 300;
+            font-family: 'Merriweather';
+            color: #999;
+            font-size: 14px;
+
+            &.active {
+              cursor: default;
+              color: #666;
+              font-weight: 600;
+            }
+          }
+        }
+     }
+
+
+
+}

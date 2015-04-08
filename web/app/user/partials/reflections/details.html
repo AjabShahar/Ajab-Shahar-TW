@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Reflection details page</title>
+
+    <link href="/common/jquery/jcarousel/jcarousel.responsive.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/user/css/ajabShahar.css"/>
+</head>
+
+<body class="header-with-carousel details reflections">
+    <ajab-shahar-header></ajab-shahar-header>
+    <div class="page-header">
+        <div class="ajab-wrapper">
+            <div class="logo-container">
+                <a href="/user/partials/songs/allSongs.html" target="_self">
+                    <span class="page-logo">reflections</span>
+                </a>
+            </div>
+            <div class="page-title">
+                <div class="main">Have you ever met yourself</div>
+                <div class="sub-main">says <span class="name">Purshottam agarwal</span></div>
+            </div>
+        </div>
+    </div>
+    <!--TODO Sakunthala : Try removing the extra div-->
+    <div class="vertical-spacer" ng-show="!shouldShowVersions()"></div>
+
+    <div class='ajab-container'>
+        <div class='ajab-wrapper'>
+            <div class="main-content">
+
+                <div id="audio_video_container">
+                    <!--<div ng-if="showVideo">-->
+                        <youtube width="100%" height="90%" videoid="videoId" should-stop-video="shouldStopVideo()"></youtube>
+                    <!--</div>-->
+                    <!--<div ng-if="showAudio">-->
+                        <!--<sound-cloud audio-url="{{audioUrl}}" id="snd_{{id}}"></sound-cloud>-->
+                    <!--</div>-->
+
+                    <div class="video-options">
+                        <ul class="slide-info">
+                            <li>
+                                <a href="javascript:void(0)" ng-click="showAbout()" ng-if="about"
+                                   class="{{isAboutVisible ? 'active-link': ''}}">about</a>
+                            </li>
+                        </ul>
+                        <ul class="share-options">
+                            <li>
+                                <a href="javascript:void(0)" class="share" ng-click="dropDownVisible='true'"></a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" class="download" ng-if="downloadurl" target="_blank"
+                                   ng-href="{{downloadurl}}"></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="toggleBySlide about-info"></div>
+                    <!--<div class='shareItemsDropDown' ng-show="dropDownVisible" ng-mouseleave="dropDownVisible='false'">-->
+                        <!--<ul class='shareItems'>-->
+                            <!--<li><a href='http://www.facebook.com/share.php?u={{url}}' target="_blank">Share on facebook</a></li>-->
+                            <!--<li><a class="twitter-share-button"-->
+                                   <!--href="https://twitter.com/share"-->
+                                   <!--data-size="large"-->
+                                   <!--data-url="https://dev.twitter.com/web/tweet-button"-->
+                                   <!--data-count-url="https://dev.twitter.com/web/tweet-button"-->
+                                   <!--data-via="twitterdev"-->
+                                   <!--data-related="twitterapi,twitter"-->
+                                   <!--data-hashtags="example,demo"-->
+                                   <!--data-text="custom share text" target="_blank">Share on twitter</a></li>-->
+                            <!--<li><a href="//pinterest.com/pin/create%2Fbutton/?url={{url}}" target="_blank">Share on pinterest</a></li>-->
+                            <!--<li><a href="https://plus.google.com/share?url={{url}}" target="_blank">Share on google+</a></li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="/user/js/common/directives/soundCloud/sdk.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/soundCloud/api.js"></script>
+    <script type="text/javascript" src="/common/lib/underscore/underscore-min.js"></script>
+    <script type="text/javascript" src="/common/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/common/lib/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/common/lib/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="/common/lib/angular-touch/angular-touch.min.js"></script>
+    <script type="text/javascript" src="/common/lib/jcarousel/dist/jquery.jcarousel.min.js"></script>
+    <script type="text/javascript" src="/common/jquery/jcarousel/jcarousel.responsive.js"></script>
+    <script type="text/javascript" src="/user/js/common/config/resourceUrlWhiteList.js"></script>
+    <script type="text/javascript" src="/user/js/songs/services/songsContentService.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/animation/animationModule.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/animation/toggleBySlide.js"></script>
+    <script type="text/javascript" src="/user/js/common/modules/thumbnailModule.js"></script>
+    <script type="text/javascript" src="/user/js/words/services/wordMapper.js"></script>
+    <script type="text/javascript" src="/user/js/songs/services/songMapper.js"></script>
+    <script type="text/javascript" src="/user/js/common/modules/mediaPlayer.js"></script>
+    <script type="text/javascript" src="/user/js/common/modules/htmlGenerator.js"></script>
+    <script type="text/javascript" src="/user/js/common/modules/headerModule.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/header/sticky.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/header/ajabShaharHeader.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/footer/ajabShaharFooter.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/animation/toggleByFading.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/songs/songContentDetails.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/carouselSupport/asCarousel.js"></script>
+    <script type="text/javascript" src="/user/js/common/bindDynamicHtml.js"></script>
+
+    <script type="text/javascript" src="/user/js/songs/songDetailsApp.js"></script>
+
+    <script type="text/javascript" src="/user/js/songs/controllers/songDetailsController.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/soundCloud/soundcloud_player.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/youtube/youtube_player.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/songs/songThumbnail.js"></script>
+</body>
+</html>
