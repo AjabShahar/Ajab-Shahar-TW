@@ -8,16 +8,17 @@
 
     <includeAll path="migrations"/>
     <changeSet id="67" author="CHANAKYA">
+        <validCheckSum>7:cf9d4e5e20d8778ac435ffa661a6f03f</validCheckSum>
         <preConditions onFail="MARK_RAN">
             <tableExists tableName="word_scholar"></tableExists>
         </preConditions>
         <sql>
-            ALTER TABLE IF EXISTS word_scholar RENAME COLUMN scholar_id TO person_id;
-            ALTER TABLE IF EXISTS word_scholar DROP CONSTRAINT word_scholar_pkey;
-            ALTER TABLE IF EXISTS word_scholar ADD PRIMARY KEY (word_person_id);
-            ALTER TABLE IF EXISTS word_scholar DROP CONSTRAINT scholar_id_fkey;
-            ALTER TABLE IF EXISTS word_scholar ADD CONSTRAINT person_id_fkey FOREIGN KEY (person_id) REFERENCES person (id);
-            ALTER TABLE IF EXISTS word_scholar RENAME TO word_person;
+            ALTER TABLE word_scholar RENAME COLUMN scholar_id TO person_id;
+            ALTER TABLE word_scholar DROP CONSTRAINT word_scholar_pkey;
+            ALTER TABLE word_scholar ADD PRIMARY KEY (word_person_id);
+            ALTER TABLE word_scholar DROP CONSTRAINT scholar_id_fkey;
+            ALTER TABLE word_scholar ADD CONSTRAINT person_id_fkey FOREIGN KEY (person_id) REFERENCES person (id);
+            ALTER TABLE word_scholar RENAME TO word_person;
         </sql>
     </changeSet>
     <changeSet id="68" author="chanakya_jaideep">
