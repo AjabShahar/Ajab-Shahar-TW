@@ -3,7 +3,7 @@
         <ul>
             <li class="list-item" ng-repeat="filterItem in filterItems" ng-click="itemClicked(filterItem)">
                 <a href="javascript:void(0)">
-                    <div ng-repeat="value in filterItem">{{value}}</div>
+                    <div ng-repeat="value in filterItem" class="child-list-item-value">{{value}}</div>
                 </a>
             </li>
         </ul>

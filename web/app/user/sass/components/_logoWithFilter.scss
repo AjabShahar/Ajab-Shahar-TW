@@ -1,0 +1,41 @@
+.logo-with-filter {
+
+    position: fixed;
+    left: 0;
+    top: 7%;
+    margin-left: 2%;
+    z-index: $zIndex-songs-leftNav;
+
+    .nav-elements-wrapper {
+      position: relative;
+      .category-logo {
+        background: transparent url('/user/img/songs/songs_logo.png') 0 0 no-repeat;
+        width: 85px;
+        height: 85px;
+        padding-top: 30px;
+        color: #9c9b9b;
+        font-size: 20px;
+        font-weight: 300;
+      }
+
+      .filter-button {
+        display: block;
+        margin-top: 8px;
+        font-size: 10px;
+        text-transform: uppercase;
+        color: #e61b72;
+        & > .collapse {
+          background: transparent url('/user/img/common/icons/minus.png') 0 0 no-repeat;
+          display: inline-block;
+          height: 9px;
+          width: 9px;
+
+          &.expand {
+            background-image: url('/user/img/common/icons/cross.png');
+
+          }
+        }
+
+      }
+    }
+}

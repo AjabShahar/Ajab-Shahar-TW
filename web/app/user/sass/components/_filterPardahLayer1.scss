@@ -109,4 +109,21 @@
 
     }
   }
+@include keyframes(pardah1-slideLeft) {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -250px;
+  }
+}
+
+@include keyframes(pardah1-slideRight) {
+  0% {
+    left: -250px;
+  }
+  100% {
+    left: 0;
+  }
+}
 

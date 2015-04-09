@@ -1,0 +1,77 @@
+.second-layer-list {
+
+    position: fixed;
+    left: 220px;
+    top: 0;
+    min-height: 650px;
+    width: 275px;
+    text-align: left;
+    z-index: -1;
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 12px;
+    box-sizing: border-box;
+
+    @include animation(pardah2-slideRight 0.5s forwards);
+
+    .overlay {
+        background: transparent url('/user/img/songs/filter-pardah2.png') right -5px repeat-y;
+        position: fixed;
+        min-width: 300px;
+        z-index: -1;
+        background-size: cover;
+        height: 100%;
+
+        & > ul {
+            display: block;
+            margin-top: 32px;
+            margin-left: 35px;
+            width: 72%;
+            height: 92%;
+            overflow-x: hidden;
+            overflow-y: auto;
+            .list-item {
+                padding: 5px 2%;
+                & > a {
+                    line-height: 1.8em;
+                    text-transform: capitalize;
+                    color: #888;
+                    &:hover {
+                        color: #E83785;
+                    }
+                    .child-list-item-value {
+                        &:nth-child(2) {
+                            font-family: 'Merriweather';
+                            font-size: 12px;
+                            font-weight: 100;
+                            font-style: italic;
+                            color: #b3b3b3;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.ng-hide {
+      @include animation(pardah2-slideLeft 0.5s forwards);
+    }
+}
+
+@include keyframes(pardah2-slideRight) {
+    0% {
+      left: -200px;
+    }
+    100% {
+      left: 220px;
+    }
+}
+
+@include keyframes(pardah2-slideLeft) {
+    0% {
+      left: 220px;
+    }
+    100% {
+      left: -200px;
+    }
+}
