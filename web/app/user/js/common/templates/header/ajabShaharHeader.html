@@ -62,9 +62,15 @@
 
         </header>
     </div>
-    <div class='headerArt'>
-        <div class='ajab-wrapper'>
-            <a class='menuTree' ng-click="toggleMenu()"></a>
-        </div>
+
+    <div style="position: relative;" class="headerArt">
+        <img src="/user/img/common/directives/header/transparent_header.png" alt=""  usemap="#avimap" style="position:absolute; left: 0; top: 0; width:100%; height: 100%;"/>
+        <!--<a class='menuTree' ng-click="toggleMenu()"></a>-->
+
     </div>
+    <map name="avimap" id="avimap">
+        <area alt="" title="" href="#" shape="poly" coords="1413,0,922,0,856,0,987,6,1076,13,1177,24,1261,28,1294,23" ng-click="toggleMenu()" />
+
+    </map>
+
 </div>
