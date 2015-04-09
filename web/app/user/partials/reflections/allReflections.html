@@ -3,90 +3,77 @@
 <head>
     <meta charset="utf-8">
     <title>All Reflections Page</title>
-    <script type="text/javascript" src="/common/lib/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="/common/lib/angular/angular.js"></script>
-    <script type="text/javascript" src="/common/lib/angular-animate/angular-animate.min.js"></script>
-    <script type="text/javascript" src="/common/lib/angular-touch/angular-touch.min.js"></script>
-    <script type="text/javascript" src="/common/lib/underscore/underscore.js"></script>
-    <script type="text/javascript" src="/common/lib/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/animation/animationModule.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/animation/toggleBySlide.js"></script>
-    <script type="text/javascript" src="/user/js/common/modules/thumbnailModule.js"></script>
-    <script type="text/javascript" src="/user/js/common/modules/PopupSupport.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/popupSupport/popup.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/popupSupport/popupMapper.js"></script>
-    <script type="text/javascript" src="/user/js/common/services/popupService.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/reflections/reflectionThumbnail.js"></script>
-    <script type="text/javascript" src="/user/js/common/modules/filterModule.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/common/asTitle.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/reflections/reflectionFilter.js"></script>
-    <script type="text/javascript" src="/user/js/common/filters/filterByScroll.js"></script>
-    <script type="text/javascript" src="/user/js/common/filters/filterReflectionByTitle.js"></script>
-    <script type="text/javascript" src="/user/js/common/modules/mediaPlayer.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/soundCloud/soundcloud_player.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/youtube/youtube_player.js"></script>
-    <script type="text/javascript" src="/user/js/common/config/resourceUrlWhiteList.js"></script>
-    <script type="text/javascript" src="/user/js/common/modules/headerModule.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/header/ajabShaharHeader.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/footer/ajabShaharFooter.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/header/sticky.js"></script>
-    <script type="text/javascript" src="/user/js/featuredContent/services/contentService.js"></script>
-    <script type="text/javascript" src="/user/js/reflections/services/reflectionMapper.js"></script>
-    <script type="text/javascript" src="/user/js/reflections/services/reflectionsContentService.js"></script>
-    <script type="text/javascript" src="/user/js/reflections/allReflectionsApp.js"></script>
-    <script type="text/javascript" src="/user/js/reflections/controllers/allReflectionsController.js"></script>
-    <script type="text/javascript" src="/user/js/common/modules/htmlGenerator.js"></script>
-    <link href="/user/css/common/directives/header/header.css" rel="stylesheet" type="text/css">
-    <link href="/user/css/common/directives/footer/footer.css" rel="stylesheet" type="text/css">
-    <link href="/user/css/thumbnails.css" rel="stylesheet" type="text/css">
-    <link href="/user/css/common/directives/popup.css" rel="stylesheet" type="text/css">
-    <link href="/user/css/common/directives/introduction.css" rel="stylesheet" type="text/css">
-    <link href="/user/css/pages/gridview.css" rel="stylesheet" type="text/css">
+
+
+    <link rel="stylesheet" type="text/css" href="/user/css/ajabShahar.css"/>
+
 </head>
-<body ng-controller="allReflectionsController" class="all-songs ng-scope" style="" ng-init="getTotalReflectionsCount()">
+<body ng-controller="allReflectionsController" class="grid-layout ng-scope reflections" style="" ng-init="getTotalReflectionsCount()">
 
 <div class="ajab-container headerfixOuter">
     <ajab-shahar-header></ajab-shahar-header>
     <!--<song-filter songs="songs" song-count="songCount" on-clear-filter="clearFilters()" active-letter="activeLetter" poet-name-in-filter="poetNameInFilter" singer-name-in-filter="singerNameInFilter"></song-filter>-->
-    <div class='left-nav headerfixInner'>
+    <div class='logo-with-filter headerfixInner'>
         <div class='nav-elements-wrapper'>
             <h1 class='category-logo'>reflections</h1>
             <a href="javascript:void(0);" class="filter-button">Filter <span class="collapse"></span></a>
         </div>
     </div>
     <div class="ajab-wrapper">
+        <!--<div on-click-outside="closeSecondParda()" class="slide-nav-list" ng-show="expandFilter">-->
+            <!--<song-filter-category criteria-list="criteriaList" select-handler="filterCategoryClicked"-->
+                                  <!--deselect-handler="removeFilterCriteria"-->
+                                  <!--clear-filters="clearAllFilters"></song-filter-category>-->
+            <!--<song-filter-parda show-this-parda="openSecondParda"-->
+                               <!--filter-items="filterItems[selectedFilterCategory.displayName]"-->
+                               <!--select-handler="filterItemSelected" ng-show="expandFilter"></song-filter-parda>-->
+        <!--</div>-->
 
 
-        <div class='grid-view' infinite-scroll="loadReflectionsFromRange()">
+        <div class='grid-view'>
 
-            <as-title current-alphabet-filter="activeLetter">
-
-                <span class='numericCount'>{{reflectionCount}} REFLECTIONS</span>
-
-                <div class="upper-right">
-                    <span class="search-box">
-                        <input type="search" class="search"/>
-                    </span>
-                    <span class="view-options">
-                        <a href="javascript:void(0)" class="grid"></a>
-                        <span class="separator">|</span>
-                        <a href="javascript:void(0)" class="list"></a>
-                    </span>
+            <div class='pagination-head'>
+                <div class="upper">
+                    <ul class="toggle">
+                        <li>
+                            <span>Original</span>
+                        </li>
+                        <li>
+                            <span class="active">English</span>
+                        </li>
+                    </ul>
+                    <div ng-transclude></div>
+                    <span class='numeric-count'>{{reflectionCount}} REFLECTIONS</span>
                 </div>
 
-            </as-title>
+            </div>
+
 
             <div class='grid-wrapper'>
-                <div infinite-scroll='loadReflectionsFromRange()' infinite-scroll-distance='1' class="song-grid">
-                    <ul class="flexi-thumbnails"
-                        ng-repeat="reflection in (reflections | filterReflectionByTitle:activeLetter| filterByScroll:scrollIndex)">
-                        <li>
-                            <reflection-thumbnail ng-if="reflection.isReflection" id="{{reflection.id}}"
-                                                  open="detailsService.open(reflection.contentId)"
-                                                  title="{{reflection.title}}" verb="{{reflection.verb}}"
-                                                  speaker="{{reflection.speaker}}"
-                                                  custom-style="{{reflection.customStyle}}"></reflection-thumbnail>
+                <div class="thumbnails-grid">
+                    <ul class="media-list">
+                        <li class="media">
+                            <div class="thumbnail reflections" id="6" content-id="song_6" open="open" custom-style="" >
+                                <div class="image">
+                                    <img src="/user/img/songs/sample-img.png">
+                                </div>
+                                <div class="bubble">
+                                    <div class="summary">
+                                        <h3 class="title">We need Kabir today</h3>
+                                        <h4 class="en-title">reflects <span class="author">Latif bolat</span></h4>
+
+                                        <div class="thumbnailDetails toggleBySlide">
+                                            <small class="intro">The nectar of heaven has been has been a familiar metaphor in many traditions across the ages.</small>
+                                            <div class="footer">
+                                                <small class="categoryName"></small>
+                                                <small class="play">05:10</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
+
                     </ul>
                 </div>
             </div>
@@ -94,5 +81,39 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript" src="/common/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/common/lib/angular/angular.js"></script>
+<script type="text/javascript" src="/common/lib/angular-animate/angular-animate.min.js"></script>
+<script type="text/javascript" src="/common/lib/angular-touch/angular-touch.min.js"></script>
+<script type="text/javascript" src="/common/lib/underscore/underscore.js"></script>
+<script type="text/javascript" src="/common/lib/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+<script type="text/javascript" src="/user/js/common/directives/animation/animationModule.js"></script>
+<script type="text/javascript" src="/user/js/common/directives/animation/toggleBySlide.js"></script>
+<script type="text/javascript" src="/user/js/common/modules/thumbnailModule.js"></script>
+<script type="text/javascript" src="/user/js/common/modules/PopupSupport.js"></script>
+<script type="text/javascript" src="/user/js/common/directives/popupSupport/popup.js"></script>
+<script type="text/javascript" src="/user/js/common/directives/popupSupport/popupMapper.js"></script>
+<script type="text/javascript" src="/user/js/common/services/popupService.js"></script>
+<script type="text/javascript" src="/user/js/common/directives/reflections/reflectionThumbnail.js"></script>
+<script type="text/javascript" src="/user/js/common/modules/filterModule.js"></script>
+<script type="text/javascript" src="/user/js/common/directives/common/asTitle.js"></script>
+<script type="text/javascript" src="/user/js/common/directives/reflections/reflectionFilter.js"></script>
+<script type="text/javascript" src="/user/js/common/filters/filterByScroll.js"></script>
+<script type="text/javascript" src="/user/js/common/filters/filterReflectionByTitle.js"></script>
+<script type="text/javascript" src="/user/js/common/modules/mediaPlayer.js"></script>
+<script type="text/javascript" src="/user/js/common/directives/soundCloud/soundcloud_player.js"></script>
+<script type="text/javascript" src="/user/js/common/directives/youtube/youtube_player.js"></script>
+<script type="text/javascript" src="/user/js/common/config/resourceUrlWhiteList.js"></script>
+<script type="text/javascript" src="/user/js/common/modules/headerModule.js"></script>
+<script type="text/javascript" src="/user/js/common/directives/header/ajabShaharHeader.js"></script>
+<script type="text/javascript" src="/user/js/common/directives/footer/ajabShaharFooter.js"></script>
+<script type="text/javascript" src="/user/js/common/directives/header/sticky.js"></script>
+<script type="text/javascript" src="/user/js/featuredContent/services/contentService.js"></script>
+<script type="text/javascript" src="/user/js/reflections/services/reflectionMapper.js"></script>
+<script type="text/javascript" src="/user/js/reflections/services/reflectionsContentService.js"></script>
+<script type="text/javascript" src="/user/js/reflections/allReflectionsApp.js"></script>
+<script type="text/javascript" src="/user/js/reflections/controllers/allReflectionsController.js"></script>
+<script type="text/javascript" src="/user/js/common/modules/htmlGenerator.js"></script>
 </body>
 </html>

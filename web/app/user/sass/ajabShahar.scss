@@ -32,7 +32,7 @@
 @import 'components/thumbnailContent';
 @import 'components/thumbnailSongs';
 @import 'components/thumbnailWords';
-@import 'components/thumbnailCouplets';
+@import 'components/thumbnailReflections';
 @import 'components/thumbnailForGrid';
 @import 'components/thumbnailForCarousel';
 @import 'components/lightbox';
@@ -41,6 +41,8 @@
 @import 'components/scrollBar';
 @import 'components/pagination';
 @import 'components/detailsLayout';
+@import 'components/gridLayout';
+@import 'components/filterPardahLayer1';
 // Page specific
 @import 'pages/splash';
 @import 'pages/home';
@@ -50,3 +52,5 @@
 @import 'pages/glossary';
 @import 'pages/wordsFeatured';
 @import 'pages/reflectionsDetail';
+@import 'pages/reflectionsAll';
+
