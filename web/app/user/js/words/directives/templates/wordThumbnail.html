@@ -1,0 +1,24 @@
+<div>
+    <div class="thumbnail word {{customStyle}}">
+        <div class="image" ng-click="open('{{id}}')">
+            <img src="{{imgSrc}}"/>
+        </div>
+        <div class="bubble" ng-click="open('{{id}}')">
+            <div class="summary" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
+                <h3 class="title">{{transliteration}}</h3>
+                <h4 class="en-title">{{translation}}</h4>
+
+                <div ng-hide="!shouldShowDetails" class='thumbnailDetails toggleBySlide'>
+                    <div class="desc">
+                        <small>{{englishIntroExcerpt| limitTo : 100 }} ...</small>
+                    </div>
+                    <div class='footer'>
+                        <p class="categoryName">WORD INTRO
+                            <small class="more-info">T</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

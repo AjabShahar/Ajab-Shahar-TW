@@ -4,18 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>Landing Page</title>
-    <!-- <link href="/user/css/mainLandingPage/homePage.css" rel="stylesheet" type="text/css"> -->
-    <!-- <link rel="stylesheet" type="text/css" href="/common/lib/angular-socialshare/angular-socialshare.css"> -->
-    <!-- <link href="/user/css/common/directives/header/header.css" rel="stylesheet" type="text/css"> -->
-    <!-- <link href="/user/css/common/directives/footer/footer.css" rel="stylesheet" type="text/css"> -->
-    <!-- <link href="/user/css/mainLandingPage/parallax.css" rel="stylesheet" type="text/css"> -->
-    <!-- <link href="/user/css/thumbnails.css" rel="stylesheet" type="text/css"> -->
-    <!-- <link href="/user/css/common/directives/popup.css" rel="stylesheet" type="text/css"> -->
-    <!-- <link href="/user/css/common/directives/introduction.css" rel="stylesheet" type="text/css"> -->
-    <!-- <link href="/user/css/wordThumbnail.css" rel="stylesheet" type="text/css"> -->
-    <!-- <link href="/user/css/reflectionThumbnail.css" rel="stylesheet" type="text/css"> -->
-    <!-- <link rel="stylesheet" href="/user/css/jquery.jscrollpane.css"/> -->
-
     <link rel="stylesheet"
           href="//fonts.googleapis.com/css?family=Merriweather:400,300italic,300,400italic,700,700italic"/>
     <link rel="stylesheet"
@@ -112,30 +100,41 @@
 <script type="text/javascript" src="/common/lib/angular/angular.min.js"></script>
 <script type="text/javascript" src="/common/lib/angular-animate/angular-animate.min.js"></script>
 <script type="text/javascript" src="/common/lib/angular-touch/angular-touch.min.js"></script>
+<script type="text/javascript" src="/common/lib/angular-route/angular-route.js"></script>
 <script type="text/javascript" src="/user/js/common/directives/socialMedia/widgets.js"></script>
 <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
 <script type="text/javascript" src="/common/lib/angular-socialshare/angular-socialshare.js"></script>
 <script type="text/javascript" src="/user/js/common/directives/animation/animationModule.js"></script>
 <script type="text/javascript" src="/user/js/common/directives/animation/toggleBySlide.js"></script>
-<script type="text/javascript" src="/user/js/common/modules/thumbnailModule.js"></script>
-<script type="text/javascript" src="/user/js/common/modules/PopupSupport.js"></script>
-<script type="text/javascript" src="/user/js/common/directives/popupSupport/popup.js"></script>
 <script type="text/javascript" src="/user/js/angular-jscrollpane.min.js"></script>
 <script type="text/javascript" src="/user/js/jquery.mousewheel.js"></script>
-
-<script type="text/javascript" src="/user/js/common/directives/songs/songThumbnail.js"></script>
-<script type="text/javascript" src="/user/js/common/directives/words/wordThumbnail.js"></script>
-<script type="text/javascript" src="/user/js/common/directives/reflections/reflectionThumbnail.js"></script>
 <script type="text/javascript" src="/user/js/scrollability.min.js"></script>
 <script type="text/javascript" src="/user/js/jquery.stellar.js"></script>
 <script type="text/javascript" src="/user/js/landingPage.js"></script>
+
+
+
+<script type="text/javascript" src="/user/js/common/modules/utilities.js"></script>
+
+<script type="text/javascript" src="/user/js/words/wordApp.js"></script>
+<script type="text/javascript" src="/user/js/words/services/wordMapper.js"></script>
+<script type="text/javascript" src="/user/js/words/directives/wordBubble.js"></script>
+<script type="text/javascript" src="/user/js/words/directives/wordThumbnail.js"></script>
+<script type="text/javascript" src="/user/js/words/directives/wordOverview.js"></script>
+<script type="text/javascript" src="/user/js/words/services/wordService.js"></script>
+
+<script type="text/javascript" src="/user/js/common/modules/thumbnailModule.js"></script>
+<script type="text/javascript" src="/user/js/common/modules/PopupSupport.js"></script>
+<script type="text/javascript" src="/user/js/common/directives/popupSupport/popup.js"></script>
+<script type="text/javascript" src="/user/js/common/directives/songs/songThumbnail.js"></script>
+<script type="text/javascript" src="/user/js/common/directives/reflections/reflectionThumbnail.js"></script>
+
 
 <script type="text/javascript" src="/user/js/common/modules/mediaPlayer.js"></script>
 <script type="text/javascript" src="/user/js/common/directives/soundCloud/soundcloud_player.js"></script>
 <script type="text/javascript" src="/user/js/common/directives/youtube/youtube_player.js"></script>
 
 <script type="text/javascript" src="/user/js/common/directives/songs/songOverview.js"></script>
-<script type="text/javascript" src="/user/js/common/directives/words/wordOverview.js"></script>
 <script type="text/javascript" src="/user/js/common/directives/reflections/reflectionOverview.js"></script>
 
 <script type="text/javascript" src="/user/js/common/config/resourceUrlWhiteList.js"></script>
@@ -143,14 +142,13 @@
 <script type="text/javascript" src="/user/js/common/directives/header/ajabShaharHeader.js"></script>
 <script type="text/javascript" src="/user/js/common/directives/footer/ajabShaharFooter.js"></script>
 <script type="text/javascript" src="/user/js/featuredContent/services/contentService.js"></script>
-<script type="text/javascript" src="/user/js/words/services/wordMapper.js"></script>
 <script type="text/javascript" src="/user/js/songs/services/songMapper.js"></script>
-<script type="text/javascript" src="/user/js/words/services/wordMapper.js"></script>
 <script type="text/javascript" src="/user/js/reflections/services/reflectionMapper.js"></script>
 <script type="text/javascript" src="/user/js/mappers.js"></script>
 <script type="text/javascript" src="/user/js/common/services/popupService.js"></script>
 
 <script type="text/javascript" src="/user/js/common/bindDynamicHtml.js"></script>
+
 <script type="text/javascript" src="/user/js/featuredContent/app.js"></script>
 
 <script type="text/javascript" src="/user/js/common/modules/htmlGenerator.js"></script>

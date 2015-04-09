@@ -1,4 +1,4 @@
-var featuredContentApp = angular.module('featuredContentApp', ['thumbnailModule', 'mediaPlayer', 'popupSupport', 'htmlGenerator', 'headerModule', 'djds4rce.angular-socialshare']);
+var featuredContentApp = angular.module('featuredContentApp', ['thumbnailModule', 'mediaPlayer', 'popupSupport', 'htmlGenerator', 'headerModule', 'djds4rce.angular-socialshare','word']);
 
 featuredContentApp.config(resourceUrlWhiteList);
 featuredContentApp.factory('contentService', ['$http', contentService]);

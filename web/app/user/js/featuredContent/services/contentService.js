@@ -11,18 +11,9 @@ var contentService = function ($http) {
         return $http.get('/api/songs/getPublishedSongs');
     };
 
-    var getWordsLandingPageContent = function () {
-        return $http.get('/api/words?showOnWordsLandingPage=true');
-    };
-
-    var getGlossaryPageContent = function () {
-        return $http.get('/api/words');
-    };
-
     return {
         getMainLandingPageThumbnails: getMainLandingPageThumbnails,
-        getSongsLandingPageThumbnails: getSongsLandingPageThumbnails,
-        getWordsLandingPageContent: getWordsLandingPageContent,
-        getGlossaryPageContent: getGlossaryPageContent
+        getSongsLandingPageThumbnails: getSongsLandingPageThumbnails
+
     };
 };

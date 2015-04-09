@@ -1,6 +1,6 @@
 'use strict';
 
-thumbnailModule.directive("wordThumbnail", function () {
+angular.module("word").directive("wordThumbnail", function () {
     return {
         replace: true,
         restrict: 'E',
@@ -14,8 +14,8 @@ thumbnailModule.directive("wordThumbnail", function () {
             id: '@',
             open: '&'
         },
-        templateUrl: '/user/js/common/templates/words/wordThumbnail.html',
-        controller: function ($scope, $window) {
+        templateUrl: '/user/js/words/directives/templates/wordThumbnail.html',
+        controller: function ($scope) {
             $scope.shouldBeOpen = false;
             $scope.shouldShowDetails = false;
 
