@@ -20,14 +20,42 @@
         </div>
     </div>
     <div class="ajab-wrapper">
-        <!--<div on-click-outside="closeSecondParda()" class="slide-nav-list" ng-show="expandFilter">-->
-            <!--<song-filter-category criteria-list="criteriaList" select-handler="filterCategoryClicked"-->
-                                  <!--deselect-handler="removeFilterCriteria"-->
-                                  <!--clear-filters="clearAllFilters"></song-filter-category>-->
+        <div class="slide-nav-list ng-animate">
+            <!--first layer pardah-->
+
+            <div class="first-layer-list">
+                <ul class='filters'>
+                    <li class='head'>Filter by</li>
+                    <li>
+                        <a href="javascript:void(0)">speaker</a>
+                        <div class="child-list">
+                            <span>Lalit Lalit<a>x</a></span>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">word</a>
+                        <div class="child-list">
+                            <span>Body As Instrument<a>x</a></span>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">poet</a>
+                        <div class="child-list">
+                            <span>Roshan Lal<a>x</a></span>
+                        </div>
+                    </li>
+
+                    <li class="reset-image"><a class="reset" ng-click="resetFilters()">reset</a></li>
+                </ul>
+            </div>
+
+
+
+        </div>
+
             <!--<song-filter-parda show-this-parda="openSecondParda"-->
                                <!--filter-items="filterItems[selectedFilterCategory.displayName]"-->
                                <!--select-handler="filterItemSelected" ng-show="expandFilter"></song-filter-parda>-->
-        <!--</div>-->
 
 
         <div class='grid-view'>
