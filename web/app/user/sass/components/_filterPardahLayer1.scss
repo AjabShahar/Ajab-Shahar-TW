@@ -10,7 +10,7 @@
 
     &.ng-hide-add {
 
-      @include animation(pardah1-slideLeft 0.5s forwards);
+     @include animation(pardah1-slideLeft 0.5s forwards);
     }
 
     &.ng-hide-remove {
@@ -33,8 +33,10 @@
       & > li {
 
         font-family: 'Merriweather';
-        color: #666;
         padding: 5px 0;
+        color: #666;
+        font-weight: 300;
+        font-size: 16px;
 
         &.head {
           line-height: 1.5em;
@@ -54,14 +56,8 @@
 
         }
 
-        & > a {
+        a {
           text-transform: lowercase;
-          font-weight: 300;
-          font-family: 'Merriweather';
-          color: #666;
-          line-height: 30px;
-          font-size: 18px;
-          cursor: pointer;
 
           &:hover {
             color: #E83785;
