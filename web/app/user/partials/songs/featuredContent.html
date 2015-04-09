@@ -4,23 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Songs landing Page</title>
-
-    <!--     <link rel="stylesheet" type="text/css" href="/common/lib/angular-socialshare/angular-socialshare.css">
-    <link href="/user/css/common/directives/header/header.css" rel="stylesheet" type="text/css">
-    <link href="/user/css/common/directives/footer/footer.css" rel="stylesheet" type="text/css">
-    <link href="/user/css/pages/songsLandingPage.css" rel="stylesheet" type="text/css">
-    <link href="/user/css/thumbnails.css" rel="stylesheet" type="text/css">
-    <link href="/user/css/common/directives/popup.css" rel="stylesheet" type="text/css">
-    <link href="/user/css/common/directives/introduction.css" rel="stylesheet" type="text/css"> -->
-
     <link rel="stylesheet"
           href="//fonts.googleapis.com/css?family=Merriweather:400,300italic,300,400italic,700,700italic"/>
     <link rel="stylesheet"
           href="//fonts.googleapis.com/css?family=Merriweather+Sans:400,300italic,300,400italic,700,700italic"/>
     <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/lohitdevanagari.css"/>
-
     <link rel="stylesheet" type="text/css" href="/user/css/ajabShahar.css"/>
-
 </head>
 <body ng-controller="songsFeaturedContentController" class="featured-songs">
 <div id="ajab_container">
@@ -56,9 +45,9 @@
                             <a href="/user/partials/songs/allSongs.html">songs</a>
 
                             <div class="sub-info">
-                                <span class="number">
-                                    {{thumbnails.length}} of {{publishedSongsCount}}
-                                </span>
+                                    <span class="number">
+                                        {{thumbnails.length}} of {{publishedSongsCount}}
+                                    </span>
                                 <a href="/user/partials/songs/allSongs.html" class="all-link">
                                     see all
                                 </a>
@@ -110,6 +99,7 @@
 <script type="text/javascript" src="/common/lib/underscore/underscore.js"></script>
 <script type="text/javascript" src="/common/lib/jquery/dist/jquery.js"></script>
 <script type="text/javascript" src="/common/lib/angular/angular.js"></script>
+<script type="text/javascript" src="/common/lib/angular-route/angular-route.js"></script>
 <script type="text/javascript" src="/common/lib/angular-animate/angular-animate.min.js"></script>
 <script type="text/javascript" src="/common/lib/angular-touch/angular-touch.min.js"></script>
 <script type="text/javascript" src="/user/js/common/directives/socialMedia/widgets.js"></script>
@@ -135,6 +125,8 @@
 <script type="text/javascript" src="/user/js/common/directives/header/ajabShaharHeader.js"></script>
 <script type="text/javascript" src="/user/js/common/directives/footer/ajabShaharFooter.js"></script>
 <script type="text/javascript" src="/user/js/featuredContent/services/contentService.js"></script>
+<script type="text/javascript" src="/user/js/common/modules/utilities.js"></script>
+<script type="text/javascript" src="/user/js/words/wordApp.js"></script>
 <script type="text/javascript" src="/user/js/words/services/wordMapper.js"></script>
 <script type="text/javascript" src="/user/js/songs/services/songMapper.js"></script>
 <script type="text/javascript" src="/user/js/common/services/popupService.js"></script>
