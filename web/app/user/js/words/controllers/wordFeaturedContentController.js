@@ -1,4 +1,4 @@
-angular.module("word").controller('allWordsController', ['$scope', 'wordService', function ($scope, wordService) {
+angular.module("word").controller('wordFeaturedContentController', ['$scope', 'wordService', function ($scope, wordService) {
     $scope.init = function () {
         wordService.getWordsLandingPageContent().then(function (result) {
             $scope.words = result.data.words;
@@ -15,7 +15,4 @@ angular.module("word").controller('allWordsController', ['$scope', 'wordService'
         homepageContent.style.height = (homepageContent.offsetHeight + 300) + "px";
     };
     $scope.init();
-
-    console.log("i m in all words controller");
 }]);
-

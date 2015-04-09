@@ -1,7 +1,6 @@
 (function ($) {
     $(function () {
         var jcarousel = $('.jcarousel');
-        console.log(jcarousel);
 
         jcarousel
             .on('jcarousel:reload jcarousel:create', function () {

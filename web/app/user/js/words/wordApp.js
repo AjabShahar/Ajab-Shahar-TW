@@ -5,17 +5,17 @@ angular.module("word", ['ngRoute', 'htmlGenerator', 'headerModule', 'animationMo
             templateUrl:"/user/js/words/partials/wordDetails.html",
             controller:"wordDetailsController"
         })
-        .when('/allWords', {
-            templateUrl: "/user/js/words/partials/allWords.html",
-            controller: "allWordsController"
+        .when('/featuredContent', {
+            templateUrl: "/user/js/words/partials/featuredContent.html",
+            controller: "wordFeaturedContentController"
         })
         .when('/glossary', {
             templateUrl: "/user/js/words/partials/glossary.html",
             controller: "glossaryController"
         })
         .otherwise( {
-            templateUrl: "/user/js/words/partials/allWords.html",
-            controller: "allWordsController"
+            templateUrl: "/user/js/words/partials/featuredContent.html",
+            controller: "wordFeaturedContentController"
         });
 
 }]);
