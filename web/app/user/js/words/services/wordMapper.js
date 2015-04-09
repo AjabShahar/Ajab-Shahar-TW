@@ -1,6 +1,6 @@
-var wordMapper = function () {
+angular.module("word").factory('wordMapper', [function () {
     getThumbnails = function (words, customStyle) {
-        return _.reduce(words, function (thumbnails, word, index) {
+        return _.reduce(words, function (thumbnails, word) {
             thumbnails.push({
                 "id": word.id,
                 "isWord": true,
@@ -10,14 +10,14 @@ var wordMapper = function () {
                 "wordTransliteration": word.wordTransliteration,
                 "hindiIntroExcerpt": word.hindiIntroExcerpt,
                 "englishIntroExcerpt": word.englishIntroExcerpt,
-                "customStyle": (customStyle) ? customStyle() : '',
+                "customStyle": (customStyle) ? customStyle() : ''
             });
             return thumbnails;
         }, []);
     };
 
-    getOverviews = function (words, customStyle) {
-        return _.reduce(words, function (introductions, word, index) {
+    getOverviews = function (words) {
+        return _.reduce(words, function (introductions, word) {
             introductions.push({
                 "id": word.id,
                 "isWord": true,
@@ -28,26 +28,26 @@ var wordMapper = function () {
                 "hindiIntroExcerpt": word.hindiIntroExcerpt,
                 "englishIntroExcerpt": word.englishIntroExcerpt,
                 "wordIntroEnglish": word.wordIntroEnglish,
-                "writers": word.writers,
+                "writers": word.writers
             });
             return introductions;
         }, []);
     };
 
     getWordDetails = function (words) {
-        return _.reduce(words, function (details, word, index) {
+        return _.reduce(words, function (details, word) {
             details.push({
                 "wordOriginal": word.wordOriginal,
                 "wordTranslation": word.wordTranslation,
                 "wordTransliteration": word.wordTransliteration,
                 "hindiIntroExcerpt": word.hindiIntroExcerpt,
-                "englishIntroExcerpt": word.englishIntroExcerpt,
+                "englishIntroExcerpt": word.englishIntroExcerpt
             });
             return details;
         }, []);
     };
     getWordCompleteInfo = function (words) {
-        return _.reduce(words, function (details, word, index) {
+        return _.reduce(words, function (details, word) {
             details.push({
                 "wordOriginal": word.wordOriginal,
                 "wordTranslation": word.wordTranslation,
@@ -55,14 +55,14 @@ var wordMapper = function () {
                 "hindiIntroExcerpt": word.hindiIntroExcerpt,
                 "englishIntroExcerpt": word.englishIntroExcerpt,
                 "wordIntroHindi": word.wordIntroHindi,
-                "wordIntroEnglish": word.wordIntroEnglish,
+                "wordIntroEnglish": word.wordIntroEnglish
             });
             return details;
         }, []);
     };
 
     getBasicDetails = function (words) {
-        return _.reduce(words, function (wordBasicInfo, word, index) {
+        return _.reduce(words, function (wordBasicInfo, word) {
             wordBasicInfo.push({
                 "id": word.id,
                 "translation": word.wordTranslation,
@@ -82,6 +82,4 @@ var wordMapper = function () {
         getWordCompleteInfo: getWordCompleteInfo,
         getBasicDetails: getBasicDetails
     };
-};
-
-thumbnailModule.factory('wordMapper', [wordMapper]);
+}]);

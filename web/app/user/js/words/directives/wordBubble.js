@@ -1,6 +1,6 @@
 'use strict';
 
-thumbnailModule.directive("wordBubble", function () {
+angular.module("word").directive("wordBubble", function () {
     return {
         restrict: 'E',
         scope: {
@@ -9,7 +9,7 @@ thumbnailModule.directive("wordBubble", function () {
             wordTranslation: '@',
             transliterationIntro: '@'
         },
-        templateUrl: '/user/js/common/templates/words/wordBubble.html',
+        templateUrl: '/user/js/words/directives/templates/wordBubble.html',
         controller: function ($scope) {
         }
     }

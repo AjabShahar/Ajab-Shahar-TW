@@ -1,0 +1,36 @@
+
+<ajab-shahar-header call-back="setPageHeight()"></ajab-shahar-header>
+
+<div class='ajab-container words-wrapper'>
+    <div class='ajab-wrapper'>
+        <div class="page-header">
+                    <span class="logo-container">
+                        <a href="javascript:void(0)">words</a>
+                    </span>
+
+            <div class="pagination-head">
+                <div class="upper">
+                    <ul class="toggle">
+                        <li>
+                            <span>Original</span>
+                        </li>
+                        <li>
+                            <span class="active">English</span>
+                        </li>
+                    </ul>
+                    <span class="numeric-count">{{Number}} words</span>
+                </div>
+            </div>
+        </div>
+        <div class='homepage-content'>
+            <div ng-repeat="word in words">
+                <word-bubble word-transliteration="{{word.wordTransliteration}}"
+                             word-translation="{{word.wordTranslation}}"
+                             transliteration-intro="{{word.englishIntroExcerpt}}"></word-bubble>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ajab-shahar-footer></ajab-shahar-footer>
+

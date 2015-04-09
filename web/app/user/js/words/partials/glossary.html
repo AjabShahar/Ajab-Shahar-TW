@@ -1,0 +1,42 @@
+
+<div class="ajab_container" id="glossary_page">
+    <ajab-shahar-header></ajab-shahar-header>
+    <div class="ajab-wrapper">
+        <div class="page-header">
+            <div class="logo-container">
+                <a href="javascript:void(0)" target="_self">
+                    <span class="page-logo">glossary</span>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="content-wrapper">
+            <div class="pagination-head">
+                <div class="upper">
+                    <span class="numeric-count">{{numberOfTerms}} words</span>
+                </div>
+            </div>
+
+            <div ng-repeat="term in glossary">
+                <dl>
+                    <dt class="word-title" ng-class="term.isRootWord ? 'root-word' : ''" ng-click="open('{{term.id}}')">
+                                   <span ng-if="term.isRootWord">
+                                       <a href="/user/partials/words/details.html?id={{term.id}}">{{term.wordTransliteration}}</a>
+                                   </span>
+                                   <span ng-if="!term.isRootWord">
+                                       {{term.wordTransliteration}}
+                                   </span>
+                        <span class="related">(<span
+                                class="hindi">{{term.wordOriginal}}</span>, {{term.diacritic}})</span>
+                    </dt>
+                    <dd class="word-meaning">
+                        <div bind-dynamic-html='term.meaning'></div>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="loader_wrapper"><span></span></div>

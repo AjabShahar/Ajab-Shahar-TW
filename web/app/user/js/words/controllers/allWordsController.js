@@ -1,6 +1,6 @@
-var wordsFeaturedContentController = function ($scope, contentService, $location, $window) {
+angular.module("word").controller('allWordsController', ['$scope', 'wordService', function ($scope, wordService) {
     $scope.init = function () {
-        contentService.getWordsLandingPageContent().then(function (result) {
+        wordService.getWordsLandingPageContent().then(function (result) {
             $scope.words = result.data.words;
         });
     };
@@ -14,8 +14,8 @@ var wordsFeaturedContentController = function ($scope, contentService, $location
         });
         homepageContent.style.height = (homepageContent.offsetHeight + 300) + "px";
     };
-
     $scope.init();
-};
 
-wordsFeaturedContentApp.controller('wordsFeaturedContentController', ['$scope', 'contentService', '$location', '$window', wordsFeaturedContentController]);
+    console.log("i m in all words controller");
+}]);
+
