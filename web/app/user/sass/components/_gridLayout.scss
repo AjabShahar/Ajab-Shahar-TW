@@ -1,0 +1,18 @@
+.grid-layout {
+    background: transparent url(/user/img/common/bg/bg_pattern.png) repeat;
+    background-size: contain;
+    margin: 10px 0 0 0;
+
+    .grid-view {
+        float: left;
+        margin-left: 130px;
+        width: 99%;
+        width: calc(100% - 130px);
+    }
+
+    .headerBox {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}

@@ -1,0 +1,116 @@
+ .slide-nav-list {
+    padding: 0;
+    margin-top: -2px;
+    margin-left: -5px;
+    position: absolute;
+    left: -250px;
+    top: 0;
+    min-height: 600px;
+    z-index: 180;
+
+    &.ng-hide-add {
+
+      @include animation(pardah1-slideLeft 0.5s forwards);
+    }
+
+    &.ng-hide-remove {
+      @include animation(pardah1-slideRight 0.5s forwards);
+    }
+
+    .first-layer-list {
+      width: 250px;
+      background: transparent url('/user/img/songs/parda180px.png') right -5px repeat-y;
+      background-size: cover;
+      height: 100%;
+      position: fixed;
+    }
+
+    .filters {
+      margin-top: 200px;
+      margin-right: 80px;
+      margin-left: 30px;
+      text-align: left;
+      & > li {
+
+        font-family: 'Merriweather';
+        color: #666;
+        padding: 5px 0;
+
+        &.head {
+          line-height: 1.5em;
+          font-size: 10px;
+          text-transform: UPPERCASE;
+          color: #b3b3b3;
+        }
+        &.ng-hide {
+          display: none;
+        }
+        &.reset-image {
+          background: transparent url('/user/img/songs/underline_curved.png') no-repeat;
+          margin-top: 50px;
+          width: 14em;
+          background-size: contain;
+          background-position: -2em 0;
+
+        }
+
+        & > a {
+          text-transform: lowercase;
+          font-weight: 300;
+          font-family: 'Merriweather';
+          color: #666;
+          line-height: 30px;
+          font-size: 18px;
+          cursor: pointer;
+
+          &:hover {
+            color: #E83785;
+          }
+
+          &.active {
+            font-weight: 700;
+          }
+
+          &.disable {
+            cursor: default;
+            color: #b3b3b3;
+            &:hover {
+              color: none;
+            }
+          }
+          &.reset {
+            text-transform: uppercase;
+            font-weight: 300;
+            font-family: 'Merriweather';
+            color: #b3b3b3;
+            font-size: 10px;
+            padding-top: 2em;
+            display: block;
+          }
+        }
+
+        .child-list {
+          margin: 10px 0;
+          line-height: 1em;
+          & span {
+            color: #999;
+            font-size: 12px;
+            font-family: 'Merriweather Sans';
+            text-transform: capitalize;
+            margin: 0;
+            font-weight: 300;
+            & a {
+
+              color: #e62379;
+              line-height: 15px;
+              margin-left: 10px;
+              font-weight: 700;
+
+            }
+          }
+        }
+      }
+
+    }
+  }
+
