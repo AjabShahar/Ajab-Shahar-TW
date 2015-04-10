@@ -14,7 +14,7 @@ angular.module("word").
         $scope.showWord = true;
 
         $scope.init = function () {
-            $scope.wordId = $routeParams.wordId;
+            $scope.wordId = $routeParams.id;
 
             wordService.getVersions($scope.wordId).then(function (result) {
                 $scope.words.push(result.data.word);
