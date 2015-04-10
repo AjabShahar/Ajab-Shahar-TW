@@ -1,0 +1,38 @@
+.words-details {
+    background: transparent url(/user/img/words/word_details_bg.png) left top;
+    width: 100%;
+
+    .content-wrapper {
+        width: 780px;
+        background: transparent url(/user/img/words/word_content_bg_middle.png) left top;
+        background-repeat: no-repeat repeat;
+        margin: 0 auto;
+        position: relative;
+        padding: 10px 2%;
+
+        &:before, &:after {
+            display: block;
+            position: absolute;
+            width:100%;
+            content: '';
+            left: 0;
+
+        }
+
+        &:before {
+            background: transparent url(/user/img/words/word_content_bg_top.png) left top no-repeat;
+            top:-93px;
+            height: 100px;
+        }
+
+
+         &:after {
+            height: 140px;
+            background: transparent url(/user/img/words/word_content_bg_bottom.png) left top scroll repeat-y;
+            bottom: -200px;
+         }
+
+
+
+    }
+}
