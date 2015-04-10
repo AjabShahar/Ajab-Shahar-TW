@@ -27,7 +27,7 @@ var contentService = function ($http) {
         return $http.get('/api/genres');
     };
 
-    var getAllReflections = function () {
+    var getAllReflectionSummaries = function () {
         return $http.get('/api/reflections/summary');
     };
 
@@ -43,6 +43,10 @@ var contentService = function ($http) {
         return $http.post('/api/words/edit', word);
     };
 
+    var getAllReflections = function(){
+       return $http.get('/api/reflections/all')
+    };
+
     return {
         getAllPeople: getAllPeople,
         getAllCategories: getAllCategories,
@@ -50,10 +54,11 @@ var contentService = function ($http) {
         getAllCouplets: getAllCouplets,
         getAllWords: getAllWords,
         getAllGenres: getAllGenres,
-        getAllReflections: getAllReflections,
+        getAllReflections: getAllReflectionSummaries,
         saveWord: saveWord,
         getWord: getWord,
         updateWord: updateWord,
-        getPoets: getPoets
+        getPoets: getPoets,
+        getAllReflections: getAllReflections
     };
 };
