@@ -1,112 +1,105 @@
 <html lang="en" ng-app="allSongsApp">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>All Songs Page</title>
-    <script type="text/javascript" src="/common/lib/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="/common/lib/angular/angular.js"></script>
-    <script type="text/javascript" src="/common/lib/angular-animate/angular-animate.min.js"></script>
-    <script type="text/javascript" src="/common/lib/angular-touch/angular-touch.min.js"></script>
-    <script type="text/javascript" src="/common/lib/underscore/underscore.js"></script>
-    <script type="text/javascript" src="/common/lib/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/animation/animationModule.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/animation/toggleBySlide.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/animation/slideNavList.js"></script>
-    <script type="text/javascript" src="/user/js/common/modules/thumbnailModule.js"></script>
-    <script type="text/javascript" src="/user/js/common/modules/PopupSupport.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/songs/songThumbnail.js"></script>
-    <script type="text/javascript" src="/user/js/common/modules/filterModule.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/common/asTitle.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/songs/songFilter.js"></script>
-    <script type="text/javascript" src="/user/js/common/filters/filterByScroll.js"></script>
-    <script type="text/javascript" src="/user/js/common/filters/filterSongBySinger.js"></script>
-    <script type="text/javascript" src="/user/js/common/filters/filterSongByPoet.js"></script>
-    <script type="text/javascript" src="/user/js/common/filters/filterSongByTitle.js"></script>
-    <script type="text/javascript" src="/user/js/common/modules/mediaPlayer.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/soundCloud/soundcloud_player.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/youtube/youtube_player.js"></script>
-    <script type="text/javascript" src="/user/js/common/config/resourceUrlWhiteList.js"></script>
-    <script type="text/javascript" src="/user/js/common/modules/headerModule.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/header/ajabShaharHeader.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/footer/ajabShaharFooter.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/header/sticky.js"></script>
-    <script type="text/javascript" src="/user/js/common/config/filterConfig.js"></script>
-    <script type="text/javascript" src="/user/js/common/models/sieve.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/songs/songFilterCategory.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/songs/songFilterParda.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/common/onClickOutside.js"></script>
-    <script type="text/javascript" src="/user/js/featuredContent/services/contentService.js"></script>
-    
-    <script type="text/javascript" src="/common/lib/angular-route/angular-route.js"></script>
-    <script type="text/javascript" src="/user/js/common/modules/utilities.js"></script>
-    <script type="text/javascript" src="/user/js/words/wordApp.js"></script>
-    <script type="text/javascript" src="/user/js/words/services/wordMapper.js"></script>
-    <script type="text/javascript" src="/user/js/songs/services/songMapper.js"></script>
-    <script type="text/javascript" src="/user/js/songs/services/songsContentService.js"></script>
-    <script type="text/javascript" src="/user/js/songs/allSongsApp.js"></script>
-    <script type="text/javascript" src="/user/js/songs/songPages.js"></script>
-    <script type="text/javascript" src="/user/js/songs/controllers/allSongsController.js"></script>
-    <script type="text/javascript" src="/user/js/common/modules/htmlGenerator.js"></script>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>All Songs Page</title>
+        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400,300italic,300,400italic,700,700italic"/>
+        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather+Sans:400,300italic,300,400italic,700,700italic"/>
+        <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/lohitdevanagari.css"/>
+        <link rel="stylesheet" type="text/css" href="/user/css/ajabShahar.css"/>
+    </head>
+    <body ng-controller="allSongsController" class="all-songs ng-scope grid-layout" style="" ng-init="getTotalSongsCount()">
 
-    <link rel="stylesheet"
-          href="//fonts.googleapis.com/css?family=Merriweather:400,300italic,300,400italic,700,700italic"/>
-    <link rel="stylesheet"
-          href="//fonts.googleapis.com/css?family=Merriweather+Sans:400,300italic,300,400italic,700,700italic"/>
-    <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/lohitdevanagari.css"/>
+        <div class="ajab-container headerfixOuter">
+            <ajab-shahar-header></ajab-shahar-header>
 
-    <link rel="stylesheet" type="text/css" href="/user/css/ajabShahar.css"/>
+            <div class="ajab-wrapper">
 
-</head>
-<body ng-controller="allSongsController" class="all-songs ng-scope grid-layout" style="" ng-init="getTotalSongsCount()">
+                <div class='logo-with-filter headerfixInner'>
+                    <div class='nav-elements-wrapper'>
+                        <h1 class='category-logo'>songs</h1>
+                        <a href="javascript:void(0);" ng-click="toggleExpandFilter()" class="filter-button">Filter <span
+                                class="collapse expand"></span></a>
+                    </div>
+                </div>
+                <div on-click-outside="closeSecondParda()" class="slide-nav-list" ng-show="expandFilter">
+                    <song-filter-category criteria-list="criteriaList" select-handler="filterCategoryClicked"
+                                          deselect-handler="removeFilterCriteria"
+                                          clear-filters="clearAllFilters"></song-filter-category>
+                    <song-filter-parda show-this-parda="openSecondParda"
+                                       filter-items="filterItems[selectedFilterCategory.displayName]"
+                                       select-handler="filterItemSelected" ng-show="expandFilter"></song-filter-parda>
+                </div>
+                <div class='grid-view' infinite-scroll="loadSongFromRange()">
 
-<div class="ajab-container headerfixOuter">
-    <ajab-shahar-header></ajab-shahar-header>
+                    <as-title filter-clicked="alphabetFilterClicked" clear-filters="clearAlphabetFilters">
+                        <span class='numeric-count' ng-show="filteredSongList.length > 1 || filteredSongList.length == 0">{{filteredSongList.length}} SONGS</span>
+                        <span class='numeric-count'
+                              ng-show="filteredSongList.length == 1">{{filteredSongList.length}} SONG</span>
+                    </as-title>
 
-    <div class="ajab-wrapper">
-
-        <div class='logo-with-filter headerfixInner'>
-            <div class='nav-elements-wrapper'>
-                <h1 class='category-logo'>songs</h1>
-                <a href="javascript:void(0);" ng-click="toggleExpandFilter()" class="filter-button">Filter <span
-                        class="collapse expand"></span></a>
-            </div>
-        </div>
-        <div on-click-outside="closeSecondParda()" class="slide-nav-list" ng-show="expandFilter">
-            <song-filter-category criteria-list="criteriaList" select-handler="filterCategoryClicked"
-                                  deselect-handler="removeFilterCriteria"
-                                  clear-filters="clearAllFilters"></song-filter-category>
-            <song-filter-parda show-this-parda="openSecondParda"
-                               filter-items="filterItems[selectedFilterCategory.displayName]"
-                               select-handler="filterItemSelected" ng-show="expandFilter"></song-filter-parda>
-        </div>
-        <div class='grid-view' infinite-scroll="loadSongFromRange()">
-
-            <as-title filter-clicked="alphabetFilterClicked" clear-filters="clearAlphabetFilters">
-                <span class='numeric-count' ng-show="filteredSongList.length > 1 || filteredSongList.length == 0">{{filteredSongList.length}} SONGS</span>
-                <span class='numeric-count'
-                      ng-show="filteredSongList.length == 1">{{filteredSongList.length}} SONG</span>
-            </as-title>
-
-            <div class='grid-wrapper'>
-                <div infinite-scroll='loadSongFromRange()' infinite-scroll-distance='1' class="thumbnails-grid">
-                    <ul class="media-list songs">
-                        <li class="media" ng-repeat="song in (filteredSongList | filterByScroll:scrollIndex)">
-                            <song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}"
-                                            open="navigateToSong(song.id)" custom-style="{{song.customStyle}}"
-                                            img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}"
-                                            english-transliteration="{{song.englishTransliteration}}"
-                                            english-translation="{{song.englishTranslation}}"
-                                            category-name="{{song.category}}" duration="{{song.duration}}"
-                                            singer="{{song.singer}}" class="songs" poet="{{song.poet}}"
-                                            singers="{{song.singers}}"></song-thumbnail>
-                        </li>
-                    </ul>
+                    <div class='grid-wrapper'>
+                        <div infinite-scroll='loadSongFromRange()' infinite-scroll-distance='1' class="thumbnails-grid">
+                            <ul class="media-list songs">
+                                <li class="media" ng-repeat="song in (filteredSongList | filterByScroll:scrollIndex)">
+                                    <song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}"
+                                                    open="navigateToSong(song.id)" custom-style="{{song.customStyle}}"
+                                                    img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}"
+                                                    english-transliteration="{{song.englishTransliteration}}"
+                                                    english-translation="{{song.englishTranslation}}"
+                                                    category-name="{{song.category}}" duration="{{song.duration}}"
+                                                    singer="{{song.singer}}" class="songs" poet="{{song.poet}}"
+                                                    singers="{{song.singers}}"></song-thumbnail>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </div>
-    </div>
-</div>
-</body>
+        <script type="text/javascript" src="/common/lib/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="/common/lib/angular/angular.js"></script>
+        <script type="text/javascript" src="/common/lib/angular-animate/angular-animate.min.js"></script>
+        <script type="text/javascript" src="/common/lib/angular-touch/angular-touch.min.js"></script>
+        <script type="text/javascript" src="/common/lib/underscore/underscore.js"></script>
+        <script type="text/javascript" src="/common/lib/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+        <script type="text/javascript" src="/user/js/common/directives/animation/animationModule.js"></script>
+        <script type="text/javascript" src="/user/js/common/directives/animation/toggleBySlide.js"></script>
+        <script type="text/javascript" src="/user/js/common/directives/animation/slideNavList.js"></script>
+        <script type="text/javascript" src="/user/js/common/modules/thumbnailModule.js"></script>
+        <script type="text/javascript" src="/user/js/common/modules/PopupSupport.js"></script>
+        <script type="text/javascript" src="/user/js/common/directives/songs/songThumbnail.js"></script>
+        <script type="text/javascript" src="/user/js/common/modules/filterModule.js"></script>
+        <script type="text/javascript" src="/user/js/common/directives/common/asTitle.js"></script>
+        <script type="text/javascript" src="/user/js/common/directives/songs/songFilter.js"></script>
+        <script type="text/javascript" src="/user/js/common/filters/filterByScroll.js"></script>
+        <script type="text/javascript" src="/user/js/common/filters/filterSongBySinger.js"></script>
+        <script type="text/javascript" src="/user/js/common/filters/filterSongByPoet.js"></script>
+        <script type="text/javascript" src="/user/js/common/filters/filterSongByTitle.js"></script>
+        <script type="text/javascript" src="/user/js/common/modules/mediaPlayer.js"></script>
+        <script type="text/javascript" src="/user/js/common/directives/soundCloud/soundcloud_player.js"></script>
+        <script type="text/javascript" src="/user/js/common/directives/youtube/youtube_player.js"></script>
+        <script type="text/javascript" src="/user/js/common/config/resourceUrlWhiteList.js"></script>
+        <script type="text/javascript" src="/user/js/common/modules/headerModule.js"></script>
+        <script type="text/javascript" src="/user/js/common/directives/header/ajabShaharHeader.js"></script>
+        <script type="text/javascript" src="/user/js/common/directives/footer/ajabShaharFooter.js"></script>
+        <script type="text/javascript" src="/user/js/common/directives/header/sticky.js"></script>
+        <script type="text/javascript" src="/user/js/common/config/filterConfig.js"></script>
+        <script type="text/javascript" src="/user/js/common/models/sieve.js"></script>
+        <script type="text/javascript" src="/user/js/common/directives/songs/songFilterCategory.js"></script>
+        <script type="text/javascript" src="/user/js/common/directives/songs/songFilterParda.js"></script>
+        <script type="text/javascript" src="/user/js/common/directives/common/onClickOutside.js"></script>
+        <script type="text/javascript" src="/user/js/featuredContent/services/contentService.js"></script>
+        <script type="text/javascript" src="/common/lib/angular-route/angular-route.js"></script>
+        <script type="text/javascript" src="/user/js/common/modules/utilities.js"></script>
+        <script type="text/javascript" src="/user/js/words/wordApp.js"></script>
+        <script type="text/javascript" src="/user/js/words/services/wordMapper.js"></script>
+        <script type="text/javascript" src="/user/js/songs/services/songMapper.js"></script>
+        <script type="text/javascript" src="/user/js/songs/services/songsContentService.js"></script>
+        <script type="text/javascript" src="/user/js/songs/allSongsApp.js"></script>
+        <script type="text/javascript" src="/user/js/songs/songPages.js"></script>
+        <script type="text/javascript" src="/user/js/songs/controllers/allSongsController.js"></script>
+        <script type="text/javascript" src="/user/js/common/modules/htmlGenerator.js"></script>
+    </body>
 </html>
