@@ -1,7 +1,10 @@
 angular.module("word").controller('wordFeaturedContentController', ['$scope', 'wordService', function ($scope, wordService) {
     $scope.init = function () {
         wordService.getWordsLandingPageContent().then(function (result) {
-            $scope.words = result.data.words;
+            var words = result.data.words;
+            $scope.words = _.filter(words, function (word) {
+                return word.isRootWord;
+            });
         });
     };
 
