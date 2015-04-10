@@ -39,7 +39,7 @@
             <div class='creditBox'><span class='selected'>{{singer}}</span> SINGER</div>
                 <span ng-repeat="word in words" class="creditBox">
                  <span ng-if="word.isRootWord" class="selected">
-                     <a href="/user/partials/words/details.html?id={{word.id}}"
+                     <a href="user/js/words/#/details/{{word.id}}"
                         target="_self">{{word.transliteration}}</a>
                  </span>
                  <span ng-if="!word.isRootWord" class="selected">
