@@ -3,7 +3,7 @@ var reflectionListController = adminApp.controller('reflectionListController', [
         loginVerifyService.redirectIfNotAuthenticated();
         $scope.reflections = [];
         $scope.init = function () {
-            contentService.getAllReflections().then(function (result) {
+            contentService.getAllReflectionSummaries().then(function (result) {
                 var allReflections = result.data;
                 $scope.reflections = _.reduce(allReflections, function (reflections, value, index) {
                     var toBeAdded = {};

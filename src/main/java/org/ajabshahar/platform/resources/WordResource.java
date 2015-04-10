@@ -29,7 +29,8 @@ public class WordResource {
     public Response createWord(String jsonWord) {
         Word word = wordRepresentationFactory.create(jsonWord);
         word = words.create(word);
-        return Response.status(200).entity(word).build();
+        WordIntermediateRepresentation wordIntermediateRepresentation = wordRepresentationFactory.createIntermediateRepresentation(word);
+        return Response.status(200).entity(wordIntermediateRepresentation).build();
     }
 
     @POST
