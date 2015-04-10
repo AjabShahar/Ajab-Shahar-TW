@@ -1,12 +1,16 @@
 package org.ajabshahar.platform.models;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
-
 @Entity
+@Getter
+@Setter
 @Table(name = "REFLECTION")
 public class Reflection {
 
@@ -39,75 +43,8 @@ public class Reflection {
     @Column(name = "SHOW_ON_LANDING_PAGE")
     private Boolean showOnFeaturedContentPage;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getYoutubeVideo() {
-        return youtubeVideo;
-    }
-
-    public void setYoutubeVideo(String youtubeVideo) {
-        this.youtubeVideo = youtubeVideo;
-    }
-
-    public PersonDetails getSpeaker() {
-        return speaker;
-    }
-
-    public void setSpeaker(PersonDetails speaker) {
-        this.speaker = speaker;
-    }
-
-    public String getSoundCloudId() {
-        return soundCloudId;
-    }
-
-    public void setSoundCloudId(String soundCloudId) {
-        this.soundCloudId = soundCloudId;
-    }
-
-    public Set<ReflectionTranscript> getReflectionTranscripts() {
-        return reflectionTranscripts;
-    }
-
-    public void setReflectionTranscripts(Set<ReflectionTranscript> reflectionTranscripts) {
-        this.reflectionTranscripts = reflectionTranscripts;
-    }
-
-    public String getVerb() {
-        return verb;
-    }
-
-    public void setVerb(String verb) {
-        this.verb = verb;
-    }
-
-    public Boolean getIsAuthoringComplete() {
-        return isAuthoringComplete;
-    }
-
-    public void setIsAuthoringComplete(Boolean isAuthoringComplete) {
-        this.isAuthoringComplete = isAuthoringComplete;
-    }
-
-    public Boolean getShowOnFeaturedContentPage() {
-        return showOnFeaturedContentPage;
-    }
-
-    public void setShowOnFeaturedContentPage(Boolean showOnFeaturedContentPage) {
-        this.showOnFeaturedContentPage = showOnFeaturedContentPage;
-    }
+    @ManyToMany
+    @JoinTable(name = "WORD_REFLECTION", joinColumns = {@JoinColumn(name = "REFLECTION_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "WORD_ID")})
+    private Set<Word> words = new HashSet<>();
 }

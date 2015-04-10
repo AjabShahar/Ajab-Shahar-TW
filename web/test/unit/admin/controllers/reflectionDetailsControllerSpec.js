@@ -20,8 +20,8 @@ describe("reflection details controller specs", function () {
             loginVerifyService: loginVerifyService
         });
 
-        httpBackend.expectGET('/api/people').respond(200, ['people data']);
-        httpBackend.expectGET('/api/words').respond(200, ['word data']);
+        httpBackend.expectGET('/api/people/summary').respond(200, ['people data']);
+        httpBackend.expectGET('/api/words/summary').respond(200, ['word data']);
     }));
 
     describe("should test save of reflection", function () {

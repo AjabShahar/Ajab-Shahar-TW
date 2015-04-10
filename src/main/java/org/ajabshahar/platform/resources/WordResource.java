@@ -92,4 +92,13 @@ public class WordResource {
     public List<Word> getWords() {
         return words.findAll();
     }
+
+    @GET
+    @Path("summary")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getSummaryRepresentation(){
+        List<Word> allWords = words.findAll();
+        WordsSummaryRepresentation wordsSummaryRepresentation = wordRepresentationFactory.create(allWords);
+        return Response.ok(wordsSummaryRepresentation).build();
+    }
 }

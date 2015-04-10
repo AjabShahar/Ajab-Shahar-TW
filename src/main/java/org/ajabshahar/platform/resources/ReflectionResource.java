@@ -1,18 +1,22 @@
 package org.ajabshahar.platform.resources;
 
 import io.dropwizard.hibernate.UnitOfWork;
+import org.ajabshahar.api.ReflectionRepresentation;
 import org.ajabshahar.api.ReflectionRepresentationFactory;
 import org.ajabshahar.api.ReflectionsRepresentation;
 import org.ajabshahar.api.ReflectionsSummaryRepresentation;
 import org.ajabshahar.core.Reflections;
 import org.ajabshahar.platform.models.Reflection;
+import org.ajabshahar.platform.models.Word;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Path("/reflections")
 @Produces(MediaType.APPLICATION_JSON)
@@ -34,7 +38,8 @@ public class ReflectionResource {
     public Response createReflection(String jsonReflection) {
         Reflection reflection = reflectionRepresentationFactory.create(jsonReflection);
         reflection = reflections.create(reflection);
-        return Response.ok(reflection, MediaType.APPLICATION_JSON).build();
+        ReflectionRepresentation reflectionRepresentation = reflectionRepresentationFactory.createReflectionRepresentation(reflection);
+        return Response.ok(reflectionRepresentation, MediaType.APPLICATION_JSON).build();
     }
 
     @GET
@@ -77,7 +82,9 @@ public class ReflectionResource {
     @GET
     @UnitOfWork
     @Path("/edit")
-    public Reflection getReflectionById(@QueryParam("id") int id) {
-        return reflections.findReflection(id);
+    public ReflectionRepresentation getReflectionById(@QueryParam("id") int id) {
+        Reflection reflection = reflections.findReflection(id);
+        ReflectionRepresentation reflectionRepresentation = reflectionRepresentationFactory.createReflectionRepresentation(reflection);
+        return reflectionRepresentation;
     }
 }

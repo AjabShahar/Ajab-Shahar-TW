@@ -26,4 +26,12 @@ public class PersonRepresentationFactory {
         }
         return peopleRepresentation;
     }
+
+    public List<PersonSummaryRepresentation> createPeopleSummaryRepresentation(List<PersonDetails> personDetails) {
+        List<PersonSummaryRepresentation> people = new ArrayList<>();
+        for (PersonDetails person : personDetails) {
+            people.add(new PersonSummaryRepresentation(person.getId(), person.getName(), person.getHindiName()));
+        }
+        return people;
+    }
 }

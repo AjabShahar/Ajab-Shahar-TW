@@ -5,6 +5,7 @@ import io.dropwizard.hibernate.UnitOfWork;
 import org.ajabshahar.api.PeopleRepresentation;
 import org.ajabshahar.api.PersonRepresentation;
 import org.ajabshahar.api.PersonRepresentationFactory;
+import org.ajabshahar.api.PersonSummaryRepresentation;
 import org.ajabshahar.core.People;
 import org.ajabshahar.platform.daos.PersonDAO;
 import org.ajabshahar.platform.models.PersonDetails;
@@ -66,6 +67,15 @@ public class PersonResource {
 
     @GET
     @UnitOfWork
+    @Path("/summary")
+    public Response getPeopleSummaryRepresentation(@QueryParam("role") String role) {
+        List<PersonDetails> personDetailsList = people.findBy(role);
+        List<PersonSummaryRepresentation> people = personRepresentationFactory.createPeopleSummaryRepresentation(personDetailsList);
+        return Response.ok(people, MediaType.APPLICATION_JSON).build();
+    }
+
+    @GET
+    @UnitOfWork
     public Response getPeople(@QueryParam("role") String role) {
         logger.debug("Get people with role: {}", role);
         List<PersonDetails> personDetailsList = people.findBy(role);
@@ -76,6 +86,5 @@ public class PersonResource {
         PeopleRepresentation peopleRepresentation = personRepresentationFactory.create(personDetailsList);
         logger.debug("Details of people with id {}:  {} ", role, peopleRepresentation.toString());
         return Response.ok(peopleRepresentation, MediaType.APPLICATION_JSON).build();
-//        return Response.ok(personDetailsList, MediaType.APPLICATION_JSON).build();
     }
 }

@@ -11,7 +11,7 @@ public class DataSetup {
     public static String HASHED_PASSWORD = PasswordEncryptor.getEncryptedPassword("password", PasswordAuthenticator.SALT, PasswordAuthenticator.ALGORITHM);
 
     public static final Operation DELETE_ALL =
-            deleteAllFrom("USERS");
+            deleteAllFrom("SONG_WORD", "WORD_REFLECTION", "WORD_INTRODUCTION", "WORD", "REFLECTION", "SONG", "PERSON", "CATEGORY");
 
     public static final Operation INSERT_ADMIN_USER =
             sequenceOf(
@@ -32,6 +32,13 @@ public class DataSetup {
 
     public static final Operation DELETE_PERSON = deleteAllFrom("PERSON");
 
+    public static final Operation DELETE_REFLECTION = deleteAllFrom("REFLECTION");
+
+    public static final Operation DELETE_REFLECTION_WORDS = deleteAllFrom("WORD_REFLECTION");
+
+    public static final Operation DELETE_USERS = deleteAllFrom("USERS");
+
+
     public static final Operation INSERT_SONGS =
             sequenceOf(
                     insertInto("SONG")
@@ -43,6 +50,7 @@ public class DataSetup {
                     insertInto("WORD")
                             .columns("id", "word_original", "word_translation", "word_transliteration", "meaning", "show_on_landing_page", "hindi_intro_excerpt", "english_intro_excerpt", "is_root_word", "diacritic")
                             .values(1, "word original", "word translation", "word transliteration", "meaning", true, "some Hindi text", "some English text", true, "some diacritic")
+                            .values(2, "word original no 2", "word translation no 2", "word transliteration no 2", "no meaning", true, "some Hindi text", "some English text", true, "some diacritic")
                             .build());
     public static final Operation INSERT_WORD_INTRODUCTION =
             sequenceOf(

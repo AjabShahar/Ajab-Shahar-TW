@@ -73,7 +73,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldHaveWordIntroduction() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_SONG_WORD, DataSetup.DELETE_WORD_INTRODUCTION, DataSetup.DELETE_WORDS, DataSetup.INSERT_WORDS,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_WORDS,
                 DataSetup.INSERT_WORD_INTRODUCTION);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
@@ -90,7 +90,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldHaveWordIntroductions() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_SONG_WORD, DataSetup.DELETE_WORD_INTRODUCTION, DataSetup.DELETE_WORDS, DataSetup.INSERT_WORDS,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_WORDS,
                 DataSetup.INSERT_WORD_INTRODUCTION, DataSetup.INSERT_WORD_INTRODUCTION);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
@@ -107,7 +107,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldHaveWordIntroductionWithContentType() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_SONG_WORD, DataSetup.DELETE_WORD_INTRODUCTION, DataSetup.DELETE_WORDS, DataSetup.INSERT_WORDS,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_WORDS,
                 DataSetup.INSERT_WORD_INTRODUCTION);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
@@ -128,7 +128,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldHaveWordIntroductionWithOtherContentType() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_SONG_WORD, DataSetup.DELETE_WORD_INTRODUCTION, DataSetup.DELETE_WORDS, DataSetup.DELETE_PERSON,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,
                 DataSetup.INSERT_WORDS,
                 DataSetup.INSERT_WORD_INTRODUCTION_WITH_COUPLET_CONTENT_TYPE);
 
@@ -150,7 +150,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldSaveWordWithOutIntroduction() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_SONG_WORD, DataSetup.DELETE_WORD_INTRODUCTION, DataSetup.DELETE_WORDS, DataSetup.DELETE_WORD_INTRODUCTION);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
