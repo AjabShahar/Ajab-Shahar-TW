@@ -41,7 +41,7 @@ public class AjabShaharAuthenticationIT {
         dataSource.setUser("sa");
         dataSource.setPassword("");
 
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_ADMIN_USER);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_USERS, DataSetup.INSERT_ADMIN_USER);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();

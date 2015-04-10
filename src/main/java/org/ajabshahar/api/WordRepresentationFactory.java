@@ -5,13 +5,10 @@ import org.ajabshahar.platform.models.PersonDetails;
 import org.ajabshahar.platform.models.Word;
 import org.ajabshahar.platform.models.WordIntroduction;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class WordRepresentationFactory {
-    private ReflectionRepresentationFactory reflectionRepresentationFactory = new ReflectionRepresentationFactory();
+    private ReflectionRepresentationFactory reflectionRepresentationFactory ;
 
     public Word create(String jsonWord) {
         return new Gson().fromJson(jsonWord, Word.class);
@@ -27,7 +24,7 @@ public class WordRepresentationFactory {
             String hindiIntroExcerpt = word.getEnglishIntroExcerpt() != null ? word.getEnglishIntroExcerpt() : "";
             String englishIntroExcerpt = word.getHindiIntroExcerpt() != null ? word.getHindiIntroExcerpt() : "";
             List<PersonSummaryRepresentation> writers = new ArrayList<>();
-            if (word.getWriters().size() > 0) {
+            if (word.getWriters() != null && word.getWriters().size() > 0) {
                 for (PersonDetails writer : word.getWriters()) {
                     PersonSummaryRepresentation representation = new PersonSummaryRepresentation(writer.getId(), writer.getName(), writer.getHindiName());
                     writers.add(representation);
@@ -163,5 +160,9 @@ public class WordRepresentationFactory {
         }
 
         return relatedWords;
+    }
+
+    public void injectReflectionRepresentationFactory(ReflectionRepresentationFactory reflectionRepresentationFactory) {
+        this.reflectionRepresentationFactory = reflectionRepresentationFactory;
     }
 }

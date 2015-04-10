@@ -1,5 +1,6 @@
 package org.ajabshahar.platform.resources;
 
+import org.ajabshahar.api.ReflectionRepresentation;
 import org.ajabshahar.api.ReflectionRepresentationFactory;
 import org.ajabshahar.api.ReflectionsRepresentation;
 import org.ajabshahar.api.ReflectionsSummaryRepresentation;
@@ -39,9 +40,11 @@ public class ReflectionResourceTest {
 
     @Test
     public void shouldTestCreateReflection() throws Exception {
-        Reflection expected = new Reflection();
-        when(reflectionRepresentationFactory.create(jsonReflection)).thenReturn(expected);
-        when(reflections.create(expected)).thenReturn(expected);
+        ReflectionRepresentation expected = new ReflectionRepresentation();
+        Reflection reflection = new Reflection();
+        when(reflectionRepresentationFactory.create(jsonReflection)).thenReturn(reflection);
+        when(reflections.create(reflection)).thenReturn(reflection);
+        when(reflectionRepresentationFactory.createReflectionRepresentation(reflection)).thenReturn(expected);
 
         Response actual = reflectionResource.createReflection(jsonReflection);
 

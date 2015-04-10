@@ -45,7 +45,7 @@
                     </div>
                     <div class="form-group col-sm-2">
                         <select ng-model="reflection.speaker.id" class="form-control"
-                                ng-options="speaker.id as speaker.firstName + ' '+speaker.lastName for speaker in people | orderBy:'firstName'">
+                                ng-options="speaker.id as speaker.name for speaker in people | orderBy:'firstName'">
                         </select>
                     </div>
                 </div>
@@ -80,17 +80,16 @@
                     </div>
                 </div>
 
-                <div class="row" ng-show="reflection.type == 'video' || reflection.youtubeVideo !=null ">
+                <div class="row" ng-show="reflection.type == 'video' || reflection.youtubeVideoId !=null ">
                     <div class="form-group col-sm-2">
                         <label>Youtube Video Id</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <input type="text" name="reflection" ng-model="reflection.youtubeVideo" class="form-control">
+                        <input type="text" name="reflection" ng-model="reflection.youtubeVideoId" class="form-control">
                     </div>
                 </div>
-                <div ng-show="reflection.type == 'text' || reflection.reflectionTranscripts.length>1 ">
-                    <reflection-transcript reflection-transcript="{{reflection.reflectionTranscript}}"
-                                           reflection-transcripts="reflection.reflectionTranscripts"></reflection-transcript>
+                <div ng-show="reflection.type == 'text' || reflection.transcripts.length>1 ">
+                    <reflection-transcript reflection-transcripts="reflection.transcripts"></reflection-transcript>
                 </div>
 
                 <div class="row">
@@ -98,7 +97,7 @@
                         <label>Show On LandingPage</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <select name="reflection" ng-model="reflection.showOnFeaturedContentPage" class="form-control">
+                        <select name="reflection" ng-model="reflection.showOnMainFcPage" class="form-control">
                             <option value="true">Yes</option>
                             <option value="false">No</option>
                         </select>
@@ -110,7 +109,7 @@
                         <label>Publish</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <select name="reflection" ng-model="reflection.isAuthoringComplete" class="form-control">
+                        <select name="reflection" ng-model="reflection.publish" class="form-control">
                             <option value="true">Yes</option>
                             <option value="false">No</option>
                         </select>

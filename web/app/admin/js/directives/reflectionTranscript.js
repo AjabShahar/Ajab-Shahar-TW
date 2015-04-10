@@ -4,7 +4,7 @@ reflectionsAdminApp.directive("reflectionTranscript", function () {
     return {
         restrict: 'E',
         scope: {
-            reflectionTranscripts: '=',
+            reflectionTranscripts: '='
         },
         templateUrl: '/admin/js/templates/reflectionTranscript.html',
         controller: function ($scope) {
