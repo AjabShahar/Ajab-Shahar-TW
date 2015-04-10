@@ -11,6 +11,7 @@ import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Collections;
 import java.util.List;
 
 public class ReflectionDAO extends AbstractDAO<Reflection> {
@@ -23,7 +24,6 @@ public class ReflectionDAO extends AbstractDAO<Reflection> {
     }
 
     public Reflection create(Reflection reflection) {
-        logger.debug("Not working .....");
         reflection = persist(reflection);
         for (ReflectionTranscript reflectionTranscript : reflection.getReflectionTranscripts()) {
             reflectionTranscript.setReflection(reflection);

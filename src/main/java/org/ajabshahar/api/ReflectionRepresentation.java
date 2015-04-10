@@ -1,25 +1,34 @@
 package org.ajabshahar.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.ajabshahar.platform.models.ReflectionTranscript;
+
+import java.util.List;
 
 public class ReflectionRepresentation {
-
     private int id;
     private String title;
     private String verb;
-    private String speaker;
+    private PersonSummaryRepresentation speaker;
     private String soundCloudId;
     private String youtubeVideoId;
-    private String englishTranscript;
+    private List<ReflectionTranscript> reflectionTranscripts;
+    private List<WordSummaryRepresentation> words;
 
-    public ReflectionRepresentation(int id, String title, String verb, String speaker, String soundCloudId, String youtubeVideoId, String englishTranscript) {
+    private Boolean showOnMainFcPage;
+
+    private Boolean publish;
+    public ReflectionRepresentation(int id, String title, String verb, PersonSummaryRepresentation speaker, String soundCloudId, String youtubeVideoId, List<ReflectionTranscript> reflectionTranscripts, WordsSummaryRepresentation wordsSummaryRepresentation, Boolean showOnMainFcPage, Boolean publish) {
         this.id = id;
         this.title = title;
         this.verb = verb;
         this.speaker = speaker;
         this.soundCloudId = soundCloudId;
         this.youtubeVideoId = youtubeVideoId;
-        this.englishTranscript = englishTranscript;
+        this.reflectionTranscripts = reflectionTranscripts;
+        this.words = wordsSummaryRepresentation.getWords();
+        this.showOnMainFcPage = showOnMainFcPage;
+        this.publish = publish;
     }
 
     public ReflectionRepresentation() {
@@ -46,13 +55,13 @@ public class ReflectionRepresentation {
         return youtubeVideoId;
     }
 
-    @JsonProperty("transcript")
-    public String getEnglishTranscript() {
-        return englishTranscript;
+    @JsonProperty("transcripts")
+    public List<ReflectionTranscript> getReflectionTranscripts() {
+        return reflectionTranscripts;
     }
 
     @JsonProperty("speaker")
-    public String getSpeaker() {
+    public PersonSummaryRepresentation getSpeaker() {
         return speaker;
     }
 
@@ -60,4 +69,25 @@ public class ReflectionRepresentation {
     public String getVerb() {
         return verb;
     }
+
+    @JsonProperty("words")
+    public List<WordSummaryRepresentation> getWords() {
+        return words;
+    }
+
+    @JsonProperty("showOnMainFcPage")
+    public Boolean isShowOnLandingPage() {
+        return showOnMainFcPage;
+    }
+
+    @JsonProperty("publish")
+    public Boolean isPublish() {
+        return publish;
+    }
+
+    public void setShowOnMainFcPage(Boolean showOnMainFcPage) {
+        this.showOnMainFcPage = showOnMainFcPage;
+    }
+
+
 }

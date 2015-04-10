@@ -1,7 +1,7 @@
 var reflectionContentService = function ($http) {
 
     var getPeople = function () {
-        return $http.get('/api/people');
+        return $http.get('/api/people/summary');
     };
 
     var getRefectionById = function (id) {
@@ -13,7 +13,7 @@ var reflectionContentService = function ($http) {
     };
 
     var getWords = function(){
-       return $http.get('/api/words');
+       return $http.get('/api/words/summary');
     };
 
     return {

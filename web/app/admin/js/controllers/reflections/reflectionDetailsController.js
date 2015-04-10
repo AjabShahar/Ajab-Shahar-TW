@@ -2,14 +2,14 @@
 reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$window', '$location', 'reflectionContentService', "loginVerifyService",
     function ($scope, $window, $location, reflectionContentService, loginVerifyService) {
         loginVerifyService.redirectIfNotAuthenticated();
-        $scope.reflection = {"reflectionTranscripts": [], "speaker": {}};
+        $scope.reflection = {"transcripts": [], "speaker": {}};
         $scope.people = [];
         $scope.words = [];
         var urlId = $location.search().id;
 
         var init = function () {
             reflectionContentService.getPeople().success(function (data) {
-                $scope.people = data.people;
+                $scope.people = data;
             });
 
             reflectionContentService.getWords().success(function(data){
@@ -19,7 +19,6 @@ reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$windo
             if (urlId != null && urlId != ''){
                 reflectionContentService.getRefectionById(urlId).success(function (data) {
                         $scope.reflection = data;
-                        $scope.reflection.speaker = data.speaker;
                 });
             }
 

@@ -48,10 +48,10 @@ public class Word {
     @JsonManagedReference
     private Set<WordIntroduction> wordIntroductions;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "WORD_REFLECTION", joinColumns = {@JoinColumn(name = "WORD_ID", referencedColumnName = "ID")},
-            inverseJoinColumns = {@JoinColumn(name = "REFLECTION_ID", referencedColumnName = "ID")})
-    private Set<Reflection> reflections;
+    @ManyToMany
+    @JoinTable(name = "WORD_REFLECTION", joinColumns = {@JoinColumn(name = "WORD_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "REFLECTION_ID")})
+    private Set<Reflection> reflections = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "RELATED_WORDS", joinColumns = {@JoinColumn(name = "WORD_ID", referencedColumnName = "ID")},

@@ -36,7 +36,7 @@ describe("Word details controller spec:", function () {
             $httpBackend.when("GET", "/api/people?role=Poet").respond({"people": "somePerson"});
             $httpBackend.when("GET", "/api/people").respond({"people": "somePerson"});
             $httpBackend.when("GET", "/api/category/word").respond(null);
-            $httpBackend.when("GET", "/api/reflections/all").respond(null);
+            $httpBackend.when("GET", "/api/reflections/summary").respond(null);
             $httpBackend.when("GET", "/api/songs/getAllSongs").respond({
                 "songs": [{
                     "englishTransliterationTitle": "some title",
@@ -93,7 +93,7 @@ describe("Word details controller spec:", function () {
         it("then should have the word's details, if the word exist", function () {
             $httpBackend.when("GET", "/api/people?role=Poet").respond({"people": "somePerson"});
             $httpBackend.when("GET", "/api/category/word").respond(null);
-            $httpBackend.when("GET", "/api/reflections/all").respond(null);
+            $httpBackend.when("GET", "/api/reflections/summary").respond(null);
             $httpBackend.when("GET", "/api/people").respond({"people": ""});
             $httpBackend.when("GET", "/api/songs/getAllSongs").respond({
                 "songs": [{
@@ -129,7 +129,7 @@ describe("Word details controller spec:", function () {
             };
             $httpBackend.when("GET", "/api/people?role=Poet").respond({"people": "somePerson"});
             $httpBackend.when("GET", "/api/category/word").respond(null);
-            $httpBackend.when("GET", "/api/reflections/all").respond(null);
+            $httpBackend.when("GET", "/api/reflections/summary").respond(null);
             $httpBackend.when("GET", "/api/people").respond({"people": ""});
             $httpBackend.when("GET", "/api/songs/getAllSongs").respond(mockedSongs);
 
@@ -149,7 +149,7 @@ describe("Word details controller spec:", function () {
             };
             $httpBackend.when("GET", "/api/people?role=Poet").respond({"people": "somePerson"});
             $httpBackend.when("GET", "/api/category/word").respond(null);
-            $httpBackend.when("GET", "/api/reflections/all").respond(null);
+            $httpBackend.when("GET", "/api/reflections/summary").respond(null);
             $httpBackend.when("GET", "/api/people").respond({"people": ""});
             $httpBackend.when("GET", "/api/songs/getAllSongs").respond(mockedSongs);
 

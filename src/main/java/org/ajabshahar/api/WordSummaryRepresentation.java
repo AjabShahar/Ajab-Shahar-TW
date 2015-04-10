@@ -67,4 +67,8 @@ public class WordSummaryRepresentation {
     public Boolean getIsRootWord() {
         return isRootWord;
     }
+
+    public void setId(int id) {
+       this.id = id;
+    }
 }
