@@ -1,3 +1,4 @@
+'use strict';
 angular.module("word").controller('wordFeaturedContentController', ['$scope', 'wordService', function ($scope, wordService) {
     $scope.init = function () {
         wordService.getWordsLandingPageContent().then(function (result) {
