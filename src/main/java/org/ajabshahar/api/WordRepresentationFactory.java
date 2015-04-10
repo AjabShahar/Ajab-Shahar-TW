@@ -2,6 +2,7 @@ package org.ajabshahar.api;
 
 import com.google.gson.Gson;
 import org.ajabshahar.platform.models.PersonDetails;
+import org.ajabshahar.platform.models.Reflection;
 import org.ajabshahar.platform.models.Word;
 import org.ajabshahar.platform.models.WordIntroduction;
 
@@ -160,6 +161,31 @@ public class WordRepresentationFactory {
         }
 
         return relatedWords;
+    }
+
+
+
+    public WordIntermediateRepresentation createIntermediateRepresentation(Word word) {
+        WordIntermediateRepresentation wordIntermediateRepresentation = new WordIntermediateRepresentation();
+        wordIntermediateRepresentation.setId(word.getId());
+        wordIntermediateRepresentation.setWordOriginal(word.getWordOriginal());
+        wordIntermediateRepresentation.setWordTranslation(word.getWordTranslation());
+        wordIntermediateRepresentation.setWordTransliteration(word.getWordTransliteration());
+        wordIntermediateRepresentation.setDiacritic(word.getDiacritic());
+        wordIntermediateRepresentation.setEnglishIntroExcerpt(word.getEnglishIntroExcerpt());
+        wordIntermediateRepresentation.setHindiIntroExcerpt(word.getHindiIntroExcerpt());
+        wordIntermediateRepresentation.setMeaning(word.getMeaning());
+        wordIntermediateRepresentation.setIsRootWord(word.getIsRootWord());
+        wordIntermediateRepresentation.setShowOnLandingPage(word.getShowOnLandingPage());
+        wordIntermediateRepresentation.setPeople(word.getPeople());
+        wordIntermediateRepresentation.setSongs(word.getSongs());
+        wordIntermediateRepresentation.setWriters(word.getWriters());
+
+        List<Reflection> reflections = new ArrayList<>(word.getReflections());
+        List<ReflectionSummaryRepresentation> reflectionSummaryRepresentationList = reflectionRepresentationFactory.toReflectionSummaryList(reflections);
+
+        wordIntermediateRepresentation.setReflections(reflectionSummaryRepresentationList);
+        return null;
     }
 
     public void injectReflectionRepresentationFactory(ReflectionRepresentationFactory reflectionRepresentationFactory) {

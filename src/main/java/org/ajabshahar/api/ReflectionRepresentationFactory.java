@@ -98,4 +98,24 @@ public class ReflectionRepresentationFactory {
     public void injectWordRepresentationFactory(WordRepresentationFactory wordRepresentationFactory) {
         this.wordRepresentationFactory = wordRepresentationFactory;
     }
+
+    public List<ReflectionSummaryRepresentation> toReflectionSummaryList(List<Reflection> reflections){
+        List<ReflectionSummaryRepresentation> reflectionsSummaryRepresentations = new ArrayList<>();
+        if(reflections != null){
+            for (Reflection reflection : reflections) {
+                reflectionsSummaryRepresentations.add(new ReflectionSummaryRepresentation(reflection.getId(),reflection.getTitle()));
+            }
+        }
+        return reflectionsSummaryRepresentations;
+    }
+
+    public List<Reflection> toReflectionSummaryList(List<Reflection> reflections){
+        List<ReflectionSummaryRepresentation> reflectionsSummaryRepresentations = new ArrayList<>();
+        if(reflections != null){
+            for (Reflection reflection : reflections) {
+                reflectionsSummaryRepresentations.add(new ReflectionSummaryRepresentation(reflection.getId(),reflection.getTitle()));
+            }
+        }
+        return reflectionsSummaryRepresentations;
+    }
 }
