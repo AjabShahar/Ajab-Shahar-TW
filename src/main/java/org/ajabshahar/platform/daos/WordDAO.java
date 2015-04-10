@@ -67,12 +67,15 @@ public class WordDAO extends AbstractDAO<Word> {
 
 
     public List<Word> findReflections(int wordId) {
-        Criteria wordReflections = currentSession().createCriteria(Word.class);
+        Session session = sessionFactory.openSession();
+        Criteria wordReflections = session.createCriteria(Word.class);
         if (wordId != 0) {
             wordReflections.add(Restrictions.eq("id", Long.valueOf(wordId)));
         }
         wordReflections.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-        return wordReflections.list();
+        List wordsWithReflections = wordReflections.list();
+        session.close();
+        return wordsWithReflections;
     }
 
     public List findAll() {
