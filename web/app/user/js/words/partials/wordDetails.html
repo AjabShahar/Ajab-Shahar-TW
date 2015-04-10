@@ -1,4 +1,4 @@
-<div class="songs-details header-with-carousel">
+<div class="words-details header-with-carousel details">
     <ajab-shahar-header></ajab-shahar-header>
     <div class="page-header">
         <div class="ajab-wrapper">
@@ -10,6 +10,9 @@
             </div>
         </div>
     </div>
+
+
+
     <div class="lower-pardah">
 
         <div class="carousel-wrapper jcarousel-wrapper" ng-show="showVersion && shouldShowReflections()">
@@ -41,24 +44,42 @@
             </a>
         </div>
     </div>
-    <div id="poem_container">
-        <div ng-show="showWord">
-            <h2 class="song-heading">{{currentWord.wordOriginal}}</h2>
 
-            <div class="lyrics">
-                <div bind-dynamic-html="currentWord.wordIntroEnglish"></div>
-            </div>
-        </div>
 
-        <div ng-show="showReflection">
-            <h2 class="song-heading">{{currentReflection.title}}</h2>
+    <div class='ajab-container'>
+        <div class='ajab-wrapper'>
+            <div class="main-content">
+                <div class="left-nav" scroll>
+                    <ul>
+                        <li><a href="javascript:void(0)" class="active ">word</a></li>
+                        <li><a target="_self" href="/user/partials/common/underConstruction.html">explore</a></li>
+                    </ul>
 
-            <div class="lyrics">
-                <reflection-content-details video-id="{{currentReflection.videoId}}"
-                                            audio-url="{{currentReflection.audioUrl}}" id="{{currentReflection.id}}"
-                                            details-service="popupService"
-                                            transcript="{{currentReflection.text}}"></reflection-content-details>
+                </div>
+
+                <div class="content-wrapper">
+                    <div >
+                        <!--<h2 class="song-heading">{{currentWord.wordOriginal}}</h2>-->
+                        <h2 class="song-heading">Song hEading</h2>
+                        <div class="lyrics">
+                            <!--<div bind-dynamic-html="currentWord.wordIntroEnglish"></div>-->
+                            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+                        </div>
+                    </div>
+
+                    <div ng-show="showReflection">
+                        <h2 class="song-heading">{{currentReflection.title}}</h2>
+
+                        <div class="lyrics">
+                            <reflection-content-details video-id="{{currentReflection.videoId}}"
+                                                        audio-url="{{currentReflection.audioUrl}}" id="{{currentReflection.id}}"
+                                                        details-service="popupService"
+                                                        transcript="{{currentReflection.text}}"></reflection-content-details>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
 </div>
