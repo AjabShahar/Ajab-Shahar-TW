@@ -246,7 +246,7 @@
     }
 
   }
-  .word-intro {
+  .lightbx-text-content {
     & > p {
       font-family: 'Merriweather';
       font-size: 13px;
@@ -260,7 +260,38 @@
       }
     }
   }
+}
+.reflection {
+    color: #808080;
+    .ref-intro-by {
+        font-size: 12px;
+        color: #808080;
+        margin-bottom: 1em;
+        .ref-caps-people {
+            text-transform: uppercase;
+        }
+        .ref-people {
+            text-transform: capitalize;
+        }
+    }
+    .ref-title {
+        font-family: 'Merriweather';
+        font-size: 21px;
+        color:#ED1E79;
+        line-height: 2em;
+    }
+    .ref-author-says {
+        font-family: 'MerriweatherSans';
+        font-size: 14px;
+        font-weight: 300;
+        text-transform: uppercase;
 
+    }
+    .ref-author-says::after {
+        content: " says";
+        font-size: 12px;
+        text-transform: lowercase;
+    }
 }
 
 
