@@ -1,5 +1,5 @@
 angular.module("word").
-    controller('wordDetailsController', ['$scope', '$location', 'wordMapper', 'popupService', 'reflectionMapper', 'wordService',function($scope, $location, wordMapper, popupService, reflectionMapper, wordService){
+    controller('wordDetailsController', ['$scope', '$location', 'wordMapper', 'popupService', 'reflectionMapper', 'wordService', '$routeParams',function($scope, $location, wordMapper, popupService, reflectionMapper, wordService, $routeParams){
         $scope.popupService = popupService;
         $scope.detailsService = $scope;
         $scope.wordReflections = {"wordThumbnails": [], "reflections": []};
@@ -14,7 +14,7 @@ angular.module("word").
         $scope.showWord = true;
 
         $scope.init = function () {
-            $scope.wordId = $location.search().id;
+            $scope.wordId = $routeParams.wordId;
 
             wordService.getVersions($scope.wordId).then(function (result) {
                 $scope.words.push(result.data.word);

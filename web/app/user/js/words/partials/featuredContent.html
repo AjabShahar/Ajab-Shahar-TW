@@ -24,7 +24,8 @@
         </div>
         <div class='homepage-content'>
             <div ng-repeat="word in words">
-                <word-bubble word-transliteration="{{word.wordTransliteration}}"
+                <word-bubble id="{{word.id}}"
+                             word-transliteration="{{word.wordTransliteration}}"
                              word-translation="{{word.wordTranslation}}"
                              transliteration-intro="{{word.englishIntroExcerpt}}"></word-bubble>
             </div>
