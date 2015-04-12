@@ -51,7 +51,6 @@ Ajabshahar.user.Sieve = function (filterCriteria) {
         return items.filter(function (item) {
             return self.filterCriteria.every(function (criteria) {
                 var result = findAndMatch(item, criteria.name, criteria.value, criteria.method);
-                //console.log("filtermatches : ",result," | ",criteria.name ," | ",criteria.value," | ",item.englishTransliteration);
                 return result;
             })
         })

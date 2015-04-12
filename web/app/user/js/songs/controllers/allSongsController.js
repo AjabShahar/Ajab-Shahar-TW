@@ -33,11 +33,17 @@ allSongsApp.controller('allSongsController', ['$scope', '$window', 'songsContent
         return firstSong.englishTransliteration.localeCompare(secondSong.englishTransliteration);
     };
 
+    var updateFilterCategoriesState = function(){
+        $scope.criteriaList.forEach(function(criterion){
+            criterion.disabled = !!(criterion.value || criterion.empty );
+        });
+    };
+
     var filterAndLoad = function (songs) {
         $scope.closeSecondParda();
         $scope.filteredSongList = sieve.filter(songs);
         loadFilterItemsFrom($scope.filteredSongList);
-        $scope.selectedFilterCategory.disabled = !!$scope.selectedFilterCategory.value;
+        updateFilterCategoriesState();
     };
 
     $scope.filterCategoryClicked = function (criteria) {
@@ -106,8 +112,8 @@ allSongsApp.controller('allSongsController', ['$scope', '$window', 'songsContent
         $scope.criteriaList.forEach(function (criterion) {
             if (!_.isEmpty(criterion.displayName)) {
                 var methodToCall = filterItemsLoaderConfig[criterion.displayName];
-                $scope.filterItems[criterion.displayName] = songsContentService[methodToCall]($scope.filteredSongList);
-                criterion.disabled = !!_.isEmpty($scope.filterItems[criterion.displayName]);
+                $scope.filterItems[criterion.displayName] = songsContentService[methodToCall](songs);
+                criterion.empty = !!_.isEmpty($scope.filterItems[criterion.displayName]);
             }
         });
     };

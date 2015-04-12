@@ -1,4 +1,4 @@
-describe("Filter model", function () {
+describe("The sieve", function () {
 
     var filter;
     beforeEach(inject(function () {
