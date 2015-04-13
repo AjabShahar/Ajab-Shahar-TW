@@ -6,6 +6,7 @@ angular.module("word").controller('wordFeaturedContentController', ['$scope', 'w
             $scope.words = _.filter(words, function (word) {
                 return word.isRootWord;
             });
+            $scope.numberOfWords = $scope.words.length;
         });
     };
 
