@@ -1,5 +1,5 @@
 'use strict';
-describe("reflection details controller specs", function () {
+describe("reflection details controller", function () {
 
     var scope, $location, fakeWindow, httpBackend;
 
@@ -12,6 +12,9 @@ describe("reflection details controller specs", function () {
         fakeWindow = {location: {href: ''}};
         $cookies.user = "admin";
 
+        spyOn($location, 'search').andReturn({id:1});
+
+
         _$controller_('reflectionDetailsController', {
             $scope: scope,
             $window: fakeWindow,
@@ -21,7 +24,9 @@ describe("reflection details controller specs", function () {
         });
 
         httpBackend.expectGET('/api/people/summary').respond(200, ['people data']);
-        httpBackend.expectGET('/api/words/summary').respond(200, ['word data']);
+        httpBackend.expectGET('/api/words/summary').respond(200, test_admin_wordSummary);
+        httpBackend.expectGET('/api/reflections/edit?id=1').respond(200,test_admin_reflection);
+
     }));
 
     describe("should test save of reflection", function () {
@@ -50,4 +55,101 @@ describe("reflection details controller specs", function () {
 
     });
 
+    it("should show already linked words for the reflection",function(){
+        httpBackend.flush();
+
+        expect(scope.words[0].ticked).toBeTruthy();
+        expect(scope.words[2].ticked).toBeTruthy();
+
+    })
 });
+
+
+var test_admin_wordSummary={
+    "words": [
+        {
+            "id": 1,
+            "wordOriginal": "अकथ कथा",
+            "wordTranslation": "Akath Katha",
+            "wordTransliteration": "Untellable Tale",
+            "hindiIntroExcerpt": "Akath means inexpressible, indescribable, ineffable. Beyond words. Beyond language. Beyond mind. But why all the hue and cry if the tale cannot be told?",
+            "englishIntroExcerpt": "",
+            "writers": [],
+            "rootWord": false
+        },
+        {
+            "id": 2,
+            "wordOriginal": "जागना सोना",
+            "wordTranslation": "Waking Sleeping",
+            "wordTransliteration": "Jaagna Sona",
+            "hindiIntroExcerpt": "A story tells of how, when the Buddha attained illumination, somebody asked him: ‘So, are you enlightened now?’ The Buddha’s response was: ‘I am awake.’",
+            "englishIntroExcerpt": "",
+            "writers": [],
+            "rootWord": true
+        },
+        {
+            "id": 3,
+            "wordOriginal": "अकथ कथा",
+            "wordTranslation": "Untellable Tale",
+            "wordTransliteration": "Akath Katha",
+            "hindiIntroExcerpt": "Akath means inexpressible, indescribable, ineffable. Beyond words. Beyond language. Beyond mind. But why all the hue and cry if the tale cannot be told? Perhaps because there is an enticing, irresistible vastness and mysteriousness to the unspeakable story. It is not mystification but an invitation to enter… a realm of experience beyond description.",
+            "englishIntroExcerpt": "",
+            "writers": [],
+            "rootWord": false
+        },
+        {
+            "id": 4,
+            "wordOriginal": "शून्य",
+            "wordTranslation": "Emptiness",
+            "wordTransliteration": "Shoonya",
+            "hindiIntroExcerpt": "Shoonya is literally zero in the Indian numbering system, the place from which all things begin. It is also a technical term in Buddhism, usually translated as emptiness or nothingness. In Sanskrit, one of its primary meanings is empty space, or void.",
+            "englishIntroExcerpt": "",
+            "writers": [],
+            "rootWord": false
+        }
+    ]
+};
+
+var test_admin_reflection = {
+    "showOnMainFcPage": true,
+    "id": 1,
+    "title": "Poet is God says Vipul",
+    "verb": "by",
+    "speaker": {
+        "id": 16,
+        "name": "Vipul Rikhi",
+        "hindiName": ""
+    },
+    "soundCloudId": null,
+    "youtubeVideoId": "MtIoD16yTQc",
+    "transcripts": [
+        {
+            "id": 1,
+            "hindiTranscript": null,
+            "englishTranscript": null
+        }
+    ],
+    "words": [
+        {
+            "id": 3,
+            "wordOriginal": "अकथ कथा",
+            "wordTranslation": "Untellable Tale",
+            "wordTransliteration": "Akath Katha",
+            "hindiIntroExcerpt": "Akath means inexpressible, indescribable, ineffable. Beyond words. Beyond language. Beyond mind. But why all the hue and cry if the tale cannot be told? Perhaps because there is an enticing, irresistible vastness and mysteriousness to the unspeakable story. It is not mystification but an invitation to enter… a realm of experience beyond description.",
+            "englishIntroExcerpt": "",
+            "writers": [],
+            "rootWord": false
+        },
+        {
+            "id": 1,
+            "wordOriginal": "अकथ कथा",
+            "wordTranslation": "Akath Katha",
+            "wordTransliteration": "Untellable Tale",
+            "hindiIntroExcerpt": "Akath means inexpressible, indescribable, ineffable. Beyond words. Beyond language. Beyond mind. But why all the hue and cry if the tale cannot be told?",
+            "englishIntroExcerpt": "",
+            "writers": [],
+            "rootWord": false
+        }
+    ],
+    "publish": true
+};

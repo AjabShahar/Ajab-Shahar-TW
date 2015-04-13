@@ -39,7 +39,7 @@ wordsAdminApp.controller('wordDetailsController', ['$scope', '$window', '$locati
                 $scope.songs = data[1].data.songs;
                 $scope.writers = angular.copy(data[2].data.people);
                 $scope.people = angular.copy(data[2].data.people);
-                $scope.reflections = data[3].data;
+                $scope.reflections = data[3].data.reflections;
                 $scope.poets = data[4].data.people;
 
                 createMenuTitleForSongs();
@@ -73,6 +73,7 @@ wordsAdminApp.controller('wordDetailsController', ['$scope', '$window', '$locati
                     $scope.writers = getSelectedContent(data.writers, $scope.writers);
                     $scope.people = getSelectedContent(data.people, $scope.people);
                     $scope.songs = getSelectedContent(data.songs, $scope.songs);
+                    $scope.reflections = getSelectedContent(data.reflections, $scope.reflections);
                     $scope.formInfo = data;
                 });
             }
