@@ -14,7 +14,6 @@ import org.ajabshahar.api.ReflectionSummaryRepresentation;
 import org.ajabshahar.api.WordIntermediateRepresentation;
 import org.ajabshahar.platform.PlatformApplication;
 import org.ajabshahar.platform.PlatformConfiguration;
-import org.ajabshahar.platform.models.Word;
 import org.ajabshahar.platform.models.WordIntroduction;
 import org.h2.jdbcx.JdbcDataSource;
 import org.junit.Before;
@@ -256,7 +255,7 @@ public class WordResourceIT {
         NewCookie sessionCookie = geCookie(response);
 
         PersonSummaryRepresentation speaker = new PersonSummaryRepresentation();
-        ReflectionSummaryRepresentation reflectionSummaryRepresentation = new ReflectionSummaryRepresentation(1,"Oh that wonderful song!", speaker);
+        ReflectionSummaryRepresentation reflectionSummaryRepresentation = new ReflectionSummaryRepresentation(1,"Oh that wonderful song!", speaker, false);
         List<ReflectionSummaryRepresentation> reflections = new ArrayList<>();
         reflections.add(reflectionSummaryRepresentation);
         jsonObject.put("reflections", reflections);

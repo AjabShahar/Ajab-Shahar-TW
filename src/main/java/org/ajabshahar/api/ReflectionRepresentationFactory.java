@@ -59,7 +59,7 @@ public class ReflectionRepresentationFactory {
         ReflectionsSummaryRepresentation reflectionsSummaryRepresentation = new ReflectionsSummaryRepresentation();
         for (Reflection reflection : reflectionList) {
             PersonDetails speakerDetails = reflection.getSpeaker();
-            ReflectionSummaryRepresentation reflectionSummaryRepresentation = new ReflectionSummaryRepresentation(reflection.getId(), reflection.getTitle(), getPersonSummaryRepresentation(speakerDetails));
+            ReflectionSummaryRepresentation reflectionSummaryRepresentation = new ReflectionSummaryRepresentation(reflection.getId(), reflection.getTitle(), getPersonSummaryRepresentation(speakerDetails), reflection.getIsAuthoringComplete());
             reflectionsSummaryRepresentation.add(reflectionSummaryRepresentation);
         }
         return reflectionsSummaryRepresentation;
@@ -122,7 +122,7 @@ public class ReflectionRepresentationFactory {
             for (Reflection reflection : reflections) {
                 PersonDetails speakerDetails = reflection.getSpeaker();
                 PersonSummaryRepresentation speaker = (speakerDetails != null ? new PersonSummaryRepresentation(speakerDetails.getId(), speakerDetails.getName(), speakerDetails.getHindiName()) : null);
-                reflectionsSummaryRepresentations.add(new ReflectionSummaryRepresentation(reflection.getId(), reflection.getTitle(), speaker));
+                reflectionsSummaryRepresentations.add(new ReflectionSummaryRepresentation(reflection.getId(), reflection.getTitle(), speaker, reflection.getIsAuthoringComplete()));
             }
         }
         return reflectionsSummaryRepresentations;

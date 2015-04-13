@@ -11,7 +11,7 @@ var reflectionListController = adminApp.controller('reflectionListController', [
                     toBeAdded.id = value.id;
                     toBeAdded.speaker = value.speaker.name;
 
-                    if (value.isAuthoringComplete)
+                    if (value.published)
                         toBeAdded.publish = "Yes";
                     else
                         toBeAdded.publish = "No";
