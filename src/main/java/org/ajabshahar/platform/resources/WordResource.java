@@ -40,7 +40,8 @@ public class WordResource {
     public Response updateWord(String jsonWord) {
         Word word = wordRepresentationFactory.create(jsonWord);
         word = words.update(word);
-        return Response.status(200).entity(word.toString()).build();
+        WordIntermediateRepresentation wordIntermediateRepresentation = wordRepresentationFactory.createIntermediateRepresentation(word);
+        return Response.status(200).entity(wordIntermediateRepresentation).build();
     }
 
     @GET

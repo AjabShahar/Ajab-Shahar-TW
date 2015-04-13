@@ -185,7 +185,7 @@ public class WordRepresentationFactory {
         List<ReflectionSummaryRepresentation> reflectionSummaryRepresentationList = reflectionRepresentationFactory.toReflectionSummaryList(reflections);
 
         wordIntermediateRepresentation.setReflections(reflectionSummaryRepresentationList);
-        return null;
+        return wordIntermediateRepresentation;
     }
 
     public void injectReflectionRepresentationFactory(ReflectionRepresentationFactory reflectionRepresentationFactory) {

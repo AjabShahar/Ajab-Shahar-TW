@@ -138,7 +138,7 @@ public class WordIntermediateRepresentation {
         this.diacritic = diacritic;
     }
 
-    public Boolean isRootWord() {
+    public Boolean getIsRootWord() {
         return isRootWord;
     }
 
