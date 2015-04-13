@@ -6,8 +6,7 @@ var splashScreenController = function ($scope, $window, $http, contentService) {
 
     $scope.saveData = function () {
         $http.post('/api/SplashScreenOptions', $scope.formInfo).success(function () {
-            alert("Data added");
-            $window.location.href = '/admin/splashScreenOptions.html';
+            $window.location.href = '/admin/partials/home.html';
         });
     };
 
