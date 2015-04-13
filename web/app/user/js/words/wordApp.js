@@ -17,5 +17,4 @@ angular.module("word", ['ngRoute', 'htmlGenerator', 'headerModule', 'animationMo
             templateUrl: "/user/js/words/partials/featuredContent.html",
             controller: "wordFeaturedContentController"
         });
-
 }]);
