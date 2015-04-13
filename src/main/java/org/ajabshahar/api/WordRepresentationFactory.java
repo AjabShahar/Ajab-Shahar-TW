@@ -180,6 +180,7 @@ public class WordRepresentationFactory {
         wordIntermediateRepresentation.setPeople(word.getPeople());
         wordIntermediateRepresentation.setSongs(word.getSongs());
         wordIntermediateRepresentation.setWriters(word.getWriters());
+        wordIntermediateRepresentation.setWordIntroductions(word.getWordIntroductions());
 
         List<Reflection> reflections = new ArrayList<>(word.getReflections());
         List<ReflectionSummaryRepresentation> reflectionSummaryRepresentationList = reflectionRepresentationFactory.toReflectionSummaryList(reflections);

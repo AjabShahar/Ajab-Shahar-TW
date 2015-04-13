@@ -121,7 +121,7 @@ public class ReflectionRepresentationFactory {
         if (reflections != null) {
             for (Reflection reflection : reflections) {
                 PersonDetails speakerDetails = reflection.getSpeaker();
-                PersonSummaryRepresentation speaker = new PersonSummaryRepresentation(speakerDetails.getId(), speakerDetails.getName(), speakerDetails.getHindiName());
+                PersonSummaryRepresentation speaker = (speakerDetails != null ? new PersonSummaryRepresentation(speakerDetails.getId(), speakerDetails.getName(), speakerDetails.getHindiName()) : null);
                 reflectionsSummaryRepresentations.add(new ReflectionSummaryRepresentation(reflection.getId(), reflection.getTitle(), speaker));
             }
         }
