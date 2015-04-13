@@ -8,6 +8,7 @@ import org.ajabshahar.platform.models.Word;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.Arrays;
 import java.util.List;
 
 @Path("/words")
@@ -56,8 +57,10 @@ public class WordResource {
     @GET
     @Path("/edit")
     @Produces(MediaType.APPLICATION_JSON)
-    public Word getWordById(@QueryParam("id") int wordId) {
-        return words.findBy(wordId);
+    public Response getWordById(@QueryParam("id") int wordId) {
+        Word word = words.findBy(wordId);
+        WordIntermediateRepresentation intermediateRepresentation = wordRepresentationFactory.createIntermediateRepresentation(word);
+        return Response.ok(intermediateRepresentation).build();
     }
 
 

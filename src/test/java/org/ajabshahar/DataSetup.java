@@ -58,12 +58,6 @@ public class DataSetup {
                             .columns("word_id", "word_intro_hindi", "word_intro_english", "content_type", "poet_id")
                             .values(1, "word intro hindi", "word intro english", "text", null)
                             .build());
-    public static final Operation INSERT_WORD_INTRODUCTION_FOR_THE_FIRST_TIME_WHILE_EDITING =
-            sequenceOf(
-                    insertInto("word_introduction")
-                            .columns("word_id", "word_intro_hindi", "word_intro_english", "content_type", "poet_id")
-                            .values(0, "word intro hindi", "word intro english", "text", null)
-                            .build());
     public static final Operation INSERT_WORD_INTRODUCTION_WITH_COUPLET_CONTENT_TYPE =
             sequenceOf(
                     insertInto("word_introduction")
@@ -90,4 +84,13 @@ public class DataSetup {
                             .columns("id", "title")
                             .values(1, "Oh that wonderful song!")
                             .build());
+
+    public static final Operation INSERT_WORD_REFLECTIONS =
+            sequenceOf(
+                    insertInto("word_reflection")
+                    .columns("word_id","reflection_id")
+                    .values(1,1)
+                    .build());
+
+
 }

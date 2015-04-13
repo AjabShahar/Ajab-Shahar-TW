@@ -87,7 +87,7 @@ public class WordResourceIT {
                 String.format("http://localhost:%d/api/words/edit?id=1", RULE.getLocalPort())).header("Content-type", "application/json")
                 .get(ClientResponse.class);
 
-        Word responseEntity = getWord(response);
+        WordIntermediateRepresentation responseEntity = getWord(response);
 
         assertEquals(1, responseEntity.getWordIntroductions().size());
     }
@@ -104,7 +104,7 @@ public class WordResourceIT {
                 String.format("http://localhost:%d/api/words/edit?id=1", RULE.getLocalPort())).header("Content-type", "application/json")
                 .get(ClientResponse.class);
 
-        Word responseEntity = getWord(response);
+        WordIntermediateRepresentation responseEntity = getWord(response);
 
         assertEquals(2, responseEntity.getWordIntroductions().size());
     }
@@ -121,7 +121,7 @@ public class WordResourceIT {
                 String.format("http://localhost:%d/api/words/edit?id=1", RULE.getLocalPort())).header("Content-type", "application/json")
                 .get(ClientResponse.class);
 
-        Word responseEntity = getWord(response);
+        WordIntermediateRepresentation responseEntity = getWord(response);
 
         Set<WordIntroduction> wordIntroductions = responseEntity.getWordIntroductions();
 
@@ -143,7 +143,7 @@ public class WordResourceIT {
                 String.format("http://localhost:%d/api/words/edit?id=1", RULE.getLocalPort())).header("Content-type", "application/json")
                 .get(ClientResponse.class);
 
-        Word responseEntity = getWord(response);
+        WordIntermediateRepresentation responseEntity = getWord(response);
 
         Set<WordIntroduction> wordIntroductions = responseEntity.getWordIntroductions();
 
@@ -274,6 +274,26 @@ public class WordResourceIT {
         assertThat(word.getReflections().size(), is(1));
     }
 
+    @Test
+    public void shouldGetSelectedReflectionsWithWord() throws Exception {
+
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_REFLECTIONS,DataSetup.INSERT_WORDS,DataSetup.INSERT_WORD_REFLECTIONS);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        ClientResponse wordResponse = client.resource(
+                String.format("http://localhost:%d/api/words/edit?id=1", RULE.getLocalPort()))
+                .header("Content-type", "application/json")
+                .get(ClientResponse.class);
+
+        WordIntermediateRepresentation word = wordResponse.getEntity(WordIntermediateRepresentation.class);
+
+        assertThat(word.getReflections().size(),is(1));
+        assertThat(word.getReflections().get(0).getId(),is(1L));
+
+    }
+
     private NewCookie geCookie(ClientResponse response) {
         return getCookie(response, "JSESSIONID");
     }
@@ -288,8 +308,7 @@ public class WordResourceIT {
         return sessionCookie;
     }
 
-    private Word getWord(ClientResponse response) {
-        Class<Word> wordClass = Word.class;
-        return response.getEntity(wordClass);
+    private WordIntermediateRepresentation getWord(ClientResponse response) {
+        return response.getEntity(WordIntermediateRepresentation.class);
     }
 }
