@@ -132,16 +132,15 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         picoContainer.addComponent(PersonRepresentationFactory.class);
         picoContainer.addComponent(CoupletsRepresentationFactory.class);
         picoContainer.addComponent(SongTextRepresentationFactory.class);
-        picoContainer.addComponent(WordRepresentationFactory.class);
 
-        WordRepresentationFactory wordRepresentationFactory = picoContainer.getComponent(WordRepresentationFactory.class);
+        WordRepresentationFactory wordRepresentationFactory = new WordRepresentationFactory();
         ReflectionRepresentationFactory reflectionRepresentationFactory = new ReflectionRepresentationFactory();
         reflectionRepresentationFactory.injectWordRepresentationFactory(wordRepresentationFactory);
         wordRepresentationFactory.injectReflectionRepresentationFactory(reflectionRepresentationFactory);
+
         picoContainer.addComponent(reflectionRepresentationFactory);
-
+        picoContainer.addComponent(wordRepresentationFactory);
         picoContainer.addComponent(Users.class);
-
         picoContainer.addComponent(SplashScreenOptionsResource.class);
         picoContainer.addComponent(WordResource.class);
         picoContainer.addComponent(CoupletResource.class);

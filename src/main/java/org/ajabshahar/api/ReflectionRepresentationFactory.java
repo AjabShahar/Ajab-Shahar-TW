@@ -109,13 +109,16 @@ public class ReflectionRepresentationFactory {
         return reflectionsSummaryRepresentations;
     }
 
-    public List<Reflection> toReflectionSummaryList(List<Reflection> reflections){
-        List<ReflectionSummaryRepresentation> reflectionsSummaryRepresentations = new ArrayList<>();
-        if(reflections != null){
-            for (Reflection reflection : reflections) {
-                reflectionsSummaryRepresentations.add(new ReflectionSummaryRepresentation(reflection.getId(),reflection.getTitle()));
+    public List<Reflection> toReflections(List<ReflectionSummaryRepresentation> reflectionSummaryList){
+        List<Reflection> reflections = new ArrayList<>();
+        if(reflectionSummaryList != null){
+            for (ReflectionSummaryRepresentation reflectionSummary : reflectionSummaryList) {
+                Reflection reflection = new Reflection();
+                reflection.setId(reflectionSummary.getId());
+                reflection.setTitle(reflectionSummary.getTitle());
+                reflections.add(reflection);
             }
         }
-        return reflectionsSummaryRepresentations;
+        return reflections;
     }
 }

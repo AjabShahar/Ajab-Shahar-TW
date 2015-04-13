@@ -83,4 +83,11 @@ public class DataSetup {
                             .columns("id", "name", "category_type")
                             .values(1, "SOng", "song")
                             .build());
+
+    public static final Operation INSERT_REFLECTIONS =
+            sequenceOf(
+                    insertInto("REFLECTION")
+                            .columns("id", "title")
+                            .values(1, "Oh that wonderful song!")
+                            .build());
 }

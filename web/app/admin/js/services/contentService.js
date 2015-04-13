@@ -54,7 +54,7 @@ var contentService = function ($http) {
         getAllCouplets: getAllCouplets,
         getAllWords: getAllWords,
         getAllGenres: getAllGenres,
-        getAllReflections: getAllReflectionSummaries,
+        getAllReflectionSummaries: getAllReflectionSummaries,
         saveWord: saveWord,
         getWord: getWord,
         updateWord: updateWord,

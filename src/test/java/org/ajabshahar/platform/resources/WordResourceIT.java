@@ -241,7 +241,7 @@ public class WordResourceIT {
     @Test
     public void shouldSaveReflections(){
 
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_REFLECTIONS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -254,7 +254,7 @@ public class WordResourceIT {
 
         NewCookie sessionCookie = geCookie(response);
 
-        ReflectionSummaryRepresentation reflectionSummaryRepresentation = new ReflectionSummaryRepresentation(1,"reflection");
+        ReflectionSummaryRepresentation reflectionSummaryRepresentation = new ReflectionSummaryRepresentation(1,"Oh that wonderful song!");
         List<ReflectionSummaryRepresentation> reflections = new ArrayList<>();
         reflections.add(reflectionSummaryRepresentation);
         jsonObject.put("reflections", reflections);

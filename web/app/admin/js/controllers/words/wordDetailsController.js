@@ -28,7 +28,7 @@ wordsAdminApp.controller('wordDetailsController', ['$scope', '$window', '$locati
         };
 
         $scope.init = function () {
-            var reflectionsPromise = contentService.getAllReflections();
+            var reflectionsPromise = contentService.getAllReflectionSummaries();
             var peoplePromise = contentService.getAllPeople();
             var categoriesPromise = contentService.getAllCategories(wordCategory);
             var songsPromise = contentService.getAllSongs();

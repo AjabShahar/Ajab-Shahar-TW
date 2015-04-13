@@ -7,6 +7,9 @@ public class ReflectionSummaryRepresentation {
     private long id;
     private String title;
 
+    public ReflectionSummaryRepresentation() {
+    }
+
     public ReflectionSummaryRepresentation(long id, String title) {
         this.id = id;
         this.title = title;
