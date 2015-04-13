@@ -9,7 +9,7 @@ import org.ajabshahar.platform.models.Word;
 import java.util.*;
 
 public class ReflectionRepresentationFactory {
-    private WordRepresentationFactory  wordRepresentationFactory;
+    private WordRepresentationFactory wordRepresentationFactory;
 
     public Reflection create(String jsonWord) {
         return toReflection(new Gson().fromJson(jsonWord, ReflectionRepresentation.class));
@@ -36,7 +36,7 @@ public class ReflectionRepresentationFactory {
 
     private Set<Word> toWords(List<WordSummaryRepresentation> wordsSummaryRepresentations) {
         Set<Word> words = new HashSet<>();
-        if(wordsSummaryRepresentations != null){
+        if (wordsSummaryRepresentations != null) {
             for (WordSummaryRepresentation wordsSummaryRepresentation : wordsSummaryRepresentations) {
                 Word word = new Word();
                 word.setId(wordsSummaryRepresentation.getId());
@@ -47,13 +47,19 @@ public class ReflectionRepresentationFactory {
     }
 
     private PersonDetails toPersonDetails(PersonSummaryRepresentation speaker) {
+        if (speaker != null) {
+            PersonDetails personDetails = new PersonDetails();
+            personDetails.setId(speaker.getId());
+            return personDetails;
+        }
         return null;
     }
 
     public ReflectionsSummaryRepresentation create(List<Reflection> reflectionList) {
         ReflectionsSummaryRepresentation reflectionsSummaryRepresentation = new ReflectionsSummaryRepresentation();
         for (Reflection reflection : reflectionList) {
-            ReflectionSummaryRepresentation reflectionSummaryRepresentation = new ReflectionSummaryRepresentation(reflection.getId(), reflection.getTitle());
+            PersonDetails speakerDetails = reflection.getSpeaker();
+            ReflectionSummaryRepresentation reflectionSummaryRepresentation = new ReflectionSummaryRepresentation(reflection.getId(), reflection.getTitle(), getPersonSummaryRepresentation(speakerDetails));
             reflectionsSummaryRepresentation.add(reflectionSummaryRepresentation);
         }
         return reflectionsSummaryRepresentation;
@@ -65,12 +71,16 @@ public class ReflectionRepresentationFactory {
             List<Word> words = new ArrayList<>(reflection.getWords());
             List<ReflectionTranscript> reflectionTranscripts = new ArrayList<>(reflection.getReflectionTranscripts());
             WordsSummaryRepresentation wordRepresentations = wordRepresentationFactory.create(words);
-            PersonSummaryRepresentation speaker = new PersonSummaryRepresentation(reflection.getSpeaker().getId(),reflection.getSpeaker().getName(),reflection.getSpeaker().getHindiName());
-            ReflectionRepresentation representation = new ReflectionRepresentation((int) reflection.getId(), reflection.getTitle(), reflection.getVerb(), speaker, reflection.getSoundCloudId(), reflection.getYoutubeVideo(), reflectionTranscripts,wordRepresentations, reflection.getShowOnFeaturedContentPage(), reflection.getIsAuthoringComplete());
+            PersonDetails speakerDetails = reflection.getSpeaker();
+            ReflectionRepresentation representation = new ReflectionRepresentation((int) reflection.getId(), reflection.getTitle(), reflection.getVerb(), getPersonSummaryRepresentation(speakerDetails), reflection.getSoundCloudId(), reflection.getYoutubeVideo(), reflectionTranscripts, wordRepresentations, reflection.getShowOnFeaturedContentPage(), reflection.getIsAuthoringComplete());
             reflectionRepresentations.add(representation);
         }
 
         return reflectionRepresentations;
+    }
+
+    private PersonSummaryRepresentation getPersonSummaryRepresentation(PersonDetails speakerDetails) {
+        return (speakerDetails != null ? new PersonSummaryRepresentation(speakerDetails.getId(), speakerDetails.getName(), speakerDetails.getHindiName()) : new PersonSummaryRepresentation());
     }
 
     public ReflectionsRepresentation createReflections(List<Reflection> reflectionList) {
@@ -86,12 +96,19 @@ public class ReflectionRepresentationFactory {
     public ReflectionRepresentation createReflectionRepresentation(Reflection reflection) {
         List<Word> words = new ArrayList<>(reflection.getWords());
         WordsSummaryRepresentation wordRepresentations = wordRepresentationFactory.create(words);
-        PersonSummaryRepresentation speaker = null;
-        if(reflection.getSpeaker() != null){
-            speaker = new PersonSummaryRepresentation(reflection.getSpeaker().getId(),reflection.getSpeaker().getName(),reflection.getSpeaker().getHindiName());
-        }
         ArrayList<ReflectionTranscript> reflectionTranscripts = new ArrayList<>(reflection.getReflectionTranscripts());
-        ReflectionRepresentation reflectionRepresentation = new ReflectionRepresentation((int) reflection.getId(), reflection.getTitle(), reflection.getVerb(), speaker, reflection.getSoundCloudId(), reflection.getYoutubeVideo(), reflectionTranscripts, wordRepresentations, reflection.getShowOnFeaturedContentPage(), reflection.getIsAuthoringComplete());
+        ReflectionRepresentation reflectionRepresentation = new ReflectionRepresentation(
+                (int) reflection.getId(),
+                reflection.getTitle(),
+                reflection.getVerb(),
+                getPersonSummaryRepresentation(reflection.getSpeaker()),
+                reflection.getSoundCloudId(),
+                reflection.getYoutubeVideo(),
+                reflectionTranscripts,
+                wordRepresentations,
+                reflection.getShowOnFeaturedContentPage(),
+                reflection.getIsAuthoringComplete()
+        );
         return reflectionRepresentation;
     }
 
@@ -99,17 +116,19 @@ public class ReflectionRepresentationFactory {
         this.wordRepresentationFactory = wordRepresentationFactory;
     }
 
-    public List<ReflectionSummaryRepresentation> toReflectionSummaryList(List<Reflection> reflections){
+    public List<ReflectionSummaryRepresentation> toReflectionSummaryList(List<Reflection> reflections) {
         List<ReflectionSummaryRepresentation> reflectionsSummaryRepresentations = new ArrayList<>();
-        if(reflections != null){
+        if (reflections != null) {
             for (Reflection reflection : reflections) {
-                reflectionsSummaryRepresentations.add(new ReflectionSummaryRepresentation(reflection.getId(),reflection.getTitle()));
+                PersonDetails speakerDetails = reflection.getSpeaker();
+                PersonSummaryRepresentation speaker = new PersonSummaryRepresentation(speakerDetails.getId(), speakerDetails.getName(), speakerDetails.getHindiName());
+                reflectionsSummaryRepresentations.add(new ReflectionSummaryRepresentation(reflection.getId(), reflection.getTitle(), speaker));
             }
         }
         return reflectionsSummaryRepresentations;
     }
 
-    public List<Reflection> toReflections(List<ReflectionSummaryRepresentation> reflectionSummaryList){
+  /*  public List<Reflection> toReflections(List<ReflectionSummaryRepresentation> reflectionSummaryList){
         List<Reflection> reflections = new ArrayList<>();
         if(reflectionSummaryList != null){
             for (ReflectionSummaryRepresentation reflectionSummary : reflectionSummaryList) {
@@ -120,5 +139,5 @@ public class ReflectionRepresentationFactory {
             }
         }
         return reflections;
-    }
+    }*/
 }

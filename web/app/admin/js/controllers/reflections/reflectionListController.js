@@ -4,12 +4,12 @@ var reflectionListController = adminApp.controller('reflectionListController', [
         $scope.reflections = [];
         $scope.init = function () {
             contentService.getAllReflectionSummaries().then(function (result) {
-                var allReflections = result.data;
+                var allReflections = result.data.reflections;
                 $scope.reflections = _.reduce(allReflections, function (reflections, value, index) {
                     var toBeAdded = {};
                     toBeAdded.title = value.title;
                     toBeAdded.id = value.id;
-                    toBeAdded.speaker = value.speaker.firstName + ' ' + value.speaker.lastName;
+                    toBeAdded.speaker = value.speaker.name;
 
                     if (value.isAuthoringComplete)
                         toBeAdded.publish = "Yes";
