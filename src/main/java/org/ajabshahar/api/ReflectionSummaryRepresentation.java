@@ -7,14 +7,16 @@ public class ReflectionSummaryRepresentation {
     private long id;
     private String title;
     private PersonSummaryRepresentation speaker;
+    private Boolean published;
 
     public ReflectionSummaryRepresentation() {
     }
 
-    public ReflectionSummaryRepresentation(long id, String title, PersonSummaryRepresentation speaker) {
+    public ReflectionSummaryRepresentation(long id, String title, PersonSummaryRepresentation speaker, Boolean published) {
         this.id = id;
         this.title = title;
         this.speaker = speaker;
+        this.published = published;
     }
 
     @JsonProperty("id")
@@ -31,4 +33,10 @@ public class ReflectionSummaryRepresentation {
     public PersonSummaryRepresentation getSpeaker() {
         return speaker;
     }
+
+    @JsonProperty("published")
+    public Boolean getPublished() {
+        return published;
+    }
+
 }
