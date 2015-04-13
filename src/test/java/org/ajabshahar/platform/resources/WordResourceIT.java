@@ -9,6 +9,7 @@ import com.sun.jersey.api.client.ClientResponse;
 import io.dropwizard.testing.junit.DropwizardAppRule;
 import net.minidev.json.JSONObject;
 import org.ajabshahar.DataSetup;
+import org.ajabshahar.api.PersonSummaryRepresentation;
 import org.ajabshahar.api.ReflectionSummaryRepresentation;
 import org.ajabshahar.api.WordIntermediateRepresentation;
 import org.ajabshahar.platform.PlatformApplication;
@@ -254,7 +255,8 @@ public class WordResourceIT {
 
         NewCookie sessionCookie = geCookie(response);
 
-        ReflectionSummaryRepresentation reflectionSummaryRepresentation = new ReflectionSummaryRepresentation(1,"Oh that wonderful song!");
+        PersonSummaryRepresentation speaker = new PersonSummaryRepresentation();
+        ReflectionSummaryRepresentation reflectionSummaryRepresentation = new ReflectionSummaryRepresentation(1,"Oh that wonderful song!", speaker);
         List<ReflectionSummaryRepresentation> reflections = new ArrayList<>();
         reflections.add(reflectionSummaryRepresentation);
         jsonObject.put("reflections", reflections);
