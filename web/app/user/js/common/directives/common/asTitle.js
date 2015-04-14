@@ -11,7 +11,7 @@ filterModule.directive("asTitle", function () {
         },
         templateUrl: '/user/js/common/templates/common/asTitle.html',
         controller: function ($scope, $rootScope) {
-            $scope.contentTextRepresentation = 'Transliteration';
+            $rootScope.contentTextRepresentation = 'Transliteration';
             $scope.alphabetFilters = [
                 {alphabet: 'ALL', isSelected: true},
                 {alphabet: 'A', isSelected: false},
@@ -42,19 +42,19 @@ filterModule.directive("asTitle", function () {
                 {alphabet: 'Z', isSelected: false}];
 
             $scope.selectOriginalTitle = function () {
-                if ($scope.contentTextRepresentation === 'Transliteration')
+                if ($rootScope.contentTextRepresentation === 'Transliteration')
                     return;
-                $scope.contentTextRepresentation = 'Transliteration';
+                $rootScope.contentTextRepresentation = 'Transliteration';
                 $scope.clearAlphabetFilter();
-                $rootScope.$broadcast('contentTextRepresentation', $scope.contentTextRepresentation);
+                //$rootScope.$broadcast('contentTextRepresentation', $rootScope.contentTextRepresentation);
             };
 
             $scope.selectEnglishTitle = function () {
-                if ($scope.contentTextRepresentation === 'Translation')
+                if ($rootScope.contentTextRepresentation === 'Translation')
                     return;
-                $scope.contentTextRepresentation = 'Translation';
+                $rootScope.contentTextRepresentation = 'Translation';
                 $scope.clearAlphabetFilter();
-                $rootScope.$broadcast('contentTextRepresentation', $scope.contentTextRepresentation);
+                //$rootScope.$broadcast('contentTextRepresentation', $rootScope.contentTextRepresentation);
             };
 
             $scope.clearAlphabetFilter = function () {
@@ -71,7 +71,7 @@ filterModule.directive("asTitle", function () {
                 $scope.currentAlphabetFilter = currentAlphabetFilter;
 
                 var filter = angular.extend({}, currentAlphabetFilter);
-                filter.contentTextRepresentation = $scope.contentTextRepresentation;
+                filter.contentTextRepresentation = $rootScope.contentTextRepresentation;
                 if (currentAlphabetFilter.alphabet.toLowerCase() === 'all') {
                     filter.alphabet = "";
                 }

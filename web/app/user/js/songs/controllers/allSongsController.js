@@ -15,8 +15,8 @@ allSongsApp.controller('allSongsController', ['$scope', '$window', 'songsContent
     var sieve = new Ajabshahar.user.Sieve($scope.criteriaList);
     var contentTextRepresentation = 'Transliteration';
 
-    $scope.$on("contentTextRepresentation", function (event, data) {
-        contentTextRepresentation = data;
+    $scope.$watch("contentTextRepresentation", function (value) {
+        contentTextRepresentation = value;
         sortSongsList($scope.filteredSongList);
     });
 
