@@ -29,11 +29,11 @@ public class SongsRepresentationFactory {
 
             song.getSingers().forEach(singer -> {
                 PersonDetails personDetails = people.findBy((int) singer.getId());
-                singers.add(new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName(), personDetails.getHindiName()));
+                singers.add(new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName(), personDetails.getHindiName(), personDetails.getPrimaryOccupation().getName()));
             });
             song.getPoets().forEach(poet -> {
                 PersonDetails personDetails = people.findBy((int) poet.getId());
-                poets.add(new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName(), personDetails.getHindiName()));
+                poets.add(new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName(), personDetails.getHindiName(), personDetails.getPrimaryOccupation().getName()));
             });
 
             SongSummaryRepresentation songSummaryRepresentation = new SongSummaryRepresentation(song.getId(), title.getEnglishTranslation(), title.getEnglishTransliteration(), singers, poets, song.getDuration(),
@@ -117,7 +117,7 @@ public class SongsRepresentationFactory {
         List<PersonSummaryRepresentation> peopleList = new ArrayList<>();
         peopleSet.forEach(singer -> {
             PersonDetails personDetails = people.findBy((int) singer.getId());
-            peopleList.add(new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName(), personDetails.getHindiName()));
+            peopleList.add(new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName(), personDetails.getHindiName(), personDetails.getPrimaryOccupation().getName()));
         });
         return peopleList;
     }
