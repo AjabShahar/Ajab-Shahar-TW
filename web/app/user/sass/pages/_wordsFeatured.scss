@@ -59,7 +59,7 @@
     .thumbnail-desc {
       position: relative;
       cursor: pointer;
-      width: 30%;
+      display: inline-block;
       margin: 0 auto;
 
        &:hover {
@@ -88,8 +88,8 @@
 
       .show-desc {
         position: absolute;
-        bottom: -20px;
-        right: -200px;
+        bottom: -40px;
+        right: -240px;
 
       }
       .bubble {
