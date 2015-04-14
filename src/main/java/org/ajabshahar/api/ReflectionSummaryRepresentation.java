@@ -1,6 +1,7 @@
 package org.ajabshahar.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.ajabshahar.platform.models.Reflection;
 
 public class ReflectionSummaryRepresentation {
 
@@ -39,4 +40,10 @@ public class ReflectionSummaryRepresentation {
         return published;
     }
 
+    public static ReflectionSummaryRepresentation createFrom(Reflection reflection){
+        if(reflection != null){
+            return new ReflectionSummaryRepresentation(reflection.getId(),reflection.getTitle(),PersonSummaryRepresentation.createFrom(reflection.getSpeaker()),reflection.getIsAuthoringComplete());
+        }
+        return null;
+    }
 }

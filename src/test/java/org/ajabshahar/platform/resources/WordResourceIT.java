@@ -27,6 +27,7 @@ import java.util.Set;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
 public class WordResourceIT {
@@ -77,15 +78,13 @@ public class WordResourceIT {
 
     @Test
     public void shouldHaveWordIntroduction() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_WORDS,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS,
                 DataSetup.INSERT_WORD_INTRODUCTION);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
 
-        ClientResponse response = client.resource(
-                String.format(API_TO_EDIT_THE_WORD_WITH_ID_ONE, RULE.getLocalPort())).header("Content-type", "application/json")
-                .get(ClientResponse.class);
+        ClientResponse response = httpGet(API_TO_EDIT_THE_WORD_WITH_ID_ONE);
 
         WordIntermediateRepresentation responseEntity = getWord(response);
 
@@ -94,15 +93,13 @@ public class WordResourceIT {
 
     @Test
     public void shouldHaveWordIntroductions() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_WORDS,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS,DataSetup.INSERT_WORDS,
                 DataSetup.INSERT_WORD_INTRODUCTION, DataSetup.INSERT_WORD_INTRODUCTION);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
 
-        ClientResponse response = client.resource(
-                String.format(API_TO_EDIT_THE_WORD_WITH_ID_ONE, RULE.getLocalPort())).header("Content-type", "application/json")
-                .get(ClientResponse.class);
+        ClientResponse response = httpGet(API_TO_EDIT_THE_WORD_WITH_ID_ONE);
 
         WordIntermediateRepresentation responseEntity = getWord(response);
 
@@ -111,15 +108,13 @@ public class WordResourceIT {
 
     @Test
     public void shouldHaveWordIntroductionWithContentType() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_WORDS,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS,
                 DataSetup.INSERT_WORD_INTRODUCTION);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
 
-        ClientResponse response = client.resource(
-                String.format(API_TO_EDIT_THE_WORD_WITH_ID_ONE, RULE.getLocalPort())).header("Content-type", "application/json")
-                .get(ClientResponse.class);
+        ClientResponse response = httpGet(API_TO_EDIT_THE_WORD_WITH_ID_ONE);
 
         WordIntermediateRepresentation responseEntity = getWord(response);
 
@@ -133,15 +128,13 @@ public class WordResourceIT {
     @Test
     public void shouldHaveWordIntroductionWithOtherContentType() {
         Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,
-                DataSetup.INSERT_WORDS,
+                DataSetup.INSERT_REFLECTIONS,DataSetup.INSERT_WORDS,
                 DataSetup.INSERT_WORD_INTRODUCTION_WITH_COUPLET_CONTENT_TYPE);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
 
-        ClientResponse response = client.resource(
-                String.format(API_TO_EDIT_THE_WORD_WITH_ID_ONE, RULE.getLocalPort())).header("Content-type", "application/json")
-                .get(ClientResponse.class);
+        ClientResponse response = httpGet(API_TO_EDIT_THE_WORD_WITH_ID_ONE);
 
         WordIntermediateRepresentation responseEntity = getWord(response);
 
@@ -159,20 +152,7 @@ public class WordResourceIT {
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
 
-        String userCredentials = "{\"username\":\"admin\",\"password\":\"password\"}";
-
-        ClientResponse response = client.resource(
-                String.format("http://localhost:%d/api/login", RULE.getLocalPort())).header("Content-type", "application/json")
-                .post(ClientResponse.class, userCredentials);
-
-        NewCookie sessionCookie = geCookie(response);
-
-
-        ClientResponse wordResponse = client.resource(
-                String.format("http://localhost:%d/api/words", RULE.getLocalPort()))
-                .header("Content-type", "application/json")
-                .cookie(sessionCookie)
-                .post(ClientResponse.class, jsonObject);
+        ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
 
         assertThat(wordResponse.getStatus(), is(200));
     }
@@ -206,7 +186,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldEditWordByAddingIntroductionsForTheFirstTime() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_SONG_WORD, DataSetup.DELETE_WORD_INTRODUCTION, DataSetup.DELETE_WORDS, DataSetup.DELETE_WORD_INTRODUCTION);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -247,26 +227,13 @@ public class WordResourceIT {
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
 
-        String userCredentials = "{\"username\":\"admin\",\"password\":\"password\"}";
-
-        ClientResponse response = client.resource(
-                String.format("http://localhost:%d/api/login", RULE.getLocalPort())).header("Content-type", "application/json")
-                .post(ClientResponse.class, userCredentials);
-
-        NewCookie sessionCookie = geCookie(response);
-
         PersonSummaryRepresentation speaker = new PersonSummaryRepresentation();
         ReflectionSummaryRepresentation reflectionSummaryRepresentation = new ReflectionSummaryRepresentation(1,"Oh that wonderful song!", speaker, false);
         List<ReflectionSummaryRepresentation> reflections = new ArrayList<>();
         reflections.add(reflectionSummaryRepresentation);
         jsonObject.put("reflections", reflections);
 
-        ClientResponse wordResponse = client.resource(
-                String.format("http://localhost:%d/api/words", RULE.getLocalPort()))
-                .header("Content-type", "application/json")
-                .cookie(sessionCookie)
-                .post(ClientResponse.class, jsonObject);
-
+        ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
 
         WordIntermediateRepresentation word = wordResponse.getEntity(WordIntermediateRepresentation.class);
 
@@ -282,10 +249,7 @@ public class WordResourceIT {
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
 
-        ClientResponse wordResponse = client.resource(
-                String.format(API_TO_EDIT_THE_WORD_WITH_ID_ONE, RULE.getLocalPort()))
-                .header("Content-type", "application/json")
-                .get(ClientResponse.class);
+        ClientResponse wordResponse = httpGet(API_TO_EDIT_THE_WORD_WITH_ID_ONE);
 
         WordIntermediateRepresentation word = wordResponse.getEntity(WordIntermediateRepresentation.class);
 
@@ -295,19 +259,111 @@ public class WordResourceIT {
     }
 
     @Test
-    public void shouldHaveShowAjabShaharTeamTextFlag(){
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_WORDS);
-
+    public void shouldHaveShowAjabShaharTeamTextFlag() {
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS,DataSetup.INSERT_WORDS);
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
 
-        ClientResponse response = client.resource(
-                String.format(API_TO_EDIT_THE_WORD_WITH_ID_ONE, RULE.getLocalPort())).header("Content-type", "application/json")
-                .get(ClientResponse.class);
+        ClientResponse response = httpGet(API_TO_EDIT_THE_WORD_WITH_ID_ONE);
 
         WordIntermediateRepresentation responseEntity = getWord(response);
 
         assertEquals(true, responseEntity.getDisplayAjabShaharTeam());
+    }
+
+    @Test
+    public void shouldSaveDefaultReflection(){
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_REFLECTIONS,DataSetup.INSERT_WORDS,DataSetup.INSERT_WORD_REFLECTIONS);
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("wordOriginal", "शून्य");
+        jsonObject.put("wordTranslation", "Emptiness");
+        jsonObject.put("wordTransliteration", "Shoonya");
+        jsonObject.put("englishIntroExcerpt", "Shoonya is literally zero ");
+        jsonObject.put("hindiIntroExcerpt", "");
+        jsonObject.put("diacritic", "");
+        jsonObject.put("isRootWord", false);
+        jsonObject.put("showOnLandingPage", false);
+        jsonObject.put("meaning", "meaning");
+        jsonObject.put("wordIntroductions", new ArrayList<>());
+        jsonObject.put("defaultReflection",new ReflectionSummaryRepresentation(2,"I hate that word!", null, false));
+
+        ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
+        WordIntermediateRepresentation word = wordResponse.getEntity(WordIntermediateRepresentation.class);
+
+        wordResponse = httpGet("http://localhost:%d/api/words/edit?id="+word.getId());
+        word = wordResponse.getEntity(WordIntermediateRepresentation.class);
+
+        assertThat(word.getDefaultReflection().getId(), is(2L));
+    }
+
+    @Test
+    public void shouldEditDefaultReflection(){
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_REFLECTIONS,DataSetup.INSERT_WORDS,DataSetup.INSERT_WORD_REFLECTIONS);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        //get existing word
+        ClientResponse wordResponse = httpGet("http://localhost:%d/api/words/edit?id=1");
+        WordIntermediateRepresentation word = wordResponse.getEntity(WordIntermediateRepresentation.class);
+        assertNull(word.getDefaultReflection());
+
+        //change the word - set a default reflection
+        word.setDefaultReflection(new ReflectionSummaryRepresentation(2,"I hate that word!",null,false));
+        wordResponse = loginAndPost("http://localhost:%d/api/words", word);
+        wordResponse = httpGet("http://localhost:%d/api/words/edit?id=1");
+
+        //check the default reflection in DB
+        word = wordResponse.getEntity(WordIntermediateRepresentation.class);
+        assertThat(word.getDefaultReflection().getId(),is(2L));
+    }
+
+    @Test
+    public void shouldRemoveDefaultReflection(){
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_REFLECTIONS,DataSetup.INSERT_WORDS,DataSetup.INSERT_WORD_REFLECTIONS);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        //get existing word
+        ClientResponse wordResponse = httpGet("http://localhost:%d/api/words/edit?id=2");
+        WordIntermediateRepresentation word = wordResponse.getEntity(WordIntermediateRepresentation.class);
+        assertEquals(2l, word.getDefaultReflection().getId());
+
+        //change the word - remove a default reflection
+        word.setDefaultReflection(null);
+        wordResponse = loginAndPost("http://localhost:%d/api/words", word);
+        wordResponse = httpGet("http://localhost:%d/api/words/edit?id=2");
+
+        //check the default reflection in DB
+        word = wordResponse.getEntity(WordIntermediateRepresentation.class);
+        assertNull(word.getDefaultReflection());
+    }
+
+
+    private ClientResponse httpGet(String getUrl) {
+        return client.resource(
+                String.format(getUrl, RULE.getLocalPort()))
+                .header("Content-type", "application/json")
+                .get(ClientResponse.class);
+    }
+
+
+    private ClientResponse loginAndPost(String postUrl, Object jsonObj) {
+        String userCredentials = "{\"username\":\"admin\",\"password\":\"password\"}";
+        ClientResponse response = client.resource(
+                String.format("http://localhost:%d/api/login", RULE.getLocalPort())).header("Content-type", "application/json")
+                .post(ClientResponse.class, userCredentials);
+
+        NewCookie sessionCookie = geCookie(response);
+        return client.resource(
+                String.format(postUrl, RULE.getLocalPort()))
+                .header("Content-type", "application/json")
+                .cookie(sessionCookie)
+                .post(ClientResponse.class, jsonObj);
     }
 
     private NewCookie geCookie(ClientResponse response) {
