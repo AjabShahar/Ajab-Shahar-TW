@@ -11,7 +11,7 @@ public class DataSetup {
     public static String HASHED_PASSWORD = PasswordEncryptor.getEncryptedPassword("password", PasswordAuthenticator.SALT, PasswordAuthenticator.ALGORITHM);
 
     public static final Operation DELETE_ALL =
-            deleteAllFrom("SONG_WORD", "WORD_REFLECTION", "WORD_INTRODUCTION", "WORD", "REFLECTION", "SONG", "PERSON", "CATEGORY");
+            deleteAllFrom("SONG_WORD", "WORD_REFLECTION", "WORD_INTRODUCTION", "RELATED_WORDS", "WORD", "REFLECTION", "SONG", "PERSON", "CATEGORY");
 
     public static final Operation INSERT_ADMIN_USER =
             sequenceOf(

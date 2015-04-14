@@ -15,7 +15,51 @@ public class WordRepresentationFactory {
     private ReflectionRepresentationFactory reflectionRepresentationFactory;
 
     public Word create(String jsonWord) {
-        return new Gson().fromJson(jsonWord, Word.class);
+        return toWord(new Gson().fromJson(jsonWord, WordIntermediateRepresentation.class));
+    }
+
+    private Word toWord(WordIntermediateRepresentation wordIntermediateRepresentation) {
+        Word word = new Word();
+        word.setId(wordIntermediateRepresentation.getId());
+        word.setWordOriginal(wordIntermediateRepresentation.getWordOriginal());
+        word.setWordTranslation(wordIntermediateRepresentation.getWordTranslation());
+        word.setWordTransliteration(wordIntermediateRepresentation.getWordTransliteration());
+        word.setDiacritic(wordIntermediateRepresentation.getDiacritic());
+        word.setHindiIntroExcerpt(wordIntermediateRepresentation.getHindiIntroExcerpt());
+        word.setEnglishIntroExcerpt(wordIntermediateRepresentation.getEnglishIntroExcerpt());
+        word.setMeaning(wordIntermediateRepresentation.getMeaning());
+        word.setIsRootWord(wordIntermediateRepresentation.getIsRootWord());
+        word.setShowOnLandingPage(wordIntermediateRepresentation.getShowOnLandingPage());
+        word.setDisplayAjabShaharTeam(wordIntermediateRepresentation.getDisplayAjabShaharTeam());
+        word.setWordIntroductions(wordIntermediateRepresentation.getWordIntroductions());
+        word.setPeople(wordIntermediateRepresentation.getPeople());
+        word.setSongs(wordIntermediateRepresentation.getSongs());
+        word.setWriters(wordIntermediateRepresentation.getWriters());
+        Reflection defaultReflection = wordIntermediateRepresentation.getDefaultReflection() != null ? new Reflection() : null;
+        if(wordIntermediateRepresentation.getDefaultReflection() != null){
+            defaultReflection.setId(wordIntermediateRepresentation.getDefaultReflection().getId());
+        }
+        word.setDefaultReflection(defaultReflection);
+
+        Set<Reflection> reflections = new HashSet<>();
+        if(wordIntermediateRepresentation.getReflections()!= null){
+            wordIntermediateRepresentation.getReflections().forEach(reflectionSummary -> {
+                Reflection reflection = new Reflection();
+                reflection.setId(reflectionSummary.getId());
+                reflections.add(reflection);
+            });
+        }
+
+        Set<Word> words = new HashSet<>();
+        wordIntermediateRepresentation.getRelatedWords().forEach(wordSummary ->{
+            Word newWord = new Word();
+            newWord.setId(wordSummary.getId());
+            words.add(newWord);
+        });
+
+        word.setReflections(reflections);
+        word.setRelatedWords(words);
+        return word;
     }
 
     public WordsSummaryRepresentation create(List<Word> wordsList) {
@@ -136,8 +180,11 @@ public class WordRepresentationFactory {
 
         List<Reflection> reflections = new ArrayList<>(word.getReflections());
         List<ReflectionSummaryRepresentation> reflectionSummaryRepresentationList = reflectionRepresentationFactory.toReflectionSummaryList(reflections);
-
         wordIntermediateRepresentation.setReflections(reflectionSummaryRepresentationList);
+
+        WordsSummaryRepresentation wordSummaryRepresentations = create(new ArrayList<Word>(word.getRelatedWords()));
+        wordIntermediateRepresentation.setRelatedWords(wordSummaryRepresentations.getWords());
+
         return wordIntermediateRepresentation;
     }
 
