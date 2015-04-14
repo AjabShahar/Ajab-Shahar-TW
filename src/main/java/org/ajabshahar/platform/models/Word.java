@@ -48,7 +48,7 @@ public class Word {
     private String meaning;
 
     @OneToOne
-    @JoinColumn(name = "DEFAULT_REFLECTION")
+    @JoinColumn(name = "DEFAULT_REFLECTION_ID")
     private Reflection defaultReflection;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "word")
