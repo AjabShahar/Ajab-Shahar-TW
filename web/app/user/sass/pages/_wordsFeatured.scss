@@ -61,20 +61,24 @@
       cursor: pointer;
       width: 30%;
       margin: 0 auto;
+
+       &:hover {
+            .title, .sub-title {
+                color: #ee2a7b;
+            }
+       }
       .title {
         font-family: 'Merriweather';
-        font-size: 20px;
+        font-size: 16px;
         font-weight: 300;
-        color: #4d4d4e;
+        color: #4e4e4e;
         text-transform: capitalize;
         line-height: 1.5em;
-        &:hover {
-          color: #ee2a7b;
-        }
+
       }
       .sub-title {
         font-family: 'Merriweather';
-        font-size: 18px;
+        font-size: 14px;
         font-weight: 300;
         font-style: italic;
         color: #989798;
@@ -85,7 +89,7 @@
       .show-desc {
         position: absolute;
         bottom: -20px;
-        right: -125px;
+        right: -200px;
 
       }
       .bubble {
