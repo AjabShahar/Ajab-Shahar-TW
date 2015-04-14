@@ -215,14 +215,12 @@
             background-position: left bottom;
             background-repeat: no-repeat;
             width: 95px;
-            padding: 5px 20px 15px;
+            padding: 0px 20px;
 
             &:last-child {
               background: none;
             }
-            &:first-child {
-              padding-top: 0;
-            }
+
           }
           a {
             display: block;
@@ -230,6 +228,7 @@
             font-family: 'Merriweather';
             color: #999;
             font-size: 14px;
+            height: 27px;
 
             &.active {
               cursor: default;
