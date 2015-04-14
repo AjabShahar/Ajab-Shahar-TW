@@ -6,6 +6,7 @@ import org.ajabshahar.platform.models.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class SongsRepresentationFactory {
     private final People people;
@@ -46,20 +47,11 @@ public class SongsRepresentationFactory {
         Title umbrellaTitle = song.getTitle() == null ? new Title() : song.getTitle();
         Title songTitle = song.getSongTitle() == null ? new Title() : song.getSongTitle();
         Gathering gathering = song.getGathering() == null ? new Gathering() : song.getGathering();
-        List<PersonSummaryRepresentation> singers = new ArrayList<>(), poets = new ArrayList<>();
+        List<PersonSummaryRepresentation> singers = getPeople(song.getSingers()), poets = getPeople(song.getPoets());
         SongText songText = song.getSongText() == null ? new SongText() : song.getSongText();
         SongTextRepresentation lyrics = songTextRepresentationFactory.getSongText(songText);
         List<Word> wordList = new ArrayList<>(song.getWords());
         WordsSummaryRepresentation words = wordRepresentationFactory.create(wordList);
-
-        song.getSingers().forEach(singer -> {
-            PersonDetails personDetails = people.findBy((int) singer.getId());
-            singers.add(new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName(), personDetails.getHindiName()));
-        });
-        song.getPoets().forEach(poet -> {
-            PersonDetails personDetails = people.findBy((int) poet.getId());
-            poets.add(new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName(), personDetails.getHindiName()));
-        });
 
         return new SongRepresentation(song.getId(),
                 umbrellaTitle.getId(),
@@ -90,21 +82,11 @@ public class SongsRepresentationFactory {
             Title umbrellaTitle = song.getTitle() == null ? new Title() : song.getTitle();
             Title songTitle = song.getSongTitle() == null ? new Title() : song.getSongTitle();
             Gathering gathering = song.getGathering() == null ? new Gathering() : song.getGathering();
-            List<PersonSummaryRepresentation> singers = new ArrayList<>(), poets = new ArrayList<>();
+            List<PersonSummaryRepresentation> singers = getPeople(song.getSingers()), poets = getPeople(song.getPoets());
             SongText songText = song.getSongText() == null ? new SongText() : song.getSongText();
             SongTextRepresentation songTextRepresentation = songTextRepresentationFactory.getSongText(songText);
             List<Word> wordList = new ArrayList<>(song.getWords());
             WordsSummaryRepresentation words = wordRepresentationFactory.create(wordList);
-
-            song.getSingers().forEach(singer -> {
-                PersonDetails personDetails = people.findBy((int) singer.getId());
-                singers.add(new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName(), personDetails.getHindiName()));
-            });
-            song.getPoets().forEach(poet -> {
-                PersonDetails personDetails = people.findBy((int) poet.getId());
-                poets.add(new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName(), personDetails.getHindiName()));
-            });
-
 
             SongRepresentation songRepresentation = new SongRepresentation(song.getId(),
                     umbrellaTitle.getId(),
@@ -129,6 +111,15 @@ public class SongsRepresentationFactory {
             songsRepresentation.add(songRepresentation);
         }
         return songsRepresentation;
+    }
+
+    private List<PersonSummaryRepresentation> getPeople(Set<PersonDetails> peopleSet) {
+        List<PersonSummaryRepresentation> peopleList = new ArrayList<>();
+        peopleSet.forEach(singer -> {
+            PersonDetails personDetails = people.findBy((int) singer.getId());
+            peopleList.add(new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName(), personDetails.getHindiName()));
+        });
+        return peopleList;
     }
 
     public Song create(String jsonSong) {
