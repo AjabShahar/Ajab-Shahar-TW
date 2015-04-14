@@ -20,7 +20,7 @@ thumbnailModule.directive("songThumbnail", function ($timeout) {
             open: '&' //open click handler ~ callback to controller
         },
         templateUrl: '/user/js/common/templates/songs/songThumbnail.html',
-        controller: function ($scope) {
+        controller: function ($scope,$rootScope) {
             $scope.textRepresentation = 'Transliteration';
             $scope.shouldShowDetails = true;
             $scope.noun = "";
@@ -32,17 +32,16 @@ thumbnailModule.directive("songThumbnail", function ($timeout) {
 
             $timeout($scope.onTimeOut, 1000);
 
-            $scope.$on('contentTextRepresentation', function (event, data) {
-                $scope.textRepresentation = data;
+            var setTitles = function(){
+                $scope.primaryTitle =   ($scope.textRepresentation === 'Transliteration') ? $scope.englishTransliteration : $scope.englishTranslation;
+                $scope.secondaryTitle =($scope.textRepresentation === 'Transliteration') ? $scope.englishTranslation : $scope.englishTransliteration;
+            };
+
+            $rootScope.$watch('contentTextRepresentation', function ( value) {
+                $scope.textRepresentation = value;
+                setTitles();
+                console.log("representation : ",$scope.textRepresentation);
             });
-
-            $scope.getTitle = function () {
-                return ($scope.textRepresentation === 'Transliteration') ? $scope.englishTransliteration : $scope.englishTranslation;
-            };
-
-            $scope.getSecondTitle = function () {
-                return ($scope.textRepresentation === 'Transliteration') ? $scope.englishTranslation : $scope.englishTransliteration;
-            };
 
             $scope.init = function () {
                 if ($scope.singers == null || $scope.singers.length <= 0) {
@@ -52,6 +51,7 @@ thumbnailModule.directive("songThumbnail", function ($timeout) {
                 }
                 $scope.multipleSingers = true;
                 $scope.noun = "sing";
+                setTitles();
             };
 
             $scope.showDetails = function () {
