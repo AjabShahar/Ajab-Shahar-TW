@@ -48,6 +48,7 @@ public class Words {
         originalWord.setReflections(updatableWord.getReflections());
         originalWord.setWriters(updatableWord.getWriters());
         originalWord.setPeople(updatableWord.getPeople());
+        originalWord.setDisplayAjabShaharTeam(updatableWord.getDisplayAjabShaharTeam());
         originalWord.getSongs().clear();
         originalWord.getSongs().addAll(updatableWord.getSongs());
         return originalWord;

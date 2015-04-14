@@ -38,4 +38,9 @@
             update word_introduction set content_type = 'text' where content_type is null;
         </sql>
     </changeSet>
+    <changeSet id="70" author="CHANAKYA_JAIDEEP">
+        <sql>
+            ALTER TABLE word ADD COLUMN display_ajab_shahar_team boolean DEFAULT false;
+        </sql>
+    </changeSet>
 </databaseChangeLog>

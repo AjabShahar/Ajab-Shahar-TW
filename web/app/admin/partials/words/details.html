@@ -124,6 +124,19 @@
 
                 <div class="row">
                     <div class="form-group col-sm-2">
+                        <label>Display "Ajab Shahar team"?</label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <select name="format" ng-model="formInfo.displayAjabShaharTeam" class="form-control"
+                                ng-init="formInfo.displayAjabShaharTeam = false">
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
                         <label>Show On LandingPage</label>
                     </div>
                     <div class="form-group col-sm-2">

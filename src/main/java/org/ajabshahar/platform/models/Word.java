@@ -38,6 +38,9 @@ public class Word {
     @Column(name = "IS_ROOT_WORD", nullable = true)
     private Boolean isRootWord;
 
+    @Column(name = "DISPLAY_AJAB_SHAHAR_TEAM", nullable = true)
+    private Boolean displayAjabShaharTeam;
+
     @Column(name = "SHOW_ON_LANDING_PAGE", nullable = false)
     private Boolean showOnLandingPage;
 

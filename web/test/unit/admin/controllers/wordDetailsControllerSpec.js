@@ -101,6 +101,7 @@ describe("Word details controller spec:", function () {
             $httpBackend.flush();
 
             expect(fakeWindow.location.href).toBe('');
+            expect(scope.formInfo.displayAjabShaharTeam).not.toBe(undefined);
         });
     });
     describe("When updating a word,", function () {
