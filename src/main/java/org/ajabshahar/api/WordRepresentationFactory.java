@@ -1,10 +1,7 @@
 package org.ajabshahar.api;
 
 import com.google.gson.Gson;
-import org.ajabshahar.platform.models.PersonDetails;
-import org.ajabshahar.platform.models.Reflection;
-import org.ajabshahar.platform.models.Word;
-import org.ajabshahar.platform.models.WordIntroduction;
+import org.ajabshahar.platform.models.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -62,6 +59,14 @@ public class WordRepresentationFactory {
         return word;
     }
 
+    private String getPrimaryCategoryName(Category primaryCategory){
+        String primaryCategoryName = "";
+        if(primaryCategory != null){
+            primaryCategoryName = primaryCategory.getName();
+        }
+        return primaryCategoryName;
+    }
+
     public WordsSummaryRepresentation create(List<Word> wordsList) {
         WordsSummaryRepresentation wordsSummaryRepresentation = new WordsSummaryRepresentation();
         wordsList.forEach(word -> {
@@ -74,7 +79,7 @@ public class WordRepresentationFactory {
             List<PersonSummaryRepresentation> writers = new ArrayList<>();
             if (word.getWriters() != null && word.getWriters().size() > 0) {
                 for (PersonDetails writer : word.getWriters()) {
-                    PersonSummaryRepresentation representation = new PersonSummaryRepresentation(writer.getId(), writer.getName(), writer.getHindiName());
+                    PersonSummaryRepresentation representation = new PersonSummaryRepresentation(writer.getId(), writer.getName(), writer.getHindiName(), getPrimaryCategoryName(writer.getPrimaryOccupation()));
                     writers.add(representation);
                 }
             }
@@ -94,7 +99,7 @@ public class WordRepresentationFactory {
             List<PersonSummaryRepresentation> writers = new ArrayList<>();
             if (word.getWriters().size() > 0) {
                 for (PersonDetails writer : word.getWriters()) {
-                    PersonSummaryRepresentation representation = new PersonSummaryRepresentation(writer.getId(), writer.getName(), writer.getHindiName());
+                    PersonSummaryRepresentation representation = new PersonSummaryRepresentation(writer.getId(), writer.getName(), writer.getHindiName(), getPrimaryCategoryName(writer.getPrimaryOccupation()));
                     writers.add(representation);
                 }
             }
@@ -199,7 +204,7 @@ public class WordRepresentationFactory {
         List<PersonSummaryRepresentation> writers = new ArrayList<>();
         if (word.getWriters().size() > 0) {
             for (PersonDetails writer : word.getWriters()) {
-                PersonSummaryRepresentation representation = new PersonSummaryRepresentation(writer.getId(), writer.getName(), writer.getHindiName());
+                PersonSummaryRepresentation representation = new PersonSummaryRepresentation(writer.getId(), writer.getName(), writer.getHindiName(), getPrimaryCategoryName(writer.getPrimaryOccupation()));
                 writers.add(representation);
             }
         }

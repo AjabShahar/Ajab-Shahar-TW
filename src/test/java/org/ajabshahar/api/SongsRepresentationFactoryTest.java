@@ -76,16 +76,21 @@ public class SongsRepresentationFactoryTest {
         gathering.setEnglish(format("song%senglishGathering", id));
         song.setGathering(gathering);
 
+        Category personCategory = new Category();
+        personCategory.setName("Devotee");
+
         PersonDetails singer = new PersonDetails(), poet = new PersonDetails();
         HashSet<PersonDetails> singers = new HashSet<>(), poets = new HashSet<>();
 
         singer.setId(id + 1000);
         singer.setFirstName(format("Singer%s", id));
+        singer.setPrimaryOccupation(personCategory);
         singers.add(singer);
         song.setSingers(singers);
 
         poet.setId(id + 2000);
         poet.setFirstName(format("Poet%s", id));
+        poet.setPrimaryOccupation(personCategory);
         poets.add(poet);
         song.setPoets(poets);
 

@@ -30,7 +30,9 @@ public class PersonRepresentationFactory {
     public List<PersonSummaryRepresentation> createPeopleSummaryRepresentation(List<PersonDetails> personDetails) {
         List<PersonSummaryRepresentation> people = new ArrayList<>();
         for (PersonDetails person : personDetails) {
-            people.add(new PersonSummaryRepresentation(person.getId(), person.getName(), person.getHindiName()));
+            Category primaryOccupation = person.getPrimaryOccupation();
+            String primaryOccupationName = (primaryOccupation != null) ? primaryOccupation.getName() : "";
+            people.add(new PersonSummaryRepresentation(person.getId(), person.getName(), person.getHindiName(), primaryOccupationName));
         }
         return people;
     }

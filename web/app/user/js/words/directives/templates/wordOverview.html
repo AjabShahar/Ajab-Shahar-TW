@@ -1,7 +1,4 @@
 <div class="media-introduction word">
-
-    <!--<h3 class="context"></h3>-->
-
     <div id="content-wrapper">
         <div class="content-bg">
             <h3 class="context">{{wordTransliteration}} {{wordTranslation}}</h3>
@@ -14,22 +11,17 @@
             </div>
         </div>
     </div>
-
     <div class="mediaFooter">
         <h3 class='infoText'>For reflections, related songs, related poems and more enter
             <a href="/user/js/words/#/details/{{id}}">WORD</a>
+            or see
+            <a href="/user/js/words/#/glossary">ALL WORDS</a>
         </h3>
 
         <div class="creditCont">
-            <div class="creditBox"><span class="selected ng-binding">Roshik</span> POET</div>
-            <div class="creditBox"><span class="selected ng-binding">Mooralala Marwada</span> SINGER</div>
-            <div class="creditBox"><span class="selected ng-binding"></span></div>
-            <br>
-
-            <div class="creditBox"><span class="selected ng-binding"></span></div>
-            <div class="creditBox"><span class="selected ng-binding"></span></div>
-            <div class="creditBox"><span class="selected ng-binding"></span></div>
+            <div class="creditBox" ng-repeat="writer in writers"><span
+                    class="selected ng-binding">{{writer.name}}</span> {{writer.primaryOccupation}}
+            </div>
         </div>
     </div>
-
 </div>
