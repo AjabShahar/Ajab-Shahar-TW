@@ -9,7 +9,7 @@ thumbnailModule.directive("reflectionThumbnail", function () {
             title: '@',
             verb: '@',
             imgSrc: '@',
-            speaker: '@',
+            speaker: '=',
             customStyle: '@',
             overlayId: '@',
             open: '&'
