@@ -46,4 +46,6 @@ public class WordIntermediateRepresentation {
     private Set<PersonDetails> people;
 
     private Boolean displayAjabShaharTeam;
+
+    private ReflectionSummaryRepresentation defaultReflection;
 }

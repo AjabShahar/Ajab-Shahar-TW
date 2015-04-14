@@ -44,7 +44,7 @@ public class SongResourceIT {
 
     @Test
     public void shouldGetSongRepresentationWithWords() throws Exception {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_CATEGORY, DataSetup.INSERT_SONGS, DataSetup.INSERT_WORDS, DataSetup.INSERT_SONG_WORD);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_CATEGORY, DataSetup.INSERT_SONGS,DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS, DataSetup.INSERT_SONG_WORD);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();

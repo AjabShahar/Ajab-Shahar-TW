@@ -43,4 +43,15 @@
             ALTER TABLE word ADD COLUMN display_ajab_shahar_team boolean DEFAULT false;
         </sql>
     </changeSet>
+    <changeSet id="71" author="Indraneel">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="word" columnName="default_reflection_id"></columnExists>
+            </not>
+        </preConditions>
+        <sql>
+            ALTER TABLE word ADD COLUMN default_reflection_id integer;
+            ALTER TABLE word ADD CONSTRAINT default_reflection_id_fkey FOREIGN KEY (default_reflection_id) REFERENCES reflection (id);
+        </sql>
+    </changeSet>
 </databaseChangeLog>

@@ -132,6 +132,7 @@ public class WordRepresentationFactory {
         wordIntermediateRepresentation.setWriters(word.getWriters());
         wordIntermediateRepresentation.setWordIntroductions(word.getWordIntroductions());
         wordIntermediateRepresentation.setDisplayAjabShaharTeam(word.getDisplayAjabShaharTeam());
+        wordIntermediateRepresentation.setDefaultReflection(ReflectionSummaryRepresentation.createFrom(word.getDefaultReflection()));
 
         List<Reflection> reflections = new ArrayList<>(word.getReflections());
         List<ReflectionSummaryRepresentation> reflectionSummaryRepresentationList = reflectionRepresentationFactory.toReflectionSummaryList(reflections);

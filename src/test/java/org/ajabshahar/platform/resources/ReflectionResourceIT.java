@@ -90,7 +90,7 @@ public class ReflectionResourceIT {
 
     @Test
     public void shouldSaveRelatedWords() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_WORDS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -172,7 +172,7 @@ public class ReflectionResourceIT {
 
     @Test
     public void shouldEditRelatedWords() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_WORDS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();

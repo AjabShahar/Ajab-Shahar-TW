@@ -47,6 +47,10 @@ public class Word {
     @Column(name = "MEANING", nullable = false)
     private String meaning;
 
+    @OneToOne
+    @JoinColumn(name = "DEFAULT_REFLECTION")
+    private Reflection defaultReflection;
+
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "word")
     @JsonManagedReference
     private Set<WordIntroduction> wordIntroductions;
