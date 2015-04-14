@@ -17,8 +17,9 @@ public class WordRepresentation {
     private String diacritic;
     private String meaning;
     private boolean isRootWord;
+    private boolean displayAjabShaharTeam;
 
-    public WordRepresentation(int id, String wordOriginal, String wordTranslation, String wordTransliteration, String englishIntroExcerpt, String hindiIntroExcerpt, String wordIntroHindi, String wordIntroEnglish, List<PersonSummaryRepresentation> writers, String diacritic, String meaning, boolean isRootWord) {
+    public WordRepresentation(int id, String wordOriginal, String wordTranslation, String wordTransliteration, String englishIntroExcerpt, String hindiIntroExcerpt, String wordIntroHindi, String wordIntroEnglish, List<PersonSummaryRepresentation> writers, String diacritic, String meaning, boolean isRootWord, boolean displayAjabShaharTeam) {
         this.id = id;
         this.wordOriginal = wordOriginal;
         this.wordTranslation = wordTranslation;
@@ -31,6 +32,7 @@ public class WordRepresentation {
         this.diacritic = diacritic;
         this.meaning = meaning;
         this.isRootWord = isRootWord;
+        this.displayAjabShaharTeam = displayAjabShaharTeam;
     }
 
     public WordRepresentation() {
@@ -95,5 +97,10 @@ public class WordRepresentation {
     @JsonProperty("isRootWord")
     public boolean isRootWord() {
         return isRootWord;
+    }
+
+    @JsonProperty("displayAjabShaharTeam")
+    public boolean displayAjabShaharTeam() {
+        return displayAjabShaharTeam;
     }
 }

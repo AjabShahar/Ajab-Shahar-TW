@@ -39,6 +39,7 @@ public class WordResourceIT {
     private JdbcDataSource dataSource;
     private JSONObject jsonObject = new JSONObject();
     private ArrayList wordIntroductions = new ArrayList();
+    private static final String API_TO_EDIT_THE_WORD_WITH_ID_ONE = "http://localhost:%d/api/words/edit?id=1";
 
     private static String resourceFilePath(String resource) {
         return ClassLoader.getSystemClassLoader().getResource(resource).getFile();
@@ -83,7 +84,7 @@ public class WordResourceIT {
         dbSetup.launch();
 
         ClientResponse response = client.resource(
-                String.format("http://localhost:%d/api/words/edit?id=1", RULE.getLocalPort())).header("Content-type", "application/json")
+                String.format(API_TO_EDIT_THE_WORD_WITH_ID_ONE, RULE.getLocalPort())).header("Content-type", "application/json")
                 .get(ClientResponse.class);
 
         WordIntermediateRepresentation responseEntity = getWord(response);
@@ -100,7 +101,7 @@ public class WordResourceIT {
         dbSetup.launch();
 
         ClientResponse response = client.resource(
-                String.format("http://localhost:%d/api/words/edit?id=1", RULE.getLocalPort())).header("Content-type", "application/json")
+                String.format(API_TO_EDIT_THE_WORD_WITH_ID_ONE, RULE.getLocalPort())).header("Content-type", "application/json")
                 .get(ClientResponse.class);
 
         WordIntermediateRepresentation responseEntity = getWord(response);
@@ -117,7 +118,7 @@ public class WordResourceIT {
         dbSetup.launch();
 
         ClientResponse response = client.resource(
-                String.format("http://localhost:%d/api/words/edit?id=1", RULE.getLocalPort())).header("Content-type", "application/json")
+                String.format(API_TO_EDIT_THE_WORD_WITH_ID_ONE, RULE.getLocalPort())).header("Content-type", "application/json")
                 .get(ClientResponse.class);
 
         WordIntermediateRepresentation responseEntity = getWord(response);
@@ -139,7 +140,7 @@ public class WordResourceIT {
         dbSetup.launch();
 
         ClientResponse response = client.resource(
-                String.format("http://localhost:%d/api/words/edit?id=1", RULE.getLocalPort())).header("Content-type", "application/json")
+                String.format(API_TO_EDIT_THE_WORD_WITH_ID_ONE, RULE.getLocalPort())).header("Content-type", "application/json")
                 .get(ClientResponse.class);
 
         WordIntermediateRepresentation responseEntity = getWord(response);
@@ -276,13 +277,13 @@ public class WordResourceIT {
     @Test
     public void shouldGetSelectedReflectionsWithWord() throws Exception {
 
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_REFLECTIONS,DataSetup.INSERT_WORDS,DataSetup.INSERT_WORD_REFLECTIONS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS, DataSetup.INSERT_WORD_REFLECTIONS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
 
         ClientResponse wordResponse = client.resource(
-                String.format("http://localhost:%d/api/words/edit?id=1", RULE.getLocalPort()))
+                String.format(API_TO_EDIT_THE_WORD_WITH_ID_ONE, RULE.getLocalPort()))
                 .header("Content-type", "application/json")
                 .get(ClientResponse.class);
 
@@ -291,6 +292,22 @@ public class WordResourceIT {
         assertThat(word.getReflections().size(),is(1));
         assertThat(word.getReflections().get(0).getId(),is(1L));
 
+    }
+
+    @Test
+    public void shouldHaveShowAjabShaharTeamTextFlag(){
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_WORDS);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        ClientResponse response = client.resource(
+                String.format(API_TO_EDIT_THE_WORD_WITH_ID_ONE, RULE.getLocalPort())).header("Content-type", "application/json")
+                .get(ClientResponse.class);
+
+        WordIntermediateRepresentation responseEntity = getWord(response);
+
+        assertEquals(true, responseEntity.getDisplayAjabShaharTeam());
     }
 
     private NewCookie geCookie(ClientResponse response) {

@@ -4,7 +4,8 @@ wordsAdminApp.controller('wordDetailsController', ['$scope', '$window', '$locati
 
         $scope.formInfo = {
             reflections: [],
-            wordIntroductions: []
+            wordIntroductions: [],
+            displayAjabShaharTeam: false
         };
         $scope.categories = [];
         $scope.reflections = [];

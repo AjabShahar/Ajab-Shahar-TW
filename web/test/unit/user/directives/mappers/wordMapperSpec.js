@@ -15,7 +15,8 @@ describe("Should test word mapper", function () {
             "wordIntroEnglish": "Word Intro English",
             "wordIntroHindi": "Word Intro Hindi",
             "writers": [],
-            "rootWord": true
+            "rootWord": true,
+            "displayAjabShaharTeam": true
         }]
     });
 
@@ -48,7 +49,7 @@ describe("Should test word mapper", function () {
         expect(words[0].englishIntroExcerpt).toBe("English Word Intro");
         expect(words[0].wordIntroEnglish).toBe("Word Intro English");
         expect(words[0].writers.length).toBe(0);
-
+        expect(words[0].displayAjabShaharTeam).toBe(true);
     });
 
     it("Should get complete info representation", function () {
