@@ -81,14 +81,11 @@
                         <label>Show On LandingPage</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <select name="format" ng-model="song.showOnLandingPage" class="form-control"
-                                ng-required="song.isAuthoringComplete">
+                        <select name="format" ng-model="song.showOnLandingPage" class="form-control">
                             <option value="true">Yes</option>
                             <option value="false">No</option>
                         </select>
                     </div>
-                    <error-message name="Show on landing page"
-                                   show-error="song.isAuthoringComplete && isEmpty(song.showOnLandingPage)"></error-message>
                 </div>
 
                 <div class="row">
