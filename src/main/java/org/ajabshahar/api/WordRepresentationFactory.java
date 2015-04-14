@@ -6,10 +6,13 @@ import org.ajabshahar.platform.models.Reflection;
 import org.ajabshahar.platform.models.Word;
 import org.ajabshahar.platform.models.WordIntroduction;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class WordRepresentationFactory {
-    private ReflectionRepresentationFactory reflectionRepresentationFactory ;
+    private ReflectionRepresentationFactory reflectionRepresentationFactory;
 
     public Word create(String jsonWord) {
         return new Gson().fromJson(jsonWord, Word.class);
@@ -77,92 +80,39 @@ public class WordRepresentationFactory {
         WordReflectionRepresentation wordReflections = new WordReflectionRepresentation();
         Word word = wordsList.get(0);
 
-        Set<WordIntroduction> wordIntroductionSet = word.getWordIntroductions() != null ? word.getWordIntroductions() : new HashSet<>();
-        String wordIntroHindi = getWordIntroOriginal(wordIntroductionSet);
-        String wordIntroEnglish = getWordIntroTranslation(wordIntroductionSet);
-        List<PersonSummaryRepresentation> writers = new ArrayList<>();
-        if (word.getWriters().size() > 0) {
-            for (PersonDetails writer : word.getWriters()) {
-                PersonSummaryRepresentation representation = new PersonSummaryRepresentation(writer.getId(), writer.getName(), writer.getHindiName());
-                writers.add(representation);
-            }
-        }
-        WordRepresentation wordRepresentation = new WordRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(), word.getWordTransliteration(), word.getEnglishIntroExcerpt(), word.getHindiIntroExcerpt(), wordIntroHindi, wordIntroEnglish, writers, word.getDiacritic(), word.getMeaning(), word.getIsRootWord(), word.getDisplayAjabShaharTeam());
-        wordReflections.setWord(wordRepresentation);
+        wordReflections.setWord(getWordRepresentation(word));
 
         wordReflections.setReflections(reflectionRepresentationFactory.create(word.getReflections()));
 
         return wordReflections;
-
     }
 
     public WordSynonymRepresentation createWordSynonyms(List<Word> wordsList) {
         WordSynonymRepresentation synonyms = new WordSynonymRepresentation();
+
         Word word = wordsList.get(0);
 
-        Set<WordIntroduction> wordIntroductionSet = word.getWordIntroductions() != null ? word.getWordIntroductions() : new HashSet<>();
-        String wordIntroHindi = getWordIntroOriginal(wordIntroductionSet);
-        String wordIntroEnglish = getWordIntroTranslation(wordIntroductionSet);
-        List<PersonSummaryRepresentation> writers = new ArrayList<>();
-        if (word.getWriters().size() > 0) {
-            for (PersonDetails writer : word.getWriters()) {
-                PersonSummaryRepresentation representation = new PersonSummaryRepresentation(writer.getId(), writer.getName(), writer.getHindiName());
-                writers.add(representation);
-            }
-        }
-        WordRepresentation wordRepresentation = new WordRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(), word.getWordTransliteration(), word.getEnglishIntroExcerpt(), word.getHindiIntroExcerpt(), wordIntroHindi, wordIntroEnglish, writers, word.getDiacritic(), word.getMeaning(), word.getIsRootWord(), word.getDisplayAjabShaharTeam());
-        synonyms.setWord(wordRepresentation);
+        synonyms.setWord(getWordRepresentation(word));
+
         for (Word synonym : word.getSynonyms()) {
-            Set<WordIntroduction> synonymIntroductionSet = synonym.getWordIntroductions() != null ?
-                    synonym.getWordIntroductions() : new HashSet<>();
-
-            String synonymIntroHindi = getWordIntroOriginal(synonymIntroductionSet);
-            String synonymIntroEnglish = getWordIntroTranslation(synonymIntroductionSet);
-
-            WordRepresentation representation = new WordRepresentation((int) synonym.getId(),
-                    synonym.getWordOriginal(), synonym.getWordTranslation(),
-                    synonym.getWordTransliteration(), synonym.getEnglishIntroExcerpt(),
-                    synonym.getHindiIntroExcerpt(), synonymIntroHindi, synonymIntroEnglish, writers, synonym.getDiacritic(), synonym.getMeaning(), synonym.getIsRootWord(), synonym.getDisplayAjabShaharTeam());
-            synonyms.add(representation);
+            synonyms.add(getWordRepresentation(synonym));
         }
 
         return synonyms;
-
     }
 
     public RelatedWordRepresentation createRelatedWords(List<Word> wordsList) {
         RelatedWordRepresentation relatedWords = new RelatedWordRepresentation();
         Word word = wordsList.get(0);
 
-        Set<WordIntroduction> wordIntroductionSet = word.getWordIntroductions() != null ? word.getWordIntroductions() : new HashSet<>();
-        String wordIntroHindi = getWordIntroOriginal(wordIntroductionSet);
-        String wordIntroEnglish = getWordIntroTranslation(wordIntroductionSet);
-        List<PersonSummaryRepresentation> writers = new ArrayList<>();
-        if (word.getWriters().size() > 0) {
-            for (PersonDetails writer : word.getWriters()) {
-                PersonSummaryRepresentation representation = new PersonSummaryRepresentation(writer.getId(), writer.getName(), writer.getHindiName());
-                writers.add(representation);
-            }
-        }
-        WordRepresentation wordRepresentation = new WordRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(), word.getWordTransliteration(), word.getEnglishIntroExcerpt(), word.getHindiIntroExcerpt(), wordIntroHindi, wordIntroEnglish, writers, word.getDiacritic(), word.getMeaning(), word.getIsRootWord(), word.getDisplayAjabShaharTeam());
-        relatedWords.setWord(wordRepresentation);
+        relatedWords.setWord(getWordRepresentation(word));
+
         for (Word relatedWord : word.getRelatedWords()) {
-            Set<WordIntroduction> relatedWordsIntroductionSet = relatedWord.getWordIntroductions() != null ?
-                    relatedWord.getWordIntroductions() : new HashSet<>();
-
-            String relatedWordIntroHindi = getWordIntroOriginal(relatedWordsIntroductionSet);
-            String relatedWordIntroEnglish = getWordIntroTranslation(relatedWordsIntroductionSet);
-
-            WordRepresentation representation = new WordRepresentation((int) relatedWord.getId(),
-                    relatedWord.getWordOriginal(), relatedWord.getWordTranslation(),
-                    relatedWord.getWordTransliteration(), relatedWord.getEnglishIntroExcerpt(),
-                    relatedWord.getHindiIntroExcerpt(), relatedWordIntroHindi, relatedWordIntroEnglish, writers, relatedWord.getDiacritic(), relatedWord.getMeaning(), relatedWord.getIsRootWord(), word.getDisplayAjabShaharTeam());
-            relatedWords.add(representation);
+            relatedWords.add(getWordRepresentation(relatedWord));
         }
 
         return relatedWords;
     }
-
 
 
     public WordIntermediateRepresentation createIntermediateRepresentation(Word word) {
@@ -192,5 +142,22 @@ public class WordRepresentationFactory {
 
     public void injectReflectionRepresentationFactory(ReflectionRepresentationFactory reflectionRepresentationFactory) {
         this.reflectionRepresentationFactory = reflectionRepresentationFactory;
+    }
+
+    private WordRepresentation getWordRepresentation(Word word) {
+        Set<WordIntroduction> wordIntroductionSet = word.getWordIntroductions() != null ? word.getWordIntroductions() : new HashSet<>();
+        String wordIntroHindi = getWordIntroOriginal(wordIntroductionSet);
+        String wordIntroEnglish = getWordIntroTranslation(wordIntroductionSet);
+        List<PersonSummaryRepresentation> writers = new ArrayList<>();
+        if (word.getWriters().size() > 0) {
+            for (PersonDetails writer : word.getWriters()) {
+                PersonSummaryRepresentation representation = new PersonSummaryRepresentation(writer.getId(), writer.getName(), writer.getHindiName());
+                writers.add(representation);
+            }
+        }
+
+        return new WordRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(),
+                word.getWordTransliteration(), word.getEnglishIntroExcerpt(), word.getHindiIntroExcerpt(),
+                wordIntroHindi, wordIntroEnglish, writers, word.getDiacritic(), word.getMeaning(), word.getIsRootWord(), word.getDisplayAjabShaharTeam());
     }
 }

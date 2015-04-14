@@ -37,7 +37,7 @@ public class WordDAO extends AbstractDAO<Word> {
             allWords.add(Restrictions.eq("showOnLandingPage", true));
         }
         if (wordId != 0) {
-            allWords.add(Restrictions.eq("id", Long.valueOf(wordId)));
+            allWords.add(Restrictions.eq("id", (long) wordId));
         }
 
         allWords.createCriteria("word.songs", "songs", JoinType.LEFT_OUTER_JOIN)
@@ -74,7 +74,7 @@ public class WordDAO extends AbstractDAO<Word> {
         Session session = sessionFactory.openSession();
         Criteria wordReflections = session.createCriteria(Word.class);
         if (wordId != 0) {
-            wordReflections.add(Restrictions.eq("id", Long.valueOf(wordId)));
+            wordReflections.add(Restrictions.eq("id", (long) wordId));
         }
         wordReflections.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         List wordsWithReflections = wordReflections.list();
