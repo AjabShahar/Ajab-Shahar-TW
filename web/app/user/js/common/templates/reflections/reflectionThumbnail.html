@@ -6,7 +6,7 @@
         <div class="summary" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
             <h3 class="title">{{title}}</h3>
 
-            <h3 class="singers">{{verb}} {{speaker}}</h3>
+            <h3 class="singers">{{verb}} {{ speaker.name }}</h3>
 
             <div ng-show="shouldShowDetails" class='thumbnailDetails toggleBySlide'>
                 <div class='footer'>

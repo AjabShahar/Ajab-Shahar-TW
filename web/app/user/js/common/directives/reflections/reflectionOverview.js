@@ -8,7 +8,7 @@ thumbnailModule.directive("reflectionOverview", function () {
             closeVideo: '&',
             title: '@',
             verb: '@',
-            speaker: '@',
+            speaker: '=',
             videoId: '@',
             audioId: '@',
             text: '@'
