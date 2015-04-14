@@ -58,19 +58,19 @@ public class WordRepresentationFactory {
     }
 
     private String getWordIntroTranslation(Set<WordIntroduction> wordIntroductionSet) {
-        String wordIntro = "";
+        StringBuilder wordIntro = new StringBuilder();
         for (WordIntroduction wordIntroduction : wordIntroductionSet) {
-            wordIntro += wordIntroduction.getWordIntroEnglish();
+            wordIntro.append(wordIntroduction.getWordIntroEnglish());
         }
-        return wordIntro;
+        return wordIntro.toString();
     }
 
     private String getWordIntroOriginal(Set<WordIntroduction> wordIntroductionSet) {
-        String wordIntro = "";
+        StringBuilder wordIntro = new StringBuilder();
         for (WordIntroduction wordIntroduction : wordIntroductionSet) {
-            wordIntro += wordIntroduction.getWordIntroHindi();
+            wordIntro.append(wordIntroduction.getWordIntroHindi());
         }
-        return wordIntro;
+        return wordIntro.toString();
     }
 
     public WordReflectionRepresentation createWordReflections(List<Word> wordsList) {
