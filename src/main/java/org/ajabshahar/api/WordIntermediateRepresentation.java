@@ -35,7 +35,7 @@ public class WordIntermediateRepresentation {
 
     private List<ReflectionSummaryRepresentation> reflections;
 
-    private Set<Word> relatedWords = new HashSet<>();
+    private List<WordSummaryRepresentation> relatedWords;
 
     private Set<Song> songs;
 

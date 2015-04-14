@@ -48,6 +48,10 @@ public class WordDAO extends AbstractDAO<Word> {
                 .setFetchMode("reflections", FetchMode.JOIN)
                 .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 
+        allWords.createCriteria("word.relatedWords","relatedWords",JoinType.LEFT_OUTER_JOIN)
+                .setFetchMode("reflatedWords", FetchMode.JOIN)
+                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+
         List words = allWords.list();
         session.close();
         return words;
