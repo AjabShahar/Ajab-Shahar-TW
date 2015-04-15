@@ -80,10 +80,35 @@ describe("Word details controller spec:", function () {
             scope.init();
             $httpBackend.flush();
 
-            expect(scope.reflections[0].ticked).toBeFalsy();
-            expect(scope.reflections[1].ticked).toBeTruthy();
-            expect(scope.reflections[2].ticked).toBeTruthy();
+            expect(scope.reflectionsWithoutTheDefault[0].ticked).toBeFalsy();
+            expect(scope.reflectionsWithoutTheDefault[0].id).toBe(4);
+            expect(scope.reflectionsWithoutTheDefault[1].ticked).toBeTruthy();
+            expect(scope.reflectionsWithoutTheDefault[1].id).toBe(5);
         });
+
+        it("it should not include the default reflection in other reflections dropdown options",function(){
+            $httpBackend.expectGET("/api/words/edit?id=1").respond(test_word);
+
+            $httpBackend.when("GET", "/api/people?role=Poet").respond({"people": "somePerson"});
+            $httpBackend.when("GET", "/api/people").respond({"people": "somePerson"});
+            $httpBackend.when("GET", "/api/category/word").respond(null);
+            $httpBackend.when("GET", "/api/reflections/summary").respond(test_reflection_summaries);
+            $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
+            $httpBackend.when("GET", "/api/songs/getAllSongs").respond({
+                "songs": [{
+                    "englishTransliterationTitle": "some title",
+                    "singers": [],
+                    "words": {"words": []}
+                }]
+            });
+
+            scope.init();
+            $httpBackend.flush();
+
+            expect(scope.reflectionsWithoutTheDefault[0].id).toBe(4);
+            expect(scope.reflectionsWithoutTheDefault[1].id).toBe(5);
+
+        })
         it("it should display the linked synonyms", function () {
             $httpBackend.expectGET("/api/words/edit?id=1").respond(test_word);
 
@@ -153,7 +178,6 @@ describe("Word details controller spec:", function () {
         });
 
     });
-
 
     describe("When saving a word,", function () {
         it("then should redirect to admin-home if saved successfully", function () {
@@ -267,8 +291,6 @@ describe("Word details controller spec:", function () {
             expect(scope.songs[0].menuTitle).toBe('some title');
             expect(scope.songs[1].menuTitle).toBe('some title2');
         });
-
-
     });
 });
 
@@ -332,6 +354,16 @@ var test_word = {
             "speaker": null
         }
     ],
+    "defaultReflection": {
+        "id": 1,
+        "title": "Poet is God says Vipul",
+        "speaker": {
+            "id": 16,
+            "name": "Vipul Rikhi",
+            "hindiName": "",
+            "primaryOccupation": ""
+        }
+    },
     "relatedWords": test_word_summaries.words,
     "songs": [],
     "synonyms": test_word_summaries.words,

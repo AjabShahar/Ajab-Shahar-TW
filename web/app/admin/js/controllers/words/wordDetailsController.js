@@ -75,13 +75,13 @@ wordsAdminApp.controller('wordDetailsController', ['$scope', '$window', '$locati
 
             if (wordID) {
                 contentService.getWord(wordID).success(function (data) {
-                    $scope.reflections = getSelectedContent(data.reflection, $scope.reflections);
                     $scope.writers = getSelectedContent(data.writers, $scope.writers);
                     $scope.people = getSelectedContent(data.people, $scope.people);
                     $scope.songs = getSelectedContent(data.songs, $scope.songs);
                     $scope.reflections = getSelectedContent(data.reflections, $scope.reflections);
                     $scope.synonyms = removeElement(getSelectedContent(data.synonyms, $scope.synonyms), data);
                     $scope.relatedWords = removeElement(getSelectedContent(data.relatedWords, $scope.relatedWords), data);
+                    $scope.reflectionsWithoutTheDefault=getSelectedContent(data.reflections, $scope.reflections);
                     $scope.formInfo = data;
                 });
             }
@@ -108,5 +108,11 @@ wordsAdminApp.controller('wordDetailsController', ['$scope', '$window', '$locati
                 redirectToURL(PAGES.ADMIN_HOME);
             });
         };
+
+        $scope.$watch("formInfo.defaultReflection",function(newValue){
+            $scope.reflectionsWithoutTheDefault = _.reject($scope.reflections,function(reflection){
+                return !_.isEmpty(newValue) && reflection.id === newValue.id;
+            })
+        })
     }]);
 
