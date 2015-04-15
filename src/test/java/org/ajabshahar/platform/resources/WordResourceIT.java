@@ -339,15 +339,10 @@ public class WordResourceIT {
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
 
-        ClientResponse words = client.resource(
-                String.format(API_TO_EDIT_THE_WORD_WITH_ID_ONE, RULE.getLocalPort())).header("Content-type", "application/json")
-                .get(ClientResponse.class);
+        ClientResponse words = httpGet(API_TO_EDIT_THE_WORD_WITH_ID_ONE);
 
         WordIntermediateRepresentation word = getWord(words);
-        List<WordSummaryRepresentation> wordSummaryRepresentations = new ArrayList<>();
-        WordSummaryRepresentation wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(),
-                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new ArrayList<>(), word.getIsRootWord());
-        wordSummaryRepresentations.add(wordSummaryRepresentation);
+        List<WordSummaryRepresentation> wordSummaryRepresentations = getWordSummaryRepresentations(word);
 
         jsonObject.put("relatedWords", wordSummaryRepresentations);
 
@@ -364,15 +359,10 @@ public class WordResourceIT {
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
 
-        ClientResponse words = client.resource(
-                String.format(API_TO_EDIT_THE_WORD_WITH_ID_ONE, RULE.getLocalPort())).header("Content-type", "application/json")
-                .get(ClientResponse.class);
+        ClientResponse words = httpGet(API_TO_EDIT_THE_WORD_WITH_ID_ONE);
 
         WordIntermediateRepresentation word = getWord(words);
-        List<WordSummaryRepresentation> wordSummaryRepresentations = new ArrayList<>();
-        WordSummaryRepresentation wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(),
-                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new ArrayList<>(), word.getIsRootWord());
-        wordSummaryRepresentations.add(wordSummaryRepresentation);
+        List<WordSummaryRepresentation> wordSummaryRepresentations = getWordSummaryRepresentations(word);
 
         jsonObject.put("synonyms", wordSummaryRepresentations);
 
@@ -383,7 +373,85 @@ public class WordResourceIT {
         assertThat((long) wordIntermediateRepresentation.getSynonyms().get(0).getId(), is(word.getId()));
     }
 
+    private List<WordSummaryRepresentation> getWordSummaryRepresentations(WordIntermediateRepresentation word) {
+        List<WordSummaryRepresentation> wordSummaryRepresentations = new ArrayList<>();
+        WordSummaryRepresentation wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(),
+                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new ArrayList<>(), word.getIsRootWord());
+        wordSummaryRepresentations.add(wordSummaryRepresentation);
+        return wordSummaryRepresentations;
+    }
 
+    @Test
+    public void shouldEditRelatedWordsAndSynonyms() {
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        ClientResponse words = httpGet(API_TO_EDIT_THE_WORD_WITH_ID_ONE);
+        List<WordSummaryRepresentation> wordSummaryRepresentations = new ArrayList<>();
+
+        WordIntermediateRepresentation word = getWord(words);
+        WordSummaryRepresentation wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(),
+                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new ArrayList<>(), word.getIsRootWord());
+        wordSummaryRepresentations.add(wordSummaryRepresentation);
+
+        jsonObject.put("relatedWords",wordSummaryRepresentations);
+
+         words = loginAndPost("http://localhost:%d/api/words", jsonObject);
+         word = getWord(words);
+
+        assertThat(word.getRelatedWords().size(), is(1));
+
+        words = httpGet("http://localhost:%d/api/words/edit?id=2");
+
+        word = getWord(words);
+        wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(),
+                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new ArrayList<>(), word.getIsRootWord());
+        wordSummaryRepresentations.add(wordSummaryRepresentation);
+
+        word.setRelatedWords(wordSummaryRepresentations);
+        word.setSynonyms(wordSummaryRepresentations);
+
+        words = loginAndPost("http://localhost:%d/api/words", word);
+        word = getWord(words);
+
+        assertThat(word.getRelatedWords().size(), is(2));
+        assertThat(word.getSynonyms().size(), is(2));
+    }
+
+    @Test
+    public void shouldDeleteRelatedWordsAndSynonyms() {
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        ClientResponse words = httpGet(API_TO_EDIT_THE_WORD_WITH_ID_ONE);
+        List<WordSummaryRepresentation> wordSummaryRepresentations = new ArrayList<>();
+
+        WordIntermediateRepresentation word = getWord(words);
+        WordSummaryRepresentation wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(),
+                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new ArrayList<>(), word.getIsRootWord());
+        wordSummaryRepresentations.add(wordSummaryRepresentation);
+
+        jsonObject.put("relatedWords",wordSummaryRepresentations);
+
+        words = loginAndPost("http://localhost:%d/api/words", jsonObject);
+        word = getWord(words);
+
+        assertThat(word.getRelatedWords().size(), is(1));
+
+        word.setRelatedWords(new ArrayList<>());
+        word.setSynonyms(new ArrayList<>());
+
+        words = loginAndPost("http://localhost:%d/api/words", word);
+        word = getWord(words);
+
+        assertThat(word.getRelatedWords().size(), is(0));
+        assertThat(word.getSynonyms().size(), is(0));
+
+    }
 
     private NewCookie geCookie(ClientResponse response) {
         return getCookie(response, "JSESSIONID");

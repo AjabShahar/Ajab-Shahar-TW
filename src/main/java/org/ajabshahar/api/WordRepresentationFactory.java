@@ -34,13 +34,13 @@ public class WordRepresentationFactory {
         word.setSongs(wordIntermediateRepresentation.getSongs());
         word.setWriters(wordIntermediateRepresentation.getWriters());
         Reflection defaultReflection = wordIntermediateRepresentation.getDefaultReflection() != null ? new Reflection() : null;
-        if(wordIntermediateRepresentation.getDefaultReflection() != null){
+        if (wordIntermediateRepresentation.getDefaultReflection() != null) {
             defaultReflection.setId(wordIntermediateRepresentation.getDefaultReflection().getId());
         }
         word.setDefaultReflection(defaultReflection);
 
         Set<Reflection> reflections = new HashSet<>();
-        if(wordIntermediateRepresentation.getReflections()!= null){
+        if (wordIntermediateRepresentation.getReflections() != null) {
             wordIntermediateRepresentation.getReflections().forEach(reflectionSummary -> {
                 Reflection reflection = new Reflection();
                 reflection.setId(reflectionSummary.getId());
@@ -48,27 +48,25 @@ public class WordRepresentationFactory {
             });
         }
 
-        Set<Word> words = new HashSet<>();
-        wordIntermediateRepresentation.getRelatedWords().forEach(getWordSummaryRepresentationConsumer(words));
-        word.setRelatedWords(words);
-
-        wordIntermediateRepresentation.getSynonyms().forEach(getWordSummaryRepresentationConsumer(words));
-        word.setSynonyms(words);
+        word.setSynonyms(getWords(wordIntermediateRepresentation.getSynonyms()));
+        word.setRelatedWords(getWords(wordIntermediateRepresentation.getRelatedWords()));
         word.setReflections(reflections);
         return word;
     }
 
-    private Consumer<WordSummaryRepresentation> getWordSummaryRepresentationConsumer(Set<Word> words) {
-        return wordSummary ->{
+    private Set<Word> getWords(List<WordSummaryRepresentation> synonymSummaries) {
+        Set<Word> words = (synonymSummaries.size() == 0 ? null : new HashSet<>());
+        synonymSummaries.forEach(synonymSummary -> {
             Word newWord = new Word();
-            newWord.setId(wordSummary.getId());
+            newWord.setId(synonymSummary.getId());
             words.add(newWord);
-        };
+        });
+        return words;
     }
 
-    private String getPrimaryCategoryName(Category primaryCategory){
+    private String getPrimaryCategoryName(Category primaryCategory) {
         String primaryCategoryName = "";
-        if(primaryCategory != null){
+        if (primaryCategory != null) {
             primaryCategoryName = primaryCategory.getName();
         }
         return primaryCategoryName;
@@ -194,9 +192,9 @@ public class WordRepresentationFactory {
         List<ReflectionSummaryRepresentation> reflectionSummaryRepresentationList = reflectionRepresentationFactory.toReflectionSummaryList(reflections);
         wordIntermediateRepresentation.setReflections(reflectionSummaryRepresentationList);
 
-        WordsSummaryRepresentation wordSummaryRepresentations = create(new ArrayList<Word>(word.getRelatedWords()));
+        WordsSummaryRepresentation wordSummaryRepresentations = word.getRelatedWords() != null ? create(new ArrayList<Word>(word.getRelatedWords())) : new WordsSummaryRepresentation();
         wordIntermediateRepresentation.setRelatedWords(wordSummaryRepresentations.getWords());
-        wordSummaryRepresentations = create(new ArrayList<Word>(word.getSynonyms()));
+        wordSummaryRepresentations = word.getSynonyms() != null ? create(new ArrayList<Word>(word.getSynonyms())) : new WordsSummaryRepresentation();
         wordIntermediateRepresentation.setSynonyms(wordSummaryRepresentations.getWords());
 
         return wordIntermediateRepresentation;
