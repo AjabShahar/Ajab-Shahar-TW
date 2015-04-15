@@ -16,7 +16,7 @@ describe("Word details controller spec:", function () {
         $httpBackend = _$httpBackend_;
         $cookies.user = "admin";
 
-        spyOn($location, 'search').andReturn({id:1});
+        spyOn($location, 'search').andReturn({id: 1});
 
         _$controller_('wordDetailsController', {
             $scope: scope,
@@ -45,6 +45,7 @@ describe("Word details controller spec:", function () {
             $httpBackend.when("GET", "/api/people").respond({"people": "somePerson"});
             $httpBackend.when("GET", "/api/category/word").respond(null);
             $httpBackend.when("GET", "/api/reflections/summary").respond(test_reflection_summaries);
+            $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
             $httpBackend.when("GET", "/api/songs/getAllSongs").respond({
                 "songs": [{
                     "englishTransliterationTitle": "some title",
@@ -68,6 +69,7 @@ describe("Word details controller spec:", function () {
             $httpBackend.when("GET", "/api/people").respond({"people": "somePerson"});
             $httpBackend.when("GET", "/api/category/word").respond(null);
             $httpBackend.when("GET", "/api/reflections/summary").respond(test_reflection_summaries);
+            $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
             $httpBackend.when("GET", "/api/songs/getAllSongs").respond({
                 "songs": [{
                     "englishTransliterationTitle": "some title",
@@ -129,7 +131,8 @@ describe("Word details controller spec:", function () {
 
             $httpBackend.when("GET", "/api/people?role=Poet").respond({"people": "somePerson"});
             $httpBackend.when("GET", "/api/category/word").respond(null);
-            $httpBackend.when("GET", "/api/reflections/summary").respond({"reflections":[]});
+            $httpBackend.when("GET", "/api/reflections/summary").respond({"reflections": []});
+            $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
             $httpBackend.when("GET", "/api/people").respond({"people": ""});
             $httpBackend.when("GET", "/api/songs/getAllSongs").respond({
                 "songs": [{
@@ -161,7 +164,8 @@ describe("Word details controller spec:", function () {
 
             $httpBackend.when("GET", "/api/people?role=Poet").respond({"people": "somePerson"});
             $httpBackend.when("GET", "/api/category/word").respond(null);
-            $httpBackend.when("GET", "/api/reflections/summary").respond({"reflections":[]});
+            $httpBackend.when("GET", "/api/reflections/summary").respond({"reflections": []});
+            $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
             $httpBackend.when("GET", "/api/people").respond({"people": ""});
             $httpBackend.when("GET", "/api/songs/getAllSongs").respond(mockedSongs);
 
@@ -184,7 +188,8 @@ describe("Word details controller spec:", function () {
 
             $httpBackend.when("GET", "/api/people?role=Poet").respond({"people": "somePerson"});
             $httpBackend.when("GET", "/api/category/word").respond(null);
-            $httpBackend.when("GET", "/api/reflections/summary").respond({"reflections":[]});
+            $httpBackend.when("GET", "/api/reflections/summary").respond({"reflections": []});
+            $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
             $httpBackend.when("GET", "/api/people").respond({"people": ""});
             $httpBackend.when("GET", "/api/songs/getAllSongs").respond(mockedSongs);
 
@@ -232,7 +237,39 @@ var test_word = {
     "people": []
 };
 
-var test_reflection_summaries ={
+var test_word_summaries = {
+    "words": [
+        {
+            "id": 3,
+            "wordOriginal": "hey",
+            "wordTranslation": "hjkhf",
+            "wordTransliteration": "ehy",
+            "hindiIntroExcerpt": "",
+            "englishIntroExcerpt": "",
+            "writers": [],
+            "rootWord": true
+        },
+        {
+            "id": 1,
+            "wordOriginal": "word1",
+            "wordTranslation": "jlksjgkl",
+            "wordTransliteration": "word1 transliteration",
+            "hindiIntroExcerpt": "intro excerpt english",
+            "englishIntroExcerpt": "intro excerpt hindi",
+            "writers": [
+                {
+                    "id": 1,
+                    "name": "Parvathy Baul",
+                    "hindiName": "",
+                    "primaryOccupation": ""
+                }
+            ],
+            "rootWord": true
+        }
+    ]
+};
+
+var test_reflection_summaries = {
     "reflections": [
         {
             "id": 4,
@@ -262,4 +299,4 @@ var test_reflection_summaries ={
             }
         }
     ]
-}
+};
