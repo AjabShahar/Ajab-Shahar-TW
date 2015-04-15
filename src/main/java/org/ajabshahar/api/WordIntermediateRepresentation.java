@@ -39,7 +39,7 @@ public class WordIntermediateRepresentation {
 
     private Set<Song> songs;
 
-    private Set<Word> synonyms = new HashSet<>();
+    private List<WordSummaryRepresentation> synonyms;
 
     private Set<PersonDetails> writers;
 

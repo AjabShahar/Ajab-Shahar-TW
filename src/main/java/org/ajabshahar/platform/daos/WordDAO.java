@@ -25,7 +25,7 @@ public class WordDAO extends AbstractDAO<Word> {
         word = persist(word);
         for (WordIntroduction wordIntroduction : word.getWordIntroductions()) {
             wordIntroduction.setWord(word);
-            currentSession().save(wordIntroduction);
+            currentSession().saveOrUpdate(wordIntroduction);
         }
         return word;
     }

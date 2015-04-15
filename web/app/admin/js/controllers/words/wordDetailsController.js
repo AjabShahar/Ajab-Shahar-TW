@@ -80,11 +80,19 @@ wordsAdminApp.controller('wordDetailsController', ['$scope', '$window', '$locati
                     $scope.people = getSelectedContent(data.people, $scope.people);
                     $scope.songs = getSelectedContent(data.songs, $scope.songs);
                     $scope.reflections = getSelectedContent(data.reflections, $scope.reflections);
-                    $scope.synonyms = getSelectedContent(data.synonyms, $scope.synonyms);
-                    $scope.relatedWords = getSelectedContent(data.relatedWords, $scope.relatedWords);
+                    $scope.synonyms = removeElement(getSelectedContent(data.synonyms, $scope.synonyms), data);
+                    $scope.relatedWords = removeElement(getSelectedContent(data.relatedWords, $scope.relatedWords), data);
                     $scope.formInfo = data;
                 });
             }
+        };
+        var removeElement = function (list, element) {
+            list.forEach(function (l) {
+
+                if (l.id === element.id)
+                    list.splice(list.indexOf(l), 1);
+            });
+            return list;
         };
 
         var redirectToURL = function (url) {
