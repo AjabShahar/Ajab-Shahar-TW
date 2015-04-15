@@ -117,7 +117,9 @@ public class SongsRepresentationFactory {
         List<PersonSummaryRepresentation> peopleList = new ArrayList<>();
         peopleSet.forEach(singer -> {
             PersonDetails personDetails = people.findBy((int) singer.getId());
-            peopleList.add(new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName(), personDetails.getHindiName(), personDetails.getPrimaryOccupation().getName()));
+            Category primaryOccupation = personDetails.getPrimaryOccupation();
+            String primaryOccupationName = (primaryOccupation != null ) ? primaryOccupation.getName(): "";
+            peopleList.add(new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName(), personDetails.getHindiName(), primaryOccupationName));
         });
         return peopleList;
     }
