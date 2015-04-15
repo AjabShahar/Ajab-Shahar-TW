@@ -22,16 +22,15 @@
             <as-admin-title title="Umbrella Title" title-data="song.title" title-list="umbrellaTitles"></as-admin-title>
 
             <as-admin-title title="Song Title" title-data="song.songTitle" title-list="songTitles"
-                            validation-required="{{song.isAuthoringComplete}}"></as-admin-title>
+                            validation-required = "true"></as-admin-title>
 
             <div class="row form-group">
                 <div class="col-sm-2">
                     <label>Singer</label>
                 </div>
                 <div class="col-sm-2" multi-select input-model="singers" button-label="firstName lastName"
-                     item-label="firstName lastName" tick-property="selected" output-model="song.singers"></div>
-                <input name="singers" ng-model="song.singers" ng-show="false" required="true">
-
+                     item-label="firstName lastName" tick-property="selected" output-model="song.singers" ></div>
+                <input type="text" ng-model="song.singers" name="singers" ng-show="false" required />
                 <error-message name="Singer"
                                show-error="song.isAuthoringComplete && song.singers.length < 1"></error-message>
             </div>
@@ -42,7 +41,6 @@
                 </div>
                 <div class="col-sm-2" multi-select input-model="words" button-label="wordTransliteration"
                      item-label="wordTransliteration" tick-property="selected" output-model="song.words"></div>
-                <input name="words" ng-model="song.words" ng-show="false" required="false">
             </div>
 
             <div class="row form-group">

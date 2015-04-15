@@ -28,7 +28,7 @@
                 <div class="row">
                     <as-admin-title title="Song Title" title-data="song.songTitle" title-list="songTitles"
                                     title-id="song.songTitle.id"
-                                    validation-required="{{song.isAuthoringComplete}}"></as-admin-title>
+                                    validation-required="true"></as-admin-title>
                 </div>
 
                 <div class="row">
@@ -39,6 +39,8 @@
                          multi-select input-model="singers" button-label="firstName lastName"
                          item-label="firstName lastName" tick-property="ticked" output-model="song.singers">
                     </div>
+                    <input type="text" ng-model="song.singers" name="singers" ng-show="false" required />
+
                     <error-message name="Singer"
                                    show-error="song.isAuthoringComplete && song.singers.length < 1"></error-message>
                 </div>
