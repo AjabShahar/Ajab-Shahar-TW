@@ -61,7 +61,6 @@ describe("Word details controller spec:", function () {
             expect(scope.people).toBe("somePerson");
         });
 
-
         it("it should display the linked reflections", function () {
             $httpBackend.expectGET("/api/words/edit?id=1").respond(test_word);
 
@@ -85,7 +84,76 @@ describe("Word details controller spec:", function () {
             expect(scope.reflections[1].ticked).toBeTruthy();
             expect(scope.reflections[2].ticked).toBeTruthy();
         });
+        it("it should display the linked synonyms", function () {
+            $httpBackend.expectGET("/api/words/edit?id=1").respond(test_word);
+
+            $httpBackend.when("GET", "/api/people?role=Poet").respond({"people": "somePerson"});
+            $httpBackend.when("GET", "/api/people").respond({"people": "somePerson"});
+            $httpBackend.when("GET", "/api/category/word").respond(null);
+            $httpBackend.when("GET", "/api/reflections/summary").respond(test_reflection_summaries);
+            $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
+            $httpBackend.when("GET", "/api/songs/getAllSongs").respond({
+                "songs": [{
+                    "englishTransliterationTitle": "some title",
+                    "singers": [],
+                    "words": {"words": []}
+                }]
+            });
+
+            scope.init();
+            $httpBackend.flush();
+
+            expect(scope.synonyms[0].ticked).toBeTruthy();
+        });
+
+        it("it should display the linked related words", function () {
+            $httpBackend.expectGET("/api/words/edit?id=1").respond(test_word);
+
+            $httpBackend.when("GET", "/api/people?role=Poet").respond({"people": "somePerson"});
+            $httpBackend.when("GET", "/api/people").respond({"people": "somePerson"});
+            $httpBackend.when("GET", "/api/category/word").respond(null);
+            $httpBackend.when("GET", "/api/reflections/summary").respond(test_reflection_summaries);
+            $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
+            $httpBackend.when("GET", "/api/songs/getAllSongs").respond({
+                "songs": [{
+                    "englishTransliterationTitle": "some title",
+                    "singers": [],
+                    "words": {"words": []}
+                }]
+            });
+
+            scope.init();
+            $httpBackend.flush();
+
+            expect(scope.relatedWords[0].ticked).toBeTruthy();
+        });
+
+        it("it shouldn't display currently editing word in related words and synonyms", function () {
+            $httpBackend.expectGET("/api/words/edit?id=1").respond(test_word);
+
+            $httpBackend.when("GET", "/api/people?role=Poet").respond({"people": "somePerson"});
+            $httpBackend.when("GET", "/api/people").respond({"people": "somePerson"});
+            $httpBackend.when("GET", "/api/category/word").respond(null);
+            $httpBackend.when("GET", "/api/reflections/summary").respond(test_reflection_summaries);
+            $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
+            $httpBackend.when("GET", "/api/songs/getAllSongs").respond({
+                "songs": [{
+                    "englishTransliterationTitle": "some title",
+                    "singers": [],
+                    "words": {"words": []}
+                }]
+            });
+
+            scope.init();
+            $httpBackend.flush();
+
+            expect(scope.relatedWords[0].ticked).toBeTruthy();
+            expect(scope.relatedWords[1]).toBeUndefined();
+            expect(scope.synonyms[1]).toBeUndefined();
+        });
+
     });
+
 
     describe("When saving a word,", function () {
         it("then should redirect to admin-home if saved successfully", function () {
@@ -199,43 +267,10 @@ describe("Word details controller spec:", function () {
             expect(scope.songs[0].menuTitle).toBe('some title');
             expect(scope.songs[1].menuTitle).toBe('some title2');
         });
+
+
     });
 });
-
-var test_word = {
-    "id": 3,
-    "wordOriginal": "अकथ कथा",
-    "wordTranslation": "Untellable Tale",
-    "wordTransliteration": "Akath Katha",
-    "englishIntroExcerpt": "Akath means inexpressible story.",
-    "hindiIntroExcerpt": null,
-    "diacritic": null,
-    "isRootWord": false,
-    "showOnLandingPage": true,
-    "meaning": null,
-    "wordIntroductions": [],
-    "reflections": [
-        {
-            "id": 1,
-            "title": "Poet is God says Vipul",
-            "speaker": {
-                "id": 16,
-                "name": "Vipul Rikhi",
-                "hindiName": ""
-            }
-        },
-        {
-            "id": 5,
-            "title": "reflection",
-            "speaker": null
-        }
-    ],
-    "relatedWords": [],
-    "songs": [],
-    "synonyms": [],
-    "writers": [],
-    "people": []
-};
 
 var test_word_summaries = {
     "words": [
@@ -267,6 +302,41 @@ var test_word_summaries = {
             "rootWord": true
         }
     ]
+};
+
+var test_word = {
+    "id": 3,
+    "wordOriginal": "अकथ कथा",
+    "wordTranslation": "Untellable Tale",
+    "wordTransliteration": "Akath Katha",
+    "englishIntroExcerpt": "Akath means inexpressible story.",
+    "hindiIntroExcerpt": null,
+    "diacritic": null,
+    "isRootWord": false,
+    "showOnLandingPage": true,
+    "meaning": null,
+    "wordIntroductions": [],
+    "reflections": [
+        {
+            "id": 1,
+            "title": "Poet is God says Vipul",
+            "speaker": {
+                "id": 16,
+                "name": "Vipul Rikhi",
+                "hindiName": ""
+            }
+        },
+        {
+            "id": 5,
+            "title": "reflection",
+            "speaker": null
+        }
+    ],
+    "relatedWords": test_word_summaries.words,
+    "songs": [],
+    "synonyms": test_word_summaries.words,
+    "writers": [],
+    "people": []
 };
 
 var test_reflection_summaries = {
