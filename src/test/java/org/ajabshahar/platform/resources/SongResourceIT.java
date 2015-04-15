@@ -59,9 +59,30 @@ public class SongResourceIT {
     }
 
     @Test
+    public void shouldHaveEmptyPrimaryOccupationIfThereIsNoPrimaryOccupationForAPerson() throws Exception {
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,
+                                                    DataSetup.INSERT_CATEGORY,
+                                                    DataSetup.INSERT_SONGS,
+                                                    DataSetup.INSERT_PERSON,
+                                                    DataSetup.INSERT_SONG_SINGER);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        ClientResponse response = client.resource(
+                String.format("http://localhost:%d/api/songs/getPublishedSongs", RULE.getLocalPort())).header("Content-type", "application/json")
+                .get(ClientResponse.class);
+
+        SongsRepresentation responseEntity = getSongsRepresentation(response);
+
+        assertEquals("", responseEntity.getSongs().get(0).getSingers().get(0).getPrimaryOccupation());
+    }
+
+    @Test
     public void shouldGetSongIfItIsNotRelatedWithAnyWord() throws Exception {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_SONG_WORD, DataSetup.DELETE_SONGS, DataSetup.DELETE_CATEGORY,
-                DataSetup.INSERT_CATEGORY, DataSetup.INSERT_SONGS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,
+                                                    DataSetup.INSERT_CATEGORY,
+                                                    DataSetup.INSERT_SONGS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
