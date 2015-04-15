@@ -1,5 +1,6 @@
 package org.ajabshahar.platform.resources;
 
+import com.google.gson.Gson;
 import com.ninja_squad.dbsetup.DbSetup;
 import com.ninja_squad.dbsetup.Operations;
 import com.ninja_squad.dbsetup.destination.DataSourceDestination;
@@ -15,7 +16,6 @@ import org.ajabshahar.api.WordIntermediateRepresentation;
 import org.ajabshahar.api.WordSummaryRepresentation;
 import org.ajabshahar.platform.PlatformApplication;
 import org.ajabshahar.platform.PlatformConfiguration;
-import org.ajabshahar.platform.models.Word;
 import org.ajabshahar.platform.models.WordIntroduction;
 import org.h2.jdbcx.JdbcDataSource;
 import org.junit.Before;
@@ -23,16 +23,12 @@ import org.junit.ClassRule;
 import org.junit.Test;
 
 import javax.ws.rs.core.NewCookie;
-import javax.xml.crypto.Data;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 public class WordResourceIT {
 
@@ -71,6 +67,7 @@ public class WordResourceIT {
         jsonObject.put("wordIntroductions", new ArrayList<>());
 
         jsonObject.put("relatedWords", new ArrayList<>());
+        jsonObject.put("synonyms", new ArrayList<>());
         jsonObject.put("songs", new ArrayList<>());
         jsonObject.put("writers", new ArrayList<>());
 
@@ -84,7 +81,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldHaveWordIntroduction() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS,
                 DataSetup.INSERT_WORD_INTRODUCTION);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
@@ -99,7 +96,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldHaveWordIntroductions() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS,DataSetup.INSERT_WORDS,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS,
                 DataSetup.INSERT_WORD_INTRODUCTION, DataSetup.INSERT_WORD_INTRODUCTION);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
@@ -114,7 +111,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldHaveWordIntroductionWithContentType() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS,
                 DataSetup.INSERT_WORD_INTRODUCTION);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
@@ -172,7 +169,7 @@ public class WordResourceIT {
 
         jsonObject.put("wordIntroductions", wordIntroductions);
 
-        ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words",jsonObject);
+        ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
 
         assertThat(wordResponse.getStatus(), is(200));
 
@@ -198,7 +195,7 @@ public class WordResourceIT {
     }
 
     @Test
-    public void shouldSaveReflections(){
+    public void shouldSaveReflections() {
 
         Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS);
 
@@ -206,7 +203,7 @@ public class WordResourceIT {
         dbSetup.launch();
 
         PersonSummaryRepresentation speaker = new PersonSummaryRepresentation();
-        ReflectionSummaryRepresentation reflectionSummaryRepresentation = new ReflectionSummaryRepresentation(1,"Oh that wonderful song!", speaker, false);
+        ReflectionSummaryRepresentation reflectionSummaryRepresentation = new ReflectionSummaryRepresentation(1, "Oh that wonderful song!", speaker, false);
         List<ReflectionSummaryRepresentation> reflections = new ArrayList<>();
         reflections.add(reflectionSummaryRepresentation);
         jsonObject.put("reflections", reflections);
@@ -231,14 +228,14 @@ public class WordResourceIT {
 
         WordIntermediateRepresentation word = wordResponse.getEntity(WordIntermediateRepresentation.class);
 
-        assertThat(word.getReflections().size(),is(1));
+        assertThat(word.getReflections().size(), is(1));
         assertThat(word.getReflections().get(0).getId(), is(1L));
 
     }
 
     @Test
     public void shouldHaveShowAjabShaharTeamTextFlag() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS,DataSetup.INSERT_WORDS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
 
@@ -250,26 +247,26 @@ public class WordResourceIT {
     }
 
     @Test
-    public void shouldSaveDefaultReflection(){
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_REFLECTIONS,DataSetup.INSERT_WORDS,DataSetup.INSERT_WORD_REFLECTIONS);
+    public void shouldSaveDefaultReflection() {
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS, DataSetup.INSERT_WORD_REFLECTIONS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
 
-        jsonObject.put("defaultReflection",new ReflectionSummaryRepresentation(2,"I hate that word!", null, false));
+        jsonObject.put("defaultReflection", new ReflectionSummaryRepresentation(2, "I hate that word!", null, false));
 
         ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
         WordIntermediateRepresentation word = wordResponse.getEntity(WordIntermediateRepresentation.class);
 
-        wordResponse = httpGet("http://localhost:%d/api/words/edit?id="+word.getId());
+        wordResponse = httpGet("http://localhost:%d/api/words/edit?id=" + word.getId());
         word = wordResponse.getEntity(WordIntermediateRepresentation.class);
 
         assertThat(word.getDefaultReflection().getId(), is(2L));
     }
 
     @Test
-    public void shouldEditDefaultReflection(){
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_REFLECTIONS,DataSetup.INSERT_WORDS,DataSetup.INSERT_WORD_REFLECTIONS);
+    public void shouldEditDefaultReflection() {
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS, DataSetup.INSERT_WORD_REFLECTIONS);
 
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
@@ -287,12 +284,12 @@ public class WordResourceIT {
 
         //check the default reflection in DB
         word = wordResponse.getEntity(WordIntermediateRepresentation.class);
-        assertThat(word.getDefaultReflection().getId(),is(2L));
+        assertThat(word.getDefaultReflection().getId(), is(2L));
     }
 
     @Test
-    public void shouldRemoveDefaultReflection(){
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_REFLECTIONS,DataSetup.INSERT_WORDS,DataSetup.INSERT_WORD_REFLECTIONS);
+    public void shouldRemoveDefaultReflection() {
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS, DataSetup.INSERT_WORD_REFLECTIONS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -337,7 +334,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldSaveWordAlongWithRelatedWords() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS,DataSetup.INSERT_WORDS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -348,17 +345,45 @@ public class WordResourceIT {
 
         WordIntermediateRepresentation word = getWord(words);
         List<WordSummaryRepresentation> wordSummaryRepresentations = new ArrayList<>();
-        WordSummaryRepresentation wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(),word.getWordOriginal(),word.getWordTranslation(),
-                word.getWordTransliteration(),word.getHindiIntroExcerpt(),word.getEnglishIntroExcerpt(),new ArrayList<>(),word.getIsRootWord());
+        WordSummaryRepresentation wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(),
+                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new ArrayList<>(), word.getIsRootWord());
         wordSummaryRepresentations.add(wordSummaryRepresentation);
 
         jsonObject.put("relatedWords", wordSummaryRepresentations);
 
-        ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words",jsonObject);
+        ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
         WordIntermediateRepresentation wordIntermediateRepresentation = getWord(wordResponse);
 
-        assertThat(wordIntermediateRepresentation.getRelatedWords().size(),is(1));
+        assertThat(wordIntermediateRepresentation.getRelatedWords().size(), is(1));
     }
+
+    @Test
+    public void shouldSaveWordAlongWithSynonyms() {
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        ClientResponse words = client.resource(
+                String.format(API_TO_EDIT_THE_WORD_WITH_ID_ONE, RULE.getLocalPort())).header("Content-type", "application/json")
+                .get(ClientResponse.class);
+
+        WordIntermediateRepresentation word = getWord(words);
+        List<WordSummaryRepresentation> wordSummaryRepresentations = new ArrayList<>();
+        WordSummaryRepresentation wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(),
+                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new ArrayList<>(), word.getIsRootWord());
+        wordSummaryRepresentations.add(wordSummaryRepresentation);
+
+        jsonObject.put("synonyms", wordSummaryRepresentations);
+
+        ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
+        WordIntermediateRepresentation wordIntermediateRepresentation = getWord(wordResponse);
+
+        assertThat(wordIntermediateRepresentation.getSynonyms().size(), is(1));
+        assertThat((long) wordIntermediateRepresentation.getSynonyms().get(0).getId(), is(word.getId()));
+    }
+
+
 
     private NewCookie geCookie(ClientResponse response) {
         return getCookie(response, "JSESSIONID");

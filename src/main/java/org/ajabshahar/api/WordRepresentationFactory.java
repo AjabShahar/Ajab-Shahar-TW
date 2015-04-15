@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Consumer;
 
 public class WordRepresentationFactory {
     private ReflectionRepresentationFactory reflectionRepresentationFactory;
@@ -48,15 +49,21 @@ public class WordRepresentationFactory {
         }
 
         Set<Word> words = new HashSet<>();
-        wordIntermediateRepresentation.getRelatedWords().forEach(wordSummary ->{
+        wordIntermediateRepresentation.getRelatedWords().forEach(getWordSummaryRepresentationConsumer(words));
+        word.setRelatedWords(words);
+
+        wordIntermediateRepresentation.getSynonyms().forEach(getWordSummaryRepresentationConsumer(words));
+        word.setSynonyms(words);
+        word.setReflections(reflections);
+        return word;
+    }
+
+    private Consumer<WordSummaryRepresentation> getWordSummaryRepresentationConsumer(Set<Word> words) {
+        return wordSummary ->{
             Word newWord = new Word();
             newWord.setId(wordSummary.getId());
             words.add(newWord);
-        });
-
-        word.setReflections(reflections);
-        word.setRelatedWords(words);
-        return word;
+        };
     }
 
     private String getPrimaryCategoryName(Category primaryCategory){
@@ -189,6 +196,8 @@ public class WordRepresentationFactory {
 
         WordsSummaryRepresentation wordSummaryRepresentations = create(new ArrayList<Word>(word.getRelatedWords()));
         wordIntermediateRepresentation.setRelatedWords(wordSummaryRepresentations.getWords());
+        wordSummaryRepresentations = create(new ArrayList<Word>(word.getSynonyms()));
+        wordIntermediateRepresentation.setSynonyms(wordSummaryRepresentations.getWords());
 
         return wordIntermediateRepresentation;
     }
