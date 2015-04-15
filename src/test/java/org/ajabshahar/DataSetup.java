@@ -11,7 +11,7 @@ public class DataSetup {
     public static String HASHED_PASSWORD = PasswordEncryptor.getEncryptedPassword("password", PasswordAuthenticator.SALT, PasswordAuthenticator.ALGORITHM);
 
     public static final Operation DELETE_ALL =
-            deleteAllFrom("SONG_WORD", "WORD_REFLECTION", "WORD_INTRODUCTION", "RELATED_WORDS", "WORD", "REFLECTION", "SONG", "PERSON", "CATEGORY");
+            deleteAllFrom("SONG_WORD", "SONG_SINGER", "WORD_REFLECTION", "WORD_INTRODUCTION", "RELATED_WORDS", "WORD", "REFLECTION", "PERSON", "SONG", "CATEGORY");
 
     public static final Operation INSERT_ADMIN_USER =
             sequenceOf(
@@ -25,6 +25,8 @@ public class DataSetup {
     public static final Operation DELETE_WORDS = deleteAllFrom("WORD");
 
     public static final Operation DELETE_WORD_INTRODUCTION = deleteAllFrom("WORD_INTRODUCTION");
+
+    public static final Operation DELETE_SONG_SINGER = deleteAllFrom("SONG_SINGER");
 
     public static final Operation DELETE_SONG_WORD = deleteAllFrom("SONG_WORD");
 
@@ -48,8 +50,8 @@ public class DataSetup {
     public static final Operation INSERT_WORDS =
             sequenceOf(
                     insertInto("WORD")
-                            .columns("id", "word_original", "word_translation", "word_transliteration", "meaning", "show_on_landing_page", "hindi_intro_excerpt", "english_intro_excerpt", "is_root_word", "diacritic","default_reflection_id","display_ajab_shahar_team")
-                            .values(1, "word original", "word translation", "word transliteration", "meaning", true, "some Hindi text", "some English text", true, "some diacritic",null,true)
+                            .columns("id", "word_original", "word_translation", "word_transliteration", "meaning", "show_on_landing_page", "hindi_intro_excerpt", "english_intro_excerpt", "is_root_word", "diacritic", "default_reflection_id", "display_ajab_shahar_team")
+                            .values(1, "word original", "word translation", "word transliteration", "meaning", true, "some Hindi text", "some English text", true, "some diacritic", null, true)
                             .values(2, "word original no 2", "word translation no 2", "word transliteration no 2", "no meaning", true, "some Hindi text", "some English text", true, "some diacritic",2,false)
                             .build());
     public static final Operation INSERT_WORD_INTRODUCTION =
@@ -86,12 +88,24 @@ public class DataSetup {
                             .values(2, "I hate that word!")
                             .build());
 
+    public static final Operation INSERT_PERSON =
+            sequenceOf(
+                    insertInto("PERSON")
+                            .columns("id", "first_name", "last_name")
+                            .values(1, "Ravi", "Das")
+                            .build());
+
+    public static final Operation INSERT_SONG_SINGER =
+            sequenceOf(
+                    insertInto("SONG_SINGER")
+                            .columns("singer_id", "song_id")
+                            .values(1, 1)
+                            .build());
+
     public static final Operation INSERT_WORD_REFLECTIONS =
             sequenceOf(
                     insertInto("word_reflection")
                     .columns("word_id","reflection_id")
                     .values(1,1)
                     .build());
-
-
 }
