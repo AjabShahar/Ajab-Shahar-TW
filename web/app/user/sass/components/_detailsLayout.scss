@@ -210,8 +210,8 @@
         ul {
           margin-left: -15px;
           li {
-            @include retina-image("/user/img/songs/separator", 300px);
-            background-size: contain;
+            background: transparent url('/user/img/songs/separator_2x.png');
+            background-size: 300px 10px;
             background-position: left bottom;
             background-repeat: no-repeat;
             width: 85px;
