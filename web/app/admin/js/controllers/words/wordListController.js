@@ -3,8 +3,8 @@ adminApp.controller('wordListController', ['$scope', 'contentService', 'loginVer
         loginVerifyService.redirectIfNotAuthenticated();
         $scope.words = [];
         $scope.init = function () {
-            contentService.getAllWords().then(function (result) {
-                var allWords = result.data;
+            contentService.getAllWordsSummaries().then(function (result) {
+                var allWords = result.data.words;
                 $scope.words = _.reduce(allWords, function (words, value, index) {
                     var toBeAdded = {};
                     toBeAdded.wordOrPhrase = value.wordTransliteration;
