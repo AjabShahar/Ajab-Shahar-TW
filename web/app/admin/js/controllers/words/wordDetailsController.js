@@ -13,6 +13,8 @@ wordsAdminApp.controller('wordDetailsController', ['$scope', '$window', '$locati
         $scope.people = [];
         $scope.songs = [];
         $scope.poets = [];
+        $scope.synonyms = [];
+        $scope.relatedWords = [];
 
         var wordCategory = 'word';
 
@@ -34,14 +36,17 @@ wordsAdminApp.controller('wordDetailsController', ['$scope', '$window', '$locati
             var categoriesPromise = contentService.getAllCategories(wordCategory);
             var songsPromise = contentService.getAllSongs();
             var poetsPromise = contentService.getPoets();
+            var wordsSummaryPromise = contentService.getAllWordsSummaries();
 
-            $q.all([categoriesPromise, songsPromise, peoplePromise, reflectionsPromise, poetsPromise]).then(function (data) {
+            $q.all([categoriesPromise, songsPromise, peoplePromise, reflectionsPromise, poetsPromise, wordsSummaryPromise]).then(function (data) {
                 $scope.categories = data[0].data;
                 $scope.songs = data[1].data.songs;
                 $scope.writers = angular.copy(data[2].data.people);
                 $scope.people = angular.copy(data[2].data.people);
                 $scope.reflections = data[3].data.reflections;
                 $scope.poets = data[4].data.people;
+                $scope.synonyms = angular.copy(data[5].data.words);
+                $scope.relatedWords = angular.copy(data[5].data.words);
 
                 createMenuTitleForSongs();
 
@@ -75,6 +80,8 @@ wordsAdminApp.controller('wordDetailsController', ['$scope', '$window', '$locati
                     $scope.people = getSelectedContent(data.people, $scope.people);
                     $scope.songs = getSelectedContent(data.songs, $scope.songs);
                     $scope.reflections = getSelectedContent(data.reflections, $scope.reflections);
+                    $scope.synonyms = getSelectedContent(data.synonyms, $scope.synonyms);
+                    $scope.relatedWords = getSelectedContent(data.relatedWords, $scope.relatedWords);
                     $scope.formInfo = data;
                 });
             }

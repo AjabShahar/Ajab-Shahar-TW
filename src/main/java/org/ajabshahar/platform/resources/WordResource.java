@@ -99,7 +99,7 @@ public class WordResource {
     }
 
     @GET
-    @Path("summary")
+    @Path("/summary")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getSummaryRepresentation(){
         List<Word> allWords = words.findAll();
