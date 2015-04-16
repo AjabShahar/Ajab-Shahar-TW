@@ -27,6 +27,7 @@ describe("Word details controller spec:", function () {
             loginVerifyService: loginVerifyService
         });
 
+        scope.wordForm = {$valid:true};
 
     }));
 
@@ -179,7 +180,7 @@ describe("Word details controller spec:", function () {
 
     });
 
-    describe("When saving a word,", function () {
+    describe("When saving or updating a word,", function () {
         it("then should redirect to admin-home if saved successfully", function () {
             $httpBackend.expectPOST('/api/words', scope.formInfo).respond(200);
 
@@ -196,24 +197,6 @@ describe("Word details controller spec:", function () {
 
             expect(fakeWindow.location.href).toBe('');
             expect(scope.formInfo.displayAjabShaharTeam).not.toBe(undefined);
-        });
-    });
-    describe("When updating a word,", function () {
-        it("then should redirect to admin-home if saved successfully", function () {
-            $httpBackend.expectPOST('/api/words/edit', scope.formInfo).respond(200);
-
-            scope.updateWord();
-            $httpBackend.flush();
-
-            expect(fakeWindow.location.href).toBe(adminHomePage);
-        });
-        it("then shouldn't redirect to admin-home if not saved successfully", function () {
-            $httpBackend.expectPOST('/api/words/edit', scope.formInfo).respond(500);
-
-            scope.updateWord();
-            $httpBackend.flush();
-
-            expect(fakeWindow.location.href).toBe('');
         });
     });
     describe("When fetching a given word via an ID,", function () {

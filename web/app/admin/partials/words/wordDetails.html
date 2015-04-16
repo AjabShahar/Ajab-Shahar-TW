@@ -17,8 +17,8 @@
     <h2>Enter Word details</h2>
 
     <div class="left">
-        <div ng-controller="wordDetailsController" ng-init="init()">
-            <form>
+        <div >
+            <form name="wordForm" ng-controller="wordDetailsController"  ng-init="init()">
                 <div class="row">
                     <div class="form-group col-sm-2">
                         <label>Word Original</label>
@@ -79,8 +79,11 @@
                     <div class="form-group col-sm-2">
                         <select ng-model="formInfo.defaultReflection"
                                 ng-options="reflection as reflection.title for reflection in reflections track by reflection.id"
-                                class="form-control" ng-required="formInfo.isRootWord && !formInfo.wordIntroduction "></select>
+                                class="form-control" ng-required="isReflectionRequired()"></select>
                     </div>
+
+                    <error-message name="Default Reflection"
+                                   show-error="isReflectionRequired()"></error-message>
                 </div>
 
                 <div class="row">
@@ -207,6 +210,9 @@
 <script src="/common/lib/angular-route/angular-route.min.js"></script>
 <script type="text/javascript" src="/admin/js/services/contentService.js"></script>
 <script type="text/javascript" src="/admin/js/services/loginVerifyService.js"></script>
+<script type="text/javascript" src="/admin/js/common/app.js"></script>
+<script type="text/javascript" src="/admin/js/common/errorMessage.js"></script>
+
 <script type="text/javascript" src="/admin/js/words/wordsAdminApp.js"></script>
 <script type="text/javascript" src="/admin/js/directives/adminWordIntroduction.js"></script>
 <script type="text/javascript" src="/admin/js/controllers/words/wordDetailsController.js"></script>
