@@ -81,20 +81,25 @@ wordsAdminApp.controller('wordDetailsController', ['$scope', '$window', '$locati
                     $scope.people = getSelectedContent(data.people, $scope.people);
                     $scope.songs = getSelectedContent(data.songs, $scope.songs);
                     $scope.reflections = getSelectedContent(data.reflections, $scope.reflections);
-                    $scope.synonyms = removeElement(getSelectedContent(data.synonyms, $scope.synonyms), data);
-                    $scope.relatedWords = removeElement(getSelectedContent(data.relatedWords, $scope.relatedWords), data);
+                    $scope.synonyms = getSelectedContent(data.synonyms, $scope.synonyms);
+                    $scope.relatedWords = getSelectedContent(data.relatedWords, $scope.relatedWords);
                     $scope.reflectionsWithoutTheDefault=getSelectedContent(data.reflections, $scope.reflections);
                     $scope.formInfo = data;
                 });
-            }
-        };
-        var removeElement = function (list, element) {
-            list.forEach(function (l) {
 
-                if (l.id === element.id)
-                    list.splice(list.indexOf(l), 1);
-            });
-            return list;
+                //TODO: we have to refactor , this is duplication
+                $scope.synonyms.forEach(function(synonum){
+                    if(synonum.id === parseInt(wordID)){
+                        $scope.synonyms.splice($scope.synonyms.indexOf(synonum),1);
+                    }
+                });
+
+                $scope.relatedWords.forEach(function(relatedWord){
+                   if(relatedWord.id === parseInt(wordID)){
+                       $scope.relatedWords.splice($scope.relatedWords.indexOf(relatedWord),1);
+                   }
+                });
+            }
         };
 
         var redirectToURL = function (url) {
