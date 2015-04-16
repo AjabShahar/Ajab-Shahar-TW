@@ -55,9 +55,11 @@ wordsAdminApp.controller('wordDetailsController', ['$scope', '$window', '$locati
         };
 
         $scope.saveData = function () {
-            contentService.saveWord($scope.formInfo).success(function () {
-                $window.location.href = '/admin/partials/home.html';
-            });
+            if($scope.wordForm.$valid){
+                    contentService.saveWord($scope.formInfo).success(function () {
+                    $window.location.href = '/admin/partials/home.html';
+                });
+            }
         };
 
         var getSelectedContent = function (data, list) {
@@ -103,12 +105,10 @@ wordsAdminApp.controller('wordDetailsController', ['$scope', '$window', '$locati
             redirectToURL(PAGES.ADMIN_HOME);
         };
 
-        $scope.updateWord = function () {
-            contentService.updateWord($scope.formInfo).success(function () {
-                redirectToURL(PAGES.ADMIN_HOME);
-            });
+        $scope.isReflectionRequired = function(){
+            var required = ($scope.formInfo.isRootWord === 'true' || $scope.formInfo.isRootWord === true) && (_.isEmpty($scope.formInfo.wordIntroductions) && _.isEmpty($scope.wordIntroductions));
+            return required;
         };
-
         $scope.$watch("formInfo.defaultReflection",function(newValue){
             $scope.reflectionsWithoutTheDefault = _.reject($scope.reflections,function(reflection){
                 return !_.isEmpty(newValue) && reflection.id === newValue.id;
