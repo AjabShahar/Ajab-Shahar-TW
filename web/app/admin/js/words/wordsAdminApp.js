@@ -2,7 +2,9 @@ var wordsAdminApp = angular.module('wordsAdminApp', ['textAngular', 'multi-selec
 wordsAdminApp.factory('contentService', ['$http', contentService]);
 
 wordsAdminApp.config(function ($locationProvider) {
-
+    $locationProvider.html5Mode({
+        enabled: true
+    });
 });
 
 wordsAdminApp.constant("PAGES", {
