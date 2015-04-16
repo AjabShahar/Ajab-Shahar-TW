@@ -15,7 +15,7 @@ $tab-portrait: new-breakpoint(max-width 768px);
 .pagination-head {
   width: 100%;
   padding: 0 0 3% 0;
-  margin-top: 6%;
+  margin-top: 90px;
   float: left;
 
   @include media($tab-portrait) {
@@ -42,6 +42,7 @@ $tab-portrait: new-breakpoint(max-width 768px);
           border-right: solid 1px #575756;
           padding: 0 15px;
           line-height: 12px;
+          cursor: pointer;
         }
 
         &:first-child {
