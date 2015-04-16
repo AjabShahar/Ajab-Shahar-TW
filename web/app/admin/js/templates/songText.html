@@ -168,7 +168,7 @@
                 <strong>Couplet's poet</strong>
             </div>
             <div class="col-md-1" ng-show="songTextContent.poet != undefined">
-                <select ng-model="songTextContent.poet" ng-options="poet.firstName for poet in poets"
+                <select ng-model="songTextContent.poet.id" ng-options="poet.id as poet.firstName for poet in poets"
                         class="form-control"></select>
             </div>
         </div>
