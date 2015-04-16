@@ -18,10 +18,6 @@ $tab-portrait: new-breakpoint(max-width 768px);
   margin-top: 90px;
   float: left;
 
-  @include media($tab-portrait) {
-    margin-top: 12%;
-  }
-
   & > .upper {
     display: inline-block;
     width: 100%;
