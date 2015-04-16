@@ -12,6 +12,8 @@ filterModule.directive("asTitle", function () {
         templateUrl: '/user/js/common/templates/common/asTitle.html',
         controller: function ($scope, $rootScope) {
             $rootScope.contentTextRepresentation = 'Transliteration';
+            $scope.isOriginalTitle = true;
+            $scope.isEnglishTitle = false;
             $scope.alphabetFilters = [
                 {alphabet: 'ALL', isSelected: true},
                 {alphabet: 'A', isSelected: false},
@@ -45,6 +47,8 @@ filterModule.directive("asTitle", function () {
                 if ($rootScope.contentTextRepresentation === 'Transliteration')
                     return;
                 $rootScope.contentTextRepresentation = 'Transliteration';
+                $scope.isOriginalTitle = true;
+                $scope.isEnglishTitle = false;
                 $scope.clearAlphabetFilter();
                 //$rootScope.$broadcast('contentTextRepresentation', $rootScope.contentTextRepresentation);
             };
@@ -53,6 +57,8 @@ filterModule.directive("asTitle", function () {
                 if ($rootScope.contentTextRepresentation === 'Translation')
                     return;
                 $rootScope.contentTextRepresentation = 'Translation';
+                $scope.isEnglishTitle = true;
+                $scope.isOriginalTitle = false;
                 $scope.clearAlphabetFilter();
                 //$rootScope.$broadcast('contentTextRepresentation', $rootScope.contentTextRepresentation);
             };
