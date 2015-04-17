@@ -1,19 +1,19 @@
 <div class="media-introduction word">
     <div id="content-wrapper">
         <div class="content-bg">
-            <h3 class="context">{{wordTransliteration}} {{wordTranslation}}</h3>
-            <h5 class="artistName">
-                <small>Introduction by</small>
-                <span class="selected">{{people}}</span>
-                <!--<span class="selected">Vipul Rikhi</span>-->
-                <small>, Ajab Shahar Team</small>
-            </h5>
+            <div class="header">
+                <h3 class="title-pink">{{wordTransliteration}} </h3>
+                <span>{{wordTranslation}}</span>
+                <h5 class="artistName">
+                    <small>Introduction by {{people}} , Ajab Shahar Team</small>
+                </h5>
+            </div>
             <div bind-dynamic-html="wordIntroEnglish" class="lightbx-text-content">
             </div>
         </div>
     </div>
     <div class="mediaFooter">
-        <h3 class='infoText'>For reflections, related songs, related poems and more enter
+        <h3 class='infoText'>For related reflections enter
             <a href="/user/js/words/#/details/{{id}}">WORD</a>
             or see
             <a href="/user/js/words/#/glossary">ALL WORDS</a>
@@ -21,7 +21,7 @@
 
         <div class="creditCont">
             <div class="creditBox" ng-repeat="writer in writers"><span
-                    class="selected ng-binding">{{writer.name}}</span> {{writer.primaryOccupation}}
+                    class="title-dark ng-binding">{{writer.name}}</span> {{writer.primaryOccupation}}
             </div>
         </div>
     </div>
