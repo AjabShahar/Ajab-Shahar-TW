@@ -1,6 +1,7 @@
-package org.ajabshahar.api;
+package org.ajabshahar.factory;
 
 import com.google.gson.Gson;
+import org.ajabshahar.api.*;
 import org.ajabshahar.core.People;
 import org.ajabshahar.platform.models.*;
 import org.hamcrest.core.IsEqual;

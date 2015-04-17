@@ -56,9 +56,7 @@ public class ReflectionRepresentationFactory {
     public ReflectionsSummaryRepresentation create(List<Reflection> reflectionList) {
         ReflectionsSummaryRepresentation reflectionsSummaryRepresentation = new ReflectionsSummaryRepresentation();
         for (Reflection reflection : reflectionList) {
-            PersonDetails speakerDetails = reflection.getSpeaker();
-            ReflectionSummaryRepresentation reflectionSummaryRepresentation = new ReflectionSummaryRepresentation(reflection.getId(), reflection.getTitle(), getPersonSummaryRepresentation(speakerDetails), reflection.getIsAuthoringComplete());
-            reflectionsSummaryRepresentation.add(reflectionSummaryRepresentation);
+            reflectionsSummaryRepresentation.add(ReflectionSummaryRepresentation.createFrom(reflection));
         }
         return reflectionsSummaryRepresentation;
     }

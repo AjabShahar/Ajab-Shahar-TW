@@ -1,6 +1,7 @@
 package org.ajabshahar.platform.daos;
 
 import io.dropwizard.hibernate.AbstractDAO;
+import org.ajabshahar.api.WordIntermediateRepresentation;
 import org.ajabshahar.platform.models.Word;
 import org.ajabshahar.platform.models.WordIntroduction;
 import org.hibernate.Criteria;

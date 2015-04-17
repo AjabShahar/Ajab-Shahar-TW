@@ -1,5 +1,9 @@
-package org.ajabshahar.api;
+package org.ajabshahar.factory;
 
+import org.ajabshahar.api.PeopleRepresentation;
+import org.ajabshahar.api.PersonRepresentation;
+import org.ajabshahar.api.PersonRepresentationFactory;
+import org.ajabshahar.api.PersonSummaryRepresentation;
 import org.ajabshahar.platform.models.Category;
 import org.ajabshahar.platform.models.PersonDetails;
 import org.hamcrest.core.IsEqual;
@@ -36,6 +40,7 @@ public class PersonRepresentationFactoryTest {
 
         personDetailsList = new ArrayList<>();
         personDetails = new PersonDetails();
+        personDetails.setId(1);
         personDetails.setFirstName("FirstName");
         personDetails.setMiddleName("MiddleName");
         personDetails.setLastName("LastName");
@@ -69,5 +74,12 @@ public class PersonRepresentationFactoryTest {
         assertThat(peopleRepresentation.getPeople().get(0).getFirstNameInHindi(), IsEqual.equalTo("जीवन मंत्र"));
         assertNull(peopleRepresentation.getPeople().get(0).getMiddleNameInHindi());
         assertNull(peopleRepresentation.getPeople().get(0).getLastNameInHindi());
+    }
+
+    @Test
+    public void shouldConvertToPersonFromPersonSummaryRepresentation() {
+        PersonDetails personDetails = PersonRepresentationFactory.toPerson(PersonSummaryRepresentation.createFrom(this.personDetails));
+
+        assertThat(personDetails.getId(),IsEqual.equalTo(1L));
     }
 }

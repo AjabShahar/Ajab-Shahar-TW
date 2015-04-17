@@ -3,8 +3,7 @@ package org.ajabshahar.api;
 import org.ajabshahar.platform.models.Category;
 import org.ajabshahar.platform.models.PersonDetails;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class PersonRepresentationFactory {
 
@@ -27,13 +26,28 @@ public class PersonRepresentationFactory {
         return peopleRepresentation;
     }
 
-    public List<PersonSummaryRepresentation> createPeopleSummaryRepresentation(List<PersonDetails> personDetails) {
+    public static List<PersonSummaryRepresentation> createPeopleSummaryRepresentation(List<PersonDetails> personDetails) {
         List<PersonSummaryRepresentation> people = new ArrayList<>();
         for (PersonDetails person : personDetails) {
-            Category primaryOccupation = person.getPrimaryOccupation();
-            String primaryOccupationName = (primaryOccupation != null) ? primaryOccupation.getName() : "";
-            people.add(new PersonSummaryRepresentation(person.getId(), person.getName(), person.getHindiName(), primaryOccupationName));
+            people.add(PersonSummaryRepresentation.createFrom(person));
         }
         return people;
+    }
+
+    public static PersonDetails toPerson(PersonSummaryRepresentation personSummaryRepresentation) {
+        PersonDetails personDetails = new PersonDetails();
+        personDetails.setId(personSummaryRepresentation.getId());
+        return personDetails;
+    }
+
+    public static Set<PersonDetails> toPerson(Set<PersonSummaryRepresentation> peopleSummaryRepresentation) {
+        if(peopleSummaryRepresentation != null ){
+            HashSet<PersonDetails> peopleDetails = new HashSet<>();
+            for(PersonSummaryRepresentation personSummaryRepresentation: peopleSummaryRepresentation){
+                peopleDetails.add(toPerson(personSummaryRepresentation));
+            }
+            return peopleDetails;
+        }
+        return Collections.EMPTY_SET;
     }
 }
