@@ -20,6 +20,7 @@ reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$windo
             if (urlId != null && urlId != ''){
                 var  getReflectionPromise = reflectionContentService.getRefectionById(urlId).success(function (data) {
                         $scope.reflection = data;
+                        $scope.reflection.type = getReflectionType();
                 });
                 $q.all([getPeoplePromise,getWordsPromise,getReflectionPromise]).then(function(){
                     $scope.words.forEach(function(word){
@@ -37,6 +38,10 @@ reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$windo
             reflectionContentService.saveReflection($scope.reflection).success(function (data) {
                 $window.location.href = '/admin/partials/home.html';
             });
+        };
+
+        var getReflectionType = function(){
+            return ($scope.reflection.soundCloudId != null ? 'audio' : ($scope.reflection.youtubeVideoId != null ? 'video' : ($scope.reflection.transcripts.length > 1 ? 'text' : '')));
         };
 
         init();
