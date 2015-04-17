@@ -34,7 +34,6 @@ songsAdminApp.directive("songText", function () {
             };
 
             $scope.clearSongText = function () {
-                $scope.songText.openingCouplets = [];
                 $scope.songText.songTextContents = [];
             };
 
