@@ -71,7 +71,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="row" ng-show="reflection.type == 'audio' || reflection.soundCloudId !=null ">
+                <div class="row" ng-show="reflection.type == 'audio'">
                     <div class="form-group col-sm-2">
                         <label>Sound Cloud Track Id</label>
                     </div>
@@ -80,7 +80,7 @@
                     </div>
                 </div>
 
-                <div class="row" ng-show="reflection.type == 'video' || reflection.youtubeVideoId !=null ">
+                <div class="row" ng-show="reflection.type == 'video'">
                     <div class="form-group col-sm-2">
                         <label>Youtube Video Id</label>
                     </div>
@@ -88,8 +88,8 @@
                         <input type="text" name="reflection" ng-model="reflection.youtubeVideoId" class="form-control">
                     </div>
                 </div>
-                <div ng-show="reflection.type == 'text' || reflection.transcripts.length > 1 ">
-                    <reflection-transcript reflection-transcripts="reflection.transcripts"></reflection-transcript>
+                <div ng-show="reflection.type == 'text'">
+                    <reflection-transcript reflection-transcripts="reflection.reflectionTranscripts"></reflection-transcript>
                 </div>
 
                 <div class="row">

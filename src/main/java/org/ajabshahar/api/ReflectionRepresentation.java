@@ -55,7 +55,7 @@ public class ReflectionRepresentation {
         return youtubeVideoId;
     }
 
-    @JsonProperty("transcripts")
+    @JsonProperty("reflectionTranscripts")
     public List<ReflectionTranscript> getReflectionTranscripts() {
         return reflectionTranscripts;
     }
