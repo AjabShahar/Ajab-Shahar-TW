@@ -3,10 +3,7 @@ package org.ajabshahar.api;
 import com.google.gson.Gson;
 import org.ajabshahar.platform.models.*;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Consumer;
 
 public class WordRepresentationFactory {
@@ -30,13 +27,14 @@ public class WordRepresentationFactory {
         word.setShowOnLandingPage(wordIntermediateRepresentation.getShowOnLandingPage());
         word.setDisplayAjabShaharTeam(wordIntermediateRepresentation.getDisplayAjabShaharTeam());
         word.setWordIntroductions(wordIntermediateRepresentation.getWordIntroductions());
-        word.setPeople(wordIntermediateRepresentation.getPeople());
-        word.setSongs(wordIntermediateRepresentation.getSongs());
-        word.setWriters(wordIntermediateRepresentation.getWriters());
+        word.setPeople(PersonRepresentationFactory.toPerson(wordIntermediateRepresentation.getPeople()));
+        word.setSongs(SongSummaryRepresentation.toSongs(wordIntermediateRepresentation.getSongs()));
+        word.setWriters(PersonRepresentationFactory.toPerson(wordIntermediateRepresentation.getWriters()));
         Reflection defaultReflection = wordIntermediateRepresentation.getDefaultReflection() != null ? new Reflection() : null;
         if (wordIntermediateRepresentation.getDefaultReflection() != null) {
             defaultReflection.setId(wordIntermediateRepresentation.getDefaultReflection().getId());
         }
+
         word.setDefaultReflection(defaultReflection);
 
         Set<Reflection> reflections = new HashSet<>();
@@ -48,19 +46,20 @@ public class WordRepresentationFactory {
             });
         }
 
-        word.setSynonyms(getWords(wordIntermediateRepresentation.getSynonyms()));
-        word.setRelatedWords(getWords(wordIntermediateRepresentation.getRelatedWords()));
+        word.setSynonyms(toWords(wordIntermediateRepresentation.getSynonyms()));
+        word.setRelatedWords(toWords(wordIntermediateRepresentation.getRelatedWords()));
         word.setReflections(reflections);
         return word;
     }
 
-    private Set<Word> getWords(List<WordSummaryRepresentation> synonymSummaries) {
-        Set<Word> words = (synonymSummaries.size() == 0 ? null : new HashSet<>());
-        synonymSummaries.forEach(synonymSummary -> {
-            Word newWord = new Word();
-            newWord.setId(synonymSummary.getId());
-            words.add(newWord);
-        });
+    public static Set<Word> toWords(List<WordSummaryRepresentation> relatedWords) {
+        Set<Word> words = new HashSet<>();
+
+        for (WordSummaryRepresentation relatedWord : relatedWords) {
+            Word word = new Word();
+            word.setId(relatedWord.getId());
+            words.add(word);
+        }
         return words;
     }
 
@@ -181,9 +180,13 @@ public class WordRepresentationFactory {
         wordIntermediateRepresentation.setMeaning(word.getMeaning());
         wordIntermediateRepresentation.setIsRootWord(word.getIsRootWord());
         wordIntermediateRepresentation.setShowOnLandingPage(word.getShowOnLandingPage());
-        wordIntermediateRepresentation.setPeople(word.getPeople());
-        wordIntermediateRepresentation.setSongs(word.getSongs());
-        wordIntermediateRepresentation.setWriters(word.getWriters());
+
+        List<PersonSummaryRepresentation> peopleSummaryRepresentation = PersonRepresentationFactory.createPeopleSummaryRepresentation(new ArrayList<>(word.getPeople()));
+        wordIntermediateRepresentation.setPeople(new HashSet<>(peopleSummaryRepresentation));
+        wordIntermediateRepresentation.setSongs(SongSummaryRepresentation.toSummaryRepresentations(word.getSongs()));
+
+        peopleSummaryRepresentation = PersonRepresentationFactory.createPeopleSummaryRepresentation(new ArrayList<>(word.getWriters()));
+        wordIntermediateRepresentation.setWriters(new HashSet<>(peopleSummaryRepresentation));
         wordIntermediateRepresentation.setWordIntroductions(word.getWordIntroductions());
         wordIntermediateRepresentation.setDisplayAjabShaharTeam(word.getDisplayAjabShaharTeam());
         wordIntermediateRepresentation.setDefaultReflection(ReflectionSummaryRepresentation.createFrom(word.getDefaultReflection()));

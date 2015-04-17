@@ -1,11 +1,16 @@
 package org.ajabshahar.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Setter;
+import org.ajabshahar.platform.models.Category;
+import org.ajabshahar.platform.models.PersonDetails;
+import org.ajabshahar.platform.models.Song;
+import org.ajabshahar.platform.models.Title;
 
-import java.util.List;
+import java.util.*;
 
+@Setter
 public class SongSummaryRepresentation {
-
     private long id;
     private String englishTranslationTitle;
     private String englishTransliterationTitle;
@@ -28,6 +33,47 @@ public class SongSummaryRepresentation {
         this.duration = duration;
         this.category = songCategory;
         this.thumbnailUrl = thumbnailUrl;
+    }
+
+    private static Song toSong(SongSummaryRepresentation songSummaryRepresentation){
+        Song song = new Song();
+        song.setId(songSummaryRepresentation.getId());
+        return song;
+    }
+
+    public static Set<Song> toSongs(List<SongSummaryRepresentation> songSummaryRepresentations){
+        HashSet<Song> songs = null;
+        if(songSummaryRepresentations != null){
+            songs = new HashSet<>();
+            for (SongSummaryRepresentation songSummaryRepresentation : songSummaryRepresentations) {
+                songs.add(toSong(songSummaryRepresentation));
+            }
+        }
+        return songs;
+    }
+
+    private static SongSummaryRepresentation toSummaryRepresentation(Song song){
+        SongSummaryRepresentation songSummaryRepresentation = new SongSummaryRepresentation();
+        songSummaryRepresentation.setId(song.getId());
+        songSummaryRepresentation.setSingers(PersonSummaryRepresentation.toPersonSummaries(song.getSingers()));
+        songSummaryRepresentation.setCategory(Optional.ofNullable(song.getSongCategory()).orElse(new Category()).getName());
+        songSummaryRepresentation.setDuration(song.getDuration());
+        songSummaryRepresentation.setEnglishTranslationTitle(Optional.ofNullable(song.getSongTitle()).orElse(new Title()).getEnglishTranslation());
+        songSummaryRepresentation.setEnglishTransliterationTitle(Optional.ofNullable(song.getSongTitle()).orElse(new Title()).getEnglishTransliteration());
+        songSummaryRepresentation.setPoets(PersonSummaryRepresentation.toPersonSummaries(song.getPoets()));
+        songSummaryRepresentation.setThumbnailUrl(song.getThumbnail_url());
+        return songSummaryRepresentation;
+    }
+
+    public static List toSummaryRepresentations(Set <Song> songs){
+        ArrayList<SongSummaryRepresentation> songSummaryRepresentations = null;
+        if(songs != null){
+            songSummaryRepresentations = new ArrayList<>();
+            for (Song song : songs) {
+                songSummaryRepresentations.add(toSummaryRepresentation(song));
+            }
+        }
+        return songSummaryRepresentations;
     }
 
     @JsonProperty("id")

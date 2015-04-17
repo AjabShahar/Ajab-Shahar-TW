@@ -10,12 +10,10 @@ import com.sun.jersey.api.client.ClientResponse;
 import io.dropwizard.testing.junit.DropwizardAppRule;
 import net.minidev.json.JSONObject;
 import org.ajabshahar.DataSetup;
-import org.ajabshahar.api.PersonSummaryRepresentation;
-import org.ajabshahar.api.ReflectionSummaryRepresentation;
-import org.ajabshahar.api.WordIntermediateRepresentation;
-import org.ajabshahar.api.WordSummaryRepresentation;
+import org.ajabshahar.api.*;
 import org.ajabshahar.platform.PlatformApplication;
 import org.ajabshahar.platform.PlatformConfiguration;
+import org.ajabshahar.platform.models.Song;
 import org.ajabshahar.platform.models.WordIntroduction;
 import org.h2.jdbcx.JdbcDataSource;
 import org.junit.Before;
@@ -23,7 +21,9 @@ import org.junit.ClassRule;
 import org.junit.Test;
 
 import javax.ws.rs.core.NewCookie;
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -451,6 +451,38 @@ public class WordResourceIT {
         assertThat(word.getRelatedWords().size(), is(0));
         assertThat(word.getSynonyms().size(), is(0));
 
+    }
+
+    @Test
+    public void shouldBeAbleToSaveASongHavingSingers(){
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,
+                DataSetup.INSERT_CATEGORY,
+                DataSetup.INSERT_REFLECTIONS,
+                DataSetup.INSERT_PERSON,
+                DataSetup.INSERT_SONGS,
+                DataSetup.INSERT_SONG_SINGER);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        PersonSummaryRepresentation personSummaryRepresentation = new PersonSummaryRepresentation(1, "singerName", "", null);
+        List <PersonSummaryRepresentation> personSummaryRepresentations = new ArrayList<>();
+        personSummaryRepresentations.add(personSummaryRepresentation);
+        SongSummaryRepresentation songSummaryRepresentation = new SongSummaryRepresentation();
+        songSummaryRepresentation.setId(1);
+        songSummaryRepresentation.setSingers(personSummaryRepresentations);
+
+        jsonObject.put("songs", Arrays.asList(songSummaryRepresentation));
+
+        ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
+
+        WordIntermediateRepresentation responseEntity = getWord(wordResponse);
+
+        WordIntermediateRepresentation wordIntermediateRepresentation = getWord(httpGet("http://localhost:%d/api/words/edit?id=" + responseEntity.getId()));
+
+        SongSummaryRepresentation songs = wordIntermediateRepresentation.getSongs().iterator().next();
+
+        assertEquals("Ravi Das", songs.getSingers().iterator().next().getName());
     }
 
     private NewCookie geCookie(ClientResponse response) {

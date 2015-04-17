@@ -1,5 +1,9 @@
 package org.ajabshahar.core;
 
+import org.ajabshahar.api.PersonRepresentation;
+import org.ajabshahar.api.PersonRepresentationFactory;
+import org.ajabshahar.api.WordIntermediateRepresentation;
+import org.ajabshahar.api.WordRepresentationFactory;
 import org.ajabshahar.platform.daos.WordDAO;
 import org.ajabshahar.platform.models.Word;
 
@@ -13,6 +17,7 @@ public class Words {
     }
 
     public Word create(Word word) {
+
         return wordRepository.create(word);
     }
 

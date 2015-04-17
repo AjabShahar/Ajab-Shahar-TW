@@ -1,5 +1,7 @@
-package org.ajabshahar.api;
+package org.ajabshahar.factory;
 
+import org.ajabshahar.api.CoupletsRepresentation;
+import org.ajabshahar.api.CoupletsRepresentationFactory;
 import org.ajabshahar.platform.models.Category;
 import org.ajabshahar.platform.models.Couplet;
 import org.ajabshahar.platform.models.PersonDetails;

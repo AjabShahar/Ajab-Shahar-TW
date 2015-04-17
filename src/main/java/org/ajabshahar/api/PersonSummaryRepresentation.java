@@ -1,14 +1,16 @@
 package org.ajabshahar.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Setter;
 import org.ajabshahar.platform.models.Category;
 import org.ajabshahar.platform.models.PersonDetails;
 
-import java.util.Optional;
+import java.util.*;
 
 import static java.lang.String.format;
 
 public class PersonSummaryRepresentation {
+    @Setter
     private long id;
     private String name;
     private String hindiName;
@@ -54,8 +56,20 @@ public class PersonSummaryRepresentation {
         return null;
     }
 
+
     @JsonProperty("primaryOccupation")
     public String getPrimaryOccupation() {
         return primaryOccupation;
+    }
+
+    public static List<PersonSummaryRepresentation> toPersonSummaries(Set<PersonDetails> people) {
+        List<PersonSummaryRepresentation> personSummaryRepresentations = null;
+        if(people != null){
+            personSummaryRepresentations = new ArrayList<>();
+            for (PersonDetails person : people) {
+                personSummaryRepresentations.add(PersonSummaryRepresentation.createFrom(person));
+            }
+        }
+        return personSummaryRepresentations;
     }
 }

@@ -10,7 +10,7 @@ import java.util.Set;
 
 @Setter
 @Getter
-public class WordIntermediateRepresentation {
+public class WordIntermediateRepresentation{
     private long id;
 
     private String wordOriginal;
@@ -37,13 +37,13 @@ public class WordIntermediateRepresentation {
 
     private List<WordSummaryRepresentation> relatedWords;
 
-    private Set<Song> songs;
+    private List<SongSummaryRepresentation> songs;
 
     private List<WordSummaryRepresentation> synonyms;
 
-    private Set<PersonDetails> writers;
+    private Set<PersonSummaryRepresentation> writers;
 
-    private Set<PersonDetails> people;
+    private Set<PersonSummaryRepresentation> people;
 
     private Boolean displayAjabShaharTeam;
 
