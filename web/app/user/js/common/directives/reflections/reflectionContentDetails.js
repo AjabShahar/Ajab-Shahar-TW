@@ -7,7 +7,7 @@ thumbnailModule.directive("reflectionContentDetails", function () {
             videoId: '@',
             audioUrl: '@',
             id: '@',
-            transcript: '@',
+            reflectionTranscript: '@',
             detailsService: '='
         },
         templateUrl: '/user/js/common/templates/reflections/reflectionContentDetails.html',
@@ -25,7 +25,7 @@ thumbnailModule.directive("reflectionContentDetails", function () {
                 else {
                     $scope.showAudio = true;
                 }
-                if ($scope.transcript.length > 0)
+                if ($scope.reflectionTranscript.length > 0)
                     $scope.showTranscript = true;
             };
 
