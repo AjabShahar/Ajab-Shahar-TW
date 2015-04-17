@@ -2,7 +2,7 @@
 reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$window', '$location', 'reflectionContentService', "loginVerifyService","$q",
     function ($scope, $window, $location, reflectionContentService, loginVerifyService,$q) {
         loginVerifyService.redirectIfNotAuthenticated();
-        $scope.reflection = {"transcripts": [], "speaker": {}};
+        $scope.reflection = {"reflectionTranscripts": [], "speaker": {}};
         $scope.people = [];
         $scope.words = [];
         var urlId = $location.search().id;
@@ -41,7 +41,7 @@ reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$windo
         };
 
         var getReflectionType = function(){
-            return ($scope.reflection.soundCloudId != null ? 'audio' : ($scope.reflection.youtubeVideoId != null ? 'video' : ($scope.reflection.transcripts.length > 1 ? 'text' : '')));
+            return ($scope.reflection.soundCloudId != null ? 'audio' : ($scope.reflection.youtubeVideoId != null ? 'video' : ($scope.reflection.reflectionTranscripts.length > 0 ? 'text' : '')));
         };
 
         init();

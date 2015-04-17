@@ -28,7 +28,8 @@ public class ReflectionRepresentationFactory {
     }
 
     private Set<ReflectionTranscript> toTranscripts(List<ReflectionTranscript> reflectionTranscripts) {
-        return Collections.EMPTY_SET;
+        return reflectionTranscripts != null && reflectionTranscripts.size() != 0
+         ? new HashSet<>(reflectionTranscripts) : new HashSet<>();
     }
 
     private Set<Word> toWords(List<WordSummaryRepresentation> wordsSummaryRepresentations) {
@@ -44,7 +45,7 @@ public class ReflectionRepresentationFactory {
     }
 
     private PersonDetails toPersonDetails(PersonSummaryRepresentation speaker) {
-        if (speaker != null) {
+        if (speaker != null && speaker.getId()!= 0) {
             PersonDetails personDetails = new PersonDetails();
             personDetails.setId(speaker.getId());
             return personDetails;
@@ -79,7 +80,7 @@ public class ReflectionRepresentationFactory {
     private PersonSummaryRepresentation getPersonSummaryRepresentation(PersonDetails speakerDetails) {
         PersonSummaryRepresentation speaker = new PersonSummaryRepresentation();
 
-        if(speakerDetails != null){
+        if (speakerDetails != null) {
             Category primaryOccupation = speakerDetails.getPrimaryOccupation();
             String primaryOccupationName = (primaryOccupation != null) ? primaryOccupation.getName() : "";
             speaker = new PersonSummaryRepresentation(speakerDetails.getId(), speakerDetails.getName(), speakerDetails.getHindiName(), primaryOccupationName);
@@ -101,7 +102,7 @@ public class ReflectionRepresentationFactory {
     public ReflectionRepresentation createReflectionRepresentation(Reflection reflection) {
         List<Word> words = new ArrayList<>(reflection.getWords());
         WordsSummaryRepresentation wordRepresentations = wordRepresentationFactory.create(words);
-        ArrayList<ReflectionTranscript> reflectionTranscripts = new ArrayList<>(reflection.getReflectionTranscripts());
+        ArrayList<ReflectionTranscript> reflectionTranscripts = reflection.getReflectionTranscripts()!=null ? new ArrayList<>(reflection.getReflectionTranscripts()): new ArrayList<>();
         ReflectionRepresentation reflectionRepresentation = new ReflectionRepresentation(
                 (int) reflection.getId(),
                 reflection.getTitle(),
