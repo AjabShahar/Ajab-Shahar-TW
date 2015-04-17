@@ -25,7 +25,7 @@ var reflectionMapper = function () {
                 "speaker": reflection.speaker,
                 "videoId": reflection.youtubeVideoId,
                 "audioUrl": reflection.soundCloudId,
-                "text": reflection.transcript
+                "text": reflection.reflectionTranscript
             });
             return overview;
         }, []);
@@ -40,7 +40,7 @@ var reflectionMapper = function () {
                 "speaker": reflection.speaker,
                 "videoId": reflection.youtubeVideoId,
                 "audioUrl": reflection.soundCloudId,
-                "text": reflection.transcript
+                "text": reflection.reflectionTranscript
             });
             return completeInfo;
         }, []);
