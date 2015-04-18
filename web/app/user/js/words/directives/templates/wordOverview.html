@@ -5,7 +5,7 @@
                 <h3 class="title-pink">{{wordTransliteration}} </h3>
                 <span>{{wordTranslation}}</span>
                 <h5 class="artistName">
-                    <small>Introduction by {{people}} <span ng-show="displayAjabShaharTeam">, Ajab Shahar Team.</span></small>
+                    <small ng-show="writers.length > 0">Introduction by {{people}} <span ng-show="displayAjabShaharTeam">, Ajab Shahar Team.</span></small>
                 </h5>
             </div>
             <div bind-dynamic-html="wordIntroEnglish" class="lightbx-text-content">
