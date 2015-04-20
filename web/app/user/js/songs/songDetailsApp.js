@@ -18,10 +18,10 @@ songDetailsApp.directive("scroll", function ($window) {
             var windowTop = $(window).scrollTop();
             if (windowTop > containerTop) {
 
-                $('.left-nav').css('top', (windowTop - containerTop));
+                $('.left-nav').css('top', (windowTop - containerTop)+ 120);
             }
             else {
-                $('.left-nav').css('top', 0);
+                $('.left-nav').css('top', -5);
             }
 
             scope.$apply();

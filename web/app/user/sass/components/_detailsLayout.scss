@@ -196,7 +196,7 @@
     .left-nav {
         width: 70px;
         left: 0%;
-        top: 0px;
+        top: -5px;
         position: absolute;
         display: inline-block;
         text-align: left;
@@ -215,28 +215,37 @@
             background-position: left bottom;
             background-repeat: no-repeat;
             width: 85px;
-            padding: 0px 20px;
+            padding: 0px 32px;
+            padding-bottom: 5px;
+            padding-left: 30px;
 
             &:last-child {
               background: none;
             }
+
 
           }
           a {
             display: block;
             font-weight: 300;
             font-family: 'Merriweather';
-            color: #999;
-            font-size: 14px;
+            color: $dark-grey;
+            font-size: $medium;
             height: 27px;
-            margin-top: 1px;
+            margin-top: 8px;
+            margin-bottom: 3px;
 
             &.active {
               cursor: default;
-              color: #666;
-              font-weight: 600;
+              color:  $pink;
+              font-weight: 300;
+            }
+
+            &:hover {
+              color:  $pink;
             }
           }
+
         }
      }
 
