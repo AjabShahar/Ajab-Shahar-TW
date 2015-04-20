@@ -40,7 +40,6 @@ thumbnailModule.directive("songThumbnail", function ($timeout) {
             $rootScope.$watch('contentTextRepresentation', function ( value) {
                 $scope.textRepresentation = value;
                 setTitles();
-                console.log("representation : ",$scope.textRepresentation);
             });
 
             $scope.init = function () {

@@ -1,5 +1,6 @@
 'use strict';
-angular.module("word").controller('wordFeaturedContentController', ['$scope', 'wordService', function ($scope, wordService) {
+angular.module("word").controller('wordFeaturedContentController', ['$scope', 'wordService', 'sortService', function ($scope, wordService, sortService) {
+    $scope.words = [];
     $scope.init = function () {
         wordService.getWordsLandingPageContent().then(function (result) {
             var words = result.data.words;
@@ -7,6 +8,13 @@ angular.module("word").controller('wordFeaturedContentController', ['$scope', 'w
                 return word.isRootWord;
             });
             $scope.numberOfWords = $scope.words.length;
+            $scope.words = sortService.sortList($scope.words);
+        });
+        var contentTextRepresentation = 'Transliteration';
+
+        $scope.$watch("contentTextRepresentation", function (value) {
+            contentTextRepresentation = value;
+            $scope.words = sortService.sortList($scope.words, contentTextRepresentation);
         });
     };
 
