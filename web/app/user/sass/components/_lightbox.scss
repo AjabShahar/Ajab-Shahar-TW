@@ -52,23 +52,24 @@
     font-weight: 300;
     font-size: 14px;
     line-height: 15px;
-    small {
+    .artist-text {
       color: #999999;
       font-size: 12px;
       margin-left: 1px;
       text-transform: lowercase;
 
-    }
-  }
 
-  &.word {
-    .artistName {
-      small {
+    }
+    .author-caps {
+        text-transform: uppercase;
+
+    }
+    .title-case {
         text-transform: initial;
-
-      }
     }
   }
+
+
 
   &.song {
     position: static;
@@ -257,6 +258,9 @@
     .title-pink {
         display: inline;
         color: #E61B72;
+    }
+    .title-italic {
+        font-style: italic;
     }
 
   }
