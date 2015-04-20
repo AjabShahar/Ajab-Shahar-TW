@@ -1,3 +1,18 @@
 @import url(http://fonts.googleapis.com/css?family=Merriweather:400,300italic,300,400italic,700,700italic);
 @import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:400,300italic,300,400italic,700,700italic);
 @import url(http://fonts.googleapis.com/earlyaccess/lohitdevanagari.css);
+
+/*********************** Merriweather font sizes across the sites *************/
+ $extra-small: 10px;
+ $small: 12px;
+ $medium: 14px;
+ $medium-large: 16px;
+ $large: 18px;
+ $extra-large: 21px;
+ $double-x-large: 30px;
+
+ /******************** Lohit devanagiri font sizes(Hindi) **************************/
+ $small-dev: 14px;
+ $medium-dev: 16px;
+ $medium-large-dev: 18px;
+ $double-x-large-dev: 45px;

@@ -252,12 +252,12 @@
     }
     .header {
         text-transform: capitalize;
-        color: #999999;
+        color: $light-grey;
         font-weight: 300;
     }
     .title-pink {
         display: inline;
-        color: #E61B72;
+        color: $pink;
     }
     .title-italic {
         font-style: italic;
