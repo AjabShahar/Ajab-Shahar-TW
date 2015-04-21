@@ -142,7 +142,7 @@
             </div>
         </div>
         <hr>
-        <div class="row" ng-repeat="songTextContent in songText.songTextContents track by $index">
+        <div class="row" ng-repeat="songTextContent in songText.songTextContents | orderBy : 'id'">
             <table class="song-text-table">
                 <td>
                     <textarea class="form-control" rows="6" ng-model="songTextContent.originalText"
