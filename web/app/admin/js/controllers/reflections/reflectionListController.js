@@ -9,7 +9,7 @@ var reflectionListController = adminApp.controller('reflectionListController', [
                     var toBeAdded = {};
                     toBeAdded.title = value.title;
                     toBeAdded.id = value.id;
-                    toBeAdded.speaker = value.speaker.name;
+                    toBeAdded.speaker = value.speaker != null ? value.speaker.name : "";
 
                     if (value.published)
                         toBeAdded.publish = "Yes";

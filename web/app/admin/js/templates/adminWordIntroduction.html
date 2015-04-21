@@ -22,7 +22,7 @@
     <button type="button" class="btn btn-info" ng-click="addToWordIntroduction()">Add to Word Introduction</button>
     <!--<button type="button" class="btn btn-danger" ng-click="clearWordIntro()">Clear Word Introduction</button>-->
 
-    <div class="row" ng-repeat="wordIntroduction in wordIntroductions track by $index">
+    <div class="row" ng-repeat="wordIntroduction in wordIntroductions | orderBy :'id'">
         <table class="word-introduction-table">
             <thead>
             <tr>
@@ -33,11 +33,11 @@
             <tbody>
             <tr>
                 <td width="50%">
-                    <text-angular name="translationContent{{$index}}"
+                    <text-angular name="translationContent"
                                   ng-model="wordIntroduction.wordIntroEnglish"></text-angular>
                 </td>
                 <td width="50%">
-                    <text-angular name="originalContent{{$index}}"
+                    <text-angular name="originalContent"
                                   ng-model="wordIntroduction.wordIntroHindi"></text-angular>
                 </td>
             </tr>
