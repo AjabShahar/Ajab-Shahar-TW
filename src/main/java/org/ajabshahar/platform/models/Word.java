@@ -3,6 +3,7 @@ package org.ajabshahar.platform.models;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.SortNatural;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -53,6 +54,7 @@ public class Word {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "word")
     @JsonManagedReference
+    @OrderBy
     private Set<WordIntroduction> wordIntroductions;
 
     @ManyToMany
