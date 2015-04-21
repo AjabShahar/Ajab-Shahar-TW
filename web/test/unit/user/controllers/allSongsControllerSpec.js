@@ -13,7 +13,7 @@ describe('On All songs page', function() {
 
     beforeEach(module("allSongsApp"));
 
-    beforeEach(inject(function(_$controller_, _$rootScope_, _$window_, _songsContentService_, _songMapper_, _$httpBackend_) {
+    beforeEach(inject(function(_$controller_, _$rootScope_, _$window_, _songsContentService_, _songMapper_, _$httpBackend_, sortService) {
         scope = _$rootScope_.$new();
         $httpBackend = _$httpBackend_;
 
@@ -22,7 +22,8 @@ describe('On All songs page', function() {
             $window: _$window_,
             $rootScope:_$rootScope_,
             songsContentService: _songsContentService_,
-            songMapper:_songMapper_
+            songMapper:_songMapper_,
+            sortService:sortService
         });
 
         var resetCategories = function(category){

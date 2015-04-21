@@ -1,16 +1,20 @@
 animationModule.service("sortService",function(){
 
-    var sortList = function (words,contentTextRepresentation) {
+    var sortList = function (list,contentTextRepresentation) {
         var sortFunction = contentTextRepresentation === 'Transliteration' ? compareTranslitTitles : compareEnglishTitles;
-        return words.sort(sortFunction);
+        return list.sort(sortFunction);
     };
 
-    var compareEnglishTitles = function (firstWord, secondWord) {
-        return firstWord.wordTranslation.localeCompare(secondWord.wordTranslation);
+    var compareEnglishTitles = function (firstItem, secondItem) {
+        if(firstItem.isSong)
+           return firstItem.englishTranslation.localeCompare(secondItem.englishTranslation);
+        return firstItem.wordTranslation.localeCompare(secondItem.wordTranslation);
     };
 
-    var compareTranslitTitles = function(firstWord, secondWord){
-        return firstWord.wordTransliteration.localeCompare(secondWord.wordTransliteration);
+    var compareTranslitTitles = function(firstItem, secondItem){
+        if(firstItem.isSong)
+           return firstItem.englishTransliteration.localeCompare(secondItem.englishTransliteration);
+        return firstItem.wordTransliteration.localeCompare(secondItem.wordTransliteration);
     };
 
     return{

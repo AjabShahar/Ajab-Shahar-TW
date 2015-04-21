@@ -1,13 +1,6 @@
 <div class='pagination-head'>
     <div class="upper">
-        <ul class="toggle">
-            <li>
-                <span ng-click="selectOriginalTitle()" ng-class="isOriginalTitle ? 'active' : ''">Original</span>
-            </li>
-            <li>
-                <span ng-click="selectEnglishTitle()" ng-class="isEnglishTitle ? 'active' : ''">English</span>
-            </li>
-        </ul>
+        <original-english-toggle></original-english-toggle>
         <div ng-transclude></div>
     </div>
     <div class="lower">
