@@ -27,6 +27,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
+import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
@@ -396,10 +397,10 @@ public class WordResourceIT {
                 word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new ArrayList<>(), word.getIsRootWord());
         wordSummaryRepresentations.add(wordSummaryRepresentation);
 
-        jsonObject.put("relatedWords",wordSummaryRepresentations);
+        jsonObject.put("relatedWords", wordSummaryRepresentations);
 
-         words = loginAndPost("http://localhost:%d/api/words", jsonObject);
-         word = getWord(words);
+        words = loginAndPost("http://localhost:%d/api/words", jsonObject);
+        word = getWord(words);
 
         assertThat(word.getRelatedWords().size(), is(1));
 
@@ -435,7 +436,7 @@ public class WordResourceIT {
                 word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new ArrayList<>(), word.getIsRootWord());
         wordSummaryRepresentations.add(wordSummaryRepresentation);
 
-        jsonObject.put("relatedWords",wordSummaryRepresentations);
+        jsonObject.put("relatedWords", wordSummaryRepresentations);
 
         words = loginAndPost("http://localhost:%d/api/words", jsonObject);
         word = getWord(words);
@@ -454,7 +455,7 @@ public class WordResourceIT {
     }
 
     @Test
-    public void shouldBeAbleToSaveASongHavingSingers(){
+    public void shouldBeAbleToSaveASongHavingSingers() {
         Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,
                 DataSetup.INSERT_CATEGORY,
                 DataSetup.INSERT_REFLECTIONS,
@@ -466,7 +467,7 @@ public class WordResourceIT {
         dbSetup.launch();
 
         PersonSummaryRepresentation personSummaryRepresentation = new PersonSummaryRepresentation(1, "singerName", "", null);
-        List <PersonSummaryRepresentation> personSummaryRepresentations = new ArrayList<>();
+        List<PersonSummaryRepresentation> personSummaryRepresentations = new ArrayList<>();
         personSummaryRepresentations.add(personSummaryRepresentation);
         SongSummaryRepresentation songSummaryRepresentation = new SongSummaryRepresentation();
         songSummaryRepresentation.setId(1);
@@ -483,6 +484,28 @@ public class WordResourceIT {
         SongSummaryRepresentation songs = wordIntermediateRepresentation.getSongs().iterator().next();
 
         assertEquals("Ravi Das", songs.getSingers().iterator().next().getName());
+    }
+
+    @Test
+    public void shouldSaveWordAlongWithWriters() {
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_PERSON, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS, DataSetup.INSERT_WORD_REFLECTIONS);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        List<PersonSummaryRepresentation> writers = new ArrayList<>();
+        writers.add(new PersonSummaryRepresentation(2, "Shabnam", "Virmani", "Singer"));
+        jsonObject.put("writers",writers);
+
+        ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
+        WordIntermediateRepresentation word = wordResponse.getEntity(WordIntermediateRepresentation.class);
+
+        wordResponse = httpGet("http://localhost:%d/api/words/edit?id=" + word.getId());
+        word = wordResponse.getEntity(WordIntermediateRepresentation.class);
+
+        assertThat(word.getId(), is(greaterThan(new Long(1))));
+        System.out.println(word.getId());
+
     }
 
     private NewCookie geCookie(ClientResponse response) {
