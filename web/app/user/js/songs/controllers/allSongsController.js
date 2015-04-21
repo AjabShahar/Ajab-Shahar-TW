@@ -1,4 +1,4 @@
-allSongsApp.controller('allSongsController', ['$scope', '$window', 'songsContentService', 'songMapper', function ($scope, $window, songsContentService, songMapper) {
+allSongsApp.controller('allSongsController', ['$scope', '$window', 'songsContentService', 'songMapper','sortService', function ($scope, $window, songsContentService, songMapper, sortService) {
     var songs = [];
     $scope.filteredSongList = [];
     $scope.activeLetter = '';
@@ -17,21 +17,8 @@ allSongsApp.controller('allSongsController', ['$scope', '$window', 'songsContent
 
     $scope.$watch("contentTextRepresentation", function (value) {
         contentTextRepresentation = value;
-        sortSongsList($scope.filteredSongList);
+        $scope.filteredSongList = sortService.sortList($scope.filteredSongList,value);
     });
-
-    var sortSongsList = function (songs) {
-        var sortFunction = contentTextRepresentation === 'Transliteration' ? compareTranslitTitles : compareEnglishTitles;
-        songs.sort(sortFunction);
-    };
-
-    var compareEnglishTitles = function (firstSong, secondSong) {
-        return firstSong.englishTranslation.localeCompare(secondSong.englishTranslation);
-    };
-
-    var compareTranslitTitles = function (firstSong, secondSong) {
-        return firstSong.englishTransliteration.localeCompare(secondSong.englishTransliteration);
-    };
 
     var updateFilterCategoriesState = function(){
         $scope.criteriaList.forEach(function(criterion){
@@ -104,7 +91,7 @@ allSongsApp.controller('allSongsController', ['$scope', '$window', 'songsContent
             songs = songMapper.getThumbnails(songsList.data.songs);
             $scope.filteredSongList = songs || [];
             loadFilterItemsFrom(songs);
-            sortSongsList($scope.filteredSongList);
+            $scope.filteredSongList = sortService.sortList($scope.filteredSongList, contentTextRepresentation);
         });
     };
 
