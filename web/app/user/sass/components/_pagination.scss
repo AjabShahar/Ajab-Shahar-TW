@@ -13,9 +13,9 @@ Todo: 768px of chrome and all resolutions with mozilla, styles need to be revisi
 $tab-portrait: new-breakpoint(max-width 768px);
 
 .pagination-head {
-  margin-top: 60px;
-  position: fixed;
-  width: inherit;
+    margin-top: 75px;
+    position: fixed;
+    width: inherit;
 
 
   & > .upper {
