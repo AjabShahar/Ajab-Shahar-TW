@@ -11,21 +11,20 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import static java.lang.String.format;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.mockito.Matchers.anyListOf;
+import static org.mockito.Matchers.anySetOf;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SongsRepresentationFactoryTest {
-    private List<Song> songsList;
+    private Set<Song> songsList;
     private SongsRepresentationFactory songsRepresentationFactory;
     @Mock
     private People people;
@@ -41,7 +40,7 @@ public class SongsRepresentationFactoryTest {
     public void setUp() {
         songsRepresentationFactory = new SongsRepresentationFactory(people, songTextRepresentationFactory, wordRepresentationFactory);
 
-        songsList = new ArrayList<>();
+        songsList = new LinkedHashSet<>();
 
         song = new Song();
         int id = 1;
@@ -80,20 +79,16 @@ public class SongsRepresentationFactoryTest {
         Category personCategory = new Category();
         personCategory.setName("Devotee");
 
-        PersonDetails singer = new PersonDetails(), poet = new PersonDetails();
-        HashSet<PersonDetails> singers = new HashSet<>(), poets = new HashSet<>();
+        PersonSummaryRepresentation singer = new PersonSummaryRepresentation(id + 1000, format("Singer%s", id), format("Singer%s", id + 1), "occupation"),
+                poet = new PersonSummaryRepresentation((id + 2000), format("Poet%s", id), format("Poet%s", id + 1), "Devotee");
+        LinkedHashSet<PersonSummaryRepresentation> singers = new LinkedHashSet<>(),
+                poets = new LinkedHashSet<>();
 
-        singer.setId(id + 1000);
-        singer.setFirstName(format("Singer%s", id));
-        singer.setPrimaryOccupation(personCategory);
         singers.add(singer);
-        song.setSingers(singers);
-
-        poet.setId(id + 2000);
-        poet.setFirstName(format("Poet%s", id));
-        poet.setPrimaryOccupation(personCategory);
         poets.add(poet);
-        song.setPoets(poets);
+
+        song.setSingers(PersonSummaryRepresentation.toPeople(singers));
+        song.setPoets(PersonSummaryRepresentation.toPeople(poets));
 
         Set<SongTextContent> songTextContents = new HashSet<>();
 
@@ -112,31 +107,29 @@ public class SongsRepresentationFactoryTest {
 
         song.setSongText(songText);
 
-        HashSet<Word> words = new HashSet<>();
-
-        song.setWords(words);
+        song.setWords(null);
         songsList.add(song);
 
-        when(people.findBy(id + 1000)).thenReturn(singer);
-        when(people.findBy(id + 2000)).thenReturn(poet);
-        when(songTextRepresentationFactory.getSongText(song.getSongText())).thenReturn(new SongTextRepresentation("", "", ""));
-        when(wordRepresentationFactory.create(anyListOf(Word.class))).thenReturn(new WordsSummaryRepresentation());
+        when(people.findBy(id + 1000)).thenReturn(PersonSummaryRepresentation.getPersonDetails(singer));
+        when(people.findBy(id + 2000)).thenReturn(PersonSummaryRepresentation.getPersonDetails(poet));
+        when(songTextRepresentationFactory.getSongText(song.getSongText())).thenReturn(new SongTextRepresentation(1, "", "", ""));
+        when(wordRepresentationFactory.create(new LinkedHashSet(anySetOf(Word.class)))).thenReturn(new WordsSummaryRepresentation());
 
     }
 
     @Test
     public void shouldCreateASongsSummaryRepresentation() {
         SongsSummaryRepresentation songsSummaryRepresentation = songsRepresentationFactory.create(songsList);
-        List<SongSummaryRepresentation> songs = songsSummaryRepresentation.getSongs();
+        Set<SongSummaryRepresentation> songs = songsSummaryRepresentation.getSongs();
         assertThat(songs.size(), IsEqual.equalTo(1));
-        assertThat(songs.get(0).getId(), IsEqual.equalTo(1L));
-        assertThat(songs.get(0).getEnglishTranslationTitle(), IsEqual.equalTo("Song1EnglishTranslation"));
-        assertThat(songs.get(0).getEnglishTransliterationTitle(), IsEqual.equalTo("Song1EnglishTransliteration"));
-        assertThat(songs.get(0).getDuration(), IsEqual.equalTo("1:00"));
-        assertThat(songs.get(0).getSingers().get(0).getName(), IsEqual.equalTo("Singer1"));
-        assertThat(songs.get(0).getPoets().get(0).getName(), IsEqual.equalTo("Poet1"));
-        assertThat(songs.get(0).getCategory(), IsEqual.equalTo("Song & Reflection"));
-        assertThat(songs.get(0).getThumbnailUrl(), IsEqual.equalTo("http://tinyurl.com"));
+        assertThat(songs.iterator().next().getId(), IsEqual.equalTo(1L));
+        assertThat(songs.iterator().next().getEnglishTranslationTitle(), IsEqual.equalTo("Song1EnglishTranslation"));
+        assertThat(songs.iterator().next().getEnglishTransliterationTitle(), IsEqual.equalTo("Song1EnglishTransliteration"));
+        assertThat(songs.iterator().next().getDuration(), IsEqual.equalTo("1:00"));
+        assertThat(songs.iterator().next().getSingers().iterator().next().getName(), IsEqual.equalTo("Singer1"));
+        assertThat(songs.iterator().next().getPoets().iterator().next().getName(), IsEqual.equalTo("Poet1"));
+        assertThat(songs.iterator().next().getCategory(), IsEqual.equalTo("Song & Reflection"));
+        assertThat(songs.iterator().next().getThumbnailUrl(), IsEqual.equalTo("http://tinyurl.com"));
     }
 
     @Test
@@ -160,8 +153,8 @@ public class SongsRepresentationFactoryTest {
         assertThat(songRepresentation.getThumbnailUrl(), IsEqual.equalTo("http://tinyurl.com"));
         assertThat(songRepresentation.getDuration(), IsEqual.equalTo("1:00"));
 
-        assertThat(songRepresentation.getSingers().get(0).toString(), IsEqual.equalTo("id: 1001, name: Singer1"));
-        assertThat(songRepresentation.getPoets().get(0).toString(), IsEqual.equalTo("id: 2001, name: Poet1"));
+        assertThat(songRepresentation.getSingers().iterator().next().toString(), IsEqual.equalTo("id: 1001, name: Singer1"));
+        assertThat(songRepresentation.getPoets().iterator().next().toString(), IsEqual.equalTo("id: 2001, name: Poet1"));
         assertNotNull(songRepresentation.getSongText());
         assertNotNull(songRepresentation.getWords());
 
@@ -170,33 +163,34 @@ public class SongsRepresentationFactoryTest {
     @Test
     public void shouldCreateSongsRepresentation() throws Exception {
         SongsRepresentation songs = songsRepresentationFactory.createSongsRepresentation(songsList);
-        List<SongRepresentation> songsRepresentation = songs.getSongs();
+        Set<SongRepresentation> songsRepresentation = songs.getSongs();
 
         assertThat(songsRepresentation.size(), IsEqual.equalTo(1));
 
-        assertThat(songsRepresentation.get(0).getId(), IsEqual.equalTo(1L));
+        assertThat(songsRepresentation.iterator().next().getId(), IsEqual.equalTo(1L));
 
-        assertThat(songsRepresentation.get(0).getUmbrellaTitleOriginal(), IsEqual.equalTo("Umbrella1Original"));
-        assertThat(songsRepresentation.get(0).getUmbrellaTitleEnglishTranslation(), IsEqual.equalTo("Umbrella1EnglishTranslation"));
-        assertThat(songsRepresentation.get(0).getUmbrellaTitleEnglishTransliteration(), IsEqual.equalTo("Umbrella1EnglishTransliteration"));
+        assertThat(songsRepresentation.iterator().next().getUmbrellaTitleOriginal(), IsEqual.equalTo("Umbrella1Original"));
+        assertThat(songsRepresentation.iterator().next().getUmbrellaTitleEnglishTranslation(), IsEqual.equalTo("Umbrella1EnglishTranslation"));
+        assertThat(songsRepresentation.iterator().next().getUmbrellaTitleEnglishTransliteration(), IsEqual.equalTo("Umbrella1EnglishTransliteration"));
 
-        assertThat(songsRepresentation.get(0).getTitleOriginal(), IsEqual.equalTo("Song1Original"));
-        assertThat(songsRepresentation.get(0).getTitleEnglishTranslation(), IsEqual.equalTo("Song1EnglishTranslation"));
-        assertThat(songsRepresentation.get(0).getTitleEnglishTransliteration(), IsEqual.equalTo("Song1EnglishTransliteration"));
+        assertThat(songsRepresentation.iterator().next().getTitleOriginal(), IsEqual.equalTo("Song1Original"));
+        assertThat(songsRepresentation.iterator().next().getTitleEnglishTranslation(), IsEqual.equalTo("Song1EnglishTranslation"));
+        assertThat(songsRepresentation.iterator().next().getTitleEnglishTransliteration(), IsEqual.equalTo("Song1EnglishTransliteration"));
 
-        assertThat(songsRepresentation.get(0).getPublish(), IsEqual.equalTo(true));
-        assertThat(songsRepresentation.get(0).getType(), IsEqual.equalTo("Song & Reflection"));
-        assertThat(songsRepresentation.get(0).isFeatured(), IsEqual.equalTo(true));
-        assertThat(songsRepresentation.get(0).getYouTubeVideoId(), IsEqual.equalTo("12345"));
-        assertThat(songsRepresentation.get(0).getSoundCloudTrackId(), IsEqual.equalTo("67890"));
-        assertThat(songsRepresentation.get(0).getThumbnailUrl(), IsEqual.equalTo("http://tinyurl.com"));
-        assertThat(songsRepresentation.get(0).getDuration(), IsEqual.equalTo("1:00"));
-        assertThat(songsRepresentation.get(0).getSongGathering(), IsEqual.equalTo("song1englishGathering"));
+        assertThat(songsRepresentation.iterator().next().getPublish(), IsEqual.equalTo(true));
+        assertThat(songsRepresentation.iterator().next().getType(), IsEqual.equalTo("Song & Reflection"));
+        assertThat(songsRepresentation.iterator().next().isFeatured(), IsEqual.equalTo(true));
+        assertThat(songsRepresentation.iterator().next().getYouTubeVideoId(), IsEqual.equalTo("12345"));
+        assertThat(songsRepresentation.iterator().next().getSoundCloudTrackId(), IsEqual.equalTo("67890"));
+        assertThat(songsRepresentation.iterator().next().getThumbnailUrl(), IsEqual.equalTo("http://tinyurl.com"));
+        assertThat(songsRepresentation.iterator().next().getDuration(), IsEqual.equalTo("1:00"));
+        assertThat(songsRepresentation.iterator().next().getSongGatheringId(), IsEqual.equalTo(1L));
+        assertThat(songsRepresentation.iterator().next().getSongGathering(), IsEqual.equalTo("song1englishGathering"));
 
-        assertThat(songsRepresentation.get(0).getSingers().get(0).toString(), IsEqual.equalTo("id: 1001, name: Singer1"));
-        assertThat(songsRepresentation.get(0).getPoets().get(0).toString(), IsEqual.equalTo("id: 2001, name: Poet1"));
-        assertNotNull(songsRepresentation.get(0).getSongText());
-        assertNotNull(songsRepresentation.get(0).getWords());
+        assertThat(songsRepresentation.iterator().next().getSingers().iterator().next().toString(), IsEqual.equalTo("id: 1001, name: Singer1"));
+        assertThat(songsRepresentation.iterator().next().getPoets().iterator().next().toString(), IsEqual.equalTo("id: 2001, name: Poet1"));
+        assertNotNull(songsRepresentation.iterator().next().getSongText());
+        assertNotNull(songsRepresentation.iterator().next().getWords());
     }
 
     @Test

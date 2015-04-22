@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.List;
+import java.util.Set;
 
 @Path("/people")
 @Produces(MediaType.APPLICATION_JSON)
@@ -69,8 +69,8 @@ public class PersonResource {
     @UnitOfWork
     @Path("/summary")
     public Response getPeopleSummaryRepresentation(@QueryParam("role") String role) {
-        List<PersonDetails> personDetailsList = people.findBy(role);
-        List<PersonSummaryRepresentation> people = personRepresentationFactory.createPeopleSummaryRepresentation(personDetailsList);
+        Set<PersonDetails> personDetailsList = people.findBy(role);
+        Set<PersonSummaryRepresentation> people = personRepresentationFactory.createPeopleSummaryRepresentation(personDetailsList);
         return Response.ok(people, MediaType.APPLICATION_JSON).build();
     }
 
@@ -78,7 +78,7 @@ public class PersonResource {
     @UnitOfWork
     public Response getPeople(@QueryParam("role") String role) {
         logger.debug("Get people with role: {}", role);
-        List<PersonDetails> personDetailsList = people.findBy(role);
+        Set<PersonDetails> personDetailsList = people.findBy(role);
         if (personDetailsList == null || personDetailsList.size() == 0) {
             logger.debug("No people with role: {}", role);
             return Response.status(Response.Status.NOT_FOUND).build();

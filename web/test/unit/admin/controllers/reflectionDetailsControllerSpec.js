@@ -25,8 +25,8 @@ describe("reflection details controller", function () {
 
         httpBackend.expectGET('/api/people/summary').respond(200, ['people data']);
         httpBackend.expectGET('/api/words/summary').respond(200, test_admin_wordSummary);
+        httpBackend.expectGET('/api/songs/getPublishedSongs').respond(200, {data: null});
         httpBackend.expectGET('/api/reflections/edit?id=1').respond(200,test_admin_reflection);
-
     }));
 
     describe("should test save of reflection", function () {

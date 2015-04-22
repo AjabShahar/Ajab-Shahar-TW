@@ -8,8 +8,7 @@ import org.ajabshahar.platform.models.Word;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Set;
 
 @Path("/words")
 @Produces(MediaType.APPLICATION_JSON)
@@ -48,7 +47,7 @@ public class WordResource {
     @GET
     @UnitOfWork
     public Response listAllWordDetails(@DefaultValue("false") @QueryParam("showOnMainLandingPage") Boolean showOnMainLandingPage) {
-        List<Word> wordsList = words.findBy(showOnMainLandingPage);
+        Set<Word> wordsList = words.findBy(showOnMainLandingPage);
         WordsRepresentation wordsRepresentation = wordRepresentationFactory.createWordsRepresentation(wordsList);
         return Response.ok(wordsRepresentation).build();
     }
@@ -68,7 +67,7 @@ public class WordResource {
     @Path("/reflections")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getReflections(@QueryParam("id") int wordId) {
-        List<Word> wordsList = words.findWords(wordId);
+        Set<Word> wordsList = words.findWords(wordId);
         WordReflectionRepresentation wordReflections = wordRepresentationFactory.createWordReflections(wordsList);
         return Response.ok(wordReflections).build();
     }
@@ -77,7 +76,7 @@ public class WordResource {
     @Path("/synonyms")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getSynonyms(@QueryParam("id") int wordId) {
-        List<Word> wordsList = words.findWords(wordId);
+        Set<Word> wordsList = words.findWords(wordId);
         WordSynonymRepresentation wordSynonyms = wordRepresentationFactory.createWordSynonyms(wordsList);
         return Response.ok(wordSynonyms).build();
     }
@@ -86,7 +85,7 @@ public class WordResource {
     @Path("/relatedWords")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getRelatedWords(@QueryParam("id") int wordId) {
-        List<Word> wordsList = words.findWords(wordId);
+        Set<Word> wordsList = words.findWords(wordId);
         RelatedWordRepresentation relatedWords = wordRepresentationFactory.createRelatedWords(wordsList);
         return Response.ok(relatedWords).build();
     }
@@ -94,7 +93,7 @@ public class WordResource {
     @GET
     @Path("/getAllWords")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Word> getWords() {
+    public Set<Word> getWords() {
         return words.findAll();
     }
 
@@ -102,7 +101,7 @@ public class WordResource {
     @Path("/summary")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getSummaryRepresentation(){
-        List<Word> allWords = words.findAll();
+        Set<Word> allWords = words.findAll();
         WordsSummaryRepresentation wordsSummaryRepresentation = wordRepresentationFactory.create(allWords);
         return Response.ok(wordsSummaryRepresentation).build();
     }

@@ -5,7 +5,8 @@ import io.dropwizard.hibernate.AbstractDAO;
 import org.ajabshahar.platform.models.Category;
 import org.hibernate.SessionFactory;
 
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class CategoryDAO extends AbstractDAO<Category> {
 
@@ -17,39 +18,39 @@ public class CategoryDAO extends AbstractDAO<Category> {
         return persist(category);
     }
 
-    public List<Category> findAll() {
-        return list(namedQuery("org.ajabshahar.platform.models.Category.findAll"));
+    public Set<Category> findAll() {
+        return new LinkedHashSet<>(list(namedQuery("org.ajabshahar.platform.models.Category.findAll")));
     }
 
-    public List<Category> findAllSongCategories() {
-        return list(namedQuery("org.ajabshahar.platform.models.Category.findAllSongCategories"));
+    public Set<Category> findAllSongCategories() {
+        return new LinkedHashSet<>(list(namedQuery("org.ajabshahar.platform.models.Category.findAllSongCategories")));
     }
 
-    public List<Category> findAllMediaCategories() {
-        return list(namedQuery("org.ajabshahar.platform.models.Category.findAllMediaCategories"));
+    public Set<Category> findAllMediaCategories() {
+        return new LinkedHashSet<>(list(namedQuery("org.ajabshahar.platform.models.Category.findAllMediaCategories")));
     }
 
-    public List<Category> findAllCoupletCategories() {
-        return list(namedQuery("org.ajabshahar.platform.models.Category.findAllCoupletCategories"));
+    public Set<Category> findAllCoupletCategories() {
+        return new LinkedHashSet<>(list(namedQuery("org.ajabshahar.platform.models.Category.findAllCoupletCategories")));
     }
 
-    public List<Category> findAllWordCategories() {
-        return list(namedQuery("org.ajabshahar.platform.models.Category.findAllWordCategories"));
+    public Set<Category> findAllWordCategories() {
+        return new LinkedHashSet<>(list(namedQuery("org.ajabshahar.platform.models.Category.findAllWordCategories")));
     }
 
     public Category getUmbrellaTitleCategory() {
-        List<Category> categories = list(namedQuery("org.ajabshahar.platform.models.Category.findUmbrellaTitleCategory"));
-        return categories.get(0);
+        Set<Category> categories = new LinkedHashSet<>(list(namedQuery("org.ajabshahar.platform.models.Category.findUmbrellaTitleCategory")));
+        return categories.iterator().next();
 
     }
 
     public Category getSongTitleCategory() {
-        List<Category> categories = list(namedQuery("org.ajabshahar.platform.models.Category.findSongTitleCategory"));
-        return categories.get(0);
+        Set<Category> categories = new LinkedHashSet<>(list(namedQuery("org.ajabshahar.platform.models.Category.findSongTitleCategory")));
+        return categories.iterator().next();
     }
 
 
-    public List<Category> findAllPersonCategory() {
-        return list(namedQuery("org.ajabshahar.platform.models.Category.findAllPersonCategories"));
+    public Set findAllPersonCategory() {
+        return new LinkedHashSet<>(list(namedQuery("org.ajabshahar.platform.models.Category.findAllPersonCategories")));
     }
 }

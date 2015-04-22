@@ -3,19 +3,19 @@ package org.ajabshahar.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class CoupletsRepresentation {
 
-    private List<CoupletRepresentation> couplets;
+    private Set<CoupletRepresentation> couplets;
 
     public CoupletsRepresentation() {
-        this.couplets = new ArrayList<>();
+        this.couplets = new LinkedHashSet<>();
     }
 
     @JsonProperty("couplets")
-    public List<CoupletRepresentation> getCouplets() {
+    public Set<CoupletRepresentation> getCouplets() {
         return couplets;
     }
 

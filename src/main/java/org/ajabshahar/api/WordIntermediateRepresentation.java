@@ -2,10 +2,8 @@ package org.ajabshahar.api;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.ajabshahar.platform.models.*;
+import org.ajabshahar.platform.models.WordIntroduction;
 
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Setter
@@ -33,13 +31,13 @@ public class WordIntermediateRepresentation{
 
     private Set<WordIntroduction> wordIntroductions;
 
-    private List<ReflectionSummaryRepresentation> reflections;
+    private Set<ReflectionSummaryRepresentation> reflections;
 
-    private List<WordSummaryRepresentation> relatedWords;
+    private Set<WordSummaryRepresentation> relatedWords;
 
-    private List<SongSummaryRepresentation> songs;
+    private Set<SongSummaryRepresentation> songs;
 
-    private List<WordSummaryRepresentation> synonyms;
+    private Set<WordSummaryRepresentation> synonyms;
 
     private Set<PersonSummaryRepresentation> writers;
 

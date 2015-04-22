@@ -2,17 +2,17 @@ package org.ajabshahar.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class WordReflectionRepresentation {
 
     private WordRepresentation word;
-    private List<ReflectionRepresentation> reflections;
+    private Set<ReflectionRepresentation> reflections;
 
     public WordReflectionRepresentation() {
         word = new WordRepresentation();
-        reflections = new ArrayList<>();
+        reflections = new LinkedHashSet<>();
     }
 
     @JsonProperty("word")
@@ -21,7 +21,7 @@ public class WordReflectionRepresentation {
     }
 
     @JsonProperty("reflections")
-    public List<ReflectionRepresentation> getReflections() {
+    public Set<ReflectionRepresentation> getReflections() {
         return reflections;
     }
 
@@ -29,7 +29,7 @@ public class WordReflectionRepresentation {
         this.word = word;
     }
 
-    public void setReflections(List<ReflectionRepresentation> reflections) {
+    public void setReflections(Set<ReflectionRepresentation> reflections) {
         this.reflections = reflections;
     }
 }

@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import org.ajabshahar.platform.daos.CoupletDAO;
 import org.ajabshahar.platform.models.Couplet;
 
-import java.util.List;
+import java.util.Set;
 
 public class Couplets {
 
@@ -14,7 +14,7 @@ public class Couplets {
         this.coupletRepository = coupletRepository;
     }
 
-    public List<org.ajabshahar.platform.models.Couplet> findBy(int id) {
+    public Set<Couplet> findBy(int id) {
         return coupletRepository.findBy(id);
     }
 

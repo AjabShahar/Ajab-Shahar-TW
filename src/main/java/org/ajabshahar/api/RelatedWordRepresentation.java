@@ -2,17 +2,17 @@ package org.ajabshahar.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class RelatedWordRepresentation {
 
     private WordRepresentation word;
-    private List<WordRepresentation> relatedWords;
+    private Set<WordRepresentation> relatedWords;
 
     public RelatedWordRepresentation() {
         word = new WordRepresentation();
-        relatedWords = new ArrayList<>();
+        relatedWords = new LinkedHashSet<>();
     }
 
     @JsonProperty("word")
@@ -21,7 +21,7 @@ public class RelatedWordRepresentation {
     }
 
     @JsonProperty("relatedWords")
-    public List<WordRepresentation> getRelatedWords() {
+    public Set<WordRepresentation> getRelatedWords() {
         return relatedWords;
     }
 

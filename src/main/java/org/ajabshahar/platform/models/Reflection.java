@@ -1,11 +1,12 @@
 package org.ajabshahar.platform.models;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
@@ -47,4 +48,9 @@ public class Reflection {
     @JoinTable(name = "WORD_REFLECTION", joinColumns = {@JoinColumn(name = "REFLECTION_ID")},
             inverseJoinColumns = {@JoinColumn(name = "WORD_ID")})
     private Set<Word> words = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(name = "REFLECTION_SONG", joinColumns = {@JoinColumn(name = "REFLECTION_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "SONG_ID")})
+    private Set<Song> songs = new LinkedHashSet<>();
 }

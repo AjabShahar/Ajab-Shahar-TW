@@ -7,15 +7,12 @@ import org.ajabshahar.api.ReflectionsRepresentation;
 import org.ajabshahar.api.ReflectionsSummaryRepresentation;
 import org.ajabshahar.core.Reflections;
 import org.ajabshahar.platform.models.Reflection;
-import org.ajabshahar.platform.models.Word;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Path("/reflections")
@@ -46,8 +43,8 @@ public class ReflectionResource {
     @UnitOfWork
     @Path("/summary")
     public Response getReflections(@DefaultValue("") @QueryParam("content") String criteria) {
-        List<Reflection> reflectionList = reflections.getAll(criteria);
-        ReflectionsSummaryRepresentation reflectionsSummaryRepresentation = reflectionRepresentationFactory.create(reflectionList);
+        Set<Reflection> reflectionList = reflections.getAll(criteria);
+        ReflectionsSummaryRepresentation reflectionsSummaryRepresentation = reflectionRepresentationFactory.toReflectionsSummaryRepresentation(reflectionList);
         return Response.ok(reflectionsSummaryRepresentation).build();
     }
 
@@ -55,7 +52,7 @@ public class ReflectionResource {
     @GET
     @UnitOfWork
     public Response getReflectionsWithCompleteInfo(@DefaultValue("") @QueryParam("content") String criteria) {
-        List<Reflection> reflectionList = reflections.getAll(criteria);
+        Set<Reflection> reflectionList = reflections.getAll(criteria);
         ReflectionsRepresentation reflectionsRepresentation = reflectionRepresentationFactory.createReflections(reflectionList);
         return Response.ok(reflectionsRepresentation).build();
     }
@@ -64,7 +61,7 @@ public class ReflectionResource {
     @UnitOfWork
     @Path("/getPublishedReflections")
     public Response getPublishedReflections(@QueryParam("startFrom") int startFrom, @QueryParam("filteredLetter") String filteredLetter) {
-        List<Reflection> reflectionList = reflections.findBy(startFrom, filteredLetter);
+        Set<Reflection> reflectionList = reflections.findBy(startFrom, filteredLetter);
         if (reflectionList == null || reflectionList.size() == 0) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
@@ -75,7 +72,7 @@ public class ReflectionResource {
     @GET
     @UnitOfWork
     @Path("/all")
-    public List<Reflection> getAllReflections() {
+    public Set<Reflection> getAllReflections() {
         return reflections.getAll("");
     }
 

@@ -9,7 +9,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class PersonDAO extends AbstractDAO<PersonDetails> {
     private final SessionFactory sessionFactory;
@@ -27,11 +28,11 @@ public class PersonDAO extends AbstractDAO<PersonDetails> {
         return persist(personDetails);
     }
 
-    public List<PersonDetails> findAll() {
-        return list(namedQuery("org.ajabshahar.platform.models.PersonDetails.findAll"));
+    public Set<PersonDetails> findAll() {
+        return new LinkedHashSet<>(list(namedQuery("org.ajabshahar.platform.models.PersonDetails.findAll")));
     }
 
-    public List<PersonDetails> findBy(int personId, String role) {
+    public Set<PersonDetails> findBy(int personId, String role) {
         if (personId <= 0 && Strings.isNullOrEmpty(role))
             return findAll();
 
@@ -44,7 +45,7 @@ public class PersonDAO extends AbstractDAO<PersonDetails> {
             criteria.createAlias("personDetails.category", "category");
             criteria.add(Restrictions.eq("category.name", role));
         }
-        return criteria.list();
+        return new LinkedHashSet<>(criteria.list());
     }
 
     public PersonDetails updatePerson(PersonDetails updatablePerson) {

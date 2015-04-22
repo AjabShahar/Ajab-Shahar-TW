@@ -9,8 +9,8 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 public class ReflectionsTest {
 
     private Reflections reflections;
-    private List<Reflection> reflectionList;
+    private Set<Reflection> reflectionList;
     private Boolean SHOW_ON_LANDING_PAGE = false;
     private Boolean IS_AUTHORING_COMPLETE = false;
     private Reflection reflection;
@@ -30,7 +30,7 @@ public class ReflectionsTest {
     @Before
     public void setUp() {
         reflections = new Reflections(reflectionRepository);
-        reflectionList = new ArrayList<>();
+        reflectionList = new LinkedHashSet<>();
         reflection = new Reflection();
     }
 
@@ -46,7 +46,7 @@ public class ReflectionsTest {
     @Test
     public void shouldGetReflections() throws Exception {
         when(reflectionRepository.findBy(SHOW_ON_LANDING_PAGE, IS_AUTHORING_COMPLETE)).thenReturn(reflectionList);
-        List<Reflection> actual = reflections.getAll("");
+        Set<Reflection> actual = reflections.getAll("");
 
         assertEquals(reflectionList, actual);
     }

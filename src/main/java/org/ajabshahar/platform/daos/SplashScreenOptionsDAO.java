@@ -5,7 +5,7 @@ import io.dropwizard.hibernate.AbstractDAO;
 import org.ajabshahar.platform.models.SplashScreenOptions;
 import org.hibernate.SessionFactory;
 
-import java.util.List;
+import java.util.Set;
 
 public class SplashScreenOptionsDAO extends AbstractDAO<SplashScreenOptions> {
     public SplashScreenOptionsDAO(SessionFactory sessionFactory) {
@@ -20,7 +20,7 @@ public class SplashScreenOptionsDAO extends AbstractDAO<SplashScreenOptions> {
         return persist(splashScreenOptions);
     }
 
-    public List<SplashScreenOptions> findAll() {
-        return list(namedQuery("org.ajabshahar.platform.models.SplashScreenOptions.findAll"));
+    public Set<SplashScreenOptions> findAll() {
+        return (Set<SplashScreenOptions>) namedQuery("org.ajabshahar.platform.models.SplashScreenOptions.findAll");
     }
 }

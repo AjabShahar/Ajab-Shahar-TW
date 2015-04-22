@@ -11,7 +11,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
@@ -31,7 +31,7 @@ public class SongResourceTest {
     @Mock
     private SongsRepresentationFactory songsRepresentationFactory;
     @Mock
-    private List<Song> songList;
+    private Set<Song> songList;
     @Mock
     private SongsRepresentation songsRepresentation;
     @Mock
@@ -43,7 +43,7 @@ public class SongResourceTest {
 
     @Before
     public void setUp() {
-        songResource = new SongResource(null, songs, songsRepresentationFactory, songTextRepresentationFactory);
+        songResource = new SongResource(null, songs, songsRepresentationFactory);
     }
 
     @Test

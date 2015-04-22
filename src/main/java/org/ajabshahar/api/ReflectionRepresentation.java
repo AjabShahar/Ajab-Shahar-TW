@@ -3,7 +3,7 @@ package org.ajabshahar.api;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.ajabshahar.platform.models.ReflectionTranscript;
 
-import java.util.List;
+import java.util.Set;
 
 public class ReflectionRepresentation {
     private int id;
@@ -12,13 +12,16 @@ public class ReflectionRepresentation {
     private PersonSummaryRepresentation speaker;
     private String soundCloudId;
     private String youtubeVideoId;
-    private List<ReflectionTranscript> reflectionTranscripts;
-    private List<WordSummaryRepresentation> words;
-
+    private Set<ReflectionTranscript> reflectionTranscripts;
+    private Set<WordSummaryRepresentation> words;
+    private Set<SongSummaryRepresentation> songs;
     private Boolean showOnMainFcPage;
 
     private Boolean publish;
-    public ReflectionRepresentation(int id, String title, String verb, PersonSummaryRepresentation speaker, String soundCloudId, String youtubeVideoId, List<ReflectionTranscript> reflectionTranscripts, WordsSummaryRepresentation wordsSummaryRepresentation, Boolean showOnMainFcPage, Boolean publish) {
+
+    public ReflectionRepresentation(int id, String title, String verb, PersonSummaryRepresentation speaker, String soundCloudId,
+                                    String youtubeVideoId, Set<ReflectionTranscript> reflectionTranscripts, WordsSummaryRepresentation wordsSummaryRepresentation,
+                                    Boolean showOnMainFcPage, Boolean publish, Set<SongSummaryRepresentation> songs) {
         this.id = id;
         this.title = title;
         this.verb = verb;
@@ -29,6 +32,7 @@ public class ReflectionRepresentation {
         this.words = wordsSummaryRepresentation.getWords();
         this.showOnMainFcPage = showOnMainFcPage;
         this.publish = publish;
+        this.songs = songs;
     }
 
     public ReflectionRepresentation() {
@@ -56,7 +60,7 @@ public class ReflectionRepresentation {
     }
 
     @JsonProperty("reflectionTranscripts")
-    public List<ReflectionTranscript> getReflectionTranscripts() {
+    public Set<ReflectionTranscript> getReflectionTranscripts() {
         return reflectionTranscripts;
     }
 
@@ -71,7 +75,7 @@ public class ReflectionRepresentation {
     }
 
     @JsonProperty("words")
-    public List<WordSummaryRepresentation> getWords() {
+    public Set<WordSummaryRepresentation> getWords() {
         return words;
     }
 
@@ -89,5 +93,8 @@ public class ReflectionRepresentation {
         this.showOnMainFcPage = showOnMainFcPage;
     }
 
-
+    @JsonProperty("songs")
+    public Set<SongSummaryRepresentation> getSongs() {
+        return songs;
+    }
 }

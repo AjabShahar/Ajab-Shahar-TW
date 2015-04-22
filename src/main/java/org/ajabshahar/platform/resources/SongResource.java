@@ -4,7 +4,6 @@ import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.jersey.caching.CacheControl;
 import io.dropwizard.jersey.sessions.Session;
 import org.ajabshahar.api.SongRepresentation;
-import org.ajabshahar.api.SongTextRepresentationFactory;
 import org.ajabshahar.api.SongsRepresentation;
 import org.ajabshahar.api.SongsRepresentationFactory;
 import org.ajabshahar.core.Songs;
@@ -18,8 +17,8 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Path("/songs")
 @Produces(MediaType.APPLICATION_JSON)
@@ -29,15 +28,12 @@ public class SongResource {
     private final SongDAO songDAO;
     private final SongsRepresentationFactory songsRepresentationFactory;
     private final Songs songs;
-    private final SongTextRepresentationFactory songTextRepresentationFactory;
 
-    public SongResource(SongDAO songDAO, Songs songs, SongsRepresentationFactory songsRepresentationFactory, SongTextRepresentationFactory songTextRepresentationFactory) {
+    public SongResource(SongDAO songDAO, Songs songs, SongsRepresentationFactory songsRepresentationFactory) {
         this.songDAO = songDAO;
         this.songsRepresentationFactory = songsRepresentationFactory;
         this.songs = songs;
-        this.songTextRepresentationFactory = songTextRepresentationFactory;
     }
-
 
     @POST
     @UnitOfWork
@@ -50,9 +46,9 @@ public class SongResource {
 
     @GET
     @UnitOfWork
-    public List<Song> listAllSongValues(@Session HttpSession httpSession) {
+    public Set<Song> listAllSongValues(@Session HttpSession httpSession) {
         if (httpSession.getAttribute("user") == null)
-            return new ArrayList<>();
+            return new LinkedHashSet<>();
         return songDAO.findAll();
     }
 
@@ -92,7 +88,7 @@ public class SongResource {
     @UnitOfWork
     @Path("/getPublishedSongs")
     public Response getPublishedSongs(@QueryParam("singerId") int singerId, @QueryParam("poetId") int poetId, @QueryParam("startFrom") int startFrom, @QueryParam("filteredLetter") String filteredLetter) {
-        List<Song> songList = songs.findBy(singerId, poetId, startFrom, filteredLetter);
+        Set<Song> songList = songs.findBy(singerId, poetId, startFrom, filteredLetter);
         if (songList == null || songList.size() == 0) {
             return Response.status(Status.NO_CONTENT).build();
         }
@@ -119,7 +115,7 @@ public class SongResource {
     @UnitOfWork
     @Path("/versions")
     public Response getSongVersions(@QueryParam("songId") int songId) {
-        List<Song> songList = songs.getVersions(songId);
+        Set<Song> songList = songs.getVersions(songId);
         SongsRepresentation songs = songsRepresentationFactory.createSongsRepresentation(songList);
         return Response.ok(songs, MediaType.APPLICATION_JSON).build();
     }
@@ -128,9 +124,7 @@ public class SongResource {
     @UnitOfWork
     @Path("/getAllSongs")
     public Response getSongs(@Session HttpSession httpSession) {
-//        if (httpSession.getAttribute("user") == null)
-//            return Response.noContent().build();
-        List<Song> songList = songs.findAll();
+        Set<Song> songList = songs.findAll();
         SongsRepresentation songsRepresentation = songsRepresentationFactory.createSongsRepresentation(songList);
         return Response.ok(songsRepresentation, MediaType.APPLICATION_JSON).build();
     }

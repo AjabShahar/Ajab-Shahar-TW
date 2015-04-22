@@ -10,7 +10,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.ws.rs.core.Response;
-import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
@@ -28,7 +28,7 @@ public class PersonResourceTest {
     @Mock
     private PersonDetails personDetails;
     @Mock
-    private List<PersonDetails> personDetailsList;
+    private Set<PersonDetails> personDetailsList;
     @Mock
     private PeopleRepresentation peopleRepresentation;
     @Mock

@@ -3,7 +3,7 @@ package org.ajabshahar.core;
 import org.ajabshahar.platform.daos.ReflectionDAO;
 import org.ajabshahar.platform.models.Reflection;
 
-import java.util.List;
+import java.util.Set;
 
 public class Reflections {
 
@@ -17,7 +17,7 @@ public class Reflections {
         return reflectionRepository.create(reflection);
     }
 
-    public List<Reflection> getAll(String criteria) {
+    public Set<Reflection> getAll(String criteria) {
 
         boolean landingPage = false, authoringComplete = false;
         if (criteria.equalsIgnoreCase("featured")) {
@@ -31,10 +31,10 @@ public class Reflections {
 
 
     public Reflection findReflection(int id) {
-        return reflectionRepository.find(id).get(0);
+        return reflectionRepository.find(id).iterator().next();
     }
 
-    public List<Reflection> findBy(int startFrom, String filteredLetter) {
+    public Set<Reflection> findBy(int startFrom, String filteredLetter) {
         return reflectionRepository.findBy(startFrom, filteredLetter);
     }
 }

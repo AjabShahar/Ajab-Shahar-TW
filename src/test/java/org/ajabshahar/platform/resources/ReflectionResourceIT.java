@@ -11,6 +11,7 @@ import net.minidev.json.JSONObject;
 import org.ajabshahar.DataSetup;
 import org.ajabshahar.api.PersonSummaryRepresentation;
 import org.ajabshahar.api.ReflectionRepresentation;
+import org.ajabshahar.api.SongSummaryRepresentation;
 import org.ajabshahar.api.WordSummaryRepresentation;
 import org.ajabshahar.platform.PlatformApplication;
 import org.ajabshahar.platform.PlatformConfiguration;
@@ -21,14 +22,11 @@ import org.junit.ClassRule;
 import org.junit.Test;
 
 import javax.ws.rs.core.NewCookie;
-import javax.xml.crypto.Data;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
 public class ReflectionResourceIT {
@@ -47,15 +45,15 @@ public class ReflectionResourceIT {
         dataSource.setUrl("jdbc:h2:./test");
         dataSource.setUser("sa");
         dataSource.setPassword("");
-
     }
-
-
 
     @Test
     public void shouldSaveReflection() {
+        String songEnglishTransliteration = "Transliteration";
+        Set<SongSummaryRepresentation> songs = new LinkedHashSet<>();
+        songs.add(new SongSummaryRepresentation(1, songEnglishTransliteration, null, null, null, null, null, null));
 
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_CATEGORY, DataSetup.INSERT_SONGS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -70,6 +68,7 @@ public class ReflectionResourceIT {
         jsonReflection.put("showOnMainFcPage", true);
         jsonReflection.put("publish", true);
         jsonReflection.put("speaker", null);
+        jsonReflection.put("songs", songs);
 
         ClientResponse reflectionResponse = loginAndSave(jsonReflection);
 
@@ -77,6 +76,7 @@ public class ReflectionResourceIT {
 
         assertThat(reflectionResponse.getStatus(), is(200));
         assertThat(reflection.getId(), is(not(0)));
+        assertThat(reflection.getSongs().iterator().next().getId(), is(1L));
     }
 
     @Test
@@ -93,7 +93,7 @@ public class ReflectionResourceIT {
         jsonReflection.put("verb", "by");
         jsonReflection.put("soundCloudId", "1234");
 
-        List<WordSummaryRepresentation> words = new ArrayList<>();
+        Set<WordSummaryRepresentation> words = new LinkedHashSet<>();
 
         WordSummaryRepresentation wordSummaryRepresentation = new WordSummaryRepresentation();
         wordSummaryRepresentation.setId(1);
@@ -166,7 +166,7 @@ public class ReflectionResourceIT {
         jsonReflection.put("verb", "by");
         jsonReflection.put("soundCloudId", "1234");
 
-        List<WordSummaryRepresentation> words = new ArrayList<>();
+        Set<WordSummaryRepresentation> words = new LinkedHashSet<>();
 
         WordSummaryRepresentation wordSummaryRepresentation = new WordSummaryRepresentation();
         wordSummaryRepresentation.setId(1);
@@ -185,19 +185,19 @@ public class ReflectionResourceIT {
         assertThat(reflectionResponse.getStatus(), is(200));
         assertThat(reflection.getId(), is(not(0)));
 
-        reflectionResponse = getReflection((int) reflection.getId());
+        reflectionResponse = getReflection(reflection.getId());
         ReflectionRepresentation reflectionRepresentation = getEntity(reflectionResponse);
         assertThat(reflectionRepresentation.getWords().size(), is(2));
 
         //edit
-        words.remove(1);
+        words.remove(words.iterator().next());
         jsonReflection.put("words", words);
 
         reflectionResponse = loginAndSave(jsonReflection);
         reflection = getEntity(reflectionResponse);
 
         //check the db
-        reflectionResponse = getReflection((int) reflection.getId());
+        reflectionResponse = getReflection(reflection.getId());
         reflectionRepresentation = getEntity(reflectionResponse);
         assertThat(reflectionRepresentation.getWords().size(), is(1));
     }
@@ -218,7 +218,7 @@ public class ReflectionResourceIT {
         jsonReflection.put("showOnMainFcPage", true);
         jsonReflection.put("publish", true);
 
-        List<ReflectionTranscript> reflectionTranscripts = new ArrayList<>();
+        Set<ReflectionTranscript> reflectionTranscripts = new LinkedHashSet<>();
         ReflectionTranscript reflectionTranscript = new ReflectionTranscript();
         reflectionTranscript.setEnglishTranscript("hey");
         reflectionTranscript.setHindiTranscript("hey hindi");
@@ -236,9 +236,9 @@ public class ReflectionResourceIT {
         reflectionRepresentation = getEntity(reflectionResponse);
 
         assertThat(reflectionRepresentation.getReflectionTranscripts().size(),is(1));
-        assertThat(reflectionRepresentation.getReflectionTranscripts().get(0).getId(),not(0));
-        assertThat(reflectionRepresentation.getReflectionTranscripts().get(0).getEnglishTranscript(),is("hey"));
-        assertThat(reflectionRepresentation.getReflectionTranscripts().get(0).getHindiTranscript(),is("hey hindi"));
+        assertThat(reflectionRepresentation.getReflectionTranscripts().iterator().next().getId(), not(0));
+        assertThat(reflectionRepresentation.getReflectionTranscripts().iterator().next().getEnglishTranscript(), is("hey"));
+        assertThat(reflectionRepresentation.getReflectionTranscripts().iterator().next().getHindiTranscript(), is("hey hindi"));
     }
 
     private ReflectionRepresentation getEntity(ClientResponse reflectionResponse) {
@@ -262,7 +262,7 @@ public class ReflectionResourceIT {
         jsonReflection.put("showOnMainFcPage", true);
         jsonReflection.put("publish", true);
 
-        List<ReflectionTranscript> reflectionTranscripts = new ArrayList<>();
+        Set<ReflectionTranscript> reflectionTranscripts = new LinkedHashSet<>();
         ReflectionTranscript reflectionTranscript = new ReflectionTranscript();
         reflectionTranscript.setEnglishTranscript("hey");
         reflectionTranscript.setHindiTranscript("hey hindi");

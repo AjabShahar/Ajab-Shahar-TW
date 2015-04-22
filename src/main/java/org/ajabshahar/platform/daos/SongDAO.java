@@ -11,9 +11,9 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class SongDAO extends AbstractDAO<Song> {
     private final SessionFactory sessionFactory;
@@ -30,10 +30,10 @@ public class SongDAO extends AbstractDAO<Song> {
                 .createCriteria("song.words", "words", JoinType.LEFT_OUTER_JOIN)
                 .setFetchMode("words", FetchMode.JOIN);
 
-        ArrayList<Song> songs = (ArrayList<Song>) findSong.list();
+        Set<Song> songs = new LinkedHashSet(findSong.list());
 
         session.close();
-        return songs.get(0);
+        return songs.iterator().next();
     }
 
     public Song saveSong(Song song) {
@@ -49,13 +49,13 @@ public class SongDAO extends AbstractDAO<Song> {
         return song;
     }
 
-    public List<Song> findAll() {
+    public Set<Song> findAll() {
         Session currentSession = sessionFactory.getCurrentSession();
         Criteria findSongs = currentSession.createCriteria(Song.class, "song")
                 .createCriteria("song.words", "words", JoinType.LEFT_OUTER_JOIN)
                 .setFetchMode("words", FetchMode.JOIN);
         findSongs.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-        return findSongs.list();
+        return new LinkedHashSet<>(findSongs.list());
     }
 
 
@@ -63,7 +63,7 @@ public class SongDAO extends AbstractDAO<Song> {
         return list(namedQuery("org.ajabshahar.platform.models.Song.findAllFilteredBy").setParameter("letter", letter + "%")).size();
     }
 
-    public List<Song> findBy(int songId, int singerId, int poetId, int startFrom, String filteredLetter) {
+    public Set<Song> findBy(int songId, int singerId, int poetId, int startFrom, String filteredLetter) {
         Session currentSession = sessionFactory.getCurrentSession();
         Criteria findSongs = currentSession.createCriteria(Song.class);
         if (songId != 0) {
@@ -87,7 +87,7 @@ public class SongDAO extends AbstractDAO<Song> {
         findSongs.add(Restrictions.eq("isAuthoringComplete", true));
         findSongs.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 
-        return findSongs.list();
+        return new LinkedHashSet<>(findSongs.list());
     }
 
     public void updateSong(Song updatableSong) {
@@ -98,7 +98,7 @@ public class SongDAO extends AbstractDAO<Song> {
         sessionFactory.getCurrentSession().update(updatableSong);
     }
 
-    public List<Song> findSongWithVersions(int songId) {
+    public Set<Song> findSongWithVersions(int songId) {
         Session currentSession = sessionFactory.getCurrentSession();
         Criteria findSongs = currentSession.createCriteria(Song.class);
 
@@ -110,9 +110,9 @@ public class SongDAO extends AbstractDAO<Song> {
             }
             findSongs.add(Restrictions.eq("isAuthoringComplete", true));
         } else {
-            return new ArrayList<>();
+            return new LinkedHashSet<>();
         }
         findSongs.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-        return findSongs.list();
+        return new LinkedHashSet<>(findSongs.list());
     }
 }

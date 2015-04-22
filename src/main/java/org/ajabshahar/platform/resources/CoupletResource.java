@@ -11,7 +11,7 @@ import org.ajabshahar.platform.models.Couplet;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.List;
+import java.util.Set;
 
 @Path("/couplets")
 @Produces(MediaType.APPLICATION_JSON)
@@ -50,14 +50,14 @@ public class CoupletResource {
     @GET
     @Path("/landingPage")
     @UnitOfWork
-    public List<Couplet> listAllOnLandingValues() {
+    public Set<Couplet> listAllOnLandingValues() {
         return coupletDAO.findAllOnLandingPage();
     }
 
     @GET
     @Path("/all")
     @UnitOfWork
-    public List<Couplet> listAll() {
+    public Set<Couplet> listAll() {
         return coupletDAO.findAll();
     }
 
@@ -74,7 +74,7 @@ public class CoupletResource {
     @UnitOfWork
     @Path("/{id}")
     public Response getCouplet(@PathParam("id") int id) {
-        List<Couplet> couplets = this.couplets.findBy(id);
+        Set<Couplet> couplets = this.couplets.findBy(id);
         CoupletsRepresentation coupletsRepresentation = coupletsRepresentationFactory.create(couplets);
         return getResponse(coupletsRepresentation).build();
     }

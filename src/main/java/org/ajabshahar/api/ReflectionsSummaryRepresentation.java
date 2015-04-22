@@ -2,19 +2,19 @@ package org.ajabshahar.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class ReflectionsSummaryRepresentation {
 
-    private List<ReflectionSummaryRepresentation> summaryRepresentationList;
+    private Set<ReflectionSummaryRepresentation> summaryRepresentationList;
 
     public ReflectionsSummaryRepresentation() {
-        this.summaryRepresentationList = new ArrayList<>();
+        this.summaryRepresentationList = new LinkedHashSet<>();
     }
 
     @JsonProperty("reflections")
-    public List<ReflectionSummaryRepresentation> getSummaryRepresentationList() {
+    public Set<ReflectionSummaryRepresentation> getSummaryRepresentationList() {
         return summaryRepresentationList;
     }
 

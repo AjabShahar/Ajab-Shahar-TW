@@ -5,7 +5,8 @@ import lombok.Setter;
 import org.ajabshahar.platform.models.Category;
 import org.ajabshahar.platform.models.PersonDetails;
 
-import java.util.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import static java.lang.String.format;
 
@@ -62,14 +63,32 @@ public class PersonSummaryRepresentation {
         return primaryOccupation;
     }
 
-    public static List<PersonSummaryRepresentation> toPersonSummaries(Set<PersonDetails> people) {
-        List<PersonSummaryRepresentation> personSummaryRepresentations = null;
+    public static Set<PersonSummaryRepresentation> toPersonSummaries(Set<PersonDetails> people) {
+        Set<PersonSummaryRepresentation> personSummaryRepresentations = null;
         if(people != null){
-            personSummaryRepresentations = new ArrayList<>();
+            personSummaryRepresentations = new LinkedHashSet<>();
             for (PersonDetails person : people) {
                 personSummaryRepresentations.add(PersonSummaryRepresentation.createFrom(person));
             }
         }
         return personSummaryRepresentations;
+    }
+
+    public static Set<PersonDetails> toPeople(Set<PersonSummaryRepresentation> personSummaryRepresentations) {
+        Set<PersonDetails> people = new LinkedHashSet<>();
+        if (personSummaryRepresentations != null) {
+            for (PersonSummaryRepresentation personSummaryRepresentation : personSummaryRepresentations) {
+                PersonDetails personDetails = getPersonDetails(personSummaryRepresentation);
+                people.add(personDetails);
+            }
+        }
+        return people;
+    }
+
+    public static PersonDetails getPersonDetails(PersonSummaryRepresentation personSummaryRepresentation) {
+        PersonDetails personDetails = new PersonDetails();
+        personDetails.setId(personSummaryRepresentation.getId());
+        personDetails.setFirstName(personSummaryRepresentation.getName());
+        return personDetails;
     }
 }

@@ -9,9 +9,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
@@ -54,7 +54,7 @@ public class GenreResourceTest {
 
     @Test
     public void shouldGetGenres() {
-        List<Genre> mockedGenres = new ArrayList<>(Arrays.asList(mockedGenre));
+        Set<Genre> mockedGenres = new LinkedHashSet<>(Arrays.asList(mockedGenre));
         when(mockedGenreDAO.findAll()).thenReturn(mockedGenres);
 
         Response response = genreResource.listAllGenres();

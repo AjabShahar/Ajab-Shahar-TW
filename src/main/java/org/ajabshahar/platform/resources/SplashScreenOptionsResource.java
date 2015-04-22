@@ -8,7 +8,7 @@ import org.ajabshahar.platform.models.SplashScreenOptions;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.List;
+import java.util.Set;
 
 @Path("/SplashScreenOptions")
 @Produces(MediaType.APPLICATION_JSON)
@@ -31,7 +31,7 @@ public class SplashScreenOptionsResource {
 
     @GET
     @UnitOfWork
-    public List<SplashScreenOptions> listAllSplashScreenValues() {
+    public Set<SplashScreenOptions> listAllSplashScreenValues() {
         return splashScreenOptionsDAO.findAll();
     }
 

@@ -2,7 +2,7 @@ package org.ajabshahar.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.List;
+import java.util.Set;
 
 public class WordRepresentation {
     private int id;
@@ -13,13 +13,13 @@ public class WordRepresentation {
     private String englishIntroExcerpt;
     private String wordIntroHindi;
     private String wordIntroEnglish;
-    private List<PersonSummaryRepresentation> writers;
+    private Set<PersonSummaryRepresentation> writers;
     private String diacritic;
     private String meaning;
     private boolean isRootWord;
     private boolean displayAjabShaharTeam;
 
-    public WordRepresentation(int id, String wordOriginal, String wordTranslation, String wordTransliteration, String englishIntroExcerpt, String hindiIntroExcerpt, String wordIntroHindi, String wordIntroEnglish, List<PersonSummaryRepresentation> writers, String diacritic, String meaning, boolean isRootWord, boolean displayAjabShaharTeam) {
+    public WordRepresentation(int id, String wordOriginal, String wordTranslation, String wordTransliteration, String englishIntroExcerpt, String hindiIntroExcerpt, String wordIntroHindi, String wordIntroEnglish, Set<PersonSummaryRepresentation> writers, String diacritic, String meaning, boolean isRootWord, boolean displayAjabShaharTeam) {
         this.id = id;
         this.wordOriginal = wordOriginal;
         this.wordTranslation = wordTranslation;
@@ -80,7 +80,7 @@ public class WordRepresentation {
     }
 
     @JsonProperty("writers")
-    public List<PersonSummaryRepresentation> getWriters() {
+    public Set<PersonSummaryRepresentation> getWriters() {
         return writers;
     }
 

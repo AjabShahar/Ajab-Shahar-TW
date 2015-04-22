@@ -8,9 +8,8 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
@@ -41,11 +40,11 @@ public class WordsTest {
         word.setIsRootWord(false);
         word.setMeaning("something1");
         word.setShowOnLandingPage(false);
-        word.setWordIntroductions(new HashSet<>());
-        word.setReflections(new HashSet<>());
-        word.setWriters(new HashSet<>());
-        word.setPeople(new HashSet<>());
-        word.setSongs(new HashSet<>());
+        word.setWordIntroductions(new LinkedHashSet<>());
+        word.setReflections(new LinkedHashSet<>());
+        word.setWriters(new LinkedHashSet<>());
+        word.setPeople(new LinkedHashSet<>());
+        word.setSongs(new LinkedHashSet<>());
     }
 
     @Test
@@ -66,16 +65,16 @@ public class WordsTest {
     private void setUpWord() {
         updatedWord = new Word();
 
-        HashSet<PersonDetails> people = new HashSet<>();
+        Set<PersonDetails> people = new LinkedHashSet<>();
         people.add(new PersonDetails());
 
-        HashSet<Song> songs = new HashSet<>();
+        Set<Song> songs = new LinkedHashSet<>();
         songs.add(new Song());
 
-        HashSet<WordIntroduction> wordIntroductions = new HashSet<>();
+        Set<WordIntroduction> wordIntroductions = new LinkedHashSet<>();
         wordIntroductions.add(new WordIntroduction());
 
-        HashSet<Reflection> reflections = new HashSet<>();
+        Set<Reflection> reflections = new LinkedHashSet<>();
         reflections.add(new Reflection());
 
         updatedWord.setId(WORD_ID);
@@ -99,7 +98,7 @@ public class WordsTest {
     public void shouldUpdateTheWord() {
         setUpWord();
 
-        ArrayList wordsList = new ArrayList();
+        Set wordsList = new LinkedHashSet();
         wordsList.add(word);
 
         when(wordRepository.findBy(WORD_ID, false)).thenReturn(wordsList);
@@ -126,10 +125,10 @@ public class WordsTest {
     @Test
     public void shouldFindVersions() throws Exception {
 
-        List<Word> expected = new ArrayList<>();
+        Set<Word> expected = new LinkedHashSet<>();
         when(wordRepository.findReflections(WORD_ID)).thenReturn(expected);
 
-        List<Word> actual = words.findWords(WORD_ID);
+        Set<Word> actual = words.findWords(WORD_ID);
 
         assertEquals(expected, actual);
 

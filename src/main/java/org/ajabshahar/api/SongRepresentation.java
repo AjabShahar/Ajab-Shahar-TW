@@ -2,13 +2,12 @@ package org.ajabshahar.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import static java.lang.String.format;
 
 public class SongRepresentation {
-    private String songGathering;
     private long id;
     private long umbrellaTitleId;
     private String umbrellaTitleOriginal;
@@ -25,19 +24,27 @@ public class SongRepresentation {
     private String soundCloudTrackId;
     private String thumbnailUrl;
     private String duration;
-    private List<PersonSummaryRepresentation> singers;
-    private List<PersonSummaryRepresentation> poets;
-    private List<LinkRepresentation> links;
+    private Set<PersonSummaryRepresentation> singers;
+    private Set<PersonSummaryRepresentation> poets;
+    private Set<LinkRepresentation> links;
     private WordsSummaryRepresentation words;
     private SongTextRepresentation songText;
+    private long songGatheringId;
+    private String songGathering;
     private String downloadUrl;
     private String about;
+    private long typeId;
 
     public SongRepresentation() {
-        this.links = new ArrayList<>();
+        this.links = new LinkedHashSet<>();
     }
 
-    public SongRepresentation(long id, long umbrellaTitleId, String umbrellaTitleOriginal, String umbrellaTitleEnglishTransliteration, String umbrellaTitleEnglishTranslation, long titleId, String titleOriginal, String titleEnglishTransliteration, String titleEnglishTranslation, boolean publish, String type, boolean featured, String youTubeVideoId, String soundCloudTrackId, String thumbnailUrl, String duration, String songGathering, List<PersonSummaryRepresentation> singers, List<PersonSummaryRepresentation> poet, String about, SongTextRepresentation songText, String downloadUrl, WordsSummaryRepresentation words) {
+    public SongRepresentation(long id, long umbrellaTitleId, String umbrellaTitleOriginal, String umbrellaTitleEnglishTransliteration,
+                              String umbrellaTitleEnglishTranslation, long titleId, String titleOriginal, String titleEnglishTransliteration,
+                              String titleEnglishTranslation, boolean publish, long typeId, String type, boolean featured, String youTubeVideoId,
+                              String soundCloudTrackId, String thumbnailUrl, String duration, long songGatheringId, String songGathering,
+                              Set<PersonSummaryRepresentation> singers, Set<PersonSummaryRepresentation> poet, String about,
+                              SongTextRepresentation songText, String downloadUrl, WordsSummaryRepresentation words) {
         this();
         this.id = id;
         this.umbrellaTitleId = umbrellaTitleId;
@@ -49,6 +56,7 @@ public class SongRepresentation {
         this.titleEnglishTransliteration = titleEnglishTransliteration;
         this.titleEnglishTranslation = titleEnglishTranslation;
         this.publish = publish;
+        this.typeId = typeId;
         this.type = type;
         this.featured = featured;
         this.youTubeVideoId = youTubeVideoId;
@@ -57,6 +65,7 @@ public class SongRepresentation {
         this.duration = duration;
         this.singers = singers;
         this.poets = poet;
+        this.songGatheringId = songGatheringId;
         this.songGathering = songGathering;
         this.singers.forEach(singer -> links.add(new LinkRepresentation("singer", format("/api/people/%s", singer.getId()))));
         this.poets.forEach(p -> links.add(new LinkRepresentation("poet", format("/api/people/%s", p.getId()))));
@@ -147,23 +156,28 @@ public class SongRepresentation {
         return duration;
     }
 
+    @JsonProperty("songGatheringId")
+    public long getSongGatheringId() {
+        return songGatheringId;
+    }
+
     @JsonProperty("songGathering")
     public String getSongGathering() {
         return songGathering;
     }
 
     @JsonProperty("singers")
-    public List<PersonSummaryRepresentation> getSingers() {
+    public Set<PersonSummaryRepresentation> getSingers() {
         return singers;
     }
 
     @JsonProperty("poet")
-    public List<PersonSummaryRepresentation> getPoets() {
+    public Set<PersonSummaryRepresentation> getPoets() {
         return poets;
     }
 
     @JsonProperty("links")
-    public List<LinkRepresentation> getLinks() {
+    public Set<LinkRepresentation> getLinks() {
         return links;
     }
 
@@ -185,6 +199,10 @@ public class SongRepresentation {
     @JsonProperty("words")
     public WordsSummaryRepresentation getWords() {
         return words;
+    }
+
+    public long getTypeId() {
+        return typeId;
     }
 }
 

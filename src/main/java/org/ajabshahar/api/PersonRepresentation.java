@@ -2,8 +2,8 @@ package org.ajabshahar.api;
 
 import org.ajabshahar.platform.models.Category;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import static java.lang.String.format;
 
@@ -16,15 +16,15 @@ public class PersonRepresentation {
     private String firstNameInHindi;
     private String middleNameInHindi;
     private String lastNameInHindi;
-    private List<String> roles;
+    private Set<String> roles;
     private Category primaryOccupation;
 
-    public PersonRepresentation(long id, String firstName, String middleName, String lastName, String firstNameInHindi, String middleNameInHindi, String lastNameInHindi, List<String> roles, Category primaryOccupation) {
+    public PersonRepresentation(long id, String firstName, String middleName, String lastName, String firstNameInHindi, String middleNameInHindi, String lastNameInHindi, Set<String> roles, Category primaryOccupation) {
         this.id = id;
         this.firstNameInHindi = firstNameInHindi;
         this.middleNameInHindi = middleNameInHindi;
         this.lastNameInHindi = lastNameInHindi;
-        this.roles = new ArrayList<>();
+        this.roles = new LinkedHashSet<>();
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
@@ -40,7 +40,7 @@ public class PersonRepresentation {
         return lastName;
     }
 
-    public List<String> getRoles() {
+    public Set<String> getRoles() {
         return roles;
     }
 

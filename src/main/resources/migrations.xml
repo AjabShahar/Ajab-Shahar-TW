@@ -30,7 +30,8 @@
         <sql>
             ALTER TABLE word_introduction ADD COLUMN content_type varchar(200);
             ALTER TABLE word_introduction ADD COLUMN poet_id integer;
-            ALTER TABLE word_introduction ADD CONSTRAINT poet_id_fkey FOREIGN KEY (poet_id) REFERENCES person (id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION;
+            ALTER TABLE word_introduction ADD CONSTRAINT poet_id_fkey FOREIGN KEY (poet_id) REFERENCES person (id) MATCH
+            SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION;
         </sql>
     </changeSet>
     <changeSet id="69" author="JAIDEEP">
@@ -51,7 +52,18 @@
         </preConditions>
         <sql>
             ALTER TABLE word ADD COLUMN default_reflection_id integer;
-            ALTER TABLE word ADD CONSTRAINT default_reflection_id_fkey FOREIGN KEY (default_reflection_id) REFERENCES reflection (id);
+            ALTER TABLE word ADD CONSTRAINT default_reflection_id_fkey FOREIGN KEY (default_reflection_id) REFERENCES
+            reflection (id);
+        </sql>
+    </changeSet>
+    <changeSet id="72" author="CHANAKYA_JAIDEEP">
+        <sql>
+            CREATE TABLE REFLECTION_SONG(
+            ID SERIAL NOT NULL,
+            REFLECTION_ID INT,
+            SONG_ID INT,
+            CONSTRAINT REFLECTION_ID_FKEY FOREIGN KEY (REFLECTION_ID) REFERENCES REFLECTION(ID),
+            CONSTRAINT SONG_ID_FKEY FOREIGN KEY (SONG_ID) REFERENCES SONG(ID));
         </sql>
     </changeSet>
 </databaseChangeLog>

@@ -2,19 +2,19 @@ package org.ajabshahar.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class WordsRepresentation {
 
-    private List<WordRepresentation> words;
+    private Set<WordRepresentation> words;
 
     public WordsRepresentation() {
-        words = new ArrayList<>();
+        words = new LinkedHashSet<>();
     }
 
     @JsonProperty("words")
-    public List<WordRepresentation> getWords() {
+    public Set<WordRepresentation> getWords() {
         return words;
     }
 

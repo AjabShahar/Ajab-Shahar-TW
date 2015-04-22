@@ -6,7 +6,8 @@ import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class CoupletDAO extends AbstractDAO<Couplet> {
     private final SessionFactory sessionFactory;
@@ -20,12 +21,12 @@ public class CoupletDAO extends AbstractDAO<Couplet> {
         return persist(couplet);
     }
 
-    public List<Couplet> findAllOnLandingPage() {
-        return list(namedQuery("org.ajabshahar.platform.models.Couplet.findAllOnLandingPage"));
+    public Set<Couplet> findAllOnLandingPage() {
+        return new LinkedHashSet<>(list(namedQuery("org.ajabshahar.platform.models.Couplet.findAllOnLandingPage")));
     }
 
-    public List<Couplet> findAll() {
-        return list(namedQuery("org.ajabshahar.platform.models.Couplet.findAll"));
+    public Set<Couplet> findAll() {
+        return new LinkedHashSet<>(list(namedQuery("org.ajabshahar.platform.models.Couplet.findAll")));
     }
 
     public Couplet findById(Long id) {
@@ -43,13 +44,13 @@ public class CoupletDAO extends AbstractDAO<Couplet> {
         return originalCouplet;
     }
 
-    public List<Couplet> findBy(int id) {
+    public Set<Couplet> findBy(int id) {
 
         org.hibernate.Session session = currentSession();
         Criteria couplet = session.createCriteria(Couplet.class);
 
         couplet.add(Restrictions.eq("id", Long.valueOf(id)));
-        return couplet.list();
+        return new LinkedHashSet(couplet.list());
     }
 
     public Couplet updateCouplet(Couplet updatableCouplet) {

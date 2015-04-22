@@ -3,19 +3,20 @@ package org.ajabshahar.api;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Setter;
 import org.ajabshahar.platform.models.Category;
-import org.ajabshahar.platform.models.PersonDetails;
 import org.ajabshahar.platform.models.Song;
 import org.ajabshahar.platform.models.Title;
 
-import java.util.*;
+import java.util.LinkedHashSet;
+import java.util.Optional;
+import java.util.Set;
 
 @Setter
 public class SongSummaryRepresentation {
     private long id;
     private String englishTranslationTitle;
     private String englishTransliterationTitle;
-    private List<PersonSummaryRepresentation> singers;
-    private List<PersonSummaryRepresentation> poets;
+    private Set<PersonSummaryRepresentation> singers;
+    private Set<PersonSummaryRepresentation> poets;
     private String duration;
     private String category;
     private String thumbnailUrl;
@@ -24,7 +25,7 @@ public class SongSummaryRepresentation {
 
     }
 
-    public SongSummaryRepresentation(long id, String englishTranslationTitle, String englishTransliterationTitle, List<PersonSummaryRepresentation> singers, List<PersonSummaryRepresentation> poets, String duration, String songCategory, String thumbnailUrl) {
+    public SongSummaryRepresentation(long id, String englishTranslationTitle, String englishTransliterationTitle, Set<PersonSummaryRepresentation> singers, Set<PersonSummaryRepresentation> poets, String duration, String songCategory, String thumbnailUrl) {
         this.id = id;
         this.englishTranslationTitle = englishTranslationTitle;
         this.englishTransliterationTitle = englishTransliterationTitle;
@@ -41,10 +42,10 @@ public class SongSummaryRepresentation {
         return song;
     }
 
-    public static Set<Song> toSongs(List<SongSummaryRepresentation> songSummaryRepresentations){
-        HashSet<Song> songs = null;
+    public static Set<Song> toSongs(Set<SongSummaryRepresentation> songSummaryRepresentations) {
+        Set<Song> songs = null;
         if(songSummaryRepresentations != null){
-            songs = new HashSet<>();
+            songs = new LinkedHashSet<>();
             for (SongSummaryRepresentation songSummaryRepresentation : songSummaryRepresentations) {
                 songs.add(toSong(songSummaryRepresentation));
             }
@@ -65,10 +66,10 @@ public class SongSummaryRepresentation {
         return songSummaryRepresentation;
     }
 
-    public static List toSummaryRepresentations(Set <Song> songs){
-        ArrayList<SongSummaryRepresentation> songSummaryRepresentations = null;
+    public static Set toSummaryRepresentations(Set<Song> songs) {
+        Set<SongSummaryRepresentation> songSummaryRepresentations = null;
         if(songs != null){
-            songSummaryRepresentations = new ArrayList<>();
+            songSummaryRepresentations = new LinkedHashSet<>();
             for (Song song : songs) {
                 songSummaryRepresentations.add(toSummaryRepresentation(song));
             }
@@ -92,12 +93,12 @@ public class SongSummaryRepresentation {
     }
 
     @JsonProperty("singers")
-    public List<PersonSummaryRepresentation> getSingers() {
+    public Set<PersonSummaryRepresentation> getSingers() {
         return singers;
     }
 
     @JsonProperty("poet")
-    public List<PersonSummaryRepresentation> getPoets() {
+    public Set<PersonSummaryRepresentation> getPoets() {
         return poets;
     }
 

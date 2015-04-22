@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import org.ajabshahar.platform.daos.PersonDAO;
 import org.ajabshahar.platform.models.PersonDetails;
 
-import java.util.List;
+import java.util.Set;
 
 public class People {
     private final PersonDAO personRepository;
@@ -14,15 +14,15 @@ public class People {
     }
 
     public PersonDetails findBy(int id) {
-        List<PersonDetails> personDetailsList = findBy(id, null);
-        return personDetailsList.size() > 0 ? personDetailsList.get(0) : null;
+        Set<PersonDetails> personDetailsList = findBy(id, null);
+        return personDetailsList.size() > 0 ? personDetailsList.iterator().next() : null;
     }
 
-    public List<PersonDetails> findBy(String role) {
+    public Set<PersonDetails> findBy(String role) {
         return findBy(0, role);
     }
 
-    private List<PersonDetails> findBy(int id, String role) {
+    private Set<PersonDetails> findBy(int id, String role) {
         return personRepository.findBy(id, role);
     }
 
