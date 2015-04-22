@@ -65,7 +65,7 @@
                     </div>
                 </div>
                 <table class="song-text-table" ng-show="songText.openingCouplets.length>0"
-                       ng-repeat="openingCouplet in songText.openingCouplets">
+                       ng-repeat="openingCouplet in songText.openingCouplets | orderBy:'id'">
                     <td>
                         <textarea class="form-control" rows="6" ng-model="openingCouplet.originalText"
                                   placeholder=" Enter original text ..."></textarea>
