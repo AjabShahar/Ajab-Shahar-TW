@@ -7,27 +7,29 @@ $desktop: new-breakpoint(min-width 1025px);
 .thumbnails-grid {
 
   @include outer-container(100%);
-  @include span-columns(12);
+  @include span-columns(15);
 
   .media {
     min-height: 250px;
     /*background: red;*/
-    @include span-columns(3 of 12);
+    @include span-columns(3 of 15);
 
 
     @include media($desktop) {
-         @include omega(4n);
+         @include omega(5n);
     }
 
     @include media($tab-landscape) {
-        @include omega-reset(4n);
-        @include span-columns(4 of 12);
-        @include omega(3n);
+        @include span-columns(16);
+        @include omega-reset(5n);
+        @include span-columns(4 of 16);
+        @include omega(4n);
     }
 
     @include media($tab-portrait) {
-        @include omega-reset(3n);
-        @include span-columns(6 of 12);
+        @include span-columns(16);
+        @include omega-reset(4n);
+        @include span-columns(8 of 16);
         @include omega(2n);
     }
   }
@@ -42,4 +44,10 @@ $desktop: new-breakpoint(min-width 1025px);
     float: left;
     background: red;
   }*/
+}
+
+@include media($tab-portrait) {
+    .grid-layout .grid-view {
+        margin-left: 100px !important;
+    }
 }
