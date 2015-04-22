@@ -4,11 +4,14 @@ $tab-portrait: new-breakpoint(max-width 768px);
 $tab-landscape: new-breakpoint(max-width 1024px);
 $desktop: new-breakpoint(min-width 1025px);
 
-.thumbnails-grid {
 
-    height: 800px;
+.grid-wrapper {
+    margin-top: 148px;
     overflow: auto;
-    clear: both;
+    height: 300px;
+}
+
+.thumbnails-grid {
 
   @include outer-container(100%);
   @include span-columns(15);
