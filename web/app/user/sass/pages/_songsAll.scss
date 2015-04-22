@@ -1,0 +1,9 @@
+.all-songs {
+    .pagination-head {
+        width: 87%;
+
+        @include media($tab-landscape) {
+             width: 83%;
+        }
+    }
+}

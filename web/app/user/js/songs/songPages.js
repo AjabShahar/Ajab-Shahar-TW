@@ -4,6 +4,7 @@
 
             var _domReady = function () {
                 _bindEvents();
+                _setScrollableRegionHeight();
             };
 
             var _bindEvents = function () {
@@ -13,6 +14,10 @@
                     return false;
                 });
             };
+
+            var _setScrollableRegionHeight = function() {
+                 $('.grid-wrapper').height($(window).height() - 150);
+            }
 
             this.init = (function () {
                 $(function () {
