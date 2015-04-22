@@ -4,7 +4,6 @@ animationModule.animation('.toggleBySlide', function () {
             if (className == 'ng-hide') {
                 element.slideUp(750, function () {
                     if ($('.slide-nav-list') !== '' && $('.slide-nav-list').size() != 0) {
-                        $('.headerArt').addClass('stackDown');
                     }
                 });
 
@@ -17,7 +16,6 @@ animationModule.animation('.toggleBySlide', function () {
         beforeRemoveClass: function (element, className, done) {
             if (className == 'ng-hide') {
                 element.removeClass('ng-hide');
-                $(".headerArt").removeClass("stackDown");
                 element.slideDown(750);
             }
             else {

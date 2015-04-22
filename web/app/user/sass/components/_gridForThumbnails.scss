@@ -6,6 +6,10 @@ $desktop: new-breakpoint(min-width 1025px);
 
 .thumbnails-grid {
 
+    height: 800px;
+    overflow: auto;
+    clear: both;
+
   @include outer-container(100%);
   @include span-columns(15);
 
