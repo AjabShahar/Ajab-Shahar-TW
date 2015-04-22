@@ -2,17 +2,17 @@ package org.ajabshahar.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class WordSynonymRepresentation {
 
     private WordRepresentation word;
-    private List<WordRepresentation> synonyms;
+    private Set<WordRepresentation> synonyms;
 
     public WordSynonymRepresentation() {
         word = new WordRepresentation();
-        synonyms = new ArrayList<>();
+        synonyms = new LinkedHashSet<>();
     }
 
     @JsonProperty("word")
@@ -21,7 +21,7 @@ public class WordSynonymRepresentation {
     }
 
     @JsonProperty("synonyms")
-    public List<WordRepresentation> getSynonyms() {
+    public Set<WordRepresentation> getSynonyms() {
         return synonyms;
     }
 

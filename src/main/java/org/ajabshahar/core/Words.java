@@ -1,13 +1,9 @@
 package org.ajabshahar.core;
 
-import org.ajabshahar.api.PersonRepresentation;
-import org.ajabshahar.api.PersonRepresentationFactory;
-import org.ajabshahar.api.WordIntermediateRepresentation;
-import org.ajabshahar.api.WordRepresentationFactory;
 import org.ajabshahar.platform.daos.WordDAO;
 import org.ajabshahar.platform.models.Word;
 
-import java.util.List;
+import java.util.Set;
 
 public class Words {
     private final WordDAO wordRepository;
@@ -21,15 +17,15 @@ public class Words {
         return wordRepository.create(word);
     }
 
-    public List<Word> findBy(boolean showOnMainLandingPage) {
+    public Set<Word> findBy(boolean showOnMainLandingPage) {
         return findBy(0, showOnMainLandingPage);
     }
 
     public Word findBy(int id) {
-        return findBy(id, false).get(0);
+        return findBy(id, false).iterator().next();
     }
 
-    private List<Word> findBy(int wordId, boolean showOnMainLandingPage) {
+    private Set<Word> findBy(int wordId, boolean showOnMainLandingPage) {
         return wordRepository.findBy(wordId, showOnMainLandingPage);
     }
 
@@ -59,11 +55,11 @@ public class Words {
         return originalWord;
     }
 
-    public List<Word> findWords(int wordId) {
+    public Set<Word> findWords(int wordId) {
         return wordRepository.findReflections(wordId);
     }
 
-    public List<Word> findAll() {
+    public Set<Word> findAll() {
         return wordRepository.findAll();
     }
 }

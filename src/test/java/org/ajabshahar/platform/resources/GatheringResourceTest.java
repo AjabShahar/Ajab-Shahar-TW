@@ -9,9 +9,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
@@ -54,7 +54,7 @@ public class GatheringResourceTest {
 
     @Test
     public void shouldGetGatherings() {
-        List<Gathering> mockedGatherings = new ArrayList<>(Arrays.asList(mockedGathering));
+        Set<Gathering> mockedGatherings = new LinkedHashSet<>(Arrays.asList(mockedGathering));
         when(mockedGatheringDAO.findAll()).thenReturn(mockedGatherings);
 
         Response response = gatheringResource.listAllGatherings();

@@ -8,7 +8,7 @@ import org.ajabshahar.platform.models.Genre;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.List;
+import java.util.Set;
 
 @Path("/genres")
 @Produces(MediaType.APPLICATION_JSON)
@@ -39,7 +39,7 @@ public class GenreResource {
     @GET
     @UnitOfWork
     public Response listAllGenres() {
-        List genres = genreDAO.findAll();
+        Set genres = genreDAO.findAll();
         return createResponseFor(genres);
     }
 

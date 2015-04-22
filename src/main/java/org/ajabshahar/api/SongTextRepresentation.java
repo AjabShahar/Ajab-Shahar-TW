@@ -1,31 +1,33 @@
 package org.ajabshahar.api;
 
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class SongTextRepresentation {
 
-    private List<SongTextSummaryRepresentation> songTextContents;
-    private List<SongTextSummaryRepresentation> openingCouplets;
+    private long id;
+    private Set<SongTextSummaryRepresentation> songTextContents;
+    private Set<SongTextSummaryRepresentation> openingCouplets;
     private String refrainOriginal;
     private String refrainEnglishTranslation;
     private String refrainEnglishTransliteration;
 
     public SongTextRepresentation() {
-        songTextContents = new ArrayList<>();
-        openingCouplets = new ArrayList<>();
+        songTextContents = new LinkedHashSet<>();
+        openingCouplets = new LinkedHashSet<>();
     }
 
-    public SongTextRepresentation(String refrainOriginal, String refrainEnglishTranslation, String refrainEnglishTransliteration) {
+    public SongTextRepresentation(long id, String refrainOriginal, String refrainEnglishTranslation, String refrainEnglishTransliteration) {
+        this.id = id;
         this.refrainOriginal = refrainOriginal;
         this.refrainEnglishTranslation = refrainEnglishTranslation;
         this.refrainEnglishTransliteration = refrainEnglishTransliteration;
-        songTextContents = new ArrayList<>();
-        openingCouplets = new ArrayList<>();
+        songTextContents = new LinkedHashSet<>();
+        openingCouplets = new LinkedHashSet<>();
     }
 
-    public List<SongTextSummaryRepresentation> getSongTextContents() {
+    public Set<SongTextSummaryRepresentation> getSongTextContents() {
         return songTextContents;
     }
 
@@ -45,11 +47,15 @@ public class SongTextRepresentation {
         return refrainEnglishTransliteration;
     }
 
-    public List<SongTextSummaryRepresentation> getOpeningCouplets() {
+    public Set<SongTextSummaryRepresentation> getOpeningCouplets() {
         return openingCouplets;
     }
 
     public void addOpeningCouplet(SongTextSummaryRepresentation songTextSummaryRepresentation) {
         openingCouplets.add(songTextSummaryRepresentation);
+    }
+
+    public long getId() {
+        return id;
     }
 }

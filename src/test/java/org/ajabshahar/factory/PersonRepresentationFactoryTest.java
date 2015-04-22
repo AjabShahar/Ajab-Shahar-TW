@@ -12,9 +12,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
@@ -22,7 +22,7 @@ import static org.junit.Assert.assertThat;
 @RunWith(MockitoJUnitRunner.class)
 public class PersonRepresentationFactoryTest {
 
-    private List<PersonDetails> personDetailsList;
+    private Set<PersonDetails> personDetailsList;
     private PersonRepresentationFactory personRepresentationFactory;
     private PersonDetails personDetails;
     HashSet<Category> categories = new HashSet<>();
@@ -38,7 +38,7 @@ public class PersonRepresentationFactoryTest {
 
         personRepresentationFactory = new PersonRepresentationFactory();
 
-        personDetailsList = new ArrayList<>();
+        personDetailsList = new LinkedHashSet<>();
         personDetails = new PersonDetails();
         personDetails.setId(1);
         personDetails.setFirstName("FirstName");
@@ -57,7 +57,7 @@ public class PersonRepresentationFactoryTest {
         assertThat(personRepresentation.getFirstName(), IsEqual.equalTo("FirstName"));
         assertThat(personRepresentation.getMiddleName(), IsEqual.equalTo("MiddleName"));
         assertThat(personRepresentation.getLastName(), IsEqual.equalTo("LastName"));
-        assertThat(personRepresentation.getRoles().get(0), IsEqual.equalTo("Singer"));
+        assertThat(personRepresentation.getRoles().iterator().next(), IsEqual.equalTo("Singer"));
         assertThat(personRepresentation.getFirstNameInHindi(), IsEqual.equalTo("जीवन मंत्र"));
         assertNull(personRepresentation.getMiddleNameInHindi());
         assertNull(personRepresentation.getLastNameInHindi());
@@ -67,13 +67,13 @@ public class PersonRepresentationFactoryTest {
     public void shouldCreatePeopleRepresentation() {
         PeopleRepresentation peopleRepresentation = personRepresentationFactory.create(personDetailsList);
 
-        assertThat(peopleRepresentation.getPeople().get(0).getFirstName(), IsEqual.equalTo("FirstName"));
-        assertThat(peopleRepresentation.getPeople().get(0).getMiddleName(), IsEqual.equalTo("MiddleName"));
-        assertThat(peopleRepresentation.getPeople().get(0).getLastName(), IsEqual.equalTo("LastName"));
-        assertThat(peopleRepresentation.getPeople().get(0).getRoles().get(0), IsEqual.equalTo("Singer"));
-        assertThat(peopleRepresentation.getPeople().get(0).getFirstNameInHindi(), IsEqual.equalTo("जीवन मंत्र"));
-        assertNull(peopleRepresentation.getPeople().get(0).getMiddleNameInHindi());
-        assertNull(peopleRepresentation.getPeople().get(0).getLastNameInHindi());
+        assertThat(peopleRepresentation.getPeople().iterator().next().getFirstName(), IsEqual.equalTo("FirstName"));
+        assertThat(peopleRepresentation.getPeople().iterator().next().getMiddleName(), IsEqual.equalTo("MiddleName"));
+        assertThat(peopleRepresentation.getPeople().iterator().next().getLastName(), IsEqual.equalTo("LastName"));
+        assertThat(peopleRepresentation.getPeople().iterator().next().getRoles().iterator().next(), IsEqual.equalTo("Singer"));
+        assertThat(peopleRepresentation.getPeople().iterator().next().getFirstNameInHindi(), IsEqual.equalTo("जीवन मंत्र"));
+        assertNull(peopleRepresentation.getPeople().iterator().next().getMiddleNameInHindi());
+        assertNull(peopleRepresentation.getPeople().iterator().next().getLastNameInHindi());
     }
 
     @Test

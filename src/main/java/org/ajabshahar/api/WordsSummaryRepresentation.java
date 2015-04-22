@@ -1,15 +1,16 @@
 package org.ajabshahar.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.ajabshahar.platform.models.Word;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class WordsSummaryRepresentation {
-    private List<WordSummaryRepresentation> words;
+    private Set<WordSummaryRepresentation> words;
 
     public WordsSummaryRepresentation() {
-        words = new ArrayList<>();
+        words = new LinkedHashSet<>();
     }
 
     public void add(WordSummaryRepresentation wordSummaryRepresentation) {
@@ -17,7 +18,19 @@ public class WordsSummaryRepresentation {
     }
 
     @JsonProperty("words")
-    public List<WordSummaryRepresentation> getWords() {
+    public Set<WordSummaryRepresentation> getWords() {
+        return words;
+    }
+
+    public static Set<Word> toWords(WordsSummaryRepresentation wordsSummaryRepresentation) {
+        Set<Word> words = new LinkedHashSet<>();
+        if (wordsSummaryRepresentation != null) {
+            for (WordSummaryRepresentation wordSummaryRepresentation : wordsSummaryRepresentation.getWords()) {
+                Word word = new Word();
+                word.setId(wordSummaryRepresentation.getId());
+                words.add(word);
+            }
+        }
         return words;
     }
 }

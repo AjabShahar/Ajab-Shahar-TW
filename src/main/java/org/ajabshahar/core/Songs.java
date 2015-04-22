@@ -7,7 +7,7 @@ import org.ajabshahar.platform.daos.TitleDAO;
 import org.ajabshahar.platform.models.Song;
 import org.ajabshahar.platform.models.Title;
 
-import java.util.List;
+import java.util.Set;
 
 public class Songs {
     private final SongDAO songsRepository;
@@ -23,15 +23,15 @@ public class Songs {
     }
 
     public Song findBy(int songId) {
-        List<Song> songList = findBy(songId, 0, 0, 0, null);
-        return songList.size() > 0 ? songList.get(0) : null;
+        Set<Song> songList = findBy(songId, 0, 0, 0, null);
+        return songList.size() > 0 ? songList.iterator().next() : null;
     }
 
-    public List<Song> findBy(int singerId, int poetId, int startFrom, String filteredLetter) {
+    public Set<Song> findBy(int singerId, int poetId, int startFrom, String filteredLetter) {
         return findBy(0, singerId, poetId, startFrom, filteredLetter);
     }
 
-    private List<Song> findBy(int songId, int singerId, int poetId, int startFrom, String filteredLetter) {
+    private Set<Song> findBy(int songId, int singerId, int poetId, int startFrom, String filteredLetter) {
         return songsRepository.findBy(songId, singerId, poetId, startFrom, filteredLetter);
     }
 
@@ -58,7 +58,7 @@ public class Songs {
 
     }
 
-    public List<Song> getVersions(int songId) {
+    public Set<Song> getVersions(int songId) {
         return songsRepository.findSongWithVersions(songId);
     }
 
@@ -89,7 +89,7 @@ public class Songs {
         return songsRepository.saveSong(song);
     }
 
-    public List<Song> findAll() {
+    public Set<Song> findAll() {
         return songsRepository.findAll();
     }
 }

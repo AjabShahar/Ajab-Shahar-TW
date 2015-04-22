@@ -8,8 +8,8 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
@@ -23,12 +23,12 @@ public class PeopleTest {
     private PersonDAO personRepository;
     @Mock
     private PersonDetails personDetails;
-    private List<PersonDetails> personDetailsList;
+    private Set<PersonDetails> personDetailsList;
     private People people;
 
     @Before
     public void setUp() {
-        personDetailsList = new ArrayList<>();
+        personDetailsList = new LinkedHashSet<>();
         personDetailsList.add(personDetails);
         people = new People(personRepository);
     }
@@ -43,14 +43,14 @@ public class PeopleTest {
     @Test
     public void shouldGetSingers() {
         when(personRepository.findBy(0, SINGER)).thenReturn(personDetailsList);
-        List<PersonDetails> result = people.findBy(SINGER);
+        Set<PersonDetails> result = people.findBy(SINGER);
         assertEquals(personDetailsList, result);
     }
 
     @Test
     public void shouldGetPoets() {
         when(personRepository.findBy(0, POET)).thenReturn(personDetailsList);
-        List<PersonDetails> result = people.findBy(POET);
+        Set<PersonDetails> result = people.findBy(POET);
         assertEquals(personDetailsList, result);
     }
 }

@@ -16,11 +16,16 @@ var reflectionContentService = function ($http) {
        return $http.get('/api/words/summary');
     };
 
+    var getSongs = function(){
+        return $http.get('/api/songs/getPublishedSongs');
+    };
+
     return {
         getPeople: getPeople,
         getRefectionById: getRefectionById,
         saveReflection: saveReflection,
-        getWords: getWords
+        getWords: getWords,
+        getSongs: getSongs
     };
 
 };

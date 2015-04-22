@@ -13,8 +13,8 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
@@ -22,7 +22,7 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class ReflectionResourceTest {
     private ReflectionResource reflectionResource;
-    private List<Reflection> reflectionList;
+    private Set<Reflection> reflectionList;
     private String CRITERIA = "";
     private String jsonReflection = "";
 
@@ -35,7 +35,7 @@ public class ReflectionResourceTest {
     public void setUp() {
 
         reflectionResource = new ReflectionResource(reflections, reflectionRepresentationFactory);
-        reflectionList = new ArrayList<>();
+        reflectionList = new LinkedHashSet<>();
     }
 
     @Test
@@ -55,7 +55,7 @@ public class ReflectionResourceTest {
     public void shouldTestGetAllReflections() throws Exception {
         ReflectionsSummaryRepresentation expected = new ReflectionsSummaryRepresentation();
         when(reflections.getAll(CRITERIA)).thenReturn(reflectionList);
-        when(reflectionRepresentationFactory.create(reflectionList)).thenReturn(expected);
+        when(reflectionRepresentationFactory.toReflectionsSummaryRepresentation(reflectionList)).thenReturn(expected);
 
         Response actual = reflectionResource.getReflections(CRITERIA);
 

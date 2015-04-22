@@ -120,7 +120,7 @@ public class PersonDetails {
     }
 
     public Category getPrimaryOccupation() {
-        return primaryOccupation;
+        return primaryOccupation == null ? new Category() : primaryOccupation;
     }
 
     public void setPrimaryOccupation(Category primaryOccupation) {

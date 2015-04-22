@@ -3,10 +3,10 @@ package org.ajabshahar.platform.models;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.SortNatural;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
@@ -65,7 +65,7 @@ public class Word {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "RELATED_WORDS", joinColumns = {@JoinColumn(name = "WORD_ID", referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(name = "RELATED_WORD_ID", referencedColumnName = "ID")})
-    private Set<Word> relatedWords = new HashSet<>();
+    private Set<Word> relatedWords = new LinkedHashSet<>();
 
     @ManyToMany
     @JoinTable(name = "SONG_WORD", joinColumns = {@JoinColumn(name = "WORD_ID")},
@@ -75,7 +75,7 @@ public class Word {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "WORD_SYNONYMS", joinColumns = {@JoinColumn(name = "WORD_ID", referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(name = "SYNONYM_WORD_ID", referencedColumnName = "ID")})
-    private Set<Word> synonyms = new HashSet<>();
+    private Set<Word> synonyms = new LinkedHashSet<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "WORD_WRITER", joinColumns = {@JoinColumn(name = "WORD_ID", referencedColumnName = "ID")},

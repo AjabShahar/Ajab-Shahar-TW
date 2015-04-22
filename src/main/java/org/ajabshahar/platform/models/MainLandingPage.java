@@ -1,33 +1,33 @@
 package org.ajabshahar.platform.models;
 
-import java.util.List;
+import java.util.Set;
 
 public class MainLandingPage {
-    private List<Song> songs;
-    private List<Couplet> couplets;
-    private List<Word> words;
+    private Set<Song> songs;
+    private Set<Couplet> couplets;
+    private Set<Word> words;
 
-    public List<Song> getSongs() {
+    public Set<Song> getSongs() {
         return songs;
     }
 
-    public void setSongs(List<Song> songs) {
+    public void setSongs(Set<Song> songs) {
         this.songs = songs;
     }
 
-    public List<Couplet> getCouplets() {
+    public Set<Couplet> getCouplets() {
         return couplets;
     }
 
-    public void setCouplets(List<Couplet> couplets) {
+    public void setCouplets(Set<Couplet> couplets) {
         this.couplets = couplets;
     }
 
-    public List<Word> getWords() {
+    public Set<Word> getWords() {
         return words;
     }
 
-    public void setWords(List<Word> words) {
+    public void setWords(Set<Word> words) {
         this.words = words;
     }
 }

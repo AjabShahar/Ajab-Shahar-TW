@@ -5,7 +5,8 @@ import io.dropwizard.hibernate.AbstractDAO;
 import org.ajabshahar.platform.models.Title;
 import org.hibernate.SessionFactory;
 
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class TitleDAO extends AbstractDAO<Title> {
 
@@ -17,22 +18,22 @@ public class TitleDAO extends AbstractDAO<Title> {
         return persist(title);
     }
 
-    public List<Title> findAll() {
+    public Set<Title> findAll() {
 
         try {
-            return list(namedQuery("org.ajabshahar.platform.models.Title.findAll"));
+            return new LinkedHashSet<>(list(namedQuery("org.ajabshahar.platform.models.Title.findAll")));
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public List<Title> findAllSongTitles() {
+    public Set<Title> findAllSongTitles() {
 
-        return list(namedQuery("org.ajabshahar.platform.models.Title.findSongTitles"));
+        return new LinkedHashSet<>(list(namedQuery("org.ajabshahar.platform.models.Title.findSongTitles")));
     }
 
-    public List<Title> findAllUmbrellaTitles() {
-        return list(namedQuery("org.ajabshahar.platform.models.Title.findUmbrellaTitles"));
+    public Set<Title> findAllUmbrellaTitles() {
+        return new LinkedHashSet<>(list(namedQuery("org.ajabshahar.platform.models.Title.findUmbrellaTitles")));
     }
 }

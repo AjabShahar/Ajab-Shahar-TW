@@ -9,19 +9,19 @@ import org.hamcrest.core.IsEqual;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class CoupletsRepresentationFactoryTest {
-    private List<Couplet> couplets;
+    private Set<Couplet> couplets;
     private CoupletsRepresentationFactory coupletsRepresentationFactory;
 
     @Before
     public void setUp() throws Exception {
         coupletsRepresentationFactory = new CoupletsRepresentationFactory();
-        couplets = new ArrayList<>();
+        couplets = new LinkedHashSet<>();
 
         Couplet couplet = new Couplet();
         couplet.setId(1);
@@ -45,11 +45,11 @@ public class CoupletsRepresentationFactoryTest {
 
         CoupletsRepresentation coupletsRepresentation = coupletsRepresentationFactory.create(couplets);
         assertThat(coupletsRepresentation.getCouplets().size(), IsEqual.equalTo(1));
-        assertThat(coupletsRepresentation.getCouplets().get(0).getId(), IsEqual.equalTo(1L));
-        assertThat(coupletsRepresentation.getCouplets().get(0).getEnglishTranslationText(), IsEqual.equalTo("english translation text"));
-        assertThat(coupletsRepresentation.getCouplets().get(0).getEnglishTransliterationText(), IsEqual.equalTo("englishTransliteration text"));
-        assertThat(coupletsRepresentation.getCouplets().get(0).getPoetName(), IsEqual.equalTo("Roshik"));
-        assertThat(coupletsRepresentation.getCouplets().get(0).getCategory(), IsEqual.equalTo("Couplet"));
+        assertThat(coupletsRepresentation.getCouplets().iterator().next().getId(), IsEqual.equalTo(1L));
+        assertThat(coupletsRepresentation.getCouplets().iterator().next().getEnglishTranslationText(), IsEqual.equalTo("english translation text"));
+        assertThat(coupletsRepresentation.getCouplets().iterator().next().getEnglishTransliterationText(), IsEqual.equalTo("englishTransliteration text"));
+        assertThat(coupletsRepresentation.getCouplets().iterator().next().getPoetName(), IsEqual.equalTo("Roshik"));
+        assertThat(coupletsRepresentation.getCouplets().iterator().next().getCategory(), IsEqual.equalTo("Couplet"));
 
     }
 }

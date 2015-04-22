@@ -12,8 +12,8 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
@@ -43,7 +43,7 @@ public class CoupletResourceTest {
     @Test
     public void shouldGetCoupletById() {
 
-        List<Couplet> expectedResult = new ArrayList<>();
+        Set<Couplet> expectedResult = new LinkedHashSet<>();
         when(coupletDAO.findBy(id)).thenReturn(expectedResult);
         when(coupletsRepresentationFactory.create(expectedResult)).thenReturn(coupletsRepresentation);
 

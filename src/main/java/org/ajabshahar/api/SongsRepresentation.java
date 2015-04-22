@@ -1,17 +1,17 @@
 package org.ajabshahar.api;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class SongsRepresentation {
 
-    private List<SongRepresentation> songs;
+    private Set<SongRepresentation> songs;
 
     public SongsRepresentation() {
-        songs = new ArrayList<>();
+        songs = new LinkedHashSet<>();
     }
 
-    public List<SongRepresentation> getSongs() {
+    public Set<SongRepresentation> getSongs() {
         return songs;
     }
 

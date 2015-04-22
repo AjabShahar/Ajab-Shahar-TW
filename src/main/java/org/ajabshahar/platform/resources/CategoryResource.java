@@ -8,7 +8,7 @@ import org.ajabshahar.platform.models.Category;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.List;
+import java.util.Set;
 
 @Path("/category")
 @Produces(MediaType.APPLICATION_JSON)
@@ -21,7 +21,7 @@ public class CategoryResource {
 
     @GET
     @UnitOfWork
-    public List<Category> listAllCategories() {
+    public Set<Category> listAllCategories() {
         return categoryDAO.findAll();
     }
 
@@ -38,28 +38,28 @@ public class CategoryResource {
     @GET
     @UnitOfWork
     @Path("/song")
-    public List<Category> listAllSongCategories() {
+    public Set<Category> listAllSongCategories() {
         return categoryDAO.findAllSongCategories();
     }
 
     @GET
     @UnitOfWork
     @Path("/media")
-    public List<Category> listAllMediaCategories() {
+    public Set<Category> listAllMediaCategories() {
         return categoryDAO.findAllMediaCategories();
     }
 
     @GET
     @UnitOfWork
     @Path("/couplet")
-    public List<Category> listAllCoupletCategories() {
+    public Set<Category> listAllCoupletCategories() {
         return categoryDAO.findAllCoupletCategories();
     }
 
     @GET
     @UnitOfWork
     @Path("/word")
-    public List<Category> listAllWordCategories() {
+    public Set<Category> listAllWordCategories() {
         return categoryDAO.findAllWordCategories();
     }
 
@@ -80,7 +80,7 @@ public class CategoryResource {
     @GET
     @UnitOfWork
     @Path("/person")
-    public List<Category> listAllPersonCategory() {
+    public Set<Category> listAllPersonCategory() {
         return categoryDAO.findAllPersonCategory();
     }
 }

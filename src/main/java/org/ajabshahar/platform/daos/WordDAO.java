@@ -1,7 +1,6 @@
 package org.ajabshahar.platform.daos;
 
 import io.dropwizard.hibernate.AbstractDAO;
-import org.ajabshahar.api.WordIntermediateRepresentation;
 import org.ajabshahar.platform.models.Word;
 import org.ajabshahar.platform.models.WordIntroduction;
 import org.hibernate.Criteria;
@@ -11,7 +10,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
 
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class WordDAO extends AbstractDAO<Word> {
 
@@ -31,7 +31,7 @@ public class WordDAO extends AbstractDAO<Word> {
         return word;
     }
 
-    public List findBy(int wordId, Boolean showOnMainLandingPage) {
+    public Set findBy(int wordId, Boolean showOnMainLandingPage) {
         Session session = this.sessionFactory.openSession();
         Criteria allWords = session.createCriteria(Word.class, "word");
         if (showOnMainLandingPage) {
@@ -53,7 +53,7 @@ public class WordDAO extends AbstractDAO<Word> {
                 .setFetchMode("reflatedWords", FetchMode.JOIN)
                 .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 
-        List words = allWords.list();
+        Set words = new LinkedHashSet<>(allWords.list());
         session.close();
         return words;
     }
@@ -75,21 +75,22 @@ public class WordDAO extends AbstractDAO<Word> {
     }
 
 
-    public List<Word> findReflections(int wordId) {
+    public Set<Word> findReflections(int wordId) {
         Session session = sessionFactory.openSession();
         Criteria wordReflections = session.createCriteria(Word.class);
         if (wordId != 0) {
             wordReflections.add(Restrictions.eq("id", (long) wordId));
         }
         wordReflections.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-        List wordsWithReflections = wordReflections.list();
+        //TODO: Check if this works
+        Set wordsWithReflections = new LinkedHashSet(wordReflections.list());
         session.close();
         return wordsWithReflections;
     }
 
-    public List findAll() {
+    public Set findAll() {
         Session session = sessionFactory.openSession();
-        List words = allWordsCriteria(session).list();
+        Set words = new LinkedHashSet(allWordsCriteria(session).list());
         session.close();
         return words;
     }

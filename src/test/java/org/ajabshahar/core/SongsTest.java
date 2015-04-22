@@ -14,8 +14,8 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -36,7 +36,7 @@ public class SongsTest {
     @Mock
     private SongTextDAO lyricsRepository;
     private Song song;
-    private List<Song> songsList;
+    private Set<Song> songsList;
     private Songs songs;
     @Mock
     private CategoryDAO categoryRepository;
@@ -44,7 +44,7 @@ public class SongsTest {
 
     @Before
     public void setup() {
-        songsList = new ArrayList<>();
+        songsList = new LinkedHashSet<>();
         song = new Song();
         song.setId(SONG_ID);
         songsList.add(song);
@@ -54,7 +54,7 @@ public class SongsTest {
     @Test
     public void shouldGetSongsForSingerAndPoet() {
         when(songsRepository.findBy(0, SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER)).thenReturn(songsList);
-        List<Song> result = songs.findBy(SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER);
+        Set<Song> result = songs.findBy(SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER);
         assertEquals(songsList, result);
     }
 
@@ -84,7 +84,7 @@ public class SongsTest {
     public void shouldGetSongVersions() throws Exception {
         when(songsRepository.findSongWithVersions(SONG_ID)).thenReturn(songsList);
 
-        List<Song> result = songs.getVersions(SONG_ID);
+        Set<Song> result = songs.getVersions(SONG_ID);
 
         assertEquals(songsList, result);
     }
@@ -171,7 +171,7 @@ public class SongsTest {
     @Test
     public void shouldGetAllSongs() throws Exception {
         when(songsRepository.findAll()).thenReturn(songsList);
-        List<Song> result = songs.findAll();
+        Set<Song> result = songs.findAll();
 
         assertEquals(songsList, result);
     }

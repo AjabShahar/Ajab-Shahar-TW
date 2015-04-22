@@ -1,6 +1,5 @@
 package org.ajabshahar.platform.resources;
 
-import com.google.gson.Gson;
 import com.ninja_squad.dbsetup.DbSetup;
 import com.ninja_squad.dbsetup.Operations;
 import com.ninja_squad.dbsetup.destination.DataSourceDestination;
@@ -13,7 +12,6 @@ import org.ajabshahar.DataSetup;
 import org.ajabshahar.api.*;
 import org.ajabshahar.platform.PlatformApplication;
 import org.ajabshahar.platform.PlatformConfiguration;
-import org.ajabshahar.platform.models.Song;
 import org.ajabshahar.platform.models.WordIntroduction;
 import org.h2.jdbcx.JdbcDataSource;
 import org.junit.Before;
@@ -21,10 +19,8 @@ import org.junit.ClassRule;
 import org.junit.Test;
 
 import javax.ws.rs.core.NewCookie;
-import javax.xml.crypto.Data;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import static org.hamcrest.Matchers.greaterThan;
@@ -40,7 +36,7 @@ public class WordResourceIT {
     private Client client;
     private JdbcDataSource dataSource;
     private JSONObject jsonObject;
-    private ArrayList wordIntroductions = new ArrayList();
+    private Set wordIntroductions = new LinkedHashSet();
     private static final String API_TO_EDIT_THE_WORD_WITH_ID_ONE = "http://localhost:%d/api/words/edit?id=1";
 
     private static String resourceFilePath(String resource) {
@@ -65,12 +61,12 @@ public class WordResourceIT {
         jsonObject.put("showOnLandingPage", false);
         jsonObject.put("displayAjabShaharTeam", false);
         jsonObject.put("meaning", "meaning");
-        jsonObject.put("wordIntroductions", new ArrayList<>());
+        jsonObject.put("wordIntroductions", new LinkedHashSet<>());
 
-        jsonObject.put("relatedWords", new ArrayList<>());
-        jsonObject.put("synonyms", new ArrayList<>());
-        jsonObject.put("songs", new ArrayList<>());
-        jsonObject.put("writers", new ArrayList<>());
+        jsonObject.put("relatedWords", new LinkedHashSet<>());
+        jsonObject.put("synonyms", new LinkedHashSet<>());
+        jsonObject.put("songs", new LinkedHashSet<>());
+        jsonObject.put("writers", new LinkedHashSet<>());
 
         JSONObject jsonWordIntroductions = new JSONObject();
         jsonWordIntroductions.put("contentType", "text");
@@ -205,7 +201,7 @@ public class WordResourceIT {
 
         PersonSummaryRepresentation speaker = new PersonSummaryRepresentation();
         ReflectionSummaryRepresentation reflectionSummaryRepresentation = new ReflectionSummaryRepresentation(1, "Oh that wonderful song!", speaker, false);
-        List<ReflectionSummaryRepresentation> reflections = new ArrayList<>();
+        Set<ReflectionSummaryRepresentation> reflections = new LinkedHashSet<>();
         reflections.add(reflectionSummaryRepresentation);
         jsonObject.put("reflections", reflections);
 
@@ -230,7 +226,7 @@ public class WordResourceIT {
         WordIntermediateRepresentation word = wordResponse.getEntity(WordIntermediateRepresentation.class);
 
         assertThat(word.getReflections().size(), is(1));
-        assertThat(word.getReflections().get(0).getId(), is(1L));
+        assertThat(word.getReflections().iterator().next().getId(), is(1L));
 
     }
 
@@ -343,7 +339,7 @@ public class WordResourceIT {
         ClientResponse words = httpGet(API_TO_EDIT_THE_WORD_WITH_ID_ONE);
 
         WordIntermediateRepresentation word = getWord(words);
-        List<WordSummaryRepresentation> wordSummaryRepresentations = getWordSummaryRepresentations(word);
+        Set<WordSummaryRepresentation> wordSummaryRepresentations = getWordSummaryRepresentations(word);
 
         jsonObject.put("relatedWords", wordSummaryRepresentations);
 
@@ -363,7 +359,7 @@ public class WordResourceIT {
         ClientResponse words = httpGet(API_TO_EDIT_THE_WORD_WITH_ID_ONE);
 
         WordIntermediateRepresentation word = getWord(words);
-        List<WordSummaryRepresentation> wordSummaryRepresentations = getWordSummaryRepresentations(word);
+        Set<WordSummaryRepresentation> wordSummaryRepresentations = getWordSummaryRepresentations(word);
 
         jsonObject.put("synonyms", wordSummaryRepresentations);
 
@@ -371,13 +367,13 @@ public class WordResourceIT {
         WordIntermediateRepresentation wordIntermediateRepresentation = getWord(wordResponse);
 
         assertThat(wordIntermediateRepresentation.getSynonyms().size(), is(1));
-        assertThat((long) wordIntermediateRepresentation.getSynonyms().get(0).getId(), is(word.getId()));
+        assertThat((long) wordIntermediateRepresentation.getSynonyms().iterator().next().getId(), is(word.getId()));
     }
 
-    private List<WordSummaryRepresentation> getWordSummaryRepresentations(WordIntermediateRepresentation word) {
-        List<WordSummaryRepresentation> wordSummaryRepresentations = new ArrayList<>();
+    private Set<WordSummaryRepresentation> getWordSummaryRepresentations(WordIntermediateRepresentation word) {
+        Set<WordSummaryRepresentation> wordSummaryRepresentations = new LinkedHashSet<>();
         WordSummaryRepresentation wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(),
-                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new ArrayList<>(), word.getIsRootWord());
+                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new LinkedHashSet<>(), word.getIsRootWord());
         wordSummaryRepresentations.add(wordSummaryRepresentation);
         return wordSummaryRepresentations;
     }
@@ -390,11 +386,11 @@ public class WordResourceIT {
         dbSetup.launch();
 
         ClientResponse words = httpGet(API_TO_EDIT_THE_WORD_WITH_ID_ONE);
-        List<WordSummaryRepresentation> wordSummaryRepresentations = new ArrayList<>();
+        Set<WordSummaryRepresentation> wordSummaryRepresentations = new LinkedHashSet<>();
 
         WordIntermediateRepresentation word = getWord(words);
         WordSummaryRepresentation wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(),
-                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new ArrayList<>(), word.getIsRootWord());
+                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new LinkedHashSet<>(), word.getIsRootWord());
         wordSummaryRepresentations.add(wordSummaryRepresentation);
 
         jsonObject.put("relatedWords", wordSummaryRepresentations);
@@ -408,7 +404,7 @@ public class WordResourceIT {
 
         word = getWord(words);
         wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(),
-                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new ArrayList<>(), word.getIsRootWord());
+                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new LinkedHashSet<>(), word.getIsRootWord());
         wordSummaryRepresentations.add(wordSummaryRepresentation);
 
         word.setRelatedWords(wordSummaryRepresentations);
@@ -429,11 +425,11 @@ public class WordResourceIT {
         dbSetup.launch();
 
         ClientResponse words = httpGet(API_TO_EDIT_THE_WORD_WITH_ID_ONE);
-        List<WordSummaryRepresentation> wordSummaryRepresentations = new ArrayList<>();
+        Set<WordSummaryRepresentation> wordSummaryRepresentations = new LinkedHashSet<>();
 
         WordIntermediateRepresentation word = getWord(words);
         WordSummaryRepresentation wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(),
-                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new ArrayList<>(), word.getIsRootWord());
+                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new LinkedHashSet<>(), word.getIsRootWord());
         wordSummaryRepresentations.add(wordSummaryRepresentation);
 
         jsonObject.put("relatedWords", wordSummaryRepresentations);
@@ -443,8 +439,8 @@ public class WordResourceIT {
 
         assertThat(word.getRelatedWords().size(), is(1));
 
-        word.setRelatedWords(new ArrayList<>());
-        word.setSynonyms(new ArrayList<>());
+        word.setRelatedWords(new LinkedHashSet<>());
+        word.setSynonyms(new LinkedHashSet<>());
 
         words = loginAndPost("http://localhost:%d/api/words", word);
         word = getWord(words);
@@ -467,7 +463,7 @@ public class WordResourceIT {
         dbSetup.launch();
 
         PersonSummaryRepresentation personSummaryRepresentation = new PersonSummaryRepresentation(1, "singerName", "", null);
-        List<PersonSummaryRepresentation> personSummaryRepresentations = new ArrayList<>();
+        Set<PersonSummaryRepresentation> personSummaryRepresentations = new LinkedHashSet<>();
         personSummaryRepresentations.add(personSummaryRepresentation);
         SongSummaryRepresentation songSummaryRepresentation = new SongSummaryRepresentation();
         songSummaryRepresentation.setId(1);
@@ -493,7 +489,7 @@ public class WordResourceIT {
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
 
-        List<PersonSummaryRepresentation> writers = new ArrayList<>();
+        Set<PersonSummaryRepresentation> writers = new LinkedHashSet<>();
         writers.add(new PersonSummaryRepresentation(2, "Shabnam", "Virmani", "Singer"));
         jsonObject.put("writers",writers);
 

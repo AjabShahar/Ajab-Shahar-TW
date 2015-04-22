@@ -2,15 +2,15 @@ package org.ajabshahar.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class PeopleRepresentation {
 
-    private List<PersonRepresentation> people;
+    private Set<PersonRepresentation> people;
 
     public PeopleRepresentation() {
-        people = new ArrayList<>();
+        people = new LinkedHashSet<>();
     }
 
     public void add(PersonRepresentation person) {
@@ -18,7 +18,7 @@ public class PeopleRepresentation {
     }
 
     @JsonProperty("people")
-    public List<PersonRepresentation> getPeople() {
+    public Set<PersonRepresentation> getPeople() {
         return people;
     }
 

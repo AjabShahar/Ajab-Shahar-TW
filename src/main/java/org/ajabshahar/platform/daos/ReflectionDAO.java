@@ -11,8 +11,8 @@ import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class ReflectionDAO extends AbstractDAO<Reflection> {
     private final static Logger logger = LoggerFactory.getLogger(ReflectionDAO.class);
@@ -32,11 +32,11 @@ public class ReflectionDAO extends AbstractDAO<Reflection> {
         return reflection;
     }
 
-    public List<Reflection> findBy(Boolean showOnFeaturedContentPage, boolean authoringComplete) {
+    public Set<Reflection> findBy(Boolean showOnFeaturedContentPage, boolean authoringComplete) {
         return findBy(-1, "", showOnFeaturedContentPage, authoringComplete);
     }
 
-    public List<Reflection> findBy(int startFrom, String filteredLetter, Boolean showOnFeaturedContentPage, boolean authoringComplete) {
+    public Set<Reflection> findBy(int startFrom, String filteredLetter, Boolean showOnFeaturedContentPage, boolean authoringComplete) {
         Session currentSession = sessionFactory.getCurrentSession();
         Criteria findReflections = currentSession.createCriteria(Reflection.class);
         if (startFrom != -1) {
@@ -53,18 +53,18 @@ public class ReflectionDAO extends AbstractDAO<Reflection> {
             findReflections.add(Restrictions.eq("showOnFeaturedContentPage", true));
         }
         findReflections.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-        return findReflections.list();
+        return new LinkedHashSet<>(findReflections.list());
     }
 
-    public List<Reflection> find(int id) {
+    public Set<Reflection> find(int id) {
         Session currentSession = sessionFactory.getCurrentSession();
         Criteria findReflections = currentSession.createCriteria(Reflection.class);
         findReflections.add(Restrictions.eq("id", Long.valueOf(id)));
 
-        return findReflections.list();
+        return new LinkedHashSet<>(findReflections.list());
     }
 
-    public List<Reflection> findBy(int startFrom, String filteredLetter) {
+    public Set<Reflection> findBy(int startFrom, String filteredLetter) {
         return findBy(startFrom, filteredLetter, false, true);
     }
 }

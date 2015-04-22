@@ -55,7 +55,7 @@ public class SongResourceIT {
 
         SongsRepresentation responseEntity = getSongsRepresentation(response);
 
-        assertEquals(1, responseEntity.getSongs().get(0).getWords().getWords().size());
+        assertEquals(1, responseEntity.getSongs().iterator().next().getWords().getWords().size());
     }
 
     @Test
@@ -75,7 +75,7 @@ public class SongResourceIT {
 
         SongsRepresentation responseEntity = getSongsRepresentation(response);
 
-        assertEquals("", responseEntity.getSongs().get(0).getSingers().get(0).getPrimaryOccupation());
+        assertEquals("", responseEntity.getSongs().iterator().next().getSingers().iterator().next().getPrimaryOccupation());
     }
 
     @Test
@@ -93,7 +93,7 @@ public class SongResourceIT {
 
         SongsRepresentation responseEntity = getSongsRepresentation(response);
 
-        assertEquals(0, responseEntity.getSongs().get(0).getWords().getWords().size());
+        assertEquals(0, responseEntity.getSongs().iterator().next().getWords().getWords().size());
 
     }
 

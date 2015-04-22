@@ -10,8 +10,8 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
@@ -27,13 +27,13 @@ public class WordResourceTest {
     private WordResource wordResource;
     private Word word;
     private WordIntermediateRepresentation wordIntermediateRepresentation;
-    private List<Word> wordList;
+    private Set<Word> wordList;
 
     @Before
     public void setUp() {
         wordResource = new WordResource(words, wordRepresentationFactory);
         word = new Word();
-        wordList = new ArrayList<>();
+        wordList = new LinkedHashSet<>();
 
         word.setId(WORD_ID);
         wordIntermediateRepresentation = new WordIntermediateRepresentation();

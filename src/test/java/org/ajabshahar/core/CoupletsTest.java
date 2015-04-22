@@ -10,8 +10,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
@@ -32,10 +32,10 @@ public class CoupletsTest {
 
     @Test
     public void shouldGetCoupletById() throws Exception {
-        List<org.ajabshahar.platform.models.Couplet> expectedResult = new ArrayList<>();
+        Set<Couplet> expectedResult = new LinkedHashSet<>();
         when(coupletRepository.findBy(ID)).thenReturn(expectedResult);
 
-        List<org.ajabshahar.platform.models.Couplet> actualResult = couplets.findBy(ID);
+        Set<Couplet> actualResult = couplets.findBy(ID);
 
         assertEquals(expectedResult, actualResult);
     }

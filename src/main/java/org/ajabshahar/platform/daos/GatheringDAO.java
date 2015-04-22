@@ -6,7 +6,8 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class GatheringDAO extends AbstractDAO<Gathering> {
     private final SessionFactory sessionFactory;
@@ -20,11 +21,11 @@ public class GatheringDAO extends AbstractDAO<Gathering> {
         return persist(gathering);
     }
 
-    public List findAll() {
+    public Set findAll() {
         Session currentSession = sessionFactory.getCurrentSession();
         Criteria findGatherings = currentSession.createCriteria(Gathering.class);
         findGatherings.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-        return findGatherings.list();
+        return new LinkedHashSet<>(findGatherings.list());
     }
 
     public Gathering findById(Long id) {

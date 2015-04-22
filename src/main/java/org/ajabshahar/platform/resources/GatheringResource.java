@@ -8,7 +8,7 @@ import org.ajabshahar.platform.models.Gathering;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.List;
+import java.util.Set;
 
 @Path("/gatherings")
 @Produces(MediaType.APPLICATION_JSON)
@@ -39,7 +39,7 @@ public class GatheringResource {
     @GET
     @UnitOfWork
     public Response listAllGatherings() {
-        List gatherings = gatheringDAO.findAll();
+        Set gatherings = gatheringDAO.findAll();
         return createResponseFor(gatherings);
     }
 

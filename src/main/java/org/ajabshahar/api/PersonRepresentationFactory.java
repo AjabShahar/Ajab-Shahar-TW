@@ -3,12 +3,14 @@ package org.ajabshahar.api;
 import org.ajabshahar.platform.models.Category;
 import org.ajabshahar.platform.models.PersonDetails;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class PersonRepresentationFactory {
 
     public PersonRepresentation create(PersonDetails personDetails) {
-        List<String> categoryName = new ArrayList<>();
+        Set<String> categoryName = new LinkedHashSet<>();
 
         for (Category category : personDetails.getCategory()) {
             categoryName.add(category.getName());
@@ -18,7 +20,7 @@ public class PersonRepresentationFactory {
         return personRepresentation;
     }
 
-    public PeopleRepresentation create(List<PersonDetails> personDetailsList) {
+    public PeopleRepresentation create(Set<PersonDetails> personDetailsList) {
         PeopleRepresentation peopleRepresentation = new PeopleRepresentation();
         for (PersonDetails personDetails : personDetailsList) {
             peopleRepresentation.add(create(personDetails));
@@ -26,8 +28,8 @@ public class PersonRepresentationFactory {
         return peopleRepresentation;
     }
 
-    public static List<PersonSummaryRepresentation> createPeopleSummaryRepresentation(List<PersonDetails> personDetails) {
-        List<PersonSummaryRepresentation> people = new ArrayList<>();
+    public static Set<PersonSummaryRepresentation> createPeopleSummaryRepresentation(Set<PersonDetails> personDetails) {
+        Set<PersonSummaryRepresentation> people = new LinkedHashSet<>();
         for (PersonDetails person : personDetails) {
             people.add(PersonSummaryRepresentation.createFrom(person));
         }
@@ -42,7 +44,7 @@ public class PersonRepresentationFactory {
 
     public static Set<PersonDetails> toPerson(Set<PersonSummaryRepresentation> peopleSummaryRepresentation) {
         if(peopleSummaryRepresentation != null ){
-            HashSet<PersonDetails> peopleDetails = new HashSet<>();
+            Set<PersonDetails> peopleDetails = new LinkedHashSet<>();
             for(PersonSummaryRepresentation personSummaryRepresentation: peopleSummaryRepresentation){
                 peopleDetails.add(toPerson(personSummaryRepresentation));
             }
