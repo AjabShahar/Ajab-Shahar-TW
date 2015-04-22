@@ -92,6 +92,7 @@ allSongsApp.controller('allSongsController', ['$scope', '$window', 'songsContent
             $scope.filteredSongList = songs || [];
             loadFilterItemsFrom(songs);
             $scope.filteredSongList = sortService.sortList($scope.filteredSongList, contentTextRepresentation);
+            updateFilterCategoriesState();
         });
     };
 
