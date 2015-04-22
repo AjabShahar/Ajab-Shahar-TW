@@ -39,13 +39,21 @@
     width: 812px;
     float: right;
 
-    .menuTree {
+    .map-image {
+        position:absolute;
+        left: 0;
+        top: 0;
+        width:812px;
+        height: 90px;
+    }
+
+    /*.menuTree {
       display: inline-block;
       width: 130px;
       height: 70px;
       float: right;
       margin: 28px 115px 0 -100px;
       cursor: pointer;
-    }
+    }*/
   }
 }
