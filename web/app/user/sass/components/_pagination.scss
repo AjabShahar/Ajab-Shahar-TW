@@ -56,10 +56,14 @@ $tab-portrait: new-breakpoint(max-width 768px);
         & > a {
           color: #888;
           text-transform: uppercase;
+
+          &:hover {
+            color: $color-hover-link;
+          }
         }
         & > .active {
           text-transform: uppercase;
-          color: #00A199;
+          color: $color-selected-link;
         }
       }
     }

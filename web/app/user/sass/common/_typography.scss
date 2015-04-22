@@ -37,14 +37,6 @@ ul {
   list-style: none;
 }
 
-.selected {
-  color: #e83785 !important;
-}
-
-.active-link {
-  color: $color-link-green;
-}
-
-.active-link-pink {
-  color: $color-link-pink;
+.active {
+    color: $color-selected-link;
 }
