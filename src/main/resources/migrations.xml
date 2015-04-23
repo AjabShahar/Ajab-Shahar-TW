@@ -71,4 +71,14 @@
             alter table word add column thumbnail_url varchar(300);
         </sql>
     </changeSet>
+    <changeSet id="74" author="CHANAKYA_JAIDEEP">
+        <sql>
+            CREATE TABLE REFLECTION_PERSON(
+            ID SERIAL NOT NULL,
+            REFLECTION_ID INT,
+            PERSON_ID INT,
+            CONSTRAINT REFLECTION_ID_FKEY FOREIGN KEY (REFLECTION_ID) REFERENCES REFLECTION(ID),
+            CONSTRAINT PERSON_ID_FKEY FOREIGN KEY (PERSON_ID) REFERENCES PERSON(ID));
+        </sql>
+    </changeSet>
 </databaseChangeLog>

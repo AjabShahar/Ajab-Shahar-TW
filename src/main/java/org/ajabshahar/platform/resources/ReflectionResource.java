@@ -36,7 +36,7 @@ public class ReflectionResource {
         Reflection reflection = reflectionRepresentationFactory.create(jsonReflection);
         reflection = reflections.create(reflection);
         ReflectionRepresentation reflectionRepresentation = reflectionRepresentationFactory.createReflectionRepresentation(reflection);
-        return Response.ok(reflectionRepresentation, MediaType.APPLICATION_JSON).build();
+        return Response.ok(reflectionRepresentation).build();
     }
 
     @GET

@@ -38,8 +38,6 @@ public class SongResourceIT {
         dataSource.setUrl("jdbc:h2:./test");
         dataSource.setUser("sa");
         dataSource.setPassword("");
-
-
     }
 
     @Test
@@ -108,7 +106,6 @@ public class SongResourceIT {
         ClientResponse response = client.resource(
                 String.format("http://localhost:%d/api/songs/getPublishedSongs?singerId=1", RULE.getLocalPort())).header("Content-type", "application/json")
                 .get(ClientResponse.class);
-
 
         assertEquals(204, response.getStatus());
 

@@ -53,4 +53,9 @@ public class Reflection {
     @JoinTable(name = "REFLECTION_SONG", joinColumns = {@JoinColumn(name = "REFLECTION_ID")},
             inverseJoinColumns = {@JoinColumn(name = "SONG_ID")})
     private Set<Song> songs = new LinkedHashSet<>();
+
+    @ManyToMany
+    @JoinTable(name = "REFLECTION_PERSON", joinColumns = {@JoinColumn(name = "REFLECTION_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "PERSON_ID")})
+    private Set<PersonDetails> people = new LinkedHashSet<>();
 }

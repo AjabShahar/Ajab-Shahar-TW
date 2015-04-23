@@ -51,9 +51,12 @@ public class ReflectionResourceIT {
     public void shouldSaveReflection() {
         String songEnglishTransliteration = "Transliteration";
         Set<SongSummaryRepresentation> songs = new LinkedHashSet<>();
+        PersonSummaryRepresentation personSummaryRepresentation = new PersonSummaryRepresentation(1, "name", "hindiName", "primaryOccupation");
+        Set<PersonSummaryRepresentation> personSummaryRepresentations = new LinkedHashSet<PersonSummaryRepresentation>();
+        personSummaryRepresentations.add(personSummaryRepresentation);
         songs.add(new SongSummaryRepresentation(1, songEnglishTransliteration, null, null, null, null, null, null));
 
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_CATEGORY, DataSetup.INSERT_SONGS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_CATEGORY, DataSetup.INSERT_PERSON, DataSetup.INSERT_SONGS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -69,6 +72,7 @@ public class ReflectionResourceIT {
         jsonReflection.put("publish", true);
         jsonReflection.put("speaker", null);
         jsonReflection.put("songs", songs);
+        jsonReflection.put("people", personSummaryRepresentations);
 
         ClientResponse reflectionResponse = loginAndSave(jsonReflection);
 
@@ -77,6 +81,7 @@ public class ReflectionResourceIT {
         assertThat(reflectionResponse.getStatus(), is(200));
         assertThat(reflection.getId(), is(not(0)));
         assertThat(reflection.getSongs().iterator().next().getId(), is(1L));
+        assertThat(reflection.getPeople().iterator().next().getId(), is(1L));
     }
 
     @Test
