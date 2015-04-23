@@ -3,6 +3,7 @@ reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$windo
     function ($scope, $window, $location, reflectionContentService, loginVerifyService, $q) {
         loginVerifyService.redirectIfNotAuthenticated();
         $scope.reflection = {"reflectionTranscripts": [], "speaker": {}};
+        $scope.peopleList = [];
         $scope.people = [];
         $scope.words = [];
         $scope.songs = [];
@@ -33,6 +34,7 @@ reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$windo
                     $scope.reflection = data[3].data;
                     $scope.words = getSelectedContent($scope.reflection.words, data[1].data.words);
                     $scope.songs = getSelectedContent($scope.reflection.songs, data[2].data.songs);
+                    $scope.people = getSelectedContent($scope.reflection.people, data[0].data);
 
                     $scope.reflection.type = getReflectionType();
                 });

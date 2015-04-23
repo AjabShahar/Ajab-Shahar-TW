@@ -26,6 +26,7 @@ public class ReflectionRepresentationFactory {
         reflection.setYoutubeVideo(reflectionRepresentation.getYoutubeVideoId());
         reflection.setReflectionTranscripts(toTranscripts(reflectionRepresentation.getReflectionTranscripts()));
         reflection.setSongs(SongSummaryRepresentation.toSongs(reflectionRepresentation.getSongs()));
+        reflection.setPeople(PersonSummaryRepresentation.toPeople(reflectionRepresentation.getPeople()));
         return reflection;
     }
 
@@ -73,7 +74,7 @@ public class ReflectionRepresentationFactory {
             ReflectionRepresentation representation = new ReflectionRepresentation((int) reflection.getId(), reflection.getTitle(),
                     reflection.getVerb(), getPersonSummaryRepresentation(speakerDetails), reflection.getSoundCloudId(), reflection.getYoutubeVideo(),
                     reflectionTranscripts, wordRepresentations, reflection.getShowOnFeaturedContentPage(), reflection.getIsAuthoringComplete(),
-                    SongSummaryRepresentation.toSummaryRepresentations(reflection.getSongs()));
+                    SongSummaryRepresentation.toSummaryRepresentations(reflection.getSongs()), PersonSummaryRepresentation.toPersonSummaries(reflection.getPeople()));
             reflectionRepresentations.add(representation);
         }
 
@@ -117,7 +118,8 @@ public class ReflectionRepresentationFactory {
                 wordRepresentations,
                 reflection.getShowOnFeaturedContentPage(),
                 reflection.getIsAuthoringComplete(),
-                SongSummaryRepresentation.toSummaryRepresentations(reflection.getSongs())
+                SongSummaryRepresentation.toSummaryRepresentations(reflection.getSongs()),
+                PersonSummaryRepresentation.toPersonSummaries(reflection.getPeople())
         );
         return reflectionRepresentation;
     }
