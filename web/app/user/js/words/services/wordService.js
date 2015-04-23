@@ -12,9 +12,25 @@ angular.module("word").service("wordService",["$http",function ($http) {
         return $http.get('/api/words');
     };
 
+    var getWord = function(id){
+        return $http.get('/api/words/edit?id='+id);
+    };
+
+    var getReflectionsFrom = function(word){
+        var reflections = [];
+        if(!_.isEmpty(word.defaultReflection)){
+            reflections.push(word.defaultReflection)
+        }
+        return reflections.concat(word.reflections);
+    };
+
+
+
     return {
         getVersions: getVersions,
         getWordsLandingPageContent: getWordsLandingPageContent,
-        getGlossaryPageContent: getGlossaryPageContent
+        getGlossaryPageContent: getGlossaryPageContent,
+        getWord:getWord,
+        getReflectionsFrom:getReflectionsFrom
     };
 }]);

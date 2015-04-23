@@ -4,6 +4,7 @@ module.exports = function (config) {
         basePath: '../../app',
         files: [
             'common/lib/jquery/dist/jquery.min.js',
+            'common/lib/jcarousel/dist/jquery.jcarousel.js',
             'common/lib/underscore/underscore-min.js',
             'common/lib/angular/angular.js',
             'common/lib/angular-animate/angular-animate.js',
@@ -36,15 +37,24 @@ module.exports = function (config) {
             'user/js/words/**/*.js',
             'user/js/songs/**/*.js',
             'http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-cookies.js',
-            '../test/unit/**/*.js'
+            '../test/unit/**/*.js',
+            'user/js/common/directives/carouselSupport/carousel.html'
         ],
         autoWatch: true,
         frameworks: ['jasmine'],
         browsers: ['PhantomJS'],
         reporters: ['dots', 'junit', 'coverage'],
+        plugins: [
+            'karma-phantomjs-launcher',
+            'karma-jasmine',
+            'karma-ng-html2js-preprocessor'
+        ],
         preprocessors: {
-            '**/*.js': ['coverage']
+            '**/*.js': ['coverage'],
+            'user/js/common/directives/carouselSupport/carousel.html':['ng-html2js']
         },
+
+
         logLevel: config.LOG_INFO,
         singleRun: true,
         junitReporter: {
