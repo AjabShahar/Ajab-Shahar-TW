@@ -1,0 +1,9 @@
+<div class="jcarousel carousel-box thumbnail-carousel">
+    <ul>
+        <li ng-repeat="item in items track by $index">
+            <content-thumbnail content="item" format="format" ng-click="selectThumbnail($index)" current-index="{{$index}}" ></content-thumbnail>
+        </li>
+    </ul>
+</div>
+<a href="" class="jcarousel-control-prev" data-jcarouselcontrol="true" ng-click="showPrev()"></a>
+<a href="" class="jcarousel-control-next" data-jcarouselcontrol="true" ng-click="showNext()"></a>
