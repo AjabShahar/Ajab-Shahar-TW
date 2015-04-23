@@ -3,36 +3,35 @@
     width: 100%;
 
     .content-wrapper {
-        width: 780px;
-        background: transparent url(/user/img/words/word_content_bg_middle.png) left top;
-        background-repeat: no-repeat repeat;
+        width: 80%;
+        background: transparent url(/user/img/words/word_text_bg.png) left top;
         margin: 0 auto;
         position: relative;
-        padding: 10px 2%;
-
-        &:before, &:after {
-            display: block;
-            position: absolute;
-            width:100%;
-            content: '';
-            left: 0;
-
-        }
-
-        &:before {
-            background: transparent url(/user/img/words/word_content_bg_top.png) left top no-repeat;
-            top:-93px;
-            height: 100px;
-        }
+        padding-left: 50px;
+        padding-top: 200px;
+        background-size: 100% 100%;
+        padding-right: 50px;
+        padding-bottom: 50px;
+        background-repeat: no-repeat repeat;
 
 
-         &:after {
+
+
+        /* &:after {
             height: 140px;
-            background: transparent url(/user/img/words/word_content_bg_bottom.png) left top scroll repeat-y;
+            background: transparent url(/user/img/words/extract_bottom.png) left top;
             bottom: -200px;
-         }
+         }*/
 
 
 
+    }
+    .content-wrapper-bottom-image {
+          background: transparent url(/user/img/words/word_text_bg_bottom.png) left -1px no-repeat;
+          height: 30px;
+          width: 80%;
+          position: relative;
+          margin: 0 auto;
+          background-size: 100% 100%;
     }
 }
