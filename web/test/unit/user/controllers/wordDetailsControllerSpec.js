@@ -29,7 +29,7 @@ describe('Word details controller', function() {
 
     }));
 
-    iit("should create the list of thumbnail objects to be displayed on carousel",function(){
+    it("should create the list of thumbnail objects to be displayed on carousel",function(){
         $httpBackend.flush();
 
         expect(scope.carouselItems.length).toBe(4);
