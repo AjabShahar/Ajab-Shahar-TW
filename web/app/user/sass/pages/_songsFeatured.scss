@@ -1,17 +1,30 @@
+$small-desktop: new-breakpoint(max-width 1380px);
+$generic-notebook: new-breakpoint(max-width 1280px);
+
 .homepage-content {
   width: 70%;
   position: relative;
   height: 2500px !important;
   margin: 18% auto 0;
 
+
   .logo-container {
-    left: 14%;
+    left: 13.5%;
     top: 23px !important;
     position: fixed;
 
-    @media screen and (max-width: 1024px) {
-      left: 5%;
-      z-index: $zIndex-innerpage-logo;
+    @include media($small-desktop) {
+        left: 12%;
+    }
+    @include media($generic-notebook) {
+        left: 9%;
+    }
+    @include media($tab-landscape) {
+        left: 2.5%;
+        z-index: $zIndex-innerpage-logo;
+    }
+    @include media($tab-portrait) {
+        left: 5%;
     }
   }
 }
