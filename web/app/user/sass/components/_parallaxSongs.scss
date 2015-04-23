@@ -1,141 +1,36 @@
 /* Animation */
 
-@-webkit-keyframes rotation {
-  0% {
-    -webkit-transform: rotate(0);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
+
+@include keyframes(rotation) {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
-@-webkit-keyframes antirotation {
-  0% {
-    -webkit-transform: rotate(0);
-  }
-  100% {
-    -webkit-transform: rotate(-360deg);
-  }
+
+@include keyframes(antirotation) {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
 }
 
-@-moz-keyframes rotation {
-  0% {
-    -moz-transform: rotate(0);
-  }
-  100% {
-    -moz-transform: rotate(360deg);
-  }
+@include keyframes(moveUp) {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 0 -4277px;
+    }
 }
 
-@-moz-keyframes antirotation {
-  0% {
-    -moz-transform: rotate(0);
-  }
-  100% {
-    -moz-transform: rotate(-360deg);
-  }
-}
 
-@-o-keyframes rotation {
-  0% {
-    -o-transform: rotate(0);
-  }
-  100% {
-    -o-transform: rotate(360deg);
-  }
-}
-
-@-o-keyframes antirotation {
-  0% {
-    -o-transform: rotate(0);
-  }
-  100% {
-    -o-transform: rotate(-360deg);
-  }
-}
-
-@keyframes rotation {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes antirotation {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(-360deg);
-  }
-}
-
-@-webkit-keyframes moveUp {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 0 -4277px;
-  }
-}
-
-@-webkit-keyframes moveDown {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 0 6400px;
-  }
-}
-
-@-moz-keyframes moveUp {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 0 -4277px;
-  }
-}
-
-@-moz-keyframes moveDown {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 0 6400px;
-  }
-}
-
-@-o-keyframes moveUp {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 0 -4277px;
-  }
-}
-
-@-o-keyframes moveDown {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 0 6400px;
-  }
-}
-
-@keyframes moveUp {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 0 -4277px;
-  }
-}
-
-@keyframes moveDown {
+@include keyframes(moveDown) {
   0% {
     background-position: 0 0;
   }
@@ -183,6 +78,9 @@
 
       &1 {
         background: url(/user/img/songs/parallax/background_image.jpg) 0px 0px;
+
+        /*@include retina-image("/user/img/songs/parallax/background_image", 1140px auto);*/
+
         background-repeat: no-repeat repeat;
 
       }
@@ -190,14 +88,10 @@
       &2 {
         background: url(/user/img/songs/parallax/white_tambura.png) 0 0 no-repeat;
         width: 145px;
-        -webkit-animation: antirotation 100s linear -5s infinite;
-        -moz-animation: antirotation 100s linear -5s infinite;
-        -o-animation: antirotation 100s linear -5s infinite;
-        animation: antirotation 100s linear -5s infinite;
-        -webkit-transform-origin: 30% 20%;
-        -moz-transform-origin: 30% 20%;
-        -o-transform-origin: 30% 20%;
-        transform-origin: 30% 20%;
+
+        @include animation(antirotation 100s linear -5s infinite);
+        @include transform-origin(30% 20%);
+
         height: 495px;
         top: 560px;
         left: 12%;
@@ -209,10 +103,8 @@
           opacity: 0.8;
           background: url(/user/img/songs/parallax/white_tambura.png) 0 0 no-repeat;
           height: 500px;
-          -webkit-animation: antirotation 100s linear 2s infinite;
-          -moz-animation: antirotation 100s linear 2s infinite;
-          -o-animation: antirotation 100s linear 2s infinite;
-          animation: antirotation 100s linear 2s infinite;
+
+          @include animation(antirotation 100s linear 2s infinite);
         }
       }
 
@@ -221,24 +113,17 @@
         opacity: 0.1;
         top: 1000px;
         left: 70%;
-        -webkit-transform-origin: 30% 20%;
-        -moz-transform-origin: 30% 20%;
-        -o-transform-origin: 30% 20%;
-        transform-origin: 30% 20%;
+
+        @include transform-origin(30% 20%);
+        @include animation(rotation 60s linear 3s infinite);
+
         width: 190px;
         height: 600px;
-        -webkit-animation: rotation 60s linear 3s infinite;
-        -moz-animation: rotation 60s linear 3s infinite;
-        -o-animation: rotation 60s linear 3s infinite;
-        animation: rotation 60s linear 3s infinite;
 
         &.tambura-small-1 {
           left: 67%;
           top: 2000px;
-          -webkit-animation: rotation 60s linear 1s infinite;
-          -moz-animation: rotation 60s linear 1s infinite;
-          -o-animation: rotation 60s linear 1s infinite;
-          animation: rotation 60s linear 1s infinite;
+          @include animation(rotation 60s linear 1s infinite);
           opacity: 0.15;
         }
       }
@@ -256,19 +141,15 @@
         height: 4277px;
         background-size: contain;
         width: 100%;
-        -webkit-animation: moveUp 200s linear infinite;
-        -moz-animation: moveUp 200s linear infinite;
-        -o-animation: moveUp 200s linear infinite;
-        animation: moveUp 200s linear infinite;
+
+        @include animation(moveUp 200s linear infinite);
 
         &.top-to-bottom {
           top: -2000px;
           opacity: 0.15;
           height: 6400px;
-          -webkit-animation: moveDown 500s linear infinite;
-          -moz-animation: moveDown 500s linear infinite;
-          -o-animation: moveDown 500s linear infinite;
-          animation: moveDown 500s linear infinite;
+
+          @include animation(moveDown 500s linear infinite);
         }
       }
 
@@ -335,10 +216,7 @@
         }
         &:after {
           float: right;
-          -webkit-transform: rotate(180deg);
-          -moz-transform: rotate(180deg);
-          -o-transform: rotate(180deg);
-          transform: rotate(180deg);
+          @include transform(rotate(180deg));
         }
       }
     }
