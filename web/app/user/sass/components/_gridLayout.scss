@@ -1,8 +1,7 @@
 .grid-layout {
-    background: transparent url(/user/img/common/bg/bg_pattern.png) repeat;
+    background: transparent url(/user/img/common/bg/bg_pattern.png) fixed repeat;
     background-size: contain;
     margin: 0;
-    position: fixed;
 
     .grid-view {
         float: left;
