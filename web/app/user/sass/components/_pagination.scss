@@ -139,7 +139,11 @@ $tab-portrait: new-breakpoint(max-width 768px);
       li {
         float: left;
         width: 3.7%;
-        text-align: center;
+        text-align: right;
+
+        &:first-child {
+            text-align: left;
+        }
         a {
           color: #888;
           cursor: pointer;
