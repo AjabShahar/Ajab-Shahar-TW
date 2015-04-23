@@ -23,9 +23,6 @@ $generic-notebook: new-breakpoint(max-width 1280px);
         left: 2.5%;
         z-index: $zIndex-innerpage-logo;
     }
-    @include media($tab-portrait) {
-        left: 5%;
-    }
   }
 }
 
