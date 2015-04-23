@@ -1,6 +1,6 @@
 angular.module("word").
-    controller('wordDetailsController', ['$scope', '$location', 'wordMapper', 'popupService', 'reflectionMapper', 'wordService', '$routeParams',function($scope, $location, wordMapper, popupService, reflectionMapper, wordService, $routeParams){
-        $scope.popupService = popupService;
+    controller('wordDetailsController', ['$scope','wordService', '$route',function($scope,wordService, $route){
+      /*  $scope.popupService = popupService;
         $scope.detailsService = $scope;
         $scope.wordReflections = {"wordThumbnails": [], "reflections": []};
         $scope.wordReflectionsCompleteInfo = {"wordCompleteInfo": [], "reflectionsCompleteInfo": []};
@@ -55,6 +55,33 @@ angular.module("word").
         $scope.shouldShowReflections = function () {
             return $scope.wordReflections.reflections.length > 0;
         };
+*/
 
+
+
+        $scope.selectThumbnail = function(thumbnail){
+            console.log(thumbnail);
+        };
+
+        $scope.init = function () {
+            $scope.carouselItems=[];
+            $scope.wordId = $route.current.params.id;
+
+            wordService.getWord($scope.wordId).success(function(response){
+                $scope.wordDetails = response;
+                if(!_.isEmpty($scope.wordDetails.wordIntroductions )){
+                    $scope.carouselItems.push(new AjabShahar.ThumbnailObject($scope.wordDetails,"word"))
+                }
+                $scope.carouselItems = $scope.carouselItems.concat(
+                    wordService
+                        .getReflectionsFrom($scope.wordDetails)
+                        .map(function(reflection){
+                            return new AjabShahar.ThumbnailObject(reflection,"reflection");
+                        }
+                    )
+                )
+            });
+
+        }();
     }]);
 

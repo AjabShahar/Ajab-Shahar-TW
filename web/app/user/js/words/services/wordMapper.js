@@ -10,6 +10,7 @@ angular.module("word").factory('wordMapper', [function () {
                 "wordTransliteration": word.wordTransliteration,
                 "hindiIntroExcerpt": word.hindiIntroExcerpt,
                 "englishIntroExcerpt": word.englishIntroExcerpt,
+                "hasWordIntro":!_.isEmpty(word.wordIntroEnglish),
                 "customStyle": (customStyle) ? customStyle() : ''
             });
             return thumbnails;

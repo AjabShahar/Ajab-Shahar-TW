@@ -11,9 +11,12 @@
         </div>
     </div>
 
+    <div class="vertical-spacer" ng-show="!shouldShowVersions() && false"></div>
+
     <div class="lower-pardah">
-        <div class="carousel-wrapper jcarousel-wrapper" ng-show="showVersion && shouldShowReflections()">
-            <div as-carousel class="carousel-box jcarousel">
+        <div class="versions toggleBySlide" ng-show="showVersion && shouldShowVersions() || true">
+            <div class="carousel-wrapper jcarousel-wrapper" ng-show="showVersion && shouldShowReflections() || true">
+            <!--<div as-carousel class="carousel-box jcarousel">
                 <ul>
                     <li ng-repeat="word in wordReflections.wordThumbnails track by $index">
                         <word-thumbnail id="{{word.id}}" transliteration="{{word.wordTransliteration}}"
@@ -31,8 +34,12 @@
                 </ul>
                 <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true"></a>
                 <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true"></a>
+            </div>-->
+                <carousel items="carouselItems" item-clicked="selectThumbnail" format="'transliteration'"></carousel>
             </div>
         </div>
+
+
         <div class="see-more" ng-click="toggleVersion()">
             <a class="version" href="javascript:void(0)">
                 intro + {{numberOfReflections}} reflections

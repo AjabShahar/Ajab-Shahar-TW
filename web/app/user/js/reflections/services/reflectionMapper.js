@@ -47,6 +47,7 @@ var reflectionMapper = function () {
 
     };
 
+
     return {
         getThumbnails: getThumbnails,
         getOverviews: getOverviews,

@@ -1,0 +1,34 @@
+<div class="thumbnail {{content.customStyle}}">
+    <div class="image" >
+        <img ng-src="{{content.thumbnailImg}}"/>
+    </div>
+    <div class="bubble" >
+        <div class="summary" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
+            <h3 class="title">{{content.getTitle(format)}}</h3>
+            <h4 class="en-title">{{content.getSecondTitle(format)}}</h4>
+
+            <span class="singers" ng-show="content.showPrimaryVerbPeopleAlways()">{{content.verbPeople.verb}} {{content.verbPeople.people|uppercase}}</span>
+
+            <div ng-hide="!shouldShowDetails" class='thumbnailDetails toggleBySlide'>
+
+                <div>
+                    <div class="singers" ng-show="content.showPrimaryVerbPeopleInDetails()">
+                        <small class="">{{content.verbPeople.verb}} {{content.verbPeople.people|uppercase}}</small>
+                    </div>
+                </div>
+
+                <div class="desc" ng-if="content.description">
+                    <small>{{content.description | limitTo : 100 }} ...</small>
+                </div>
+                <small class="poet" ng-if="content.description && content.secondaryVerbPeople" >{{content.secondaryVerbPeople.verb}} {{content.secondaryVerbPeople.people|uppercase}}</small>
+
+                <div class='footer'>
+                    <p class="categoryName">{{content.type | uppercase}}
+                        <small class="more-info" ng-if="content.contentFormat === 'text'">T</small>
+                        <small class="play" ng-if="content.contentFormat !== 'text'" >{{duration}}</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
