@@ -11,8 +11,16 @@ var contentService = function ($http) {
         return $http.get('/api/people');
     };
 
+    var getAllPeopleSummary = function(params){
+        return $http.get('/api/people/summary',{params:params});
+    };
+
     var getPoets = function () {
         return $http.get('/api/people?role=Poet');
+    };
+
+    var getAllPoetsSummary = function () {
+        return getAllPeopleSummary({role:'Poet'})
     };
 
     var getAllCouplets = function () {
@@ -53,6 +61,8 @@ var contentService = function ($http) {
 
     return {
         getAllPeople: getAllPeople,
+        getAllPeopleSummary: getAllPeopleSummary,
+        getAllPoetsSummary: getAllPoetsSummary,
         getAllCategories: getAllCategories,
         getAllSongs: getAllSongs,
         getAllCouplets: getAllCouplets,
