@@ -32,19 +32,19 @@ wordsAdminApp.controller('wordDetailsController', ['$scope', '$window', '$locati
 
         $scope.init = function () {
             var reflectionsPromise = contentService.getAllReflectionSummaries();
-            var peoplePromise = contentService.getAllPeople();
+            var peoplePromise = contentService.getAllPeopleSummary();
             var categoriesPromise = contentService.getAllCategories(wordCategory);
             var songsPromise = contentService.getAllSongs();
-            var poetsPromise = contentService.getPoets();
+            var poetsPromise = contentService.getAllPoetsSummary();
             var wordsSummaryPromise = contentService.getAllWordsSummaries();
 
             $q.all([categoriesPromise, songsPromise, peoplePromise, reflectionsPromise, poetsPromise, wordsSummaryPromise]).then(function (data) {
                 $scope.categories = data[0].data;
                 $scope.songs = data[1].data.songs;
-                $scope.writers = angular.copy(data[2].data.people);
-                $scope.people = angular.copy(data[2].data.people);
+                $scope.writers = angular.copy(data[2].data);
+                $scope.people = angular.copy(data[2].data);
                 $scope.reflections = data[3].data.reflections;
-                $scope.poets = data[4].data.people;
+                $scope.poets = data[4].data;
                 $scope.synonyms = angular.copy(data[5].data.words);
                 $scope.relatedWords = angular.copy(data[5].data.words);
 
