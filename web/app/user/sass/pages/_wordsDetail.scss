@@ -2,27 +2,62 @@
     background: transparent url(/user/img/words/word_details_bg.png) left top;
     width: 100%;
 
+    .main-content {
+        margin-top: 10px;
+        .left-nav {
+            top: 15px;
+        }
+
+    }
+
+    .header {
+        color: $light-grey;
+        font-size: $small;
+        margin-left: 1px;
+        text-align: left;
+        padding-top: 15px;
+        font-weight: 300;
+
+
+        .author-caps {
+              text-transform: uppercase;
+              color: $pink;
+
+        }
+        .title-case {
+              text-transform: initial;
+        }
+
+
+        .header-video-reflection {
+            h3 {
+                line-height: 1.5em;
+            }
+            .ref-header2-text {
+                font-size: $large;
+                color: $dark-grey;
+                font-weight: 300;
+
+            }
+
+        }
+    }
+
+
+
+
+
     .content-wrapper {
         width: 80%;
         background: transparent url(/user/img/words/word_text_bg.png) left top;
         margin: 0 auto;
         position: relative;
         padding-left: 50px;
-        padding-top: 200px;
+        padding-top: 20px;
         background-size: 100% 100%;
         padding-right: 50px;
         padding-bottom: 50px;
         background-repeat: no-repeat repeat;
-
-
-
-
-        /* &:after {
-            height: 140px;
-            background: transparent url(/user/img/words/extract_bottom.png) left top;
-            bottom: -200px;
-         }*/
-
 
 
     }
