@@ -130,9 +130,7 @@ public class ReflectionRepresentationFactory {
         Set<ReflectionSummaryRepresentation> reflectionsSummaryRepresentations = new LinkedHashSet<>();
         if (reflections != null) {
             for (Reflection reflection : reflections) {
-                PersonSummaryRepresentation speaker = getPersonSummaryRepresentation(reflection.getSpeaker());
-
-                reflectionsSummaryRepresentations.add(new ReflectionSummaryRepresentation(reflection.getId(), reflection.getTitle(), speaker, reflection.getIsAuthoringComplete()));
+                reflectionsSummaryRepresentations.add(ReflectionSummaryRepresentation.createFrom(reflection));
             }
         }
         return reflectionsSummaryRepresentations;

@@ -3,7 +3,8 @@ AjabShahar.ThumbnailObject = function(contentItem,type){
     var self = this;
     self.actualContent = contentItem;
     var buildFromSong = function(song){
-        /*self.type = type;
+        /*
+        self.type = type;
         self.id = song.id;
         self.imgSrc = song.thumbnailUrl;
         self.videoSrc = song.videoId;
@@ -13,7 +14,8 @@ AjabShahar.ThumbnailObject = function(contentItem,type){
         self.category = "SONG";
         self.verb=getVerbForSong(song);
         self.moreInfo = song.poet? "Poet "+song.poet.toUpperCase():null;
-        self.duration = song.duration;*/
+        self.duration = song.duration;
+        */
     };
 
     var buildFromWord = function(word){
@@ -40,7 +42,7 @@ AjabShahar.ThumbnailObject = function(contentItem,type){
             self.description =reflection.about;
             self.verbPeople ={
                 verb:reflection.verb,
-                people:reflection.speaker.name
+                people:reflection.speaker?reflection.speaker.name:""
             };
             self.englishTitle =reflection.title;
         }
@@ -60,12 +62,12 @@ AjabShahar.ThumbnailObject = function(contentItem,type){
     };
 
     self.getTitle = function(contentTextRepresentation){
-        var title = (contentTextRepresentation === 'Transliteration') ? self.englishTransliteration : self.englishTranslation;
-        return self.type === 'reflection'? self.englishTranslation: title;
+        var title = (contentTextRepresentation === 'Transliteration') ? self.translitTitle : self.englishTitle;
+        return self.type === 'reflection'? self.englishTitle: title;
     };
 
     self.getSecondTitle = function(contentTextRepresentation){
-        var title = (contentTextRepresentation === 'Transliteration') ? self.englishTranslation : self.englishTransliteration;
+        var title = (contentTextRepresentation === 'Translation') ? self.englishTitle : self.translitTitle;
         return self.type === 'reflection'? "": title;
     };
 
@@ -74,7 +76,7 @@ AjabShahar.ThumbnailObject = function(contentItem,type){
     };
 
     self.showPrimaryVerbPeopleInDetails = function(){
-        return !(self.type === 'song' && self.verbPeople.verb === 'sing')
+        return (self.type === 'song' && self.verbPeople.verb === 'sing')
     };
 
     if(type === 'song'){

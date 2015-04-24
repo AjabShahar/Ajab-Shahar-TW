@@ -12,6 +12,7 @@ import org.ajabshahar.DataSetup;
 import org.ajabshahar.api.*;
 import org.ajabshahar.platform.PlatformApplication;
 import org.ajabshahar.platform.PlatformConfiguration;
+import org.ajabshahar.platform.models.ReflectionTranscript;
 import org.ajabshahar.platform.models.WordIntroduction;
 import org.h2.jdbcx.JdbcDataSource;
 import org.junit.Before;
@@ -20,6 +21,7 @@ import org.junit.Test;
 
 import javax.ws.rs.core.NewCookie;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -38,6 +40,9 @@ public class WordResourceIT {
     private JSONObject jsonObject;
     private Set wordIntroductions = new LinkedHashSet();
     private static final String API_TO_EDIT_THE_WORD_WITH_ID_ONE = "http://localhost:%d/api/words/edit?id=1";
+    private String youtubeVideoId="";
+    private String soundCloudId="";
+    private Set<ReflectionTranscript> reflectionTranscripts= Collections.EMPTY_SET;
 
     private static String resourceFilePath(String resource) {
         return ClassLoader.getSystemClassLoader().getResource(resource).getFile();
@@ -200,7 +205,7 @@ public class WordResourceIT {
         dbSetup.launch();
 
         PersonSummaryRepresentation speaker = new PersonSummaryRepresentation();
-        ReflectionSummaryRepresentation reflectionSummaryRepresentation = new ReflectionSummaryRepresentation(1, "Oh that wonderful song!", speaker, false);
+        ReflectionSummaryRepresentation reflectionSummaryRepresentation = new ReflectionSummaryRepresentation(1, "Oh that wonderful song!", speaker, false, youtubeVideoId, soundCloudId, reflectionTranscripts);
         Set<ReflectionSummaryRepresentation> reflections = new LinkedHashSet<>();
         reflections.add(reflectionSummaryRepresentation);
         jsonObject.put("reflections", reflections);
@@ -250,7 +255,7 @@ public class WordResourceIT {
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
 
-        jsonObject.put("defaultReflection", new ReflectionSummaryRepresentation(2, "I hate that word!", null, false));
+        jsonObject.put("defaultReflection", new ReflectionSummaryRepresentation(2, "I hate that word!", null, false, youtubeVideoId, soundCloudId, reflectionTranscripts));
 
         ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
         WordIntermediateRepresentation word = wordResponse.getEntity(WordIntermediateRepresentation.class);
@@ -275,7 +280,7 @@ public class WordResourceIT {
         assertNull(word.getDefaultReflection());
 
         //change the word - set a default reflection
-        word.setDefaultReflection(new ReflectionSummaryRepresentation(2, "I hate that word!", null, false));
+        word.setDefaultReflection(new ReflectionSummaryRepresentation(2, "I hate that word!", null, false, youtubeVideoId, soundCloudId, reflectionTranscripts));
         wordResponse = loginAndPost("http://localhost:%d/api/words", word);
         wordResponse = httpGet("http://localhost:%d/api/words/edit?id=1");
 
