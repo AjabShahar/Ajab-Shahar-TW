@@ -1,30 +1,23 @@
 'use strict';
 
-thumbnailModule.directive("songContentDetails", function () {
+thumbnailModule.directive("contentDetails", function () {
     return {
         restrict: 'E',
         scope: {
-            videoId: '@',
-            audioUrl: '@',
-            singer: '@',
-            poet: '@',
-            id: '@',
-            downloadurl: '@',
-            about: '@',
-            words: '=',
-            detailsService: '='
+            content:"="
         },
-        templateUrl: '/user/js/common/templates/songs/songContentDetails.html',
+        templateUrl: '/user/js/common/directives/contentDetails/contentDetails.html',
         controller: function ($scope) {
             $scope.isAboutVisible = false;
             $scope.hasAudioAndVideo = false;
             $scope.showVideo = false;
             $scope.showAudio = false;
+            $scope.showText = false;
 
             $scope.isAudioOrVideo = function () {
-                if (Boolean($scope.videoId)) {
+                if (Boolean($scope.content.videoId)) {
                     $scope.showVideo = true;
-                    (Boolean($scope.audioUrl)) ? $scope.hasAudioAndVideo = true : $scope.hasAudioAndVideo = false;
+                    (Boolean($scope.content.audioUrl)) ? $scope.hasAudioAndVideo = true : $scope.hasAudioAndVideo = false;
                 }
                 else {
                     $scope.showAudio = true;
@@ -55,7 +48,22 @@ thumbnailModule.directive("songContentDetails", function () {
                 }
 
                 $scope.isAboutVisible = true;
-            }
+            };
+
+            $scope.showText = function(){
+                return !_.isEmpty($scope.content.textSections);
+            };
+
+            var init = function(){
+                if(!_.isEmpty($scope.content)){
+                    $scope.showVideo = !!(!$scope.showText() && $scope.content.videoId);
+                    $scope.showAudio = !!(!$scope.showText() && !$scope.content.videoId && $scope.content.audioId);
+                }
+            };
+
+            $scope.$watch("content",function(){
+                init();
+            })
         }
     }
 });
