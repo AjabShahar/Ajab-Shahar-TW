@@ -60,7 +60,16 @@ angular.module("word").
 
 
         $scope.selectThumbnail = function(thumbnail){
-            console.log(thumbnail);
+            if(_.isEmpty(thumbnail)) return;
+            console.log("selected : ",thumbnail);
+            if(thumbnail.type === 'word'){
+                $scope.detailsObject = new AjabShahar.DetailsObject($scope.wordDetails,thumbnail.type)
+            }
+            else if (thumbnail.type === 'reflection'){
+                wordService.getReflection(thumbnail.id).success(function(response){
+                    $scope.detailsObject =new AjabShahar.DetailsObject(response,thumbnail.type)
+                })
+            }
         };
 
         $scope.init = function () {

@@ -26,7 +26,9 @@ thumbnailModule.directive("carousel", function () {
                 scope.itemClicked(scope.items[index])
             };
 
-            scope.selectThumbnail(0);
+            scope.$watch('items',function(){
+                scope.selectThumbnail(0);
+            });
         }
     }
 });

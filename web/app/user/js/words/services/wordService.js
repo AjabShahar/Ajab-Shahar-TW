@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module("word").service("wordService",["$http",function ($http) {
 
     var getVersions = function (wordId) {
@@ -24,13 +26,16 @@ angular.module("word").service("wordService",["$http",function ($http) {
         return reflections.concat(word.reflections);
     };
 
-
+    var getReflection = function(id){
+        return $http.get('/api/reflections/edit?id='+id);
+    };
 
     return {
         getVersions: getVersions,
         getWordsLandingPageContent: getWordsLandingPageContent,
         getGlossaryPageContent: getGlossaryPageContent,
         getWord:getWord,
-        getReflectionsFrom:getReflectionsFrom
+        getReflectionsFrom:getReflectionsFrom,
+        getReflection:getReflection
     };
 }]);

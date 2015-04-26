@@ -1,4 +1,4 @@
-angular.module("word", ['ngRoute', 'htmlGenerator', 'headerModule', 'animationModule', 'popupSupport','utilities', 'thumbnailModule'])
+angular.module("word", ['ngRoute', 'htmlGenerator', 'headerModule', 'animationModule', 'popupSupport','utilities', 'thumbnailModule','mediaPlayer'])
 .config(["$routeProvider", function ($routeProvider) {
     $routeProvider
         .when("/details/:id",{

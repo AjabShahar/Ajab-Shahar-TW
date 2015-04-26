@@ -1,0 +1,112 @@
+<div ng-init="isAudioOrVideo()">
+
+    <div class="header">
+        <div ng-if="content.type === 'word'" class="header">
+            <span class="title-case" ng-bind="content.verb"></span>
+            <span class="author-caps" ng-repeat="person in content.people"><a href="" ng-bind="person"></a><span
+                    ng-show="!$last">, </span></span>
+            <span class="title-case" ng-show="content.displayAjabShaharTeam">, Ajab Shahar Team</span>
+        </div>
+
+        <div ng-if="content.type === 'reflection'">
+            <div class="header-reflection">
+                <span class="author-caps">purushottam agarwal </span>
+                <span class="header">asks</span>
+
+                <h3>
+                    <span class="ref-header2-text">Have you ever met yourself</span>
+                </h3>
+                <span class="header-italic">Excerpted from kashi ka kabir Reinterpreting  a poet's life and his life times</span>
+            </div>
+
+            <div class="header-reflection">
+                <span class="author-caps">linda hess</span>
+                <span class="header">says</span>
+
+                <h3>
+                    <span class="ref-header2-text">Kabir says Face it You are a liar</span>
+                </h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="detail-content">
+        <div class="text-container">
+            <div class="text-content" ng-if="showText()">
+                <div ng-repeat="textSection in content.textSections" bind-dynamic-html="textSection"></div>
+            </div>
+            <div class="text-share-options">
+                <a href="javascript:void(0)" class="share" ng-click="dropDownVisible='true'"></a>
+            </div>
+        </div>
+
+        <div id="audio_video_container">
+            <div ng-if="showVideo">
+                <youtube width="100%" height="90%" videoid="content.videoId"
+                         should-stop-video="shouldStopVideo()"></youtube>
+            </div>
+            <div ng-if="showAudio">
+                <sound-cloud audio-url="{{content.audioId}}" id="snd_{{id}}"></sound-cloud>
+            </div>
+
+            <div class="video-options">
+                <ul class="slide-info">
+                    <li>
+                        <a href="javascript:void(0)" ng-click="showAbout()" ng-if="about"
+                           class="{{isAboutVisible ? 'active-link': ''}}">about</a>
+                    </li>
+                </ul>
+                <ul class="share-options">
+                    <li>
+                        <a href="javascript:void(0)" class="share" ng-click="dropDownVisible='true'"></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="download" ng-if="content.downloadUrl" target="_blank"
+                           ng-href="{{content.downloadUrl}}"></a>
+                    </li>
+                </ul>
+                <ul class="audio-video-options" ng-show="hasAudioAndVideo">
+                    <li>
+                        <a href="javascript:void(0)" ng-show="showVideo" class="video-icon active"
+                           ng-click="toggleVideoOrAudio()"></a>
+                        <a href="javascript:void(0)" ng-hide="showVideo" class="video-icon"
+                           ng-click="toggleVideoOrAudio()"></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" ng-show="showAudio" class="audio-icon active"
+                           ng-click="toggleVideoOrAudio()"></a>
+                        <a href="javascript:void(0)" ng-hide="showAudio" class="audio-icon"
+                           ng-click="toggleVideoOrAudio()"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="toggleBySlide about-info" bind-dynamic-html="content.about" ng-show="isAboutVisible"></div>
+        </div>
+
+        <div class='shareItemsDropDown' ng-show="dropDownVisible" ng-mouseleave="dropDownVisible='false'">
+            <ul class='shareItems'>
+                <li><a href='http://www.facebook.com/share.php?u={{url}}' target="_blank">Share on facebook</a></li>
+                <li><a class="twitter-share-button"
+                       href="https://twitter.com/share"
+                       data-size="large"
+                       data-url="https://dev.twitter.com/web/tweet-button"
+                       data-count-url="https://dev.twitter.com/web/tweet-button"
+                       data-via="twitterdev"
+                       data-related="twitterapi,twitter"
+                       data-hashtags="example,demo"
+                       data-text="custom share text" target="_blank">Share on twitter</a></li>
+                <li><a href="//pinterest.com/pin/create%2Fbutton/?url={{url}}" target="_blank">Share on pinterest</a>
+                </li>
+                <li><a href="https://plus.google.com/share?url={{url}}" target="_blank">Share on google+</a></li>
+            </ul>
+        </div>
+
+        <div class="related-links-parda">
+        <span ng-repeat="link in content.links">
+            <span ng-bind="link.name"></span>
+            <span ng-bind="link.occupation"></span>
+        </span>
+        </div>
+
+    </div>
+</div>
