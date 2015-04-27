@@ -16,6 +16,11 @@
         color: #9c9b9b;
         font-size: 20px;
         font-weight: 300;
+
+        &:hover {
+           color: $color-link;
+           cursor: pointer;
+        }
       }
 
       .filter-button {
