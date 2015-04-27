@@ -2,6 +2,7 @@
 
 var AjabShahar  = AjabShahar|| {};
 
+
 AjabShahar.DetailsObject = function(content,type){
     var self = this;
     self.type = type;
@@ -12,11 +13,26 @@ AjabShahar.DetailsObject = function(content,type){
     };
 
     var getRelatedLinksFromWord = function (word) {
-
+        if(word && !_.isEmpty(word.writers)){
+            return word.writers.map(function(writer){
+                return {
+                    name :writer.name,
+                    occupation:writer.primaryOccupation
+                };
+            });
+        }
+        return null;
     };
 
     var getRelatedLinksFromReflection = function (reflection) {
 
+    };
+
+    var getPeopleFromWord = function (word) {
+        if(word && !_.isEmpty(word.writers)){
+            return word.writers.map(function(writer){ return writer.name});
+        }
+        return null;
     };
 
     self.getContentFormat = function(){
@@ -68,6 +84,9 @@ AjabShahar.DetailsObject = function(content,type){
         self.textSections = getFromWord(word,'text');
         //self.about = getAboutFromWord(word);
         self.links = getRelatedLinksFromWord(word);
+        self.verb="Introduction By";
+        self.people = getPeopleFromWord(word);
+        self.displayAjabShaharTeam = word.displayAjabShaharTeam;
     };
 
     var buildFromReflection = function(reflection){
@@ -76,6 +95,8 @@ AjabShahar.DetailsObject = function(content,type){
         self.videoId = reflection.youtubeVideoId;
         self.textSections = reflection.reflectionTranscripts;
         self.links = getRelatedLinksFromReflection(reflection);
+        self.verb = reflection.verb;
+        self.people = reflection.speaker;
     };
 
     if(type === 'song'){
