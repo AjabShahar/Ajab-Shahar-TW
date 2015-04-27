@@ -1,4 +1,23 @@
 <div ng-init="isAudioOrVideo()">
+    <div ng-if="content.type === 'word'" class="header">
+        <span class="title-case" ng-bind="content.verb"></span>
+        <span class="author-caps" ng-repeat="person in content.people"><a href="" ng-bind="person"></a><span ng-show="!$last">, </span></span>
+        <span class="title-case" ng-show="content.displayAjabShaharTeam">, Ajab Shahar Team</span>
+    </div>
+
+    <div ng-if="content.type === 'reflection'">
+
+    </div>
+
+    <div ng-if="showVideo">
+        <youtube width="100%" height="90%" videoid="content.videoId" should-stop-video="shouldStopVideo()"></youtube>
+    </div>
+    <div ng-if="showAudio">
+        <sound-cloud audio-url="{{content.audioId}}" id="snd_{{id}}"></sound-cloud>
+    </div>
+    <div class="text-content" ng-if="showText()" >
+        <div ng-repeat="textSection in content.textSections" bind-dynamic-html="textSection"></div>
+    </div>
 
     <div class="header">
         <div ng-if="content.type === 'word'" class="header">
@@ -22,7 +41,6 @@
             <div class="header-reflection">
                 <span class="author-caps">linda hess</span>
                 <span class="header">says</span>
-
                 <h3>
                     <span class="ref-header2-text">Kabir says Face it You are a liar</span>
                 </h3>
