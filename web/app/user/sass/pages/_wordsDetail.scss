@@ -28,30 +28,44 @@
                 background-repeat: no-repeat repeat;
                 .header {
                         color: $light-grey;
-                        font-size: $small;
-                        margin-left: 1px;
-                        text-align: left;
                         padding-top: 15px;
                         font-weight: 300;
 
+                        .header-text {
+                            font-size: $small;
+                            margin-left: 1px;
+                            text-align: left;
+                        }
+                        .header-reflection {
+
+                             width: 853px;
+                             text-align: left;
+                             margin: 0 auto;
+                             padding-left: 0px;
+                             h3 {
+                                 line-height: 1.5em;
+                             }
+                             .ref-header2-text {
+                                     font-size: $large;
+                                     color: $dark-grey;
+                                     font-weight: 300;
+
+                             }
+                             .header-italic {
+                                    font-size: $medium;
+                                    color: $light-grey;
+                                    font-weight: 300;
+                                    font-style: italic;
+                             }
+
+                        }
+
+
                 }
-                .header-video-reflection {
-
-                         width: 853px;
-                         text-align: left;
-                         margin: 0 auto;
-                         padding-left: 0px;
-                         h3 {
-                             line-height: 1.5em;
-                         }
-                         .ref-header2-text {
-                                 font-size: $large;
-                                 color: $dark-grey;
-                                 font-weight: 300;
-
-                         }
-
+                .text-content {
+                    padding-bottom: 50px;
                 }
+
                 #audio_video_container {
                     margin-top: 1em;
                 }
@@ -72,6 +86,44 @@
 
 
 }
+.details {
+    .text-share-options {
+        background: transparent url(/user/img/words/word_dt_ct_separator.png) 18px 0 no-repeat;
+        background-size: 1000px 7px;
+        .share {
+              height: 23px;
+              background: transparent url(/user/img/songs/songs_sprite.png) -26px 0 no-repeat;
+              display: inline-block;
+              width: 26px;
+                padding: 10px 5px;
+                line-height: 20px;
+
+              &:before {
+
+                content: '';
+              }
+
+        }
+
+
+
+    }
+
+
+}
+
 body .footer-bg {
   display: none;
 }
+
+
+/******************** To be removed *****************************************************/
+
+.details .detail-content #media_reflection {
+display: none;
+
+}
+.details .detail-content .text-content {
+
+}
+
