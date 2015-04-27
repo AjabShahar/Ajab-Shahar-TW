@@ -31,10 +31,8 @@
       margin-left: 30px;
       text-align: left;
       & > li {
-
         font-family: 'Merriweather';
         padding: 5px 0;
-        color: #666;
         font-weight: 300;
         font-size: 16px;
 
@@ -58,18 +56,18 @@
 
         a {
           text-transform: lowercase;
-
-          &:hover {
-            color: #E83785;
-          }
+          color: $color-link;
 
           &.active {
-            font-weight: 700;
+            color: $color-active-link;
+            &:hover {
+                cursor: default;
+            }
           }
 
           &.disable {
             cursor: default;
-            color: #b3b3b3;
+            color: $color-disabled-link;
             &:hover {
               color: none;
             }
@@ -89,15 +87,15 @@
           margin: 10px 0;
           line-height: 1em;
           & span {
-            color: #999;
+            color: $color-sub-link;
             font-size: 12px;
             font-family: 'Merriweather Sans';
             text-transform: capitalize;
             margin: 0;
             font-weight: 300;
             & a {
-
-              color: #e62379;
+              cursor: pointer;
+              color: $color-link;
               line-height: 15px;
               margin-left: 10px;
               font-weight: 700;

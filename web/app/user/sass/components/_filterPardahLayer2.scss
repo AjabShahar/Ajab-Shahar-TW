@@ -38,9 +38,9 @@
                 & > a {
                     line-height: 1.8em;
                     text-transform: capitalize;
-                    color: #888;
+                    color: $color-sub-link;
                     &:hover {
-                        color: #E83785;
+                        color: $color-link;
                     }
                     .child-list-item-value {
                         &:nth-child(2) {
@@ -48,7 +48,7 @@
                             font-size: 12px;
                             font-weight: 100;
                             font-style: italic;
-                            color: #b3b3b3;
+                            color: $color-disabled-link;
                         }
                     }
                 }
