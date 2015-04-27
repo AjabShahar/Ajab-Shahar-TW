@@ -4,6 +4,11 @@
 
     .page-header {
         height: 150px;
+        .logo-container > a {
+                top: 5px;
+                position: relative;
+        }
+
         .page-title {
               width: 55%;
               text-align: left;
