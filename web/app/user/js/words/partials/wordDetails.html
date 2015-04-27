@@ -2,12 +2,53 @@
     <ajab-shahar-header></ajab-shahar-header>
     <div class="page-header">
         <div class="ajab-wrapper">
-            <div class="page-title">
-                <span class="main">{{words[0].wordTransliteration}}</span>
+            <div class="logo-container">
+                <a href="/user/partials/words/allWords.html" target="_self">
+                    <span class="page-logo">words</span>
+                </a>
             </div>
+
             <div class="page-title">
-                <span class="sub-main">{{words[0].wordTranslation}}</span>
+                <span class="main">Bazaar</span>
+                <span class="sub-main">Marketplace </span>
+
+                <p class="title-related-words">
+                    <span class="header-translit-text">haatasdasds</span><span
+                        class="header-translate-text"> marketplaceaxc,</span>
+                    <span class="header-translit-text"> haatasdasds</span><span
+                        class="header-translate-text"> marketplaceaxc,</span>
+                    <span class="header-translit-text"> haatasdasds</span><span
+                        class="header-translate-text">marketplaceaxc,</span>
+                    <span class="header-translit-text">haatasdasds</span><span
+                        class="header-translate-text">, marketplaceaxc</span>
+                    <span class="header-translit-text">haatasdasds</span><span
+                        class="header-translate-text">, marketplaceaxc</span>
+                    <span class="header-translit-text">haatasdasds</span><span
+                        class="header-translate-text">, marketplaceaxc</span>
+                    <span class="header-translit-text">haatasdasds</span><span
+                        class="header-translate-text">, marketplaceaxc</span>
+                    <span class="header-translit-text">haatasdasds</span><span
+                        class="header-translate-text">, marketplaceaxc</span>
+                    <span class="header-translit-text">haatasdasds</span><span
+                        class="header-translate-text">, marketplaceaxc</span>
+                    <span class="header-translit-text">haatasdasds</span><span
+                        class="header-translate-text">, marketplaceaxc</span>
+                    <span class="header-translit-text">haatasdasds</span><span
+                        class="header-translate-text">, marketplaceaxc</span>
+                    <span class="header-translit-text">haatasdasds</span><span
+                        class="header-translate-text">, marketplaceaxc</span>
+                    <span class="header-translit-text">haatasdasds</span><span
+                        class="header-translate-text">, marketplaceaxc</span>
+                    <span class="header-translit-text">haatasdasds</span><span
+                        class="header-translate-text">, marketplaceaxc</span>
+
+
+
+
+
+
             </div>
+
         </div>
     </div>
 
@@ -16,25 +57,25 @@
     <div class="lower-pardah">
         <div class="versions toggleBySlide" ng-show="showVersion && shouldShowVersions() || true">
             <div class="carousel-wrapper jcarousel-wrapper" ng-show="showVersion && shouldShowReflections() || true">
-            <!--<div as-carousel class="carousel-box jcarousel">
-                <ul>
-                    <li ng-repeat="word in wordReflections.wordThumbnails track by $index">
-                        <word-thumbnail id="{{word.id}}" transliteration="{{word.wordTransliteration}}"
-                                        open="detailsService.openWord(word.id)" translation="{{word.wordTranslation}}"
-                                        english-intro-excerpt="{{word.englishIntroExcerpt}}"
-                                        custom-style="{{word.customStyle}}"
-                                        img-src="https://yt3.ggpht.com/-JtqzFmOGDiI/AAAAAAAAAAI/AAAAAAAAAAA/McQLKmfBpqg/s900-c-k-no/photo.jpg"></word-thumbnail>
-                    </li>
-                    <li ng-repeat="reflection in wordReflections.reflections track by $index">
-                        <reflection-thumbnail id="{{reflection.id}}" title="{{reflection.title}}"
-                                              verb="{{reflection.verb}}"
-                                              open="detailsService.openReflection(reflection.id)"
-                                              speaker="{{reflection.speaker}}"></reflection-thumbnail>
-                    </li>
-                </ul>
-                <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true"></a>
-                <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true"></a>
-            </div>-->
+                <!--<div as-carousel class="carousel-box jcarousel">
+                    <ul>
+                        <li ng-repeat="word in wordReflections.wordThumbnails track by $index">
+                            <word-thumbnail id="{{word.id}}" transliteration="{{word.wordTransliteration}}"
+                                            open="detailsService.openWord(word.id)" translation="{{word.wordTranslation}}"
+                                            english-intro-excerpt="{{word.englishIntroExcerpt}}"
+                                            custom-style="{{word.customStyle}}"
+                                            img-src="https://yt3.ggpht.com/-JtqzFmOGDiI/AAAAAAAAAAI/AAAAAAAAAAA/McQLKmfBpqg/s900-c-k-no/photo.jpg"></word-thumbnail>
+                        </li>
+                        <li ng-repeat="reflection in wordReflections.reflections track by $index">
+                            <reflection-thumbnail id="{{reflection.id}}" title="{{reflection.title}}"
+                                                  verb="{{reflection.verb}}"
+                                                  open="detailsService.openReflection(reflection.id)"
+                                                  speaker="{{reflection.speaker}}"></reflection-thumbnail>
+                        </li>
+                    </ul>
+                    <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true"></a>
+                    <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true"></a>
+                </div>-->
                 <carousel items="carouselItems" item-clicked="selectThumbnail" format="'transliteration'"></carousel>
             </div>
         </div>
@@ -69,6 +110,7 @@
                         <div class="header-reflection">
                             <span class="author-caps">purushottam agarwal </span>
                             <span class="header">asks</span>
+
                             <h3>
                                 <span class="ref-header2-text">Have you ever met yourself</span>
                             </h3>
@@ -76,15 +118,14 @@
                         </div>
 
 
-
                         <div class="header-reflection">
                             <span class="author-caps">linda hess</span>
                             <span class="header">says</span>
+
                             <h3>
                                 <span class="ref-header2-text">Kabir says Face it You are a liar</span>
                             </h3>
                         </div>
-
 
 
                     </div>
@@ -92,221 +133,311 @@
                         <div class="text-container">
                             <div class="text-content">
                                 <p>
-                                Published September 3, 2014 Tweet Subscribe If you’re already a fan of Sass and Bourbon,
-                                you’re going to love Neat – a lightweight, semantic grid system that works seamlessly with Bourbon
-                                and Sass, from the same folks at Thoughtbot who wrote Bourbon. In case all this sounds new to you,
-                                Sass is a preprocessor for CSS that can help improve your CSS workflow tremendously. Bourbon is a set of
-                                mixins for Sass that enhances and extends Sass’s power. If you’re not familiar with Sass and Bourbon check
-                                out my previous article describing how to get set up with Sass and Bourbon in a few simple steps.
+                                    Published September 3, 2014 Tweet Subscribe If you’re already a fan of Sass and
+                                    Bourbon,
+                                    you’re going to love Neat – a lightweight, semantic grid system that works
+                                    seamlessly with Bourbon
+                                    and Sass, from the same folks at Thoughtbot who wrote Bourbon. In case all this
+                                    sounds new to you,
+                                    Sass is a preprocessor for CSS that can help improve your CSS workflow tremendously.
+                                    Bourbon is a set of
+                                    mixins for Sass that enhances and extends Sass’s power. If you’re not familiar with
+                                    Sass and Bourbon check
+                                    out my previous article describing how to get set up with Sass and Bourbon in a few
+                                    simple steps.
 
                                 </p>
+
                                 <p>
-                                Published September 3, 2014 Tweet Subscribe If you’re already a fan of Sass and Bourbon,
-                                you’re going to love Neat – a lightweight, semantic grid system that works seamlessly with Bourbon
-                                and Sass, from the same folks at Thoughtbot who wrote Bourbon. In case all this sounds new to you,
-                                Sass is a preprocessor for CSS that can help improve your CSS workflow tremendously. Bourbon is a set of
-                                mixins for Sass that enhances and extends Sass’s power. If you’re not familiar with Sass and Bourbon check
-                                out my previous article describing how to get set up with Sass and Bourbon in a few simple steps.
+                                    Published September 3, 2014 Tweet Subscribe If you’re already a fan of Sass and
+                                    Bourbon,
+                                    you’re going to love Neat – a lightweight, semantic grid system that works
+                                    seamlessly with Bourbon
+                                    and Sass, from the same folks at Thoughtbot who wrote Bourbon. In case all this
+                                    sounds new to you,
+                                    Sass is a preprocessor for CSS that can help improve your CSS workflow tremendously.
+                                    Bourbon is a set of
+                                    mixins for Sass that enhances and extends Sass’s power. If you’re not familiar with
+                                    Sass and Bourbon check
+                                    out my previous article describing how to get set up with Sass and Bourbon in a few
+                                    simple steps.
 
                                 </p>
+
                                 <p>
-                                Published September 3, 2014 Tweet Subscribe If you’re already a fan of Sass and Bourbon,
-                                you’re going to love Neat – a lightweight, semantic grid system that works seamlessly with Bourbon
-                                and Sass, from the same folks at Thoughtbot who wrote Bourbon. In case all this sounds new to you,
-                                Sass is a preprocessor for CSS that can help improve your CSS workflow tremendously. Bourbon is a set of
-                                mixins for Sass that enhances and extends Sass’s power. If you’re not familiar with Sass and Bourbon check
-                                out my previous article describing how to get set up with Sass and Bourbon in a few simple steps.
+                                    Published September 3, 2014 Tweet Subscribe If you’re already a fan of Sass and
+                                    Bourbon,
+                                    you’re going to love Neat – a lightweight, semantic grid system that works
+                                    seamlessly with Bourbon
+                                    and Sass, from the same folks at Thoughtbot who wrote Bourbon. In case all this
+                                    sounds new to you,
+                                    Sass is a preprocessor for CSS that can help improve your CSS workflow tremendously.
+                                    Bourbon is a set of
+                                    mixins for Sass that enhances and extends Sass’s power. If you’re not familiar with
+                                    Sass and Bourbon check
+                                    out my previous article describing how to get set up with Sass and Bourbon in a few
+                                    simple steps.
 
                                 </p>
+
                                 <p>
-                                Published September 3, 2014 Tweet Subscribe If you’re already a fan of Sass and Bourbon,
-                                you’re going to love Neat – a lightweight, semantic grid system that works seamlessly with Bourbon
-                                and Sass, from the same folks at Thoughtbot who wrote Bourbon. In case all this sounds new to you,
-                                Sass is a preprocessor for CSS that can help improve your CSS workflow tremendously. Bourbon is a set of
-                                mixins for Sass that enhances and extends Sass’s power. If you’re not familiar with Sass and Bourbon check
-                                out my previous article describing how to get set up with Sass and Bourbon in a few simple steps.
+                                    Published September 3, 2014 Tweet Subscribe If you’re already a fan of Sass and
+                                    Bourbon,
+                                    you’re going to love Neat – a lightweight, semantic grid system that works
+                                    seamlessly with Bourbon
+                                    and Sass, from the same folks at Thoughtbot who wrote Bourbon. In case all this
+                                    sounds new to you,
+                                    Sass is a preprocessor for CSS that can help improve your CSS workflow tremendously.
+                                    Bourbon is a set of
+                                    mixins for Sass that enhances and extends Sass’s power. If you’re not familiar with
+                                    Sass and Bourbon check
+                                    out my previous article describing how to get set up with Sass and Bourbon in a few
+                                    simple steps.
 
                                 </p>
+
                                 <p>
-                                Published September 3, 2014 Tweet Subscribe If you’re already a fan of Sass and Bourbon,
-                                you’re going to love Neat – a lightweight, semantic grid system that works seamlessly with Bourbon
-                                and Sass, from the same folks at Thoughtbot who wrote Bourbon. In case all this sounds new to you,
-                                Sass is a preprocessor for CSS that can help improve your CSS workflow tremendously. Bourbon is a set of
-                                mixins for Sass that enhances and extends Sass’s power. If you’re not familiar with Sass and Bourbon check
-                                out my previous article describing how to get set up with Sass and Bourbon in a few simple steps.
+                                    Published September 3, 2014 Tweet Subscribe If you’re already a fan of Sass and
+                                    Bourbon,
+                                    you’re going to love Neat – a lightweight, semantic grid system that works
+                                    seamlessly with Bourbon
+                                    and Sass, from the same folks at Thoughtbot who wrote Bourbon. In case all this
+                                    sounds new to you,
+                                    Sass is a preprocessor for CSS that can help improve your CSS workflow tremendously.
+                                    Bourbon is a set of
+                                    mixins for Sass that enhances and extends Sass’s power. If you’re not familiar with
+                                    Sass and Bourbon check
+                                    out my previous article describing how to get set up with Sass and Bourbon in a few
+                                    simple steps.
 
                                 </p>
+
                                 <p>
-                                Published September 3, 2014 Tweet Subscribe If you’re already a fan of Sass and Bourbon,
-                                you’re going to love Neat – a lightweight, semantic grid system that works seamlessly with Bourbon
-                                and Sass, from the same folks at Thoughtbot who wrote Bourbon. In case all this sounds new to you,
-                                Sass is a preprocessor for CSS that can help improve your CSS workflow tremendously. Bourbon is a set of
-                                mixins for Sass that enhances and extends Sass’s power. If you’re not familiar with Sass and Bourbon check
-                                out my previous article describing how to get set up with Sass and Bourbon in a few simple steps.
+                                    Published September 3, 2014 Tweet Subscribe If you’re already a fan of Sass and
+                                    Bourbon,
+                                    you’re going to love Neat – a lightweight, semantic grid system that works
+                                    seamlessly with Bourbon
+                                    and Sass, from the same folks at Thoughtbot who wrote Bourbon. In case all this
+                                    sounds new to you,
+                                    Sass is a preprocessor for CSS that can help improve your CSS workflow tremendously.
+                                    Bourbon is a set of
+                                    mixins for Sass that enhances and extends Sass’s power. If you’re not familiar with
+                                    Sass and Bourbon check
+                                    out my previous article describing how to get set up with Sass and Bourbon in a few
+                                    simple steps.
 
                                 </p>
+
                                 <p>
-                                Published September 3, 2014 Tweet Subscribe If you’re already a fan of Sass and Bourbon,
-                                you’re going to love Neat – a lightweight, semantic grid system that works seamlessly with Bourbon
-                                and Sass, from the same folks at Thoughtbot who wrote Bourbon. In case all this sounds new to you,
-                                Sass is a preprocessor for CSS that can help improve your CSS workflow tremendously. Bourbon is a set of
-                                mixins for Sass that enhances and extends Sass’s power. If you’re not familiar with Sass and Bourbon check
-                                out my previous article describing how to get set up with Sass and Bourbon in a few simple steps.
+                                    Published September 3, 2014 Tweet Subscribe If you’re already a fan of Sass and
+                                    Bourbon,
+                                    you’re going to love Neat – a lightweight, semantic grid system that works
+                                    seamlessly with Bourbon
+                                    and Sass, from the same folks at Thoughtbot who wrote Bourbon. In case all this
+                                    sounds new to you,
+                                    Sass is a preprocessor for CSS that can help improve your CSS workflow tremendously.
+                                    Bourbon is a set of
+                                    mixins for Sass that enhances and extends Sass’s power. If you’re not familiar with
+                                    Sass and Bourbon check
+                                    out my previous article describing how to get set up with Sass and Bourbon in a few
+                                    simple steps.
 
                                 </p>
+
                                 <p>
-                                Published September 3, 2014 Tweet Subscribe If you’re already a fan of Sass and Bourbon,
-                                you’re going to love Neat – a lightweight, semantic grid system that works seamlessly with Bourbon
-                                and Sass, from the same folks at Thoughtbot who wrote Bourbon. In case all this sounds new to you,
-                                Sass is a preprocessor for CSS that can help improve your CSS workflow tremendously. Bourbon is a set of
-                                mixins for Sass that enhances and extends Sass’s power. If you’re not familiar with Sass and Bourbon check
-                                out my previous article describing how to get set up with Sass and Bourbon in a few simple steps.
+                                    Published September 3, 2014 Tweet Subscribe If you’re already a fan of Sass and
+                                    Bourbon,
+                                    you’re going to love Neat – a lightweight, semantic grid system that works
+                                    seamlessly with Bourbon
+                                    and Sass, from the same folks at Thoughtbot who wrote Bourbon. In case all this
+                                    sounds new to you,
+                                    Sass is a preprocessor for CSS that can help improve your CSS workflow tremendously.
+                                    Bourbon is a set of
+                                    mixins for Sass that enhances and extends Sass’s power. If you’re not familiar with
+                                    Sass and Bourbon check
+                                    out my previous article describing how to get set up with Sass and Bourbon in a few
+                                    simple steps.
 
                                 </p>
+
                                 <p>
-                                Published September 3, 2014 Tweet Subscribe If you’re already a fan of Sass and Bourbon,
-                                you’re going to love Neat – a lightweight, semantic grid system that works seamlessly with Bourbon
-                                and Sass, from the same folks at Thoughtbot who wrote Bourbon. In case all this sounds new to you,
-                                Sass is a preprocessor for CSS that can help improve your CSS workflow tremendously. Bourbon is a set of
-                                mixins for Sass that enhances and extends Sass’s power. If you’re not familiar with Sass and Bourbon check
-                                out my previous article describing how to get set up with Sass and Bourbon in a few simple steps.
+                                    Published September 3, 2014 Tweet Subscribe If you’re already a fan of Sass and
+                                    Bourbon,
+                                    you’re going to love Neat – a lightweight, semantic grid system that works
+                                    seamlessly with Bourbon
+                                    and Sass, from the same folks at Thoughtbot who wrote Bourbon. In case all this
+                                    sounds new to you,
+                                    Sass is a preprocessor for CSS that can help improve your CSS workflow tremendously.
+                                    Bourbon is a set of
+                                    mixins for Sass that enhances and extends Sass’s power. If you’re not familiar with
+                                    Sass and Bourbon check
+                                    out my previous article describing how to get set up with Sass and Bourbon in a few
+                                    simple steps.
 
                                 </p>
+
                                 <p>
-                                Published September 3, 2014 Tweet Subscribe If you’re already a fan of Sass and Bourbon,
-                                you’re going to love Neat – a lightweight, semantic grid system that works seamlessly with Bourbon
-                                and Sass, from the same folks at Thoughtbot who wrote Bourbon. In case all this sounds new to you,
-                                Sass is a preprocessor for CSS that can help improve your CSS workflow tremendously. Bourbon is a set of
-                                mixins for Sass that enhances and extends Sass’s power. If you’re not familiar with Sass and Bourbon check
-                                out my previous article describing how to get set up with Sass and Bourbon in a few simple steps.
+                                    Published September 3, 2014 Tweet Subscribe If you’re already a fan of Sass and
+                                    Bourbon,
+                                    you’re going to love Neat – a lightweight, semantic grid system that works
+                                    seamlessly with Bourbon
+                                    and Sass, from the same folks at Thoughtbot who wrote Bourbon. In case all this
+                                    sounds new to you,
+                                    Sass is a preprocessor for CSS that can help improve your CSS workflow tremendously.
+                                    Bourbon is a set of
+                                    mixins for Sass that enhances and extends Sass’s power. If you’re not familiar with
+                                    Sass and Bourbon check
+                                    out my previous article describing how to get set up with Sass and Bourbon in a few
+                                    simple steps.
 
                                 </p>
+
                                 <p>
-                                Published September 3, 2014 Tweet Subscribe If you’re already a fan of Sass and Bourbon,
-                                you’re going to love Neat – a lightweight, semantic grid system that works seamlessly with Bourbon
-                                and Sass, from the same folks at Thoughtbot who wrote Bourbon. In case all this sounds new to you,
-                                Sass is a preprocessor for CSS that can help improve your CSS workflow tremendously. Bourbon is a set of
-                                mixins for Sass that enhances and extends Sass’s power. If you’re not familiar with Sass and Bourbon check
-                                out my previous article describing how to get set up with Sass and Bourbon in a few simple steps.
+                                    Published September 3, 2014 Tweet Subscribe If you’re already a fan of Sass and
+                                    Bourbon,
+                                    you’re going to love Neat – a lightweight, semantic grid system that works
+                                    seamlessly with Bourbon
+                                    and Sass, from the same folks at Thoughtbot who wrote Bourbon. In case all this
+                                    sounds new to you,
+                                    Sass is a preprocessor for CSS that can help improve your CSS workflow tremendously.
+                                    Bourbon is a set of
+                                    mixins for Sass that enhances and extends Sass’s power. If you’re not familiar with
+                                    Sass and Bourbon check
+                                    out my previous article describing how to get set up with Sass and Bourbon in a few
+                                    simple steps.
 
                                 </p>
+
                                 <p>
-                                Published September 3, 2014 Tweet Subscribe If you’re already a fan of Sass and Bourbon,
-                                you’re going to love Neat – a lightweight, semantic grid system that works seamlessly with Bourbon
-                                and Sass, from the same folks at Thoughtbot who wrote Bourbon. In case all this sounds new to you,
-                                Sass is a preprocessor for CSS that can help improve your CSS workflow tremendously. Bourbon is a set of
-                                mixins for Sass that enhances and extends Sass’s power. If you’re not familiar with Sass and Bourbon check
-                                out my previous article describing how to get set up with Sass and Bourbon in a few simple steps.
+                                    Published September 3, 2014 Tweet Subscribe If you’re already a fan of Sass and
+                                    Bourbon,
+                                    you’re going to love Neat – a lightweight, semantic grid system that works
+                                    seamlessly with Bourbon
+                                    and Sass, from the same folks at Thoughtbot who wrote Bourbon. In case all this
+                                    sounds new to you,
+                                    Sass is a preprocessor for CSS that can help improve your CSS workflow tremendously.
+                                    Bourbon is a set of
+                                    mixins for Sass that enhances and extends Sass’s power. If you’re not familiar with
+                                    Sass and Bourbon check
+                                    out my previous article describing how to get set up with Sass and Bourbon in a few
+                                    simple steps.
 
                                 </p>
+
                                 <p>
-                                Published September 3, 2014 Tweet Subscribe If you’re already a fan of Sass and Bourbon,
-                                you’re going to love Neat – a lightweight, semantic grid system that works seamlessly with Bourbon
-                                and Sass, from the same folks at Thoughtbot who wrote Bourbon. In case all this sounds new to you,
-                                Sass is a preprocessor for CSS that can help improve your CSS workflow tremendously. Bourbon is a set of
-                                mixins for Sass that enhances and extends Sass’s power. If you’re not familiar with Sass and Bourbon check
-                                out my previous article describing how to get set up with Sass and Bourbon in a few simple steps.
+                                    Published September 3, 2014 Tweet Subscribe If you’re already a fan of Sass and
+                                    Bourbon,
+                                    you’re going to love Neat – a lightweight, semantic grid system that works
+                                    seamlessly with Bourbon
+                                    and Sass, from the same folks at Thoughtbot who wrote Bourbon. In case all this
+                                    sounds new to you,
+                                    Sass is a preprocessor for CSS that can help improve your CSS workflow tremendously.
+                                    Bourbon is a set of
+                                    mixins for Sass that enhances and extends Sass’s power. If you’re not familiar with
+                                    Sass and Bourbon check
+                                    out my previous article describing how to get set up with Sass and Bourbon in a few
+                                    simple steps.
 
                                 </p>
 
 
                             </div>
-                        <div class="text-share-options">
-                            <a href="javascript:void(0)" class="share" ng-click="dropDownVisible='true'"></a>
+                            <div class="text-share-options">
+                                <a href="javascript:void(0)" class="share" ng-click="dropDownVisible='true'"></a>
+                            </div>
                         </div>
-                    </div>
 
-                    <div id="media_reflection">
+                        <div id="media_reflection">
 
-                        <div id="audio_video_container">
-
+                            <div id="audio_video_container">
 
 
-                            <youtube width="100%" height="90%" videoid="videoId" should-stop-video="shouldStopVideo()"
-                                     class="ng-isolate-scope"><iframe id="ytplayer" type="text/html" width="100%" height="90%"
-                                                                      ng-src="//www.youtube.com/embed/jjiU7EEpwJg?controls=undefined&amp;autoplay=undefined&amp;loop=undefined&amp;playlist=undefined&amp;rel=0&amp;showinfo=0"
-                                                                      frameborder="0" src="//www.youtube.com/embed/jjiU7EEpwJg?controls=undefined&amp;autoplay=undefined&amp;loop=undefined&amp;playlist=undefined&amp;rel=0&amp;showinfo=0">
+                                <youtube width="100%" height="90%" videoid="videoId"
+                                         should-stop-video="shouldStopVideo()"
+                                         class="ng-isolate-scope">
+                                    <iframe id="ytplayer" type="text/html" width="100%" height="90%"
+                                            ng-src="//www.youtube.com/embed/jjiU7EEpwJg?controls=undefined&amp;autoplay=undefined&amp;loop=undefined&amp;playlist=undefined&amp;rel=0&amp;showinfo=0"
+                                            frameborder="0"
+                                            src="//www.youtube.com/embed/jjiU7EEpwJg?controls=undefined&amp;autoplay=undefined&amp;loop=undefined&amp;playlist=undefined&amp;rel=0&amp;showinfo=0">
 
-                            </iframe></youtube>
-                            <div class="video-options">
-                                <ul class="slide-info">
-                                    <li>
-                                        <a href="javascript:void(0)" ng-click="showAbout()"
-                                           class="active-link">about</a>
-                                    </li>
-                                </ul>
-                                <ul class="share-options">
+                                    </iframe>
+                                </youtube>
+                                <div class="video-options">
+                                    <ul class="slide-info">
+                                        <li>
+                                            <a href="javascript:void(0)" ng-click="showAbout()"
+                                               class="active-link">about</a>
+                                        </li>
+                                    </ul>
+                                    <ul class="share-options">
 
-                                    <li>
-                                        <a href="javascript:void(0)" class="share" ng-click="dropDownVisible='true'"></a>
-                                    </li>
+                                        <li>
+                                            <a href="javascript:void(0)" class="share"
+                                               ng-click="dropDownVisible='true'"></a>
+                                        </li>
 
-                                </ul>
+                                    </ul>
+                                </div>
+
+
+                                <div class="toggleBySlide about-info" bind-dynamic-html="about"></div>
+
+
                             </div>
 
 
-
-                            <div class="toggleBySlide about-info" bind-dynamic-html="about" ></div>
-
-
-
-
-
-
                         </div>
 
 
-                    </div>
-
-
-                    <div class='shareItemsDropDown'  ng-mouseleave="dropDownVisible='false'">
-                        <ul class='shareItems'>
-                            <li><a href='http://www.facebook.com/share.php?u={{url}}' target="_blank">Share on facebook</a></li>
-                            <li><a class="twitter-share-button"
-                                   href="https://twitter.com/share"
-                                   data-size="large"
-                                   data-url="https://dev.twitter.com/web/tweet-button"
-                                   data-count-url="https://dev.twitter.com/web/tweet-button"
-                                   data-via="twitterdev"
-                                   data-related="twitterapi,twitter"
-                                   data-hashtags="example,demo"
-                                   data-text="custom share text" target="_blank">Share on twitter</a></li>
-                            <li><a href="//pinterest.com/pin/create%2Fbutton/?url={{url}}" target="_blank">Share on pinterest</a></li>
-                            <li><a href="https://plus.google.com/share?url={{url}}" target="_blank">Share on google+</a></li>
-                        </ul>
-                    </div>
-                    <div class="related-links-parda">
-                        <dl>
-                            <dt>{{poet}}</dt>
-                            <dd>Poet</dd>
-                            <dt>{{singer}}</dt>
-                            <dd>Singer</dd>
-                            <dt ng-repeat="word in words">
+                        <div class='shareItemsDropDown' ng-mouseleave="dropDownVisible='false'">
+                            <ul class='shareItems'>
+                                <li><a href='http://www.facebook.com/share.php?u={{url}}' target="_blank">Share on
+                                    facebook</a></li>
+                                <li><a class="twitter-share-button"
+                                       href="https://twitter.com/share"
+                                       data-size="large"
+                                       data-url="https://dev.twitter.com/web/tweet-button"
+                                       data-count-url="https://dev.twitter.com/web/tweet-button"
+                                       data-via="twitterdev"
+                                       data-related="twitterapi,twitter"
+                                       data-hashtags="example,demo"
+                                       data-text="custom share text" target="_blank">Share on twitter</a></li>
+                                <li><a href="//pinterest.com/pin/create%2Fbutton/?url={{url}}" target="_blank">Share on
+                                    pinterest</a></li>
+                                <li><a href="https://plus.google.com/share?url={{url}}" target="_blank">Share on
+                                    google+</a></li>
+                            </ul>
+                        </div>
+                        <div class="related-links-parda">
+                            <dl>
+                                <dt>{{poet}}</dt>
+                                <dd>Poet</dd>
+                                <dt>{{singer}}</dt>
+                                <dd>Singer</dd>
+                                <dt ng-repeat="word in words">
                                      <span ng-if="word.isRootWord">
                                          <a href="user/js/words/#/details/{{word.id}}" target="_self">{{word.transliteration}}</a>
                                      </span>
                                      <span ng-if="!word.isRootWord">
                                          {{word.transliteration}}
                                      </span>
-                            <p> WORD </p>
-                            </dt>
-                        </dl>
+                                <p> WORD </p>
+                                </dt>
+                            </dl>
+                        </div>
+
                     </div>
 
+
+                    <!--<reflection-content-details video-id="jjiU7EEpwJg"-->
+                    <!--id="3"-->
+                    <!--details-service="popupService"-->
+                    <!--reflection-transcript="dfsdf dafsdf adfsdf qewqeqr"></reflection-content-details>-->
                 </div>
 
-
-
-
-                                <!--<reflection-content-details video-id="jjiU7EEpwJg"-->
-                                                        <!--id="3"-->
-                                                        <!--details-service="popupService"-->
-                                                        <!--reflection-transcript="dfsdf dafsdf adfsdf qewqeqr"></reflection-content-details>-->
+                <div class="content-wrapper-bottom-image"></div>
             </div>
 
-            <div class="content-wrapper-bottom-image"></div>
         </div>
-
     </div>
-</div>
 </div>
