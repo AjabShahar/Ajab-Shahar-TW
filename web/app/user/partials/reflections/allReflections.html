@@ -21,16 +21,15 @@
         </div>
     </div>
     <div class="ajab-wrapper">
-
-        <div class="slide-nav-list " ng-show="expandFilter">
+        <div class="slide-nav-list " ng-show="expandFilter" on-click-outside="closeSecondParda()">
             <!--first layer pardah-->
 
             <div class="first-layer-list">
                 <ul class='filters'>
                     <li class='head'>Filter by</li>
                     <li>
-                        <a href="javascript:void(0)">speaker</a>
-                        <div class="child-list">
+                        <a href="javascript:void(0)" ng-click="openParda()">speaker</a>
+                        <div class="child-list" >
                             <!--<span>Lalit Lalit<a>x</a></span>-->
                         </div>
                     </li>
@@ -53,7 +52,7 @@
 
             <!--Pardah 2-->
 
-            <div class="second-layer-list" ng-show="showThisParda">
+            <div class="second-layer-list" ng-show="openSecondParda">
                 <div class="overlay">
                     <ul>
                         <li class="list-item">
