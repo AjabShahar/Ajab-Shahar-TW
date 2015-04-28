@@ -5,6 +5,23 @@
             padding-top: 35px;
           }
     }
+    /*.tooltip {
+        display: inline;
+        position: relative
+    }
+    .tooltip:hover:after {
+        background: #333;
+        border-radius: 4px;
+        bottom: 25px;
+        left: 40%;
+        color: $pink;
+        content: attr(title);
+        width: auto;
+        position: absolute;
+        padding: 5px 5px
+    }*/
+
+
 /* UI: Code for testing: can be removed after actual implementation */
     .slide-nav-list {
 
