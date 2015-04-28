@@ -35,6 +35,10 @@ var allReflectionsController = function ($scope) {
         $scope.selectedFilterCategory.active = false;
     };
 
+    $scope.openParda = function () {
+        $scope.openSecondParda = true;
+    }
+
 
 
 
