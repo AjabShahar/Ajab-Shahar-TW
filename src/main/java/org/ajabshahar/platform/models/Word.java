@@ -48,6 +48,9 @@ public class Word {
     @Column(name = "MEANING", nullable = false)
     private String meaning;
 
+    @Column(name = "THUMBNAIL_URL", nullable = true)
+    private String thumbnailUrl;
+
     @OneToOne
     @JoinColumn(name = "DEFAULT_REFLECTION_ID")
     private Reflection defaultReflection;

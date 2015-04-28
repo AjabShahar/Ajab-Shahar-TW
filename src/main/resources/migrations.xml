@@ -66,4 +66,9 @@
             CONSTRAINT SONG_ID_FKEY FOREIGN KEY (SONG_ID) REFERENCES SONG(ID));
         </sql>
     </changeSet>
+    <changeSet id="73" author="PADMA">
+        <sql>
+            alter table word add column thumbnail_url varchar(300);
+        </sql>
+    </changeSet>
 </databaseChangeLog>

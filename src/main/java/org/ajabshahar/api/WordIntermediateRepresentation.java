@@ -23,6 +23,8 @@ public class WordIntermediateRepresentation{
 
     private String diacritic;
 
+    private String thumbnailUrl;
+
     private Boolean isRootWord;
 
     private Boolean showOnLandingPage;

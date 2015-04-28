@@ -24,6 +24,7 @@ public class WordRepresentationFactory {
         word.setHindiIntroExcerpt(wordIntermediateRepresentation.getHindiIntroExcerpt());
         word.setEnglishIntroExcerpt(wordIntermediateRepresentation.getEnglishIntroExcerpt());
         word.setMeaning(wordIntermediateRepresentation.getMeaning());
+        word.setThumbnailUrl(wordIntermediateRepresentation.getThumbnailUrl());
         word.setIsRootWord(wordIntermediateRepresentation.getIsRootWord());
         word.setShowOnLandingPage(wordIntermediateRepresentation.getShowOnLandingPage());
         word.setDisplayAjabShaharTeam(wordIntermediateRepresentation.getDisplayAjabShaharTeam());
@@ -181,6 +182,7 @@ public class WordRepresentationFactory {
         wordIntermediateRepresentation.setMeaning(word.getMeaning());
         wordIntermediateRepresentation.setIsRootWord(word.getIsRootWord());
         wordIntermediateRepresentation.setShowOnLandingPage(word.getShowOnLandingPage());
+        wordIntermediateRepresentation.setThumbnailUrl(word.getThumbnailUrl());
 
         Set<PersonSummaryRepresentation> peopleSummaryRepresentation = PersonRepresentationFactory.createPeopleSummaryRepresentation(word.getPeople());
         wordIntermediateRepresentation.setPeople(new LinkedHashSet<>(peopleSummaryRepresentation));

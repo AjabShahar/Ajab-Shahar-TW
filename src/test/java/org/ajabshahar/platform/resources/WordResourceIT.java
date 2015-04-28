@@ -67,6 +67,7 @@ public class WordResourceIT {
         jsonObject.put("displayAjabShaharTeam", false);
         jsonObject.put("meaning", "meaning");
         jsonObject.put("wordIntroductions", new LinkedHashSet<>());
+        jsonObject.put("thumbnailUrl","some url");
 
         jsonObject.put("relatedWords", new LinkedHashSet<>());
         jsonObject.put("synonyms", new LinkedHashSet<>());
@@ -507,6 +508,44 @@ public class WordResourceIT {
         assertThat(word.getId(), is(greaterThan(new Long(1))));
         System.out.println(word.getId());
 
+    }
+
+    @Test
+    public void shouldSaveWordAlongWithThumbnailUrl() {
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
+        WordIntermediateRepresentation wordIntermediateRepresentation = getWord(wordResponse);
+
+        assertThat(wordResponse.getStatus(), is(200));
+        assertThat(wordIntermediateRepresentation.getThumbnailUrl(), is("some url"));
+
+    }
+
+    @Test
+    public void shouldEditWordThumbnailUrl() {
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
+        WordIntermediateRepresentation wordIntermediateRepresentation = getWord(wordResponse);
+
+        assertThat(wordResponse.getStatus(), is(200));
+        assertThat(wordIntermediateRepresentation.getThumbnailUrl(), is("some url"));
+
+        wordResponse = httpGet("http://localhost:%d/api/words/edit?id="+wordIntermediateRepresentation.getId());
+        wordIntermediateRepresentation = getWord(wordResponse);
+        wordIntermediateRepresentation.setThumbnailUrl("other Url");
+
+        wordResponse = loginAndPost("http://localhost:%d/api/words",wordIntermediateRepresentation);
+        wordIntermediateRepresentation = getWord(wordResponse);
+
+        assertThat(wordIntermediateRepresentation.getThumbnailUrl(),is("other Url"));
     }
 
     private NewCookie geCookie(ClientResponse response) {
