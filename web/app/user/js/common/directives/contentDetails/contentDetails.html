@@ -1,56 +1,28 @@
 <div ng-init="isAudioOrVideo()">
-    <div ng-if="content.type === 'word'" class="header">
-        <span class="title-case" ng-bind="content.verb"></span>
-        <span class="author-caps" ng-repeat="person in content.people"><a href="" ng-bind="person"></a><span ng-show="!$last">, </span></span>
-        <span class="title-case" ng-show="content.displayAjabShaharTeam">, Ajab Shahar Team</span>
-    </div>
-
-    <div ng-if="content.type === 'reflection'">
-
-    </div>
-
-    <div ng-if="showVideo">
-        <youtube width="100%" height="90%" videoid="content.videoId" should-stop-video="shouldStopVideo()"></youtube>
-    </div>
-    <div ng-if="showAudio">
-        <sound-cloud audio-url="{{content.audioId}}" id="snd_{{id}}"></sound-cloud>
-    </div>
-    <div class="text-content" ng-if="showText()" >
-        <div ng-repeat="textSection in content.textSections" bind-dynamic-html="textSection"></div>
-    </div>
-
     <div class="header">
-        <div ng-if="content.type === 'word'" class="header">
+        <div ng-if="content.type === 'word'" class="header-text">
             <span class="title-case" ng-bind="content.verb"></span>
-            <span class="author-caps" ng-repeat="person in content.people"><a href="" ng-bind="person"></a><span
-                    ng-show="!$last">, </span></span>
+            <span class="author-caps" ng-repeat="person in content.people">
+                <a href="" ng-bind="person"></a>
+                <span ng-hide="$last">, </span>
+            </span>
             <span class="title-case" ng-show="content.displayAjabShaharTeam">, Ajab Shahar Team</span>
         </div>
 
-        <div ng-if="content.type === 'reflection'">
-            <div class="header-reflection">
-                <span class="author-caps">purushottam agarwal </span>
-                <span class="header">asks</span>
+        <div ng-if="content.type === 'reflection'" class="header-reflection">
+            <span class="author-caps" ng-bind="content.people[0]"></span>
+            <span class="header" ng-bind="content.verb"></span>
 
-                <h3>
-                    <span class="ref-header2-text">Have you ever met yourself</span>
-                </h3>
-                <span class="header-italic">Excerpted from kashi ka kabir Reinterpreting  a poet's life and his life times</span>
-            </div>
-
-            <div class="header-reflection">
-                <span class="author-caps">linda hess</span>
-                <span class="header">says</span>
-                <h3>
-                    <span class="ref-header2-text">Kabir says Face it You are a liar</span>
-                </h3>
-            </div>
+            <h3>
+                <span class="ref-header2-text" ng-bind="content.title"></span>
+            </h3>
+            <span class="header-italic" ng-bind="content.excerpt"></span>
         </div>
     </div>
 
     <div class="detail-content">
-        <div class="text-container">
-            <div class="text-content" ng-if="showText()">
+        <div class="text-container" ng-if="showText()">
+            <div class="text-content" >
                 <div ng-repeat="textSection in content.textSections" bind-dynamic-html="textSection"></div>
             </div>
             <div class="text-share-options">
@@ -58,7 +30,7 @@
             </div>
         </div>
 
-        <div id="audio_video_container">
+        <div id="audio_video_container" ng-if="!showText()">
             <div ng-if="showVideo">
                 <youtube width="100%" height="90%" videoid="content.videoId"
                          should-stop-video="shouldStopVideo()"></youtube>
@@ -121,8 +93,10 @@
 
         <div class="related-links-parda">
         <span ng-repeat="link in content.links">
-            <span ng-bind="link.name"></span>
-            <span ng-bind="link.occupation"></span>
+            <!--<span ng-bind="link.name"></span>-->
+            <a ng-href="{{link.link}}" ng-bind="link.name"></a>
+            <span ng-bind="link.alternateName"></span>
+            <span ng-bind="link.description"></span>
         </span>
         </div>
 
