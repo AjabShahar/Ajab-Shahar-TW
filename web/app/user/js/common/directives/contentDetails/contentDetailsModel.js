@@ -7,32 +7,64 @@ AjabShahar.DetailsObject = function(content,type){
     var self = this;
     self.type = type;
     self.originalObject = content;
+    var WORD_DETAILS_PATH ="/user/js/words/#/details/";
+
+
+    var pluckPropertyFrom = function(obj,propertyName,lambdaFunctionName,callback){
+        if(!_.isEmpty(obj) && !_.isEmpty(obj[propertyName])){
+            if(lambdaFunctionName){
+                return obj[propertyName][lambdaFunctionName](callback);
+            }
+            return obj[propertyName]
+        }
+        return null;
+    };
 
     var getRelatedLinksFromSong = function (song) {
 
     };
 
     var getRelatedLinksFromWord = function (word) {
-        if(word && !_.isEmpty(word.writers)){
-            return word.writers.map(function(writer){
-                return {
-                    name :writer.name,
-                    occupation:writer.primaryOccupation
-                };
-            });
-        }
-        return null;
+        return pluckPropertyFrom(word,"writers","map",function(writer){
+            return {
+                name :writer.name,
+                description:writer.primaryOccupation
+            };
+        });
     };
 
     var getRelatedLinksFromReflection = function (reflection) {
+        var relatedLinks = [];
 
+        if(!_.isEmpty(reflection)){
+            var speakerLink = {
+                name :reflection.speaker? reflection.speaker.name:"",
+                description:reflection.speaker? reflection.speaker.primaryOccupation:""
+            };
+
+            var relatedPeople = pluckPropertyFrom(reflection,"people","map",function(person){
+                return {
+                    name: person.name,
+                    description: person.primaryOccupation
+                };
+            });
+
+            var relatedWords = pluckPropertyFrom(reflection,"words","map",function(word){
+                return {
+                    name:word.wordTransliteration,
+                    link:WORD_DETAILS_PATH+word.id,
+                    alternateName: word.wordTranslation,
+                    description:"WORD"
+                }
+            });
+
+            relatedLinks = relatedLinks.concat(speakerLink).concat(relatedPeople).concat(relatedWords);
+        }
+        return relatedLinks;
     };
 
     var getPeopleFromWord = function (word) {
-        if(word && !_.isEmpty(word.writers)){
-            return word.writers.map(function(writer){ return writer.name});
-        }
-        return null;
+        return pluckPropertyFrom(word,"writers","map",function(writer){ return writer.name});
     };
 
     self.getContentFormat = function(){
@@ -84,19 +116,28 @@ AjabShahar.DetailsObject = function(content,type){
         self.textSections = getFromWord(word,'text');
         //self.about = getAboutFromWord(word);
         self.links = getRelatedLinksFromWord(word);
-        self.verb="Introduction By";
+        self.verb="Introduction by";
         self.people = getPeopleFromWord(word);
         self.displayAjabShaharTeam = word.displayAjabShaharTeam;
     };
 
     var buildFromReflection = function(reflection){
+        var getReflectionTranscripts = function(reflection){
+            if(!_.isEmpty(reflection.reflectionTranscripts)){
+                return reflection.reflectionTranscripts.map(function(transcript){
+                    return transcript.englishTranscript;
+                });
+            }
+            return null;
+        };
         self.id = reflection.id;
         self.audioId = reflection.soundCloudId;
         self.videoId = reflection.youtubeVideoId;
-        self.textSections = reflection.reflectionTranscripts;
+        self.textSections = getReflectionTranscripts(reflection);
         self.links = getRelatedLinksFromReflection(reflection);
         self.verb = reflection.verb;
-        self.people = reflection.speaker;
+        self.people = [reflection.speaker.name];
+        self.title = reflection.title;
     };
 
     if(type === 'song'){

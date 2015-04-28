@@ -49,11 +49,11 @@ public class ReflectionSummaryRepresentation {
         return published;
     }
 
-    @JsonProperty("audioId")
+    @JsonProperty("soundCloudId")
     public String getSoundCloudId() {
         return soundCloudId;
     }
-    @JsonProperty("videoId")
+    @JsonProperty("youtubeVideoId")
     public String getYoutubeVideoId() {
         return youtubeVideoId;
     }
