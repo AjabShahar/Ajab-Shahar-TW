@@ -1,39 +1,43 @@
-var allReflectionsController = function ($scope, $window, reflectionsContentService, reflectionMapper) {
+var allReflectionsController = function ($scope) {
     $scope.reflections = [];
     $scope.allReflections = null;
     $scope.totalFilteredReflections = 0;
-    $scope.detailsService = {
-        open: function (id) {
-            $window.location.href = '/reflections/details.html?id=' + id;
-        }
-    };
+
     $scope.activeLetter = '';
     $scope.scrollIndex = 12;
     $scope.reflectionCount = 0;
     $scope.reflectionsList = [];
 
+
+    $scope.filteredSongList = [];
+    $scope.activeLetter = '';
+    $scope.scrollIndex = 12;
+    $scope.songCount = 0;
+    $scope.expandFilter = false;
+    $scope.filterItems = {};
+    $scope.selectedFilterCategory = {};
+    $scope.openSecondParda = false;
+
+
     var i = 0;
 
-    $scope.getAllReflections = function () {
-        reflectionsContentService.getAllReflections().then(function (reflectionsList) {
-            $scope.reflections = reflectionMapper.getThumbnails(reflectionsList.data.reflections);
-            $scope.reflectionCount = reflectionsList.data.reflections.length;
-        });
+    $scope.toggleExpandFilter = function () {
+            $scope.expandFilter = !$scope.expandFilter;
+            if (!$scope.expandFilter) {
+                $scope.closeSecondParda()
+            }
     };
 
-    $scope.reflectionStartsWithComparator = function (actual, expected) {
-        if (!$scope.activeLetter && $scope.activeLetter == '') {
-            return true;
+    $scope.closeSecondParda = function () {
+        if ($scope.openSecondParda) {
+            $scope.openSecondParda = false;
         }
-        return $scope.strStartsWith(actual.englishTransliterationTitle.toUpperCase(), $scope.activeLetter.toUpperCase());
+        $scope.selectedFilterCategory.active = false;
     };
 
-    $scope.loadReflectionFromRange = function () {
-        if ($scope.scrollIndex > $scope.reflections.length)
-            return;
-        $scope.scrollIndex += 12;
-    };
-    $scope.getAllReflections();
+
+
+
 };
 
-allReflectionsApp.controller('allReflectionsController', ['$scope', '$window', 'reflectionsContentService', 'reflectionMapper', allReflectionsController]);
+allReflectionsApp.controller('allReflectionsController', ['$scope', allReflectionsController]);
