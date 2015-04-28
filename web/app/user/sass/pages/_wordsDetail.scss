@@ -119,14 +119,15 @@
     .text-share-options {
         background: transparent url(/user/img/words/word_dt_ct_separator.png) 18px 0 no-repeat;
         background-size: 1000px 7px;
+        width: 100%;
         .share {
               height: 23px;
-              background: transparent url(/user/img/songs/songs_sprite.png) -26px 0 no-repeat;
-              display: inline-block;
+              background: transparent url(/user/img/songs/songs_sprite.png) -26px 20px no-repeat;
               width: 26px;
-                padding: 10px 5px;
-                line-height: 20px;
-
+              padding: 23px 19px;
+              line-height: 20px;
+              display: block;
+              margin-left: 10px;
               &:before {
 
                 content: '';
