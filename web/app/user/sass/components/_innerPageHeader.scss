@@ -16,6 +16,15 @@
       font-family: 'Merriweather';
       font-size: 18px;
       font-weight: 300;
+      cursor: pointer;
+      &:hover {
+         color: $color-hover-link;
+
+      }
+      .page-logo:hover {
+        color: $color-hover-link;
+        cursor: pointer;
+      }
     }
   }
 
@@ -24,21 +33,19 @@
 
     .number {
       font-size: 14px;
-      color: #999;
+      color: $color-regular-text;
       border-bottom: solid 1px #d3135a;
       padding: 5px;
     }
 
     .all-link {
-      color: #fff;
+      color: $color-link;
       text-transform: uppercase;
       font-size: 16px;
       padding-top: 5px;
       display: inline-block;
       line-height: 27px;
-      &:hover {
-        color: #999;
-      }
+      font-weight: 300;
     }
   }
 }

@@ -36,6 +36,10 @@
         background: transparent url(/user/img/common/directives/popup/close.png);
         height: 16px;
         width: 16px;
+
+        &:hover {
+            background-image: url(/user/img/common/directives/popup/close_hover.png);
+        }
       }
     }
 
@@ -52,7 +56,7 @@
       clear: right;
       margin-bottom: 15px;
       cursor: pointer;
-      &.active {
+      &.active, &:hover {
         background: transparent url(/user/img/common/directives/popup/pink_half_moon.png);
       }
     }
