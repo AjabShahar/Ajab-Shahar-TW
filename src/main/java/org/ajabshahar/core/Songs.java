@@ -44,11 +44,11 @@ public class Songs {
             titleRepository.create(songTitle);
             song.setSongTitle(songTitle);
         }
-        if (song.getTitle() != null && song.getTitle().getId() == 0) {
-            Title umbrellaTitle = new Title(song.getTitle());
+        if (song.getUmbrellaTitle() != null && song.getUmbrellaTitle().getId() == 0) {
+            Title umbrellaTitle = new Title(song.getUmbrellaTitle());
             umbrellaTitle.setCategory(categoryRepository.getUmbrellaTitleCategory());
             titleRepository.create(umbrellaTitle);
-            song.setTitle(umbrellaTitle);
+            song.setUmbrellaTitle(umbrellaTitle);
         }
         if (song.getSongText() != null) {
             songTextDAO.create(song.getSongText());
@@ -69,16 +69,16 @@ public class Songs {
             songTitle.setCategory(categoryRepository.getSongTitleCategory());
             titleRepository.create(songTitle);
         }
-        if (song.getTitle() == null && song.getSongTitle() != null) {
+        if (song.getUmbrellaTitle() == null && song.getSongTitle() != null) {
 
             Title umbrellaTitle = new Title(song.getSongTitle());
             umbrellaTitle.setCategory(categoryRepository.getUmbrellaTitleCategory());
             titleRepository.create(umbrellaTitle);
-            song.setTitle(umbrellaTitle);
+            song.setUmbrellaTitle(umbrellaTitle);
 
-        } else if (song.getTitle() != null && song.getTitle().getId() == 0) {
+        } else if (song.getUmbrellaTitle() != null && song.getUmbrellaTitle().getId() == 0) {
 
-            Title umbrellaTitle = song.getTitle();
+            Title umbrellaTitle = song.getUmbrellaTitle();
             umbrellaTitle.setCategory(categoryRepository.getUmbrellaTitleCategory());
             titleRepository.create(umbrellaTitle);
 

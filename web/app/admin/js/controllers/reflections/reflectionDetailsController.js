@@ -1,5 +1,5 @@
 'use strict';
-reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$window', '$location', 'reflectionContentService', "loginVerifyService","$q",
+reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$window', '$location', 'reflectionContentService', "loginVerifyService", "$q",
     function ($scope, $window, $location, reflectionContentService, loginVerifyService, $q) {
         loginVerifyService.redirectIfNotAuthenticated();
         $scope.reflection = {"reflectionTranscripts": [], "speaker": {}};
@@ -19,6 +19,12 @@ reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$windo
             });
         };
 
+        var addSongTitle = function () {
+            $scope.songs = angular.forEach($scope.songs, function (song) {
+                song.newTitle = song.songTitle.englishTransliteration;
+            })
+        };
+
         var init = function () {
             var getPeoplePromise = reflectionContentService.getPeople();
 
@@ -26,19 +32,22 @@ reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$windo
 
             var getSongsPromise = reflectionContentService.getSongs();
 
-            if (urlId != null && urlId != '') {
-                var getReflectionPromise = reflectionContentService.getRefectionById(urlId);
+            $q.all([getPeoplePromise, getWordsPromise, getSongsPromise]).then(function (data) {
+                $scope.people = data[0].data;
+                $scope.songs = data[2].data.songs;
+                $scope.words = data[1].data;
+                addSongTitle();
+                if (urlId != null && urlId != '') {
+                    reflectionContentService.getRefectionById(urlId).success(function (data) {
+                        $scope.reflection = data;
+                        $scope.words = getSelectedContent($scope.reflection.words, $scope.words);
+                        $scope.songs = getSelectedContent($scope.reflection.songs, $scope.songs);
+                        $scope.people = getSelectedContent($scope.reflection.people, $scope.people);
+                        $scope.reflection.type = getReflectionType();
+                    });
 
-                $q.all([getPeoplePromise, getWordsPromise, getSongsPromise, getReflectionPromise]).then(function (data) {
-                    $scope.people = data[0].data;
-                    $scope.reflection = data[3].data;
-                    $scope.words = getSelectedContent($scope.reflection.words, data[1].data.words);
-                    $scope.songs = getSelectedContent($scope.reflection.songs, data[2].data.songs);
-                    $scope.people = getSelectedContent($scope.reflection.people, data[0].data);
-
-                    $scope.reflection.type = getReflectionType();
-                });
-            }
+                }
+            });
         };
 
         $scope.saveData = function () {

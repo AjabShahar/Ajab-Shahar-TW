@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -63,7 +62,7 @@ public class Word {
     @ManyToMany
     @JoinTable(name = "WORD_REFLECTION", joinColumns = {@JoinColumn(name = "WORD_ID")},
             inverseJoinColumns = {@JoinColumn(name = "REFLECTION_ID")})
-    private Set<Reflection> reflections = new HashSet<>();
+    private Set<Reflection> reflections = new LinkedHashSet<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "RELATED_WORDS", joinColumns = {@JoinColumn(name = "WORD_ID", referencedColumnName = "ID")},

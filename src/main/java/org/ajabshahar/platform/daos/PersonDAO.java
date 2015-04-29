@@ -36,7 +36,7 @@ public class PersonDAO extends AbstractDAO<PersonDetails> {
         if (personId <= 0 && Strings.isNullOrEmpty(role))
             return findAll();
 
-        Session session = currentSession();
+        Session session = this.sessionFactory.openSession();
         Criteria criteria = session.createCriteria(PersonDetails.class, "personDetails");
         if (personId > 0) {
             criteria.add(Restrictions.eq("id", Long.valueOf(personId)));
@@ -45,7 +45,9 @@ public class PersonDAO extends AbstractDAO<PersonDetails> {
             criteria.createAlias("personDetails.category", "category");
             criteria.add(Restrictions.eq("category.name", role));
         }
-        return new LinkedHashSet<>(criteria.list());
+        Set linkedHashSet = new LinkedHashSet<>(criteria.list());
+        session.close();
+        return linkedHashSet;
     }
 
     public PersonDetails updatePerson(PersonDetails updatablePerson) {

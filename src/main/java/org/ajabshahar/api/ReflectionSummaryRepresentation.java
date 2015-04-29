@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.ajabshahar.platform.models.Reflection;
 import org.ajabshahar.platform.models.ReflectionTranscript;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class ReflectionSummaryRepresentation {
@@ -62,6 +63,38 @@ public class ReflectionSummaryRepresentation {
     public Set<ReflectionTranscript> getReflectionTranscripts() {
         return reflectionTranscripts;
     }
+
+    public static Set<ReflectionSummaryRepresentation> createFrom(Set<Reflection> reflections) {
+        Set<ReflectionSummaryRepresentation> reflectionSummaryRepresentations = new LinkedHashSet<>();
+        if (reflections != null) {
+            for (Reflection reflection : reflections) {
+                reflectionSummaryRepresentations.add(createFrom(reflection));
+            }
+        }
+        return reflectionSummaryRepresentations;
+    }
+
+    ;
+
+    private static Reflection toReflection(ReflectionSummaryRepresentation reflectionSummaryRepresentation) {
+        Reflection reflection = new Reflection();
+        reflection.setId(reflectionSummaryRepresentation.getId());
+        return reflection;
+    }
+
+    ;
+
+    public static Set<Reflection> toReflections(Set<ReflectionSummaryRepresentation> reflectionSummaryRepresentations) {
+        Set<Reflection> reflections = new LinkedHashSet<>();
+        if (reflectionSummaryRepresentations != null) {
+            for (ReflectionSummaryRepresentation reflectionSummaryRepresentation : reflectionSummaryRepresentations) {
+                reflections.add(toReflection(reflectionSummaryRepresentation));
+            }
+        }
+        return reflections;
+    }
+
+    ;
 
     public static ReflectionSummaryRepresentation createFrom(Reflection reflection){
         if(reflection != null){

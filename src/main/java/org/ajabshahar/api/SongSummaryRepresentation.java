@@ -62,7 +62,7 @@ public class SongSummaryRepresentation {
         songSummaryRepresentation.setEnglishTranslationTitle(Optional.ofNullable(song.getSongTitle()).orElse(new Title()).getEnglishTranslation());
         songSummaryRepresentation.setEnglishTransliterationTitle(Optional.ofNullable(song.getSongTitle()).orElse(new Title()).getEnglishTransliteration());
         songSummaryRepresentation.setPoets(PersonSummaryRepresentation.toPersonSummaries(song.getPoets()));
-        songSummaryRepresentation.setThumbnailUrl(song.getThumbnail_url());
+        songSummaryRepresentation.setThumbnailUrl(song.getThumbnailURL());
         return songSummaryRepresentation;
     }
 

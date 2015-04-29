@@ -40,7 +40,7 @@ public class SongDAO extends AbstractDAO<Song> {
         Calendar calendar = Calendar.getInstance();
         java.util.Date now = calendar.getTime();
 
-        currentSession().update(song.getTitle());
+        currentSession().update(song.getUmbrellaTitle());
         currentSession().save(song);
 
         if (song.getIsAuthoringComplete()) {
@@ -91,8 +91,8 @@ public class SongDAO extends AbstractDAO<Song> {
     }
 
     public void updateSong(Song updatableSong) {
-        if (updatableSong.getTitle() != null)
-            sessionFactory.getCurrentSession().update(updatableSong.getTitle());
+        if (updatableSong.getUmbrellaTitle() != null)
+            sessionFactory.getCurrentSession().update(updatableSong.getUmbrellaTitle());
         if (updatableSong.getSongTitle() != null)
             sessionFactory.getCurrentSession().update(updatableSong.getSongTitle());
         sessionFactory.getCurrentSession().update(updatableSong);
@@ -105,8 +105,8 @@ public class SongDAO extends AbstractDAO<Song> {
         Song song = findById((long) songId);
         if (song != null) {
             findSongs.createAlias("title", "titleAlias");
-            if (song.getTitle() != null) {
-                findSongs.add(Restrictions.eq("titleAlias.id", song.getTitle().getId()));
+            if (song.getUmbrellaTitle() != null) {
+                findSongs.add(Restrictions.eq("titleAlias.id", song.getUmbrellaTitle().getId()));
             }
             findSongs.add(Restrictions.eq("isAuthoringComplete", true));
         } else {

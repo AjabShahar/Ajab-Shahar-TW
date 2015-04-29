@@ -25,12 +25,13 @@ describe("reflection details controller", function () {
 
         httpBackend.expectGET('/api/people/summary').respond(200, ['people data']);
         httpBackend.expectGET('/api/words/summary').respond(200, test_admin_wordSummary);
-        httpBackend.expectGET('/api/songs/getPublishedSongs').respond(200, {data: null});
+        httpBackend.expectGET('/api/songs/getAllSongs').respond(200, {data: null});
         httpBackend.expectGET('/api/reflections/edit?id=1').respond(200,test_admin_reflection);
     }));
 
     describe("should test save of reflection", function () {
         it("after saving should redirect to admin page", function () {
+            httpBackend.flush();
             httpBackend.expectPOST('/api/reflections').respond(200);
 
             scope.saveData();
@@ -44,7 +45,7 @@ describe("reflection details controller", function () {
 
     describe("should test updating of reflection", function () {
         it("after updating should redirect to admin page", function () {
-
+            httpBackend.flush();
             httpBackend.expectPOST('/api/reflections').respond(200, {'id': 1});
 
             scope.saveData();
@@ -65,8 +66,7 @@ describe("reflection details controller", function () {
 });
 
 
-var test_admin_wordSummary={
-    "words": [
+var test_admin_wordSummary = [
         {
             "id": 1,
             "wordOriginal": "अकथ कथा",
@@ -107,8 +107,7 @@ var test_admin_wordSummary={
             "writers": [],
             "rootWord": false
         }
-    ]
-};
+];
 
 var test_admin_reflection = {
     "showOnMainFcPage": true,

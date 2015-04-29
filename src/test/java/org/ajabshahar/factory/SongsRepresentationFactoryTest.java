@@ -51,7 +51,7 @@ public class SongsRepresentationFactoryTest {
         umbrellaTitle.setOriginalTitle(format("Umbrella%sOriginal", id));
         umbrellaTitle.setEnglishTranslation(format("Umbrella%sEnglishTranslation", id));
         umbrellaTitle.setEnglishTransliteration(format("Umbrella%sEnglishTransliteration", id));
-        song.setTitle(umbrellaTitle);
+        song.setUmbrellaTitle(umbrellaTitle);
 
         Title songTitle = new Title();
         songTitle.setId(id);
@@ -67,8 +67,8 @@ public class SongsRepresentationFactoryTest {
         song.setIsAuthoringComplete(true);
         song.setShowOnLandingPage(true);
         song.setYoutubeVideoId("12345");
-        song.setSoundCloudTrackID("67890");
-        song.setThumbnail_url("http://tinyurl.com");
+        song.setSoundCloudTrackId("67890");
+        song.setThumbnailURL("http://tinyurl.com");
         song.setDuration("1:00");
 
         Gathering gathering = new Gathering();
@@ -113,7 +113,7 @@ public class SongsRepresentationFactoryTest {
         when(people.findBy(id + 1000)).thenReturn(PersonSummaryRepresentation.getPersonDetails(singer));
         when(people.findBy(id + 2000)).thenReturn(PersonSummaryRepresentation.getPersonDetails(poet));
         when(songTextRepresentationFactory.getSongText(song.getSongText())).thenReturn(new SongTextRepresentation(1, "", "", ""));
-        when(wordRepresentationFactory.create(new LinkedHashSet(anySetOf(Word.class)))).thenReturn(new WordsSummaryRepresentation());
+        when(wordRepresentationFactory.create(new LinkedHashSet(anySetOf(Word.class)))).thenReturn(new LinkedHashSet<>());
 
     }
 
@@ -137,20 +137,20 @@ public class SongsRepresentationFactoryTest {
         SongRepresentation songRepresentation = songsRepresentationFactory.create(song);
         assertThat(songRepresentation.getId(), IsEqual.equalTo(1L));
 
-        assertThat(songRepresentation.getUmbrellaTitleOriginal(), IsEqual.equalTo("Umbrella1Original"));
-        assertThat(songRepresentation.getUmbrellaTitleEnglishTranslation(), IsEqual.equalTo("Umbrella1EnglishTranslation"));
-        assertThat(songRepresentation.getUmbrellaTitleEnglishTransliteration(), IsEqual.equalTo("Umbrella1EnglishTransliteration"));
+        assertThat(songRepresentation.getUmbrellaTitle().getOriginalTitle(), IsEqual.equalTo("Umbrella1Original"));
+        assertThat(songRepresentation.getUmbrellaTitle().getEnglishTranslation(), IsEqual.equalTo("Umbrella1EnglishTranslation"));
+        assertThat(songRepresentation.getUmbrellaTitle().getEnglishTransliteration(), IsEqual.equalTo("Umbrella1EnglishTransliteration"));
 
-        assertThat(songRepresentation.getTitleOriginal(), IsEqual.equalTo("Song1Original"));
-        assertThat(songRepresentation.getTitleEnglishTranslation(), IsEqual.equalTo("Song1EnglishTranslation"));
-        assertThat(songRepresentation.getTitleEnglishTransliteration(), IsEqual.equalTo("Song1EnglishTransliteration"));
+        assertThat(songRepresentation.getSongTitle().getOriginalTitle(), IsEqual.equalTo("Song1Original"));
+        assertThat(songRepresentation.getSongTitle().getEnglishTranslation(), IsEqual.equalTo("Song1EnglishTranslation"));
+        assertThat(songRepresentation.getSongTitle().getEnglishTransliteration(), IsEqual.equalTo("Song1EnglishTransliteration"));
 
-        assertThat(songRepresentation.getPublish(), IsEqual.equalTo(true));
-        assertThat(songRepresentation.getType(), IsEqual.equalTo("Song & Reflection"));
-        assertThat(songRepresentation.isFeatured(), IsEqual.equalTo(true));
-        assertThat(songRepresentation.getYouTubeVideoId(), IsEqual.equalTo("12345"));
+        assertThat(songRepresentation.getIsAuthoringComplete(), IsEqual.equalTo(true));
+        assertThat(songRepresentation.getSongCategory().getName(), IsEqual.equalTo("Song & Reflection"));
+        assertThat(songRepresentation.getShowOnLandingPage(), IsEqual.equalTo(true));
+        assertThat(songRepresentation.getYoutubeVideoId(), IsEqual.equalTo("12345"));
         assertThat(songRepresentation.getSoundCloudTrackId(), IsEqual.equalTo("67890"));
-        assertThat(songRepresentation.getThumbnailUrl(), IsEqual.equalTo("http://tinyurl.com"));
+        assertThat(songRepresentation.getThumbnailURL(), IsEqual.equalTo("http://tinyurl.com"));
         assertThat(songRepresentation.getDuration(), IsEqual.equalTo("1:00"));
 
         assertThat(songRepresentation.getSingers().iterator().next().toString(), IsEqual.equalTo("id: 1001, name: Singer1"));
@@ -169,23 +169,22 @@ public class SongsRepresentationFactoryTest {
 
         assertThat(songsRepresentation.iterator().next().getId(), IsEqual.equalTo(1L));
 
-        assertThat(songsRepresentation.iterator().next().getUmbrellaTitleOriginal(), IsEqual.equalTo("Umbrella1Original"));
-        assertThat(songsRepresentation.iterator().next().getUmbrellaTitleEnglishTranslation(), IsEqual.equalTo("Umbrella1EnglishTranslation"));
-        assertThat(songsRepresentation.iterator().next().getUmbrellaTitleEnglishTransliteration(), IsEqual.equalTo("Umbrella1EnglishTransliteration"));
+        assertThat(songsRepresentation.iterator().next().getUmbrellaTitle().getOriginalTitle(), IsEqual.equalTo("Umbrella1Original"));
+        assertThat(songsRepresentation.iterator().next().getUmbrellaTitle().getEnglishTranslation(), IsEqual.equalTo("Umbrella1EnglishTranslation"));
+        assertThat(songsRepresentation.iterator().next().getUmbrellaTitle().getEnglishTransliteration(), IsEqual.equalTo("Umbrella1EnglishTransliteration"));
+        assertThat(songsRepresentation.iterator().next().getSongTitle().getOriginalTitle(), IsEqual.equalTo("Song1Original"));
+        assertThat(songsRepresentation.iterator().next().getSongTitle().getEnglishTranslation(), IsEqual.equalTo("Song1EnglishTranslation"));
+        assertThat(songsRepresentation.iterator().next().getSongTitle().getEnglishTransliteration(), IsEqual.equalTo("Song1EnglishTransliteration"));
 
-        assertThat(songsRepresentation.iterator().next().getTitleOriginal(), IsEqual.equalTo("Song1Original"));
-        assertThat(songsRepresentation.iterator().next().getTitleEnglishTranslation(), IsEqual.equalTo("Song1EnglishTranslation"));
-        assertThat(songsRepresentation.iterator().next().getTitleEnglishTransliteration(), IsEqual.equalTo("Song1EnglishTransliteration"));
-
-        assertThat(songsRepresentation.iterator().next().getPublish(), IsEqual.equalTo(true));
-        assertThat(songsRepresentation.iterator().next().getType(), IsEqual.equalTo("Song & Reflection"));
-        assertThat(songsRepresentation.iterator().next().isFeatured(), IsEqual.equalTo(true));
-        assertThat(songsRepresentation.iterator().next().getYouTubeVideoId(), IsEqual.equalTo("12345"));
+        assertThat(songsRepresentation.iterator().next().getIsAuthoringComplete(), IsEqual.equalTo(true));
+        assertThat(songsRepresentation.iterator().next().getSongCategory().getName(), IsEqual.equalTo("Song & Reflection"));
+        assertThat(songsRepresentation.iterator().next().getShowOnLandingPage(), IsEqual.equalTo(true));
+        assertThat(songsRepresentation.iterator().next().getYoutubeVideoId(), IsEqual.equalTo("12345"));
         assertThat(songsRepresentation.iterator().next().getSoundCloudTrackId(), IsEqual.equalTo("67890"));
-        assertThat(songsRepresentation.iterator().next().getThumbnailUrl(), IsEqual.equalTo("http://tinyurl.com"));
+        assertThat(songsRepresentation.iterator().next().getThumbnailURL(), IsEqual.equalTo("http://tinyurl.com"));
         assertThat(songsRepresentation.iterator().next().getDuration(), IsEqual.equalTo("1:00"));
-        assertThat(songsRepresentation.iterator().next().getSongGatheringId(), IsEqual.equalTo(1L));
-        assertThat(songsRepresentation.iterator().next().getSongGathering(), IsEqual.equalTo("song1englishGathering"));
+        assertThat(songsRepresentation.iterator().next().getGathering().getId(), IsEqual.equalTo(1L));
+        assertThat(songsRepresentation.iterator().next().getGathering().getEnglish(), IsEqual.equalTo("song1englishGathering"));
 
         assertThat(songsRepresentation.iterator().next().getSingers().iterator().next().toString(), IsEqual.equalTo("id: 1001, name: Singer1"));
         assertThat(songsRepresentation.iterator().next().getPoets().iterator().next().toString(), IsEqual.equalTo("id: 2001, name: Poet1"));
