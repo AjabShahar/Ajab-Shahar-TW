@@ -1,7 +1,7 @@
 <div>
     <div class="thumbnail word {{customStyle}}">
         <div class="image" ng-click="open('{{id}}')">
-            <img src="{{imgSrc}}"/>
+            <img ng-src="{{imgSrc}}"/>
         </div>
         <div class="bubble" ng-click="open('{{id}}')">
             <div class="summary" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">

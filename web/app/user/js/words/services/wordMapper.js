@@ -11,7 +11,8 @@ angular.module("word").factory('wordMapper', [function () {
                 "hindiIntroExcerpt": word.hindiIntroExcerpt,
                 "englishIntroExcerpt": word.englishIntroExcerpt,
                 "hasWordIntro":!_.isEmpty(word.wordIntroEnglish),
-                "customStyle": (customStyle) ? customStyle() : ''
+                "customStyle": (customStyle) ? customStyle() : '',
+                "thumbnailUrl": word.thumbnailUrl ? word.thumbnailUrl : "https://yt3.ggpht.com/-JtqzFmOGDiI/AAAAAAAAAAI/AAAAAAAAAAA/McQLKmfBpqg/s900-c-k-no/photo.jpg"
             });
             return thumbnails;
         }, []);

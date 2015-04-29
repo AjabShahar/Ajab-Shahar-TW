@@ -22,7 +22,7 @@ AjabShahar.ThumbnailObject = function(contentItem,type){
         if(!_.isEmpty(word)) {
             self.type = type;
             self.id = word.id;
-            self.thumbnailImg = 'https://yt3.ggpht.com/-JtqzFmOGDiI/AAAAAAAAAAI/AAAAAAAAAAA/McQLKmfBpqg/s900-c-k-no/photo.jpg';
+            self.thumbnailImg = word.thumbnailUrl ? word.thumbnailUrl:'https://yt3.ggpht.com/-JtqzFmOGDiI/AAAAAAAAAAI/AAAAAAAAAAA/McQLKmfBpqg/s900-c-k-no/photo.jpg';
             self.description = word.englishIntroExcerpt;
             self.verbPeople = {
                 verb: "Intro by",
