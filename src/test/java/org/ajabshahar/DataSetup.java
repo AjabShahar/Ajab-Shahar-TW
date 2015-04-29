@@ -11,8 +11,8 @@ public class DataSetup {
     public static String HASHED_PASSWORD = PasswordEncryptor.getEncryptedPassword("password", PasswordAuthenticator.SALT, PasswordAuthenticator.ALGORITHM);
 
     public static final Operation DELETE_ALL =
-            deleteAllFrom("REFLECTION_SONG", "REFLECTION_PERSON","SONG_WORD", "SONG_SINGER", "WORD_REFLECTION","WORD_SYNONYMS","WORD_WRITER", "WORD_INTRODUCTION",
-                    "RELATED_WORDS", "WORD","TRANSCRIPT", "REFLECTION", "PERSON", "SONG", "CATEGORY");
+            deleteAllFrom("REFLECTION_SONG", "REFLECTION_PERSON", "SONG_WORD", "SONG_SINGER", "WORD_REFLECTION", "WORD_SYNONYMS", "WORD_WRITER", "WORD_INTRODUCTION",
+                    "RELATED_WORDS", "WORD", "TRANSCRIPT", "REFLECTION", "PERSON", "SONG", "TITLE", "CATEGORY");
 
     public static final Operation INSERT_ADMIN_USER =
             sequenceOf(
@@ -45,15 +45,44 @@ public class DataSetup {
     public static final Operation INSERT_SONGS =
             sequenceOf(
                     insertInto("SONG")
-                            .columns("id", "show_on_landing_page", "is_authoring_complete", "song_category", "youtube_video_id", "soundcloud_track_id")
-                            .values(1, true, true, 1, "123456", "12345")
+                            .columns("id", "show_on_landing_page", "is_authoring_complete", "song_category", "youtube_video_id", "soundcloud_track_id", "THUMBNAIL_URL")
+                            .values(1, true, true, 1, "123456", "12345", "thumbURL")
                             .build());
+
+    public static final Operation INSERT_SONG_TITLE =
+            sequenceOf(
+                    insertInto("TITLE")
+                            .columns("id", "original_title", "english_translation", "english_transliteration", "category_id")
+                            .values(1, "original", "translation", "transliteration", 2)
+                            .build());
+
+    public static final Operation INSERT_UMBRELLA_TITLE =
+            sequenceOf(
+                    insertInto("TITLE")
+                            .columns("id", "original_title", "english_translation", "english_transliteration", "category_id")
+                            .values(2, "original", "translation", "transliteration", 3)
+                            .build());
+
+    public static final Operation INSERT_SONG_TITLE_CATEGORY =
+            sequenceOf(
+                    insertInto("CATEGORY")
+                            .columns("id", "name", "category_type")
+                            .values(2, "Song Title", "Song Title")
+                            .build());
+
+    public static final Operation INSERT_UMBRELLA_TITLE_CATEGORY =
+            sequenceOf(
+                    insertInto("CATEGORY")
+                            .columns("id", "name", "category_type")
+                            .values(3, "Umbrella Title", "Umbrella Title")
+                            .build());
+
     public static final Operation INSERT_WORDS =
             sequenceOf(
                     insertInto("WORD")
                             .columns("id", "word_original", "word_translation", "word_transliteration", "meaning", "show_on_landing_page", "hindi_intro_excerpt", "english_intro_excerpt", "is_root_word", "diacritic", "default_reflection_id", "display_ajab_shahar_team")
                             .values(1, "word original", "word translation", "word transliteration", "meaning", true, "some Hindi text", "some English text", true, "some diacritic", null, true)
-                            .values(2, "word original no 2", "word translation no 2", "word transliteration no 2", "no meaning", true, "some Hindi text", "some English text", true, "some diacritic",2,false)
+                            .values(2, "word original no 2", "word translation no 2", "word transliteration no 2", "no meaning", true, "some Hindi text", "some English text", true, "some diacritic", 2, false)
                             .build());
     public static final Operation INSERT_WORD_INTRODUCTION =
             sequenceOf(
@@ -107,7 +136,7 @@ public class DataSetup {
     public static final Operation INSERT_WORD_REFLECTIONS =
             sequenceOf(
                     insertInto("word_reflection")
-                    .columns("word_id","reflection_id")
-                    .values(1,1)
-                    .build());
+                            .columns("word_id", "reflection_id")
+                            .values(1, 1)
+                            .build());
 }

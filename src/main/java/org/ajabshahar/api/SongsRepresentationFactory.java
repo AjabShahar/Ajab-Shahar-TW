@@ -5,6 +5,7 @@ import org.ajabshahar.core.People;
 import org.ajabshahar.platform.models.*;
 
 import java.util.LinkedHashSet;
+import java.util.Optional;
 import java.util.Set;
 
 public class SongsRepresentationFactory {
@@ -40,82 +41,64 @@ public class SongsRepresentationFactory {
             }
             SongSummaryRepresentation songSummaryRepresentation = new SongSummaryRepresentation(song.getId(), title.getEnglishTranslation(),
                     title.getEnglishTransliteration(), singers, poets, song.getDuration(),
-                    song.getSongCategory().getName(), song.getThumbnail_url());
+                    song.getSongCategory().getName(), song.getThumbnailURL());
             songs.addSong(songSummaryRepresentation);
         }
         return songs;
     }
 
     public SongRepresentation create(Song song) {
-        Title umbrellaTitle = song.getTitle() == null ? new Title() : song.getTitle();
+        Title umbrellaTitle = song.getUmbrellaTitle() == null ? new Title() : song.getUmbrellaTitle();
         Title songTitle = song.getSongTitle() == null ? new Title() : song.getSongTitle();
         Gathering gathering = song.getGathering() == null ? new Gathering() : song.getGathering();
-        Set<PersonSummaryRepresentation> singers = getPeople(song.getSingers()), poets = getPeople(song.getPoets());
+        Set<PersonSummaryRepresentation> singers = getPeople(song.getSingers());
+        Set<PersonSummaryRepresentation> poets = getPeople(song.getPoets());
         SongText songText = song.getSongText() == null ? new SongText() : song.getSongText();
         SongTextRepresentation lyrics = songTextRepresentationFactory.getSongText(songText);
 
         Set<Word> wordList = (song.getWords() != null) ? new LinkedHashSet<>(song.getWords()) : new LinkedHashSet<>();
-        WordsSummaryRepresentation words = wordRepresentationFactory.create(wordList);
+        Set<WordSummaryRepresentation> words = wordRepresentationFactory.create(wordList);
 
         return new SongRepresentation(song.getId(),
-                umbrellaTitle.getId(),
-                umbrellaTitle.getOriginalTitle(),
-                umbrellaTitle.getEnglishTransliteration(),
-                umbrellaTitle.getEnglishTranslation(),
-                songTitle.getId(),
-                songTitle.getOriginalTitle(),
-                songTitle.getEnglishTransliteration(),
-                songTitle.getEnglishTranslation(),
                 song.getIsAuthoringComplete(),
-                song.getSongCategory().getId(),
-                song.getSongCategory().getName(),
                 song.getShowOnLandingPage(),
                 song.getYoutubeVideoId(),
-                song.getSoundCloudTrackID(),
-                song.getThumbnail_url(),
+                song.getSoundCloudTrackId(),
+                song.getThumbnailURL(),
                 song.getDuration(),
-                gathering.getId(),
-                gathering.getEnglish(),
                 singers,
                 poets,
-                song.getAbout(), lyrics, song.getDownload_url(), words);
+                song.getAbout(), lyrics, song.getDownloadURL(),
+                words,
+                ReflectionSummaryRepresentation.createFrom(song.getReflections()),
+                umbrellaTitle, songTitle, gathering, song.getSongCategory(), song.getMediaCategory(), song.getSongGenre());
     }
 
     public SongsRepresentation createSongsRepresentation(Set<Song> songList) {
         SongsRepresentation songsRepresentation = new SongsRepresentation();
         for (Song song : songList) {
 
-            Title umbrellaTitle = song.getTitle() == null ? new Title() : song.getTitle();
+            Title umbrellaTitle = song.getUmbrellaTitle() == null ? new Title() : song.getUmbrellaTitle();
             Title songTitle = song.getSongTitle() == null ? new Title() : song.getSongTitle();
             Gathering gathering = song.getGathering() == null ? new Gathering() : song.getGathering();
             Set<PersonSummaryRepresentation> singers = getPeople(song.getSingers()), poets = getPeople(song.getPoets());
             SongText songText = song.getSongText() == null ? new SongText() : song.getSongText();
             SongTextRepresentation songTextRepresentation = songTextRepresentationFactory.getSongText(songText);
             Set<Word> wordList = song.getWords();
-            WordsSummaryRepresentation words = wordRepresentationFactory.create(wordList);
+            Set<WordSummaryRepresentation> words = wordRepresentationFactory.create(wordList);
 
             SongRepresentation songRepresentation = new SongRepresentation(song.getId(),
-                    umbrellaTitle.getId(),
-                    umbrellaTitle.getOriginalTitle(),
-                    umbrellaTitle.getEnglishTransliteration(),
-                    umbrellaTitle.getEnglishTranslation(),
-                    songTitle.getId(),
-                    songTitle.getOriginalTitle(),
-                    songTitle.getEnglishTransliteration(),
-                    songTitle.getEnglishTranslation(),
                     song.getIsAuthoringComplete(),
-                    song.getSongCategory().getId(),
-                    song.getSongCategory().getName(),
                     song.getShowOnLandingPage(),
                     song.getYoutubeVideoId(),
-                    song.getSoundCloudTrackID(),
-                    song.getThumbnail_url(),
+                    song.getSoundCloudTrackId(),
+                    song.getThumbnailURL(),
                     song.getDuration(),
-                    gathering.getId(),
-                    gathering.getEnglish(),
                     singers,
                     poets,
-                    song.getAbout(), songTextRepresentation, song.getDownload_url(), words);
+                    song.getAbout(), songTextRepresentation, song.getDownloadURL(), words,
+                    ReflectionSummaryRepresentation.createFrom(song.getReflections()),
+                    umbrellaTitle, songTitle, gathering, song.getSongCategory(), song.getMediaCategory(), song.getSongGenre());
             songsRepresentation.add(songRepresentation);
         }
         return songsRepresentation;
@@ -139,37 +122,29 @@ public class SongsRepresentationFactory {
     private Song toSong(SongRepresentation songRepresentation) {
         Song song = new Song();
 
-        Title title = new Title();
-        title.setId(songRepresentation.getUmbrellaTitleId());
-
-        Category songCategory = new Category();
-        songCategory.setId(songRepresentation.getTypeId());
-
         SongText songText = new SongText();
-        songText.setId(songRepresentation.getSongText().getId());
-
-        Gathering gathering = new Gathering();
-        gathering.setId(songRepresentation.getId());
+        songText.setId(Optional.ofNullable(songRepresentation.getSongText()).orElse(new SongTextRepresentation()).getId());
+        song.setUmbrellaTitle(songRepresentation.getUmbrellaTitle());
 
         song.setId(songRepresentation.getId());
-        song.setTitle(title);
-        title.setId(songRepresentation.getTitleId());
-        song.setSongTitle(title);
-        song.setIsAuthoringComplete(songRepresentation.getPublish());
-        song.setSongCategory(songCategory);
-        song.setShowOnLandingPage(songRepresentation.isFeatured());
-        song.setYoutubeVideoId(songRepresentation.getYouTubeVideoId());
-        song.setSoundCloudTrackID(songRepresentation.getSoundCloudTrackId());
-        song.setThumbnail_url(songRepresentation.getThumbnailUrl());
+        song.setSongTitle(songRepresentation.getSongTitle());
+        song.setIsAuthoringComplete(songRepresentation.getIsAuthoringComplete());
+        song.setSongCategory(songRepresentation.getSongCategory());
+        song.setMediaCategory(songRepresentation.getMediaCategory());
+        song.setShowOnLandingPage(songRepresentation.getShowOnLandingPage());
+        song.setYoutubeVideoId(songRepresentation.getYoutubeVideoId());
+        song.setSoundCloudTrackId(songRepresentation.getSoundCloudTrackId());
+        song.setThumbnailURL(songRepresentation.getThumbnailURL());
         song.setDuration(songRepresentation.getDuration());
+        song.setSongGenre(songRepresentation.getSongGenre());
         song.setSingers(PersonSummaryRepresentation.toPeople(songRepresentation.getSingers()));
         song.setPoets(PersonSummaryRepresentation.toPeople(songRepresentation.getPoets()));
         song.setWords(WordsSummaryRepresentation.toWords(songRepresentation.getWords()));
         song.setSongText(songText);
-        song.setDownload_url(songRepresentation.getDownloadUrl());
+        song.setDownloadURL(songRepresentation.getDownloadURL());
         song.setAbout(songRepresentation.getAbout());
-        song.setGathering(gathering);
-
+        song.setGathering(songRepresentation.getGathering());
+        song.setReflections(ReflectionSummaryRepresentation.toReflections(songRepresentation.getReflections()));
         return song;
     }
 }

@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
@@ -36,13 +37,13 @@ public class Song {
     private String youtubeVideoId;
 
     @Column(name = "SOUNDCLOUD_TRACK_ID", nullable = false)
-    private String soundCloudTrackID;
+    private String soundCloudTrackId;
 
     @Column(name = "THUMBNAIL_URL")
-    private String thumbnail_url;
+    private String thumbnailURL;
 
     @Column(name = "DOWNLOAD_URL")
-    private String download_url;
+    private String downloadURL;
 
     @Column(name = "ABOUT")
     private String about;
@@ -68,17 +69,17 @@ public class Song {
             inverseJoinColumns = {@JoinColumn(name = "POET_ID", referencedColumnName = "ID")})
     private Set<PersonDetails> poets;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinColumn(name = "SONG_CATEGORY")
     private Category songCategory;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinColumn(name = "MEDIA_CATEGORY")
     private Category mediaCategory;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "UMBRELLA_TITLE_ID")
-    private Title title;
+    private Title umbrellaTitle;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "SONG_TITLE_ID")
@@ -93,22 +94,27 @@ public class Song {
             inverseJoinColumns = {@JoinColumn(name = "WORD_ID")})
     private Set<Word> words;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     private Gathering gathering;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "REFLECTION_SONG", joinColumns = {@JoinColumn(name = "SONG_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "REFLECTION_ID")})
+    private Set<Reflection> reflections = new LinkedHashSet<>();
 
     public void updateFrom(Song song) {
         Calendar calendar = Calendar.getInstance();
         Date now = calendar.getTime();
 
-        this.title = song.title;
+        this.umbrellaTitle = song.umbrellaTitle;
         this.songTitle = song.songTitle;
         this.about = song.about;
-        this.download_url = song.download_url;
+        this.downloadURL = song.downloadURL;
         this.songText = song.songText;
         this.showOnLandingPage = song.showOnLandingPage;
         this.duration = song.duration;
         this.youtubeVideoId = song.youtubeVideoId;
-        this.thumbnail_url = song.thumbnail_url;
+        this.thumbnailURL = song.thumbnailURL;
         this.isAuthoringComplete = song.isAuthoringComplete;
         this.singers = song.singers;
         this.poets = song.poets;
@@ -116,8 +122,9 @@ public class Song {
         this.mediaCategory = song.mediaCategory;
         this.songGenre = song.songGenre;
         this.words = song.words;
-        this.soundCloudTrackID = song.soundCloudTrackID;
+        this.soundCloudTrackId = song.soundCloudTrackId;
         this.gathering = song.gathering;
+        this.reflections = song.reflections;
 
         if (song.isAuthoringComplete) {
             this.publishedDate = new Timestamp(now.getTime());

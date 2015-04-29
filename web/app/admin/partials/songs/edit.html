@@ -36,8 +36,8 @@
                         <label>Singer</label>
                     </div>
                     <div class="form-group col-sm-2"
-                         multi-select input-model="singers" button-label="firstName lastName"
-                         item-label="firstName lastName" tick-property="ticked" output-model="song.singers">
+                         multi-select input-model="singers" button-label="name"
+                         item-label="name" tick-property="ticked" output-model="song.singers">
                     </div>
                     <input type="text" ng-model="song.singers" name="singers" ng-show="false" required />
 
@@ -53,13 +53,21 @@
                          item-label="wordTransliteration" tick-property="ticked" output-model="song.words"></div>
                 </div>
 
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label>Reflections</label>
+                    </div>
+                    <div class="col-sm-2" multi-select input-model="reflections" button-label="title"
+                         item-label="title" tick-property="ticked" output-model="song.reflections"></div>
+                </div>
+
                 <div class="row">
                     <div class="form-group col-sm-2">
                         <label>Poet</label>
                     </div>
                     <div class="form-group col-sm-2">
                         <select ng-model="song.poets[0].id"
-                                ng-options="poet.id as poet.firstName + ' ' + poet.lastName for poet in poets"
+                                ng-options="poet.id as poet.name for poet in poets"
                                 class="form-control" ng-required="song.isAuthoringComplete"></select>
                     </div>
                     <error-message name="Poet"
@@ -71,8 +79,8 @@
                         <label>Gatherings</label>
                     </div>
                     <div class="col-sm-2">
-                        <select ng-model="song.gathering.id"
-                                ng-options="gathering.id as gathering.english for gathering in gatherings"
+                        <select ng-model="song.gathering"
+                                ng-options="gathering as gathering.english for gathering in gatherings"
                                 class="form-control">
                         </select>
                     </div>
@@ -132,7 +140,7 @@
                         <label>SoundCloud track ID for audio</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <input type="text" name="soundCloudTrackID" ng-model="song.soundCloudTrackID"
+                        <input type="text" name="soundCloudTrackId" ng-model="song.soundCloudTrackId"
                                class="form-control" ng-required="song.isAuthoringComplete && isMediaUrlEmpty()">
                     </div>
                     <error-message name="Youtube URL or soundCloud"
@@ -144,11 +152,11 @@
                         <label>Thumbnail Url</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <input type="text" name="thumbnailUrl" ng-model="song.thumbnail_url" class="form-control"
+                        <input type="text" name="thumbnailURL" ng-model="song.thumbnailURL" class="form-control"
                                ng-required="song.isAuthoringComplete">
                     </div>
                     <error-message name="Thumbnail URL"
-                                   show-error="song.isAuthoringComplete && isEmpty(song.thumbnail_url)"></error-message>
+                                   show-error="song.isAuthoringComplete && isEmpty(song.thumbnailURL)"></error-message>
                 </div>
 
                 <div class="row">
@@ -156,7 +164,7 @@
                         <label>Download Url</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <input type="text" name="downloadUrl" ng-model="song.download_url" class="form-control">
+                        <input type="text" name="downloadURL" ng-model="song.downloadURL" class="form-control">
                     </div>
                 </div>
 

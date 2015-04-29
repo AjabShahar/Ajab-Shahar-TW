@@ -8,11 +8,11 @@ var songContentService = function ($http) {
     };
 
     var getSingers = function () {
-        return $http.get('/api/people?role=Singer');
+        return $http.get('/api/people/summary?role=Singer');
     };
 
     var getPoets = function () {
-        return $http.get('/api/people?role=Poet');
+        return $http.get('/api/people/summary?role=Poet');
     };
 
     var getCouplets = function () {
@@ -51,6 +51,10 @@ var songContentService = function ($http) {
         return $http.get('/api/gatherings');
     };
 
+    var getReflections = function () {
+        return $http.get('/api/reflections/summary');
+    };
+
     return {
         getSong: getSong,
         createSong: createSong,
@@ -64,6 +68,7 @@ var songContentService = function ($http) {
         getMediaCategories: getMediaCategories,
         getGenres: getGenres,
         getWords: getWords,
-        getGatherings: getGatherings
+        getGatherings: getGatherings,
+        getReflections: getReflections
     };
 };

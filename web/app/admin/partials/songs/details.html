@@ -19,7 +19,8 @@
 
     <div class="left">
         <form name="songForm" novalidate ng-controller="songDetailsController" ng-init="init()">
-            <as-admin-title title="Umbrella Title" title-data="song.title" title-list="umbrellaTitles"></as-admin-title>
+            <as-admin-title title="Umbrella Title" title-data="song.umbrellaTitle"
+                            title-list="umbrellaTitles"></as-admin-title>
 
             <as-admin-title title="Song Title" title-data="song.songTitle" title-list="songTitles"
                             validation-required = "true"></as-admin-title>
@@ -28,8 +29,8 @@
                 <div class="col-sm-2">
                     <label>Singer</label>
                 </div>
-                <div class="col-sm-2" multi-select input-model="singers" button-label="firstName lastName"
-                     item-label="firstName lastName" tick-property="selected" output-model="song.singers" ></div>
+                <div class="col-sm-2" multi-select input-model="singers" button-label="name"
+                     item-label="name" tick-property="selected" output-model="song.singers"></div>
                 <input type="text" ng-model="song.singers" name="singers" ng-show="false" required />
                 <error-message name="Singer"
                                show-error="song.isAuthoringComplete && song.singers.length < 1"></error-message>
@@ -45,11 +46,19 @@
 
             <div class="row form-group">
                 <div class="col-sm-2">
+                    <label>Reflections</label>
+                </div>
+                <div class="col-sm-2" multi-select input-model="reflections" button-label="title"
+                     item-label="title" tick-property="selected" output-model="song.reflections"></div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-sm-2">
                     <label>Poet</label>
                 </div>
                 <div class="col-sm-2">
                     <select ng-model="song.poets[0]"
-                            ng-options="poet.firstName + ' ' + poet.lastName for poet in poets  | orderBy:'firstName'"
+                            ng-options="poet.name for poet in poets  | orderBy:'name'"
                             class="form-control" ng-required="song.isAuthoringComplete">
                     </select>
                 </div>
@@ -124,7 +133,7 @@
                     <label>SoundCloud track ID for audio</label>
                 </div>
                 <div class="col-sm-2">
-                    <input type="text" name="soundCloudTrackID" ng-model="song.soundCloudTrackID" class="form-control"
+                    <input type="text" name="soundCloudTrackID" ng-model="song.soundCloudTrackId" class="form-control"
                            ng-required="song.isAuthoringComplete && isMediaUrlEmpty()">
                 </div>
                 <error-message name="Youtube URL or soundCloud"
@@ -136,11 +145,11 @@
                     <label>Thumbnail Url</label>
                 </div>
                 <div class="col-sm-2">
-                    <input type="text" name="thumbnailUrl" ng-model="song.thumbnail_url" class="form-control"
+                    <input type="text" name="thumbnailUrl" ng-model="song.thumbnailURL" class="form-control"
                            ng-required="song.isAuthoringComplete">
                 </div>
                 <error-message name="Thumbnail URL"
-                               show-error="song.isAuthoringComplete && isEmpty(song.thumbnail_url)"></error-message>
+                               show-error="song.isAuthoringComplete && isEmpty(song.thumbnailURL)"></error-message>
             </div>
 
             <div class="row form-group">
@@ -148,7 +157,7 @@
                     <label>Download Url for the song</label>
                 </div>
                 <div class="col-sm-2">
-                    <input type="text" name="downloadUrl" ng-model="song.download_url" class="form-control">
+                    <input type="text" name="downloadUrl" ng-model="song.downloadURL" class="form-control">
                 </div>
             </div>
 

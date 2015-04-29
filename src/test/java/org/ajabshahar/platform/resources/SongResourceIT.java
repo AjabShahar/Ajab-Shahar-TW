@@ -1,22 +1,30 @@
 package org.ajabshahar.platform.resources;
 
 import com.ninja_squad.dbsetup.DbSetup;
-import com.ninja_squad.dbsetup.Operations;
 import com.ninja_squad.dbsetup.destination.DataSourceDestination;
 import com.ninja_squad.dbsetup.operation.Operation;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import io.dropwizard.testing.junit.DropwizardAppRule;
-import org.ajabshahar.DataSetup;
+import net.minidev.json.JSONObject;
 import org.ajabshahar.api.SongsRepresentation;
 import org.ajabshahar.platform.PlatformApplication;
 import org.ajabshahar.platform.PlatformConfiguration;
+import org.ajabshahar.platform.models.Song;
+import org.ajabshahar.platform.models.Title;
 import org.h2.jdbcx.JdbcDataSource;
 import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Test;
 
+import javax.ws.rs.core.NewCookie;
+
+import static com.ninja_squad.dbsetup.Operations.sequenceOf;
+import static org.ajabshahar.DataSetup.*;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class SongResourceIT {
 
@@ -41,8 +49,38 @@ public class SongResourceIT {
     }
 
     @Test
+    public void shouldBeAbleToSaveASong() {
+        Operation operation = sequenceOf(DELETE_ALL, INSERT_CATEGORY, INSERT_SONG_TITLE_CATEGORY,
+                INSERT_UMBRELLA_TITLE_CATEGORY, INSERT_SONG_TITLE, INSERT_UMBRELLA_TITLE, INSERT_SONGS);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        Title title = new Title();
+        title.setId(1);
+
+        JSONObject jsonReflection = new JSONObject();
+
+        jsonReflection.put("songTitle", title);
+        jsonReflection.put("soundCloudTrackId", "1");
+        title.setId(2);
+        jsonReflection.put("umbrellaTitle", title);
+        jsonReflection.put("duration", "2");
+
+        ClientResponse songResponse = loginAndPost("http://localhost:%d/api/songs", jsonReflection);
+        ;
+
+        Song song = getSong(songResponse);
+
+        assertThat(song.getId(), is(not(0)));
+        assertThat(song.getUmbrellaTitle().getId(), is(2L));
+        assertThat(song.getDuration(), is("2"));
+        assertThat(song.getSoundCloudTrackId(), is("1"));
+    }
+
+    @Test
     public void shouldGetSongRepresentationWithWords() throws Exception {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_CATEGORY, DataSetup.INSERT_SONGS,DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS, DataSetup.INSERT_SONG_WORD);
+        Operation operation = sequenceOf(DELETE_ALL, INSERT_CATEGORY, INSERT_SONGS, INSERT_REFLECTIONS, INSERT_WORDS, INSERT_SONG_WORD);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -53,16 +91,16 @@ public class SongResourceIT {
 
         SongsRepresentation responseEntity = getSongsRepresentation(response);
 
-        assertEquals(1, responseEntity.getSongs().iterator().next().getWords().getWords().size());
+        assertEquals(1, responseEntity.getSongs().iterator().next().getWords().size());
     }
 
     @Test
     public void shouldHaveEmptyPrimaryOccupationIfThereIsNoPrimaryOccupationForAPerson() throws Exception {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,
-                                                    DataSetup.INSERT_CATEGORY,
-                                                    DataSetup.INSERT_SONGS,
-                                                    DataSetup.INSERT_PERSON,
-                                                    DataSetup.INSERT_SONG_SINGER);
+        Operation operation = sequenceOf(DELETE_ALL,
+                INSERT_CATEGORY,
+                INSERT_SONGS,
+                INSERT_PERSON,
+                INSERT_SONG_SINGER);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -78,9 +116,9 @@ public class SongResourceIT {
 
     @Test
     public void shouldGetSongIfItIsNotRelatedWithAnyWord() throws Exception {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,
-                                                    DataSetup.INSERT_CATEGORY,
-                                                    DataSetup.INSERT_SONGS);
+        Operation operation = sequenceOf(DELETE_ALL,
+                INSERT_CATEGORY,
+                INSERT_SONGS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -91,14 +129,14 @@ public class SongResourceIT {
 
         SongsRepresentation responseEntity = getSongsRepresentation(response);
 
-        assertEquals(0, responseEntity.getSongs().iterator().next().getWords().getWords().size());
+        assertEquals(0, responseEntity.getSongs().iterator().next().getWords().size());
 
     }
 
     @Test
     public void shouldGiveEmptyResponseIfSongNotFound() throws Exception {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_SONG_WORD, DataSetup.DELETE_SONGS, DataSetup.DELETE_CATEGORY,
-                DataSetup.INSERT_CATEGORY, DataSetup.INSERT_SONGS);
+        Operation operation = sequenceOf(DELETE_ALL, DELETE_SONG_WORD, DELETE_SONGS, DELETE_CATEGORY,
+                INSERT_CATEGORY, INSERT_SONGS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -112,8 +150,39 @@ public class SongResourceIT {
     }
 
     private SongsRepresentation getSongsRepresentation(ClientResponse response) {
-        Class<SongsRepresentation> songsRepresentationClass = SongsRepresentation.class;
-        return response.getEntity(songsRepresentationClass);
+        return response.getEntity(SongsRepresentation.class);
+    }
+
+    private ClientResponse loginAndPost(String postUrl, Object jsonObj) {
+        String userCredentials = "{\"username\":\"admin\",\"password\":\"password\"}";
+        ClientResponse response = client.resource(
+                String.format("http://localhost:%d/api/login", RULE.getLocalPort())).header("Content-type", "application/json")
+                .post(ClientResponse.class, userCredentials);
+
+        NewCookie sessionCookie = geCookie(response);
+        return client.resource(
+                String.format(postUrl, RULE.getLocalPort()))
+                .header("Content-type", "application/json")
+                .cookie(sessionCookie)
+                .post(ClientResponse.class, jsonObj);
+    }
+
+    private Song getSong(ClientResponse response) {
+        return response.getEntity(Song.class);
+    }
+
+    private NewCookie geCookie(ClientResponse response) {
+        return getCookie(response, "JSESSIONID");
+    }
+
+    private NewCookie getCookie(ClientResponse response, String name) {
+        NewCookie sessionCookie = null;
+        for (NewCookie cookie : response.getCookies()) {
+            if (cookie.getName().equalsIgnoreCase(name)) {
+                sessionCookie = cookie;
+            }
+        }
+        return sessionCookie;
     }
 
 }

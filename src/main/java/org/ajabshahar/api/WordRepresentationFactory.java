@@ -57,10 +57,12 @@ public class WordRepresentationFactory {
     public static Set<Word> toWords(Set<WordSummaryRepresentation> relatedWords) {
         Set<Word> words = new LinkedHashSet<>();
 
-        for (WordSummaryRepresentation relatedWord : relatedWords) {
-            Word word = new Word();
-            word.setId(relatedWord.getId());
-            words.add(word);
+        if (relatedWords != null) {
+            for (WordSummaryRepresentation relatedWord : relatedWords) {
+                Word word = new Word();
+                word.setId(relatedWord.getId());
+                words.add(word);
+            }
         }
         return words;
     }
@@ -73,8 +75,8 @@ public class WordRepresentationFactory {
         return primaryCategoryName;
     }
 
-    public WordsSummaryRepresentation create(Set<Word> wordsList) {
-        WordsSummaryRepresentation wordsSummaryRepresentation = new WordsSummaryRepresentation();
+    public Set<WordSummaryRepresentation> create(Set<Word> wordsList) {
+        Set<WordSummaryRepresentation> wordsSummaryRepresentation = new LinkedHashSet<>();
         wordsList.forEach(word -> {
 
             String wordOriginal = word.getWordOriginal() != null ? word.getWordOriginal() : "";
@@ -109,7 +111,9 @@ public class WordRepresentationFactory {
                     writers.add(representation);
                 }
             }
-            WordRepresentation wordRepresentation = new WordRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(), word.getWordTransliteration(), word.getEnglishIntroExcerpt(), word.getHindiIntroExcerpt(), wordIntroHindi, wordIntroEnglish, writers, word.getDiacritic(), word.getMeaning(), word.getIsRootWord(), word.getDisplayAjabShaharTeam(),word.getThumbnailUrl());
+            WordRepresentation wordRepresentation = new WordRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(), word.getWordTransliteration(),
+                    word.getEnglishIntroExcerpt(), word.getHindiIntroExcerpt(), wordIntroHindi, wordIntroEnglish, writers, word.getDiacritic(), word.getMeaning(),
+                    word.getIsRootWord(), word.getDisplayAjabShaharTeam(), word.getThumbnailUrl());
             wordsRepresentation.add(wordRepresentation);
         }
         return wordsRepresentation;
@@ -198,10 +202,10 @@ public class WordRepresentationFactory {
         Set<ReflectionSummaryRepresentation> reflectionSummaryRepresentationList = reflectionRepresentationFactory.toReflectionSummaryList(reflections);
         wordIntermediateRepresentation.setReflections(reflectionSummaryRepresentationList);
 
-        WordsSummaryRepresentation wordSummaryRepresentations = word.getRelatedWords() != null ? create(new LinkedHashSet<>(word.getRelatedWords())) : new WordsSummaryRepresentation();
-        wordIntermediateRepresentation.setRelatedWords(wordSummaryRepresentations.getWords());
-        wordSummaryRepresentations = word.getSynonyms() != null ? create(new LinkedHashSet<>(word.getSynonyms())) : new WordsSummaryRepresentation();
-        wordIntermediateRepresentation.setSynonyms(wordSummaryRepresentations.getWords());
+        Set<WordSummaryRepresentation> wordSummaryRepresentations = word.getRelatedWords() != null ? create(new LinkedHashSet<>(word.getRelatedWords())) : new LinkedHashSet<>();
+        wordIntermediateRepresentation.setRelatedWords(wordSummaryRepresentations);
+        wordSummaryRepresentations = word.getSynonyms() != null ? create(new LinkedHashSet<>(word.getSynonyms())) : new LinkedHashSet<>();
+        wordIntermediateRepresentation.setSynonyms(wordSummaryRepresentations);
 
         return wordIntermediateRepresentation;
     }

@@ -19,6 +19,7 @@ songsAdminApp.controller('songDetailsController', ['$scope', '$window', '$locati
         $scope.genres = [];
         $scope.words = [];
         $scope.gatherings = [];
+        $scope.reflections = [];
 
         var sortList = function (list, sortCriteria) {
             return $filter('orderBy')(list, sortCriteria);
@@ -45,8 +46,9 @@ songsAdminApp.controller('songDetailsController', ['$scope', '$window', '$locati
             var poetPromise = songContentService.getPoets();
             var wordPromise = songContentService.getWords();
             var gatheringPromise = songContentService.getGatherings();
+            var reflectionsPromise = songContentService.getReflections();
 
-            var promises = [genrePromise, titlePromise, songCategoryPromise, mediaCategoryPromise, umbrellaTitlePromise, singerPromise, poetPromise, wordPromise, gatheringPromise];
+            var promises = [genrePromise, titlePromise, songCategoryPromise, mediaCategoryPromise, umbrellaTitlePromise, singerPromise, poetPromise, wordPromise, gatheringPromise, reflectionsPromise];
 
             $q.all(promises).then(function (data) {
                 $scope.genres = data[0].data;
@@ -54,17 +56,18 @@ songsAdminApp.controller('songDetailsController', ['$scope', '$window', '$locati
                 $scope.songCategories = data[2].data;
                 $scope.mediaCategories = data[3].data;
                 $scope.umbrellaTitles = data[4].data;
-                $scope.singers = removeNulls(data[5].data.people);
-                $scope.poets = removeNulls(data[6].data.people);
+                $scope.singers = removeNulls(data[5].data);
+                $scope.poets = removeNulls(data[6].data);
                 $scope.words = data[7].data.words;
                 $scope.gatherings = data[8].data;
+                $scope.reflections = data[9].data.reflections;
                 $scope.song.songCategory = $scope.songCategories[0];
 
                 $scope.getSongData();
             });
         };
 
-        var setSongCategory = function () {
+        var setMediaCategory = function () {
             if (Boolean($scope.song.youtubeVideoId)) {
                 $scope.song["mediaCategory"] = $scope.mediaCategories.filter(function (mediaCategory) {
                     return mediaCategory.name == "audio & video";
@@ -82,7 +85,7 @@ songsAdminApp.controller('songDetailsController', ['$scope', '$window', '$locati
         };
 
         $scope.saveData = function () {
-            setSongCategory();
+            setMediaCategory();
 
             songContentService.createSong($scope.song)
                 .error(function (data) {
@@ -110,6 +113,7 @@ songsAdminApp.controller('songDetailsController', ['$scope', '$window', '$locati
                 $scope.genres = getSelectedContent(data.songGenre, $scope.genres);
                 $scope.singers = getSelectedContent(data.singers, $scope.singers);
                 $scope.words = getSelectedContent(data.words, $scope.words);
+                $scope.reflections = getSelectedContent(data.reflections, $scope.reflections);
                 $scope.song = data;
 
                 if ($scope.song.songText) {
@@ -128,7 +132,7 @@ songsAdminApp.controller('songDetailsController', ['$scope', '$window', '$locati
         };
 
         $scope.updateSong = function () {
-            setSongCategory();
+            setMediaCategory();
             $scope.song.publishedDate = null;
 
             songContentService.editSong($scope.song)

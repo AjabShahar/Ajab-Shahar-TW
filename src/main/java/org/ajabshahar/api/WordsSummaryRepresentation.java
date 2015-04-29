@@ -22,10 +22,10 @@ public class WordsSummaryRepresentation {
         return words;
     }
 
-    public static Set<Word> toWords(WordsSummaryRepresentation wordsSummaryRepresentation) {
+    public static Set<Word> toWords(Set<WordSummaryRepresentation> wordSummaryRepresentations) {
         Set<Word> words = new LinkedHashSet<>();
-        if (wordsSummaryRepresentation != null) {
-            for (WordSummaryRepresentation wordSummaryRepresentation : wordsSummaryRepresentation.getWords()) {
+        if (wordSummaryRepresentations != null) {
+            for (WordSummaryRepresentation wordSummaryRepresentation : wordSummaryRepresentations) {
                 Word word = new Word();
                 word.setId(wordSummaryRepresentation.getId());
                 words.add(word);

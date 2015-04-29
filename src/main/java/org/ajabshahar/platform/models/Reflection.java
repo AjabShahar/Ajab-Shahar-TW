@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -47,9 +46,9 @@ public class Reflection {
     @ManyToMany
     @JoinTable(name = "WORD_REFLECTION", joinColumns = {@JoinColumn(name = "REFLECTION_ID")},
             inverseJoinColumns = {@JoinColumn(name = "WORD_ID")})
-    private Set<Word> words = new HashSet<>();
+    private Set<Word> words = new LinkedHashSet<>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "REFLECTION_SONG", joinColumns = {@JoinColumn(name = "REFLECTION_ID")},
             inverseJoinColumns = {@JoinColumn(name = "SONG_ID")})
     private Set<Song> songs = new LinkedHashSet<>();

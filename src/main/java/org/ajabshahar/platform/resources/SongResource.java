@@ -40,8 +40,8 @@ public class SongResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response saveSong(String jsonSong) {
         Song song = songsRepresentationFactory.create(jsonSong);
-        songs.save(song);
-        return Response.ok().build();
+        song = songs.save(song);
+        return Response.ok().entity(song).build();
     }
 
     @GET
@@ -75,9 +75,11 @@ public class SongResource {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Song getSongById(@PathParam("id") Long id) {
+    public SongRepresentation getSongById(@PathParam("id") Long id) {
         try {
-            return songDAO.findById(id);
+
+            Song song = songDAO.findById(id);
+            return songsRepresentationFactory.create(song);
         } catch (Exception e) {
             System.out.println(e.getStackTrace());
         }

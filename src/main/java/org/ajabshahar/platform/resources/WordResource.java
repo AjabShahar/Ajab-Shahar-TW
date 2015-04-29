@@ -102,7 +102,7 @@ public class WordResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getSummaryRepresentation(){
         Set<Word> allWords = words.findAll();
-        WordsSummaryRepresentation wordsSummaryRepresentation = wordRepresentationFactory.create(allWords);
-        return Response.ok(wordsSummaryRepresentation).build();
+        Set<WordSummaryRepresentation> wordSummaryRepresentations = wordRepresentationFactory.create(allWords);
+        return Response.ok(wordSummaryRepresentations).build();
     }
 }

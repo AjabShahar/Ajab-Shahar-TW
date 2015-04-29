@@ -69,7 +69,7 @@ public class ReflectionRepresentationFactory {
         for (Reflection reflection : reflections) {
             Set<Word> words = new LinkedHashSet<>(reflection.getWords());
             Set<ReflectionTranscript> reflectionTranscripts = new LinkedHashSet<>(reflection.getReflectionTranscripts());
-            WordsSummaryRepresentation wordRepresentations = wordRepresentationFactory.create(words);
+            Set<WordSummaryRepresentation> wordRepresentations = wordRepresentationFactory.create(words);
             PersonDetails speakerDetails = reflection.getSpeaker();
             ReflectionRepresentation representation = new ReflectionRepresentation((int) reflection.getId(), reflection.getTitle(),
                     reflection.getVerb(), getPersonSummaryRepresentation(speakerDetails), reflection.getSoundCloudId(), reflection.getYoutubeVideo(),
@@ -105,7 +105,7 @@ public class ReflectionRepresentationFactory {
 
     public ReflectionRepresentation createReflectionRepresentation(Reflection reflection) {
         Set<Word> words = new LinkedHashSet<>(reflection.getWords());
-        WordsSummaryRepresentation wordRepresentations = wordRepresentationFactory.create(words);
+        Set<WordSummaryRepresentation> wordSummaryRepresentations = wordRepresentationFactory.create(words);
         Set<ReflectionTranscript> reflectionTranscripts = reflection.getReflectionTranscripts() != null ? new LinkedHashSet<>(reflection.getReflectionTranscripts()) : new LinkedHashSet<>();
         ReflectionRepresentation reflectionRepresentation = new ReflectionRepresentation(
                 (int) reflection.getId(),
@@ -115,7 +115,7 @@ public class ReflectionRepresentationFactory {
                 reflection.getSoundCloudId(),
                 reflection.getYoutubeVideo(),
                 reflectionTranscripts,
-                wordRepresentations,
+                wordSummaryRepresentations,
                 reflection.getShowOnFeaturedContentPage(),
                 reflection.getIsAuthoringComplete(),
                 SongSummaryRepresentation.toSummaryRepresentations(reflection.getSongs()),

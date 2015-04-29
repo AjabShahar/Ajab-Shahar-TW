@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.ajabshahar.platform.models.ReflectionTranscript;
 
 import java.util.Set;
-import java.util.stream.BaseStream;
 
 public class ReflectionRepresentation {
     private int id;
@@ -21,7 +20,7 @@ public class ReflectionRepresentation {
     private Set<PersonSummaryRepresentation> people;
 
     public ReflectionRepresentation(int id, String title, String verb, PersonSummaryRepresentation speaker, String soundCloudId,
-                                    String youtubeVideoId, Set<ReflectionTranscript> reflectionTranscripts, WordsSummaryRepresentation wordsSummaryRepresentation,
+                                    String youtubeVideoId, Set<ReflectionTranscript> reflectionTranscripts, Set<WordSummaryRepresentation> wordSummaryRepresentations,
                                     Boolean showOnMainFcPage, Boolean publish, Set<SongSummaryRepresentation> songs, Set<PersonSummaryRepresentation> people) {
         this.id = id;
         this.title = title;
@@ -30,7 +29,7 @@ public class ReflectionRepresentation {
         this.soundCloudId = soundCloudId;
         this.youtubeVideoId = youtubeVideoId;
         this.reflectionTranscripts = reflectionTranscripts;
-        this.words = wordsSummaryRepresentation.getWords();
+        this.words = wordSummaryRepresentations;
         this.showOnMainFcPage = showOnMainFcPage;
         this.publish = publish;
         this.songs = songs;

@@ -9,9 +9,9 @@ adminApp.controller('songListController', ['$scope', 'contentService', 'loginVer
                 var allSongs = result.data.songs;
                 $scope.songs = _.reduce(allSongs, function (songs, value, index) {
                     var toBeAdded = {};
-                    toBeAdded.title = value.englishTransliterationTitle;
-                    toBeAdded.translatedTitle = value.englishTranslationTitle;
-                    toBeAdded.categoryName = value.category;
+                    toBeAdded.title = value.songTitle.englishTransliteration;
+                    toBeAdded.translatedTitle = value.songTitle.englishTranslation;
+                    toBeAdded.categoryName = value.songCategory.name;
                     toBeAdded.publish = value.publish;
 
                     if (value.publish)
