@@ -55,14 +55,18 @@ describe("Song content service", function () {
 var test_songsList = [
     {
         "id": 11,
-        "umbrellaTitleId": 38,
-        "umbrellaTitleOriginal": "भजन रो गुड़क रहयो गाड़ो",
-        "umbrellaTitleEnglishTransliteration": "Bhajan Ro Gudak Rahyo Gaado",
-        "umbrellaTitleEnglishTranslation": "The Cart of Meditation is Tottering",
-        "titleId": 50,
-        "titleOriginal": "नित खैर मंगा",
-        "englishTransliterationTitle": "Nit Khair Manga",
-        "englishTranslationTitle": "Everyday I Ask For Your Well Being",
+        "umbrellaTitle": {
+            "id": 38,
+            "originalTitle": "भजन रो गुड़क रहयो गाड़ो",
+            "englishTransliteration": "Bhajan Ro Gudak Rahyo Gaado",
+            "englishTranslation": "The Cart of Meditation is Tottering"
+        },
+        songTitle: {
+            "id": 50,
+            "originalTitle": "नित खैर मंगा",
+            "englishTransliteration": "Nit Khair Manga",
+            "englishTranslation": "Everyday I Ask For Your Well Being"
+        },
         "publish": true,
         "category": "Songs",
         "featured": true,
@@ -117,14 +121,18 @@ var test_songsList = [
     },
     {
         "id": 12,
-        "umbrellaTitleId": 57,
-        "umbrellaTitleOriginal": "थारा रंगमहल में",
-        "umbrellaTitleEnglishTransliteration": "Thaara Rangmahal Mein",
-        "umbrellaTitleEnglishTranslation": "In Your Colourful Palace",
-        "titleId": 56,
-        "titleOriginal": "थारा रंगमहल में",
-        "englishTransliterationTitle": "Thaara Rangmahal Mein",
-        "englishTranslationTitle": "In Your Colourful Palace",
+        "umbrellaTitle": {
+            "id": 57,
+            "originalTitle": "थारा रंगमहल में",
+            "englishTransliteration": "Thaara Rangmahal Mein",
+            "englishTranslation": "In Your Colourful Palace"
+        },
+        "songTitle": {
+            "id": 56,
+            "originalTitle": "थारा रंगमहल में",
+            "englishTransliteration": "Thaara Rangmahal Mein",
+            "englishTranslation": "In Your Colourful Palace"
+        },
         "publish": true,
         "category": "Songs",
         "featured": true,
@@ -152,14 +160,18 @@ var test_songsList = [
     },
     {
         "id": 5,
-        "umbrellaTitleId": 36,
-        "umbrellaTitleOriginal": "हिए काया में",
-        "umbrellaTitleEnglishTransliteration": "Hiye Kaaya Mein",
-        "umbrellaTitleEnglishTranslation": "In This Body",
-        "titleId": 35,
-        "titleOriginal": "हिए काया में",
-        "englishTransliterationTitle": "Hiye Kaaya Mein",
-        "englishTranslationTitle": "In This Body",
+        "umbrellaTitle": {
+            "id": 36,
+            "originalTitle": "हिए काया में",
+            "englishTransliteration": "Hiye Kaaya Mein",
+            "englishTranslation": "In This Body"
+        },
+        songTitle: {
+            "id": 35,
+            "originalTitle": "हिए काया में",
+            "englishTransliteration": "Hiye Kaaya Mein",
+            "englishTranslation": "In This Body"
+        },
         "publish": true,
         "category": "Songs",
         "featured": true,
@@ -208,14 +220,18 @@ var test_songsList = [
     },
     {
         "id": 8,
-        "umbrellaTitleId": 36,
-        "umbrellaTitleOriginal": "हिए काया में",
-        "umbrellaTitleEnglishTransliteration": "Hiye Kaaya Mein",
-        "umbrellaTitleEnglishTranslation": "In This Body",
-        "titleId": 35,
-        "titleOriginal": "हिए काया में",
-        "englishTransliterationTitle": "Hiye Kaaya Mein",
-        "englishTranslationTitle": "In This Body",
+        "umbrellaTitle": {
+            "id": 36,
+            "originalTitle": "हिए काया में",
+            "englishTransliteration": "Hiye Kaaya Mein",
+            "englishTranslation": "In This Body"
+        },
+        "songTitle": {
+            "id": 35,
+            "originalTitle": "हिए काया में",
+            "englishTransliteration": "Hiye Kaaya Mein",
+            "englishTranslation": "In This Body"
+        },
         "publish": true,
         "category": "Songs",
         "featured": true,

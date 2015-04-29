@@ -9,8 +9,10 @@ describe('Mapper', function () {
             module('thumbnailModule');
             songList = [{
                 "id": 1,
-                "englishTranslationTitle": "For a few days,O heart",
-                "englishTransliterationTitle": "Kichhu din mone mone",
+                "songTitle": {
+                    "englishTranslation": "For a few days,O heart",
+                    "englishTransliteration": "Kichhu din mone mone"
+                },
                 "category": "Song & Reflection",
                 "poets": [{
                     "name": "Sharath"
