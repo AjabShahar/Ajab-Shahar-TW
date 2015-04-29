@@ -23,7 +23,7 @@
     <div class="detail-content">
         <div class="text-container" ng-if="showText()">
             <div class="text-content" >
-                <div ng-repeat="textSection in content.textSections" bind-dynamic-html="textSection"></div>
+                <div id="text-section" ng-repeat="textSection in content.textSections" bind-dynamic-html="textSection"></div>
             </div>
             <div class="text-share-options">
                 <a href="javascript:void(0)" class="share" ng-click="dropDownVisible='true'"></a>
@@ -92,12 +92,26 @@
         </div>
 
         <div class="related-links-parda">
-        <span ng-repeat="link in content.links">
-            <!--<span ng-bind="link.name"></span>-->
-            <a ng-href="{{link.link}}" ng-bind="link.name"></a>
-            <span ng-bind="link.alternateName"></span>
-            <span ng-bind="link.description"></span>
-        </span>
+            <dl>
+                <dt ng-repeat="link in content.links">
+                    <a ng-href="{{link.link}}" ng-bind="link.name"></a>
+                    <span ng-bind="link.alternateName"></span>
+                    <span ng-bind="link.description"></span>
+                </dt>
+            </dl>
+
+        <!--<span ng-repeat="link in content.links">-->
+            <!--&lt;!&ndash;<span ng-bind="link.name"></span>&ndash;&gt;-->
+            <!--<a ng-href="{{link.link}}" ng-bind="link.name"></a>-->
+            <!--<span ng-bind="link.alternateName"></span>-->
+            <!--<span ng-bind="link.description"></span>-->
+        <!--</span>-->
+
+
+
+
+
+
         </div>
 
     </div>
