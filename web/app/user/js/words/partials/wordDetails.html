@@ -7,60 +7,29 @@
                 </a>
             </div>
             <div class="page-title">
-                <span class="main">Bazaar</span>
-                <span class="sub-main">Marketplace </span>
+                <span class="main" ng-bind="wordDetails.wordTransliteration"></span>
+                <span class="sub-main" ng-bind="wordDetails.wordTranslation"></span>
 
                 <p class="title-related-words">
-                    <span class="header-translit-text">haatasdasds</span><span
-                        class="header-translate-text"> marketplaceaxc,</span>
-                    <span class="header-translit-text"> haatasdasds</span><span
-                        class="header-translate-text"> marketplaceaxc,</span>
-                    <span class="header-translit-text"> haatasdasds</span><span
-                        class="header-translate-text">marketplaceaxc,</span>
-                    <span class="header-translit-text">haatasdasds</span><span
-                        class="header-translate-text">, marketplaceaxc</span>
-                    <span class="header-translit-text">haatasdasds</span><span
-                        class="header-translate-text">, marketplaceaxc</span>
-                    <span class="header-translit-text">haatasdasds</span><span
-                        class="header-translate-text">, marketplaceaxc</span>
-                    <span class="header-translit-text">haatasdasds</span><span
-                        class="header-translate-text">, marketplaceaxc</span>
-                    <span class="header-translit-text">haatasdasds</span><span
-                        class="header-translate-text">, marketplaceaxc</span>
-                    <span class="header-translit-text">haatasdasds</span><span
-                        class="header-translate-text">, marketplaceaxc</span>
-                    <span class="header-translit-text">haatasdasds</span><span
-                        class="header-translate-text">, marketplaceaxc</span>
-                    <span class="header-translit-text">haatasdasds</span><span
-                        class="header-translate-text">, marketplaceaxc</span>
-                    <span class="header-translit-text">haatasdasds</span><span
-                        class="header-translate-text">, marketplaceaxc</span>
-                    <span class="header-translit-text">haatasdasds</span><span
-                        class="header-translate-text">, marketplaceaxc</span>
-                    <span class="header-translit-text">haatasdasds</span><span
-                        class="header-translate-text">, marketplaceaxc</span>
-
-
-
-
-
-
+                    <span ng-repeat="word in associatedWords">
+                        <span class="header-translit-text" ng-bind="word.wordTransliteration"></span>
+                        <span class="header-translate-text" ng-bind="word.wordTranslation"></span>
+                        <span ng-hide="$last">, </span>
+                    </span>
+               </p>
             </div>
         </div>
     </div>
 
-    <div class="vertical-spacer" ng-show="!shouldShowVersions() && false"></div>
+    <div class="vertical-spacer" ng-show="containsReflections()"></div>
 
     <div class="lower-pardah">
-        <div class="versions toggleBySlide" ng-show="showVersion && shouldShowVersions() || true">
-            <div class="carousel-wrapper jcarousel-wrapper" ng-show="showVersion && shouldShowReflections() || true">
-                <carousel items="carouselItems" item-clicked="selectThumbnail" format="'transliteration'"></carousel>
-            </div>
+        <div class="versions toggleBySlide" ng-show="shouldShowCarousel()">
+            <carousel items="carouselItems" item-clicked="selectThumbnail" format="'transliteration'"></carousel>
         </div>
 
-        <div class="see-more" ng-click="toggleVersion()">
-            <a class="version" href="javascript:void(0)">
-                intro + {{numberOfReflections}} reflections
+        <div class="see-more" ng-click="toggleCarousel()">
+            <a class="version" href="javascript:void(0)" ng-bind="'intro + ' + reflectionCount() + ' reflections' ">
                 <span class="arrow" ng-class="showVersion ? 'up-arrow' : ''"></span>
             </a>
         </div>
