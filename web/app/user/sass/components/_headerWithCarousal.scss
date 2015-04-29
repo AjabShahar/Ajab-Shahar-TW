@@ -38,6 +38,25 @@
     position: relative;
 
     .versions {
+
+      .jcarousel-control-prev, .jcarousel-control-next {
+        background: transparent url(/user/img/songs/carousel-left.png) 0 0 no-repeat;
+        width: 28px;
+        height: 39px;
+        display: inline-block;
+        text-shadow: none;
+        border-radius: 0;
+        box-shadow: none;
+        top: 25%;
+      }
+      .jcarousel-control-prev {
+        left: -10px;
+      }
+
+      .jcarousel-control-next {
+        background-image: url(/user/img/songs/carousel-right.png);
+        right: 0;
+      }
       .carousel-wrapper {
         border: none;
         box-shadow: none;
@@ -86,24 +105,7 @@
 
         }
 
-        .jcarousel-control-prev, .jcarousel-control-next {
-          background: transparent url(/user/img/songs/carousel-left.png) 0 0 no-repeat;
-          width: 28px;
-          height: 39px;
-          display: inline-block;
-          text-shadow: none;
-          border-radius: 0;
-          box-shadow: none;
-          top: 25%;
-        }
-        .jcarousel-control-prev {
-          left: -10px;
-        }
 
-        .jcarousel-control-next {
-          background-image: url(/user/img/songs/carousel-right.png);
-          right: 0;
-        }
         /*UI: WIP */
         .thumbnailWrapper {
           margin: 0;

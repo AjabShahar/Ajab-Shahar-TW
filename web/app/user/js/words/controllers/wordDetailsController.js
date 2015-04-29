@@ -5,7 +5,7 @@ angular.module("word").
 
         $scope.containsReflections = function() {
             if(!_.isEmpty($scope.wordDetails)){
-                return !_.isEmpty($scope.wordDetails.defaultReflection) && !_.isEmpty($scope.wordDetails.reflections);
+                return !_.isEmpty($scope.wordDetails.defaultReflection) || !_.isEmpty($scope.wordDetails.reflections);
             }
             return false;
         };

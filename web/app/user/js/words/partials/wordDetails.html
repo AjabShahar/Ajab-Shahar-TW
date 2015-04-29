@@ -21,16 +21,17 @@
         </div>
     </div>
 
-    <div class="vertical-spacer" ng-show="containsReflections()"></div>
+    <div class="vertical-spacer" ng-show="!containsReflections()"></div>
 
-    <div class="lower-pardah">
+    <div class="lower-pardah" ng-show="containsReflections()">
         <div class="versions toggleBySlide" ng-show="shouldShowCarousel()">
             <carousel items="carouselItems" item-clicked="selectThumbnail" format="'transliteration'"></carousel>
         </div>
 
         <div class="see-more" ng-click="toggleCarousel()">
-            <a class="version" href="javascript:void(0)" ng-bind="'intro + ' + reflectionCount() + ' reflections' ">
-                <span class="arrow" ng-class="showVersion ? 'up-arrow' : ''"></span>
+            <a class="version" href="javascript:void(0)" >
+                intro + {{reflectionCount()}} reflection<span ng-show="reflectionCount() != 1">s</span>
+                <span class="arrow" ng-class="shouldShowCarousel() ? 'up-arrow' : ''"></span>
             </a>
         </div>
     </div>

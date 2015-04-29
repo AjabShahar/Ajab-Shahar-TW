@@ -87,7 +87,7 @@ describe("content details directive", function () {
         rootScope.$digest();
 
         var directiveScope = directiveElement.isolateScope();
-        console.log("directive scope :",directiveScope)
+        console.log("directive scope :",directiveScope);
 
         expect(scope.hasText()).toBeTruthy();
         expect(scope.showVideo).toBeFalsy();
