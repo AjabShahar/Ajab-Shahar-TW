@@ -1,5 +1,31 @@
 angular.module("word").
     controller('wordDetailsController', ['$scope','wordService', '$route',function($scope,wordService, $route){
+
+        var carouselOpen = true;
+
+        $scope.containsReflections = function() {
+            if(!_.isEmpty($scope.wordDetails)){
+                return !_.isEmpty($scope.wordDetails.defaultReflection) && !_.isEmpty($scope.wordDetails.reflections);
+            }
+            return false;
+        };
+        $scope.shouldShowCarousel = function(){
+            return  carouselOpen && $scope.containsReflections()
+        };
+
+        $scope.toggleCarousel = function(){
+            carouselOpen = !carouselOpen;
+        };
+
+        $scope.reflectionCount = function(){
+            var count = 0;
+            if(!_.isEmpty($scope.wordDetails)){
+                if(!_.isEmpty($scope.wordDetails.defaultReflection)) count++;
+                if(!_.isEmpty($scope.wordDetails.reflections)) count+= $scope.wordDetails.reflections.length;
+            }
+            return count;
+        };
+
         $scope.selectThumbnail = function(thumbnail){
             if(_.isEmpty(thumbnail)) return;
             if(thumbnail.type === 'word'){
@@ -18,6 +44,8 @@ angular.module("word").
 
             wordService.getWord($scope.wordId).success(function(response){
                 $scope.wordDetails = response;
+                $scope.associatedWords = [].concat($scope.wordDetails.synonyms).concat($scope.wordDetails.relatedWords);
+
                 if(!_.isEmpty($scope.wordDetails.wordIntroductions )){
                     $scope.carouselItems.push(new AjabShahar.ThumbnailObject($scope.wordDetails,"word"))
                 }
