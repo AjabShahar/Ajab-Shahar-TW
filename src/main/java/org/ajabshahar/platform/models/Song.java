@@ -94,7 +94,7 @@ public class Song {
             inverseJoinColumns = {@JoinColumn(name = "WORD_ID")})
     private Set<Word> words;
 
-    @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     private Gathering gathering;
 
     @ManyToMany(fetch = FetchType.EAGER)
