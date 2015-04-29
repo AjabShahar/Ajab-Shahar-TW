@@ -1,4 +1,5 @@
-<div ng-init="isAudioOrVideo()">
+<div>
+    <!--    Title  and other headers -->
     <div class="header">
         <div ng-if="content.type === 'word'" class="header-text">
             <span class="title-case" ng-bind="content.verb"></span>
@@ -19,9 +20,12 @@
             <span class="header-italic" ng-bind="content.excerpt"></span>
         </div>
     </div>
+    <!--end of titles-->
 
     <div class="detail-content">
-        <div class="text-container" ng-if="showText()">
+    <!--main content-->
+        <!--text content-->
+        <div class="text-container" ng-if="hasText()">
             <div class="text-content" >
                 <div id="text-section" ng-repeat="textSection in content.textSections" bind-dynamic-html="textSection"></div>
             </div>
@@ -29,20 +33,25 @@
                 <a href="javascript:void(0)" class="share" ng-click="dropDownVisible='true'"></a>
             </div>
         </div>
+        <!--end of textcontent-->
 
-        <div id="audio_video_container" ng-if="!showText()">
+        <!--audio video content-->
+        <div id="audio_video_container" ng-if="!hasText()">
+            <!--video content-->
             <div ng-if="showVideo">
                 <youtube width="100%" height="90%" videoid="content.videoId"
                          should-stop-video="shouldStopVideo()"></youtube>
             </div>
+            <!--audio content-->
             <div ng-if="showAudio">
                 <sound-cloud audio-url="{{content.audioId}}" id="snd_{{id}}"></sound-cloud>
             </div>
 
+            <!--toggle, about sections -->
             <div class="video-options">
                 <ul class="slide-info">
                     <li>
-                        <a href="javascript:void(0)" ng-click="showAbout()" ng-if="about"
+                        <a href="javascript:void(0)" ng-click="toggleAbout()" ng-if="about"
                            class="{{isAboutVisible ? 'active-link': ''}}">about</a>
                     </li>
                 </ul>
@@ -55,7 +64,7 @@
                            ng-href="{{content.downloadUrl}}"></a>
                     </li>
                 </ul>
-                <ul class="audio-video-options" ng-show="hasAudioAndVideo">
+                <ul class="audio-video-options" ng-show="hasAudioAndVideo()">
                     <li>
                         <a href="javascript:void(0)" ng-show="showVideo" class="video-icon active"
                            ng-click="toggleVideoOrAudio()"></a>
@@ -71,8 +80,11 @@
                 </ul>
             </div>
             <div class="toggleBySlide about-info" bind-dynamic-html="content.about" ng-show="isAboutVisible"></div>
+        <!--end of toggle, about-->
         </div>
+        <!--end of audio video-->
 
+        <!--sharing-->
         <div class='shareItemsDropDown' ng-show="dropDownVisible" ng-mouseleave="dropDownVisible='false'">
             <ul class='shareItems'>
                 <li><a href='http://www.facebook.com/share.php?u={{url}}' target="_blank">Share on facebook</a></li>
@@ -91,6 +103,7 @@
             </ul>
         </div>
 
+        <!--related links-->
         <div class="related-links-parda">
             <dl>
                 <dt ng-repeat="link in content.links">
@@ -99,20 +112,6 @@
                     <p><span ng-bind="link.description"></span></p>
                 </dt>
             </dl>
-
-        <!--<span ng-repeat="link in content.links">-->
-            <!--&lt;!&ndash;<span ng-bind="link.name"></span>&ndash;&gt;-->
-            <!--<a ng-href="{{link.link}}" ng-bind="link.name"></a>-->
-            <!--<span ng-bind="link.alternateName"></span>-->
-            <!--<span ng-bind="link.description"></span>-->
-        <!--</span>-->
-
-
-
-
-
-
         </div>
-
     </div>
 </div>

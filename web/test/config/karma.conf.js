@@ -38,7 +38,8 @@ module.exports = function (config) {
             'user/js/songs/**/*.js',
             'http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-cookies.js',
             '../test/unit/**/*.js',
-            'user/js/common/directives/carouselSupport/carousel.html'
+            'user/js/common/directives/carouselSupport/carousel.html',
+            'user/js/common/directives/contentDetails/contentDetails.html'
         ],
         autoWatch: true,
         frameworks: ['jasmine'],
@@ -51,9 +52,16 @@ module.exports = function (config) {
         ],
         preprocessors: {
             '**/*.js': ['coverage'],
-            'user/js/common/directives/carouselSupport/carousel.html':['ng-html2js']
+            'user/js/common/directives/carouselSupport/carousel.html':['ng-html2js'],
+            'user/js/common/directives/contentDetails/contentDetails.html':['ng-html2js']
         },
 
+        ngHtml2JsPreprocessor: {
+            prependPrefix: '/',
+            // setting this option will create only a single module that contains templates
+            // from all the files, so you can load them all with module('foo')
+            moduleName: 'testTemplate'
+        },
 
         logLevel: config.LOG_INFO,
         singleRun: true,
