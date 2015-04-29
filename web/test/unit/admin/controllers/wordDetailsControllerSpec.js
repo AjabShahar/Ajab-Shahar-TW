@@ -34,6 +34,7 @@ describe("Word details controller spec:", function () {
     beforeEach(function () {
         adminHomePage = '/admin/partials/home.html';
         scope.formInfo.original = "data";
+        scope.formInfo.thumbnailUrl = "url";
     });
 
     describe("When initializing a word", function () {
@@ -116,7 +117,7 @@ describe("Word details controller spec:", function () {
             expect(scope.reflectionsWithoutTheDefault[0].id).toBe(4);
             expect(scope.reflectionsWithoutTheDefault[1].id).toBe(5);
 
-        })
+        });
         it("it should display the linked synonyms", function () {
             $httpBackend.expectGET("/api/words/edit?id=1").respond(test_word);
 
@@ -204,6 +205,33 @@ describe("Word details controller spec:", function () {
 
             expect(fakeWindow.location.href).toBe('');
             expect(scope.formInfo.displayAjabShaharTeam).not.toBe(undefined);
+        });
+        it("should append /images/ for thumbnail url,if it is just filename",function(){
+            scope.formInfo.thumbnailUrl = "thumbnail.jpg";
+            $httpBackend.expectPOST('/api/words', scope.formInfo).respond(500);
+
+            scope.saveData();
+            $httpBackend.flush();
+
+            expect(scope.formInfo.thumbnailUrl).toBe('/images/thumbnail.jpg');
+        });
+        it("should not append /images/ for thumbnail url,if it already have /images appended in filename",function(){
+            scope.formInfo.thumbnailUrl = "/images/thumbnail.jpg";
+            $httpBackend.expectPOST('/api/words', scope.formInfo).respond(500);
+
+            scope.saveData();
+            $httpBackend.flush();
+
+            expect(scope.formInfo.thumbnailUrl).toBe('/images/thumbnail.jpg');
+        });
+        it("should not append /images/ for thumbnail url,if the image is from internet source",function(){
+            scope.formInfo.thumbnailUrl = "http://www.hdwallpapersimages.com/wp-content/uploads/images/Child-Girl-with-Sunflowers-Images.jpg";
+            $httpBackend.expectPOST('/api/words', scope.formInfo).respond(500);
+
+            scope.saveData();
+            $httpBackend.flush();
+
+            expect(scope.formInfo.thumbnailUrl).toBe('http://www.hdwallpapersimages.com/wp-content/uploads/images/Child-Girl-with-Sunflowers-Images.jpg');
         });
     });
     describe("When fetching a given word via an ID,", function () {
