@@ -30,7 +30,7 @@ thumbnailModule.factory('songMapper', ['wordMapper', function (wordMapper) {
                 "singer": (song.singers == null || song.singers.length == 0) ? '' : song.singers[0].name + (song.singers[1] != null ? ' ......' : ''),
                 "singers": (song.singers != null && song.singers.length > 1) ? getSingers(song.singers) : '',
                 "poet": (song.poet == null || song.poet.length == 0) ? 'Unknown' : song.poet[0].name,
-                "thumbnailUrl": song.thumbnailUrl,
+                "thumbnailUrl": song.thumbnailURL,
                 "words": wordMapper.getBasicDetails(song.words.words),
                 "singersAsList": song.singers
             });
@@ -51,7 +51,7 @@ thumbnailModule.factory('songMapper', ['wordMapper', function (wordMapper) {
                 "audioId": song.soundCloudTrackId,
                 "poet": (song.poet == null || song.poet.length == 0) ? 'Unknown' : song.poet[0].name,
                 "noun": song.singers.length > 1 ? 'sing' : 'sings',
-                "downloadUrl": song.downloadUrl,
+                "downloadUrl": song.downloadURL,
                 "words": wordMapper.getBasicDetails(song.words.words)
             });
 
@@ -70,7 +70,7 @@ thumbnailModule.factory('songMapper', ['wordMapper', function (wordMapper) {
                 "audioUrl": song.soundCloudTrackId,
                 "singer": getSingers(song.singers),
                 "poet": poet,
-                "downloadURL": song.downloadUrl,
+                "downloadURL": song.downloadURL,
                 "about": (song.about == null) ? song.about : '\'' + song.about + '\'',
                 "words": wordMapper.getBasicDetails(song.words.words)
             });
