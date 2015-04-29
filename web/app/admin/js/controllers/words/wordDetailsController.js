@@ -56,7 +56,7 @@ wordsAdminApp.controller('wordDetailsController', ['$scope', '$window', '$locati
 
         $scope.saveData = function () {
             if($scope.wordForm.$valid){
-                if ($scope.formInfo.thumbnailUrl.indexOf("http") === -1 && $scope.formInfo.thumbnailUrl.indexOf("/images/") === -1) {
+                if ($scope.formInfo.thumbnailUrl && $scope.formInfo.thumbnailUrl.indexOf("http") === -1 && $scope.formInfo.thumbnailUrl.indexOf("/images/") === -1) {
                     $scope.formInfo.thumbnailUrl = '/images/' + $scope.formInfo.thumbnailUrl;
                 }
                     contentService.saveWord($scope.formInfo).success(function () {

@@ -34,7 +34,6 @@ describe("Word details controller spec:", function () {
     beforeEach(function () {
         adminHomePage = '/admin/partials/home.html';
         scope.formInfo.original = "data";
-        scope.formInfo.thumbnailUrl = "url";
     });
 
     describe("When initializing a word", function () {
