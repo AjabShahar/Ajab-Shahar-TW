@@ -69,11 +69,11 @@ public class Song {
             inverseJoinColumns = {@JoinColumn(name = "POET_ID", referencedColumnName = "ID")})
     private Set<PersonDetails> poets;
 
-    @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "SONG_CATEGORY")
     private Category songCategory;
 
-    @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "MEDIA_CATEGORY")
     private Category mediaCategory;
 
