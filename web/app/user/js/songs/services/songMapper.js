@@ -16,7 +16,7 @@ thumbnailModule.factory('songMapper', ['wordMapper', function (wordMapper) {
     };
 
     getThumbnails = function (songs, customStyle) {
-        return _.reduce(songs, function (thumbnails, song, index) {
+        return _.reduce(songs, function (thumbnails, song) {
             thumbnails.push({
                 "id": song.id,
                 "contentId": 'song_' + song.id,
@@ -29,7 +29,7 @@ thumbnailModule.factory('songMapper', ['wordMapper', function (wordMapper) {
                 "duration": song.duration,
                 "singer": (song.singers == null || song.singers.length == 0) ? '' : song.singers[0].name + (song.singers[1] != null ? ' ......' : ''),
                 "singers": (song.singers != null && song.singers.length > 1) ? getSingers(song.singers) : '',
-                "poet": (song.poet == null || song.poet.length == 0) ? 'Unknown' : song.poet[0].name,
+                "poet": (song.poets == null || song.poets.length == 0) ? 'Unknown' : song.poets[0].name,
                 "thumbnailUrl": song.thumbnailURL,
                 "words": wordMapper.getBasicDetails(song.words.words),
                 "singersAsList": song.singers
@@ -38,18 +38,18 @@ thumbnailModule.factory('songMapper', ['wordMapper', function (wordMapper) {
         }, []);
     };
 
-    getOverviews = function (songs, customStyle) {
-        return _.reduce(songs, function (allIntroductions, song, index) {
+    getOverviews = function (songs) {
+        return _.reduce(songs, function (allIntroductions, song) {
             allIntroductions.push({
                 "id": song.id,
                 "contentId": "song_" + song.id,
                 "isSong": true,
-                "videoId": song.youTubeVideoId,
+                "videoId": song.youtubeVideoId,
                 "englishTranslation": song.englishTranslationTitle,
                 "englishTransliteration": song.englishTransliterationTitle,
                 "singer": getSingers(song.singers),
                 "audioId": song.soundCloudTrackId,
-                "poet": (song.poet == null || song.poet.length == 0) ? 'Unknown' : song.poet[0].name,
+                "poet": (song.poets == null || song.poets.length == 0) ? 'Unknown' : song.poets[0].name,
                 "noun": song.singers.length > 1 ? 'sing' : 'sings',
                 "downloadUrl": song.downloadURL,
                 "words": wordMapper.getBasicDetails(song.words.words)
@@ -60,13 +60,13 @@ thumbnailModule.factory('songMapper', ['wordMapper', function (wordMapper) {
     };
 
     getSongDetails = function (songs) {
-        return _.reduce(songs, function (details, song, index) {
-            var poet = (Boolean(song.poet[0])) ? song.poet[0].name : '';
+        return _.reduce(songs, function (details, song) {
+            var poet = (Boolean(song.poets[0])) ? song.poets[0].name : '';
 
             details.push({
                 "id": song.id,
                 "contentId": "song_" + song.id,
-                "videoId": song.youTubeVideoId,
+                "videoId": song.youtubeVideoId,
                 "audioUrl": song.soundCloudTrackId,
                 "singer": getSingers(song.singers),
                 "poet": poet,

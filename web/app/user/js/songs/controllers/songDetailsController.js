@@ -6,8 +6,6 @@ var songDetailsController = function ($scope, $location, songsContentService, so
     $scope.direction = '';
     $scope.dropDownVisible = false;
     $scope.showVersion = true;
-    $scope.umbrellaTitleEnglishTranslation = '';
-    $scope.umbrellaTitleEnglishTransliteration = '';
     $scope.numberOfVersions = 0;
     $scope.songText = {
         "refrainOriginal": '',
@@ -34,8 +32,8 @@ var songDetailsController = function ($scope, $location, songsContentService, so
         songsContentService.getSongsVersions($scope.songId).then(function (result) {
             $scope.versions = songMapper.getThumbnails($scope.getSongsVersions(result.data.songs, $scope.songId), $scope.getCustomStyle);
             $scope.numberOfVersions = result.data.songs.length;
-            $scope.umbrellaTitleEnglishTransliteration = result.data.songs[0].umbrellaTitleEnglishTransliteration;
-            $scope.umbrellaTitleEnglishTranslation = result.data.songs[0].umbrellaTitleEnglishTranslation;
+            $scope.umbrellaTitleEnglishTransliteration = result.data.songs[0].umbrellaTitle.englishTransliteration;
+            $scope.umbrellaTitleEnglishTranslation = result.data.songs[0].umbrellaTitle.englishTranslation;
         });
 
         $scope.getRenditions($scope.songId);
@@ -61,7 +59,7 @@ var songDetailsController = function ($scope, $location, songsContentService, so
 
     $scope.getSong = function (songId) {
         songsContentService.getSong(songId).then(function (result) {
-            $scope.poet = result.data.poet[0];
+            $scope.poet = result.data.poets[0];
             $scope.song = result.data;
             $scope.songText.refrainEnglishTranslation = result.data.songText.refrainEnglishTranslation;
             $scope.songText.refrainOriginal = result.data.songText.refrainOriginal;

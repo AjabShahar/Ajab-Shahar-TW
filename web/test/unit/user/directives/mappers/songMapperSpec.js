@@ -12,7 +12,7 @@ describe('Mapper', function () {
                 "englishTranslationTitle": "For a few days,O heart",
                 "englishTransliterationTitle": "Kichhu din mone mone",
                 "category": "Song & Reflection",
-                "poet": [{
+                "poets": [{
                     "name": "Sharath"
                 }],
                 "thumbnailURL": "imgId",
@@ -23,7 +23,7 @@ describe('Mapper', function () {
                 "words": {
                     "words": []
                 },
-                "youTubeVideoId": "123456",
+                "youtubeVideoId": "123456",
                 "soundCloudTrackId": "sound cloud track",
                 "about": "about song",
                 "downloadURL": "download link"

@@ -77,7 +77,7 @@ var test_songsList = [
                 "hindiName": ""
             }
         ],
-        "poet": [
+        "poets": [
             {
                 "id": 26,
                 "name": "Badar Muneer",
@@ -139,7 +139,7 @@ var test_songsList = [
                 "hindiName": ""
             }
         ],
-        "poet": [
+        "poets": [
             {
                 "id": 11,
                 "name": "Kabir",
@@ -184,7 +184,7 @@ var test_songsList = [
                 "hindiName": ""
             }
         ],
-        "poet": [
+        "poets": [
             {
                 "id": 24,
                 "name": "Shah Abdul Latif Bhitai",
@@ -230,7 +230,7 @@ var test_songsList = [
                 "hindiName": ""
             }
         ],
-        "poet": [
+        "poets": [
             {
                 "id": 11,
                 "name": "Kabir",
