@@ -50,7 +50,7 @@ describe("Word details controller spec:", function () {
             $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
             $httpBackend.when("GET", "/api/songs/getAllSongs").respond({
                 "songs": [{
-                    "englishTransliterationTitle": "some title",
+                    "songTitle":{englishTransliteration:"some title"},
                     "singers": [],
                     "words": {"words": []}
                 }]
@@ -80,7 +80,7 @@ describe("Word details controller spec:", function () {
             $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
             $httpBackend.when("GET", "/api/songs/getAllSongs").respond({
                 "songs": [{
-                    "englishTransliterationTitle": "some title",
+                    "songTitle":{englishTransliteration:"some title"},
                     "singers": [],
                     "words": {"words": []}
                 }]
@@ -105,7 +105,7 @@ describe("Word details controller spec:", function () {
             $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
             $httpBackend.when("GET", "/api/songs/getAllSongs").respond({
                 "songs": [{
-                    "englishTransliterationTitle": "some title",
+                    "songTitle":{englishTransliteration:"some title"},
                     "singers": [],
                     "words": {"words": []}
                 }]
@@ -128,7 +128,7 @@ describe("Word details controller spec:", function () {
             $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
             $httpBackend.when("GET", "/api/songs/getAllSongs").respond({
                 "songs": [{
-                    "englishTransliterationTitle": "some title",
+                    "songTitle":{englishTransliteration:"some title"},
                     "singers": [],
                     "words": {"words": []}
                 }]
@@ -150,7 +150,7 @@ describe("Word details controller spec:", function () {
             $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
             $httpBackend.when("GET", "/api/songs/getAllSongs").respond({
                 "songs": [{
-                    "englishTransliterationTitle": "some title",
+                    "songTitle":{englishTransliteration:"some title"},
                     "singers": [],
                     "words": {"words": []}
                 }]
@@ -172,7 +172,7 @@ describe("Word details controller spec:", function () {
             $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
             $httpBackend.when("GET", "/api/songs/getAllSongs").respond({
                 "songs": [{
-                    "englishTransliterationTitle": "some title",
+                    "songTitle":{englishTransliteration:"some title"},
                     "singers": [],
                     "words": {"words": []}
                 }]
@@ -246,7 +246,7 @@ describe("Word details controller spec:", function () {
             $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
             $httpBackend.when("GET", "/api/songs/getAllSongs").respond({
                 "songs": [{
-                    "englishTransliterationTitle": "some title",
+                    "songTitle":{englishTransliteration:"some title"},
                     "singers": [],
                     "words": {"words": []}
                 }]
@@ -261,11 +261,11 @@ describe("Word details controller spec:", function () {
 
             var mockedSongs = {
                 "songs": [{
-                    "englishTransliterationTitle": "some title",
+                    "songTitle":{englishTransliteration:"some title"},
                     "singers": [{"name": "singer1"}, {"name": "singer2"}],
                     "words": {"words": []}
                 }, {
-                    "englishTransliterationTitle": "some title2",
+                    "songTitle":{englishTransliteration:"some title2"},
                     "singers": [{"name": "singer3"}, {"name": "singer4"}],
                     "words": {"words": []}
                 }]
@@ -288,10 +288,10 @@ describe("Word details controller spec:", function () {
         it("then shouldn't have singers as a comma separated entries for a song, if there are no singers", function () {
             var mockedSongs = {
                 "songs": [{
-                    "englishTransliterationTitle": "some title",
+                    "songTitle":{englishTransliteration:"some title"},
                     "singers": [],
                     "words": {"words": []}
-                }, {"englishTransliterationTitle": "some title2", "singers": [], "words": {"words": []}}]
+                }, {"songTitle":{englishTransliteration:"some title2"}, "singers": [], "words": {"words": []}}]
             };
 
             $httpBackend.expectGET("/api/words/edit?id=1").respond(test_word);
