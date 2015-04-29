@@ -175,6 +175,7 @@
   padding-left: 300px;
   padding-right: 225px;
   text-align: center;
+  font-family: 'Merriweather';
   .creditBox {
     display: inline-block;
     padding: 0 10px;
@@ -186,7 +187,7 @@
 
     .title-dark {
       font-size: 13px;
-      color: #4D4D4D;
+      color: $color-active-link;
       text-transform: none;
       font-family: "Merriweather";
     }
@@ -194,6 +195,7 @@
     .link-text {
         color: $color-sub-link;
         cursor: pointer;
+        font-size: $medium;
 
         &:hover {
             color: $color-hover-link;
@@ -228,36 +230,7 @@
   }
 }
 
-/* social media icons */
-/*.twitterPlug {
-    display:inline-block;
-}
 
-.socialIcons li {
-    display:inline-block;
-    margin-right: 1%;
-    cursor: pointer;
-}
-
-.shareItemsDropDown{
-	position: absolute;
-	display: inline-block;
-	width:200px;
-	background: #fff;
-	border:solid 1px #ccc;
-	border-radius: 5px;
-	box-shadow: #ccc 0 0 5px;
-	padding: 10px;
-	margin-left: -2px;
-
-	ul.shareItems li{
-        padding: 5px 0;
-        display: block;
-        a{
-            text-decoration: none;
-        }
-    }
-}*/
 
 #content-wrapper {
   background: transparent url(/user/img/words/content_bg.png) -4px 0 no-repeat;
