@@ -15,7 +15,7 @@ describe('Mapper', function () {
                 "poet": [{
                     "name": "Sharath"
                 }],
-                "thumbnailUrl": "imgId",
+                "thumbnailURL": "imgId",
                 "singers": [{
                     "name": "Parvathy Baul"
                 }],
@@ -26,7 +26,7 @@ describe('Mapper', function () {
                 "youTubeVideoId": "123456",
                 "soundCloudTrackId": "sound cloud track",
                 "about": "about song",
-                "downloadUrl": "download link"
+                "downloadURL": "download link"
             }];
         });
 
