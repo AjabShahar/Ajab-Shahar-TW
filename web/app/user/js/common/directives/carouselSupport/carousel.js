@@ -23,6 +23,7 @@ thumbnailModule.directive("carousel", function () {
 
             scope.selectThumbnail = function(index){
                 carousel.scroll(index);
+                scope.selectedThumbnail=scope.items[index];
                 scope.itemClicked(scope.items[index])
             };
 

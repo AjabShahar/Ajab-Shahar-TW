@@ -59,6 +59,43 @@ describe("contentDetails model",function(){
     });
 });
 
+describe("content details directive", function () {
+    var $compile,
+        scope,
+        template,
+        rootScope,
+        $httpBackend;
+
+    beforeEach(module('testTemplate'));
+    beforeEach(module('thumbnailModule'));
+
+    beforeEach(inject(function (_$compile_, _$rootScope_, $templateCache,_$httpBackend_) {
+        $compile = _$compile_;
+        scope = _$rootScope_.$new();
+        template = $templateCache;
+        rootScope = _$rootScope_;
+        $httpBackend = _$httpBackend_;
+    }));
+
+
+    xit("should show text content by default when it is present, in case of words",function(){
+        //$httpBackend.expectGET("/user/js/common/directives/carouselSupport/carousel.html").respond('200');
+
+        scope.detailsObject = new AjabShahar.DetailsObject(test_wordRepresentation,'word');
+        var directiveElement = angular.element('<content-details ng-if="detailsObject" content="detailsObject">');
+        $compile(directiveElement)(scope);
+        rootScope.$digest();
+
+        var directiveScope = directiveElement.isolateScope();
+        console.log("directive scope :",directiveScope)
+
+        expect(scope.hasText()).toBeTruthy();
+        expect(scope.showVideo).toBeFalsy();
+        expect(scope.showAudio).toBeFalsy();
+
+    });
+});
+
 var test_wordRepresentation ={
     "id": 2,
     "wordOriginal": "जागना सोना",
