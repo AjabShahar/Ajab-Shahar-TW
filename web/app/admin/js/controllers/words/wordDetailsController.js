@@ -22,9 +22,9 @@ wordsAdminApp.controller('wordDetailsController', ['$scope', '$window', '$locati
             angular.forEach($scope.songs, function (song) {
                 var singerNames = _.pluck(song.singers, 'name');
                 if (_.isEmpty(singerNames)) {
-                    song.menuTitle = song.englishTransliterationTitle;
+                    song.menuTitle = song.songTitle.englishTransliteration;
                 } else {
-                    song.menuTitle = song.englishTransliterationTitle + " - (" + singerNames.join(", ") + ")";
+                    song.menuTitle = song.songTitle.englishTransliteration + " - (" + singerNames.join(", ") + ")";
                 }
                 song.words = song.words.words;
             });
