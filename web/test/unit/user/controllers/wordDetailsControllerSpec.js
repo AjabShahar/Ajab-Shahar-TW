@@ -32,7 +32,14 @@ describe('Word details controller', function() {
     it("should create the list of thumbnail objects to be displayed on carousel",function(){
         $httpBackend.flush();
 
-        expect(scope.carouselItems.length).toBe(4);
+        expect(scope.carouselItems.length).toBe(3);
+
+    });
+
+    it("should display only the published reflections that are related to the word",function(){
+        $httpBackend.flush();
+
+        expect(scope.carouselItems.length).toBe(3);
 
         expect(scope.carouselItems[0].type).toBe('word');
 
@@ -42,9 +49,8 @@ describe('Word details controller', function() {
         expect(scope.carouselItems[2].type).toBe('reflection');
         expect(scope.carouselItems[2].id).toBe(4);
 
-        expect(scope.carouselItems[3].type).toBe('reflection');
-        expect(scope.carouselItems[3].id).toBe(7);
     });
+
 });
 
 var test_wordDetail ={
@@ -95,7 +101,7 @@ var test_wordDetail ={
                 "hindiName": null,
                 "primaryOccupation": null
             },
-            "published": true
+            "published": false
         }
     ],
     "relatedWords": [],

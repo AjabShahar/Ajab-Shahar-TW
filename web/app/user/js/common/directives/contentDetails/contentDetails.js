@@ -11,6 +11,7 @@ thumbnailModule.directive("contentDetails", function () {
             $scope.showVideo = false;
             $scope.showAudio = false;
             $scope.hasText = false;
+            $scope.sharingVisible = false;
 
             $scope.hasAudioAndVideo = function () {
                 return $scope.content.videoId && $scope.content.audioId;
@@ -29,6 +30,10 @@ thumbnailModule.directive("contentDetails", function () {
 
             $scope.toggleAbout = function () {
                 $scope.isAboutVisible = !$scope.isAboutVisible;
+            };
+
+            $scope.toggleShare = function(){
+                $scope.sharingVisible = !$scope.sharingVisible;
             };
 
             $scope.hasText = function(){

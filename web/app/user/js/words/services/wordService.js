@@ -23,7 +23,8 @@ angular.module("word").service("wordService",["$http",function ($http) {
         if(!_.isEmpty(word.defaultReflection)){
             reflections.push(word.defaultReflection)
         }
-        return reflections.concat(word.reflections);
+        var relatedReflections = word.reflections?word.reflections.filter(function(reflection){ return reflection.published }):undefined;
+        return reflections.concat(relatedReflections);
     };
 
     var getReflection = function(id){

@@ -65,7 +65,7 @@ public class ReflectionResource {
         if (reflectionList == null || reflectionList.size() == 0) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        ReflectionsRepresentation reflectionsSummaryRepresentation = reflectionRepresentationFactory.createReflections(reflectionList);
+        ReflectionsSummaryRepresentation reflectionsSummaryRepresentation = reflectionRepresentationFactory.toReflectionsSummaryRepresentation(reflectionList);
         return Response.ok(reflectionsSummaryRepresentation, MediaType.APPLICATION_JSON).build();
     }
 
