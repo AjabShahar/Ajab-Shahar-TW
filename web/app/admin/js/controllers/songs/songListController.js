@@ -12,7 +12,7 @@ adminApp.controller('songListController', ['$scope', 'contentService', 'loginVer
                     toBeAdded.title = value.songTitle.englishTransliteration;
                     toBeAdded.translatedTitle = value.songTitle.englishTranslation;
                     toBeAdded.categoryName = value.songCategory.name;
-                    toBeAdded.publish = value.publish;
+                    toBeAdded.publish = value.isAuthoringComplete;
 
                     if (value.publish)
                         toBeAdded.publish = "Yes";
