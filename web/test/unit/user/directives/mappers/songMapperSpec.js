@@ -22,9 +22,7 @@ describe('Mapper', function () {
                     "name": "Parvathy Baul"
                 }],
                 "duration": "09:11",
-                "words": {
-                    "words": []
-                },
+                "words": [],
                 "youtubeVideoId": "123456",
                 "soundCloudTrackId": "sound cloud track",
                 "about": "about song",
