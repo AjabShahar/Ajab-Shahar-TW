@@ -16,15 +16,14 @@
 
             .title-related-words {
                 margin-top: 7px;
+                font-size: $medium;
+                font-weight: 300;
                 .header-translit-text {
                     color: $dark-grey;
                     font-size: $medium;
-                    font-weight: 400;
                 }
                 .header-translate-text {
                     color: $light-grey;
-                    font-size: $small;
-                    font-weight: 300;
                     font-style: italic;
                 }
             }
@@ -86,7 +85,7 @@
                                  line-height: 1.5em;
                              }
                              .ref-header2-text {
-                                     font-size: $large;
+                                     font-size: $extra-large;
                                      color: $dark-grey;
                                      font-weight: 300;
 
@@ -158,13 +157,4 @@ body .footer-bg {
 }
 
 
-/******************** To be removed *****************************************************/
-
-.details .detail-content #media_reflection {
-display: none;
-
-}
-.details .detail-content .text-content {
-
-}
 
