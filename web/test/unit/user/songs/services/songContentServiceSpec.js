@@ -88,7 +88,6 @@ var test_songsList = [
                 "hindiName": ""
             }
         ],
-        "words": {
             "words": [
                 {
                     "id": 1,
@@ -117,7 +116,7 @@ var test_songsList = [
                     "rootWord": true
                 }
             ]
-        }
+
     },
     {
         "id": 12,
@@ -154,9 +153,9 @@ var test_songsList = [
                 "hindiName": ""
             }
         ],
-        "words": {
-            "words": []
-        }
+
+        "words": []
+
     },
     {
         "id": 5,
@@ -203,7 +202,6 @@ var test_songsList = [
                 "hindiName": ""
             }
         ],
-        "words": {
             "words": [
                 {
                     "id": 5,
@@ -216,7 +214,7 @@ var test_songsList = [
                     "rootWord": true
                 }
             ]
-        }
+
     },
     {
         "id": 8,
@@ -263,7 +261,6 @@ var test_songsList = [
                 "url": "/api/people/11"
             }
         ],
-        "words": {
             "words": [
                 {
                     "id": 1,
@@ -312,6 +309,5 @@ var test_songsList = [
                     "rootWord": false
                 }
             ]
-        }
     }
 ];
