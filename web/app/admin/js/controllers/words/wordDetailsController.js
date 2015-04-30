@@ -45,8 +45,8 @@ wordsAdminApp.controller('wordDetailsController', ['$scope', '$window', '$locati
                 $scope.people = angular.copy(data[2].data);
                 $scope.reflections = data[3].data.reflections;
                 $scope.poets = data[4].data;
-                $scope.synonyms = angular.copy(data[5].data.words);
-                $scope.relatedWords = angular.copy(data[5].data.words);
+                $scope.synonyms = angular.copy(data[5].data);
+                $scope.relatedWords = angular.copy(data[5].data);
 
                 createMenuTitleForSongs();
 
