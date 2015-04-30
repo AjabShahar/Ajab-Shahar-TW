@@ -179,7 +179,8 @@
   .creditBox {
     display: inline-block;
     padding: 0 10px;
-    font-size: 10px;
+    font-family: 'Merriweather Sans';
+    font-size: $extra-small;
     font-weight: 300;
     line-height: 11px;
     text-transform: uppercase;
@@ -195,6 +196,7 @@
     .link-text {
         color: $color-sub-link;
         cursor: pointer;
+        font-family: 'Merriweather';
         font-size: $medium;
 
         &:hover {
