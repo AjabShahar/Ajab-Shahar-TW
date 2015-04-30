@@ -311,8 +311,8 @@ describe("Word details controller spec:", function () {
     });
 });
 
-var test_word_summaries = {
-    "words": [
+var test_word_summaries =
+     [
         {
             "id": 3,
             "wordOriginal": "hey",
@@ -340,8 +340,8 @@ var test_word_summaries = {
             ],
             "rootWord": true
         }
-    ]
-};
+    ];
+
 
 var test_word = {
     "id": 3,
@@ -381,9 +381,9 @@ var test_word = {
             "primaryOccupation": ""
         }
     },
-    "relatedWords": test_word_summaries.words,
+    "relatedWords": test_word_summaries,
     "songs": [],
-    "synonyms": test_word_summaries.words,
+    "synonyms": test_word_summaries,
     "writers": [],
     "people": []
 };
