@@ -21,9 +21,9 @@
         </div>
     </div>
 
-    <div class="vertical-spacer" ng-show="!containsReflections()"></div>
 
-    <div class="lower-pardah" ng-show="containsReflections()">
+    <div class="lower-pardah" ng-class="{'no-pardah': !containsReflections() }">
+
         <div class="versions toggleBySlide" ng-show="shouldShowCarousel()">
             <carousel items="carouselItems" item-clicked="selectThumbnail" format="'transliteration'"></carousel>
         </div>
