@@ -31,7 +31,7 @@ thumbnailModule.factory('songMapper', ['wordMapper', function (wordMapper) {
                 "singers": (song.singers != null && song.singers.length > 1) ? getSingers(song.singers) : '',
                 "poet": (song.poets == null || song.poets.length == 0) ? 'Unknown' : song.poets[0].name,
                 "thumbnailUrl": song.thumbnailURL,
-                "words": wordMapper.getBasicDetails(song.words.words),
+                "words": wordMapper.getBasicDetails(song.words),
                 "singersAsList": song.singers
             });
             return thumbnails;
@@ -52,7 +52,7 @@ thumbnailModule.factory('songMapper', ['wordMapper', function (wordMapper) {
                 "poet": (song.poets == null || song.poets.length == 0) ? 'Unknown' : song.poets[0].name,
                 "noun": song.singers.length > 1 ? 'sing' : 'sings',
                 "downloadUrl": song.downloadURL,
-                "words": wordMapper.getBasicDetails(song.words.words)
+                "words": wordMapper.getBasicDetails(song.words)
             });
 
             return allIntroductions;
@@ -72,7 +72,7 @@ thumbnailModule.factory('songMapper', ['wordMapper', function (wordMapper) {
                 "poet": poet,
                 "downloadURL": song.downloadURL,
                 "about": (song.about == null) ? song.about : '\'' + song.about + '\'',
-                "words": wordMapper.getBasicDetails(song.words.words)
+                "words": wordMapper.getBasicDetails(song.words)
             });
             return details;
         }, []);
