@@ -14,7 +14,7 @@ adminApp.controller('songListController', ['$scope', 'contentService', 'loginVer
                     toBeAdded.categoryName = value.songCategory.name;
                     toBeAdded.publish = value.isAuthoringComplete;
 
-                    if (value.publish)
+                    if (value.isAuthoringComplete)
                         toBeAdded.publish = "Yes";
 
                     else
