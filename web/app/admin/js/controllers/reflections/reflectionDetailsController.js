@@ -19,10 +19,15 @@ reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$windo
             });
         };
 
-        var addSongTitle = function () {
-            $scope.songs = angular.forEach($scope.songs, function (song) {
-                song.newTitle = song.songTitle.englishTransliteration;
-            })
+        var createMenuTitleForSongs = function () {
+            angular.forEach($scope.songs, function (song) {
+                var singerNames = _.pluck(song.singers, 'name');
+                if (_.isEmpty(singerNames)) {
+                    song.menuTitle = song.songTitle.englishTransliteration;
+                } else {
+                    song.menuTitle = song.songTitle.englishTransliteration + " - (" + singerNames.join(", ") + ")";
+                }
+            });
         };
 
         var init = function () {
@@ -36,7 +41,6 @@ reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$windo
                 $scope.people = data[0].data;
                 $scope.songs = data[2].data.songs;
                 $scope.words = data[1].data;
-                addSongTitle();
                 if (urlId != null && urlId != '') {
                     reflectionContentService.getRefectionById(urlId).success(function (data) {
                         $scope.reflection = data;
@@ -45,8 +49,8 @@ reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$windo
                         $scope.people = getSelectedContent($scope.reflection.people, $scope.people);
                         $scope.reflection.type = getReflectionType();
                     });
-
                 }
+                createMenuTitleForSongs();
             });
         };
 
