@@ -10,7 +10,7 @@
             <span class="title-case" ng-show="content.displayAjabShaharTeam">, Ajab Shahar Team</span>
         </div>
 
-        <div ng-if="content.type === 'reflection'" class="header-reflection">
+        <div ng-if="content.type === 'reflection'" class="header-reflection" ng-class="{'header-reflection-audiovideo': showVideo || showAudio}">
             <span class="author-caps" ng-bind="content.people[0]"></span>
             <span class="header" ng-bind="content.verb"></span>
 
