@@ -4,16 +4,16 @@
   .summary {
 
     .singers {
-      color: $color-text;
-      font-size: 12px;
+      color: $color-highlight-text;
+      font-size: $small;
       font-weight: 100;
-      line-height: 16px;
+      line-height: 20px;
     }
 
     .poet {
-      font-size: 14px;
+      font-size: $small;
       line-height: 20px;
-      color: $color-sub-text;
+      color: $color-regular-text;
     }
 
     .categoryName {
