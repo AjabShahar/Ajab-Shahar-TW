@@ -1,6 +1,6 @@
 'use strict';
 
-describe('On All songs page', function () {
+describe('On All songs page', function() {
     var scope, $httpBackend;
 
     var criteriaList = Ajabshahar.user.SongFilterConfig.filterCategories;
@@ -22,11 +22,11 @@ describe('On All songs page', function () {
             $window: _$window_,
             $rootScope: _$rootScope_,
             songsContentService: _songsContentService_,
-            songMapper: _songMapper_,
-            sortService: sortService
+            songMapper:_songMapper_,
+            sortService:sortService
         });
 
-        var resetCategories = function (category) {
+        var resetCategories = function(category){
             category.value = "";
             category.disabled = undefined;
             category.active = undefined;
@@ -37,14 +37,14 @@ describe('On All songs page', function () {
     }));
 
 
-    describe('When its initialized', function () {
-        it(' should setup filter categories and mark all the categories that have 0 items to filter on', function () {
-            /*$httpBackend.when("GET", "/api/words?showOnWordsLandingPage=true").respond({"words" : [{'id': 1, 'isRootWord': true}, {'id': 2, 'isRootWord': true}]});
+    describe('When its initialized', function() {
+        iit(' should setup filter categories and mark all the categories that have 0 items to filter on as disabled', function() {
+            $httpBackend.flush();
 
-             scope.init();
-             $httpBackend.flush();
-
-             expect(scope.words.length).toBe(2);*/
+            expect(scope.filterItems.Word.length).toBe(4);
+            expect(scope.filterItems.Singer.length).toBe(6);
+            expect(scope.filterItems.Poet.length).toBe(3);
+            expect(scope.filterItems.Gathering.length).toBe(0);
         });
 
     });
