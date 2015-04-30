@@ -170,10 +170,11 @@
 
             dt {
               color: $color-sub-link;
-              text-transform: capitalize;
+              text-transform: uppercase;
               font-weight: 300;
               display: inline-block;
               font-size: $medium;
+              font-family: 'merriweather';
 
               &:hover {
                 cursor: pointer;
@@ -192,6 +193,7 @@
             dd {
               color: $color-disabled-link;
               text-transform: uppercase;
+              font-family: 'merriweather sans';
               display: inline-block;
               margin: 0 20px 0 0;
               font-size: $extra-small;
