@@ -32,8 +32,12 @@
         }
     }
 
+
     .no-pardah {
         background: none;
+    }
+    .lower-pardah .versions .jcarousel-control-prev, .lower-pardah .versions .jcarousel-control-next {
+        top: 50%;
     }
 
     .main-content {
