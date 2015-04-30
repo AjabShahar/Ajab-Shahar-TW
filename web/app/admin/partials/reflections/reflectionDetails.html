@@ -60,11 +60,12 @@
 
                 <div class="row form-group">
                     <div class="col-sm-2">
-                        <label>Songs</label>
+                        <label>Related Songs</label>
                     </div>
-                    <div class="col-sm-2" multi-select input-model="songs" button-label="newTitle"
-                         item-label="newTitle" tick-property="ticked" output-model="reflection.songs"></div>
+                    <div class="col-sm-8 rowWiseSelect" multi-select input-model="songs" button-label="menuTitle"
+                         item-label="menuTitle" tick-property="ticked" output-model="reflection.songs"></div>
                 </div>
+
                 <div class="row form-group">
                     <div class="col-sm-2">
                         <label>Related people</label>
@@ -139,6 +140,7 @@
     </div>
 </div>
 
+<script src="/common/lib/underscore/underscore.js"></script>
 <script src="/common/lib/angular/angular.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-cookies.js"></script>
 <script type="text/javascript" src="/common/lib/angular-filter/dist/angular-filter.js"></script>
