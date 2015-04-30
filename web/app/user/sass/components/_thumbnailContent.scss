@@ -10,17 +10,17 @@
     }
 
     .en-title {
-      color: $color-sub-text;
+      color: $color-regular-text;
       font-style: italic;
       margin-bottom: 3px;
-      font-size: 16px;
+      font-size: $medium-large;
     }
 
     .footer {
-      margin-top: 10px;
-      color: $color-text;
+      margin-top: 3px;
+      color: $color-regular-text;
       line-height: 18px;
-      font-size: 12px;
+      font-size: $small;
       text-align: right;
       text-transform: uppercase;
     }

@@ -2,25 +2,25 @@
 
   .summary {
     .sub-title.item-title-translation {
-      font-size: 18px;
+      font-size: $large;
     }
 
     .desc {
-      color: #868686;
-      font-size: 12px;
+      color: $color-regular-text;
+      font-size: $small;
       line-height: 18px;
     }
   }
   .footer {
     .categoryName {
-      color: #868686;
-      font-size: 11px;
+      color: $color-regular-text;
+      font-size: $small;
       line-height: 18px;
       text-transform: uppercase;
     }
     .more-info {
-      color: #9c9b9b;
-      font-size: 20px;
+      color: $color-regular-text;
+      font-size: $extra-large;
       text-transform: uppercase;
       font-family: "Merriweather";
       font-weight: 700;
