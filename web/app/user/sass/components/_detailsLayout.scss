@@ -163,6 +163,10 @@
             text-align: center;
             display: block;
 
+            .italicise {
+                font-style: italic;
+            }
+
             dt {
               color: $color-sub-link;
               text-transform: capitalize;

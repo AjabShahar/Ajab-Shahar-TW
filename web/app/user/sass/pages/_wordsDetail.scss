@@ -12,9 +12,10 @@
         .page-title {
               width: 55%;
               text-align: left;
-              margin-top: 10px;
+              margin-top: 25px;
 
             .title-related-words {
+                margin-top: 7px;
                 .header-translit-text {
                     color: $dark-grey;
                     font-size: $medium;
@@ -29,6 +30,10 @@
             }
 
         }
+    }
+
+    .no-pardah {
+        background: none;
     }
 
     .main-content {
