@@ -25,6 +25,7 @@ import javax.ws.rs.core.NewCookie;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import static org.ajabshahar.DataSetup.INSERT_GATHERINGS;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
@@ -56,7 +57,7 @@ public class ReflectionResourceIT {
         personSummaryRepresentations.add(personSummaryRepresentation);
         songs.add(new SongSummaryRepresentation(1, songEnglishTransliteration, null, null, null, null, null, null));
 
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_CATEGORY, DataSetup.INSERT_PERSON, DataSetup.INSERT_SONGS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_CATEGORY, DataSetup.INSERT_PERSON,INSERT_GATHERINGS, DataSetup.INSERT_SONGS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
