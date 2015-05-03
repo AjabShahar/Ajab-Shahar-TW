@@ -12,7 +12,7 @@ public class DataSetup {
 
     public static final Operation DELETE_ALL =
             deleteAllFrom("REFLECTION_SONG", "REFLECTION_PERSON", "SONG_WORD", "SONG_SINGER", "WORD_REFLECTION", "WORD_SYNONYMS", "WORD_WRITER", "WORD_INTRODUCTION",
-                    "RELATED_WORDS", "WORD", "TRANSCRIPT", "REFLECTION", "PERSON", "SONG", "TITLE", "CATEGORY");
+                    "RELATED_WORDS", "WORD", "TRANSCRIPT", "REFLECTION", "PERSON", "SONG", "TITLE", "CATEGORY","GATHERING");
 
     public static final Operation INSERT_ADMIN_USER =
             sequenceOf(
@@ -41,12 +41,14 @@ public class DataSetup {
 
     public static final Operation DELETE_USERS = deleteAllFrom("USERS");
 
+    public static final Operation DELETE_GATHERINGS = deleteAllFrom("GATHERING");
+
 
     public static final Operation INSERT_SONGS =
             sequenceOf(
                     insertInto("SONG")
-                            .columns("id", "show_on_landing_page", "is_authoring_complete", "song_category", "youtube_video_id", "soundcloud_track_id", "THUMBNAIL_URL")
-                            .values(1, true, true, 1, "123456", "12345", "thumbURL")
+                            .columns("id", "show_on_landing_page", "is_authoring_complete", "song_category", "youtube_video_id", "soundcloud_track_id", "THUMBNAIL_URL", "gathering_id")
+                            .values(1, true, true, 1, "123456", "12345", "thumbURL", 11)
                             .build());
 
     public static final Operation INSERT_SONG_TITLE =
@@ -138,5 +140,12 @@ public class DataSetup {
                     insertInto("word_reflection")
                             .columns("word_id", "reflection_id")
                             .values(1, 1)
+                            .build());
+
+    public static final Operation INSERT_GATHERINGS =
+            sequenceOf(
+                    insertInto("GATHERING")
+                            .columns("id", "english_text","hindi_text")
+                            .values(11, "Rajasthan","rajasthan")
                             .build());
 }

@@ -25,6 +25,7 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import static org.ajabshahar.DataSetup.INSERT_GATHERINGS;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
@@ -462,6 +463,7 @@ public class WordResourceIT {
                 DataSetup.INSERT_CATEGORY,
                 DataSetup.INSERT_REFLECTIONS,
                 DataSetup.INSERT_PERSON,
+                INSERT_GATHERINGS,
                 DataSetup.INSERT_SONGS,
                 DataSetup.INSERT_SONG_SINGER);
 

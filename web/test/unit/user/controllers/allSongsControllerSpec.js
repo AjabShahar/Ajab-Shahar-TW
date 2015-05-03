@@ -38,13 +38,14 @@ describe('On All songs page', function() {
 
 
     describe('When its initialized', function() {
-        iit(' should setup filter categories and mark all the categories that have 0 items to filter on as disabled', function() {
+        it(' should setup filter categories and mark all the categories that have 0 items to filter on as disabled', function() {
             $httpBackend.flush();
 
             expect(scope.filterItems.Word.length).toBe(4);
             expect(scope.filterItems.Singer.length).toBe(6);
             expect(scope.filterItems.Poet.length).toBe(3);
-            expect(scope.filterItems.Gathering.length).toBe(0);
+            expect(scope.filterItems.Gathering.length).toBe(1);
+            expect(scope.filterItems.Gathering[0][0]).toBe("rajasthan");
         });
 
     });
@@ -157,6 +158,11 @@ var test_AllSongsList = {
             "soundCloudTrackId": "https://soundcloud.com/kashanilyas/we-main-chori-chori-tere-nal/sets",
             "thumbnailUrl": "https://farm8.staticflickr.com/7583/16097980187_72dfa07068_o.png",
             "duration": "07:45",
+            "gathering":{
+                id:11,
+                english:"rajasthan",
+                hindi:"rajasthan"
+            },
             "singers": [
                 {
                     "id": 25,
@@ -169,43 +175,41 @@ var test_AllSongsList = {
                     "hindiName": ""
                 }
             ],
-            "poet": [
+            "poets": [
                 {
                     "id": 26,
                     "name": "Badar Muneer",
                     "hindiName": ""
                 }
             ],
-            "words": {
-                "words": [
-                    {
-                        "id": 1,
-                        "wordOriginal": "अकथ कथा",
-                        "wordTranslation": "Akath Katha",
-                        "wordTransliteration": "Untellable Tale",
-                        "hindiIntroExcerpt": "Akath means inexpressible, indescribable, ineffable. Beyond words. Beyond language. Beyond mind. But why all the hue and cry if the tale cannot be told?",
-                        "englishIntroExcerpt": "",
-                        "writers": [],
-                        "rootWord": false
-                    },
-                    {
-                        "id": 14,
-                        "wordOriginal": "Guitar",
-                        "wordTranslation": "Guitar",
-                        "wordTransliteration": "Gitara",
-                        "hindiIntroExcerpt": "This is english intro excerpt",
-                        "englishIntroExcerpt": "This is hindi intro excerpt",
-                        "writers": [
-                            {
-                                "id": 7,
-                                "name": "Parvathy Baul",
-                                "hindiName": ""
-                            }
-                        ],
-                        "rootWord": true
-                    }
-                ]
-            }
+            "words": [
+                {
+                    "id": 1,
+                    "wordOriginal": "अकथ कथा",
+                    "wordTranslation": "Akath Katha",
+                    "wordTransliteration": "Untellable Tale",
+                    "hindiIntroExcerpt": "Akath means inexpressible, indescribable, ineffable. Beyond words. Beyond language. Beyond mind. But why all the hue and cry if the tale cannot be told?",
+                    "englishIntroExcerpt": "",
+                    "writers": [],
+                    "rootWord": false
+                },
+                {
+                    "id": 14,
+                    "wordOriginal": "Guitar",
+                    "wordTranslation": "Guitar",
+                    "wordTransliteration": "Gitara",
+                    "hindiIntroExcerpt": "This is english intro excerpt",
+                    "englishIntroExcerpt": "This is hindi intro excerpt",
+                    "writers": [
+                        {
+                            "id": 7,
+                            "name": "Parvathy Baul",
+                            "hindiName": ""
+                        }
+                    ],
+                    "rootWord": true
+                }
+            ]
         },
         {
             "id": 12,
@@ -224,6 +228,11 @@ var test_AllSongsList = {
             "publish": true,
             "category": "Songs",
             "featured": true,
+            "gathering":{
+                id:0,
+                english:null,
+                hindi:null
+            },
             "youTubeVideoId": "sop02Ivqji0",
             "soundCloudTrackId": "https://soundcloud.com/kashanilyas/we-main-chori-chori-tere-nal/sets",
             "thumbnailUrl": "https://farm8.staticflickr.com/7511/16096481990_31028b8c63_o.jpg",
@@ -235,16 +244,14 @@ var test_AllSongsList = {
                     "hindiName": ""
                 }
             ],
-            "poet": [
+            "poets": [
                 {
                     "id": 11,
                     "name": "Kabir",
                     "hindiName": ""
                 }
             ],
-            "words": {
-                "words": []
-            }
+            "words": []
         },
         {
             "id": 5,
@@ -284,27 +291,25 @@ var test_AllSongsList = {
                     "hindiName": ""
                 }
             ],
-            "poet": [
+            "poets": [
                 {
                     "id": 24,
                     "name": "Shah Abdul Latif Bhitai",
                     "hindiName": ""
                 }
             ],
-            "words": {
-                "words": [
-                    {
-                        "id": 5,
-                        "wordOriginal": "जागना सोना",
-                        "wordTranslation": "Waking Sleeping",
-                        "wordTransliteration": "Jaagna Sona",
-                        "hindiIntroExcerpt": "A story tells of how, when the Buddha attained illumination, somebody asked him: ‘So, are you enlightened now?’ The Buddha’s response was: ‘I am awake.’",
-                        "englishIntroExcerpt": "",
-                        "writers": [],
-                        "rootWord": true
-                    }
-                ]
-            }
+            "words": [
+                {
+                    "id": 5,
+                    "wordOriginal": "जागना सोना",
+                    "wordTranslation": "Waking Sleeping",
+                    "wordTransliteration": "Jaagna Sona",
+                    "hindiIntroExcerpt": "A story tells of how, when the Buddha attained illumination, somebody asked him: ‘So, are you enlightened now?’ The Buddha’s response was: ‘I am awake.’",
+                    "englishIntroExcerpt": "",
+                    "writers": [],
+                    "rootWord": true
+                }
+            ]
         },
         {
             "id": 8,
@@ -334,53 +339,51 @@ var test_AllSongsList = {
                     "hindiName": ""
                 }
             ],
-            "poet": [
+            "poets": [
                 {
                     "id": 11,
                     "name": "Kabir",
                     "hindiName": ""
                 }
             ],
-            "words": {
-                "words": [
-                    {
-                        "id": 1,
-                        "wordOriginal": "अकथ कथा",
-                        "wordTranslation": "Akath Katha",
-                        "wordTransliteration": "Untellable Tale",
-                        "hindiIntroExcerpt": "Akath means inexpressible, indescribable, ineffable. Beyond words. Beyond language. Beyond mind. But why all the hue and cry if the tale cannot be told?",
-                        "englishIntroExcerpt": "",
-                        "writers": [],
-                        "rootWord": false
-                    },
-                    {
-                        "id": 5,
-                        "wordOriginal": "जागना सोना",
-                        "wordTranslation": "Waking Sleeping",
-                        "wordTransliteration": "Jaagna Sona",
-                        "hindiIntroExcerpt": "A story tells of how, when the Buddha attained illumination, somebody asked him: ‘So, are you enlightened now?’ The Buddha’s response was: ‘I am awake.’",
-                        "englishIntroExcerpt": "",
-                        "writers": [],
-                        "rootWord": false
-                    },
-                    {
-                        "id": 10,
-                        "wordOriginal": "bazaar",
-                        "wordTranslation": "market",
-                        "wordTransliteration": "bazaar",
-                        "hindiIntroExcerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                        "englishIntroExcerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                        "writers": [
-                            {
-                                "id": 7,
-                                "name": "Parvathy Baul",
-                                "hindiName": ""
-                            }
-                        ],
-                        "rootWord": false
-                    }
-                ]
-            }
+            "words": [
+                {
+                    "id": 1,
+                    "wordOriginal": "अकथ कथा",
+                    "wordTranslation": "Akath Katha",
+                    "wordTransliteration": "Untellable Tale",
+                    "hindiIntroExcerpt": "Akath means inexpressible, indescribable, ineffable. Beyond words. Beyond language. Beyond mind. But why all the hue and cry if the tale cannot be told?",
+                    "englishIntroExcerpt": "",
+                    "writers": [],
+                    "rootWord": false
+                },
+                {
+                    "id": 5,
+                    "wordOriginal": "जागना सोना",
+                    "wordTranslation": "Waking Sleeping",
+                    "wordTransliteration": "Jaagna Sona",
+                    "hindiIntroExcerpt": "A story tells of how, when the Buddha attained illumination, somebody asked him: ‘So, are you enlightened now?’ The Buddha’s response was: ‘I am awake.’",
+                    "englishIntroExcerpt": "",
+                    "writers": [],
+                    "rootWord": true
+                },
+                {
+                    "id": 10,
+                    "wordOriginal": "bazaar",
+                    "wordTranslation": "market",
+                    "wordTransliteration": "bazaar",
+                    "hindiIntroExcerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    "englishIntroExcerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    "writers": [
+                        {
+                            "id": 7,
+                            "name": "Parvathy Baul",
+                            "hindiName": ""
+                        }
+                    ],
+                    "rootWord": true
+                }
+            ]
         }
     ]
 };

@@ -77,13 +77,11 @@ public class SongResource {
     @Produces(MediaType.APPLICATION_JSON)
     public SongRepresentation getSongById(@PathParam("id") Long id) {
         try {
-
             Song song = songDAO.findById(id);
             return songsRepresentationFactory.create(song);
         } catch (Exception e) {
-            System.out.println(e.getStackTrace());
+            throw new RuntimeException(e.getMessage());
         }
-        return null;
     }
 
     @GET
@@ -94,8 +92,8 @@ public class SongResource {
         if (songList == null || songList.size() == 0) {
             return Response.status(Status.NO_CONTENT).build();
         }
-        SongsRepresentation songsSummaryRepresentation = songsRepresentationFactory.createSongsRepresentation(songList);
-        return Response.ok(songsSummaryRepresentation, MediaType.APPLICATION_JSON).build();
+        SongsRepresentation songsRepresentation = songsRepresentationFactory.createSongsRepresentation(songList);
+        return Response.ok(songsRepresentation, MediaType.APPLICATION_JSON).build();
     }
 
     @GET
