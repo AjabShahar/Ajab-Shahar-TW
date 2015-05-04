@@ -8,6 +8,11 @@ import java.util.LinkedHashSet;
 import java.util.Optional;
 import java.util.Set;
 
+import static org.ajabshahar.api.PersonSummaryRepresentation.*;
+import static org.ajabshahar.api.ReflectionSummaryRepresentation.*;
+import static org.ajabshahar.api.SongTextRepresentation.toSongText;
+import static org.ajabshahar.api.WordsSummaryRepresentation.*;
+
 public class SongsRepresentationFactory {
     private final People people;
     private final SongTextRepresentationFactory songTextRepresentationFactory;
@@ -50,7 +55,7 @@ public class SongsRepresentationFactory {
     public SongRepresentation create(Song song) {
         Title umbrellaTitle = song.getUmbrellaTitle() == null ? new Title() : song.getUmbrellaTitle();
         Title songTitle = song.getSongTitle() == null ? new Title() : song.getSongTitle();
-        Gathering gathering = song.getGathering() == null ? new Gathering() : song.getGathering();
+        Gathering gathering = song.getGathering();
         Set<PersonSummaryRepresentation> singers = getPeople(song.getSingers());
         Set<PersonSummaryRepresentation> poets = getPeople(song.getPoets());
         SongText songText = song.getSongText() == null ? new SongText() : song.getSongText();
@@ -70,7 +75,7 @@ public class SongsRepresentationFactory {
                 poets,
                 song.getAbout(), lyrics, song.getDownloadURL(),
                 words,
-                ReflectionSummaryRepresentation.createFrom(song.getReflections()),
+                createFrom(song.getReflections()),
                 umbrellaTitle, songTitle, gathering, song.getSongCategory(), song.getMediaCategory(), song.getSongGenre());
     }
 
@@ -97,7 +102,7 @@ public class SongsRepresentationFactory {
                     singers,
                     poets,
                     song.getAbout(), songTextRepresentation, song.getDownloadURL(), words,
-                    ReflectionSummaryRepresentation.createFrom(song.getReflections()),
+                    createFrom(song.getReflections()),
                     umbrellaTitle, songTitle, gathering, song.getSongCategory(), song.getMediaCategory(), song.getSongGenre());
             songsRepresentation.add(songRepresentation);
         }
@@ -122,8 +127,6 @@ public class SongsRepresentationFactory {
     private Song toSong(SongRepresentation songRepresentation) {
         Song song = new Song();
 
-        SongText songText = new SongText();
-        songText.setId(Optional.ofNullable(songRepresentation.getSongText()).orElse(new SongTextRepresentation()).getId());
         song.setUmbrellaTitle(songRepresentation.getUmbrellaTitle());
 
         song.setId(songRepresentation.getId());
@@ -137,14 +140,14 @@ public class SongsRepresentationFactory {
         song.setThumbnailURL(songRepresentation.getThumbnailURL());
         song.setDuration(songRepresentation.getDuration());
         song.setSongGenre(songRepresentation.getSongGenre());
-        song.setSingers(PersonSummaryRepresentation.toPeople(songRepresentation.getSingers()));
-        song.setPoets(PersonSummaryRepresentation.toPeople(songRepresentation.getPoets()));
-        song.setWords(WordsSummaryRepresentation.toWords(songRepresentation.getWords()));
-        song.setSongText(songText);
+        song.setSingers(toPeople(songRepresentation.getSingers()));
+        song.setPoets(toPeople(songRepresentation.getPoets()));
+        song.setWords(toWords(songRepresentation.getWords()));
+        song.setSongText(toSongText(songRepresentation.getSongText()));
         song.setDownloadURL(songRepresentation.getDownloadURL());
         song.setAbout(songRepresentation.getAbout());
         song.setGathering(songRepresentation.getGathering());
-        song.setReflections(ReflectionSummaryRepresentation.toReflections(songRepresentation.getReflections()));
+        song.setReflections(toReflections(songRepresentation.getReflections()));
         return song;
     }
 }
