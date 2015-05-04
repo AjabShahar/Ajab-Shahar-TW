@@ -39,7 +39,7 @@
   }
 
   .moreDesc {
-    color: $color-active-link;
+    color: $color-regular-text;
     font-size: $medium-large;
     font-style: italic;
     font-weight: 300;
@@ -50,10 +50,14 @@
   .artistName {
     text-transform: uppercase;
     font-weight: 300;
-    font-size: $medium;
+    font-size: $small;
     font-family: 'Merriweather Sans';
     line-height: 26px;
     color: $color-regular-text;
+
+    small {
+        text-transform: lowercase;
+    }
 
     .artist-text {
       color: #999999;
