@@ -52,7 +52,7 @@
                                               placeholder="Enter english-translated text ..."></textarea>
                                 </td>
                                 <td>
-                                    <select ng-model="openingCouplet.poet" ng-options="poet.firstName for poet in poets"
+                                    <select ng-model="openingCouplet.poet" ng-options="poet.name for poet in poets"
                                             class="form-control"></select>
                                 </td>
                             </tr>
@@ -79,7 +79,7 @@
                                   placeholder=" Enter original text ..."></textarea>
                     </td>
                     <td>
-                        <select ng-model="openingCouplet.poet.id" ng-options="poet.id as poet.firstName for poet in poets"
+                        <select ng-model="openingCouplet.poet.id" ng-options="poet.id as poet.name for poet in poets"
                                 class="form-control"></select>
                     </td>
                 </table>
@@ -129,7 +129,7 @@
                 <strong>Couplet's poet</strong>
             </div>
             <div class="col-md-1" ng-show="shouldShowCoupletDetails()">
-                <select ng-model="newContent.poet" ng-options="poet.firstName for poet in poets"
+                <select ng-model="newContent.poet" ng-options="poet.name for poet in poets"
                         class="form-control"></select>
             </div>
 
@@ -157,6 +157,7 @@
                               placeholder=" Enter original text ..."></textarea>
                 </td>
                 <td>
+                    <span>Show refrain ?</span>
                     <select name="format" ng-model="songTextContent.showRefrain" class="form-control">
                         <option value="true">Yes</option>
                         <option value="false">No</option>
@@ -168,7 +169,7 @@
                 <strong>Couplet's poet</strong>
             </div>
             <div class="col-md-1" ng-show="songTextContent.poet != undefined">
-                <select ng-model="songTextContent.poet.id" ng-options="poet.id as poet.firstName for poet in poets"
+                <select ng-model="songTextContent.poet.id" ng-options="poet.id as poet.name for poet in poets"
                         class="form-control"></select>
             </div>
         </div>
