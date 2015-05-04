@@ -10,15 +10,22 @@
                 <span class="main" ng-bind="wordDetails.wordTransliteration"></span>
                 <span class="sub-main" ng-bind="wordDetails.wordTranslation"></span>
 
-                <p ng-cloak class="title-related-words">
-                    <span ng-repeat="word in associatedWords">
-                        <span class="header-translit-text">{{word.wordTransliteration}}</span>
-                        <span class="header-translate-text">
-                            {{word.wordTranslation}}<span ng-hide="$last">, </span>
-                        </span>
-                    </span>
-               </p>
+                <div ng-cloak class="related-words">
+                    <dl>
+                        <dt ng-repeat="word in associatedWords">
+                            <p><span class="header-translit-text">{{word.wordTransliteration}}</span></p>
+                        <p><span class="header-translate-text">
+                            {{word.wordTranslation}}<span ng-hide="$last" class="comma-space">,  </span>
+                        </span></p>
+                        </dt>
+                    </dl>
+
+                </div>
+
             </div>
+
+
+
         </div>
     </div>
 

@@ -2,6 +2,10 @@
     background: transparent url(/user/img/words/word_details_bg.png) left top;
     width: 100%;
 
+    .comma-space:after {
+        content:"\00a0";
+    }
+
     .page-header {
         height: 150px;
         .logo-container > a {
@@ -12,21 +16,42 @@
         .page-title {
               width: 55%;
               text-align: left;
-              margin-top: 25px;
+              margin-top: 21px;
+              color: $dark-grey;
 
-            .title-related-words {
-                margin-top: 7px;
-                font-size: $medium;
-                font-weight: 300;
-                .header-translit-text {
-                    color: $dark-grey;
-                    font-size: $medium;
-                }
-                .header-translate-text {
-                    color: $light-grey;
-                    font-style: italic;
-                }
-            }
+
+
+              .related-words {
+                        width: auto;
+                        margin-top: 10px;
+                        font-size: $medium;
+                        font-weight: 300;
+                        font-family: 'merriweather';
+
+                        .header-translit-text {
+                            color: $dark-grey;
+                        }
+                        .header-translate-text {
+                            color: $light-grey;
+                            font-style: italic;
+                        }
+
+                        dl {
+                          margin: 4px auto;
+                          clear: both;
+                          display: block;
+
+                          dt {
+                            display: inline-block;
+
+
+                            p {
+                              display: inline-block;
+                            }
+                          }
+
+                        }
+              }
 
         }
     }
