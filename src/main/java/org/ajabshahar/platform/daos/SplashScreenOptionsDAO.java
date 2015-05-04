@@ -5,6 +5,7 @@ import io.dropwizard.hibernate.AbstractDAO;
 import org.ajabshahar.platform.models.SplashScreenOptions;
 import org.hibernate.SessionFactory;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class SplashScreenOptionsDAO extends AbstractDAO<SplashScreenOptions> {
@@ -21,6 +22,6 @@ public class SplashScreenOptionsDAO extends AbstractDAO<SplashScreenOptions> {
     }
 
     public Set<SplashScreenOptions> findAll() {
-        return (Set<SplashScreenOptions>) namedQuery("org.ajabshahar.platform.models.SplashScreenOptions.findAll");
+        return new LinkedHashSet<>(list(namedQuery("org.ajabshahar.platform.models.SplashScreenOptions.findAll")));
     }
 }
