@@ -39,18 +39,28 @@
                     line-height: 1.8em;
                     text-transform: capitalize;
                     color: $color-sub-link;
-                    &:hover {
-                        color: $pink ;
-                    }
+                    font-size: $small;
+
                     .child-list-item-value {
                         &:nth-child(2) {
-                            font-family: 'Merriweather';
-                            font-size: 12px;
+                            font-size: $small;
                             font-weight: 100;
                             font-style: italic;
+                            text-transform: capitalize;
+                            color: $color-regular-text-light;
+                            cursor: pointer;
+                        }
+
+                        &:hover {
+                            color: $color-hover-link ;
                         }
                     }
+
+                    &:hover {
+                        color: $color-hover-link ;
+                    }
                 }
+
             }
         }
     }
