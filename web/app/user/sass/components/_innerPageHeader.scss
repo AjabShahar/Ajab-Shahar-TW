@@ -2,9 +2,10 @@
   width: 100%;
   padding: 20px 0 0;
   display: inline-block;
-
+  z-index: $zIndex-logo;
   .logo-container {
     width: 85px;
+
     > a {
       background: transparent url(/user/img/songs/songs_logo.png) center center no-repeat;
       width: inherit;
