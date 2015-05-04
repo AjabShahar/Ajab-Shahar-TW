@@ -47,6 +47,7 @@
 
                             p {
                               display: inline-block;
+                              line-height: 17px;
                             }
                           }
 
@@ -72,6 +73,7 @@
         .author-caps {
               text-transform: uppercase;
               color: $pink;
+              margin-right: -2px;
 
         }
         .title-case {
@@ -107,7 +109,7 @@
                              text-align: left;
                              padding-left: 0px;
                              h3 {
-                                 line-height: 1.5em;
+                                 line-height: 2em;
                              }
                              .ref-header2-text {
                                      font-size: $extra-large;
@@ -131,7 +133,7 @@
                 }
 
                 #audio_video_container {
-                    margin-top: 1em;
+                    margin-top: 0.3em;
                 }
 
         }
