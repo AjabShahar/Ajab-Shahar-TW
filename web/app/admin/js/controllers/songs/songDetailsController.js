@@ -128,7 +128,7 @@ songsAdminApp.controller('songDetailsController', ['$scope', '$window', '$locati
         };
 
         $scope.isMediaUrlEmpty = function () {
-            return !(Boolean($scope.song.youtubeVideoId) || Boolean($scope.song.soundCloudTrackID));
+            return !(Boolean($scope.song.youtubeVideoId) || Boolean($scope.song.soundCloudTrackId));
         };
 
         $scope.updateSong = function () {
