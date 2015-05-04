@@ -34,13 +34,15 @@
         font-family: 'Merriweather';
         padding: 5px 0;
         font-weight: 300;
-        font-size: 16px;
+        font-size: $medium-large;
+        text-transform: lowercase;
 
         &.head {
           line-height: 1.5em;
-          font-size: 10px;
-          text-transform: UPPERCASE;
-          color: #b3b3b3;
+          font-size: $extra-small;
+          text-transform: uppercase;
+          color: $color-regular-text-light;
+          font-family: "merriweather sans";
         }
         &.ng-hide {
           display: none;
@@ -75,9 +77,10 @@
           &.reset {
             text-transform: uppercase;
             font-weight: 300;
-            font-family: 'Merriweather';
-            color: #b3b3b3;
-            font-size: 10px;
+            font-family: 'Merriweather Sans';
+            color: $color-link;
+            cursor: pointer;
+            font-size: $extra-small;
             padding-top: 2em;
             display: block;
           }

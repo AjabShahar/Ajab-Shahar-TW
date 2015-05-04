@@ -31,7 +31,7 @@ $tab-portrait: new-breakpoint(max-width 768px);
     border-bottom: solid 1px #ccc;
 
     .toggle {
-      font-size: 12px;
+      font-size: $small;
       text-transform: uppercase;
       width: 200px;
       float: left;
@@ -74,8 +74,8 @@ $tab-portrait: new-breakpoint(max-width 768px);
       float: right;
       line-height: 12px;
       font-weight: 300;
-      font-size: 14px;
-      color: #888;
+      font-size: $small;
+      color: $color-regular-text;
       text-transform: uppercase;
     }
 
@@ -149,7 +149,7 @@ $tab-portrait: new-breakpoint(max-width 768px);
         a {
           color: $color-sub-link;
           cursor: pointer;
-          font-size: 15px;
+          font-size: $medium;
           font-weight: 300;
 
           &.active {

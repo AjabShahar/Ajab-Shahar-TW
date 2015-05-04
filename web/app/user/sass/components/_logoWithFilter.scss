@@ -13,7 +13,7 @@
         width: 85px;
         height: 85px;
         padding-top: 30px;
-        color: #9c9b9b;
+        color: $color-sub-link;
         font-size: 20px;
         font-weight: 300;
 
@@ -25,10 +25,11 @@
 
       .filter-button {
         display: block;
-        margin-top: 8px;
-        font-size: 10px;
+        margin-top: 7px;
+        font-size: $small;
         text-transform: uppercase;
-        color: #e61b72;
+        color: $color-link;
+
         & > .collapse {
           background: transparent url('/user/img/common/icons/minus.png') 0 0 no-repeat;
           display: inline-block;
