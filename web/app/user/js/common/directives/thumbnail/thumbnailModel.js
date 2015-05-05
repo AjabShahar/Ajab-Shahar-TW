@@ -62,12 +62,12 @@ AjabShahar.ThumbnailObject = function(contentItem,type){
     };
 
     self.getTitle = function(contentTextRepresentation){
-        var title = (contentTextRepresentation === 'Transliteration') ? self.translitTitle : self.englishTitle;
+        var title = (contentTextRepresentation === 'Transliteration' || contentTextRepresentation === 'transliteration') ? self.translitTitle : self.englishTitle;
         return self.type === 'reflection'? self.englishTitle: title;
     };
 
     self.getSecondTitle = function(contentTextRepresentation){
-        var title = (contentTextRepresentation === 'Translation') ? self.englishTitle : self.translitTitle;
+        var title = (contentTextRepresentation === 'Transliteration' || contentTextRepresentation === 'transliteration') ? self.englishTitle : self.translitTitle;
         return self.type === 'reflection'? "": title;
     };
 
