@@ -1,7 +1,24 @@
+$desktop_128: new-breakpoint(max-width 1280px);
+$desktop_138: new-breakpoint(max-width 1380px);
+$desktop_144: new-breakpoint(max-width 1440px);
+
 .grid-layout {
     background: transparent url(/user/img/common/bg/bg_pattern.png) fixed repeat;
     background-size: contain;
     margin: 0;
+
+    .logo-with-filter {
+        @include media($desktop) {
+            margin-left: 3%;
+
+        }
+        @include media($tab-landscape) {
+            margin-left: 4%;
+
+        }
+
+
+    }
 
     .grid-view {
         float: left;
@@ -11,6 +28,38 @@
 
         @include media($tab-portrait) {
             margin-left: 110px !important;
+        }
+
+        .pagination-head {
+
+
+            @include media($desktop_144) {
+                width: 82% !important;
+                left: 12%;
+
+            }
+            @include media($desktop_138) {
+                width: 83% !important;
+                left: 12%;
+
+            }
+            @include media($desktop_128) {
+                width: 84% !important;
+                left: 12%;
+
+            }
+            @include media($tab-landscape) {
+                width: 79% !important;
+                left: 16%;
+
+            }
+            @include media($tab-portrait) {
+                width: 70% !important;
+                left: 20%;
+
+            }
+
+
         }
     }
 
