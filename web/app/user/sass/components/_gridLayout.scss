@@ -1,7 +1,3 @@
-$desktop_128: new-breakpoint(max-width 1280px);
-$desktop_138: new-breakpoint(max-width 1380px);
-$desktop_144: new-breakpoint(max-width 1440px);
-
 .grid-layout {
     background: transparent url(/user/img/common/bg/bg_pattern.png) fixed repeat;
     background-size: contain;
@@ -33,21 +29,12 @@ $desktop_144: new-breakpoint(max-width 1440px);
         .pagination-head {
 
 
-            @include media($desktop_144) {
-                width: 82% !important;
-                left: 12%;
-
-            }
-            @include media($desktop_138) {
-                width: 83% !important;
-                left: 12%;
-
-            }
-            @include media($desktop_128) {
+            @include media($desktop) {
                 width: 84% !important;
                 left: 12%;
 
             }
+
             @include media($tab-landscape) {
                 width: 79% !important;
                 left: 16%;
