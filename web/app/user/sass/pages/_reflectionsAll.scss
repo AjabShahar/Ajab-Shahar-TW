@@ -1,4 +1,15 @@
-.reflections {
+.all-reflections {
+
+    position: fixed;
+    .pagination-head {
+        width: 87% !important;
+        margin-top: 75px;
+        position: fixed;
+
+        @include media($tab-landscape) {
+             width: 83%;
+        }
+    }
     .nav-elements-wrapper {
           .category-logo {
             font-size: 12px;
