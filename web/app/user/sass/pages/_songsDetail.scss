@@ -109,6 +109,9 @@ body.songs-details {
           width: 36px;
           height: 36px;
           background: transparent url(/user/img/common/icons/sprite_icons.png) 0 0 no-repeat;
+          &.active {
+            cursor: default;
+          }
 
         }
 
@@ -123,6 +126,7 @@ body.songs-details {
                 height: 39px;
                 background-position: -84px -200px;
             }
+
 
           }
         }
