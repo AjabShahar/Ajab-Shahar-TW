@@ -108,23 +108,51 @@ body.songs-details {
           float: left;
           width: 36px;
           height: 36px;
-          background: transparent url(/user/img/songs/songs_sprite.png) 0 0 no-repeat;
+          background: transparent url(/user/img/common/icons/sprite_icons.png) 0 0 no-repeat;
 
         }
 
         &.original {
           & > a {
-            background-position: 0px -48px;
+            width: 39px;
+            height: 39px;
+            background-position: -222px -131px;
+
+            &:hover, &.active {
+                width: 39px;
+                height: 39px;
+                background-position: -84px -200px;
+            }
+
           }
         }
         &.transliteration {
           & > a {
-            background-position: 0px -84px;
+            width: 39px;
+            height: 40px;
+            background-position: -291px -130px;
+
+            &:hover, &.active {
+                width: 39px;
+                height: 40px;
+                background-position: -15px -270px;
+            }
+
           }
         }
         &.translation {
           & > a {
-            background-position: 0px -120px;
+            width: 39px;
+            height: 39px;
+            background-position: -180px -62px;
+
+            &:hover, &.active {
+                width: 39px;
+                height: 39px;
+                background-position: -84px -131px;
+            }
+
+
           }
         }
       }
