@@ -113,7 +113,7 @@ allSongsApp.controller('allSongsController', ['$scope', '$window', 'songsContent
     };
 
     $scope.navigateToSong = function (id) {
-        $window.location.href = '/user/partials/songs/details.html?id=' + id;
+        $window.location.href = '/songs/?id=' + id;
     };
 
     $scope.getAllSongs();

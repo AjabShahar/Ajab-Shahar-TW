@@ -31,7 +31,7 @@
 
     <div class="mediaFooter">
         <h3 class='infoText'>For lyrics, translations, versions, reflections and more
-            <a href="/user/partials/songs/details.html?id={{id}}">enter song</a> or see <a href="/user/partials/songs/allSongs.html" class="sub">all songs</a>
+            <a href="/songs/?id={{id}}">enter song</a> or see <a href="/user/partials/songs/allSongs.html" class="sub">all songs</a>
         </h3>
 
         <div class='creditCont'>
@@ -39,7 +39,7 @@
             <div class='creditBox'><a href="javascript:void(0)" class='link-text'>{{singer}}</a> SINGER</div>
                 <span ng-repeat="word in words" class="creditBox">
                  <span ng-if="word.isRootWord" class="link-text">
-                     <a href="/user/js/words/#/details/{{word.id}}"
+                     <a href="/words/#/details/{{word.id}}"
                         target="_self">{{word.transliteration}}</a>
                  </span>
                  <span ng-if="!word.isRootWord">
