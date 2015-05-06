@@ -30,7 +30,7 @@
                 <div id="text-section" ng-repeat="textSection in content.textSections" bind-dynamic-html="textSection"></div>
             </div>
             <div class="text-share-options" ng-click="toggleShare()">
-                <a href="javascript:void(0)" class="share" ></a>
+                <a href="javascript:void(0)" class="share" ng-class="{'active': sharingVisible}" ></a>
             </div>
         </div>
         <!--end of textcontent-->
@@ -57,7 +57,7 @@
                 </ul>
                 <ul class="share-options">
                     <li ng-click="toggleShare()">
-                        <a href="javascript:void(0)" class="share" ></a>
+                        <a href="javascript:void(0)" class="share" ng-class="{'active': sharingVisible}"></a>
                     </li>
                     <li>
                         <a href="javascript:void(0)" class="download" ng-if="content.downloadUrl" target="_blank"

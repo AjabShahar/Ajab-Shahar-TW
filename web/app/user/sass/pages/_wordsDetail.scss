@@ -109,7 +109,7 @@
                              text-align: left;
                              padding-left: 0px;
                              h3 {
-                                 line-height: 2em;
+                                 line-height: 1.5em;
                              }
                              .ref-header2-text {
                                      font-size: $extra-large;
@@ -133,7 +133,7 @@
                 }
 
                 #audio_video_container {
-                    margin-top: 0.3em;
+                    margin-top: 1em;
                 }
 
         }
@@ -158,16 +158,22 @@
         background-size: 1000px 7px;
         width: 100%;
         .share {
-              height: 23px;
-              background: transparent url(/user/img/songs/songs_sprite.png) -26px 20px no-repeat;
-              width: 26px;
+              height: 15px;
+              background: transparent url(/user/img/common/icons/sprite_icons.png) -265px 5px no-repeat;
+              width: 16px;
               padding: 23px 19px;
               line-height: 20px;
               display: block;
-              margin-left: 10px;
               &:before {
 
                 content: '';
+              }
+              &.active {
+                width: 16px;
+                height: 15px;
+                background-position: -199px -221px;
+                cursor: default;
+                margin-left: 19px;
               }
 
         }
