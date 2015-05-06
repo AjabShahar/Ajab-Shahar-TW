@@ -81,4 +81,9 @@
             CONSTRAINT PERSON_ID_FKEY FOREIGN KEY (PERSON_ID) REFERENCES PERSON(ID));
         </sql>
     </changeSet>
+    <changeSet id="75" author="CHANAKYA">
+        <sql>
+            alter table reflection add column thumbnail_url varchar(300);
+        </sql>
+    </changeSet>
 </databaseChangeLog>

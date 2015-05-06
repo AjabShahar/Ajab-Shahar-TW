@@ -131,6 +131,18 @@
                     </div>
                 </div>
 
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label>Thumbnail Url</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" name="thumbnailUrl" ng-model="reflection.thumbnailURL" class="form-control"
+                               ng-required="reflection.publish">
+                    </div>
+                    <error-message name="Thumbnail URL"
+                                   show-error="reflection.publish && isEmpty(reflection.thumbnailURL)"></error-message>
+                </div>
+
                 <div>
                     <button type="submit" ng-click="saveData()" class="btn btn-primary btn-lg">Save</button>
                 </div>
