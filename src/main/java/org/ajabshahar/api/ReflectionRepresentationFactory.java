@@ -27,6 +27,7 @@ public class ReflectionRepresentationFactory {
         reflection.setReflectionTranscripts(toTranscripts(reflectionRepresentation.getReflectionTranscripts()));
         reflection.setSongs(SongSummaryRepresentation.toSongs(reflectionRepresentation.getSongs()));
         reflection.setPeople(PersonSummaryRepresentation.toPeople(reflectionRepresentation.getPeople()));
+        reflection.setThumbnailURL(reflectionRepresentation.getThumbnailURL());
         return reflection;
     }
 
@@ -48,7 +49,7 @@ public class ReflectionRepresentationFactory {
     }
 
     private PersonDetails toPersonDetails(PersonSummaryRepresentation speaker) {
-        if (speaker != null && speaker.getId()!= 0) {
+        if (speaker != null && speaker.getId() != 0) {
             PersonDetails personDetails = new PersonDetails();
             personDetails.setId(speaker.getId());
             return personDetails;
@@ -72,9 +73,10 @@ public class ReflectionRepresentationFactory {
             Set<WordSummaryRepresentation> wordRepresentations = wordRepresentationFactory.create(words);
             PersonDetails speakerDetails = reflection.getSpeaker();
             ReflectionRepresentation representation = new ReflectionRepresentation((int) reflection.getId(), reflection.getTitle(),
-                    reflection.getVerb(), getPersonSummaryRepresentation(speakerDetails), reflection.getSoundCloudId(), reflection.getYoutubeVideo(),
-                    reflectionTranscripts, wordRepresentations, reflection.getShowOnFeaturedContentPage(), reflection.getIsAuthoringComplete(),
-                    SongSummaryRepresentation.toSummaryRepresentations(reflection.getSongs()), PersonSummaryRepresentation.toPersonSummaries(reflection.getPeople()));
+                    reflection.getVerb(), getPersonSummaryRepresentation(speakerDetails), reflection.getSoundCloudId(),
+                    reflection.getYoutubeVideo(),reflectionTranscripts, wordRepresentations, reflection.getShowOnFeaturedContentPage(),
+                    reflection.getIsAuthoringComplete(), SongSummaryRepresentation.toSummaryRepresentations(reflection.getSongs()),
+                    PersonSummaryRepresentation.toPersonSummaries(reflection.getPeople()), reflection.getThumbnailURL());
             reflectionRepresentations.add(representation);
         }
 
@@ -119,7 +121,8 @@ public class ReflectionRepresentationFactory {
                 reflection.getShowOnFeaturedContentPage(),
                 reflection.getIsAuthoringComplete(),
                 SongSummaryRepresentation.toSummaryRepresentations(reflection.getSongs()),
-                PersonSummaryRepresentation.toPersonSummaries(reflection.getPeople())
+                PersonSummaryRepresentation.toPersonSummaries(reflection.getPeople()),
+                reflection.getThumbnailURL()
         );
         return reflectionRepresentation;
     }

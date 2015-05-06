@@ -18,10 +18,11 @@ public class ReflectionRepresentation {
     private Boolean showOnMainFcPage;
     private Boolean publish;
     private Set<PersonSummaryRepresentation> people;
+    private String thumbnailURL;
 
     public ReflectionRepresentation(int id, String title, String verb, PersonSummaryRepresentation speaker, String soundCloudId,
                                     String youtubeVideoId, Set<ReflectionTranscript> reflectionTranscripts, Set<WordSummaryRepresentation> wordSummaryRepresentations,
-                                    Boolean showOnMainFcPage, Boolean publish, Set<SongSummaryRepresentation> songs, Set<PersonSummaryRepresentation> people) {
+                                    Boolean showOnMainFcPage, Boolean publish, Set<SongSummaryRepresentation> songs, Set<PersonSummaryRepresentation> people,String thumbnailURL) {
         this.id = id;
         this.title = title;
         this.verb = verb;
@@ -34,6 +35,7 @@ public class ReflectionRepresentation {
         this.publish = publish;
         this.songs = songs;
         this.people = people;
+        this.thumbnailURL = thumbnailURL;
     }
 
     public ReflectionRepresentation() {
@@ -102,5 +104,9 @@ public class ReflectionRepresentation {
     @JsonProperty("people")
     public Set<PersonSummaryRepresentation> getPeople() {
         return people;
+    }
+
+    public String getThumbnailURL() {
+        return thumbnailURL;
     }
 }

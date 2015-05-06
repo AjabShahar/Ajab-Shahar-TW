@@ -57,4 +57,7 @@ public class Reflection {
     @JoinTable(name = "REFLECTION_PERSON", joinColumns = {@JoinColumn(name = "REFLECTION_ID")},
             inverseJoinColumns = {@JoinColumn(name = "PERSON_ID")})
     private Set<PersonDetails> people = new LinkedHashSet<>();
+
+    @Column(name = "THUMBNAIL_URL")
+    private String thumbnailURL;
 }
