@@ -86,21 +86,40 @@
             li {
               padding: 10px;
               a {
-                background: transparent url(/user/img/songs/songs_sprite.png) 0 0 no-repeat;
+                background: transparent url(/user/img/common/icons/sprite_icons.png) 0 0 no-repeat;
                 display: inline-block;
                 width: 26px;
                 height: 23px;
 
                 &.favorite {
+                  background: transparent url(/user/img/songs/songs_sprite.png) 0 0 no-repeat;
                   background-position: 0 -25px;
                   height: 22px;
                 }
                 &.share {
-                  background-position: -26px 0;
-                  height: 23px;
+                  width: 16px;
+                  height: 15px;
+                  background-position: -285px -15px;
+
+                  &.active {
+                    width: 16px;
+                    height: 15px;
+                    background-position: -199px -241px;
+                    cursor: default;
+                  }
+
                 }
                 &.download {
-                  background-position: -26px -23px;
+                  width: 18px;
+                  height: 17px;
+                  background-position: -189px -15px;
+
+                  &.active {
+                    width: 18px;
+                    height: 17px;
+                    background-position: -15px -62px;
+                    cursor: default;
+                  }
                 }
               }
 
