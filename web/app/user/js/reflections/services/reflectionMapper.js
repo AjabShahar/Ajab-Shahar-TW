@@ -1,4 +1,4 @@
-var reflectionMapper = function () {
+angular.module("reflection").factory('reflectionMapper',[function () {
     getThumbnails = function (reflections, customStyle) {
         return _.reduce(reflections, function (thumbnails, reflection, index) {
             thumbnails.push({
@@ -53,6 +53,4 @@ var reflectionMapper = function () {
         getOverviews: getOverviews,
         getReflectionsCompleteInfo: getReflectionsCompleteInfo
     };
-};
-
-thumbnailModule.factory('reflectionMapper', [reflectionMapper]);
+}]);
