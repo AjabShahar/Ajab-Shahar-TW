@@ -159,9 +159,9 @@
         </div>
         <div class="lyrics-footer">
             <ul>
-                <li class="original" ng-click="showOriginal()"><a href="javascript:void(0)"></a></li>
-                <li class="transliteration" ng-click="showEnglishTransliteration()"><a href="javascript:void(0)"></a></li>
-                <li class="translation" ng-click="showEnglishTranslation()"><a href="javascript:void(0)"></a></li>
+                <li class="original" ng-click="showOriginal()"><a href="javascript:void(0)" ng-class="{'active':originalVisible}"></a></li>
+                <li class="transliteration" ng-click="showEnglishTransliteration()"><a href="javascript:void(0)" ng-class="{'active':englishTransliterationVisible}"></a></li>
+                <li class="translation" ng-click="showEnglishTranslation()"><a href="javascript:void(0)" ng-class="{'active':englishTranslationVisible}"></a></li>
             </ul>
             <div class="glossary-link">see <a target="_blank" href="/user/js/words/#/glossary">Glossary</a></div>
         </div>
