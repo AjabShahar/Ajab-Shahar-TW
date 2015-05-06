@@ -1,4 +1,4 @@
-angular.module('reflection', ['ngRoute','htmlGenerator', 'headerModule'])
+angular.module('reflection', ['ngRoute','htmlGenerator','thumbnailModule','mediaPlayer','utilities','animationModule','headerModule'])
     .config(["$routeProvider", function ($routeProvider) {
         $routeProvider
             .when("/details/:id",{
