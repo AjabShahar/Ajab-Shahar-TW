@@ -60,4 +60,7 @@ public class Reflection {
 
     @Column(name = "THUMBNAIL_URL")
     private String thumbnailURL;
+
+    @Column(name = "INFO")
+    private String info;
 }

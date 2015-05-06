@@ -28,6 +28,7 @@ public class ReflectionRepresentationFactory {
         reflection.setSongs(SongSummaryRepresentation.toSongs(reflectionRepresentation.getSongs()));
         reflection.setPeople(PersonSummaryRepresentation.toPeople(reflectionRepresentation.getPeople()));
         reflection.setThumbnailURL(reflectionRepresentation.getThumbnailURL());
+        reflection.setInfo(reflectionRepresentation.getInfo());
         return reflection;
     }
 
@@ -72,11 +73,20 @@ public class ReflectionRepresentationFactory {
             Set<ReflectionTranscript> reflectionTranscripts = new LinkedHashSet<>(reflection.getReflectionTranscripts());
             Set<WordSummaryRepresentation> wordRepresentations = wordRepresentationFactory.create(words);
             PersonDetails speakerDetails = reflection.getSpeaker();
-            ReflectionRepresentation representation = new ReflectionRepresentation((int) reflection.getId(), reflection.getTitle(),
-                    reflection.getVerb(), getPersonSummaryRepresentation(speakerDetails), reflection.getSoundCloudId(),
-                    reflection.getYoutubeVideo(),reflectionTranscripts, wordRepresentations, reflection.getShowOnFeaturedContentPage(),
-                    reflection.getIsAuthoringComplete(), SongSummaryRepresentation.toSummaryRepresentations(reflection.getSongs()),
-                    PersonSummaryRepresentation.toPersonSummaries(reflection.getPeople()), reflection.getThumbnailURL());
+            ReflectionRepresentation representation = new ReflectionRepresentation((int) reflection.getId(),
+                    reflection.getTitle(),
+                    reflection.getVerb(),
+                    getPersonSummaryRepresentation(speakerDetails),
+                    reflection.getSoundCloudId(),
+                    reflection.getYoutubeVideo(),
+                    reflectionTranscripts,
+                    wordRepresentations,
+                    reflection.getShowOnFeaturedContentPage(),
+                    reflection.getIsAuthoringComplete(),
+                    SongSummaryRepresentation.toSummaryRepresentations(reflection.getSongs()),
+                    PersonSummaryRepresentation.toPersonSummaries(reflection.getPeople()),
+                    reflection.getThumbnailURL(),
+                    reflection.getInfo());
             reflectionRepresentations.add(representation);
         }
 
@@ -122,7 +132,8 @@ public class ReflectionRepresentationFactory {
                 reflection.getIsAuthoringComplete(),
                 SongSummaryRepresentation.toSummaryRepresentations(reflection.getSongs()),
                 PersonSummaryRepresentation.toPersonSummaries(reflection.getPeople()),
-                reflection.getThumbnailURL()
+                reflection.getThumbnailURL(),
+                reflection.getInfo()
         );
         return reflectionRepresentation;
     }
