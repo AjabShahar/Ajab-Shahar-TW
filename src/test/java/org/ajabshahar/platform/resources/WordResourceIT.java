@@ -44,6 +44,7 @@ public class WordResourceIT {
     private String youtubeVideoId="";
     private String soundCloudId="";
     private String thumbnailUrl="";
+    private String info ="";
     private Set<ReflectionTranscript> reflectionTranscripts= Collections.EMPTY_SET;
 
     private static String resourceFilePath(String resource) {
@@ -208,7 +209,8 @@ public class WordResourceIT {
         dbSetup.launch();
 
         PersonSummaryRepresentation speaker = new PersonSummaryRepresentation();
-        ReflectionSummaryRepresentation reflectionSummaryRepresentation = new ReflectionSummaryRepresentation(1, "Oh that wonderful song!", speaker, false, youtubeVideoId, soundCloudId, reflectionTranscripts, thumbnailUrl);
+        ReflectionSummaryRepresentation reflectionSummaryRepresentation = new ReflectionSummaryRepresentation(1, "Oh that wonderful song!",
+                speaker, false, youtubeVideoId, soundCloudId, reflectionTranscripts, thumbnailUrl, info);
         Set<ReflectionSummaryRepresentation> reflections = new LinkedHashSet<>();
         reflections.add(reflectionSummaryRepresentation);
         jsonObject.put("reflections", reflections);
@@ -258,7 +260,8 @@ public class WordResourceIT {
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
 
-        jsonObject.put("defaultReflection", new ReflectionSummaryRepresentation(2, "I hate that word!", null, false, youtubeVideoId, soundCloudId, reflectionTranscripts, thumbnailUrl));
+        jsonObject.put("defaultReflection", new ReflectionSummaryRepresentation(2, "I hate that word!",
+                null, false, youtubeVideoId, soundCloudId, reflectionTranscripts, thumbnailUrl, info));
 
         ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
         WordIntermediateRepresentation word = wordResponse.getEntity(WordIntermediateRepresentation.class);
@@ -283,7 +286,8 @@ public class WordResourceIT {
         assertNull(word.getDefaultReflection());
 
         //change the word - set a default reflection
-        word.setDefaultReflection(new ReflectionSummaryRepresentation(2, "I hate that word!", null, false, youtubeVideoId, soundCloudId, reflectionTranscripts, thumbnailUrl));
+        word.setDefaultReflection(new ReflectionSummaryRepresentation(2, "I hate that word!", null,
+                false, youtubeVideoId, soundCloudId, reflectionTranscripts, thumbnailUrl, info));
         wordResponse = loginAndPost("http://localhost:%d/api/words", word);
         wordResponse = httpGet("http://localhost:%d/api/words/edit?id=1");
 

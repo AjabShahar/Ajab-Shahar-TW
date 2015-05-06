@@ -1,6 +1,5 @@
 package org.ajabshahar.api;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.ajabshahar.platform.models.Category;
 import org.ajabshahar.platform.models.Gathering;
 import org.ajabshahar.platform.models.Genre;

@@ -86,4 +86,9 @@
             alter table reflection add column thumbnail_url varchar(300);
         </sql>
     </changeSet>
+    <changeSet id="76" author="CHANAKYA">
+        <sql>
+            alter table reflection add column info varchar(300);
+        </sql>
+    </changeSet>
 </databaseChangeLog>
