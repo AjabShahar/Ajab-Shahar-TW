@@ -31,14 +31,14 @@ describe("contentDetails model",function(){
         expect(reflectionDetailsObject.people.length).toBe(1);
         expect(reflectionDetailsObject.people[0]).toBe("Vipul Rikhi");
 
-        expect(reflectionDetailsObject.links.length).toBe(4);
+        expect(reflectionDetailsObject.links.length).toBe(5);
 
     });
 
     it("should construct reflection details object from reflection representation with proper values in the link field",function(){
         var reflectionDetailsObject = new AjabShahar.DetailsObject(test_reflectionRepresentation,'reflection');
 
-        expect(reflectionDetailsObject.links.length).toBe(4);
+        expect(reflectionDetailsObject.links.length).toBe(5);
 
         //speaker first
         expect(reflectionDetailsObject.links[0].name).toBe("Vipul Rikhi");
@@ -56,6 +56,11 @@ describe("contentDetails model",function(){
         expect(reflectionDetailsObject.links[3].description).toBe("WORD");
         expect(reflectionDetailsObject.links[3].alternateName).toBe("sugar");
         expect(reflectionDetailsObject.links[3].link).toBe("/user/js/words/#/details/15");
+
+        //related songs
+        expect(reflectionDetailsObject.links[4].name).toBe("Nit Khair Manga");
+        expect(reflectionDetailsObject.links[4].description).toBe("SONG");
+        expect(reflectionDetailsObject.links[4].link).toBe("/user/partials/songs/details.html?id=11");
     });
 });
 
@@ -270,6 +275,31 @@ var test_reflectionRepresentation = {
             "primaryOccupation": "poet"
         }
     ],
-    "songs": [],
+    "songs": [
+        {
+            "id": 11,
+            "englishTranslationTitle": "Everyday I Ask For Your Well Being",
+            "englishTransliterationTitle": "Nit Khair Manga",
+            "singers": [
+                {
+                    "id": 25,
+                    "name": "Mukhtiyar Ali",
+                    "hindiName": "",
+                    "primaryOccupation": null
+                }
+            ],
+            "poet": [
+                {
+                    "id": 26,
+                    "name": "Badar Muneer",
+                    "hindiName": "",
+                    "primaryOccupation": null
+                }
+            ],
+            "duration": "07:45",
+            "category": "Songs",
+            "thumbnailUrl": "https://farm8.staticflickr.com/7583/16097980187_72dfa07068_o.png"
+        }
+    ],
     "publish": true
 }

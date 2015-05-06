@@ -1,4 +1,4 @@
-var reflectionsContentService = function ($http) {
+angular.module("reflection").service("reflectionsContentService",["$http",function($http) {
     var getAllReflections = function () {
         return $http.get('/api/reflections/getPublishedReflections');
     };
@@ -12,7 +12,7 @@ var reflectionsContentService = function ($http) {
     };
 
     var getReflection = function (id) {
-        return $http.get('/api/reflections/getPublishedReflections/' + id);
+        return $http.get('/api/reflections/edit?id=' + id);
     };
 
     return {
@@ -21,4 +21,4 @@ var reflectionsContentService = function ($http) {
         getReflectionsStartingWith: getReflectionsStartingWith,
         getReflection: getReflection
     };
-};
+}]);

@@ -8,6 +8,7 @@ AjabShahar.DetailsObject = function(content,type){
     self.type = type;
     self.originalObject = content;
     var WORD_DETAILS_PATH ="/user/js/words/#/details/";
+    var SONG_DETAILS_PATH ="/user/partials/songs/details.html?id=";
 
 
     var pluckPropertyFrom = function(obj,propertyName,lambdaFunctionName,callback){
@@ -58,7 +59,15 @@ AjabShahar.DetailsObject = function(content,type){
                 }
             });
 
-            relatedLinks = relatedLinks.concat(speakerLink).concat(relatedPeople).concat(relatedWords);
+            var relatedSongs = pluckPropertyFrom(reflection,"songs","map",function(song){
+                return {
+                    name : song.englishTransliterationTitle,
+                    link: SONG_DETAILS_PATH+song.id,
+                    description:"SONG"
+                }
+            });
+
+            relatedLinks = relatedLinks.concat(speakerLink).concat(relatedPeople).concat(relatedWords).concat(relatedSongs);
         }
         return relatedLinks;
     };
