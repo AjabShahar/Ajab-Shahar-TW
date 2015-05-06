@@ -29,6 +29,7 @@ public class ReflectionRepresentationFactory {
         reflection.setPeople(PersonSummaryRepresentation.toPeople(reflectionRepresentation.getPeople()));
         reflection.setThumbnailURL(reflectionRepresentation.getThumbnailURL());
         reflection.setInfo(reflectionRepresentation.getInfo());
+        reflection.setAbout(reflectionRepresentation.getAbout());
         return reflection;
     }
 
@@ -86,7 +87,7 @@ public class ReflectionRepresentationFactory {
                     SongSummaryRepresentation.toSummaryRepresentations(reflection.getSongs()),
                     PersonSummaryRepresentation.toPersonSummaries(reflection.getPeople()),
                     reflection.getThumbnailURL(),
-                    reflection.getInfo());
+                    reflection.getInfo(), reflection.getAbout());
             reflectionRepresentations.add(representation);
         }
 
@@ -133,7 +134,8 @@ public class ReflectionRepresentationFactory {
                 SongSummaryRepresentation.toSummaryRepresentations(reflection.getSongs()),
                 PersonSummaryRepresentation.toPersonSummaries(reflection.getPeople()),
                 reflection.getThumbnailURL(),
-                reflection.getInfo()
+                reflection.getInfo(),
+                reflection.getAbout()
         );
         return reflectionRepresentation;
     }

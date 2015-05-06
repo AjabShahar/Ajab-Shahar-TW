@@ -91,4 +91,9 @@
             alter table reflection add column info varchar(300);
         </sql>
     </changeSet>
+    <changeSet id="77" author="CHANAKYA">
+        <sql>
+            alter table reflection add column about varchar(300);
+        </sql>
+    </changeSet>
 </databaseChangeLog>

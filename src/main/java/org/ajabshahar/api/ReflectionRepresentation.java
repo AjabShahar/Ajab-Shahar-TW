@@ -20,10 +20,11 @@ public class ReflectionRepresentation {
     private Set<PersonSummaryRepresentation> people;
     private String thumbnailURL;
     private String info;
+    private String about;
 
     public ReflectionRepresentation(int id, String title, String verb, PersonSummaryRepresentation speaker, String soundCloudId,
                                     String youtubeVideoId, Set<ReflectionTranscript> reflectionTranscripts, Set<WordSummaryRepresentation> wordSummaryRepresentations,
-                                    Boolean showOnMainFcPage, Boolean publish, Set<SongSummaryRepresentation> songs, Set<PersonSummaryRepresentation> people, String thumbnailURL, String info) {
+                                    Boolean showOnMainFcPage, Boolean publish, Set<SongSummaryRepresentation> songs, Set<PersonSummaryRepresentation> people, String thumbnailURL, String info, String about) {
         this.id = id;
         this.title = title;
         this.verb = verb;
@@ -38,6 +39,7 @@ public class ReflectionRepresentation {
         this.people = people;
         this.thumbnailURL = thumbnailURL;
         this.info = info;
+        this.about = about;
     }
 
     public ReflectionRepresentation() {
@@ -114,5 +116,9 @@ public class ReflectionRepresentation {
 
     public String getInfo() {
         return info;
+    }
+
+    public String getAbout() {
+        return about;
     }
 }

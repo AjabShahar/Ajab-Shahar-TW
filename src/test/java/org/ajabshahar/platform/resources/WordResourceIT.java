@@ -45,6 +45,7 @@ public class WordResourceIT {
     private String soundCloudId="";
     private String thumbnailUrl="";
     private String info ="";
+    private String about ="";
     private Set<ReflectionTranscript> reflectionTranscripts= Collections.EMPTY_SET;
 
     private static String resourceFilePath(String resource) {
@@ -210,7 +211,7 @@ public class WordResourceIT {
 
         PersonSummaryRepresentation speaker = new PersonSummaryRepresentation();
         ReflectionSummaryRepresentation reflectionSummaryRepresentation = new ReflectionSummaryRepresentation(1, "Oh that wonderful song!",
-                speaker, false, youtubeVideoId, soundCloudId, reflectionTranscripts, thumbnailUrl, info);
+                speaker, false, youtubeVideoId, soundCloudId, reflectionTranscripts, thumbnailUrl, info, about);
         Set<ReflectionSummaryRepresentation> reflections = new LinkedHashSet<>();
         reflections.add(reflectionSummaryRepresentation);
         jsonObject.put("reflections", reflections);
@@ -261,7 +262,7 @@ public class WordResourceIT {
         dbSetup.launch();
 
         jsonObject.put("defaultReflection", new ReflectionSummaryRepresentation(2, "I hate that word!",
-                null, false, youtubeVideoId, soundCloudId, reflectionTranscripts, thumbnailUrl, info));
+                null, false, youtubeVideoId, soundCloudId, reflectionTranscripts, thumbnailUrl, info, about));
 
         ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
         WordIntermediateRepresentation word = wordResponse.getEntity(WordIntermediateRepresentation.class);
@@ -287,7 +288,7 @@ public class WordResourceIT {
 
         //change the word - set a default reflection
         word.setDefaultReflection(new ReflectionSummaryRepresentation(2, "I hate that word!", null,
-                false, youtubeVideoId, soundCloudId, reflectionTranscripts, thumbnailUrl, info));
+                false, youtubeVideoId, soundCloudId, reflectionTranscripts, thumbnailUrl, info, about));
         wordResponse = loginAndPost("http://localhost:%d/api/words", word);
         wordResponse = httpGet("http://localhost:%d/api/words/edit?id=1");
 
