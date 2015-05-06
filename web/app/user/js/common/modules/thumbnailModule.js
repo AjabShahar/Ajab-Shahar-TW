@@ -1,3 +1,3 @@
 'use strict';
 
-var thumbnailModule = angular.module("thumbnailModule", ['animationModule','word']);
+var thumbnailModule = angular.module("thumbnailModule", ['animationModule','word','reflection']);

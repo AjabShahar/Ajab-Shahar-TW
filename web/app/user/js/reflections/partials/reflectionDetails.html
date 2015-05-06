@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Reflection details page</title>
-
-    <link href="/common/jquery/jcarousel/jcarousel.responsive.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="/user/css/ajabShahar.css"/>
-</head>
-
-<body class="header-with-carousel details reflections">
-    <ajab-shahar-header></ajab-shahar-header>
+<div class="header-with-carousel details reflections">
     <div class="page-header">
         <div class="ajab-wrapper">
             <div class="logo-container">
@@ -84,7 +71,7 @@
                             <dd>Singer</dd>
                             <dt ng-repeat="word in words">
                              <span ng-if="word.isRootWord">
-                                 <a href="user/js/words/#/details/{{word.id}}" target="_self">{{word.transliteration}}</a>
+                                 <a href="../../words#/details/{{word.id}}" target="_self">{{word.transliteration}}</a>
                              </span>
                              <span ng-if="!word.isRootWord">
                                  {{word.transliteration}}
@@ -100,39 +87,4 @@
         </div>
 
     </div>
-
-    <script type="text/javascript" src="/user/js/common/directives/soundCloud/sdk.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/soundCloud/api.js"></script>
-    <script type="text/javascript" src="/common/lib/underscore/underscore-min.js"></script>
-    <script type="text/javascript" src="/common/lib/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="/common/lib/angular/angular.min.js"></script>
-    <script type="text/javascript" src="/common/lib/angular-animate/angular-animate.min.js"></script>
-    <script type="text/javascript" src="/common/lib/angular-touch/angular-touch.min.js"></script>
-    <script type="text/javascript" src="/common/lib/jcarousel/dist/jquery.jcarousel.min.js"></script>
-    <script type="text/javascript" src="/common/jquery/jcarousel/jcarousel.responsive.js"></script>
-    <script type="text/javascript" src="/user/js/common/config/resourceUrlWhiteList.js"></script>
-    <script type="text/javascript" src="/user/js/songs/services/songsContentService.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/animation/animationModule.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/animation/toggleBySlide.js"></script>
-    <script type="text/javascript" src="/user/js/common/modules/thumbnailModule.js"></script>
-    <script type="text/javascript" src="/user/js/words/services/wordMapper.js"></script>
-    <script type="text/javascript" src="/user/js/songs/services/songMapper.js"></script>
-    <script type="text/javascript" src="/user/js/common/modules/mediaPlayer.js"></script>
-    <script type="text/javascript" src="/user/js/common/modules/htmlGenerator.js"></script>
-    <script type="text/javascript" src="/user/js/common/modules/headerModule.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/header/sticky.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/header/ajabShaharHeader.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/footer/ajabShaharFooter.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/animation/toggleByFading.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/songs/songContentDetails.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/carouselSupport/asCarousel.js"></script>
-    <script type="text/javascript" src="/user/js/common/bindDynamicHtml.js"></script>
-
-    <script type="text/javascript" src="/user/js/songs/songDetailsApp.js"></script>
-
-    <script type="text/javascript" src="/user/js/songs/controllers/songDetailsController.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/soundCloud/soundcloud_player.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/youtube/youtube_player.js"></script>
-    <script type="text/javascript" src="/user/js/common/directives/songs/songThumbnail.js"></script>
-</body>
-</html>
+</div>

@@ -1,4 +1,4 @@
-var allReflectionsController = function ($scope) {
+angular.module("reflection").controller('allReflectionsController',['$scope',function($scope) {
     $scope.reflections = [];
     $scope.allReflections = null;
     $scope.totalFilteredReflections = 0;
@@ -38,10 +38,4 @@ var allReflectionsController = function ($scope) {
     $scope.openParda = function () {
         $scope.openSecondParda = true;
     }
-
-
-
-
-};
-
-allReflectionsApp.controller('allReflectionsController', ['$scope', allReflectionsController]);
+}]);
