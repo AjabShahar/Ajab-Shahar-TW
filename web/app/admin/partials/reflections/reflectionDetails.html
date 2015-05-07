@@ -52,6 +52,87 @@
 
                 <div class="row form-group">
                     <div class="col-sm-2">
+                        <label>Thumbnail Url</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" name="thumbnailUrl" ng-model="reflection.thumbnailURL" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label>Reflection Excerpt</label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <input type="text" name="translation" ng-model="reflection.reflectionExcerpt"
+                               class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Reflection Type</label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <select name="reflection" ng-model="reflection.type" class="form-control">
+                            <option value="audio">Audio</option>
+                            <option value="video">Video</option>
+                            <option value="text">Text</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row form-group" ng-show="reflection.type == 'text'">
+                    <div class="col-sm-2">
+                        <label>Info</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <text-angular name="infoText" ng-model="reflection.info"></text-angular>
+                    </div>
+                </div>
+
+                <div ng-show="reflection.type == 'text'">
+                    <reflection-transcript reflection-transcripts="reflection.reflectionTranscripts"></reflection-transcript>
+                </div>
+
+                <div class="row" ng-show="reflection.type == 'audio'">
+                    <div class="form-group col-sm-2">
+                        <label>Sound Cloud Track Id</label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <input type="text" name="reflection" ng-model="reflection.soundCloudId" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row" ng-show="reflection.type == 'video'">
+                    <div class="form-group col-sm-2">
+                        <label>Youtube Video Id</label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <input type="text" name="reflection" ng-model="reflection.youtubeVideoId" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row form-group" ng-show="reflection.type != 'text'">
+                    <div class="col-sm-2">
+                        <label>Duration</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" name="duration" ng-model="reflection.duration" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row form-group" ng-show="reflection.type != 'text'">
+                    <div class="col-sm-2">
+                        <label>About</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <text-angular name="aboutText" ng-model="reflection.about"></text-angular>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-2">
                         <label>Words</label>
                     </div>
                     <div class="col-sm-2" multi-select input-model="words" button-label="wordTransliteration"
@@ -76,39 +157,6 @@
 
                 <div class="row">
                     <div class="form-group col-sm-2">
-                        <label>Reflection Type</label>
-                    </div>
-                    <div class="form-group col-sm-2">
-                        <select name="reflection" ng-model="reflection.type" class="form-control">
-                            <option value="audio">Audio</option>
-                            <option value="video">Video</option>
-                            <option value="text">Text</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row" ng-show="reflection.type == 'audio'">
-                    <div class="form-group col-sm-2">
-                        <label>Sound Cloud Track Id</label>
-                    </div>
-                    <div class="form-group col-sm-2">
-                        <input type="text" name="reflection" ng-model="reflection.soundCloudId" class="form-control">
-                    </div>
-                </div>
-
-                <div class="row" ng-show="reflection.type == 'video'">
-                    <div class="form-group col-sm-2">
-                        <label>Youtube Video Id</label>
-                    </div>
-                    <div class="form-group col-sm-2">
-                        <input type="text" name="reflection" ng-model="reflection.youtubeVideoId" class="form-control">
-                    </div>
-                </div>
-                <div ng-show="reflection.type == 'text'">
-                    <reflection-transcript reflection-transcripts="reflection.reflectionTranscripts"></reflection-transcript>
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-sm-2">
                         <label>Show On LandingPage</label>
                     </div>
                     <div class="form-group col-sm-2">
@@ -128,52 +176,6 @@
                             <option value="true">Yes</option>
                             <option value="false">No</option>
                         </select>
-                    </div>
-                </div>
-
-                <div class="row form-group">
-                    <div class="col-sm-2">
-                        <label>Thumbnail Url</label>
-                    </div>
-                    <div class="col-sm-2">
-                        <input type="text" name="thumbnailUrl" ng-model="reflection.thumbnailURL" class="form-control">
-                    </div>
-                </div>
-
-                <div class="row form-group" ng-show="reflection.type == 'text'">
-                    <div class="col-sm-2">
-                        <label>Info</label>
-                    </div>
-                    <div class="col-sm-8">
-                        <text-angular name="infoText" ng-model="reflection.info"></text-angular>
-                    </div>
-                </div>
-
-                <div class="row form-group" ng-show="reflection.type != 'text'">
-                    <div class="col-sm-2">
-                        <label>About</label>
-                    </div>
-                    <div class="col-sm-8">
-                        <text-angular name="aboutText" ng-model="reflection.about"></text-angular>
-                    </div>
-                </div>
-
-                <div class="row form-group">
-                    <div class="col-sm-2">
-                        <label>Reflection Excerpt</label>
-                    </div>
-                    <div class="form-group col-sm-2">
-                        <input type="text" name="translation" ng-model="reflection.reflectionExcerpt"
-                               class="form-control">
-                    </div>
-                </div>
-
-                <div class="row form-group" ng-show="reflection.type != 'text'">
-                    <div class="col-sm-2">
-                        <label>Duration</label>
-                    </div>
-                    <div class="col-sm-2">
-                        <input type="text" name="duration" ng-model="reflection.duration" class="form-control">
                     </div>
                 </div>
 
