@@ -26,6 +26,7 @@
     <!--main content-->
         <!--text content-->
         <div class="text-container" ng-if="hasText()">
+            <span class="header-italic" bind-dynamic-html="content.info"></span>
             <div class="text-content" >
                 <div id="text-section" ng-repeat="textSection in content.textSections" bind-dynamic-html="textSection"></div>
             </div>
@@ -51,8 +52,8 @@
             <div class="video-options">
                 <ul class="slide-info">
                     <li>
-                        <a href="javascript:void(0)" ng-click="toggleAbout()" ng-if="about"
-                           class="{{isAboutVisible ? 'active-link': ''}}">about</a>
+                        <a href="javascript:void(0)" ng-click="toggleAbout()" ng-if="content.about"
+                           class="{{isAboutVisible ? 'active-link': ''}}" >about</a>
                     </li>
                 </ul>
                 <ul class="share-options">
@@ -79,10 +80,10 @@
                     </li>
                 </ul>
             </div>
-            <div class="toggleBySlide about-info" bind-dynamic-html="content.about" ng-show="isAboutVisible"></div>
-        <!--end of toggle, about-->
         </div>
         <!--end of audio video-->
+        <div class="toggleBySlide about-info" bind-dynamic-html="content.about" ng-show="isAboutVisible"></div>
+        <!--end of toggle, about-->
 
         <!--sharing-->
         <div class='shareItemsDropDown' ng-show="sharingVisible">

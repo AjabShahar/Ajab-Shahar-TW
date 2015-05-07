@@ -12,6 +12,7 @@ thumbnailModule.directive("contentDetails", function () {
             $scope.showAudio = false;
             $scope.hasText = false;
             $scope.sharingVisible = false;
+            $scope.isAboutVisible = false;
 
             $scope.hasAudioAndVideo = function () {
                 return $scope.content.videoId && $scope.content.audioId;
