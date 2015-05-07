@@ -7,8 +7,8 @@ AjabShahar.DetailsObject = function(content,type){
     var self = this;
     self.type = type;
     self.originalObject = content;
-    var WORD_DETAILS_PATH ="/user/js/words/#/details/";
-    var SONG_DETAILS_PATH ="/user/partials/songs/details.html?id=";
+    var WORD_DETAILS_PATH ="/words/#/details/";
+    var SONG_DETAILS_PATH ="/songs/?id=";
 
 
     var pluckPropertyFrom = function(obj,propertyName,lambdaFunctionName,callback){
