@@ -13,7 +13,7 @@ describe('Mapper', function () {
                     "englishTranslation": "For a few days,O heart",
                     "englishTransliteration": "Kichhu din mone mone"
                 },
-                "category": "Song & Reflection",
+                "songCategory": {name: "Song & Reflection"},
                 "poets": [{
                     "name": "Sharath"
                 }],
