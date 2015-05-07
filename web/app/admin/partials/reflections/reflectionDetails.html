@@ -136,14 +136,11 @@
                         <label>Thumbnail Url</label>
                     </div>
                     <div class="col-sm-2">
-                        <input type="text" name="thumbnailUrl" ng-model="reflection.thumbnailURL" class="form-control"
-                               ng-required="reflection.publish">
+                        <input type="text" name="thumbnailUrl" ng-model="reflection.thumbnailURL" class="form-control">
                     </div>
-                    <error-message name="Thumbnail URL"
-                                   show-error="reflection.publish && isEmpty(reflection.thumbnailURL)"></error-message>
                 </div>
 
-                <div class="row form-group ">
+                <div class="row form-group" ng-show="reflection.type == 'text'">
                     <div class="col-sm-2">
                         <label>Info</label>
                     </div>
@@ -152,12 +149,31 @@
                     </div>
                 </div>
 
-                <div class="row form-group ">
+                <div class="row form-group" ng-show="reflection.type != 'text'">
                     <div class="col-sm-2">
                         <label>About</label>
                     </div>
                     <div class="col-sm-8">
                         <text-angular name="aboutText" ng-model="reflection.about"></text-angular>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label>Reflection Excerpt</label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <input type="text" name="translation" ng-model="reflection.reflectionExcerpt"
+                               class="form-control">
+                    </div>
+                </div>
+
+                <div class="row form-group" ng-show="reflection.type != 'text'">
+                    <div class="col-sm-2">
+                        <label>Duration</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" name="duration" ng-model="reflection.duration" class="form-control">
                     </div>
                 </div>
 

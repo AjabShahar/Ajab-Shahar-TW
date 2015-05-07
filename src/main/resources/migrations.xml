@@ -101,4 +101,10 @@
             ALTER TABLE song ALTER COLUMN youtube_video_id TYPE VARCHAR(200);
         </sql>
     </changeSet>
+    <changeSet id="79" author="CHANAKYA">
+        <sql>
+            alter table reflection add column reflection_excerpt varchar(300);
+            alter table reflection add column duration varchar(20);
+        </sql>
+    </changeSet>
 </databaseChangeLog>

@@ -41,12 +41,14 @@ public class WordResourceIT {
     private JSONObject jsonObject;
     private Set wordIntroductions = new LinkedHashSet();
     private static final String API_TO_EDIT_THE_WORD_WITH_ID_ONE = "http://localhost:%d/api/words/edit?id=1";
-    private String youtubeVideoId="";
-    private String soundCloudId="";
-    private String thumbnailUrl="";
-    private String info ="";
-    private String about ="";
-    private Set<ReflectionTranscript> reflectionTranscripts= Collections.EMPTY_SET;
+    private String youtubeVideoId = "";
+    private String soundCloudId = "";
+    private String thumbnailUrl = "";
+    private String info = "";
+    private String about = "";
+    private String reflectionExcerpt = "";
+    private String duration = "";
+    private Set<ReflectionTranscript> reflectionTranscripts = Collections.EMPTY_SET;
 
     private static String resourceFilePath(String resource) {
         return ClassLoader.getSystemClassLoader().getResource(resource).getFile();
@@ -71,7 +73,7 @@ public class WordResourceIT {
         jsonObject.put("displayAjabShaharTeam", false);
         jsonObject.put("meaning", "meaning");
         jsonObject.put("wordIntroductions", new LinkedHashSet<>());
-        jsonObject.put("thumbnailUrl","some url");
+        jsonObject.put("thumbnailUrl", "some url");
 
         jsonObject.put("relatedWords", new LinkedHashSet<>());
         jsonObject.put("synonyms", new LinkedHashSet<>());
@@ -211,7 +213,7 @@ public class WordResourceIT {
 
         PersonSummaryRepresentation speaker = new PersonSummaryRepresentation();
         ReflectionSummaryRepresentation reflectionSummaryRepresentation = new ReflectionSummaryRepresentation(1, "Oh that wonderful song!",
-                speaker, false, youtubeVideoId, soundCloudId, reflectionTranscripts, thumbnailUrl, info, about);
+                speaker, false, youtubeVideoId, soundCloudId, reflectionTranscripts, thumbnailUrl, info, about, reflectionExcerpt, duration);
         Set<ReflectionSummaryRepresentation> reflections = new LinkedHashSet<>();
         reflections.add(reflectionSummaryRepresentation);
         jsonObject.put("reflections", reflections);
@@ -262,7 +264,7 @@ public class WordResourceIT {
         dbSetup.launch();
 
         jsonObject.put("defaultReflection", new ReflectionSummaryRepresentation(2, "I hate that word!",
-                null, false, youtubeVideoId, soundCloudId, reflectionTranscripts, thumbnailUrl, info, about));
+                null, false, youtubeVideoId, soundCloudId, reflectionTranscripts, thumbnailUrl, info, about, reflectionExcerpt, duration));
 
         ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
         WordIntermediateRepresentation word = wordResponse.getEntity(WordIntermediateRepresentation.class);
@@ -288,7 +290,7 @@ public class WordResourceIT {
 
         //change the word - set a default reflection
         word.setDefaultReflection(new ReflectionSummaryRepresentation(2, "I hate that word!", null,
-                false, youtubeVideoId, soundCloudId, reflectionTranscripts, thumbnailUrl, info, about));
+                false, youtubeVideoId, soundCloudId, reflectionTranscripts, thumbnailUrl, info, about, reflectionExcerpt, duration));
         wordResponse = loginAndPost("http://localhost:%d/api/words", word);
         wordResponse = httpGet("http://localhost:%d/api/words/edit?id=1");
 
@@ -498,14 +500,14 @@ public class WordResourceIT {
 
     @Test
     public void shouldSaveWordAlongWithWriters() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_PERSON, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS, DataSetup.INSERT_WORD_REFLECTIONS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS, DataSetup.INSERT_WORD_REFLECTIONS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
 
         Set<PersonSummaryRepresentation> writers = new LinkedHashSet<>();
         writers.add(new PersonSummaryRepresentation(2, "Shabnam", "Virmani", "Singer"));
-        jsonObject.put("writers",writers);
+        jsonObject.put("writers", writers);
 
         ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
         WordIntermediateRepresentation word = wordResponse.getEntity(WordIntermediateRepresentation.class);
@@ -546,14 +548,14 @@ public class WordResourceIT {
         assertThat(wordResponse.getStatus(), is(200));
         assertThat(wordIntermediateRepresentation.getThumbnailUrl(), is("some url"));
 
-        wordResponse = httpGet("http://localhost:%d/api/words/edit?id="+wordIntermediateRepresentation.getId());
+        wordResponse = httpGet("http://localhost:%d/api/words/edit?id=" + wordIntermediateRepresentation.getId());
         wordIntermediateRepresentation = getWord(wordResponse);
         wordIntermediateRepresentation.setThumbnailUrl("other Url");
 
-        wordResponse = loginAndPost("http://localhost:%d/api/words",wordIntermediateRepresentation);
+        wordResponse = loginAndPost("http://localhost:%d/api/words", wordIntermediateRepresentation);
         wordIntermediateRepresentation = getWord(wordResponse);
 
-        assertThat(wordIntermediateRepresentation.getThumbnailUrl(),is("other Url"));
+        assertThat(wordIntermediateRepresentation.getThumbnailUrl(), is("other Url"));
     }
 
     private NewCookie geCookie(ClientResponse response) {
