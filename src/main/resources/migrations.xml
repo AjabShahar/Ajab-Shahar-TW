@@ -96,4 +96,9 @@
             alter table reflection add column about varchar(300);
         </sql>
     </changeSet>
+    <changeSet id="78" author="CHANAKYA">
+        <sql>
+            ALTER TABLE song ALTER COLUMN youtube_video_id TYPE VARCHAR(200);
+        </sql>
+    </changeSet>
 </databaseChangeLog>
