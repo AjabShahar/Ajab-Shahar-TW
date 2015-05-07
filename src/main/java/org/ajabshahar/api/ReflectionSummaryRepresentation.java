@@ -19,13 +19,15 @@ public class ReflectionSummaryRepresentation {
     private String thumbnailUrl;
     private String info;
     private String about;
+    private String reflectionExcerpt;
+    private String duration;
 
     public ReflectionSummaryRepresentation() {
     }
 
     public ReflectionSummaryRepresentation(long id, String title, PersonSummaryRepresentation speaker,
                                            Boolean published, String youtubeVideoId, String soundCloudId,
-                                           Set<ReflectionTranscript> reflectionTranscripts, String thumbnailUrl, String info, String about) {
+                                           Set<ReflectionTranscript> reflectionTranscripts, String thumbnailUrl, String info, String about, String reflectionExcerpt, String duration) {
         this.id = id;
         this.title = title;
         this.speaker = speaker;
@@ -36,6 +38,8 @@ public class ReflectionSummaryRepresentation {
         this.thumbnailUrl = thumbnailUrl;
         this.info = info;
         this.about = about;
+        this.reflectionExcerpt = reflectionExcerpt;
+        this.duration = duration;
     }
 
     @JsonProperty("id")
@@ -85,6 +89,14 @@ public class ReflectionSummaryRepresentation {
         return about;
     }
 
+    public String getDuration() {
+        return duration;
+    }
+
+    public String getReflectionExcerpt() {
+        return reflectionExcerpt;
+    }
+
     public static Set<ReflectionSummaryRepresentation> createFrom(Set<Reflection> reflections) {
         Set<ReflectionSummaryRepresentation> reflectionSummaryRepresentations = new LinkedHashSet<>();
         if (reflections != null) {
@@ -122,7 +134,7 @@ public class ReflectionSummaryRepresentation {
             return new ReflectionSummaryRepresentation(reflection.getId(),reflection.getTitle(),
                     PersonSummaryRepresentation.createFrom(reflection.getSpeaker()),reflection.getIsAuthoringComplete(),
                     reflection.getYoutubeVideo(), reflection.getSoundCloudId(), reflection.getReflectionTranscripts(),
-                    reflection.getThumbnailURL(), reflection.getInfo(), reflection.getAbout());
+                    reflection.getThumbnailURL(), reflection.getInfo(), reflection.getAbout(),reflection.getReflectionExcerpt(),reflection.getDuration());
         }
         return null;
     }

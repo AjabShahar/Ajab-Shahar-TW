@@ -66,4 +66,10 @@ public class Reflection {
 
     @Column(name = "ABOUT")
     private String about;
+
+    @Column(name = "REFLECTION_EXCERPT")
+    private String reflectionExcerpt;
+
+    @Column(name = "DURATION")
+    private String duration;
 }
