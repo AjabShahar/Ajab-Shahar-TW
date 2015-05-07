@@ -19,13 +19,13 @@ describe("contentDetails model",function(){
     });
 
     it("should construct reflection details object from reflection representation",function(){
-        var reflectionDetailsObject = new AjabShahar.DetailsObject(test_reflectionRepresentation,'reflection');
+        var reflectionDetailsObject = new AjabShahar.DetailsObject(test_reflectionRepresentation1,'reflection');
 
         expect(reflectionDetailsObject.audioId).toBe("http://sound.com/audioId");
         expect(reflectionDetailsObject.videoId).toBe("MtIoD16yTQc");
 
         expect(reflectionDetailsObject.textSections.length).toBe(3);
-        expect(reflectionDetailsObject.textSections[1]).toBe(test_reflectionRepresentation.reflectionTranscripts[1].englishTranscript);
+        expect(reflectionDetailsObject.textSections[1]).toBe(test_reflectionRepresentation1.reflectionTranscripts[1].englishTranscript);
 
         expect(reflectionDetailsObject.verb).toBe("says");
         expect(reflectionDetailsObject.people.length).toBe(1);
@@ -36,7 +36,7 @@ describe("contentDetails model",function(){
     });
 
     it("should construct reflection details object from reflection representation with proper values in the link field",function(){
-        var reflectionDetailsObject = new AjabShahar.DetailsObject(test_reflectionRepresentation,'reflection');
+        reflectionDetailsObject = new AjabShahar.DetailsObject(test_reflectionRepresentation1,'reflection');
 
         expect(reflectionDetailsObject.links.length).toBe(5);
 
@@ -219,7 +219,7 @@ var test_wordRepresentation ={
     }
 }
 
-var test_reflectionRepresentation = {
+var test_reflectionRepresentation1 = {
     "showOnMainFcPage": true,
     "id": 1,
     "title": "Poet is God says Vipul",
@@ -258,7 +258,7 @@ var test_reflectionRepresentation = {
             "hindiIntroExcerpt": "",
             "englishIntroExcerpt": "",
             "writers": [],
-            "rootWord": false
+            "rootWord": true
         }
     ],
     "people":[
@@ -302,4 +302,4 @@ var test_reflectionRepresentation = {
         }
     ],
     "publish": true
-}
+};
