@@ -68,7 +68,7 @@ var test_songsList = [
             "englishTranslation": "Everyday I Ask For Your Well Being"
         },
         "publish": true,
-        "category": "Songs",
+        "songCategory": {name: "Songs"},
         "featured": true,
         "youTubeVideoId": "",
         "soundCloudTrackId": "https://soundcloud.com/kashanilyas/we-main-chori-chori-tere-nal/sets",
@@ -133,7 +133,7 @@ var test_songsList = [
             "englishTranslation": "In Your Colourful Palace"
         },
         "publish": true,
-        "category": "Songs",
+        "songCategory": {name: "Songs"},
         "featured": true,
         "youTubeVideoId": "sop02Ivqji0",
         "soundCloudTrackId": "https://soundcloud.com/kashanilyas/we-main-chori-chori-tere-nal/sets",
@@ -172,7 +172,7 @@ var test_songsList = [
             "englishTranslation": "In This Body"
         },
         "publish": true,
-        "category": "Songs",
+        "songCategory": {name: "Songs"},
         "featured": true,
         "youTubeVideoId": "J4IU5tDlD_s",
         "soundCloudTrackId": "174024475",
@@ -231,7 +231,7 @@ var test_songsList = [
             "englishTranslation": "In This Body"
         },
         "publish": true,
-        "category": "Songs",
+        "songCategory": {name: "Songs"},
         "featured": true,
         "youTubeVideoId": "J4IU5tDlD_s",
         "soundCloudTrackId": "174024475",
