@@ -53,7 +53,7 @@ AjabShahar.DetailsObject = function(content,type){
             var relatedWords = pluckPropertyFrom(reflection,"words","map",function(word){
                 return {
                     name:word.wordTransliteration,
-                    link:WORD_DETAILS_PATH+word.id,
+                    link:word.rootWord ? WORD_DETAILS_PATH+word.id : null,
                     alternateName: word.wordTranslation,
                     description:"WORD"
                 }
