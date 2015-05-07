@@ -107,4 +107,9 @@
             alter table reflection add column duration varchar(20);
         </sql>
     </changeSet>
+    <changeSet id="80" author="CHANAKYA">
+        <sql>
+            ALTER TABLE reflection ALTER COLUMN about TYPE text;
+        </sql>
+    </changeSet>
 </databaseChangeLog>
