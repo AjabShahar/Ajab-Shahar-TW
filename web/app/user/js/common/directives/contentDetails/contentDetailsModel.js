@@ -147,6 +147,8 @@ AjabShahar.DetailsObject = function(content,type){
         self.verb = reflection.verb;
         self.people = [reflection.speaker.name];
         self.title = reflection.title;
+        self.info = reflection.info;
+        self.about = reflection.about;
     };
 
     if(type === 'song'){
