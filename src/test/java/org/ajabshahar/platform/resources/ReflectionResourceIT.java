@@ -39,6 +39,7 @@ public class ReflectionResourceIT {
 
     private Client client;
     private JdbcDataSource dataSource;
+
     @Before
     public void setUp() {
         client = new Client();
@@ -57,7 +58,7 @@ public class ReflectionResourceIT {
         personSummaryRepresentations.add(personSummaryRepresentation);
         songs.add(new SongSummaryRepresentation(1, songEnglishTransliteration, null, null, null, null, null, null));
 
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_CATEGORY, DataSetup.INSERT_PERSON,INSERT_GATHERINGS, DataSetup.INSERT_SONGS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_CATEGORY, DataSetup.INSERT_PERSON, INSERT_GATHERINGS, DataSetup.INSERT_SONGS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -87,7 +88,7 @@ public class ReflectionResourceIT {
 
     @Test
     public void shouldSaveRelatedWords() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -121,7 +122,6 @@ public class ReflectionResourceIT {
         ReflectionRepresentation reflectionRepresentation = getEntity(reflectionResponse);
         assertThat(reflectionRepresentation.getWords().size(), is(2));
     }
-
 
 
     @Test
@@ -161,7 +161,7 @@ public class ReflectionResourceIT {
 
     @Test
     public void shouldEditRelatedWords() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -234,14 +234,14 @@ public class ReflectionResourceIT {
 
         ClientResponse reflectionResponse = loginAndSave(jsonReflection);
 
-        assertThat(reflectionResponse.getStatus(),is(200));
+        assertThat(reflectionResponse.getStatus(), is(200));
         ReflectionRepresentation reflectionRepresentation = getEntity(reflectionResponse);
 
         reflectionResponse = getReflection(reflectionRepresentation.getId());
 
         reflectionRepresentation = getEntity(reflectionResponse);
 
-        assertThat(reflectionRepresentation.getReflectionTranscripts().size(),is(1));
+        assertThat(reflectionRepresentation.getReflectionTranscripts().size(), is(1));
         assertThat(reflectionRepresentation.getReflectionTranscripts().iterator().next().getId(), not(0));
         assertThat(reflectionRepresentation.getReflectionTranscripts().iterator().next().getEnglishTranscript(), is("hey"));
         assertThat(reflectionRepresentation.getReflectionTranscripts().iterator().next().getHindiTranscript(), is("hey hindi"));
@@ -310,16 +310,16 @@ public class ReflectionResourceIT {
         jsonReflection.put("showOnMainFcPage", true);
         jsonReflection.put("publish", true);
 
-        PersonSummaryRepresentation personSummaryRepresentation = new PersonSummaryRepresentation(1,"Ravi", "hindi name","singer");
-        jsonReflection.put("speaker",personSummaryRepresentation);
+        PersonSummaryRepresentation personSummaryRepresentation = new PersonSummaryRepresentation(1, "Ravi", "hindi name", "singer");
+        jsonReflection.put("speaker", personSummaryRepresentation);
 
         ClientResponse reflectionResponse = loginAndSave(jsonReflection);
 
-        assertThat(reflectionResponse.getStatus(),is(200));
+        assertThat(reflectionResponse.getStatus(), is(200));
 
         reflectionResponse = getReflection(getEntity(reflectionResponse).getId());
 
-        assertThat(getEntity(reflectionResponse).getSpeaker().getId(),is(1L));
+        assertThat(getEntity(reflectionResponse).getSpeaker().getId(), is(1L));
     }
 
     @Test
@@ -338,7 +338,7 @@ public class ReflectionResourceIT {
         jsonReflection.put("showOnMainFcPage", true);
         jsonReflection.put("publish", true);
 
-        PersonSummaryRepresentation personSummaryRepresentation = new PersonSummaryRepresentation(1,"Ravi", "hindi name","singer");
+        PersonSummaryRepresentation personSummaryRepresentation = new PersonSummaryRepresentation(1, "Ravi", "hindi name", "singer");
         jsonReflection.put("speaker", personSummaryRepresentation);
 
         ClientResponse reflectionResponse = loginAndSave(jsonReflection);
@@ -349,17 +349,317 @@ public class ReflectionResourceIT {
 
         assertThat(getEntity(reflectionResponse).getSpeaker().getId(), is(1L));
 
-        personSummaryRepresentation = new PersonSummaryRepresentation(2,"Shabnam", "Virmani","singer");
-        jsonReflection.put("speaker",personSummaryRepresentation);
+        personSummaryRepresentation = new PersonSummaryRepresentation(2, "Shabnam", "Virmani", "singer");
+        jsonReflection.put("speaker", personSummaryRepresentation);
 
         reflectionResponse = loginAndSave(jsonReflection);
 
-        assertThat(reflectionResponse.getStatus(),is(200));
+        assertThat(reflectionResponse.getStatus(), is(200));
 
         reflectionResponse = getReflection(getEntity(reflectionResponse).getId());
 
         assertThat(getEntity(reflectionResponse).getSpeaker().getId(), is(2L));
 
+    }
+
+    @Test
+    public void shouldSaveInfo() {
+
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        JSONObject jsonReflection = new JSONObject();
+
+        jsonReflection.put("title", "reflection");
+        jsonReflection.put("verb", "by");
+        jsonReflection.put("soundCloudId", "1234");
+        jsonReflection.put("youtubeVideoId", "12345");
+        jsonReflection.put("showOnMainFcPage", true);
+        jsonReflection.put("publish", true);
+        jsonReflection.put("info", "some info");
+
+        ClientResponse reflectionResponse = loginAndSave(jsonReflection);
+
+        assertThat(reflectionResponse.getStatus(), is(200));
+
+        assertThat(getEntity(reflectionResponse).getInfo(), is("some info"));
+    }
+
+    @Test
+    public void shouldEditInfo() {
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        JSONObject jsonReflection = new JSONObject();
+
+        jsonReflection.put("title", "reflection");
+        jsonReflection.put("verb", "by");
+        jsonReflection.put("soundCloudId", "1234");
+        jsonReflection.put("youtubeVideoId", "12345");
+        jsonReflection.put("showOnMainFcPage", true);
+        jsonReflection.put("publish", true);
+        jsonReflection.put("info", "some info");
+
+        ClientResponse reflectionResponse = loginAndSave(jsonReflection);
+
+        ReflectionRepresentation reflection = getEntity(reflectionResponse);
+
+        assertThat(reflectionResponse.getStatus(), is(200));
+
+        assertThat(reflection.getInfo(), is("some info"));
+
+        jsonReflection.put("info", "some other info");
+
+        reflectionResponse = loginAndSave(jsonReflection);
+        reflection = getEntity(reflectionResponse);
+
+        assertThat(reflectionResponse.getStatus(), is(200));
+
+        assertThat(reflection.getInfo(), is("some other info"));
+    }
+
+    @Test
+    public void shouldSaveThumbnailUrl() {
+
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        JSONObject jsonReflection = new JSONObject();
+
+        jsonReflection.put("title", "reflection");
+        jsonReflection.put("verb", "by");
+        jsonReflection.put("soundCloudId", "1234");
+        jsonReflection.put("youtubeVideoId", "12345");
+        jsonReflection.put("showOnMainFcPage", true);
+        jsonReflection.put("publish", true);
+        jsonReflection.put("thumbnailURL", "some url");
+
+        ClientResponse reflectionResponse = loginAndSave(jsonReflection);
+
+        assertThat(reflectionResponse.getStatus(), is(200));
+
+        assertThat(getEntity(reflectionResponse).getThumbnailURL(), is("some url"));
+    }
+
+    @Test
+    public void shouldEditThumbnailUrl() {
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        JSONObject jsonReflection = new JSONObject();
+
+        jsonReflection.put("title", "reflection");
+        jsonReflection.put("verb", "by");
+        jsonReflection.put("soundCloudId", "1234");
+        jsonReflection.put("youtubeVideoId", "12345");
+        jsonReflection.put("showOnMainFcPage", true);
+        jsonReflection.put("publish", true);
+        jsonReflection.put("thumbnailURL", "some url");
+
+        ClientResponse reflectionResponse = loginAndSave(jsonReflection);
+
+        ReflectionRepresentation reflection = getEntity(reflectionResponse);
+
+        assertThat(reflectionResponse.getStatus(), is(200));
+
+        assertThat(reflection.getThumbnailURL(), is("some url"));
+
+        jsonReflection.put("thumbnailURL", "some other url");
+
+        reflectionResponse = loginAndSave(jsonReflection);
+        reflection = getEntity(reflectionResponse);
+
+        assertThat(reflectionResponse.getStatus(), is(200));
+
+        assertThat(reflection.getThumbnailURL(), is("some other url"));
+    }
+
+    @Test
+    public void shouldSaveAbout() {
+
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        JSONObject jsonReflection = new JSONObject();
+
+        jsonReflection.put("title", "reflection");
+        jsonReflection.put("verb", "by");
+        jsonReflection.put("soundCloudId", "1234");
+        jsonReflection.put("youtubeVideoId", "12345");
+        jsonReflection.put("showOnMainFcPage", true);
+        jsonReflection.put("publish", true);
+        jsonReflection.put("about", "some text");
+
+        ClientResponse reflectionResponse = loginAndSave(jsonReflection);
+
+        assertThat(reflectionResponse.getStatus(), is(200));
+
+        assertThat(getEntity(reflectionResponse).getAbout(), is("some text"));
+    }
+
+    @Test
+    public void shouldEditAbout() {
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        JSONObject jsonReflection = new JSONObject();
+
+        jsonReflection.put("title", "reflection");
+        jsonReflection.put("verb", "by");
+        jsonReflection.put("soundCloudId", "1234");
+        jsonReflection.put("youtubeVideoId", "12345");
+        jsonReflection.put("showOnMainFcPage", true);
+        jsonReflection.put("publish", true);
+        jsonReflection.put("about", "some text");
+
+        ClientResponse reflectionResponse = loginAndSave(jsonReflection);
+
+        ReflectionRepresentation reflection = getEntity(reflectionResponse);
+
+        assertThat(reflectionResponse.getStatus(), is(200));
+
+        assertThat(reflection.getAbout(), is("some text"));
+
+        jsonReflection.put("about", "some other text");
+
+        reflectionResponse = loginAndSave(jsonReflection);
+        reflection = getEntity(reflectionResponse);
+
+        assertThat(reflectionResponse.getStatus(), is(200));
+
+        assertThat(reflection.getAbout(), is("some other text"));
+    }
+
+    @Test
+    public void shouldSaveReflectionExcerpt() {
+
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        JSONObject jsonReflection = new JSONObject();
+
+        jsonReflection.put("title", "reflection");
+        jsonReflection.put("verb", "by");
+        jsonReflection.put("soundCloudId", "1234");
+        jsonReflection.put("youtubeVideoId", "12345");
+        jsonReflection.put("showOnMainFcPage", true);
+        jsonReflection.put("publish", true);
+        jsonReflection.put("reflectionExcerpt", "some text");
+
+        ClientResponse reflectionResponse = loginAndSave(jsonReflection);
+
+        assertThat(reflectionResponse.getStatus(), is(200));
+
+        assertThat(getEntity(reflectionResponse).getReflectionExcerpt(), is("some text"));
+    }
+
+    @Test
+    public void shouldEditReflectionExcerpt() {
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        JSONObject jsonReflection = new JSONObject();
+
+        jsonReflection.put("title", "reflection");
+        jsonReflection.put("verb", "by");
+        jsonReflection.put("soundCloudId", "1234");
+        jsonReflection.put("youtubeVideoId", "12345");
+        jsonReflection.put("showOnMainFcPage", true);
+        jsonReflection.put("publish", true);
+        jsonReflection.put("reflectionExcerpt", "some text");
+
+        ClientResponse reflectionResponse = loginAndSave(jsonReflection);
+
+        ReflectionRepresentation reflection = getEntity(reflectionResponse);
+
+        assertThat(reflectionResponse.getStatus(), is(200));
+
+        assertThat(reflection.getReflectionExcerpt(), is("some text"));
+
+        jsonReflection.put("reflectionExcerpt", "some other text");
+
+        reflectionResponse = loginAndSave(jsonReflection);
+        reflection = getEntity(reflectionResponse);
+
+        assertThat(reflectionResponse.getStatus(), is(200));
+
+        assertThat(reflection.getReflectionExcerpt(), is("some other text"));
+    }
+
+    @Test
+    public void shouldSaveDuration() {
+
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        JSONObject jsonReflection = new JSONObject();
+
+        jsonReflection.put("title", "reflection");
+        jsonReflection.put("verb", "by");
+        jsonReflection.put("soundCloudId", "1234");
+        jsonReflection.put("youtubeVideoId", "12345");
+        jsonReflection.put("showOnMainFcPage", true);
+        jsonReflection.put("publish", true);
+        jsonReflection.put("duration", "100");
+
+        ClientResponse reflectionResponse = loginAndSave(jsonReflection);
+
+        assertThat(reflectionResponse.getStatus(), is(200));
+
+        assertThat(getEntity(reflectionResponse).getDuration(), is("100"));
+    }
+
+    @Test
+    public void shouldEditDuration() {
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        JSONObject jsonReflection = new JSONObject();
+
+        jsonReflection.put("title", "reflection");
+        jsonReflection.put("verb", "by");
+        jsonReflection.put("soundCloudId", "1234");
+        jsonReflection.put("youtubeVideoId", "12345");
+        jsonReflection.put("showOnMainFcPage", true);
+        jsonReflection.put("publish", true);
+        jsonReflection.put("duration", "100");
+
+        ClientResponse reflectionResponse = loginAndSave(jsonReflection);
+
+        ReflectionRepresentation reflection = getEntity(reflectionResponse);
+
+        assertThat(reflectionResponse.getStatus(), is(200));
+
+        assertThat(reflection.getDuration(), is("100"));
+
+        jsonReflection.put("duration", "200");
+
+        reflectionResponse = loginAndSave(jsonReflection);
+        reflection = getEntity(reflectionResponse);
+
+        assertThat(reflectionResponse.getStatus(), is(200));
+
+        assertThat(reflection.getDuration(), is("200"));
     }
 
     private static String resourceFilePath(String resource) {
@@ -369,7 +669,7 @@ public class ReflectionResourceIT {
     private ClientResponse loginAndSave(JSONObject jsonReflection) {
         String userCredentials = "{\"username\":\"admin\",\"password\":\"password\"}";
 
-        ClientResponse clientResponse =  client.resource(
+        ClientResponse clientResponse = client.resource(
                 String.format("http://localhost:%d/api/login", RULE.getLocalPort())).header("Content-type", "application/json")
                 .post(ClientResponse.class, userCredentials);
 
@@ -384,7 +684,7 @@ public class ReflectionResourceIT {
 
     private ClientResponse getReflection(int id) {
         return client.resource(
-                String.format("http://localhost:%d/api/reflections/edit?id=%d", RULE.getLocalPort(),id))
+                String.format("http://localhost:%d/api/reflections/edit?id=%d", RULE.getLocalPort(), id))
                 .header("Content-type", "application/json")
                 .get(ClientResponse.class);
     }
