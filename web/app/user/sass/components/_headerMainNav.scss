@@ -66,6 +66,11 @@ header ul {
         font-size: 15px;
         letter-spacing: 0.05em;
         padding: 0 0.5% 0 1%;
+        &.disable {
+            cursor: default;
+            color: $color-disabled-link;
+
+        }
       }
       &.english {
         padding: 0 0 0 0.5%;
@@ -121,7 +126,7 @@ header ul {
         font-size: $medium;
 
         &.disable {
-            cursor: default;
+            cursor: default !important;
             color: $color-disabled-link;
 
             &:hover {
