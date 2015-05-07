@@ -1,3 +1,4 @@
+$lower-resolution: new-breakpoint(max-width 1024px);
 .words-details {
     background: transparent url(/user/img/words/word_details_bg.png) left top;
     width: 100%;
@@ -14,10 +15,22 @@
         }
 
         .page-title {
-              width: 55%;
+              width: 70%;
               text-align: left;
               margin-top: 21px;
               color: $dark-grey;
+              font-weight: 300;
+
+              @include media($lower-resolution) {
+                  width: 55%;
+
+              }
+              .sub-main {
+                font-size: $large;
+                color: $grey;
+
+              }
+
 
 
 
@@ -47,7 +60,7 @@
 
                             p {
                               display: inline-block;
-                              line-height: 17px;
+                              line-height: 19px;
                             }
                           }
 
@@ -96,7 +109,7 @@
                         font-weight: 300;
 
                         .header-text {
-                            font-size: $small;
+                            font-size: $medium;
                             margin-left: 1px;
                             text-align: left;
                         }
