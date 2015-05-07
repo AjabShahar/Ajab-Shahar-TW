@@ -55,12 +55,12 @@ describe("contentDetails model",function(){
         expect(reflectionDetailsObject.links[3].name).toBe("shakkar");
         expect(reflectionDetailsObject.links[3].description).toBe("WORD");
         expect(reflectionDetailsObject.links[3].alternateName).toBe("sugar");
-        expect(reflectionDetailsObject.links[3].link).toBe("/user/js/words/#/details/15");
+        expect(reflectionDetailsObject.links[3].link).toBe("/words/#/details/15");
 
         //related songs
         expect(reflectionDetailsObject.links[4].name).toBe("Nit Khair Manga");
         expect(reflectionDetailsObject.links[4].description).toBe("SONG");
-        expect(reflectionDetailsObject.links[4].link).toBe("/user/partials/songs/details.html?id=11");
+        expect(reflectionDetailsObject.links[4].link).toBe("/songs/?id=11");
     });
 });
 
