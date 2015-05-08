@@ -24,7 +24,7 @@ thumbnailModule.directive("songOverview", function () {
 
             $scope.$watch(function () {
                 return $scope.closeVideo();
-            }, function (newValue, oldValue) {
+            }, function (newValue) {
                 $scope.shouldStopVideo = !newValue;
             });
 
