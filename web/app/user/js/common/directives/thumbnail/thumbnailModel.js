@@ -70,7 +70,7 @@ AjabShahar.ThumbnailObject = function(contentItem,type){
         if(!_.isEmpty(song.singers)){
             return song.singers.length > 1 ?"SING":"SINGS";
         }
-        return null;
+        return "";
     };
 
     var getSingersFromSong = function (singers) {
