@@ -1,4 +1,4 @@
-var contentService = function ($http) {
+featuredContentApp.factory('mainLandingContentService', ['$http',function ($http) {
     var getMainLandingPageThumbnails = function () {
         return {
             songs: $http.get('/api/songs/getPublishedSongs'),
@@ -16,4 +16,4 @@ var contentService = function ($http) {
         getSongsLandingPageThumbnails: getSongsLandingPageThumbnails
 
     };
-};
+}]);

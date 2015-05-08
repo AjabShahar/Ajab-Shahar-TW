@@ -1,4 +1,5 @@
-<div class="thumbnail {{content.customStyle}}" ng-class="content.type">
+<div class="thumbnail " ng-class="[content.type,customStyle]">
+    <!--{{customStyle}}-->
     <div class="image" >
         <img ng-src="{{content.thumbnailImg}}"/>
     </div>
@@ -23,9 +24,9 @@
                 <small class="poet" ng-if="content.description && content.secondaryVerbPeople" >{{content.secondaryVerbPeople.verb}} {{content.secondaryVerbPeople.people|uppercase}}</small>
 
                 <div class='footer'>
-                    <p class="categoryName">{{content.type | uppercase}}
+                    <p class="categoryName">{{content.contentCategory | uppercase}}
                         <small class="more-info" ng-if="content.contentFormat === 'text'">T</small>
-                        <small class="play" ng-if="content.contentFormat !== 'text'" >{{duration}}</small>
+                        <small class="play" ng-if="content.contentFormat !== 'text'" >{{content.duration}}</small>
                     </p>
                 </div>
             </div>

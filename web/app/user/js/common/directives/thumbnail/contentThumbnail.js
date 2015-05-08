@@ -22,7 +22,8 @@ angular.module("thumbnailModule").directive("contentThumbnail",["$timeout",funct
             content:"=",
             currentIndex:"@",
             onClick:"=",
-            format:"="
+            format:"=",
+            customStyle:"@"
         },
         templateUrl:"/user/js/common/directives/thumbnail/contentThumbnail.html" ,
         controller:controller

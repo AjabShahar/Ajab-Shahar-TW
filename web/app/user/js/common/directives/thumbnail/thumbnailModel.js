@@ -1,21 +1,27 @@
 var AjabShahar  = AjabShahar|| {};
+
 AjabShahar.ThumbnailObject = function(contentItem,type){
     var self = this;
     self.actualContent = contentItem;
     var buildFromSong = function(song){
-        /*
-        self.type = type;
-        self.id = song.id;
-        self.imgSrc = song.thumbnailUrl;
-        self.videoSrc = song.videoId;
-        self.audioSrc= song.audioId;
-        self.englishTranslation =song.englishTranslation;
-        self.englishTransliteration =song.englishTransliteration;
-        self.category = "SONG";
-        self.verb=getVerbForSong(song);
-        self.moreInfo = song.poet? "Poet "+song.poet.toUpperCase():null;
-        self.duration = song.duration;
-        */
+        if(!_.isEmpty(song)) {
+            self.type = type;
+            self.id = song.id;
+            self.thumbnailImg = song.thumbnailURL;
+            self.verbPeople = {
+                verb: getVerbForSong(song),
+                people: getSingersFromSong(song.singers)
+            };
+            self.englishTitle = song.songTitle.englishTranslation;
+            self.translitTitle = song.songTitle.englishTransliteration;
+            self.contentFormat = song.youtubeVideoId? 'video':'audio';
+            self.secondaryVerbPeople = {
+                verb: !_.isEmpty(song.poets) ? "POET" :undefined,
+                people: !_.isEmpty(song.poets) ? song.poets[0].name:""
+            };
+            self.duration = song.duration;
+            self.contentCategory = song.songCategory?song.songCategory.name:"song";
+        }
     };
 
     var buildFromWord = function(word){
@@ -31,6 +37,7 @@ AjabShahar.ThumbnailObject = function(contentItem,type){
             self.englishTitle = word.wordTranslation;
             self.translitTitle = word.wordTransliteration;
             self.contentFormat = "text";
+            self.contentCategory = "word";
         }
     };
 
@@ -45,6 +52,8 @@ AjabShahar.ThumbnailObject = function(contentItem,type){
                 people:reflection.speaker?reflection.speaker.name:""
             };
             self.englishTitle =reflection.title;
+            self.contentCategory = "reflection";
+
         }
     };
 
@@ -56,9 +65,24 @@ AjabShahar.ThumbnailObject = function(contentItem,type){
     };
 
     var getVerbForSong = function(song){
-        var verb = _.isEmpty(song.singer)?null:"sings "+song.singer.toUpperCase();
-        verb = !verb && _.isEmpty(song.singers)?null:"sing "+song.singers.toUpperCase();
-        return verb;
+        if(!_.isEmpty(song.singers)){
+            return song.singers.length > 1 ?"SING":"SINGS";
+        }
+        return null;
+    };
+
+    var getSingersFromSong = function (singers) {
+        var value = "";
+        if(!_.isEmpty(singers)){
+            value = "" + singers[0].name;
+            for (var index = 1; index < singers.length; index++) {
+                if (index == singers.length - 1)
+                    value += ' & ' + singers[index].name;
+                else
+                    value += ', ' + singers[index].name;
+            }
+        }
+        return value;
     };
 
     self.getTitle = function(contentTextRepresentation){
@@ -72,11 +96,11 @@ AjabShahar.ThumbnailObject = function(contentItem,type){
     };
 
     self.showPrimaryVerbPeopleAlways = function(){
-        return !(self.type === 'song' && self.verbPeople.verb === 'sing') && self.type !== 'word';
+        return !(self.type === 'song' && self.verbPeople.verb.toLowerCase() === 'sing') || self.type === 'word';
     };
 
     self.showPrimaryVerbPeopleInDetails = function(){
-        return (self.type === 'song' && self.verbPeople.verb === 'sing')
+        return (self.type === 'song' && self.verbPeople.verb.toLowerCase() === 'sing')
     };
 
     if(type === 'song'){
