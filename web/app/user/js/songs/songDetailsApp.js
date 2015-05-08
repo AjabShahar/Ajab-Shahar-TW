@@ -7,7 +7,7 @@ songDetailsApp.directive('bindDynamicHtml', ['$compile', bindDynamicHtml]);
 
 songDetailsApp.config(function ($locationProvider) {
     $locationProvider.html5Mode({
-        enabled: true,
+        enabled: true
     });
 });
 
