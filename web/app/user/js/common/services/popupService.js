@@ -1,46 +1,49 @@
-var popupService = function () {
-    shouldBeOpen = {};
-    popups = [];
-//    isThumbnailOpen = false;
+'use strict';
 
-    open = function (id) {
-        shouldBeOpen[id] = true;
-//        isThumbnailOpen = true;
-//        isThumbnailOpen;
+popupSupport.factory('popupService', function () {
+    var self = {};
+    var items = {};
+    var selectedIndex = -1;
+
+    self.select = function(index){
+        items[index].selected = true;
+        selectedIndex = index;
+        return items[index];
     };
 
-    onClose = function (id) {
-        shouldBeOpen[id] = false;
-//        isThumbnailOpen = false;
+    self.isSelected = function(index){
+        return items[index].selected;
     };
 
-    shouldShow = function (id) {
-        return shouldBeOpen[id];
+    self.addItem = function(item,index){
+        items[index] = {
+            content: item,
+            selected: false,
+            index: index
+        }
+    };
+    self.deselect = function(){
+        if(selectedIndex!= -1){
+            items[selectedIndex].selected = false;
+            selectedIndex = -1;
+        }
     };
 
-    isClosed = function (id) {
-        return !shouldBeOpen[id];
+    self.getItems = function(){
+        return _.values(items);
     };
 
-    select = function (oldIndex, newIndex) {
-        shouldBeOpen[popups[oldIndex]] = false;
-        if (newIndex > popups.length)
-            newIndex = 0;
-        shouldBeOpen[popups[newIndex]] = true;
+    self.count = function(){
+        return _.values(items).length;
     };
 
-    init = function (id) {
-        popups[popups.length] = id;
+    self.getSelected = function(){
+        return selectedIndex != -1 ? items[selectedIndex]: null;
     };
 
-    return {
-        open: open,
-        onClose: onClose,
-        select: select,
-        shouldShow: shouldShow,
-        isClosed: isClosed,
-        init: init
-//        isThumbnailOpen: isThumbnailOpen
+    self.reset = function(){
+        items = [];
     };
-};
-popupSupport.factory('popupService', [popupService]);
+
+    return self;
+});

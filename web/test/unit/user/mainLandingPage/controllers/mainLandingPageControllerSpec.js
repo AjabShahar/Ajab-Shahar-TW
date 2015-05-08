@@ -1,24 +1,25 @@
 'use strict';
 
 describe('Main landing page controller', function () {
-    var scope, $httpBackend;
+    var scope, $httpBackend,popupService;
 
     beforeEach(module("featuredContentApp"));
 
     beforeEach(inject(function (_$controller_, _$rootScope_, _mainLandingContentService_, _mappers_, _popupService_,_$httpBackend_) {
         scope = _$rootScope_.$new();
         $httpBackend = _$httpBackend_;
+        popupService = _popupService_;
 
         _$controller_('featuredContentController', {
             $scope: scope,
             mainLandingContentService: _mainLandingContentService_,
             mappers: _mappers_,
-            popupService: _popupService_
+            popupService: popupService
         });
 
-        $httpBackend.when("GET", "/api/songs/getPublishedSongs").respond(test_songs);
-        $httpBackend.when("GET", "/api/reflections?content=featured").respond(test_reflections);
-        $httpBackend.when("GET", "/api/words?showOnMainLandingPage=true").respond(test_words);
+        $httpBackend.when("GET", "/api/songs/getPublishedSongs").respond(test_songs_mainfc);
+        $httpBackend.when("GET", "/api/reflections?content=featured").respond(test_reflections_mainfc);
+        $httpBackend.when("GET", "/api/words?showOnMainLandingPage=true").respond(test_words_mainfc);
 
     }));
 
@@ -28,22 +29,24 @@ describe('Main landing page controller', function () {
         //scope.init();
         $httpBackend.flush();
 
-        expect(scope.featureContentOverviews[0].isSong).toBeTruthy();
-        expect(scope.featureContentOverviews[2].isSong).toBeTruthy();
-        expect(scope.featureContentOverviews[4].isSong).toBeTruthy();
-        expect(scope.featureContentOverviews[6].isSong).toBeTruthy();
-        expect(scope.featureContentOverviews[8].isSong).toBeTruthy();
+        expect(popupService.getItems()[0].content.isSong).toBeTruthy();
+        expect(popupService.getItems()[2].content.isSong).toBeTruthy();
+        expect(popupService.getItems()[4].content.isSong).toBeTruthy();
+        expect(popupService.getItems()[6].content.isSong).toBeTruthy();
+        expect(popupService.getItems()[8].content.isSong).toBeTruthy();
 
-        expect(scope.featureContentOverviews[3].wordTranslation).toBe("Waking Sleeping");
+        expect(popupService.getItems()[3].content.wordTranslation).toBe("Waking Sleeping");
 
-        expect(scope.featureContentOverviews[1].isReflection).toBeTruthy();
-        expect(scope.featureContentOverviews[5].isReflection).toBeTruthy();
-        expect(scope.featureContentOverviews[7].isReflection).toBeTruthy();
+        expect(popupService.getItems()[1].content.isReflection).toBeTruthy();
+        expect(popupService.getItems()[5].content.isReflection).toBeTruthy();
+        expect(popupService.getItems()[7].content.isReflection).toBeTruthy();
 
     });
+
 });
 
-var test_songs = {
+
+var test_songs_mainfc = {
     "songs": [
         {
             "id": 11,
@@ -209,7 +212,7 @@ var test_songs = {
     ]
 };
 
-var test_words = {
+var test_words_mainfc = {
     words: [{
         "id": 2,
         "wordOriginal": "जागना सोना",
@@ -231,7 +234,7 @@ var test_words = {
     }]
 };
 
-var test_reflections ={
+var test_reflections_mainfc ={
     "reflections": [
         {
             "showOnMainFcPage": true,

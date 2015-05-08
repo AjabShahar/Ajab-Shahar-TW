@@ -1,33 +1,26 @@
-<div ng-if="show('{{id}}')" class="popup-wrapper" style="z-index:2147483647">
+<div class="popup-wrapper" style="z-index:2147483647">
     <div class="overlay"></div>
-    <!--<div class='arrows left'>-->
-    <!--</div>-->
-
-    <!--<div class='fullHeight '>-->
     <div class='popup-container'>
-        <song-overview ng-if="overview.isSong" id="{{overview.id}}" singer="{{overview.singer}}"
-                       poet="{{overview.poet}}" english-translation="{{overview.englishTranslation}}"
-                       audio-Url="{{overview.audioId}}" video-Url="{{overview.videoId}}"
-                       close-video="detailsService.isClosed(overview.contentId)"
-                       english-transliteration="{{overview.englishTransliteration}}" noun="{{overview.noun}}"
-                       words="overview.words" downloadurl="{{overview.downloadUrl}}"></song-overview>
-        <word-overview ng-if="overview.isWord" id="{{overview.id}}"
-                       word-transliteration="{{overview.wordTransliteration}}"
-                       word-translation="{{overview.wordTranslation}}"
-                       word-intro-english="{{overview.wordIntroEnglish}}"
-                       writers="overview.writers"
-                       display-ajab-shahar-team="{{overview.displayAjabShaharTeam}}"></word-overview>
-        <reflection-overview ng-if="overview.isReflection" id="{{overview.id}}" title="{{overview.title}}"
-                             verb="{{overview.verb}}" speaker="overview.speaker"
-                             video-id="{{overview.videoId}}" audio-id="{{overview.audioUrl}}"
-                             text="{{overview.text}}"></reflection-overview>
+        <song-overview ng-if="overview.content.isSong" id="{{overview.content.id}}" singer="{{overview.content.singer}}"
+                       poet="{{overview.content.poet}}" english-translation="{{overview.content.englishTranslation}}"
+                       audio-Url="{{overview.content.audioId}}" video-Url="{{overview.content.videoId}}"
+                       english-transliteration="{{overview.content.englishTransliteration}}" noun="{{overview.content.noun}}"
+                       words="overview.content.words" downloadurl="{{overview.content.downloadUrl}}"></song-overview>
+        <word-overview ng-if="overview.content.isWord" id="{{overview.content.id}}"
+                       word-transliteration="{{overview.content.wordTransliteration}}"
+                       word-translation="{{overview.content.wordTranslation}}"
+                       word-intro-english="{{overview.content.wordIntroEnglish}}"
+                       writers="overview.content.writers"
+                       display-ajab-shahar-team="{{overview.content.displayAjabShaharTeam}}"></word-overview>
+        <reflection-overview ng-if="overview.content.isReflection" id="{{overview.content.id}}" title="{{overview.content.title}}"
+                             verb="{{overview.content.verb}}" speaker="overview.content.speaker"
+                             video-id="{{overview.content.videoId}}" audio-id="{{overview.content.audioUrl}}"
+                             text="{{overview.content.text}}"></reflection-overview>
     </div>
-    <!--</div>-->
-
 
     <div class='arrows right'>
-        <a href='#' class='close' ng-click="onClose('{{id}}')"></a>
-        <span ng-repeat="i in getPopupCount() track by $index" ng-click="onSelect($index)"
+        <a href='#' class='close' ng-click="close()"></a>
+        <span ng-repeat="i in getPopupCount() track by $index" ng-click="select($index)"
               ng-class="isActive($index) ? 'active' : ''" class="bubble"></span>
     </div>
 </div>

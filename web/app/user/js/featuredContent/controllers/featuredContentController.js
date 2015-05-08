@@ -1,6 +1,8 @@
-var featuredContentController = function ($scope, contentService, popupService, mappers) {
-    $scope.detailsService = popupService;
+"use strict";
+
+featuredContentApp.controller('featuredContentController', ['$scope', 'mainLandingContentService', 'popupService', 'mappers',function ($scope, contentService, popupService, mappers) {
     $scope.thumbnailOpen = false;
+    popupService.reset();
 
     $scope.thumbnails = {};
     $scope.featureContentOverviews = {};
@@ -8,8 +10,6 @@ var featuredContentController = function ($scope, contentService, popupService, 
     $scope.shiftThumbnail = function (index) {
         return "shift" + (index+1);
     };
-
-    $scope.format = "Transliteration";
 
     var thumbnailPlacementRule = {
         songs :[0,2,4,6,8],
@@ -33,7 +33,7 @@ var featuredContentController = function ($scope, contentService, popupService, 
             });
 
             _.each(introductions, function (introduction,index) {
-                $scope.featureContentOverviews[thumbnailPlacementRule.songs[index]] = introduction;
+                popupService.addItem(introduction,thumbnailPlacementRule.songs[index]);
             });
         });
 
@@ -46,7 +46,7 @@ var featuredContentController = function ($scope, contentService, popupService, 
             });
 
             _.each(introductions, function (introduction,index) {
-                $scope.featureContentOverviews[thumbnailPlacementRule.words[index]] = introduction;
+                popupService.addItem(introduction,thumbnailPlacementRule.words[index]);
             });
         });
 
@@ -59,19 +59,19 @@ var featuredContentController = function ($scope, contentService, popupService, 
             });
 
             _.each(introductions, function (introduction,index) {
-                $scope.featureContentOverviews[thumbnailPlacementRule.reflections[index]] = introduction;
+                popupService.addItem(introduction,thumbnailPlacementRule.reflections[index]);
             });
         });
 
     }();
 
     $scope.selectThumbnail = function (index) {
-        $scope.detailsService.open($scope.thumbnails[index].type+"_"+$scope.thumbnails[index].id);
+        popupService.select(index);
     };
 
-    $scope.popupCount = function(){
-        return _.keys($scope.featureContentOverviews).length;
+    $scope.selectedOverview = function(){
+        var selected = popupService.getSelected();
+        return selected;
     }
-};
+}]);
 
-featuredContentApp.controller('featuredContentController', ['$scope', 'mainLandingContentService', 'popupService', 'mappers', featuredContentController]);

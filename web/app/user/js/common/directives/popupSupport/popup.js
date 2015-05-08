@@ -1,51 +1,39 @@
-var popUp = function () {
+"use strict";
+
+popupSupport.directive('popUp',["popupService",function (popupService) {
     return {
         restrict: 'E',
         transclude: true,
         replace: true,
         scope: {
-            show: '&', //true/false - displays popup
             width: '@', //width of the popup
             popupCount: '@',
             id: '@',//an id for the background overlay for manipulation via jquery
-            index: '@',
-            detailsService: '=',
             overview:"="
         },
         templateUrl: '/user/js/common/templates/popupSupport/popup.html',
-        controller: function ($scope, $rootScope) {
-            $scope.$watch(function () {
-                return $scope.show();
-            }, function (newValue, oldValue) {
-                if (newValue != true)
-                    return;
-
-                if ($scope.overlayId) {
-                    jQuery('#' + $scope.overlayId).css("height", jQuery(window).height());
-                }
-            });
+        link:function(scope,element,attr){
+                jQuery(element).css("height", jQuery(window).height());
+        },
+        controller: function ($scope) {
 
             $scope.getPopupCount = function () {
-                return ($scope.popupCount == null) ? new Array(15) : new Array(parseInt($scope.popupCount));
+                var count = popupService.count();
+                return new Array(count);
             };
 
-            $scope.onSelect = function (index) {
-                $scope.detailsService.select(parseInt($scope.index), index);
+            $scope.select = function (index) {
+                popupService.select(index);
             };
 
-            $scope.onClose = function (index) {
-                $scope.detailsService.onClose($scope.id);
+            $scope.close = function () {
+                popupService.deselect();
             };
 
             $scope.isActive = function (index) {
-                return $scope.index == index;
+                return _.isEmpty(popupService.getSelected())? false : popupService.getSelected().index === index;
             };
-
-            $scope.isClosed = function () {
-                return !$scope.show();
-            }
         }
     };
-};
+}]);
 
-popupSupport.directive('popUp', popUp);
