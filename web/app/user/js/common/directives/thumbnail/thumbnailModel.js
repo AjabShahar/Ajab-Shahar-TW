@@ -45,15 +45,17 @@ AjabShahar.ThumbnailObject = function(contentItem,type){
         if(!_.isEmpty(reflection)){
             self.type = type;
             self.id = reflection.id;
-            self.thumbnailImg = "/user/img/reflections/bw_background2b.jpg";
-            self.description =reflection.about;
+            self.thumbnailImg = reflection.thumbnailImg ? reflection.thumbnailImg : "/user/img/reflections/bw_background2b.jpg";
+            self.description =reflection.excerpt;
             self.verbPeople ={
                 verb:reflection.verb,
                 people:reflection.speaker?reflection.speaker.name:""
             };
             self.englishTitle =reflection.title;
             self.contentCategory = "reflection";
-
+            self.duration = reflection.duration;
+            if(reflection.duration === null || reflection.duration === "")
+               self.contentFormat = "text";
         }
     };
 

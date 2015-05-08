@@ -40,7 +40,7 @@ var contentService = function ($http) {
     };
 
     var getAllReflectionSummaries = function () {
-        return $http.get('/api/reflections/summary');
+        return $http.get('/api/reflections');
     };
 
     var saveWord = function (word) {

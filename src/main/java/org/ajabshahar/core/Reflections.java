@@ -22,8 +22,8 @@ public class Reflections {
         boolean landingPage = false, authoringComplete = false;
         if (criteria.equalsIgnoreCase("featured")) {
             landingPage = true;
+            authoringComplete = true;
         } else if (criteria.equalsIgnoreCase("authoringComplete")) {
-            landingPage = true;
             authoringComplete = true;
         }
         return reflectionRepository.findBy(landingPage, authoringComplete);
