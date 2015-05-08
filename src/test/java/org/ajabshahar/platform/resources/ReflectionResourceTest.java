@@ -52,22 +52,10 @@ public class ReflectionResourceTest {
     }
 
     @Test
-    public void shouldTestGetAllReflections() throws Exception {
+    public void shouldGetAllReflectionsWithAllInfo() throws Exception {
         ReflectionsSummaryRepresentation expected = new ReflectionsSummaryRepresentation();
         when(reflections.getAll(CRITERIA)).thenReturn(reflectionList);
         when(reflectionRepresentationFactory.toReflectionsSummaryRepresentation(reflectionList)).thenReturn(expected);
-
-        Response actual = reflectionResource.getReflections(CRITERIA);
-
-        assertEquals(actual.getEntity(), expected);
-
-    }
-
-    @Test
-    public void shouldGetAllReflectionsWithAllInfo() throws Exception {
-        ReflectionsRepresentation expected = new ReflectionsRepresentation();
-        when(reflections.getAll(CRITERIA)).thenReturn(reflectionList);
-        when(reflectionRepresentationFactory.createReflections(reflectionList)).thenReturn(expected);
         Response actual = reflectionResource.getReflectionsWithCompleteInfo(CRITERIA);
 
         assertEquals(expected, actual.getEntity());

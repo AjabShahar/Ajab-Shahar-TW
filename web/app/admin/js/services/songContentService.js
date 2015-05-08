@@ -52,7 +52,7 @@ var songContentService = function ($http) {
     };
 
     var getReflections = function () {
-        return $http.get('/api/reflections/summary');
+        return $http.get('/api/reflections');
     };
 
     return {

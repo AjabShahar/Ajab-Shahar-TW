@@ -39,21 +39,12 @@ public class ReflectionResource {
         return Response.ok(reflectionRepresentation).build();
     }
 
-    @GET
-    @UnitOfWork
-    @Path("/summary")
-    public Response getReflections(@DefaultValue("") @QueryParam("content") String criteria) {
-        Set<Reflection> reflectionList = reflections.getAll(criteria);
-        ReflectionsSummaryRepresentation reflectionsSummaryRepresentation = reflectionRepresentationFactory.toReflectionsSummaryRepresentation(reflectionList);
-        return Response.ok(reflectionsSummaryRepresentation).build();
-    }
-
 
     @GET
     @UnitOfWork
     public Response getReflectionsWithCompleteInfo(@DefaultValue("") @QueryParam("content") String criteria) {
         Set<Reflection> reflectionList = reflections.getAll(criteria);
-        ReflectionsRepresentation reflectionsRepresentation = reflectionRepresentationFactory.createReflections(reflectionList);
+        ReflectionsSummaryRepresentation reflectionsRepresentation = reflectionRepresentationFactory.toReflectionsSummaryRepresentation(reflectionList);
         return Response.ok(reflectionsRepresentation).build();
     }
 

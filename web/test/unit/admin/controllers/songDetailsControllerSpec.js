@@ -72,7 +72,7 @@ describe("Song details controller specs", function () {
             $httpBackend.when("GET", "/api/people/summary?role=Poet").respond({"people": ""});
             $httpBackend.when("GET", "/api/words").respond({"words": ""});
             $httpBackend.when("GET", "/api/gatherings").respond(["someGathering"]);
-            $httpBackend.when("GET", "/api/reflections/summary").respond(["someReflections"]);
+            $httpBackend.when("GET", "/api/reflections").respond(["someReflections"]);
             $httpBackend.when("GET", "/api/songs/undefined").respond({"songGenre": ""});
 
             scope.init();
