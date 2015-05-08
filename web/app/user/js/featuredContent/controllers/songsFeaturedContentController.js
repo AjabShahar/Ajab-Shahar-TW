@@ -1,4 +1,4 @@
-var songsFeaturedContentController = function ($scope, contentService, songMapper, popupService, $location, $window) {
+var songsFeaturedContentController = function ($scope, mainLandingContentService, songMapper, popupService, $location, $window) {
     $scope.publishedSongsCount = 0;
     $scope.thumbnails = [];
     $scope.featureContentOverviews = [];
@@ -6,7 +6,7 @@ var songsFeaturedContentController = function ($scope, contentService, songMappe
     $scope.detailsService = popupService;
     $scope.init = function () {
         $scope.url = $location.absUrl();
-        contentService.getSongsLandingPageThumbnails().then(function (result) {
+        mainLandingContentService.getSongsLandingPageThumbnails().then(function (result) {
             $scope.publishedSongsCount = result.data.songs.length;
             var songs = _.shuffle(result.data.songs).slice(0, 9);
             var songThumbnails = songMapper.getThumbnails(songs, $scope.getSongCustomStyle);
@@ -46,4 +46,4 @@ var songsFeaturedContentController = function ($scope, contentService, songMappe
     $scope.init();
 };
 
-featuredContentApp.controller('songsFeaturedContentController', ['$scope', 'contentService', 'songMapper', 'popupService', '$location', '$window', songsFeaturedContentController]);
+featuredContentApp.controller('songsFeaturedContentController', ['$scope', 'mainLandingContentService', 'songMapper', 'popupService', '$location', '$window', songsFeaturedContentController]);
