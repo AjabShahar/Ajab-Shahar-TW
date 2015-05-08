@@ -3,7 +3,7 @@ var featuredContentApp = angular.module('featuredContentApp', ['thumbnailModule'
 featuredContentApp.config(resourceUrlWhiteList);
 
 
-featuredContentApp.directive('bindDynamicHtml', ['$compile', bindDynamicHtml]);
+//featuredContentApp.directive('bindDynamicHtml', ['$compile', bindDynamicHtml]);
 
 featuredContentApp.run(function ($FB) {
     $FB.init('714039208665351');

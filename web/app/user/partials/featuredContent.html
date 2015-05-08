@@ -47,12 +47,9 @@
             </div>
         </div>
 
-        <div ng-repeat="(index,overview) in featureContentOverviews">
-            <pop-up popup-count="popupCount()" ng-init="detailsService.init(featureContentOverviews[$index].contentId)"
-                    id="{{featureContentOverviews[$index].contentId}}" width="100" details-service="detailsService"
-                    show="detailsService.shouldShow(featureContentOverviews[$index].contentId)" index="{{$index}}" close-button="true" overview="featureContentOverviews[$index]">
-            </pop-up>
-        </div>
+        <pop-up ng-if="selectedOverview().selected" id="{{selectedOverview().content.contentId}}" width="100"
+                close-button="true" overview="selectedOverview()">
+        </pop-up>
     </div>
 
     <ajab-shahar-footer></ajab-shahar-footer>

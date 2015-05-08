@@ -21,7 +21,10 @@ mediaPlayer.directive('youtube', function ($window, YT_event, $sce) {
         template: '<iframe id="ytplayer" type="text/html" width="{{width}}" height="{{height}}" ng-src="{{videoUrl}}" frameborder="0"/>',
 
         link: function (scope) {
-            scope.videoUrl = $sce.trustAsResourceUrl("//www.youtube.com/embed/" + scope.videoid + "?controls=" + scope.controls + "&autoplay=" + scope.autoplay + "&loop=" + scope.loop + "&playlist=" + scope.playlist + "&rel=0&showinfo=0");
+            scope.$watch("videoid",function(){
+                scope.videoUrl = $sce.trustAsResourceUrl("//www.youtube.com/embed/" + scope.videoid + "?controls=" + scope.controls + "&autoplay=" + scope.autoplay + "&loop=" + scope.loop + "&playlist=" + scope.playlist + "&rel=0&showinfo=0");
+                console.log(scope.videoid);
+            });
         }
     };
 });
