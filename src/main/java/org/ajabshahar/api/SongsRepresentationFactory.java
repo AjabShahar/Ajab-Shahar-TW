@@ -44,9 +44,10 @@ public class SongsRepresentationFactory {
                             personDetails.getPrimaryOccupation().getName()));
                 });
             }
+            String contentFormat = song.getYoutubeVideoId() != null ? "video" :"audio";
             SongSummaryRepresentation songSummaryRepresentation = new SongSummaryRepresentation(song.getId(), title.getEnglishTranslation(),
                     title.getEnglishTransliteration(), singers, poets, song.getDuration(),
-                    song.getSongCategory().getName(), song.getThumbnailURL());
+                    song.getSongCategory().getName(), song.getThumbnailURL(),song.getIsAuthoringComplete(),contentFormat);
             songs.addSong(songSummaryRepresentation);
         }
         return songs;

@@ -20,12 +20,14 @@ public class SongSummaryRepresentation {
     private String duration;
     private String category;
     private String thumbnailUrl;
+    private boolean published;
+    private String contentFormat;
 
     public SongSummaryRepresentation() {
 
     }
 
-    public SongSummaryRepresentation(long id, String englishTranslationTitle, String englishTransliterationTitle, Set<PersonSummaryRepresentation> singers, Set<PersonSummaryRepresentation> poets, String duration, String songCategory, String thumbnailUrl) {
+    public SongSummaryRepresentation(long id, String englishTranslationTitle, String englishTransliterationTitle, Set<PersonSummaryRepresentation> singers, Set<PersonSummaryRepresentation> poets, String duration, String songCategory, String thumbnailUrl,boolean published,String contentFormat) {
         this.id = id;
         this.englishTranslationTitle = englishTranslationTitle;
         this.englishTransliterationTitle = englishTransliterationTitle;
@@ -34,6 +36,8 @@ public class SongSummaryRepresentation {
         this.duration = duration;
         this.category = songCategory;
         this.thumbnailUrl = thumbnailUrl;
+        this.published = published;
+        this.contentFormat = contentFormat;
     }
 
     private static Song toSong(SongSummaryRepresentation songSummaryRepresentation){
@@ -97,7 +101,7 @@ public class SongSummaryRepresentation {
         return singers;
     }
 
-    @JsonProperty("poet")
+    @JsonProperty("poets")
     public Set<PersonSummaryRepresentation> getPoets() {
         return poets;
     }
@@ -115,5 +119,15 @@ public class SongSummaryRepresentation {
     @JsonProperty("thumbnailUrl")
     public String getThumbnailUrl() {
         return thumbnailUrl;
+    }
+
+    @JsonProperty("published")
+    public boolean getPublished() {
+        return published;
+    }
+
+    @JsonProperty("contentFormat")
+    public String getContentFormat() {
+        return contentFormat;
     }
 }

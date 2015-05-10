@@ -3,9 +3,7 @@ package org.ajabshahar.platform.resources;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.jersey.caching.CacheControl;
 import io.dropwizard.jersey.sessions.Session;
-import org.ajabshahar.api.SongRepresentation;
-import org.ajabshahar.api.SongsRepresentation;
-import org.ajabshahar.api.SongsRepresentationFactory;
+import org.ajabshahar.api.*;
 import org.ajabshahar.core.Songs;
 import org.ajabshahar.platform.daos.SongDAO;
 import org.ajabshahar.platform.models.Song;
@@ -17,6 +15,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.core.StreamingOutput;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -44,14 +43,6 @@ public class SongResource {
         return Response.ok().entity(song).build();
     }
 
-    @GET
-    @UnitOfWork
-    public Set<Song> listAllSongValues(@Session HttpSession httpSession) {
-        if (httpSession.getAttribute("user") == null)
-            return new LinkedHashSet<>();
-        return songDAO.findAll();
-    }
-
     @POST
     @Path("/edit")
     @UnitOfWork
@@ -63,13 +54,12 @@ public class SongResource {
     }
 
     @GET
-    @Path("/count/startingWith")
     @UnitOfWork
-    @CacheControl(maxAge = 60)
     @Produces(MediaType.APPLICATION_JSON)
-    public int listAllSongsFilteredBy(@QueryParam("letter") String letter) {
-        letter = letter == null ? "" : letter;
-        return songDAO.getCountOfSongsThatStartWith(letter);
+    public Response getSongs(@QueryParam("content") String contentType) {
+        Set<Song> songSet = songs.findBy(contentType);
+        SongsSummaryRepresentation songsSummaryRepresentation = songsRepresentationFactory.create(songSet);
+        return Response.ok(songsSummaryRepresentation).build();
     }
 
     @GET
@@ -87,8 +77,8 @@ public class SongResource {
     @GET
     @UnitOfWork
     @Path("/getPublishedSongs")
-    public Response getPublishedSongs(@QueryParam("singerId") int singerId, @QueryParam("poetId") int poetId, @QueryParam("startFrom") int startFrom, @QueryParam("filteredLetter") String filteredLetter) {
-        Set<Song> songList = songs.findBy(singerId, poetId, startFrom, filteredLetter);
+    public Response getPublishedSongs(@QueryParam("singerId") int singerId, @QueryParam("poetId") int poetId) {
+        Set<Song> songList = songs.findBy(0,singerId, poetId);
         if (songList == null || songList.size() == 0) {
             return Response.status(Status.NO_CONTENT).build();
         }

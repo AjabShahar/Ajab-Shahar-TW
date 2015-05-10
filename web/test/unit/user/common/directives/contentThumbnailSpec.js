@@ -10,7 +10,7 @@ describe("Thumbnail model", function () {
         expect(songThumbnail.englishTitle).toBe("Everyday I Ask For Your Well Being");
         expect(songThumbnail.translitTitle).toBe("Nit Khair Manga");
 
-        expect(songThumbnail.contentFormat).toBe("audio");
+        expect(songThumbnail.contentFormat).toBe("video");
         expect(songThumbnail.duration).toBe("07:45");
 
         expect(songThumbnail.secondaryVerbPeople.verb).toBe("POET");
@@ -23,18 +23,18 @@ describe("Thumbnail model", function () {
         var songThumbnail = new AjabShahar.ThumbnailObject(test_songRepresentation[1],"song");
 
         expect(songThumbnail.type).toBe("song");
-        expect(songThumbnail.thumbnailImg).toBe("https://farm8.staticflickr.com/7496/15609516053_67a9b050e9_o.png");
+        expect(songThumbnail.thumbnailImg).toBe("https://farm8.staticflickr.com/7583/16097980187_72dfa07068_o.png");
         expect(songThumbnail.verbPeople.verb).toBe("SING");
-        expect(songThumbnail.verbPeople.people).toBe("Parvathy Baul & Badar Muneer");
+        expect(songThumbnail.verbPeople.people).toBe("Jaan2 Mohammed & Mitha Khan Jat");
 
-        expect(songThumbnail.englishTitle).toBe("For a Few Days, O Heart");
-        expect(songThumbnail.translitTitle).toBe("Kichhu din mone mone");
+        expect(songThumbnail.englishTitle).toBe("In This Body");
+        expect(songThumbnail.translitTitle).toBe("Hiye Kaaya Mein");
 
-        expect(songThumbnail.contentFormat).toBe("video");
+        expect(songThumbnail.contentFormat).toBe("audio");
         expect(songThumbnail.duration).toBe("05:45");
 
         expect(songThumbnail.secondaryVerbPeople.verb).toBe("POET");
-        expect(songThumbnail.secondaryVerbPeople.people).toBe("Roshik");
+        expect(songThumbnail.secondaryVerbPeople.people).toBe("Kabir");
 
     });
 
@@ -57,18 +57,14 @@ describe("content thumbnail directive",function(){
 var test_songRepresentation = [
     {
         "id": 11,
-        "isAuthoringComplete": true,
-        "showOnLandingPage": true,
-        "youtubeVideoId": "",
-        "soundCloudTrackId": "https://soundcloud.com/kashanilyas/we-main-chori-chori-tere-nal/sets",
-        "thumbnailURL": "https://farm8.staticflickr.com/7583/16097980187_72dfa07068_o.png",
-        "duration": "07:45",
+        "englishTranslationTitle": "Everyday I Ask For Your Well Being",
+        "englishTransliterationTitle": "Nit Khair Manga",
         "singers": [
             {
                 "id": 25,
                 "name": "Mukhtiyar Ali",
                 "hindiName": "",
-                "primaryOccupation": ""
+                "primaryOccupation": null
             }
         ],
         "poets": [
@@ -76,75 +72,41 @@ var test_songRepresentation = [
                 "id": 26,
                 "name": "Badar Muneer",
                 "hindiName": "",
-                "primaryOccupation": ""
+                "primaryOccupation": null
             }
         ],
-        "about": "<p>This is about song</p>",
-        "songTitle": {
-            "id": 50,
-            "originalTitle": "नित खैर मंगा",
-            "englishTranslation": "Everyday I Ask For Your Well Being",
-            "englishTransliteration": "Nit Khair Manga",
-            "category": {
-                "id": 7,
-                "name": "Song Title",
-                "categoryType": "Song Title"
-            }
-        },
-        "songCategory": {
-            "id": 1,
-            "name": "Songs",
-            "categoryType": "song"
-        },
-        "mediaCategory": {
-            "id": 4,
-            "name": "audio only",
-            "categoryType": "media"
-        }
+        "duration": "07:45",
+        "category": "Songs",
+        "thumbnailUrl": "https://farm8.staticflickr.com/7583/16097980187_72dfa07068_o.png",
+        "published": true,
+        "contentFormat": "video"
     },
     {
-        "id": 7,
-        "isAuthoringComplete": true,
-        "showOnLandingPage": true,
-        "youtubeVideoId": "tNh2kjmSzPw",
-        "soundCloudTrackId": "170049166",
-        "thumbnailURL": "https://farm8.staticflickr.com/7496/15609516053_67a9b050e9_o.png",
-        "duration": "05:45",
-        "singers": [
-            {
-                "id": 7,
-                "name": "Parvathy Baul",
-                "hindiName": "",
-                "primaryOccupation": ""
-            },
-            {
-                "id": 26,
-                "name": "Badar Muneer",
-                "hindiName": "",
-                "primaryOccupation": ""
-            }
-        ],
-        "poets": [
-            {
-                "id": 8,
-                "name": "Roshik",
-                "hindiName": "",
-                "primaryOccupation": ""
-            }
-        ],
-        "downloadURL": "",
-        "about": null,
-        "songTitle": {
-            "id": 39,
-            "originalTitle": "किछु दिन मोने मोने",
-            "englishTranslation": "For a Few Days, O Heart",
-            "englishTransliteration": "Kichhu din mone mone",
-            "category": {
-                "id": 7,
-                "name": "Song Title",
-                "categoryType": "Song Title"
-            }
+        "id": 17,
+        "englishTranslationTitle": "In This Body",
+        "englishTransliterationTitle": "Hiye Kaaya Mein",
+        "singers": [{
+            "id": 22,
+            "name": "Jaan2 Mohammed",
+            "hindiName": "",
+            "primaryOccupation": "Singer"
         },
-        "mediaCategory": null
+            {
+                "id": 20,
+                "name": "Mitha Khan Jat",
+                "hindiName": "",
+                "primaryOccupation": null
+            }],
+        "poets": [{
+            "id": 11,
+            "name": "Kabir",
+            "hindiName": "",
+            "primaryOccupation": "Poet"
+        }],
+        "duration": "05:45",
+        "category": "Songs",
+        "thumbnailUrl": "https://farm8.staticflickr.com/7583/16097980187_72dfa07068_o.png",
+        "published": false,
+        "contentFormat": "audio"
     }
 ];

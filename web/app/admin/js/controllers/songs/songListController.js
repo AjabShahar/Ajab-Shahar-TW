@@ -9,12 +9,12 @@ adminApp.controller('songListController', ['$scope', 'contentService', 'loginVer
                 var allSongs = result.data.songs;
                 $scope.songs = _.reduce(allSongs, function (songs, value, index) {
                     var toBeAdded = {};
-                    toBeAdded.title = value.songTitle.englishTransliteration;
-                    toBeAdded.translatedTitle = value.songTitle.englishTranslation;
-                    toBeAdded.categoryName = value.songCategory.name;
-                    toBeAdded.publish = value.isAuthoringComplete;
+                    toBeAdded.title = value.englishTransliterationTitle;
+                    toBeAdded.translatedTitle = value.englishTranslationTitle;
+                    toBeAdded.categoryName = value.category;
+                    toBeAdded.publish = value.published;
 
-                    if (value.isAuthoringComplete)
+                    if (value.published)
                         toBeAdded.publish = "Yes";
 
                     else
@@ -23,7 +23,7 @@ adminApp.controller('songListController', ['$scope', 'contentService', 'loginVer
                     toBeAdded.singerNames = _.reduce(value.singers, function (memo, value, index) {
                         return (memo + ((index != 0) ? ', ' : '') + value.name);
                     }, '');
-                    toBeAdded.poetNames = _.reduce(value.poet, function (memo, value, index) {
+                    toBeAdded.poetNames = _.reduce(value.poets, function (memo, value, index) {
                         return (memo + ((index != 0) ? ', ' : '') + value.name);
                     }, '');
                     toBeAdded.id = value.id;

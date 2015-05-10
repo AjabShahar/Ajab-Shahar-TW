@@ -47,13 +47,7 @@ describe("Word details controller spec:", function () {
             $httpBackend.when("GET", "/api/category/word").respond(null);
             $httpBackend.when("GET", "/api/reflections").respond(test_reflection_summaries);
             $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
-            $httpBackend.when("GET", "/api/songs/getAllSongs").respond({
-                "songs": [{
-                    "songTitle":{englishTransliteration:"some title"},
-                    "singers": [],
-                    "words": {"words": []}
-                }]
-            });
+            $httpBackend.when("GET", "/api/songs").respond(test_song);
 
             scope.init();
             $httpBackend.flush();
@@ -77,13 +71,7 @@ describe("Word details controller spec:", function () {
             $httpBackend.when("GET", "/api/category/word").respond(null);
             $httpBackend.when("GET", "/api/reflections").respond(test_reflection_summaries);
             $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
-            $httpBackend.when("GET", "/api/songs/getAllSongs").respond({
-                "songs": [{
-                    "songTitle":{englishTransliteration:"some title"},
-                    "singers": [],
-                    "words": {"words": []}
-                }]
-            });
+            $httpBackend.when("GET", "/api/songs").respond(test_song);
 
             scope.init();
             $httpBackend.flush();
@@ -102,13 +90,7 @@ describe("Word details controller spec:", function () {
             $httpBackend.when("GET", "/api/category/word").respond(null);
             $httpBackend.when("GET", "/api/reflections").respond(test_reflection_summaries);
             $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
-            $httpBackend.when("GET", "/api/songs/getAllSongs").respond({
-                "songs": [{
-                    "songTitle":{englishTransliteration:"some title"},
-                    "singers": [],
-                    "words": {"words": []}
-                }]
-            });
+            $httpBackend.when("GET", "/api/songs").respond(test_song);
 
             scope.init();
             $httpBackend.flush();
@@ -125,13 +107,7 @@ describe("Word details controller spec:", function () {
             $httpBackend.when("GET", "/api/category/word").respond(null);
             $httpBackend.when("GET", "/api/reflections").respond(test_reflection_summaries);
             $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
-            $httpBackend.when("GET", "/api/songs/getAllSongs").respond({
-                "songs": [{
-                    "songTitle":{englishTransliteration:"some title"},
-                    "singers": [],
-                    "words": {"words": []}
-                }]
-            });
+            $httpBackend.when("GET", "/api/songs").respond(test_song);
 
             scope.init();
             $httpBackend.flush();
@@ -147,13 +123,7 @@ describe("Word details controller spec:", function () {
             $httpBackend.when("GET", "/api/category/word").respond(null);
             $httpBackend.when("GET", "/api/reflections").respond(test_reflection_summaries);
             $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
-            $httpBackend.when("GET", "/api/songs/getAllSongs").respond({
-                "songs": [{
-                    "songTitle":{englishTransliteration:"some title"},
-                    "singers": [],
-                    "words": {"words": []}
-                }]
-            });
+            $httpBackend.when("GET", "/api/songs").respond(test_song);
 
             scope.init();
             $httpBackend.flush();
@@ -169,13 +139,7 @@ describe("Word details controller spec:", function () {
             $httpBackend.when("GET", "/api/category/word").respond(null);
             $httpBackend.when("GET", "/api/reflections").respond(test_reflection_summaries);
             $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
-            $httpBackend.when("GET", "/api/songs/getAllSongs").respond({
-                "songs": [{
-                    "songTitle":{englishTransliteration:"some title"},
-                    "singers": [],
-                    "words": {"words": []}
-                }]
-            });
+            $httpBackend.when("GET", "/api/songs").respond(test_song);
 
             scope.init();
             $httpBackend.flush();
@@ -243,13 +207,7 @@ describe("Word details controller spec:", function () {
             $httpBackend.when("GET", "/api/category/word").respond(null);
             $httpBackend.when("GET", "/api/reflections").respond({"reflections": []});
             $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
-            $httpBackend.when("GET", "/api/songs/getAllSongs").respond({
-                "songs": [{
-                    "songTitle":{englishTransliteration:"some title"},
-                    "singers": [],
-                    "words": {"words": []}
-                }]
-            });
+            $httpBackend.when("GET", "/api/songs").respond(test_song);
 
             scope.init();
             $httpBackend.flush();
@@ -258,17 +216,7 @@ describe("Word details controller spec:", function () {
         });
         it("then should have singers as a comma separated entries for a song", function () {
 
-            var mockedSongs = {
-                "songs": [{
-                    "songTitle":{englishTransliteration:"some title"},
-                    "singers": [{"name": "singer1"}, {"name": "singer2"}],
-                    "words": {"words": []}
-                }, {
-                    "songTitle":{englishTransliteration:"some title2"},
-                    "singers": [{"name": "singer3"}, {"name": "singer4"}],
-                    "words": {"words": []}
-                }]
-            };
+
             $httpBackend.expectGET("/api/words/edit?id=1").respond(test_word);
 
             $httpBackend.when("GET", "/api/people/summary?role=Poet").respond(test_peopleSummary);
@@ -276,23 +224,16 @@ describe("Word details controller spec:", function () {
             $httpBackend.when("GET", "/api/category/word").respond(null);
             $httpBackend.when("GET", "/api/reflections").respond({"reflections": []});
             $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
-            $httpBackend.when("GET", "/api/songs/getAllSongs").respond(mockedSongs);
+            $httpBackend.when("GET", "/api/songs").respond(mockedSongs);
 
             scope.init();
             $httpBackend.flush();
 
-            expect(scope.songs[0].menuTitle).toBe('some title - (singer1, singer2)');
-            expect(scope.songs[1].menuTitle).toBe('some title2 - (singer3, singer4)');
+            expect(scope.songs[0].menuTitle).toBe('Nit Khair Manga - (Mukhtiyar Ali, Some one)');
         });
         it("then shouldn't have singers as a comma separated entries for a song, if there are no singers", function () {
-            var mockedSongs = {
-                "songs": [{
-                    "songTitle":{englishTransliteration:"some title"},
-                    "singers": [],
-                    "words": {"words": []}
-                }, {"songTitle":{englishTransliteration:"some title2"}, "singers": [], "words": {"words": []}}]
-            };
 
+            mockedSongs.songs[0].singers = [];
             $httpBackend.expectGET("/api/words/edit?id=1").respond(test_word);
 
             $httpBackend.when("GET", "/api/people/summary?role=Poet").respond(test_peopleSummary);
@@ -300,13 +241,12 @@ describe("Word details controller spec:", function () {
             $httpBackend.when("GET", "/api/category/word").respond(null);
             $httpBackend.when("GET", "/api/reflections").respond({"reflections": []});
             $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
-            $httpBackend.when("GET", "/api/songs/getAllSongs").respond(mockedSongs);
+            $httpBackend.when("GET", "/api/songs").respond(mockedSongs);
 
             scope.init();
             $httpBackend.flush();
 
-            expect(scope.songs[0].menuTitle).toBe('some title');
-            expect(scope.songs[1].menuTitle).toBe('some title2');
+            expect(scope.songs[0].menuTitle).toBe('Nit Khair Manga');
         });
     });
 });
@@ -434,3 +374,26 @@ var test_peopleSummary = [
         "primaryOccupation": null
     }
 ];
+
+var test_song = {
+    "id": 11,
+    "englishTranslationTitle": "Everyday I Ask For Your Well Being",
+    "englishTransliterationTitle": "Nit Khair Manga",
+    "singers": [
+        {
+            "id": 25,
+            "name": "Mukhtiyar Ali",
+            "hindiName": "",
+            "primaryOccupation": null
+        },{
+            "id": 26,
+            "name": "Some one",
+            "hindiName": "",
+            "primaryOccupation": null
+        }
+    ]
+};
+
+var mockedSongs = {
+    "songs": [test_song]
+};

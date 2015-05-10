@@ -26,8 +26,8 @@ featuredContentApp.controller('featuredContentController', ['$scope', 'mainLandi
 
         content.songs.then(function (result) {
             var songs = _.shuffle(result.data.songs).slice(0, 5);
-            var introductions = songMapper.getOverviews(songs);
-
+            //var introductions = songMapper.getOverviews(songs);
+             var introductions = [];
             _.each(songs, function (song,index) {
                 $scope.thumbnails[thumbnailPlacementRule.songs[index]] =new AjabShahar.ThumbnailObject(song,"song");
             });

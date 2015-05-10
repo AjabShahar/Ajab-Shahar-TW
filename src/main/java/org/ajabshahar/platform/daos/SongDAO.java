@@ -59,11 +59,7 @@ public class SongDAO extends AbstractDAO<Song> {
     }
 
 
-    public int getCountOfSongsThatStartWith(String letter) {
-        return list(namedQuery("org.ajabshahar.platform.models.Song.findAllFilteredBy").setParameter("letter", letter + "%")).size();
-    }
-
-    public Set<Song> findBy(int songId, int singerId, int poetId, int startFrom, String filteredLetter) {
+    public Set<Song> findBy(int songId, int singerId, int poetId) {
         Session currentSession = sessionFactory.getCurrentSession();
         Criteria findSongs = currentSession.createCriteria(Song.class);
         if (songId != 0) {
@@ -76,13 +72,6 @@ public class SongDAO extends AbstractDAO<Song> {
         if (poetId != 0) {
             findSongs.createAlias("poets", "poetsAlias");
             findSongs.add(Restrictions.eq("poetsAlias.id", (long) poetId));
-        }
-        if (startFrom != 0) {
-            findSongs.setFirstResult(startFrom);
-        }
-        if (filteredLetter != null) {
-            findSongs.createAlias("songTitle", "songTitleAlias");
-            findSongs.add(Restrictions.like("songTitleAlias.englishTranslation", filteredLetter, MatchMode.START));
         }
         findSongs.add(Restrictions.eq("isAuthoringComplete", true));
         findSongs.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
@@ -111,6 +100,17 @@ public class SongDAO extends AbstractDAO<Song> {
             findSongs.add(Restrictions.eq("isAuthoringComplete", true));
         } else {
             return new LinkedHashSet<>();
+        }
+        findSongs.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        return new LinkedHashSet<>(findSongs.list());
+    }
+
+    public Set<Song> findBy(String contentType) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Criteria findSongs = currentSession.createCriteria(Song.class);
+        if (contentType != null && contentType.equalsIgnoreCase("featured")) {
+            findSongs.add(Restrictions.eq("isAuthoringComplete", true));
+            findSongs.add(Restrictions.eq("showOnLandingPage", true));
         }
         findSongs.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return new LinkedHashSet<>(findSongs.list());

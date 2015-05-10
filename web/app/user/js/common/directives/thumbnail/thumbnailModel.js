@@ -7,20 +7,20 @@ AjabShahar.ThumbnailObject = function(contentItem,type){
         if(!_.isEmpty(song)) {
             self.type = type;
             self.id = song.id;
-            self.thumbnailImg = song.thumbnailURL;
+            self.thumbnailImg = song.thumbnailUrl;
             self.verbPeople = {
                 verb: getVerbForSong(song),
                 people: getSingersFromSong(song.singers)
             };
-            self.englishTitle = song.songTitle.englishTranslation;
-            self.translitTitle = song.songTitle.englishTransliteration;
-            self.contentFormat = song.youtubeVideoId? 'video':'audio';
+            self.englishTitle = song.englishTranslationTitle;
+            self.translitTitle = song.englishTransliterationTitle;
+            self.contentFormat = song.contentFormat;
             self.secondaryVerbPeople = {
                 verb: !_.isEmpty(song.poets) ? "POET" :undefined,
                 people: !_.isEmpty(song.poets) ? song.poets[0].name:""
             };
             self.duration = song.duration;
-            self.contentCategory = song.songCategory?song.songCategory.name:"song";
+            self.contentCategory = song.category;
         }
     };
 

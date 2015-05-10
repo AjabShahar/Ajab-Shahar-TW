@@ -4,7 +4,7 @@ var contentService = function ($http) {
     };
 
     var getAllSongs = function () {
-        return $http.get('/api/songs/getAllSongs');
+        return $http.get('/api/songs');
     };
 
     var getAllPeople = function () {
@@ -48,7 +48,7 @@ var contentService = function ($http) {
     };
 
     var getWord = function (wordID) {
-        return $http.get('/api/words/edit?id=' + wordID);
+            return $http.get('/api/words/edit?id=' + wordID);
     };
 
     var updateWord = function (word) {
