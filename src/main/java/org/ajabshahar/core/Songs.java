@@ -23,16 +23,16 @@ public class Songs {
     }
 
     public Song findBy(int songId) {
-        Set<Song> songList = findBy(songId, 0, 0, 0, null);
+        Set<Song> songList = findBy(songId, 0, 0);
         return songList.size() > 0 ? songList.iterator().next() : null;
     }
 
-    public Set<Song> findBy(int singerId, int poetId, int startFrom, String filteredLetter) {
-        return findBy(0, singerId, poetId, startFrom, filteredLetter);
+    public Set<Song> findBy(int singerId, int poetId) {
+        return findBy(0, singerId, poetId);
     }
 
-    private Set<Song> findBy(int songId, int singerId, int poetId, int startFrom, String filteredLetter) {
-        return songsRepository.findBy(songId, singerId, poetId, startFrom, filteredLetter);
+    private Set<Song> findBy(int songId, int singerId, int poetId) {
+        return songsRepository.findBy(songId, singerId, poetId);
     }
 
     public void update(Song song) {

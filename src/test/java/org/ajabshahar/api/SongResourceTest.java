@@ -49,10 +49,10 @@ public class SongResourceTest {
     @Test
     public void shouldGetSongsFilteredBySingerAndPoet() {
         when(songList.size()).thenReturn(1);
-        when(songs.findBy(SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER)).thenReturn(songList);
+        when(songs.findBy(SINGER_ID, POET_ID)).thenReturn(songList);
         when(songsRepresentationFactory.createSongsRepresentation(songList)).thenReturn(songsRepresentation);
 
-        Response response = songResource.getPublishedSongs(SINGER_ID, POET_ID, 1, FILTERED_LETTER);
+        Response response = songResource.getPublishedSongs(SINGER_ID, POET_ID);
         assertEquals(songsRepresentation, response.getEntity());
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
     }
@@ -60,9 +60,9 @@ public class SongResourceTest {
     @Test
     public void shouldGet204IfSongsNotFound() {
         when(songList.size()).thenReturn(0);
-        when(songs.findBy(SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER)).thenReturn(songList);
+        when(songs.findBy(SINGER_ID, POET_ID)).thenReturn(songList);
 
-        Response response = songResource.getPublishedSongs(SINGER_ID, POET_ID, START_FROM, FILTERED_LETTER);
+        Response response = songResource.getPublishedSongs(SINGER_ID, POET_ID);
         assertEquals(Status.NO_CONTENT.getStatusCode(), response.getStatus());
     }
 
