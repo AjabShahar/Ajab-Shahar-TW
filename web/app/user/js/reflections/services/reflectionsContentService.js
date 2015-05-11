@@ -1,14 +1,6 @@
 angular.module("reflection").service("reflectionsContentService",["$http",function($http) {
     var getAllReflections = function () {
-        return $http.get('/api/reflections/getPublishedReflections');
-    };
-
-    var getReflectionsInRangeAndFilteredBy = function (startIndex, letter) {
-        return $http.get('/api/reflections/getPublishedReflections?startFrom=' + startIndex + "&filteredLetter=" + letter);
-    };
-
-    var getReflectionsStartingWith = function (letter) {
-        return $http.get('/api/reflections/count/startingWith?letter=' + letter);
+        return $http.get('/api/reflections/getCompleteInfo?content=featured');
     };
 
     var getReflection = function (id) {
@@ -17,8 +9,6 @@ angular.module("reflection").service("reflectionsContentService",["$http",functi
 
     return {
         getAllReflections: getAllReflections,
-        getReflectionsInRangeAndFilteredBy: getReflectionsInRangeAndFilteredBy,
-        getReflectionsStartingWith: getReflectionsStartingWith,
         getReflection: getReflection
     };
 }]);

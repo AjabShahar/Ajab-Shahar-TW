@@ -18,7 +18,7 @@ describe('Main landing page controller', function () {
         });
 
         $httpBackend.when("GET", "/api/songs/getPublishedSongs").respond(test_songs_mainfc);
-        $httpBackend.when("GET", "/api/reflections?content=featured").respond(test_reflections_mainfc);
+        $httpBackend.when("GET", "/api/reflections/completeInfo?content=featured").respond(test_reflections_mainfc);
         $httpBackend.when("GET", "/api/words?showOnMainLandingPage=true").respond(test_words_mainfc);
 
     }));
@@ -238,44 +238,148 @@ var test_reflections_mainfc ={
     "reflections": [
         {
             "showOnMainFcPage": true,
+            "thumbnailURL": "https://avatars1.githubusercontent.com/u/3875065?v=3&s=72",
+            "info": "<p>By Vipul</p>",
+            "about": null,
+            "duration": "",
+            "reflectionExcerpt": "This is text reflection excerpt. This is text reflection excerpt.This is text reflection excerpt",
+            "id": 1,
+            "title": "Poet is God",
+            "verb": "says",
+            "speaker": {
+                "id": 16,
+                "name": "Vipul Rikhi",
+                "hindiName": "",
+                "primaryOccupation": "Singer"
+            },
+            "soundCloudId": null,
+            "youtubeVideoId": "MtIoD16yTQc",
+            "reflectionTranscripts": [
+                {
+                    "id": 1,
+                    "hindiTranscript": "hindi transcript",
+                    "englishTranscript": "english transcript"
+                }
+            ],
+            "words": [
+                {
+                    "id": 34,
+                    "wordOriginal": "New word",
+                    "wordTranslation": "New word",
+                    "wordTransliteration": "New word",
+                    "hindiIntroExcerpt": "",
+                    "englishIntroExcerpt": "",
+                    "writers": [],
+                    "rootWord": false
+                }
+            ],
+            "songs": [
+                {
+                    "id": 11,
+                    "englishTranslationTitle": "Everyday I Ask For Your Well Being",
+                    "englishTransliterationTitle": "Nit Khair Manga",
+                    "singers": [
+                        {
+                            "id": 25,
+                            "name": "Mukhtiyar Ali",
+                            "hindiName": "",
+                            "primaryOccupation": null
+                        }
+                    ],
+                    "poet": [
+                        {
+                            "id": 26,
+                            "name": "Badar Muneer",
+                            "hindiName": "",
+                            "primaryOccupation": null
+                        }
+                    ],
+                    "duration": "07:45",
+                    "category": "Songs",
+                    "thumbnailUrl": "https://farm8.staticflickr.com/7583/16097980187_72dfa07068_o.png"
+                }
+            ],
+            "publish": true,
+            "people": [
+                {
+                    "id": 8,
+                    "name": "Roshik",
+                    "hindiName": "",
+                    "primaryOccupation": null
+                }
+            ]
+        },
+        {
+            "showOnMainFcPage": true,
+            "thumbnailURL": null,
+            "info": null,
+            "about": null,
+            "duration": null,
+            "reflectionExcerpt": null,
+            "id": 10,
+            "title": "test reflection",
+            "verb": "by",
+            "speaker": {
+                "id": 15,
+                "name": "Shabnam Virmani",
+                "hindiName": "",
+                "primaryOccupation": null
+            },
+            "soundCloudId": "mn",
+            "youtubeVideoId": null,
+            "reflectionTranscripts": [],
+            "words": [
+                {
+                    "id": 26,
+                    "wordOriginal": "à¤¶à¥‚à¤¨à¥à¤¯",
+                    "wordTranslation": "Emptiness",
+                    "wordTransliteration": "Shoonya",
+                    "hindiIntroExcerpt": "Shoonya is literally zero in the Indian numbering system, the place from which all things begin.",
+                    "englishIntroExcerpt": "Hindi. Shoonya is literally zero in the Indian numbering system, the place from which all things begin.",
+                    "writers": [
+                        {
+                            "id": 10,
+                            "name": "Mooralala Marwada",
+                            "hindiName": "",
+                            "primaryOccupation": null
+                        }
+                    ],
+                    "rootWord": true
+                }
+            ],
+            "songs": [],
+            "publish": true,
+            "people": []
+        },
+        {
+            "showOnMainFcPage": true,
+            "thumbnailURL": null,
+            "info": null,
+            "about": null,
+            "duration": null,
+            "reflectionExcerpt": null,
             "id": 5,
             "title": "reflection",
-            "verb": "reflection",
+            "verb": "says",
             "speaker": {
                 "id": 17,
                 "name": "Fakru",
                 "hindiName": "",
                 "primaryOccupation": null
             },
+            "soundCloudId": null,
             "youtubeVideoId": null,
-            "publish": true
-        },
-        {
-            "showOnMainFcPage": true,
-            "id": 6,
-            "title": "reflection1",
-            "verb": "reflec",
-            "speaker": {
-                "id": 36,
-                "name": "hjhj jhjkahf",
-                "hindiName": "",
-                "primaryOccupation": null
-            },
-            "publish": false
-        },
-        {
-            "showOnMainFcPage": true,
-            "id": 4,
-            "title": "Unbelievable",
-            "verb": null,
-            "speaker": {
-                "id": 14,
-                "name": "Gavra Devi",
-                "hindiName": "",
-                "primaryOccupation": null
-            },
-            "youtubeVideoId": "T70-HTlKRXo",
-            "publish": true
+            "reflectionTranscripts": [
+                {
+                    "id": 2,
+                    "hindiTranscript": "<p>jeu</p>",
+                    "englishTranscript": "<p>heu</p>"
+                }
+            ],
+            "words": [],
+            "songs": [],
+            "publish": true,
+            "people": []
         }
     ]
 };
