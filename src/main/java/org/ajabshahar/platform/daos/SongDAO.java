@@ -59,11 +59,7 @@ public class SongDAO extends AbstractDAO<Song> {
     }
 
 
-    public int getCountOfSongsThatStartWith(String letter) {
-        return list(namedQuery("org.ajabshahar.platform.models.Song.findAllFilteredBy").setParameter("letter", letter + "%")).size();
-    }
-
-    public Set<Song> findBy(int songId, int singerId, int poetId, int startFrom, String filteredLetter) {
+    public Set<Song> findBy(int songId, int singerId, int poetId) {
         Session currentSession = sessionFactory.getCurrentSession();
         Criteria findSongs = currentSession.createCriteria(Song.class);
         if (songId != 0) {
@@ -76,13 +72,6 @@ public class SongDAO extends AbstractDAO<Song> {
         if (poetId != 0) {
             findSongs.createAlias("poets", "poetsAlias");
             findSongs.add(Restrictions.eq("poetsAlias.id", (long) poetId));
-        }
-        if (startFrom != 0) {
-            findSongs.setFirstResult(startFrom);
-        }
-        if (filteredLetter != null) {
-            findSongs.createAlias("songTitle", "songTitleAlias");
-            findSongs.add(Restrictions.like("songTitleAlias.englishTranslation", filteredLetter, MatchMode.START));
         }
         findSongs.add(Restrictions.eq("isAuthoringComplete", true));
         findSongs.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);

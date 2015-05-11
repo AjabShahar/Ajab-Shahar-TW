@@ -44,14 +44,6 @@ public class SongResource {
         return Response.ok().entity(song).build();
     }
 
-    @GET
-    @UnitOfWork
-    public Set<Song> listAllSongValues(@Session HttpSession httpSession) {
-        if (httpSession.getAttribute("user") == null)
-            return new LinkedHashSet<>();
-        return songDAO.findAll();
-    }
-
     @POST
     @Path("/edit")
     @UnitOfWork
@@ -60,16 +52,6 @@ public class SongResource {
         Song song = songsRepresentationFactory.create(jsonSong);
         songs.update(song);
         return Response.ok().build();
-    }
-
-    @GET
-    @Path("/count/startingWith")
-    @UnitOfWork
-    @CacheControl(maxAge = 60)
-    @Produces(MediaType.APPLICATION_JSON)
-    public int listAllSongsFilteredBy(@QueryParam("letter") String letter) {
-        letter = letter == null ? "" : letter;
-        return songDAO.getCountOfSongsThatStartWith(letter);
     }
 
     @GET
@@ -87,8 +69,8 @@ public class SongResource {
     @GET
     @UnitOfWork
     @Path("/getPublishedSongs")
-    public Response getPublishedSongs(@QueryParam("singerId") int singerId, @QueryParam("poetId") int poetId, @QueryParam("startFrom") int startFrom, @QueryParam("filteredLetter") String filteredLetter) {
-        Set<Song> songList = songs.findBy(singerId, poetId, startFrom, filteredLetter);
+    public Response getPublishedSongs(@QueryParam("singerId") int singerId, @QueryParam("poetId") int poetId) {
+        Set<Song> songList = songs.findBy(singerId, poetId);
         if (songList == null || songList.size() == 0) {
             return Response.status(Status.NO_CONTENT).build();
         }
