@@ -42,7 +42,7 @@ public class ReflectionResource {
 
     @GET
     @UnitOfWork
-    public Response getReflectionsWithCompleteInfo(@DefaultValue("") @QueryParam("content") String criteria) {
+    public Response getReflections(@DefaultValue("") @QueryParam("content") String criteria) {
         Set<Reflection> reflectionList = reflections.getAll(criteria);
         ReflectionsSummaryRepresentation reflectionsRepresentation = reflectionRepresentationFactory.toReflectionsSummaryRepresentation(reflectionList);
         return Response.ok(reflectionsRepresentation).build();
@@ -50,14 +50,11 @@ public class ReflectionResource {
 
     @GET
     @UnitOfWork
-    @Path("/getPublishedReflections")
-    public Response getPublishedReflections(@QueryParam("startFrom") int startFrom, @QueryParam("filteredLetter") String filteredLetter) {
-        Set<Reflection> reflectionList = reflections.findBy(startFrom, filteredLetter);
-        if (reflectionList == null || reflectionList.size() == 0) {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        }
-        ReflectionsSummaryRepresentation reflectionsSummaryRepresentation = reflectionRepresentationFactory.toReflectionsSummaryRepresentation(reflectionList);
-        return Response.ok(reflectionsSummaryRepresentation, MediaType.APPLICATION_JSON).build();
+    @Path("/completeInfo")
+    public Response getReflectionsWithCompleteInfo(@DefaultValue("") @QueryParam("content") String criteria) {
+        Set<Reflection> reflectionList = reflections.getAll(criteria);
+        ReflectionsRepresentation reflectionsRepresentation = reflectionRepresentationFactory.createReflections(reflectionList);
+        return Response.ok(reflectionsRepresentation).build();
     }
 
     @GET

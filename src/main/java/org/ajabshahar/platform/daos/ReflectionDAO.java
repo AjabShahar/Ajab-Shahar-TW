@@ -33,18 +33,8 @@ public class ReflectionDAO extends AbstractDAO<Reflection> {
     }
 
     public Set<Reflection> findBy(Boolean showOnFeaturedContentPage, boolean authoringComplete) {
-        return findBy(-1, "", showOnFeaturedContentPage, authoringComplete);
-    }
-
-    public Set<Reflection> findBy(int startFrom, String filteredLetter, Boolean showOnFeaturedContentPage, boolean authoringComplete) {
         Session currentSession = sessionFactory.getCurrentSession();
         Criteria findReflections = currentSession.createCriteria(Reflection.class);
-        if (startFrom != -1) {
-            findReflections.setFirstResult(startFrom);
-        }
-        if (filteredLetter != null && filteredLetter != "") {
-            findReflections.add(Restrictions.like("title", filteredLetter, MatchMode.START));
-        }
 
         if (authoringComplete) {
             findReflections.add(Restrictions.eq("isAuthoringComplete", true));
@@ -62,9 +52,5 @@ public class ReflectionDAO extends AbstractDAO<Reflection> {
         findReflections.add(Restrictions.eq("id", Long.valueOf(id)));
 
         return new LinkedHashSet<>(findReflections.list());
-    }
-
-    public Set<Reflection> findBy(int startFrom, String filteredLetter) {
-        return findBy(startFrom, filteredLetter, false, true);
     }
 }

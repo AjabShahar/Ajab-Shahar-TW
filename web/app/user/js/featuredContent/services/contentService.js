@@ -3,7 +3,7 @@ featuredContentApp.factory('mainLandingContentService', ['$http',function ($http
         return {
             songs: $http.get('/api/songs/getPublishedSongs'),
             words: $http.get('/api/words?showOnMainLandingPage=true'),
-            reflections: $http.get('/api/reflections?content=featured')
+            reflections: $http.get('/api/reflections/completeInfo?content=featured')
         };
     };
 

@@ -34,7 +34,4 @@ public class Reflections {
         return reflectionRepository.find(id).iterator().next();
     }
 
-    public Set<Reflection> findBy(int startFrom, String filteredLetter) {
-        return reflectionRepository.findBy(startFrom, filteredLetter);
-    }
 }
