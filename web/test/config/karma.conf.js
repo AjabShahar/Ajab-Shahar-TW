@@ -35,6 +35,7 @@ module.exports = function (config) {
             'user/js/songs/services/songsContentService.js',
             'user/js/reflections/reflectionsApp.js',
             'user/js/reflections/services/reflectionsContentService.js',
+            'user/js/reflections/controllers/allReflectionsController.js',
             'user/js/songs/songDetailsApp.js',
             'user/js/songs/songsApp.js',
             'user/js/words/wordApp.js',
