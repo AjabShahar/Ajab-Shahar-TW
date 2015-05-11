@@ -21,11 +21,12 @@
                 <div class="desc" ng-if="content.description">
                     <small>{{content.description | limitTo : 100 }} <span ng-if="content.description.length > 100">...</span></small>
                 </div>
-                <small class="poet" ng-if="content.description && content.secondaryVerbPeople" >{{content.secondaryVerbPeople.verb}} {{content.secondaryVerbPeople.people|uppercase}}</small>
+                <small class="poet" ng-if="content.description || content.secondaryVerbPeople" >{{content.secondaryVerbPeople.verb}} {{content.secondaryVerbPeople.people|uppercase}}</small>
 
                 <div class='footer'>
                     <p class="categoryName">{{content.contentCategory | uppercase}}
                         <small class="more-info" ng-if="content.contentFormat === 'text'">T</small>
+                        <small ng-class='content.contentFormat === "video" ? "play_video_icon": "play_audio_icon"' ng-if="content.contentFormat === 'video'"></small>
                         <small class="play" ng-if="content.contentFormat !== 'text'" >{{content.duration}}</small>
                     </p>
                 </div>
