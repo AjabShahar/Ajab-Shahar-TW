@@ -31,7 +31,7 @@
           bottom: -25px;
         }
 
-        .play {
+        .play-video {
                 background: url(/user/img/common/icons/gray_play.png) left bottom no-repeat;
                 padding-left: 12px;
                 margin-left: 3px;
@@ -40,13 +40,9 @@
 
 
         .play-audio {
-                background: transparent url('../../user/img/songs/av_sprite.png') 0 0 no-repeat;
-
-                display: inline-block;
-
-                background-position: -13px -12px;
-                width: 46px;
-                height: 20px;
+                background: transparent url('/user/img/common/icons/a_grey.png') left -1px no-repeat;
+                padding-left: 17px;
+                margin-left: 3px;
 
         }
 
