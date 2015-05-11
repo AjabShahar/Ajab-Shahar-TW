@@ -1,7 +1,8 @@
 <div class="second-layer-list" ng-show="showThisParda">
     <div class="overlay">
         <ul>
-            <li class="list-item" ng-repeat="filterItem in filterItems" ng-click="itemClicked(filterItem)">
+            <li class="list-item" ng-repeat="filterItem in filterItems | orderBy :'0'"
+                ng-click="itemClicked(filterItem)">
                 <a href="javascript:void(0)">
                     <div ng-repeat="value in filterItem" class="child-list-item-value">{{value}}</div>
                 </a>

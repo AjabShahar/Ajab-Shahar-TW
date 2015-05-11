@@ -12,20 +12,16 @@ filterModule.directive("songFilterCategory", function () {
             clearFilters: "="
         },
 
-        link: function (scope, element, attrs) {
+        link: function (scope) {
             scope.criteriaClicked = function (criteria) {
-                //console.log("criteria clicked : ",criteria)
                 scope.selectHandler(criteria);
             };
 
             scope.criteriaRemoved = function (criteria) {
-                //console.log("criteria removed : ",criteria)
                 scope.deselectHandler(criteria);
             };
 
             scope.resetFilters = function () {
-                //console.log("reset clicked")
-
                 scope.clearFilters();
             }
         }
