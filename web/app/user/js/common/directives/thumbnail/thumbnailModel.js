@@ -45,8 +45,8 @@ AjabShahar.ThumbnailObject = function(contentItem,type){
         if(!_.isEmpty(reflection)){
             self.type = type;
             self.id = reflection.id;
-            self.thumbnailImg = reflection.thumbnailImg ? reflection.thumbnailImg : "/user/img/reflections/bw_background2b.jpg";
-            self.description =reflection.excerpt;
+            self.thumbnailImg = reflection.thumbnailURL ? reflection.thumbnailURL : "/user/img/reflections/bw_background2b.jpg";
+            self.description =reflection.reflectionExcerpt;
             self.verbPeople ={
                 verb:reflection.verb,
                 people:reflection.speaker?reflection.speaker.name:""
@@ -54,8 +54,8 @@ AjabShahar.ThumbnailObject = function(contentItem,type){
             self.englishTitle =reflection.title;
             self.contentCategory = "reflection";
             self.duration = reflection.duration;
-            if(reflection.duration === null || reflection.duration === "")
-               self.contentFormat = "text";
+            self.contentFormat = reflection.youtubeVideoId === null || reflection.youtubeVideoId === "" ?
+                (reflection.soundCloudId === null || reflection.soundCloudId === "" ? "text" :"audio") : "video"
         }
     };
 
