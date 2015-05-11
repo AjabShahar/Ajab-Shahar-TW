@@ -11,7 +11,7 @@ filterModule.directive("songFilterParda", function () {
             showThisParda: "="
         },
 
-        link: function (scope, element, attrs) {
+        link: function (scope) {
             scope.itemClicked = function (item) {
                 scope.selectHandler(item[0]);
             };
