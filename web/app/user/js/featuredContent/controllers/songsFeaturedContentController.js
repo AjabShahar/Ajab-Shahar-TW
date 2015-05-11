@@ -13,7 +13,8 @@ featuredContentApp.controller('songsFeaturedContentController', ['$scope', 'main
                 $scope.thumbnails[index] = new AjabShahar.ThumbnailObject(song,"song");
             });
 
-            var introductions = songMapper.getOverviews(songs);
+            //var introductions = songMapper.getOverviews(songs);
+            var introductions = [];
             _.each(introductions, function (introduction,index) {
                 popupService.addItem(introduction,index);
             });

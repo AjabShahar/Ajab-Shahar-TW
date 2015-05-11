@@ -112,6 +112,9 @@ public class SongDAO extends AbstractDAO<Song> {
             findSongs.add(Restrictions.eq("isAuthoringComplete", true));
             findSongs.add(Restrictions.eq("showOnLandingPage", true));
         }
+        if (contentType != null && contentType.equalsIgnoreCase("songsFeatured")) {
+            findSongs.add(Restrictions.eq("isAuthoringComplete", true));
+        }
         findSongs.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return new LinkedHashSet<>(findSongs.list());
     }

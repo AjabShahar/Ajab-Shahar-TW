@@ -8,7 +8,7 @@ featuredContentApp.factory('mainLandingContentService', ['$http',function ($http
     };
 
     var getSongsLandingPageThumbnails = function () {
-        return $http.get('/api/songs/getPublishedSongs');
+        return $http.get('/api/songs?content=songsFeatured');
     };
 
     return {

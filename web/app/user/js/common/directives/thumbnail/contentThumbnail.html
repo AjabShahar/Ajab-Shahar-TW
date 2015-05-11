@@ -21,7 +21,7 @@
                 <div class="desc" ng-if="content.description">
                     <small>{{content.description | limitTo : 100 }} <span ng-if="content.description.length > 100">...</span></small>
                 </div>
-                <small class="poet" ng-if="content.description && content.secondaryVerbPeople" >{{content.secondaryVerbPeople.verb}} {{content.secondaryVerbPeople.people|uppercase}}</small>
+                <small class="poet" ng-if="content.description || content.secondaryVerbPeople" >{{content.secondaryVerbPeople.verb}} {{content.secondaryVerbPeople.people|uppercase}}</small>
 
                 <div class='footer'>
                     <p class="categoryName">{{content.contentCategory | uppercase}}
