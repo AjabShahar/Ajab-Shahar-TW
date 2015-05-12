@@ -55,10 +55,6 @@ var contentService = function ($http) {
         return $http.post('/api/words/edit', word);
     };
 
-    var getAllReflections = function(){
-       return $http.get('/api/reflections/all')
-    };
-
     return {
         getAllPeople: getAllPeople,
         getAllPeopleSummary: getAllPeopleSummary,
@@ -73,7 +69,6 @@ var contentService = function ($http) {
         saveWord: saveWord,
         getWord: getWord,
         updateWord: updateWord,
-        getPoets: getPoets,
-        getAllReflections: getAllReflections
+        getPoets: getPoets
     };
 };

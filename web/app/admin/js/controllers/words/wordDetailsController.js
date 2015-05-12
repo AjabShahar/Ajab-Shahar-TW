@@ -44,6 +44,7 @@ wordsAdminApp.controller('wordDetailsController', ['$scope', '$window', '$locati
                 $scope.writers = angular.copy(data[2].data);
                 $scope.people = angular.copy(data[2].data);
                 $scope.reflections = data[3].data.reflections;
+                $scope.reflectionsWithoutTheDefault = angular.copy($scope.reflections);
                 $scope.poets = data[4].data;
                 $scope.synonyms = angular.copy(data[5].data);
                 $scope.relatedWords = angular.copy(data[5].data);

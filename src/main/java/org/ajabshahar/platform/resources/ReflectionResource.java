@@ -57,12 +57,6 @@ public class ReflectionResource {
         return Response.ok(reflectionsRepresentation).build();
     }
 
-    @GET
-    @UnitOfWork
-    @Path("/all")
-    public Set<Reflection> getAllReflections() {
-        return reflections.getAll("");
-    }
 
     @GET
     @UnitOfWork
