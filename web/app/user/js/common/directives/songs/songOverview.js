@@ -18,15 +18,13 @@ thumbnailModule.directive("songOverview", function () {
         },
         templateUrl: '/user/js/common/templates/songs/songOverview.html',
         controller: function ($scope) {
-            $scope.hasAudioAndVideo = false;
-            $scope.showVideo = false;
-            $scope.showAudio = false;
 
-            $scope.$watch(function () {
+
+            /*$scope.$watch(function () {
                 return $scope.closeVideo();
             }, function (newValue) {
                 $scope.shouldStopVideo = !newValue;
-            });
+            });*/
 
             $scope.isVideo = function () {
                 return Boolean($scope.videoUrl);
@@ -36,7 +34,7 @@ thumbnailModule.directive("songOverview", function () {
                 return !$scope.isVideo();
             };
 
-            $scope.isAudioOrVideo = function () {
+            var setAudioOrVideo = function () {
                 if (Boolean($scope.videoUrl)) {
                     $scope.showVideo = true;
                     (Boolean($scope.audioUrl)) ? $scope.hasAudioAndVideo = true : $scope.hasAudioAndVideo = false;
@@ -58,9 +56,24 @@ thumbnailModule.directive("songOverview", function () {
                 }
             };
 
-            $scope.shouldStopVideo = function () {
+            /*$scope.shouldStopVideo = function () {
                 return $scope.detailsService.isClosed($scope.id);
-            }
+            };*/
+
+            var init= function(){
+                $scope.hasAudioAndVideo = false;
+                $scope.showVideo = false;
+                $scope.showAudio = false;
+                setAudioOrVideo();
+            };
+
+            $scope.$watch('videoUrl',function(){
+                init();
+            });
+
+            $scope.$watch('audioUrl',function(){
+                init();
+            });
         }
     }
 });
