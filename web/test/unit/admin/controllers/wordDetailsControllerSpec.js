@@ -16,7 +16,6 @@ describe("Word details controller spec:", function () {
         $httpBackend = _$httpBackend_;
         $cookies.user = "admin";
 
-        spyOn($location, 'search').andReturn({id: 1});
 
         _$controller_('wordDetailsController', {
             $scope: scope,
@@ -37,6 +36,9 @@ describe("Word details controller spec:", function () {
     });
 
     describe("When initializing a word", function () {
+        beforeEach(function(){
+            spyOn($location, 'search').andReturn({id: 1});
+        });
 
         it("then should have people and writers", function () {
             $httpBackend.expectGET("/api/words/edit?id=1").respond(test_word);
@@ -68,6 +70,7 @@ describe("Word details controller spec:", function () {
             expect(scope.writers[1].id).toBe(11);
 
         });
+
 
         it("it should display the linked reflections", function () {
             $httpBackend.expectGET("/api/words/edit?id=1").respond(test_word);
@@ -188,6 +191,10 @@ describe("Word details controller spec:", function () {
     });
 
     describe("When saving or updating a word,", function () {
+        beforeEach(function(){
+            spyOn($location, 'search').andReturn({id: 1});
+        });
+
         it("then should redirect to admin-home if saved successfully", function () {
             $httpBackend.expectPOST('/api/words', scope.formInfo).respond(200);
 
@@ -232,8 +239,13 @@ describe("Word details controller spec:", function () {
 
             expect(scope.formInfo.thumbnailUrl).toBe('http://www.hdwallpapersimages.com/wp-content/uploads/images/Child-Girl-with-Sunflowers-Images.jpg');
         });
+
     });
     describe("When fetching a given word via an ID,", function () {
+        beforeEach(function(){
+            spyOn($location, 'search').andReturn({id: 1});
+        });
+
         it("then should have the word's details, if the word exist", function () {
 
             $httpBackend.expectGET("/api/words/edit?id=1").respond(test_word);
@@ -307,6 +319,28 @@ describe("Word details controller spec:", function () {
 
             expect(scope.songs[0].menuTitle).toBe('some title');
             expect(scope.songs[1].menuTitle).toBe('some title2');
+        });
+    });
+    describe("when saving the word for the first time",function(){
+        it("By default, it should have all the reflections for reflections dropdown options",function(){
+
+            $httpBackend.when("GET", "/api/people/summary?role=Poet").respond(test_peopleSummary);
+            $httpBackend.when("GET", "/api/people/summary").respond(test_peopleSummary);
+            $httpBackend.when("GET", "/api/category/word").respond(null);
+            $httpBackend.when("GET", "/api/reflections").respond(test_reflection_summaries);
+            $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
+            $httpBackend.when("GET", "/api/songs/getAllSongs").respond({
+                "songs": [{
+                    "songTitle":{englishTransliteration:"some title"},
+                    "singers": [],
+                    "words": {"words": []}
+                }]
+            });
+
+            scope.init();
+            $httpBackend.flush();
+
+            expect(scope.reflectionsWithoutTheDefault.length).toBe(3);
         });
     });
 });
