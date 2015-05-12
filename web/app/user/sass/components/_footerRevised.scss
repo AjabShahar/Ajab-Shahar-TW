@@ -1,0 +1,209 @@
+
+
+.footer-box {
+    position: relative;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    height: 275px;
+
+    .footer-tree {
+        background: transparent url('/user/img/common/bg/footer_tree.png') 0px top no-repeat;
+        background-size: 56px 70px;
+        height: 85px;
+        position: relative;
+        top: -61px;
+        margin-left: 18%;
+        width: 56px;
+
+        @media screen and (max-width: 1024px) {
+            margin-left: 9%;
+          }
+    }
+
+
+.footer-bg {
+        background: transparent url('/user/img/common/bg/footer-bg.png') center center repeat;
+        background-size: 999px 397px;
+        position: relative;
+        margin-top: -180px;
+        height: 397px;
+        @media screen and (max-width: 1024px) {
+             background-position: left top;
+        }
+
+        .content-wrapper {
+            background: black;
+            width: 100%;
+            height: inherit;
+            margin-top: 5px;
+        }
+
+
+        .footer-content {
+            font-weight: 300;
+            color: #b3b3b3;
+            font-family: 'Merriweather Sans';
+            font-weight: 300;
+            display: inline-block;
+            width: 80%;
+            text-align: left;
+
+            @media screen and (max-width: 1024px) {
+                      width: 98%;
+            }
+
+
+
+            .first-row-footer {
+                height: 220px;
+                font-size: 12px;
+                width: 92%;
+                margin: 0 auto;
+                .vertical-separator {
+                    color: #b3b3b3;
+                    background: transparent url(/user/img/common/directives/footer/dotted.png) 0px top;
+                    background-repeat: no-repeat repeat;
+                    padding: 0 3%;
+                    height: 170px;
+
+                }
+                .footer-title {
+
+                    font-size: 18px;
+                    color: $pink;
+                    margin-top: 10px;
+                    margin-bottom: 5px;
+                }
+                .first-row-col {
+
+                    float:left;
+                    width: 25%;
+                    margin-top: 2%;
+                    padding: 0 3%;
+                    p{
+                        line-height: 22px;
+                    }
+
+                }
+                .support-col {
+                    float: left;
+                    width: 29%;
+                    margin-top: 2%;
+                    p{
+                        line-height: 22px;
+                    }
+                }
+                .subscribe-col {
+                    float:left;
+                    width: 31%;
+                    margin-top: 2%;
+                     p{
+                        line-height: 22px;
+                        margin-top: 15px;
+                        .highlight {
+                            font-size: 18px;
+                            color: $pink;
+                        }
+
+                     }
+
+                }
+                .site-links {
+                    float:left;
+                    width: 15%;
+                    margin-top: 2%;
+                    font-size: 14px;
+                    ul{
+                        margin-top: 20px;
+                        li {
+                                margin-bottom: 16px;
+                        }
+                    }
+
+                }
+            }
+
+            .content-links {
+                background: transparent url(/user/img/common/bg/horizon-separator.png) left top repeat-x;
+                padding: 20px 20px 5px 20px;
+                font-size: 11px;
+                width: 100%;
+                text-align: center;
+
+
+
+                ul {
+                    width: 100%;
+                    display: inline-block;
+
+                }
+                li {
+                    width:auto;
+                    display: inline-block;
+                    border-right: solid thin;
+                    padding:0 1%;
+                    margin-bottom: 10px;
+                    &:last-child {
+                        border: none;
+                        margin-right: 0;
+                    }
+                }
+
+            }
+            #dark-font {
+                color: $light-grey;
+                display: inline;
+            }
+            .footer-info {
+                background: transparent url(/user/img/common/bg/png8.png) left top repeat-x;
+                padding: 20px 0px;
+
+                li  {
+                    float: left;
+                    &:first-child {
+                        background: url(/user/img/common/directives/footer/icons/kabirinit.jpg) -1px 0 no-repeat;
+                        width: 82%;
+                        float: left;
+                        height: 50px;
+                        @media screen and (max-width: 1024px) {
+                            width: 75%;
+                        }
+
+                    }
+                    &.fbook, &.sound-cloud,&.ok-listen,&.social-utube {
+                        margin-top: 7px;
+                        margin-right: 15px;
+                        float: right;
+                    }
+                    &.ok-listen {
+                        margin-right: 0px;
+                    }
+                }
+
+                .created-by {
+                    width: 75%;
+                    margin-left: 55px;
+                    float: left;
+                    font-size: 10px;
+                    margin: 5px 0 5px 55px;
+                    .website-design {
+                        display: inline;
+                        @media screen and (max-width: 1024px) {
+                            float: left;
+                            margin-top: 5px;
+                        }
+                    }
+
+                }
+
+
+            }
+
+
+        }
+
+
+
+}
+}
