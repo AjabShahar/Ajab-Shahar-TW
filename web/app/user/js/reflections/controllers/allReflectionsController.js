@@ -1,4 +1,4 @@
-angular.module("reflection").controller('allReflectionsController', ['$scope', 'reflectionsContentService', function ($scope, reflectionsContentService) {
+angular.module("reflection").controller('allReflectionsController', ['$scope', 'reflectionsContentService', '$window', function ($scope, reflectionsContentService, $window) {
     $scope.reflections = [];
 
     $scope.activeLetter = '';
@@ -35,6 +35,10 @@ angular.module("reflection").controller('allReflectionsController', ['$scope', '
 
     $scope.shiftThumbnail = function (index) {
         return "shift" + (index + 1);
+    };
+
+    $scope.navigateToDetailPage = function (id) {
+        $window.location.href = '/reflections/#/details/'+id;
     };
 
     $scope.init = function () {

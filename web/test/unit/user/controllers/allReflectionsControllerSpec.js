@@ -1,17 +1,20 @@
 describe("Reflection details controller", function () {
 
     var reflectionsContentService,
-        scope;
+        scope,
+        fakeWindow;
 
     beforeEach(module("reflection"));
 
-    beforeEach(inject(function (_$controller_, _$rootScope_, _$httpBackend_, _reflectionsContentService_) {
+    beforeEach(inject(function (_$controller_, _$rootScope_, _$httpBackend_, _$window_, _reflectionsContentService_) {
         scope = _$rootScope_.$new();
         $httpBackend = _$httpBackend_;
         reflectionsContentService = _reflectionsContentService_;
+        fakeWindow = {location: {href: ''}};
 
         _$controller_("allReflectionsController", {
             $scope: scope,
+            $window: fakeWindow,
             reflectionsContentService: reflectionsContentService
         });
         $httpBackend.when("GET", "/api/reflections/completeInfo?content=authoringComplete").respond(test_reflections);
@@ -52,6 +55,11 @@ describe("Reflection details controller", function () {
         expect(scope.reflections[1].contentFormat).toBe("audio");
     });
 
+    it("should redirect to details page on clicking of reflection thumbnail", function () {
+        scope.navigateToDetailPage(1);
+
+        expect(fakeWindow.location.href).toBe('/reflections/#/details/' + 1);
+    });
 });
 
 var test_reflections = {
