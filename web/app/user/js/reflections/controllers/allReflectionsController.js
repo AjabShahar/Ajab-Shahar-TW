@@ -1,4 +1,4 @@
-angular.module("reflection").controller('allReflectionsController', ['$scope', 'reflectionsContentService', '$window', function ($scope, reflectionsContentService, $window) {
+angular.module("reflection").controller('allReflectionsController', ['$scope', 'reflectionsContentService', '$window','$rootScope', function ($scope, reflectionsContentService, $window,$rootScope) {
     $scope.reflections = [];
 
     $scope.activeLetter = '';
@@ -11,7 +11,7 @@ angular.module("reflection").controller('allReflectionsController', ['$scope', '
     $scope.filterItems = {};
     $scope.selectedFilterCategory = {};
     $scope.openSecondParda = false;
-
+    $rootScope.isGridPage = true;
 
     var i = 0;
 
