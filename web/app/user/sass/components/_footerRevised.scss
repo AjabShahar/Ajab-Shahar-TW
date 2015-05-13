@@ -15,7 +15,7 @@
       width: 100%;
       display: inline-block;
       text-align: center;
-      height: 275px;
+      height: 295px;
       margin-top: 99px;
       background: black;
 
@@ -131,7 +131,7 @@
                     ul{
                         margin-top: 20px;
                         li {
-                                margin-bottom: 16px;
+                                margin-bottom: 20px;
                         }
                     }
 
@@ -141,7 +141,7 @@
             .content-links {
                 background: transparent url(/user/img/common/bg/horizon-separator.png) left top repeat-x;
                 padding: 20px 20px 5px 20px;
-                font-size: 11px;
+                font-size: 14px;
                 width: 100%;
                 text-align: center;
 
@@ -177,7 +177,7 @@
                     float: left;
 
                     .kabir-logo {
-                        background: url(/user/img/common/directives/footer/icons/kabirlogo-light.png) -1px 0 no-repeat;
+                        background: url(/user/img/common/directives/footer/icons/kabirlogo-light.png) 6px 0 no-repeat;
                         width: 35px;
                         float: left;
                         height: 50px;
@@ -224,11 +224,11 @@
                 }
 
                 .created-by {
-                    width: 74%;
-                    margin-left: 25px;
+                    width: 90%;
+                    margin-left: 15px;
                     float: left;
-                    font-size: 10px;
-                    line-height: 15px;
+                    font-size: 12px;
+                    line-height: 18px;
                     .website-design {
                         display: inline;
 
