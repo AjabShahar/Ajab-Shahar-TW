@@ -1,48 +1,45 @@
-
+.footer-tree {
+    background: transparent url('/user/img/common/bg/footer_tree.png') 0px top no-repeat;
+      background-size: 56px 70px;
+      height: 85px;
+      margin-left: 5%;
+      width: 56px;
+      padding-top: 148px;
+      margin-top: -160px;
+      z-index: 600;
+      position: relative;
+}
 
 .footer-box {
-    position: relative;
-    width: 100%;
-    display: inline-block;
-    text-align: center;
-    height: 275px;
+      position: relative;
+      width: 100%;
+      display: inline-block;
+      text-align: center;
+      height: 275px;
+      margin-top: 99px;
+      background: black;
 
-    .footer-tree {
-        background: transparent url('/user/img/common/bg/footer_tree.png') 0px top no-repeat;
-        background-size: 56px 70px;
-        height: 85px;
-        position: relative;
-        top: -61px;
-        margin-left: 18%;
-        width: 56px;
-
-        @media screen and (max-width: 1024px) {
-            margin-left: 9%;
-          }
-    }
 
 
 .footer-bg {
-        background: transparent url('/user/img/common/bg/footer-bg.png') center center repeat;
+        background: transparent url('/user/img/common/bg/footer-bg.png') left top repeat;
         background-size: 999px 397px;
         position: relative;
         margin-top: -180px;
         height: 397px;
-        @media screen and (max-width: 1024px) {
-             background-position: left top;
-        }
+
 
         .content-wrapper {
-            background: black;
-            width: 100%;
-            height: inherit;
-            margin-top: 5px;
+              width: 100%;
+              height: inherit;
+
+              padding-top: 100px;
         }
 
 
         .footer-content {
             font-weight: 300;
-            color: #b3b3b3;
+            color: $light-grey;
             font-family: 'Merriweather Sans';
             font-weight: 300;
             display: inline-block;
@@ -51,6 +48,17 @@
 
             @media screen and (max-width: 1024px) {
                       width: 98%;
+            }
+            a {
+                &:hover {
+                    color: $pink;
+                }
+
+               &.disable {
+                    color: $dark-grey;
+                    cursor: default;
+               }
+
             }
 
 
@@ -61,7 +69,7 @@
                 width: 92%;
                 margin: 0 auto;
                 .vertical-separator {
-                    color: #b3b3b3;
+
                     background: transparent url(/user/img/common/directives/footer/dotted.png) 0px top;
                     background-repeat: no-repeat repeat;
                     padding: 0 3%;
@@ -74,6 +82,9 @@
                     color: $pink;
                     margin-top: 10px;
                     margin-bottom: 5px;
+                    &:hover {
+                        font-weight: 400;
+                    }
                 }
                 .first-row-col {
 
@@ -104,6 +115,9 @@
                         .highlight {
                             font-size: 18px;
                             color: $pink;
+                            &:hover {
+                                font-weight: 400;
+                            }
                         }
 
                      }
@@ -152,17 +166,17 @@
 
             }
             #dark-font {
-                color: $light-grey;
+                color: $dark-grey;
                 display: inline;
             }
             .footer-info {
-                background: transparent url(/user/img/common/bg/png8.png) left top repeat-x;
+                background: transparent url(/user/img/common/bg/horizon-separator.png) left top repeat-x;
                 padding: 20px 0px;
 
                 li  {
                     float: left;
                     &:first-child {
-                        background: url(/user/img/common/directives/footer/icons/kabirinit.jpg) -1px 0 no-repeat;
+                        background: url(/user/img/common/directives/footer/icons/kabirlogo-light.png) -1px 0 no-repeat;
                         width: 82%;
                         float: left;
                         height: 50px;
@@ -178,6 +192,26 @@
                     }
                     &.ok-listen {
                         margin-right: 0px;
+                        a:hover {
+                            width: 33px;
+                            height: 24px;
+                            background-position: -15px -119px;
+                        }
+                    }
+                    &.fbook a:hover {
+                        width: 19px;
+                        height: 20px;
+                        background-position: -163px -15px;
+                    }
+                    &.sound-cloud a:hover {
+                        width: 39px;
+                        height: 18px;
+                        background-position: -148px -167px;
+                    }
+                    &.social-utube a:hover {
+                        width: 19px;
+                        height: 23px;
+                        background-position: -15px -174px;
                     }
                 }
 
