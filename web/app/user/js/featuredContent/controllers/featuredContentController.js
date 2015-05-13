@@ -70,8 +70,7 @@ featuredContentApp.controller('featuredContentController', ['$scope', 'mainLandi
     };
 
     $scope.selectedOverview = function(){
-        var selected = popupService.getSelected();
-        return selected;
+        return popupService.getSelected();
     }
 }]);
 

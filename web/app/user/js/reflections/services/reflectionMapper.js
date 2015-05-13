@@ -1,6 +1,6 @@
 angular.module("reflection").factory('reflectionMapper',[function () {
-    getThumbnails = function (reflections, customStyle) {
-        return _.reduce(reflections, function (thumbnails, reflection, index) {
+    var getThumbnails = function (reflections, customStyle) {
+        return _.reduce(reflections, function (thumbnails, reflection) {
             thumbnails.push({
                 "id": reflection.id,
                 "contentId": "reflection_" + reflection.id,
@@ -14,8 +14,8 @@ angular.module("reflection").factory('reflectionMapper',[function () {
         }, []);
     };
 
-    getOverviews = function (reflections, customStyle) {
-        return _.reduce(reflections, function (overview, reflection, index) {
+    var getOverviews = function (reflections) {
+        return _.reduce(reflections, function (overview, reflection) {
             overview.push({
                 "id": reflection.id,
                 "contentId": "reflection_" + reflection.id,
@@ -25,14 +25,18 @@ angular.module("reflection").factory('reflectionMapper',[function () {
                 "speaker": reflection.speaker,
                 "videoId": reflection.youtubeVideoId,
                 "audioUrl": reflection.soundCloudId,
-                "text": reflection.reflectionTranscript
+                "text": reflection.reflectionTranscript,
+                "info": reflection.info,
+                "people":reflection.people,
+                "words": reflection.words,
+                "songs": reflection.songs
             });
             return overview;
         }, []);
     };
 
-    getReflectionsCompleteInfo = function (reflections) {
-        return _.reduce(reflections, function (completeInfo, reflection, index) {
+    var getReflectionsCompleteInfo = function (reflections) {
+        return _.reduce(reflections, function (completeInfo, reflection) {
             completeInfo.push({
                 "id": reflection.id,
                 "title": reflection.title,

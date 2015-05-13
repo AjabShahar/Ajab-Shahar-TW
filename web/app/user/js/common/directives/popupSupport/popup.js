@@ -12,7 +12,7 @@ popupSupport.directive('popUp',["popupService",function (popupService) {
             overview:"="
         },
         templateUrl: '/user/js/common/templates/popupSupport/popup.html',
-        link:function(scope,element,attr){
+        link:function(scope,element){
                 jQuery(element).css("height", jQuery(window).height());
         },
         controller: function ($scope) {
