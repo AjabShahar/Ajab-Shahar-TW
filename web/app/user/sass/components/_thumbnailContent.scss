@@ -15,6 +15,12 @@
       margin-bottom: 3px;
       font-size: $medium-large;
     }
+    .singers {
+      color: $dark-grey;
+      font-size: $small;
+      font-weight: 100;
+      line-height: 20px;
+    }
 
     .footer {
       margin-top: 3px;
@@ -23,6 +29,21 @@
       font-size: $small;
       text-align: right;
       text-transform: uppercase;
+
+      .play-video {
+              background: url(/user/img/common/icons/gray_play.png) left bottom no-repeat;
+              padding-left: 12px;
+              margin-left: 3px;
+              color: #888;
+      }
+
+
+      .play-audio {
+              background: transparent url('/user/img/common/icons/a_grey.png') left -1px no-repeat;
+              padding-left: 17px;
+              margin-left: 3px;
+
+      }
     }
 
   }
