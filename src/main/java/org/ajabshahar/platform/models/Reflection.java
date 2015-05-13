@@ -3,8 +3,12 @@ package org.ajabshahar.platform.models;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -33,9 +37,9 @@ public class Reflection {
     @OneToOne(fetch = FetchType.EAGER)
     private PersonDetails speaker;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "reflection")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "reflection",cascade = javax.persistence.CascadeType.ALL,orphanRemoval = true)
     @JsonManagedReference
-    private Set<ReflectionTranscript> reflectionTranscripts;
+    private Set<ReflectionTranscript> reflectionTranscripts = new LinkedHashSet<>();
 
     @Column(name = "IS_AUTHORING_COMPLETE")
     private Boolean isAuthoringComplete;
@@ -72,4 +76,6 @@ public class Reflection {
 
     @Column(name = "DURATION")
     private String duration;
+
+
 }

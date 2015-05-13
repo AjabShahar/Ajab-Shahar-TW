@@ -1,6 +1,8 @@
 package org.ajabshahar.api;
 
 import com.google.gson.Gson;
+import org.ajabshahar.core.Reflections;
+import org.ajabshahar.platform.daos.ReflectionDAO;
 import org.ajabshahar.platform.models.*;
 
 import java.util.LinkedHashSet;
@@ -8,6 +10,8 @@ import java.util.Set;
 
 public class ReflectionRepresentationFactory {
     private WordRepresentationFactory wordRepresentationFactory;
+    private ReflectionDAO reflectionDAO;
+
 
     public Reflection create(String jsonWord) {
         return toReflection(new Gson().fromJson(jsonWord, ReflectionRepresentation.class));
@@ -15,7 +19,9 @@ public class ReflectionRepresentationFactory {
 
     private Reflection toReflection(ReflectionRepresentation reflectionRepresentation) {
         Reflection reflection = new Reflection();
-        reflection.setId(reflectionRepresentation.getId());
+        if(reflectionRepresentation.getId() != 0){
+            reflection = reflectionDAO.find(reflectionRepresentation.getId());
+        }
         reflection.setIsAuthoringComplete(reflectionRepresentation.isPublish());
         reflection.setShowOnFeaturedContentPage(reflectionRepresentation.isShowOnLandingPage());
         reflection.setSoundCloudId(reflectionRepresentation.getSoundCloudId());
@@ -24,7 +30,14 @@ public class ReflectionRepresentationFactory {
         reflection.setVerb(reflectionRepresentation.getVerb());
         reflection.setWords(toWords(reflectionRepresentation.getWords()));
         reflection.setYoutubeVideo(reflectionRepresentation.getYoutubeVideoId());
-        reflection.setReflectionTranscripts(toTranscripts(reflectionRepresentation.getReflectionTranscripts()));
+        Set<ReflectionTranscript> reflectionTranscripts = reflectionRepresentation.getReflectionTranscripts();
+        reflection.getReflectionTranscripts().clear();
+        if(reflectionTranscripts != null){
+            for (ReflectionTranscript reflectionTranscript : reflectionTranscripts) {
+                reflectionTranscript.setReflection(reflection);
+                addReflectionTranscript(reflection, reflectionTranscript);
+            }
+        }
         reflection.setSongs(SongSummaryRepresentation.toSongs(reflectionRepresentation.getSongs()));
         reflection.setPeople(PersonSummaryRepresentation.toPeople(reflectionRepresentation.getPeople()));
         reflection.setThumbnailURL(reflectionRepresentation.getThumbnailURL());
@@ -35,9 +48,8 @@ public class ReflectionRepresentationFactory {
         return reflection;
     }
 
-    private Set<ReflectionTranscript> toTranscripts(Set<ReflectionTranscript> reflectionTranscripts) {
-        return reflectionTranscripts != null && reflectionTranscripts.size() != 0
-                ? new LinkedHashSet<>(reflectionTranscripts) : new LinkedHashSet<>();
+    private void addReflectionTranscript(Reflection reflection, ReflectionTranscript reflectionTranscript) {
+        reflection.getReflectionTranscripts().add(reflectionTranscript);
     }
 
     private Set<Word> toWords(Set<WordSummaryRepresentation> wordsSummaryRepresentations) {
@@ -149,6 +161,10 @@ public class ReflectionRepresentationFactory {
 
     public void injectWordRepresentationFactory(WordRepresentationFactory wordRepresentationFactory) {
         this.wordRepresentationFactory = wordRepresentationFactory;
+    }
+
+    public void injectReflectionDao(ReflectionDAO reflectionDAO) {
+        this.reflectionDAO = reflectionDAO;
     }
 
     public Set<ReflectionSummaryRepresentation> toReflectionSummaryList(Set<Reflection> reflections) {

@@ -5,6 +5,7 @@ import org.ajabshahar.api.ReflectionRepresentationFactory;
 import org.ajabshahar.api.ReflectionsRepresentation;
 import org.ajabshahar.api.ReflectionsSummaryRepresentation;
 import org.ajabshahar.core.Reflections;
+import org.ajabshahar.platform.daos.ReflectionDAO;
 import org.ajabshahar.platform.models.Reflection;
 import org.junit.Before;
 import org.junit.Test;

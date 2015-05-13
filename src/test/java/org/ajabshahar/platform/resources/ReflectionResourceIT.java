@@ -22,6 +22,7 @@ import org.junit.ClassRule;
 import org.junit.Test;
 
 import javax.ws.rs.core.NewCookie;
+import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -252,8 +253,7 @@ public class ReflectionResourceIT {
     }
 
     @Test
-    public void shouldEditTranscripts() {
-
+    public void shouldEditAndRemoveTranscripts() {
         Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
@@ -267,6 +267,8 @@ public class ReflectionResourceIT {
         jsonReflection.put("youtubeVideoId", "12345");
         jsonReflection.put("showOnMainFcPage", true);
         jsonReflection.put("publish", true);
+        jsonReflection.put("about", "old");
+
 
         Set<ReflectionTranscript> reflectionTranscripts = new LinkedHashSet<>();
         ReflectionTranscript reflectionTranscript = new ReflectionTranscript();
@@ -282,15 +284,18 @@ public class ReflectionResourceIT {
         ReflectionRepresentation reflectionRepresentation = getEntity(reflectionResponse);
 
         assertThat(reflectionRepresentation.getReflectionTranscripts().size(), is(1));
-
-        jsonReflection.put("reflectionTranscripts", null);
+        jsonReflection.put("id", reflectionRepresentation.getId());
+        jsonReflection.put("about", "new");
+        jsonReflection.put("reflectionTranscripts", Collections.EMPTY_LIST);
 
         reflectionResponse = loginAndSave(jsonReflection);
 
         reflectionResponse = getReflection(getEntity(reflectionResponse).getId());
 
-        assertThat(getEntity(reflectionResponse).getReflectionTranscripts().size(), is(0));
-
+        ReflectionRepresentation reflection2 = getEntity(reflectionResponse);
+        Set<ReflectionTranscript> reflectionTranscripts1 = reflection2.getReflectionTranscripts();
+        assertThat(reflectionTranscripts1.size(), is(0));
+        assertThat(reflection2.getAbout(), is("new"));
     }
 
     @Test

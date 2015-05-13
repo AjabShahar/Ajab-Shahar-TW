@@ -137,6 +137,7 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         ReflectionRepresentationFactory reflectionRepresentationFactory = new ReflectionRepresentationFactory();
         reflectionRepresentationFactory.injectWordRepresentationFactory(wordRepresentationFactory);
         wordRepresentationFactory.injectReflectionRepresentationFactory(reflectionRepresentationFactory);
+        reflectionRepresentationFactory.injectReflectionDao(picoContainer.getComponent(ReflectionDAO.class));
 
         picoContainer.addComponent(reflectionRepresentationFactory);
         picoContainer.addComponent(wordRepresentationFactory);

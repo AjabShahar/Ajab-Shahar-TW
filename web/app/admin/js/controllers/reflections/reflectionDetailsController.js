@@ -30,6 +30,30 @@ reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$windo
             });
         };
 
+        var REFLECTION_TYPE = {
+            audio: "audio",
+            video: "video",
+            text: "text"
+        };
+
+        var resetOtherTypeRelatedFields = function(type){
+            if(type == REFLECTION_TYPE.audio){
+                $scope.reflection.youtubeVideoId = null;
+                $scope.reflection.reflectionTranscripts = null;
+                $scope.reflection.info = null;
+            }
+            else if(type == REFLECTION_TYPE.video){
+                $scope.reflection.soundCloudId = null;
+                $scope.reflection.reflectionTranscripts = null;
+                $scope.reflection.info = null;
+            }
+            else {
+                $scope.reflection.soundCloudId = null;
+                $scope.reflection.youtubeVideoId = null;
+                $scope.reflection.about = null;
+            }
+        };
+
         var init = function () {
             var getPeoplePromise = reflectionContentService.getPeople();
 
@@ -58,6 +82,9 @@ reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$windo
             if ($scope.reflection.thumbnailUrl && $scope.reflection.thumbnailUrl.indexOf("http") === -1 && $scope.reflection.thumbnailUrl.indexOf("/images/") === -1) {
                 $scope.reflection.thumbnailUrl = '/images/' + $scope.reflection.thumbnailUrl;
             }
+
+            resetOtherTypeRelatedFields($scope.reflection.type);
+
             reflectionContentService.saveReflection($scope.reflection).success(function () {
                 $window.location.href = '/admin/partials/home.html';
             });
