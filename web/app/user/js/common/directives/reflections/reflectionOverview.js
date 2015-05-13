@@ -9,25 +9,28 @@ thumbnailModule.directive("reflectionOverview", function () {
             title: '@',
             verb: '@',
             speaker: '=',
-            videoId: '@',
-            audioId: '@',
-            text: '@'
+            videoUrl: '@',
+            audioUrl: '@',
+            text: '@',
+            people: '=',
+            words: '=',
+            songs: '='
         },
         templateUrl: '/user/js/common/templates/reflections/reflectionOverview.html',
         controller: function ($scope) {
+            $scope.showVideo = Boolean($scope.videoUrl);
+            $scope.showAudio = Boolean($scope.audioUrl);
+            $scope.showText = Boolean($scope.text);
+
             $scope.$watch(function () {
                 return $scope.closeVideo();
-            }, function (newValue, oldValue) {
+            }, function (newValue) {
                 $scope.shouldStopVideo = !newValue;
             });
 
-            $scope.isVideo = function () {
-                return Boolean($scope.videoId);
-            };
-
-            $scope.isAudio = function () {
-                return !$scope.isVideo();
-            };
+            $scope.shouldStopVideo = function () {
+                return $scope.detailsService.isClosed($scope.id);
+            }
         }
     }
 });

@@ -295,14 +295,14 @@
         color:#ED1E79;
         line-height: 2em;
     }
-    .ref-author-says {
+  .ref-speaker {
         font-family: 'MerriweatherSans';
         font-size: 14px;
         font-weight: 300;
         text-transform: uppercase;
 
     }
-    .ref-author-says::after {
+  .ref-verb {
         content: " says";
         font-size: 12px;
         text-transform: lowercase;
