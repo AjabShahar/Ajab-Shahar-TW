@@ -1,10 +1,5 @@
 .thumbnail.reflections {
-    .title {
-        font-size: $medium;
-        font-weight: 300;
-        color: $pink;
 
-    }
     .en-title {
         font-family: 'Merriweather Sans';
         font-size: $medium;
@@ -17,18 +12,5 @@
 
 
     }
-    .thumbnailDetails {
-        .intro {
-            font-size: $small;
-            color: $light-grey;
-            font-weight: 300;
-        }
-        .more-info {
-              color: #9c9b9b;
-              font-size: 20px;
-              text-transform: uppercase;
-              font-family: "Merriweather";
-              font-weight: 700;
-        }
-    }
+
 }

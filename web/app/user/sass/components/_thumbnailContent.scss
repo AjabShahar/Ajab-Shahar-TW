@@ -6,7 +6,8 @@
 
     .title {
       margin-bottom: 3px;
-      font-size: 18px;
+      font-size: $large;
+      font-weight: 100;
     }
 
     .en-title {
@@ -21,6 +22,13 @@
       font-weight: 100;
       line-height: 20px;
     }
+    .thumbnailDetails{
+        .desc, .poet {
+            line-height: 18px;
+            color: $grey;
+
+        }
+    }
 
     .footer {
       margin-top: 3px;
@@ -30,19 +38,27 @@
       text-align: right;
       text-transform: uppercase;
 
-      .play-video {
-              background: url(/user/img/common/icons/gray_play.png) left bottom no-repeat;
+      .play-video-icon {
+              background: url(/user/img/common/icons/p_dark.png) left 1px no-repeat;
               padding-left: 12px;
               margin-left: 3px;
-              color: #888;
+              vertical-align: text-top
       }
 
 
-      .play-audio {
-              background: transparent url('/user/img/common/icons/a_grey.png') left -1px no-repeat;
+      .play-audio-icon {
+              background: transparent url('/user/img/common/icons/a_dark.png') left -1px no-repeat;
               padding-left: 17px;
               margin-left: 3px;
 
+
+      }
+      .more-info {
+            color: $grey;
+            font-size: $extra-large;
+            text-transform: uppercase;
+            font-family: "Merriweather";
+            font-weight: 300;
       }
     }
 
