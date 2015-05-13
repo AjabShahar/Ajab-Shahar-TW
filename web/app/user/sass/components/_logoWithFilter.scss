@@ -29,6 +29,7 @@
         font-size: $small;
         text-transform: uppercase;
         color: $color-link;
+        margin-left: 10px;
 
         & > .collapse {
           background: transparent url('/user/img/common/icons/minus.png') 0 0 no-repeat;
