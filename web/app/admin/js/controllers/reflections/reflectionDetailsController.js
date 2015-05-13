@@ -55,6 +55,9 @@ reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$windo
         };
 
         $scope.saveData = function () {
+            if ($scope.reflection.thumbnailUrl && $scope.reflection.thumbnailUrl.indexOf("http") === -1 && $scope.reflection.thumbnailUrl.indexOf("/images/") === -1) {
+                $scope.reflection.thumbnailUrl = '/images/' + $scope.reflection.thumbnailUrl;
+            }
             reflectionContentService.saveReflection($scope.reflection).success(function () {
                 $window.location.href = '/admin/partials/home.html';
             });
