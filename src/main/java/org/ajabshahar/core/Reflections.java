@@ -31,7 +31,7 @@ public class Reflections {
 
 
     public Reflection findReflection(int id) {
-        return reflectionRepository.find(id).iterator().next();
+        return reflectionRepository.find(id);
     }
 
 }

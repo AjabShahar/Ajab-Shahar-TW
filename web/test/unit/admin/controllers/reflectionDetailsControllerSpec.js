@@ -39,9 +39,45 @@ describe("reflection details controller", function () {
 
             expect(fakeWindow.location.href).toBe('/admin/partials/home.html');
         });
-
     });
 
+    describe("Should remove other reflection types and their information when one of the types is selected", function(){
+       it("When reflection type is audio, should have other types as null", function(){
+           httpBackend.flush();
+           httpBackend.expectPOST('/api/reflections').respond(200, {'id': 1});
+
+           scope.saveData();
+           httpBackend.flush();
+
+           expect(scope.reflection.type).toBe('video');
+
+           scope.reflection.type = "audio";
+           scope.reflection.soundCloudId = "soundCloudURL";
+
+           scope.saveData();
+
+           expect(scope.reflection.about).toBe("about");
+           expect(scope.reflection.youtubeVideoId).toBe(null);
+           expect(scope.reflection.soundCloudId).toBe("soundCloudURL");
+       }) ;
+        it("When reflection type is audio, should have other types as null", function(){
+            httpBackend.flush();
+            httpBackend.expectPOST('/api/reflections').respond(200, {'id': 1});
+
+            scope.saveData();
+            httpBackend.flush();
+
+            scope.reflection.type = "text";
+            scope.reflection.info = "info";
+            scope.saveData();
+
+            expect(scope.reflection.about).toBe(null);
+            expect(scope.reflection.info).toBe("info");
+            expect(scope.reflection.youtubeVideoId).toBe(null);
+            expect(scope.reflection.soundCloudId).toBe(null);
+            expect(scope.reflection.type).toBe("text");
+        }) ;
+    });
 
     describe("should test updating of reflection", function () {
         it("after updating should redirect to admin page", function () {
@@ -53,7 +89,6 @@ describe("reflection details controller", function () {
 
             expect(fakeWindow.location.href).toBe('/admin/partials/home.html');
         });
-
     });
 
     it("should show already linked words for the reflection",function(){
@@ -128,6 +163,7 @@ var test_admin_reflection = {
             "englishTranscript": null
         }
     ],
+    "about": "about",
     "words": [
         {
             "id": 3,

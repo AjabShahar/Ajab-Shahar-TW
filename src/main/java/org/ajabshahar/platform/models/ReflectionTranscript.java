@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "TRANSCRIPT")
-public class ReflectionTranscript {
+    public class ReflectionTranscript {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,5 +54,24 @@ public class ReflectionTranscript {
 
     public void setEnglishTranscript(String englishTranscript) {
         this.englishTranscript = englishTranscript;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ReflectionTranscript that = (ReflectionTranscript) o;
+
+        if (id != that.id) return false;
+        return englishTranscript.equals(that.englishTranscript);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + englishTranscript.hashCode();
+        return result;
     }
 }
