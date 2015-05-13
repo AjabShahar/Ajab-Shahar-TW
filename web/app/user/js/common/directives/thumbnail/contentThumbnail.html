@@ -26,8 +26,7 @@
                 <div class='footer'>
                     <p class="categoryName">{{content.contentCategory | uppercase}}
                         <small class="more-info" ng-if="content.contentFormat === 'text'">T</small>
-                        <small ng-class='content.contentFormat === "video" ? "play_video_icon": "play_audio_icon"' ng-if="content.contentFormat === 'video'"></small>
-                        <small class="play" ng-if="content.contentFormat !== 'text'" >{{content.duration}}</small>
+                        <small ng-class='content.contentFormat === "video" ? "play-video-icon": "play-audio-icon"' ng-if="content.contentFormat != 'text'">{{content.duration}}</small>
                     </p>
                 </div>
             </div>
