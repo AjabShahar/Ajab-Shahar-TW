@@ -64,14 +64,16 @@ import javax.persistence.*;
         ReflectionTranscript that = (ReflectionTranscript) o;
 
         if (id != that.id) return false;
-        return englishTranscript.equals(that.englishTranscript);
+        if (englishTranscript != null ? !englishTranscript.equals(that.englishTranscript) : that.englishTranscript != null)
+            return false;
 
+        return true;
     }
 
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + englishTranscript.hashCode();
+        result = 31 * result + (englishTranscript != null ? englishTranscript.hashCode() : 0);
         return result;
     }
 }
