@@ -15,12 +15,10 @@
                 <small class="poet">Poet {{poet|uppercase}}</small>
                 <div class='footer'>
                     <small class="categoryName">{{categoryName}}</small>
-                    <small class="play">{{duration}}</small>
+                    <!--<small class="play">{{duration}}</small>-->
+                    <small ng-class='song.url !== null ? "play-video-icon": "play-audio-icon"'>{{duration}}</small>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-
