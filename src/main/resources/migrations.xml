@@ -112,4 +112,9 @@
             ALTER TABLE reflection ALTER COLUMN about TYPE text;
         </sql>
     </changeSet>
+    <changeSet id="81" author="PADMA">
+        <sql>
+            ALTER TABLE reflection ALTER COLUMN info TYPE text;
+        </sql>
+    </changeSet>
 </databaseChangeLog>
