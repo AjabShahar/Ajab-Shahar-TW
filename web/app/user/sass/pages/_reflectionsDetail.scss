@@ -8,21 +8,32 @@
 
         .page-title {
             margin-top: 22px;
-            .sub-main {
+            font-weight: 300;
+            .main {
                 text-align: left;
-                color: #666;
+            }
+            .sub-main {
+                font-family: 'Merriweather Sans';
+                text-align: left;
+                color: $grey;
                 line-height: 26px;
-
+                font-style: normal;
                 .name {
-                    font-family: 'Merriweather Sans';
-                    font-size: 14px;
-                    color: #ed1e79;
+
+                    font-size: $medium;
+                    color: $pink;
                     text-transform: uppercase;
-                    font-style: normal;
                 }
             }
         }
 
     }
+    .main-content .detail-text-wrapper {
+        background: transparent url(/user/img/reflections/reflection-white-bg.png) left top no-repeat;
+        margin: 165px auto;
+        background-size: 100% 100%;
+
+    }
+
 
 }
