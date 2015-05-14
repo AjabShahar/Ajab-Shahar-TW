@@ -3,7 +3,7 @@
 
   .summary {
     font-weight: 100;
-
+    line-height: 16px;
     .title {
       margin-bottom: 3px;
       font-size: $large;
@@ -20,26 +20,28 @@
       color: $dark-grey;
       font-size: $small;
       font-weight: 100;
-      line-height: 20px;
     }
     .thumbnailDetails{
         .desc, .poet {
             line-height: 18px;
             color: $grey;
-
+            font-size: $small;
+        }
+        .poet {
+            line-height: 16px;
         }
     }
 
     .footer {
       margin-top: 3px;
       color: $color-regular-text;
-      line-height: 18px;
+      line-height: 20px;
       font-size: $small;
       text-align: right;
       text-transform: uppercase;
 
       .play-video-icon {
-              background: url(/user/img/common/icons/p_dark.png) left 1px no-repeat;
+              background: url(/user/img/common/icons/gray_play.png) left 1px no-repeat;
               padding-left: 12px;
               margin-left: 3px;
               vertical-align: text-top
@@ -47,7 +49,7 @@
 
 
       .play-audio-icon {
-              background: transparent url('/user/img/common/icons/a_dark.png') left -1px no-repeat;
+              background: transparent url('/user/img/common/icons/a_grey.png') left -1px no-repeat;
               padding-left: 17px;
               margin-left: 3px;
 
