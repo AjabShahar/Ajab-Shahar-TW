@@ -75,6 +75,9 @@ $lower-resolution: new-breakpoint(max-width 1024px);
         top: 50%;
     }
 
+    .lower-pardah{
+        min-height: 196px;
+    }
     .main-content {
         margin-top: 10px;
         .left-nav {
