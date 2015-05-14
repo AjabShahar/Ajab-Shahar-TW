@@ -7,7 +7,6 @@ reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$windo
         $scope.people = [];
         $scope.words = [];
         $scope.songs = [];
-        var urlId = $location.search().id;
 
         var getSelectedContent = function (data, list) {
             return angular.forEach(list, function (item) {
@@ -61,8 +60,10 @@ reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$windo
 
             var getSongsPromise = reflectionContentService.getSongs();
 
+
             $q.all([getPeoplePromise, getWordsPromise, getSongsPromise]).then(function (data) {
                 $scope.people = data[0].data;
+                var urlId = $location.search().id;
                 $scope.songs = data[2].data.songs;
                 $scope.words = data[1].data;
                 if (urlId != null && urlId != '') {
@@ -79,8 +80,8 @@ reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$windo
         };
 
         $scope.saveData = function () {
-            if ($scope.reflection.thumbnailUrl && $scope.reflection.thumbnailUrl.indexOf("http") === -1 && $scope.reflection.thumbnailUrl.indexOf("/images/") === -1) {
-                $scope.reflection.thumbnailUrl = '/images/' + $scope.reflection.thumbnailUrl;
+            if ($scope.reflection.thumbnailURL && $scope.reflection.thumbnailURL.indexOf("http") === -1 && $scope.reflection.thumbnailURL.indexOf("/images/") === -1) {
+                $scope.reflection.thumbnailURL = '/images/' + $scope.reflection.thumbnailURL;
             }
 
             resetOtherTypeRelatedFields($scope.reflection.type);
@@ -91,7 +92,7 @@ reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$windo
         };
 
         var getReflectionType = function () {
-            return ($scope.reflection.soundCloudId != null ? 'audio' : ($scope.reflection.youtubeVideoId != null ? 'video' : ($scope.reflection.reflectionTranscripts.length > 0 ? 'text' : '')));
+            return ($scope.reflection.soundCloudId != null ? 'audio' : ($scope.reflection.youtubeVideoId != null ? 'video' : ($scope.reflection.reflectionTranscripts && $scope.reflection.reflectionTranscripts.length > 0 ? 'text' : '')));
         };
 
         init();

@@ -214,7 +214,7 @@ describe("Word details controller spec:", function () {
         });
         it("should append /images/ for thumbnail url,if it is just filename",function(){
             scope.formInfo.thumbnailUrl = "thumbnail.jpg";
-            $httpBackend.expectPOST('/api/words', scope.formInfo).respond(500);
+            $httpBackend.expectPOST('/api/words', scope.formInfo).respond(200);
 
             scope.saveData();
             $httpBackend.flush();
@@ -223,7 +223,7 @@ describe("Word details controller spec:", function () {
         });
         it("should not append /images/ for thumbnail url,if it already have /images appended in filename",function(){
             scope.formInfo.thumbnailUrl = "/images/thumbnail.jpg";
-            $httpBackend.expectPOST('/api/words', scope.formInfo).respond(500);
+            $httpBackend.expectPOST('/api/words', scope.formInfo).respond(200);
 
             scope.saveData();
             $httpBackend.flush();
@@ -232,7 +232,7 @@ describe("Word details controller spec:", function () {
         });
         it("should not append /images/ for thumbnail url,if the image is from internet source",function(){
             scope.formInfo.thumbnailUrl = "http://www.hdwallpapersimages.com/wp-content/uploads/images/Child-Girl-with-Sunflowers-Images.jpg";
-            $httpBackend.expectPOST('/api/words', scope.formInfo).respond(500);
+            $httpBackend.expectPOST('/api/words', scope.formInfo).respond(200);
 
             scope.saveData();
             $httpBackend.flush();
