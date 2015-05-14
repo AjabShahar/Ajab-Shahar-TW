@@ -1,6 +1,7 @@
 $pink: #E61B72;
-$light-grey: #999999;
+$light-grey: #b3b3b3;
 $dark-grey: #4D4D4D;
+$clickable-grey:#808080;
 $color-primary: #E83785;
 $grey: #999999;
 // Text Colors
@@ -17,9 +18,9 @@ $color-border: #C7C6C5;
 
 
 /*** According to new color scheme ***/
-$color-link: #e61b72;
-$color-sub-link: #999;
-$color-hover-link: #e61b72;
+$color-link: $pink;
+$color-sub-link: $clickable-grey;
+$color-hover-link: $pink;
 
 $color-regular-text: #999;
 $color-highlight-text: #4d4d4d;
