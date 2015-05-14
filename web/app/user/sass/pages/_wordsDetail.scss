@@ -92,27 +92,8 @@ $lower-resolution: new-breakpoint(max-width 1024px);
         .title-case {
               text-transform: initial;
         }
-        .content-wrapper {
-                width: 80%;
-                background: transparent url(/user/img/words/word_text_bg.png) left top;
-                margin: 0 auto;
-                position: relative;
-                padding-left: 50px;
-                padding-top: 20px;
-                background-size: 100% 100%;
-                padding-right: 50px;
-                padding-bottom: 50px;
-                background-repeat: no-repeat repeat;
+        .detail-text-wrapper {
                 .header {
-                        color: $grey;
-                        padding-top: 15px;
-                        font-weight: 300;
-
-                        .header-text {
-                            font-size: $medium;
-                            margin-left: 1px;
-                            text-align: left;
-                        }
                         .header-reflection-audiovideo {
 
                              width: 853px;
@@ -141,23 +122,11 @@ $lower-resolution: new-breakpoint(max-width 1024px);
 
 
                 }
-                .text-content {
-                    padding-bottom: 50px;
-                }
 
-                #audio_video_container {
-                    margin-top: 1em;
-                }
+
 
         }
-        .content-wrapper-bottom-image {
-                  background: transparent url(/user/img/words/word_text_bg_bottom.png) left -1px no-repeat;
-                  height: 30px;
-                  width: 80%;
-                  position: relative;
-                  margin: 0 auto;
-                  background-size: 100% 100%;
-        }
+
 
 
 
@@ -167,12 +136,12 @@ $lower-resolution: new-breakpoint(max-width 1024px);
 }
 .details {
     .text-share-options {
-        background: transparent url(/user/img/words/word_dt_ct_separator.png) 18px 0 no-repeat;
+        background: transparent url(/user/img/words/word_dt_ct_separator.png) 4px 0 no-repeat;
         background-size: 1000px 7px;
         width: 100%;
         .share {
               height: 15px;
-              background: transparent url(/user/img/common/icons/sprite_icons.png) -265px 5px no-repeat;
+              background: transparent url(/user/img/common/icons/sprite_icons.png) -277px 5px no-repeat;
               width: 16px;
               padding: 23px 19px;
               line-height: 20px;

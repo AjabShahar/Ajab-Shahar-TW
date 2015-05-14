@@ -26,7 +26,7 @@
     <!--main content-->
         <!--text content-->
         <div class="text-container" ng-if="hasText()">
-            <span class="header-italic" bind-dynamic-html="content.info"></span>
+            <span class="header-text" bind-dynamic-html="content.info"></span>
             <div class="text-content" >
                 <div id="text-section" ng-repeat="textSection in content.textSections" bind-dynamic-html="textSection"></div>
             </div>

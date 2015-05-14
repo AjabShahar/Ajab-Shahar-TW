@@ -10,6 +10,49 @@
         min-height: 500px;
         position: relative;
         padding-bottom: 15em;
+
+        .detail-text-wrapper {
+                width: 80%;
+                background: transparent url(/user/img/words/word_text_bg.png) left top;
+                margin: 0 auto;
+                position: relative;
+                padding-left: 50px;
+                padding-top: 20px;
+                background-size: 100% 100%;
+                padding-right: 50px;
+                padding-bottom: 50px;
+                background-repeat: no-repeat repeat;
+
+
+
+                .header-text {
+                    font-size: $medium;
+                    margin-left: 1px;
+                    text-align: left;
+                    color: $light-grey;
+                    padding-top: 15px;
+                    font-weight: 300;
+                }
+
+
+                .text-content {
+                    padding-bottom: 50px;
+                }
+
+                #audio_video_container {
+                    margin-top: 1em;
+                }
+
+        }
+        .detail-text-wrapper-bottom-image {
+              background: transparent url(/user/img/words/word_text_bg_bottom.png) left -1px no-repeat;
+              height: 30px;
+              width: 80%;
+              position: relative;
+              margin: 0 auto;
+              background-size: 100% 100%;
+        }
+
     }
 
     #audio_video_container {
