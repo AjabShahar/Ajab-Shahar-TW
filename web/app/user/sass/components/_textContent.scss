@@ -31,6 +31,7 @@
              text-align: left;
              line-height: 24px;
 
+
         }
         h1,h2,h3,h4,h5,h6 {
             color: #4d4d4d;
@@ -40,6 +41,18 @@
                font-weight: 400;
                line-height: 27px;
                color: $color-highlight-text;
+        }
+     }
+     .couplet {
+        font-family: 'Merriweather';
+        line-heigh: 21px;
+        font-size: $medium;
+        color: $grey;
+        font-weight: 300;
+        font-style: italic;
+        .hindi {
+            font-family: 'Lohit Devanagari';
+            font-style: normal;
         }
      }
 
