@@ -6,7 +6,8 @@ describe("contentDetails model",function(){
         expect(wordDetailsObject.videoId).toBe("MtIoD16yTQc");
 
         expect(wordDetailsObject.textSections.length).toBe(3);
-        expect(wordDetailsObject.textSections[0]).toBe(test_wordRepresentation.wordIntroductions[0].wordIntroEnglish);
+        expect(wordDetailsObject.textSections[0].text).toBe(test_wordRepresentation.wordIntroductions[0].wordIntroEnglish);
+        expect(wordDetailsObject.textSections[0].type).toBe('couplet');
 
         expect(wordDetailsObject.links.length).toBe(2);
         expect(wordDetailsObject.links[0].name).toBe("Mooralala Marwada");
@@ -25,7 +26,7 @@ describe("contentDetails model",function(){
         expect(reflectionDetailsObject.videoId).toBe("MtIoD16yTQc");
 
         expect(reflectionDetailsObject.textSections.length).toBe(3);
-        expect(reflectionDetailsObject.textSections[1]).toBe(test_reflectionRepresentation1.reflectionTranscripts[1].englishTranscript);
+        expect(reflectionDetailsObject.textSections[1].text).toBe(test_reflectionRepresentation1.reflectionTranscripts[1].englishTranscript);
 
         expect(reflectionDetailsObject.verb).toBe("says");
         expect(reflectionDetailsObject.people.length).toBe(1);
