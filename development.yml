@@ -1,5 +1,6 @@
 template: Hello, %s!
 defaultName: Stranger
+sessionTimeout: 120
 server:
   gzip:
     enabled: true
