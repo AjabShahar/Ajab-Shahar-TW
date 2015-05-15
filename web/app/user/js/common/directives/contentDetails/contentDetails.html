@@ -12,7 +12,7 @@
 
         <div ng-if="content.type === 'reflection'" class="header-reflection" ng-class="{'header-reflection-audiovideo': showVideo || showAudio}">
             <span class="header-text author-caps" ng-bind="content.people[0]"></span>
-            <span class="header" ng-bind="content.verb"></span>
+            <span class="header-verb" ng-bind="content.verb"></span>
 
             <h3>
                 <span class="ref-header2-text" ng-bind="content.title"></span>
@@ -28,7 +28,7 @@
         <div class="text-container" ng-if="hasText()">
             <span class="header-text" bind-dynamic-html="content.info"></span>
             <div class="text-content" >
-                <div id="text-section" ng-repeat="textSection in content.textSections" bind-dynamic-html="textSection"></div>
+                <div id="text-section" ng-repeat="textSection in content.textSections" bind-dynamic-html="textSection.text" ng-class="{couplet: textSection.type === 'couplet'}"></div>
             </div>
             <div class="text-share-options" ng-click="toggleShare()">
                 <a href="javascript:void(0)" class="share" ng-class="{'active': sharingVisible}" ></a>

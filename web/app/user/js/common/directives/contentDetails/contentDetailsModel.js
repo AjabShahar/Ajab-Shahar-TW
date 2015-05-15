@@ -112,7 +112,10 @@ AjabShahar.DetailsObject = function(content,type){
             if(type ==='text'){
                 if(!_.isEmpty(word.wordIntroductions)){
                     return word.wordIntroductions.map(function(wordIntro){
-                        return wordIntro.wordIntroEnglish;
+                        return {
+                            text: wordIntro.wordIntroEnglish,
+                            type: wordIntro.contentType
+                        }
                     });
                 }
             }
@@ -134,7 +137,9 @@ AjabShahar.DetailsObject = function(content,type){
         var getReflectionTranscripts = function(reflection){
             if(!_.isEmpty(reflection.reflectionTranscripts)){
                 return reflection.reflectionTranscripts.map(function(transcript){
-                    return transcript.englishTranscript;
+                    return {
+                        text: transcript.englishTranscript
+                    }
                 });
             }
             return null;
