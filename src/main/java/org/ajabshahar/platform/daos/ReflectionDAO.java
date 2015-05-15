@@ -27,8 +27,7 @@ public class ReflectionDAO extends AbstractDAO<Reflection> {
     }
 
     public Reflection create(Reflection reflection) {
-        Set<ReflectionTranscript> reflectionTranscripts = reflection.getReflectionTranscripts();
-        boolean isEmptyReflectionTranscript = (reflectionTranscripts == null) || reflectionTranscripts.isEmpty();
+        boolean isEmptyReflectionTranscript = (reflection.getReflectionTranscripts() == null) || reflection.getReflectionTranscripts().isEmpty();
         boolean isAExistingReflection = reflection.getId() != 0;
 
         if(isEmptyReflectionTranscript && isAExistingReflection){
@@ -36,6 +35,7 @@ public class ReflectionDAO extends AbstractDAO<Reflection> {
             reflection.getReflectionTranscripts().clear();
         }
 
+        currentSession().clear();
         currentSession().saveOrUpdate(reflection);
         return reflection;
     }
