@@ -15,6 +15,10 @@ angular.module("word").
             carouselOpen = !carouselOpen;
         };
 
+        $scope.containsWordIntro = function(){
+            return !_.isEmpty($scope.detailsObject) && $scope.detailsObject.type === 'word' && !_.isEmpty($scope.detailsObject.type);
+        };
+
         $scope.reflectionCount = function(){
             var count = 0;
             if(!_.isEmpty($scope.wordDetails)){
