@@ -37,6 +37,7 @@ public class Reflection {
     @OneToOne(fetch = FetchType.EAGER)
     private PersonDetails speaker;
 
+    @Fetch(FetchMode.SUBSELECT)
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "reflection",cascade = javax.persistence.CascadeType.ALL,orphanRemoval = true)
     @JsonManagedReference
     private Set<ReflectionTranscript> reflectionTranscripts = new LinkedHashSet<>();
@@ -47,17 +48,20 @@ public class Reflection {
     @Column(name = "SHOW_ON_LANDING_PAGE")
     private Boolean showOnFeaturedContentPage;
 
+    @Fetch(FetchMode.SUBSELECT)
     @ManyToMany
     @JoinTable(name = "WORD_REFLECTION", joinColumns = {@JoinColumn(name = "REFLECTION_ID")},
             inverseJoinColumns = {@JoinColumn(name = "WORD_ID")})
     private Set<Word> words = new LinkedHashSet<>();
 
+    @Fetch(FetchMode.SUBSELECT)
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "REFLECTION_SONG", joinColumns = {@JoinColumn(name = "REFLECTION_ID")},
             inverseJoinColumns = {@JoinColumn(name = "SONG_ID")})
     private Set<Song> songs = new LinkedHashSet<>();
 
     @ManyToMany
+    @Fetch(FetchMode.SUBSELECT)
     @JoinTable(name = "REFLECTION_PERSON", joinColumns = {@JoinColumn(name = "REFLECTION_ID")},
             inverseJoinColumns = {@JoinColumn(name = "PERSON_ID")})
     private Set<PersonDetails> people = new LinkedHashSet<>();

@@ -3,6 +3,8 @@ package org.ajabshahar.platform.models;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -55,16 +57,19 @@ public class Song {
     private Timestamp publishedDate;
 
     @ManyToMany(fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SUBSELECT)
     @JoinTable(name = "SONG_SINGER", joinColumns = {@JoinColumn(name = "SONG_ID", referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(name = "SINGER_ID", referencedColumnName = "ID")})
     private Set<PersonDetails> singers;
 
     @ManyToMany(fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SUBSELECT)
     @JoinTable(name = "SONG_GENRE", joinColumns = {@JoinColumn(name = "SONG_ID", referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(name = "GENRE_ID", referencedColumnName = "ID")})
     private Set<Genre> songGenre;
 
     @ManyToMany(fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SUBSELECT)
     @JoinTable(name = "SONG_POET", joinColumns = {@JoinColumn(name = "SONG_ID", referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(name = "POET_ID", referencedColumnName = "ID")})
     private Set<PersonDetails> poets;
@@ -90,6 +95,7 @@ public class Song {
     private SongText songText;
 
     @ManyToMany
+    @Fetch(FetchMode.SUBSELECT)
     @JoinTable(name = "SONG_WORD", joinColumns = {@JoinColumn(name = "SONG_ID")},
             inverseJoinColumns = {@JoinColumn(name = "WORD_ID")})
     private Set<Word> words;
@@ -97,6 +103,7 @@ public class Song {
     @OneToOne(fetch = FetchType.EAGER)
     private Gathering gathering;
 
+    @Fetch(FetchMode.SUBSELECT)
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "REFLECTION_SONG", joinColumns = {@JoinColumn(name = "SONG_ID")},
             inverseJoinColumns = {@JoinColumn(name = "REFLECTION_ID")})

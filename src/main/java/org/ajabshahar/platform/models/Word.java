@@ -3,6 +3,8 @@ package org.ajabshahar.platform.models;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.LinkedHashSet;
@@ -60,30 +62,36 @@ public class Word {
     private Set<WordIntroduction> wordIntroductions;
 
     @ManyToMany
+    @Fetch(FetchMode.SUBSELECT)
     @JoinTable(name = "WORD_REFLECTION", joinColumns = {@JoinColumn(name = "WORD_ID")},
             inverseJoinColumns = {@JoinColumn(name = "REFLECTION_ID")})
     private Set<Reflection> reflections = new LinkedHashSet<>();
 
+    @Fetch(FetchMode.SUBSELECT)
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "RELATED_WORDS", joinColumns = {@JoinColumn(name = "WORD_ID", referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(name = "RELATED_WORD_ID", referencedColumnName = "ID")})
     private Set<Word> relatedWords = new LinkedHashSet<>();
 
+    @Fetch(FetchMode.SUBSELECT)
     @ManyToMany
     @JoinTable(name = "SONG_WORD", joinColumns = {@JoinColumn(name = "WORD_ID")},
             inverseJoinColumns = {@JoinColumn(name = "SONG_ID")})
     private Set<Song> songs;
 
+    @Fetch(FetchMode.SUBSELECT)
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "WORD_SYNONYMS", joinColumns = {@JoinColumn(name = "WORD_ID", referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(name = "SYNONYM_WORD_ID", referencedColumnName = "ID")})
     private Set<Word> synonyms = new LinkedHashSet<>();
 
+    @Fetch(FetchMode.SUBSELECT)
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "WORD_WRITER", joinColumns = {@JoinColumn(name = "WORD_ID", referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(name = "WRITER_ID", referencedColumnName = "ID")})
     private Set<PersonDetails> writers;
 
+    @Fetch(FetchMode.SUBSELECT)
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "WORD_PERSON", joinColumns = {@JoinColumn(name = "WORD_ID", referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(name = "PERSON_ID", referencedColumnName = "ID")})

@@ -1,6 +1,8 @@
 package org.ajabshahar.platform.models;
 
 import com.google.common.base.Strings;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -39,6 +41,7 @@ public class PersonDetails {
     private String lastNameInHindi;
 
     @OneToMany(fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SUBSELECT)
     @JoinTable(name = "person_category", joinColumns = @JoinColumn(name = "person_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> category;
