@@ -4,11 +4,9 @@ angular.module("word").
         var carouselOpen = true;
 
         $scope.containsReflections = function() {
-            if(!_.isEmpty($scope.wordDetails)){
-                return !_.isEmpty($scope.wordDetails.defaultReflection) || !_.isEmpty($scope.wordDetails.reflections);
-            }
-            return false;
+            return $scope.reflectionCount()>0;
         };
+
         $scope.shouldShowCarousel = function(){
             return  carouselOpen && $scope.containsReflections()
         };
@@ -21,7 +19,12 @@ angular.module("word").
             var count = 0;
             if(!_.isEmpty($scope.wordDetails)){
                 if(!_.isEmpty($scope.wordDetails.defaultReflection)) count++;
-                if(!_.isEmpty($scope.wordDetails.reflections)) count+= $scope.wordDetails.reflections.length;
+                if(!_.isEmpty($scope.wordDetails.reflections)) {
+                    var reflectionCount = _.countBy($scope.wordDetails.reflections,function(reflection){
+                        return reflection.published? 'published':'unpublished';
+                    });
+                    count+= reflectionCount.published;
+                }
             }
             return count;
         };
