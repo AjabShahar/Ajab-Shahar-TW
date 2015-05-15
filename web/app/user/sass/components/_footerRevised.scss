@@ -1,10 +1,10 @@
 .footer-tree {
     background: transparent url('/user/img/common/bg/footer_tree.png') 0px top no-repeat;
-      background-size: 56px 52px;
+      background-size: contain;
       height: 85px;
       margin-left: 5%;
-      width: 56px;
-      padding-top: 130px;
+      width: 45px;
+      padding-top: 127px;
       margin-top: -160px;
       z-index: 600;
       position: relative;
@@ -23,7 +23,7 @@
 
 .footer-bg {
         background: transparent url('/user/img/common/bg/footer-bg.png') left top repeat;
-        background-size: 999px 397px;
+        background-size: contain;
         position: relative;
         margin-top: -180px;
         height: 397px;
