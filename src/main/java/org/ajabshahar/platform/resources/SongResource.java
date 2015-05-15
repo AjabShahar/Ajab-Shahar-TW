@@ -3,9 +3,7 @@ package org.ajabshahar.platform.resources;
 import io.dropwizard.hibernate.UnitOfWork;
 import io.dropwizard.jersey.caching.CacheControl;
 import io.dropwizard.jersey.sessions.Session;
-import org.ajabshahar.api.SongRepresentation;
-import org.ajabshahar.api.SongsRepresentation;
-import org.ajabshahar.api.SongsRepresentationFactory;
+import org.ajabshahar.api.*;
 import org.ajabshahar.core.Songs;
 import org.ajabshahar.platform.daos.SongDAO;
 import org.ajabshahar.platform.models.Song;
@@ -104,10 +102,9 @@ public class SongResource {
 
     @GET
     @UnitOfWork
-    @Path("/getAllSongs")
     public Response getSongs(@Session HttpSession httpSession) {
         Set<Song> songList = songs.findAll();
-        SongsRepresentation songsRepresentation = songsRepresentationFactory.createSongsRepresentation(songList);
-        return Response.ok(songsRepresentation, MediaType.APPLICATION_JSON).build();
+        SongsSummaryRepresentation songsSummaryRepresentation = songsRepresentationFactory.create(songList);
+        return Response.ok(songsSummaryRepresentation, MediaType.APPLICATION_JSON).build();
     }
 }

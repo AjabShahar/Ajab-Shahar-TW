@@ -22,7 +22,7 @@ describe("reflection details controller", function () {
 
         httpBackend.expectGET('/api/people/summary').respond(200, ['people data']);
         httpBackend.expectGET('/api/words/summary').respond(200, test_admin_wordSummary);
-        httpBackend.expectGET('/api/songs/getAllSongs').respond(200, {data: null});
+        httpBackend.expectGET('/api/songs').respond(song_summary);
     }));
 
     describe("should test save of reflection", function () {
@@ -62,6 +62,19 @@ describe("reflection details controller", function () {
             httpBackend.flush();
 
             expect(scope.reflection.thumbnailURL).toBe('http://www.hdwallpapersimages.com/wp-content/uploads/images/Child-Girl-with-Sunflowers-Images.jpg');
+        });
+        it("then should have singers as a comma separated entries for a song", function () {
+
+            httpBackend.flush();
+
+            expect(scope.songs[0].menuTitle).toBe('Kichhu din mone mone - (Parvathy Baul)');
+            expect(scope.songs[1].menuTitle).toBe('Bhajan - (Gavra Devi)');
+        });
+        it("then shouldn't have singers as a comma separated entries for a song, if there are no singers", function () {
+
+            httpBackend.flush();
+
+            expect(scope.songs[2].menuTitle).toBe('Hiye Kaaya Mein');
         });
     });
 
@@ -245,6 +258,71 @@ var test_admin_reflection = {
             "name": "Roshik",
             "hindiName": "",
             "primaryOccupation": null
+        }
+    ]
+};
+var song_summary = {
+    "songs": [
+        {
+            "id": 1,
+            "englishTranslationTitle": "For a few days,O Heart",
+            "englishTransliterationTitle": "Kichhu din mone mone",
+            "singers": [
+                {
+                    "id": 1,
+                    "name": "Parvathy Baul",
+                    "hindiName": "",
+                    "primaryOccupation": null
+                }
+            ],
+            "poet": [
+                {
+                    "id": 2,
+                    "name": "Roshik",
+                    "hindiName": "",
+                    "primaryOccupation": null
+                }
+            ],
+            "duration": "5:45",
+            "category": "Songs",
+            "thumbnailUrl": "http://3.bp.blogspot.com/-kwpgiMcXc24/TcOcowo6mTI/AAAAAAAAA9w/uNt6ZsJadDg/s1600/parvathy_baul03.jpg",
+            "publish": true
+        },
+        {
+            "id": 2,
+            "englishTranslationTitle": "The Cart of Meditation is Tottering",
+            "englishTransliterationTitle": "Bhajan",
+            "singers": [
+                {
+                    "id": 3,
+                    "name": "Gavra Devi",
+                    "hindiName": "",
+                    "primaryOccupation": null
+                }
+            ],
+            "poet": [
+                {
+                    "id": 4,
+                    "name": "Fakru",
+                    "hindiName": "",
+                    "primaryOccupation": null
+                }
+            ],
+            "duration": "5:10",
+            "category": "Songs",
+            "thumbnailUrl": "http://i.ytimg.com/vi/J4IU5tDlD_s/mqdefault.jpg",
+            "publish": true
+        },
+        {
+            "id": 5,
+            "englishTranslationTitle": "In This Body",
+            "englishTransliterationTitle": "Hiye Kaaya Mein",
+            "singers": [],
+            "poet": [],
+            "duration": "7:05",
+            "category": "Songs",
+            "thumbnailUrl": "http://mountainshepherds.com/wp-content/gallery/archival/gauradevi.jpg",
+            "publish": true
         }
     ]
 };

@@ -122,9 +122,9 @@ public class SongResourceTest {
 
     @Test
     public void shouldGetAllSongs() throws Exception {
-        SongsRepresentation expectedResult = new SongsRepresentation();
+        SongsSummaryRepresentation expectedResult = new SongsSummaryRepresentation();
         when(songs.findAll()).thenReturn(songList);
-        when(songsRepresentationFactory.createSongsRepresentation(songList)).thenReturn(expectedResult);
+        when(songsRepresentationFactory.create(songList)).thenReturn(expectedResult);
 
         Response actualResult = songResource.getSongs(null);
 

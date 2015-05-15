@@ -46,7 +46,7 @@ public class SongsRepresentationFactory {
             }
             SongSummaryRepresentation songSummaryRepresentation = new SongSummaryRepresentation(song.getId(), title.getEnglishTranslation(),
                     title.getEnglishTransliteration(), singers, poets, song.getDuration(),
-                    song.getSongCategory().getName(), song.getThumbnailURL());
+                    song.getSongCategory().getName(), song.getThumbnailURL(),song.getIsAuthoringComplete());
             songs.addSong(songSummaryRepresentation);
         }
         return songs;

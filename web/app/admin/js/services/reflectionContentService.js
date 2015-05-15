@@ -17,7 +17,7 @@ var reflectionContentService = function ($http) {
     };
 
     var getSongs = function(){
-        return $http.get('/api/songs/getAllSongs');
+        return $http.get('/api/songs');
     };
 
     return {
