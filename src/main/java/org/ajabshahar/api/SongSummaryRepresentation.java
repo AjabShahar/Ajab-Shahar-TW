@@ -6,6 +6,7 @@ import org.ajabshahar.platform.models.Category;
 import org.ajabshahar.platform.models.Song;
 import org.ajabshahar.platform.models.Title;
 
+import java.util.Base64;
 import java.util.LinkedHashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -20,12 +21,13 @@ public class SongSummaryRepresentation {
     private String duration;
     private String category;
     private String thumbnailUrl;
+    private boolean publish;
 
     public SongSummaryRepresentation() {
 
     }
 
-    public SongSummaryRepresentation(long id, String englishTranslationTitle, String englishTransliterationTitle, Set<PersonSummaryRepresentation> singers, Set<PersonSummaryRepresentation> poets, String duration, String songCategory, String thumbnailUrl) {
+    public SongSummaryRepresentation(long id, String englishTranslationTitle, String englishTransliterationTitle, Set<PersonSummaryRepresentation> singers, Set<PersonSummaryRepresentation> poets, String duration, String songCategory, String thumbnailUrl,boolean publish) {
         this.id = id;
         this.englishTranslationTitle = englishTranslationTitle;
         this.englishTransliterationTitle = englishTransliterationTitle;
@@ -34,6 +36,7 @@ public class SongSummaryRepresentation {
         this.duration = duration;
         this.category = songCategory;
         this.thumbnailUrl = thumbnailUrl;
+        this.publish = publish;
     }
 
     private static Song toSong(SongSummaryRepresentation songSummaryRepresentation){
@@ -115,5 +118,10 @@ public class SongSummaryRepresentation {
     @JsonProperty("thumbnailUrl")
     public String getThumbnailUrl() {
         return thumbnailUrl;
+    }
+
+    @JsonProperty("publish")
+    public boolean isPublish() {
+        return publish;
     }
 }

@@ -22,9 +22,9 @@ reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$windo
             angular.forEach($scope.songs, function (song) {
                 var singerNames = _.pluck(song.singers, 'name');
                 if (_.isEmpty(singerNames)) {
-                    song.menuTitle = song.songTitle.englishTransliteration;
+                    song.menuTitle = song.englishTransliterationTitle;
                 } else {
-                    song.menuTitle = song.songTitle.englishTransliteration + " - (" + singerNames.join(", ") + ")";
+                    song.menuTitle = song.englishTransliterationTitle + " - (" + singerNames.join(", ") + ")";
                 }
             });
         };

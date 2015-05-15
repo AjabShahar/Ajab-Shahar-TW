@@ -4,7 +4,7 @@ var contentService = function ($http) {
     };
 
     var getAllSongs = function () {
-        return $http.get('/api/songs/getAllSongs');
+        return $http.get('/api/songs');
     };
 
     var getAllPeople = function () {
