@@ -1,10 +1,10 @@
-var AjabShahar  = AjabShahar|| {};
+var AjabShahar = AjabShahar || {};
 
-AjabShahar.ThumbnailObject = function(contentItem,type){
+AjabShahar.ThumbnailObject = function (contentItem, type) {
     var self = this;
     self.actualContent = contentItem;
-    var buildFromSong = function(song){
-        if(!_.isEmpty(song)) {
+    var buildFromSong = function (song) {
+        if (!_.isEmpty(song)) {
             self.type = type;
             self.id = song.id;
             self.thumbnailImg = song.thumbnailURL;
@@ -14,21 +14,21 @@ AjabShahar.ThumbnailObject = function(contentItem,type){
             };
             self.englishTitle = song.songTitle.englishTranslation;
             self.translitTitle = song.songTitle.englishTransliteration;
-            self.contentFormat = song.youtubeVideoId? 'video':'audio';
+            self.contentFormat = song.youtubeVideoId ? 'video' : 'audio';
             self.secondaryVerbPeople = {
-                verb: !_.isEmpty(song.poets) ? "POET" :undefined,
-                people: !_.isEmpty(song.poets) ? song.poets[0].name:""
+                verb: !_.isEmpty(song.poets) ? "POET" : undefined,
+                people: !_.isEmpty(song.poets) ? song.poets[0].name : ""
             };
             self.duration = song.duration;
-            self.contentCategory = song.songCategory?song.songCategory.name:"song";
+            self.contentCategory = song.songCategory ? song.songCategory.name : "song";
         }
     };
 
-    var buildFromWord = function(word){
-        if(!_.isEmpty(word)) {
+    var buildFromWord = function (word) {
+        if (!_.isEmpty(word)) {
             self.type = type;
             self.id = word.id;
-            self.thumbnailImg = word.thumbnailUrl ? word.thumbnailUrl:'https://yt3.ggpht.com/-JtqzFmOGDiI/AAAAAAAAAAI/AAAAAAAAAAA/McQLKmfBpqg/s900-c-k-no/photo.jpg';
+            self.thumbnailImg = word.thumbnailUrl ? word.thumbnailUrl : 'https://yt3.ggpht.com/-JtqzFmOGDiI/AAAAAAAAAAI/AAAAAAAAAAA/McQLKmfBpqg/s900-c-k-no/photo.jpg';
             self.description = word.englishIntroExcerpt;
             self.verbPeople = {
                 verb: "Intro by",
@@ -41,41 +41,51 @@ AjabShahar.ThumbnailObject = function(contentItem,type){
         }
     };
 
-    var buildFromReflection = function(reflection){
-        if(!_.isEmpty(reflection)){
+    var buildFromReflection = function (reflection) {
+        if (!_.isEmpty(reflection)) {
             self.type = type;
             self.id = reflection.id;
             self.thumbnailImg = reflection.thumbnailURL ? reflection.thumbnailURL : "/user/img/reflections/bw_background2b.jpg";
-            self.description =reflection.reflectionExcerpt;
-            self.verbPeople ={
-                verb:reflection.verb,
-                people:reflection.speaker?reflection.speaker.name:""
+            self.description = reflection.reflectionExcerpt;
+            self.verbPeople = {
+                verb: reflection.verb,
+                people: reflection.speaker ? reflection.speaker.name : ""
             };
-            self.englishTitle =reflection.title;
+            self.englishTitle = reflection.title;
             self.contentCategory = "reflection";
             self.duration = reflection.duration;
-            self.contentFormat = reflection.youtubeVideoId === null || reflection.youtubeVideoId === "" ?
-                (reflection.soundCloudId === null || reflection.soundCloudId === "" ? "text" :"audio") : "video"
+            self.contentFormat = getReflectionFormat(reflection);
         }
     };
 
-    var getWritersForWord = function(word){
-        if(!_.isEmpty(word.writers)){
-            return word.writers[0].name +  (word.displayAjabShaharTeam === 'true' || word.displayAjabShaharTeam ? ", Ajab Shahar Team":"");
+    var getReflectionFormat = function (reflection) {
+        if(reflection.contentType && !_.isEmpty(reflection.contentType))
+          return reflection.contentType;
+        else if(reflection.youtubeVideoId && !_.isEmpty(reflection.youtubeVideoId))
+          return "video";
+        else if(reflection.soundCloudId && !_.isEmpty(reflection.soundCloudId))
+          return "audio";
+        else if(!_.isEmpty(reflection.reflectionTranscripts))
+          return "text";
+    };
+
+    var getWritersForWord = function (word) {
+        if (!_.isEmpty(word.writers)) {
+            return word.writers[0].name + (word.displayAjabShaharTeam === 'true' || word.displayAjabShaharTeam ? ", Ajab Shahar Team" : "");
         }
         return "";
     };
 
-    var getVerbForSong = function(song){
-        if(!_.isEmpty(song.singers)){
-            return song.singers.length > 1 ?"SING":"SINGS";
+    var getVerbForSong = function (song) {
+        if (!_.isEmpty(song.singers)) {
+            return song.singers.length > 1 ? "SING" : "SINGS";
         }
         return "";
     };
 
     var getSingersFromSong = function (singers) {
         var value = "";
-        if(!_.isEmpty(singers)){
+        if (!_.isEmpty(singers)) {
             value = "" + singers[0].name;
             for (var index = 1; index < singers.length; index++) {
                 if (index == singers.length - 1)
@@ -87,35 +97,35 @@ AjabShahar.ThumbnailObject = function(contentItem,type){
         return value;
     };
 
-    self.getTitle = function(contentTextRepresentation){
-        if(!contentTextRepresentation && self.type !== 'reflection') return self.translitTitle;
+    self.getTitle = function (contentTextRepresentation) {
+        if (!contentTextRepresentation && self.type !== 'reflection') return self.translitTitle;
 
         var title = (contentTextRepresentation === 'Transliteration' || contentTextRepresentation === 'transliteration') ? self.translitTitle : self.englishTitle;
-        return self.type === 'reflection'? self.englishTitle: title;
+        return self.type === 'reflection' ? self.englishTitle : title;
     };
 
-    self.getSecondTitle = function(contentTextRepresentation){
-        if(!contentTextRepresentation && self.type !== 'reflection') return self.englishTitle;
+    self.getSecondTitle = function (contentTextRepresentation) {
+        if (!contentTextRepresentation && self.type !== 'reflection') return self.englishTitle;
 
         var title = (contentTextRepresentation === 'Transliteration' || contentTextRepresentation === 'transliteration') ? self.englishTitle : self.translitTitle;
-        return self.type === 'reflection'? "": title;
+        return self.type === 'reflection' ? "" : title;
     };
 
-    self.showPrimaryVerbPeopleAlways = function(){
+    self.showPrimaryVerbPeopleAlways = function () {
         return !(self.type === 'song' && self.verbPeople.verb.toLowerCase() === 'sing') || self.type === 'word';
     };
 
-    self.showPrimaryVerbPeopleInDetails = function(){
+    self.showPrimaryVerbPeopleInDetails = function () {
         return (self.type === 'song' && self.verbPeople.verb.toLowerCase() === 'sing')
     };
 
-    if(type === 'song'){
+    if (type === 'song') {
         buildFromSong(contentItem);
     }
-    else if(type === 'word'){
+    else if (type === 'word') {
         buildFromWord(contentItem);
     }
-    else if(type === 'reflection'){
+    else if (type === 'reflection') {
         buildFromReflection(contentItem);
     }
     return self;
