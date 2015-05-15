@@ -96,7 +96,7 @@ public class DataSetup {
             sequenceOf(
                     insertInto("word_introduction")
                             .columns("word_id", "word_intro_hindi", "word_intro_english", "content_type", "poet_id")
-                            .values(1, "word intro hindi", "word intro english", "couplet", null)
+                            .values(2, "word intro hindi", "word intro english", "couplet", null)
                             .build());
     public static final Operation INSERT_SONG_WORD =
             sequenceOf(
@@ -148,4 +148,22 @@ public class DataSetup {
                             .columns("id", "english_text","hindi_text")
                             .values(11, "Rajasthan","rajasthan")
                             .build());
+
+    public static final Operation INSERT_COMPLETE_STARTER_SET =
+            sequenceOf(
+                    INSERT_CATEGORY,
+                    INSERT_PERSON,
+                    INSERT_GATHERINGS,
+                    INSERT_UMBRELLA_TITLE,
+                    INSERT_UMBRELLA_TITLE_CATEGORY,
+                    INSERT_SONGS,
+                    INSERT_SONG_TITLE,
+                    INSERT_SONG_TITLE_CATEGORY,
+                    INSERT_SONG_SINGER,
+                    INSERT_WORDS,
+                    INSERT_WORD_INTRODUCTION,
+                    INSERT_WORD_INTRODUCTION_WITH_COUPLET_CONTENT_TYPE,
+                    INSERT_REFLECTIONS,
+                    INSERT_WORD_REFLECTIONS
+            );
 }
