@@ -28,6 +28,7 @@ module.exports = function (config) {
             'user/js/common/modules/mediaPlayer.js',
             'user/js/common/modules/filterModule.js',
             'user/js/common/modules/lazyLoadModule.js',
+            'user/js/common/modules/utilities.js',
             'user/js/mappers.js',
             'user/js/common/**/*.js',
             'user/js/introduction/**/*.js',

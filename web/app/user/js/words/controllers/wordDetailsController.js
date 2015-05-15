@@ -15,10 +15,6 @@ angular.module("word").
             carouselOpen = !carouselOpen;
         };
 
-        $scope.containsWordIntro = function(){
-            return !_.isEmpty($scope.detailsObject) && $scope.detailsObject.type === 'word' && !_.isEmpty($scope.detailsObject.type);
-        };
-
         $scope.reflectionCount = function(){
             var count = 0;
             if(!_.isEmpty($scope.wordDetails)){
@@ -35,6 +31,7 @@ angular.module("word").
 
         $scope.selectThumbnail = function(thumbnail){
             if(_.isEmpty(thumbnail)) return;
+            $scope.detailsObject = {};
             if(thumbnail.type === 'word'){
                 $scope.detailsObject = new AjabShahar.DetailsObject($scope.wordDetails,thumbnail.type)
             }
@@ -48,10 +45,10 @@ angular.module("word").
         $scope.init = function () {
             $scope.carouselItems=[];
             $scope.wordId = $route.current.params.id;
-
             wordService.getWord($scope.wordId).success(function(response){
                 $scope.wordDetails = response;
                 $scope.associatedWords = [].concat($scope.wordDetails.synonyms).concat($scope.wordDetails.relatedWords);
+                $scope.containsWordIntro =  (!_.isEmpty($scope.wordDetails)  && !_.isEmpty($scope.wordDetails.wordIntroductions));
 
                 if(!_.isEmpty($scope.wordDetails.wordIntroductions )){
                     $scope.carouselItems.push(new AjabShahar.ThumbnailObject($scope.wordDetails,"word"))

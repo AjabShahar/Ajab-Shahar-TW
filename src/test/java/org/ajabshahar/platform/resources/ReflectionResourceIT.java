@@ -22,6 +22,7 @@ import org.junit.ClassRule;
 import org.junit.Test;
 
 import javax.ws.rs.core.NewCookie;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -295,6 +296,58 @@ public class ReflectionResourceIT {
         ReflectionRepresentation reflection2 = getEntity(reflectionResponse);
         Set<ReflectionTranscript> reflectionTranscripts1 = reflection2.getReflectionTranscripts();
         assertThat(reflectionTranscripts1.size(), is(0));
+        assertThat(reflection2.getAbout(), is("new"));
+    }
+
+    @Test
+    public void shouldEditAndUpdateTranscripts() {
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        JSONObject jsonReflection = new JSONObject();
+
+        jsonReflection.put("title", "reflection");
+        jsonReflection.put("verb", "by");
+        jsonReflection.put("soundCloudId", "1234");
+        jsonReflection.put("youtubeVideoId", "12345");
+        jsonReflection.put("showOnMainFcPage", true);
+        jsonReflection.put("publish", true);
+        jsonReflection.put("about", "old");
+
+
+        Set<ReflectionTranscript> reflectionTranscripts = new LinkedHashSet<>();
+        ReflectionTranscript reflectionTranscript = new ReflectionTranscript();
+        reflectionTranscript.setEnglishTranscript("hey");
+        reflectionTranscript.setHindiTranscript("hey hindi");
+        reflectionTranscripts.add(reflectionTranscript);
+
+        jsonReflection.put("reflectionTranscripts", reflectionTranscripts);
+
+        ClientResponse reflectionResponse = loginAndSave(jsonReflection);
+
+        reflectionResponse = getReflection(getEntity(reflectionResponse).getId());
+        ReflectionRepresentation reflectionRepresentation = getEntity(reflectionResponse);
+
+        Set<ReflectionTranscript> reflectionTranscriptsFromDb = reflectionRepresentation.getReflectionTranscripts();
+        assertThat(reflectionTranscriptsFromDb.size(), is(1));
+        jsonReflection.put("id", reflectionRepresentation.getId());
+        jsonReflection.put("about", "new");
+        ReflectionTranscript newReflectionTranscript = new ReflectionTranscript();
+        newReflectionTranscript.setId(reflectionTranscriptsFromDb.iterator().next().getId());
+        newReflectionTranscript.setEnglishTranscript("hey i changed!");
+
+        jsonReflection.put("reflectionTranscripts", Arrays.asList(newReflectionTranscript));
+
+        reflectionResponse = loginAndSave(jsonReflection);
+
+        reflectionResponse = getReflection(getEntity(reflectionResponse).getId());
+
+        ReflectionRepresentation reflection2 = getEntity(reflectionResponse);
+        Set<ReflectionTranscript> reflectionTranscripts1 = reflection2.getReflectionTranscripts();
+        assertThat(reflectionTranscripts1.size(), is(1));
+        assertThat(reflectionTranscripts1.iterator().next().getEnglishTranscript(), is("hey i changed!"));
         assertThat(reflection2.getAbout(), is("new"));
     }
 

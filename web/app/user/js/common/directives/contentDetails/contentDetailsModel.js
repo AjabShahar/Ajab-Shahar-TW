@@ -131,6 +131,7 @@ AjabShahar.DetailsObject = function(content,type){
         self.verb="Introduction by";
         self.people = getPeopleFromWord(word);
         self.displayAjabShaharTeam = word.displayAjabShaharTeam;
+        self.info="";
     };
 
     var buildFromReflection = function(reflection){
@@ -154,6 +155,7 @@ AjabShahar.DetailsObject = function(content,type){
         self.title = reflection.title;
         self.info = reflection.info;
         self.about = reflection.about;
+        self.excerpt = reflection.reflectionExcerpt;
     };
 
     if(type === 'song'){
