@@ -2,7 +2,6 @@ package org.ajabshahar.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.ajabshahar.platform.models.Reflection;
-import org.ajabshahar.platform.models.ReflectionTranscript;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -17,12 +16,13 @@ public class ReflectionSummaryRepresentation {
     private String reflectionExcerpt;
     private String duration;
     private String verb;
+    private String contentType;
 
     public ReflectionSummaryRepresentation() {
     }
 
     public ReflectionSummaryRepresentation(long id, String title, PersonSummaryRepresentation speaker,
-                                           Boolean published, String thumbnailUrl, String reflectionExcerpt, String duration, String verb) {
+                                           Boolean published, String thumbnailUrl, String reflectionExcerpt, String duration, String verb, String contentType) {
         this.id = id;
         this.title = title;
         this.speaker = speaker;
@@ -31,6 +31,7 @@ public class ReflectionSummaryRepresentation {
         this.reflectionExcerpt = reflectionExcerpt;
         this.duration = duration;
         this.verb = verb;
+        this.contentType = contentType;
     }
 
     @JsonProperty("id")
@@ -99,19 +100,35 @@ public class ReflectionSummaryRepresentation {
         return reflections;
     }
 
-    ;
+
 
     public static ReflectionSummaryRepresentation createFrom(Reflection reflection){
         if(reflection != null){
+            String contentType = getContentType(reflection);
             return new ReflectionSummaryRepresentation(reflection.getId(),reflection.getTitle(),
                     PersonSummaryRepresentation.createFrom(reflection.getSpeaker()),reflection.getIsAuthoringComplete(),
-                    reflection.getThumbnailURL(),reflection.getReflectionExcerpt(),reflection.getDuration(), reflection.getVerb());
+                    reflection.getThumbnailURL(),reflection.getReflectionExcerpt(),reflection.getDuration(), reflection.getVerb(), contentType);
         }
         return null;
+    }
+
+    private static String getContentType(Reflection reflection){
+        if(reflection.getYoutubeVideo() != null&&!reflection.getYoutubeVideo().isEmpty())
+            return "video";
+        else if(reflection.getSoundCloudId()!=null&&!reflection.getSoundCloudId().isEmpty())
+            return "audio";
+        else if(!reflection.getReflectionTranscripts().isEmpty())
+            return "text";
+        return "";
     }
 
     @JsonProperty("verb")
     public String getVerb() {
         return verb;
+    }
+
+    @JsonProperty("contentType")
+    public String getContentType() {
+        return contentType;
     }
 }
