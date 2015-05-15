@@ -95,6 +95,19 @@
 
         }
 
+        .about-link {
+            font-weight: 300;
+            color: $pink;
+            font-size: $medium-large;
+            &:hover {
+                color: $dark-grey;
+            }
+            &.active {
+                color: $dark-grey;
+                cursor: default;
+            }
+        }
+
         .about-info {
             display: none;
             max-height: 260px;
