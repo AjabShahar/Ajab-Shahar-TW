@@ -1,169 +1,166 @@
 $lower-resolution: new-breakpoint(max-width 1024px);
 .words-details {
-    background: transparent url(/user/img/words/word_details_bg.png) left top;
-    width: 100%;
+  background: transparent url(/user/img/words/word_details_bg.png) left top;
+  width: 100%;
 
-    .comma-space:after {
-        content:"\00a0";
+  .comma-space:after {
+    content: "\00a0";
+  }
+
+  .page-header {
+    height: 150px;
+    .logo-container > a {
+      top: 5px;
+      position: relative;
     }
 
-    .page-header {
-        height: 150px;
-        .logo-container > a {
-                top: 5px;
-                position: relative;
-        }
+    .page-title {
+      width: 70%;
+      text-align: left;
+      margin-top: 21px;
+      color: $dark-grey;
+      font-weight: 300;
 
-        .page-title {
-              width: 70%;
-              text-align: left;
-              margin-top: 21px;
-              color: $dark-grey;
-              font-weight: 300;
+      @include media($lower-resolution) {
+        width: 55%;
 
-              @include media($lower-resolution) {
-                  width: 55%;
+      }
+      .sub-main {
+        font-size: $large;
+        color: $grey;
 
-              }
-              .sub-main {
-                font-size: $large;
-                color: $grey;
+      }
 
-              }
-
-
-
-
-              .related-words {
-                        width: auto;
-                        margin-top: 10px;
-                        font-size: $medium;
-                        font-weight: 300;
-                        font-family: 'merriweather';
-
-                        .header-translit-text {
-                            color: $dark-grey;
-                        }
-                        .header-translate-text {
-                            color: $light-grey;
-                            font-style: italic;
-                        }
-
-                        dl {
-                          margin: 4px auto;
-                          clear: both;
-                          display: block;
-
-                          dt {
-                            display: inline-block;
-
-
-                            p {
-                              display: inline-block;
-                              line-height: 19px;
-                            }
-                          }
-
-                        }
-              }
-
-        }
-    }
-
-
-    .lower-pardah .versions .jcarousel-control-prev, .lower-pardah .versions .jcarousel-control-next {
-        top: 50%;
-    }
-
-    .lower-pardah{
-        min-height: 196px;
-    }
-    .main-content {
+      .related-words {
+        width: auto;
         margin-top: 10px;
-        .left-nav {
-            top: 15px;
+        font-size: $medium;
+        font-weight: 300;
+        font-family: 'merriweather';
+
+        .header-translit-text {
+          color: $dark-grey;
         }
-        .author-caps {
-              text-transform: uppercase;
-              color: $pink;
-              margin-right: -2px;
-
-        }
-        .title-case {
-              text-transform: initial;
-        }
-        .detail-text-wrapper {
-                .header {
-                        .header-reflection-audiovideo {
-
-                             width: 853px;
-                             margin: 0 auto;
-                        }
-                        .header-reflection {
-                             text-align: left;
-                             padding-left: 0px;
-                             h3 {
-                                 line-height: 1.5em;
-                             }
-                             .ref-header2-text {
-                                     font-size: $extra-large;
-                                     color: $dark-grey;
-                                     font-weight: 300;
-
-                             }
-                             .header-italic {
-                                    font-size: $medium;
-                                    color: $light-grey;
-                                    font-weight: 300;
-                                    font-style: italic;
-                             }
-
-                        }
-
-
-                }
-
-
-
+        .header-translate-text {
+          color: $light-grey;
+          font-style: italic;
         }
 
+        dl {
+          margin: 4px auto;
+          clear: both;
+          display: block;
 
+          dt {
+            display: inline-block;
 
+            p {
+              display: inline-block;
+              line-height: 19px;
+            }
+          }
+
+        }
+      }
+
+    }
+  }
+
+  .lower-pardah .versions .jcarousel-control-prev, .lower-pardah .versions .jcarousel-control-next {
+    top: 50%;
+  }
+
+  .lower-pardah {
+    min-height: 196px;
+  }
+  .main-content {
+    margin-top: 10px;
+    .left-nav {
+      top: 15px;
+    }
+    .author-caps {
+      text-transform: uppercase;
+      color: $pink;
+      margin-right: -2px;
+
+    }
+    .title-case {
+      text-transform: initial;
+    }
+    .detail-text-wrapper {
+      .header {
+        .header-reflection-audiovideo {
+
+          width: 853px;
+          margin: 0 auto;
+        }
+        .header-reflection {
+          .header-text {
+            color: $grey;
+            font-size: $small;
+            text-transform: uppercase;
+          }
+          .header-verb {
+            color: $grey;
+            font-size: $small;
+            font-weight: 100;
+            text-transform: lowercase;
+          }
+          text-align: left;
+          padding-left: 0px;
+          h3 {
+            line-height: 1.5em;
+          }
+          .ref-header2-text {
+            font-size: $large;
+            color: $dark-grey;
+            font-weight: 300;
+
+          }
+          .header-italic {
+            font-size: $medium;
+            color: $light-grey;
+            font-weight: 300;
+            font-style: italic;
+          }
+
+        }
+
+      }
 
     }
 
+  }
 
 }
+
 .details {
-    .text-share-options {
-        background: transparent url(/user/img/words/word_dt_ct_separator.png) 4px 0 no-repeat;
-        background-size: 1000px 7px;
-        width: 100%;
-        .share {
-              height: 15px;
-              background: transparent url(/user/img/common/icons/sprite_icons.png) -277px 5px no-repeat;
-              width: 16px;
-              padding: 23px 19px;
-              line-height: 20px;
-              display: block;
-              &:before {
+  .text-share-options {
+    background: transparent url(/user/img/words/word_dt_ct_separator.png) 4px 0 no-repeat;
+    background-size: 1000px 7px;
+    width: 100%;
+    .share {
+      height: 15px;
+      background: transparent url(/user/img/common/icons/sprite_icons.png) -277px 5px no-repeat;
+      width: 16px;
+      padding: 23px 19px;
+      line-height: 20px;
+      display: block;
+      &:before {
 
-                content: '';
-              }
-              &.active {
-                width: 16px;
-                height: 15px;
-                background-position: -199px -221px;
-                cursor: default;
-                margin-left: 19px;
-              }
-
-        }
-
-
+        content: '';
+      }
+      &.active {
+        width: 16px;
+        height: 15px;
+        background-position: -199px -221px;
+        cursor: default;
+        margin-left: 19px;
+      }
 
     }
 
+  }
 
 }
 

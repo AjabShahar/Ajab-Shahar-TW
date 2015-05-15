@@ -1,60 +1,55 @@
 /********************************** For text content in lightboxes  ********************************************/
 .text-content {
 
-    & > p {
-      margin-top: 0.8em;
-      font-family: 'Merriweather';
-      font-size: $medium;
-      line-height: 24px;
-      font-weight: 300;
-      color: $color-highlight-text;
+  & > p {
+    margin-top: 0.8em;
+    font-family: 'Merriweather';
+    font-size: $medium;
+    line-height: 24px;
+    font-weight: 300;
+    color: $color-highlight-text;
 
-      &:first-child:first-letter {
-        font-size: $extra-large;
-        font-weight: 400;
-        line-height: 27px;
-        color: $color-highlight-text;
-      }
+    &:first-child:first-letter {
+      font-size: $extra-large;
+      font-weight: 400;
+      line-height: 27px;
+      color: $color-highlight-text;
     }
   }
-
+}
 
 /********************************** For text content in detail pages ********************************************/
-  .detail-content .text-content {
-    #text-section {
-        & > p {
-             margin-top: 0.5em;
-             font-family: 'Merriweather';
-             font-size: $medium;
-             font-weight: 300;
-             color: $color-highlight-text;
-             text-align: left;
-             line-height: 24px;
-
-
-        }
-        h1,h2,h3,h4,h5,h6 {
-            color: #4d4d4d;
-        }
-        &:first-child:first-letter {
-               font-size: $extra-large;
-               font-weight: 400;
-               line-height: 27px;
-               color: $color-highlight-text;
-        }
-     }
-     .couplet {
-        font-family: 'Merriweather';
-        line-heigh: 21px;
-        font-size: $medium;
-        color: $grey;
-        font-weight: 300;
-        font-style: italic;
-        .hindi {
-            font-family: 'Lohit Devanagari';
-            font-style: normal;
-        }
-     }
-
+.detail-content .text-content {
+  p {
+    margin-top: 0.5em;
+    font-family: 'Merriweather';
+    font-size: $medium;
+    font-weight: 300;
+    color: $color-highlight-text;
+    text-align: left;
+    line-height: 24px;
 
   }
+  h1, h2, h3, h4, h5, h6 {
+    color: #4d4d4d;
+  }
+
+  #text-section:first-child:first-letter {
+    font-size: $extra-large;
+    font-weight: 400;
+    line-height: 27px;
+    color: $color-highlight-text;
+  }
+  .couplet, .couplet p {
+    font-family: 'Merriweather', serif;
+    line-height: 21px;
+    font-size: $medium;
+    color: $grey;
+    font-weight: 300;
+    font-style: italic;
+    .hindi {
+      font-family: 'Lohit Devanagari';
+      font-style: normal;
+    }
+  }
+}
