@@ -2,7 +2,7 @@
     <div class="page-header">
         <div class="ajab-wrapper">
             <div class="logo-container">
-                <a href="/songs/all" target="_self">
+                <a href="/reflections/all" target="_self">
                     <span class="page-logo">reflections</span>
                 </a>
             </div>
@@ -19,7 +19,9 @@
             <div class="main-content">
 
                 <div class="detail-text-wrapper" ng-if="isInitialized()">
-                    <content-details  content="reflectionDetails"></content-details>
+                    <div id="audio_video_container">
+                        <content-details content="reflectionDetails"></content-details>
+                    </div>
                 </div>
 
             </div>
