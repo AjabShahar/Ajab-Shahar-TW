@@ -5,6 +5,23 @@
     .no-pardah {
         background: none;
     }
+    .author-name {
+        color: $pink;
+        font-weight: 300;
+        font-size: $medium;
+        text-transform: uppercase;
+        font-family: 'Merriweather Sans';
+    }
+
+
+     .verb {
+        color: $grey;
+        font-size: $medium;
+        font-weight: 300;
+        text-transform: lowercase;
+        font-family: 'Merriweather Sans';
+    }
+
     .main-content {
         margin-top: 60px;
         min-height: 500px;
