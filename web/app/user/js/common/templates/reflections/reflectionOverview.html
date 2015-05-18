@@ -4,8 +4,9 @@
 
     <h3 class="ref-title">{{title}}</h3>
 
-    <div id="content-wrapper" bind-dynamic-html="text" ng-show="showText">
-        {{text}}
+    <div id="content-wrapper" ng-show="showText">
+        <span bind-dynamic-html="info"></span>
+        <span bind-dynamic-html="transcript.englishTranscript" ng-repeat="transcript in text"></span>
     </div>
 
     <div ng-show="showVideo" class='youtubeVideo'>
