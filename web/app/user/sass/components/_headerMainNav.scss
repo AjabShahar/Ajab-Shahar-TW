@@ -32,6 +32,12 @@ header ul {
     @media screen and (max-width: 770px) {
       padding: 0 1%;
     }
+    a {
+        &.active {
+            color: $pink !important;
+            cursor: default;
+        }
+    }
   }
 
   &.top-line {
