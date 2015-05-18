@@ -11,16 +11,17 @@ thumbnailModule.directive("reflectionOverview", function () {
             speaker: '=',
             videoUrl: '@',
             audioUrl: '@',
-            text: '@',
+            text: '=',
             people: '=',
             words: '=',
-            songs: '='
+            songs: '=',
+            info: '@'
         },
         templateUrl: '/user/js/common/templates/reflections/reflectionOverview.html',
         controller: function ($scope) {
             $scope.showVideo = Boolean($scope.videoUrl);
             $scope.showAudio = Boolean($scope.audioUrl);
-            $scope.showText = Boolean($scope.text);
+            $scope.showText = Boolean($scope.info);
 
             $scope.$watch(function () {
                 return $scope.closeVideo();

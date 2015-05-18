@@ -25,7 +25,7 @@ angular.module("reflection").factory('reflectionMapper',[function () {
                 "speaker": reflection.speaker,
                 "videoId": reflection.youtubeVideoId,
                 "audioUrl": reflection.soundCloudId,
-                "text": reflection.reflectionTranscript,
+                "text": reflection.reflectionTranscripts,
                 "info": reflection.info,
                 "people":reflection.people,
                 "words": reflection.words,
@@ -44,7 +44,7 @@ angular.module("reflection").factory('reflectionMapper',[function () {
                 "speaker": reflection.speaker,
                 "videoId": reflection.youtubeVideoId,
                 "audioUrl": reflection.soundCloudId,
-                "text": reflection.reflectionTranscript
+                "text": reflection.reflectionTranscripts
             });
             return completeInfo;
         }, []);
