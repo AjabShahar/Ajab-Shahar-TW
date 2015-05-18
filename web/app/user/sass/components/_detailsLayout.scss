@@ -285,6 +285,11 @@
                 font-weight: 300;
                 font-family: 'Merriweather Sans';
               }
+
+              .disabledLink{
+                color: $light-grey;
+                cursor: auto;
+              }
             }
             dd {
               color: $color-disabled-link;

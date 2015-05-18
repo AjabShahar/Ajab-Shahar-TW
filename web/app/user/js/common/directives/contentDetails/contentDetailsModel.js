@@ -7,8 +7,6 @@ AjabShahar.DetailsObject = function(content,type){
     var self = this;
     self.type = type;
     self.originalObject = content;
-    var WORD_DETAILS_PATH ="/words/#/details/";
-    var SONG_DETAILS_PATH ="/songs/?id=";
 
 
     var pluckPropertyFrom = function(obj,propertyName,lambdaFunctionName,callback){
@@ -36,6 +34,8 @@ AjabShahar.DetailsObject = function(content,type){
 
     var getRelatedLinksFromReflection = function (reflection) {
         var relatedLinks = [];
+        var WORD_DETAILS_PATH ="/words/#/details/";
+        var SONG_DETAILS_PATH ="/songs/?id=";
 
         if(!_.isEmpty(reflection)){
             var speakerLink = {
