@@ -78,53 +78,58 @@ $lower-resolution: new-breakpoint(max-width 1024px);
     .left-nav {
       top: 15px;
     }
-    .author-caps {
-      text-transform: uppercase;
-      color: $pink;
-      margin-right: -2px;
 
-    }
-    .title-case {
-      text-transform: initial;
-    }
     .detail-text-wrapper {
-      .header {
-        .header-reflection-audiovideo {
+          .header {
+            text-align: left;
+            padding-left: 0px;
+            h3 {
+                line-height: 1.5em;
+            }
+            .header-reflection-audiovideo {
 
-          width: 853px;
-          margin: 0 auto;
-        }
-        .header-reflection {
-          .header-text {
-            color: $grey;
-            font-size: $small;
-            text-transform: uppercase;
-          }
-          .header-verb {
-            color: $grey;
-            font-size: $small;
-            font-weight: 100;
-            text-transform: lowercase;
-          }
-          text-align: left;
-          padding-left: 0px;
-          h3 {
-            line-height: 1.5em;
-          }
-          .ref-header2-text {
-            font-size: $large;
-            color: $dark-grey;
-            font-weight: 300;
+              width: 853px;
+              margin: 0 auto;
+            }
+            .author-name {
+                color: $pink;
+                font-weight: 300;
+                font-size: $medium;
+                text-transform: uppercase;
+                font-family: 'Merriweather Sans';
+            }
 
-          }
-          .header-italic {
-            font-size: $medium;
-            color: $light-grey;
-            font-weight: 300;
-            font-style: italic;
-          }
+            .header-intro-by {
+                color: $dark-grey;
+                font-size: $medium;
+                font-weight: 300;
 
-        }
+            }
+            .header-verb {
+                color: $grey;
+                font-size: $medium;
+                font-weight: 300;
+                text-transform: lowercase;
+                font-family: 'Merriweather Sans';
+            }
+
+            .header-title {
+                font-size: $extra-large;
+                color: $dark-grey;
+                font-weight: 300;
+                line-height: 30px;
+                font-family: 'Merriweather';
+
+            }
+            .header-excerpt-italic {
+                font-size: $small;
+                color: $grey;
+                font-weight: 300;
+                font-style: italic;
+                font-family: 'Merriweather';
+            }
+
+
 
       }
 

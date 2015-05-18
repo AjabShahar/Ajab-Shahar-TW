@@ -1,23 +1,23 @@
 <div>
     <!--    Title  and other headers -->
     <div class="header">
-        <div ng-if="content.type === 'word'" class="header-text">
-            <span class="title-case" ng-bind="content.verb"></span>
-            <span class="author-caps" ng-repeat="person in content.people">
+        <div ng-if="content.type === 'word'" class="header-intro-by">
+            <span  ng-bind="content.verb"></span>
+            <span class="author-name" ng-repeat="person in content.people">
                 <a href="" ng-bind="person"></a>
                 <span ng-hide="$last">& </span>
             </span>
-            <span class="title-case" ng-show="content.displayAjabShaharTeam">, Ajab Shahar Team</span>
+            <span ng-show="content.displayAjabShaharTeam">, Ajab Shahar Team</span>
         </div>
 
         <div ng-if="content.type === 'reflection'" class="header-reflection" ng-class="{'header-reflection-audiovideo': showVideo || showAudio}">
-            <span class="header-text author-caps" ng-bind="content.people[0]"></span>
+            <span class="author-name" ng-bind="content.people[0]"></span>
             <span class="header-verb" ng-bind="content.verb"></span>
 
             <h3>
-                <span class="ref-header2-text" ng-bind="content.title"></span>
+                <span class="header-title" ng-bind="content.title"></span>
             </h3>
-            <span class="header-italic" ng-bind="content.excerpt"></span>
+            <span class="header-excerpt-italic" ng-bind="content.excerpt"></span>
         </div>
     </div>
     <!--end of titles-->
