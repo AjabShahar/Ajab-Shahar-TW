@@ -1,7 +1,98 @@
 <div class="ng-scope all-reflections">
 
+    <div class='pagination-head'>
+        <div class="upper">
 
- <div class="ajab-container headerfixOuter">
+            <!--<div ng-transclude></div>-->
+            <span class='numeric-count' >{{reflectionCount}} REFLECTIONS</span>
+        </div>
+    </div>
+
+    <div class="slide-nav-list " ng-show="expandFilter" on-click-outside="closeSecondParda()">
+        <!--first layer pardah-->
+
+        <div class="first-layer-list">
+            <ul class='filters'>
+                <li class='head'>Filter by</li>
+                <li>
+                    <a href="javascript:void(0)"  title="writers or speakers who have reflected on a song, poem or idea" class="disable">speaker</a>
+                    <div class="child-list" >
+                        <span>Lalit Lalit<a>x</a></span>
+                    </div>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" title="words, metaphors or ideas in or about mystic poetry" ng-click="openParda()">word</a>
+                    <div class="child-list">
+
+                    </div>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" title="reflections on various poets" class="disable">poet</a>
+                    <div class="child-list">
+                        <span>Roshan Lal<a>x</a></span>
+                    </div>
+                </li>
+
+                <li class="reset-image"><a class="reset" ng-click="resetFilters()">reset</a></li>
+            </ul>
+        </div>
+
+        <!--Pardah 2-->
+
+        <div class="second-layer-list" ng-show="openSecondParda">
+            <div class="overlay">
+                <ul>
+
+
+                    <li class="list-item ng-scope">
+                        <a href="javascript:void(0)">
+                            <div class="child-list-item-value ">Akath katha</div>
+                            <div class="child-list-item-value ">Lotus</div>
+                        </a>
+                    </li>
+
+                    <li class="list-item ng-scope">
+                        <a href="javascript:void(0)">
+                            <div class="child-list-item-value ">Akath katha</div>
+                            <div class="child-list-item-value ">Lotus</div>
+                        </a>
+                    </li>
+
+                    <li class="list-item ng-scope">
+                        <a href="javascript:void(0)">
+                            <div class="child-list-item-value ">Akath katha</div>
+                            <div class="child-list-item-value ">Lotus</div>
+                        </a>
+                    </li>
+
+                    <li class="list-item ng-scope">
+                        <a href="javascript:void(0)">
+                            <div class="child-list-item-value ">Akath katha</div>
+                            <div class="child-list-item-value ">Lotus</div>
+                        </a>
+                    </li>
+
+                    <li class="list-item ng-scope">
+                        <a href="javascript:void(0)">
+                            <div class="child-list-item-value ">Akath katha</div>
+                            <div class="child-list-item-value ">Lotus</div>
+                        </a>
+                    </li>
+
+                    <li class="list-item ng-scope">
+                        <a href="javascript:void(0)">
+                            <div class="child-list-item-value ">Akath katha</div>
+                            <div class="child-list-item-value ">Lotus</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+
+ <div class="qualifier ajab-container headerfixOuter">
     <!--<song-filter songs="songs" song-count="songCount" on-clear-filter="clearFilters()" active-letter="activeLetter" poet-name-in-filter="poetNameInFilter" singer-name-in-filter="singerNameInFilter"></song-filter>-->
     <div class='logo-with-filter headerfixInner'>
         <div class='nav-elements-wrapper'>
@@ -11,106 +102,10 @@
         </div>
     </div>
     <div class="ajab-wrapper">
-        <div class="slide-nav-list " ng-show="expandFilter" on-click-outside="closeSecondParda()">
-            <!--first layer pardah-->
-
-            <div class="first-layer-list">
-                <ul class='filters'>
-                    <li class='head'>Filter by</li>
-                    <li>
-                        <a href="javascript:void(0)"  title="writers or speakers who have reflected on a song, poem or idea" class="disable">speaker</a>
-                        <div class="child-list" >
-                            <span>Lalit Lalit<a>x</a></span>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)" title="words, metaphors or ideas in or about mystic poetry" ng-click="openParda()">word</a>
-                        <div class="child-list">
-
-                        </div>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)" title="reflections on various poets" class="disable">poet</a>
-                        <div class="child-list">
-                            <span>Roshan Lal<a>x</a></span>
-                        </div>
-                    </li>
-
-                    <li class="reset-image"><a class="reset" ng-click="resetFilters()">reset</a></li>
-                </ul>
-            </div>
-
-            <!--Pardah 2-->
-
-            <div class="second-layer-list" ng-show="openSecondParda">
-                <div class="overlay">
-                    <ul>
-
-
-                        <li class="list-item ng-scope">
-                            <a href="javascript:void(0)">
-                                <div class="child-list-item-value ">Akath katha</div>
-                                <div class="child-list-item-value ">Lotus</div>
-                            </a>
-                        </li>
-
-                        <li class="list-item ng-scope">
-                            <a href="javascript:void(0)">
-                                <div class="child-list-item-value ">Akath katha</div>
-                                <div class="child-list-item-value ">Lotus</div>
-                            </a>
-                        </li>
-
-                        <li class="list-item ng-scope">
-                            <a href="javascript:void(0)">
-                                <div class="child-list-item-value ">Akath katha</div>
-                                <div class="child-list-item-value ">Lotus</div>
-                            </a>
-                        </li>
-
-                        <li class="list-item ng-scope">
-                            <a href="javascript:void(0)">
-                                <div class="child-list-item-value ">Akath katha</div>
-                                <div class="child-list-item-value ">Lotus</div>
-                            </a>
-                        </li>
-
-                        <li class="list-item ng-scope">
-                            <a href="javascript:void(0)">
-                                <div class="child-list-item-value ">Akath katha</div>
-                                <div class="child-list-item-value ">Lotus</div>
-                            </a>
-                        </li>
-
-                        <li class="list-item ng-scope">
-                            <a href="javascript:void(0)">
-                                <div class="child-list-item-value ">Akath katha</div>
-                                <div class="child-list-item-value ">Lotus</div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-
-        </div>
-
 
 
         <div class='grid-view'>
-
-            <div class='pagination-head'>
-                <div class="upper">
-
-                    <!--<div ng-transclude></div>-->
-                    <span class='numeric-count' >{{reflectionCount}} REFLECTIONS</span>
-                </div>
-
-
-            </div>
-
-
-            <div class='grid-wrapper' height-offset="-150">
+            <div class='grid-wrapper' >
                 <div class="thumbnails-grid">
                     <ul class="media-list">
                         <div ng-repeat="(index,reflection) in reflections" class="media" ng-click="navigateToDetailPage(reflections[$index].id)">
@@ -120,8 +115,10 @@
                     </ul>
                 </div>
             </div>
-
         </div>
     </div>
+
+     <ajab-shahar-footer></ajab-shahar-footer>
+
  </div>
 </div>

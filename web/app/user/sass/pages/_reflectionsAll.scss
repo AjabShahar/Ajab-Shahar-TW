@@ -1,47 +1,58 @@
 .all-reflections {
 
-    //position: fixed;
-    .pagination-head {
-        width: 87% !important;
-        margin-top: 75px;
-        position: fixed;
+  .pagination-head {
+    position: absolute;
+    @include span-columns(10);
+    margin-top: 75px;
+    height: 150px;
+    @include shift(1.5);
 
-        @include media($tab-landscape) {
-             width: 83%;
-        }
-    }
-    .nav-elements-wrapper {
-          .category-logo {
-            font-size: 12px;
-            padding-top: 35px;
-          }
-    }
-    /*.tooltip {
-        display: inline;
-        position: relative
-    }
-    .tooltip:hover:after {
-        background: #333;
-        border-radius: 4px;
-        bottom: 25px;
-        left: 40%;
-        color: $pink;
-        content: attr(title);
-        width: auto;
-        position: absolute;
-        padding: 5px 5px
-    }*/
-
-
-/* UI: Code for testing: can be removed after actual implementation */
-    .slide-nav-list {
+    @include media($tab-landscape) {
+      @include span-columns(9);
+      @include shift(2);
 
     }
-    .second-layer-list {
+  }
 
+  .qualifier.ajab-container {
+    position: absolute;
+    top: 150px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    overflow-y: scroll;
+  }
 
-        position: fixed;
-
+  .nav-elements-wrapper {
+    .category-logo {
+      font-size: 12px;
+      padding-top: 35px;
     }
+  }
+  /*.tooltip {
+      display: inline;
+      position: relative
+  }
+  .tooltip:hover:after {
+      background: #333;
+      border-radius: 4px;
+      bottom: 25px;
+      left: 40%;
+      color: $pink;
+      content: attr(title);
+      width: auto;
+      position: absolute;
+      padding: 5px 5px
+  }*/
+
+  /* UI: Code for testing: can be removed after actual implementation */
+  .slide-nav-list {
+
+  }
+  .second-layer-list {
+
+    position: fixed;
+
+  }
 }
 

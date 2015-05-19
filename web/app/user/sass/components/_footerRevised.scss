@@ -1,3 +1,7 @@
+.footer-container{
+  position: relative;
+  clear: both;
+}
 .footer-tree {
     background: transparent url('/user/img/common/bg/footer_tree.png') 0px top no-repeat;
       background-size: contain;
@@ -6,7 +10,6 @@
       width: 45px;
       padding-top: 127px;
       margin-top: -160px;
-      z-index: 600;
       position: relative;
 }
 
