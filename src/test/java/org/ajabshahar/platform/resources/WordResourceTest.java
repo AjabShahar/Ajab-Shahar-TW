@@ -62,26 +62,4 @@ public class WordResourceTest {
 
         assertEquals(expected, actual.getEntity());
     }
-
-    @Test
-    public void shouldGetWordSynonyms() throws Exception {
-        WordSynonymRepresentation expected = new WordSynonymRepresentation();
-        when(words.findWords((int) WORD_ID)).thenReturn(wordList);
-        when(wordRepresentationFactory.createWordSynonyms(wordList)).thenReturn(expected);
-
-        Response actual = wordResource.getSynonyms((int) WORD_ID);
-
-        assertEquals(expected, actual.getEntity());
-    }
-
-    @Test
-    public void shouldGetRelatedWords() throws Exception {
-        RelatedWordRepresentation expected = new RelatedWordRepresentation();
-        when(words.findWords((int) WORD_ID)).thenReturn(wordList);
-        when(wordRepresentationFactory.createRelatedWords(wordList)).thenReturn(expected);
-
-        Response actual = wordResource.getRelatedWords((int) WORD_ID);
-
-        assertEquals(expected, actual.getEntity());
-    }
 }

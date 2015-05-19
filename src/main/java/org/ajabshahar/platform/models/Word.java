@@ -52,6 +52,9 @@ public class Word {
     @Column(name = "THUMBNAIL_URL", nullable = true)
     private String thumbnailUrl;
 
+    @Column(name = "PUBLISH")
+    private boolean publish;
+
     @OneToOne
     @JoinColumn(name = "DEFAULT_REFLECTION_ID")
     private Reflection defaultReflection;

@@ -12,7 +12,7 @@ public class DataSetup {
 
     public static final Operation DELETE_ALL =
             deleteAllFrom("REFLECTION_SONG", "REFLECTION_PERSON", "SONG_WORD", "SONG_SINGER", "WORD_REFLECTION", "WORD_SYNONYMS", "WORD_WRITER", "WORD_INTRODUCTION",
-                    "RELATED_WORDS", "WORD", "TRANSCRIPT", "REFLECTION", "PERSON", "SONG", "TITLE", "CATEGORY","GATHERING");
+                    "RELATED_WORDS", "WORD", "TRANSCRIPT", "REFLECTION", "PERSON", "SONG", "TITLE", "CATEGORY", "GATHERING");
 
     public static final Operation INSERT_ADMIN_USER =
             sequenceOf(
@@ -82,9 +82,9 @@ public class DataSetup {
     public static final Operation INSERT_WORDS =
             sequenceOf(
                     insertInto("WORD")
-                            .columns("id", "word_original", "word_translation", "word_transliteration", "meaning", "show_on_landing_page", "hindi_intro_excerpt", "english_intro_excerpt", "is_root_word", "diacritic", "default_reflection_id", "display_ajab_shahar_team")
-                            .values(1, "word original", "word translation", "word transliteration", "meaning", true, "some Hindi text", "some English text", true, "some diacritic", null, true)
-                            .values(2, "word original no 2", "word translation no 2", "word transliteration no 2", "no meaning", true, "some Hindi text", "some English text", true, "some diacritic", 2, false)
+                            .columns("id", "word_original", "word_translation", "word_transliteration", "meaning", "show_on_landing_page", "hindi_intro_excerpt", "english_intro_excerpt", "is_root_word", "diacritic", "default_reflection_id", "display_ajab_shahar_team", "publish")
+                            .values(1, "word original", "word translation", "word transliteration", "meaning", true, "some Hindi text", "some English text", true, "some diacritic", null, true, false)
+                            .values(2, "word original no 2", "word translation no 2", "word transliteration no 2", "no meaning", true, "some Hindi text", "some English text", true, "some diacritic", 2, false, false)
                             .build());
     public static final Operation INSERT_WORD_INTRODUCTION =
             sequenceOf(
@@ -145,8 +145,8 @@ public class DataSetup {
     public static final Operation INSERT_GATHERINGS =
             sequenceOf(
                     insertInto("GATHERING")
-                            .columns("id", "english_text","hindi_text")
-                            .values(11, "Rajasthan","rajasthan")
+                            .columns("id", "english_text", "hindi_text")
+                            .values(11, "Rajasthan", "rajasthan")
                             .build());
 
     public static final Operation INSERT_COMPLETE_STARTER_SET =

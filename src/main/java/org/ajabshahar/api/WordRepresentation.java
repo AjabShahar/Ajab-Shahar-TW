@@ -19,8 +19,9 @@ public class WordRepresentation {
     private boolean isRootWord;
     private boolean displayAjabShaharTeam;
     private String thumbnailUrl;
+    private boolean publish;
 
-    public WordRepresentation(int id, String wordOriginal, String wordTranslation, String wordTransliteration, String englishIntroExcerpt, String hindiIntroExcerpt, String wordIntroHindi, String wordIntroEnglish, Set<PersonSummaryRepresentation> writers, String diacritic, String meaning, boolean isRootWord, boolean displayAjabShaharTeam, String thumbnailUrl) {
+    public WordRepresentation(int id, String wordOriginal, String wordTranslation, String wordTransliteration, String englishIntroExcerpt, String hindiIntroExcerpt, String wordIntroHindi, String wordIntroEnglish, Set<PersonSummaryRepresentation> writers, String diacritic, String meaning, boolean isRootWord, boolean displayAjabShaharTeam, String thumbnailUrl,boolean publish) {
         this.id = id;
         this.wordOriginal = wordOriginal;
         this.wordTranslation = wordTranslation;
@@ -35,6 +36,7 @@ public class WordRepresentation {
         this.isRootWord = isRootWord;
         this.displayAjabShaharTeam = displayAjabShaharTeam;
         this.thumbnailUrl = thumbnailUrl;
+        this.publish = publish;
     }
 
     public WordRepresentation() {
@@ -109,5 +111,9 @@ public class WordRepresentation {
     @JsonProperty("thumbnailUrl")
     public String getThumbnailUrl() {
         return thumbnailUrl;
+    }
+
+    public boolean isPublish() {
+        return publish;
     }
 }

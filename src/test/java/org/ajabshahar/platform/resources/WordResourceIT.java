@@ -555,6 +555,25 @@ public class WordResourceIT {
         assertThat(wordIntermediateRepresentation.getThumbnailUrl(), is("other Url"));
     }
 
+    @Test
+    public void shouldHavePublishField() {
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        jsonObject.put("publish",true);
+
+        ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
+        WordIntermediateRepresentation wordIntermediateRepresentation = getWord(wordResponse);
+
+        wordResponse = httpGet("http://localhost:%d/api/words/edit?id=" + wordIntermediateRepresentation.getId());
+        wordIntermediateRepresentation = getWord(wordResponse);
+
+        assertThat(wordResponse.getStatus(), is(200));
+        assertThat(wordIntermediateRepresentation.isPublish(), is(true));
+    }
+
     private NewCookie geCookie(ClientResponse response) {
         return getCookie(response, "JSESSIONID");
     }

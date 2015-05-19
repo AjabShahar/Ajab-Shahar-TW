@@ -33,17 +33,6 @@ public class WordResource {
         return Response.status(200).entity(wordIntermediateRepresentation).build();
     }
 
-    @POST
-    @Path("/edit")
-    @UnitOfWork
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateWord(String jsonWord) {
-        Word word = wordRepresentationFactory.create(jsonWord);
-        word = words.update(word);
-        WordIntermediateRepresentation wordIntermediateRepresentation = wordRepresentationFactory.createIntermediateRepresentation(word);
-        return Response.status(200).entity(wordIntermediateRepresentation).build();
-    }
-
     @GET
     @UnitOfWork
     public Response listAllWordDetails(@DefaultValue("false") @QueryParam("showOnMainLandingPage") Boolean showOnMainLandingPage) {
@@ -70,24 +59,6 @@ public class WordResource {
         Set<Word> wordsList = words.findWords(wordId);
         WordReflectionRepresentation wordReflections = wordRepresentationFactory.createWordReflections(wordsList);
         return Response.ok(wordReflections).build();
-    }
-
-    @GET
-    @Path("/synonyms")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getSynonyms(@QueryParam("id") int wordId) {
-        Set<Word> wordsList = words.findWords(wordId);
-        WordSynonymRepresentation wordSynonyms = wordRepresentationFactory.createWordSynonyms(wordsList);
-        return Response.ok(wordSynonyms).build();
-    }
-
-    @GET
-    @Path("/relatedWords")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getRelatedWords(@QueryParam("id") int wordId) {
-        Set<Word> wordsList = words.findWords(wordId);
-        RelatedWordRepresentation relatedWords = wordRepresentationFactory.createRelatedWords(wordsList);
-        return Response.ok(relatedWords).build();
     }
 
     @GET

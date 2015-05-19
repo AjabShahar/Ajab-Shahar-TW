@@ -48,4 +48,6 @@ public class WordIntermediateRepresentation{
     private Boolean displayAjabShaharTeam;
 
     private ReflectionSummaryRepresentation defaultReflection;
+
+    private boolean publish;
 }

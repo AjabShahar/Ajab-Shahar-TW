@@ -201,6 +201,19 @@
                          item-label="wordTransliteration" tick-property="ticked" output-model="formInfo.relatedWords"></div>
                 </div>
 
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Publish</label>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <select name="format" ng-model="formInfo.publish" class="form-control"
+                                ng-init="formInfo.publish = formInfo.publish || false">
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </div>
+
                 <div>
                     <button type="submit" ng-click="saveData()" class="btn btn-primary btn-lg">Save</button>
                 </div>

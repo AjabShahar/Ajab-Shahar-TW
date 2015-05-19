@@ -27,6 +27,7 @@ public class WordRepresentationFactory {
         word.setThumbnailUrl(wordIntermediateRepresentation.getThumbnailUrl());
         word.setIsRootWord(wordIntermediateRepresentation.getIsRootWord());
         word.setShowOnLandingPage(wordIntermediateRepresentation.getShowOnLandingPage());
+        word.setPublish(wordIntermediateRepresentation.isPublish());
         word.setDisplayAjabShaharTeam(wordIntermediateRepresentation.getDisplayAjabShaharTeam());
         word.setWordIntroductions(wordIntermediateRepresentation.getWordIntroductions());
         word.setPeople(PersonRepresentationFactory.toPerson(wordIntermediateRepresentation.getPeople()));
@@ -113,7 +114,7 @@ public class WordRepresentationFactory {
             }
             WordRepresentation wordRepresentation = new WordRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(), word.getWordTransliteration(),
                     word.getEnglishIntroExcerpt(), word.getHindiIntroExcerpt(), wordIntroHindi, wordIntroEnglish, writers, word.getDiacritic(), word.getMeaning(),
-                    word.getIsRootWord(), word.getDisplayAjabShaharTeam(), word.getThumbnailUrl());
+                    word.getIsRootWord(), word.getDisplayAjabShaharTeam(), word.getThumbnailUrl(),word.isPublish());
             wordsRepresentation.add(wordRepresentation);
         }
         return wordsRepresentation;
@@ -187,6 +188,7 @@ public class WordRepresentationFactory {
         wordIntermediateRepresentation.setIsRootWord(word.getIsRootWord());
         wordIntermediateRepresentation.setShowOnLandingPage(word.getShowOnLandingPage());
         wordIntermediateRepresentation.setThumbnailUrl(word.getThumbnailUrl());
+        wordIntermediateRepresentation.setPublish(word.isPublish());
 
         Set<PersonSummaryRepresentation> peopleSummaryRepresentation = PersonRepresentationFactory.createPeopleSummaryRepresentation(word.getPeople());
         wordIntermediateRepresentation.setPeople(new LinkedHashSet<>(peopleSummaryRepresentation));
@@ -228,6 +230,6 @@ public class WordRepresentationFactory {
 
         return new WordRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(),
                 word.getWordTransliteration(), word.getEnglishIntroExcerpt(), word.getHindiIntroExcerpt(),
-                wordIntroHindi, wordIntroEnglish, writers, word.getDiacritic(), word.getMeaning(), word.getIsRootWord(), word.getDisplayAjabShaharTeam(),word.getThumbnailUrl());
+                wordIntroHindi, wordIntroEnglish, writers, word.getDiacritic(), word.getMeaning(), word.getIsRootWord(), word.getDisplayAjabShaharTeam(),word.getThumbnailUrl(),word.isPublish());
     }
 }
