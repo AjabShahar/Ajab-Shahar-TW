@@ -108,6 +108,9 @@ header ul {
             color: $color-disabled-link;
         }
       }
+      &.selected {
+        color: $color-link;
+      }
 
       &:hover {
         color: $color-hover-link;
@@ -143,6 +146,10 @@ header ul {
         &:hover {
             color: $color-hover-link;
             cursor: pointer;
+        }
+
+        &.selected {
+          color: $color-link;
         }
 
         @media screen and (max-width: 770px) {
