@@ -1,3 +1,4 @@
+/*
 .all-songs {
     position: fixed;
     .pagination-head {
@@ -10,3 +11,31 @@
         }
     }
 }
+*/
+
+.all-songs {
+    .pagination-head {
+      position: absolute;
+      @include span-columns(10);
+        margin-top: 75px;
+        height: 150px;
+        @include shift(1.5);
+
+        @include media($tab-landscape) {
+          @include span-columns(9);
+          @include shift(2);
+
+
+        }
+    }
+
+    .qualifier.ajab-container{
+        position: absolute;
+        top: 150px;
+        left:0px;
+        right:0px;
+        bottom:0px;
+        overflow-y: scroll;
+    }
+}
+

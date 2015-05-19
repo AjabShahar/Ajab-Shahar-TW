@@ -2,7 +2,7 @@
 
 filterModule.directive("asTitle", function () {
     return {
-        restrict: 'E',
+        restrict: 'AE',
         replace: true,
         transclude: true,
         scope: {
