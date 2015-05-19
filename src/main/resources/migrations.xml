@@ -117,4 +117,10 @@
             ALTER TABLE reflection ALTER COLUMN info TYPE text;
         </sql>
     </changeSet>
+    <changeSet id="82" author="PADMA">
+        <sql>
+            ALTER TABLE transcript ALTER COLUMN english_transcript TYPE text;
+            ALTER TABLE transcript ALTER COLUMN hindi_transcript TYPE text;
+        </sql>
+    </changeSet>
 </databaseChangeLog>
