@@ -1,0 +1,14 @@
+
+# path = /usr/lib/systemd/system/ajabshahar.service
+
+[Unit]
+Description=Ajabshahar Application
+After=network.target postgresql-9.4.service
+
+[Service]
+User=ajabshahar
+ExecStart=/bin/java -jar /opt/ajabshahar/platform-1.0-SNAPSHOT.jar server /opt/ajabshahar/appserver.yml
+ExecStop=/bin/kill -TERM ${MAINPID}
+
+[Install]
+WantedBy=multi-user.target
