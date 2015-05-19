@@ -37,8 +37,10 @@
                  <span> WORD  </span>
             </span>
 
-            <span ng-repeat="song in songs" class="creditBox">{{song.englishTransliterationTitle}}</span>
-            <span class="creditBox"> SONG </span>
+            <span ng-repeat="song in songs" class="creditBox">
+                <a href="/songs/?id={{song.id}}" target="_self" class="link-text">{{song.englishTransliterationTitle}}</a>
+                <span class="creditBox"> SONG </span>
+            </span>
 
         </div>
     </div>
