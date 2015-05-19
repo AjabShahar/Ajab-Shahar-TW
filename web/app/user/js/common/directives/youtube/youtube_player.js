@@ -23,7 +23,6 @@ mediaPlayer.directive('youtube', function ($window, YT_event, $sce) {
         link: function (scope) {
             scope.$watch("videoid",function(){
                 scope.videoUrl = $sce.trustAsResourceUrl("//www.youtube.com/embed/" + scope.videoid + "?controls=" + scope.controls + "&autoplay=" + scope.autoplay + "&loop=" + scope.loop + "&playlist=" + scope.playlist + "&rel=0&showinfo=0");
-                console.log(scope.videoid);
             });
         }
     };
