@@ -123,4 +123,9 @@
             ALTER TABLE transcript ALTER COLUMN hindi_transcript TYPE text;
         </sql>
     </changeSet>
+    <changeSet id="83" author="PADMA">
+        <sql>
+            ALTER TABLE word ADD COLUMN publish boolean DEFAULT false ;
+        </sql>
+    </changeSet>
 </databaseChangeLog>
