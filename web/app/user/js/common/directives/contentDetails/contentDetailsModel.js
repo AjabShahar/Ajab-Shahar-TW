@@ -1,17 +1,17 @@
 'use strict';
 
-var AjabShahar  = AjabShahar|| {};
+var AjabShahar = AjabShahar || {};
 
 
-AjabShahar.DetailsObject = function(content,type){
+AjabShahar.DetailsObject = function (content, type) {
     var self = this;
     self.type = type;
     self.originalObject = content;
 
 
-    var pluckPropertyFrom = function(obj,propertyName,lambdaFunctionName,callback){
-        if(!_.isEmpty(obj) && !_.isEmpty(obj[propertyName])){
-            if(lambdaFunctionName){
+    var pluckPropertyFrom = function (obj, propertyName, lambdaFunctionName, callback) {
+        if (!_.isEmpty(obj) && !_.isEmpty(obj[propertyName])) {
+            if (lambdaFunctionName) {
                 return obj[propertyName][lambdaFunctionName](callback);
             }
             return obj[propertyName]
@@ -24,47 +24,49 @@ AjabShahar.DetailsObject = function(content,type){
     };
 
     var getRelatedLinksFromWord = function (word) {
-        return pluckPropertyFrom(word,"writers","map",function(writer){
+        return pluckPropertyFrom(word, "writers", "map", function (writer) {
             return {
-                name :writer.name,
-                description:writer.primaryOccupation
+                name: writer.name,
+                description: writer.primaryOccupation
             };
         });
     };
 
     var getRelatedLinksFromReflection = function (reflection) {
         var relatedLinks = [];
-        var WORD_DETAILS_PATH ="/words/#/details/";
-        var SONG_DETAILS_PATH ="/songs/?id=";
+        var WORD_DETAILS_PATH = "/words/#/details/";
+        var SONG_DETAILS_PATH = "/songs/?id=";
 
-        if(!_.isEmpty(reflection)){
+        if (!_.isEmpty(reflection)) {
             var speakerLink = {
-                name :reflection.speaker? reflection.speaker.name:"",
-                description:reflection.speaker? reflection.speaker.primaryOccupation:""
+                name: reflection.speaker ? reflection.speaker.name : "",
+                description: reflection.speaker ? reflection.speaker.primaryOccupation : ""
             };
 
-            var relatedPeople = pluckPropertyFrom(reflection,"people","map",function(person){
+            var relatedPeople = pluckPropertyFrom(reflection, "people", "map", function (person) {
                 return {
                     name: person.name,
                     description: person.primaryOccupation
                 };
             });
 
-            var relatedWords = pluckPropertyFrom(reflection,"words","map",function(word){
-                return {
-                    name:word.wordTransliteration,
-                    link:word.rootWord ? WORD_DETAILS_PATH+word.id : null,
-                    alternateName: word.wordTranslation,
-                    description:"WORD"
+            var relatedWords = pluckPropertyFrom(reflection, "words", "map", function (word) {
+                if (word.rootWord && word.publish) {
+                    return {
+                        name: word.wordTransliteration,
+                        link: WORD_DETAILS_PATH + word.id,
+                        alternateName: word.wordTranslation,
+                        description: "WORD"
+                    }
                 }
             });
 
-            var relatedSongs = pluckPropertyFrom(reflection,"songs","map",function(song){
-                return {
-                    name : song.englishTransliterationTitle,
-                    link: SONG_DETAILS_PATH+song.id,
-                    description:"SONG"
-                }
+            var relatedSongs = pluckPropertyFrom(reflection, "songs", "map", function (song) {
+                    return {
+                        name: song.englishTransliterationTitle,
+                        link: SONG_DETAILS_PATH + song.id,
+                        description: "SONG"
+                    }
             });
 
             relatedLinks = relatedLinks.concat(speakerLink).concat(relatedPeople).concat(relatedWords).concat(relatedSongs);
@@ -73,22 +75,24 @@ AjabShahar.DetailsObject = function(content,type){
     };
 
     var getPeopleFromWord = function (word) {
-        return pluckPropertyFrom(word,"writers","map",function(writer){ return writer.name});
+        return pluckPropertyFrom(word, "writers", "map", function (writer) {
+            return writer.name
+        });
     };
 
-    self.getContentFormat = function(){
-        if(self.audioId){
+    self.getContentFormat = function () {
+        if (self.audioId) {
             return 'audio';
         }
-        if(self.videoId){
+        if (self.videoId) {
             return 'video';
         }
-        if(!_.isEmpty(self.textSections)){
+        if (!_.isEmpty(self.textSections)) {
             return 'text';
         }
     };
 
-    var buildFromSong = function(song){
+    var buildFromSong = function (song) {
         self.id = song.id;
         self.audioId = song.soundCloudTrackId;
         self.videoId = song.youTubeVideoId;
@@ -97,21 +101,21 @@ AjabShahar.DetailsObject = function(content,type){
         self.links = getRelatedLinksFromSong(song);
     };
 
-    var buildFromWord = function(word){
-        var getFromWord = function (word,type) {
-            if(type === 'audio'){
-                if(!_.isEmpty(word.defaultReflection)){
+    var buildFromWord = function (word) {
+        var getFromWord = function (word, type) {
+            if (type === 'audio') {
+                if (!_.isEmpty(word.defaultReflection)) {
                     return word.defaultReflection.soundCloudId;
                 }
             }
-            if(type === 'video'){
-                if(!_.isEmpty(word.defaultReflection)){
+            if (type === 'video') {
+                if (!_.isEmpty(word.defaultReflection)) {
                     return word.defaultReflection.youtubeVideoId;
                 }
             }
-            if(type ==='text'){
-                if(!_.isEmpty(word.wordIntroductions)){
-                    return word.wordIntroductions.map(function(wordIntro){
+            if (type === 'text') {
+                if (!_.isEmpty(word.wordIntroductions)) {
+                    return word.wordIntroductions.map(function (wordIntro) {
                         return {
                             text: wordIntro.wordIntroEnglish,
                             type: wordIntro.contentType
@@ -123,21 +127,21 @@ AjabShahar.DetailsObject = function(content,type){
         };
 
         self.id = word.id;
-        self.audioId = getFromWord(word,'audio');
-        self.videoId = getFromWord(word,'video');
-        self.textSections = getFromWord(word,'text');
+        self.audioId = getFromWord(word, 'audio');
+        self.videoId = getFromWord(word, 'video');
+        self.textSections = getFromWord(word, 'text');
         //self.about = getAboutFromWord(word);
         self.links = getRelatedLinksFromWord(word);
-        self.verb="Introduction by";
+        self.verb = "Introduction by";
         self.people = getPeopleFromWord(word);
         self.displayAjabShaharTeam = word.displayAjabShaharTeam;
-        self.info="";
+        self.info = "";
     };
 
-    var buildFromReflection = function(reflection){
-        var getReflectionTranscripts = function(reflection){
-            if(!_.isEmpty(reflection.reflectionTranscripts)){
-                return reflection.reflectionTranscripts.map(function(transcript){
+    var buildFromReflection = function (reflection) {
+        var getReflectionTranscripts = function (reflection) {
+            if (!_.isEmpty(reflection.reflectionTranscripts)) {
+                return reflection.reflectionTranscripts.map(function (transcript) {
                     return {
                         text: transcript.englishTranscript
                     }
@@ -158,13 +162,13 @@ AjabShahar.DetailsObject = function(content,type){
         self.excerpt = reflection.reflectionExcerpt;
     };
 
-    if(type === 'song'){
+    if (type === 'song') {
         buildFromSong(content);
     }
-    else if(type === 'word'){
+    else if (type === 'word') {
         buildFromWord(content);
     }
-    else if(type === 'reflection'){
+    else if (type === 'reflection') {
         buildFromReflection(content);
     }
     return self;

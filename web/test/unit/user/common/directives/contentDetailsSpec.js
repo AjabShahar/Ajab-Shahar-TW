@@ -1,6 +1,6 @@
-describe("contentDetails model",function(){
-    it("should construct a details model from word Representation",function(){
-        var wordDetailsObject = new AjabShahar.DetailsObject(test_wordRepresentation,'word');
+describe("contentDetails model", function () {
+    it("should construct a details model from word Representation", function () {
+        var wordDetailsObject = new AjabShahar.DetailsObject(test_wordRepresentation, 'word');
 
         expect(wordDetailsObject.audioId).toBe("http://sound.com/audioId");
         expect(wordDetailsObject.videoId).toBe("MtIoD16yTQc");
@@ -19,8 +19,8 @@ describe("contentDetails model",function(){
         expect(wordDetailsObject.people[0]).toBe("Mooralala Marwada");
     });
 
-    it("should construct reflection details object from reflection representation",function(){
-        var reflectionDetailsObject = new AjabShahar.DetailsObject(test_reflectionRepresentation1,'reflection');
+    it("should construct reflection details object from reflection representation", function () {
+        var reflectionDetailsObject = new AjabShahar.DetailsObject(test_reflectionRepresentation1, 'reflection');
 
         expect(reflectionDetailsObject.audioId).toBe("http://sound.com/audioId");
         expect(reflectionDetailsObject.videoId).toBe("MtIoD16yTQc");
@@ -36,8 +36,8 @@ describe("contentDetails model",function(){
 
     });
 
-    it("should construct reflection details object from reflection representation with proper values in the link field",function(){
-        reflectionDetailsObject = new AjabShahar.DetailsObject(test_reflectionRepresentation1,'reflection');
+    it("should construct reflection details object from reflection representation with proper values in the link field", function () {
+        reflectionDetailsObject = new AjabShahar.DetailsObject(test_reflectionRepresentation1, 'reflection');
 
         expect(reflectionDetailsObject.links.length).toBe(5);
 
@@ -75,7 +75,7 @@ describe("content details directive", function () {
     beforeEach(module('testTemplate'));
     beforeEach(module('thumbnailModule'));
 
-    beforeEach(inject(function (_$compile_, _$rootScope_, $templateCache,_$httpBackend_) {
+    beforeEach(inject(function (_$compile_, _$rootScope_, $templateCache, _$httpBackend_) {
         $compile = _$compile_;
         scope = _$rootScope_.$new();
         template = $templateCache;
@@ -84,16 +84,16 @@ describe("content details directive", function () {
     }));
 
 
-    xit("should show text content by default when it is present, in case of words",function(){
+    xit("should show text content by default when it is present, in case of words", function () {
         //$httpBackend.expectGET("/user/js/common/directives/carouselSupport/carousel.html").respond('200');
 
-        scope.detailsObject = new AjabShahar.DetailsObject(test_wordRepresentation,'word');
+        scope.detailsObject = new AjabShahar.DetailsObject(test_wordRepresentation, 'word');
         var directiveElement = angular.element('<content-details ng-if="detailsObject" content="detailsObject">');
         $compile(directiveElement)(scope);
         rootScope.$digest();
 
         var directiveScope = directiveElement.isolateScope();
-        console.log("directive scope :",directiveScope);
+        console.log("directive scope :", directiveScope);
 
         expect(scope.hasText()).toBeTruthy();
         expect(scope.showVideo).toBeFalsy();
@@ -102,7 +102,7 @@ describe("content details directive", function () {
     });
 });
 
-var test_wordRepresentation ={
+var test_wordRepresentation = {
     "id": 2,
     "wordOriginal": "जागना सोना",
     "wordTranslation": "Waking Sleeping",
@@ -218,7 +218,7 @@ var test_wordRepresentation ={
         "soundCloudId": "http://sound.com/audioId",
         "youtubeVideoId": "MtIoD16yTQc"
     }
-}
+};
 
 var test_reflectionRepresentation1 = {
     "showOnMainFcPage": true,
@@ -259,10 +259,11 @@ var test_reflectionRepresentation1 = {
             "hindiIntroExcerpt": "",
             "englishIntroExcerpt": "",
             "writers": [],
-            "rootWord": true
+            "rootWord": true,
+            "publish": true
         }
     ],
-    "people":[
+    "people": [
         {
             "id": 14,
             "name": "Gavra Devi",

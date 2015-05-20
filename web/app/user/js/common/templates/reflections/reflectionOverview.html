@@ -27,13 +27,8 @@
             <div class='creditBox' ng-repeat="person in people track by $index"><span class='selected'>{{person.name}} </span> {{person.primaryOccupation}}</div>
 
             <span ng-repeat="word in words" class="creditBox">
-                 <span ng-if="word.rootWord" class="link-text">
                      <a href="/words/#/details/{{word.id}}"
-                        target="_self">{{word.wordTransliteration}} {{word.wordTranslation}}</a>
-                 </span>
-                 <span ng-if="!word.rootWord">
-                     {{word.wordTransliteration}} {{word.wordTranslation}}
-                 </span>
+                        target="_self" class="link-text">{{word.transliteration}} {{word.translation}}</a>
                  <span> WORD  </span>
             </span>
 
