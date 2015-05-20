@@ -12,7 +12,6 @@ import org.ajabshahar.DataSetup;
 import org.ajabshahar.api.*;
 import org.ajabshahar.platform.PlatformApplication;
 import org.ajabshahar.platform.PlatformConfiguration;
-import org.ajabshahar.platform.models.ReflectionTranscript;
 import org.ajabshahar.platform.models.WordIntroduction;
 import org.h2.jdbcx.JdbcDataSource;
 import org.junit.Before;
@@ -21,7 +20,6 @@ import org.junit.Test;
 
 import javax.ws.rs.core.NewCookie;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -385,7 +383,7 @@ public class WordResourceIT {
     private Set<WordSummaryRepresentation> getWordSummaryRepresentations(WordIntermediateRepresentation word) {
         Set<WordSummaryRepresentation> wordSummaryRepresentations = new LinkedHashSet<>();
         WordSummaryRepresentation wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(),
-                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new LinkedHashSet<>(), word.getIsRootWord());
+                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new LinkedHashSet<>(), word.getIsRootWord(), word.isPublish());
         wordSummaryRepresentations.add(wordSummaryRepresentation);
         return wordSummaryRepresentations;
     }
@@ -402,7 +400,7 @@ public class WordResourceIT {
 
         WordIntermediateRepresentation word = getWord(words);
         WordSummaryRepresentation wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(),
-                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new LinkedHashSet<>(), word.getIsRootWord());
+                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new LinkedHashSet<>(), word.getIsRootWord(), word.isPublish());
         wordSummaryRepresentations.add(wordSummaryRepresentation);
 
         jsonObject.put("relatedWords", wordSummaryRepresentations);
@@ -416,7 +414,7 @@ public class WordResourceIT {
 
         word = getWord(words);
         wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(),
-                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new LinkedHashSet<>(), word.getIsRootWord());
+                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new LinkedHashSet<>(), word.getIsRootWord(), word.isPublish());
         wordSummaryRepresentations.add(wordSummaryRepresentation);
 
         word.setRelatedWords(wordSummaryRepresentations);
@@ -441,7 +439,7 @@ public class WordResourceIT {
 
         WordIntermediateRepresentation word = getWord(words);
         WordSummaryRepresentation wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(),
-                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new LinkedHashSet<>(), word.getIsRootWord());
+                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new LinkedHashSet<>(), word.getIsRootWord(), word.isPublish());
         wordSummaryRepresentations.add(wordSummaryRepresentation);
 
         jsonObject.put("relatedWords", wordSummaryRepresentations);

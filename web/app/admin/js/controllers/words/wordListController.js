@@ -10,6 +10,10 @@ adminApp.controller('wordListController', ['$scope', 'contentService', 'loginVer
                     toBeAdded.wordOrPhrase = value.wordTransliteration;
                     toBeAdded.meaning = value.wordTranslation;
                     toBeAdded.id = value.id;
+                    if(value.publish)
+                      toBeAdded.publish = "Yes";
+                    else
+                      toBeAdded.publish = "No";
                     words.push(toBeAdded);
                     return words;
                 }, []);
