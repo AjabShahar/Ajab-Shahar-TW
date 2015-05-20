@@ -35,8 +35,9 @@ public class WordResource {
 
     @GET
     @UnitOfWork
-    public Response listAllWordDetails(@DefaultValue("false") @QueryParam("showOnMainLandingPage") Boolean showOnMainLandingPage) {
-        Set<Word> wordsList = words.findBy(showOnMainLandingPage);
+    public Response listAllWordDetails(@DefaultValue("false") @QueryParam("showOnMainLandingPage") Boolean showOnMainLandingPage,
+                                       @DefaultValue("false") @QueryParam("publish") boolean publish) {
+        Set<Word> wordsList = words.findBy(showOnMainLandingPage, publish);
         WordsRepresentation wordsRepresentation = wordRepresentationFactory.createWordsRepresentation(wordsList);
         return Response.ok(wordsRepresentation).build();
     }
@@ -45,8 +46,8 @@ public class WordResource {
     @GET
     @Path("/edit")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getWordById(@QueryParam("id") int wordId) {
-        Word word = words.findBy(wordId);
+    public Response getWordById(@QueryParam("id") int wordId, @DefaultValue("false") @QueryParam("publish") boolean publish) {
+        Word word = words.findBy(wordId, publish);
         WordIntermediateRepresentation intermediateRepresentation = wordRepresentationFactory.createIntermediateRepresentation(word);
         return Response.ok(intermediateRepresentation).build();
     }
@@ -62,17 +63,10 @@ public class WordResource {
     }
 
     @GET
-    @Path("/getAllWords")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Set<Word> getWords() {
-        return words.findAll();
-    }
-
-    @GET
     @Path("/summary")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getSummaryRepresentation(){
-        Set<Word> allWords = words.findAll();
+    public Response getSummaryRepresentation() {
+        Set<Word> allWords = words.findBy(false, false);
         Set<WordSummaryRepresentation> wordSummaryRepresentations = wordRepresentationFactory.create(allWords);
         return Response.ok(wordSummaryRepresentations).build();
     }

@@ -27,10 +27,6 @@ var contentService = function ($http) {
         return $http.get('/api/couplets');
     };
 
-    var getAllWords = function () {
-        return $http.get('/api/words/getAllWords');
-    };
-
     var getAllWordsSummaries = function () {
         return $http.get('/api/words/summary');
     };
@@ -62,7 +58,6 @@ var contentService = function ($http) {
         getAllCategories: getAllCategories,
         getAllSongs: getAllSongs,
         getAllCouplets: getAllCouplets,
-        getAllWords: getAllWords,
         getAllWordsSummaries: getAllWordsSummaries,
         getAllGenres: getAllGenres,
         getAllReflectionSummaries: getAllReflectionSummaries,

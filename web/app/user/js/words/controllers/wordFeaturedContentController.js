@@ -3,7 +3,7 @@ angular.module("word").controller('wordFeaturedContentController', ['$scope', 'w
     $scope.words = [];
     $scope.init = function () {
         var contentTextRepresentation = 'Transliteration';
-        wordService.getWordsLandingPageContent().then(function (result) {
+        wordService.getWords().then(function (result) {
             var words = result.data.words;
             $scope.words = _.filter(words, function (word) {
                 return word.isRootWord;

@@ -94,33 +94,6 @@ public class WordsTest {
         updatedWord.setSongs(songs);
     }
 
-    @Test
-    public void shouldUpdateTheWord() {
-        setUpWord();
-
-        Set wordsList = new LinkedHashSet();
-        wordsList.add(word);
-
-        when(wordRepository.findBy(WORD_ID, false)).thenReturn(wordsList);
-
-        words.update(updatedWord);
-
-        assertEquals(word.getShowOnLandingPage(), true);
-        assertEquals(word.getIsRootWord(), true);
-        assertEquals(word.getIsRootWord(), true);
-        assertEquals(word.getMeaning(), "meaning");
-        assertEquals(word.getDiacritic(), "diacritic");
-        assertEquals(word.getWordOriginal(), "original");
-        assertEquals(word.getWordTranslation(), "translated");
-        assertEquals(word.getWordTransliteration(), "transliterated");
-        assertEquals(word.getEnglishIntroExcerpt(), "englishIntroExcerpt");
-        assertEquals(word.getHindiIntroExcerpt(), "hindiIntroExcerpt");
-        assertEquals(word.getPeople().size(), 1);
-        assertEquals(word.getSongs().size(), 1);
-        assertEquals(word.getWriters().size(), 1);
-        assertEquals(word.getWordIntroductions().size(), 1);
-        assertEquals(word.getReflections().size(), 1);
-    }
 
     @Test
     public void shouldFindVersions() throws Exception {
