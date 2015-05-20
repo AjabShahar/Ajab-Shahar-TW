@@ -21,7 +21,7 @@ thumbnailModule.directive("reflectionOverview", function () {
         controller: function ($scope) {
             $scope.showVideo = Boolean($scope.videoUrl);
             $scope.showAudio = Boolean($scope.audioUrl);
-            $scope.showText = Boolean($scope.info);
+            $scope.showText = Boolean($scope.info) || Boolean($scope.text);
 
             $scope.$watch(function () {
                 return $scope.closeVideo();
