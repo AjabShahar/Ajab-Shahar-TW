@@ -27,15 +27,18 @@
         <tr>
             <td><b>Translitered word</b></td>
             <td><b>Translated word</b></td>
+            <td><b>Published</b></td>
             <td><b>Edit</b></td>
         </tr>
         <tr>
             <td><input ng-model="search.wordOrPhrase" class="form-control"><br></td>
             <td><input ng-model="search.meaning" class="form-control"><br></td>
+            <td><input ng-model="search.publish" class="form-control"><br></td>
         </tr>
         <tr ng-repeat="word in words |  filter:search">
             <td>{{word.wordOrPhrase}}</td>
             <td>{{word.meaning}}</td>
+            <td>{{word.publish}}</td>
             <td><a href="wordDetails.html?id={{word.id}}" class="btn btn-info">Edit</a></td>
         </tr>
     </table>
