@@ -147,33 +147,6 @@ public class WordRepresentationFactory {
         return wordReflections;
     }
 
-    public WordSynonymRepresentation createWordSynonyms(Set<Word> wordsList) {
-        WordSynonymRepresentation synonyms = new WordSynonymRepresentation();
-
-        Word word = wordsList.iterator().next();
-
-        synonyms.setWord(getWordRepresentation(word));
-
-        for (Word synonym : word.getSynonyms()) {
-            synonyms.add(getWordRepresentation(synonym));
-        }
-
-        return synonyms;
-    }
-
-    public RelatedWordRepresentation createRelatedWords(Set<Word> wordsList) {
-        RelatedWordRepresentation relatedWords = new RelatedWordRepresentation();
-        Word word = wordsList.iterator().next();
-
-        relatedWords.setWord(getWordRepresentation(word));
-
-        for (Word relatedWord : word.getRelatedWords()) {
-            relatedWords.add(getWordRepresentation(relatedWord));
-        }
-
-        return relatedWords;
-    }
-
 
     public WordIntermediateRepresentation createIntermediateRepresentation(Word word) {
         WordIntermediateRepresentation wordIntermediateRepresentation = new WordIntermediateRepresentation();

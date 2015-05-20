@@ -6,12 +6,12 @@ angular.module("word").service("wordService",["$http",function ($http) {
         return $http.get('/api/words/reflections?id=' + wordId);
     };
 
-    var getWordsLandingPageContent = function () {
-        return $http.get('/api/words?showOnWordsLandingPage=true');
+    var getWords = function () {
+        return $http.get('/api/words?publish=true');
     };
 
     var getGlossaryPageContent = function () {
-        return $http.get('/api/words');
+        return $http.get('/api/words?publish=true');
     };
 
     var getWord = function(id){
@@ -33,7 +33,7 @@ angular.module("word").service("wordService",["$http",function ($http) {
 
     return {
         getVersions: getVersions,
-        getWordsLandingPageContent: getWordsLandingPageContent,
+        getWords: getWords,
         getGlossaryPageContent: getGlossaryPageContent,
         getWord:getWord,
         getReflectionsFrom:getReflectionsFrom,

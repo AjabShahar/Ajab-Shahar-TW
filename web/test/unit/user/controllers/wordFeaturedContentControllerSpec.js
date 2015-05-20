@@ -19,7 +19,7 @@ describe('Word feature controller specs:', function() {
 
 	describe('When initializing the controller,', function() {
 		it('should have list of words which are rootwords', function() {
-			$httpBackend.when("GET", "/api/words?showOnWordsLandingPage=true").respond({"words" : [{'id': 1, 'isRootWord': true, 'wordTranslation': "translation"}, {'id': 2, 'isRootWord': true, 'wordTranslation':"trnaslation"}]});
+			$httpBackend.when("GET", "/api/words?publish=true").respond({"words" : [{'id': 1, 'isRootWord': true, 'wordTranslation': "translation"}, {'id': 2, 'isRootWord': true, 'wordTranslation':"trnaslation"}]});
 
 			scope.init();
 			$httpBackend.flush();
@@ -27,7 +27,7 @@ describe('Word feature controller specs:', function() {
 			expect(scope.words.length).toBe(2);
 		});
 		it('should not have list of words which are not rootwords', function() {
-			$httpBackend.when("GET", "/api/words?showOnWordsLandingPage=true").respond({"words" : [{'id': 1}, {'id': 2}]});
+			$httpBackend.when("GET", "/api/words?publish=true").respond({"words" : [{'id': 1}, {'id': 2}]});
 
 			scope.init();
 			$httpBackend.flush();

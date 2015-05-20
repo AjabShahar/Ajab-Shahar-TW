@@ -31,25 +31,29 @@ public class WordDAO extends AbstractDAO<Word> {
         return word;
     }
 
-    public Set findBy(int wordId, Boolean showOnMainLandingPage) {
+    public Set findBy(int wordId, Boolean showOnMainLandingPage, boolean publish) {
         Session session = this.sessionFactory.openSession();
         Criteria allWords = session.createCriteria(Word.class, "word");
         if (showOnMainLandingPage) {
+            allWords.add(Restrictions.eq("publish", true));
             allWords.add(Restrictions.eq("showOnLandingPage", true));
         }
         if (wordId != 0) {
             allWords.add(Restrictions.eq("id", (long) wordId));
+        }
+        if (publish) {
+            allWords.add(Restrictions.eq("publish", true));
         }
 
         allWords.createCriteria("word.songs", "songs", JoinType.LEFT_OUTER_JOIN)
                 .setFetchMode("songs", FetchMode.JOIN)
                 .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 
-        allWords.createCriteria("word.reflections","reflections",JoinType.LEFT_OUTER_JOIN)
+        allWords.createCriteria("word.reflections", "reflections", JoinType.LEFT_OUTER_JOIN)
                 .setFetchMode("reflections", FetchMode.JOIN)
                 .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 
-        allWords.createCriteria("word.relatedWords","relatedWords",JoinType.LEFT_OUTER_JOIN)
+        allWords.createCriteria("word.relatedWords", "relatedWords", JoinType.LEFT_OUTER_JOIN)
                 .setFetchMode("reflatedWords", FetchMode.JOIN)
                 .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 
@@ -65,15 +69,6 @@ public class WordDAO extends AbstractDAO<Word> {
                 .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
     }
 
-    public Word update(Word updatableWord) {
-        currentSession().update(updatableWord);
-        for (WordIntroduction wordIntroduction : updatableWord.getWordIntroductions()) {
-            wordIntroduction.setWord(updatableWord);
-            currentSession().saveOrUpdate(wordIntroduction);
-        }
-        return updatableWord;
-    }
-
 
     public Set<Word> findReflections(int wordId) {
         Session session = sessionFactory.openSession();
@@ -86,12 +81,5 @@ public class WordDAO extends AbstractDAO<Word> {
         Set wordsWithReflections = new LinkedHashSet(wordReflections.list());
         session.close();
         return wordsWithReflections;
-    }
-
-    public Set findAll() {
-        Session session = sessionFactory.openSession();
-        Set words = new LinkedHashSet(allWordsCriteria(session).list());
-        session.close();
-        return words;
     }
 }
