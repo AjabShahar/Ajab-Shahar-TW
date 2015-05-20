@@ -26,6 +26,8 @@ wordsAdminApp.directive("adminWordIntroduction", function () {
                     $scope.wordIntroductions.push(wordIntroduction);
                 }
                 $scope.wordIntroduction = "";
+                $scope.wordIntroEnglish = "";
+                $scope.wordIntroHindi = "";
             };
         }
     };
