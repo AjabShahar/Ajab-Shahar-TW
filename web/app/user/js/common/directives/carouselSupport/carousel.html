@@ -1,12 +1,13 @@
 <div class="carousel-wrapper jcarousel-wrapper">
     <div class="jcarousel carousel-box thumbnail-carousel">
         <ul id="carousel" class="carousel-item">
-            <li  ng-repeat="item in items track by $index" ng-class="{selected: item.id === selectedThumbnail.id && item.type === selectedThumbnail.type}">
+            <li  ng-repeat="item in items track by $index" on-ng-repeat-end="jcarousel" ng-class="{selected: item.id === selectedThumbnail.id && item.type === selectedThumbnail.type}">
                 <content-thumbnail content="item" format="format" ng-click="selectThumbnail($index)"
                                    current-index="{{$index}}"></content-thumbnail>
             </li>
         </ul>
     </div>
+    <a href="" class="jcarousel-control-prev" data-jcarouselcontrol="true" ng-click="showPrev()" style="z-index: 10000000"></a>
+    <a href="" class="jcarousel-control-next" data-jcarouselcontrol="true" ng-click="showNext()" style="z-index: 10000000"></a>
 </div>
-<a href="" class="jcarousel-control-prev" data-jcarouselcontrol="true" ng-click="showPrev()" style="z-index: 10000000"></a>
-<a href="" class="jcarousel-control-next" data-jcarouselcontrol="true" ng-click="showNext()" style="z-index: 10000000"></a>
+

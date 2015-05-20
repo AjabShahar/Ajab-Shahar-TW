@@ -35,7 +35,7 @@
 
                 <div as-carousel class="carousel-box jcarousel thumbnail-carousel">
                     <ul>
-                        <li ng-repeat="song in versions track by $index">
+                        <li ng-repeat="song in versions track by $index" on-ng-repeat-end="loadCarousel">
                             <song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}"
                                             open="detailsService.open(song.id)" custom-style="{{song.customStyle}}"
                                             img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}"
@@ -44,6 +44,8 @@
                                             category-name="{{song.category}}" duration="{{song.duration}}"
                                             singer="{{song.singer}}" class="songs" poet="{{song.poet}}"
                                             singers="{{song.singers}}"></song-thumbnail>
+
+
                         </li>
                     </ul>
                     <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true"></a>
@@ -192,6 +194,9 @@
     <script type="text/javascript" src="/user/js/common/modules/htmlGenerator.js"></script>
     <script type="text/javascript" src="/user/js/common/modules/headerModule.js"></script>
     <script type="text/javascript" src="/user/js/common/modules/utilities.js"></script>
+
+    <script type="text/javascript" src="/user/js/common/directives/onNgRepeatEnd/onNgRepeatEnd.js"></script>
+
     <script type="text/javascript" src="/user/js/words/wordApp.js"></script>
     <script type="text/javascript" src="/user/js/reflections/reflectionsApp.js"></script>
     <script type="text/javascript" src="/user/js/words/services/wordMapper.js"></script>
