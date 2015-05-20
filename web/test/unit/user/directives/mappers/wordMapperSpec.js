@@ -24,19 +24,6 @@ describe("Should test word mapper", function () {
         wordMapper = _wordMapper_;
     }));
 
-    it("Should get thumbnail representation", function () {
-        var words = wordMapper.getThumbnails(wordList);
-
-        expect(words.length).toBe(1);
-        expect(words[0].id).toBe(1);
-        expect(words[0].wordOriginal).toBe("Original word");
-        expect(words[0].wordTranslation).toBe("Translated word");
-        expect(words[0].wordTransliteration).toBe("Transliterated word");
-        expect(words[0].hindiIntroExcerpt).toBe("Hindi Word Intro");
-        expect(words[0].englishIntroExcerpt).toBe("English Word Intro");
-
-    });
-
     it("Should get overview representation", function () {
         var words = wordMapper.getOverviews(wordList);
 
@@ -52,19 +39,6 @@ describe("Should test word mapper", function () {
         expect(words[0].displayAjabShaharTeam).toBe(true);
     });
 
-    it("Should get complete info representation", function () {
-        var words = wordMapper.getWordCompleteInfo(wordList);
-
-        expect(words.length).toBe(1);
-        expect(words[0].wordOriginal).toBe("Original word");
-        expect(words[0].wordTranslation).toBe("Translated word");
-        expect(words[0].wordTransliteration).toBe("Transliterated word");
-        expect(words[0].hindiIntroExcerpt).toBe("Hindi Word Intro");
-        expect(words[0].englishIntroExcerpt).toBe("English Word Intro");
-        expect(words[0].wordIntroEnglish).toBe("Word Intro English");
-        expect(words[0].wordIntroHindi).toBe("Word Intro Hindi");
-
-    });
 
     it("Should get Basic representation", function () {
         var words = wordMapper.getBasicDetails(wordList);
