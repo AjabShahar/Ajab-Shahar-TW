@@ -70,7 +70,7 @@
           text-align: center;
           margin: 0 auto;
           padding: 12px 0 0;
-          overflow: visible;
+          overflow: hidden;
 
           @media screen and (max-width: 1380px) {
             width: 94%;
@@ -101,6 +101,9 @@
               width: auto !important;
               margin: 0 46px 0 53px;
             }
+          }
+          .jcarousel-control-next,.jcarousel-control-prev{
+            z-index: 20;
           }
 
         }

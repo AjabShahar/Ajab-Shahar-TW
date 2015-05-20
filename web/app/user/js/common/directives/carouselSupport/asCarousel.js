@@ -1,11 +1,12 @@
 'use strict';
 
-thumbnailModule.directive("asCarousel", function () {
+thumbnailModule.directive("asCarousel", function ($timeout) {
     return {
         restrict: 'A',
-        scope: {},
         link: function ($scope, $elem, $attrs) {
-            $elem.jcarousel();
+            $scope.loadCarousel = function () {
+                $elem.jcarousel();
+            }
         }
     }
 });

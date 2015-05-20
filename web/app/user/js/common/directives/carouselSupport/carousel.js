@@ -10,9 +10,13 @@ thumbnailModule.directive("carousel", function () {
             format:"="
         },
         link: function (scope, elem) {
-            elem.jcarousel();
+            var carousel = {};
+            scope.jcarousel = function(){
+                $(elem).find('.jcarousel').jcarousel();
+                carousel= $(elem).find('.jcarousel').data('jcarousel');
 
-            var carousel = elem.data('jcarousel');
+            };
+
             scope.showPrev = function(){
                 carousel.scroll('-=1');
             };
@@ -22,7 +26,7 @@ thumbnailModule.directive("carousel", function () {
             };
 
             scope.selectThumbnail = function(index){
-                carousel.scroll(index);
+                if(carousel && carousel.scroll) carousel.scroll(index);
                 scope.selectedThumbnail=scope.items[index];
                 scope.itemClicked(scope.items[index])
             };
