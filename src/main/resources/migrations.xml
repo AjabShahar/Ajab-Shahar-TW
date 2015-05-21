@@ -133,4 +133,9 @@
             alter table person add column thumbnail_url varchar(300);
         </sql>
     </changeSet>
+    <changeSet id="85" author="CHANAKYA">
+        <sql>
+            alter table person add column profile text;
+        </sql>
+    </changeSet>
 </databaseChangeLog>

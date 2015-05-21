@@ -19,8 +19,9 @@ public class PersonRepresentation {
     private Set<String> roles;
     private Category primaryOccupation;
     private String thumbnailURL;
+    private String profile;
 
-    public PersonRepresentation(long id, String firstName, String middleName, String lastName, String firstNameInHindi, String middleNameInHindi, String lastNameInHindi, Set<String> roles, Category primaryOccupation, String thumbnailURL) {
+    public PersonRepresentation(long id, String firstName, String middleName, String lastName, String firstNameInHindi, String middleNameInHindi, String lastNameInHindi, Set<String> roles, Category primaryOccupation, String thumbnailURL, String profile) {
         this.id = id;
         this.firstNameInHindi = firstNameInHindi;
         this.middleNameInHindi = middleNameInHindi;
@@ -32,6 +33,7 @@ public class PersonRepresentation {
         this.roles = roles;
         this.primaryOccupation = primaryOccupation;
         this.thumbnailURL = thumbnailURL;
+        this.profile = profile;
     }
 
     public String getFirstName() {
@@ -77,6 +79,10 @@ public class PersonRepresentation {
 
     public String getThumbnailURL() {
         return thumbnailURL;
+    }
+
+    public String getProfile() {
+        return profile;
     }
 
     public void setPrimaryOccupation(Category primaryOccupation) {

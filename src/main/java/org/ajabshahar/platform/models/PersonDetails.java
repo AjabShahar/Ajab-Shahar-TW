@@ -53,6 +53,9 @@ public class PersonDetails {
     @Column(name = "THUMBNAIL_URL")
     private String thumbnailURL;
 
+    @Column(name = "PROFILE")
+    private String profile;
+
     public String getFirstName() {
         return firstName;
     }
@@ -139,5 +142,13 @@ public class PersonDetails {
 
     public void setThumbnailURL(String thumbnailURL) {
         this.thumbnailURL = thumbnailURL;
+    }
+
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
     }
 }

@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="/common/lib/angular-multi-select/angular-multi-select.css">
     <link href="/admin/css/admin.css" rel="stylesheet" type="text/css">
     <link href="/common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link rel='stylesheet' href='https://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css'>
+
 </head>
 <body>
 <a ng-href="/admin/partials/home.html" target="_self">
@@ -103,6 +105,15 @@
                     </div>
                     <div class="col-sm-2">
                         <input type="text" name="thumbnailUrl" ng-model="formInfo.thumbnailURL" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label>Profile</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <text-angular name="profileText" ng-model="formInfo.profile"></text-angular>
                     </div>
                 </div>
 
