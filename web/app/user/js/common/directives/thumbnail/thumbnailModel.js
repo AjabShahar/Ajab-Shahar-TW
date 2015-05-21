@@ -7,20 +7,28 @@ AjabShahar.ThumbnailObject = function (contentItem, type) {
         if (!_.isEmpty(song)) {
             self.type = type;
             self.id = song.id;
-            self.thumbnailImg = song.thumbnailURL;
             self.verbPeople = {
                 verb: getVerbForSong(song),
                 people: getSingersFromSong(song.singers)
             };
-            self.englishTitle = song.songTitle.englishTranslation;
-            self.translitTitle = song.songTitle.englishTransliteration;
-            self.contentFormat = song.youtubeVideoId ? 'video' : 'audio';
             self.secondaryVerbPeople = {
                 verb: !_.isEmpty(song.poets) ? "POET" : undefined,
                 people: !_.isEmpty(song.poets) ? song.poets[0].name : ""
             };
             self.duration = song.duration;
             self.contentCategory = song.songCategory ? song.songCategory.name : "song";
+            if (!_.isUndefined(song.songTitle)) {
+                self.thumbnailImg = song.thumbnailURL;
+                self.englishTitle = song.songTitle.englishTranslation;
+                self.translitTitle = song.songTitle.englishTransliteration;
+                self.contentFormat = song.youtubeVideoId ? 'video' : 'audio';
+            }
+            else {
+                self.englishTitle = song.englishTranslationTitle;
+                self.translitTitle = song.englishTransliterationTitle;
+                self.thumbnailImg = song.thumbnailUrl;
+                self.contentFormat = song.contentFormat;
+            }
         }
     };
 
@@ -46,7 +54,7 @@ AjabShahar.ThumbnailObject = function (contentItem, type) {
             self.type = type;
             self.id = reflection.id;
             self.thumbnailImg = reflection.thumbnailURL ? reflection.thumbnailURL : "/user/img/reflections/bw_background2b.jpg";
-            self.description = reflection.excerpt?reflection.excerpt:reflection.reflectionExcerpt;
+            self.description = reflection.excerpt ? reflection.excerpt : reflection.reflectionExcerpt;
             self.verbPeople = {
                 verb: reflection.verb,
                 people: reflection.speaker ? reflection.speaker.name : ""
@@ -59,14 +67,14 @@ AjabShahar.ThumbnailObject = function (contentItem, type) {
     };
 
     var getReflectionFormat = function (reflection) {
-        if(reflection.contentType && !_.isEmpty(reflection.contentType))
-          return reflection.contentType;
-        else if(reflection.youtubeVideoId && !_.isEmpty(reflection.youtubeVideoId))
-          return "video";
-        else if(reflection.soundCloudId && !_.isEmpty(reflection.soundCloudId))
-          return "audio";
-        else if(!_.isEmpty(reflection.reflectionTranscripts))
-          return "text";
+        if (reflection.contentType && !_.isEmpty(reflection.contentType))
+            return reflection.contentType;
+        else if (reflection.youtubeVideoId && !_.isEmpty(reflection.youtubeVideoId))
+            return "video";
+        else if (reflection.soundCloudId && !_.isEmpty(reflection.soundCloudId))
+            return "audio";
+        else if (!_.isEmpty(reflection.reflectionTranscripts))
+            return "text";
     };
 
     var getWritersForWord = function (word) {

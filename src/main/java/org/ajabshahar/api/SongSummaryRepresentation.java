@@ -22,12 +22,13 @@ public class SongSummaryRepresentation {
     private String category;
     private String thumbnailUrl;
     private boolean publish;
+    private String contentFormat;
 
     public SongSummaryRepresentation() {
 
     }
 
-    public SongSummaryRepresentation(long id, String englishTranslationTitle, String englishTransliterationTitle, Set<PersonSummaryRepresentation> singers, Set<PersonSummaryRepresentation> poets, String duration, String songCategory, String thumbnailUrl,boolean publish) {
+    public SongSummaryRepresentation(long id, String englishTranslationTitle, String englishTransliterationTitle, Set<PersonSummaryRepresentation> singers, Set<PersonSummaryRepresentation> poets, String duration, String songCategory, String thumbnailUrl,boolean publish,String contentFormat) {
         this.id = id;
         this.englishTranslationTitle = englishTranslationTitle;
         this.englishTransliterationTitle = englishTransliterationTitle;
@@ -37,6 +38,7 @@ public class SongSummaryRepresentation {
         this.category = songCategory;
         this.thumbnailUrl = thumbnailUrl;
         this.publish = publish;
+        this.contentFormat = contentFormat;
     }
 
     private static Song toSong(SongSummaryRepresentation songSummaryRepresentation){
@@ -123,5 +125,10 @@ public class SongSummaryRepresentation {
     @JsonProperty("publish")
     public boolean isPublish() {
         return publish;
+    }
+
+    @JsonProperty("contentFormat")
+    public String getContentFormat() {
+        return contentFormat;
     }
 }

@@ -99,9 +99,9 @@ public class SongResourceTest {
 
     @Test
     public void shouldGetSongVersions() throws Exception {
-        SongsRepresentation expectedResult = new SongsRepresentation();
+        SongsSummaryRepresentation expectedResult = new SongsSummaryRepresentation();
         when(songs.getVersions(SONG_ID)).thenReturn(songList);
-        when(songsRepresentationFactory.createSongsRepresentation(songList)).thenReturn(expectedResult);
+        when(songsRepresentationFactory.create(songList)).thenReturn(expectedResult);
 
         Response actualResult = songResource.getSongVersions(SONG_ID);
 

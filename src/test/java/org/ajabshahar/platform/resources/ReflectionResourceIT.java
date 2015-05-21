@@ -58,7 +58,7 @@ public class ReflectionResourceIT {
         PersonSummaryRepresentation personSummaryRepresentation = new PersonSummaryRepresentation(1, "name", "hindiName", "primaryOccupation");
         Set<PersonSummaryRepresentation> personSummaryRepresentations = new LinkedHashSet<PersonSummaryRepresentation>();
         personSummaryRepresentations.add(personSummaryRepresentation);
-        songs.add(new SongSummaryRepresentation(1, songEnglishTransliteration, null, null, null, null, null, null,false));
+        songs.add(new SongSummaryRepresentation(1, songEnglishTransliteration, null, null, null, null, null, null,false,"video"));
 
         Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_CATEGORY, DataSetup.INSERT_PERSON, INSERT_GATHERINGS, DataSetup.INSERT_SONGS);
 
