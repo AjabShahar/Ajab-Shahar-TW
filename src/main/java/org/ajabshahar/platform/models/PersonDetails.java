@@ -50,6 +50,9 @@ public class PersonDetails {
     @JoinColumn(name = "PRIMARY_OCCUPATION")
     private Category primaryOccupation;
 
+    @Column(name = "THUMBNAIL_URL")
+    private String thumbnailURL;
+
     public String getFirstName() {
         return firstName;
     }
@@ -128,5 +131,13 @@ public class PersonDetails {
 
     public void setPrimaryOccupation(Category primaryOccupation) {
         this.primaryOccupation = primaryOccupation;
+    }
+
+    public String getThumbnailURL() {
+        return thumbnailURL;
+    }
+
+    public void setThumbnailURL(String thumbnailURL) {
+        this.thumbnailURL = thumbnailURL;
     }
 }

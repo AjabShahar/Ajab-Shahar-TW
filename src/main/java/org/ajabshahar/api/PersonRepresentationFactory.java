@@ -16,7 +16,7 @@ public class PersonRepresentationFactory {
             categoryName.add(category.getName());
         }
 
-        PersonRepresentation personRepresentation = new PersonRepresentation(personDetails.getId(), personDetails.getFirstName(), personDetails.getMiddleName(), personDetails.getLastName(), personDetails.getFirstNameInHindi(), personDetails.getMiddleNameInHindi(), personDetails.getLastNameInHindi(), categoryName, personDetails.getPrimaryOccupation());
+        PersonRepresentation personRepresentation = new PersonRepresentation(personDetails.getId(), personDetails.getFirstName(), personDetails.getMiddleName(), personDetails.getLastName(), personDetails.getFirstNameInHindi(), personDetails.getMiddleNameInHindi(), personDetails.getLastNameInHindi(), categoryName, personDetails.getPrimaryOccupation(), personDetails.getThumbnailURL());
         return personRepresentation;
     }
 

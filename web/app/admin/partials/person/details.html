@@ -96,6 +96,16 @@
                                 ng-options="occupation.id as occupation.name for occupation in formInfo.category"></select>
                     </div>
                 </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label>Thumbnail Url</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" name="thumbnailUrl" ng-model="formInfo.thumbnailURL" class="form-control">
+                    </div>
+                </div>
+
                 <button type="submit" ng-click="saveData()" class="btn btn-primary btn-lg">Save</button>
             </form>
         </div>
