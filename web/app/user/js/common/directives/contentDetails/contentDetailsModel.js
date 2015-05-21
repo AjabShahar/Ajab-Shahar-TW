@@ -20,6 +20,38 @@ AjabShahar.DetailsObject = function (content, type) {
     };
 
     var getRelatedLinksFromSong = function (song) {
+        var relatedLinks = [];
+        var WORD_DETAILS_PATH = "/words/#/details/";
+
+        if (!_.isEmpty(song)) {
+            var speakerLink = pluckPropertyFrom(song,"singers","map",function(singer){
+                return{
+                    name: singer.name,
+                    description: "SINGER"
+                }
+            });
+
+            var relatedPeople = pluckPropertyFrom(song, "poets", "map", function (poet) {
+                return {
+                    name: poet.name,
+                    description: "POET"
+                };
+            });
+
+            var relatedWords = pluckPropertyFrom(song, "words", "map", function (word) {
+                if (word.rootWord && word.publish) {
+                    return {
+                        name: word.wordTransliteration,
+                        link: WORD_DETAILS_PATH + word.id,
+                        alternateName: word.wordTranslation,
+                        description: "WORD"
+                    }
+                }
+            });
+
+            relatedLinks = relatedLinks.concat(speakerLink).concat(relatedPeople).concat(relatedWords);
+        }
+        return relatedLinks;
 
     };
 
@@ -95,8 +127,8 @@ AjabShahar.DetailsObject = function (content, type) {
     var buildFromSong = function (song) {
         self.id = song.id;
         self.audioId = song.soundCloudTrackId;
-        self.videoId = song.youTubeVideoId;
-        self.downloadUrl = song.downloadUrl;
+        self.videoId = song.youtubeVideoId;
+        self.downloadUrl = song.downloadURL;
         self.about = song.about;
         self.links = getRelatedLinksFromSong(song);
     };

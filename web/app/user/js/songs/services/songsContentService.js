@@ -1,6 +1,6 @@
 var songsContentService = function ($http) {
     var getSongsVersions = function (id) {
-        return $http.get('/api/songs/versions?songId=' + id);
+        return $http.get('/api/songs/versions?id=' + id);
         //return $http.get('/api/songs/'+id+"/versions");
     };
 

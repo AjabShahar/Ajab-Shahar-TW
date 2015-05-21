@@ -90,18 +90,20 @@ public class SongDAO extends AbstractDAO<Song> {
     public Set<Song> findSongWithVersions(int songId) {
         Session currentSession = sessionFactory.getCurrentSession();
         Criteria findSongs = currentSession.createCriteria(Song.class);
+        Set<Song> songs = new LinkedHashSet<>();
 
         Song song = findById((long) songId);
         if (song != null) {
             findSongs.createAlias("umbrellaTitle", "titleAlias");
             if (song.getUmbrellaTitle() != null) {
                 findSongs.add(Restrictions.eq("titleAlias.id", song.getUmbrellaTitle().getId()));
+                findSongs.add(Restrictions.eq("isAuthoringComplete", true));
+                findSongs.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+                songs.addAll(findSongs.list());
+            } else {
+                songs.add(song);
             }
-            findSongs.add(Restrictions.eq("isAuthoringComplete", true));
-        } else {
-            return new LinkedHashSet<>();
         }
-        findSongs.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-        return new LinkedHashSet<>(findSongs.list());
+        return songs;
     }
 }

@@ -31,6 +31,7 @@ public class SongsRepresentationFactory {
 
             Title title = song.getSongTitle() == null ? new Title() : song.getSongTitle();
             final Set<PersonSummaryRepresentation> singers = new LinkedHashSet<>(), poets = new LinkedHashSet<>();
+            String contentFormat = song.getYoutubeVideoId() != null ? "video" : "audio";
 
             song.getSingers().forEach(singer -> {
                 PersonDetails personDetails = people.findBy((int) singer.getId());
@@ -46,7 +47,7 @@ public class SongsRepresentationFactory {
             }
             SongSummaryRepresentation songSummaryRepresentation = new SongSummaryRepresentation(song.getId(), title.getEnglishTranslation(),
                     title.getEnglishTransliteration(), singers, poets, song.getDuration(),
-                    song.getSongCategory().getName(), song.getThumbnailURL(),song.getIsAuthoringComplete());
+                    song.getSongCategory().getName(), song.getThumbnailURL(),song.getIsAuthoringComplete(),contentFormat);
             songs.addSong(songSummaryRepresentation);
         }
         return songs;

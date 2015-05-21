@@ -27,69 +27,30 @@
             </div>
         </div>
     </div>
-    <!--TODO Sakunthala : Try removing the extra div-->
-    <div class="vertical-spacer" ng-show="!shouldShowVersions()"></div>
-    <div class="lower-pardah" ng-show="shouldShowVersions()">
-        <div class="versions toggleBySlide" ng-show="showVersion && shouldShowVersions()">
-            <div class="carousel-wrapper jcarousel-wrapper">
 
-                <div as-carousel class="carousel-box jcarousel thumbnail-carousel">
-                    <ul>
-                        <li ng-repeat="song in versions track by $index" on-ng-repeat-end="loadCarousel">
-                            <song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}"
-                                            open="detailsService.open(song.id)" custom-style="{{song.customStyle}}"
-                                            img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}"
-                                            english-transliteration="{{song.englishTransliteration}}"
-                                            english-translation="{{song.englishTranslation}}"
-                                            category-name="{{song.category}}" duration="{{song.duration}}"
-                                            singer="{{song.singer}}" class="songs" poet="{{song.poet}}"
-                                            singers="{{song.singers}}"></song-thumbnail>
+    <div class="lower-pardah" ng-class="{'no-pardah': !containsVersions() }">
 
-
-                        </li>
-                    </ul>
-                    <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true"></a>
-                    <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true"></a>
-                </div>
-            </div>
+        <div class="versions toggleBySlide" ng-show="shouldShowCarousel()">
+            <carousel items="carouselItems" item-clicked="selectThumbnail" format="'transliteration'"></carousel>
         </div>
-        <div class="see-more" ng-show="shouldShowVersions()" ng-click="toggleVersion()">
-            <a class="version" href="javascript:void(0)">
-                {{numberOfVersions}} versions
-                <span class="arrow" ng-class="showVersion ? 'up-arrow' : ''"></span>
+        <div class="see-more" ng-show="containsVersions()" ng-click="toggleCarousel()">
+            <a class="version" href="javascript:void(0)" >
+                <span ng-show="containsWordIntro"></span> {{numberOfVersions}} version<span ng-show="numberOfVersions != 1">s</span>
+                <span class="arrow" ng-class="shouldShowCarousel() ? 'up-arrow' : ''"></span>
             </a>
         </div>
     </div>
     <div class='ajab-container'>
         <div class='ajab-wrapper'>
             <div class="main-content">
-                <div class="left-nav" scroll>
-                    <ul>
-                        <li><a href="javascript:void(0)" class="active ">song</a></li>
-                        <li><a target="_self" href="/user/partials/common/underConstruction.html">explore</a></li>
+                    <div class="left-nav" scroll>
+                        <ul>
+                            <li><a href="javascript:void(0)" class="active ">song</a></li>
+                            <li><a target="_self" href="/user/partials/common/underConstruction.html">explore</a></li>
+                        </ul>
 
-
-                    </ul>
-
-                </div>
-                <div id="audio_video_container">
-
-                    <div>
-                        <div class="rendition-wrapper">
-                            <ul ng-hide="true">
-                                <li><a href="javascript:void(0)" class="active">01</a>|</li>
-                                <li><a href="javascript:void(0)">02</a>|</li>
-                                <li><a href="javascript:void(0)">03</a></li>
-                            </ul>
-                        </div>
-                        <div ng-repeat="song in renditions" ng-show="isOpen({{song.id}})">
-                            <song-content-details video-id="{{song.videoId}}" audio-url="{{song.audioUrl}}" id="{{song.id}}"
-                                                  singer="{{song.singer}}" poet="{{song.poet}}"
-                                                  details-service="detailsService" downloadurl="{{song.downloadURL}}"
-                                                  about="{{song.about}}" words="song.words"></song-content-details>
-                        </div>
                     </div>
-                </div>
+                    <content-details ng-if="detailsObject" content="detailsObject"></content-details>
                 <div id="poem_container">
                     <div ng-show="originalVisible" class="toggleByFading  hindi">
                         <h2 class="song-heading">{{song.titleOriginal}}</h2>
@@ -195,6 +156,11 @@
     <script type="text/javascript" src="/user/js/common/modules/headerModule.js"></script>
     <script type="text/javascript" src="/user/js/common/modules/utilities.js"></script>
 
+    <script type="text/javascript" src="/user/js/common/directives/carouselSupport/asCarousel.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/carouselSupport/carousel.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/thumbnail/thumbnailModel.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/contentDetails/contentDetailsModel.js"></script>
+    <script type="text/javascript" src="/user/js/common/directives/contentDetails/contentDetails.js"></script>
     <script type="text/javascript" src="/user/js/common/directives/onNgRepeatEnd/onNgRepeatEnd.js"></script>
 
     <script type="text/javascript" src="/user/js/words/wordApp.js"></script>

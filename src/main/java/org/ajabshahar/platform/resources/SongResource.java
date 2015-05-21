@@ -94,10 +94,10 @@ public class SongResource {
     @GET
     @UnitOfWork
     @Path("/versions")
-    public Response getSongVersions(@QueryParam("songId") int songId) {
+    public Response getSongVersions(@QueryParam("id") int songId) {
         Set<Song> songList = songs.getVersions(songId);
-        SongsRepresentation songs = songsRepresentationFactory.createSongsRepresentation(songList);
-        return Response.ok(songs, MediaType.APPLICATION_JSON).build();
+        SongsSummaryRepresentation songsSummaryRepresentation = songsRepresentationFactory.create(songList);
+        return Response.ok(songsSummaryRepresentation, MediaType.APPLICATION_JSON).build();
     }
 
     @GET
