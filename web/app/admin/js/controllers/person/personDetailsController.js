@@ -27,8 +27,13 @@ personAdminApp.controller('personDetailsController', ['$scope', '$http', '$windo
         };
 
         $scope.saveData = function () {
-            if ($scope.formInfo.primaryOccupation == null || ($scope.formInfo.primaryOccupationId != $scope.formInfo.primaryOccupation.id))
+            if ($scope.formInfo.primaryOccupation == null || ($scope.formInfo.primaryOccupationId != $scope.formInfo.primaryOccupation.id)) {
                 $scope.formInfo.primaryOccupation = _.findWhere($scope.categoryList, {"id": $scope.formInfo.primaryOccupationId});
+            }
+
+            if ($scope.formInfo.thumbnailURL && $scope.formInfo.thumbnailURL.indexOf("http") === -1 && $scope.formInfo.thumbnailURL.indexOf("/images/") === -1) {
+                $scope.formInfo.thumbnailURL = '/images/' + $scope.formInfo.thumbnailURL;
+            }
 
             (isAddNewPersonPage) ? savePerson() : updatePerson();
         };

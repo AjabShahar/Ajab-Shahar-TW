@@ -128,4 +128,9 @@
             ALTER TABLE word ADD COLUMN publish boolean DEFAULT false ;
         </sql>
     </changeSet>
+    <changeSet id="84" author="CHANAKYA">
+        <sql>
+            alter table person add column thumbnail_url varchar(300);
+        </sql>
+    </changeSet>
 </databaseChangeLog>

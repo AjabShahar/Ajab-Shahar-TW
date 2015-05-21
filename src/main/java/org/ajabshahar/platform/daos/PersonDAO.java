@@ -67,6 +67,7 @@ public class PersonDAO extends AbstractDAO<PersonDetails> {
         originalPersonData.setFirstNameInHindi(updatablePerson.getFirstNameInHindi());
         originalPersonData.setMiddleNameInHindi(updatablePerson.getMiddleNameInHindi());
         originalPersonData.setLastNameInHindi(updatablePerson.getLastNameInHindi());
+        originalPersonData.setThumbnailURL(updatablePerson.getThumbnailURL());
         return originalPersonData;
     }
 }
