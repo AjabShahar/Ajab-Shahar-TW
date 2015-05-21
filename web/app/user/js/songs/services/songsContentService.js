@@ -13,14 +13,6 @@ var songsContentService = function ($http) {
         return $http.get('/api/songs/getPublishedSongs');
     };
 
-    var getSongsInRangeAndFilteredBy = function (startIndex, letter) {
-        return $http.get('/api/songs/getPublishedSongs?startFrom=' + startIndex + "&filteredLetter=" + letter);
-    };
-
-    var getSongsStartingWith = function (letter) {
-        return $http.get('/api/songs/count/startingWith?letter=' + letter);
-    };
-
     var getSong = function (id) {
         return $http.get('/api/songs/getPublishedSongs/' + id);
     };
@@ -88,8 +80,6 @@ var songsContentService = function ($http) {
         getAllSongs: getAllSongs,
         getSongsVersions: getSongsVersions,
         getSongRenditions: getSongRenditions,
-        getSongsInRangeAndFilteredBy: getSongsInRangeAndFilteredBy,
-        getSongsStartingWith: getSongsStartingWith,
         getSong: getSong,
         getWordsFrom: getWordsFrom,
         getSingersFrom: getSingersFrom,

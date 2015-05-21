@@ -25,7 +25,7 @@ thumbnailModule.factory('songMapper', ['wordMapper', function (wordMapper) {
                 "customStyle": (customStyle) ? customStyle() : '',
                 "englishTransliteration": song.songTitle.englishTransliteration,
                 "category": (song.songCategory) ? song.songCategory.name : "",
-                "gathering": _.isEmpty(song.gathering)?"":song.gathering.english,
+                "gathering": _.isEmpty(song.gathering) ? "" : song.gathering.english,
                 "duration": song.duration,
                 "singer": (song.singers == null || song.singers.length == 0) ? '' : song.singers[0].name + (song.singers[1] != null ? ' ......' : ''),
                 "singers": (song.singers != null && song.singers.length > 1) ? getSingers(song.singers) : '',
@@ -52,10 +52,23 @@ thumbnailModule.factory('songMapper', ['wordMapper', function (wordMapper) {
                 "poet": (song.poets == null || song.poets.length == 0) ? 'Unknown' : song.poets[0].name,
                 "noun": song.singers.length > 1 ? 'sing' : 'sings',
                 "downloadUrl": song.downloadURL,
-                "words": wordMapper.getBasicDetails(song.words)
+                "words": getWords(song.words)
             });
 
             return allIntroductions;
+        }, []);
+    };
+
+    var getWords = function (words) {
+        return _.reduce(words, function (wordsList, word) {
+            if (word.rootWord && word.publish) {
+                wordsList.push({
+                    "id": word.id,
+                    "translation": word.wordTranslation,
+                    "transliteration": word.wordTransliteration
+                });
+            }
+            return wordsList;
         }, []);
     };
 

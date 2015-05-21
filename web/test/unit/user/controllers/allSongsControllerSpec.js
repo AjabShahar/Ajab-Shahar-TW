@@ -41,7 +41,7 @@ describe('On All songs page', function() {
         it(' should setup filter categories and mark all the categories that have 0 items to filter on as disabled', function() {
             $httpBackend.flush();
 
-            expect(scope.filterItems.Word.length).toBe(4);
+            expect(scope.filterItems.Word.length).toBe(3);
             expect(scope.filterItems.Singer.length).toBe(6);
             expect(scope.filterItems.Poet.length).toBe(3);
             expect(scope.filterItems.Gathering.length).toBe(1);
@@ -191,7 +191,8 @@ var test_AllSongsList = {
                     "hindiIntroExcerpt": "Akath means inexpressible, indescribable, ineffable. Beyond words. Beyond language. Beyond mind. But why all the hue and cry if the tale cannot be told?",
                     "englishIntroExcerpt": "",
                     "writers": [],
-                    "rootWord": false
+                    "rootWord": false,
+                    "publish": true
                 },
                 {
                     "id": 14,
@@ -207,7 +208,8 @@ var test_AllSongsList = {
                             "hindiName": ""
                         }
                     ],
-                    "rootWord": true
+                    "rootWord": true,
+                    "publish": false
                 }
             ]
         },
@@ -307,7 +309,8 @@ var test_AllSongsList = {
                     "hindiIntroExcerpt": "A story tells of how, when the Buddha attained illumination, somebody asked him: ‘So, are you enlightened now?’ The Buddha’s response was: ‘I am awake.’",
                     "englishIntroExcerpt": "",
                     "writers": [],
-                    "rootWord": true
+                    "rootWord": true,
+                    "publish": true
                 }
             ]
         },
@@ -355,7 +358,8 @@ var test_AllSongsList = {
                     "hindiIntroExcerpt": "Akath means inexpressible, indescribable, ineffable. Beyond words. Beyond language. Beyond mind. But why all the hue and cry if the tale cannot be told?",
                     "englishIntroExcerpt": "",
                     "writers": [],
-                    "rootWord": false
+                    "rootWord": false,
+                    "publish": false
                 },
                 {
                     "id": 5,
@@ -365,7 +369,8 @@ var test_AllSongsList = {
                     "hindiIntroExcerpt": "A story tells of how, when the Buddha attained illumination, somebody asked him: ‘So, are you enlightened now?’ The Buddha’s response was: ‘I am awake.’",
                     "englishIntroExcerpt": "",
                     "writers": [],
-                    "rootWord": true
+                    "rootWord": true,
+                    "publish": true
                 },
                 {
                     "id": 10,
@@ -381,7 +386,8 @@ var test_AllSongsList = {
                             "hindiName": ""
                         }
                     ],
-                    "rootWord": true
+                    "rootWord": true,
+                    "publish":true
                 }
             ]
         }

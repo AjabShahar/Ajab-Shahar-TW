@@ -16,7 +16,8 @@ describe("Should test word mapper", function () {
             "wordIntroHindi": "Word Intro Hindi",
             "writers": [],
             "rootWord": true,
-            "displayAjabShaharTeam": true
+            "displayAjabShaharTeam": true,
+            "publish":true
         }]
     });
 

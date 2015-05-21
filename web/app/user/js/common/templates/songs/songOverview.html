@@ -8,7 +8,7 @@
     <h4 class='moreDesc'>{{englishTranslation}}</h4>
 
     <div ng-if="showVideo" class='youtubeVideo'>
-        <youtube width="100%" height="90%" videoid="videoUrl" ></youtube>
+        <youtube width="100%" height="90%" videoid="videoUrl"></youtube>
     </div>
     <div ng-if="showAudio">
         <sound-cloud audio-url="{{audioUrl}}" id="snd_{{id}}"></sound-cloud>
@@ -38,15 +38,10 @@
             <div class='creditBox'><a href="javascript:void(0)" class='link-text'>{{poet}}</a> POET</div>
             <div class='creditBox'><a href="javascript:void(0)" class='link-text'>{{singer}}</a> SINGER</div>
                 <span ng-repeat="word in words" class="creditBox">
-                 <span ng-if="word.isRootWord" class="link-text">
                      <a href="/words/#/details/{{word.id}}"
-                        target="_self">{{word.transliteration}}</a>
-                 </span>
-                 <span ng-if="!word.isRootWord">
-                     {{word.transliteration}}
-                 </span>
+                        target="_self" class="link-text">{{word.transliteration}}</a>
                  <span> WORD  </span>
-              </span>
+                </span>
         </div>
     </div>
 </div>
