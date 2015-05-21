@@ -51,10 +51,12 @@ public class PersonDAO extends AbstractDAO<PersonDetails> {
     }
 
     public PersonDetails updatePerson(PersonDetails updatablePerson) {
+        Session session = this.sessionFactory.openSession();
         Long id = updatablePerson.getId();
-        PersonDetails originalPersonData = (PersonDetails) sessionFactory.openStatelessSession().get(PersonDetails.class, id);
+        PersonDetails originalPersonData = (PersonDetails) session.get(PersonDetails.class, id);
         originalPersonData = invokeAllSetters(originalPersonData, updatablePerson);
         sessionFactory.getCurrentSession().update(originalPersonData);
+        session.close();
         return originalPersonData;
     }
 
