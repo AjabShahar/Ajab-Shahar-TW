@@ -17,7 +17,7 @@
             <h3>
                 <span class="header-title" ng-bind="content.title"></span>
             </h3>
-            <span class="header-excerpt-italic" ng-bind="content.excerpt"></span>
+            <span class="header-excerpt-italic" ng-if="hasText()" ng-bind="content.excerpt"></span>
         </div>
     </div>
     <!--end of titles-->
