@@ -22,6 +22,7 @@ angular.module("word").factory('wordMapper', [function () {
 
     getBasicDetails = function (words) {
         return _.reduce(words, function (wordBasicInfo, word) {
+            if (word.publish) {
                 wordBasicInfo.push({
                     "id": word.id,
                     "translation": word.wordTranslation,
@@ -29,6 +30,7 @@ angular.module("word").factory('wordMapper', [function () {
                     "isRootWord": word.rootWord
 
                 });
+            }
             wordBasicInfo = _.sortBy(wordBasicInfo, 'transliteration');
             return wordBasicInfo;
         }, []);

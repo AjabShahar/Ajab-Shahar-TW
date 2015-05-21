@@ -20,7 +20,7 @@ describe("Song content service", function () {
         expect(songsList.length).toBe(4);
 
         var wordsInSongs = songsContentService.getWordsFrom(songsList);
-        expect(wordsInSongs.length).toBe(4);
+        expect(wordsInSongs.length).toBe(3);
         var expectedList = ["bazaar", "Jaagna Sona", "Gitara", "Akath Katha"];
         wordsInSongs.forEach(function (words) {
             _.contains(expectedList, words[0]);
@@ -97,7 +97,8 @@ var test_songsList = [
                     "hindiIntroExcerpt": "Akath means inexpressible, indescribable, ineffable. Beyond words. Beyond language. Beyond mind. But why all the hue and cry if the tale cannot be told?",
                     "englishIntroExcerpt": "",
                     "writers": [],
-                    "rootWord": false
+                    "rootWord": false,
+                    "publish": true
                 },
                 {
                     "id": 14,
@@ -113,7 +114,8 @@ var test_songsList = [
                             "hindiName": ""
                         }
                     ],
-                    "rootWord": true
+                    "rootWord": true,
+                    "publish": false
                 }
             ]
 
@@ -211,7 +213,8 @@ var test_songsList = [
                     "hindiIntroExcerpt": "A story tells of how, when the Buddha attained illumination, somebody asked him: ‘So, are you enlightened now?’ The Buddha’s response was: ‘I am awake.’",
                     "englishIntroExcerpt": "",
                     "writers": [],
-                    "rootWord": true
+                    "rootWord": true,
+                    "publish": true
                 }
             ]
 
@@ -270,7 +273,8 @@ var test_songsList = [
                     "hindiIntroExcerpt": "Akath means inexpressible, indescribable, ineffable. Beyond words. Beyond language. Beyond mind. But why all the hue and cry if the tale cannot be told?",
                     "englishIntroExcerpt": "",
                     "writers": [],
-                    "rootWord": false
+                    "rootWord": false,
+                    "publish": true
                 },
                 {
                     "id": 5,
@@ -280,17 +284,9 @@ var test_songsList = [
                     "hindiIntroExcerpt": "A story tells of how, when the Buddha attained illumination, somebody asked him: ‘So, are you enlightened now?’ The Buddha’s response was: ‘I am awake.’",
                     "englishIntroExcerpt": "",
                     "writers": [],
-                    "rootWord": false
-                },
-                {
-                    "id": 5,
-                    "wordOriginal": "जागना सोना",
-                    "wordTranslation": "Waking Sleeping",
-                    "wordTransliteration": "Jaagna Sona",
-                    "hindiIntroExcerpt": "A story tells of how, when the Buddha attained illumination, somebody asked him: ‘So, are you enlightened now?’ The Buddha’s response was: ‘I am awake.’",
-                    "englishIntroExcerpt": "",
-                    "writers": [],
-                    "rootWord": true
+                    "rootWord": false,
+                    "publish": true
+
                 },
                 {
                     "id": 10,
@@ -306,7 +302,8 @@ var test_songsList = [
                             "hindiName": ""
                         }
                     ],
-                    "rootWord": false
+                    "rootWord": false,
+                    "publish": true
                 }
             ]
     }
