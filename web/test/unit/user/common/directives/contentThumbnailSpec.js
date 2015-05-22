@@ -1,6 +1,6 @@
 describe("Thumbnail model", function () {
     it("should construct song thumbnail model from song representation", function () {
-        var songThumbnail = new AjabShahar.ThumbnailObject(test_songRepresentation[0],"song");
+        var songThumbnail = new AjabShahar.ThumbnailObject(test_songRepresentation[0], "song");
 
         expect(songThumbnail.type).toBe("song");
         expect(songThumbnail.thumbnailImg).toBe("https://farm8.staticflickr.com/7583/16097980187_72dfa07068_o.png");
@@ -18,9 +18,25 @@ describe("Thumbnail model", function () {
 
     });
 
+    it("should construct song thumbnail model from song summary representation", function () {
+        var songThumbnail = new AjabShahar.ThumbnailObject(song, "song");
+
+        expect(songThumbnail.type).toBe("song");
+        expect(songThumbnail.thumbnailImg).toBe("http://3.bp.blogspot.com/-kwpgiMcXc24/TcOcowo6mTI/AAAAAAAAA9w/uNt6ZsJadDg/s1600/parvathy_baul03.jpg");
+
+        expect(songThumbnail.englishTitle).toBe("For a few days,O Heart");
+        expect(songThumbnail.translitTitle).toBe("Kichhu din mone mone");
+
+        expect(songThumbnail.contentFormat).toBe("video");
+        expect(songThumbnail.duration).toBe("5:45");
+
+        expect(songThumbnail.secondaryVerbPeople.verb).toBe("POET");
+        expect(songThumbnail.secondaryVerbPeople.people).toBe("Roshik");
+
+    });
 
     it("should construct song thumbnail model from song representation with proper singers information and content format", function () {
-        var songThumbnail = new AjabShahar.ThumbnailObject(test_songRepresentation[1],"song");
+        var songThumbnail = new AjabShahar.ThumbnailObject(test_songRepresentation[1], "song");
 
         expect(songThumbnail.type).toBe("song");
         expect(songThumbnail.thumbnailImg).toBe("https://farm8.staticflickr.com/7496/15609516053_67a9b050e9_o.png");
@@ -40,15 +56,15 @@ describe("Thumbnail model", function () {
 
 });
 
-describe("content thumbnail directive",function(){
+describe("content thumbnail directive", function () {
 
-    it("should show singers information only when there is only one singer for the song ",function(){
-        var songThumbnail = new AjabShahar.ThumbnailObject(test_songRepresentation[1],"song");
+    it("should show singers information only when there is only one singer for the song ", function () {
+        var songThumbnail = new AjabShahar.ThumbnailObject(test_songRepresentation[1], "song");
 
         expect(songThumbnail.showPrimaryVerbPeopleAlways()).toBeFalsy();
         expect(songThumbnail.showPrimaryVerbPeopleInDetails()).toBeTruthy();
 
-        var songThumbnail = new AjabShahar.ThumbnailObject(test_songRepresentation[0],"song");
+        var songThumbnail = new AjabShahar.ThumbnailObject(test_songRepresentation[0], "song");
 
         expect(songThumbnail.showPrimaryVerbPeopleAlways()).toBeTruthy();
         expect(songThumbnail.showPrimaryVerbPeopleInDetails()).toBeFalsy();
@@ -148,3 +164,22 @@ var test_songRepresentation = [
         "mediaCategory": null
     }
 ];
+var song = {
+    "id": 1,
+    "englishTranslationTitle": "For a few days,O Heart",
+    "englishTransliterationTitle": "Kichhu din mone mone",
+    "singers": [],
+    "poet": [
+        {
+            "id": 2,
+            "name": "Roshik",
+            "hindiName": "",
+            "primaryOccupation": null
+        }
+    ],
+    "duration": "5:45",
+    "category": "Songs",
+    "thumbnailUrl": "http://3.bp.blogspot.com/-kwpgiMcXc24/TcOcowo6mTI/AAAAAAAAA9w/uNt6ZsJadDg/s1600/parvathy_baul03.jpg",
+    "publish": true,
+    "contentFormat": "video"
+};
