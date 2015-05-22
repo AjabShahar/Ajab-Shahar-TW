@@ -93,7 +93,7 @@ public class WordResourceIT {
 
         ClientResponse response = httpGet(API_TO_EDIT_THE_WORD_WITH_ID_ONE);
 
-        WordIntermediateRepresentation responseEntity = getWord(response);
+        WordRepresentation responseEntity = getWord(response);
 
         assertEquals(1, responseEntity.getWordIntroductions().size());
     }
@@ -108,7 +108,7 @@ public class WordResourceIT {
 
         ClientResponse response = httpGet(API_TO_EDIT_THE_WORD_WITH_ID_ONE);
 
-        WordIntermediateRepresentation responseEntity = getWord(response);
+        WordRepresentation responseEntity = getWord(response);
 
         assertEquals(2, responseEntity.getWordIntroductions().size());
     }
@@ -123,7 +123,7 @@ public class WordResourceIT {
 
         ClientResponse response = httpGet(API_TO_EDIT_THE_WORD_WITH_ID_ONE);
 
-        WordIntermediateRepresentation responseEntity = getWord(response);
+        WordRepresentation responseEntity = getWord(response);
 
         Set<WordIntroduction> wordIntroductions = responseEntity.getWordIntroductions();
 
@@ -143,7 +143,7 @@ public class WordResourceIT {
 
         ClientResponse response = httpGet(API_TO_EDIT_THE_WORD_WITH_ID_ONE);
 
-        WordIntermediateRepresentation responseEntity = getWord(response);
+        WordRepresentation responseEntity = getWord(response);
 
         Set<WordIntroduction> wordIntroductions = responseEntity.getWordIntroductions();
 
@@ -215,7 +215,7 @@ public class WordResourceIT {
 
         ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
 
-        WordIntermediateRepresentation word = wordResponse.getEntity(WordIntermediateRepresentation.class);
+        WordRepresentation word = wordResponse.getEntity(WordRepresentation.class);
 
         assertThat(wordResponse.getStatus(), is(200));
         assertThat(word.getReflections().size(), is(1));
@@ -231,7 +231,7 @@ public class WordResourceIT {
 
         ClientResponse wordResponse = httpGet(API_TO_EDIT_THE_WORD_WITH_ID_ONE);
 
-        WordIntermediateRepresentation word = wordResponse.getEntity(WordIntermediateRepresentation.class);
+        WordRepresentation word = wordResponse.getEntity(WordRepresentation.class);
 
         assertThat(word.getReflections().size(), is(1));
         assertThat(word.getReflections().iterator().next().getId(), is(1L));
@@ -246,7 +246,7 @@ public class WordResourceIT {
 
         ClientResponse response = httpGet(API_TO_EDIT_THE_WORD_WITH_ID_ONE);
 
-        WordIntermediateRepresentation responseEntity = getWord(response);
+        WordRepresentation responseEntity = getWord(response);
 
         assertEquals(true, responseEntity.getDisplayAjabShaharTeam());
     }
@@ -262,10 +262,10 @@ public class WordResourceIT {
                 null, false,thumbnailUrl, reflectionExcerpt, duration, verb, contentType));
 
         ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
-        WordIntermediateRepresentation word = wordResponse.getEntity(WordIntermediateRepresentation.class);
+        WordRepresentation word = wordResponse.getEntity(WordRepresentation.class);
 
         wordResponse = httpGet("http://localhost:%d/api/words/edit?id=" + word.getId());
-        word = wordResponse.getEntity(WordIntermediateRepresentation.class);
+        word = wordResponse.getEntity(WordRepresentation.class);
 
         assertThat(word.getDefaultReflection().getId(), is(2L));
     }
@@ -280,7 +280,7 @@ public class WordResourceIT {
 
         //get existing word
         ClientResponse wordResponse = httpGet("http://localhost:%d/api/words/edit?id=1");
-        WordIntermediateRepresentation word = wordResponse.getEntity(WordIntermediateRepresentation.class);
+        WordRepresentation word = wordResponse.getEntity(WordRepresentation.class);
         assertNull(word.getDefaultReflection());
 
         //change the word - set a default reflection
@@ -290,7 +290,7 @@ public class WordResourceIT {
         wordResponse = httpGet("http://localhost:%d/api/words/edit?id=1");
 
         //check the default reflection in DB
-        word = wordResponse.getEntity(WordIntermediateRepresentation.class);
+        word = wordResponse.getEntity(WordRepresentation.class);
         assertThat(word.getDefaultReflection().getId(), is(2L));
     }
 
@@ -303,7 +303,7 @@ public class WordResourceIT {
 
         //get existing word
         ClientResponse wordResponse = httpGet("http://localhost:%d/api/words/edit?id=2");
-        WordIntermediateRepresentation word = wordResponse.getEntity(WordIntermediateRepresentation.class);
+        WordRepresentation word = wordResponse.getEntity(WordRepresentation.class);
         assertEquals(2l, word.getDefaultReflection().getId());
 
         //change the word - remove a default reflection
@@ -312,7 +312,7 @@ public class WordResourceIT {
         wordResponse = httpGet("http://localhost:%d/api/words/edit?id=2");
 
         //check the default reflection in DB
-        word = wordResponse.getEntity(WordIntermediateRepresentation.class);
+        word = wordResponse.getEntity(WordRepresentation.class);
         assertNull(word.getDefaultReflection());
     }
 
@@ -348,15 +348,15 @@ public class WordResourceIT {
 
         ClientResponse words = httpGet(API_TO_EDIT_THE_WORD_WITH_ID_ONE);
 
-        WordIntermediateRepresentation word = getWord(words);
+        WordRepresentation word = getWord(words);
         Set<WordSummaryRepresentation> wordSummaryRepresentations = getWordSummaryRepresentations(word);
 
         jsonObject.put("relatedWords", wordSummaryRepresentations);
 
         ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
-        WordIntermediateRepresentation wordIntermediateRepresentation = getWord(wordResponse);
+        WordRepresentation wordRepresentation = getWord(wordResponse);
 
-        assertThat(wordIntermediateRepresentation.getRelatedWords().size(), is(1));
+        assertThat(wordRepresentation.getRelatedWords().size(), is(1));
     }
 
     @Test
@@ -368,19 +368,19 @@ public class WordResourceIT {
 
         ClientResponse words = httpGet(API_TO_EDIT_THE_WORD_WITH_ID_ONE);
 
-        WordIntermediateRepresentation word = getWord(words);
+        WordRepresentation word = getWord(words);
         Set<WordSummaryRepresentation> wordSummaryRepresentations = getWordSummaryRepresentations(word);
 
         jsonObject.put("synonyms", wordSummaryRepresentations);
 
         ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
-        WordIntermediateRepresentation wordIntermediateRepresentation = getWord(wordResponse);
+        WordRepresentation wordRepresentation = getWord(wordResponse);
 
-        assertThat(wordIntermediateRepresentation.getSynonyms().size(), is(1));
-        assertThat((long) wordIntermediateRepresentation.getSynonyms().iterator().next().getId(), is(word.getId()));
+        assertThat(wordRepresentation.getSynonyms().size(), is(1));
+        assertThat((long) wordRepresentation.getSynonyms().iterator().next().getId(), is(word.getId()));
     }
 
-    private Set<WordSummaryRepresentation> getWordSummaryRepresentations(WordIntermediateRepresentation word) {
+    private Set<WordSummaryRepresentation> getWordSummaryRepresentations(WordRepresentation word) {
         Set<WordSummaryRepresentation> wordSummaryRepresentations = new LinkedHashSet<>();
         WordSummaryRepresentation wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(),
                 word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new LinkedHashSet<>(), word.getIsRootWord(), word.isPublish());
@@ -398,7 +398,7 @@ public class WordResourceIT {
         ClientResponse words = httpGet(API_TO_EDIT_THE_WORD_WITH_ID_ONE);
         Set<WordSummaryRepresentation> wordSummaryRepresentations = new LinkedHashSet<>();
 
-        WordIntermediateRepresentation word = getWord(words);
+        WordRepresentation word = getWord(words);
         WordSummaryRepresentation wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(),
                 word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new LinkedHashSet<>(), word.getIsRootWord(), word.isPublish());
         wordSummaryRepresentations.add(wordSummaryRepresentation);
@@ -437,7 +437,7 @@ public class WordResourceIT {
         ClientResponse words = httpGet(API_TO_EDIT_THE_WORD_WITH_ID_ONE);
         Set<WordSummaryRepresentation> wordSummaryRepresentations = new LinkedHashSet<>();
 
-        WordIntermediateRepresentation word = getWord(words);
+        WordRepresentation word = getWord(words);
         WordSummaryRepresentation wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(),
                 word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new LinkedHashSet<>(), word.getIsRootWord(), word.isPublish());
         wordSummaryRepresentations.add(wordSummaryRepresentation);
@@ -484,11 +484,11 @@ public class WordResourceIT {
 
         ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
 
-        WordIntermediateRepresentation responseEntity = getWord(wordResponse);
+        WordRepresentation responseEntity = getWord(wordResponse);
 
-        WordIntermediateRepresentation wordIntermediateRepresentation = getWord(httpGet("http://localhost:%d/api/words/edit?id=" + responseEntity.getId()));
+        WordRepresentation wordRepresentation = getWord(httpGet("http://localhost:%d/api/words/edit?id=" + responseEntity.getId()));
 
-        SongSummaryRepresentation songs = wordIntermediateRepresentation.getSongs().iterator().next();
+        SongSummaryRepresentation songs = wordRepresentation.getSongs().iterator().next();
 
         assertEquals("Ravi Das", songs.getSingers().iterator().next().getName());
     }
@@ -505,10 +505,10 @@ public class WordResourceIT {
         jsonObject.put("writers", writers);
 
         ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
-        WordIntermediateRepresentation word = wordResponse.getEntity(WordIntermediateRepresentation.class);
+        WordRepresentation word = wordResponse.getEntity(WordRepresentation.class);
 
         wordResponse = httpGet("http://localhost:%d/api/words/edit?id=" + word.getId());
-        word = wordResponse.getEntity(WordIntermediateRepresentation.class);
+        word = wordResponse.getEntity(WordRepresentation.class);
 
         assertThat(word.getId(), is(greaterThan(new Long(1))));
         System.out.println(word.getId());
@@ -523,10 +523,10 @@ public class WordResourceIT {
         dbSetup.launch();
 
         ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
-        WordIntermediateRepresentation wordIntermediateRepresentation = getWord(wordResponse);
+        WordRepresentation wordRepresentation = getWord(wordResponse);
 
         assertThat(wordResponse.getStatus(), is(200));
-        assertThat(wordIntermediateRepresentation.getThumbnailUrl(), is("some url"));
+        assertThat(wordRepresentation.getThumbnailUrl(), is("some url"));
 
     }
 
@@ -538,19 +538,19 @@ public class WordResourceIT {
         dbSetup.launch();
 
         ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
-        WordIntermediateRepresentation wordIntermediateRepresentation = getWord(wordResponse);
+        WordRepresentation wordRepresentation = getWord(wordResponse);
 
         assertThat(wordResponse.getStatus(), is(200));
-        assertThat(wordIntermediateRepresentation.getThumbnailUrl(), is("some url"));
+        assertThat(wordRepresentation.getThumbnailUrl(), is("some url"));
 
-        wordResponse = httpGet("http://localhost:%d/api/words/edit?id=" + wordIntermediateRepresentation.getId());
-        wordIntermediateRepresentation = getWord(wordResponse);
-        wordIntermediateRepresentation.setThumbnailUrl("other Url");
+        wordResponse = httpGet("http://localhost:%d/api/words/edit?id=" + wordRepresentation.getId());
+        wordRepresentation = getWord(wordResponse);
+        wordRepresentation.setThumbnailUrl("other Url");
 
-        wordResponse = loginAndPost("http://localhost:%d/api/words", wordIntermediateRepresentation);
-        wordIntermediateRepresentation = getWord(wordResponse);
+        wordResponse = loginAndPost("http://localhost:%d/api/words", wordRepresentation);
+        wordRepresentation = getWord(wordResponse);
 
-        assertThat(wordIntermediateRepresentation.getThumbnailUrl(), is("other Url"));
+        assertThat(wordRepresentation.getThumbnailUrl(), is("other Url"));
     }
 
     @Test
@@ -563,13 +563,13 @@ public class WordResourceIT {
         jsonObject.put("publish",true);
 
         ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
-        WordIntermediateRepresentation wordIntermediateRepresentation = getWord(wordResponse);
+        WordRepresentation wordRepresentation = getWord(wordResponse);
 
-        wordResponse = httpGet("http://localhost:%d/api/words/edit?id=" + wordIntermediateRepresentation.getId());
-        wordIntermediateRepresentation = getWord(wordResponse);
+        wordResponse = httpGet("http://localhost:%d/api/words/edit?id=" + wordRepresentation.getId());
+        wordRepresentation = getWord(wordResponse);
 
         assertThat(wordResponse.getStatus(), is(200));
-        assertThat(wordIntermediateRepresentation.isPublish(), is(true));
+        assertThat(wordRepresentation.isPublish(), is(true));
     }
 
     private NewCookie geCookie(ClientResponse response) {
@@ -586,7 +586,7 @@ public class WordResourceIT {
         return sessionCookie;
     }
 
-    private WordIntermediateRepresentation getWord(ClientResponse response) {
-        return response.getEntity(WordIntermediateRepresentation.class);
+    private WordRepresentation getWord(ClientResponse response) {
+        return response.getEntity(WordRepresentation.class);
     }
 }

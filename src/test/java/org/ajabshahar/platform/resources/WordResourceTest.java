@@ -26,7 +26,7 @@ public class WordResourceTest {
 
     private WordResource wordResource;
     private Word word;
-    private WordIntermediateRepresentation wordIntermediateRepresentation;
+    private WordRepresentation wordRepresentation;
     private Set<Word> wordList;
 
     @Before
@@ -36,8 +36,8 @@ public class WordResourceTest {
         wordList = new LinkedHashSet<>();
 
         word.setId(WORD_ID);
-        wordIntermediateRepresentation = new WordIntermediateRepresentation();
-        wordIntermediateRepresentation.setId(WORD_ID);
+        wordRepresentation = new WordRepresentation();
+        wordRepresentation.setId(WORD_ID);
     }
 /*
     @Test
