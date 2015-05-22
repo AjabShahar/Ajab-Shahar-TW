@@ -68,18 +68,20 @@ var songDetailsController = function ($scope, $location, songsContentService) {
     };
 
     $scope.selectThumbnail = function (thumbnail) {
-        songsContentService.getSong(thumbnail.id).success(function (response) {
-            $scope.detailsObject = new AjabShahar.DetailsObject(response, thumbnail.type);
-            $scope.selectedSong = response;
+        if(thumbnail != null){
+            songsContentService.getSong(thumbnail.id).success(function (response) {
+                $scope.detailsObject = new AjabShahar.DetailsObject(response, thumbnail.type);
+                $scope.selectedSong = response;
 
-            initialiseMainTitles();
-            getSongsLyrics($scope.selectedSong)
+                initialiseMainTitles();
+                getSongsLyrics($scope.selectedSong)
 
-        });
+            });
+        }
     };
 
     $scope.hasSongText = function () {
-        if ($scope.selectedSong.songText.songTextContents.length > 0)
+        if ($scope.selectedSong.songText != null && $scope.selectedSong.songText.songTextContents.length > 0)
             return true;
         return false;
     };

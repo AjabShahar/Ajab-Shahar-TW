@@ -21,7 +21,7 @@
     </script>
 </head>
 
-<body ng-controller="songDetailsController" class="songs-details header-with-carousel details">
+<body ng-controller="songDetailsController"  class="songs-details header-with-carousel details">
     <ajab-shahar-header></ajab-shahar-header>
     <div class="page-header">
         <div class="ajab-wrapper">
@@ -30,7 +30,7 @@
                     <span class="page-logo">songs</span>
                 </a>
             </div>
-            <div class="page-title">
+            <div class="page-title" ng-cloak>
                 <span class="main">{{mainTitle.transliteration}}</span>
                 <span class="sub-main">{{mainTitle.translation}}</span>
             </div>
@@ -39,10 +39,10 @@
 
     <div class="lower-pardah" ng-class="{'no-pardah': !containsVersions() }">
 
-        <div class="versions toggleBySlide" ng-show="shouldShowCarousel()">
+        <div class="versions toggleBySlide" ng-show="shouldShowCarousel()" ng-cloak>
             <carousel items="carouselItems" item-clicked="selectThumbnail" format="'transliteration'"></carousel>
         </div>
-        <div class="see-more" ng-show="containsVersions()" ng-click="toggleCarousel()">
+        <div class="see-more" ng-show="containsVersions()" ng-click="toggleCarousel()" ng-cloak>
             <a class="version" href="javascript:void(0)" >
                 <span ng-show="containsWordIntro"></span> {{numberOfVersions}} version<span ng-show="numberOfVersions != 1">s</span>
                 <span class="arrow" ng-class="shouldShowCarousel() ? 'up-arrow' : ''"></span>
@@ -59,8 +59,10 @@
                         </ul>
 
                     </div>
-                    <content-details ng-if="detailsObject" content="detailsObject"></content-details>
-                <div ng-show="hasSongText()" id="poem_container">
+                <div class="detail-text-wrapper">
+                    <content-details ng-if="detailsObject" content="detailsObject" ng-cloak></content-details>
+                </div>
+                <div ng-show="hasSongText()" id="poem_container" ng-cloak>
                     <div ng-show="originalVisible" class="toggleByFading  hindi">
                         <h2 class="song-heading">{{selectedSong.songTitle.originalTitle}}</h2>
                         <div ng-if="songText.openingCouplets.length!=0" ng-repeat="openingCouplet in songText.openingCouplets track by $index" class="initial-couplets">
