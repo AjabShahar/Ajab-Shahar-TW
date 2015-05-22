@@ -1,6 +1,10 @@
 var songDetailsController = function ($scope, $location, songsContentService, songMapper) {
 
     var carouselOpen = true;
+    $scope.mainTitle = {transliteration: "", translation: ""};
+    $scope.selectedSong = {};
+    $scope.songText = {};
+    $scope.englishTransliterationVisible = true;
 
     $scope.init = function () {
         $scope.carouselItems = [];
@@ -12,7 +16,19 @@ var songDetailsController = function ($scope, $location, songsContentService, so
                 })
             );
             $scope.numberOfVersions = $scope.carouselItems.length;
+            sortCarouselItems();
         });
+    };
+
+    var sortCarouselItems = function () {
+
+        for (index in $scope.carouselItems) {
+            if ($scope.carouselItems[index].id == $scope.songId) {
+                var dummyVar = $scope.carouselItems[index];
+                $scope.carouselItems.splice(index, 1);
+                $scope.carouselItems.splice(0, 0, dummyVar);
+            }
+        }
     };
 
     $scope.containsVersions = function () {
@@ -27,10 +43,15 @@ var songDetailsController = function ($scope, $location, songsContentService, so
         carouselOpen = !carouselOpen;
     };
 
-    $scope.getSongsLyrics = function (songTextComponents, openingCouplets) {
+    var getSongsLyrics = function (song) {
         $scope.songText.songTextContents = [];
         $scope.songText.openingCouplets = [];
-        sortedSongTextComponents = _.sortBy(songTextComponents, function (songTextComponent) {
+        $scope.refrainOriginal = song.songText.refrainOriginal;
+        $scope.refrainTranslation = song.songText.refrainEnglishTranslation;
+        $scope.refrainTransliteration = song.songText.refrainEnglishTransliteration;
+
+
+        sortedSongTextComponents = _.sortBy(song.songText.songTextContents, function (songTextComponent) {
             return songTextComponent.sequenceNumber;
         });
         for (index in sortedSongTextComponents) {
@@ -38,7 +59,7 @@ var songDetailsController = function ($scope, $location, songsContentService, so
             $scope.songText.songTextContents.push(item);
         }
 
-        sortedSongTextComponents = _.sortBy(openingCouplets, function (openingCouplet) {
+        sortedSongTextComponents = _.sortBy(song.songText.openingCouplets, function (openingCouplet) {
             return openingCouplet.sequenceNumber;
         });
         for (index in sortedSongTextComponents) {
@@ -49,10 +70,31 @@ var songDetailsController = function ($scope, $location, songsContentService, so
 
     $scope.selectThumbnail = function (thumbnail) {
         songsContentService.getSong(thumbnail.id).success(function (response) {
-            $scope.detailsObject = new AjabShahar.DetailsObject(response, thumbnail.type)
+            $scope.detailsObject = new AjabShahar.DetailsObject(response, thumbnail.type);
+            $scope.selectedSong = response;
+
+            initialiseMainTitles();
+            getSongsLyrics($scope.selectedSong)
+
         });
     };
 
+    $scope.hasSongText = function () {
+        if ($scope.selectedSong.songText.songTextContents.length > 0)
+            return true;
+        return false;
+    };
+
+    var initialiseMainTitles = function () {
+        if (!_.isEmpty($scope.selectedSong.umbrellaTitle.englishTranslation)) {
+            $scope.mainTitle.translation = $scope.selectedSong.umbrellaTitle.englishTranslation;
+            $scope.mainTitle.transliteration = $scope.selectedSong.umbrellaTitle.englishTransliteration;
+        }
+        else {
+            $scope.mainTitle.translation = $scope.selectedSong.songTitle.englishTranslation;
+            $scope.mainTitle.transliteration = $scope.selectedSong.songTitle.englishTransliteration;
+        }
+    };
 
     $scope.showEnglishTranslation = function () {
         $scope.englishTransliterationVisible = false;
