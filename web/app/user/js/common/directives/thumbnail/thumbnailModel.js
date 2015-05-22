@@ -53,7 +53,7 @@ AjabShahar.ThumbnailObject = function (contentItem, type) {
         if (!_.isEmpty(reflection)) {
             self.type = type;
             self.id = reflection.id;
-            self.thumbnailImg = reflection.thumbnailURL ? reflection.thumbnailURL : "/user/img/reflections/bw_background2b.jpg";
+            self.thumbnailImg = reflection.thumbnailImg ? reflection.thumbnailImg : "/user/img/reflections/bw_background2b.jpg";
             self.description = reflection.excerpt ? reflection.excerpt : reflection.reflectionExcerpt;
             self.verbPeople = {
                 verb: reflection.verb,
