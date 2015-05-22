@@ -3,6 +3,7 @@ package org.ajabshahar.core;
 import org.ajabshahar.platform.daos.ReflectionDAO;
 import org.ajabshahar.platform.models.Reflection;
 
+import java.util.List;
 import java.util.Set;
 
 public class Reflections {
@@ -29,6 +30,9 @@ public class Reflections {
         return reflectionRepository.findBy(landingPage, authoringComplete);
     }
 
+    public Set<Reflection> getAllByIds(List<Long> ids) {
+        return reflectionRepository.findByIds(ids);
+    }
 
     public Reflection findReflection(int id) {
         return reflectionRepository.find(id);

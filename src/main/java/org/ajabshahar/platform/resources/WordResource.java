@@ -29,11 +29,11 @@ public class WordResource {
     public Response createWord(String jsonWord) {
         Word word = wordRepresentationFactory.create(jsonWord);
         word = words.create(word);
-        WordIntermediateRepresentation wordIntermediateRepresentation = wordRepresentationFactory.createIntermediateRepresentation(word);
-        return Response.status(200).entity(wordIntermediateRepresentation).build();
+        WordRepresentation wordRepresentation = wordRepresentationFactory.createWordRepresentation(word);
+        return Response.status(200).entity(wordRepresentation).build();
     }
 
-    @GET
+  /*  @GET
     @UnitOfWork
     public Response listAllWordDetails(@DefaultValue("false") @QueryParam("showOnMainLandingPage") Boolean showOnMainLandingPage,
                                        @DefaultValue("false") @QueryParam("publish") boolean publish) {
@@ -42,13 +42,13 @@ public class WordResource {
         return Response.ok(wordsRepresentation).build();
     }
 
-
+*/
     @GET
     @Path("/edit")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getWordById(@QueryParam("id") int wordId, @DefaultValue("false") @QueryParam("publish") boolean publish) {
         Word word = words.findBy(wordId, publish);
-        WordIntermediateRepresentation intermediateRepresentation = wordRepresentationFactory.createIntermediateRepresentation(word);
+        WordRepresentation intermediateRepresentation = wordRepresentationFactory.createWordRepresentation(word);
         return Response.ok(intermediateRepresentation).build();
     }
 

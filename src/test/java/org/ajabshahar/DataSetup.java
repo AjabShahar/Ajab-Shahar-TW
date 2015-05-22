@@ -154,16 +154,16 @@ public class DataSetup {
                     INSERT_CATEGORY,
                     INSERT_PERSON,
                     INSERT_GATHERINGS,
-                    INSERT_UMBRELLA_TITLE,
                     INSERT_UMBRELLA_TITLE_CATEGORY,
+                    INSERT_UMBRELLA_TITLE,
                     INSERT_SONGS,
-                    INSERT_SONG_TITLE,
                     INSERT_SONG_TITLE_CATEGORY,
+                    INSERT_SONG_TITLE,
                     INSERT_SONG_SINGER,
+                    INSERT_REFLECTIONS,
                     INSERT_WORDS,
                     INSERT_WORD_INTRODUCTION,
                     INSERT_WORD_INTRODUCTION_WITH_COUPLET_CONTENT_TYPE,
-                    INSERT_REFLECTIONS,
                     INSERT_WORD_REFLECTIONS
             );
 }

@@ -58,4 +58,13 @@ public class ReflectionDAO extends AbstractDAO<Reflection> {
         Session currentSession = sessionFactory.getCurrentSession();
         return (Reflection) currentSession.get(Reflection.class,(long)id);
     }
+
+    public LinkedHashSet<Reflection> findByIds(List<Long> ids){
+        Session currentSession = sessionFactory.getCurrentSession();
+        List<Reflection> reflections = currentSession
+                .createQuery("from Reflection r where r.id in :reflections")
+                .setParameterList("reflections", ids)
+                .list();
+        return  new LinkedHashSet<>(reflections);
+    }
 }

@@ -9,10 +9,7 @@ import com.sun.jersey.api.client.ClientResponse;
 import io.dropwizard.testing.junit.DropwizardAppRule;
 import net.minidev.json.JSONObject;
 import org.ajabshahar.DataSetup;
-import org.ajabshahar.api.PersonSummaryRepresentation;
-import org.ajabshahar.api.ReflectionRepresentation;
-import org.ajabshahar.api.SongSummaryRepresentation;
-import org.ajabshahar.api.WordSummaryRepresentation;
+import org.ajabshahar.api.*;
 import org.ajabshahar.platform.PlatformApplication;
 import org.ajabshahar.platform.PlatformConfiguration;
 import org.ajabshahar.platform.models.ReflectionTranscript;
@@ -22,14 +19,13 @@ import org.junit.ClassRule;
 import org.junit.Test;
 
 import javax.ws.rs.core.NewCookie;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.*;
 
 import static org.ajabshahar.DataSetup.INSERT_GATHERINGS;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 public class ReflectionResourceIT {
@@ -720,6 +716,49 @@ public class ReflectionResourceIT {
         assertThat(reflection.getDuration(), is("200"));
     }
 
+    @Test
+    public void shouldGetReflectionsByIds(){
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_COMPLETE_STARTER_SET);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        ClientResponse reflectionResponse = client.resource(
+                String.format("http://localhost:%d/api/reflections/summaries?", RULE.getLocalPort(), 1, 2))
+                .queryParam("ids", "1")
+                .queryParam("ids","2")
+                .header("Content-type", "application/json")
+                .get(ClientResponse.class);
+
+        Set<LinkedHashMap> reflectionSummaries = reflectionResponse.getEntity(Set.class);
+
+        assertNotNull(reflectionSummaries);
+        assertEquals(2, reflectionSummaries.size());
+        Iterator<LinkedHashMap> summaryRepresentationIterator = reflectionSummaries.iterator();
+        assertEquals("I hate that word!", summaryRepresentationIterator.next().get("title"));
+        assertEquals("Oh that wonderful song!", summaryRepresentationIterator.next().get("title"));
+    }
+
+    @Test
+    public void shouldGetReflectionsByIdsEvenWhenThereIsJustOneId(){
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_COMPLETE_STARTER_SET);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        ClientResponse reflectionResponse = client.resource(
+                String.format("http://localhost:%d/api/reflections/summaries?", RULE.getLocalPort()))
+                .queryParam("ids","1")
+                .header("Content-type", "application/json")
+                .get(ClientResponse.class);
+
+        LinkedHashSet reflectionSummaries = reflectionResponse.getEntity(LinkedHashSet.class);
+
+        assertNotNull(reflectionSummaries);
+        assertEquals(1,reflectionSummaries.size());
+        LinkedHashMap  summaryRepresentation = (LinkedHashMap) reflectionSummaries.iterator().next();
+        assertEquals("Oh that wonderful song!", summaryRepresentation.get("title"));
+    }
     private static String resourceFilePath(String resource) {
         return ClassLoader.getSystemClassLoader().getResource(resource).getFile();
     }

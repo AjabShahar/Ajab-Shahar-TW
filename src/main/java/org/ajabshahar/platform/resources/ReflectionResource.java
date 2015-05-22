@@ -1,10 +1,7 @@
 package org.ajabshahar.platform.resources;
 
 import io.dropwizard.hibernate.UnitOfWork;
-import org.ajabshahar.api.ReflectionRepresentation;
-import org.ajabshahar.api.ReflectionRepresentationFactory;
-import org.ajabshahar.api.ReflectionsRepresentation;
-import org.ajabshahar.api.ReflectionsSummaryRepresentation;
+import org.ajabshahar.api.*;
 import org.ajabshahar.core.Reflections;
 import org.ajabshahar.platform.models.Reflection;
 import org.slf4j.Logger;
@@ -13,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 import java.util.Set;
 
 @Path("/reflections")
@@ -47,6 +45,16 @@ public class ReflectionResource {
         ReflectionsSummaryRepresentation reflectionsRepresentation = reflectionRepresentationFactory.toReflectionsSummaryRepresentation(reflectionList);
         return Response.ok(reflectionsRepresentation).build();
     }
+
+    @GET
+    @UnitOfWork
+    @Path("/summaries")
+    public Response getReflectionSummaries(@QueryParam("ids") List<Long> ids) {
+        Set<Reflection> reflectionList = reflections.getAllByIds(ids);
+        Set<ReflectionSummaryRepresentation> reflectionsRepresentation = reflectionRepresentationFactory.toReflectionSummaryList(reflectionList);
+        return Response.ok(reflectionsRepresentation).build();
+    }
+
 
     @GET
     @UnitOfWork
