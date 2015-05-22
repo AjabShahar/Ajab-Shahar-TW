@@ -1,4 +1,4 @@
-var songDetailsController = function ($scope, $location, songsContentService, songMapper) {
+var songDetailsController = function ($scope, $location, songsContentService) {
 
     var carouselOpen = true;
     $scope.mainTitle = {transliteration: "", translation: ""};
@@ -21,7 +21,6 @@ var songDetailsController = function ($scope, $location, songsContentService, so
     };
 
     var sortCarouselItems = function () {
-
         for (index in $scope.carouselItems) {
             if ($scope.carouselItems[index].id == $scope.songId) {
                 var dummyVar = $scope.carouselItems[index];
@@ -126,4 +125,4 @@ var songDetailsController = function ($scope, $location, songsContentService, so
 };
 
 songDetailsApp
-    .controller('songDetailsController', ['$scope', '$location', 'songsContentService', 'songMapper', songDetailsController]);
+    .controller('songDetailsController', ['$scope', '$location', 'songsContentService', songDetailsController]);

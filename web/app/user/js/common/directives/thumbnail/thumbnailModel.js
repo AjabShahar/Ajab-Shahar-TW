@@ -11,10 +11,6 @@ AjabShahar.ThumbnailObject = function (contentItem, type) {
                 verb: getVerbForSong(song),
                 people: getSingersFromSong(song.singers)
             };
-            self.secondaryVerbPeople = {
-                verb: !_.isEmpty(song.poets) ? "POET" : undefined,
-                people: !_.isEmpty(song.poets) ? song.poets[0].name : ""
-            };
             self.duration = song.duration;
             self.contentCategory = song.songCategory ? song.songCategory.name : "song";
             if (!_.isUndefined(song.songTitle)) {
@@ -22,12 +18,20 @@ AjabShahar.ThumbnailObject = function (contentItem, type) {
                 self.englishTitle = song.songTitle.englishTranslation;
                 self.translitTitle = song.songTitle.englishTransliteration;
                 self.contentFormat = song.youtubeVideoId ? 'video' : 'audio';
+                self.secondaryVerbPeople = {
+                    verb: !_.isEmpty(song.poets) ? "POET" : undefined,
+                    people: !_.isEmpty(song.poets) ? song.poets[0].name : ""
+                };
             }
             else {
                 self.englishTitle = song.englishTranslationTitle;
                 self.translitTitle = song.englishTransliterationTitle;
                 self.thumbnailImg = song.thumbnailUrl;
                 self.contentFormat = song.contentFormat;
+                self.secondaryVerbPeople = {
+                    verb: !_.isEmpty(song.poet) ? "POET" : undefined,
+                    people: !_.isEmpty(song.poet) ? song.poet[0].name : ""
+                };
             }
         }
     };
