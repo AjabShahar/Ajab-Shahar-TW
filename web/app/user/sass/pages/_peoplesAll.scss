@@ -1,0 +1,132 @@
+.all-people {
+    background: transparent url('/user/img/people/all-people-map-bg.png') left top;
+    background-size: contain;
+
+    &.grid-layout {
+
+        .people-grid-view {
+            width: 65%;
+            margin: 0 auto;
+
+            position: relative;
+            .people-grid-content-wrapper {
+                background: transparent url('/user/img/people/all-people-content-bg2.png') left top;
+                            background-size: cover;
+                            background-repeat: no-repeat repeat;
+
+                .people-grid-wrapper {
+                    overflow: visible;
+                    margin: 0 30px;
+                    height: auto;
+                    .pagination-head {
+                        margin-top: 75px;
+                    }
+                    .people-wrapper {
+                        clear: both;
+                        height: 180px;
+                        text-align: left;
+                    }
+                    .image {
+                        float: left;
+                        width: 25%;
+
+                    }
+                    .people-info {
+
+                          .title {
+                            text-transform: Capitalize;
+                            font-size: 21px;
+                            color: $dark-grey;
+
+                          }
+                          .job-title {
+                            text-transform: Capitalize;
+                            font-size: 14px;
+                            color: $grey;
+                          }
+                          float: left;
+                          width: 70%;
+                          font-size: 16px;
+                          font-weight: 300;
+                          font-family: Meriweather;
+                          margin-left: 3%;
+                          color: $grey;
+
+                         .see-more {
+                            overflow: visible;
+                            max-height: 1000px !important;
+                           /* transition: all 1s;*/
+                         }
+                         .see-less {
+                            max-height: 4.5em;
+                           /* transition: all 1s;*/
+                         }
+
+
+                    }
+                }
+
+            }
+        }
+
+    }
+
+    .clamped {
+        line-height: 1.5;
+        overflow: hidden;
+        position: relative;
+    }
+    /*.see-more {
+        overflow: visible;
+        max-height: 1000px !important;
+        transition: all 0.8s;
+    }*/
+
+    .clamped-2 {
+        /* Clamp to 2 lines, ie line-height x 2: */
+        max-height: 4.5em;
+    }
+
+    .ellipsis {
+        bottom: 0;
+        position: absolute;
+        right: 0;
+        color: $pink;
+        font-weight: 300;
+    }
+    .ellipsis-less {
+        color: $pink;
+        font-weight: 300;
+        position: relative;
+        padding-left: 20px;
+    }
+
+    .fill {
+        height: 100%;
+        position: absolute;
+        width: 100%;
+    }
+
+
+
+
+    #page-wrapper {
+        width: 100%;
+        min-height: 750px;
+    }
+
+    .sadhus {
+        background: transparent url('/user/img/people/all-people-sadhus.png') center bottom;
+        background-size: contain;
+    }
+    .yoginis {
+        background: transparent url('/user/img/people/all-people-yoginis.png') center bottom;
+        background-size: contain;
+
+    }
+    .hansas {
+        background: transparent url('/user/img/people/all-people-hansas.png') center bottom;
+        background-size: contain;
+    }
+
+}
