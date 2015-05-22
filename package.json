@@ -22,18 +22,14 @@
     "run-sequence": "^1.0.2"
   },
   "scripts": {
-    "preinstall": "npm i -g http-server",
     "postinstall": "bower install",
     "prestart": "npm install",
-    "start": "http-server app -o -d false -p 8000",
     "pretest": "npm install",
     "test": "node node_modules/karma/bin/karma start app/test/js/config/karma.conf.js",
     "dev": "node node_modules/karma/bin/karma start app/test/js/config/karma.dev.conf.js",
     "test-single-run": "node node_modules/karma/bin/karma start app/test/js/config/karma.conf.js  --single-run",
     "preupdate-webdriver": "npm install",
-    "update-webdriver": "webdriver-manager update",
-    "preprotractor": "npm run update-webdriver",
-    "protractor": "protractor test/protractor-conf.js"
+    "update-webdriver": "webdriver-manager update"
   },
   "repository": {
     "type": "git",
