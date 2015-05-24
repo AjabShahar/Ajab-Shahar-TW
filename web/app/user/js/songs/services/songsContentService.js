@@ -1,4 +1,6 @@
-var songsContentService = function ($http) {
+"use strict";
+
+var songsContentService = function ($http,$q) {
     var getSongsVersions = function (id) {
         return $http.get('/api/songs/versions?id=' + id);
         //return $http.get('/api/songs/'+id+"/versions");
@@ -16,13 +18,6 @@ var songsContentService = function ($http) {
     var getSong = function (id) {
         return $http.get('/api/songs/getPublishedSongs/' + id);
     };
-
-    //var wordSeen = function(word,wordsList){
-    //    return _.some(wordsList,function(wordInList){
-    //        return wordInList[0] === word.translation;
-    //    })
-    //};
-
     var getWordsFrom = function (songs) {
         var wordsDictionary = {};
         if (!_.isEmpty(songs)) {
@@ -75,6 +70,37 @@ var songsContentService = function ($http) {
         return _pluckFields(songs, "gathering");
     };
 
+    var getReflectionsFromRelatedWordsOf = function(song){
+        if(!_.isEmpty(song.words)){
+            var relatedWordIds = song.words.map(function(word){
+                return word.id;
+            });
+            if(!_.isEmpty(relatedWordIds)){
+                return $http.get('/api/words/reflections',{
+                    params:{
+                        ids:relatedWordIds
+                    }
+                });
+            }
+        }
+        return $q.reject({});
+    };
+
+    var getSongsFromRelatedWordsOf = function(song){
+        if(!_.isEmpty(song.words)){
+            var relatedWordIds = song.words.map(function(word){
+                return word.id;
+            });
+            if(!_.isEmpty(relatedWordIds)){
+                return $http.get('/api/words/songs',{
+                    params:{
+                        ids:relatedWordIds
+                    }
+                });
+            }
+        }
+        return $q.reject({});
+    };
 
     return {
         getAllSongs: getAllSongs,
@@ -84,6 +110,8 @@ var songsContentService = function ($http) {
         getWordsFrom: getWordsFrom,
         getSingersFrom: getSingersFrom,
         getPoetsFrom: getPoetsFrom,
-        getGatheringsFrom: getGatheringsFrom
+        getGatheringsFrom: getGatheringsFrom,
+        getReflectionsFromRelatedWordsOf:getReflectionsFromRelatedWordsOf,
+        getSongsFromRelatedWordsOf:getSongsFromRelatedWordsOf
     };
 };
