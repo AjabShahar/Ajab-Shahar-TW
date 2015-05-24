@@ -5,7 +5,7 @@ describe('Main landing page controller', function () {
 
     beforeEach(module("featuredContentApp"));
 
-    beforeEach(inject(function (_$controller_, _$rootScope_, _mainLandingContentService_, _mappers_, _popupService_,_$httpBackend_) {
+    beforeEach(inject(function (_$controller_, _$rootScope_, _mainLandingContentService_, _popupService_,_$httpBackend_,_overviewMapperService_) {
         scope = _$rootScope_.$new();
         $httpBackend = _$httpBackend_;
         popupService = _popupService_;
@@ -13,7 +13,7 @@ describe('Main landing page controller', function () {
         _$controller_('featuredContentController', {
             $scope: scope,
             mainLandingContentService: _mainLandingContentService_,
-            mappers: _mappers_,
+            overviewMapperService:_overviewMapperService_,
             popupService: popupService
         });
 

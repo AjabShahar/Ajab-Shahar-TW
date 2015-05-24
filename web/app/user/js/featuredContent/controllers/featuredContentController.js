@@ -1,6 +1,6 @@
 "use strict";
 
-featuredContentApp.controller('featuredContentController', ['$scope', 'mainLandingContentService', 'popupService', 'mappers',function ($scope, contentService, popupService, mappers) {
+featuredContentApp.controller('featuredContentController', ['$scope', 'mainLandingContentService', 'popupService', 'overviewMapperService',function ($scope, contentService, popupService, overviewMapperService) {
     $scope.thumbnailOpen = false;
     popupService.reset();
 
@@ -18,15 +18,15 @@ featuredContentApp.controller('featuredContentController', ['$scope', 'mainLandi
     };
 
     $scope.init = function () {
-        var wordMapper = mappers.getWordMapper(),
-            songMapper = mappers.getSongMapper(),
-            reflectionMapper = mappers.getReflectionMapper(),
-            content = contentService.getMainLandingPageThumbnails();
+        //var wordMapper = mappers.getWordMapper(),
+        //    songMapper = mappers.getSongMapper(),
+        //    reflectionMapper = mappers.getReflectionMapper(),
+        var content = contentService.getMainLandingPageThumbnails();
 
 
         content.songs.then(function (result) {
             var songs = _.shuffle(result.data.songs).slice(0, 5);
-            var introductions = songMapper.getOverviews(songs);
+            var introductions = overviewMapperService.toSongOverviews(songs);
 
             _.each(songs, function (song,index) {
                 $scope.thumbnails[thumbnailPlacementRule.songs[index]] =new AjabShahar.ThumbnailObject(song,"song");
@@ -39,7 +39,7 @@ featuredContentApp.controller('featuredContentController', ['$scope', 'mainLandi
 
         content.words.then(function (result) {
             var words = _.shuffle(result.data.words).slice(0, 1);
-            var introductions = wordMapper.getOverviews(words);
+            var introductions = overviewMapperService.toWordOverviews(words);
 
             _.each(words, function (word,index) {
                 $scope.thumbnails[thumbnailPlacementRule.words[index]] = new AjabShahar.ThumbnailObject(word,"word");
@@ -52,7 +52,7 @@ featuredContentApp.controller('featuredContentController', ['$scope', 'mainLandi
 
         content.reflections.then(function (result) {
             var reflections = _.shuffle(result.data.reflections).slice(0, 3);
-            var introductions = reflectionMapper.getOverviews(reflections);
+            var introductions = overviewMapperService.toReflectionOverviews(reflections);
 
             _.each(reflections, function (reflection,index) {
                 $scope.thumbnails[thumbnailPlacementRule.reflections[index]] = new AjabShahar.ThumbnailObject(reflection,"reflection");

@@ -1,7 +1,7 @@
 var songDetailsApp = angular.module('songDetailsApp', ['thumbnailModule', 'mediaPlayer', 'htmlGenerator', 'headerModule', 'animationModule']);
 
 songDetailsApp.config(resourceUrlWhiteList);
-songDetailsApp.factory('songsContentService', ['$http', songsContentService]);
+songDetailsApp.factory('songsContentService' ,['$http','$q', songsContentService]);
 
 songDetailsApp.directive('bindDynamicHtml', ['$compile', bindDynamicHtml]);
 
