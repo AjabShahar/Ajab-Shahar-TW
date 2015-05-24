@@ -572,6 +572,20 @@ public class WordResourceIT {
         assertThat(wordRepresentation.isPublish(), is(true));
     }
 
+    @Test
+    public void shouldGetAllPublishedWords(){
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_COMPLETE_STARTER_SET);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+        ClientResponse wordsResponse = httpGet("http://localhost:%d/api/words?publish=true");
+
+        WordsRepresentation wordsRepresentation = wordsResponse.getEntity(WordsRepresentation.class);
+        assertThat(wordsResponse.getStatus(), is(200));
+        assertThat(wordsRepresentation.getWords().size(),is(2));
+
+    }
+
     private NewCookie geCookie(ClientResponse response) {
         return getCookie(response, "JSESSIONID");
     }
