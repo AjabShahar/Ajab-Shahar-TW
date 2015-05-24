@@ -3,7 +3,6 @@
 describe('Mapper', function () {
     describe('song mapper', function () {
         var songMapper;
-        var wordMapper;
         var songList;
         beforeEach(function () {
             module('thumbnailModule');
@@ -30,8 +29,7 @@ describe('Mapper', function () {
             }];
         });
 
-        beforeEach(inject(function (_wordMapper_, _songMapper_) {
-            wordMapper = _wordMapper_;
+        beforeEach(inject(function (_songMapper_) {
             songMapper = _songMapper_;
         }));
 
@@ -49,7 +47,6 @@ describe('Mapper', function () {
         });
 
         it('Should get song overviews', function () {
-            spyOn(wordMapper, 'getBasicDetails').andReturn([]);
             var songs = songMapper.getOverviews(songList);
             expect(songs.length).toBe(1);
             expect(songs[0].id).toBe(1);
@@ -66,7 +63,6 @@ describe('Mapper', function () {
         });
 
         it('Should get song details', function () {
-            spyOn(wordMapper, 'getBasicDetails').andReturn([]);
             var songs = songMapper.getSongDetails(songList);
 
             expect(songs.length).toBe(1);

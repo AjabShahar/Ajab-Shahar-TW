@@ -1,4 +1,6 @@
-thumbnailModule.factory('songMapper', ['wordMapper', function (wordMapper) {
+"use strict";
+
+thumbnailModule.factory('songMapper', [function () {
     var getSingers = function (singers) {
         var value = "";
 
@@ -15,7 +17,7 @@ thumbnailModule.factory('songMapper', ['wordMapper', function (wordMapper) {
         return value;
     };
 
-    getThumbnails = function (songs, customStyle) {
+    var getThumbnails = function (songs, customStyle) {
         return _.reduce(songs, function (thumbnails, song) {
             thumbnails.push({
                 "id": song.id,
@@ -31,14 +33,14 @@ thumbnailModule.factory('songMapper', ['wordMapper', function (wordMapper) {
                 "singers": (song.singers != null && song.singers.length > 1) ? getSingers(song.singers) : '',
                 "poet": (song.poets == null || song.poets.length == 0) ? 'Unknown' : song.poets[0].name,
                 "thumbnailUrl": song.thumbnailURL,
-                "words": wordMapper.getBasicDetails(song.words),
+                "words": _getBasicWordDetails(song.words),
                 "singersAsList": song.singers
             });
             return thumbnails;
         }, []);
     };
 
-    getOverviews = function (songs) {
+    var getOverviews = function (songs) {
         return _.reduce(songs, function (allIntroductions, song) {
             allIntroductions.push({
                 "id": song.id,
@@ -72,7 +74,7 @@ thumbnailModule.factory('songMapper', ['wordMapper', function (wordMapper) {
         }, []);
     };
 
-    getSongDetails = function (songs) {
+    var getSongDetails = function (songs) {
         return _.reduce(songs, function (details, song) {
             var poet = (Boolean(song.poets[0])) ? song.poets[0].name : '';
 
@@ -85,9 +87,25 @@ thumbnailModule.factory('songMapper', ['wordMapper', function (wordMapper) {
                 "poet": poet,
                 "downloadURL": song.downloadURL,
                 "about": (song.about == null) ? song.about : '\'' + song.about + '\'',
-                "words": wordMapper.getBasicDetails(song.words)
+                "words": _getBasicWordDetails(song.words)
             });
             return details;
+        }, []);
+    };
+
+    var _getBasicWordDetails = function (words) {
+        return _.reduce(words, function (wordBasicInfo, word) {
+            if (word.publish) {
+                wordBasicInfo.push({
+                    "id": word.id,
+                    "translation": word.wordTranslation,
+                    "transliteration": word.wordTransliteration,
+                    "isRootWord": word.rootWord
+
+                });
+            }
+            wordBasicInfo = _.sortBy(wordBasicInfo, 'transliteration');
+            return wordBasicInfo;
         }, []);
     };
 
