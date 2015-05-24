@@ -1,17 +1,17 @@
 <div class="thumbnailWrapper">
     <div class="thumbnail-desc" ng-mouseEnter="showStaticText = true" ng-mouseleave="showStaticText = false">
         <div class="title">
-            <a href="/words/#/details/{{id}}">{{primaryTitle}}</a>
+            <a ng-href="{{wordDetailUrl}}">{{primaryTitle}}</a>
         </div>
         <div class="sub-title">
-            <a href="/words/#/details/{{id}}">{{secondaryTitle}}</a>
+            <a ng-href="{{wordDetailUrl}}">{{secondaryTitle}}</a>
         </div>
 
-        <a href="/words/#/details/{{id}}">
+        <a ng-href="{{wordDetailUrl}}">
             <div class="show-desc" ng-show="showStaticText">
                 <div class="bubble">
                     <div bind-dynamic-html="transliterationIntro"></div>
-                    <div class="more-info">For Intro & Reflections enter <a href="/words/#/details/{{id}}"
+                    <div class="more-info">For Intro & Reflections enter <a ng-href="{{wordDetailUrl}}"
                                                                             class="selected">WORD</a>
                     </div>
                 </div>

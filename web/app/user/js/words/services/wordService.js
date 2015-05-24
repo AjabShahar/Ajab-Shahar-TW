@@ -2,10 +2,6 @@
 
 angular.module("word").service("wordService",["$http",function ($http) {
 
-    var getVersions = function (wordId) {
-        return $http.get('/api/words/reflections?id=' + wordId);
-    };
-
     var getWords = function () {
         return $http.get('/api/words?publish=true');
     };
@@ -32,7 +28,6 @@ angular.module("word").service("wordService",["$http",function ($http) {
     };
 
     return {
-        getVersions: getVersions,
         getWords: getWords,
         getGlossaryPageContent: getGlossaryPageContent,
         getWord:getWord,

@@ -15,6 +15,7 @@ angular.module("word").directive("wordBubble", function () {
             $scope.primaryTitle = $scope.wordTransliteration;
             $scope.secondaryTitle = $scope.wordTranslation;
 
+            $scope.wordDetailUrl = "details/" + $scope.id;
             var setTitles = function(){
                 $scope.primaryTitle =   ($scope.textRepresentation === 'Transliteration') ? $scope.wordTransliteration : $scope.wordTranslation;
                 $scope.secondaryTitle =($scope.textRepresentation === 'Transliteration') ? $scope.wordTranslation : $scope.wordTransliteration;
