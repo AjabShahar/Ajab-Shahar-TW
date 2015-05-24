@@ -1,5 +1,5 @@
 angular.module("word", ['ngRoute', 'htmlGenerator', 'headerModule', 'animationModule', 'popupSupport','utilities', 'thumbnailModule','mediaPlayer'])
-.config(["$routeProvider", function ($routeProvider) {
+.config(["$routeProvider","$locationProvider", function ($routeProvider,$locationProvider) {
     $routeProvider
         .when("/details/:id",{
             templateUrl:"/user/js/words/partials/wordDetails.html",
@@ -17,4 +17,6 @@ angular.module("word", ['ngRoute', 'htmlGenerator', 'headerModule', 'animationMo
             templateUrl: "/user/js/words/partials/featuredContent.html",
             controller: "wordFeaturedContentController"
         });
+
+        $locationProvider.html5Mode(true);
 }]);

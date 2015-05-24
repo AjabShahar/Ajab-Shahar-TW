@@ -3,7 +3,7 @@ var songDetailsApp = angular.module('songDetailsApp', ['thumbnailModule', 'media
 songDetailsApp.config(resourceUrlWhiteList);
 songDetailsApp.factory('songsContentService' ,['$http','$q', songsContentService]);
 
-songDetailsApp.directive('bindDynamicHtml', ['$compile', bindDynamicHtml]);
+//songDetailsApp.directive('bindDynamicHtml', ['$compile', bindDynamicHtml]);
 
 songDetailsApp.config(function ($locationProvider) {
     $locationProvider.html5Mode({
