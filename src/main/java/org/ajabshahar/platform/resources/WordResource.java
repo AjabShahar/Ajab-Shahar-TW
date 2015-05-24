@@ -33,7 +33,7 @@ public class WordResource {
         return Response.status(200).entity(wordRepresentation).build();
     }
 
-  /*  @GET
+    @GET
     @UnitOfWork
     public Response listAllWordDetails(@DefaultValue("false") @QueryParam("showOnMainLandingPage") Boolean showOnMainLandingPage,
                                        @DefaultValue("false") @QueryParam("publish") boolean publish) {
@@ -42,7 +42,6 @@ public class WordResource {
         return Response.ok(wordsRepresentation).build();
     }
 
-*/
     @GET
     @Path("/edit")
     @Produces(MediaType.APPLICATION_JSON)
@@ -53,15 +52,15 @@ public class WordResource {
     }
 
 
-    @GET
+   /* @GET
     @Path("/reflections")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getReflections(@QueryParam("id") int wordId) {
+    public Response getReflections(@QueryParam("id") wordId) {
         Set<Word> wordsList = words.findWords(wordId);
-        WordReflectionRepresentation wordReflections = wordRepresentationFactory.createWordReflections(wordsList);
+        Set<WordReflectionRepresentation> wordReflections = wordRepresentationFactory.createWordReflections(wordsList);
         return Response.ok(wordReflections).build();
     }
-
+*/
     @GET
     @Path("/summary")
     @Produces(MediaType.APPLICATION_JSON)

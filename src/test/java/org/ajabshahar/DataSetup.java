@@ -85,6 +85,8 @@ public class DataSetup {
                             .columns("id", "word_original", "word_translation", "word_transliteration", "meaning", "show_on_landing_page", "hindi_intro_excerpt", "english_intro_excerpt", "is_root_word", "diacritic", "default_reflection_id", "display_ajab_shahar_team", "publish")
                             .values(1, "word original", "word translation", "word transliteration", "meaning", true, "some Hindi text", "some English text", true, "some diacritic", null, true, false)
                             .values(2, "word original no 2", "word translation no 2", "word transliteration no 2", "no meaning", true, "some Hindi text", "some English text", true, "some diacritic", 2, false, false)
+                            .values(3, "word original no 3", "word translation no 3", "word transliteration no 3", "no meaning 3", true, "some Hindi text", "some English text", true, "some diacritic", 2, false, true)
+                            .values(4, "word original no 4", "word translation no 4", "word transliteration no 4", "no meaning 4", true, "some Hindi text", "some English text", true, "some diacritic", 2, false, true)
                             .build());
     public static final Operation INSERT_WORD_INTRODUCTION =
             sequenceOf(

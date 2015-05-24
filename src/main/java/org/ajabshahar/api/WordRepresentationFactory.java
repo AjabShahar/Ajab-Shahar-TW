@@ -80,45 +80,36 @@ public class WordRepresentationFactory {
         Set<WordSummaryRepresentation> wordsSummaryRepresentation = new LinkedHashSet<>();
         wordsList.forEach(word -> {
 
-            String wordOriginal = word.getWordOriginal() != null ? word.getWordOriginal() : "";
-            String wordTranslation = word.getWordTranslation() != null ? word.getWordTranslation() : "";
-            String wordTransliteration = word.getWordTransliteration() != null ? word.getWordTransliteration() : "";
-            String hindiIntroExcerpt = word.getEnglishIntroExcerpt() != null ? word.getEnglishIntroExcerpt() : "";
-            String englishIntroExcerpt = word.getHindiIntroExcerpt() != null ? word.getHindiIntroExcerpt() : "";
-            Set<PersonSummaryRepresentation> writers = new LinkedHashSet<>();
-            if (word.getWriters() != null && word.getWriters().size() > 0) {
-                for (PersonDetails writer : word.getWriters()) {
-                    PersonSummaryRepresentation representation = new PersonSummaryRepresentation(writer.getId(), writer.getName(), writer.getHindiName(), getPrimaryCategoryName(writer.getPrimaryOccupation()));
-                    writers.add(representation);
-                }
-            }
-            WordSummaryRepresentation wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), wordOriginal, wordTranslation, wordTransliteration, hindiIntroExcerpt, englishIntroExcerpt, writers, word.getIsRootWord(), word.isPublish());
+            WordSummaryRepresentation wordSummaryRepresentation = getWordSummaryRepresentation(word);
 
             wordsSummaryRepresentation.add(wordSummaryRepresentation);
         });
         return wordsSummaryRepresentation;
     }
-/*
+
+    private WordSummaryRepresentation getWordSummaryRepresentation(Word word) {
+        String wordOriginal = word.getWordOriginal() != null ? word.getWordOriginal() : "";
+        String wordTranslation = word.getWordTranslation() != null ? word.getWordTranslation() : "";
+        String wordTransliteration = word.getWordTransliteration() != null ? word.getWordTransliteration() : "";
+        String hindiIntroExcerpt = word.getEnglishIntroExcerpt() != null ? word.getEnglishIntroExcerpt() : "";
+        String englishIntroExcerpt = word.getHindiIntroExcerpt() != null ? word.getHindiIntroExcerpt() : "";
+        Set<PersonSummaryRepresentation> writers = new LinkedHashSet<>();
+        if (word.getWriters() != null && word.getWriters().size() > 0) {
+            for (PersonDetails writer : word.getWriters()) {
+                PersonSummaryRepresentation representation = new PersonSummaryRepresentation(writer.getId(), writer.getName(), writer.getHindiName(), getPrimaryCategoryName(writer.getPrimaryOccupation()));
+                writers.add(representation);
+            }
+        }
+        return new WordSummaryRepresentation((int) word.getId(), wordOriginal, wordTranslation, wordTransliteration, hindiIntroExcerpt, englishIntroExcerpt, writers, word.getIsRootWord(), word.isPublish());
+    }
     public WordsRepresentation createWordsRepresentation(Set<Word> wordsList) {
         WordsRepresentation wordsRepresentation = new WordsRepresentation();
         for (Word word : wordsList) {
-            Set<WordIntroduction> wordIntroductionSet = word.getWordIntroductions() != null ? word.getWordIntroductions() : new HashSet<>();
-            String wordIntroHindi = getWordIntroOriginal(wordIntroductionSet);
-            String wordIntroEnglish = getWordIntroTranslation(wordIntroductionSet);
-            Set<PersonSummaryRepresentation> writers = new LinkedHashSet<>();
-            if (word.getWriters().size() > 0) {
-                for (PersonDetails writer : word.getWriters()) {
-                    PersonSummaryRepresentation representation = new PersonSummaryRepresentation(writer.getId(), writer.getName(), writer.getHindiName(), getPrimaryCategoryName(writer.getPrimaryOccupation()));
-                    writers.add(representation);
-                }
-            }
-            WordRepresentation wordRepresentation = new WordRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(), word.getWordTransliteration(),
-                    word.getEnglishIntroExcerpt(), word.getHindiIntroExcerpt(), wordIntroHindi, wordIntroEnglish, writers, word.getDiacritic(), word.getMeaning(),
-                    word.getIsRootWord(), word.getDisplayAjabShaharTeam(), word.getThumbnailUrl(),word.isPublish());
+            WordRepresentation wordRepresentation = createWordRepresentation(word);
             wordsRepresentation.add(wordRepresentation);
         }
         return wordsRepresentation;
-    }*/
+    }
 
     private String getWordIntroTranslation(Set<WordIntroduction> wordIntroductionSet) {
         StringBuilder wordIntro = new StringBuilder();
@@ -136,15 +127,15 @@ public class WordRepresentationFactory {
         return wordIntro.toString();
     }
 
-    public WordReflectionRepresentation createWordReflections(Set<Word> wordsList) {
-        WordReflectionRepresentation wordReflections = new WordReflectionRepresentation();
-        Word word = wordsList.iterator().next();
-
-        wordReflections.setWord(createWordRepresentation(word));
-
-        wordReflections.setReflections(reflectionRepresentationFactory.create(word.getReflections()));
-
-        return wordReflections;
+    public Set<WordReflectionRepresentation> createWordReflections(Set<Word> wordsList) {
+        Set<WordReflectionRepresentation> wordReflectionRepresentations = new LinkedHashSet<>();
+        for (Word word : wordsList) {
+            WordReflectionRepresentation wordReflections = new WordReflectionRepresentation();
+            wordReflections.setWord(getWordSummaryRepresentation(word));
+            wordReflections.setReflections(reflectionRepresentationFactory.toReflectionsSummaryRepresentation(word.getReflections()).getSummaryRepresentationList());
+            wordReflectionRepresentations.add(wordReflections);
+        }
+        return wordReflectionRepresentations;
     }
 
 
@@ -188,21 +179,4 @@ public class WordRepresentationFactory {
     public void injectReflectionRepresentationFactory(ReflectionRepresentationFactory reflectionRepresentationFactory) {
         this.reflectionRepresentationFactory = reflectionRepresentationFactory;
     }
-/*
-    private WordRepresentation getWordRepresentation(Word word) {
-        Set<WordIntroduction> wordIntroductionSet = word.getWordIntroductions() != null ? word.getWordIntroductions() : new HashSet<>();
-        String wordIntroHindi = getWordIntroOriginal(wordIntroductionSet);
-        String wordIntroEnglish = getWordIntroTranslation(wordIntroductionSet);
-        Set<PersonSummaryRepresentation> writers = new LinkedHashSet<>();
-        if (word.getWriters().size() > 0) {
-            for (PersonDetails writer : word.getWriters()) {
-                PersonSummaryRepresentation representation = new PersonSummaryRepresentation(writer.getId(), writer.getName(), writer.getHindiName(), getPrimaryCategoryName(writer.getPrimaryOccupation()));
-                writers.add(representation);
-            }
-        }
-
-        return new WordRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(),
-                word.getWordTransliteration(), word.getEnglishIntroExcerpt(), word.getHindiIntroExcerpt(),
-                wordIntroHindi, wordIntroEnglish, writers, word.getDiacritic(), word.getMeaning(), word.getIsRootWord(), word.getDisplayAjabShaharTeam(),word.getThumbnailUrl(),word.isPublish());
-    }*/
 }

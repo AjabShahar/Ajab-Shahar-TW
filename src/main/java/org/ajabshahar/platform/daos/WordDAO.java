@@ -58,7 +58,7 @@ public class WordDAO extends AbstractDAO<Word> {
                 .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 
         Set words = new LinkedHashSet<>(allWords.list());
-        session.close();
+//        session.close();
         return words;
     }
 
@@ -79,7 +79,7 @@ public class WordDAO extends AbstractDAO<Word> {
         wordReflections.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         //TODO: Check if this works
         Set wordsWithReflections = new LinkedHashSet(wordReflections.list());
-        session.close();
+//        session.close();
         return wordsWithReflections;
     }
 }
