@@ -33,15 +33,12 @@
 
         .detail-text-wrapper {
                 width: 80%;
-                background: transparent url(/user/img/words/word_text_bg.png) left top;
                 margin: 0 auto;
                 position: relative;
                 padding-left: 50px;
                 padding-top: 20px;
-                background-size: 100% 100%;
                 padding-right: 50px;
                 padding-bottom: 50px;
-                background-repeat: no-repeat repeat;
 
 
 
@@ -71,6 +68,13 @@
               position: relative;
               margin: 0 auto;
               background-size: 100% 100%;
+        }
+
+        .text-background{
+              background: transparent url(/user/img/words/word_text_bg.png) left top;
+              background-repeat: no-repeat repeat;
+              background-size: 100% 100%;
+
         }
 
     }
