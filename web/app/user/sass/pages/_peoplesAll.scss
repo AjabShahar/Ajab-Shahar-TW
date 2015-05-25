@@ -1,111 +1,117 @@
 .all-people {
-    background: transparent url('/user/img/people/all-people-map-bg.png') left top;
+    background: transparent url('/user/img/people/all-people-map-bg.png') left top fixed;
     background-size: contain;
 
     &.grid-layout {
 
         .people-grid-view {
-            width: 65%;
+            width: 75%;
             margin: 0 auto;
-
             position: relative;
+
+
+            @include media($tab-landscape) {
+                width: 88%;
+                margin-left: 122px;
+            }
+            @include media($tab-portrait) {
+                width: 85%;
+                margin-left: 115px;
+
+            }
+
             .people-grid-content-wrapper {
-                background: transparent url('/user/img/people/all-people-content-bg2.png') left top;
-                            background-size: cover;
-                            background-repeat: no-repeat repeat;
+                background: transparent url('/user/img/people/all-people-content-bg.png') left top fixed;
+                background-size: cover;
+                background-repeat: no-repeat repeat;
+                display: inline-block;
+                overflow: visible;
+                min-height: 900px;
 
                 .people-grid-wrapper {
-                    overflow: visible;
                     margin: 0 30px;
-                    height: auto;
+                    @include media($tab-portrait) {
+                        margin: 0 10px;
+                    }
+
                     .pagination-head {
                         margin-top: 75px;
+                        margin-bottom: 50px;
                     }
-                    .people-wrapper {
+                    .row-wrapper {
                         clear: both;
-                        height: 180px;
-                        text-align: left;
+                        height: 170px;
+
+                        .people-wrapper {
+                            text-align: left;
+                            float: left;
+                            width: calc(97% - 255px);
+                            margin-left: 3%;
+
+                        }
+                        .image {
+                            float: left;
+                            width: 255px;
+                            text-align: left;
+
+                        }
+                        .explore {
+                            background: transparent url('/user/img/people/explore-icon.png') 60px 3px no-repeat;
+                            background-size: 15px 16px;
+                            display: inline-block;
+                            float: left;
+                            width: 100px;
+                            color: $pink;
+                            font-weight: 300;
+                            line-height: 23px;
+                            font-size: $small;
+                            font-family: 'Meriweather Sans';
+                            text-transform: Uppercase;
+
+                        }
+
+                        .people-info {
+                               font-size: $medium;
+                               font-weight: 300;
+                               font-family: 'Meriweather';
+                               color: $grey;
+                               max-height: 9em;
+                               line-height: 1.5em;
+
+                              .title {
+                                text-transform: Capitalize;
+                                font-size: $extra-large;
+                                color: $dark-grey;
+
+                              }
+                              .job-title {
+                                text-transform: Capitalize;
+                                font-size: $medium;
+                                color: $grey;
+                                font-family: 'Meriweather Sans';
+                              }
+
+
+
+                        }
                     }
-                    .image {
-                        float: left;
-                        width: 25%;
 
-                    }
-                    .people-info {
-
-                          .title {
-                            text-transform: Capitalize;
-                            font-size: 21px;
-                            color: $dark-grey;
-
-                          }
-                          .job-title {
-                            text-transform: Capitalize;
-                            font-size: 14px;
-                            color: $grey;
-                          }
-                          float: left;
-                          width: 70%;
-                          font-size: 16px;
-                          font-weight: 300;
-                          font-family: Meriweather;
-                          margin-left: 3%;
-                          color: $grey;
-
-                         .see-more {
-                            overflow: visible;
-                            max-height: 1000px !important;
-                           /* transition: all 1s;*/
-                         }
-                         .see-less {
-                            max-height: 4.5em;
-                           /* transition: all 1s;*/
-                         }
-
-
-                    }
                 }
-
             }
         }
 
     }
 
-    .clamped {
-        line-height: 1.5;
-        overflow: hidden;
-        position: relative;
-    }
-    /*.see-more {
-        overflow: visible;
-        max-height: 1000px !important;
-        transition: all 0.8s;
-    }*/
 
-    .clamped-2 {
-        /* Clamp to 2 lines, ie line-height x 2: */
-        max-height: 4.5em;
-    }
-
-    .ellipsis {
-        bottom: 0;
-        position: absolute;
-        right: 0;
+   .read-link {
         color: $pink;
         font-weight: 300;
-    }
-    .ellipsis-less {
-        color: $pink;
-        font-weight: 300;
-        position: relative;
-        padding-left: 20px;
-    }
+        float: right;
+        line-height: 23px;
+        font-family: 'Meriweather';
+        font-size: $medium;
 
-    .fill {
-        height: 100%;
-        position: absolute;
-        width: 100%;
-    }
+   }
 
 
 
@@ -113,19 +119,22 @@
     #page-wrapper {
         width: 100%;
         min-height: 750px;
+        .category-logo {
+            font-size: 18px;
+        }
     }
 
     .sadhus {
-        background: transparent url('/user/img/people/all-people-sadhus.png') center bottom;
+        background: transparent url('/user/img/people/sadhus.png') center bottom fixed;
         background-size: contain;
     }
     .yoginis {
-        background: transparent url('/user/img/people/all-people-yoginis.png') center bottom;
+        background: transparent url('/user/img/people/yoginis.png') center bottom fixed;
         background-size: contain;
 
     }
     .hansas {
-        background: transparent url('/user/img/people/all-people-hansas.png') center bottom;
+        background: transparent url('/user/img/people/hansas.png') center bottom fixed;
         background-size: contain;
     }
 
