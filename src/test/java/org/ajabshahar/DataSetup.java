@@ -47,8 +47,10 @@ public class DataSetup {
     public static final Operation INSERT_SONGS =
             sequenceOf(
                     insertInto("SONG")
-                            .columns("id", "show_on_landing_page", "is_authoring_complete", "song_category", "youtube_video_id", "soundcloud_track_id", "THUMBNAIL_URL", "gathering_id")
-                            .values(1, true, true, 1, "123456", "12345", "thumbURL", 11)
+                            .columns("id", "show_on_landing_page", "is_authoring_complete", "song_category", "youtube_video_id", "soundcloud_track_id", "THUMBNAIL_URL", "gathering_id", "song_title_id")
+                            .values(1, true, true, 1, "123456", "12345", "thumbURL", 11, 1)
+                            .values(2, true, true, 1, "you-123456", "s-12345", "thumbURL2", 11, 3)
+                            .values(3, true, true, 1, "you-234567", "s-23456", "thumbURL3", 11,5)
                             .build());
 
     public static final Operation INSERT_SONG_TITLE =
@@ -56,6 +58,8 @@ public class DataSetup {
                     insertInto("TITLE")
                             .columns("id", "original_title", "english_translation", "english_transliteration", "category_id")
                             .values(1, "original", "translation", "transliteration", 2)
+                            .values(3, "original2", "translation2", "transliteration3", 2)
+                            .values(5, "original3", "translation3", "transliteration3", 2)
                             .build());
 
     public static final Operation INSERT_UMBRELLA_TITLE =
@@ -63,6 +67,8 @@ public class DataSetup {
                     insertInto("TITLE")
                             .columns("id", "original_title", "english_translation", "english_transliteration", "category_id")
                             .values(2, "original", "translation", "transliteration", 3)
+                            .values(4, "original-u1", "translation-u1", "transliteration-u1", 3)
+                            .values(6, "original-u2", "translation-u2", "transliteration-u2", 3)
                             .build());
 
     public static final Operation INSERT_SONG_TITLE_CATEGORY =
@@ -104,7 +110,9 @@ public class DataSetup {
             sequenceOf(
                     insertInto("SONG_WORD")
                             .columns("song_id", "word_id")
-                            .values(1, 1)
+                            .values(2, 2)
+                            .values(3, 3)
+                            .values(1, 3)
                             .build());
 
     public static final Operation INSERT_CATEGORY =
@@ -120,6 +128,7 @@ public class DataSetup {
                             .columns("id", "title")
                             .values(1, "Oh that wonderful song!")
                             .values(2, "I hate that word!")
+                            .values(3, "Jaane kya hoga rama re!")
                             .build());
 
     public static final Operation INSERT_PERSON =
@@ -142,6 +151,8 @@ public class DataSetup {
                     insertInto("word_reflection")
                             .columns("word_id", "reflection_id")
                             .values(1, 1)
+                            .values(4, 1)
+                            .values(3, 3)
                             .build());
 
     public static final Operation INSERT_GATHERINGS =
@@ -151,6 +162,12 @@ public class DataSetup {
                             .values(11, "Rajasthan", "rajasthan")
                             .build());
 
+    public static final Operation INSERT_SONGS_AND_TITLE =
+            sequenceOf(
+                    INSERT_SONG_TITLE_CATEGORY,
+                    INSERT_SONG_TITLE,
+                    INSERT_SONGS
+            );
     public static final Operation INSERT_COMPLETE_STARTER_SET =
             sequenceOf(
                     INSERT_CATEGORY,
@@ -158,14 +175,15 @@ public class DataSetup {
                     INSERT_GATHERINGS,
                     INSERT_UMBRELLA_TITLE_CATEGORY,
                     INSERT_UMBRELLA_TITLE,
-                    INSERT_SONGS,
                     INSERT_SONG_TITLE_CATEGORY,
                     INSERT_SONG_TITLE,
+                    INSERT_SONGS,
                     INSERT_SONG_SINGER,
                     INSERT_REFLECTIONS,
                     INSERT_WORDS,
                     INSERT_WORD_INTRODUCTION,
                     INSERT_WORD_INTRODUCTION_WITH_COUPLET_CONTENT_TYPE,
-                    INSERT_WORD_REFLECTIONS
+                    INSERT_WORD_REFLECTIONS,
+                    INSERT_SONG_WORD
             );
 }

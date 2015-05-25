@@ -3,6 +3,7 @@ package org.ajabshahar.api;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Setter;
 import org.ajabshahar.platform.models.Category;
+import org.ajabshahar.platform.models.PersonDetails;
 import org.ajabshahar.platform.models.Song;
 import org.ajabshahar.platform.models.Title;
 
@@ -21,7 +22,7 @@ public class SongSummaryRepresentation {
     private String duration;
     private String category;
     private String thumbnailUrl;
-    private boolean publish;
+    private Boolean publish;
     private String contentFormat;
 
     public SongSummaryRepresentation() {
@@ -58,7 +59,24 @@ public class SongSummaryRepresentation {
         return songs;
     }
 
-    private static SongSummaryRepresentation toSummaryRepresentation(Song song){
+    public static SongSummaryRepresentation toSummaryRepresentation(Song song){
+        final Set<PersonSummaryRepresentation> singers = new LinkedHashSet<>(), poets = new LinkedHashSet<>();
+        String contentFormat = song.getYoutubeVideoId() != null ? "video" : "audio";
+
+        if(song.getSingers() != null){
+            song.getSingers().forEach(singer -> {
+                singers.add(new PersonSummaryRepresentation(singer.getId(), singer.getName(), singer.getHindiName(),
+                        singer.getPrimaryOccupation().getName()));
+            });
+        }
+
+        if (song.getPoets() != null) {
+            song.getPoets().forEach(poet -> {
+                poets.add(new PersonSummaryRepresentation(poet.getId(), poet.getName(), poet.getHindiName(),
+                        poet.getPrimaryOccupation().getName()));
+            });
+        }
+
         SongSummaryRepresentation songSummaryRepresentation = new SongSummaryRepresentation();
         songSummaryRepresentation.setId(song.getId());
         songSummaryRepresentation.setSingers(PersonSummaryRepresentation.toPersonSummaries(song.getSingers()));
@@ -68,6 +86,8 @@ public class SongSummaryRepresentation {
         songSummaryRepresentation.setEnglishTransliterationTitle(Optional.ofNullable(song.getSongTitle()).orElse(new Title()).getEnglishTransliteration());
         songSummaryRepresentation.setPoets(PersonSummaryRepresentation.toPersonSummaries(song.getPoets()));
         songSummaryRepresentation.setThumbnailUrl(song.getThumbnailURL());
+        songSummaryRepresentation.setContentFormat(contentFormat);
+        songSummaryRepresentation.setPublish(song.getIsAuthoringComplete());
         return songSummaryRepresentation;
     }
 
@@ -123,7 +143,7 @@ public class SongSummaryRepresentation {
     }
 
     @JsonProperty("publish")
-    public boolean isPublish() {
+    public Boolean isPublish() {
         return publish;
     }
 

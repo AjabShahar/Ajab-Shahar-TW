@@ -8,6 +8,7 @@ import org.ajabshahar.platform.models.Word;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 import java.util.Set;
 
 @Path("/words")
@@ -52,15 +53,24 @@ public class WordResource {
     }
 
 
-   /* @GET
+    @GET
     @Path("/reflections")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getReflections(@QueryParam("id") wordId) {
-        Set<Word> wordsList = words.findWords(wordId);
+    public Response getReflections(@QueryParam("ids") List<Long> wordIds) {
+        Set<Word> wordsList = words.findWords(wordIds);
         Set<WordReflectionRepresentation> wordReflections = wordRepresentationFactory.createWordReflections(wordsList);
         return Response.ok(wordReflections).build();
     }
-*/
+
+    @GET
+    @Path("/songs")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getSongs(@QueryParam("ids") List<Long> wordIds) {
+        Set<Word> wordsList = words.findWords(wordIds);
+        Set<WordSongsRepresentation> wordReflections = wordRepresentationFactory.createWordSongs(wordsList);
+        return Response.ok(wordReflections).build();
+    }
+
     @GET
     @Path("/summary")
     @Produces(MediaType.APPLICATION_JSON)
