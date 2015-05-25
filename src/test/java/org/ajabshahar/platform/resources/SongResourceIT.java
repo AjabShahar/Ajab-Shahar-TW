@@ -7,6 +7,7 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import io.dropwizard.testing.junit.DropwizardAppRule;
 import net.minidev.json.JSONObject;
+import org.ajabshahar.api.PersonSummaryRepresentation;
 import org.ajabshahar.api.SongRepresentation;
 import org.ajabshahar.api.SongsRepresentation;
 import org.ajabshahar.platform.PlatformApplication;
@@ -84,7 +85,7 @@ public class SongResourceIT {
 
     @Test
     public void shouldGetSongRepresentationWithWords() throws Exception {
-        Operation operation = sequenceOf(DELETE_ALL, INSERT_CATEGORY, INSERT_GATHERINGS,INSERT_SONGS, INSERT_REFLECTIONS, INSERT_WORDS, INSERT_SONG_WORD);
+        Operation operation = sequenceOf(DELETE_ALL, INSERT_CATEGORY, INSERT_GATHERINGS, INSERT_SONGS_AND_TITLE, INSERT_REFLECTIONS, INSERT_WORDS, INSERT_SONG_WORD);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -103,7 +104,7 @@ public class SongResourceIT {
         Operation operation = sequenceOf(DELETE_ALL,
                 INSERT_CATEGORY,
                 INSERT_GATHERINGS,
-                INSERT_SONGS,
+                INSERT_SONGS_AND_TITLE,
                 INSERT_PERSON,
                 INSERT_SONG_SINGER);
 
@@ -116,7 +117,10 @@ public class SongResourceIT {
 
         SongsRepresentation responseEntity = getSongsRepresentation(response);
 
-        assertEquals("", responseEntity.getSongs().iterator().next().getSingers().iterator().next().getPrimaryOccupation());
+        Set<PersonSummaryRepresentation> singers = responseEntity.getSongs().iterator().next().getSingers();
+        for (PersonSummaryRepresentation singer : singers) {
+            assertEquals("", singer.getPrimaryOccupation());
+        }
     }
 
     @Test
@@ -124,7 +128,7 @@ public class SongResourceIT {
         Operation operation = sequenceOf(DELETE_ALL,
                 INSERT_CATEGORY,
                 INSERT_GATHERINGS,
-                INSERT_SONGS);
+                INSERT_SONGS_AND_TITLE);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -142,7 +146,7 @@ public class SongResourceIT {
     @Test
     public void shouldGiveEmptyResponseIfSongNotFound() throws Exception {
         Operation operation = sequenceOf(DELETE_ALL, DELETE_SONG_WORD, DELETE_SONGS, DELETE_CATEGORY,
-                INSERT_CATEGORY,INSERT_GATHERINGS, INSERT_SONGS);
+                INSERT_CATEGORY,INSERT_GATHERINGS, INSERT_SONGS_AND_TITLE);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();

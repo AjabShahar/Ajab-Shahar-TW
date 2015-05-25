@@ -3,6 +3,7 @@ package org.ajabshahar.core;
 import org.ajabshahar.platform.daos.WordDAO;
 import org.ajabshahar.platform.models.Word;
 
+import java.util.List;
 import java.util.Set;
 
 public class Words {
@@ -29,7 +30,7 @@ public class Words {
         return wordRepository.findBy(wordId, showOnMainLandingPage,publish);
     }
 
-    public Set<Word> findWords(int wordId) {
-        return wordRepository.findReflections(wordId);
+    public Set<Word> findWords(List<Long> wordIds) {
+        return wordRepository.findReflections(wordIds);
     }
 }

@@ -62,48 +62,4 @@ public class WordsTest {
         assertEquals(expected.getHindiIntroExcerpt(), "something1");
     }
 
-    private void setUpWord() {
-        updatedWord = new Word();
-
-        Set<PersonDetails> people = new LinkedHashSet<>();
-        people.add(new PersonDetails());
-
-        Set<Song> songs = new LinkedHashSet<>();
-        songs.add(new Song());
-
-        Set<WordIntroduction> wordIntroductions = new LinkedHashSet<>();
-        wordIntroductions.add(new WordIntroduction());
-
-        Set<Reflection> reflections = new LinkedHashSet<>();
-        reflections.add(new Reflection());
-
-        updatedWord.setId(WORD_ID);
-        updatedWord.setWordOriginal("original");
-        updatedWord.setWordTranslation("translated");
-        updatedWord.setWordTransliteration("transliterated");
-        updatedWord.setEnglishIntroExcerpt("englishIntroExcerpt");
-        updatedWord.setHindiIntroExcerpt("hindiIntroExcerpt");
-        updatedWord.setDiacritic("diacritic");
-        updatedWord.setIsRootWord(true);
-        updatedWord.setMeaning("meaning");
-        updatedWord.setShowOnLandingPage(true);
-        updatedWord.setWordIntroductions(wordIntroductions);
-        updatedWord.setReflections(reflections);
-        updatedWord.setWriters(people);
-        updatedWord.setPeople(people);
-        updatedWord.setSongs(songs);
-    }
-
-
-    @Test
-    public void shouldFindVersions() throws Exception {
-
-        Set<Word> expected = new LinkedHashSet<>();
-        when(wordRepository.findReflections(WORD_ID)).thenReturn(expected);
-
-        Set<Word> actual = words.findWords(WORD_ID);
-
-        assertEquals(expected, actual);
-
-    }
 }

@@ -11,6 +11,7 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
 
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 public class WordDAO extends AbstractDAO<Word> {
@@ -70,16 +71,13 @@ public class WordDAO extends AbstractDAO<Word> {
     }
 
 
-    public Set<Word> findReflections(int wordId) {
+    public Set<Word> findReflections(List<Long> wordIds) {
         Session session = sessionFactory.openSession();
         Criteria wordReflections = session.createCriteria(Word.class);
-        if (wordId != 0) {
-            wordReflections.add(Restrictions.eq("id", (long) wordId));
+        if (wordIds != null) {
+            wordReflections.add(Restrictions.in("id", wordIds));
         }
-        wordReflections.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-        //TODO: Check if this works
-        Set wordsWithReflections = new LinkedHashSet(wordReflections.list());
-//        session.close();
+        Set<Word> wordsWithReflections = new LinkedHashSet<>(wordReflections.list());
         return wordsWithReflections;
     }
 }

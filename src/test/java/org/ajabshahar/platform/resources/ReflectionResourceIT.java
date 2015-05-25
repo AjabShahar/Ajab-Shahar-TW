@@ -56,7 +56,7 @@ public class ReflectionResourceIT {
         personSummaryRepresentations.add(personSummaryRepresentation);
         songs.add(new SongSummaryRepresentation(1, songEnglishTransliteration, null, null, null, null, null, null,false,"video"));
 
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_CATEGORY, DataSetup.INSERT_PERSON, INSERT_GATHERINGS, DataSetup.INSERT_SONGS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_CATEGORY, DataSetup.INSERT_PERSON, INSERT_GATHERINGS, DataSetup.INSERT_SONGS_AND_TITLE);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();

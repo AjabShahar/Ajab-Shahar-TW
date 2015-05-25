@@ -28,27 +28,7 @@ public class SongsRepresentationFactory {
     public SongsSummaryRepresentation create(Set<Song> songList) {
         SongsSummaryRepresentation songs = new SongsSummaryRepresentation();
         for (Song song : songList) {
-
-            Title title = song.getSongTitle() == null ? new Title() : song.getSongTitle();
-            final Set<PersonSummaryRepresentation> singers = new LinkedHashSet<>(), poets = new LinkedHashSet<>();
-            String contentFormat = song.getYoutubeVideoId() != null ? "video" : "audio";
-
-            song.getSingers().forEach(singer -> {
-                PersonDetails personDetails = people.findBy((int) singer.getId());
-                singers.add(new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName(), personDetails.getHindiName(),
-                        personDetails.getPrimaryOccupation().getName()));
-            });
-            if (song.getPoets() != null) {
-                song.getPoets().forEach(poet -> {
-                    PersonDetails personDetails = people.findBy((int) poet.getId());
-                    poets.add(new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName(), personDetails.getHindiName(),
-                            personDetails.getPrimaryOccupation().getName()));
-                });
-            }
-            SongSummaryRepresentation songSummaryRepresentation = new SongSummaryRepresentation(song.getId(), title.getEnglishTranslation(),
-                    title.getEnglishTransliteration(), singers, poets, song.getDuration(),
-                    song.getSongCategory().getName(), song.getThumbnailURL(),song.getIsAuthoringComplete(),contentFormat);
-            songs.addSong(songSummaryRepresentation);
+            songs.addSong(SongSummaryRepresentation.toSummaryRepresentation(song));
         }
         return songs;
     }

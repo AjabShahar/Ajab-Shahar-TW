@@ -1,5 +1,8 @@
 package org.ajabshahar.platform.resources;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
 import com.ninja_squad.dbsetup.DbSetup;
 import com.ninja_squad.dbsetup.Operations;
 import com.ninja_squad.dbsetup.destination.DataSourceDestination;
@@ -19,11 +22,10 @@ import org.junit.ClassRule;
 import org.junit.Test;
 
 import javax.ws.rs.core.NewCookie;
-import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.*;
 
 import static org.ajabshahar.DataSetup.INSERT_GATHERINGS;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
@@ -316,29 +318,6 @@ public class WordResourceIT {
         assertNull(word.getDefaultReflection());
     }
 
-
-    private ClientResponse httpGet(String getUrl) {
-        return client.resource(
-                String.format(getUrl, RULE.getLocalPort()))
-                .header("Content-type", "application/json")
-                .get(ClientResponse.class);
-    }
-
-
-    private ClientResponse loginAndPost(String postUrl, Object jsonObj) {
-        String userCredentials = "{\"username\":\"admin\",\"password\":\"password\"}";
-        ClientResponse response = client.resource(
-                String.format("http://localhost:%d/api/login", RULE.getLocalPort())).header("Content-type", "application/json")
-                .post(ClientResponse.class, userCredentials);
-
-        NewCookie sessionCookie = geCookie(response);
-        return client.resource(
-                String.format(postUrl, RULE.getLocalPort()))
-                .header("Content-type", "application/json")
-                .cookie(sessionCookie)
-                .post(ClientResponse.class, jsonObj);
-    }
-
     @Test
     public void shouldSaveWordAlongWithRelatedWords() {
         Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
@@ -380,13 +359,6 @@ public class WordResourceIT {
         assertThat((long) wordRepresentation.getSynonyms().iterator().next().getId(), is(word.getId()));
     }
 
-    private Set<WordSummaryRepresentation> getWordSummaryRepresentations(WordRepresentation word) {
-        Set<WordSummaryRepresentation> wordSummaryRepresentations = new LinkedHashSet<>();
-        WordSummaryRepresentation wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(),
-                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new LinkedHashSet<>(), word.getIsRootWord(), word.isPublish());
-        wordSummaryRepresentations.add(wordSummaryRepresentation);
-        return wordSummaryRepresentations;
-    }
 
     @Test
     public void shouldEditRelatedWordsAndSynonyms() {
@@ -467,6 +439,8 @@ public class WordResourceIT {
                 DataSetup.INSERT_REFLECTIONS,
                 DataSetup.INSERT_PERSON,
                 INSERT_GATHERINGS,
+                DataSetup.INSERT_SONG_TITLE_CATEGORY,
+                DataSetup.INSERT_SONG_TITLE,
                 DataSetup.INSERT_SONGS,
                 DataSetup.INSERT_SONG_SINGER);
 
@@ -584,6 +558,85 @@ public class WordResourceIT {
         assertThat(wordsResponse.getStatus(), is(200));
         assertThat(wordsRepresentation.getWords().size(),is(2));
 
+    }
+
+    @Test
+    public void shouldGetWordReflectionsForGivenWordIds(){
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_COMPLETE_STARTER_SET);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+        ClientResponse wordReflectionsResponse = httpGet("http://localhost:%d/api/words/reflections?ids=1&ids=3");
+
+        Set<LinkedHashMap> wordReflectionsList = wordReflectionsResponse.getEntity(Set.class);
+        assertThat(wordReflectionsResponse.getStatus(), is(200));
+        assertThat(wordReflectionsList.size(), is(2));
+
+        Iterator<LinkedHashMap> wordReflectionsIterator = wordReflectionsList.iterator();
+        LinkedHashMap wordReflections1 = wordReflectionsIterator.next();
+        LinkedHashMap wordReflections2 = wordReflectionsIterator.next();
+
+        Gson gson = new Gson();
+        WordReflectionRepresentation wordReflectionRepresentation1 = gson.fromJson(gson.toJson(wordReflections1), WordReflectionRepresentation.class);
+        WordReflectionRepresentation wordReflectionRepresentation2 = gson.fromJson(gson.toJson(wordReflections2), WordReflectionRepresentation.class);
+
+        assertThat(wordReflectionRepresentation1.getReflections().iterator().next().getTitle(),equalTo("Oh that wonderful song!"));
+        assertThat(wordReflectionRepresentation2.getReflections().iterator().next().getTitle(),equalTo("Jaane kya hoga rama re!"));
+    }
+
+    @Test
+    public void shouldGetWordSongsForGivenWordIds(){
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_COMPLETE_STARTER_SET);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+        ClientResponse wordSongsResponse = httpGet("http://localhost:%d/api/words/songs?ids=2&ids=3");
+
+        Set<LinkedHashMap> wordSongsList = wordSongsResponse.getEntity(Set.class);
+        assertThat(wordSongsResponse.getStatus(), is(200));
+        assertThat(wordSongsList.size(), is(2));
+
+        Gson gson = new Gson();
+        for (LinkedHashMap wordSongs : wordSongsList) {
+            WordSongsRepresentation wordSongsRepresentation = gson.fromJson(gson.toJson(wordSongs), WordSongsRepresentation.class);
+            if(wordSongsRepresentation.getWord().getId() == 3){
+                String englishTranslationTitle = wordSongsRepresentation.getSongs().iterator().next().getEnglishTranslationTitle();
+                assertTrue(englishTranslationTitle.equals("translation3") || englishTranslationTitle.equals("translation"));
+            }
+            else{
+                assertThat(wordSongsRepresentation.getSongs().iterator().next().getEnglishTranslationTitle(),equalTo("translation2"));
+            }
+        }
+    }
+
+    private ClientResponse httpGet(String getUrl) {
+        return client.resource(
+                String.format(getUrl, RULE.getLocalPort()))
+                .header("Content-type", "application/json")
+                .get(ClientResponse.class);
+    }
+
+
+    private ClientResponse loginAndPost(String postUrl, Object jsonObj) {
+        String userCredentials = "{\"username\":\"admin\",\"password\":\"password\"}";
+        ClientResponse response = client.resource(
+                String.format("http://localhost:%d/api/login", RULE.getLocalPort())).header("Content-type", "application/json")
+                .post(ClientResponse.class, userCredentials);
+
+        NewCookie sessionCookie = geCookie(response);
+        return client.resource(
+                String.format(postUrl, RULE.getLocalPort()))
+                .header("Content-type", "application/json")
+                .cookie(sessionCookie)
+                .post(ClientResponse.class, jsonObj);
+    }
+
+    private Set<WordSummaryRepresentation> getWordSummaryRepresentations(WordRepresentation word) {
+        Set<WordSummaryRepresentation> wordSummaryRepresentations = new LinkedHashSet<>();
+        WordSummaryRepresentation wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(),
+                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new LinkedHashSet<>(), word.getIsRootWord(), word.isPublish());
+        wordSummaryRepresentations.add(wordSummaryRepresentation);
+        return wordSummaryRepresentations;
     }
 
     private NewCookie geCookie(ClientResponse response) {
