@@ -82,6 +82,9 @@
                                 text-transform: Capitalize;
                                 font-size: $extra-large;
                                 color: $dark-grey;
+                                &:hover {
+                                    color: $pink;
+                                }
 
                               }
                               .job-title {
