@@ -2,7 +2,10 @@
 
 angular.module("song").controller("songExploreController", ['$scope', '$route', 'songsContentService',function ($scope, $route,songsContentService) {
 
-    var songId = $route.current.params.songId;
+    var songId = null;
+    if($route.current){
+        songId = $route.current.params.songId;
+    }
     $scope.thumbnails = [];
 
     $scope.init = function () {
@@ -28,5 +31,7 @@ angular.module("song").controller("songExploreController", ['$scope', '$route', 
         });
     };
 
-    $scope.init();
+    if(songId){
+        $scope.init();
+    }
 }]);
