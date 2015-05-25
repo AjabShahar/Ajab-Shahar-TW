@@ -58,7 +58,7 @@ describe("Reflection details controller", function () {
     it("should redirect to details page on clicking of reflection thumbnail", function () {
         scope.navigateToDetailPage(1);
 
-        expect(fakeWindow.location.href).toBe('/reflections/#/details/' + 1);
+        expect(fakeWindow.location.href).toBe('details/' + 1);
     });
 });
 
