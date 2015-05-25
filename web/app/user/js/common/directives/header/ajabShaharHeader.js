@@ -42,12 +42,13 @@ headerModule.directive("ajabShaharHeader", function ($window) {
                 var currentPagePath = $window.location.href;
                 if (currentPagePath.indexOf("/songs") > 0)
                     $scope.currentPage.songs = true;
-                else if (currentPagePath.indexOf("words/#/featuredContent") > 0)
+                else if(currentPagePath.indexOf("/words/glossary")>0)
+                    $scope.currentPage.glossary = true;
+                else if (currentPagePath.indexOf("/words/") > 0)
                     $scope.currentPage.words = true;
                 else if (currentPagePath.indexOf("/reflections") > 0)
                     $scope.currentPage.reflections = true;
-                else if(currentPagePath.indexOf("/words/#/glossary")>0)
-                    $scope.currentPage.glossary = true;
+
             };
             $scope.init();
         }

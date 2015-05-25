@@ -38,7 +38,7 @@ angular.module("reflection").controller('allReflectionsController', ['$scope', '
     };
 
     $scope.navigateToDetailPage = function (id) {
-        $window.location.href = '/reflections/#/details/'+id;
+        $window.location.href = 'details/'+id;
     };
 
     $scope.init = function () {

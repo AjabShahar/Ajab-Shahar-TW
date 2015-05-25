@@ -1,5 +1,5 @@
 angular.module('reflection', ['ngRoute','htmlGenerator','thumbnailModule','mediaPlayer','utilities','animationModule','headerModule'])
-    .config(["$routeProvider", function ($routeProvider) {
+    .config(["$routeProvider","$locationProvider", function ($routeProvider,$locationProvider) {
         $routeProvider
             .when("/details/:id",{
                 templateUrl:"/user/js/reflections/partials/reflectionDetails.html",
@@ -12,5 +12,6 @@ angular.module('reflection', ['ngRoute','htmlGenerator','thumbnailModule','media
             .otherwise( {
                 templateUrl: "/user/js/reflections/partials/allReflections.html",
                 controller: "allReflectionsController"
-            })
+            });
+        $locationProvider.html5Mode(true);
     }]);
