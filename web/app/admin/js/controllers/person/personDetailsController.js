@@ -5,11 +5,10 @@ personAdminApp.controller('personDetailsController', ['$scope', '$http', '$windo
         $scope.pageTitle = "";
         $scope.formInfo = {};
         $scope.categoryList = [];
-        var isAddNewPersonPage = true;
-
         $scope.init = function () {
             contentService.getAllCategories('person').success(function (result) {
                 $scope.categoryList = result;
+                $scope.primaryOccupationsList = angular.copy(result);
                 getPersonData();
             });
         };
@@ -20,22 +19,15 @@ personAdminApp.controller('personDetailsController', ['$scope', '$http', '$windo
             });
         };
 
-        var updatePerson = function () {
-            $http.post('/api/people/edit', $scope.formInfo).success(function () {
-                $window.location.href = '/admin/partials/home.html';
-            });
-        };
-
         $scope.saveData = function () {
-            if ($scope.formInfo.primaryOccupation == null || ($scope.formInfo.primaryOccupationId != $scope.formInfo.primaryOccupation.id)) {
-                $scope.formInfo.primaryOccupation = _.findWhere($scope.categoryList, {"id": $scope.formInfo.primaryOccupationId});
-            }
+            //if ($scope.formInfo.primaryOccupation == null || ($scope.formInfo.primaryOccupationId != $scope.formInfo.primaryOccupation.id)) {
+            //    $scope.formInfo.primaryOccupation = _.findWhere($scope.categoryList, {"id": $scope.formInfo.primaryOccupationId});
+            //}
 
             if ($scope.formInfo.thumbnailURL && $scope.formInfo.thumbnailURL.indexOf("http") === -1 && $scope.formInfo.thumbnailURL.indexOf("/images/") === -1) {
                 $scope.formInfo.thumbnailURL = '/images/' + $scope.formInfo.thumbnailURL;
             }
-
-            (isAddNewPersonPage) ? savePerson() : updatePerson();
+            savePerson();
         };
 
         var getPersonDetails = function (personId) {
@@ -56,9 +48,8 @@ personAdminApp.controller('personDetailsController', ['$scope', '$http', '$windo
 
         var getPersonData = function () {
             var personId = $location.search().id;
-            isAddNewPersonPage = (personId == undefined);
 
-            if (isAddNewPersonPage) {
+            if (!personId) {
                 $scope.pageTitle = "Person details - admin";
                 $scope.pageHeading = "Add Person details";
             }
@@ -68,5 +59,10 @@ personAdminApp.controller('personDetailsController', ['$scope', '$http', '$windo
                 getPersonDetails(personId);
             }
         };
+        $scope.$watch("formInfo.primaryOccupation", function (newValue) {
+            $scope.categoryList = _.reject($scope.categoryList, function (categoty) {
+                return !_.isEmpty(newValue) && categoty.id === newValue.id;
+            })
+        })
     }]);
 

@@ -22,12 +22,10 @@ import java.util.Set;
 public class PersonResource {
 
     private final static Logger logger = LoggerFactory.getLogger(PersonResource.class);
-    private final PersonDAO personDAO;
     private PersonRepresentationFactory personRepresentationFactory;
     private final People people;
 
-    public PersonResource(PersonDAO personDAO, People people, PersonRepresentationFactory personRepresentationFactory) {
-        this.personDAO = personDAO;
+    public PersonResource(People people, PersonRepresentationFactory personRepresentationFactory) {
         this.personRepresentationFactory = personRepresentationFactory;
         this.people = people;
     }
@@ -36,18 +34,9 @@ public class PersonResource {
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createPersonDetails(String jsonPersonDetails) {
-        PersonDetails personDetails = new Gson().fromJson(jsonPersonDetails, PersonDetails.class);
-        personDAO.create(personDetails);
+        PersonDetails personDetails = personRepresentationFactory.create(jsonPersonDetails);
+        personDetails =  people.create(personDetails);
         return Response.status(200).entity(personDetails.getId()).build();
-    }
-
-    @POST
-    @Path("/edit")
-    @UnitOfWork
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response updatePersonDetails(String jsonPersonDetails) {
-        PersonDetails personDetails = people.update(jsonPersonDetails);
-        return Response.ok(personDetails).build();
     }
 
     @GET

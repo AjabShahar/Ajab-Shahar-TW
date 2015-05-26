@@ -1,5 +1,6 @@
 package org.ajabshahar.api;
 
+import com.google.gson.Gson;
 import org.ajabshahar.platform.models.Category;
 import org.ajabshahar.platform.models.PersonDetails;
 
@@ -54,5 +55,9 @@ public class PersonRepresentationFactory {
             return peopleDetails;
         }
         return Collections.EMPTY_SET;
+    }
+
+    public PersonDetails create(String jsonPersonDetails) {
+        return new Gson().fromJson(jsonPersonDetails, PersonDetails.class);
     }
 }

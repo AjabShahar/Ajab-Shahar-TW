@@ -36,7 +36,7 @@ public class PersonResourceTest {
 
     @Before
     public void setUp() {
-        personResource = new PersonResource(null, people, personRepresentationFactory);
+        personResource = new PersonResource(people, personRepresentationFactory);
     }
 
     @Test

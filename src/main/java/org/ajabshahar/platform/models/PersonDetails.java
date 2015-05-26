@@ -1,6 +1,8 @@
 package org.ajabshahar.platform.models;
 
 import com.google.common.base.Strings;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -10,13 +12,9 @@ import java.util.Set;
 import static java.lang.String.format;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "PERSON")
-@NamedQueries({
-        @NamedQuery(
-                name = "org.ajabshahar.platform.models.PersonDetails.findAll",
-                query = "SELECT p FROM PersonDetails p"
-        )
-})
 public class PersonDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,99 +54,14 @@ public class PersonDetails {
     @Column(name = "PROFILE")
     private String profile;
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return format("%s %2s %3s", Strings.nullToEmpty(getFirstName()), Strings.nullToEmpty(getMiddleName()), Strings.nullToEmpty(getLastName())).replaceAll("\\s+", " ").trim();
     }
 
-    public Set<Category> getCategory() {
-        return category;
-    }
-
-    public void setCategory(Set<Category> category) {
-        this.category = category;
-    }
-
-    public String getFirstNameInHindi() {
-        return firstNameInHindi;
-    }
-
-    public void setFirstNameInHindi(String firstNameInHindi) {
-        this.firstNameInHindi = firstNameInHindi;
-    }
-
-    public String getMiddleNameInHindi() {
-        return middleNameInHindi;
-    }
-
-    public void setMiddleNameInHindi(String middleNameInHindi) {
-        this.middleNameInHindi = middleNameInHindi;
-    }
-
-    public String getLastNameInHindi() {
-        return lastNameInHindi;
-    }
-
-    public void setLastNameInHindi(String lastNameInHindi) {
-        this.lastNameInHindi = lastNameInHindi;
-    }
 
     public String getHindiName() {
         return format("%s %2s %3s", Strings.nullToEmpty(getFirstNameInHindi()), Strings.nullToEmpty(getMiddleNameInHindi()), Strings.nullToEmpty(getLastNameInHindi())).replaceAll("\\s+", " ").trim();
     }
 
-    public Category getPrimaryOccupation() {
-        return primaryOccupation == null ? new Category() : primaryOccupation;
-    }
-
-    public void setPrimaryOccupation(Category primaryOccupation) {
-        this.primaryOccupation = primaryOccupation;
-    }
-
-    public String getThumbnailURL() {
-        return thumbnailURL;
-    }
-
-    public void setThumbnailURL(String thumbnailURL) {
-        this.thumbnailURL = thumbnailURL;
-    }
-
-    public String getProfile() {
-        return profile;
-    }
-
-    public void setProfile(String profile) {
-        this.profile = profile;
-    }
 }

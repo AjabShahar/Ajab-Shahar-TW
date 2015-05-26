@@ -65,15 +65,17 @@ public class SongSummaryRepresentation {
 
         if(song.getSingers() != null){
             song.getSingers().forEach(singer -> {
+                String primaryOccupation = singer.getPrimaryOccupation() != null ? singer.getPrimaryOccupation().getName() : "";
                 singers.add(new PersonSummaryRepresentation(singer.getId(), singer.getName(), singer.getHindiName(),
-                        singer.getPrimaryOccupation().getName()));
+                        primaryOccupation));
             });
         }
 
         if (song.getPoets() != null) {
             song.getPoets().forEach(poet -> {
+                String primaryOccupation = poet.getPrimaryOccupation() != null ? poet.getPrimaryOccupation().getName() : "";
                 poets.add(new PersonSummaryRepresentation(poet.getId(), poet.getName(), poet.getHindiName(),
-                        poet.getPrimaryOccupation().getName()));
+                        primaryOccupation));
             });
         }
 

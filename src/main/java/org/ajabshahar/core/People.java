@@ -26,8 +26,7 @@ public class People {
         return personRepository.findBy(id, role);
     }
 
-    public PersonDetails update(String jsonPersonDetails) {
-        PersonDetails personDetails = new Gson().fromJson(jsonPersonDetails, PersonDetails.class);
-        return personRepository.updatePerson(personDetails);
+    public PersonDetails create(PersonDetails personDetails) {
+        return personRepository.create(personDetails);
     }
 }
