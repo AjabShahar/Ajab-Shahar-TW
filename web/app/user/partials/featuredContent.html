@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="featuredContentApp">
+<html lang="en" ng-app="featuredContentApp" ng-controller="featuredContentController" class="{{selectedOverview().selected ? 'disableOuterScrollbar' : ''}}">
 <head>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -21,7 +21,7 @@
 
     <link rel="stylesheet" type="text/css" href="/user/css/ajabShahar.css"/>
 
-<body ng-controller="featuredContentController" class="featured-all">
+<body class="featured-all {{selectedOverview().selected ? 'disableOuterScrollbar' : ''}}">
 <div id="ajab_container">
     <ajab-shahar-header show-menu-details="true" call-back="setPageHeight()"></ajab-shahar-header>
 
