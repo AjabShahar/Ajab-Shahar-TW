@@ -28,14 +28,8 @@ public class PersonDAO extends AbstractDAO<PersonDetails> {
         return persist(personDetails);
     }
 
-    public Set<PersonDetails> findAll() {
-        return new LinkedHashSet<>(list(namedQuery("org.ajabshahar.platform.models.PersonDetails.findAll")));
-    }
 
     public Set<PersonDetails> findBy(int personId, String role) {
-        if (personId <= 0 && Strings.isNullOrEmpty(role))
-            return findAll();
-
         Session session = this.sessionFactory.openSession();
         Criteria criteria = session.createCriteria(PersonDetails.class, "personDetails");
         if (personId > 0) {
@@ -48,29 +42,5 @@ public class PersonDAO extends AbstractDAO<PersonDetails> {
         Set linkedHashSet = new LinkedHashSet<>(criteria.list());
         session.close();
         return linkedHashSet;
-    }
-
-    public PersonDetails updatePerson(PersonDetails updatablePerson) {
-        Session session = this.sessionFactory.openSession();
-        Long id = updatablePerson.getId();
-        PersonDetails originalPersonData = (PersonDetails) session.get(PersonDetails.class, id);
-        originalPersonData = invokeAllSetters(originalPersonData, updatablePerson);
-        sessionFactory.getCurrentSession().update(originalPersonData);
-        session.close();
-        return originalPersonData;
-    }
-
-    private PersonDetails invokeAllSetters(PersonDetails originalPersonData, PersonDetails updatablePerson) {
-        originalPersonData.setPrimaryOccupation(updatablePerson.getPrimaryOccupation());
-        originalPersonData.setCategory(updatablePerson.getCategory());
-        originalPersonData.setFirstName(updatablePerson.getFirstName());
-        originalPersonData.setLastName(updatablePerson.getLastName());
-        originalPersonData.setMiddleName(updatablePerson.getMiddleName());
-        originalPersonData.setFirstNameInHindi(updatablePerson.getFirstNameInHindi());
-        originalPersonData.setMiddleNameInHindi(updatablePerson.getMiddleNameInHindi());
-        originalPersonData.setLastNameInHindi(updatablePerson.getLastNameInHindi());
-        originalPersonData.setThumbnailURL(updatablePerson.getThumbnailURL());
-        originalPersonData.setProfile(updatablePerson.getProfile());
-        return originalPersonData;
     }
 }

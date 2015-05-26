@@ -55,7 +55,7 @@
                         <label>First Name In Hindi</label>
                     </div>
                     <div class="col-sm-2">
-                        <input type="text" name="FirstName" ng-model="formInfo.firstNameInHindi" maxlength="30" required
+                        <input type="text" name="FirstName" ng-model="formInfo.firstNameInHindi" maxlength="30"
                                class="form-control"/>
                     </div>
                 </div>
@@ -81,21 +81,21 @@
 
                 <div class="row form-group">
                     <div class="col-sm-2">
-                        <label>Occupation</label>
+                        <label>Primary Occupation</label>
                     </div>
                     <div class="col-sm-2">
-                        <div class="col-sm-5" multi-select input-model="categoryList" button-label="name"
-                             item-label="name" tick-property="ticked" output-model="formInfo.category"></div>
+                        <select class="form-control col-sm-5" ng-model="formInfo.primaryOccupation"
+                                ng-options="occupation as occupation.name for occupation in primaryOccupationsList track by occupation.id"></select>
                     </div>
                 </div>
 
                 <div class="row form-group">
                     <div class="col-sm-2">
-                        <label>Primary Occupation</label>
+                        <label>Occupation</label>
                     </div>
                     <div class="col-sm-2">
-                        <select class="form-control col-sm-5" ng-model="formInfo.primaryOccupationId"
-                                ng-options="occupation.id as occupation.name for occupation in formInfo.category"></select>
+                        <div class="col-sm-5" multi-select input-model="categoryList" button-label="name"
+                             item-label="name" tick-property="ticked" output-model="formInfo.category"></div>
                     </div>
                 </div>
 
