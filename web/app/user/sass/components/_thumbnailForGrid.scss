@@ -1,4 +1,4 @@
-.thumbnails-grid {
+.thumbnails-grid, .thumbnail-list, .thumbnail-carousel {
 
   .thumbnail {
     width: 230px;
@@ -39,13 +39,13 @@
   }
 
 }
-.songdetails {
+.thumbdetails {
     -webkit-transition: max-height 1s; 
     -moz-transition: max-height 1s; 
     -ms-transition: max-height 1s; 
     -o-transition: max-height 1s; 
     transition: max-height 1s;  
     overflow: hidden;
-    max-height: 85px;
+    max-height: 110px;
 }
 

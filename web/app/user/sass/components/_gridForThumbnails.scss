@@ -10,7 +10,7 @@ $desktop: new-breakpoint(min-width 1025px);
   @include span-columns(12);
 
   .media {
-    min-height: 250px;
+    min-height: 280px;
     /*background: red;*/
     @include span-columns(3 of 12);
 

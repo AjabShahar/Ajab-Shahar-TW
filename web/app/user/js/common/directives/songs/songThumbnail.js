@@ -21,7 +21,7 @@ thumbnailModule.directive("songThumbnail", function ($timeout) {
         },
         templateUrl: '/user/js/common/templates/songs/songThumbnail.html',
         controller: function ($scope,$rootScope) {
-            $scope.bubbleShowClass = "songdetails";
+            $scope.bubbleShowClass = "thumbdetails";
             $scope.textRepresentation = 'Transliteration';
             $scope.shouldShowDetails = true;
             $scope.noun = "";
@@ -55,16 +55,14 @@ thumbnailModule.directive("songThumbnail", function ($timeout) {
             };
 
             $scope.showDetails = function () {
-                $scope.bubbleShowClass = "songdetails";
+                $scope.bubbleShowClass = "thumbdetails";
             };
+
 
             $scope.hideDetails = function() {
-                $scope.bubbleShowClass = "songdetails collapse";
+                console.log("in here");
+                $scope.bubbleShowClass = "thumbdetails collapse";
             }
-
-            $scope.addCollapse = function () {
-                $scope.bubbleShowClass = "songdetails collapse";
-            };
 
             $scope.init();
         }

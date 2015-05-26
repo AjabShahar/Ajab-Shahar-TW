@@ -3,7 +3,7 @@
         <img src="{{imgSrc}}"/>
     </div>
     <div class="bubble" ng-click="open('{{id}}')">
-        <div class="summary" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()" ng-load="addCollapse()">
+        <div class="summary" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()" ng-load="hideDetails()">
             <h3 class="title">{{primaryTitle}}</h3>
             <h4 class="en-title">{{secondaryTitle}}</h4>
             <span class="singers" ng-hide="multipleSingers">{{noun}} {{singer|uppercase}}</span>

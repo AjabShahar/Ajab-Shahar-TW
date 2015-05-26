@@ -32,7 +32,7 @@
 
     <div class="lower-pardah" ng-class="{'no-pardah': !containsReflections() }">
 
-        <div class="versions toggleBySlide" ng-show="shouldShowCarousel()">
+        <div class="versions toggleBySlide thumbnail-carousel" ng-show="shouldShowCarousel()">
             <carousel items="carouselItems" item-clicked="selectThumbnail" format="'transliteration'"></carousel>
         </div>
 
@@ -46,7 +46,7 @@
 
     <div class='ajab-container'>
         <div class='ajab-wrapper'>
-            <div class="main-content">
+            <div class="main-content ">
                 <div>
                         <content-details ng-if="detailsObject" content="detailsObject"></content-details>
                 </div>

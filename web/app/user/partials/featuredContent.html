@@ -47,7 +47,7 @@
             <div class='ajab-wrapper '>
                 <div class="featured-all">
                     <div class='main-homepage-content'>
-                        <div ng-repeat="(index,thumbnail) in thumbnails" ng-click="selectThumbnail($index)" >
+                        <div ng-repeat="(index,thumbnail) in thumbnails" ng-click="selectThumbnail($index)" class="thumbnail-list" >
                             <content-thumbnail content="thumbnails[$index]" format="format"  custom-style="{{shiftThumbnail($index)}}"
                                                current-index="{{$index}}"></content-thumbnail>
                         </div>

@@ -64,7 +64,7 @@
                         </div>
                     </div>
 
-                    <div ng-repeat="(index,thumbnail) in thumbnails" ng-click="openThumbnail($index)">
+                    <div ng-repeat="(index,thumbnail) in thumbnails" ng-click="openThumbnail($index)" class="thumbnail-list">
                         <content-thumbnail content="thumbnails[$index]" format="format"
                                            custom-style="{{getSongCustomStyle($index)}}"
                                            current-index="{{$index}}"></content-thumbnail>
