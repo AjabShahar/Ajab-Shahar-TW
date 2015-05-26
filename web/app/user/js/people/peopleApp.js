@@ -3,7 +3,8 @@ var peopleApp = angular.module('people', ['ngRoute','htmlGenerator','utilities',
         $routeProvider
 
             .when('/allPeople', {
-                templateUrl: "/user/js/people/partials/allPeople.html"
+                templateUrl: "/user/js/people/partials/allPeople.html",
+                controller:"allPeopleController"
 
             })
             .otherwise( {
