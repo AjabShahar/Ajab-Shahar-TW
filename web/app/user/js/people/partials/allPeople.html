@@ -9,7 +9,6 @@
 <div ng-controller="allPeopleController">
     <div id="page-wrapper" ng-random-class ng-classes="classes">
         <div class="ajab-container headerfixOuter">
-            <ajab-shahar-header></ajab-shahar-header>
             <div class='logo-with-filter headerfixInner'>
                 <div class='nav-elements-wrapper'>
                     <h1 class='category-logo'>people</h1>
@@ -55,8 +54,6 @@
                             <li class="reset-image"><a class="reset" ng-click="resetFilters()">reset</a></li>
                         </ul>
                     </div>
-
-
                 </div>
 
                 <div class='people-grid-view'>
@@ -68,7 +65,10 @@
                             <div class='pagination-head'>
                                 <div class="upper">
 
-                                    <span class='numeric-count'>457 PEOPLE</span>
+                                    <span class='numeric-count'
+                                          ng-if="numberOfPeople == 1">{{numberOfPeople}} PERSON</span>
+                                    <span class='numeric-count'
+                                          ng-if="numberOfPeople > 1">{{numberOfPeople}} PEOPLE</span>
                                 </div>
                                 <div class="lower">
                                     <ul class='alphabets'>
@@ -82,118 +82,28 @@
 
                             </div>
                             <ul>
-                                <li>
-                                    <div class="row-wrapper">
-                                        <div class="image">
-                                            <img src="/user/img/people/spider.jpg">
-                                        </div>
-                                        <div class="people-wrapper">
-                                            <div class="people-info" ellipsis>
-                                                <span class="title">amir khushro</span>
-                                                <span class="job-title">photographer, Artist, Singer</span>
-
-                                                <p class="clamped clamped-2" ng-class="seeMore ? 'see-more':'see-less'">
-                                                    Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                    industry. Lorem Ipsum has been
-                                                    the industry's
-                                                    </p>
-
-                                            </div>
-                                            <a href="javascript:void(0)" class="explore">Explore</a>
-                                        </div>
+                                <div ng-repeat="(index,person) in people" class="row-wrapper">
+                                    <div class="image">
+                                        <img src="person.thumbnailImg">
                                     </div>
-                                </li>
+                                    <div class="people-wrapper">
+                                        <div class="people-info" ellipsis>
+                                            <span class="title">{{person.name}}</span>
+                                            <span class="job-title"><li ng-repeat="role in person.occupations track by $index" style="display: inline">
+                                                {{role}}
+                                                <span ng-hide="$last">,  </span>
+                                            </li></span>
 
-                                <li>
-                                    <div class="row-wrapper">
-                                        <div class="image">
-                                            <img src="/user/img/people/spider.jpg">
+                                            <p class="clamped clamped-2" ng-class="seeMore ? 'see-more':'see-less'">
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                industry. Lorem Ipsum has been
+                                                the industry's
+                                            </p>
+
                                         </div>
-                                        <div class="people-wrapper">
-                                            <div class="people-info" ellipsis>
-                                                <span class="title">amir khushro</span>
-                                                <span class="job-title">photographer, Artist, Singer</span>
-
-                                                <p>
-                                                    Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                    industry. Lorem Ipsum has been
-                                                    the industry's
-                                                    standard dummy text ever since the 1500s, when an unknown printer
-                                                    took a galley of type and scrambled it to make a type
-                                                    specimen book.
-                                                    It has survived not only five centuries, but also the leap into
-                                                    electronic typesetting, remaining essentially unchanged.
-                                                    It was
-                                                    popularised in the 1960s with the release of Letraset sheets
-                                                    containing Lorem Ipsum passages,
-                                                    and more recently with desktop publishing software like Aldus
-                                                    PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply
-                                                    dummy text of the printing and typesetting industry. Lorem Ipsum has
-                                                    been
-                                                    the industry's
-                                                    standard dummy text ever since the 1500s, when an unknown printer
-                                                    took a galley of type and scrambled it to make a type
-                                                    specimen book.
-                                                    It has survived not only five centuries, but also the leap into
-                                                    electronic typesetting, remaining essentially unchanged.
-                                                    It was
-                                                    popularised in the 1960s with the release of Letraset sheets
-                                                    containing Lorem Ipsum passages,
-                                                    and more recently with desktop publishing software like Aldus
-                                                    PageMaker including versions of Lorem Ipsum.</p>
-
-                                            </div>
-                                            <a href="javascript:void(0)" class="explore">Explore</a>
-                                        </div>
+                                        <a href="javascript:void(0)" class="explore">Explore</a>
                                     </div>
-                                </li>
-
-                                <li>
-                                    <div class="row-wrapper">
-                                        <div class="image">
-                                            <img src="/user/img/people/spider.jpg">
-                                        </div>
-                                        <div class="people-wrapper">
-                                            <div class="people-info" ellipsis>
-                                                <span class="title">amir khushro</span>
-                                                <span class="job-title">photographer, Artist, Singer</span>
-
-                                                <p class="clamped clamped-2" ng-class="seeMore ? 'see-more':'see-less'">
-                                                    Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                    industry. Lorem Ipsum has been
-                                                    the industry's
-                                                    standard dummy text ever since the 1500s, when an unknown printer
-                                                    took a galley of type and scrambled it to make a type
-                                                    specimen book.
-                                                    It has survived not only five centuries, but also the leap into
-                                                    electronic typesetting, remaining essentially unchanged.
-                                                    It was
-                                                    popularised in the 1960s with the release of Letraset sheets
-                                                    containing Lorem Ipsum passages,
-                                                    and more recently with desktop publishing software like Aldus
-                                                    PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply
-                                                    dummy text of the printing and typesetting industry. Lorem Ipsum has
-                                                    been
-                                                    the industry's
-                                                    standard dummy text ever since the 1500s, when an unknown printer
-                                                    took a galley of type and scrambled it to make a type
-                                                    specimen book.
-                                                    It has survived not only five centuries, but also the leap into
-                                                    electronic typesetting, remaining essentially unchanged.
-                                                    It was
-                                                    popularised in the 1960s with the release of Letraset sheets
-                                                    containing Lorem Ipsum passages,
-                                                    and more recently with desktop publishing software like Aldus
-                                                    PageMaker including versions of Lorem Ipsum.</p>
-
-                                            </div>
-                                            <a href="javascript:void(0)" class="explore">Explore</a>
-                                        </div>
-                                    </div>
-
-                                </li>
-
-
+                                </div>
                             </ul>
                         </div>
 
