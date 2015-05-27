@@ -16,11 +16,9 @@ import java.util.Set;
 
 public class WordDAO extends AbstractDAO<Word> {
 
-    private final SessionFactory sessionFactory;
 
     public WordDAO(SessionFactory sessionFactory) {
         super(sessionFactory);
-        this.sessionFactory = sessionFactory;
     }
 
     public Word create(Word word) {
@@ -33,8 +31,7 @@ public class WordDAO extends AbstractDAO<Word> {
     }
 
     public Set findBy(int wordId, Boolean showOnMainLandingPage, boolean publish) {
-        Session session = this.sessionFactory.openSession();
-        Criteria allWords = session.createCriteria(Word.class, "word");
+        Criteria allWords = currentSession().createCriteria(Word.class, "word");
         if (showOnMainLandingPage) {
             allWords.add(Restrictions.eq("publish", true));
             allWords.add(Restrictions.eq("showOnLandingPage", true));
@@ -59,7 +56,6 @@ public class WordDAO extends AbstractDAO<Word> {
                 .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 
         Set words = new LinkedHashSet<>(allWords.list());
-//        session.close();
         return words;
     }
 
@@ -72,8 +68,7 @@ public class WordDAO extends AbstractDAO<Word> {
 
 
     public Set<Word> findReflections(List<Long> wordIds) {
-        Session session = sessionFactory.openSession();
-        Criteria wordReflections = session.createCriteria(Word.class);
+        Criteria wordReflections = currentSession().createCriteria(Word.class);
         if (wordIds != null) {
             wordReflections.add(Restrictions.in("id", wordIds));
         }

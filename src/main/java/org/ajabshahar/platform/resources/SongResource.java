@@ -55,6 +55,7 @@ public class SongResource {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
+    @UnitOfWork
     public SongRepresentation getSongById(@PathParam("id") Long id) {
         try {
             Song song = songDAO.findById(id);

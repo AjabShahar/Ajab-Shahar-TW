@@ -46,6 +46,7 @@ public class WordResource {
     @GET
     @Path("/edit")
     @Produces(MediaType.APPLICATION_JSON)
+    @UnitOfWork
     public Response getWordById(@QueryParam("id") int wordId, @DefaultValue("false") @QueryParam("publish") boolean publish) {
         Word word = words.findBy(wordId, publish);
         WordRepresentation intermediateRepresentation = wordRepresentationFactory.createWordRepresentation(word);
@@ -56,6 +57,7 @@ public class WordResource {
     @GET
     @Path("/reflections")
     @Produces(MediaType.APPLICATION_JSON)
+    @UnitOfWork
     public Response getReflections(@QueryParam("ids") List<Long> wordIds) {
         Set<Word> wordsList = words.findWords(wordIds);
         Set<WordReflectionRepresentation> wordReflections = wordRepresentationFactory.createWordReflections(wordsList);
@@ -65,6 +67,7 @@ public class WordResource {
     @GET
     @Path("/songs")
     @Produces(MediaType.APPLICATION_JSON)
+    @UnitOfWork
     public Response getSongs(@QueryParam("ids") List<Long> wordIds) {
         Set<Word> wordsList = words.findWords(wordIds);
         Set<WordSongsRepresentation> wordReflections = wordRepresentationFactory.createWordSongs(wordsList);
@@ -74,6 +77,7 @@ public class WordResource {
     @GET
     @Path("/summary")
     @Produces(MediaType.APPLICATION_JSON)
+    @UnitOfWork
     public Response getSummaryRepresentation() {
         Set<Word> allWords = words.findBy(false, false);
         Set<WordSummaryRepresentation> wordSummaryRepresentations = wordRepresentationFactory.create(allWords);

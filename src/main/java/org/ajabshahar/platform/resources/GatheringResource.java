@@ -45,6 +45,7 @@ public class GatheringResource {
 
     @GET
     @Path("/{id}")
+    @UnitOfWork
     public Response getGatheringById(@PathParam("id") Long id) {
         Gathering gathering = gatheringDAO.findById(id);
         return createResponseFor(gathering);

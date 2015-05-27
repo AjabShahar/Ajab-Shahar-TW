@@ -19,11 +19,9 @@ import java.util.Set;
 
 public class ReflectionDAO extends AbstractDAO<Reflection> {
     private final static Logger logger = LoggerFactory.getLogger(ReflectionDAO.class);
-    private final SessionFactory sessionFactory;
 
     public ReflectionDAO(SessionFactory sessionFactory) {
         super(sessionFactory);
-        this.sessionFactory = sessionFactory;
     }
 
     public Reflection create(Reflection reflection) {
@@ -41,8 +39,7 @@ public class ReflectionDAO extends AbstractDAO<Reflection> {
     }
 
     public Set<Reflection> findBy(Boolean showOnFeaturedContentPage, boolean authoringComplete) {
-        Session currentSession = sessionFactory.getCurrentSession();
-        Criteria findReflections = currentSession.createCriteria(Reflection.class);
+        Criteria findReflections = currentSession().createCriteria(Reflection.class);
 
         if (authoringComplete) {
             findReflections.add(Restrictions.eq("isAuthoringComplete", true));
@@ -55,13 +52,11 @@ public class ReflectionDAO extends AbstractDAO<Reflection> {
     }
 
     public Reflection find(int id) {
-        Session currentSession = sessionFactory.getCurrentSession();
-        return (Reflection) currentSession.get(Reflection.class,(long)id);
+        return (Reflection) currentSession().get(Reflection.class,(long)id);
     }
 
     public LinkedHashSet<Reflection> findByIds(List<Long> ids){
-        Session currentSession = sessionFactory.getCurrentSession();
-        List<Reflection> reflections = currentSession
+        List<Reflection> reflections = currentSession()
                 .createQuery("from Reflection r where r.id in :reflections")
                 .setParameterList("reflections", ids)
                 .list();
