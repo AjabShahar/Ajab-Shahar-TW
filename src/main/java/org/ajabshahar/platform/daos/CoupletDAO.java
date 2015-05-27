@@ -10,11 +10,9 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class CoupletDAO extends AbstractDAO<Couplet> {
-    private final SessionFactory sessionFactory;
 
     public CoupletDAO(SessionFactory sessionFactory) {
         super(sessionFactory);
-        this.sessionFactory = sessionFactory;
     }
 
     public Couplet create(Couplet couplet) {
@@ -30,7 +28,7 @@ public class CoupletDAO extends AbstractDAO<Couplet> {
     }
 
     public Couplet findById(Long id) {
-        return (Couplet) sessionFactory.openSession().get(Couplet.class, id);
+        return (Couplet) currentSession().get(Couplet.class, id);
     }
 
     private Couplet invokeSetters(Couplet originalCouplet, Couplet updatableCouplet) {
@@ -46,8 +44,7 @@ public class CoupletDAO extends AbstractDAO<Couplet> {
 
     public Set<Couplet> findBy(int id) {
 
-        org.hibernate.Session session = currentSession();
-        Criteria couplet = session.createCriteria(Couplet.class);
+        Criteria couplet = currentSession().createCriteria(Couplet.class);
 
         couplet.add(Restrictions.eq("id", Long.valueOf(id)));
         return new LinkedHashSet(couplet.list());
@@ -55,9 +52,9 @@ public class CoupletDAO extends AbstractDAO<Couplet> {
 
     public Couplet updateCouplet(Couplet updatableCouplet) {
         Long id = updatableCouplet.getId();
-        Couplet originalCouplet = (Couplet) sessionFactory.openSession().get(Couplet.class, id);
+        Couplet originalCouplet = (Couplet) currentSession().get(Couplet.class, id);
         originalCouplet = invokeSetters(originalCouplet, updatableCouplet);
-        sessionFactory.openStatelessSession().update(originalCouplet);
+        currentSession().update(originalCouplet);
         return originalCouplet;
     }
 }

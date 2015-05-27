@@ -45,6 +45,7 @@ public class GenreResource {
 
     @GET
     @Path("/{id}")
+    @UnitOfWork
     public Response getGenreById(@PathParam("id") Long id) {
         Genre genre = genreDAO.findById(id);
         return createResponseFor(genre);

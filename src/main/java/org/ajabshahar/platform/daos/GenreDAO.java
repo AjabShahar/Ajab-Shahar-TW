@@ -10,11 +10,9 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class GenreDAO extends AbstractDAO<Genre> {
-    private final SessionFactory sessionFactory;
 
     public GenreDAO(SessionFactory sessionFactory) {
         super(sessionFactory);
-        this.sessionFactory = sessionFactory;
     }
 
     public Genre create(Genre genre) {
@@ -22,13 +20,12 @@ public class GenreDAO extends AbstractDAO<Genre> {
     }
 
     public Set findAll() {
-        Session currentSession = sessionFactory.getCurrentSession();
-        Criteria findGenres = currentSession.createCriteria(Genre.class);
+        Criteria findGenres = currentSession().createCriteria(Genre.class);
         findGenres.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return new LinkedHashSet<>(findGenres.list());
     }
 
     public Genre findById(Long id) {
-        return (Genre) sessionFactory.openSession().get(Genre.class, id);
+        return (Genre) currentSession().get(Genre.class, id);
     }
 }

@@ -16,23 +16,18 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class SongDAO extends AbstractDAO<Song> {
-    private final SessionFactory sessionFactory;
 
     public SongDAO(SessionFactory sessionFactory) {
         super(sessionFactory);
-        this.sessionFactory = sessionFactory;
     }
 
     public Song findById(Long id) {
-        Session session = sessionFactory.openSession();
-        Criteria findSong = session.createCriteria(Song.class, "song")
+        Criteria findSong = currentSession().createCriteria(Song.class, "song")
                 .add(Restrictions.eq("id", id))
                 .createCriteria("song.words", "words", JoinType.LEFT_OUTER_JOIN)
                 .setFetchMode("words", FetchMode.JOIN);
 
         Set<Song> songs = new LinkedHashSet(findSong.list());
-
-        session.close();
         return songs.iterator().next();
     }
 
@@ -50,8 +45,7 @@ public class SongDAO extends AbstractDAO<Song> {
     }
 
     public Set<Song> findAll() {
-        Session currentSession = sessionFactory.getCurrentSession();
-        Criteria findSongs = currentSession.createCriteria(Song.class, "song")
+        Criteria findSongs = currentSession().createCriteria(Song.class, "song")
                 .createCriteria("song.words", "words", JoinType.LEFT_OUTER_JOIN)
                 .setFetchMode("words", FetchMode.JOIN);
         findSongs.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
@@ -60,8 +54,7 @@ public class SongDAO extends AbstractDAO<Song> {
 
 
     public Set<Song> findBy(int songId, int singerId, int poetId) {
-        Session currentSession = sessionFactory.getCurrentSession();
-        Criteria findSongs = currentSession.createCriteria(Song.class);
+        Criteria findSongs = currentSession().createCriteria(Song.class);
         if (songId != 0) {
             findSongs.add(Restrictions.eq("id", (long) songId));
         }
@@ -81,15 +74,14 @@ public class SongDAO extends AbstractDAO<Song> {
 
     public void updateSong(Song updatableSong) {
         if (updatableSong.getUmbrellaTitle() != null)
-            sessionFactory.getCurrentSession().update(updatableSong.getUmbrellaTitle());
+            currentSession().update(updatableSong.getUmbrellaTitle());
         if (updatableSong.getSongTitle() != null)
-            sessionFactory.getCurrentSession().update(updatableSong.getSongTitle());
-        sessionFactory.getCurrentSession().update(updatableSong);
+            currentSession().update(updatableSong.getSongTitle());
+        currentSession().update(updatableSong);
     }
 
     public Set<Song> findSongWithVersions(int songId) {
-        Session currentSession = sessionFactory.getCurrentSession();
-        Criteria findSongs = currentSession.createCriteria(Song.class);
+        Criteria findSongs = currentSession().createCriteria(Song.class);
         Set<Song> songs = new LinkedHashSet<>();
 
         Song song = findById((long) songId);
