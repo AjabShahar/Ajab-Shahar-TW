@@ -3,6 +3,18 @@ var AjabShahar = AjabShahar || {};
 AjabShahar.ThumbnailObject = function (contentItem, type) {
     var self = this;
     self.actualContent = contentItem;
+
+    self.getShortRelativeUrl = function(){
+        return "details/"+self.id ;
+    };
+
+    self.getUrl = function(){
+        if(self.type=='song'){
+            return "/songs/details?id="+self.id;
+        }
+        return "/"+self.type+"s/details/"+self.id;
+    };
+
     var buildFromSong = function (song) {
         if (!_.isEmpty(song)) {
             self.type = type;
