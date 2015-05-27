@@ -1,6 +1,6 @@
-var Ajabshahar = Ajabshahar || {};
-Ajabshahar.user = Ajabshahar.user || {};
-Ajabshahar.user.SongFilterConfig = (function () {
+var AjabShahar = AjabShahar || {};
+AjabShahar.user = AjabShahar.user || {};
+AjabShahar.user.SongFilterConfig = (function () {
     var filterCategories = [
         {
             name: "singersAsList[].name",

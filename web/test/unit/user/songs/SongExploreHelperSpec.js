@@ -34,11 +34,22 @@ describe("Song Explore Helper",function(){
     });
 
     it("should display only the words that are published and are root words", function () {
+        var wordThumbnails = AjabShahar.SongExploreHelper.createWordThumbnails(song_explore_helper_words);
+
+        var wordIds = wordThumbnails.map(function(wordThumbnail){
+            return wordThumbnail.id;
+        });
+        expect(_.contains(wordIds,5)).toBeFalsy();
 
     });
 
     it("should display only reflections that are published", function () {
+        var reflectionThumbnails = AjabShahar.SongExploreHelper.createReflectionThumbnails(song_explore_helper_reflectionSummaries[0].reflections);
 
+        var refIds = reflectionThumbnails.map(function(refThumbnail){
+            return refThumbnail.id;
+        });
+        expect(_.contains(refIds,6)).toBeFalsy();
     });
 
     it("should show at most 3 reflections per word", function () {
@@ -432,4 +443,42 @@ var song_explore_helper_songSummaries = [
             }
         ]
     }
+];
+
+var song_explore_helper_words = [
+    {
+        "id": 6,
+        "wordOriginal": "जागना सोना",
+        "wordTranslation": "Waking Sleeping",
+        "wordTransliteration": "Jaagna Sona",
+        "hindiIntroExcerpt": "",
+        "englishIntroExcerpt": "",
+        "writers": [],
+        "rootWord": true,
+        "publish": true
+    },
+    {
+        "id": 4,
+        "wordOriginal": "शून्य",
+        "wordTranslation": "Emptiness",
+        "wordTransliteration": "Shoonya",
+        "hindiIntroExcerpt": "Shoonya is literally zero in the Indian numbering system, the place from which all things begin. It is also a technical term in Buddhism, usually translated as emptiness or nothingness. In Sanskrit, one of its primary meanings is empty space, or void.",
+        "englishIntroExcerpt": "",
+        "writers": [],
+        "rootWord": true,
+        "publish": true
+    },
+    {
+        "id": 5,
+        "wordOriginal": "शून्य",
+        "wordTranslation": "Emptiness",
+        "wordTransliteration": "Shoonya 2",
+        "hindiIntroExcerpt": "Shoonya 2  is literally zero ",
+        "englishIntroExcerpt": "",
+        "writers": [],
+        "rootWord": true,
+        "publish": false
+    }
+
+
 ];

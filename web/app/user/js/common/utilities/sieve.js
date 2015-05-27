@@ -1,6 +1,6 @@
-var Ajabshahar = Ajabshahar || {};
-Ajabshahar.user = Ajabshahar.user || {};
-Ajabshahar.user.Sieve = function (filterCriteria) {
+var AjabShahar = AjabShahar || {};
+AjabShahar.user = AjabShahar.user || {};
+AjabShahar.user.Sieve = function (filterCriteria) {
     var self = {};
     self.selectedFilters = [];
 
@@ -71,10 +71,10 @@ Ajabshahar.user.Sieve = function (filterCriteria) {
         });
     };
     self.setFilterCriteria = function (name, value) {
-        var filterCriteria = _.find(self.filterCriteria, function (criteria) {
+        var filterCriterion = _.find(self.filterCriteria, function (criteria) {
             return criteria.name === name;
         });
-        filterCriteria.value = value;
+        filterCriterion.value = value;
     };
 
     self.removeFilterCriteria = function (filterName) {

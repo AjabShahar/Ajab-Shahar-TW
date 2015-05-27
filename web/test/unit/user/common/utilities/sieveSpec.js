@@ -2,7 +2,7 @@ describe("The sieve", function () {
 
     var filter;
     beforeEach(inject(function () {
-        filter = new Ajabshahar.user.Sieve();
+        filter = new AjabShahar.user.Sieve();
 
     }));
 
