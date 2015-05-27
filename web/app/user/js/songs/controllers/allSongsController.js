@@ -10,9 +10,9 @@ allSongsApp.controller('allSongsController', ['$scope', '$window', 'songsContent
     $scope.openSecondParda = false;
     //------------------
 
-    $scope.criteriaList = Ajabshahar.user.SongFilterConfig.filterCategories;
-    var filterItemsLoaderConfig = Ajabshahar.user.SongFilterConfig.filterItemsLoader;
-    var sieve = new Ajabshahar.user.Sieve($scope.criteriaList);
+    $scope.criteriaList = AjabShahar.user.SongFilterConfig.filterCategories;
+    var filterItemsLoaderConfig = AjabShahar.user.SongFilterConfig.filterItemsLoader;
+    var sieve = new AjabShahar.user.Sieve($scope.criteriaList);
     var contentTextRepresentation = 'Transliteration';
 
     $scope.$watch("contentTextRepresentation", function (value) {

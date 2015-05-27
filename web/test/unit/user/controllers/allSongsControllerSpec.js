@@ -3,7 +3,7 @@
 describe('On All songs page', function() {
     var scope, $httpBackend;
 
-    var criteriaList = Ajabshahar.user.SongFilterConfig.filterCategories;
+    var criteriaList = AjabShahar.user.SongFilterConfig.filterCategories;
 
     var singerCategory = criteriaList[0];
     var wordCategory = criteriaList[2];

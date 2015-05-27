@@ -34,7 +34,7 @@ describe("Song Explore controller", function () {
 
     });
 
-    it("should add reflections directly related to songs to the list of thumbnails to be displayed", function () {
+    it("should add reflections directly related to the song and reflections related to related words to the list of thumbnails to be displayed", function () {
         httpBackend.flush();
 
         var reflectionThumbnailCount = 0;
@@ -42,9 +42,42 @@ describe("Song Explore controller", function () {
             thumbnail.type === 'reflection' ? reflectionThumbnailCount++ : "";
         });
 
-        expect(reflectionThumbnailCount).toBe(7);
+        expect(reflectionThumbnailCount).toBe(5);
     });
 
+    it("should add songs related to related words of the song to the list of thumbnails to be displayed", function () {
+        httpBackend.flush();
+
+        var songThumbnailCount = 0;
+        scope.thumbnails.forEach(function (thumbnail) {
+            thumbnail.type === 'song' ? songThumbnailCount++ : "";
+        });
+
+        expect(songThumbnailCount).toBe(5);
+    });
+
+    it("should not show duplicate thumbnails for repeated content",function(){
+        httpBackend.flush();
+
+        for(var i=0 ; i<scope.thumbnails.length;i++){
+            for(var j=i+1;j<scope.thumbnails.length;j++){
+                var  thumbnailI = scope.thumbnails[i].type +"_"+scope.thumbnails[i].id;
+                var  thumbnailJ = scope.thumbnails[j].type +"_"+scope.thumbnails[j].id;
+                expect(thumbnailI === thumbnailJ).toBeFalsy(thumbnailI+" : I = "+i+" j="+j);
+            }
+        }
+    });
+
+
+    it("should not show a thumbnail of the song being explored",function(){
+        httpBackend.flush();
+
+        var thumbnails = scope.thumbnails.map(function(thumbnail){
+            return thumbnail.type+"_"+thumbnail.id;
+        });
+        expect(_.contains(thumbnails,"song_18")).toBeFalsy();
+        expect(_.contains(thumbnails,"song_19")).toBeTruthy();
+    });
 
 });
 

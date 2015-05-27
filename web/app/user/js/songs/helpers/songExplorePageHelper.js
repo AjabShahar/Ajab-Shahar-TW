@@ -1,6 +1,9 @@
-var AjabShahar = AjabShahar || {};
+"use strict";
+
+AjabShahar = AjabShahar || {};
 AjabShahar.SongExploreHelper = (function(){
     var self = {};
+
     self.createWordThumbnails = function(words){
         var wordThumbnails = [];
         if(!_.isEmpty(words)){
@@ -36,18 +39,32 @@ AjabShahar.SongExploreHelper = (function(){
         return songThumbnails;
     };
 
-    self.getReflectionsFromWordReflections = function(wordReflections){
+    var getUnique = function(newItems,existingItems ){
+        var uniqueItems= newItems || [];
+        if(!_.isEmpty(existingItems) && !_.isEmpty(newItems)){
+            uniqueItems = _.reject(newItems,function(newItem){
+                return _.some(existingItems,function(existingItem){
+                    return existingItem ? newItem.id === existingItem.id:false;
+                })
+            });
+        }
+        return uniqueItems;
+    };
+
+    self.getReflectionsFromWordReflections = function(wordReflections,existingReflections){
         var reflections =_.reduce(wordReflections,function(result,wordReflection){
-            var reflectionThumbnails = _.sample(self.createReflectionThumbnails(wordReflection.reflections),3);
+            var uniqueReflections = getUnique(wordReflection.reflections,result.concat(existingReflections));
+            var reflectionThumbnails = _.sample(self.createReflectionThumbnails(uniqueReflections),3);
             result = result.concat(reflectionThumbnails);
             return result;
         },[]);
         return reflections;
     };
 
-    self.getSongsFromWordReflections = function(wordSongs){
+    self.getSongsFromWordReflections = function(wordSongs,existingSongs){
         var songs =_.reduce(wordSongs,function(result,wordSong){
-            var songThumbnails = _.sample(self.createSongThumbnails(wordSong.songs),3);
+            var uniqueSongs = getUnique(wordSong.songs,result.concat(existingSongs));
+            var songThumbnails = _.sample(self.createSongThumbnails(uniqueSongs),3);
             result = result.concat(songThumbnails);
             return result;
         },[]);
