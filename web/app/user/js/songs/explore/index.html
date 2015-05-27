@@ -27,7 +27,7 @@
         ga('send', 'pageview');
     </script>
 </head>
-<body ng-controller="songExploreController" class="all-songs ng-scope grid-layout">
+<body ng-controller="songExploreController" class="details">
 <ajab-shahar-header></ajab-shahar-header>
 <div ng-view ></div>
 
@@ -38,6 +38,7 @@
 <script type="text/javascript" src="/common/lib/angular-animate/angular-animate.min.js"></script>
 <script type="text/javascript" src="/common/lib/angular-touch/angular-touch.min.js"></script>
 <script type="text/javascript" src="/common/lib/underscore/underscore.js"></script>
+<script type="text/javascript" src="/common/lib/masonry/dist/masonry.pkgd.js"></script>
 <script type="text/javascript" src="/common/lib/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
 <script type="text/javascript" src="/user/js/common/directives/animation/animationModule.js"></script>
 <script type="text/javascript" src="/user/js/common/directives/animation/toggleBySlide.js"></script>
@@ -53,6 +54,7 @@
 <script type="text/javascript" src="/user/js/common/filters/filterSongByPoet.js"></script>
 <script type="text/javascript" src="/user/js/common/filters/filterSongByTitle.js"></script>
 <script type="text/javascript" src="/user/js/common/modules/mediaPlayer.js"></script>
+
 <script type="text/javascript" src="/user/js/common/directives/soundCloud/soundcloud_player.js"></script>
 <script type="text/javascript" src="/user/js/common/directives/youtube/youtube_player.js"></script>
 <script type="text/javascript" src="/user/js/common/config/resourceUrlWhiteList.js"></script>
@@ -68,6 +70,7 @@
 <script type="text/javascript" src="/common/lib/angular-route/angular-route.js"></script>
 <script type="text/javascript" src="/user/js/common/modules/utilities.js"></script>
 <script type="text/javascript" src="/user/js/words/services/sortService.js"></script>
+<script type="text/javascript" src="/user/js/common/directives/heightOffset/heightOffset.js"></script>
 <script type="text/javascript" src="/user/js/common/directives/animation/originalEnglishToggle.js"></script>
 <script type="text/javascript" src="/user/js/songs/services/songsContentService.js"></script>
 <script type="text/javascript" src="/user/js/common/modules/htmlGenerator.js"></script>

@@ -22,3 +22,18 @@ angular.module('utilities').directive('ellipsis',function(){
         }
     }
 });
+
+angular.module('utilities').directive('mosaic',function(){
+    return {
+        scope:{},
+        link:function(scope,element,attrs){
+            $(element).masonry({
+                columnWidth: ".media",
+                itemSelector: '.media',
+                percentPosition: true
+
+
+            });
+        }
+    }
+});
