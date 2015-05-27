@@ -76,7 +76,7 @@
                             <ul>
                                 <div ng-repeat="(index,person) in people" class="row-wrapper">
                                     <div class="image">
-                                        <img src="person.thumbnailImg">
+                                        <img src="{{person.thumbnailImg}}">
                                     </div>
                                     <div class="people-wrapper">
                                         <div class="people-info" ellipsis>
@@ -87,9 +87,7 @@
                                             </li></span>
 
                                             <p class="clamped clamped-2" ng-class="seeMore ? 'see-more':'see-less'">
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                industry. Lorem Ipsum has been
-                                                the industry's
+                                                <div bind-dynamic-html = "person.profile"></div>
                                             </p>
 
                                         </div>
