@@ -21,6 +21,9 @@ public class PersonRepresentation {
     private String thumbnailURL;
     private String profile;
 
+    public PersonRepresentation(){
+
+    }
     public PersonRepresentation(long id, String firstName, String middleName, String lastName, String firstNameInHindi, String middleNameInHindi, String lastNameInHindi, Set<String> roles, Category primaryOccupation, String thumbnailURL, String profile) {
         this.id = id;
         this.firstNameInHindi = firstNameInHindi;

@@ -36,7 +36,8 @@ public class PersonResource {
     public Response createPersonDetails(String jsonPersonDetails) {
         PersonDetails personDetails = personRepresentationFactory.create(jsonPersonDetails);
         personDetails =  people.create(personDetails);
-        return Response.status(200).entity(personDetails.getId()).build();
+        PersonRepresentation personRepresentation = personRepresentationFactory.create(personDetails);
+        return Response.status(200).entity(personRepresentation).build();
     }
 
     @GET
