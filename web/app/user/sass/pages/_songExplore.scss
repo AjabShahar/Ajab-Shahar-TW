@@ -1,0 +1,40 @@
+.song-explore {
+
+    .main-content {
+        margin-top: 140px;
+
+        .grid-wrapper {
+            margin-left: 125px;
+        }
+
+    }
+
+    #container {
+        ul.media-list {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            width: 100%;
+        }
+        .media {
+            min-height: 0px;
+            width: 25%;
+            margin-bottom: 18px;
+            @include media($tab-landscape) {
+               width: 33%;
+            }
+
+            @include media($tab-portrait) {
+               width: 50%;
+            }
+
+            .thumbnail .bubble {
+                position: relative;
+                top: -27px;
+                left: -9px;
+            }
+        }
+    }
+
+
+}
