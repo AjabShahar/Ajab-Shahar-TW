@@ -13,8 +13,10 @@ public class PersonRepresentationFactory {
     public PersonRepresentation create(PersonDetails personDetails) {
         Set<String> categoryName = new LinkedHashSet<>();
 
-        for (Category category : personDetails.getCategory()) {
-            categoryName.add(category.getName());
+        if (personDetails.getCategory() != null) {
+            for (Category category : personDetails.getCategory()) {
+                categoryName.add(category.getName());
+            }
         }
 
         PersonRepresentation personRepresentation = new PersonRepresentation(personDetails.getId(), personDetails.getFirstName(),
@@ -47,9 +49,9 @@ public class PersonRepresentationFactory {
     }
 
     public static Set<PersonDetails> toPerson(Set<PersonSummaryRepresentation> peopleSummaryRepresentation) {
-        if(peopleSummaryRepresentation != null ){
+        if (peopleSummaryRepresentation != null) {
             Set<PersonDetails> peopleDetails = new LinkedHashSet<>();
-            for(PersonSummaryRepresentation personSummaryRepresentation: peopleSummaryRepresentation){
+            for (PersonSummaryRepresentation personSummaryRepresentation : peopleSummaryRepresentation) {
                 peopleDetails.add(toPerson(personSummaryRepresentation));
             }
             return peopleDetails;
