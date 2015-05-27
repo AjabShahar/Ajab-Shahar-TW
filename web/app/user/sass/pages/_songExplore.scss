@@ -1,5 +1,10 @@
 .song-explore {
 
+    .sub-main {
+        font-size: $large !important;
+        color: $grey;
+    }
+
     .main-content {
         margin-top: 140px;
 
@@ -20,6 +25,7 @@
             min-height: 0px;
             width: 25%;
             margin-bottom: 18px;
+            float: left;
             @include media($tab-landscape) {
                width: 33%;
             }

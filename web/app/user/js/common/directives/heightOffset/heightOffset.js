@@ -30,7 +30,8 @@ angular.module('utilities').directive('mosaic',function(){
             $(element).masonry({
                 columnWidth: ".media",
                 itemSelector: '.media',
-                percentPosition: true
+                percentPosition: true,
+                isOriginLeft: true
 
 
             });
