@@ -2,7 +2,7 @@
     <div class="page-header">
         <div class="ajab-wrapper">
             <div class="logo-container">
-                <a href="/songs/#/featuredContent" target="_self">
+                <a href="/songs/featuredContent" target="_self">
                     <span class="page-logo">songs</span>
                 </a>
             </div>
@@ -18,13 +18,13 @@
             <div class="main-content">
                 <div class="left-nav" scroll>
                     <ul>
-                        <li><a href="javascript:void(0)">song</a></li>
+                        <li><a ng-href="{{getDetailsPageUrl()}}">song</a></li>
                         <li><a target="_self" href="/user/partials/common/underConstruction.html"
                                class="active">explore</a>
                             <ul class="child-list">
-                                <li><a href="javascript:void(0)" ng-click="applyFilter('song')" ng-class="{active:currentSelection==='song'}">songs</a></li>
-                                <li><a href="javascript:void(0)" ng-click="applyFilter('word')" ng-class="{active:currentSelection==='word'}">words</a></li>
-                                <li><a href="javascript:void(0)" ng-click="applyFilter('reflection')" ng-class="{active:currentSelection==='reflection'}">reflections</a></li>
+                                <li ng-show="contentAvailable('song')"><a href="javascript:void(0)" ng-click="applyFilter('song')" ng-class="{active:currentSelection==='song'}">songs</a></li>
+                                <li ng-show="contentAvailable('word')"><a href="javascript:void(0)" ng-click="applyFilter('word')" ng-class="{active:currentSelection==='word'}">words</a></li>
+                                <li ng-show="contentAvailable('reflection')"><a href="javascript:void(0)" ng-click="applyFilter('reflection')" ng-class="{active:currentSelection==='reflection'}">reflections</a></li>
 
                                 <li><a href="javascript:void(0)" ng-click="clearFilters()" ng-class="{active:!currentSelection}">all</a></li>
                             </ul>
@@ -39,7 +39,7 @@
                         <div id="container" mosaic >
                             <!--<ul class="media-list" height-offset="0">-->
                             <div ng-repeat="thumbnail in thumbnails | filter : {type: currentSelection }" class="media" >
-                                <content-thumbnail content="thumbnail" format="format" ng-click="selectThumbnail($index)" keep-expanded="true"
+                                <content-thumbnail content="thumbnail" format="format" ng-click="selectThumbnail(thumbnail)" keep-expanded="true"
                                                    current-index="{{$index}}"></content-thumbnail>
                             </div>
                             <!--</ul>-->

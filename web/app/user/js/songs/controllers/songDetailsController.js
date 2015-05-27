@@ -124,6 +124,10 @@ var songDetailsController = function ($scope, $location, songsContentService) {
         return '';
     };
     $scope.init();
+
+    $scope.getSongExploreUrl = function(){
+        return "/songs/explore/"+$scope.songId;
+    }
 };
 
 songDetailsApp
