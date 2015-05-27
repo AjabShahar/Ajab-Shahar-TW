@@ -7,13 +7,15 @@ angular.module("thumbnailModule").directive("contentThumbnail",["$timeout",funct
         };
 
         $scope.hideDetails = function(){
-            $scope.shouldShowDetails = false;
+            if(!$scope.keepExpanded){
+                $scope.shouldShowDetails = false;
+            }
         };
         $scope.onTimeOut = function(){
             $scope.hideDetails();
         };
 
-        if(!$scope.showDetails){
+        if(!$scope.keepExpanded){
             $timeout($scope.onTimeOut,1000);
         }
     };
@@ -26,7 +28,7 @@ angular.module("thumbnailModule").directive("contentThumbnail",["$timeout",funct
             onClick:"=",
             format:"=",
             customStyle:"@",
-            showDetails:"@"
+            keepExpanded:"@"
         },
         templateUrl:"/user/js/common/directives/thumbnail/contentThumbnail.html" ,
         controller:controller

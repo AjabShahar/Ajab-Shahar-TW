@@ -7,29 +7,19 @@ angular.module("song").controller("songExploreController", ['$scope', '$route', 
         songId = $route.current.params.songId;
     }
     $scope.thumbnails = [];
-    $scope.filteredThumbnails =$scope.thumbnails;
     $scope.format = "transliteration";
     $scope.selectThumbnail = function(){
 
     };
 
-    $scope.filterCriteria = [{
-        name:"type",
-        value:""
-    }];
-
-    var sieve = new AjabShahar.user.Sieve($scope.filterCriteria);
+    $scope.currentSelection = "";
 
     $scope.applyFilter = function(contentType){
-        sieve.setFilterCriteria($scope.filterCriteria[0].name, contentType);
+        $scope.currentSelection = contentType;
     };
 
     $scope.clearFilters = function(){
-        sieve.clearFilters();
-    };
-
-    $scope.filteredList = function(){
-        return sieve.filter($scope.thumbnails);
+        $scope.currentSelection = "";
     };
 
     $scope.init = function () {
