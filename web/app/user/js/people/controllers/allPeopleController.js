@@ -7,7 +7,7 @@ angular.module("people").controller('allPeopleController', ['$scope','peopleServ
     peopleService.getPeople().success(function(response){
         var people = response.people;
         _.each(people, function (person, index) {
-            $scope.people.push(new AjabShahar.ThumbnailObject(person, "person"));
+            $scope.people.push(new AjabShahar.DetailsObject(person, "person"));
         });
         $scope.numberOfPeople = $scope.people.length;
     })
