@@ -351,16 +351,33 @@
             display: block;
             font-weight: 300;
             font-family: 'Merriweather';
-            color: $color-link;
+            color: $pink;
             font-size: $medium;
             height: 27px;
             margin-top: 8px;
             margin-bottom: 3px;
 
+            &:hover {
+                color: $dark-grey;
+            }
+
             &.active {
-              cursor: default;
-              color:  $color-active-link;
-              font-weight: 300;
+                cursor: default;
+                color:  $color-active-link;
+                font-weight: 300;
+            }
+            &.disable{
+                color: $light-grey;
+                cursor: default;
+            }
+          }
+
+          &.child-list {
+            margin-top: -12px;
+            li {
+                background: none;
+                height: 15px;
+
             }
           }
 
