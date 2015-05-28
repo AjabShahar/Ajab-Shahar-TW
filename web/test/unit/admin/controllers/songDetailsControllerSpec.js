@@ -68,8 +68,8 @@ describe("Song details controller specs", function () {
             $httpBackend.when("GET", "/api/category/song").respond([]);
             $httpBackend.when("GET", "/api/category/media").respond(null);
             $httpBackend.when("GET", "/api/title/umbrella").respond(null);
-            $httpBackend.when("GET", "/api/people/summary?role=Singer").respond({"people": ""});
-            $httpBackend.when("GET", "/api/people/summary?role=Poet").respond({"people": ""});
+            $httpBackend.when("GET", "/api/people/summary?show=all&role=Singer").respond({"people": ""});
+            $httpBackend.when("GET", "/api/people/summary?show=all&role=Poet").respond({"people": ""});
             $httpBackend.when("GET", "/api/words").respond({"words": ""});
             $httpBackend.when("GET", "/api/gatherings").respond(["someGathering"]);
             $httpBackend.when("GET", "/api/reflections").respond(["someReflections"]);

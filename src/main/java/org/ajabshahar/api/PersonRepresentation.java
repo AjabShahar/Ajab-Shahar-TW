@@ -1,5 +1,6 @@
 package org.ajabshahar.api;
 
+import lombok.Getter;
 import org.ajabshahar.platform.models.Category;
 
 import java.util.LinkedHashSet;
@@ -7,6 +8,7 @@ import java.util.Set;
 
 import static java.lang.String.format;
 
+@Getter
 public class PersonRepresentation {
 
     private long id;
@@ -41,60 +43,12 @@ public class PersonRepresentation {
         this.publish = publish;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public Set<String> getRoles() {
-        return roles;
-    }
-
-    public String getMiddleName() {
-        return middleName;
-    }
-
     @Override
     public String toString() {
         return format("first name: %s, middle name: %2s, last name: %3s", getFirstName(), getMiddleName(), getLastName());
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public String getFirstNameInHindi() {
-        return firstNameInHindi;
-    }
-
-    public String getMiddleNameInHindi() {
-        return middleNameInHindi;
-    }
-
-    public String getLastNameInHindi() {
-        return lastNameInHindi;
-    }
-
-    public Category getPrimaryOccupation() {
-        return primaryOccupation;
-    }
-
-    public String getThumbnailURL() {
-        return thumbnailURL;
-    }
-
-    public String getProfile() {
-        return profile;
-    }
-
     public void setPrimaryOccupation(Category primaryOccupation) {
         this.primaryOccupation = primaryOccupation;
-    }
-
-    public boolean isPublish() {
-        return publish;
     }
 }

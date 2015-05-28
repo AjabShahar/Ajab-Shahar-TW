@@ -1,7 +1,7 @@
 var reflectionContentService = function ($http) {
 
     var getPeople = function () {
-        return $http.get('/api/people/summary');
+        return $http.get('/api/people/summary?show=all');
     };
 
     var getRefectionById = function (id) {

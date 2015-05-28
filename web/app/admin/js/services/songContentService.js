@@ -8,11 +8,11 @@ var songContentService = function ($http) {
     };
 
     var getSingers = function () {
-        return $http.get('/api/people/summary?role=Singer');
+        return $http.get('/api/people/summary?show=all&role=Singer');
     };
 
     var getPoets = function () {
-        return $http.get('/api/people/summary?role=Poet');
+        return $http.get('/api/people/summary?show=all&role=Poet');
     };
 
     var getCouplets = function () {

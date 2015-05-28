@@ -20,7 +20,7 @@ describe("reflection details controller", function () {
             loginVerifyService: loginVerifyService
         });
 
-        httpBackend.expectGET('/api/people/summary').respond(200, ['people data']);
+        httpBackend.expectGET('/api/people/summary?show=all').respond(200, ['people data']);
         httpBackend.expectGET('/api/words/summary').respond(200, test_admin_wordSummary);
         httpBackend.expectGET('/api/songs').respond(song_summary);
     }));

@@ -27,7 +27,7 @@ public class PersonDAO extends AbstractDAO<PersonDetails> {
     }
 
 
-    public Set<PersonDetails> findBy(int personId, String role) {
+    public Set findBy(int personId, String role, String show) {
         Criteria criteria = currentSession().createCriteria(PersonDetails.class, "personDetails");
         if (personId > 0) {
             criteria.add(Restrictions.eq("id", Long.valueOf(personId)));
@@ -35,6 +35,11 @@ public class PersonDAO extends AbstractDAO<PersonDetails> {
         if (!Strings.isNullOrEmpty(role)) {
             criteria.createAlias("personDetails.category", "category");
             criteria.add(Restrictions.eq("category.name", role));
+        }
+        if(show != null) {
+            if (show.equals("published")) {
+                criteria.add(Restrictions.eq("personDetails.publish", true));
+            }
         }
         Set linkedHashSet = new LinkedHashSet<>(criteria.list());
         return linkedHashSet;

@@ -14,16 +14,16 @@ public class People {
     }
 
     public PersonDetails findBy(int id) {
-        Set<PersonDetails> personDetailsList = findBy(id, null);
+        Set<PersonDetails> personDetailsList = findBy(id, null, null);
         return personDetailsList.size() > 0 ? personDetailsList.iterator().next() : null;
     }
 
-    public Set<PersonDetails> findBy(String role) {
-        return findBy(0, role);
+    public Set<PersonDetails> findBy(String role, String show) {
+        return findBy(0, role, show);
     }
 
-    private Set<PersonDetails> findBy(int id, String role) {
-        return personRepository.findBy(id, role);
+    private Set<PersonDetails> findBy(int id, String role, String show) {
+        return personRepository.findBy(id, role, show);
     }
 
     public PersonDetails create(PersonDetails personDetails) {
