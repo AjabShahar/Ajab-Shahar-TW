@@ -19,6 +19,7 @@ public class PeopleTest {
     private static final int PERSON_ID = 1001;
     private static final String SINGER = "Singer";
     private static final String POET = "Poet";
+    private static final String show = "all";
     @Mock
     private PersonDAO personRepository;
     @Mock
@@ -35,22 +36,22 @@ public class PeopleTest {
 
     @Test
     public void shouldGetPersonById() throws Exception {
-        when(personRepository.findBy(PERSON_ID, null)).thenReturn(personDetailsList);
+        when(personRepository.findBy(PERSON_ID, null, null)).thenReturn(personDetailsList);
         PersonDetails result = people.findBy(PERSON_ID);
         assertEquals(personDetails, result);
     }
 
     @Test
     public void shouldGetSingers() {
-        when(personRepository.findBy(0, SINGER)).thenReturn(personDetailsList);
-        Set<PersonDetails> result = people.findBy(SINGER);
+        when(personRepository.findBy(0, SINGER, show)).thenReturn(personDetailsList);
+        Set<PersonDetails> result = people.findBy(SINGER, show);
         assertEquals(personDetailsList, result);
     }
 
     @Test
     public void shouldGetPoets() {
-        when(personRepository.findBy(0, POET)).thenReturn(personDetailsList);
-        Set<PersonDetails> result = people.findBy(POET);
+        when(personRepository.findBy(0, POET, show)).thenReturn(personDetailsList);
+        Set<PersonDetails> result = people.findBy(POET, show);
         assertEquals(personDetailsList, result);
     }
 }

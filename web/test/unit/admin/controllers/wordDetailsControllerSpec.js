@@ -44,8 +44,8 @@ describe("Word details controller spec:", function () {
             $httpBackend.expectGET("/api/words/edit?id=1").respond(test_word);
 
 
-            $httpBackend.when("GET", "/api/people/summary?role=Poet").respond(test_peopleSummary);
-            $httpBackend.when("GET", "/api/people/summary").respond(test_peopleSummary);
+            $httpBackend.when("GET", "/api/people/summary?show=all&role=Poet").respond(test_peopleSummary);
+            $httpBackend.when("GET", "/api/people/summary?show=all").respond(test_peopleSummary);
             $httpBackend.when("GET", "/api/category/word").respond(null);
             $httpBackend.when("GET", "/api/reflections").respond(test_reflection_summaries);
             $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
@@ -69,8 +69,8 @@ describe("Word details controller spec:", function () {
         it("it should display the linked reflections", function () {
             $httpBackend.expectGET("/api/words/edit?id=1").respond(test_word);
 
-            $httpBackend.when("GET", "/api/people/summary?role=Poet").respond(test_peopleSummary);
-            $httpBackend.when("GET", "/api/people/summary").respond(test_peopleSummary);
+            $httpBackend.when("GET", "/api/people/summary?show=all&role=Poet").respond(test_peopleSummary);
+            $httpBackend.when("GET", "/api/people/summary?show=all").respond(test_peopleSummary);
             $httpBackend.when("GET", "/api/category/word").respond(null);
             $httpBackend.when("GET", "/api/reflections").respond(test_reflection_summaries);
             $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
@@ -88,8 +88,8 @@ describe("Word details controller spec:", function () {
         it("it should not include the default reflection in other reflections dropdown options",function(){
             $httpBackend.expectGET("/api/words/edit?id=1").respond(test_word);
 
-            $httpBackend.when("GET", "/api/people/summary?role=Poet").respond(test_peopleSummary);
-            $httpBackend.when("GET", "/api/people/summary").respond(test_peopleSummary);
+            $httpBackend.when("GET", "/api/people/summary?show=all&role=Poet").respond(test_peopleSummary);
+            $httpBackend.when("GET", "/api/people/summary?show=all").respond(test_peopleSummary);
             $httpBackend.when("GET", "/api/category/word").respond(null);
             $httpBackend.when("GET", "/api/reflections").respond(test_reflection_summaries);
             $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
@@ -105,8 +105,8 @@ describe("Word details controller spec:", function () {
         it("it should display the linked synonyms", function () {
             $httpBackend.expectGET("/api/words/edit?id=1").respond(test_word);
 
-            $httpBackend.when("GET", "/api/people/summary?role=Poet").respond(test_peopleSummary);
-            $httpBackend.when("GET", "/api/people/summary").respond(test_peopleSummary);
+            $httpBackend.when("GET", "/api/people/summary?show=all&role=Poet").respond(test_peopleSummary);
+            $httpBackend.when("GET", "/api/people/summary?show=all").respond(test_peopleSummary);
             $httpBackend.when("GET", "/api/category/word").respond(null);
             $httpBackend.when("GET", "/api/reflections").respond(test_reflection_summaries);
             $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
@@ -121,8 +121,8 @@ describe("Word details controller spec:", function () {
         it("it should display the linked related words", function () {
             $httpBackend.expectGET("/api/words/edit?id=1").respond(test_word);
 
-            $httpBackend.when("GET", "/api/people/summary?role=Poet").respond(test_peopleSummary);
-            $httpBackend.when("GET", "/api/people/summary").respond(test_peopleSummary);
+            $httpBackend.when("GET", "/api/people/summary?show=all&role=Poet").respond(test_peopleSummary);
+            $httpBackend.when("GET", "/api/people/summary?show=all").respond(test_peopleSummary);
             $httpBackend.when("GET", "/api/category/word").respond(null);
             $httpBackend.when("GET", "/api/reflections").respond(test_reflection_summaries);
             $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
@@ -137,8 +137,8 @@ describe("Word details controller spec:", function () {
         it("it shouldn't display currently editing word in related words and synonyms", function () {
             $httpBackend.expectGET("/api/words/edit?id=1").respond(test_word);
 
-            $httpBackend.when("GET", "/api/people/summary?role=Poet").respond(test_peopleSummary);
-            $httpBackend.when("GET", "/api/people/summary").respond(test_peopleSummary);
+            $httpBackend.when("GET", "/api/people/summary?show=all&role=Poet").respond(test_peopleSummary);
+            $httpBackend.when("GET", "/api/people/summary?show=all").respond(test_peopleSummary);
             $httpBackend.when("GET", "/api/category/word").respond(null);
             $httpBackend.when("GET", "/api/reflections").respond(test_reflection_summaries);
             $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
@@ -214,8 +214,8 @@ describe("Word details controller spec:", function () {
 
             $httpBackend.expectGET("/api/words/edit?id=1").respond(test_word);
 
-            $httpBackend.when("GET", "/api/people/summary?role=Poet").respond(test_peopleSummary);
-            $httpBackend.when("GET", "/api/people/summary").respond(test_peopleSummary);
+            $httpBackend.when("GET", "/api/people/summary?show=all&role=Poet").respond(test_peopleSummary);
+            $httpBackend.when("GET", "/api/people/summary?show=all").respond(test_peopleSummary);
             $httpBackend.when("GET", "/api/category/word").respond(null);
             $httpBackend.when("GET", "/api/reflections").respond({"reflections": []});
             $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
@@ -230,8 +230,8 @@ describe("Word details controller spec:", function () {
 
             $httpBackend.expectGET("/api/words/edit?id=1").respond(test_word);
 
-            $httpBackend.when("GET", "/api/people/summary?role=Poet").respond(test_peopleSummary);
-            $httpBackend.when("GET", "/api/people/summary").respond(test_peopleSummary);
+            $httpBackend.when("GET", "/api/people/summary?show=all&role=Poet").respond(test_peopleSummary);
+            $httpBackend.when("GET", "/api/people/summary?show=all").respond(test_peopleSummary);
             $httpBackend.when("GET", "/api/category/word").respond(null);
             $httpBackend.when("GET", "/api/reflections").respond({"reflections": []});
             $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
@@ -247,8 +247,8 @@ describe("Word details controller spec:", function () {
 
             $httpBackend.expectGET("/api/words/edit?id=1").respond(test_word);
 
-            $httpBackend.when("GET", "/api/people/summary?role=Poet").respond(test_peopleSummary);
-            $httpBackend.when("GET", "/api/people/summary").respond(test_peopleSummary);
+            $httpBackend.when("GET", "/api/people/summary?show=all&role=Poet").respond(test_peopleSummary);
+            $httpBackend.when("GET", "/api/people/summary?show=all").respond(test_peopleSummary);
             $httpBackend.when("GET", "/api/category/word").respond(null);
             $httpBackend.when("GET", "/api/reflections").respond({"reflections": []});
             $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);
@@ -263,8 +263,8 @@ describe("Word details controller spec:", function () {
     describe("when saving the word for the first time",function(){
         it("By default, it should have all the reflections for reflections dropdown options",function(){
 
-            $httpBackend.when("GET", "/api/people/summary?role=Poet").respond(test_peopleSummary);
-            $httpBackend.when("GET", "/api/people/summary").respond(test_peopleSummary);
+            $httpBackend.when("GET", "/api/people/summary?show=all&role=Poet").respond(test_peopleSummary);
+            $httpBackend.when("GET", "/api/people/summary?show=all").respond(test_peopleSummary);
             $httpBackend.when("GET", "/api/category/word").respond(null);
             $httpBackend.when("GET", "/api/reflections").respond(test_reflection_summaries);
             $httpBackend.when("GET", "/api/words/summary").respond(test_word_summaries);

@@ -51,6 +51,7 @@ public class PersonResourceIT {
 
         jsonPerson.put("firstName", "parvathy");
         jsonPerson.put("lastName", "Baul");
+        jsonPerson.put("publish", true);
     }
 
     @Test

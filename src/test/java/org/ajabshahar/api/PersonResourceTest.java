@@ -21,6 +21,7 @@ public class PersonResourceTest {
     public static final int PERSON_ID = 1001;
     public static final String ROLE = "role";
     private PersonResource personResource;
+    private String showAll = "all";
     @Mock
     private People people;
     @Mock
@@ -62,10 +63,10 @@ public class PersonResourceTest {
     @Test
     public void shouldGetPeopleOfARole() {
         when(personDetailsList.size()).thenReturn(1);
-        when(people.findBy(ROLE)).thenReturn(personDetailsList);
+        when(people.findBy(ROLE, showAll)).thenReturn(personDetailsList);
         when(personRepresentationFactory.create(personDetailsList)).thenReturn(peopleRepresentation);
 
-        Response response = personResource.getPeople(ROLE);
+        Response response = personResource.getPeople(ROLE, showAll);
 
         assertEquals(peopleRepresentation, response.getEntity());
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
@@ -74,9 +75,9 @@ public class PersonResourceTest {
     @Test
     public void shouldGet404IfPeopleForRoleNotFound() throws Exception {
         when(personDetailsList.size()).thenReturn(0);
-        when(people.findBy(ROLE)).thenReturn(personDetailsList);
+        when(people.findBy(ROLE, showAll)).thenReturn(personDetailsList);
 
-        Response response = personResource.getPeople(ROLE);
+        Response response = personResource.getPeople(ROLE, showAll);
 
         assertEquals(Response.Status.NOT_FOUND.getStatusCode(), response.getStatus());
     }

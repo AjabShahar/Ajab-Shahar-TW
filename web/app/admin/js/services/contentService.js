@@ -8,15 +8,15 @@ var contentService = function ($http) {
     };
 
     var getAllPeople = function () {
-        return $http.get('/api/people');
+        return $http.get('/api/people?show=all');
     };
 
     var getAllPeopleSummary = function(params){
-        return $http.get('/api/people/summary',{params:params});
+        return $http.get('/api/people/summary?show=all',{params:params});
     };
 
     var getPoets = function () {
-        return $http.get('/api/people?role=Poet');
+        return $http.get('/api/people?show=all&role=Poet');
     };
 
     var getAllPoetsSummary = function () {
