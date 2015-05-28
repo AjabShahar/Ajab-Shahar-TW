@@ -10,9 +10,9 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "1.2.25",
-    "angular-route": "1.2.25",
-    "angular-animate": "1.2.25",
+    "angular": "1.2.28",
+    "angular-route": "1.2.28",
+    "angular-animate": "1.2.28",
     "angular-socialshare": "0.0.5",
     "angular-multi-select": "2.0.0",
     "jcarousel": "0.3.1",
@@ -23,16 +23,19 @@
     "underscore": "~1.5.2",
     "bower-facebook": "~1.0.0",
     "bootstrap": "~3.3.0",
-    "textAngular": "1.2.2",
+    "textAngular": "latest",
     "bourbon": "~4.2.1",
     "neat": "~1.7.1",
     "angular-hint": "0.0.0",
-    "masonry": "~3.3.0"
+    "masonry": "~3.3.0",
+    "angular-masonry": "0.11.0"
   },
   "devDependencies": {
     "angular-mocks": "~1.2"
   },
   "resolutions": {
-    "angular": "1.2.25"
+    "angular":"1.2.28",
+    "masonry": "~3.3.0",
+    "jquery": ">= 1.9.1"
   }
 }

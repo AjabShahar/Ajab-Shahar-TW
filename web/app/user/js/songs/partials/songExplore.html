@@ -36,9 +36,9 @@
                 </div>
                 <div class='grid-view'>
                     <div class='grid-wrapper' >
-                        <div id="container" mosaic >
+                        <div id="container" masonry preserve-order>
                             <!--<ul class="media-list" height-offset="0">-->
-                            <div ng-repeat="thumbnail in thumbnails | filter : {type: currentSelection }" class="media" >
+                            <div ng-repeat="thumbnail in thumbnails | filter : {type: currentSelection }" class="media masonry-brick">
                                 <content-thumbnail content="thumbnail" format="format" ng-click="selectThumbnail(thumbnail)" keep-expanded="true"
                                                    current-index="{{$index}}"></content-thumbnail>
                             </div>
