@@ -52,6 +52,7 @@
                 }
 
 
+
                 .text-content {
                     padding-bottom: 50px;
                 }
@@ -59,23 +60,40 @@
                 #audio_video_container {
                     margin-top: 1em;
                 }
+                .text-top-background{
+                    background: transparent url(/user/img/words/one.png) left top;
+                    background-repeat: no-repeat no-repeat;
+                    background-size: 100% 100%;
+                    height: 130px;
+
+                }
+                .text-middle-background {
+                    background: transparent url(/user/img/words/two.png) left bottom;
+                    background-repeat: no-repeat repeat;
+                    background-size: 100% 100%;
+                    width: 100%;
+                    position: relative;
+
+                    .detail-content {
+                        position: relative;
+                        top: -60px;
+                        width: 90%;
+                        margin: 0 auto;
+                    }
+                }
 
         }
         .detail-text-wrapper-bottom-image {
-              background: transparent url(/user/img/words/word_text_bg_bottom.png) left -1px no-repeat;
-              height: 30px;
-              width: 80%;
+              background: transparent url(/user/img/words/three.png) left 0px no-repeat;
+              height: 80px;
+              width: 100%;
               position: relative;
               margin: 0 auto;
               background-size: 100% 100%;
         }
 
-        .text-background{
-              background: transparent url(/user/img/words/word_text_bg.png) left top;
-              background-repeat: no-repeat repeat;
-              background-size: 100% 100%;
+        
 
-        }
 
     }
 
