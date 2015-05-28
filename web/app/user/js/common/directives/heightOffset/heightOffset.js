@@ -10,18 +10,20 @@ angular.module('utilities').directive('heightOffset',function(){
     }
 });
 
-angular.module('utilities').directive('ellipsis',function(){
+angular.module('utilities').directive('ellipsis',['$timeout',function($timeout){
     return {
         scope:{},
         link:function(scope,element,attrs){
-            $(element).readmore({
-                moreLink: '<a href="#" class="read-link">see more</a>',
-                lessLink: '<a href="#" class="read-link">see less</a>'
+            $timeout(function(){
+                $(element).readmore({
+                    moreLink: '<a href="#" class="read-link">see more</a>',
+                    lessLink: '<a href="#" class="read-link">see less</a>'
 
+                });
             });
         }
     }
-});
+}]);
 
 angular.module('utilities').directive('mosaic',function(){
     return {
