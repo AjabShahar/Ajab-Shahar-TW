@@ -196,6 +196,7 @@ AjabShahar.DetailsObject = function (content, type) {
 
     var buildFromPerson = function (person) {
         if (!_.isEmpty(person)) {
+            self.id = person.id;
             self.name = getName(person);
             self.occupations = getOccupations(person);
             self.thumbnailImg = person.thumbnailURL;
