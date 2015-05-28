@@ -1,4 +1,4 @@
-angular.module("song", ["thumbnailModule", "utilities", "ngRoute", "headerModule"])
+angular.module("song", ["thumbnailModule", "utilities", "ngRoute", "headerModule","wu.masonry"])
     .config(["$routeProvider", "$locationProvider", function ($routeProvider, $locationProvider) {
         $routeProvider
             .when("/:songId", {
