@@ -138,4 +138,9 @@
             alter table person add column profile text;
         </sql>
     </changeSet>
+    <changeSet id="86" author="JAIDEEP">
+        <sql>
+            ALTER TABLE PERSON ADD COLUMN publish BOOLEAN DEFAULT false;
+        </sql>
+    </changeSet>
 </databaseChangeLog>

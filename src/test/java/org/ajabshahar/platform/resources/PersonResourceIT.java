@@ -131,7 +131,6 @@ public class PersonResourceIT {
         personDetails = personResponse.getEntity(PersonRepresentation.class);
 
         assertThat(personDetails.getThumbnailURL(), is("URL"));
-
     }
 
     @Test
@@ -153,6 +152,22 @@ public class PersonResourceIT {
 
         assertThat(personDetails.getProfile(), is("This is person profile"));
 
+    }
+
+    @Test
+    public void shouldPublishPerson(){
+        jsonPerson.put("publish", true);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL);
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+        ClientResponse personResponse = loginAndPost("http://localhost:%d/api/people", jsonPerson);
+
+        PersonRepresentation personDetails = personResponse.getEntity(PersonRepresentation.class);
+        personResponse = httpGet("http://localhost:%d/api/people/" + personDetails.getId());
+
+        personDetails = personResponse.getEntity(PersonRepresentation.class);
+
+        assertThat(personDetails.isPublish(), is(true));
     }
 
     private ClientResponse httpGet(String url) {

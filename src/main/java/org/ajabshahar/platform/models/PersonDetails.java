@@ -23,25 +23,25 @@ public class PersonDetails {
     @Column(name = "FIRST_NAME", nullable = false)
     private String firstName;
 
-    @Column(name = "MIDDLE_NAME", nullable = true)
+    @Column(name = "MIDDLE_NAME")
     private String middleName;
 
-    @Column(name = "LAST_NAME", nullable = true)
+    @Column(name = "LAST_NAME")
     private String lastName;
 
-    @Column(name = "FIRST_NAME_IN_HINDI", nullable = true)
+    @Column(name = "FIRST_NAME_IN_HINDI")
     private String firstNameInHindi;
 
-    @Column(name = "MIDDLE_NAME_IN_HINDI", nullable = true)
+    @Column(name = "MIDDLE_NAME_IN_HINDI")
     private String middleNameInHindi;
 
-    @Column(name = "LAST_NAME_IN_HINDI", nullable = true)
+    @Column(name = "LAST_NAME_IN_HINDI")
     private String lastNameInHindi;
 
     @OneToMany(fetch = FetchType.EAGER)
     @Fetch(FetchMode.SUBSELECT)
     @JoinTable(name = "person_category", joinColumns = @JoinColumn(name = "person_id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id"))
+                    inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> category;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -54,14 +54,14 @@ public class PersonDetails {
     @Column(name = "PROFILE")
     private String profile;
 
+    @Column(name = "PUBLISH")
+    private boolean publish;
 
     public String getName() {
         return format("%s %2s %3s", Strings.nullToEmpty(getFirstName()), Strings.nullToEmpty(getMiddleName()), Strings.nullToEmpty(getLastName())).replaceAll("\\s+", " ").trim();
     }
 
-
     public String getHindiName() {
         return format("%s %2s %3s", Strings.nullToEmpty(getFirstNameInHindi()), Strings.nullToEmpty(getMiddleNameInHindi()), Strings.nullToEmpty(getLastNameInHindi())).replaceAll("\\s+", " ").trim();
     }
-
 }

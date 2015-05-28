@@ -22,7 +22,7 @@ public class PersonRepresentationFactory {
         PersonRepresentation personRepresentation = new PersonRepresentation(personDetails.getId(), personDetails.getFirstName(),
                 personDetails.getMiddleName(), personDetails.getLastName(), personDetails.getFirstNameInHindi(),
                 personDetails.getMiddleNameInHindi(), personDetails.getLastNameInHindi(), categoryName,
-                personDetails.getPrimaryOccupation(), personDetails.getThumbnailURL(), personDetails.getProfile());
+                personDetails.getPrimaryOccupation(), personDetails.getThumbnailURL(), personDetails.getProfile(), personDetails.isPublish());
         return personRepresentation;
     }
 

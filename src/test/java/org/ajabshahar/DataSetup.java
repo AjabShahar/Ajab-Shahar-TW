@@ -122,9 +122,9 @@ public class DataSetup {
     public static final Operation INSERT_PERSON =
             sequenceOf(
                     insertInto("PERSON")
-                            .columns("id", "first_name", "last_name")
-                            .values(1, "Ravi", "Das")
-                            .values(2, "Shabnam", "Virmani")
+                            .columns("id", "first_name", "last_name", "publish")
+                            .values(1, "Ravi", "Das", true)
+                            .values(2, "Shabnam", "Virmani", true)
                             .build());
 
     public static final Operation INSERT_SONG_SINGER =

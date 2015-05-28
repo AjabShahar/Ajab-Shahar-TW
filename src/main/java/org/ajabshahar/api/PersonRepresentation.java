@@ -20,11 +20,12 @@ public class PersonRepresentation {
     private Category primaryOccupation;
     private String thumbnailURL;
     private String profile;
+    private boolean publish;
 
     public PersonRepresentation(){
 
     }
-    public PersonRepresentation(long id, String firstName, String middleName, String lastName, String firstNameInHindi, String middleNameInHindi, String lastNameInHindi, Set<String> roles, Category primaryOccupation, String thumbnailURL, String profile) {
+    public PersonRepresentation(long id, String firstName, String middleName, String lastName, String firstNameInHindi, String middleNameInHindi, String lastNameInHindi, Set<String> roles, Category primaryOccupation, String thumbnailURL, String profile, boolean publish) {
         this.id = id;
         this.firstNameInHindi = firstNameInHindi;
         this.middleNameInHindi = middleNameInHindi;
@@ -37,6 +38,7 @@ public class PersonRepresentation {
         this.primaryOccupation = primaryOccupation;
         this.thumbnailURL = thumbnailURL;
         this.profile = profile;
+        this.publish = publish;
     }
 
     public String getFirstName() {
@@ -90,5 +92,9 @@ public class PersonRepresentation {
 
     public void setPrimaryOccupation(Category primaryOccupation) {
         this.primaryOccupation = primaryOccupation;
+    }
+
+    public boolean isPublish() {
+        return publish;
     }
 }

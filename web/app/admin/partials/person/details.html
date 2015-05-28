@@ -117,6 +117,19 @@
                     </div>
                 </div>
 
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label>Publish</label>
+                    </div>
+                    <div class="col-sm-1"
+                         ng-init='authoringOptions=[{ "value": true, "text": "Yes" }, { "value": false, "text": "No" }]'>
+                        <select class="form-control"
+                                ng-init="formInfo.publish = formInfo.publish || authoringOptions[1].value"
+                                ng-model="formInfo.publish"
+                                ng-options="authoringOption.value as authoringOption.text for authoringOption in authoringOptions"></select>
+                    </div>
+                </div>
+
                 <button type="submit" ng-click="saveData()" class="btn btn-primary btn-lg">Save</button>
             </form>
         </div>
