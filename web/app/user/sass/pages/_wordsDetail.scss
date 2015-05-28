@@ -1,7 +1,9 @@
 $lower-resolution: new-breakpoint(max-width 1024px);
 .words-details {
-  background: transparent url(/user/img/words/word_details_bg.png) left top;
+  background: transparent url(/user/img/words/word_details_bg.png) left top fixed;
   width: 100%;
+  background-size: cover;
+  height: 100%;
 
   .comma-space:after {
     content: "\00a0";
@@ -15,7 +17,7 @@ $lower-resolution: new-breakpoint(max-width 1024px);
     }
 
     .page-title {
-      width: 70%;
+      width: 60%;
       text-align: left;
       margin-top: 21px;
       color: $dark-grey;
