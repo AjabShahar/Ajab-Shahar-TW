@@ -24,7 +24,7 @@
                         <label>Word Original</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <input type="text" name="word" ng-model="formInfo.wordOriginal" class="form-control">
+                        <input type="text" name="word original" ng-model="formInfo.wordOriginal" class="form-control">
                     </div>
                 </div>
 
@@ -33,7 +33,7 @@
                         <label>Word Transliteration</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <input type="text" name="word" ng-model="formInfo.wordTransliteration" class="form-control">
+                        <input type="text" name="word transliteration" ng-model="formInfo.wordTransliteration" class="form-control">
                     </div>
                 </div>
 
@@ -42,7 +42,7 @@
                         <label>Diacritic</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <input type="text" name="translation" ng-model="formInfo.diacritic" class="form-control">
+                        <input type="text" name="word diacritic" ng-model="formInfo.diacritic" class="form-control">
                     </div>
                 </div>
 
@@ -51,7 +51,7 @@
                         <label>Word Translation</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <input type="text" name="word" ng-model="formInfo.wordTranslation" class="form-control">
+                        <input type="text" name="word translation" ng-model="formInfo.wordTranslation" class="form-control">
                     </div>
                 </div>
 
@@ -59,7 +59,7 @@
                     <div class="col-sm-2">
                         <label>Related Songs</label>
                     </div>
-                    <div class="col-sm-8 rowWiseSelect" multi-select input-model="songs" button-label="menuTitle"
+                    <div name="related songs" class="col-sm-8 rowWiseSelect" multi-select input-model="songs" button-label="menuTitle"
                          item-label="menuTitle" tick-property="ticked" output-model="formInfo.songs"></div>
                 </div>
 
@@ -67,7 +67,7 @@
                     <div class="col-sm-2">
                         <label>People</label>
                     </div>
-                    <div class="col-sm-2" multi-select input-model="people" button-label="name"
+                    <div name ="people" class="col-sm-2" multi-select input-model="people" button-label="name"
                          item-label="name" tick-property="ticked" output-model="formInfo.people"></div>
                 </div>
 
@@ -76,7 +76,7 @@
                         <label>Default Reflection</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <select ng-model="formInfo.defaultReflection"
+                        <select name="default reflection" ng-model="formInfo.defaultReflection"
                                 ng-options="reflection as reflection.title for reflection in reflections track by reflection.id"
                                 class="form-control" ng-required="isReflectionRequired()"></select>
                     </div>
@@ -89,7 +89,7 @@
                     <div class="form-group col-sm-2">
                         <label>Other Related Reflections</label>
                     </div>
-                    <div class="form-group col-sm-6 rowWiseSelect" multi-select input-model="reflectionsWithoutTheDefault"
+                    <div name="other related reflections" class="form-group col-sm-6 rowWiseSelect" multi-select input-model="reflectionsWithoutTheDefault"
                          button-label="title" item-label="title" tick-property="ticked"
                          output-model="formInfo.reflections"></div>
                 </div>
@@ -99,7 +99,7 @@
                         <label>Meaning</label>
                     </div>
                     <div class="col-sm-8">
-                        <text-angular name="htmlcontent" ng-model="formInfo.meaning"></text-angular>
+                        <text-angular name="meaning" ng-model="formInfo.meaning"></text-angular>
                     </div>
                 </div>
 
@@ -108,7 +108,7 @@
                         <label>Is this a Root Word ?</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <select name="format" ng-model="formInfo.isRootWord" class="form-control"
+                        <select name="root word" ng-model="formInfo.isRootWord" class="form-control"
                                 ng-init="formInfo.isRootWord = formInfo.isRootWord || false">
                             <option value="true">Yes</option>
                             <option value="false">No</option>
@@ -121,7 +121,7 @@
                         <label>Word Intro Excerpt (English)</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <input type="text" name="translation" ng-model="formInfo.englishIntroExcerpt"
+                        <input type="text" name="word intro excerpt english" ng-model="formInfo.englishIntroExcerpt"
                                class="form-control">
                     </div>
                 </div>
@@ -131,7 +131,7 @@
                         <label>Word Intro Excerpt (Hindi)</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <input type="text" name="translation" ng-model="formInfo.hindiIntroExcerpt"
+                        <input type="text" name="word intro excerpt hindi" ng-model="formInfo.hindiIntroExcerpt"
                                class="form-control">
                     </div>
                 </div>
@@ -144,7 +144,7 @@
                     <div class="col-sm-2">
                         <label>Writer</label>
                     </div>
-                    <div class="col-sm-2" multi-select input-model="writers" button-label="name"
+                    <div name="writer" class="col-sm-2" multi-select input-model="writers" button-label="name"
                          item-label="name" tick-property="ticked" output-model="formInfo.writers"></div>
                 </div>
 
@@ -153,7 +153,7 @@
                         <label>Display "Ajab Shahar team"?</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <select name="format" ng-model="formInfo.displayAjabShaharTeam" class="form-control"
+                        <select name="display ajabshahar team" ng-model="formInfo.displayAjabShaharTeam" class="form-control"
                                 ng-init="formInfo.displayAjabShaharTeam = formInfo.displayAjabShaharTeam || false">
                             <option value="true">Yes</option>
                             <option value="false">No</option>
@@ -166,7 +166,7 @@
                         <label>Thumbnail Url</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <input type="text" name="word" ng-model="formInfo.thumbnailUrl" class="form-control">
+                        <input type="text" name="thumbnail url" ng-model="formInfo.thumbnailUrl" class="form-control">
                     </div>
                 </div>
 
@@ -175,7 +175,7 @@
                         <label>Show On LandingPage</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <select name="format" ng-model="formInfo.showOnLandingPage" class="form-control"
+                        <select name="show on landingpage" ng-model="formInfo.showOnLandingPage" class="form-control"
                                 ng-init="formInfo.showOnLandingPage = formInfo.showOnLandingPage || false">
                             <option value="true">Yes</option>
                             <option value="false">No</option>
@@ -188,7 +188,7 @@
                     <div class="col-sm-2">
                         <label>Synonyms</label>
                     </div>
-                    <div class="col-sm-8 " multi-select input-model="synonyms" button-label="wordTransliteration"
+                    <div name="synonyms" class="col-sm-8 " multi-select input-model="synonyms" button-label="wordTransliteration"
                          item-label="wordTransliteration" tick-property="ticked" output-model="formInfo.synonyms"></div>
                 </div>
 
@@ -197,7 +197,7 @@
                     <div class="col-sm-2">
                         <label>Related Words</label>
                     </div>
-                    <div class="col-sm-8 " multi-select input-model="relatedWords" button-label="wordTransliteration"
+                    <div name="related words" class="col-sm-8 " multi-select input-model="relatedWords" button-label="wordTransliteration"
                          item-label="wordTransliteration" tick-property="ticked" output-model="formInfo.relatedWords"></div>
                 </div>
 
@@ -206,7 +206,7 @@
                         <label>Publish</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <select name="format" ng-model="formInfo.publish" class="form-control"
+                        <select name="publish" ng-model="formInfo.publish" class="form-control"
                                 ng-init="formInfo.publish = formInfo.publish || false">
                             <option value="true">Yes</option>
                             <option value="false">No</option>
