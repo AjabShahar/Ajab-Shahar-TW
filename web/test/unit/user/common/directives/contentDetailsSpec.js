@@ -89,6 +89,7 @@ describe("contentDetails model", function () {
     it("should construct person details model from person representation", function () {
         personDetails = new AjabShahar.DetailsObject(person, 'person');
 
+        expect(personDetails.id).toBe(1);
         expect(personDetails.name).toBe("Parvathy Baul");
         expect(personDetails.occupations.length).toBe(2);
         expect(personDetails.thumbnailImg).toBeNull();

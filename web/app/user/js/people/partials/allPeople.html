@@ -80,14 +80,14 @@
                                     </div>
                                     <div class="people-wrapper">
                                         <div class="people-info" ellipsis>
-                                            <span class="title">{{person.name}}</span>
+                                            <a href="/people/#/explore/{{person.id}}" target="_self"><span class="title">{{person.name}}</span></a>
                                             <span class="job-title"><li ng-repeat="role in person.occupations track by $index" style="display: inline">
                                                 {{role}}
                                                 <span ng-hide="$last">,  </span>
                                             </li></span>
                                                 <div bind-dynamic-html = "person.profile"></div>
                                         </div>
-                                        <a href="javascript:void(0)" class="explore">Explore</a>
+                                        <a href="/people/#/explore/{{person.id}}" class="explore">Explore</a>
                                     </div>
                                 </div>
                             </ul>
