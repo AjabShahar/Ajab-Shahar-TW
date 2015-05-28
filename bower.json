@@ -23,7 +23,7 @@
     "underscore": "~1.5.2",
     "bower-facebook": "~1.0.0",
     "bootstrap": "~3.3.0",
-    "textAngular": "latest",
+    "textAngular": "1.2.2",
     "bourbon": "~4.2.1",
     "neat": "~1.7.1",
     "angular-hint": "0.0.0",
@@ -34,8 +34,7 @@
     "angular-mocks": "~1.2"
   },
   "resolutions": {
-    "angular":"1.2.28",
-    "masonry": "~3.3.0",
+    "angular": "1.2.28",
     "jquery": ">= 1.9.1"
   }
 }
