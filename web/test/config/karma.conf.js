@@ -45,6 +45,8 @@ module.exports = function (config) {
             'user/js/reflections/**/*.js',
             'http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-cookies.js',
             '../test/unit/**/*.js',
+            'user/js/people/peopleApp.js',
+            'user/js/people/**/*.js',
             'user/js/common/directives/carouselSupport/carousel.html',
             'user/js/common/directives/contentDetails/contentDetails.html'
         ],

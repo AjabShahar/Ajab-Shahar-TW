@@ -74,7 +74,7 @@
 
                             </div>
                             <ul>
-                                <div ng-repeat="(index,person) in people" class="row-wrapper">
+                                <div ng-repeat="(index,person) in people | orderBy : 'name'" class="row-wrapper">
                                     <div class="image">
                                         <img src="{{person.thumbnailImg}}">
                                     </div>
@@ -85,11 +85,7 @@
                                                 {{role}}
                                                 <span ng-hide="$last">,  </span>
                                             </li></span>
-
-                                            <p class="clamped clamped-2" ng-class="seeMore ? 'see-more':'see-less'">
                                                 <div bind-dynamic-html = "person.profile"></div>
-                                            </p>
-
                                         </div>
                                         <a href="javascript:void(0)" class="explore">Explore</a>
                                     </div>

@@ -85,6 +85,36 @@ describe("contentDetails model", function () {
         expect(songDetails.links[3].description).toBe("WORD");
 
     });
+
+    it("should construct person details model from person representation", function () {
+        personDetails = new AjabShahar.DetailsObject(person, 'person');
+
+        expect(personDetails.name).toBe("Parvathy Baul");
+        expect(personDetails.occupations.length).toBe(2);
+        expect(personDetails.thumbnailImg).toBeNull();
+        expect(personDetails.profile).toBeNull();
+    });
+
+    var person =
+    {
+        "id": 1,
+        "firstName": "Parvathy",
+        "middleName": "",
+        "lastName": "Baul",
+        "firstNameInHindi": null,
+        "middleNameInHindi": null,
+        "lastNameInHindi": null,
+        "roles": [
+            "Poet"
+        ],
+        "primaryOccupation": {
+            "id": 9,
+            "name": "Poet",
+            "categoryType": "person"
+        },
+        "thumbnailURL": null,
+        "profile": null
+    };
 });
 
 describe("content details directive", function () {
