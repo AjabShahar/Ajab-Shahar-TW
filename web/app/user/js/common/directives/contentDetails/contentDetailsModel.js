@@ -150,7 +150,8 @@ AjabShahar.DetailsObject = function (content, type) {
                     return word.wordIntroductions.map(function (wordIntro) {
                         return {
                             text: wordIntro.wordIntroEnglish,
-                            type: wordIntro.contentType
+                            type: wordIntro.contentType,
+                            poet: wordIntro.poet?wordIntro.poet.name:""
                         }
                     });
                 }
