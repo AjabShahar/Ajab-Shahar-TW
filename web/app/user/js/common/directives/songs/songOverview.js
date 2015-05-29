@@ -6,8 +6,8 @@ thumbnailModule.directive("songOverview", function () {
         scope: {
             englishTranslation: '@',
             englishTransliteration: '@',
-            singer: '@',
-            poet: '@',
+            singers: '=',
+            poet: '=',
             videoUrl: '@',
             id: '@',
             audioUrl: '@',

@@ -1,8 +1,8 @@
 <div class="popup-wrapper" style="z-index:2147483647">
     <div class="overlay"></div>
     <div class='popup-container'>
-        <song-overview ng-if="overview.content.isSong" id="{{overview.content.id}}" singer="{{overview.content.singer}}"
-                       poet="{{overview.content.poet}}" english-translation="{{overview.content.englishTranslation}}"
+        <song-overview ng-if="overview.content.isSong" id="{{overview.content.id}}" singers="overview.content.singers"
+                       poet="overview.content.poet" english-translation="{{overview.content.englishTranslation}}"
                        audio-Url="{{overview.content.audioId}}" video-Url="{{overview.content.videoId}}"
                        english-transliteration="{{overview.content.englishTransliteration}}" noun="{{overview.content.noun}}"
                        words="overview.content.words" downloadurl="{{overview.content.downloadUrl}}"></song-overview>

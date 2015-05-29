@@ -1,6 +1,6 @@
 <div class="media-introduction song">
     <h5 class="artistName selected">
-        {{singer}}
+        <span ng-repeat="singer in singers track by $index">{{singer.name}}<span ng-hide="$last"> &  </span></span>
         <small> {{noun}}</small>
     </h5>
 
@@ -35,8 +35,11 @@
         </h3>
 
         <div class='creditCont'>
-            <div class='creditBox'><a href="javascript:void(0)" class='link-text'>{{poet}}</a> POET</div>
-            <div class='creditBox'><a href="javascript:void(0)" class='link-text'>{{singer}}</a> SINGER</div>
+            <div class='creditBox'><a href="/people/all#{{poet.id}}" class='link-text'>{{poet.name}}</a> POET</div>
+            <span class='creditBox' ng-repeat="singer in singers track by $index">
+                <a href="/people/all#{{singer.id}}" class='link-text'>{{singer.name}}</a>
+               <span class="creditBox">SINGER</span>
+            </span>
                 <span ng-repeat="word in words" class="creditBox">
                      <a href="/words/#/details/{{word.id}}"
                         target="_self" class="link-text">{{word.transliteration}}</a>

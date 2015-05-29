@@ -17,7 +17,7 @@ describe("Song overview specs:", function () {
         it("then should replace the element with the appropriate content", function () {
             scope.overview = {
                 id: 1,
-                singer: "singer",
+                singers: "singer",
                 poet: "poet",
                 englishTranslation: "englishTranslation",
                 audioId: "audioId",
@@ -26,8 +26,8 @@ describe("Song overview specs:", function () {
                 noun: "noun",
                 words: "words"
             };
-            var songOverviewDirective = '<song-overview id="{{overview.id}}" singer="{{overview.singer}}" poet="{{overview.poet}}" english-translation="{{overview.englishTranslation}}" audio-Url="{{overview.audioId}}" video-Url="{{overview.videoId}}" english-transliteration="{{overview.englishTransliteration}}" noun="{{overview.noun}}" words="overview.words"></song-overview>';
-            template.put('/user/js/common/templates/songs/songOverview.html', '{{id}} {{singer}} {{poet}} {{englishTranslation}} {{audioUrl}} {{videoUrl}} {{englishTransliteration}} {{noun}} {{words}}');
+            var songOverviewDirective = '<song-overview id="{{overview.id}}" singers="overview.singers" poet="overview.poet" english-translation="{{overview.englishTranslation}}" audio-Url="{{overview.audioId}}" video-Url="{{overview.videoId}}" english-transliteration="{{overview.englishTransliteration}}" noun="{{overview.noun}}" words="overview.words"></song-overview>';
+            template.put('/user/js/common/templates/songs/songOverview.html', '{{id}} {{singers}} {{poet}} {{englishTranslation}} {{audioUrl}} {{videoUrl}} {{englishTransliteration}} {{noun}} {{words}}');
 
             var element = $compile(songOverviewDirective)(scope);
             scope.$apply();
