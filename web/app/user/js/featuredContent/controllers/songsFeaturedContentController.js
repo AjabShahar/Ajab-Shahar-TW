@@ -1,4 +1,4 @@
-featuredContentApp.controller('songsFeaturedContentController', ['$scope', 'mainLandingContentService', 'songMapper', 'popupService', '$location', function ($scope, mainLandingContentService, songMapper, popupService, $location) {
+featuredContentApp.controller('songsFeaturedContentController', ['$scope', 'mainLandingContentService', 'overviewMapperService', 'popupService', '$location', function ($scope, mainLandingContentService, overviewMapperService, popupService, $location) {
     $scope.publishedSongsCount = 0;
     $scope.thumbnails = {};
     popupService.reset();
@@ -13,7 +13,7 @@ featuredContentApp.controller('songsFeaturedContentController', ['$scope', 'main
                 $scope.thumbnails[index] = new AjabShahar.ThumbnailObject(song,"song");
             });
 
-            var introductions = songMapper.getOverviews(songs);
+            var introductions = overviewMapperService.toSongOverviews(songs);
             _.each(introductions, function (introduction,index) {
                 popupService.addItem(introduction,index);
             });
