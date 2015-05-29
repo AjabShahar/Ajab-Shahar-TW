@@ -9,18 +9,3 @@ angular.module('utilities').directive('heightOffset', function () {
         }
     }
 });
-
-angular.module('utilities').directive('ellipsis', ['$timeout', function ($timeout) {
-    return {
-        scope: {},
-        link: function (scope, element, attrs) {
-            $timeout(function () {
-                $(element).readmore({
-                    moreLink: '<a href="#" class="read-link">see more</a>',
-                    lessLink: '<a href="#" class="read-link">see less</a>'
-
-                });
-            });
-        }
-    }
-}]);

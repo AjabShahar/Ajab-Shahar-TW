@@ -1,5 +1,6 @@
 <div ng-controller="allPeopleController">
     <div id="page-wrapper" ng-random-class ng-classes="classes">
+        <div class="main-content">
         <div class="ajab-container headerfixOuter">
             <div class='logo-with-filter headerfixInner'>
                 <div class='nav-elements-wrapper'>
@@ -50,7 +51,7 @@
 
                 <div class='people-grid-view'>
 
-                    <div class="people-grid-content-wrapper" height-offset="150">
+                    <div class="people-grid-content-wrapper" min-height-offset="150">
 
 
                         <div class='people-grid-wrapper'>
@@ -78,14 +79,15 @@
                                     <div class="image" >
                                         <img src="{{person.thumbnailImg}}">
                                     </div>
-                                    <div class="people-wrapper" >
-                                        <div class="people-info" ellipsis>
+                                    <div class="people-wrapper">
+                                        <div class="people-info" read-more>
+
                                             <a href="/people/#/explore/{{person.id}}" target="_self"><span class="title">{{person.name}}</span></a>
                                             <span class="job-title"><li ng-repeat="role in person.occupations track by $index" style="display: inline">
                                                 {{role}}
                                                 <span ng-hide="$last">,  </span>
                                             </li></span>
-                                                <div bind-dynamic-html = "person.profile"></div>
+                                            <div bind-dynamic-html = "person.profile"></div>
                                         </div>
                                         <a href="/people/#/explore/{{person.id}}" class="explore">Explore</a>
                                     </div>
@@ -100,4 +102,5 @@
         </div>
     </div>
     <ajab-shahar-footer></ajab-shahar-footer>
+</div>
 </div>
