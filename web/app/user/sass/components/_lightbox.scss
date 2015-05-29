@@ -277,7 +277,30 @@
 
 }
 .reflection {
-    color: #808080;
+    width: 80%;
+    margin: 0px auto;
+    position: relative;
+
+
+    &.bg-wrapper {
+        background: transparent url(/user/img/words/content_bg.png) -4px 0 no-repeat;
+        padding: 2% 4% 5% 4%;
+        background-size: 100% 100%;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -o-box-sizing: border-box;
+        box-sizing: border-box;
+        .content-bg {
+                overflow: auto;
+                height: 450px;
+                padding-right: 2em;
+
+                @media screen and (max-width: 768px) {
+                  height: 665px;
+                }
+        }
+    }
+
     .ref-intro-by {
         font-size: 12px;
         color: #808080;
@@ -295,14 +318,14 @@
         color:#ED1E79;
         line-height: 2em;
     }
-  .ref-speaker {
+    .ref-speaker {
         font-family: 'MerriweatherSans';
         font-size: 14px;
         font-weight: 300;
         text-transform: uppercase;
 
     }
-  .ref-verb {
+    .ref-verb {
         content: " says";
         font-size: 12px;
         text-transform: lowercase;

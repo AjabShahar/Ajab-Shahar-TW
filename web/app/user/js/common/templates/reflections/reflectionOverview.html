@@ -1,10 +1,10 @@
-<div class="media-introduction reflection">
+<div class="media-introduction reflection" ng-class="{'bg-wrapper': showText}">
 
     <span class="ref-speaker">{{speaker.name}}</span><span class="ref-verb">  {{verb}}</span>
 
     <h3 class="ref-title">{{title}}</h3>
 
-    <div id="content-wrapper" ng-show="showText">
+    <div class="content-bg" ng-show="showText">
         <span bind-dynamic-html="info"></span>
         <span bind-dynamic-html="transcript.englishTranscript" ng-repeat="transcript in text"></span>
     </div>
