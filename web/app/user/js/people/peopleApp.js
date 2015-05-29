@@ -10,6 +10,10 @@ angular.module('people', ['ngRoute','htmlGenerator','utilities','animationModule
                 templateUrl:"/user/js/people/partials/explore.html",
                 controller:""
             })
+            .when('/allPeople#:name',{
+                templateUrl: "/user/js/people/partials/allPeople.html",
+                controller:"allPeopleController"
+            })
             .otherwise( {
                 templateUrl: "/user/js/people/partials/allPeople.html",
                 controller:"allPeopleController"
