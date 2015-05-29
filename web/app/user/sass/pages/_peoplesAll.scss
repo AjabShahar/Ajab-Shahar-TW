@@ -28,6 +28,7 @@
                 overflow: visible;
                 min-height: 900px;
                 width:100%;
+                padding-bottom: 15em;
 
                 .people-grid-wrapper {
                     margin: 0 30px;
@@ -42,6 +43,12 @@
                     .row-wrapper {
                         clear: both;
                         height: 170px;
+                        .image {
+                            float: left;
+                            width: 255px;
+                            text-align: left;
+
+                        }
 
                         .people-wrapper {
                             text-align: left;
@@ -49,53 +56,77 @@
                             width: calc(97% - 255px);
                             margin-left: 3%;
 
-                        }
-                        .image {
-                            float: left;
-                            width: 255px;
-                            text-align: left;
-
-                        }
-                        .explore {
-                            background: transparent url('/user/img/people/explore-icon.png') 60px 3px no-repeat;
-                            background-size: 15px 16px;
-                            display: inline-block;
-                            float: left;
-                            width: 100px;
-                            color: $pink;
-                            font-weight: 300;
-                            line-height: 23px;
-                            font-size: $small;
-                            font-family: 'Merriweather Sans';
-                            text-transform: Uppercase;
-
-                        }
-
-                        .people-info {
-                               font-size: $medium;
-                               font-weight: 300;
-                               font-family: 'Merriweather';
-                               color: $grey;
-                               max-height: 9em;
-                               line-height: 1.5em;
-
-                              .title {
-                                text-transform: Capitalize;
-                                font-size: $extra-large;
-                                color: $dark-grey;
-                                &:hover {
-                                    color: $pink;
+                             a {
+                                &:nth-child(2) {
+                                    border-right: solid thin;
+                                    padding-right: 10px;
+                                }
+                                &:nth-child(3) {
+                                    margin-left: 10px;
+                                    background-position: 55px -1px;
+                                }
+                                &:nth-child(2):not(.read-link) {
+                                    border: none;
+                                    padding-right: 0;
                                 }
 
-                              }
-                              .job-title {
-                                text-transform: Capitalize;
-                                font-size: $small;
-                                color: $grey;
-                                font-family: 'Merriweather Sans';
-                              }
+
+                            }
+
+                            .people-info {
+                                   font-size: $medium;
+                                   font-weight: 300;
+                                   font-family: 'Merriweather';
+                                   color: $grey;
+                                   max-height: 9em;
+                                   line-height: 1.5em;
+
+                                  .title {
+                                        text-transform: Capitalize;
+                                        font-size: $extra-large;
+                                        color: $dark-grey;
+                                        &:hover {
+                                            color: $pink;
+                                        }
+
+                                  }
+                                  .job-title {
+                                        text-transform: Capitalize;
+                                        font-size: $small;
+                                        color: $grey;
+                                        font-family: 'Merriweather Sans';
+                                  }
 
 
+
+                            }
+
+
+
+                            .explore {
+                                    background: transparent url('/user/img/people/explore-icon.png') 55px 3px no-repeat;
+                                    background-size: 15px 16px;
+                                    display: inline-block;
+                                    float: left;
+                                    width: 100px;
+                                    color: $pink;
+                                    font-weight: 300;
+                                    font-size: $small;
+                                    font-family: 'Merriweather Sans';
+                                    text-transform: Uppercase;
+                                    margin-top: 9px;
+
+                            }
+
+                            .read-link {
+                                    color: $pink;
+                                    font-weight: 300;
+                                    font-family: 'Merriweather';
+                                    font-size: $medium;
+                                    margin-top: 7px;
+                                    float: left;
+
+                            }
 
                         }
                     }
@@ -105,20 +136,6 @@
         }
 
     }
-
-
-   .read-link {
-        color: $pink;
-        font-weight: 300;
-        float: right;
-        line-height: 23px;
-        font-family: 'Merriweather';
-        font-size: $medium;
-
-   }
-
-
-
 
     #page-wrapper {
         width: 100%;
