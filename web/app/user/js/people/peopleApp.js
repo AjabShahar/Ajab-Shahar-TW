@@ -10,7 +10,7 @@ angular.module('people', ['ngRoute','htmlGenerator','utilities','animationModule
                 templateUrl:"/user/js/people/partials/explore.html",
                 controller:""
             })
-            .when('/allPeople#:name',{
+            .when('/all#:id',{
                 templateUrl: "/user/js/people/partials/allPeople.html",
                 controller:"allPeopleController"
             })

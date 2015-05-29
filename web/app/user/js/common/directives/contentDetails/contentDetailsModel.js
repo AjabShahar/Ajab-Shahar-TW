@@ -28,7 +28,7 @@ AjabShahar.DetailsObject = function (content, type) {
                 return{
                     name: singer.name,
                     description: "SINGER",
-                    link:"/people/allPeople#"+singer.id
+                    link:"/people/all#"+singer.id
                 }
             });
 
@@ -36,7 +36,7 @@ AjabShahar.DetailsObject = function (content, type) {
                 return {
                     name: poet.name,
                     description: "POET",
-                    link:"/people/allPeople#"+poet.id
+                    link:"/people/all#"+poet.id
                 };
             });
 
@@ -62,7 +62,7 @@ AjabShahar.DetailsObject = function (content, type) {
             return {
                 name: writer.name,
                 description: writer.primaryOccupation,
-                link:"/people/allPeople#"+writer.id
+                link:"/people/all#"+writer.id
             };
         });
     };
@@ -76,14 +76,14 @@ AjabShahar.DetailsObject = function (content, type) {
             var speakerLink = {
                 name: reflection.speaker ? reflection.speaker.name : "",
                 description: reflection.speaker ? reflection.speaker.primaryOccupation : "",
-                link:"/people/allPeople#"+reflection.speaker.id
+                link:"/people/all#"+reflection.speaker.id
             };
 
             var relatedPeople = pluckPropertyFrom(reflection, "people", "map", function (person) {
                 return {
                     name: person.name,
                     description: person.primaryOccupation,
-                    link:"/people/allPeople#"+person.id
+                    link:"/people/all#"+person.id
                 };
             });
 

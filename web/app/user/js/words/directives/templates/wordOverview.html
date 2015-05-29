@@ -22,8 +22,8 @@
         </h3>
 
         <div class="creditCont">
-            <div class="creditBox" ng-repeat="writer in writers"><span
-                    class="title-dark ng-binding">{{writer.name}}</span> {{writer.primaryOccupation}}
+            <div class="creditBox" ng-repeat="writer in writers">
+                <a href="/people/all#{{writer.id}}" class='title-dark ng-binding'>{{writer.name}}</a>{{writer.primaryOccupation}}
             </div>
         </div>
     </div>
