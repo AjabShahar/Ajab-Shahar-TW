@@ -68,7 +68,7 @@
                 <div class="related-links-parda">
                     <dl>
                         <dt ng-repeat="link in content.links track by $index">
-                            <a ng-href="{{link.link}}" ng-cloak ng-class="{disabledLink:!link.link}">
+                            <a ng-href="{{link.link}}" target="_self" ng-cloak ng-class="{disabledLink:!link.link}">
                                 {{link.name}} <span ng-bind="link.alternateName" class="italicise"></span>
                             </a>
                         <p><span ng-bind="link.description"></span></p>
@@ -154,7 +154,7 @@
                 <div class="related-links-parda">
                     <dl>
                         <dt ng-repeat="link in content.links track by $index">
-                            <a ng-href="{{link.link}}" ng-cloak ng-class="{disabledLink:!link.link}">
+                            <a ng-href="{{link.link}}" target="_self" ng-cloak ng-class="{disabledLink:!link.link}">
                                 {{link.name}} <span ng-bind="link.alternateName" class="italicise"></span>
                             </a>
                         <p><span ng-bind="link.description"></span></p>

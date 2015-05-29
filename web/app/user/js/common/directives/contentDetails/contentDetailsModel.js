@@ -27,14 +27,16 @@ AjabShahar.DetailsObject = function (content, type) {
             var speakerLink = pluckPropertyFrom(song,"singers","map",function(singer){
                 return{
                     name: singer.name,
-                    description: "SINGER"
+                    description: "SINGER",
+                    link:"/people/allPeople#"+singer.id
                 }
             });
 
             var relatedPeople = pluckPropertyFrom(song, "poets", "map", function (poet) {
                 return {
                     name: poet.name,
-                    description: "POET"
+                    description: "POET",
+                    link:"/people/allPeople#"+poet.id
                 };
             });
 
@@ -59,7 +61,8 @@ AjabShahar.DetailsObject = function (content, type) {
         return pluckPropertyFrom(word, "writers", "map", function (writer) {
             return {
                 name: writer.name,
-                description: writer.primaryOccupation
+                description: writer.primaryOccupation,
+                link:"/people/allPeople#"+writer.id
             };
         });
     };
@@ -72,13 +75,15 @@ AjabShahar.DetailsObject = function (content, type) {
         if (!_.isEmpty(reflection)) {
             var speakerLink = {
                 name: reflection.speaker ? reflection.speaker.name : "",
-                description: reflection.speaker ? reflection.speaker.primaryOccupation : ""
+                description: reflection.speaker ? reflection.speaker.primaryOccupation : "",
+                link:"/people/allPeople#"+reflection.speaker.id
             };
 
             var relatedPeople = pluckPropertyFrom(reflection, "people", "map", function (person) {
                 return {
                     name: person.name,
-                    description: person.primaryOccupation
+                    description: person.primaryOccupation,
+                    link:"/people/allPeople#"+person.id
                 };
             });
 
@@ -195,34 +200,6 @@ AjabShahar.DetailsObject = function (content, type) {
         self.excerpt = reflection.reflectionExcerpt;
     };
 
-    var buildFromPerson = function (person) {
-        if (!_.isEmpty(person)) {
-            self.id = person.id;
-            self.name = getName(person);
-            self.occupations = getOccupations(person);
-            self.thumbnailImg = person.thumbnailURL;
-            self.profile = person.profile;
-        }
-    };
-    var getName = function (person) {
-        var name = person.firstName;
-        if (!_.isEmpty(person.middleName))
-            name = name + ' ' + person.middleName;
-        if (!_.isEmpty(person.lastName))
-            name = name + ' ' + person.lastName;
-        return name;
-    };
-    var getOccupations = function(person){
-        var occupations = [];
-        if(!_.isEmpty(person.primaryOccupation) && !_.isEmpty(person.primaryOccupation.name)){
-            occupations.push(person.primaryOccupation.name);
-        }
-        angular.forEach(person.roles,function(role){
-            occupations.push(role);
-        });
-        return occupations;
-    };
-
     if (type === 'song') {
         buildFromSong(content);
     }
@@ -231,9 +208,6 @@ AjabShahar.DetailsObject = function (content, type) {
     }
     else if (type === 'reflection') {
         buildFromReflection(content);
-    }
-    else if(type === 'person'){
-        buildFromPerson(content)
     }
     return self;
 };

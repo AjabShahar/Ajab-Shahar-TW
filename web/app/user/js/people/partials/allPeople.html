@@ -74,11 +74,11 @@
 
                             </div>
                             <ul>
-                                <div ng-repeat="(index,person) in people | orderBy : 'name'" class="row-wrapper">
-                                    <div class="image">
+                                <div id="{{person.id}}" ng-repeat="(index,person) in people | orderBy : 'name'" class="row-wrapper">
+                                    <div class="image" >
                                         <img src="{{person.thumbnailImg}}">
                                     </div>
-                                    <div class="people-wrapper">
+                                    <div class="people-wrapper" >
                                         <div class="people-info" ellipsis>
                                             <a href="/people/#/explore/{{person.id}}" target="_self"><span class="title">{{person.name}}</span></a>
                                             <span class="job-title"><li ng-repeat="role in person.occupations track by $index" style="display: inline">
