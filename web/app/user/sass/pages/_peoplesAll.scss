@@ -43,6 +43,7 @@
                     .row-wrapper {
                         clear: both;
                         height: 170px;
+                        padding-top: 8px;
                         .image {
                             float: left;
                             width: 255px;
@@ -68,6 +69,7 @@
                                 &:nth-child(2):not(.read-link) {
                                     border: none;
                                     padding-right: 0;
+                                    background-position: 55px -1px;
                                 }
 
 
