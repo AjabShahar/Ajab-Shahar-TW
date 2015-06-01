@@ -5,7 +5,7 @@ angular.module('reflection', ['ngRoute','htmlGenerator','thumbnailModule','media
                 templateUrl:"/user/js/reflections/partials/reflectionDetails.html",
                 controller:"reflectionDetailsController"
             })
-            .when('/allReflections', {
+            .when('/all', {
                 templateUrl: "/user/js/reflections/partials/allReflections.html",
                 controller: "allReflectionsController"
             })
