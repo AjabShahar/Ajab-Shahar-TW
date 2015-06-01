@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="featuredContentApp">
+<html lang="en" ng-app="featuredContentApp" ng-controller="songsFeaturedContentController" class="{{selectedOverview().selected ? 'disableOuterScrollbar' : ''}}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -20,7 +20,7 @@
         ga('send', 'pageview');
     </script>
 </head>
-<body ng-controller="songsFeaturedContentController" class="featured-songs">
+<body class="featured-songs {{selectedOverview().selected ? 'disableOuterScrollbar' : ''}}">
 <div id="ajab_container">
     <ajab-shahar-header call-back="setPageHeight()"></ajab-shahar-header>
 
