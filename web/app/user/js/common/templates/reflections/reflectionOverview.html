@@ -1,12 +1,12 @@
 <div class="media-introduction reflection" ng-class="{'bg-wrapper': showText}">
 
-    <span class="ref-speaker">{{speaker.name}}</span><span class="ref-verb">  {{verb}}</span>
+    <span class="author-name">{{speaker.name}}</span><span class="verb">  {{verb}}</span>
 
     <h3 class="ref-title">{{title}}</h3>
 
-    <div class="content-bg" ng-show="showText">
-        <span bind-dynamic-html="info"></span>
-        <span bind-dynamic-html="transcript.englishTranscript" ng-repeat="transcript in text"></span>
+    <div class="content-bg text-content" ng-show="showText">
+        <span bind-dynamic-html="info" class="ref-intro-by"></span>
+        <div bind-dynamic-html="transcript.englishTranscript" ng-repeat="transcript in text"></div>
     </div>
 
     <div ng-show="showVideo" class='youtubeVideo'>
@@ -18,22 +18,26 @@
 
     <div class="mediaFooter">
         <h3 class='infoText'>Go to
-            <a href="/reflections/#/details/{{id}}">REFLECTION</a> or see
-            <a href="/reflections/#/all">All Reflections</a>
+
+            <a href="/reflections/#/details/{{id}}">Reflection</a> or see
+            <a href="/reflections/#/allReflections">All Reflections</a>
         </h3>
 
         <div class='creditCont'>
-            <div class='creditBox' ng-repeat="person in people track by $index"><a class='selected' href="/people/all#{{person.id}}">{{person.name}} </a> {{person.primaryOccupation}}</div>
+
+            <div class='creditBox' ng-repeat="person in people track by $index"><a class='link-text selected'
+                                               href="/people/all#person.id">{{person.name}} </a>
+                {{person.primaryOccupation}}</div>
 
             <span ng-repeat="word in words" class="creditBox">
                      <a href="/words/#/details/{{word.id}}"
-                        target="_self" class="link-text">{{word.transliteration}} {{word.translation}}</a>
+                        target="_self" class="link-text">{{word.transliteration}} <span class="italic-text">{{word.translation}}</span></a>
                  <span> WORD  </span>
             </span>
 
             <span ng-repeat="song in songs" class="creditBox">
                 <a href="/songs/?id={{song.id}}" target="_self" class="link-text">{{song.englishTransliterationTitle}}</a>
-                <span class="creditBox"> SONG </span>
+                 SONG
             </span>
 
         </div>
