@@ -98,7 +98,9 @@
                                         color: $grey;
                                         font-family: 'Merriweather Sans';
                                   }
-
+                                  .comma-space:after {
+                                        content: "\00a0";
+                                  }
 
 
                             }

@@ -85,7 +85,7 @@
                                             <a href="/people/#/explore/{{person.id}}" target="_self"><span class="title">{{person.name}}</span></a>
                                             <span class="job-title"><li ng-repeat="role in person.occupations track by $index" style="display: inline">
                                                 {{role}}
-                                                <span ng-hide="$last">,  </span>
+                                                <span ng-hide="$last" class="comma-space">,</span>
                                             </li></span>
                                             <div bind-dynamic-html = "person.profile"></div>
                                         </div>
