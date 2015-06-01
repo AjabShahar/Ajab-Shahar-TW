@@ -3,9 +3,11 @@ personAdminApp.controller('personDetailsController', ['$scope', '$http', '$windo
         loginVerifyService.redirectIfNotAuthenticated();
         $scope.formInfo = {};
         $scope.categoryList = [];
+        $scope.allCategories = [];
         $scope.init = function () {
             contentService.getAllCategories('person').success(function (result) {
                 $scope.categoryList = result;
+                $scope.allCategories = angular.copy(result);
                 $scope.primaryOccupationsList = angular.copy(result);
                 getPersonDetails();
             });
@@ -37,12 +39,13 @@ personAdminApp.controller('personDetailsController', ['$scope', '$http', '$windo
                             }
                         });
                     });
+                    $scope.allCategories = angular.copy($scope.categoryList);
                 });
             }
         };
 
         $scope.$watch("formInfo.primaryOccupation", function (newValue) {
-            $scope.categoryList = _.reject($scope.categoryList, function (categoty) {
+            $scope.categoryList = _.reject($scope.allCategories, function (categoty) {
                 return !_.isEmpty(newValue) && categoty.id === newValue.id;
             })
         })
