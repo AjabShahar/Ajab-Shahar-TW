@@ -23,8 +23,7 @@
         </h3>
 
         <div class='creditCont'>
-            <div class='creditBox'><a class='selected' href="/people/all#{{speaker.id}}">{{speaker.name}} </a> {{speaker.primaryOccupation}}</div>
-            <div class='creditBox' ng-repeat="person in people track by $index"><a class='selected' href="/people/all#person.id">{{person.name}} </a> {{person.primaryOccupation}}</div>
+            <div class='creditBox' ng-repeat="person in people track by $index"><a class='selected' href="/people/all#{{person.id}}">{{person.name}} </a> {{person.primaryOccupation}}</div>
 
             <span ng-repeat="word in words" class="creditBox">
                      <a href="/words/#/details/{{word.id}}"
