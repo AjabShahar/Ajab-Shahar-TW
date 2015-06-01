@@ -555,7 +555,7 @@ public class WordResourceIT {
 
     }
 
-    @Test
+    /*@Test
     public void shouldGetWordReflectionsForGivenWordIds(){
         Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_COMPLETE_STARTER_SET);
 
@@ -577,9 +577,33 @@ public class WordResourceIT {
 
         assertThat(wordReflectionRepresentation1.getReflections().iterator().next().getTitle(),equalTo("Oh that wonderful song!"));
         assertThat(wordReflectionRepresentation2.getReflections().iterator().next().getTitle(),equalTo("Jaane kya hoga rama re!"));
-    }
+    }*/
 
     @Test
+    public void shouldGetWordReflectionsForGivenWordIds2(){
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_COMPLETE_STARTER_SET);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+        ClientResponse wordReflectionsResponse = httpGet("http://localhost:%d/api/words?representation=custom&ids=1&ids=3");
+
+        Set<LinkedHashMap> wordReflectionsList = wordReflectionsResponse.getEntity(Set.class);
+        assertThat(wordReflectionsResponse.getStatus(), is(200));
+        assertThat(wordReflectionsList.size(), is(2));
+
+        Iterator<LinkedHashMap> wordReflectionsIterator = wordReflectionsList.iterator();
+        LinkedHashMap wordReflections1 = wordReflectionsIterator.next();
+        LinkedHashMap wordReflections2 = wordReflectionsIterator.next();
+
+        Gson gson = new Gson();
+        WordCustomRepresentation wordReflectionRepresentation1 = gson.fromJson(gson.toJson(wordReflections1), WordCustomRepresentation.class);
+        WordCustomRepresentation wordReflectionRepresentation2 = gson.fromJson(gson.toJson(wordReflections2), WordCustomRepresentation.class);
+
+        assertThat(wordReflectionRepresentation1.getReflections().iterator().next().getTitle(),equalTo("Oh that wonderful song!"));
+        assertThat(wordReflectionRepresentation2.getReflections().iterator().next().getTitle(),equalTo("Jaane kya hoga rama re!"));
+    }
+
+    /*@Test
     public void shouldGetWordSongsForGivenWordIds(){
         Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_COMPLETE_STARTER_SET);
 
@@ -602,6 +626,44 @@ public class WordResourceIT {
                 assertThat(wordSongsRepresentation.getSongs().iterator().next().getEnglishTranslationTitle(),equalTo("translation2"));
             }
         }
+    }*/
+
+    @Test
+    public void shouldGetWordSongsForGivenWordIds2(){
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_COMPLETE_STARTER_SET);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+        ClientResponse wordSongsResponse = httpGet("http://localhost:%d/api/words?representation=custom&ids=2&ids=3");
+
+        Set<LinkedHashMap> wordSongsList = wordSongsResponse.getEntity(Set.class);
+        assertThat(wordSongsResponse.getStatus(), is(200));
+        assertThat(wordSongsList.size(), is(2));
+
+        Gson gson = new Gson();
+        for (LinkedHashMap wordSongs : wordSongsList) {
+            WordCustomRepresentation wordCustomRepresentation = gson.fromJson(gson.toJson(wordSongs), WordCustomRepresentation.class);
+            if(wordCustomRepresentation.getWord().getId() == 3){
+                String englishTranslationTitle = wordCustomRepresentation.getSongs().iterator().next().getEnglishTranslationTitle();
+                assertTrue(englishTranslationTitle.equals("translation3") || englishTranslationTitle.equals("translation"));
+            }
+            else{
+                assertThat(wordCustomRepresentation.getSongs().iterator().next().getEnglishTranslationTitle(),equalTo("translation2"));
+            }
+        }
+    }
+
+    @Test
+    public void shouldGetWordsForId(){
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_COMPLETE_STARTER_SET);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+        ClientResponse wordResponse = httpGet("http://localhost:%d/api/words?ids=2");
+
+        WordsRepresentation wordsList = wordResponse.getEntity(WordsRepresentation.class);
+        assertThat(wordResponse.getStatus(), is(200));
+        assertThat(wordsList.getWords().size(), is(1));
     }
 
     private ClientResponse httpGet(String getUrl) {

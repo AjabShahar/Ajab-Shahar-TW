@@ -3,12 +3,10 @@
 var songsContentService = function ($http,$q) {
     var getSongsVersions = function (id) {
         return $http.get('/api/songs/versions?id=' + id);
-        //return $http.get('/api/songs/'+id+"/versions");
     };
 
     var getSongRenditions = function (id) {
         return $http.get('/api/songs/versions?songId=' + id);
-        //return $http.get('/api/songs/'+id+"/versions");
     };
 
     var getAllSongs = function () {
@@ -22,7 +20,6 @@ var songsContentService = function ($http,$q) {
         var wordsDictionary = {};
         if (!_.isEmpty(songs)) {
             _.reduce(songs, function (wordsDictionary, song) {
-                //console.log(song.words);
                 if (!_.isEmpty(song.words)) {
                     song.words.forEach(function (word) {
                         wordsDictionary[word.id] = [word.transliteration, word.translation];
@@ -70,31 +67,16 @@ var songsContentService = function ($http,$q) {
         return _pluckFields(songs, "gathering");
     };
 
-    var getReflectionsFromRelatedWordsOf = function(song){
+    var getRelatedContentFromRelatedWordsOf = function(song){
         if(!_.isEmpty(song.words)){
             var relatedWordIds = song.words.map(function(word){
                 return word.id;
             });
             if(!_.isEmpty(relatedWordIds)){
-                return $http.get('/api/words/reflections',{
+                return $http.get('/api/words/',{
                     params:{
-                        ids:relatedWordIds
-                    }
-                });
-            }
-        }
-        return $q.reject({});
-    };
-
-    var getSongsFromRelatedWordsOf = function(song){
-        if(!_.isEmpty(song.words)){
-            var relatedWordIds = song.words.map(function(word){
-                return word.id;
-            });
-            if(!_.isEmpty(relatedWordIds)){
-                return $http.get('/api/words/songs',{
-                    params:{
-                        ids:relatedWordIds
+                        ids:relatedWordIds,
+                        representation:"custom"
                     }
                 });
             }
@@ -111,7 +93,6 @@ var songsContentService = function ($http,$q) {
         getSingersFrom: getSingersFrom,
         getPoetsFrom: getPoetsFrom,
         getGatheringsFrom: getGatheringsFrom,
-        getReflectionsFromRelatedWordsOf:getReflectionsFromRelatedWordsOf,
-        getSongsFromRelatedWordsOf:getSongsFromRelatedWordsOf
+        getRelatedContentFromRelatedWordsOf:getRelatedContentFromRelatedWordsOf
     };
 };

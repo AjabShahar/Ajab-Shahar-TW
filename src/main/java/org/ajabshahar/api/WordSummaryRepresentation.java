@@ -1,7 +1,11 @@
 package org.ajabshahar.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.ajabshahar.platform.models.Category;
+import org.ajabshahar.platform.models.PersonDetails;
+import org.ajabshahar.platform.models.Word;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class WordSummaryRepresentation {
@@ -77,5 +81,29 @@ public class WordSummaryRepresentation {
     @JsonProperty("publish")
     public boolean isPublish() {
         return publish;
+    }
+
+    public static WordSummaryRepresentation fromWord(Word word) {
+        String wordOriginal = word.getWordOriginal() != null ? word.getWordOriginal() : "";
+        String wordTranslation = word.getWordTranslation() != null ? word.getWordTranslation() : "";
+        String wordTransliteration = word.getWordTransliteration() != null ? word.getWordTransliteration() : "";
+        String hindiIntroExcerpt = word.getEnglishIntroExcerpt() != null ? word.getEnglishIntroExcerpt() : "";
+        String englishIntroExcerpt = word.getHindiIntroExcerpt() != null ? word.getHindiIntroExcerpt() : "";
+        Set<PersonSummaryRepresentation> writers = new LinkedHashSet<>();
+        if (word.getWriters() != null && word.getWriters().size() > 0) {
+            for (PersonDetails writer : word.getWriters()) {
+                PersonSummaryRepresentation representation = new PersonSummaryRepresentation(writer.getId(), writer.getName(), writer.getHindiName(), getPrimaryCategoryName(writer.getPrimaryOccupation()));
+                writers.add(representation);
+            }
+        }
+        return new WordSummaryRepresentation((int) word.getId(), wordOriginal, wordTranslation, wordTransliteration, hindiIntroExcerpt, englishIntroExcerpt, writers, word.getIsRootWord(), word.isPublish());
+    }
+
+    private static String getPrimaryCategoryName(Category primaryCategory) {
+        String primaryCategoryName = "";
+        if (primaryCategory != null) {
+            primaryCategoryName = primaryCategory.getName();
+        }
+        return primaryCategoryName;
     }
 }

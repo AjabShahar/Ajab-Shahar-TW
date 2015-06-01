@@ -59,12 +59,21 @@ public class WordDAO extends AbstractDAO<Word> {
         return words;
     }
 
-    public Set<Word> findReflections(List<Long> wordIds) {
-        Criteria wordReflections = currentSession().createCriteria(Word.class);
-        if (wordIds != null) {
-            wordReflections.add(Restrictions.in("id", wordIds));
+    private Criteria allWordsCriteria(Session session) {
+        return session.createCriteria(Word.class, "word")
+                .createCriteria("word.songs", "songs", JoinType.LEFT_OUTER_JOIN)
+                .setFetchMode("songs", FetchMode.JOIN)
+                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+    }
+
+
+    public Set<Word> findWords(List<Long> wordIds) {
+        Criteria wordCriteria = currentSession().createCriteria(Word.class);
+        if (wordIds != null && !wordIds.isEmpty()) {
+            wordCriteria.add(Restrictions.in("id", wordIds));
+            return new LinkedHashSet<>(wordCriteria.list());
+        }else{
+            return findBy(0,false,true);
         }
-        Set<Word> wordsWithReflections = new LinkedHashSet<>(wordReflections.list());
-        return wordsWithReflections;
     }
 }

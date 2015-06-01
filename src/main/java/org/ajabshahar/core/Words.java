@@ -31,6 +31,6 @@ public class Words {
     }
 
     public Set<Word> findWords(List<Long> wordIds) {
-        return wordRepository.findReflections(wordIds);
+        return wordRepository.findWords(wordIds);
     }
 }
