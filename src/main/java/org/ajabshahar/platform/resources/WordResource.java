@@ -36,12 +36,28 @@ public class WordResource {
 
     @GET
     @UnitOfWork
-    public Response listAllWordDetails(@DefaultValue("false") @QueryParam("showOnMainLandingPage") Boolean showOnMainLandingPage,
-                                       @DefaultValue("false") @QueryParam("publish") boolean publish) {
-        Set<Word> wordsList = words.findBy(showOnMainLandingPage, publish);
-        WordsRepresentation wordsRepresentation = wordRepresentationFactory.createWordsRepresentation(wordsList);
-        wordsRepresentation.removeUnPublishedPeople();
-        return Response.ok(wordsRepresentation).build();
+    public Response getWords(
+            @DefaultValue("false") @QueryParam("showOnMainLandingPage") Boolean showOnMainLandingPage,
+            @DefaultValue("false") @QueryParam("publish") boolean publish,
+            @QueryParam("ids")List<Long> ids,
+            @QueryParam("representation")String representation) {
+        if(ids != null && !ids.isEmpty()) {
+            Set<Word> wordsList = words.findWords(ids);
+            if(representation != null && representation.equals("custom") ){
+                return Response.ok(WordCustomRepresentation.fromWords(wordsList)).build();
+            }
+            else{
+                WordsRepresentation wordsRepresentation = wordRepresentationFactory.createWordsRepresentation(wordsList);
+                wordsRepresentation.removeUnPublishedPeople();
+                return Response.ok(wordsRepresentation).build();
+            }
+        }
+        else {
+            Set<Word> wordsList = words.findBy(showOnMainLandingPage, publish);
+            WordsRepresentation wordsRepresentation = wordRepresentationFactory.createWordsRepresentation(wordsList);
+            wordsRepresentation.removeUnPublishedPeople();
+            return Response.ok(wordsRepresentation).build();
+        }
     }
 
     @GET

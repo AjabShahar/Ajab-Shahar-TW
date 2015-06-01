@@ -53,7 +53,12 @@ AjabShahar.SongExploreHelper = (function(){
 
     self.getReflectionsFromWordReflections = function(wordReflections,existingReflections){
         var reflections =_.reduce(wordReflections,function(result,wordReflection){
-            var uniqueReflections = getUnique(wordReflection.reflections,result.concat(existingReflections));
+            var reflectionsRelatedToWords =[];
+            if(!_.isEmpty(wordReflection.defaultReflection)){
+                reflectionsRelatedToWords.push(wordReflection.defaultReflection)
+            }
+            reflectionsRelatedToWords = reflectionsRelatedToWords.concat(wordReflection.reflections);
+            var uniqueReflections = getUnique(reflectionsRelatedToWords,result.concat(existingReflections));
             var reflectionThumbnails = _.sample(self.createReflectionThumbnails(uniqueReflections),3);
             result = result.concat(reflectionThumbnails);
             return result;
