@@ -67,7 +67,7 @@ public class SongSummaryRepresentation {
             song.getSingers().forEach(singer -> {
                 String primaryOccupation = singer.getPrimaryOccupation() != null ? singer.getPrimaryOccupation().getName() : "";
                 singers.add(new PersonSummaryRepresentation(singer.getId(), singer.getName(), singer.getHindiName(),
-                        primaryOccupation));
+                        primaryOccupation, singer.isPublish()));
             });
         }
 
@@ -75,7 +75,7 @@ public class SongSummaryRepresentation {
             song.getPoets().forEach(poet -> {
                 String primaryOccupation = poet.getPrimaryOccupation() != null ? poet.getPrimaryOccupation().getName() : "";
                 poets.add(new PersonSummaryRepresentation(poet.getId(), poet.getName(), poet.getHindiName(),
-                        primaryOccupation));
+                        primaryOccupation, poet.isPublish()));
             });
         }
 

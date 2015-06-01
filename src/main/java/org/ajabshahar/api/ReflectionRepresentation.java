@@ -1,11 +1,12 @@
 package org.ajabshahar.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.ajabshahar.api.common.BaseRepresentation;
 import org.ajabshahar.platform.models.ReflectionTranscript;
 
 import java.util.Set;
 
-public class ReflectionRepresentation {
+public class ReflectionRepresentation extends BaseRepresentation {
     private int id;
     private String title;
     private String verb;
@@ -132,5 +133,10 @@ public class ReflectionRepresentation {
 
     public String getReflectionExcerpt() {
         return reflectionExcerpt;
+    }
+
+    public void removeUnPublishedPeople(){
+        this.people = getOnlyPublishedPeople(this.people);
+        this.speaker = (this.speaker.isPublish()) ? this.speaker : null;
     }
 }

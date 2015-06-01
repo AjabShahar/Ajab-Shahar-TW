@@ -40,6 +40,7 @@ public class WordResource {
                                        @DefaultValue("false") @QueryParam("publish") boolean publish) {
         Set<Word> wordsList = words.findBy(showOnMainLandingPage, publish);
         WordsRepresentation wordsRepresentation = wordRepresentationFactory.createWordsRepresentation(wordsList);
+        wordsRepresentation.removeUnPublishedPeople();
         return Response.ok(wordsRepresentation).build();
     }
 
@@ -50,6 +51,10 @@ public class WordResource {
     public Response getWordById(@QueryParam("id") int wordId, @DefaultValue("false") @QueryParam("publish") boolean publish) {
         Word word = words.findBy(wordId, publish);
         WordRepresentation intermediateRepresentation = wordRepresentationFactory.createWordRepresentation(word);
+
+        if(publish){
+            intermediateRepresentation.removeUnPublishedPeople();
+        }
         return Response.ok(intermediateRepresentation).build();
     }
 

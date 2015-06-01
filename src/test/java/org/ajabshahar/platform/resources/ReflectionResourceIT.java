@@ -51,7 +51,7 @@ public class ReflectionResourceIT {
     public void shouldSaveReflection() {
         String songEnglishTransliteration = "Transliteration";
         Set<SongSummaryRepresentation> songs = new LinkedHashSet<>();
-        PersonSummaryRepresentation personSummaryRepresentation = new PersonSummaryRepresentation(1, "name", "hindiName", "primaryOccupation");
+        PersonSummaryRepresentation personSummaryRepresentation = new PersonSummaryRepresentation(1, "name", "hindiName", "primaryOccupation", true);
         Set<PersonSummaryRepresentation> personSummaryRepresentations = new LinkedHashSet<PersonSummaryRepresentation>();
         personSummaryRepresentations.add(personSummaryRepresentation);
         songs.add(new SongSummaryRepresentation(1, songEnglishTransliteration, null, null, null, null, null, null,false,"video"));
@@ -116,11 +116,10 @@ public class ReflectionResourceIT {
         assertThat(reflectionResponse.getStatus(), is(200));
         assertThat(reflection.getId(), is(not(0)));
 
-        reflectionResponse = getReflection((int) reflection.getId());
+        reflectionResponse = getReflection(reflection.getId());
         ReflectionRepresentation reflectionRepresentation = getEntity(reflectionResponse);
         assertThat(reflectionRepresentation.getWords().size(), is(2));
     }
-
 
     @Test
     public void shouldEditReflection() {
@@ -154,7 +153,6 @@ public class ReflectionResourceIT {
         assertThat(reflectionResponse.getStatus(), is(200));
         assertThat(reflection.getId(), is(not(0)));
         assertThat(reflection.getSoundCloudId(), is("6789"));
-
     }
 
     @Test
@@ -364,7 +362,7 @@ public class ReflectionResourceIT {
         jsonReflection.put("showOnMainFcPage", true);
         jsonReflection.put("publish", true);
 
-        PersonSummaryRepresentation personSummaryRepresentation = new PersonSummaryRepresentation(1, "Ravi", "hindi name", "singer");
+        PersonSummaryRepresentation personSummaryRepresentation = new PersonSummaryRepresentation(1, "Ravi", "hindi name", "singer", true);
         jsonReflection.put("speaker", personSummaryRepresentation);
 
         ClientResponse reflectionResponse = loginAndSave(jsonReflection);
@@ -392,7 +390,7 @@ public class ReflectionResourceIT {
         jsonReflection.put("showOnMainFcPage", true);
         jsonReflection.put("publish", true);
 
-        PersonSummaryRepresentation personSummaryRepresentation = new PersonSummaryRepresentation(1, "Ravi", "hindi name", "singer");
+        PersonSummaryRepresentation personSummaryRepresentation = new PersonSummaryRepresentation(1, "Ravi", "hindi name", "singer", true);
         jsonReflection.put("speaker", personSummaryRepresentation);
 
         ClientResponse reflectionResponse = loginAndSave(jsonReflection);
@@ -403,7 +401,7 @@ public class ReflectionResourceIT {
 
         assertThat(getEntity(reflectionResponse).getSpeaker().getId(), is(1L));
 
-        personSummaryRepresentation = new PersonSummaryRepresentation(2, "Shabnam", "Virmani", "singer");
+        personSummaryRepresentation = new PersonSummaryRepresentation(2, "Shabnam", "Virmani", "singer", true);
         jsonReflection.put("speaker", personSummaryRepresentation);
 
         reflectionResponse = loginAndSave(jsonReflection);

@@ -19,8 +19,6 @@ public class ReflectionResource {
 
     private final Reflections reflections;
     private final ReflectionRepresentationFactory reflectionRepresentationFactory;
-    private final static Logger logger = LoggerFactory.getLogger(ReflectionResource.class);
-
 
     public ReflectionResource(Reflections reflections, ReflectionRepresentationFactory reflectionRepresentationFactory) {
         this.reflections = reflections;
@@ -62,6 +60,7 @@ public class ReflectionResource {
     public Response getReflectionsWithCompleteInfo(@DefaultValue("") @QueryParam("content") String criteria) {
         Set<Reflection> reflectionList = reflections.getAll(criteria);
         ReflectionsRepresentation reflectionsRepresentation = reflectionRepresentationFactory.createReflections(reflectionList);
+        reflectionsRepresentation.removeUnPublishedPeople();
         return Response.ok(reflectionsRepresentation).build();
     }
 
@@ -69,9 +68,12 @@ public class ReflectionResource {
     @GET
     @UnitOfWork
     @Path("/edit")
-    public ReflectionRepresentation getReflectionById(@QueryParam("id") int id) {
+    public ReflectionRepresentation getReflectionById(@QueryParam("id") int id, @DefaultValue("true") @QueryParam("publish") boolean publish) {
         Reflection reflection = reflections.findReflection(id);
         ReflectionRepresentation reflectionRepresentation = reflectionRepresentationFactory.createReflectionRepresentation(reflection);
+        if(publish){
+            reflectionRepresentation.removeUnPublishedPeople();
+        }
         return reflectionRepresentation;
     }
 }

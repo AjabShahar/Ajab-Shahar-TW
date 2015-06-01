@@ -117,7 +117,8 @@ public class ReflectionRepresentationFactory {
         if (speakerDetails != null) {
             Category primaryOccupation = speakerDetails.getPrimaryOccupation();
             String primaryOccupationName = (primaryOccupation != null) ? primaryOccupation.getName() : "";
-            speaker = new PersonSummaryRepresentation(speakerDetails.getId(), speakerDetails.getName(), speakerDetails.getHindiName(), primaryOccupationName);
+            speaker = new PersonSummaryRepresentation(speakerDetails.getId(), speakerDetails.getName(),
+                    speakerDetails.getHindiName(), primaryOccupationName, speakerDetails.isPublish());
         }
 
         return speaker;

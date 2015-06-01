@@ -18,4 +18,10 @@ public class SongsRepresentation {
     public void add(SongRepresentation songRepresentation) {
         songs.add(songRepresentation);
     }
+
+    public void removeUnPublishedPeople() {
+        for (SongRepresentation song : songs) {
+            song.removeUnPublishedPeople();
+        }
+    }
 }

@@ -16,15 +16,17 @@ public class PersonSummaryRepresentation {
     private String name;
     private String hindiName;
     private String primaryOccupation;
+    private boolean publish;
 
     public PersonSummaryRepresentation() {
     }
 
-    public PersonSummaryRepresentation(long id, String name, String hindiName, String primaryOccupation) {
+    public PersonSummaryRepresentation(long id, String name, String hindiName, String primaryOccupation, boolean publish) {
         this.id = id;
         this.name = name;
         this.hindiName = hindiName;
         this.primaryOccupation = primaryOccupation;
+        this.publish = publish;
     }
 
     @JsonProperty("id")
@@ -52,7 +54,8 @@ public class PersonSummaryRepresentation {
         if (personDetails != null) {
             Category primaryOccupation = personDetails.getPrimaryOccupation();
             String primaryOccupationName = (primaryOccupation != null) ? primaryOccupation.getName() : "";
-            return new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName(), personDetails.getHindiName(), primaryOccupationName);
+            return new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName(),
+                    personDetails.getHindiName(), primaryOccupationName, personDetails.isPublish());
         }
         return null;
     }
@@ -90,5 +93,9 @@ public class PersonSummaryRepresentation {
         personDetails.setId(personSummaryRepresentation.getId());
         personDetails.setFirstName(personSummaryRepresentation.getName());
         return personDetails;
+    }
+
+    public boolean isPublish() {
+        return publish;
     }
 }

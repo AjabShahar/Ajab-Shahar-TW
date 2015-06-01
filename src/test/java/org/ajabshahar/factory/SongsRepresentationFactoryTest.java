@@ -79,8 +79,8 @@ public class SongsRepresentationFactoryTest {
         Category personCategory = new Category();
         personCategory.setName("Devotee");
 
-        PersonSummaryRepresentation singer = new PersonSummaryRepresentation(id + 1000, format("Singer%s", id), format("Singer%s", id + 1), "occupation"),
-                poet = new PersonSummaryRepresentation((id + 2000), format("Poet%s", id), format("Poet%s", id + 1), "Devotee");
+        PersonSummaryRepresentation singer = new PersonSummaryRepresentation(id + 1000, format("Singer%s", id), format("Singer%s", id + 1), "occupation", true),
+                poet = new PersonSummaryRepresentation((id + 2000), format("Poet%s", id), format("Poet%s", id + 1), "Devotee", true);
         LinkedHashSet<PersonSummaryRepresentation> singers = new LinkedHashSet<>(),
                 poets = new LinkedHashSet<>();
 
