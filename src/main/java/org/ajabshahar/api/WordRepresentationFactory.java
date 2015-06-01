@@ -96,7 +96,9 @@ public class WordRepresentationFactory {
         Set<PersonSummaryRepresentation> writers = new LinkedHashSet<>();
         if (word.getWriters() != null && word.getWriters().size() > 0) {
             for (PersonDetails writer : word.getWriters()) {
-                PersonSummaryRepresentation representation = new PersonSummaryRepresentation(writer.getId(), writer.getName(), writer.getHindiName(), getPrimaryCategoryName(writer.getPrimaryOccupation()));
+                PersonSummaryRepresentation representation = new PersonSummaryRepresentation(writer.getId(),
+                        writer.getName(), writer.getHindiName(), getPrimaryCategoryName(writer.getPrimaryOccupation()),
+                        writer.isPublish());
                 writers.add(representation);
             }
         }

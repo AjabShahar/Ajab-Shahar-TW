@@ -24,7 +24,7 @@ describe('Word details controller', function() {
             $route:$route
         });
 
-        $httpBackend.when("GET", "/api/words/edit?id=3").respond(test_wordDetail);
+        $httpBackend.when("GET", "/api/words/edit?id=3&publish=true").respond(test_wordDetail);
         $httpBackend.when("GET", "/user/js/words/partials/featuredContent.html").respond(200);
 
     }));

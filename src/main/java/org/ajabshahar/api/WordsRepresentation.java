@@ -21,4 +21,10 @@ public class WordsRepresentation {
     public void add(WordRepresentation wordRepresentation) {
         words.add(wordRepresentation);
     }
+
+    public void removeUnPublishedPeople() {
+        for (WordRepresentation word : words) {
+            word.removeUnPublishedPeople();
+        }
+    }
 }

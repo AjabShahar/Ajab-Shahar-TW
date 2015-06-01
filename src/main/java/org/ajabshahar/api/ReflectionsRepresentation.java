@@ -22,4 +22,10 @@ public class ReflectionsRepresentation {
     public void setReflections(Set<ReflectionRepresentation> reflections) {
         this.reflections = reflections;
     }
+
+    public void removeUnPublishedPeople() {
+        for (ReflectionRepresentation reflection : reflections) {
+            reflection.removeUnPublishedPeople();
+        }
+    }
 }

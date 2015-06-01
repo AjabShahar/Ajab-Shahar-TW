@@ -11,7 +11,7 @@ angular.module("word").service("wordService",["$http",function ($http) {
     };
 
     var getWord = function(id){
-        return $http.get('/api/words/edit?id='+id);
+        return $http.get('/api/words/edit?id='+id + "&publish=true");
     };
 
     var getReflectionsFrom = function(word){

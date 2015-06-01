@@ -120,7 +120,7 @@ describe("reflection details controller", function () {
     describe("should test updating of reflection", function () {
         it("after updating should redirect to admin page", function () {
             spyOn($location, 'search').andReturn({id: 1});
-            httpBackend.when('GET','/api/reflections/edit?id=1').respond(test_admin_reflection);
+            httpBackend.when('GET','/api/reflections/edit?id=1&publish=false').respond(test_admin_reflection);
 
             httpBackend.flush();
             httpBackend.when('POST','/api/reflections').respond(200, {'id': 1});
@@ -132,7 +132,7 @@ describe("reflection details controller", function () {
         });
         it("should show already linked words for the reflection", function () {
             spyOn($location, 'search').andReturn({id: 1});
-            httpBackend.when('GET','/api/reflections/edit?id=1').respond(test_admin_reflection);
+            httpBackend.when('GET','/api/reflections/edit?id=1&publish=false').respond(test_admin_reflection);
 
             httpBackend.flush();
 

@@ -1,7 +1,6 @@
 package org.ajabshahar.platform.resources;
 
 import io.dropwizard.hibernate.UnitOfWork;
-import io.dropwizard.jersey.caching.CacheControl;
 import io.dropwizard.jersey.sessions.Session;
 import org.ajabshahar.api.*;
 import org.ajabshahar.core.Songs;
@@ -15,7 +14,6 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Path("/songs")
@@ -74,6 +72,7 @@ public class SongResource {
             return Response.status(Status.NO_CONTENT).build();
         }
         SongsRepresentation songsRepresentation = songsRepresentationFactory.createSongsRepresentation(songList);
+        songsRepresentation.removeUnPublishedPeople();
         return Response.ok(songsRepresentation, MediaType.APPLICATION_JSON).build();
     }
 
@@ -81,14 +80,12 @@ public class SongResource {
     @UnitOfWork
     @Path("/getPublishedSongs/{id}")
     public Response getPublishedSong(@PathParam("id") int songId) {
-        logger.debug("Get song with id: {}", songId);
         Song song = songs.findBy(songId);
         if (song == null) {
-            logger.debug("No song with id: {}", songId);
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         SongRepresentation songRepresentation = songsRepresentationFactory.create(song);
-        logger.debug("Details of song with id {}:  {} ", songId, songRepresentation.toString());
+        songRepresentation.removeUnPublishedPeople();
         return Response.ok(songRepresentation, MediaType.APPLICATION_JSON).build();
     }
 

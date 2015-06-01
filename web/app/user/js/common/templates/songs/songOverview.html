@@ -33,13 +33,14 @@
         <h3 class='infoText'>For lyrics, translations, versions, reflections and more
             <a ng-href="/songs/?id={{id}}">enter song</a> or see <a ng-href="/songs/all" class="sub">all songs</a>
         </h3>
-
         <div class='creditCont'>
             <div class='creditBox'><a href="/people/all#{{poet.id}}" class='link-text'>{{poet.name}}</a> POET</div>
             <span class='creditBox' ng-repeat="singer in singers track by $index">
                 <a href="/people/all#{{singer.id}}" class='link-text'>{{singer.name}}</a>
                <span class="creditBox">SINGER</span>
             </span>
+            <div class='creditBox'><a href="javascript:void(0)" class='link-text'>{{poet}}</a> POET</div>
+            <div class='creditBox' ng-show="singer.length > 0"><a href="javascript:void(0)" class='link-text'>{{singer}}</a> SINGER</div>
                 <span ng-repeat="word in words" class="creditBox">
                      <a href="/words/#/details/{{word.id}}"
                         target="_self" class="link-text">{{word.transliteration}}</a>

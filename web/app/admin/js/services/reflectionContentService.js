@@ -5,7 +5,7 @@ var reflectionContentService = function ($http) {
     };
 
     var getRefectionById = function (id) {
-        return $http.get('/api/reflections/edit?id=' + id);
+        return $http.get('/api/reflections/edit?id=' + id + "&publish=false");
     };
 
     var saveReflection = function (data) {

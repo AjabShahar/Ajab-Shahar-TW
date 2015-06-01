@@ -1,8 +1,6 @@
 package org.ajabshahar.platform.resources;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
 import com.ninja_squad.dbsetup.DbSetup;
 import com.ninja_squad.dbsetup.Operations;
 import com.ninja_squad.dbsetup.destination.DataSourceDestination;
@@ -447,7 +445,7 @@ public class WordResourceIT {
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
 
-        PersonSummaryRepresentation personSummaryRepresentation = new PersonSummaryRepresentation(1, "singerName", "", null);
+        PersonSummaryRepresentation personSummaryRepresentation = new PersonSummaryRepresentation(1, "singerName", "", null, true);
         Set<PersonSummaryRepresentation> personSummaryRepresentations = new LinkedHashSet<>();
         personSummaryRepresentations.add(personSummaryRepresentation);
         SongSummaryRepresentation songSummaryRepresentation = new SongSummaryRepresentation();
@@ -475,7 +473,7 @@ public class WordResourceIT {
         dbSetup.launch();
 
         Set<PersonSummaryRepresentation> writers = new LinkedHashSet<>();
-        writers.add(new PersonSummaryRepresentation(2, "Shabnam", "Virmani", "Singer"));
+        writers.add(new PersonSummaryRepresentation(2, "Shabnam", "Virmani", "Singer", true));
         jsonObject.put("writers", writers);
 
         ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
@@ -485,8 +483,6 @@ public class WordResourceIT {
         word = wordResponse.getEntity(WordRepresentation.class);
 
         assertThat(word.getId(), is(greaterThan(new Long(1))));
-        System.out.println(word.getId());
-
     }
 
     @Test
@@ -501,7 +497,6 @@ public class WordResourceIT {
 
         assertThat(wordResponse.getStatus(), is(200));
         assertThat(wordRepresentation.getThumbnailUrl(), is("some url"));
-
     }
 
     @Test

@@ -2,12 +2,10 @@
 
 var AjabShahar = AjabShahar || {};
 
-
 AjabShahar.DetailsObject = function (content, type) {
     var self = this;
     self.type = type;
     self.originalObject = content;
-
 
     var pluckPropertyFrom = function (obj, propertyName, lambdaFunctionName, callback) {
         if (!_.isEmpty(obj) && !_.isEmpty(obj[propertyName])) {
@@ -193,7 +191,7 @@ AjabShahar.DetailsObject = function (content, type) {
         self.textSections = getReflectionTranscripts(reflection);
         self.links = getRelatedLinksFromReflection(reflection);
         self.verb = reflection.verb;
-        self.people = [reflection.speaker.name];
+        self.people = (reflection.speaker) ? [reflection.speaker.name] : [];
         self.title = reflection.title;
         self.info = reflection.info;
         self.about = reflection.about;

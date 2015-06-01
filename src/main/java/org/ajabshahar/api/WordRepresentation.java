@@ -2,13 +2,14 @@ package org.ajabshahar.api;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.ajabshahar.api.common.BaseRepresentation;
 import org.ajabshahar.platform.models.WordIntroduction;
 
 import java.util.Set;
 
 @Setter
 @Getter
-public class WordRepresentation {
+public class WordRepresentation extends BaseRepresentation{
     private long id;
 
     private String wordOriginal;
@@ -50,4 +51,9 @@ public class WordRepresentation {
     private ReflectionSummaryRepresentation defaultReflection;
 
     private boolean publish;
+
+    public void removeUnPublishedPeople(){
+        this.people = getOnlyPublishedPeople(this.people);
+        this.writers = getOnlyPublishedPeople(this.writers);
+    }
 }

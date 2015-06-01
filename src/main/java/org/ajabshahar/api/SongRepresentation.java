@@ -1,5 +1,6 @@
 package org.ajabshahar.api;
 
+import org.ajabshahar.api.common.BaseRepresentation;
 import org.ajabshahar.platform.models.Category;
 import org.ajabshahar.platform.models.Gathering;
 import org.ajabshahar.platform.models.Genre;
@@ -10,7 +11,7 @@ import java.util.Set;
 
 import static java.lang.String.format;
 
-public class SongRepresentation {
+public class SongRepresentation extends BaseRepresentation {
     private long id;
     private boolean isAuthoringComplete;
     private boolean showOnLandingPage;
@@ -150,6 +151,12 @@ public class SongRepresentation {
 
     public Set<ReflectionSummaryRepresentation> getReflections() {
         return reflections;
+    }
+
+    public SongRepresentation removeUnPublishedPeople() {
+        this.poets = getOnlyPublishedPeople(this.poets);
+        this.singers = getOnlyPublishedPeople(this.singers);
+        return this;
     }
 }
 

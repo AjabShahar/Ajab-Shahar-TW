@@ -96,7 +96,8 @@ public class SongsRepresentationFactory {
             PersonDetails personDetails = people.findBy((int) singer.getId());
             Category primaryOccupation = personDetails.getPrimaryOccupation();
             String primaryOccupationName = (primaryOccupation != null) ? (primaryOccupation.getName() != null) ? primaryOccupation.getName() : "" : "";
-            peopleList.add(new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName(), personDetails.getHindiName(), primaryOccupationName));
+            peopleList.add(new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName(),
+                    personDetails.getHindiName(), primaryOccupationName, personDetails.isPublish()));
         });
         return peopleList;
     }

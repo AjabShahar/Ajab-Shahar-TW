@@ -59,14 +59,6 @@ public class WordDAO extends AbstractDAO<Word> {
         return words;
     }
 
-    private Criteria allWordsCriteria(Session session) {
-        return session.createCriteria(Word.class, "word")
-                .createCriteria("word.songs", "songs", JoinType.LEFT_OUTER_JOIN)
-                .setFetchMode("songs", FetchMode.JOIN)
-                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-    }
-
-
     public Set<Word> findReflections(List<Long> wordIds) {
         Criteria wordReflections = currentSession().createCriteria(Word.class);
         if (wordIds != null) {
