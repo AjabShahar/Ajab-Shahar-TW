@@ -10,7 +10,7 @@ headerModule.directive("ajabShaharHeader", function ($window) {
         templateUrl: '/user/js/common/templates/header/ajabShaharHeader.html',
         controller: function ($scope) {
             $scope.initialMenuState = $scope.showMenuDetails;
-            $scope.currentPage = {"songs": false, "words": false, "reflections": false, "glossary": false};
+            $scope.currentPage = {"songs": false, "words": false, "reflections": false, "glossary": false,"people":false};
             $window.onload = function () {
                 $scope.callBack && $scope.callBack();
             };
@@ -48,6 +48,8 @@ headerModule.directive("ajabShaharHeader", function ($window) {
                     $scope.currentPage.words = true;
                 else if (currentPagePath.indexOf("/reflections") > 0)
                     $scope.currentPage.reflections = true;
+                else if(currentPagePath.indexOf("/people") > 0)
+                    $scope.currentPage.people = true;
 
             };
             $scope.init();
