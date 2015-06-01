@@ -93,7 +93,7 @@
 
                                   }
                                   .job-title {
-                                        text-transform: Capitalize;
+                                        text-transform: uppercase;
                                         font-size: $small;
                                         color: $grey;
                                         font-family: 'Merriweather Sans';
@@ -117,6 +117,9 @@
                                     font-family: 'Merriweather Sans';
                                     text-transform: Uppercase;
                                     margin-top: 9px;
+                                    &:hover {
+                                        color: $dark-grey;
+                                    }
 
                             }
 
@@ -127,6 +130,9 @@
                                     font-size: $medium;
                                     margin-top: 7px;
                                     float: left;
+                                    &:hover {
+                                        color: $dark-grey;
+                                    }
 
                             }
 
