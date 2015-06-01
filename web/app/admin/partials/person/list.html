@@ -21,6 +21,7 @@
             <td><b>Middle Name</b></td>
             <td><b>Last Name</b></td>
             <td><b>Roles</b></td>
+            <td><b>Published</b></td>
             <td><b>Edit</b></td>
         </tr>
         <tr>
@@ -28,12 +29,14 @@
             <td><input ng-model="search.middleName" class="form-control"><br></td>
             <td><input ng-model="search.lastName" class="form-control"><br></td>
             <td><input ng-model="search.roles" class="form-control"><br></td>
+            <td><input ng-model="search.publish" class="form-control"><br></td>
         </tr>
         <tr ng-repeat="person in people | orderBy:'firstName' | filter:search">
             <td>{{person.firstName}}</td>
             <td>{{person.middleName}}</td>
             <td>{{person.lastName}}</td>
             <td>{{person.roles}}</td>
+            <td>{{person.publish}}</td>
             <td><a href="details.html?id={{person.id}}" class="btn btn-info">Edit</a></td>
         </tr>
     </table>
