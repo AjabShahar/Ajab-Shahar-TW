@@ -13,6 +13,15 @@ adminApp.controller('personListController', ['$scope', 'contentService', 'loginV
                     toBeAdded.roles = _.reduce(value.roles, function (memo, value, index) {
                         return memo + ((index != 0) ? ', ' : '') + value;
                     }, '');
+
+                    toBeAdded.publish = value.publish;
+
+                    if (value.publish)
+                        toBeAdded.publish = "Yes";
+
+                    else
+                        toBeAdded.publish = "No";
+
                     toBeAdded.id = value.id;
                     people.push(toBeAdded);
                     return people;
