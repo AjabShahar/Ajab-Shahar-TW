@@ -33,6 +33,9 @@
   h1, h2, h3, h4, h5, h6 {
     color: #4d4d4d;
   }
+  a {
+    color: $pink;
+  }
 
   #text-section:first-child:first-letter {
     font-size: $extra-large;
