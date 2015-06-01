@@ -74,7 +74,7 @@ AjabShahar.DetailsObject = function (content, type) {
             var speakerLink = {
                 name: reflection.speaker ? reflection.speaker.name : "",
                 description: reflection.speaker ? reflection.speaker.primaryOccupation : "",
-                link:"/people/all#"+reflection.speaker.id
+                link:reflection.speaker ? "/people/all#"+reflection.speaker.id : ""
             };
 
             var relatedPeople = pluckPropertyFrom(reflection, "people", "map", function (person) {
