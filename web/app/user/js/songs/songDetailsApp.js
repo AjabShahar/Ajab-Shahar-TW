@@ -1,4 +1,4 @@
-var songDetailsApp = angular.module('songDetailsApp', ['thumbnailModule', 'mediaPlayer', 'htmlGenerator', 'headerModule', 'animationModule']);
+var songDetailsApp = angular.module('songDetailsApp', ['thumbnailModule', 'mediaPlayer', 'htmlGenerator','utilities', 'headerModule', 'animationModule']);
 
 songDetailsApp.config(resourceUrlWhiteList);
 songDetailsApp.factory('songsContentService' ,['$http','$q', songsContentService]);
