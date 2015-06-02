@@ -21,8 +21,8 @@
             }
 
             .people-grid-content-wrapper {
-                background: transparent url('/user/img/people/all-people-content-bg.png') left top fixed;
-                background-size: cover;
+                background: transparent url('/user/img/people/all-people-content-bg.png') left top;
+                background-size: contain;
                 background-repeat: no-repeat repeat;
                 display: inline-block;
                 overflow: visible;
