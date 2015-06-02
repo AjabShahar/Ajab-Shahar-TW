@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module("word").directive("wordOverview", function () {
+thumbnailModule.directive("wordOverview", function () {
     return {
         restrict: 'E',
         scope: {
