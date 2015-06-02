@@ -69,7 +69,9 @@ var songsContentService = function ($http,$q) {
 
     var getRelatedContentFromRelatedWordsOf = function(song){
         if(!_.isEmpty(song.words)){
-            var relatedWordIds = song.words.map(function(word){
+            var relatedWordIds = song.words.filter(function(word){
+                return word.publish;
+            }).map(function(word){
                 return word.id;
             });
             if(!_.isEmpty(relatedWordIds)){
