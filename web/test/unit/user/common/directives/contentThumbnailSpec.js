@@ -54,6 +54,45 @@ describe("Thumbnail model", function () {
 
     });
 
+    it("should construct reflection thumbnail from reflection representation", function () {
+        var reflectionThumbnail = new AjabShahar.ThumbnailObject(test_reflection, "reflection");
+
+        expect(reflectionThumbnail.type).toBe('reflection');
+        expect(reflectionThumbnail.id).toBe(5);
+        expect(reflectionThumbnail.thumbnailImg).toBe("/images/TN-Reflection-Tosing-Kabirs-truth-reflection.png");
+        expect(reflectionThumbnail.description).toBe("this is excerpt");
+        expect(reflectionThumbnail.verbPeople.verb).toBe("describes");
+        expect(reflectionThumbnail.verbPeople.people).toBe("name");
+        expect(reflectionThumbnail.englishTitle).toBe("My Personal and Political Kabir");
+        expect(reflectionThumbnail.contentCategory).toBe("reflection");
+        expect(reflectionThumbnail.duration).toBe("1:16:54");
+        expect(reflectionThumbnail.contentFormat).toBe("video");
+
+    });
+
+    var test_reflection = {
+        "showOnMainFcPage": true,
+        "thumbnailURL": "/images/TN-Reflection-Tosing-Kabirs-truth-reflection.png",
+        "info": null,
+        "about": "<p>In this compelling talk, Dr. Purushottam Agrawal speaks powerfully</p>",
+        "duration": "1:16:54",
+        "reflectionExcerpt": "this is excerpt",
+        "id": 5,
+        "title": "My Personal and Political Kabir",
+        "verb": "describes",
+        "speaker": {
+            name:"name"
+        },
+        "soundCloudId": null,
+        "youtubeVideoId": "bWyTFl6s62s",
+        "reflectionTranscripts": [],
+        "words": [],
+        "songs": [],
+        "publish": true,
+        "people": []
+
+    }
+
 });
 
 describe("content thumbnail directive", function () {
