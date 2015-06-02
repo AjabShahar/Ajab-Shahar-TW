@@ -73,11 +73,8 @@
                         <div ng-repeat="songLyrics in songText.songTextContents track by $index" class="lyrics">
                             <p style=" white-space: pre-line">{{songLyrics.originalText}}</p>
                             <p ng-if="songLyrics.showRefrain">{{refrainOriginal}}....</p><br/>
-
-                            <!--<div ng-show="songLyrics.poet!=null">-->
-                                <!--<p>{{songLyrics.poet.hindiName}}</p>-->
-                            <!--</div>-->
                         </div>
+                        <div> कवि  {{selectedSong.poets[0].hindiName}}</div>
                     </div>
                     <div ng-show="englishTranslationVisible" class="toggleByFading">
                         <h2 class="song-heading">{{selectedSong.songTitle.englishTranslation}}</h2>
@@ -89,11 +86,8 @@
                         <div ng-repeat="songLyrics in songText.songTextContents track by $index" class="lyrics">
                             <p style=" white-space: pre-line">{{songLyrics.englishTranslationText}}</p>
                             <p ng-if="songLyrics.showRefrain">{{refrainTranslation}}....</p><br/>
-
-                            <!--<div ng-show="songLyrics.poet!=null">-->
-                                <!--<h5 class="poet-details">Poet <span class='selected'>{{poet.name}}</span></h5>-->
-                            <!--</div>-->
                         </div>
+                        <div> POET {{selectedSong.poets[0].name}}</div>
                     </div>
                     <div ng-show="englishTransliterationVisible" class="toggleByFading">
                         <h2 class="song-heading">{{selectedSong.songTitle.englishTransliteration}}</h2>
@@ -106,10 +100,8 @@
                             <p style=" white-space: pre-line">{{songLyrics.englishTransliterationText}}</p>
                             <p ng-if="songLyrics.showRefrain">
                                 {{refrainTransliteration}}....</p><br/>
-                            <!--<div ng-show="songLyrics.poet!=null">-->
-                                <!--<h5 class="poet-details">Poet <span class='selected'>{{poet.name}}</span></h5>-->
-                            <!--</div>-->
                         </div>
+                        <div> POET {{selectedSong.poets[0].name}}</div>
                     </div>
                 </div>
             </div>
