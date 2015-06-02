@@ -40,7 +40,7 @@ var songContentService = function ($http) {
     };
 
     var editSong = function (song) {
-        return $http.post('/api/songs/edit', song);
+        return $http.post('/api/songs', song);
     };
 
     var getWords = function () {

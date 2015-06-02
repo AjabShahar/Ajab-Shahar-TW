@@ -66,21 +66,6 @@ public class SongsTest {
     }
 
     @Test
-    public void shouldUpdateSongForIncompleteAuthoring() throws Exception {
-        when(songsRepository.findById((long) SONG_ID)).thenReturn(song);
-        Song updatedSong = new Song();
-        updatedSong.setDuration("new duration");
-        updatedSong.setIsAuthoringComplete(false);
-        updatedSong.setId(SONG_ID);
-        updatedSong.setGathering(new Gathering());
-        songs.update(updatedSong);
-        assertEquals(song.getDuration(), updatedSong.getDuration());
-        assertEquals(song.getId(), updatedSong.getId());
-        assertEquals(song.getIsAuthoringComplete(), updatedSong.getIsAuthoringComplete());
-        assertEquals(song.getGathering(), updatedSong.getGathering());
-    }
-
-    @Test
     public void shouldGetSongVersions() throws Exception {
         when(songsRepository.findSongWithVersions(SONG_ID)).thenReturn(songsList);
 

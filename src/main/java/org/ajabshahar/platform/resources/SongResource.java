@@ -40,16 +40,6 @@ public class SongResource {
         return Response.ok().entity(song).build();
     }
 
-    @POST
-    @Path("/edit")
-    @UnitOfWork
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateSong(String jsonSong) {
-        Song song = songsRepresentationFactory.create(jsonSong);
-        songs.update(song);
-        return Response.ok().build();
-    }
-
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)

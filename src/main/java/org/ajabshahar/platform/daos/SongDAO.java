@@ -35,8 +35,7 @@ public class SongDAO extends AbstractDAO<Song> {
         Calendar calendar = Calendar.getInstance();
         java.util.Date now = calendar.getTime();
 
-        currentSession().update(song.getUmbrellaTitle());
-        currentSession().save(song);
+        currentSession().saveOrUpdate(song);
 
         if (song.getIsAuthoringComplete()) {
             song.setPublishedDate(new Timestamp(now.getTime()));

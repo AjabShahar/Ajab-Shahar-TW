@@ -90,7 +90,7 @@ public class Song {
     @JoinColumn(name = "SONG_TITLE_ID")
     private Title songTitle;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "SONG_TEXT_ID")
     private SongText songText;
 
