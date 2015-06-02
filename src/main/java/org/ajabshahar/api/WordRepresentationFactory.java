@@ -68,14 +68,6 @@ public class WordRepresentationFactory {
         return words;
     }
 
-    private String getPrimaryCategoryName(Category primaryCategory) {
-        String primaryCategoryName = "";
-        if (primaryCategory != null) {
-            primaryCategoryName = primaryCategory.getName();
-        }
-        return primaryCategoryName;
-    }
-
     public Set<WordSummaryRepresentation> create(Set<Word> wordsList) {
         Set<WordSummaryRepresentation> wordsSummaryRepresentation = new LinkedHashSet<>();
         wordsList.forEach(word -> {
@@ -95,22 +87,6 @@ public class WordRepresentationFactory {
             wordsRepresentation.add(wordRepresentation);
         }
         return wordsRepresentation;
-    }
-
-    private String getWordIntroTranslation(Set<WordIntroduction> wordIntroductionSet) {
-        StringBuilder wordIntro = new StringBuilder();
-        for (WordIntroduction wordIntroduction : wordIntroductionSet) {
-            wordIntro.append(wordIntroduction.getWordIntroEnglish());
-        }
-        return wordIntro.toString();
-    }
-
-    private String getWordIntroOriginal(Set<WordIntroduction> wordIntroductionSet) {
-        StringBuilder wordIntro = new StringBuilder();
-        for (WordIntroduction wordIntroduction : wordIntroductionSet) {
-            wordIntro.append(wordIntroduction.getWordIntroHindi());
-        }
-        return wordIntro.toString();
     }
 
     public Set<WordReflectionRepresentation> createWordReflections(Set<Word> wordsList) {

@@ -84,6 +84,10 @@ public class WordSummaryRepresentation {
     }
 
     public static WordSummaryRepresentation fromWord(Word word) {
+        return fromWord(word,true);
+    }
+
+    public static WordSummaryRepresentation fromWord(Word word,boolean published) {
         String wordOriginal = word.getWordOriginal() != null ? word.getWordOriginal() : "";
         String wordTranslation = word.getWordTranslation() != null ? word.getWordTranslation() : "";
         String wordTransliteration = word.getWordTransliteration() != null ? word.getWordTransliteration() : "";
@@ -92,7 +96,7 @@ public class WordSummaryRepresentation {
         Set<PersonSummaryRepresentation> writers = new LinkedHashSet<>();
         if (word.getWriters() != null && word.getWriters().size() > 0) {
             for (PersonDetails writer : word.getWriters()) {
-                PersonSummaryRepresentation representation = new PersonSummaryRepresentation(writer.getId(), writer.getName(), writer.getHindiName(), getPrimaryCategoryName(writer.getPrimaryOccupation()));
+                PersonSummaryRepresentation representation = new PersonSummaryRepresentation(writer.getId(), writer.getName(), writer.getHindiName(), getPrimaryCategoryName(writer.getPrimaryOccupation()),published);
                 writers.add(representation);
             }
         }
