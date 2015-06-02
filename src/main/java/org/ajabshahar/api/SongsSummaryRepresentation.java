@@ -21,4 +21,11 @@ public class SongsSummaryRepresentation {
     public void addSong(SongSummaryRepresentation song) {
         songs.add(song);
     }
+
+    public void removeUnPublishedPeople() {
+        for (SongSummaryRepresentation song : songs) {
+            song.setPoets(song.getOnlyPublishedPeople(song.getPoets()));
+            song.setSingers(song.getOnlyPublishedPeople(song.getSingers()));
+        }
+    }
 }

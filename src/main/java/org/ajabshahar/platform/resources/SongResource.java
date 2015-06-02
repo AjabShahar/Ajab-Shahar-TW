@@ -85,6 +85,7 @@ public class SongResource {
     public Response getSongVersions(@QueryParam("id") int songId) {
         Set<Song> songList = songs.getVersions(songId);
         SongsSummaryRepresentation songsSummaryRepresentation = songsRepresentationFactory.create(songList);
+        songsSummaryRepresentation.removeUnPublishedPeople();
         return Response.ok(songsSummaryRepresentation, MediaType.APPLICATION_JSON).build();
     }
 
