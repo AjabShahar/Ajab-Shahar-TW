@@ -39,8 +39,6 @@
                 <a href="/people/all#{{singer.id}}" class='link-text'>{{singer.name}}</a>
                <span class="creditBox">SINGER</span>
             </span>
-            <div class='creditBox'><a href="javascript:void(0)" class='link-text'>{{poet}}</a> POET</div>
-            <div class='creditBox' ng-show="singer.length > 0"><a href="javascript:void(0)" class='link-text'>{{singer}}</a> SINGER</div>
                 <span ng-repeat="word in words" class="creditBox">
                      <a href="/words/#/details/{{word.id}}"
                         target="_self" class="link-text">{{word.transliteration}}</a>
