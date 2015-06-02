@@ -35,29 +35,6 @@ public class Songs {
         return songsRepository.findBy(songId, singerId, poetId);
     }
 
-    public void update(Song song) {
-        Long id = song.getId();
-        Song songFromDB = songsRepository.findById(id);
-        if (song.getSongTitle() != null && song.getSongTitle().getId() == 0) {
-            Title songTitle = new Title(song.getSongTitle());
-            songTitle.setCategory(categoryRepository.getSongTitleCategory());
-            titleRepository.create(songTitle);
-            song.setSongTitle(songTitle);
-        }
-        if (song.getUmbrellaTitle() != null && song.getUmbrellaTitle().getId() == 0) {
-            Title umbrellaTitle = new Title(song.getUmbrellaTitle());
-            umbrellaTitle.setCategory(categoryRepository.getUmbrellaTitleCategory());
-            titleRepository.create(umbrellaTitle);
-            song.setUmbrellaTitle(umbrellaTitle);
-        }
-        if (song.getSongText() != null) {
-            songTextDAO.create(song.getSongText());
-        }
-        songFromDB.updateFrom(song);
-        songsRepository.updateSong(songFromDB);
-
-    }
-
     public Set<Song> getVersions(int songId) {
         return songsRepository.findSongWithVersions(songId);
     }
@@ -82,9 +59,6 @@ public class Songs {
             umbrellaTitle.setCategory(categoryRepository.getUmbrellaTitleCategory());
             titleRepository.create(umbrellaTitle);
 
-        }
-        if (song.getSongText() != null) {
-            songTextDAO.create(song.getSongText());
         }
         return songsRepository.saveSong(song);
     }

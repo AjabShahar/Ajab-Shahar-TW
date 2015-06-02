@@ -87,17 +87,6 @@ public class SongResourceTest {
     }
 
     @Test
-    public void shouldUpdateSong() throws Exception {
-        String jsonSong = "Song";
-        when(songsRepresentationFactory.create(jsonSong)).thenReturn(song);
-
-        Response response = songResource.updateSong(jsonSong);
-
-        verify(songs).update(song);
-        assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
-    }
-
-    @Test
     public void shouldGetSongVersions() throws Exception {
         SongsSummaryRepresentation expectedResult = new SongsSummaryRepresentation();
         when(songs.getVersions(SONG_ID)).thenReturn(songList);

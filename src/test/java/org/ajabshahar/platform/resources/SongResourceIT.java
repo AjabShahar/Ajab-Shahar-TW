@@ -1,5 +1,7 @@
 package org.ajabshahar.platform.resources;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.ninja_squad.dbsetup.DbSetup;
 import com.ninja_squad.dbsetup.destination.DataSourceDestination;
 import com.ninja_squad.dbsetup.operation.Operation;
@@ -14,6 +16,7 @@ import org.ajabshahar.platform.PlatformApplication;
 import org.ajabshahar.platform.PlatformConfiguration;
 import org.ajabshahar.platform.models.Gathering;
 import org.ajabshahar.platform.models.Song;
+import org.ajabshahar.platform.models.SongTextContent;
 import org.ajabshahar.platform.models.Title;
 import org.h2.jdbcx.JdbcDataSource;
 import org.junit.Before;
@@ -26,6 +29,7 @@ import java.util.Set;
 
 import static com.ninja_squad.dbsetup.Operations.sequenceOf;
 import static org.ajabshahar.DataSetup.*;
+import static org.hamcrest.Matchers.endsWith;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertEquals;
@@ -221,6 +225,85 @@ public class SongResourceIT {
         assertThat(songFromDb.getGathering().getId(), is(11L));
     }
 
+    @Test
+    public void shouldBeAbleToAddAndEditSongText(){
+        Operation operation = sequenceOf(DELETE_ALL, INSERT_CATEGORY, INSERT_SONG_TITLE_CATEGORY,
+                INSERT_UMBRELLA_TITLE_CATEGORY, INSERT_SONG_TITLE, INSERT_UMBRELLA_TITLE,INSERT_GATHERINGS, INSERT_SONGS);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        SongRepresentation songRepresentation = new Gson().fromJson(getSongWithSongText(), SongRepresentation.class);
+
+        ClientResponse songResponse = loginAndPost("http://localhost:%d/api/songs",songRepresentation);
+        Song song = getSong(songResponse);
+
+        long songId = song.getId();
+        ClientResponse response = client.resource(
+                String.format("http://localhost:%d/api/songs/"+ songId, RULE.getLocalPort())).header("Content-type", "application/json")
+                .get(ClientResponse.class);
+        songRepresentation = getSongRepresentation(response);
+
+        assertThat(songRepresentation.getId(), is(not(0)));
+        assertThat(songRepresentation.getSongText().getSongTextContents().size(),is(2));
+
+        songRepresentation.getSongText().getSongTextContents();
+        for (SongTextContent songTextContent : songRepresentation.getSongText().getSongTextContents()) {
+            songTextContent.setEnglishTransliterationText(songTextContent.getEnglishTransliterationText()+" - 2");
+        }
+
+        songResponse = loginAndPost("http://localhost:%d/api/songs",songRepresentation);
+
+        response = client.resource(
+                String.format("http://localhost:%d/api/songs/"+ songId, RULE.getLocalPort())).header("Content-type", "application/json")
+                .get(ClientResponse.class);
+        songRepresentation = getSongRepresentation(response);
+
+        assertThat(songRepresentation.getId(), is(songId));
+        assertThat(songRepresentation.getSongText().getSongTextContents().size(),is(2));
+
+        for (SongTextContent songTextContent : songRepresentation.getSongText().getSongTextContents()) {
+            assertThat(songTextContent.getEnglishTransliterationText(), endsWith(" - 2"));
+        }
+    }
+
+    @Test
+    public void shouldBeAbleToEditSongText(){
+
+    }
+
+
+    private String getSongWithSongText(){
+        return "{\n" +
+                "  \"isAuthoringComplete\": true,\n" +
+                "  \"soundCloudTrackId\": \"174024475\",\n" +
+                "  \"songText\": {\n" +
+                "    \"songTextContents\": [\n" +
+                "      {\n" +
+                "        \"originalText\": \"भजन रो गुड़क रहयो गाड\",\n" +
+                "        \"englishTranslationText\": \"Bhajan ro guḍak rahyo gaaḍo\",\n" +
+                "        \"englishTransliterationText\": \"Your meditation-cart is tottering\",\n" +
+                "        \"contentType\": \"stanza\",\n" +
+                "        \"sequenceNumber\": 0\n" +
+                "      },\n" +
+                "      {\n" +
+                "        \"originalText\": \"राम नाम रा गेड़ा लाग्या\",\n" +
+                "        \"englishTranslationText\": \"Raam naam ra geḍa laagya\",\n" +
+                "        \"englishTransliterationText\": \"Raam’s name, the wares you cart\",\n" +
+                "        \"contentType\": \"stanza\",\n" +
+                "        \"sequenceNumber\": 4\n" +
+                "      }\n" +
+                "    ],\n" +
+                "    \"openingCouplets\": [],\n" +
+                "    \"refrainOriginal\": \"भजन रो...\",\n" +
+                "    \"refrainEnglishTranslation\": \"The cart of meditation…\",\n" +
+                "    \"refrainEnglishTransliteration\": \"Bhajan ro...\"\n" +
+                "  },\n" +
+                "  \"songTitle\": {\n" +
+                "    \"id\": 3\n" +
+                "  }\n" +
+                "}";
+    }
     private SongsRepresentation getSongsRepresentation(ClientResponse response) {
         return response.getEntity(SongsRepresentation.class);
     }
@@ -241,6 +324,10 @@ public class SongResourceIT {
 
     private Song getSong(ClientResponse response) {
         return response.getEntity(Song.class);
+    }
+
+    private SongRepresentation getSongRepresentation(ClientResponse response) {
+        return response.getEntity(SongRepresentation.class);
     }
 
     private NewCookie geCookie(ClientResponse response) {

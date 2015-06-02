@@ -84,7 +84,7 @@ describe("Song details controller specs", function () {
 
     describe("When updating a song", function () {
         it("then should redirect to the admin homepage", function () {
-            $httpBackend.expectPOST('/api/songs/edit', scope.song).respond(200);
+            $httpBackend.expectPOST('/api/songs', scope.song).respond(200);
 
             scope.updateSong();
             $httpBackend.flush();
@@ -94,7 +94,7 @@ describe("Song details controller specs", function () {
             expect(scope.song.mediaCategory.name).toBe('audio & video');
         });
         it("then should have published date as null", function () {
-            $httpBackend.expectPOST('/api/songs/edit', scope.song).respond(200);
+            $httpBackend.expectPOST('/api/songs', scope.song).respond(200);
 
             scope.updateSong();
             $httpBackend.flush();
