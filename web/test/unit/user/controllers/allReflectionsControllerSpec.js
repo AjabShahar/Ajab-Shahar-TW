@@ -66,7 +66,7 @@ var test_reflections = {
     reflections: [
         {
             "showOnMainFcPage": true,
-            "thumbnailImg": "https://avatars2.githubusercontent.com/u/11533144?v=3&s=72",
+            "thumbnailURL": "https://avatars2.githubusercontent.com/u/11533144?v=3&s=72",
             "info": null,
             "about": "<p>ghsjdgLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Â </p>",
             "duration": "10:00",
