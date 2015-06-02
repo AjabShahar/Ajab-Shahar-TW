@@ -104,6 +104,18 @@ public class SongSummaryRepresentation {
         return songSummaryRepresentations;
     }
 
+    public Set<PersonSummaryRepresentation> getOnlyPublishedPeople(Set<PersonSummaryRepresentation> people){
+        Set<PersonSummaryRepresentation> publishedPeople = new LinkedHashSet<>();
+        if(people != null) {
+            for (PersonSummaryRepresentation person : people) {
+                if (person.isPublish()) {
+                    publishedPeople.add(person);
+                }
+            }
+        }
+        return publishedPeople;
+    }
+
     @JsonProperty("id")
     public long getId() {
         return id;
