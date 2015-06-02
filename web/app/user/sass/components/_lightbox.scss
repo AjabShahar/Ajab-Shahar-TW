@@ -307,9 +307,9 @@
 
 
     .author-name {
-            color: $pink;
-            font-weight: 300;
-            font-size: $medium;
+            color: $grey;
+            font-weight: 400;
+            font-size: $small;
             text-transform: uppercase;
             font-family: 'Merriweather Sans';
     }
@@ -317,7 +317,7 @@
 
      .verb {
             color: $grey;
-            font-size: $medium;
+            font-size: $small;
             font-weight: 300;
             text-transform: lowercase;
             font-family: 'Merriweather Sans';
