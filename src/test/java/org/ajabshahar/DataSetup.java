@@ -12,7 +12,7 @@ public class DataSetup {
 
     public static final Operation DELETE_ALL =
             deleteAllFrom("REFLECTION_SONG", "REFLECTION_PERSON", "SONG_WORD", "SONG_SINGER", "WORD_REFLECTION", "WORD_SYNONYMS", "WORD_WRITER", "WORD_INTRODUCTION",
-                    "RELATED_WORDS", "WORD", "TRANSCRIPT", "REFLECTION","PERSON_CATEGORY" ,"PERSON", "SONG", "TITLE","CATEGORY",  "GATHERING");
+                    "RELATED_WORDS", "WORD", "TRANSCRIPT", "REFLECTION", "PERSON_CATEGORY", "PERSON", "SONG", "TITLE", "CATEGORY", "GATHERING");
 
     public static final Operation INSERT_ADMIN_USER =
             sequenceOf(
@@ -113,10 +113,10 @@ public class DataSetup {
     public static final Operation INSERT_REFLECTIONS =
             sequenceOf(
                     insertInto("REFLECTION")
-                            .columns("id", "title")
-                            .values(1, "Oh that wonderful song!")
-                            .values(2, "I hate that word!")
-                            .values(3, "Jaane kya hoga rama re!")
+                            .columns("id", "title", "speaker_id")
+                            .values(1, "Oh that wonderful song!", 1)
+                            .values(2, "I hate that word!", 2)
+                            .values(3, "Jaane kya hoga rama re!", 3)
                             .build());
 
     public static final Operation INSERT_PERSON =
@@ -125,6 +125,7 @@ public class DataSetup {
                             .columns("id", "first_name", "last_name", "publish")
                             .values(1, "Ravi", "Das", true)
                             .values(2, "Shabnam", "Virmani", true)
+                            .values(3, "Gippy", "Grewal", false)
                             .build());
 
     public static final Operation INSERT_SONG_SINGER =
