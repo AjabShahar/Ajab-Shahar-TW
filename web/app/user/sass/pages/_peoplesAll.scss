@@ -31,9 +31,9 @@
                 padding-bottom: 15em;
 
                 .people-grid-wrapper {
-                    margin: 0 30px;
+                    margin: 0 40px;
                     @include media($tab-portrait) {
-                        margin: 0 10px;
+                        margin: 0 22px;
                     }
 
                     .pagination-head {
@@ -42,8 +42,8 @@
                     }
                     .row-wrapper {
                         clear: both;
-                        height: 170px;
-                        padding-top: 8px;
+                        height: 180px;
+                        padding-top: 20px;
                         .image {
                             float: left;
                             width: 255px;
@@ -55,7 +55,7 @@
                             text-align: left;
                             float: left;
                             width: calc(97% - 255px);
-                            margin-left: 3%;
+                            margin-left: 2%;
 
                              a {
                                 &:nth-child(2) {
@@ -87,6 +87,7 @@
                                         text-transform: Capitalize;
                                         font-size: $extra-large;
                                         color: $dark-grey;
+                                        margin-right: 5px;
                                         &:hover {
                                             color: $pink;
                                         }
@@ -118,7 +119,7 @@
                                     font-size: $small;
                                     font-family: 'Merriweather Sans';
                                     text-transform: Uppercase;
-                                    margin-top: 9px;
+                                    margin-top: 8px;
                                     &:hover {
                                         color: $dark-grey;
                                     }
@@ -129,9 +130,10 @@
                                     color: $pink;
                                     font-weight: 300;
                                     font-family: 'Merriweather';
-                                    font-size: $medium;
-                                    margin-top: 7px;
+                                    font-size: $small;
+                                    margin-top: 8px;
                                     float: left;
+                                    text-transform: uppercase;
                                     &:hover {
                                         color: $dark-grey;
                                     }
