@@ -143,4 +143,23 @@
             ALTER TABLE PERSON ADD COLUMN publish BOOLEAN DEFAULT false;
         </sql>
     </changeSet>
+    <changeSet id="87" author="INDRANEEL">
+        <comment>changing most of varchar fields to type Text</comment>
+        <sql>
+            ALTER TABLE reflection ALTER COLUMN reflection_excerpt TYPE text;
+            ALTER TABLE reflection ALTER COLUMN sound_cloud_track_id TYPE text;
+            ALTER TABLE reflection ALTER COLUMN thumbnail_url TYPE text;
+
+            ALTER TABLE word ALTER COLUMN hindi_intro_excerpt TYPE text;
+            ALTER TABLE word ALTER COLUMN english_intro_excerpt TYPE text;
+            ALTER TABLE word ALTER COLUMN thumbnail_url TYPE text;
+
+            ALTER TABLE person ALTER COLUMN thumbnail_url TYPE text;
+
+            ALTER TABLE song ALTER COLUMN download_url TYPE text;
+            ALTER TABLE song ALTER COLUMN soundcloud_track_id TYPE text;
+            ALTER TABLE song ALTER COLUMN thumbnail_url TYPE text;
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
