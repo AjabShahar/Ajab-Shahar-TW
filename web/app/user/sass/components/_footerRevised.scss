@@ -51,7 +51,7 @@
             @media screen and (max-width: 1280px) {
                       width: 85%;
             }
-            @media screen and (max-width: 1024px) {
+            @media screen and (max-width: 768px) {
                       width: 98%;
             }
             a {
@@ -73,12 +73,20 @@
                 font-size: 12px;
                 width: 92%;
                 margin: 0 auto;
+                @media screen and (max-width: 1024px) {
+                    width: 99%;
+                }
                 .vertical-separator {
 
                     background: transparent url(/user/img/common/directives/footer/dotted.png) 0px top;
                     background-repeat: no-repeat repeat;
                     padding: 0 3%;
                     height: 170px;
+                    @media screen and (max-width: 1024px) {
+                          padding: 0 2%;
+                          height: 187px;
+
+                    }
 
                 }
                 .footer-title {
@@ -100,6 +108,10 @@
                     p{
                         line-height: 22px;
                     }
+                    @media screen and (max-width: 1024px) {
+                        width: 24%;
+
+                    }
 
                 }
                 .support-col {
@@ -108,6 +120,10 @@
                     margin-top: 2%;
                     p{
                         line-height: 22px;
+                    }
+                    @media screen and (max-width: 1024px) {
+                        width: 28%;
+
                     }
                 }
                 .subscribe-col {
@@ -139,6 +155,10 @@
                                 margin-bottom: 20px;
                         }
                     }
+                    @media screen and (max-width: 1024px) {
+                        width: 17%;
+
+                    }
 
                 }
             }
@@ -155,6 +175,10 @@
                 ul {
                     width: 100%;
                     display: inline-block;
+                    @media screen and (max-width: 1024px) {
+                        width: 80%;
+
+                    }
 
                 }
                 li {
