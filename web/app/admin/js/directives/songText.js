@@ -25,7 +25,8 @@ songsAdminApp.directive("songText", function () {
                     "contentType": "couplet",
                     "englishTranslationText": "",
                     "englishTransliterationText": "",
-                    "originalText": ""
+                    "originalText": "",
+                    "poet":{}
                 };
             };
 

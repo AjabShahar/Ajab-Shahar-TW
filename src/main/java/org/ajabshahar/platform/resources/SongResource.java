@@ -37,20 +37,22 @@ public class SongResource {
     public Response saveSong(String jsonSong) {
         Song song = songsRepresentationFactory.create(jsonSong);
         song = songs.save(song);
-        return Response.ok().entity(song).build();
+        SongRepresentation songRepresentation = songsRepresentationFactory.create(song);
+        return Response.ok().entity(songRepresentation).build();
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @UnitOfWork
-    public SongRepresentation getSongById(@PathParam("id") Long id) {
-        try {
-            Song song = songDAO.findById(id);
-            return songsRepresentationFactory.create(song);
-        } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
+    public Response getSongById(@PathParam("id") int songId) {
+        Song song = songs.findBy(songId);
+        if (song == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
         }
+        SongRepresentation songRepresentation = songsRepresentationFactory.create(song);
+        songRepresentation.removeUnPublishedPeople();
+        return Response.ok(songRepresentation, MediaType.APPLICATION_JSON).build();
     }
 
     @GET

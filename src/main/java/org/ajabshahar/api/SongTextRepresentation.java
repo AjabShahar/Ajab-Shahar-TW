@@ -5,14 +5,15 @@ import org.ajabshahar.platform.models.OpeningCouplet;
 import org.ajabshahar.platform.models.SongText;
 import org.ajabshahar.platform.models.SongTextContent;
 
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class SongTextRepresentation {
 
     private long id;
-    private Set<SongTextContent> songTextContents;
-    private Set<OpeningCouplet> openingCouplets;
+    private Set<SongTextContentSummaryRepresentation> songTextContents;
+    private Set<OpeningCoupletSummaryRepresentation> openingCouplets;
     private String refrainOriginal;
     private String refrainEnglishTranslation;
     private String refrainEnglishTransliteration;
@@ -29,11 +30,11 @@ public class SongTextRepresentation {
         openingCouplets = new LinkedHashSet<>();
     }
 
-    public Set<SongTextContent> getSongTextContents() {
+    public Set<SongTextContentSummaryRepresentation> getSongTextContents() {
         return songTextContents;
     }
 
-    public void addSongTextContents(SongTextContent songTextContent) {
+    public void addSongTextContents(SongTextContentSummaryRepresentation songTextContent) {
         songTextContents.add(songTextContent);
     }
 
@@ -49,31 +50,15 @@ public class SongTextRepresentation {
         return refrainEnglishTransliteration;
     }
 
-    public Set<OpeningCouplet> getOpeningCouplets() {
+    public Set<OpeningCoupletSummaryRepresentation> getOpeningCouplets() {
         return openingCouplets;
-    }
-
-    public void addOpeningCouplet(OpeningCouplet openingCouplet) {
-        openingCouplets.add(openingCouplet);
-    }
-
-    public static SongText toSongText(SongTextRepresentation songTextRepresentation){
-        SongText songText = null;
-
-        if(songTextRepresentation != null){
-            songText = new SongText();
-            songText.setId(songTextRepresentation.getId());
-            songText.setOpeningCouplets(songTextRepresentation.getOpeningCouplets());
-            songText.setRefrainEnglishTranslation(songTextRepresentation.getRefrainEnglishTranslation());
-            songText.setRefrainEnglishTransliteration(songTextRepresentation.getRefrainEnglishTransliteration());
-            songText.setRefrainOriginal(songTextRepresentation.getRefrainOriginal());
-            songText.setSongTextContents(songTextRepresentation.getSongTextContents());
-        }
-
-        return songText;
     }
 
     public long getId() {
         return id;
+    }
+
+    public void addOpeningCouplet(OpeningCoupletSummaryRepresentation openingCouplet) {
+       openingCouplets.add(openingCouplet);
     }
 }

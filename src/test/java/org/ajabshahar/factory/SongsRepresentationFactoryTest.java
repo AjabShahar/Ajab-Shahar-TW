@@ -19,6 +19,7 @@ import static java.lang.String.format;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anySetOf;
 import static org.mockito.Mockito.when;
 
@@ -194,6 +195,7 @@ public class SongsRepresentationFactoryTest {
 
     @Test
     public void shouldTestCreateSong() throws Exception {
+        when(songTextRepresentationFactory.toSongText(any())).thenReturn(song.getSongText());
         String jsonSong = new Gson().toJson(song);
         Song expected = songsRepresentationFactory.create(jsonSong);
 

@@ -2,34 +2,27 @@ package org.ajabshahar.api;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
-public class SongTextContentSummaryRepresentation {
-
+public class OpeningCoupletSummaryRepresentation {
     private int id;
     private String originalText;
     private String englishTranslationText;
     private String englishTransliterationText;
     private String contentType;
     private int sequenceNumber;
-    private boolean showRefrain;
     private PersonSummaryRepresentation poet;
 
-    public SongTextContentSummaryRepresentation(int id, String originalText, String englishTranslationText, String englishTransliterationText, String contentType, int sequenceNumber, boolean showRefrain, PersonSummaryRepresentation poet) {
+    public OpeningCoupletSummaryRepresentation(int id, String originalText, String englishTranslationText, String englishTransliterationText, String contentType, int sequenceNumber,PersonSummaryRepresentation poet) {
         this.id = id;
         this.originalText = originalText;
         this.englishTranslationText = englishTranslationText;
         this.englishTransliterationText = englishTransliterationText;
         this.contentType = contentType;
         this.sequenceNumber = sequenceNumber;
-        this.showRefrain = showRefrain;
         this.poet = poet;
     }
 
-    public SongTextContentSummaryRepresentation() {
+    public OpeningCoupletSummaryRepresentation() {
     }
 
     @JsonProperty("id")
@@ -60,11 +53,6 @@ public class SongTextContentSummaryRepresentation {
     @JsonProperty("sequenceNumber")
     public int getSequenceNumber() {
         return sequenceNumber;
-    }
-
-    @JsonProperty("showRefrain")
-    public boolean isShowRefrain() {
-        return showRefrain;
     }
 
     @JsonProperty("poet")

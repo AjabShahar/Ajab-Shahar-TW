@@ -1,9 +1,14 @@
 package org.ajabshahar.platform.models;
 
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "SONG_TEXT_CONTENT")
 public class SongTextContent {
 
@@ -33,67 +38,4 @@ public class SongTextContent {
     @JoinColumn(name = "poet_id")
     private PersonDetails poet;
 
-    public String getOriginalText() {
-        return originalText;
-    }
-
-    public void setOriginalText(String originalText) {
-        this.originalText = originalText;
-    }
-
-    public String getEnglishTranslationText() {
-        return englishTranslationText;
-    }
-
-    public void setEnglishTranslationText(String englishTranslationText) {
-        this.englishTranslationText = englishTranslationText;
-    }
-
-    public String getEnglishTransliterationText() {
-        return englishTransliterationText;
-    }
-
-    public void setEnglishTransliterationText(String englishTransliterationText) {
-        this.englishTransliterationText = englishTransliterationText;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getContentType() {
-        return contentType;
-    }
-
-    public void setContentType(String contentType) {
-        this.contentType = contentType;
-    }
-
-    public int getSequenceNumber() {
-        return sequenceNumber;
-    }
-
-    public void setSequenceNumber(int sequenceNumber) {
-        this.sequenceNumber = sequenceNumber;
-    }
-
-    public PersonDetails getPoet() {
-        return poet;
-    }
-
-    public void setPoet(PersonDetails personDetails) {
-        this.poet = personDetails;
-    }
-
-    public Boolean getShowRefrain() {
-        return showRefrain;
-    }
-
-    public void setShowRefrain(Boolean showRefrain) {
-        this.showRefrain = showRefrain;
-    }
 }

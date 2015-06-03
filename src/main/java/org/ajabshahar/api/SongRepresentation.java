@@ -21,7 +21,7 @@ public class SongRepresentation extends BaseRepresentation {
     private String duration;
     private Set<PersonSummaryRepresentation> singers;
     private Set<PersonSummaryRepresentation> poets;
-    private Set<LinkRepresentation> links;
+//    private Set<LinkRepresentation> links;
     private Set<WordSummaryRepresentation> words;
     private SongTextRepresentation songText;
     private String downloadURL;
@@ -35,7 +35,7 @@ public class SongRepresentation extends BaseRepresentation {
     private Set<ReflectionSummaryRepresentation> reflections;
 
     public SongRepresentation() {
-        this.links = new LinkedHashSet<>();
+//        this.links = new LinkedHashSet<>();
     }
 
     public SongRepresentation(long id, boolean isAuthoringComplete, boolean showOnLandingPage, String youTubeVideoId,
@@ -59,8 +59,8 @@ public class SongRepresentation extends BaseRepresentation {
         this.gathering = gathering;
         this.songCategory = songCategory;
         this.mediaCategory = mediaCategory;
-        this.singers.forEach(singer -> links.add(new LinkRepresentation("singer", format("/api/people/%s", singer.getId()))));
-        this.poets.forEach(p -> links.add(new LinkRepresentation("poet", format("/api/people/%s", p.getId()))));
+//        this.singers.forEach(singer -> links.add(new LinkRepresentation("singer", format("/api/people/%s", singer.getId()))));
+//        this.poets.forEach(p -> links.add(new LinkRepresentation("poet", format("/api/people/%s", p.getId()))));
         this.songText = songText;
         this.downloadURL = downloadURL;
         this.about = about;
@@ -105,9 +105,9 @@ public class SongRepresentation extends BaseRepresentation {
         return poets;
     }
 
-    public Set<LinkRepresentation> getLinks() {
-        return links;
-    }
+//    public Set<LinkRepresentation> getLinks() {
+//        return links;
+//    }
 
     public SongTextRepresentation getSongText() {
         return songText;

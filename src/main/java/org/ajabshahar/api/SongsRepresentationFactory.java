@@ -10,7 +10,6 @@ import java.util.Set;
 
 import static org.ajabshahar.api.PersonSummaryRepresentation.*;
 import static org.ajabshahar.api.ReflectionSummaryRepresentation.*;
-import static org.ajabshahar.api.SongTextRepresentation.toSongText;
 import static org.ajabshahar.api.WordsSummaryRepresentation.*;
 
 public class SongsRepresentationFactory {
@@ -125,7 +124,7 @@ public class SongsRepresentationFactory {
         song.setSingers(toPeople(songRepresentation.getSingers()));
         song.setPoets(toPeople(songRepresentation.getPoets()));
         song.setWords(toWords(songRepresentation.getWords()));
-        song.setSongText(toSongText(songRepresentation.getSongText()));
+        song.setSongText(songTextRepresentationFactory.toSongText(songRepresentation.getSongText()));
         song.setDownloadURL(songRepresentation.getDownloadURL());
         song.setAbout(songRepresentation.getAbout());
         song.setGathering(songRepresentation.getGathering());

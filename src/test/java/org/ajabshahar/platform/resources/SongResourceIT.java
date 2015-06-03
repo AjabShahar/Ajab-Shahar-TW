@@ -11,6 +11,7 @@ import io.dropwizard.testing.junit.DropwizardAppRule;
 import net.minidev.json.JSONObject;
 import org.ajabshahar.api.PersonSummaryRepresentation;
 import org.ajabshahar.api.SongRepresentation;
+import org.ajabshahar.api.SongTextContentSummaryRepresentation;
 import org.ajabshahar.api.SongsRepresentation;
 import org.ajabshahar.platform.PlatformApplication;
 import org.ajabshahar.platform.PlatformConfiguration;
@@ -187,13 +188,13 @@ public class SongResourceIT {
 
         ClientResponse songResponse = loginAndPost("http://localhost:%d/api/songs", jsonReflection);
 
-        Song song = getSong(songResponse);
+        SongRepresentation songRepresentation = getSongRepresentation(songResponse);
 
         ClientResponse response = client.resource(
-                String.format("http://localhost:%d/api/songs/"+song.getId(), RULE.getLocalPort())).header("Content-type", "application/json")
+                String.format("http://localhost:%d/api/songs/"+songRepresentation.getId(), RULE.getLocalPort())).header("Content-type", "application/json")
                 .get(ClientResponse.class);
 
-        SongRepresentation songRepresentation = response.getEntity(SongRepresentation.class);
+        songRepresentation = getSongRepresentation(response);
         assertThat(songRepresentation.getGathering().getEnglish(),is("Rajasthan"));
 
     }
@@ -248,7 +249,7 @@ public class SongResourceIT {
         assertThat(songRepresentation.getSongText().getSongTextContents().size(),is(2));
 
         songRepresentation.getSongText().getSongTextContents();
-        for (SongTextContent songTextContent : songRepresentation.getSongText().getSongTextContents()) {
+        for (SongTextContentSummaryRepresentation songTextContent : songRepresentation.getSongText().getSongTextContents()) {
             songTextContent.setEnglishTransliterationText(songTextContent.getEnglishTransliterationText()+" - 2");
         }
 
@@ -262,7 +263,7 @@ public class SongResourceIT {
         assertThat(songRepresentation.getId(), is(songId));
         assertThat(songRepresentation.getSongText().getSongTextContents().size(),is(2));
 
-        for (SongTextContent songTextContent : songRepresentation.getSongText().getSongTextContents()) {
+        for (SongTextContentSummaryRepresentation songTextContent : songRepresentation.getSongText().getSongTextContents()) {
             assertThat(songTextContent.getEnglishTransliterationText(), endsWith(" - 2"));
         }
     }

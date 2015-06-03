@@ -89,9 +89,13 @@ public class PersonSummaryRepresentation {
     }
 
     public static PersonDetails getPersonDetails(PersonSummaryRepresentation personSummaryRepresentation) {
-        PersonDetails personDetails = new PersonDetails();
-        personDetails.setId(personSummaryRepresentation.getId());
-        personDetails.setFirstName(personSummaryRepresentation.getName());
+        PersonDetails personDetails = null;
+        if(personSummaryRepresentation != null){
+            personDetails = new PersonDetails();
+            personDetails.setId(personSummaryRepresentation.getId());
+            personDetails.setFirstName(personSummaryRepresentation.getName());
+        }
+
         return personDetails;
     }
 
