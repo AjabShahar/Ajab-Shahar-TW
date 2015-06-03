@@ -22,7 +22,7 @@
 
             .people-grid-content-wrapper {
                 background: transparent url('/user/img/people/all-people-content-bg.png') left top;
-                background-size: contain;
+                background-size: 100% auto;
                 background-repeat: no-repeat repeat;
                 display: inline-block;
                 overflow: visible;
@@ -81,7 +81,7 @@
                                    font-family: 'Merriweather';
                                    color: $grey;
                                    max-height: 9em;
-                                   line-height: 1.5em;
+                                   line-height: 1.8em;
 
                                   .title {
                                         text-transform: Capitalize;
@@ -119,7 +119,7 @@
                                     font-size: $small;
                                     font-family: 'Merriweather Sans';
                                     text-transform: Uppercase;
-                                    margin-top: 8px;
+                                    margin-top: 5px;
                                     &:hover {
                                         color: $dark-grey;
                                     }
@@ -131,7 +131,7 @@
                                     font-weight: 300;
                                     font-family: 'Merriweather';
                                     font-size: $small;
-                                    margin-top: 8px;
+                                    margin-top: 5px;
                                     float: left;
                                     text-transform: uppercase;
                                     &:hover {
