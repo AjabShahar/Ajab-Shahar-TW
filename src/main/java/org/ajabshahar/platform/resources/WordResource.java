@@ -8,6 +8,7 @@ import org.ajabshahar.platform.models.Word;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -70,8 +71,32 @@ public class WordResource {
 
         if(publish){
             intermediateRepresentation.removeUnPublishedPeople();
+            removeUnPublishedPeopleFromWordReflection(intermediateRepresentation);
+
         }
         return Response.ok(intermediateRepresentation).build();
+    }
+
+    private void removeUnPublishedPeopleFromWordReflection(WordRepresentation intermediateRepresentation) {
+        Set<ReflectionSummaryRepresentation> reflections = intermediateRepresentation.getReflections();
+        Set<ReflectionSummaryRepresentation> reflectionsWithOutUnPublishedPeople = new LinkedHashSet<>();
+        for (ReflectionSummaryRepresentation reflection : reflections) {
+            if(reflection.getSpeaker().isPublish()) {
+                reflectionsWithOutUnPublishedPeople.add(reflection);
+            }
+            else {
+                reflection.setSpeaker(null);
+                reflectionsWithOutUnPublishedPeople.add(reflection);
+            }
+        }
+
+        intermediateRepresentation.setReflections(reflectionsWithOutUnPublishedPeople);
+
+        if(!intermediateRepresentation.getDefaultReflection().getSpeaker().isPublish()) {
+            ReflectionSummaryRepresentation defaultReflection = intermediateRepresentation.getDefaultReflection();
+            defaultReflection.setSpeaker(null);
+            intermediateRepresentation.setDefaultReflection(defaultReflection);
+        }
     }
 
 

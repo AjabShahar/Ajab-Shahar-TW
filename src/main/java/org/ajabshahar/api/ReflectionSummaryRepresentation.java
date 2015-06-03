@@ -122,6 +122,10 @@ public class ReflectionSummaryRepresentation {
         return "";
     }
 
+    public void setSpeaker(PersonSummaryRepresentation speaker){
+        this.speaker = speaker;
+    }
+
     @JsonProperty("verb")
     public String getVerb() {
         return verb;

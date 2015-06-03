@@ -23,9 +23,7 @@ import javax.ws.rs.core.NewCookie;
 import java.util.*;
 
 import static org.ajabshahar.DataSetup.INSERT_GATHERINGS;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 public class WordResourceIT {
@@ -85,7 +83,8 @@ public class WordResourceIT {
 
     @Test
     public void shouldHaveWordIntroduction() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON,
+                DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS,
                 DataSetup.INSERT_WORD_INTRODUCTION);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
@@ -100,7 +99,8 @@ public class WordResourceIT {
 
     @Test
     public void shouldHaveWordIntroductions() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON,
+                DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS,
                 DataSetup.INSERT_WORD_INTRODUCTION, DataSetup.INSERT_WORD_INTRODUCTION);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
@@ -115,7 +115,8 @@ public class WordResourceIT {
 
     @Test
     public void shouldHaveWordIntroductionWithContentType() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON,
+                DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS,
                 DataSetup.INSERT_WORD_INTRODUCTION);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
@@ -134,7 +135,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldHaveWordIntroductionWithOtherContentType() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON,
                 DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS,
                 DataSetup.INSERT_WORD_INTRODUCTION_WITH_COUPLET_CONTENT_TYPE);
 
@@ -201,7 +202,7 @@ public class WordResourceIT {
     @Test
     public void shouldSaveReflections() {
 
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON, DataSetup.INSERT_REFLECTIONS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -224,7 +225,10 @@ public class WordResourceIT {
     @Test
     public void shouldGetSelectedReflectionsWithWord() throws Exception {
 
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS, DataSetup.INSERT_WORD_REFLECTIONS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON,
+                DataSetup.INSERT_REFLECTIONS,
+                DataSetup.INSERT_WORDS,
+                DataSetup.INSERT_WORD_REFLECTIONS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -235,12 +239,34 @@ public class WordResourceIT {
 
         assertThat(word.getReflections().size(), is(1));
         assertThat(word.getReflections().iterator().next().getId(), is(1L));
+        assertThat(word.getReflections().iterator().next().getSpeaker().getName(), is("Ravi Das"));
+    }
 
+    @Test
+    public void shouldGetSelectedReflectionsWithWordButNotShowSpeakerIfItsUnPublished() throws Exception {
+        final String API_TO_EDIT_THE_WORD_WITH_ID_THREE = "http://localhost:%d/api/words/edit?id=3&publish=true";
+
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON,
+                DataSetup.INSERT_REFLECTIONS,
+                DataSetup.INSERT_WORDS,
+                DataSetup.INSERT_WORD_REFLECTIONS);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        ClientResponse wordResponse = httpGet(API_TO_EDIT_THE_WORD_WITH_ID_THREE);
+
+        WordRepresentation word = wordResponse.getEntity(WordRepresentation.class);
+
+        assertThat(word.getReflections().size(), is(1));
+        assertThat(word.getReflections().iterator().next().getId(), is(3L));
+        assertThat(word.getReflections().iterator().next().getSpeaker(), is(nullValue()));
     }
 
     @Test
     public void shouldHaveShowAjabShaharTeamTextFlag() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON,
+                DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
 
@@ -253,7 +279,8 @@ public class WordResourceIT {
 
     @Test
     public void shouldSaveDefaultReflection() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS, DataSetup.INSERT_WORD_REFLECTIONS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_PERSON,
+                DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS, DataSetup.INSERT_WORD_REFLECTIONS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -272,7 +299,8 @@ public class WordResourceIT {
 
     @Test
     public void shouldEditDefaultReflection() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS, DataSetup.INSERT_WORD_REFLECTIONS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON,
+                DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS, DataSetup.INSERT_WORD_REFLECTIONS);
 
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
@@ -296,7 +324,8 @@ public class WordResourceIT {
 
     @Test
     public void shouldRemoveDefaultReflection() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS, DataSetup.INSERT_WORD_REFLECTIONS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON,
+                DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS, DataSetup.INSERT_WORD_REFLECTIONS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -318,7 +347,8 @@ public class WordResourceIT {
 
     @Test
     public void shouldSaveWordAlongWithRelatedWords() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON,
+                DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -338,7 +368,8 @@ public class WordResourceIT {
 
     @Test
     public void shouldSaveWordAlongWithSynonyms() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON,
+                DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -360,7 +391,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldEditRelatedWordsAndSynonyms() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -399,7 +430,8 @@ public class WordResourceIT {
 
     @Test
     public void shouldDeleteRelatedWordsAndSynonyms() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON,
+                DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -433,9 +465,9 @@ public class WordResourceIT {
     @Test
     public void shouldBeAbleToSaveASongHavingSingers() {
         Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,
+                DataSetup.INSERT_PERSON,
                 DataSetup.INSERT_CATEGORY,
                 DataSetup.INSERT_REFLECTIONS,
-                DataSetup.INSERT_PERSON,
                 INSERT_GATHERINGS,
                 DataSetup.INSERT_SONG_TITLE_CATEGORY,
                 DataSetup.INSERT_SONG_TITLE,

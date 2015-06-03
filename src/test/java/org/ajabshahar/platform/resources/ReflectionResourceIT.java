@@ -86,7 +86,7 @@ public class ReflectionResourceIT {
 
     @Test
     public void shouldSaveRelatedWords() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -157,7 +157,7 @@ public class ReflectionResourceIT {
 
     @Test
     public void shouldEditRelatedWords() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -716,7 +716,7 @@ public class ReflectionResourceIT {
 
     @Test
     public void shouldGetReflectionsByIds(){
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_COMPLETE_STARTER_SET);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_COMPLETE_STARTER_SET);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -733,8 +733,8 @@ public class ReflectionResourceIT {
         assertNotNull(reflectionSummaries);
         assertEquals(2, reflectionSummaries.size());
         Iterator<LinkedHashMap> summaryRepresentationIterator = reflectionSummaries.iterator();
-        assertEquals("I hate that word!", summaryRepresentationIterator.next().get("title"));
         assertEquals("Oh that wonderful song!", summaryRepresentationIterator.next().get("title"));
+        assertEquals("I hate that word!", summaryRepresentationIterator.next().get("title"));
     }
 
     @Test
