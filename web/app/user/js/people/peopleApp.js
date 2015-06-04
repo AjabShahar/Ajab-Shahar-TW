@@ -1,4 +1,4 @@
-angular.module('people', ['ngRoute','htmlGenerator','utilities','animationModule','headerModule'])
+angular.module('people', ['ngRoute','htmlGenerator','utilities','animationModule','headerModule','wu.masonry'])
     .config(["$routeProvider","$locationProvider", function ($routeProvider,$locationProvider) {
         $routeProvider
             .when('/allPeople', {

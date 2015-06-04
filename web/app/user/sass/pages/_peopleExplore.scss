@@ -4,47 +4,6 @@
         background: none;
     }
 
-    .sub-main {
-        font-size: $large !important;
-        color: $grey;
-    }
-
-    .main-content {
-        margin-top: 155px;
-
-        .grid-wrapper {
-            margin-left: 125px;
-        }
-
-    }
-
-    #container {
-        ul.media-list {
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: column;
-            width: 100%;
-        }
-        .media {
-            min-height: 0px;
-            width: 25%;
-            margin-bottom: 18px;
-            float: left;
-            @include media($tab-landscape) {
-               width: 33%;
-            }
-
-            @include media($tab-portrait) {
-               width: 50%;
-            }
-
-             .bubble {
-                position: relative;
-                top: -27px;
-                left: -9px;
-            }
-        }
-    }
 
 
 }
