@@ -2,6 +2,7 @@ angular.module("people").controller('allPeopleController', ['$scope', 'peopleSer
     $scope.classes = ['hansas', 'sadhus', 'yoginis'];
 
     $scope.people = [];
+    $scope.expandFilter = false;
     $scope.numberOfPeople;
     $scope.init = function () {
         peopleService.getPeople().success(function (response) {
@@ -12,5 +13,11 @@ angular.module("people").controller('allPeopleController', ['$scope', 'peopleSer
             $scope.numberOfPeople = $scope.people.length;
         });
     };
+
+    $scope.toggleExpandFilter = function () {
+            $scope.expandFilter = !$scope.expandFilter;
+            
+    };
+
     $scope.init();
 }]);
