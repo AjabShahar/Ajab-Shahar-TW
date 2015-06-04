@@ -26,7 +26,7 @@ describe("song details controller", function () {
     it("should have the selected song in light box as first song in carousel items", function () {
         expect(scope.carouselItems[0].id).toBe(1);
         expect(scope.carouselItems[0].englishTitle).toBe("The Cart of Meditation is Tottering");
-        expect(scope.carouselItems[0].verbPeople.verb).toBe("SING");
+        expect(scope.carouselItems[0].verbPeople.verb).toBe("sing");
         expect(scope.carouselItems[0].verbPeople.people).toBe("Fakru & Mooralala Marwada");
         expect(scope.carouselItems[1].englishTitle).toBe("In This Body");
     });

@@ -4,7 +4,7 @@ describe("Thumbnail model", function () {
 
         expect(songThumbnail.type).toBe("song");
         expect(songThumbnail.thumbnailImg).toBe("https://farm8.staticflickr.com/7583/16097980187_72dfa07068_o.png");
-        expect(songThumbnail.verbPeople.verb).toBe("SINGS");
+        expect(songThumbnail.verbPeople.verb).toBe("sings");
         expect(songThumbnail.verbPeople.people).toBe("Mukhtiyar Ali");
 
         expect(songThumbnail.englishTitle).toBe("Everyday I Ask For Your Well Being");
@@ -13,7 +13,7 @@ describe("Thumbnail model", function () {
         expect(songThumbnail.contentFormat).toBe("audio");
         expect(songThumbnail.duration).toBe("07:45");
 
-        expect(songThumbnail.secondaryVerbPeople.verb).toBe("POET");
+        expect(songThumbnail.secondaryVerbPeople.verb).toBe("Poet");
         expect(songThumbnail.secondaryVerbPeople.people).toBe("Badar Muneer");
 
     });
@@ -30,7 +30,7 @@ describe("Thumbnail model", function () {
         expect(songThumbnail.contentFormat).toBe("video");
         expect(songThumbnail.duration).toBe("5:45");
 
-        expect(songThumbnail.secondaryVerbPeople.verb).toBe("POET");
+        expect(songThumbnail.secondaryVerbPeople.verb).toBe("Poet");
         expect(songThumbnail.secondaryVerbPeople.people).toBe("Roshik");
 
     });
@@ -40,7 +40,7 @@ describe("Thumbnail model", function () {
 
         expect(songThumbnail.type).toBe("song");
         expect(songThumbnail.thumbnailImg).toBe("https://farm8.staticflickr.com/7496/15609516053_67a9b050e9_o.png");
-        expect(songThumbnail.verbPeople.verb).toBe("SING");
+        expect(songThumbnail.verbPeople.verb).toBe("sing");
         expect(songThumbnail.verbPeople.people).toBe("Parvathy Baul & Badar Muneer");
 
         expect(songThumbnail.englishTitle).toBe("For a Few Days, O Heart");
@@ -49,7 +49,7 @@ describe("Thumbnail model", function () {
         expect(songThumbnail.contentFormat).toBe("video");
         expect(songThumbnail.duration).toBe("05:45");
 
-        expect(songThumbnail.secondaryVerbPeople.verb).toBe("POET");
+        expect(songThumbnail.secondaryVerbPeople.verb).toBe("Poet");
         expect(songThumbnail.secondaryVerbPeople.people).toBe("Roshik");
 
     });
