@@ -34,7 +34,9 @@ public class PersonDAO extends AbstractDAO<PersonDetails> {
         }
         if (!Strings.isNullOrEmpty(role)) {
             criteria.createAlias("personDetails.category", "category");
-            criteria.add(Restrictions.eq("category.name", role));
+            criteria.createAlias("personDetails.primaryOccupation", "primaryOccupation");
+
+            criteria.add(Restrictions.or(Restrictions.eq("category.name", role), Restrictions.eq("primaryOccupation.name", role)));
         }
         if(show != null) {
             if (show.equals("published")) {
