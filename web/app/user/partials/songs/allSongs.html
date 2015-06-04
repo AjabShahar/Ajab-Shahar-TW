@@ -18,7 +18,7 @@
             ga('send', 'pageview');
         </script>
     </head>
-    <body ng-controller="allSongsController" class="all-songs ng-scope grid-layout" ng-init="getTotalSongsCount()">
+    <body ng-controller="allSongsController" class="all-songs ng-scope grid-layout">
         <ajab-shahar-header></ajab-shahar-header>
 
         <as-title filter-clicked="alphabetFilterClicked" clear-filters="clearAlphabetFilters">
@@ -48,12 +48,12 @@
                     </div>
                 </div>
 
-                <div class='grid-view' infinite-scroll="loadSongFromRange()">
+                <div class='grid-view'>
 
                     <div class='grid-wrapper'>
-                        <div infinite-scroll='loadSongFromRange()' infinite-scroll-distance='1' class="thumbnails-grid">
+                        <div class="thumbnails-grid">
                             <ul class="media-list songs">
-                                <li class="media" ng-repeat="song in (filteredSongList | filterByScroll:scrollIndex)">
+                                <li class="media" ng-repeat="song in filteredSongList">
                                     <song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}"
                                                     open="navigateToSong(song.id)" custom-style="{{song.customStyle}}"
                                                     img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}"
@@ -76,7 +76,6 @@
         <script type="text/javascript" src="/common/lib/angular-animate/angular-animate.min.js"></script>
         <script type="text/javascript" src="/common/lib/angular-touch/angular-touch.min.js"></script>
         <script type="text/javascript" src="/common/lib/underscore/underscore.js"></script>
-        <script type="text/javascript" src="/common/lib/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
         <script type="text/javascript" src="/user/js/common/directives/animation/animationModule.js"></script>
         <script type="text/javascript" src="/user/js/common/directives/animation/toggleBySlide.js"></script>
         <script type="text/javascript" src="/user/js/common/directives/animation/slideNavList.js"></script>
