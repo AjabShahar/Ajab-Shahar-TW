@@ -3,10 +3,14 @@ package org.ajabshahar.platform.models;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
@@ -82,11 +86,14 @@ public class Song {
     @JoinColumn(name = "MEDIA_CATEGORY")
     private Category mediaCategory;
 
+
     @ManyToOne(fetch = FetchType.EAGER)
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinColumn(name = "UMBRELLA_TITLE_ID")
     private Title umbrellaTitle;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinColumn(name = "SONG_TITLE_ID")
     private Title songTitle;
 

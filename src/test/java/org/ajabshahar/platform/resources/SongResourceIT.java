@@ -68,13 +68,14 @@ public class SongResourceIT {
         dbSetup.launch();
 
         Title title = new Title();
-        title.setId(1);
+        title.setEnglishTranslation("whatever in english");
+        title.setEnglishTranslation("whatever in hindi");
 
         JSONObject jsonReflection = new JSONObject();
 
         jsonReflection.put("songTitle", title);
         jsonReflection.put("soundCloudTrackId", "1");
-        title.setId(2);
+
         jsonReflection.put("umbrellaTitle", title);
         jsonReflection.put("duration", "2");
 
@@ -83,7 +84,7 @@ public class SongResourceIT {
         Song song = getSong(songResponse);
 
         assertThat(song.getId(), is(not(0)));
-        assertThat(song.getUmbrellaTitle().getId(), is(2L));
+        assertThat(song.getUmbrellaTitle().getId(), is(not(0)));
         assertThat(song.getDuration(), is("2"));
         assertThat(song.getSoundCloudTrackId(), is("1"));
     }
@@ -173,13 +174,14 @@ public class SongResourceIT {
         dbSetup.launch();
 
         Title title = new Title();
-        title.setId(1);
+        title.setEnglishTranslation("something1");
+        title.setEnglishTransliteration("something12");
 
         JSONObject jsonReflection = new JSONObject();
 
         jsonReflection.put("songTitle", title);
         jsonReflection.put("soundCloudTrackId", "1");
-        title.setId(2);
+
         jsonReflection.put("umbrellaTitle", title);
         jsonReflection.put("duration", "2");
         Gathering gathering = new Gathering();
