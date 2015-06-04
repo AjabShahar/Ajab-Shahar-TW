@@ -1,5 +1,5 @@
-wordsAdminApp.controller('wordDetailsController', ['$scope', '$window', '$location', 'contentService', 'PAGES', '$q', "loginVerifyService",
-    function ($scope, $window, $location, contentService, PAGES, $q, loginVerifyService) {
+wordsAdminApp.controller('wordDetailsController', ['$scope', '$window', '$location', 'contentService', 'PAGES', '$q', "loginVerifyService", '$filter',
+    function ($scope, $window, $location, contentService, PAGES, $q, loginVerifyService, $filter) {
         loginVerifyService.redirectIfNotAuthenticated();
 
         $scope.formInfo = {
@@ -27,12 +27,11 @@ wordsAdminApp.controller('wordDetailsController', ['$scope', '$window', '$locati
                     song.menuTitle = song.englishTransliterationTitle + " - (" + singerNames.join(", ") + ")";
                 }
             });
+            $scope.songs = sortList($scope.songs, 'menuTitle');
+        };
 
-            $scope.songs.sort(function (element, nextElement) {
-                element = element.menuTitle.toLowerCase();
-                nextElement = nextElement.menuTitle.toLowerCase();
-                return element < nextElement ? -1 : element > nextElement ? 1 : 0;
-            });
+        var sortList = function (list, sortCriteria) {
+            return $filter('orderBy')(list, sortCriteria);
         };
 
         $scope.init = function () {
