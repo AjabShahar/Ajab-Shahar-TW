@@ -67,14 +67,14 @@ describe("reflection details controller", function () {
 
             httpBackend.flush();
 
-            expect(scope.songs[0].menuTitle).toBe('Kichhu din mone mone - (Parvathy Baul)');
-            expect(scope.songs[1].menuTitle).toBe('Bhajan - (Gavra Devi)');
+            expect(scope.songs[0].menuTitle).toBe('Bhajan - (Gavra Devi)');
+            expect(scope.songs[2].menuTitle).toBe('Kichhu din mone mone - (Parvathy Baul)');
         });
         it("then shouldn't have singers as a comma separated entries for a song, if there are no singers", function () {
 
             httpBackend.flush();
 
-            expect(scope.songs[2].menuTitle).toBe('Hiye Kaaya Mein');
+            expect(scope.songs[1].menuTitle).toBe('Hiye Kaaya Mein');
         });
     });
 
@@ -136,7 +136,6 @@ describe("reflection details controller", function () {
 
             httpBackend.flush();
 
-            expect(scope.words[0].ticked).toBeTruthy();
             expect(scope.words[1].ticked).toBeFalsy();
         });
     });
