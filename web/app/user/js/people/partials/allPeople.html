@@ -85,14 +85,14 @@
 
                             </div>
                             <ul>
-                                <div id="{{person.id}}" ng-repeat="(index,person) in people | orderBy : 'name'" class="row-wrapper">
+                                <div id="{{person.id}}" ng-repeat="(index,person) in people | orderBy : 'name'" on-ng-repeat-end="scrollTo" class="row-wrapper">
                                     <div class="image" >
                                         <img src="{{person.thumbnailImg}}">
                                     </div>
                                     <div class="people-wrapper">
                                         <div class="people-info" read-more>
 
-                                            <a href="/people/#/explore/{{person.id}}" target="_self"><span class="title">{{person.name}}</span></a>
+                                            <a  target="_self"><span class="title">{{person.name}}</span></a>
                                             <span class="job-title"><li ng-repeat="role in person.occupations track by $index" style="display: inline">
                                                 {{role}}
                                                 <span ng-hide="$last" class="comma-space">,</span>

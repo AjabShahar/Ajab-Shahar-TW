@@ -1,10 +1,12 @@
 "use strict";
 
-angular.module('utilities').directive('onNgRepeatEnd',function(){
+angular.module('utilities').directive('onNgRepeatEnd',function($timeout){
     return {
         link:function(scope,elem,attr){
             if(scope.$last){
-                scope[attr.onNgRepeatEnd]();
+                $timeout(function(){
+                    scope[attr.onNgRepeatEnd]();
+                });
             }
         }
     }

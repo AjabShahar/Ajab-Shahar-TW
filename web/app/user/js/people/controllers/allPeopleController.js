@@ -1,4 +1,4 @@
-angular.module("people").controller('allPeopleController', ['$scope', 'peopleService','$location', function ($scope, peopleService,$location) {
+angular.module("people").controller('allPeopleController', ['$scope', 'peopleService','$location', '$anchorScroll', function ($scope, peopleService,$location, $anchorScroll) {
     $scope.classes = ['hansas', 'sadhus', 'yoginis'];
 
     $scope.people = [];
@@ -12,6 +12,12 @@ angular.module("people").controller('allPeopleController', ['$scope', 'peopleSer
             });
             $scope.numberOfPeople = $scope.people.length;
         });
+    };
+
+    $scope.scrollTo = function(){
+        $location.hash($location.hash());
+        $anchorScroll();
+        //$('body').scrollTo('#' + $location.hash());
     };
 
     $scope.toggleExpandFilter = function () {
