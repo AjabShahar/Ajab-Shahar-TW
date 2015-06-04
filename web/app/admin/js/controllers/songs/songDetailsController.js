@@ -51,16 +51,16 @@ songsAdminApp.controller('songDetailsController', ['$scope', '$window', '$locati
             var promises = [genrePromise, titlePromise, songCategoryPromise, mediaCategoryPromise, umbrellaTitlePromise, singerPromise, poetPromise, wordPromise, gatheringPromise, reflectionsPromise];
 
             $q.all(promises).then(function (data) {
-                $scope.genres = data[0].data;
-                $scope.songTitles = data[1].data;
+                $scope.genres = sortList(data[0].data,'english');
+                $scope.songTitles = sortList(data[1].data,'englishTransliteration');
                 $scope.songCategories = data[2].data;
                 $scope.mediaCategories = data[3].data;
-                $scope.umbrellaTitles = data[4].data;
+                $scope.umbrellaTitles = sortList(data[4].data,'englishTransliteration');
                 $scope.singers = removeNulls(data[5].data);
                 $scope.poets = removeNulls(data[6].data);
-                $scope.words = data[7].data.words;
-                $scope.gatherings = data[8].data;
-                $scope.reflections = data[9].data.reflections;
+                $scope.words = sortList(data[7].data.words,'wordTransliteration');
+                $scope.gatherings = sortList(data[8].data, 'english');
+                $scope.reflections = sortList(data[9].data.reflections, 'title');
                 $scope.song.songCategory = $scope.songCategories[0];
 
                 $scope.getSongData();
