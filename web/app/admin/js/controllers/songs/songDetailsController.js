@@ -29,7 +29,7 @@ songsAdminApp.controller('songDetailsController', ['$scope', '$window', '$locati
             var persons = angular.forEach(personList, function (person) {
                 person.lastName = (Boolean(person.lastName)) ? person.lastName : '';
             });
-            return sortList(persons, 'firstName');
+            return sortList(persons, 'name');
         };
 
         $scope.isEmpty = function (value) {
