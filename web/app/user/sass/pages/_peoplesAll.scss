@@ -43,7 +43,7 @@
                     .row-wrapper {
                         clear: both;
                         height: 180px;
-                        padding-top: 20px;
+                        padding-top: 40px;
                         .image {
                             float: left;
                             width: 255px;
@@ -80,8 +80,8 @@
                                    font-weight: 300;
                                    font-family: 'Merriweather';
                                    color: $grey;
-                                   max-height: 9em;
-                                   line-height: 1.8em;
+                                   max-height: 126px;
+                                   line-height: 1.45em;
 
                                   .title {
                                         text-transform: Capitalize;
