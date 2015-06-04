@@ -27,6 +27,12 @@ wordsAdminApp.controller('wordDetailsController', ['$scope', '$window', '$locati
                     song.menuTitle = song.englishTransliterationTitle + " - (" + singerNames.join(", ") + ")";
                 }
             });
+
+            $scope.songs.sort(function (element, nextElement) {
+                element = element.menuTitle.toLowerCase();
+                nextElement = nextElement.menuTitle.toLowerCase();
+                return element < nextElement ? -1 : element > nextElement ? 1 : 0;
+            });
         };
 
         $scope.init = function () {
