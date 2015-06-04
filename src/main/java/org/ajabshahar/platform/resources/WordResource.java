@@ -92,7 +92,9 @@ public class WordResource {
 
         intermediateRepresentation.setReflections(reflectionsWithOutUnPublishedPeople);
 
-        if(!intermediateRepresentation.getDefaultReflection().getSpeaker().isPublish()) {
+        if(intermediateRepresentation.getDefaultReflection() != null
+                && intermediateRepresentation.getDefaultReflection().getSpeaker() != null
+                && !intermediateRepresentation.getDefaultReflection().getSpeaker().isPublish()) {
             ReflectionSummaryRepresentation defaultReflection = intermediateRepresentation.getDefaultReflection();
             defaultReflection.setSpeaker(null);
             intermediateRepresentation.setDefaultReflection(defaultReflection);

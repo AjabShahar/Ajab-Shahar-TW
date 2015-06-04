@@ -161,5 +161,10 @@
             ALTER TABLE song ALTER COLUMN thumbnail_url TYPE text;
         </sql>
     </changeSet>
+    <changeSet id="88" author="INDRANEEL">
+            <dropNotNullConstraint columnName="word_original"
+                                   schemaName="public"
+                                   tableName="word"/>
+    </changeSet>
 
 </databaseChangeLog>

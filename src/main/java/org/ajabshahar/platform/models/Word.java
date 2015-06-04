@@ -19,7 +19,7 @@ public class Word {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "WORD_ORIGINAL", nullable = false)
+    @Column(name = "WORD_ORIGINAL", nullable = true)
     private String wordOriginal;
 
     @Column(name = "WORD_TRANSLATION", nullable = false)
