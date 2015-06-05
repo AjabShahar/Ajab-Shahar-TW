@@ -14,6 +14,18 @@ public class WordRepresentationFactory {
         return toWord(new Gson().fromJson(jsonWord, WordRepresentation.class));
     }
 
+    public static Word toWordsFromRepresentation(WordRepresentation wordRepresentation) {
+        if(wordRepresentation != null) {
+            Word words = new Word();
+            Word word = new Word();
+            word.setId(wordRepresentation.getId());
+            return words;
+        }
+        else {
+            return null;
+        }
+    }
+
     private Word toWord(WordRepresentation wordRepresentation) {
         Word word = new Word();
         word.setId(wordRepresentation.getId());
@@ -29,7 +41,16 @@ public class WordRepresentationFactory {
         word.setShowOnLandingPage(wordRepresentation.getShowOnLandingPage());
         word.setPublish(wordRepresentation.isPublish());
         word.setDisplayAjabShaharTeam(wordRepresentation.getDisplayAjabShaharTeam());
-        word.setWordIntroductions(wordRepresentation.getWordIntroductions());
+
+        Set<WordIntroduction> wordIntroductions = new LinkedHashSet<>();
+        Set<WordIntroductionRepresentation> wordIntroductionRepresentations = wordRepresentation.getWordIntroductions();
+        if(wordIntroductionRepresentations != null) {
+            for (WordIntroductionRepresentation wordIntroductionRepresentation : wordIntroductionRepresentations) {
+                wordIntroductions.add(wordIntroductionRepresentation.toWordIntroduction());
+            }
+        }
+        word.setWordIntroductions(wordIntroductions);
+
         word.setPeople(PersonRepresentationFactory.toPerson(wordRepresentation.getPeople()));
         word.setSongs(SongSummaryRepresentation.toSongs(wordRepresentation.getSongs()));
         word.setWriters(PersonRepresentationFactory.toPerson(wordRepresentation.getWriters()));
@@ -133,7 +154,17 @@ public class WordRepresentationFactory {
 
         peopleSummaryRepresentation = PersonRepresentationFactory.createPeopleSummaryRepresentation(word.getWriters());
         wordRepresentation.setWriters(new LinkedHashSet<>(peopleSummaryRepresentation));
-        wordRepresentation.setWordIntroductions(word.getWordIntroductions());
+
+        Set<WordIntroduction> wordIntroductions = new LinkedHashSet<>();
+        Set<WordIntroductionRepresentation> wordIntroductionRepresentations = wordRepresentation.getWordIntroductions();
+        if(wordIntroductionRepresentations != null) {
+            for (WordIntroductionRepresentation wordIntroductionRepresentation : wordIntroductionRepresentations) {
+                wordIntroductions.add(wordIntroductionRepresentation.toWordIntroduction());
+            }
+        }
+
+        WordIntroductionRepresentation wordIntroductionRepresentation = new WordIntroductionRepresentation();
+        wordRepresentation.setWordIntroductions(wordIntroductionRepresentation.toWordIntroductionRepresentations(word.getWordIntroductions()));
         wordRepresentation.setDisplayAjabShaharTeam(word.getDisplayAjabShaharTeam());
         wordRepresentation.setDefaultReflection(ReflectionSummaryRepresentation.createFrom(word.getDefaultReflection()));
 
