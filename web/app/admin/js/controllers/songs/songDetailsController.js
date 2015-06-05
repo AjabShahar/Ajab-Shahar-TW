@@ -87,6 +87,9 @@ songsAdminApp.controller('songDetailsController', ['$scope', '$window', '$locati
         $scope.saveData = function () {
             setMediaCategory();
 
+            if ($scope.song.thumbnailURL && $scope.song.thumbnailURL.indexOf("http") === -1 && $scope.song.thumbnailURL.indexOf("/images/") === -1) {
+                $scope.song.thumbnailURL = '/images/' + $scope.song.thumbnailURL;
+            }
             songContentService.createSong($scope.song)
                 .error(function (data) {
                     alert(data);
@@ -134,6 +137,10 @@ songsAdminApp.controller('songDetailsController', ['$scope', '$window', '$locati
         $scope.updateSong = function () {
             setMediaCategory();
             $scope.song.publishedDate = null;
+
+            if ($scope.song.thumbnailURL && $scope.song.thumbnailURL.indexOf("http") === -1 && $scope.song.thumbnailURL.indexOf("/images/") === -1) {
+                $scope.song.thumbnailURL = '/images/' + $scope.song.thumbnailURL;
+            }
 
             songContentService.editSong($scope.song)
                 .error(function (data) {
