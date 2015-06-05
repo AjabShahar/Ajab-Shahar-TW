@@ -1,4 +1,5 @@
-angular.module("reflection").controller('allReflectionsController', ['$scope', 'reflectionsContentService', '$window','$rootScope', function ($scope, reflectionsContentService, $window,$rootScope) {
+angular.module("reflection").controller('allReflectionsController', ['$scope', 'reflectionsContentService', '$window','$rootScope','$filter',
+    function ($scope, reflectionsContentService, $window,$rootScope,$filter) {
     $scope.reflections = [];
 
     $scope.activeLetter = '';
@@ -13,7 +14,9 @@ angular.module("reflection").controller('allReflectionsController', ['$scope', '
     $scope.openSecondParda = false;
     $rootScope.isGridPage = true;
 
-    var i = 0;
+    var sortList = function (list, sortCriteria) {
+        return $filter('orderBy')(list, sortCriteria);
+    };
 
     $scope.toggleExpandFilter = function () {
         $scope.expandFilter = !$scope.expandFilter;
@@ -44,10 +47,11 @@ angular.module("reflection").controller('allReflectionsController', ['$scope', '
     $scope.init = function () {
         reflectionsContentService.getPublishedReflections().then(function (reflections) {
             var reflectionsList = reflections.data.reflections;
-            _.each(reflectionsList, function (reflection, index) {
+            _.each(reflectionsList, function (reflection) {
                 $scope.reflections.push(new AjabShahar.ThumbnailObject(reflection, "reflection"));
             });
             $scope.reflectionCount = $scope.reflections.length;
+            $scope.reflections = sortList($scope.reflections,'englishTitle');
         });
     };
 
