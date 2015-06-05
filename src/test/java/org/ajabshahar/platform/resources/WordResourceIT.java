@@ -126,9 +126,9 @@ public class WordResourceIT {
 
         WordRepresentation responseEntity = getWord(response);
 
-        Set<WordIntroduction> wordIntroductions = responseEntity.getWordIntroductions();
+        Set<WordIntroductionRepresentation> wordIntroductions = responseEntity.getWordIntroductions();
 
-        for (WordIntroduction wordIntroduction : wordIntroductions) {
+        for (WordIntroductionRepresentation wordIntroduction : wordIntroductions) {
             assertEquals("text", wordIntroduction.getContentType());
         }
     }
@@ -146,9 +146,9 @@ public class WordResourceIT {
 
         WordRepresentation responseEntity = getWord(response);
 
-        Set<WordIntroduction> wordIntroductions = responseEntity.getWordIntroductions();
+        Set<WordIntroductionRepresentation> wordIntroductions = responseEntity.getWordIntroductions();
 
-        for (WordIntroduction wordIntroduction : wordIntroductions) {
+        for (WordIntroductionRepresentation wordIntroduction : wordIntroductions) {
             assertEquals("couplet", wordIntroduction.getContentType());
         }
     }

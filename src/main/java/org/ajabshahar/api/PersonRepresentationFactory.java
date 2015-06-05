@@ -43,9 +43,14 @@ public class PersonRepresentationFactory {
     }
 
     public static PersonDetails toPerson(PersonSummaryRepresentation personSummaryRepresentation) {
-        PersonDetails personDetails = new PersonDetails();
-        personDetails.setId(personSummaryRepresentation.getId());
-        return personDetails;
+        if(personSummaryRepresentation != null) {
+            PersonDetails personDetails = new PersonDetails();
+            personDetails.setId(personSummaryRepresentation.getId());
+            return personDetails;
+        }
+        else {
+            return null;
+        }
     }
 
     public static Set<PersonDetails> toPerson(Set<PersonSummaryRepresentation> peopleSummaryRepresentation) {
