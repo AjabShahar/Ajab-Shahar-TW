@@ -168,7 +168,7 @@ var song_explore_testSong = {
                 "primaryOccupation": null
             },
             "published": true,
-            "thumbnailImg": null,
+            "thumbnailURL": null,
             "excerpt": "“When the words of a poem start occupying your stomach instead of your cerebral cortex (through music), it’s a complete transformation in your experience of the so-called poem!”",
             "duration": "5:00",
             "verb": "says",
@@ -184,7 +184,7 @@ var song_explore_testSong = {
                 "primaryOccupation": null
             },
             "published": true,
-            "thumbnailImg": null,
+            "thumbnailURL": null,
             "excerpt": null,
             "duration": null,
             "verb": "says",
@@ -213,7 +213,7 @@ var song_explore_wordCustomSummaries =
                     "title": "reflection",
                     "speaker": null,
                     "published": true,
-                    "thumbnailImg": null,
+                    "thumbnailURL": null,
                     "excerpt": null,
                     "duration": null,
                     "verb": "by",
@@ -229,7 +229,7 @@ var song_explore_wordCustomSummaries =
                         "primaryOccupation": null
                     },
                     "published": false,
-                    "thumbnailImg": null,
+                    "thumbnailURL": null,
                     "excerpt": null,
                     "duration": null,
                     "verb": "reflec",
@@ -245,7 +245,7 @@ var song_explore_wordCustomSummaries =
                         "primaryOccupation": null
                     },
                     "published": true,
-                    "thumbnailImg": null,
+                    "thumbnailURL": null,
                     "excerpt": "“When the words of a poem start occupying your stomach instead of your cerebral cortex (through music), it’s a complete transformation in your experience of the so-called poem!”",
                     "duration": "5:00",
                     "verb": "says",
@@ -261,7 +261,7 @@ var song_explore_wordCustomSummaries =
                         "primaryOccupation": null
                     },
                     "published": true,
-                    "thumbnailImg": "http://files1.coloribus.com/files/adsarchive/part_807/8077505/file/halls-light-cough-sweets-unbelievable-small-56470.jpg",
+                    "thumbnailURL": "http://files1.coloribus.com/files/adsarchive/part_807/8077505/file/halls-light-cough-sweets-unbelievable-small-56470.jpg",
                     "excerpt": "Angela Belcher looks to nature for inspiration on how to engineer viruses to create extraordinary new materials",
                     "duration": "10:00",
                     "verb": "says",
@@ -369,7 +369,7 @@ var song_explore_wordCustomSummaries =
                         "primaryOccupation": null
                     },
                     "published": true,
-                    "thumbnailImg": null,
+                    "thumbnailURL": null,
                     "excerpt": null,
                     "duration": null,
                     "verb": "reflection",
@@ -385,7 +385,7 @@ var song_explore_wordCustomSummaries =
                         "primaryOccupation": null
                     },
                     "published": true,
-                    "thumbnailImg": null,
+                    "thumbnailURL": null,
                     "excerpt": null,
                     "duration": null,
                     "verb": "says",

@@ -262,7 +262,7 @@ describe("song details controller", function () {
                     "primaryOccupation": null
                 },
                 "published": true,
-                "thumbnailImg": "/images/chairman.jpg",
+                "thumbnailURL": "/images/chairman.jpg",
                 "excerpt": "this excerpt",
                 "duration": "10:00",
                 "verb": "by",
