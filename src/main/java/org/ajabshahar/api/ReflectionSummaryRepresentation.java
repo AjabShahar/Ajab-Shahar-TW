@@ -12,7 +12,7 @@ public class ReflectionSummaryRepresentation {
     private String title;
     private PersonSummaryRepresentation speaker;
     private Boolean published;
-    private String thumbnailUrl;
+    private String thumbnailURL;
     private String reflectionExcerpt;
     private String duration;
     private String verb;
@@ -27,7 +27,7 @@ public class ReflectionSummaryRepresentation {
         this.title = title;
         this.speaker = speaker;
         this.published = published;
-        this.thumbnailUrl = thumbnailUrl;
+        this.thumbnailURL = thumbnailUrl;
         this.reflectionExcerpt = reflectionExcerpt;
         this.duration = duration;
         this.verb = verb;
@@ -54,11 +54,9 @@ public class ReflectionSummaryRepresentation {
         return published;
     }
 
-    @JsonProperty("thumbnailImg")
-    public String getThumbnailUrl() {
-        return thumbnailUrl;
+    public String getThumbnailURL() {
+        return thumbnailURL;
     }
-
 
     @JsonProperty("duration")
     public String getDuration() {
