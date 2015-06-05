@@ -1,4 +1,4 @@
-.thumbnails-grid {
+.thumbnails-grid, .thumbnail-list, .thumbnail-carousel {
 
   .thumbnail {
     width: 230px;
@@ -16,7 +16,6 @@
       left: -9px;
 
       .summary {
-
         &:before {
           background-image: url(/user/img/common/directives/thumbnail/bubble-215-top.png);
           width: 230px;
@@ -30,11 +29,23 @@
           height: 25px;
           bottom: -25px;
         }
-
-
+        .collapse {
+          max-height: 0px;
+        }
       }
+
     }
 
   }
 
 }
+.thumbdetails {
+    -webkit-transition: max-height 1s; 
+    -moz-transition: max-height 1s; 
+    -ms-transition: max-height 1s; 
+    -o-transition: max-height 1s; 
+    transition: max-height 1s;  
+    overflow: hidden;
+    max-height: 110px;
+}
+

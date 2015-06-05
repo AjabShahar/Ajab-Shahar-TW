@@ -4,13 +4,13 @@
         <img ng-src="{{content.thumbnailImg}}"/>
     </div>
     <div class="bubble" >
-        <div class="summary" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
+        <div class="summary" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()" ng-load="hideDetails()">
             <h3 class="title">{{content.getTitle(format)}}</h3>
             <h4 class="en-title">{{content.getSecondTitle(format)}}</h4>
 
             <span class="singers" ng-show="content.showPrimaryVerbPeopleAlways()">{{content.verbPeople.verb}} {{content.verbPeople.people|uppercase}}</span>
 
-            <div ng-hide="!shouldShowDetails" class='thumbnailDetails toggleBySlide'>
+            <div class='thumbnailDetails toggleBySlide {{bubbleShowClass}}'>
 
                 <div>
                     <div class="singers" ng-show="content.showPrimaryVerbPeopleInDetails()">
