@@ -1,16 +1,20 @@
-personAdminApp.controller('personDetailsController', ['$scope', '$http', '$window', '$location', 'contentService', 'loginVerifyService',
-    function ($scope, $http, $window, $location, contentService, loginVerifyService) {
+personAdminApp.controller('personDetailsController', ['$scope', '$http', '$window', '$location', 'contentService', 'loginVerifyService',  '$filter',
+    function ($scope, $http, $window, $location, contentService, loginVerifyService, $filter) {
         loginVerifyService.redirectIfNotAuthenticated();
         $scope.formInfo = {};
         $scope.categoryList = [];
         $scope.allCategories = [];
         $scope.init = function () {
             contentService.getAllCategories('person').success(function (result) {
-                $scope.categoryList = result;
-                $scope.allCategories = angular.copy(result);
-                $scope.primaryOccupationsList = angular.copy(result);
+                $scope.categoryList = sortList(result, 'name');
+                $scope.allCategories = sortList(angular.copy(result), 'name');
+                $scope.primaryOccupationsList = sortList(angular.copy(result), 'name');
                 getPersonDetails();
             });
+        };
+
+        var sortList = function (list, sortCriteria) {
+            return $filter('orderBy')(list, sortCriteria);
         };
 
         var savePerson = function () {
