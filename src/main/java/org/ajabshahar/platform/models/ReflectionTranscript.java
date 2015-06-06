@@ -2,6 +2,7 @@ package org.ajabshahar.platform.models;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.*;
 
@@ -19,7 +20,7 @@ import javax.persistence.*;
     @Column(name = "ENGLISH_TRANSCRIPT")
     private String englishTranscript;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "reflection_id", nullable = false)
     @JsonBackReference
     private Reflection reflection;

@@ -43,18 +43,6 @@ public class WordDAO extends AbstractDAO<Word> {
             allWords.add(Restrictions.eq("publish", true));
         }
 
-        allWords.createCriteria("word.songs", "songs", JoinType.LEFT_OUTER_JOIN)
-                .setFetchMode("songs", FetchMode.JOIN)
-                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-
-        allWords.createCriteria("word.reflections", "reflections", JoinType.LEFT_OUTER_JOIN)
-                .setFetchMode("reflections", FetchMode.JOIN)
-                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-
-        allWords.createCriteria("word.relatedWords", "relatedWords", JoinType.LEFT_OUTER_JOIN)
-                .setFetchMode("reflatedWords", FetchMode.JOIN)
-                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-
         Set words = new LinkedHashSet<>(allWords.list());
         return words;
     }

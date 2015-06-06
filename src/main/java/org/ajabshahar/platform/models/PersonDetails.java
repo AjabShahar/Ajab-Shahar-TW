@@ -3,6 +3,7 @@ package org.ajabshahar.platform.models;
 import com.google.common.base.Strings;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -15,6 +16,7 @@ import static java.lang.String.format;
 @Getter
 @Setter
 @Table(name = "PERSON")
+@BatchSize(size = 50)
 public class PersonDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,13 +40,14 @@ public class PersonDetails {
     @Column(name = "LAST_NAME_IN_HINDI")
     private String lastNameInHindi;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @Fetch(FetchMode.SUBSELECT)
+    @BatchSize(size = 50)
+    @OneToMany
     @JoinTable(name = "person_category", joinColumns = @JoinColumn(name = "person_id"),
                     inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> category;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @BatchSize(size = 50)
+    @ManyToOne
     @JoinColumn(name = "PRIMARY_OCCUPATION")
     private Category primaryOccupation;
 

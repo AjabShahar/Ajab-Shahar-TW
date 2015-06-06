@@ -60,58 +60,61 @@ public class Song {
     @Column(name = "published_date")
     private Timestamp publishedDate;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @Fetch(FetchMode.SUBSELECT)
+    @BatchSize(size = 50)
+    @ManyToMany
     @JoinTable(name = "SONG_SINGER", joinColumns = {@JoinColumn(name = "SONG_ID", referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(name = "SINGER_ID", referencedColumnName = "ID")})
     private Set<PersonDetails> singers;
 
+    @BatchSize(size = 50)
     @ManyToMany(fetch = FetchType.EAGER)
-    @Fetch(FetchMode.SUBSELECT)
-    @JoinTable(name = "SONG_GENRE", joinColumns = {@JoinColumn(name = "SONG_ID", referencedColumnName = "ID")},
-            inverseJoinColumns = {@JoinColumn(name = "GENRE_ID", referencedColumnName = "ID")})
+    @JoinTable(name = "SONG_GENRE", joinColumns = {@JoinColumn(name = "SONG_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "GENRE_ID")})
     private Set<Genre> songGenre;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @Fetch(FetchMode.SUBSELECT)
+    @BatchSize(size = 50)
+    @ManyToMany
     @JoinTable(name = "SONG_POET", joinColumns = {@JoinColumn(name = "SONG_ID", referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(name = "POET_ID", referencedColumnName = "ID")})
     private Set<PersonDetails> poets;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "SONG_CATEGORY")
     private Category songCategory;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "MEDIA_CATEGORY")
     private Category mediaCategory;
 
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @BatchSize(size = 50)
+    @ManyToOne
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinColumn(name = "UMBRELLA_TITLE_ID")
     private Title umbrellaTitle;
 
+    @BatchSize(size = 50)
     @ManyToOne(fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinColumn(name = "SONG_TITLE_ID")
     private Title songTitle;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @BatchSize(size = 50)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "SONG_TEXT_ID")
     private SongText songText;
 
+    @BatchSize(size = 50)
     @ManyToMany
-    @Fetch(FetchMode.SUBSELECT)
     @JoinTable(name = "SONG_WORD", joinColumns = {@JoinColumn(name = "SONG_ID")},
             inverseJoinColumns = {@JoinColumn(name = "WORD_ID")})
     private Set<Word> words;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne
     private Gathering gathering;
 
-    @Fetch(FetchMode.SUBSELECT)
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
+    @BatchSize(size = 50)
     @JoinTable(name = "REFLECTION_SONG", joinColumns = {@JoinColumn(name = "SONG_ID")},
             inverseJoinColumns = {@JoinColumn(name = "REFLECTION_ID")})
     private Set<Reflection> reflections = new LinkedHashSet<>();

@@ -11,7 +11,7 @@ public class DataSetup {
     public static String HASHED_PASSWORD = PasswordEncryptor.getEncryptedPassword("password", PasswordAuthenticator.SALT, PasswordAuthenticator.ALGORITHM);
 
     public static final Operation DELETE_ALL =
-            deleteAllFrom("REFLECTION_SONG", "REFLECTION_PERSON", "SONG_WORD", "SONG_SINGER", "WORD_REFLECTION", "WORD_SYNONYMS", "WORD_WRITER", "WORD_INTRODUCTION",
+            deleteAllFrom("REFLECTION_SONG", "REFLECTION_PERSON", "SONG_WORD", "SONG_SINGER", "WORD_REFLECTION", "WORD_SYNONYMS", "WORD_WRITER","WORD_PERSON","REFLECTION_PERSON", "WORD_INTRODUCTION",
                     "RELATED_WORDS", "WORD", "TRANSCRIPT", "REFLECTION", "PERSON_CATEGORY", "PERSON", "SONG", "TITLE", "CATEGORY", "GATHERING");
 
     public static final Operation INSERT_ADMIN_USER =
@@ -34,10 +34,10 @@ public class DataSetup {
     public static final Operation INSERT_SONGS =
             sequenceOf(
                     insertInto("SONG")
-                            .columns("id", "show_on_landing_page", "is_authoring_complete", "song_category", "youtube_video_id", "soundcloud_track_id", "THUMBNAIL_URL", "gathering_id", "song_title_id")
-                            .values(1, true, true, 1, "123456", "12345", "thumbURL", 11, 1)
-                            .values(2, true, true, 1, "you-123456", "s-12345", "thumbURL2", 11, 3)
-                            .values(3, true, true, 1, "you-234567", "s-23456", "thumbURL3", 11,5)
+                            .columns("id", "show_on_landing_page", "is_authoring_complete", "song_category", "youtube_video_id", "soundcloud_track_id", "THUMBNAIL_URL", "gathering_id", "song_title_id","umbrella_title_id")
+                            .values(1, true, true, 1, "123456", "12345", "thumbURL", 11, 1,2)
+                            .values(2, true, true, 1, "you-123456", "s-12345", "thumbURL2", 11, 3,4)
+                            .values(3, true, true, 1, "you-234567", "s-23456", "thumbURL3", 11,5,6)
                             .build());
 
     public static final Operation INSERT_SONG_TITLE =
@@ -119,6 +119,13 @@ public class DataSetup {
                             .values(3, "Jaane kya hoga rama re!", 3)
                             .build());
 
+    public static final Operation INSERT_REFLECTION_PERSON =
+            sequenceOf(
+                    insertInto("reflection_person")
+                            .columns("person_id", "reflection_id")
+                            .values(1, 1)
+                            .build());
+
     public static final Operation INSERT_PERSON =
             sequenceOf(
                     insertInto("PERSON")
@@ -133,6 +140,8 @@ public class DataSetup {
                     insertInto("SONG_SINGER")
                             .columns("singer_id", "song_id")
                             .values(1, 1)
+                            .values(2, 2)
+                            .values(3, 3)
                             .build());
 
     public static final Operation INSERT_WORD_REFLECTIONS =
@@ -142,6 +151,31 @@ public class DataSetup {
                             .values(1, 1)
                             .values(4, 1)
                             .values(3, 3)
+                            .values(2, 3)
+                            .build());
+
+    public static final Operation INSERT_WORD_WRITERS =
+            sequenceOf(
+                    insertInto("word_writer")
+                            .columns("word_id", "writer_id")
+                            .values(2, 2)
+                            .values(2, 1)
+                            .build());
+
+    public static final Operation INSERT_WORD_PEOPLE =
+            sequenceOf(
+                    insertInto("word_person")
+                            .columns("word_id", "person_id")
+                            .values(2, 1)
+                            .values(2, 2)
+                            .build());
+
+    public static final Operation INSERT_RELATED_WORDS =
+            sequenceOf(
+                    insertInto("related_words")
+                            .columns("word_id", "related_word_id")
+                            .values(2, 3)
+                            .values(2, 1)
                             .build());
 
     public static final Operation INSERT_GATHERINGS =
@@ -153,10 +187,20 @@ public class DataSetup {
 
     public static final Operation INSERT_SONGS_AND_TITLE =
             sequenceOf(
+                    INSERT_UMBRELLA_TITLE_CATEGORY,
+                    INSERT_UMBRELLA_TITLE,
                     INSERT_SONG_TITLE_CATEGORY,
                     INSERT_SONG_TITLE,
                     INSERT_SONGS
             );
+
+    public static final Operation INSERT_REFLECTION_SONG = sequenceOf(
+            sequenceOf(
+                    insertInto("reflection_song")
+                            .columns("song_id", "reflection_id")
+                            .values(1, 1)
+                            .build()));
+
     public static final Operation INSERT_COMPLETE_STARTER_SET =
             sequenceOf(
                     INSERT_CATEGORY,
@@ -169,7 +213,12 @@ public class DataSetup {
                     INSERT_SONGS,
                     INSERT_SONG_SINGER,
                     INSERT_REFLECTIONS,
+                    INSERT_REFLECTION_SONG,
+                    INSERT_REFLECTION_PERSON,
                     INSERT_WORDS,
+                    INSERT_RELATED_WORDS,
+                    INSERT_WORD_PEOPLE,
+                    INSERT_WORD_WRITERS,
                     INSERT_WORD_INTRODUCTION,
                     INSERT_WORD_INTRODUCTION_WITH_COUPLET_CONTENT_TYPE,
                     INSERT_WORD_REFLECTIONS,

@@ -1,5 +1,6 @@
 package org.ajabshahar.platform.resources;
 
+import com.google.gson.Gson;
 import com.ninja_squad.dbsetup.DbSetup;
 import com.ninja_squad.dbsetup.Operations;
 import com.ninja_squad.dbsetup.destination.DataSourceDestination;
@@ -22,6 +23,7 @@ import javax.ws.rs.core.NewCookie;
 import java.util.*;
 
 import static org.ajabshahar.DataSetup.INSERT_GATHERINGS;
+import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertEquals;
@@ -756,6 +758,28 @@ public class ReflectionResourceIT {
         assertEquals(1,reflectionSummaries.size());
         LinkedHashMap  summaryRepresentation = (LinkedHashMap) reflectionSummaries.iterator().next();
         assertEquals("Oh that wonderful song!", summaryRepresentation.get("title"));
+    }
+
+
+    @Test
+    public void shouldGetReflectionAndRelatedContent(){
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_COMPLETE_STARTER_SET);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        ClientResponse reflectionResponse = client.resource(
+                String.format("http://localhost:%d/api/reflections/edit", RULE.getLocalPort()))
+                .queryParam("id","1")
+                .header("Content-type", "application/json")
+                .get(ClientResponse.class);
+
+        ReflectionRepresentation reflectionRepresentation =  reflectionResponse.getEntity(ReflectionRepresentation.class);
+
+        assertNotNull(reflectionRepresentation);
+        assertThat(reflectionRepresentation.getWords().size(), greaterThan(0));
+        assertThat(reflectionRepresentation.getSongs().size(), greaterThan(0));
+        assertThat(reflectionRepresentation.getPeople().size(),greaterThan(0));
     }
     private static String resourceFilePath(String resource) {
         return ClassLoader.getSystemClassLoader().getResource(resource).getFile();

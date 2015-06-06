@@ -34,11 +34,11 @@ public class Reflection {
     @Column(name = "SOUND_CLOUD_TRACK_ID")
     private String soundCloudId;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne
     private PersonDetails speaker;
 
-    @Fetch(FetchMode.SUBSELECT)
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "reflection",cascade = javax.persistence.CascadeType.ALL,orphanRemoval = true)
+    @BatchSize(size = 50)
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "reflection",cascade = javax.persistence.CascadeType.ALL,orphanRemoval = true)
     @JsonManagedReference
     private Set<ReflectionTranscript> reflectionTranscripts = new LinkedHashSet<>();
 
@@ -48,20 +48,19 @@ public class Reflection {
     @Column(name = "SHOW_ON_LANDING_PAGE")
     private Boolean showOnFeaturedContentPage;
 
-    @Fetch(FetchMode.SUBSELECT)
     @ManyToMany
     @JoinTable(name = "WORD_REFLECTION", joinColumns = {@JoinColumn(name = "REFLECTION_ID")},
             inverseJoinColumns = {@JoinColumn(name = "WORD_ID")})
     private Set<Word> words = new LinkedHashSet<>();
 
-    @Fetch(FetchMode.SUBSELECT)
-    @ManyToMany(fetch = FetchType.EAGER)
+    @BatchSize(size = 50)
+    @ManyToMany
     @JoinTable(name = "REFLECTION_SONG", joinColumns = {@JoinColumn(name = "REFLECTION_ID")},
             inverseJoinColumns = {@JoinColumn(name = "SONG_ID")})
     private Set<Song> songs = new LinkedHashSet<>();
 
+    @BatchSize(size = 50)
     @ManyToMany
-    @Fetch(FetchMode.SUBSELECT)
     @JoinTable(name = "REFLECTION_PERSON", joinColumns = {@JoinColumn(name = "REFLECTION_ID")},
             inverseJoinColumns = {@JoinColumn(name = "PERSON_ID")})
     private Set<PersonDetails> people = new LinkedHashSet<>();

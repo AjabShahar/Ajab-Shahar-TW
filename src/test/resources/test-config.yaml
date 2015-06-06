@@ -26,6 +26,7 @@ logging:
   level: WARNING
   loggers:
     io.dropwizard: WARNING
+#    org.hibernate.SQL: DEBUG
   appenders:
     - type: console
 sessionTimeout: 1

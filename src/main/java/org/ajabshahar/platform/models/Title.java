@@ -1,5 +1,7 @@
 package org.ajabshahar.platform.models;
 
+import org.hibernate.annotations.BatchSize;
+
 import javax.persistence.*;
 
 @Entity
@@ -32,6 +34,7 @@ public class Title {
     @Column(name = "ENGLISH_TRANSLITERATION", nullable = true)
     private String englishTransliteration;
 
+    @BatchSize(size = 50)
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "CATEGORY_ID")
     private Category category;

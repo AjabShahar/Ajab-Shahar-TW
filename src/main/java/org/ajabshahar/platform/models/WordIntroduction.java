@@ -3,6 +3,7 @@ package org.ajabshahar.platform.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.*;
 
@@ -22,7 +23,7 @@ public class WordIntroduction {
     @Column(name = "word_intro_english", nullable = true)
     private String wordIntroEnglish;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "word_id", nullable = false)
     @JsonBackReference
     private Word word;
@@ -30,7 +31,8 @@ public class WordIntroduction {
     @Column(name = "content_type", nullable = false)
     private String contentType;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @BatchSize(size = 30)
+    @OneToOne
     private PersonDetails poet;
 
     public long getId() {

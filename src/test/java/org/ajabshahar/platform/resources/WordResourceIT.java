@@ -238,8 +238,8 @@ public class WordResourceIT {
         WordRepresentation word = wordResponse.getEntity(WordRepresentation.class);
 
         assertThat(word.getReflections().size(), is(1));
-        assertThat(word.getReflections().iterator().next().getId(), is(1L));
-        assertThat(word.getReflections().iterator().next().getSpeaker().getName(), is("Ravi Das"));
+        assertThat(word.getReflections().iterator().next().getId(), isIn(new Long[]{3L, 1L}));
+        assertThat(word.getReflections().iterator().next().getSpeaker().getName(), isIn(new String[]{"Gippy Grewal", "Ravi Das"}));
     }
 
     @Test
@@ -469,15 +469,13 @@ public class WordResourceIT {
                 DataSetup.INSERT_CATEGORY,
                 DataSetup.INSERT_REFLECTIONS,
                 INSERT_GATHERINGS,
-                DataSetup.INSERT_SONG_TITLE_CATEGORY,
-                DataSetup.INSERT_SONG_TITLE,
-                DataSetup.INSERT_SONGS,
+                DataSetup.INSERT_SONGS_AND_TITLE,
                 DataSetup.INSERT_SONG_SINGER);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
 
-        PersonSummaryRepresentation personSummaryRepresentation = new PersonSummaryRepresentation(1, "singerName", "", null, true);
+        PersonSummaryRepresentation personSummaryRepresentation = new PersonSummaryRepresentation(1, "", "", null, true);
         Set<PersonSummaryRepresentation> personSummaryRepresentations = new LinkedHashSet<>();
         personSummaryRepresentations.add(personSummaryRepresentation);
         SongSummaryRepresentation songSummaryRepresentation = new SongSummaryRepresentation();
@@ -587,32 +585,8 @@ public class WordResourceIT {
 
     }
 
-    /*@Test
-    public void shouldGetWordReflectionsForGivenWordIds(){
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_COMPLETE_STARTER_SET);
-
-        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
-        dbSetup.launch();
-        ClientResponse wordReflectionsResponse = httpGet("http://localhost:%d/api/words/reflections?ids=1&ids=3");
-
-        Set<LinkedHashMap> wordReflectionsList = wordReflectionsResponse.getEntity(Set.class);
-        assertThat(wordReflectionsResponse.getStatus(), is(200));
-        assertThat(wordReflectionsList.size(), is(2));
-
-        Iterator<LinkedHashMap> wordReflectionsIterator = wordReflectionsList.iterator();
-        LinkedHashMap wordReflections1 = wordReflectionsIterator.next();
-        LinkedHashMap wordReflections2 = wordReflectionsIterator.next();
-
-        Gson gson = new Gson();
-        WordReflectionRepresentation wordReflectionRepresentation1 = gson.fromJson(gson.toJson(wordReflections1), WordReflectionRepresentation.class);
-        WordReflectionRepresentation wordReflectionRepresentation2 = gson.fromJson(gson.toJson(wordReflections2), WordReflectionRepresentation.class);
-
-        assertThat(wordReflectionRepresentation1.getReflections().iterator().next().getTitle(),equalTo("Oh that wonderful song!"));
-        assertThat(wordReflectionRepresentation2.getReflections().iterator().next().getTitle(),equalTo("Jaane kya hoga rama re!"));
-    }*/
-
     @Test
-    public void shouldGetWordReflectionsForGivenWordIds2(){
+    public void shouldGetWordReflectionsForGivenWordIds(){
         Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_COMPLETE_STARTER_SET);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
@@ -631,37 +605,12 @@ public class WordResourceIT {
         WordCustomRepresentation wordReflectionRepresentation1 = gson.fromJson(gson.toJson(wordReflections1), WordCustomRepresentation.class);
         WordCustomRepresentation wordReflectionRepresentation2 = gson.fromJson(gson.toJson(wordReflections2), WordCustomRepresentation.class);
 
-        assertThat(wordReflectionRepresentation1.getReflections().iterator().next().getTitle(),equalTo("Oh that wonderful song!"));
-        assertThat(wordReflectionRepresentation2.getReflections().iterator().next().getTitle(),equalTo("Jaane kya hoga rama re!"));
+        assertThat(wordReflectionRepresentation2.getReflections().iterator().next().getTitle(),isIn(new String[]{"Jaane kya hoga rama re!", "Oh that wonderful song!"}));
+        assertThat(wordReflectionRepresentation1.getReflections().iterator().next().getTitle(),isIn(new String[]{"Jaane kya hoga rama re!", "Oh that wonderful song!"}));
     }
 
-    /*@Test
-    public void shouldGetWordSongsForGivenWordIds(){
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_COMPLETE_STARTER_SET);
-
-        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
-        dbSetup.launch();
-        ClientResponse wordSongsResponse = httpGet("http://localhost:%d/api/words/songs?ids=2&ids=3");
-
-        Set<LinkedHashMap> wordSongsList = wordSongsResponse.getEntity(Set.class);
-        assertThat(wordSongsResponse.getStatus(), is(200));
-        assertThat(wordSongsList.size(), is(2));
-
-        Gson gson = new Gson();
-        for (LinkedHashMap wordSongs : wordSongsList) {
-            WordSongsRepresentation wordSongsRepresentation = gson.fromJson(gson.toJson(wordSongs), WordSongsRepresentation.class);
-            if(wordSongsRepresentation.getWord().getId() == 3){
-                String englishTranslationTitle = wordSongsRepresentation.getSongs().iterator().next().getEnglishTranslationTitle();
-                assertTrue(englishTranslationTitle.equals("translation3") || englishTranslationTitle.equals("translation"));
-            }
-            else{
-                assertThat(wordSongsRepresentation.getSongs().iterator().next().getEnglishTranslationTitle(),equalTo("translation2"));
-            }
-        }
-    }*/
-
     @Test
-    public void shouldGetWordSongsForGivenWordIds2(){
+    public void shouldGetWordSongsForGivenWordIds(){
         Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_COMPLETE_STARTER_SET);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
@@ -697,6 +646,27 @@ public class WordResourceIT {
         assertThat(wordResponse.getStatus(), is(200));
         assertThat(wordsList.getWords().size(), is(1));
     }
+
+    @Test
+    public void shouldGetWordForIdWithRelatedContent(){
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_COMPLETE_STARTER_SET);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+        ClientResponse wordResponse = httpGet("http://localhost:%d/api/words?ids=2");
+
+        WordsRepresentation wordsList = wordResponse.getEntity(WordsRepresentation.class);
+        assertThat(wordResponse.getStatus(), is(200));
+        WordRepresentation word = wordsList.getWords().iterator().next();
+        assertNotNull(word);
+        assertThat(word.getReflections().size(), is(1));
+        assertThat(word.getSongs().size(), is(1));
+        assertThat(word.getDefaultReflection(),is(notNullValue(ReflectionSummaryRepresentation.class)));
+        assertThat(word.getWriters().size(),is(2));
+        assertThat(word.getPeople().size(), is(2));
+        assertThat(word.getRelatedWords().size(), is(2));
+    }
+
 
     private ClientResponse httpGet(String getUrl) {
         return client.resource(

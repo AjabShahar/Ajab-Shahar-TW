@@ -271,10 +271,28 @@ public class SongResourceIT {
     }
 
     @Test
-    public void shouldBeAbleToEditSongText(){
+    public void shouldFetchGivenSongWithRelatedContent(){
+        Operation operation = sequenceOf(DELETE_ALL, INSERT_COMPLETE_STARTER_SET);
 
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        SongRepresentation song = getSong("1");
+
+        assertNotNull(song);
+        assertThat(song.getWords().size(), is(1));
+        assertThat(song.getSingers().size(), is(1));
+        assertNotNull(song.getSongTitle());
+        assertNotNull(song.getUmbrellaTitle());
+        assertNotNull(song.getGathering());
+        assertThat(song.getReflections().size(), is(1));
     }
 
+    private SongRepresentation getSong(String id){
+        return getSongRepresentation(client.resource(
+                String.format("http://localhost:%d/api/songs/"+ id, RULE.getLocalPort())).header("Content-type", "application/json")
+                .get(ClientResponse.class));
+    }
 
     private String getSongWithSongText(){
         return "{\n" +

@@ -14,18 +14,6 @@ public class WordRepresentationFactory {
         return toWord(new Gson().fromJson(jsonWord, WordRepresentation.class));
     }
 
-    public static Word toWordsFromRepresentation(WordRepresentation wordRepresentation) {
-        if(wordRepresentation != null) {
-            Word words = new Word();
-            Word word = new Word();
-            word.setId(wordRepresentation.getId());
-            return words;
-        }
-        else {
-            return null;
-        }
-    }
-
     private Word toWord(WordRepresentation wordRepresentation) {
         Word word = new Word();
         word.setId(wordRepresentation.getId());
@@ -148,12 +136,9 @@ public class WordRepresentationFactory {
         wordRepresentation.setThumbnailUrl(word.getThumbnailUrl());
         wordRepresentation.setPublish(word.isPublish());
 
-        Set<PersonSummaryRepresentation> peopleSummaryRepresentation = PersonRepresentationFactory.createPeopleSummaryRepresentation(word.getPeople());
-        wordRepresentation.setPeople(new LinkedHashSet<>(peopleSummaryRepresentation));
+        wordRepresentation.setPeople(PersonRepresentationFactory.createPeopleSummaryRepresentation(word.getPeople()));
         wordRepresentation.setSongs(SongSummaryRepresentation.toSummaryRepresentations(word.getSongs()));
-
-        peopleSummaryRepresentation = PersonRepresentationFactory.createPeopleSummaryRepresentation(word.getWriters());
-        wordRepresentation.setWriters(new LinkedHashSet<>(peopleSummaryRepresentation));
+        wordRepresentation.setWriters(PersonRepresentationFactory.createPeopleSummaryRepresentation(word.getWriters()));
 
         Set<WordIntroduction> wordIntroductions = new LinkedHashSet<>();
         Set<WordIntroductionRepresentation> wordIntroductionRepresentations = wordRepresentation.getWordIntroductions();
@@ -162,14 +147,13 @@ public class WordRepresentationFactory {
                 wordIntroductions.add(wordIntroductionRepresentation.toWordIntroduction());
             }
         }
-
         WordIntroductionRepresentation wordIntroductionRepresentation = new WordIntroductionRepresentation();
         wordRepresentation.setWordIntroductions(wordIntroductionRepresentation.toWordIntroductionRepresentations(word.getWordIntroductions()));
+
         wordRepresentation.setDisplayAjabShaharTeam(word.getDisplayAjabShaharTeam());
         wordRepresentation.setDefaultReflection(ReflectionSummaryRepresentation.createFrom(word.getDefaultReflection()));
 
-        Set<Reflection> reflections = new LinkedHashSet<>(word.getReflections());
-        Set<ReflectionSummaryRepresentation> reflectionSummaryRepresentationList = reflectionRepresentationFactory.toReflectionSummaryList(reflections);
+        Set<ReflectionSummaryRepresentation> reflectionSummaryRepresentationList = reflectionRepresentationFactory.toReflectionSummaryList(word.getReflections());
         wordRepresentation.setReflections(reflectionSummaryRepresentationList);
 
         Set<WordSummaryRepresentation> wordSummaryRepresentations = word.getRelatedWords() != null ? create(new LinkedHashSet<>(word.getRelatedWords())) : new LinkedHashSet<>();
