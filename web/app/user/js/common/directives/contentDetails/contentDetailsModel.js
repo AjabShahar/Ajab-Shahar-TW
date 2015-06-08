@@ -173,6 +173,7 @@ AjabShahar.DetailsObject = function (content, type) {
         self.people = getPeopleFromWord(word);
         self.displayAjabShaharTeam = word.displayAjabShaharTeam;
         self.info = "";
+        self.image = word.thumbnailUrl;
     };
 
     var buildFromReflection = function (reflection) {
@@ -197,6 +198,7 @@ AjabShahar.DetailsObject = function (content, type) {
         self.info = reflection.info;
         self.about = reflection.about;
         self.excerpt = reflection.reflectionExcerpt;
+        self.image = reflection.thumbnailURL;
     };
 
     if (type === 'song') {

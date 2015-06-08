@@ -14,7 +14,6 @@ module.exports = function (config) {
             'common/lib/textAngular/dist/textAngular-sanitize.min.js',
             'common/lib/textAngular/dist/textAngular.min.js',
             'common/lib/ngInfiniteScroll/build/ng-infinite-scroll.min.js',
-            'common/lib/angular-socialshare/angular-socialshare.js',
             'common/lib/angular-masonry/angular-masonry.js',
             'admin/js/services/**/*.js',
             'admin/js/person/**/*.js',

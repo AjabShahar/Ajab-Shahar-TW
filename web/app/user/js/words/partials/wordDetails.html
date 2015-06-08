@@ -9,33 +9,24 @@
             <div class="page-title">
                 <span class="main" ng-bind="wordDetails.wordTransliteration"></span>
                 <span class="sub-main" ng-bind="wordDetails.wordTranslation"></span>
-
                 <div ng-cloak class="related-words">
                     <dl>
                         <dt ng-repeat="word in associatedWords">
                         <p><span class="header-translit-text">{{word.wordTransliteration}}</span></p>
-
                         <p><span class="header-translate-text">
                             {{word.wordTranslation}}<span ng-hide="$last" class="comma-space">,  </span>
                         </span></p>
                         </dt>
                     </dl>
-
                 </div>
-
             </div>
-
-
         </div>
     </div>
 
-
     <div class="lower-pardah" ng-class="{'no-pardah': !containsReflections() }">
-
         <div class="versions toggleBySlide" ng-show="shouldShowCarousel()">
             <carousel items="carouselItems" item-clicked="selectThumbnail" format="'transliteration'"></carousel>
         </div>
-
         <div class="see-more" ng-show="containsReflections()" ng-click="toggleCarousel()">
             <a class="version" href="javascript:void(0)" >
                 <span ng-show="containsWordIntro">intro + </span> {{reflectionCount()}} reflection<span ng-show="reflectionCount() != 1">s</span>
@@ -43,15 +34,13 @@
             </a>
         </div>
     </div>
-
     <div class='ajab-container'>
         <div class='ajab-wrapper'>
             <div class="main-content">
                 <div>
-                        <content-details ng-if="detailsObject" content="detailsObject"></content-details>
+                    <content-details ng-if="detailsObject" content="detailsObject"></content-details>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
