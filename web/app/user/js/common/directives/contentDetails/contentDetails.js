@@ -7,12 +7,13 @@ thumbnailModule.directive("contentDetails", function () {
             content:"="
         },
         templateUrl: '/user/js/common/directives/contentDetails/contentDetails.html',
-        controller: function ($scope) {
+        controller: function ($scope, $location) {
             $scope.showVideo = false;
             $scope.showAudio = false;
             $scope.hasText = false;
             $scope.sharingVisible = false;
             $scope.isAboutVisible = false;
+            $scope.url;
 
             $scope.hasAudioAndVideo = function () {
                 return $scope.content.videoId && $scope.content.audioId;
@@ -46,6 +47,7 @@ thumbnailModule.directive("contentDetails", function () {
                     $scope.showVideo = !!(!$scope.hasText() && $scope.content.videoId);
                     $scope.showAudio = !!(!$scope.hasText() && !$scope.content.videoId && $scope.content.audioId);
                 }
+                $scope.url = $location.absUrl();
             };
 
             $scope.$watch("content",function(){

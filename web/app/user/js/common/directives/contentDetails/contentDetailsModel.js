@@ -132,6 +132,7 @@ AjabShahar.DetailsObject = function (content, type) {
         self.audioId = song.soundCloudTrackId;
         self.videoId = song.youtubeVideoId;
         self.downloadUrl = song.downloadURL;
+        self.image = song.thumbnailURL;
         self.about = song.about;
         self.links = getRelatedLinksFromSong(song);
     };
