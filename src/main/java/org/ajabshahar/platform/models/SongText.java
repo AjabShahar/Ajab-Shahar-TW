@@ -2,8 +2,6 @@ package org.ajabshahar.platform.models;
 
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "SONG_TEXT")
@@ -13,31 +11,21 @@ public class SongText {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "REFRAIN_ORIGINAL")
-    private String refrainOriginal;
+    @Column(name = "ORIGINAL")
+    private String original;
 
-    @Column(name = "REFRAIN_ENGLISH_TRANSLATION")
-    private String refrainEnglishTranslation;
+    @Column(name = "TRANSLATION")
+    private String translation;
 
-    @Column(name = "REFRAIN_ENGLISH_TRANSLITERATION")
-    private String refrainEnglishTransliteration;
+    @Column(name = "TRANSLITERATION")
+    private String transliteration;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "SONG_TEXT_SONG_TEXT_CONTENT", joinColumns = @JoinColumn(name = "SONG_TEXT_ID"),
-            inverseJoinColumns = @JoinColumn(name = "SONG_TEXT_CONTENT_ID"))
-    private Set<SongTextContent> songTextContents = new HashSet<>();
-
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "SONG_TEXT_OPENING_COUPLET", joinColumns = @JoinColumn(name = "SONG_TEXT_ID"),
-            inverseJoinColumns = @JoinColumn(name = "OPENING_COUPLET_ID"))
-    private Set<OpeningCouplet> openingCouplets = new HashSet<>();
-
-    public String getRefrainOriginal() {
-        return refrainOriginal;
+    public String getOriginal() {
+        return original;
     }
 
-    public void setRefrainOriginal(String refrainOriginal) {
-        this.refrainOriginal = refrainOriginal;
+    public void setOriginal(String original) {
+        this.original = original;
     }
 
     public long getId() {
@@ -48,36 +36,20 @@ public class SongText {
         this.id = id;
     }
 
-    public String getRefrainEnglishTranslation() {
-        return refrainEnglishTranslation;
+    public String getTranslation() {
+        return translation;
     }
 
-    public void setRefrainEnglishTranslation(String refrainEnglishTranslation) {
-        this.refrainEnglishTranslation = refrainEnglishTranslation;
+    public void setTranslation(String translation) {
+        this.translation = translation;
     }
 
-    public String getRefrainEnglishTransliteration() {
-        return refrainEnglishTransliteration;
+    public String getTransliteration() {
+        return transliteration;
     }
 
-    public void setRefrainEnglishTransliteration(String refrainEnglishTransliteration) {
-        this.refrainEnglishTransliteration = refrainEnglishTransliteration;
+    public void setTransliteration(String transliteration) {
+        this.transliteration = transliteration;
     }
 
-    public Set<SongTextContent> getSongTextContents() {
-        return songTextContents;
-    }
-
-    public void setSongTextContents(Set<SongTextContent> songTextContents) {
-        this.songTextContents = songTextContents;
-    }
-
-
-    public Set<OpeningCouplet> getOpeningCouplets() {
-        return openingCouplets;
-    }
-
-    public void setOpeningCouplets(Set<OpeningCouplet> openingCouplets) {
-        this.openingCouplets = openingCouplets;
-    }
 }

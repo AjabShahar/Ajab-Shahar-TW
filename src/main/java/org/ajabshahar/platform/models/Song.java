@@ -100,7 +100,7 @@ public class Song {
     private Title songTitle;
 
     @BatchSize(size = 50)
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
     @JoinColumn(name = "SONG_TEXT_ID")
     private SongText songText;
 

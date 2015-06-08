@@ -1,10 +1,7 @@
 package org.ajabshahar.api;
 
 import org.ajabshahar.api.common.BaseRepresentation;
-import org.ajabshahar.platform.models.Category;
-import org.ajabshahar.platform.models.Gathering;
-import org.ajabshahar.platform.models.Genre;
-import org.ajabshahar.platform.models.Title;
+import org.ajabshahar.platform.models.*;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -23,7 +20,7 @@ public class SongRepresentation extends BaseRepresentation {
     private Set<PersonSummaryRepresentation> poets;
     private Set<LinkRepresentation> links;
     private Set<WordSummaryRepresentation> words;
-    private SongTextRepresentation songText;
+    private SongText songText;
     private String downloadURL;
     private String about;
     private Title umbrellaTitle;
@@ -41,7 +38,7 @@ public class SongRepresentation extends BaseRepresentation {
     public SongRepresentation(long id, boolean isAuthoringComplete, boolean showOnLandingPage, String youTubeVideoId,
                               String soundCloudTrackId, String thumbnailURL, String duration,
                               Set<PersonSummaryRepresentation> singers, Set<PersonSummaryRepresentation> poet, String about,
-                              SongTextRepresentation songText, String downloadURL, Set<WordSummaryRepresentation> words,
+                              SongText songText, String downloadURL, Set<WordSummaryRepresentation> words,
                               Set<ReflectionSummaryRepresentation> reflections,
                               Title umbrellaTitle, Title songTitle, Gathering gathering, Category songCategory, Category mediaCategory, Set<Genre> genre) {
         this();
@@ -109,7 +106,7 @@ public class SongRepresentation extends BaseRepresentation {
         return links;
     }
 
-    public SongTextRepresentation getSongText() {
+    public SongText getSongText() {
         return songText;
     }
 

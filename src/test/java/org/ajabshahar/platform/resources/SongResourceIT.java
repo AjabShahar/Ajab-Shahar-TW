@@ -1,7 +1,6 @@
 package org.ajabshahar.platform.resources;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.ninja_squad.dbsetup.DbSetup;
 import com.ninja_squad.dbsetup.destination.DataSourceDestination;
 import com.ninja_squad.dbsetup.operation.Operation;
@@ -17,7 +16,7 @@ import org.ajabshahar.platform.PlatformApplication;
 import org.ajabshahar.platform.PlatformConfiguration;
 import org.ajabshahar.platform.models.Gathering;
 import org.ajabshahar.platform.models.Song;
-import org.ajabshahar.platform.models.SongTextContent;
+import org.ajabshahar.platform.models.SongText;
 import org.ajabshahar.platform.models.Title;
 import org.h2.jdbcx.JdbcDataSource;
 import org.junit.Before;
@@ -25,17 +24,12 @@ import org.junit.ClassRule;
 import org.junit.Test;
 
 import javax.ws.rs.core.NewCookie;
-
 import java.util.Set;
 
 import static com.ninja_squad.dbsetup.Operations.sequenceOf;
 import static org.ajabshahar.DataSetup.*;
-import static org.hamcrest.Matchers.endsWith;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
 
 public class SongResourceIT {
 
@@ -248,12 +242,13 @@ public class SongResourceIT {
         songRepresentation = getSongRepresentation(response);
 
         assertThat(songRepresentation.getId(), is(not(0)));
-        assertThat(songRepresentation.getSongText().getSongTextContents().size(),is(2));
+        assertThat(songRepresentation.getSongText(),notNullValue());
+        assertThat(songRepresentation.getSongText().getTranslation(),is("Lost Lost Moon, Clear Eyes will be all night How will you sleep?"));
 
-        songRepresentation.getSongText().getSongTextContents();
-        for (SongTextContent songTextContent : songRepresentation.getSongText().getSongTextContents()) {
-            songTextContent.setEnglishTransliterationText(songTextContent.getEnglishTransliterationText()+" - 2");
-        }
+        SongText songText = songRepresentation.getSongText();
+        songText.setOriginal(songText.getOriginal()+" - 2");
+        songText.setTranslation(songText.getTranslation()+" - 2");
+        songText.setTransliteration(songText.getTransliteration()+" - 2");
 
         songResponse = loginAndPost("http://localhost:%d/api/songs",songRepresentation);
 
@@ -263,11 +258,9 @@ public class SongResourceIT {
         songRepresentation = getSongRepresentation(response);
 
         assertThat(songRepresentation.getId(), is(songId));
-        assertThat(songRepresentation.getSongText().getSongTextContents().size(),is(2));
+        assertThat(songRepresentation.getSongText(),notNullValue());
+        assertThat(songRepresentation.getSongText().getTranslation(),is("Lost Lost Moon, Clear Eyes will be all night How will you sleep? - 2"));
 
-        for (SongTextContent songTextContent : songRepresentation.getSongText().getSongTextContents()) {
-            assertThat(songTextContent.getEnglishTransliterationText(), endsWith(" - 2"));
-        }
     }
 
     @Test
@@ -298,28 +291,11 @@ public class SongResourceIT {
         return "{\n" +
                 "  \"isAuthoringComplete\": true,\n" +
                 "  \"soundCloudTrackId\": \"174024475\",\n" +
-                "  \"songText\": {\n" +
-                "    \"songTextContents\": [\n" +
-                "      {\n" +
-                "        \"originalText\": \"भजन रो गुड़क रहयो गाड\",\n" +
-                "        \"englishTranslationText\": \"Bhajan ro guḍak rahyo gaaḍo\",\n" +
-                "        \"englishTransliterationText\": \"Your meditation-cart is tottering\",\n" +
-                "        \"contentType\": \"stanza\",\n" +
-                "        \"sequenceNumber\": 0\n" +
-                "      },\n" +
-                "      {\n" +
-                "        \"originalText\": \"राम नाम रा गेड़ा लाग्या\",\n" +
-                "        \"englishTranslationText\": \"Raam naam ra geḍa laagya\",\n" +
-                "        \"englishTransliterationText\": \"Raam’s name, the wares you cart\",\n" +
-                "        \"contentType\": \"stanza\",\n" +
-                "        \"sequenceNumber\": 4\n" +
-                "      }\n" +
-                "    ],\n" +
-                "    \"openingCouplets\": [],\n" +
-                "    \"refrainOriginal\": \"भजन रो...\",\n" +
-                "    \"refrainEnglishTranslation\": \"The cart of meditation…\",\n" +
-                "    \"refrainEnglishTransliteration\": \"Bhajan ro...\"\n" +
-                "  },\n" +
+                "  \"songText\" :{\n" +
+                "       \"original\": \"खोया खोया चाँद, खुला आसमान आँखों में सारी रात जाएगी तुम को भी कैसे नींद आएगी?\"," +
+                "       \"translation\":\"Lost Lost Moon, Clear Eyes will be all night How will you sleep?\"," +
+                "       \"transliteration\":\"Khoya khoya chaand, khula aasmaan Aankhon mein saari raat jaayegi Tumko bhi kaise neend aayegi\"" +
+                "   },"+
                 "  \"songTitle\": {\n" +
                 "    \"id\": 3\n" +
                 "  }\n" +

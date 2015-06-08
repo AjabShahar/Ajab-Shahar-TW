@@ -31,14 +31,12 @@ public class SongsRepresentationFactoryTest {
     @Mock
     private PersonDetails personDetails;
     @Mock
-    private SongTextRepresentationFactory songTextRepresentationFactory;
-    @Mock
     private WordRepresentationFactory wordRepresentationFactory;
     private Song song;
 
     @Before
     public void setUp() {
-        songsRepresentationFactory = new SongsRepresentationFactory(people, songTextRepresentationFactory, wordRepresentationFactory);
+        songsRepresentationFactory = new SongsRepresentationFactory(people, wordRepresentationFactory);
 
         songsList = new LinkedHashSet<>();
 
@@ -100,10 +98,9 @@ public class SongsRepresentationFactoryTest {
         songTextContents.add(songTextContent);
 
         songText.setId(1);
-        songText.setRefrainOriginal("Original Refrain");
-        songText.setRefrainEnglishTranslation("English Translation Refrain");
-        songText.setRefrainEnglishTransliteration("English Translation Refrain");
-        songText.setSongTextContents(songTextContents);
+        songText.setOriginal("Original Refrain");
+        songText.setTranslation("English Translation Refrain");
+        songText.setTransliteration("English Translation Refrain");
 
         song.setSongText(songText);
 
@@ -112,7 +109,6 @@ public class SongsRepresentationFactoryTest {
 
         when(people.findBy(id + 1000)).thenReturn(PersonSummaryRepresentation.getPersonDetails(singer));
         when(people.findBy(id + 2000)).thenReturn(PersonSummaryRepresentation.getPersonDetails(poet));
-        when(songTextRepresentationFactory.getSongText(song.getSongText())).thenReturn(new SongTextRepresentation(1, "", "", ""));
         when(wordRepresentationFactory.create(new LinkedHashSet(anySetOf(Word.class)))).thenReturn(new LinkedHashSet<>());
 
     }
@@ -198,6 +194,5 @@ public class SongsRepresentationFactoryTest {
         Song expected = songsRepresentationFactory.create(jsonSong);
 
         assertEquals(expected.getId(), song.getId());
-        assertNotNull(expected.getSongText().getSongTextContents());
     }
 }

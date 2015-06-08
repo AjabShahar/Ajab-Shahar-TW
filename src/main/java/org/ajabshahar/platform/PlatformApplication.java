@@ -131,7 +131,6 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
         picoContainer.addComponent(SongsRepresentationFactory.class);
         picoContainer.addComponent(PersonRepresentationFactory.class);
         picoContainer.addComponent(CoupletsRepresentationFactory.class);
-        picoContainer.addComponent(SongTextRepresentationFactory.class);
 
         WordRepresentationFactory wordRepresentationFactory = new WordRepresentationFactory();
         ReflectionRepresentationFactory reflectionRepresentationFactory = new ReflectionRepresentationFactory();

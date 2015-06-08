@@ -166,5 +166,26 @@
                                    schemaName="public"
                                    tableName="word"/>
     </changeSet>
+    <changeSet id="89" author="INDRANEEL">
+        <comment>change the song text columns to hold song text directly. No refrains etc</comment>
+        <renameColumn tableName="song_text" oldColumnName="refrain_original" newColumnName="original"/>
+        <renameColumn tableName="song_text" oldColumnName="refrain_english_translation" newColumnName="translation"/>
+        <renameColumn tableName="song_text" oldColumnName="refrain_english_transliteration" newColumnName="transliteration"/>
+    </changeSet>
+    <changeSet id="90" author="INDRANEEL">
+        <comment>Removing character limits on song text fields</comment>
+        <sql>
+            ALTER TABLE song_text ALTER COLUMN original TYPE text;
+            ALTER TABLE song_text ALTER COLUMN translation TYPE text;
+            ALTER TABLE song_text ALTER COLUMN transliteration TYPE text;
+        </sql>
+    </changeSet>
+    <changeSet id="91" author="INDRANEEL">
+        <comment>Dropping song text related tables that are no longer required</comment>
+        <dropTable tableName="song_text_opening_couplet"/>
+        <dropTable tableName="song_text_song_text_content"/>
+        <dropTable tableName="opening_couplet"/>
+        <dropTable tableName="song_text_content"/>
+    </changeSet>
 
 </databaseChangeLog>

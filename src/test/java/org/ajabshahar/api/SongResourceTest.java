@@ -38,8 +38,6 @@ public class SongResourceTest {
     private Song song;
     @Mock
     private SongRepresentation songRepresentation;
-    @Mock
-    private SongTextRepresentationFactory songTextRepresentationFactory;
 
     @Before
     public void setUp() {
