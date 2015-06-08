@@ -17,7 +17,7 @@ public class WordIntroductionRepresentation {
     private PersonSummaryRepresentation poet;
 
 
-    public static WordIntroductionRepresentation toWordIntroductionRepresentation(WordIntroduction wordIntroduction){
+    public static WordIntroductionRepresentation createFrom(WordIntroduction wordIntroduction){
         WordIntroductionRepresentation wordIntroductionRepresentation = new WordIntroductionRepresentation();
         wordIntroductionRepresentation.id = wordIntroduction.getId();
         wordIntroductionRepresentation.wordIntroHindi = wordIntroduction.getWordIntroHindi();
@@ -43,7 +43,7 @@ public class WordIntroductionRepresentation {
         Set<WordIntroductionRepresentation> wordIntroductionRepresentations = new LinkedHashSet<>();
         if(wordIntroductions != null){
             for (WordIntroduction wordIntroduction : wordIntroductions) {
-                wordIntroductionRepresentations.add(toWordIntroductionRepresentation(wordIntroduction));
+                wordIntroductionRepresentations.add(createFrom(wordIntroduction));
             }
         }
         return wordIntroductionRepresentations;

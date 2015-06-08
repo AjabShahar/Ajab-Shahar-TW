@@ -85,13 +85,13 @@ public class DataSetup {
             sequenceOf(
                     insertInto("word_introduction")
                             .columns("word_id", "word_intro_hindi", "word_intro_english", "content_type", "poet_id")
-                            .values(1, "word intro hindi", "word intro english", "text", null)
+                            .values(1, "word intro hindi", "word intro english", "text", 1)
                             .build());
     public static final Operation INSERT_WORD_INTRODUCTION_WITH_COUPLET_CONTENT_TYPE =
             sequenceOf(
                     insertInto("word_introduction")
                             .columns("word_id", "word_intro_hindi", "word_intro_english", "content_type", "poet_id")
-                            .values(2, "word intro hindi", "word intro english", "couplet", null)
+                            .values(2, "word intro hindi", "word intro english", "couplet", 1)
                             .build());
     public static final Operation INSERT_SONG_WORD =
             sequenceOf(
