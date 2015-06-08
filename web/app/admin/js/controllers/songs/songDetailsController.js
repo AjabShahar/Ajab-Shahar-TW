@@ -118,15 +118,7 @@ songsAdminApp.controller('songDetailsController', ['$scope', '$window', '$locati
                 $scope.words = getSelectedContent(data.words, $scope.words);
                 $scope.reflections = getSelectedContent(data.reflections, $scope.reflections);
                 $scope.song = data;
-
-                if ($scope.song.songText) {
-                    $scope.song.songText.songTextContents = sortList($scope.song.songText.songTextContents, 'sequenceNumber');
-                } else {
-                    $scope.song.songText = {
-                        songTextContents: [],
-                        openingCouplets: []
-                    }
-                }
+                $scope.song.songText = $scope.song.songText || {};
             });
         };
 

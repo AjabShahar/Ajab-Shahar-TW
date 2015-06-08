@@ -177,7 +177,34 @@
                     <input name="genres" ng-model="song.songGenre" ng-show="false">
                 </div>
 
-                <song-text poets="poets" song-text="song.songText"></song-text>
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Song Lyrics - Original</label>
+                    </div>
+
+                    <div class="form-group col-sm-8">
+                        <text-angular name="songLyricsOriginal" ng-model="song.songText.original"></text-angular>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Song Lyrics - Transliteration</label>
+                    </div>
+
+                    <div class="form-group col-sm-8">
+                        <text-angular name="songLyricsTransliteration" ng-model="song.songText.transliteration"></text-angular>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Song Lyrics - Translation</label>
+                    </div>
+
+                    <div class="form-group col-sm-8">
+                        <text-angular name="songLyricsTranslation" ng-model="song.songText.translation"></text-angular>
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="form-group col-sm-2">
@@ -185,7 +212,7 @@
                     </div>
 
                     <div class="form-group col-sm-8">
-                        <text-angular name="htmlcontent" ng-model="song.about"></text-angular>
+                        <text-angular name="about" ng-model="song.about"></text-angular>
                     </div>
                 </div>
 
@@ -195,7 +222,7 @@
                     </div>
                     <div class="form-group col-sm-2"
                          ng-init='authoringOptions=[{ "value": true, "text": "Yes" }, { "value": false, "text": "No" }]'>
-                        <select class="form-control" ng-model="song.isAuthoringComplete"
+                        <select name="publish" class="form-control" ng-model="song.isAuthoringComplete"
                                 ng-options="authoringOption.value as authoringOption.text for authoringOption in authoringOptions"></select>
                     </div>
                 </div>
@@ -223,7 +250,6 @@
 <script type="text/javascript" src="/admin/js/common/errorMessage.js"></script>
 <script type="text/javascript" src="/admin/js/app.js"></script>
 <script type="text/javascript" src="/admin/js/controllers/songs/songDetailsController.js"></script>
-<script type="text/javascript" src="/admin/js/directives/songText.js"></script>
 <script type="text/javascript" src="/admin/js/directives/asAdminTitle.js"></script>
 </body>
 </html>
