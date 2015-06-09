@@ -13,6 +13,7 @@ import org.ajabshahar.DataSetup;
 import org.ajabshahar.api.*;
 import org.ajabshahar.platform.PlatformApplication;
 import org.ajabshahar.platform.PlatformConfiguration;
+import org.ajabshahar.platform.models.Word;
 import org.h2.jdbcx.JdbcDataSource;
 import org.junit.Before;
 import org.junit.ClassRule;
@@ -411,9 +412,9 @@ public class WordResourceIT {
 
         words = httpGet("http://localhost:%d/api/words/edit?id=2");
 
-        word = getWord(words);
-        wordSummaryRepresentation = new WordSummaryRepresentation((int) word.getId(), word.getWordOriginal(), word.getWordTranslation(),
-                word.getWordTransliteration(), word.getHindiIntroExcerpt(), word.getEnglishIntroExcerpt(), new LinkedHashSet<>(), word.getIsRootWord(), word.isPublish());
+        WordRepresentation linkedWord = getWord(words);
+        wordSummaryRepresentation = new WordSummaryRepresentation((int) linkedWord.getId(), linkedWord.getWordOriginal(), linkedWord.getWordTranslation(),
+                linkedWord.getWordTransliteration(), linkedWord.getHindiIntroExcerpt(), linkedWord.getEnglishIntroExcerpt(), new LinkedHashSet<>(), linkedWord.getIsRootWord(), linkedWord.isPublish());
         wordSummaryRepresentations.add(wordSummaryRepresentation);
 
         word.setRelatedWords(wordSummaryRepresentations);
@@ -665,6 +666,33 @@ public class WordResourceIT {
         assertThat(word.getRelatedWords().size(), is(2));
     }
 
+    @Test
+    public void shouldSynonymsAndRelatedWordsRelationShouldBeBidirectional() {
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_CATEGORY, DataSetup.INSERT_PERSON,
+                DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        ClientResponse words = httpGet(API_TO_EDIT_THE_WORD_WITH_ID_ONE);
+
+        WordRepresentation word = getWord(words);
+        Set<WordSummaryRepresentation> wordSummaryRepresentations = getWordSummaryRepresentations(word);
+
+        jsonObject.put("synonyms", wordSummaryRepresentations);
+        jsonObject.put("relatedWords",wordSummaryRepresentations);
+
+        ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
+        WordRepresentation wordRepresentation = getWord(wordResponse);
+
+        words = httpGet("http://localhost:%d/api/words?ids="+word.getId());
+
+        WordsRepresentation wordsList = words.getEntity(WordsRepresentation.class);
+
+        assertThat(wordsList.getWords().iterator().next().getSynonyms().size(),is(1));
+        assertThat(wordsList.getWords().iterator().next().getRelatedWords().size(),is(1));
+
+    }
 
     private ClientResponse httpGet(String getUrl) {
         return client.resource(

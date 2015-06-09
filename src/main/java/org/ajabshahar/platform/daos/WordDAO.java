@@ -10,6 +10,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
 
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -26,6 +27,21 @@ public class WordDAO extends AbstractDAO<Word> {
         for (WordIntroduction wordIntroduction : word.getWordIntroductions()) {
             wordIntroduction.setWord(word);
             currentSession().saveOrUpdate(wordIntroduction);
+        }
+        for(Word synonym : word.getSynonyms()){
+            Set<Word> words = new HashSet<Word>();
+            words.add(word);
+            Word newWord = (Word) findBy((int)synonym.getId(),false,false).iterator().next();
+            newWord.setSynonyms(words);
+            currentSession().saveOrUpdate(newWord);
+        }
+
+        for(Word relatedWord : word.getRelatedWords()){
+            Set<Word> words = new HashSet<Word>();
+            words.add(word);
+            Word newWord = (Word) findBy((int)relatedWord.getId(),false,false).iterator().next();
+            newWord.setRelatedWords(words);
+            currentSession().saveOrUpdate(newWord);
         }
         return word;
     }
