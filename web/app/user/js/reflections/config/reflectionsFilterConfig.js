@@ -5,18 +5,24 @@ AjabShahar.user.ReflectionFilterConfig = (function () {
         {
             name: "words[].wordTransliteration",
             value: "",
-            displayName: "Word"
+            displayName: "Words"
         },
         {
             name: "speaker.name",
             value: "",
-            displayName: "Speaker"
+            displayName: "Speakers"
+        },
+        {
+            name: "people[].name",
+            value: "",
+            displayName: "People"
         }
     ];
 
     var filterItemsLoader = {
-        "Word": "getWordsFrom",
-        "Speaker": "getSpeakersFrom"
+        "Words": "getWordsFrom",
+        "Speakers": "getSpeakersFrom",
+        "People": "getPeopleFrom"
     };
 
     return {

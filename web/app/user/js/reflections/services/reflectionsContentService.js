@@ -26,6 +26,21 @@ angular.module("reflection").service("reflectionsContentService",["$http",functi
         return _.values(wordsDictionary);
     };
 
+    var getPeopleFrom = function (reflections) {
+        var peopleList = {};
+        if (!_.isEmpty(reflections)) {
+            _.reduce(reflections, function (peopleList, reflection) {
+                if (!_.isEmpty(reflection.people)) {
+                    reflection.people.forEach(function (person) {
+                        peopleList[person.id] = [person.name];
+                    })
+                }
+                return peopleList;
+            }, peopleList)
+        }
+        return _.values(peopleList);
+    };
+
     var _pluckFields = function (reflections, field) {
         var valuesMap = {};
         if (!_.isEmpty(reflections)) {
@@ -48,6 +63,7 @@ angular.module("reflection").service("reflectionsContentService",["$http",functi
         getReflection: getReflection,
         getPublishedReflections: getPublishedReflections,
         getWordsFrom: getWordsFrom,
-        getSpeakersFrom: getSpeakersFrom
+        getSpeakersFrom: getSpeakersFrom,
+        getPeopleFrom: getPeopleFrom
     };
 }]);
