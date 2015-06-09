@@ -53,8 +53,9 @@ describe("song details controller", function () {
         httpBackend.when('GET', '/api/songs/getPublishedSongs/' + scope.carouselItems[0].id).respond(song);
         httpBackend.flush();
 
-        expect(scope.songText.openingCouplets.length).toBe(1);
-        expect(scope.songText.songTextContents.length).toBe(2);
+        expect(scope.selectedSong.songText.original).toBeTruthy();
+        expect(scope.selectedSong.songText.translation).toBeTruthy();
+        expect(scope.selectedSong.songText.transliteration).toBeTruthy();
 
         expect(scope.hasSongText(song)).toBeTruthy();
 
@@ -134,90 +135,9 @@ describe("song details controller", function () {
         ],
         "songText": {
             "id": 3,
-            "songTextContents": [
-                {
-                    "id": 2,
-                    "originalText": "à¤®à¤¸à¥à¤œà¤¿à¤¦ à¥™à¥à¤¦à¤¾ à¤•à¤¾ à¤˜à¤° à¤¹à¥ˆ, à¤ªà¥€à¤¨à¥‡ à¤•à¥€ à¤œà¤—à¤¹ à¤¨à¤¹à¥€à¤‚ ,\nà¤•à¤¾à¤«à¤¿à¤° à¤•à¥‡ à¤¦à¤¿à¤² à¤®à¥‡à¤‚ à¤œà¤¾ à¤µà¤¹à¤¾à¤ à¥™à¥à¤¦à¤¾ à¤¨à¤¹à¥€à¤‚ .",
-                    "englishTranslationText": "Mosque is the place of God, not a place to drink,\nGo to the heart of a kafir, God is absent there.\n(In Islam Kafir refers to a person who rejects God )",
-                    "englishTransliterationText": "Masjid khuda ka ghar h, pine ki jagah nahi,\nKafir k dil me ja waha khuda nahi.",
-                    "contentType": "couplet",
-                    "sequenceNumber": 1,
-                    "showRefrain": true,
-                    "poet": {
-                        "id": 2,
-                        "firstName": "Roshik",
-                        "middleName": "",
-                        "lastName": "",
-                        "firstNameInHindi": null,
-                        "middleNameInHindi": null,
-                        "lastNameInHindi": null,
-                        "category": [
-                            {
-                                "id": 9,
-                                "name": "Poet",
-                                "categoryType": "person"
-                            }
-                        ],
-                        "primaryOccupation": {
-                            "id": 0,
-                            "name": null,
-                            "categoryType": null
-                        },
-                        "thumbnailURL": null,
-                        "profile": null,
-                        "hindiName": "",
-                        "name": "Roshik"
-                    }
-                },
-                {
-                    "id": 1,
-                    "originalText": "à¤¶à¤°à¤¾à¤¬ à¤ªà¥€à¤¨à¥‡ à¤¦à¥‡ à¤®à¤¸à¥à¤œà¤¿à¤¦ à¤®à¥‡à¤‚ à¤¬à¥ˆà¤  à¤•à¤° ,\nà¤¯à¤¾ à¤µà¥‹ à¤œà¤—à¤¹ à¤¬à¤¤à¤¾ à¤œà¤¹à¤¾à¤ à¥™à¥à¤¦à¤¾ à¤¨à¤¹à¥€à¤‚",
-                    "englishTranslationText": "Let me drink in the mosque,\nOr tell me the place where God is not present.",
-                    "englishTransliterationText": "Sharab pine de masjid me baith kar,\nYa wo jagah bata jaha khuda nahi.",
-                    "contentType": "stanza",
-                    "sequenceNumber": 0,
-                    "showRefrain": true,
-                    "poet": null
-                }
-            ],
-            "openingCouplets": [
-                {
-                    "id": 1,
-                    "originalText": "Where-e'er you find \"the cooling western breeze,\"\nIn the next line, it \"whispers through the trees;\"\nIf crystal streams \"with pleasing murmurs creep,\"\nThe reader's threatened (not in vain) with \"sleep.\"",
-                    "englishTranslationText": "Nor shall Death brag thou wander'st in his shade,\nWhen in eternal lines to time thou growest:\nSo long as men can breathe or eyes can see,\nSo long lives this and this gives life to thee.",
-                    "englishTransliterationText": "Shall I compare thee to a summer's day?\nThou art more lovely and more temperate:\nRough winds do shake the darling buds of May,\nAnd summer's lease hath all too short a date:\nSometimes too hot the eye of heaven shines,\nAnd often is his gold complexion dimm'd;",
-                    "contentType": "couplet",
-                    "sequenceNumber": 0,
-                    "poet": {
-                        "id": 1,
-                        "firstName": "Parvathy",
-                        "middleName": "",
-                        "lastName": "Baul",
-                        "firstNameInHindi": null,
-                        "middleNameInHindi": null,
-                        "lastNameInHindi": null,
-                        "category": [
-                            {
-                                "id": 9,
-                                "name": "Poet",
-                                "categoryType": "person"
-                            }
-                        ],
-                        "primaryOccupation": {
-                            "id": 0,
-                            "name": null,
-                            "categoryType": null
-                        },
-                        "thumbnailURL": null,
-                        "profile": null,
-                        "hindiName": "",
-                        "name": "Parvathy Baul"
-                    }
-                }
-            ],
-            "refrainOriginal": "à¤•à¤¾à¤«à¤¿à¤° à¤•à¥‡ à¤¦à¤¿à¤²",
-            "refrainEnglishTranslation": "I have looked into the heart of a Kafir",
-            "refrainEnglishTransliteration": "Kafir k dil se"
+            "original": "à¤®à¤¸à¥à¤œà¤¿à¤¦ à¥™à¥à¤¦à¤¾ à¤•à¤¾ à¤˜à¤° à¤¹à¥ˆ, à¤ªà¥€à¤¨à¥‡ à¤•à¥€ à¤œà¤—à¤¹ à¤¨à¤¹à¥€à¤‚ ,\nà¤•à¤¾à¤«à¤¿à¤° à¤•à¥‡ à¤¦à¤¿à¤² à¤®à¥‡à¤‚ à¤œà¤¾ à¤µà¤¹à¤¾à¤ à¥™à¥à¤¦à¤¾ à¤¨à¤¹à¥€à¤‚ .",
+            "translation": "Mosque is the place of God, not a place to drink,\nGo to the heart of a kafir, God is absent there.\n(In Islam Kafir refers to a person who rejects God )",
+            "transliteration": "Masjid khuda ka ghar h, pine ki jagah nahi,\nKafir k dil me ja waha khuda nahi."
         },
         "downloadURL": null,
         "about": null,

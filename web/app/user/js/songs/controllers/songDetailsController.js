@@ -71,7 +71,7 @@ var songDetailsController = function ($scope, $location, songsContentService) {
         if(thumbnail != null){
             songsContentService.getSong(thumbnail.id).success(function (response) {
                 $scope.detailsObject = new AjabShahar.DetailsObject(response, thumbnail.type);
-                $scope.selectedSong = response;
+                $scope.selectedSong = response || {};
 
                 initialiseMainTitles();
                 getSongsLyrics($scope.selectedSong)
@@ -81,9 +81,7 @@ var songDetailsController = function ($scope, $location, songsContentService) {
     };
 
     $scope.hasSongText = function () {
-        if ($scope.selectedSong.songText != null && $scope.selectedSong.songText.songTextContents.length > 0)
-            return true;
-        return false;
+        return !_.isEmpty($scope.selectedSong.songText) && (!_.isEmpty($scope.selectedSong.songText.original) || !_.isEmpty($scope.selectedSong.songText.translation) || !_.isEmpty($scope.selectedSong.songText.transliteration));
     };
 
     var initialiseMainTitles = function () {
