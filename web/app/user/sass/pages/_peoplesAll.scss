@@ -1,6 +1,12 @@
 .all-people {
     background: transparent url('/user/img/people/all-people-map-bg.png') left top fixed;
     background-size: contain;
+        .logo-with-filter {
+            z-index: 89;
+         }
+         .slide-nav-list {
+            z-index: 70;
+         }
 
         .people-grid-view {
             width: 75%;
@@ -78,7 +84,7 @@
                                    font-weight: 300;
                                    font-family: 'Merriweather';
                                    color: $grey;
-                                   max-height: 126px;
+                                   max-height: 124px;
                                    line-height: 1.45em;
 
                                   .title {
@@ -127,7 +133,7 @@
                             .read-link {
                                     color: $pink;
                                     font-weight: 300;
-                                    font-family: 'Merriweather';
+                                    font-family: 'Merriweather Sans';
                                     font-size: $small;
                                     margin-top: 5px;
                                     float: left;
