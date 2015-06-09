@@ -135,6 +135,7 @@ AjabShahar.DetailsObject = function (content, type) {
         self.image = song.thumbnailURL;
         self.about = song.about;
         self.links = getRelatedLinksFromSong(song);
+        self.shareUrl = "/songs/?id=" + self.id;
     };
 
     var buildFromWord = function (word) {
@@ -174,6 +175,7 @@ AjabShahar.DetailsObject = function (content, type) {
         self.displayAjabShaharTeam = word.displayAjabShaharTeam;
         self.info = "";
         self.image = word.thumbnailUrl;
+        self.shareUrl = "/words/details/" + self.id;
     };
 
     var buildFromReflection = function (reflection) {
@@ -199,6 +201,7 @@ AjabShahar.DetailsObject = function (content, type) {
         self.about = reflection.about;
         self.excerpt = reflection.reflectionExcerpt;
         self.image = reflection.thumbnailURL;
+        self.shareUrl = "/reflections/details/" + self.id;
     };
 
     if (type === 'song') {

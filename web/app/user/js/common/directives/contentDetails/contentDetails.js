@@ -42,12 +42,25 @@ thumbnailModule.directive("contentDetails", function () {
                 return !_.isEmpty($scope.content.textSections);
             };
 
+            $scope.createUrl = function(resource){
+              return $scope.url + resource;
+            };
+
+            $scope.createURLForImage = function(imageURL){
+                if(imageURL.includes("http")){
+                    return imageURL;
+                }
+                else{
+                    return $scope.url + imageURL;
+                }
+            };
+
             var init = function(){
                 if(!_.isEmpty($scope.content)){
                     $scope.showVideo = !!(!$scope.hasText() && $scope.content.videoId);
                     $scope.showAudio = !!(!$scope.hasText() && !$scope.content.videoId && $scope.content.audioId);
                 }
-                $scope.url = $location.absUrl();
+                $scope.url = $location.host();
             };
 
             $scope.$watch("content",function(){
