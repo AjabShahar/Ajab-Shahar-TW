@@ -108,6 +108,7 @@ public class DataSetup {
                             .columns("id", "name", "category_type")
                             .values(1, "SOng", "song")
                             .values(9, "Singer", "person")
+                            .values(12, "Poet", "poet")
                             .build());
 
     public static final Operation INSERT_REFLECTIONS =
@@ -129,10 +130,18 @@ public class DataSetup {
     public static final Operation INSERT_PERSON =
             sequenceOf(
                     insertInto("PERSON")
-                            .columns("id", "first_name", "last_name", "publish")
-                            .values(1, "Ravi", "Das", true)
-                            .values(2, "Shabnam", "Virmani", true)
-                            .values(3, "Gippy", "Grewal", false)
+                            .columns("id", "first_name", "last_name", "publish", "primary_occupation")
+                            .values(1, "Ravi", "Das", true, null)
+                            .values(2, "Shabnam", "Virmani", true,null)
+                            .values(3, "Gippy", "Grewal", false,null)
+                            .values(4, "Gavura", "Devi", false,9)
+                            .build());
+
+    public static final Operation INSERT_PERSON_CATEGORY =
+            sequenceOf(
+                    insertInto("PERSON_CATEGORY")
+                            .columns("person_id","category_id")
+                            .values(2,9)
                             .build());
 
     public static final Operation INSERT_SONG_SINGER =

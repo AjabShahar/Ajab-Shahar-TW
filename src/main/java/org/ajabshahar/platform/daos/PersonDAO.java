@@ -7,7 +7,11 @@ import org.ajabshahar.platform.models.PersonDetails;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.CriteriaSpecification;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Disjunction;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.sql.JoinType;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -33,8 +37,8 @@ public class PersonDAO extends AbstractDAO<PersonDetails> {
             criteria.add(Restrictions.eq("id", Long.valueOf(personId)));
         }
         if (!Strings.isNullOrEmpty(role)) {
-            criteria.createAlias("personDetails.category", "category");
-            criteria.createAlias("personDetails.primaryOccupation", "primaryOccupation");
+            criteria.createAlias("personDetails.category", "category", JoinType.LEFT_OUTER_JOIN);
+            criteria.createAlias("personDetails.primaryOccupation", "primaryOccupation",JoinType.LEFT_OUTER_JOIN);
 
             criteria.add(Restrictions.or(Restrictions.eq("category.name", role), Restrictions.eq("primaryOccupation.name", role)));
         }

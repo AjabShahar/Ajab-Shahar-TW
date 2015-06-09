@@ -9,7 +9,9 @@ import com.sun.jersey.api.client.ClientResponse;
 import io.dropwizard.testing.junit.DropwizardAppRule;
 import net.minidev.json.JSONObject;
 import org.ajabshahar.DataSetup;
+import org.ajabshahar.api.PeopleRepresentation;
 import org.ajabshahar.api.PersonRepresentation;
+import org.ajabshahar.api.PersonSummaryRepresentation;
 import org.ajabshahar.platform.PlatformApplication;
 import org.ajabshahar.platform.PlatformConfiguration;
 import org.h2.jdbcx.JdbcDataSource;
@@ -23,6 +25,7 @@ import java.util.LinkedHashMap;
 import java.util.Set;
 
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 public class PersonResourceIT {
@@ -169,6 +172,20 @@ public class PersonResourceIT {
         personDetails = personResponse.getEntity(PersonRepresentation.class);
 
         assertThat(personDetails.isPublish(), is(true));
+    }
+
+    @Test
+    public void shouldGetThePeopleBasedOnRole() {
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_CATEGORY,DataSetup.INSERT_PERSON,DataSetup.INSERT_PERSON_CATEGORY);
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        ClientResponse peopleResponse =  httpGet("http://localhost:%d/api/people/summary?show=all&role=Singer");
+
+        Set<PersonSummaryRepresentation> people = peopleResponse.getEntity(Set.class);
+
+        assertEquals(people.size(),2);
+
     }
 
     private ClientResponse httpGet(String url) {

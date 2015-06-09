@@ -87,7 +87,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldHaveWordIntroduction() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_CATEGORY,DataSetup.INSERT_PERSON,
                 DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS,
                 DataSetup.INSERT_WORD_INTRODUCTION);
 
@@ -107,7 +107,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldSaveWordWithIntroductions() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_CATEGORY,DataSetup.INSERT_PERSON);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -124,7 +124,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldEditWordWithIntroductions() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_CATEGORY, DataSetup.INSERT_PERSON);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -152,7 +152,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldHaveWordIntroductions() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_CATEGORY,DataSetup.INSERT_PERSON,
                 DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS,
                 DataSetup.INSERT_WORD_INTRODUCTION, DataSetup.INSERT_WORD_INTRODUCTION);
 
@@ -168,7 +168,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldSaveWordWithOutIntroduction() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_CATEGORY,DataSetup.INSERT_PERSON);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -180,7 +180,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldEditWordByAddingIntroductionsForTheFirstTime() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_CATEGORY, DataSetup.INSERT_PERSON);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -200,7 +200,7 @@ public class WordResourceIT {
     @Test
     public void shouldSaveReflections() {
 
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON, DataSetup.INSERT_REFLECTIONS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_CATEGORY,DataSetup.INSERT_PERSON, DataSetup.INSERT_REFLECTIONS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -223,7 +223,7 @@ public class WordResourceIT {
     @Test
     public void shouldGetSelectedReflectionsWithWord() throws Exception {
 
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_CATEGORY, DataSetup.INSERT_PERSON,
                 DataSetup.INSERT_REFLECTIONS,
                 DataSetup.INSERT_WORDS,
                 DataSetup.INSERT_WORD_REFLECTIONS);
@@ -244,7 +244,7 @@ public class WordResourceIT {
     public void shouldGetSelectedReflectionsWithWordButNotShowSpeakerIfItsUnPublished() throws Exception {
         final String API_TO_EDIT_THE_WORD_WITH_ID_THREE = "http://localhost:%d/api/words/edit?id=3&publish=true";
 
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_CATEGORY,DataSetup.INSERT_PERSON,
                 DataSetup.INSERT_REFLECTIONS,
                 DataSetup.INSERT_WORDS,
                 DataSetup.INSERT_WORD_REFLECTIONS);
@@ -263,7 +263,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldHaveShowAjabShaharTeamTextFlag() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_CATEGORY, DataSetup.INSERT_PERSON,
                 DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -277,7 +277,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldSaveDefaultReflection() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_CATEGORY, DataSetup.INSERT_PERSON,
                 DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS, DataSetup.INSERT_WORD_REFLECTIONS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
@@ -297,7 +297,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldEditDefaultReflection() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_CATEGORY, DataSetup.INSERT_PERSON,
                 DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS, DataSetup.INSERT_WORD_REFLECTIONS);
 
 
@@ -322,7 +322,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldRemoveDefaultReflection() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_CATEGORY, DataSetup.INSERT_PERSON,
                 DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS, DataSetup.INSERT_WORD_REFLECTIONS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
@@ -345,7 +345,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldSaveWordAlongWithRelatedWords() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_CATEGORY,DataSetup.INSERT_PERSON,
                 DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
@@ -366,7 +366,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldSaveWordAlongWithSynonyms() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_CATEGORY, DataSetup.INSERT_PERSON,
                 DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
@@ -389,7 +389,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldEditRelatedWordsAndSynonyms() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_CATEGORY, DataSetup.INSERT_PERSON, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -428,7 +428,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldDeleteRelatedWordsAndSynonyms() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON,
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_CATEGORY,DataSetup.INSERT_PERSON,
                 DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
@@ -463,8 +463,8 @@ public class WordResourceIT {
     @Test
     public void shouldBeAbleToSaveASongHavingSingers() {
         Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,
-                DataSetup.INSERT_PERSON,
                 DataSetup.INSERT_CATEGORY,
+                DataSetup.INSERT_PERSON,
                 DataSetup.INSERT_REFLECTIONS,
                 INSERT_GATHERINGS,
                 DataSetup.INSERT_SONGS_AND_TITLE,
@@ -495,7 +495,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldSaveWordAlongWithWriters() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS, DataSetup.INSERT_WORD_REFLECTIONS);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_CATEGORY, DataSetup.INSERT_PERSON, DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS, DataSetup.INSERT_WORD_REFLECTIONS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -515,7 +515,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldSaveWordAlongWithThumbnailUrl() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_CATEGORY,DataSetup.INSERT_PERSON);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -529,7 +529,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldEditWordThumbnailUrl() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_CATEGORY,DataSetup.INSERT_PERSON);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -552,7 +552,7 @@ public class WordResourceIT {
 
     @Test
     public void shouldHavePublishField() {
-        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_PERSON);
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_CATEGORY, DataSetup.INSERT_PERSON);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
