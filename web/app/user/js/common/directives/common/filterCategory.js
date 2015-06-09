@@ -1,10 +1,10 @@
 'use strict';
 
-filterModule.directive("songFilterCategory", function () {
+filterModule.directive("filterCategory", function () {
 
     return {
         restrict: 'EA',
-        templateUrl: '/user/js/common/templates/songs/songFilterCategory.html',
+        templateUrl: '/user/js/common/templates/common/filterCategory.html',
         scope: {
             criteriaList: "=",
             selectHandler: "=",

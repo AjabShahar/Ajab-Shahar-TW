@@ -28,12 +28,12 @@
         </as-title>
 
         <div on-click-outside="closeSecondParda()" class="slide-nav-list" ng-show="expandFilter">
-            <song-filter-category criteria-list="criteriaList" select-handler="filterCategoryClicked"
+            <filter-category criteria-list="criteriaList" select-handler="filterCategoryClicked"
                                   deselect-handler="removeFilterCriteria"
-                                  clear-filters="clearAllFilters"></song-filter-category>
-            <song-filter-parda show-this-parda="openSecondParda"
+                                  clear-filters="clearAllFilters"></filter-category>
+            <filter-parda show-this-parda="openSecondParda"
                                filter-items="filterItems[selectedFilterCategory.displayName]"
-                               select-handler="filterItemSelected" ng-show="expandFilter"></song-filter-parda>
+                               select-handler="filterItemSelected" ng-show="expandFilter"></filter-parda>
         </div>
 
         <div class="ajab-container  qualifier">
@@ -97,10 +97,10 @@
         <script type="text/javascript" src="/user/js/common/directives/header/ajabShaharHeader.js"></script>
         <script type="text/javascript" src="/user/js/common/directives/footer/ajabShaharFooter.js"></script>
         <script type="text/javascript" src="/user/js/common/directives/header/sticky.js"></script>
-        <script type="text/javascript" src="/user/js/common/config/filterConfig.js"></script>
+        <script type="text/javascript" src="/user/js/songs/config/songsFilterConfig.js"></script>
         <script type="text/javascript" src="/user/js/common/utilities/sieve.js"></script>
-        <script type="text/javascript" src="/user/js/common/directives/songs/songFilterCategory.js"></script>
-        <script type="text/javascript" src="/user/js/common/directives/songs/songFilterParda.js"></script>
+        <script type="text/javascript" src="/user/js/common/directives/common/filterCategory.js"></script>
+        <script type="text/javascript" src="/user/js/common/directives/common/filterParda.js"></script>
         <script type="text/javascript" src="/user/js/common/directives/common/onClickOutside.js"></script>
         <script type="text/javascript" src="/common/lib/angular-route/angular-route.js"></script>
         <script type="text/javascript" src="/user/js/common/modules/utilities.js"></script>

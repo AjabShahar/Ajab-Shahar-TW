@@ -1,10 +1,10 @@
 'use strict';
 
-filterModule.directive("songFilterParda", function () {
+filterModule.directive("filterParda", function () {
 
     return {
         restrict: 'EA',
-        templateUrl: '/user/js/common/templates/songs/songFilterParda.html',
+        templateUrl: '/user/js/common/templates/common/filterParda.html',
         scope: {
             filterItems: "=",
             selectHandler: "=",
