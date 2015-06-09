@@ -39,8 +39,8 @@ describe("Reflection details controller", function () {
 
         $httpBackend.flush();
 
-        expect(scope.reflections[0].englishTitle).toBe("oh that word!");
-        expect(scope.reflections[1].englishTitle).toBe("Poet is God");
+        expect(scope.reflectionsList[0].englishTitle).toBe("oh that word!");
+        expect(scope.reflectionsList[1].englishTitle).toBe("Poet is God");
     });
 
     it("should get thumbnail representation of reflections", function () {
