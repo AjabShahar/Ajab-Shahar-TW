@@ -4,7 +4,7 @@ wordsAdminApp.controller('wordDetailsController', ['$scope', '$window', '$locati
 
         $scope.formInfo = {
             reflections: [],
-            wordIntroductions: [],
+            wordIntroductions: [{}],
             displayAjabShaharTeam: false
         };
         $scope.categories = [];
@@ -93,6 +93,7 @@ wordsAdminApp.controller('wordDetailsController', ['$scope', '$window', '$locati
                     $scope.relatedWords = getSelectedContent(data.relatedWords, $scope.relatedWords);
                     $scope.reflectionsWithoutTheDefault=getSelectedContent(data.reflections, $scope.reflections);
                     $scope.formInfo = data;
+                    $scope.formInfo.wordIntroductions = $scope.formInfo.wordIntroductions || [{}];
                 });
 
                 //TODO: we have to refactor , this is duplication

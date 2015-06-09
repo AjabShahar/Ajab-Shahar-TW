@@ -9,7 +9,7 @@ songsAdminApp.config(function ($locationProvider,$provide) {
         $provide.decorator('taOptions', ['taRegisterTool', '$delegate', '$log',
             function(taRegisterTool, taOptions, $log){
                 rangy.init();
-                coupletApplier = rangy.createClassApplier("initial-couplets", {normalize: true});
+                var coupletApplier = rangy.createClassApplier("initial-couplets", {normalize: true});
                 taRegisterTool('couplet', {
                     iconclass: "fa fa-comment",
                     buttontext: "couplet",
@@ -22,7 +22,7 @@ songsAdminApp.config(function ($locationProvider,$provide) {
                 });
                 taOptions.toolbar[1].push('couplet');
 
-                refrainApplier = rangy.createClassApplier("refrain", {normalize: true});
+                var refrainApplier = rangy.createClassApplier("refrain", {normalize: true});
                 taRegisterTool('refrain', {
                     iconclass: "fa fa-ellipsis-v",
                     buttontext: "refrain",

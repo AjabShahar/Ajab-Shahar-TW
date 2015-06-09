@@ -99,9 +99,24 @@
                     </div>
                 </div>
 
-                <div ng-show="reflection.type == 'text'">
-                    <reflection-transcript reflection-transcripts="reflection.reflectionTranscripts"></reflection-transcript>
+                <div class="row form-group" ng-show="reflection.type == 'text'">
+                    <div class="col-sm-2">
+                        <label>Reflection Transcript - English</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <text-angular name="reflectionTranscriptEnglish" ng-model="reflection.reflectionTranscripts[0].englishTranscript"></text-angular>
+                    </div>
                 </div>
+
+                <div class="row form-group" ng-show="reflection.type == 'text'">
+                    <div class="col-sm-2">
+                        <label>Reflection Transcript - Original</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <text-angular name="reflectionTranscriptOriginal" ng-model="reflection.reflectionTranscripts[0].hindiTranscript"></text-angular>
+                    </div>
+                </div>
+
 
                 <div class="row" ng-show="reflection.type == 'audio'">
                     <div class="form-group col-sm-2">
@@ -195,6 +210,10 @@
 <script type="text/javascript" src="/common/lib/angular-multi-select/angular-multi-select.js"></script>
 <script type="text/javascript" src="/common/lib/textAngular/dist/textAngular-sanitize.min.js"></script>
 <script type="text/javascript" src="/common/lib/textAngular/dist/textAngular.min.js"></script>
+
+<script type="text/javascript" src="/common/lib/rangy/rangy-core.min.js"></script>
+<script type="text/javascript" src="/common/lib/rangy/rangy-classapplier.min.js"></script>
+
 <script src="/common/lib/angular-route/angular-route.js"></script>
 <script type="text/javascript" src="/admin/js/services/reflectionContentService.js"></script>
 <script type="text/javascript" src="/admin/js/services/loginVerifyService.js"></script>

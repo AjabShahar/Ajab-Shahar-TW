@@ -2,7 +2,7 @@
 reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$window', '$location', 'reflectionContentService', "loginVerifyService", "$q", '$filter',
     function ($scope, $window, $location, reflectionContentService, loginVerifyService, $q, $filter) {
         loginVerifyService.redirectIfNotAuthenticated();
-        $scope.reflection = {"reflectionTranscripts": [], "speaker": {}};
+        $scope.reflection = {"reflectionTranscripts": [{}], "speaker": {}};
         $scope.peopleList = [];
         $scope.people = [];
         $scope.words = [];
@@ -75,6 +75,7 @@ reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$windo
                 if (urlId != null && urlId != '') {
                     reflectionContentService.getRefectionById(urlId).success(function (data) {
                         $scope.reflection = data;
+                        $scope.reflection.reflectionTranscripts = $scope.reflection.reflectionTranscripts || [{}];
                         $scope.words = getSelectedContent($scope.reflection.words, $scope.words);
                         $scope.songs = getSelectedContent($scope.reflection.songs, $scope.songs);
                         $scope.people = getSelectedContent($scope.reflection.people, $scope.people);

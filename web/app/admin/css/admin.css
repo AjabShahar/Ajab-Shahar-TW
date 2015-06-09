@@ -27,7 +27,7 @@
     width: 98%;
 }
 
-.initial-couplets{
+.initial-couplets,.couplet{
     color: #808080;
     font-size: 14px;
     font-style: italic;

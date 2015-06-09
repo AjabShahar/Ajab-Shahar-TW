@@ -136,9 +136,29 @@
                     </div>
                 </div>
 
-                <admin-word-introduction word-introduction="{{formInfo.wordIntroduction}}"
+                <!--<admin-word-introduction word-introduction="{{formInfo.wordIntroduction}}"
                                          word-introductions="formInfo.wordIntroductions"
-                                         poets="poets"></admin-word-introduction>
+                                         poets="poets"></admin-word-introduction>-->
+
+
+                <div class="row form-group ">
+                    <div class="col-sm-2">
+                        <label>Word Introduction - English</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <text-angular name="wordIntroductionEnglish" ng-model="formInfo.wordIntroductions[0].wordIntroEnglish"></text-angular>
+                    </div>
+                </div>
+
+                <div class="row form-group ">
+                    <div class="col-sm-2">
+                        <label>Word Introduction - Original</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <text-angular name="wordIntroductionOriginal" ng-model="formInfo.wordIntroductions[0].wordIntroHindi"></text-angular>
+                    </div>
+                </div>
+
 
                 <div class="row form-group">
                     <div class="col-sm-2">
@@ -229,6 +249,10 @@
 <script type="text/javascript" src="/common/lib/angular-filter/dist/angular-filter.js"></script>
 <script type="text/javascript" src="/common/lib/textAngular/dist/textAngular-sanitize.min.js"></script>
 <script type="text/javascript" src="/common/lib/textAngular/dist/textAngular.min.js"></script>
+
+<script type="text/javascript" src="/common/lib/rangy/rangy-core.min.js"></script>
+<script type="text/javascript" src="/common/lib/rangy/rangy-classapplier.min.js"></script>
+
 <script src="/common/lib/angular-route/angular-route.min.js"></script>
 <script type="text/javascript" src="/admin/js/services/contentService.js"></script>
 <script type="text/javascript" src="/admin/js/services/loginVerifyService.js"></script>
