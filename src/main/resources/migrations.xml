@@ -187,5 +187,11 @@
         <dropTable tableName="opening_couplet"/>
         <dropTable tableName="song_text_content"/>
     </changeSet>
-
+    <changeSet id="92" author="INDRANEEL">
+        <comment>Removing character limits on word intro fields</comment>
+        <sql>
+            ALTER TABLE word_introduction ALTER COLUMN word_intro_hindi TYPE text;
+            ALTER TABLE word_introduction ALTER COLUMN word_intro_english TYPE text;
+        </sql>
+    </changeSet>
 </databaseChangeLog>
