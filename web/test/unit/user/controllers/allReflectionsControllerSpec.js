@@ -35,6 +35,14 @@ describe("Reflection details controller", function () {
         expect(scope.reflectionCount).toBe(2);
     });
 
+    it("should sort reflections based on title", function () {
+
+        $httpBackend.flush();
+
+        expect(scope.reflections[0].englishTitle).toBe("oh that word!");
+        expect(scope.reflections[1].englishTitle).toBe("Poet is God");
+    });
+
     it("should get thumbnail representation of reflections", function () {
 
         $httpBackend.flush();
