@@ -55,6 +55,7 @@ allSongsApp.controller('allSongsController', ['$scope', '$window', 'songsContent
     $scope.filterItemSelected = function (filterValue) {
         sieve.setFilterCriteria($scope.selectedFilterCategory.name, filterValue);
         filterAndLoad(songs);
+        $scope.toggleExpandFilter();
     };
 
     $scope.closeSecondParda = function () {

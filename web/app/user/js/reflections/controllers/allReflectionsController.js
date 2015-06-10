@@ -74,6 +74,7 @@ angular.module("reflection").controller('allReflectionsController', ['$scope', '
         $scope.filterItemSelected = function (filterValue) {
             sieve.setFilterCriteria($scope.selectedFilterCategory.name, filterValue);
             filterAndLoad(reflections);
+            $scope.toggleExpandFilter();
         };
 
     var sortList = function (list, sortCriteria) {
