@@ -118,12 +118,8 @@
                     </ul>
                 </div>
 
-                <div class="toggleBySlide about-info about-text" bind-dynamic-html="content.about"
-                     ng-show="isAboutVisible"></div>
-                <!--end of toggle, about-->
-
                 <!--sharing-->
-                <div class='shareItemsDropDown' ng-show="sharingVisible">
+                <div class='toggleBySlide shareItemsDropDown' ng-show="sharingVisible">
                     <ul class='shareItems'>
                         <li><a href='http://www.facebook.com/share.php?u={{createUrl(content.shareUrl)}}' target="_blank">Share on Facebook</a>
                         </li>
@@ -137,6 +133,10 @@
                         </li>
                     </ul>
                 </div>
+
+                <div class="toggleBySlide about-info about-text" bind-dynamic-html="content.about"
+                     ng-show="isAboutVisible"></div>
+                <!--end of toggle, about-->
 
                 <!--related links-->
                 <div class="related-links-parda">
