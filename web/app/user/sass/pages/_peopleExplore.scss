@@ -2,28 +2,39 @@
     background: transparent url('/user/img/people/people-explore-map.png') left top fixed;
     background-size: contain;
 
+
+
     #page-wrapper {
             width: 100%;
             min-height: 750px;
             .category-logo {
                 font-size: 18px;
             }
-        }
+            .page-title {
+                .job {
+                    font-style: italic;
+                    font-weight: 300;
+                    font-family: 'Merriweather Sans';
+                    font-size: 18px;
+                    color: $light-grey;
 
-        .sadhus {
-            background: transparent url('/user/img/people/sadhus-light.png') center bottom fixed;
-            background-size: contain;
-        }
-        .yoginis {
-            background: transparent url('/user/img/people/yoginis-light.png') center bottom fixed;
-            background-size: contain;
+                }
+            }
+            &.sadhus {
+                background: transparent url('/user/img/people/sadhus-light.png') center bottom fixed;
+                background-size: contain;
+            }
+            &.yoginis {
+                background: transparent url('/user/img/people/yoginis-light.png') center bottom fixed;
+                background-size: contain;
+
+            }
+            &.hansas {
+                background: transparent url('/user/img/people/hansas-light.png') center bottom fixed;
+                background-size: contain;
+            }
 
         }
-        .hansas {
-            background: transparent url('/user/img/people/hansas-light.png') center bottom fixed;
-            background-size: contain;
-        }
-
 
 
 }
