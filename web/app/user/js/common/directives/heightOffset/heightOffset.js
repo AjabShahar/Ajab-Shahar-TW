@@ -9,3 +9,20 @@ angular.module('utilities').directive('heightOffset', function () {
         }
     }
 });
+
+
+angular.module('utilities').directive('heightFactor', function ($timeout) {
+    return function (scope, element, attrs) {
+
+            $timeout(init, false);
+            function init() {
+                var offset = parseInt(attrs.heightFactor);
+                var deltaFactor = offset - ($(element).height() % offset);
+                $(element).height($(element).height() + deltaFactor);
+            }
+        });
+    }
+
+});
+
+

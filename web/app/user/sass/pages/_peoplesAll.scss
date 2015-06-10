@@ -2,10 +2,10 @@
     background: transparent url('/user/img/people/all-people-map-bg.png') left top fixed;
     background-size: contain;
         .logo-with-filter {
-            z-index: 89;
+            z-index: $zIndex-people-logo;
          }
          .slide-nav-list {
-            z-index: 70;
+            z-index: $zIndex-people-filter-pardah1;
          }
 
         .people-grid-view {

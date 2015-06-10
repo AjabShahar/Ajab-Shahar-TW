@@ -5,6 +5,9 @@
     background: transparent url(/user/img/songs/song_detail_bg_tiledY.jpg) left top;
     background-repeat: no-repeat repeat;
     background-size: 100% auto;
+    .page-header {
+        z-index: $zIndex-detail-page-header;
+    }
     .no-pardah {
         background: none;
     }
@@ -61,16 +64,17 @@
                     margin-top: 1em;
                 }
                 .text-top-background{
-                    background: transparent url(/user/img/words/one.png) left top;
+                    background: transparent url(/user/img/words/word1.png);
                     background-repeat: no-repeat no-repeat;
-                    background-size: 100% 100%;
-                    height: 130px;
+                    background-size: 100% 216px;
+                    height: 216px;
+                    width: 100%;
 
                 }
                 .text-middle-background {
-                    background: transparent url(/user/img/words/two.png) left bottom;
+                    background: transparent url(/user/img/words/word2.png);
                     background-repeat: no-repeat repeat;
-                    background-size: 100% 100%;
+                    background-size: 100% 300px ;
                     width: 100%;
                     position: relative;
 
@@ -84,12 +88,12 @@
 
         }
         .detail-text-wrapper-bottom-image {
-              background: transparent url(/user/img/words/three.png) left 0px no-repeat;
-              height: 80px;
+              background: transparent url(/user/img/words/word3.png)  no-repeat;
+              height: 220px;
               width: 100%;
               position: relative;
               margin: 0 auto;
-              background-size: 100% 100%;
+              background-size: 100% 220px ;
         }
 
         
