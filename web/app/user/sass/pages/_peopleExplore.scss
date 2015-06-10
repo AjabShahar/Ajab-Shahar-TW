@@ -1,8 +1,28 @@
 .people-explore {
+    background: transparent url('/user/img/people/people-explore-map.png') left top fixed;
+    background-size: contain;
 
-    &.details {
-        background: none;
-    }
+    #page-wrapper {
+            width: 100%;
+            min-height: 750px;
+            .category-logo {
+                font-size: 18px;
+            }
+        }
+
+        .sadhus {
+            background: transparent url('/user/img/people/sadhus-light.png') center bottom fixed;
+            background-size: contain;
+        }
+        .yoginis {
+            background: transparent url('/user/img/people/yoginis-light.png') center bottom fixed;
+            background-size: contain;
+
+        }
+        .hansas {
+            background: transparent url('/user/img/people/hansas-light.png') center bottom fixed;
+            background-size: contain;
+        }
 
 
 
