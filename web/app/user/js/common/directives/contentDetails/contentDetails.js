@@ -47,8 +47,10 @@ thumbnailModule.directive("contentDetails", function () {
             };
 
             $scope.createURLForImage = function(imageURL){
-                if(imageURL.includes("http")){
-                    return imageURL;
+                if(imageURL){
+                    if(imageURL.includes("http")){
+                        return imageURL;
+                    }
                 }
                 else{
                     return $scope.url + imageURL;
