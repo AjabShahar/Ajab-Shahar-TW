@@ -20,9 +20,7 @@ angular.module('utilities').directive('heightFactor', function ($timeout) {
                 var deltaFactor = offset - ($(element).height() % offset);
                 $(element).height($(element).height() + deltaFactor);
             }
-        });
-    }
-
-});
+        };
+    });
 
 
