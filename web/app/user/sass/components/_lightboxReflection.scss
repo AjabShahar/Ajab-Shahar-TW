@@ -1,0 +1,94 @@
+.media-introduction {
+    &.reflection {
+
+        position: relative;
+        width: 75%;
+        margin: 0px auto;
+
+        &.bg-wrapper {
+            width: 80%;
+            margin: 0px auto;
+            background: transparent url(/user/img/words/content_bg.png) -4px 0 no-repeat;
+            padding: 2% 4% 5% 4%;
+            background-size: 100% 100%;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -o-box-sizing: border-box;
+            box-sizing: border-box;
+            .content-bg {
+                    overflow: auto;
+                    height: 450px;
+                    padding-right: 2em;
+
+                    @media screen and (max-width: 768px) {
+                      height: 665px;
+                    }
+            }
+        }
+
+
+        .author-name {
+                color: $grey;
+                font-weight: 400;
+                font-size: $small;
+                text-transform: uppercase;
+                font-family: 'Merriweather Sans';
+        }
+
+
+        .verb {
+                color: $grey;
+                font-size: $small;
+                font-weight: 300;
+                text-transform: lowercase;
+                font-family: 'Merriweather Sans';
+        }
+
+        .ref-intro-by {
+            font-size: $medium;
+            color: $dark-grey;
+            margin-bottom: 1em;
+
+        }
+        .ref-title {
+            font-family: 'Merriweather';
+            font-size: $large;
+            color:$pink;
+            line-height: 2em;
+        }
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
