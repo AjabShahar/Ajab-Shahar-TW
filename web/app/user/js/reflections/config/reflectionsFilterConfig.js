@@ -5,17 +5,20 @@ AjabShahar.user.ReflectionFilterConfig = (function () {
         {
             name: "words[].wordTransliteration",
             value: "",
-            displayName: "Words"
+            displayName: "Words",
+            tooltip: "Words, metaphors or ideas in or about mystic poetry"
         },
         {
             name: "speaker.name",
             value: "",
-            displayName: "Speakers"
+            displayName: "Speakers",
+            tooltip: "Speakers or writers who have reflected on a song, poem or idea"
         },
         {
             name: "people[].name",
             value: "",
-            displayName: "People"
+            displayName: "People",
+            tooltip: "Poets or other people, who are the subject of a reflection"
         }
     ];
 

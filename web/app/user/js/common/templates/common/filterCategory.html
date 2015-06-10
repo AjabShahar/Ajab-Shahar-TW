@@ -3,7 +3,7 @@
         <li class='head'>Filter by</li>
         <li ng-repeat="criteria in criteriaList">
             <div ng-if="criteria.displayName">
-                <a href="javascript:void(0)" ng-class="{active:criteria.active,disable:criteria.disabled}"
+                <a href="javascript:void(0)" title="{{criteria.tooltip}}" ng-class="{active:criteria.active,disable:criteria.disabled}"
                    ng-click="criteriaClicked(criteria)">{{criteria.displayName}}</a>
 
                 <div class="child-list" ng-show="criteria.value">
