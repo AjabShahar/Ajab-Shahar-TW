@@ -4,19 +4,19 @@
     </div>
     <div class="bubble" ng-click="open('{{id}}')">
         <div class="summary" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
-            <h3 class="title">{{primaryTitle}}</h3>
-            <h4 class="en-title">{{secondaryTitle}}</h4>
-            <span class="singers" ng-hide="multipleSingers">{{noun}} {{singer|uppercase}}</span>
+            <h3 class="title" ng-cloak>{{primaryTitle}}</h3>
+            <h4 class="en-title" ng-cloak>{{secondaryTitle}}</h4>
+            <span class="singers" ng-cloak ng-hide="multipleSingers">{{noun}} {{singer|uppercase}}</span>
 
             <div ng-hide="!shouldShowDetails" class='thumbnailDetails toggleBySlide'>
                 <div class="singers" ng-show="multipleSingers">
-                    <small class="">sing {{singers|uppercase}}</small>
+                    <small class="" ng-cloak>sing {{singers|uppercase}}</small>
                 </div>
-                <small class="poet">Poet {{poet|uppercase}}</small>
+                <small class="poet" ng-cloak>Poet {{poet|uppercase}}</small>
                 <div class='footer'>
-                    <small class="categoryName">{{categoryName}}</small>
+                    <small class="categoryName" ng-cloak>{{categoryName}}</small>
                     <!--<small class="play">{{duration}}</small>-->
-                    <small ng-class='song.url !== null ? "play-video-icon": "play-audio-icon"'>{{duration}}</small>
+                    <small ng-class='song.url !== null ? "play-video-icon": "play-audio-icon"' ng-cloak>{{duration}}</small>
                 </div>
             </div>
         </div>

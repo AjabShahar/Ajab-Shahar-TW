@@ -22,9 +22,9 @@
         <ajab-shahar-header></ajab-shahar-header>
 
         <as-title filter-clicked="alphabetFilterClicked" clear-filters="clearAlphabetFilters">
-            <span class='numeric-count' ng-show="filteredSongList.length > 1 || filteredSongList.length == 0">{{filteredSongList.length}} SONGS</span>
+            <span class='numeric-count' ng-show="filteredSongList.length > 1 || filteredSongList.length == 0" ng-cloak>{{filteredSongList.length}} SONGS</span>
                         <span class='numeric-count'
-                              ng-show="filteredSongList.length == 1">{{filteredSongList.length}} SONG</span>
+                              ng-show="filteredSongList.length == 1" ng-cloak>{{filteredSongList.length}} SONG</span>
         </as-title>
 
         <div on-click-outside="closeSecondParda()" class="slide-nav-list" ng-show="expandFilter">

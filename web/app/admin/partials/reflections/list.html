@@ -37,7 +37,7 @@
             <td><input ng-model="search.speakerName" class="form-control"><br></td>
             <td><input ng-model="search.publish" class="form-control"><br></td>
         </tr>
-        <tr ng-repeat="reflection in reflections| orderBy:'title' |filter:search">
+        <tr ng-cloak ng-repeat="reflection in reflections| orderBy:'title' |filter:search">
             <td>{{reflection.title}}</td>
             <td>{{reflection.speaker}}</td>
             <td>{{reflection.publish}}</td>

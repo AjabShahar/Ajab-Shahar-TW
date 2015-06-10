@@ -2,7 +2,7 @@
 <html ng-app="gatheringsAdminApp" ng-controller="gatheringDetailsController">
 <head lang="">
     <meta charset="UTF-8">
-    <title>Gathering {{pageName}} - admin</title>
+    <title ng-cloak>Gathering {{pageName}} - admin</title>
     <link href="/admin/css/admin.css" rel="stylesheet" type="text/css">
     <link href="/common/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
 </head>
@@ -12,11 +12,11 @@
 </a>
 
 <div class="left">
-    <h2>{{pageName}} gathering details</h2>
+    <h2 ng-cloak>{{pageName}} gathering details</h2>
 
     <div class="alert alert-danger" role="alert" ng-show="alert.length != 0">
         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-        <span class="sr-only">Error:</span>
+        <span class="sr-only" ng-cloak>Error:</span>
         {{alert}}
     </div>
     <div class="row">

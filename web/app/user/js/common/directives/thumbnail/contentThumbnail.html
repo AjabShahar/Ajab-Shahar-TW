@@ -5,29 +5,30 @@
     </div>
     <div class="bubble" >
         <div class="summary" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
-            <h3 class="title">{{content.getTitle(format)}}</h3>
-            <h4 class="en-title">{{content.getSecondTitle(format)}}</h4>
+            <h3 class="title" ng-cloak>{{content.getTitle(format)}}</h3>
+            <h4 class="en-title" ng-cloak>{{content.getSecondTitle(format)}}</h4>
 
-            <span class="singers" ng-show="content.showPrimaryVerbPeopleAlways()">{{content.verbPeople.verb}} {{content.verbPeople.people|uppercase}}</span>
+            <span class="singers" ng-show="content.showPrimaryVerbPeopleAlways()" ng-cloak>{{content.verbPeople.verb}} {{content.verbPeople.people|uppercase}}</span>
 
             <div ng-hide="!shouldShowDetails" class='thumbnailDetails toggleBySlide'>
 
                 <div>
                     <div class="singers" ng-show="content.showPrimaryVerbPeopleInDetails()">
-                        <small class="">{{content.verbPeople.verb}} {{content.verbPeople.people|uppercase}}</small>
+                        <small ng-cloak>{{content.verbPeople.verb}} {{content.verbPeople.people|uppercase}}</small>
                     </div>
                 </div>
 
                 <div class="desc" ng-if="content.description">
-                    <small>{{content.description}}</small>
+                    <small ng-cloak>{{content.description}}</small>
                 </div>
-                <small class="poet" ng-if="content.description || content.secondaryVerbPeople" >{{content.secondaryVerbPeople.verb}} {{content.secondaryVerbPeople.people|uppercase}}</small>
+                <small class="poet" ng-if="content.description || content.secondaryVerbPeople" ng-cloak>{{content.secondaryVerbPeople.verb}} {{content.secondaryVerbPeople.people|uppercase}}</small>
 
                 <div class='footer'>
-                    <p class="categoryName">{{content.contentCategory | uppercase}}
+                    <p class="categoryName" ng-cloak>{{content.contentCategory | uppercase}}
                         <small class="more-info" ng-if="content.contentFormat === 'text'">T</small>
-                        <small ng-class='{"play-video-icon" : content.contentFormat === "video", "play-audio-icon" :content.contentFormat === "audio"}' ng-if="content.contentFormat != 'text'"></small>
-                        <small ng-if="content.contentFormat != 'text'">{{content.duration}}</small>
+                        <small ng-class='{"play-video-icon" : content.contentFormat === "video",
+                        "play-audio-icon" :content.contentFormat === "audio"}' ng-if="content.contentFormat != 'text'"></small>
+                        <small ng-if="content.contentFormat != 'text'" ng-cloak>{{content.duration}}</small>
                     </p>
                 </div>
             </div>

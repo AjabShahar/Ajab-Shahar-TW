@@ -21,7 +21,7 @@
             <td><input ng-model="search.name" class="form-control"><br></td>
         </tr>
         <tr ng-repeat="category in categories| filter:search">
-            <td>{{category.name}}</td>
+            <td ng-cloak>{{category.name}}</td>
             <td><a href="edit.html?id={{category.id}}" class="btn btn-info">Edit</a></td>
         </tr>
     </table>

@@ -31,7 +31,7 @@
             <td><input ng-model="search.roles" class="form-control"><br></td>
             <td><input ng-model="search.publish" class="form-control"><br></td>
         </tr>
-        <tr ng-repeat="person in people | orderBy:'firstName' | filter:search">
+        <tr ng-cloak ng-repeat="person in people | orderBy:'firstName' | filter:search">
             <td>{{person.firstName}}</td>
             <td>{{person.middleName}}</td>
             <td>{{person.lastName}}</td>

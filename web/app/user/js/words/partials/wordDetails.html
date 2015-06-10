@@ -12,8 +12,8 @@
                 <div ng-cloak class="related-words">
                     <dl>
                         <dt ng-repeat="word in associatedWords">
-                        <p><span class="header-translit-text">{{word.wordTransliteration}}</span></p>
-                        <p><span class="header-translate-text">
+                        <p><span class="header-translit-text" ng-cloak>{{word.wordTransliteration}}</span></p>
+                        <p><span class="header-translate-text" ng-cloak>
                             {{word.wordTranslation}}<span ng-hide="$last" class="comma-space">,  </span>
                         </span></p>
                         </dt>
@@ -28,7 +28,7 @@
             <carousel items="carouselItems" item-clicked="selectThumbnail" format="'transliteration'"></carousel>
         </div>
         <div class="see-more" ng-show="containsReflections()" ng-click="toggleCarousel()">
-            <a class="version" href="javascript:void(0)" >
+            <a class="version" href="javascript:void(0)" ng-cloak>
                 <span ng-show="containsWordIntro">intro + </span> {{reflectionCount()}} reflection<span ng-show="reflectionCount() != 1">s</span>
                 <span class="arrow" ng-class="shouldShowCarousel() ? 'up-arrow' : ''"></span>
             </a>

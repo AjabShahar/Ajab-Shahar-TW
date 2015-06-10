@@ -5,7 +5,7 @@
             <li>
                 <a ng-click="toggleSingers()" ng-class="shouldShowSingers ? 'active' : 'disable'">singer</a>
                 <ul class="child-list">
-                    <li ng-hide="singerNameInFilter==''|| singerNameInFilter.name==''">{{singerNameInFilter.name}}<a
+                    <li ng-hide="singerNameInFilter==''|| singerNameInFilter.name==''" ng-cloak>{{singerNameInFilter.name}}<a
                             ng-click="removeSingerFilter()">x</a></li>
                 </ul>
             </li>
@@ -13,7 +13,7 @@
             <li>
                 <a ng-click="togglePoets()" ng-class="shouldShowPoets ? 'active' : 'disable'">Poet</a>
                 <ul class="child-list">
-                    <li ng-hide="poetNameInFilter==''|| poetNameInFilter.name==''">{{poetNameInFilter.name}}<a
+                    <li ng-hide="poetNameInFilter==''|| poetNameInFilter.name==''" ng-cloak>{{poetNameInFilter.name}}<a
                             ng-click="removePoetFilter()">x</a></li>
                 </ul>
             </li>
@@ -28,7 +28,7 @@
         <div class="overlay"></div>
         <ul>
             <li ng-repeat="singer in singers" class="list-item">
-                <a href="#" ng-click="initialiseSingerNameInFilter(singer);hideSingers()">{{singer.name}}</a>
+                <a href="#" ng-click="initialiseSingerNameInFilter(singer);hideSingers()" ng-cloak>{{singer.name}}</a>
             </li>
         </ul>
     </div>
@@ -36,7 +36,7 @@
         <div class="overlay"></div>
         <ul>
             <li ng-repeat="poet in poets" class="list-item">
-                <a href="javascript:void(0)" ng-click="initialisePoetNameInFilter(poet);hidePoets()">{{poet.name}}</a>
+                <a href="javascript:void(0)" ng-click="initialisePoetNameInFilter(poet);hidePoets()" ng-cloak>{{poet.name}}</a>
             </li>
         </ul>
     </div>

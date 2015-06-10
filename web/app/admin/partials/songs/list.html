@@ -33,7 +33,7 @@
             <td><input ng-model="search.poetNames" class="form-control"><br></td>
             <td><input ng-model="search.publish" class="form-control"><br></td>
         </tr>
-        <tr ng-repeat="song in songs| orderBy:'title' |filter:search">
+        <tr ng-cloak ng-repeat="song in songs| orderBy:'title' |filter:search">
             <td>{{song.title}}</td>
             <td>{{song.translatedTitle}}</td>
             <td>{{song.categoryName}}</td>

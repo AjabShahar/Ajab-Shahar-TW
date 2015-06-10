@@ -6,7 +6,7 @@
     <div class="lower">
         <ul class='alphabets'>
             <li ng-repeat="alphabetFilter in alphabetFilters">
-                <a ng-click="filterSongsOnLetter(alphabetFilter)" ng-class="isSelected(alphabetFilter)">{{alphabetFilter.alphabet}}</a>
+                <a ng-click="filterSongsOnLetter(alphabetFilter)" ng-class="isSelected(alphabetFilter)" ng-cloak>{{alphabetFilter.alphabet}}</a>
             </li>
         </ul>
     </div>

@@ -25,17 +25,17 @@
 
         <div class='creditCont'>
 
-            <div class='creditBox' ng-repeat="person in people track by $index"><a class='link-text selected'
-                                               href="/people/all#person.id">{{person.name}} </a>
+            <div class='creditBox' ng-repeat="person in people track by $index" ng-cloak>
+                <a class='link-text selected' href="/people/all#person.id">{{person.name}} </a>
                 {{person.primaryOccupation}}</div>
 
-            <span ng-repeat="word in words" class="creditBox">
+            <span ng-repeat="word in words" class="creditBox ng-cloak">
                      <a href="/words/#/details/{{word.id}}"
                         target="_self" class="link-text">{{word.transliteration}} <span class="italic-text">{{word.translation}}</span></a>
                  <span> WORD  </span>
             </span>
 
-            <span ng-repeat="song in songs" class="creditBox">
+            <span ng-repeat="song in songs" class="creditBox" ng-cloak>
                 <a href="/songs/?id={{song.id}}" target="_self" class="link-text">{{song.englishTransliterationTitle}}</a>
                  SONG
             </span>

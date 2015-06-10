@@ -8,7 +8,7 @@
 </head>
 <body ng-controller="adminHomeController">
 <button type="button" ng-click="logout()" class="btn btn-danger pull-right">Log Out</button>
-<span ng-show="message.text" class="bg-danger panel panel-danger">{{message.text}}</span>
+<span ng-show="message.text" ng-cloak class="bg-danger panel panel-danger">{{message.text}}</span>
 
 <h3>Add new</h3>
 

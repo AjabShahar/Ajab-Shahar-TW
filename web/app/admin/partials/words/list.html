@@ -35,7 +35,7 @@
             <td><input ng-model="search.meaning" class="form-control"><br></td>
             <td><input ng-model="search.publish" class="form-control"><br></td>
         </tr>
-        <tr ng-repeat="word in words | orderBy:'wordOrPhrase'|  filter:search">
+        <tr ng-cloak ng-repeat="word in words | orderBy:'wordOrPhrase'|  filter:search">
             <td>{{word.wordOrPhrase}}</td>
             <td>{{word.meaning}}</td>
             <td>{{word.publish}}</td>

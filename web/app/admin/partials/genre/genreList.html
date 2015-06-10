@@ -24,7 +24,7 @@
             <td><input ng-model="search.english" class="form-control"><br></td>
             <td><input ng-model="search.original" class="form-control"><br></td>
         </tr>
-        <tr ng-repeat="genre in genres | orderBy:'english' | filter:search">
+        <tr ng-cloak ng-repeat="genre in genres | orderBy:'english' | filter:search">
             <td>{{genre.english}}</td>
             <td>{{genre.original}}</td>
             <td><a href="genreDetails.html?id={{genre.id}}" class="btn btn-info">Edit</a></td>

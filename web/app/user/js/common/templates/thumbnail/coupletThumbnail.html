@@ -5,12 +5,12 @@
         </div>
 
         <div class="thumbnailDesc" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
-            <h3 class="selected">{{title}}..</h3>
-            <small>{{englishTranslationText}}</small>
+            <h3 class="selected" ng-cloak>{{title}}..</h3>
+            <small ng-cloak>{{englishTranslationText}}</small>
 
             <div ng-show="shouldShowDetails" class='thumbnailDetails'>
                 <div class='categoryDetails'>
-                    <small class="categoryName">{{categoryName | uppercase}}</small>
+                    <small class="categoryName" ng-cloak>{{categoryName | uppercase}}</small>
                 </div>
             </div>
         </div>

@@ -4,9 +4,9 @@
     </div>
     <div class="bubble" ng-click="open('{{id}}')">
         <div class="summary" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
-            <h3 class="title">{{title}}</h3>
+            <h3 class="title" ng-cloak>{{title}}</h3>
 
-            <h3 class="singers">{{verb}} {{ speaker.name }}</h3>
+            <h3 class="singers" ng-cloak>{{verb}} {{ speaker.name }}</h3>
 
             <div ng-show="shouldShowDetails" class='thumbnailDetails toggleBySlide'>
                 <div class='footer'>
