@@ -19,7 +19,7 @@ describe("Thumbnail model", function () {
     });
 
     it("should construct song thumbnail model from song summary representation", function () {
-        var songThumbnail = new AjabShahar.ThumbnailObject(song, "song");
+        var songThumbnail = new AjabShahar.ThumbnailObject(test_thumbnail_song, "song");
 
         expect(songThumbnail.type).toBe("song");
         expect(songThumbnail.thumbnailImg).toBe("http://3.bp.blogspot.com/-kwpgiMcXc24/TcOcowo6mTI/AAAAAAAAA9w/uNt6ZsJadDg/s1600/parvathy_baul03.jpg");
@@ -32,6 +32,18 @@ describe("Thumbnail model", function () {
 
         expect(songThumbnail.secondaryVerbPeople.verb).toBe("Poet");
         expect(songThumbnail.secondaryVerbPeople.people).toBe("Roshik");
+
+    });
+
+    it("should construct song thumbnail model with a proper 'sings' or 'sing' verb based on the number of singers for song" , function () {
+        var songThumbnail = new AjabShahar.ThumbnailObject(test_thumbnail_song, "song");
+        expect(songThumbnail.verbPeople.verb).toBe("sing","multiple singers");
+
+        songThumbnail = new AjabShahar.ThumbnailObject(test_thumbnail_song2, "song");
+        expect(songThumbnail.verbPeople.verb).toBe("sing","multiple singers who sing together");
+
+        songThumbnail = new AjabShahar.ThumbnailObject(test_songRepresentation[0], "song","single singer");
+        expect(songThumbnail.verbPeople.verb).toBe("sings");
 
     });
 
@@ -203,11 +215,51 @@ var test_songRepresentation = [
         "mediaCategory": null
     }
 ];
-var song = {
+var test_thumbnail_song = {
     "id": 1,
     "englishTranslationTitle": "For a few days,O Heart",
     "englishTransliterationTitle": "Kichhu din mone mone",
-    "singers": [],
+    "singers": [
+        {
+            "id": 7,
+            "name": "Parvathy Baul",
+            "hindiName": "",
+            "primaryOccupation": ""
+        },
+        {
+            "id": 26,
+            "name": "Badar Muneer",
+            "hindiName": "",
+            "primaryOccupation": ""
+        }
+    ],
+    "poet": [
+        {
+            "id": 2,
+            "name": "Roshik",
+            "hindiName": "",
+            "primaryOccupation": null
+        }
+    ],
+    "duration": "5:45",
+    "category": "Songs",
+    "thumbnailUrl": "http://3.bp.blogspot.com/-kwpgiMcXc24/TcOcowo6mTI/AAAAAAAAA9w/uNt6ZsJadDg/s1600/parvathy_baul03.jpg",
+    "publish": true,
+    "contentFormat": "video"
+};
+
+var test_thumbnail_song2 = {
+    "id": 1,
+    "englishTranslationTitle": "For a few days,O Heart",
+    "englishTransliterationTitle": "Kichhu din mone mone",
+    "singers": [
+        {
+            "id": 7,
+            "name": "Parvathy Baul & lalaji",
+            "hindiName": "",
+            "primaryOccupation": ""
+        }
+    ],
     "poet": [
         {
             "id": 2,

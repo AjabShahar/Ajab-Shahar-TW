@@ -42,31 +42,6 @@ var songDetailsController = function ($scope, $location, songsContentService) {
         carouselOpen = !carouselOpen;
     };
 
-    var getSongsLyrics = function (song) {
-        $scope.songText.songTextContents = [];
-        $scope.songText.openingCouplets = [];
-        $scope.refrainOriginal = song.songText.refrainOriginal;
-        $scope.refrainTranslation = song.songText.refrainEnglishTranslation;
-        $scope.refrainTransliteration = song.songText.refrainEnglishTransliteration;
-
-
-        sortedSongTextComponents = _.sortBy(song.songText.songTextContents, function (songTextComponent) {
-            return songTextComponent.sequenceNumber;
-        });
-        for (index in sortedSongTextComponents) {
-            var item = sortedSongTextComponents[index];
-            $scope.songText.songTextContents.push(item);
-        }
-
-        sortedSongTextComponents = _.sortBy(song.songText.openingCouplets, function (openingCouplet) {
-            return openingCouplet.sequenceNumber;
-        });
-        for (index in sortedSongTextComponents) {
-            var item = sortedSongTextComponents[index];
-            $scope.songText.openingCouplets.push(item);
-        }
-    };
-
     $scope.selectThumbnail = function (thumbnail) {
         if(thumbnail != null){
             songsContentService.getSong(thumbnail.id).success(function (response) {
@@ -74,8 +49,6 @@ var songDetailsController = function ($scope, $location, songsContentService) {
                 $scope.selectedSong = response || {};
 
                 initialiseMainTitles();
-                getSongsLyrics($scope.selectedSong)
-
             });
         }
     };

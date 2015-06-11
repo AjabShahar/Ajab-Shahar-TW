@@ -19,9 +19,10 @@ AjabShahar.ThumbnailObject = function (contentItem, type) {
         if (!_.isEmpty(song)) {
             self.type = type;
             self.id = song.id;
+            var singersAsString = getSingersFromSong(song.singers)
             self.verbPeople = {
-                verb: getVerbForSong(song),
-                people: getSingersFromSong(song.singers)
+                people: singersAsString,
+                verb: getVerbForSong(singersAsString)
             };
             self.duration = song.duration;
             self.contentCategory = song.songCategory ? song.songCategory.name : "song";
@@ -101,9 +102,9 @@ AjabShahar.ThumbnailObject = function (contentItem, type) {
         return "";
     };
 
-    var getVerbForSong = function (song) {
-        if (!_.isEmpty(song.singers)) {
-            return song.singers.length > 1 ? "sing" : "sings";
+    var getVerbForSong = function (singersAsString) {
+        if (!_.isEmpty(singersAsString)) {
+            return singersAsString.indexOf('&') > 0 ? "sing" : "sings";
         }
         return "";
     };

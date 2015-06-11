@@ -42,15 +42,20 @@ thumbnailModule.directive("songThumbnail", function ($timeout) {
                 setTitles();
             });
 
+            var containsAmpersand = function(singer) {
+                return  singer.name.indexOf('&') > 0;
+            };
+
             $scope.init = function () {
-                if ($scope.singers == null || $scope.singers.length <= 0) {
-                    $scope.multipleSingers = false;
-                    $scope.noun = "sings";
+                if(!_.isEmpty($scope.singers) && ($scope.singers.length > 1 || containsAmpersand($scope.singers[0])) ){
+                    $scope.multipleSingers = true;
+                    $scope.noun = "sing";
+                    setTitles();
                     return;
                 }
-                $scope.multipleSingers = true;
-                $scope.noun = "sing";
-                setTitles();
+                $scope.multipleSingers = false;
+                $scope.noun = "sings";
+                return;
             };
 
             $scope.showDetails = function () {
