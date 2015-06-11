@@ -37,6 +37,10 @@ ul {
   list-style: none;
 }
 
+.link a{
+  color: $color-link
+}
+
 .active {
     color: $color-active-link;
 }

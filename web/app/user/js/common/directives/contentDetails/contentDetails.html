@@ -30,9 +30,9 @@
             <!--main content-->
             <!--text content-->
             <div class="text-container" ng-if="hasText()">
-                <span class="header-text" bind-dynamic-html="content.info"></span>
+                <span class="header-text link" bind-dynamic-html="content.info"></span>
 
-                <div class="text-content">
+                <div class="text-content link">
                     <div id="text-section" ng-repeat="textSection in content.textSections" >
                         <div bind-dynamic-html="textSection.text" ng-class="{couplet: textSection.type === 'couplet'}"></div>
                         <div ng-show="textSection.poet"><a href="" ng-bind="textSection.poet"></a></div>
@@ -133,7 +133,7 @@
                     </ul>
                 </div>
 
-                <div class="toggleBySlide about-info about-text" bind-dynamic-html="content.about"
+                <div class="toggleBySlide about-info about-text link" bind-dynamic-html="content.about"
                      ng-show="isAboutVisible"></div>
                 <!--end of toggle, about-->
 
