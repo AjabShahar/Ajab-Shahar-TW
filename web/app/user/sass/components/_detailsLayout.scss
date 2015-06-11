@@ -52,6 +52,9 @@
                     color: $dark-grey;
                     padding-top: 15px;
                     font-weight: 300;
+                    a {
+                        color: $pink;
+                    }
                 }
 
 
@@ -164,6 +167,9 @@
             font-weight: 300;
             overflow: auto;
             line-height: 21px;
+            a {
+                color: $pink;
+            }
         }
 
 
