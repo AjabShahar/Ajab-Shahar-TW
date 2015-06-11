@@ -212,7 +212,7 @@
         cursor: pointer;
         font-family: 'Merriweather';
         font-size: $medium;
-        text-transform: none;
+        text-transform: capitalize;
         &:hover {
             color: $pink;
         }

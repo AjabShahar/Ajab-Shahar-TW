@@ -1,4 +1,4 @@
-angular.module('utilities', [])
+angular.module('utilities')
   .filter('titleCase', function() {
     return function(input) {
       input = input || '';
