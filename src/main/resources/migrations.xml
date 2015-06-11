@@ -197,7 +197,6 @@
     <changeSet id="93" author="CHANAKYA">
         <comment>Adding new occupations</comment>
         <sql>
-
             insert into category(name,category_type)
                 (select 'Bhakti Poet', 'person' WHERE NOT EXISTS (select 1  from category where name='Bhakti Poet' AND category_type='person'));
             insert into category(name,category_type)
@@ -350,6 +349,21 @@
                 (select 'Musician', 'person' WHERE NOT EXISTS (select 1  from category where name='Musician' AND category_type='person'));
             insert into category(name,category_type)
                 (select 'Musicians', 'person' WHERE NOT EXISTS (select 1  from category where name='Musicians' AND category_type='person'));
+        </sql>
+    </changeSet>
+    <changeSet id="94" author="CHANAKYA">
+        <comment>Adding meta occupations</comment>
+        <sql>
+            insert into category(name,category_type)
+            (select '_Poets', 'person' WHERE NOT EXISTS (select 1  from category where name='_Poets' AND category_type='person'));
+            insert into category(name,category_type)
+            (select '_Singers', 'person' WHERE NOT EXISTS (select 1  from category where name='_Singers' AND category_type='person'));
+            insert into category(name,category_type)
+            (select '_Writers', 'person' WHERE NOT EXISTS (select 1  from category where name='_Writers' AND category_type='person'));
+            insert into category(name,category_type)
+            (select '_Artists', 'person' WHERE NOT EXISTS (select 1  from category where name='_Artists' AND category_type='person'));
+            insert into category(name,category_type)
+            (select '_Other', 'person' WHERE NOT EXISTS (select 1  from category where name='_Other' AND category_type='person'));
         </sql>
     </changeSet>
 </databaseChangeLog>
