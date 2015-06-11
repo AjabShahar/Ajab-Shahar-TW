@@ -1,28 +1,30 @@
 /********************************** For text content in lightboxes  ********************************************/
-.text-content {
-
-   p {
-    margin-top: 0.8em;
-    font-family: 'Merriweather';
-    font-size: $medium;
-    line-height: 24px;
-    font-weight: 300;
-    color: $color-highlight-text;
-    }
-
-     & > div:first-of-type {
-        p::first-letter {
-          font-size: $extra-large;
-          font-weight: 400;
-          line-height: 27px;
-          color: $dark-grey;
+.media-introduction {
+    .text-content {
+       p {
+            margin-top: 0.8em;
+            font-family: 'Merriweather';
+            font-size: $medium;
+            line-height: 24px;
+            font-weight: 300;
+            color: $color-highlight-text;
         }
-    }
+
+        & > div:first-of-type {
+           p::first-letter {
+              font-size: $extra-large;
+              font-weight: 400;
+              line-height: 27px;
+              color: $dark-grey;
+           }
+        }
 
     a {
         color: $pink;
     }
 
+
+    }
 
 }
 
@@ -45,11 +47,13 @@
     color: $pink;
   }
 
-  #text-section:first-child:first-letter {
-    font-size: $extra-large;
-    font-weight: 400;
-    line-height: 27px;
-    color: $color-highlight-text;
+  #text-section:first-child{
+    div > p:first-child:first-letter {
+        font-size: $extra-large;
+        font-weight: 400;
+        line-height: 27px;
+        color: $color-highlight-text;
+    }
   }
   .couplet, .couplet p {
     font-family: 'Merriweather', serif;
