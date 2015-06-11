@@ -99,7 +99,7 @@ reflectionsAdminApp.controller('reflectionDetailsController', ['$scope', '$windo
         };
 
         var getReflectionType = function () {
-            return ($scope.reflection.soundCloudId != null ? 'audio' : ($scope.reflection.youtubeVideoId != null ? 'video' : ($scope.reflection.reflectionTranscripts && $scope.reflection.reflectionTranscripts.length > 0 ? 'text' : '')));
+            return ($scope.reflection.soundCloudId != null ? 'audio' : ($scope.reflection.youtubeVideoId != null ? 'video' : (!$scope.reflection.about ? 'text' : 'video')));
         };
 
         init();

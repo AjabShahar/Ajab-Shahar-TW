@@ -77,15 +77,15 @@
                          item-label="name" tick-property="ticked" output-model="reflection.people"></div>
                 </div>
 
-                <div class="row">
+                <div class="row"
+                     ng-init='reflectionTypes=[{ "value": "audio", "text": "Audio" }, { "value": "video", "text": "Video" }, { "value": "text", "text": "Text" }]'>
                     <div class="form-group col-sm-2">
                         <label>Reflection Type</label>
                     </div>
                     <div class="form-group col-sm-2">
-                        <select name="reflection" ng-model="reflection.type" class="form-control">
-                            <option value="audio">Audio</option>
-                            <option value="video">Video</option>
-                            <option value="text">Text</option>
+                        <select name="reflection" ng-model="reflection.type"
+                                ng-init="reflection.type = reflection.type|| reflectionTypes[1].value" class="form-control"
+                                ng-options="reflectionTypes.value as reflectionTypes.text for reflectionTypes in reflectionTypes">
                         </select>
                     </div>
                 </div>
@@ -197,7 +197,6 @@
                 <div>
                     <button type="submit" ng-click="saveData()" class="btn btn-primary btn-lg">Save</button>
                 </div>
-
             </form>
         </div>
     </div>
