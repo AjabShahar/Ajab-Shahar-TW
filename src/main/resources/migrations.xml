@@ -194,4 +194,162 @@
             ALTER TABLE word_introduction ALTER COLUMN word_intro_english TYPE text;
         </sql>
     </changeSet>
+    <changeSet id="93" author="CHANAKYA">
+        <comment>Adding new occupations</comment>
+        <sql>
+
+            insert into category(name,category_type)
+                (select 'Bhakti Poet', 'person' WHERE NOT EXISTS (select 1  from category where name='Bhakti Poet' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Sufi Poet', 'person' WHERE NOT EXISTS (select 1  from category where name='Sufi Poet' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Baul Poet', 'person' WHERE NOT EXISTS (select 1  from category where name='Baul Poet' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Mystic Poet', 'person' WHERE NOT EXISTS (select 1  from category where name='Mystic Poet' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Classical Singer', 'person' WHERE NOT EXISTS (select 1  from category where name='Classical Singer' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Folk Singer', 'person' WHERE NOT EXISTS (select 1  from category where name='Folk Singer' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Baul Singer', 'person' WHERE NOT EXISTS (select 1  from category where name='Baul Singer' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Waai Singer', 'person' WHERE NOT EXISTS (select 1  from category where name='Waai Singer' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Thumri Singer', 'person' WHERE NOT EXISTS (select 1  from category where name='Thumri Singer' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Qawwal', 'person' WHERE NOT EXISTS (select 1  from category where name='Qawwal' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Sufi Singer', 'person' WHERE NOT EXISTS (select 1  from category where name='Sufi Singer' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Bhakti Singer', 'person' WHERE NOT EXISTS (select 1  from category where name='Bhakti Singer' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Writer', 'person' WHERE NOT EXISTS (select 1  from category where name='Writer' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Scholar', 'person' WHERE NOT EXISTS (select 1  from category where name='Scholar' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Researcher', 'person' WHERE NOT EXISTS (select 1  from category where name='Researcher' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Fiction Writer', 'person' WHERE NOT EXISTS (select 1  from category where name='Fiction Writer' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Translator', 'person' WHERE NOT EXISTS (select 1  from category where name='Translator' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Contemporary Poet', 'person' WHERE NOT EXISTS (select 1  from category where name='Contemporary Poet' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Journalist', 'person' WHERE NOT EXISTS (select 1  from category where name='Journalist' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Artist', 'person' WHERE NOT EXISTS (select 1  from category where name='Artist' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Painter', 'person' WHERE NOT EXISTS (select 1  from category where name='Painter' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Photographer', 'person' WHERE NOT EXISTS (select 1  from category where name='Photographer' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Filmmaker', 'person' WHERE NOT EXISTS (select 1  from category where name='Filmmaker' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Designer', 'person' WHERE NOT EXISTS (select 1  from category where name='Designer' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Animator', 'person' WHERE NOT EXISTS (select 1  from category where name='Animator' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Visual Artist', 'person' WHERE NOT EXISTS (select 1  from category where name='Visual Artist' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Illustrator', 'person' WHERE NOT EXISTS (select 1  from category where name='Illustrator' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Graphic Novelist', 'person' WHERE NOT EXISTS (select 1  from category where name='Graphic Novelist' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Philosopher', 'person' WHERE NOT EXISTS (select 1  from category where name='Philosopher' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Folklorist', 'person' WHERE NOT EXISTS (select 1  from category where name='Folklorist' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Thinker', 'person' WHERE NOT EXISTS (select 1  from category where name='Thinker' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Social Activist', 'person' WHERE NOT EXISTS (select 1  from category where name='Social Activist' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Social Worker', 'person' WHERE NOT EXISTS (select 1  from category where name='Social Worker' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Ngo Worker', 'person' WHERE NOT EXISTS (select 1  from category where name='Ngo Worker' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Politician', 'person' WHERE NOT EXISTS (select 1  from category where name='Politician' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Political Worker', 'person' WHERE NOT EXISTS (select 1  from category where name='Political Worker' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'CCultural Activist', 'person' WHERE NOT EXISTS (select 1  from category where name='CCultural Activist' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Dancer', 'person' WHERE NOT EXISTS (select 1  from category where name='Dancer' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Media Artist', 'person' WHERE NOT EXISTS (select 1  from category where name='Media Artist' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Theatre Person', 'person' WHERE NOT EXISTS (select 1  from category where name='Theatre Person' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Theatre Director', 'person' WHERE NOT EXISTS (select 1  from category where name='Theatre Director' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Actor', 'person' WHERE NOT EXISTS (select 1  from category where name='Actor' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Performing Artist', 'person' WHERE NOT EXISTS (select 1  from category where name='Performing Artist' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Educator', 'person' WHERE NOT EXISTS (select 1  from category where name='Educator' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Educationist', 'person' WHERE NOT EXISTS (select 1  from category where name='Educationist' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Teacher', 'person' WHERE NOT EXISTS (select 1  from category where name='Teacher' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'School Teacher', 'person' WHERE NOT EXISTS (select 1  from category where name='School Teacher' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'College Professor', 'person' WHERE NOT EXISTS (select 1  from category where name='College Professor' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Farmer', 'person' WHERE NOT EXISTS (select 1  from category where name='Farmer' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Fruit Seller', 'person' WHERE NOT EXISTS (select 1  from category where name='Fruit Seller' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Shop Keeper', 'person' WHERE NOT EXISTS (select 1  from category where name='Shop Keeper' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Paan Wallah', 'person' WHERE NOT EXISTS (select 1  from category where name='Paan Wallah' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Weaver', 'person' WHERE NOT EXISTS (select 1  from category where name='Weaver' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Village Elder', 'person' WHERE NOT EXISTS (select 1  from category where name='Village Elder' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Ex-Bureaucrat', 'person' WHERE NOT EXISTS (select 1  from category where name='Ex-Bureaucrat' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Bureaucrat', 'person' WHERE NOT EXISTS (select 1  from category where name='Bureaucrat' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Institution Builder', 'person' WHERE NOT EXISTS (select 1  from category where name='Institution Builder' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Home Maker', 'person' WHERE NOT EXISTS (select 1  from category where name='Home Maker' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Professional', 'person' WHERE NOT EXISTS (select 1  from category where name='Professional' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Entrepreneur', 'person' WHERE NOT EXISTS (select 1  from category where name='Entrepreneur' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Spiritual Leader', 'person' WHERE NOT EXISTS (select 1  from category where name='Spiritual Leader' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Spiritual Practitioner', 'person' WHERE NOT EXISTS (select 1  from category where name='Spiritual Practitioner' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Practitioner', 'person' WHERE NOT EXISTS (select 1  from category where name='Practitioner' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Seeker', 'person' WHERE NOT EXISTS (select 1  from category where name='Seeker' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Guru', 'person' WHERE NOT EXISTS (select 1  from category where name='Guru' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Spiritual Guide', 'person' WHERE NOT EXISTS (select 1  from category where name='Spiritual Guide' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Spiritual Figure', 'person' WHERE NOT EXISTS (select 1  from category where name='Spiritual Figure' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Religious Leader', 'person' WHERE NOT EXISTS (select 1  from category where name='Religious Leader' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Co-Traveller', 'person' WHERE NOT EXISTS (select 1  from category where name='Co-Traveller' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Yatri', 'person' WHERE NOT EXISTS (select 1  from category where name='Yatri' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Singers', 'person' WHERE NOT EXISTS (select 1  from category where name='Singers' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Sufi Singers', 'person' WHERE NOT EXISTS (select 1  from category where name='Sufi Singers' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Waai Singers', 'person' WHERE NOT EXISTS (select 1  from category where name='Waai Singers' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Folk Singers', 'person' WHERE NOT EXISTS (select 1  from category where name='Folk Singers' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Musician', 'person' WHERE NOT EXISTS (select 1  from category where name='Musician' AND category_type='person'));
+            insert into category(name,category_type)
+                (select 'Musicians', 'person' WHERE NOT EXISTS (select 1  from category where name='Musicians' AND category_type='person'));
+        </sql>
+    </changeSet>
 </databaseChangeLog>
