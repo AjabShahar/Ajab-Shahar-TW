@@ -48,6 +48,7 @@ module.exports = function (config) {
             '../test/unit/**/*.js',
             'user/js/people/peopleApp.js',
             'user/js/people/**/*.js',
+            'user/js/people/*.js',
             'user/js/common/directives/carouselSupport/carousel.html',
             'user/js/common/directives/contentDetails/contentDetails.html'
         ],

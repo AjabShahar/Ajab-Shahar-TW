@@ -72,13 +72,12 @@
                                     <span class='numeric-count'
                                           ng-if="numberOfPeople == 1">{{numberOfPeople}} PERSON</span>
                                     <span class='numeric-count'
-                                          ng-if="numberOfPeople > 1">{{numberOfPeople}} PEOPLE</span>
+                                          ng-if="numberOfPeople != 1">{{numberOfPeople}} PEOPLE</span>
                                 </div>
                                 <div class="lower">
                                     <ul class='alphabets'>
-                                        <li ng-repeat="alphabetFilter in ['ALL','A','B','C','D','E','F','G','H','I','J','K','L','M','N',
-                                            'O','P','Q','R','S','T','U','V','W','X','Y','Z']">
-                                            <a ng-cloak>{{alphabetFilter}}</a>
+                                        <li ng-repeat="letter in alphabetFilters" ng-click="applyAlphabetFilter(letter)">
+                                            <a ng-cloak>{{letter}}</a>
                                         </li>
                                     </ul>
                                 </div>

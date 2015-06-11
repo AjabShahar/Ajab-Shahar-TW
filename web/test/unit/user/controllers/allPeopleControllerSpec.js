@@ -30,6 +30,30 @@ describe("all people controller", function () {
         expect(scope.people[0].profile).toBe("profile");
     });
 
+    it("should apply alphabet filter",function(){
+        httpBackend.when('GET', '/api/people').respond(response);
+        httpBackend.flush();
+
+        scope.applyAlphabetFilter("R");
+
+        expect(scope.numberOfPeople).toBe(1);
+        expect(scope.people[0].name).toBe("Roshik");
+        expect(scope.people[0].occupations.length).toBe(1);
+        expect(scope.people[0].thumbnailImg).toBe(null);
+        expect(scope.people[0].profile).toBe("profile");
+    });
+
+    it("should clear alphabet filter",function(){
+        httpBackend.when('GET', '/api/people').respond(response);
+        httpBackend.flush();
+
+        scope.applyAlphabetFilter("ALL");
+
+        expect(scope.numberOfPeople).toBe(2);
+        expect(scope.people[0].name).toBe("Roshik");
+        expect(scope.people[1].name).toBe("Parvathy Baul");
+    });
+
     var response = {
         people: [
             {
