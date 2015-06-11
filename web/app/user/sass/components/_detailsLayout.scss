@@ -1,6 +1,4 @@
-.about-text {
-  text-align: left;
-}
+
 .details {
     background: transparent url(/user/img/songs/song_detail_bg_tiledY.jpg) left top;
     background-repeat: no-repeat repeat;
@@ -190,6 +188,12 @@
               color: #666;
               font-weight: 200;
               line-height: 20px;
+              padding: 10px 5px;
+            }
+            &:first-of-type {
+                & > li:first-of-type {
+                    padding-left: 0 !important;
+                }
             }
           }
 

@@ -86,10 +86,9 @@
 
                 <!--toggle, about sections -->
                 <div class="video-options">
-                    <ul class="slide-info">
+                    <ul class="slide-info" ng-if="content.about">
                         <li>
                             <a href="javascript:void(0)" class="about-link" ng-click="toggleAbout()"
-                               ng-if="content.about"
                                ng-class="isAboutVisible ? 'active': ''">about</a>
                         </li>
                     </ul>
