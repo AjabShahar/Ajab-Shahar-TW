@@ -23,7 +23,6 @@
                                class="active">explore</a>
                             <ul class="child-list">
                                 <li ng-show="contentAvailable('song')"><a href="javascript:void(0)" ng-click="applyFilter('song')" ng-class="{active:currentSelection==='song'}">songs</a></li>
-                                <li ng-show="contentAvailable('word')"><a href="javascript:void(0)" ng-click="applyFilter('word')" ng-class="{active:currentSelection==='word'}">words</a></li>
                                 <li ng-show="contentAvailable('reflection')"><a href="javascript:void(0)" ng-click="applyFilter('reflection')" ng-class="{active:currentSelection==='reflection'}">reflections</a></li>
 
                                 <li><a href="javascript:void(0)" ng-click="clearFilters()" ng-class="{active:!currentSelection}">all</a></li>
@@ -38,7 +37,7 @@
                     <div class='grid-wrapper' >
                         <div id="container" masonry preserve-order height-offset="150">
                             <!--<ul class="media-list" height-offset="0">-->
-                            <div ng-repeat="thumbnail in thumbnails | filter : {type: currentSelection }" class="media masonry-brick">
+                            <div ng-repeat="thumbnail in thumbnails | filter : contentTypeFilter" class="media masonry-brick">
                                 <content-thumbnail content="thumbnail" format="format" ng-click="selectThumbnail(thumbnail)" keep-expanded="true"
                                                    current-index="{{$index}}"></content-thumbnail>
                             </div>
