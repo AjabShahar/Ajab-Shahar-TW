@@ -42,5 +42,9 @@ $desktop: new-breakpoint(min-width 1025px);
     float: left;
     background: red;
   }*/
+  &:after {
+    content: "";
+    padding-bottom: 6em;
+  }
 }
 
