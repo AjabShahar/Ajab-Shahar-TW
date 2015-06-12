@@ -138,7 +138,7 @@ AjabShahar.ThumbnailObject = function (contentItem, type) {
     };
 
     self.showPrimaryVerbPeopleAlways = function () {
-        return !(self.type === 'song' && self.verbPeople.verb.toLowerCase() === 'sing') || self.type === 'word';
+        return self.type === 'song' || self.type === 'word';
     };
 
     self.showPrimaryVerbPeopleInDetails = function () {

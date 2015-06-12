@@ -12,12 +12,6 @@
 
             <div ng-hide="!shouldShowDetails" class='thumbnailDetails toggleBySlide'>
 
-                <div>
-                    <div class="singers" ng-show="content.showPrimaryVerbPeopleInDetails()">
-                        <small ng-cloak>{{content.verbPeople.verb}} {{content.verbPeople.people|uppercase}}</small>
-                    </div>
-                </div>
-
                 <div class="desc" ng-if="content.description">
                     <small ng-cloak>{{content.description}}</small>
                 </div>
