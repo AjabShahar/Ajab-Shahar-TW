@@ -38,7 +38,6 @@
                     </div>
                 </div>
 
-
                 <div class="row">
                     <div class="form-group col-sm-2">
                         <label>Name of the speaker</label>
@@ -69,15 +68,7 @@
                     </div>
                 </div>
 
-                <div class="row form-group">
-                    <div class="col-sm-2">
-                        <label>Related people</label>
-                    </div>
-                    <div class="col-sm-2" multi-select input-model="people" button-label="name"
-                         item-label="name" tick-property="ticked" output-model="reflection.people"></div>
-                </div>
-
-                <div class="row"
+                <div class="row form-group"
                      ng-init='reflectionTypes=[{ "value": "audio", "text": "Audio" }, { "value": "video", "text": "Video" }, { "value": "text", "text": "Text" }]'>
                     <div class="form-group col-sm-2">
                         <label>Reflection Type</label>
@@ -89,34 +80,6 @@
                         </select>
                     </div>
                 </div>
-
-                <div class="row form-group" ng-show="reflection.type == 'text'">
-                    <div class="col-sm-2">
-                        <label>Info</label>
-                    </div>
-                    <div class="col-sm-8">
-                        <text-angular name="infoText" ng-model="reflection.info"></text-angular>
-                    </div>
-                </div>
-
-                <div class="row form-group" ng-show="reflection.type == 'text'">
-                    <div class="col-sm-2">
-                        <label>Reflection Transcript - English</label>
-                    </div>
-                    <div class="col-sm-8">
-                        <text-angular name="reflectionTranscriptEnglish" ng-model="reflection.reflectionTranscripts[0].englishTranscript"></text-angular>
-                    </div>
-                </div>
-
-                <div class="row form-group" ng-show="reflection.type == 'text'">
-                    <div class="col-sm-2">
-                        <label>Reflection Transcript - Original</label>
-                    </div>
-                    <div class="col-sm-8">
-                        <text-angular name="reflectionTranscriptOriginal" ng-model="reflection.reflectionTranscripts[0].hindiTranscript"></text-angular>
-                    </div>
-                </div>
-
 
                 <div class="row" ng-show="reflection.type == 'audio'">
                     <div class="form-group col-sm-2">
@@ -154,9 +117,36 @@
                     </div>
                 </div>
 
+                <div class="row form-group" ng-show="reflection.type == 'text'">
+                    <div class="col-sm-2">
+                        <label>Info</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <text-angular name="infoText" ng-model="reflection.info"></text-angular>
+                    </div>
+                </div>
+
+                <div class="row form-group" ng-show="reflection.type == 'text'">
+                    <div class="col-sm-2">
+                        <label>Reflection Transcript - English</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <text-angular name="reflectionTranscriptEnglish" ng-model="reflection.reflectionTranscripts[0].englishTranscript"></text-angular>
+                    </div>
+                </div>
+
+                <div class="row form-group" ng-show="reflection.type == 'text'">
+                    <div class="col-sm-2">
+                        <label>Reflection Transcript - Original</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <text-angular name="reflectionTranscriptOriginal" ng-model="reflection.reflectionTranscripts[0].hindiTranscript"></text-angular>
+                    </div>
+                </div>
+
                 <div class="row form-group">
                     <div class="col-sm-2">
-                        <label>Words</label>
+                        <label>Related Words</label>
                     </div>
                     <div class="col-sm-2" multi-select input-model="words" button-label="wordTransliteration"
                          item-label="wordTransliteration" tick-property="ticked" output-model="reflection.words"></div>
@@ -168,6 +158,14 @@
                     </div>
                     <div class="col-sm-8 rowWiseSelect" multi-select input-model="songs" button-label="menuTitle"
                          item-label="menuTitle" tick-property="ticked" output-model="reflection.songs"></div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label>Related people</label>
+                    </div>
+                    <div class="col-sm-2" multi-select input-model="people" button-label="name"
+                         item-label="name" tick-property="ticked" output-model="reflection.people"></div>
                 </div>
 
                 <div class="row">
