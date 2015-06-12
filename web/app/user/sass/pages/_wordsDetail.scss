@@ -11,11 +11,11 @@ $lower-resolution: new-breakpoint(max-width 1024px);
 
   .page-header {
     height: 150px;
-    display: table;
     .logo-container {
-        vertical-align: top;
-        display: table-cell;
         padding-left: 6px;
+        padding-top: 5px;
+        float: left;
+
      }
      &> a {
 
@@ -30,8 +30,11 @@ $lower-resolution: new-breakpoint(max-width 1024px);
         margin-top: 26px;
         color: #4D4D4D;
         font-weight: 300;
-        display: table-cell;
+        display: flex;
         line-height: 24px;
+        height: 95px;
+        align-items: center;
+        margin: 0px 17px;
 
       @include media($lower-resolution) {
         width: 55%;
