@@ -11,17 +11,27 @@ $lower-resolution: new-breakpoint(max-width 1024px);
 
   .page-header {
     height: 150px;
-    .logo-container > a {
-      top: 5px;
-      position: relative;
-    }
+    display: table;
+    .logo-container {
+        vertical-align: top;
+        display: table-cell;
+        padding-left: 6px;
+     }
+     &> a {
+
+        top: 5px;
+        position: relative;
+     }
+
 
     .page-title {
-      width: 60%;
-      text-align: left;
-      margin-top: 17px;
-      color: $dark-grey;
-      font-weight: 300;
+        width: 60%;
+        text-align: left;
+        margin-top: 26px;
+        color: #4D4D4D;
+        font-weight: 300;
+        display: table-cell;
+        line-height: 24px;
 
       @include media($lower-resolution) {
         width: 55%;
@@ -33,37 +43,21 @@ $lower-resolution: new-breakpoint(max-width 1024px);
 
       }
 
-      .related-words {
-        width: auto;
-        margin-top: 10px;
+      .header-translit-text {
+        color: $dark-grey;
+        white-space: nowrap;
         font-size: $medium;
         font-weight: 300;
         font-family: 'merriweather';
-
-        .header-translit-text {
-          color: $dark-grey;
-        }
-        .header-translate-text {
-          color: $light-grey;
-          font-style: italic;
-        }
-
-        dl {
-          margin: 4px auto;
-          clear: both;
-          display: block;
-
-          dt {
-            display: inline-block;
-
-            p {
-              display: inline-block;
-              line-height: 19px;
-            }
-          }
-
-        }
       }
+      .header-translate-text {
+        color: $light-grey;
+        font-style: italic;
+        display: inline-block;
+        white-space: nowrap;
+      }
+
+
 
     }
   }

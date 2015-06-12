@@ -1,24 +1,25 @@
 <div class="words-details header-with-carousel details">
-    <div class="page-header">
-        <div class="ajab-wrapper">
+    <div class="ajab-wrapper">
+        <div class="page-header">
+
             <div class="logo-container">
                 <a href="/words/#/featuredContent" target="_self">
                     <span class="page-logo">words</span>
                 </a>
             </div>
             <div class="page-title">
-                <span class="main" ng-bind="wordDetails.wordTransliteration"></span>
-                <span class="sub-main" ng-bind="wordDetails.wordTranslation"></span>
-                <div ng-cloak class="related-words">
-                    <dl>
-                        <dt ng-repeat="word in associatedWords">
-                        <p><span class="header-translit-text" ng-cloak>{{word.wordTransliteration}}</span></p>
-                        <p><span class="header-translate-text" ng-cloak>
-                            {{word.wordTranslation}}<span ng-hide="$last" class="comma-space">,  </span>
-                        </span></p>
-                        </dt>
-                    </dl>
-                </div>
+                <p>
+                    <span class="main" ng-bind="wordDetails.wordTransliteration"></span>
+                    <span class="sub-main" ng-bind="wordDetails.wordTranslation"></span>
+                    <span ng-repeat="word in associatedWords">
+                        <span class="header-translit-text" ng-cloak>{{word.wordTransliteration}}
+                            <span class="header-translate-text" ng-cloak>
+                                {{word.wordTranslation}}<span ng-hide="$last" class="comma-space">,  </span>
+                            </span>
+                        </span>
+
+                    </span>
+                </p>
             </div>
         </div>
     </div>
