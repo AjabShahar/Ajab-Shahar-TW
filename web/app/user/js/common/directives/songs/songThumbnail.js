@@ -43,11 +43,20 @@ thumbnailModule.directive("songThumbnail", function ($timeout) {
             });
 
             var containsAmpersand = function(singer) {
-                return  singer.name.indexOf('&') > 0;
+                if(!_.isEmpty(singer)){
+                    return  singer.indexOf('&') > 0;
+                }
+                return false;
             };
 
             $scope.init = function () {
-                if(!_.isEmpty($scope.singers) && ($scope.singers.length > 1 || containsAmpersand($scope.singers[0])) ){
+                if(!_.isEmpty($scope.singers) && $scope.singers.length > 1  ){
+                    $scope.multipleSingers = true;
+                    $scope.noun = "sing";
+                    setTitles();
+                    return;
+                }
+                else if(containsAmpersand($scope.singer)){
                     $scope.multipleSingers = true;
                     $scope.noun = "sing";
                     setTitles();
@@ -55,7 +64,11 @@ thumbnailModule.directive("songThumbnail", function ($timeout) {
                 }
                 $scope.multipleSingers = false;
                 $scope.noun = "sings";
-                return;
+                setTitles();
+            };
+
+            $scope.getSingers = function(){
+                return _.isEmpty($scope.singers)?$scope.singer :$scope.singers ;
             };
 
             $scope.showDetails = function () {
