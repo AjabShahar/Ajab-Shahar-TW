@@ -39,6 +39,10 @@
       font-size: $small;
       text-align: right;
       text-transform: uppercase;
+      bottom: -19px;
+      z-index: 100;
+      position: relative;
+
 
       .play-video-icon {
               background: url(/user/img/common/icons/gray_play.png) left 1px no-repeat;

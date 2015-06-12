@@ -44,17 +44,18 @@
       }
 
       &:after {
-        background: url(/user/img/common/directives/thumbnail/bubble-250-bottom_new.png) scroll repeat-y top left;
+        background: url(/user/img/common/directives/thumbnail/bubble-250-bottom.png) scroll repeat-y top left;
         width: 270px;
-        height: 15px;
+        height: 30px;
         content: " ";
         position: absolute;
-        bottom: -15px;
+        bottom: -30px;
         left: 0;
       }
 
       .categoryName{
         color: $light-grey;
+        
       }
     }
 
