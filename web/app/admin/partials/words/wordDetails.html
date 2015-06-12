@@ -63,14 +63,6 @@
                          item-label="menuTitle" tick-property="ticked" output-model="formInfo.songs"></div>
                 </div>
 
-                <div class="row form-group">
-                    <div class="col-sm-2">
-                        <label>People</label>
-                    </div>
-                    <div name ="people" class="col-sm-2" multi-select input-model="people" button-label="name"
-                         item-label="name" tick-property="ticked" output-model="formInfo.people"></div>
-                </div>
-
                 <div class="row">
                     <div class="form-group col-sm-2">
                         <label>Default Reflection</label>
@@ -87,11 +79,19 @@
 
                 <div class="row">
                     <div class="form-group col-sm-2">
-                        <label>Other Related Reflections</label>
+                        <label>Related Reflections</label>
                     </div>
                     <div name="other related reflections" class="form-group col-sm-6 rowWiseSelect" multi-select input-model="reflectionsWithoutTheDefault"
                          button-label="title" item-label="title" tick-property="ticked"
                          output-model="formInfo.reflections"></div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                        <label>Related People</label>
+                    </div>
+                    <div name ="people" class="col-sm-2" multi-select input-model="people" button-label="name"
+                         item-label="name" tick-property="ticked" output-model="formInfo.people"></div>
                 </div>
 
                 <div class="row form-group ">
@@ -143,7 +143,7 @@
 
                 <div class="row form-group ">
                     <div class="col-sm-2">
-                        <label>Word Introduction - English</label>
+                        <label>Word Introduction(English)</label>
                     </div>
                     <div class="col-sm-8">
                         <text-angular name="wordIntroductionEnglish" ng-model="formInfo.wordIntroductions[0].wordIntroEnglish"></text-angular>
@@ -152,7 +152,7 @@
 
                 <div class="row form-group ">
                     <div class="col-sm-2">
-                        <label>Word Introduction - Original</label>
+                        <label>Word Introduction(Hindi)</label>
                     </div>
                     <div class="col-sm-8">
                         <text-angular name="wordIntroductionOriginal" ng-model="formInfo.wordIntroductions[0].wordIntroHindi"></text-angular>
@@ -183,7 +183,7 @@
 
                 <div class="row">
                     <div class="form-group col-sm-2">
-                        <label>Thumbnail Url</label>
+                        <label>Word Intro Thumbnail Url</label>
                     </div>
                     <div class="form-group col-sm-2">
                         <input type="text" name="thumbnail url" ng-model="formInfo.thumbnailUrl" class="form-control">
