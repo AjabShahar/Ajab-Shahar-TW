@@ -60,25 +60,7 @@ public class SongSummaryRepresentation {
     }
 
     public static SongSummaryRepresentation toSummaryRepresentation(Song song){
-        final Set<PersonSummaryRepresentation> singers = new LinkedHashSet<>(), poets = new LinkedHashSet<>();
         String contentFormat = song.getYoutubeVideoId() != null ? "video" : "audio";
-
-        if(song.getSingers() != null){
-            song.getSingers().forEach(singer -> {
-                String primaryOccupation = singer.getPrimaryOccupation() != null ? singer.getPrimaryOccupation().getName() : "";
-                singers.add(new PersonSummaryRepresentation(singer.getId(), singer.getName(), singer.getHindiName(),
-                        primaryOccupation, singer.isPublish()));
-            });
-        }
-
-        if (song.getPoets() != null) {
-            song.getPoets().forEach(poet -> {
-                String primaryOccupation = poet.getPrimaryOccupation() != null ? poet.getPrimaryOccupation().getName() : "";
-                poets.add(new PersonSummaryRepresentation(poet.getId(), poet.getName(), poet.getHindiName(),
-                        primaryOccupation, poet.isPublish()));
-            });
-        }
-
         SongSummaryRepresentation songSummaryRepresentation = new SongSummaryRepresentation();
         songSummaryRepresentation.setId(song.getId());
         songSummaryRepresentation.setSingers(PersonSummaryRepresentation.toPersonSummaries(song.getSingers()));

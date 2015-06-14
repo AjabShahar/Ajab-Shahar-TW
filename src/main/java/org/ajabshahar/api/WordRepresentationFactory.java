@@ -8,7 +8,6 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class WordRepresentationFactory {
-    private ReflectionRepresentationFactory reflectionRepresentationFactory;
 
     public Word create(String jsonWord) {
         return toWord(new Gson().fromJson(jsonWord, WordRepresentation.class));
@@ -79,12 +78,7 @@ public class WordRepresentationFactory {
 
     public Set<WordSummaryRepresentation> create(Set<Word> wordsList) {
         Set<WordSummaryRepresentation> wordsSummaryRepresentation = new LinkedHashSet<>();
-        wordsList.forEach(word -> {
-
-            WordSummaryRepresentation wordSummaryRepresentation = WordSummaryRepresentation.fromWord(word);
-
-            wordsSummaryRepresentation.add(wordSummaryRepresentation);
-        });
+        wordsList.forEach(word -> wordsSummaryRepresentation.add(WordSummaryRepresentation.fromWord(word)));
         return wordsSummaryRepresentation;
     }
 
@@ -103,8 +97,7 @@ public class WordRepresentationFactory {
         for (Word word : wordsList) {
             WordReflectionRepresentation wordReflections = new WordReflectionRepresentation();
             wordReflections.setWord(WordSummaryRepresentation.fromWord(word));
-            wordReflections.setReflections(reflectionRepresentationFactory.toReflectionsSummaryRepresentation(word.getReflections()).getSummaryRepresentationList());
-
+            wordReflections.setReflections(ReflectionSummaryRepresentation.createFrom(word.getReflections()));
             wordReflectionRepresentations.add(wordReflections);
         }
         return wordReflectionRepresentations;
@@ -153,18 +146,15 @@ public class WordRepresentationFactory {
         wordRepresentation.setDisplayAjabShaharTeam(word.getDisplayAjabShaharTeam());
         wordRepresentation.setDefaultReflection(ReflectionSummaryRepresentation.createFrom(word.getDefaultReflection()));
 
-        Set<ReflectionSummaryRepresentation> reflectionSummaryRepresentationList = reflectionRepresentationFactory.toReflectionSummaryList(word.getReflections());
+        Set<ReflectionSummaryRepresentation> reflectionSummaryRepresentationList = ReflectionSummaryRepresentation.createFrom(word.getReflections());
         wordRepresentation.setReflections(reflectionSummaryRepresentationList);
 
-        Set<WordSummaryRepresentation> wordSummaryRepresentations = word.getRelatedWords() != null ? create(new LinkedHashSet<>(word.getRelatedWords())) : new LinkedHashSet<>();
+        Set<WordSummaryRepresentation> wordSummaryRepresentations = word.getRelatedWords() != null ? create(word.getRelatedWords()) : new LinkedHashSet<>();
         wordRepresentation.setRelatedWords(wordSummaryRepresentations);
-        wordSummaryRepresentations = word.getSynonyms() != null ? create(new LinkedHashSet<>(word.getSynonyms())) : new LinkedHashSet<>();
+        wordSummaryRepresentations = word.getSynonyms() != null ? create(word.getSynonyms()) : new LinkedHashSet<>();
         wordRepresentation.setSynonyms(wordSummaryRepresentations);
 
         return wordRepresentation;
     }
 
-    public void injectReflectionRepresentationFactory(ReflectionRepresentationFactory reflectionRepresentationFactory) {
-        this.reflectionRepresentationFactory = reflectionRepresentationFactory;
-    }
 }

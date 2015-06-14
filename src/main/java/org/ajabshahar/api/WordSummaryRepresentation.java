@@ -5,6 +5,7 @@ import org.ajabshahar.platform.models.Category;
 import org.ajabshahar.platform.models.PersonDetails;
 import org.ajabshahar.platform.models.Word;
 
+import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -87,27 +88,24 @@ public class WordSummaryRepresentation {
         return fromWord(word,true);
     }
 
+    public static Set<WordSummaryRepresentation> fromWords(Set<Word> words) {
+        if(words != null){
+            Set<WordSummaryRepresentation> wordsSummaryRepresentation = new LinkedHashSet<>();
+            words.forEach(word -> wordsSummaryRepresentation.add(WordSummaryRepresentation.fromWord(word)));
+            return wordsSummaryRepresentation;
+        }
+        return Collections.EMPTY_SET;
+    }
+
     public static WordSummaryRepresentation fromWord(Word word,boolean published) {
         String wordOriginal = word.getWordOriginal() != null ? word.getWordOriginal() : "";
         String wordTranslation = word.getWordTranslation() != null ? word.getWordTranslation() : "";
         String wordTransliteration = word.getWordTransliteration() != null ? word.getWordTransliteration() : "";
         String hindiIntroExcerpt = word.getEnglishIntroExcerpt() != null ? word.getEnglishIntroExcerpt() : "";
         String englishIntroExcerpt = word.getHindiIntroExcerpt() != null ? word.getHindiIntroExcerpt() : "";
-        Set<PersonSummaryRepresentation> writers = new LinkedHashSet<>();
-        if (word.getWriters() != null && word.getWriters().size() > 0) {
-            for (PersonDetails writer : word.getWriters()) {
-                PersonSummaryRepresentation representation = new PersonSummaryRepresentation(writer.getId(), writer.getName(), writer.getHindiName(), getPrimaryCategoryName(writer.getPrimaryOccupation()),published);
-                writers.add(representation);
-            }
-        }
+        Set<PersonSummaryRepresentation> writers = PersonSummaryRepresentation.toPersonSummaries(word.getWriters());;
         return new WordSummaryRepresentation((int) word.getId(), wordOriginal, wordTranslation, wordTransliteration, hindiIntroExcerpt, englishIntroExcerpt, writers, word.getIsRootWord(), word.isPublish());
     }
 
-    private static String getPrimaryCategoryName(Category primaryCategory) {
-        String primaryCategoryName = "";
-        if (primaryCategory != null) {
-            primaryCategoryName = primaryCategory.getName();
-        }
-        return primaryCategoryName;
-    }
+
 }

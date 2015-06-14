@@ -61,7 +61,7 @@ public class Word {
     private Reflection defaultReflection;
 
     @BatchSize(size = 50)
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "word")
+    @OneToMany(mappedBy = "word")
     @JsonManagedReference
     @OrderBy
     private Set<WordIntroduction> wordIntroductions;

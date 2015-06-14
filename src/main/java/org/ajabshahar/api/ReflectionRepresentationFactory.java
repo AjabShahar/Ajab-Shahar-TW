@@ -8,9 +8,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class ReflectionRepresentationFactory {
-    private WordRepresentationFactory wordRepresentationFactory;
     private ReflectionDAO reflectionDAO;
-
 
     public Reflection create(String jsonWord) {
         return toReflection(new Gson().fromJson(jsonWord, ReflectionRepresentation.class));
@@ -18,7 +16,7 @@ public class ReflectionRepresentationFactory {
 
     private Reflection toReflection(ReflectionRepresentation reflectionRepresentation) {
         Reflection reflection = new Reflection();
-        if (reflectionRepresentation.getId() != 0) {
+        if(reflectionRepresentation.getId() != 0){
             reflection = reflectionDAO.find(reflectionRepresentation.getId());
         }
         reflection.setIsAuthoringComplete(reflectionRepresentation.isPublish());
@@ -31,7 +29,7 @@ public class ReflectionRepresentationFactory {
         reflection.setYoutubeVideo(reflectionRepresentation.getYoutubeVideoId());
         Set<ReflectionTranscript> reflectionTranscripts = reflectionRepresentation.getReflectionTranscripts();
         reflection.getReflectionTranscripts().clear();
-        if (reflectionTranscripts != null) {
+        if(reflectionTranscripts != null){
             for (ReflectionTranscript reflectionTranscript : reflectionTranscripts) {
                 reflectionTranscript.setReflection(reflection);
                 addReflectionTranscript(reflection, reflectionTranscript);
@@ -85,30 +83,8 @@ public class ReflectionRepresentationFactory {
     public Set<ReflectionRepresentation> create(Set<Reflection> reflections) {
         Set<ReflectionRepresentation> reflectionRepresentations = new LinkedHashSet<>();
         for (Reflection reflection : reflections) {
-            Set<Word> words = new LinkedHashSet<>(reflection.getWords());
-            Set<ReflectionTranscript> reflectionTranscripts = new LinkedHashSet<>(reflection.getReflectionTranscripts());
-            Set<WordSummaryRepresentation> wordRepresentations = wordRepresentationFactory.create(words);
-            PersonDetails speakerDetails = reflection.getSpeaker();
-            ReflectionRepresentation representation = new ReflectionRepresentation((int) reflection.getId(),
-                    reflection.getTitle(),
-                    reflection.getVerb(),
-                    getPersonSummaryRepresentation(speakerDetails),
-                    reflection.getSoundCloudId(),
-                    reflection.getYoutubeVideo(),
-                    reflectionTranscripts,
-                    wordRepresentations,
-                    reflection.getShowOnFeaturedContentPage(),
-                    reflection.getIsAuthoringComplete(),
-                    SongSummaryRepresentation.toSummaryRepresentations(reflection.getSongs()),
-                    PersonSummaryRepresentation.toPersonSummaries(reflection.getPeople()),
-                    reflection.getThumbnailURL(),
-                    reflection.getInfo(),
-                    reflection.getAbout(),
-                    reflection.getDuration(),
-                    reflection.getReflectionExcerpt());
-            reflectionRepresentations.add(representation);
+            reflectionRepresentations.add(createReflectionRepresentation(reflection));
         }
-
         return reflectionRepresentations;
     }
 
@@ -137,8 +113,8 @@ public class ReflectionRepresentationFactory {
 
     public ReflectionRepresentation createReflectionRepresentation(Reflection reflection) {
         Set<Word> words = reflection.getWords();
-        Set<WordSummaryRepresentation> wordSummaryRepresentations = wordRepresentationFactory.create(words);
-        Set<ReflectionTranscript> reflectionTranscripts = reflection.getReflectionTranscripts() != null ? reflection.getReflectionTranscripts() : new LinkedHashSet<>();
+        Set<WordSummaryRepresentation> wordSummaryRepresentations = WordSummaryRepresentation.fromWords(words);
+        Set<ReflectionTranscript> reflectionTranscripts = reflection.getReflectionTranscripts() != null ?reflection.getReflectionTranscripts() : new LinkedHashSet<>();
         ReflectionRepresentation reflectionRepresentation = new ReflectionRepresentation(
                 (int) reflection.getId(),
                 reflection.getTitle(),
@@ -159,10 +135,6 @@ public class ReflectionRepresentationFactory {
                 reflection.getReflectionExcerpt()
         );
         return reflectionRepresentation;
-    }
-
-    public void injectWordRepresentationFactory(WordRepresentationFactory wordRepresentationFactory) {
-        this.wordRepresentationFactory = wordRepresentationFactory;
     }
 
     public void injectReflectionDao(ReflectionDAO reflectionDAO) {

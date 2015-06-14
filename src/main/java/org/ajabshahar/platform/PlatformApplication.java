@@ -24,7 +24,6 @@ import org.eclipse.jetty.server.SessionManager;
 import org.eclipse.jetty.server.session.HashSessionManager;
 import org.eclipse.jetty.server.session.SessionHandler;
 import org.picocontainer.DefaultPicoContainer;
-import org.picocontainer.injectors.SetterInjection;
 
 import javax.servlet.DispatcherType;
 import java.util.EnumSet;
@@ -134,8 +133,6 @@ public class PlatformApplication extends Application<PlatformConfiguration> {
 
         WordRepresentationFactory wordRepresentationFactory = new WordRepresentationFactory();
         ReflectionRepresentationFactory reflectionRepresentationFactory = new ReflectionRepresentationFactory();
-        reflectionRepresentationFactory.injectWordRepresentationFactory(wordRepresentationFactory);
-        wordRepresentationFactory.injectReflectionRepresentationFactory(reflectionRepresentationFactory);
         reflectionRepresentationFactory.injectReflectionDao(picoContainer.getComponent(ReflectionDAO.class));
 
         picoContainer.addComponent(reflectionRepresentationFactory);

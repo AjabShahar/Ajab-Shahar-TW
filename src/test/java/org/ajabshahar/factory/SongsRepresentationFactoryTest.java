@@ -36,7 +36,7 @@ public class SongsRepresentationFactoryTest {
 
     @Before
     public void setUp() {
-        songsRepresentationFactory = new SongsRepresentationFactory(people, wordRepresentationFactory);
+        songsRepresentationFactory = new SongsRepresentationFactory();
 
         songsList = new LinkedHashSet<>();
 

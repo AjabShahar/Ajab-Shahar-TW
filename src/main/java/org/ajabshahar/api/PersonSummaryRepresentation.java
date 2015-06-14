@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.ajabshahar.platform.models.Category;
 import org.ajabshahar.platform.models.PersonDetails;
 
+import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -52,10 +53,8 @@ public class PersonSummaryRepresentation {
 
     public static PersonSummaryRepresentation createFrom(PersonDetails personDetails) {
         if (personDetails != null) {
-            Category primaryOccupation = personDetails.getPrimaryOccupation();
-            String primaryOccupationName = (primaryOccupation != null) ? primaryOccupation.getName() : "";
             return new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName(),
-                    personDetails.getHindiName(), primaryOccupationName, personDetails.isPublish());
+                    personDetails.getHindiName(), getPrimaryOccupation(personDetails.getPrimaryOccupation()), personDetails.isPublish());
         }
         return null;
     }
@@ -67,14 +66,14 @@ public class PersonSummaryRepresentation {
     }
 
     public static Set<PersonSummaryRepresentation> toPersonSummaries(Set<PersonDetails> people) {
-        Set<PersonSummaryRepresentation> personSummaryRepresentations = null;
         if(people != null){
-            personSummaryRepresentations = new LinkedHashSet<>();
+            Set<PersonSummaryRepresentation> personSummaryRepresentations = new LinkedHashSet<>();
             for (PersonDetails person : people) {
                 personSummaryRepresentations.add(PersonSummaryRepresentation.createFrom(person));
             }
+            return personSummaryRepresentations;
         }
-        return personSummaryRepresentations;
+        return Collections.emptySet();
     }
 
     public static Set<PersonDetails> toPeople(Set<PersonSummaryRepresentation> personSummaryRepresentations) {
@@ -93,6 +92,14 @@ public class PersonSummaryRepresentation {
         personDetails.setId(personSummaryRepresentation.getId());
         personDetails.setFirstName(personSummaryRepresentation.getName());
         return personDetails;
+    }
+
+    private static String getPrimaryOccupation(Category primaryCategory) {
+        String primaryCategoryName = "";
+        if (primaryCategory != null) {
+            primaryCategoryName = primaryCategory.getName();
+        }
+        return primaryCategoryName;
     }
 
     public boolean isPublish() {

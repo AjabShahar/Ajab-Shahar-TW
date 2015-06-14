@@ -13,12 +13,8 @@ import static org.ajabshahar.api.ReflectionSummaryRepresentation.toReflections;
 import static org.ajabshahar.api.WordsSummaryRepresentation.toWords;
 
 public class SongsRepresentationFactory {
-    private final People people;
-    private final WordRepresentationFactory wordRepresentationFactory;
 
-    public SongsRepresentationFactory(People people, WordRepresentationFactory wordRepresentationFactory) {
-        this.people = people;
-        this.wordRepresentationFactory = wordRepresentationFactory;
+    public SongsRepresentationFactory() {
     }
 
 
@@ -39,7 +35,7 @@ public class SongsRepresentationFactory {
         SongText songText = song.getSongText() == null ? new SongText() : song.getSongText();
 
         Set<Word> wordList = (song.getWords() != null) ? new LinkedHashSet<>(song.getWords()) : new LinkedHashSet<>();
-        Set<WordSummaryRepresentation> words = wordRepresentationFactory.create(wordList);
+        Set<WordSummaryRepresentation> words = WordSummaryRepresentation.fromWords(wordList);
 
         return new SongRepresentation(song.getId(),
                 song.getIsAuthoringComplete(),
@@ -66,13 +62,7 @@ public class SongsRepresentationFactory {
 
     private Set<PersonSummaryRepresentation> getPeople(Set<PersonDetails> peopleSet) {
         Set<PersonSummaryRepresentation> peopleList = new LinkedHashSet<>();
-        peopleSet.forEach(singer -> {
-            PersonDetails personDetails = people.findBy((int) singer.getId());
-            Category primaryOccupation = personDetails.getPrimaryOccupation();
-            String primaryOccupationName = (primaryOccupation != null) ? (primaryOccupation.getName() != null) ? primaryOccupation.getName() : "" : "";
-            peopleList.add(new PersonSummaryRepresentation(personDetails.getId(), personDetails.getName(),
-                    personDetails.getHindiName(), primaryOccupationName, personDetails.isPublish()));
-        });
+        peopleSet.forEach(person -> peopleList.add(PersonSummaryRepresentation.createFrom(person)));
         return peopleList;
     }
 

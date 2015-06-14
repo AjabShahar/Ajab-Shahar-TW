@@ -23,7 +23,7 @@ public class WordIntroductionRepresentation {
         wordIntroductionRepresentation.wordIntroHindi = wordIntroduction.getWordIntroHindi();
         wordIntroductionRepresentation.wordIntroEnglish = wordIntroduction.getWordIntroEnglish();
         wordIntroductionRepresentation.contentType = wordIntroduction.getContentType();
-        wordIntroductionRepresentation.poet = PersonSummaryRepresentation.createFrom(wordIntroduction.getPoet());
+//        wordIntroductionRepresentation.poet = PersonSummaryRepresentation.createFrom(wordIntroduction.getPoet());
         return wordIntroductionRepresentation;
     }
 
