@@ -18,7 +18,7 @@ angular.module("word").
         $scope.reflectionCount = function(){
             var count = 0;
             if(!_.isEmpty($scope.wordDetails)){
-                if(!_.isEmpty($scope.wordDetails.defaultReflection)) count++;
+                //if(!_.isEmpty($scope.wordDetails.defaultReflection)) count++;
                 if(!_.isEmpty($scope.wordDetails.reflections)) {
                     var reflectionCount = _.countBy($scope.wordDetails.reflections,function(reflection){
                         return reflection.published? 'published':'unpublished';

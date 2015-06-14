@@ -69,8 +69,10 @@
                     </div>
                     <div class="form-group col-sm-2">
                         <select name="default reflection" ng-model="formInfo.defaultReflection"
-                                ng-options="reflection as reflection.title for reflection in reflections track by reflection.id"
-                                class="form-control" ng-required="isReflectionRequired()"></select>
+                                ng-options="reflection as reflection.title for reflection in formInfo.reflections track by reflection.id"
+                                class="form-control" ng-required="isReflectionRequired()">
+                            <option value=""></option>
+                        </select>
                     </div>
 
                     <error-message name="Default Reflection"
@@ -81,7 +83,7 @@
                     <div class="form-group col-sm-2">
                         <label>Related Reflections</label>
                     </div>
-                    <div name="other related reflections" class="form-group col-sm-6 rowWiseSelect" multi-select input-model="reflectionsWithoutTheDefault"
+                    <div name="other related reflections" class="form-group col-sm-6 rowWiseSelect" multi-select input-model="reflections"
                          button-label="title" item-label="title" tick-property="ticked"
                          output-model="formInfo.reflections"></div>
                 </div>

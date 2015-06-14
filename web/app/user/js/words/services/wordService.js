@@ -14,13 +14,29 @@ angular.module("word").service("wordService",["$http",function ($http) {
         return $http.get('/api/words/edit?id='+id + "&publish=true");
     };
 
+    var _moveDefaultReflectionToFront = function(reflections,defaultReflectionId){
+        for(var i=0;i<reflections.length;i++){
+            if(reflections[i].id === defaultReflectionId){
+                var defaultReflection = reflections[i];
+                reflections[i] = reflections[0];
+                reflections[0] = defaultReflection;
+                break;
+            }
+        }
+    };
     var getReflectionsFrom = function(word){
         var reflections = [];
-        if(!_.isEmpty(word.defaultReflection)){
-            reflections.push(word.defaultReflection)
+        var defaultReflectionId= null;
+        if(!_.isEmpty(word.defaultReflection) && word.defaultReflection.published){
+            defaultReflectionId = word.defaultReflection.id;
         }
+
         var relatedReflections = word.reflections?word.reflections.filter(function(reflection){ return reflection.published }):undefined;
-        return reflections.concat(relatedReflections);
+        if(defaultReflectionId && !_.isEmpty(relatedReflections)){
+            _moveDefaultReflectionToFront(relatedReflections,defaultReflectionId);
+        }
+        reflections.push(relatedReflections);
+        return relatedReflections;
     };
 
     var getReflection = function(id){
