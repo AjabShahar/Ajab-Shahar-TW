@@ -6,8 +6,7 @@
                 <span class="title-italic" ng-cloak>{{wordTranslation}}</span>
                 <h5 class="artistName">
                     <small ng-show="writers.length > 0" class="artist-text title-case">Introduction by </small>
-                    <span  ng-show="writers.length > 0" class="artist-text author-caps" ng-cloak>{{people}}</span>
-                    <span  ng-show="displayAjabShaharTeam" class="artist-text title-case">, Ajab Shahar Team</span>
+                    <span  ng-show="writers.length > 0" class="artist-text author-caps" ng-cloak>{{people}}<span ng-show="displayAjabShaharTeam" class="artist-text title-case">, Ajab Shahar Team</span></span>
                 </h5>
             </div>
             <div bind-dynamic-html="wordIntroEnglish" class="text-content">
