@@ -147,22 +147,22 @@ $tab-portrait: new-breakpoint(max-width 768px);
             text-align: left;
         }
         a {
-          color: $color-sub-link;
+          color: $grey;
           cursor: pointer;
           font-size: $medium;
           font-weight: 300;
 
           &.active {
-            color: $color-active-link;
+            color: $pink;
             cursor: default;
 
             &:hover {
-                color: $color-active-link;
+                color: $pink;
             }
           }
 
           &:hover {
-            color: $color-hover-link;
+            color: $pink;
           }
 
         }

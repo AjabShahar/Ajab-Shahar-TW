@@ -22,7 +22,7 @@
                         <small class="more-info" ng-if="content.contentFormat === 'text'">T</small>
                         <small ng-class='{"play-video-icon" : content.contentFormat === "video",
                         "play-audio-icon" :content.contentFormat === "audio"}' ng-if="content.contentFormat != 'text'"></small>
-                        <small ng-if="content.contentFormat != 'text'" ng-cloak>{{content.duration}}</small>
+                        <small ng-if="content.contentFormat != 'text'" ng-cloak><span class="duration">{{content.duration}}</span></small>
                     </p>
                 </div>
             </div>

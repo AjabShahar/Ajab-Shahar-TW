@@ -39,17 +39,17 @@
       font-size: $small;
       text-align: right;
       text-transform: uppercase;
-      bottom: -19px;
+      bottom: -17px;
       z-index: 100;
       position: relative;
 
 
       .play-video-icon {
-              background: url(/user/img/common/icons/gray_play.png) left 1px no-repeat;
+              background: url(/user/img/common/icons/gray_play.png) left 2px no-repeat;
               padding-left: 12px;
               margin-left: 3px;
-              vertical-align: text-top;
               color:$grey;
+              vertical-align: middle;
       }
 
 
@@ -58,6 +58,7 @@
               padding-left: 17px;
               margin-left: 3px;
               color:$grey;
+              vertical-align: middle;
       }
 
       .more-info {
@@ -66,6 +67,9 @@
             text-transform: uppercase;
             font-family: "Merriweather";
             font-weight: 300;
+      }
+      .duration {
+            position: relative;
       }
     }
 
