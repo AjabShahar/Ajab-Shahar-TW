@@ -14,6 +14,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import java.util.HashSet;
 import java.util.Set;
 
 @Path("/songs")
@@ -56,8 +57,8 @@ public class SongResource {
     @GET
     @UnitOfWork
     @Path("/getPublishedSongs")
-    public Response getPublishedSongs(@QueryParam("singerId") int singerId, @QueryParam("poetId") int poetId) {
-        Set<Song> songList = songs.findBy(singerId, poetId);
+    public Response getPublishedSongs() {
+        Set<Song> songList = songs.findAll();
         if (songList == null || songList.size() == 0) {
             return Response.status(Status.NO_CONTENT).build();
         }
@@ -91,8 +92,14 @@ public class SongResource {
 
     @GET
     @UnitOfWork
-    public Response getSongs(@Session HttpSession httpSession) {
-        Set<Song> songList = songs.findAll();
+    public Response getSongs(@QueryParam("personId") int personId) {
+        Set<Song> songList = new HashSet<>();
+        if (personId != 0) {
+            songList = songs.findByPerson(personId);
+        } else {
+
+            songList = songs.findAll();
+        }
         SongsSummaryRepresentation songsSummaryRepresentation = songsRepresentationFactory.create(songList);
         return Response.ok(songsSummaryRepresentation, MediaType.APPLICATION_JSON).build();
     }

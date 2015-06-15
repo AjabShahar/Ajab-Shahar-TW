@@ -9,9 +9,7 @@ import com.sun.jersey.api.client.ClientResponse;
 import io.dropwizard.testing.junit.DropwizardAppRule;
 import net.minidev.json.JSONObject;
 import org.ajabshahar.DataSetup;
-import org.ajabshahar.api.PersonSummaryRepresentation;
-import org.ajabshahar.api.SongRepresentation;
-import org.ajabshahar.api.SongsRepresentation;
+import org.ajabshahar.api.*;
 import org.ajabshahar.platform.PlatformApplication;
 import org.ajabshahar.platform.PlatformConfiguration;
 import org.ajabshahar.platform.models.Gathering;
@@ -24,6 +22,7 @@ import org.junit.ClassRule;
 import org.junit.Test;
 
 import javax.ws.rs.core.NewCookie;
+import java.util.HashSet;
 import java.util.Set;
 
 import static com.ninja_squad.dbsetup.Operations.sequenceOf;
@@ -56,7 +55,7 @@ public class SongResourceIT {
     @Test
     public void shouldBeAbleToSaveASong() {
         Operation operation = sequenceOf(DELETE_ALL, INSERT_CATEGORY, INSERT_SONG_TITLE_CATEGORY,
-                INSERT_UMBRELLA_TITLE_CATEGORY, INSERT_SONG_TITLE, INSERT_UMBRELLA_TITLE,INSERT_GATHERINGS, INSERT_SONGS);
+                INSERT_UMBRELLA_TITLE_CATEGORY, INSERT_SONG_TITLE, INSERT_UMBRELLA_TITLE, INSERT_GATHERINGS, INSERT_SONGS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -146,23 +145,24 @@ public class SongResourceIT {
     @Test
     public void shouldGiveEmptyResponseIfSongNotFound() throws Exception {
         Operation operation = sequenceOf(DELETE_ALL, DELETE_SONG_WORD, DELETE_SONGS, DELETE_CATEGORY,
-                INSERT_CATEGORY,INSERT_GATHERINGS, INSERT_SONGS_AND_TITLE);
+                INSERT_CATEGORY, INSERT_GATHERINGS, INSERT_SONGS_AND_TITLE);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
 
         ClientResponse response = client.resource(
-                String.format("http://localhost:%d/api/songs/getPublishedSongs?singerId=1", RULE.getLocalPort())).header("Content-type", "application/json")
+                String.format("http://localhost:%d/api/songs?personId=1", RULE.getLocalPort())).header("Content-type", "application/json")
                 .get(ClientResponse.class);
 
-        assertEquals(204, response.getStatus());
+        SongsSummaryRepresentation songs = response.getEntity(SongsSummaryRepresentation.class);
+        assertEquals(0, songs.getSongs().size());
 
     }
 
     @Test
-    public void shouldBeAbleToLinkGatheringWithASong(){
+    public void shouldBeAbleToLinkGatheringWithASong() {
         Operation operation = sequenceOf(DELETE_ALL, INSERT_CATEGORY, INSERT_SONG_TITLE_CATEGORY,
-                INSERT_UMBRELLA_TITLE_CATEGORY, INSERT_SONG_TITLE, INSERT_UMBRELLA_TITLE,INSERT_GATHERINGS, INSERT_SONGS);
+                INSERT_UMBRELLA_TITLE_CATEGORY, INSERT_SONG_TITLE, INSERT_UMBRELLA_TITLE, INSERT_GATHERINGS, INSERT_SONGS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -187,18 +187,18 @@ public class SongResourceIT {
         Song song = getSong(songResponse);
 
         ClientResponse response = client.resource(
-                String.format("http://localhost:%d/api/songs/"+song.getId(), RULE.getLocalPort())).header("Content-type", "application/json")
+                String.format("http://localhost:%d/api/songs/" + song.getId(), RULE.getLocalPort())).header("Content-type", "application/json")
                 .get(ClientResponse.class);
 
         SongRepresentation songRepresentation = response.getEntity(SongRepresentation.class);
-        assertThat(songRepresentation.getGathering().getEnglish(),is("Rajasthan"));
+        assertThat(songRepresentation.getGathering().getEnglish(), is("Rajasthan"));
 
     }
 
     @Test
-    public  void shouldFetchGatheringWithAllSongs(){
+    public void shouldFetchGatheringWithAllSongs() {
         Operation operation = sequenceOf(DELETE_ALL, INSERT_CATEGORY, INSERT_SONG_TITLE_CATEGORY,
-                INSERT_UMBRELLA_TITLE_CATEGORY, INSERT_SONG_TITLE, INSERT_UMBRELLA_TITLE,INSERT_GATHERINGS, INSERT_SONGS);
+                INSERT_UMBRELLA_TITLE_CATEGORY, INSERT_SONG_TITLE, INSERT_UMBRELLA_TITLE, INSERT_GATHERINGS, INSERT_SONGS);
 
         final int SONG_WITH_GATHERING = 1;
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
@@ -212,7 +212,7 @@ public class SongResourceIT {
         Set<SongRepresentation> songs = songsRepresentation.getSongs();
         SongRepresentation songFromDb = null;
         for (SongRepresentation song : songs) {
-            if(song.getId() == SONG_WITH_GATHERING){
+            if (song.getId() == SONG_WITH_GATHERING) {
                 songFromDb = song;
                 break;
             }
@@ -223,48 +223,48 @@ public class SongResourceIT {
     }
 
     @Test
-    public void shouldBeAbleToAddAndEditSongText(){
+    public void shouldBeAbleToAddAndEditSongText() {
         Operation operation = sequenceOf(DELETE_ALL, INSERT_CATEGORY, INSERT_SONG_TITLE_CATEGORY,
-                INSERT_UMBRELLA_TITLE_CATEGORY, INSERT_SONG_TITLE, INSERT_UMBRELLA_TITLE,INSERT_GATHERINGS, INSERT_SONGS);
+                INSERT_UMBRELLA_TITLE_CATEGORY, INSERT_SONG_TITLE, INSERT_UMBRELLA_TITLE, INSERT_GATHERINGS, INSERT_SONGS);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
 
         SongRepresentation songRepresentation = new Gson().fromJson(getSongWithSongText(), SongRepresentation.class);
 
-        ClientResponse songResponse = loginAndPost("http://localhost:%d/api/songs",songRepresentation);
+        ClientResponse songResponse = loginAndPost("http://localhost:%d/api/songs", songRepresentation);
         Song song = getSong(songResponse);
 
         long songId = song.getId();
         ClientResponse response = client.resource(
-                String.format("http://localhost:%d/api/songs/"+ songId, RULE.getLocalPort())).header("Content-type", "application/json")
+                String.format("http://localhost:%d/api/songs/" + songId, RULE.getLocalPort())).header("Content-type", "application/json")
                 .get(ClientResponse.class);
         songRepresentation = getSongRepresentation(response);
 
         assertThat(songRepresentation.getId(), is(not(0)));
-        assertThat(songRepresentation.getSongText(),notNullValue());
-        assertThat(songRepresentation.getSongText().getTranslation(),is("Lost Lost Moon, Clear Eyes will be all night How will you sleep?"));
+        assertThat(songRepresentation.getSongText(), notNullValue());
+        assertThat(songRepresentation.getSongText().getTranslation(), is("Lost Lost Moon, Clear Eyes will be all night How will you sleep?"));
 
         SongText songText = songRepresentation.getSongText();
-        songText.setOriginal(songText.getOriginal()+" - 2");
-        songText.setTranslation(songText.getTranslation()+" - 2");
-        songText.setTransliteration(songText.getTransliteration()+" - 2");
+        songText.setOriginal(songText.getOriginal() + " - 2");
+        songText.setTranslation(songText.getTranslation() + " - 2");
+        songText.setTransliteration(songText.getTransliteration() + " - 2");
 
-        songResponse = loginAndPost("http://localhost:%d/api/songs",songRepresentation);
+        songResponse = loginAndPost("http://localhost:%d/api/songs", songRepresentation);
 
         response = client.resource(
-                String.format("http://localhost:%d/api/songs/"+ songId, RULE.getLocalPort())).header("Content-type", "application/json")
+                String.format("http://localhost:%d/api/songs/" + songId, RULE.getLocalPort())).header("Content-type", "application/json")
                 .get(ClientResponse.class);
         songRepresentation = getSongRepresentation(response);
 
         assertThat(songRepresentation.getId(), is(songId));
-        assertThat(songRepresentation.getSongText(),notNullValue());
-        assertThat(songRepresentation.getSongText().getTranslation(),is("Lost Lost Moon, Clear Eyes will be all night How will you sleep? - 2"));
+        assertThat(songRepresentation.getSongText(), notNullValue());
+        assertThat(songRepresentation.getSongText().getTranslation(), is("Lost Lost Moon, Clear Eyes will be all night How will you sleep? - 2"));
 
     }
 
     @Test
-    public void shouldFetchGivenSongWithRelatedContent(){
+    public void shouldFetchGivenSongWithRelatedContent() {
         Operation operation = sequenceOf(DELETE_ALL, INSERT_COMPLETE_STARTER_SET);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
@@ -281,13 +281,31 @@ public class SongResourceIT {
         assertThat(song.getReflections().size(), is(1));
     }
 
-    private SongRepresentation getSong(String id){
+    @Test
+    public void shouldGetSongsBasedOnPersonId() {
+        Operation operation = sequenceOf(DELETE_ALL, DELETE_SONG_WORD, DELETE_SONGS, DELETE_CATEGORY,
+                INSERT_CATEGORY, INSERT_GATHERINGS, INSERT_SONGS_AND_TITLE, INSERT_PERSON,INSERT_PERSON_CATEGORY,
+                INSERT_SONG_SINGER);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        ClientResponse response = client.resource(
+                String.format("http://localhost:%d/api/songs?personId=1", RULE.getLocalPort())).header("Content-type", "application/json")
+                .get(ClientResponse.class);
+
+        SongsSummaryRepresentation songs = response.getEntity(SongsSummaryRepresentation.class);
+        assertEquals(1, songs.getSongs().size());
+
+    }
+
+    private SongRepresentation getSong(String id) {
         return getSongRepresentation(client.resource(
-                String.format("http://localhost:%d/api/songs/"+ id, RULE.getLocalPort())).header("Content-type", "application/json")
+                String.format("http://localhost:%d/api/songs/" + id, RULE.getLocalPort())).header("Content-type", "application/json")
                 .get(ClientResponse.class));
     }
 
-    private String getSongWithSongText(){
+    private String getSongWithSongText() {
         return "{\n" +
                 "  \"isAuthoringComplete\": true,\n" +
                 "  \"soundCloudTrackId\": \"174024475\",\n" +
@@ -295,12 +313,13 @@ public class SongResourceIT {
                 "       \"original\": \"खोया खोया चाँद, खुला आसमान आँखों में सारी रात जाएगी तुम को भी कैसे नींद आएगी?\"," +
                 "       \"translation\":\"Lost Lost Moon, Clear Eyes will be all night How will you sleep?\"," +
                 "       \"transliteration\":\"Khoya khoya chaand, khula aasmaan Aankhon mein saari raat jaayegi Tumko bhi kaise neend aayegi\"" +
-                "   },"+
+                "   }," +
                 "  \"songTitle\": {\n" +
                 "    \"id\": 3\n" +
                 "  }\n" +
                 "}";
     }
+
     private SongsRepresentation getSongsRepresentation(ClientResponse response) {
         return response.getEntity(SongsRepresentation.class);
     }

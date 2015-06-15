@@ -53,14 +53,14 @@ public class SongsTest {
 
     @Test
     public void shouldGetSongsForSingerAndPoet() {
-        when(songsRepository.findBy(0, SINGER_ID, POET_ID)).thenReturn(songsList);
-        Set<Song> result = songs.findBy(SINGER_ID, POET_ID);
+        when(songsRepository.findBy(0, SINGER_ID)).thenReturn(songsList);
+        Set<Song> result = songs.findByPerson(SINGER_ID);
         assertEquals(songsList, result);
     }
 
     @Test
     public void shouldGetPersonById() throws Exception {
-        when(songsRepository.findBy(SONG_ID, 0, 0)).thenReturn(songsList);
+        when(songsRepository.findBy(SONG_ID, 0)).thenReturn(songsList);
         Song result = songs.findBy(SONG_ID);
         assertEquals(song, result);
     }

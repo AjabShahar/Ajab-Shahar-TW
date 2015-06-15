@@ -53,18 +53,17 @@ public class SongDAO extends AbstractDAO<Song> {
     }
 
 
-    public Set<Song> findBy(int songId, int singerId, int poetId) {
-        Criteria findSongs = currentSession().createCriteria(Song.class);
+    public Set<Song> findBy(int songId, int personId) {
+        Criteria findSongs = currentSession().createCriteria(Song.class,"song");
         if (songId != 0) {
             findSongs.add(Restrictions.eq("id", (long) songId));
         }
-        if (singerId != 0) {
-            findSongs.createAlias("singers", "singersAlias");
-            findSongs.add(Restrictions.eq("singersAlias.id", (long) singerId));
-        }
-        if (poetId != 0) {
-            findSongs.createAlias("poets", "poetsAlias");
-            findSongs.add(Restrictions.eq("poetsAlias.id", (long) poetId));
+        if (personId != 0) {
+
+            findSongs.createAlias("song.singers", "singers", JoinType.LEFT_OUTER_JOIN);
+            findSongs.createAlias("song.poets", "poets", JoinType.LEFT_OUTER_JOIN);
+
+            findSongs.add(Restrictions.or(Restrictions.and(Restrictions.isNotNull("singers"), Restrictions.eq("singers.id",(long)personId)), Restrictions.and(Restrictions.isNotNull("poets"),Restrictions.eq("poets.id", (long)personId))));
         }
         findSongs.add(Restrictions.eq("isAuthoringComplete", true));
         findSongs.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
