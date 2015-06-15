@@ -366,4 +366,11 @@
             (select '_Other', 'person' WHERE NOT EXISTS (select 1  from category where name='_Other' AND category_type='person'));
         </sql>
     </changeSet>
+    <changeSet id="95" author="CHANAKYA">
+        <comment>Adding Legendary occupations to meta occupations</comment>
+        <sql>
+            insert into category(name,category_type)
+            (select '_Legendary Figures', 'person' WHERE NOT EXISTS (select 1  from category where name='_Legendary Figures' AND category_type='person'));
+        </sql>
+    </changeSet>
 </databaseChangeLog>
