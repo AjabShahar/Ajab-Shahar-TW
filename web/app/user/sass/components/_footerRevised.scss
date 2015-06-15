@@ -206,12 +206,13 @@
                     float: left;
 
                     .kabir-logo {
-                        background: url(/user/img/common/directives/footer/icons/kabirlogo-light.png) 6px 0 no-repeat;
+                        background: url(/user/img/common/directives/footer/icons/kabirlogo-light.png) -1px 0 no-repeat;
                         width: 35px;
                         float: left;
                         height: 50px;
                         &:hover {
                             background: url(/user/img/common/directives/footer/icons/kabirlogo-pink.png) -1px 0 no-repeat;
+                            
                         }
                     }
                     &.project-details {
