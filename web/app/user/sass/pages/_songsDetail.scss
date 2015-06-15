@@ -83,7 +83,7 @@ body.songs-details {
         font-family: 'Lohit Devanagari', serif;
       }
       .song-heading {
-        font-size: 32px;
+        font-size: $double-x-large-dev;
       }
       .initial-couplets {
         font-size: 15px;
@@ -127,12 +127,17 @@ body.songs-details {
           & > a {
             width: 39px;
             height: 39px;
-            background-position: -222px -131px;
+            background-position: -84px -200px;
 
             &:hover, &.active {
                 width: 39px;
                 height: 39px;
-                background-position: -84px -200px;
+                background-position: -153px -131px;
+            }
+            &.disabled {
+                width: 39px;
+                height: 39px;
+                background-position: -15px -200px;
             }
 
 
@@ -142,12 +147,18 @@ body.songs-details {
           & > a {
             width: 39px;
             height: 40px;
-            background-position: -291px -130px;
+            background-position: -15px -270px;
 
             &:hover, &.active {
                 width: 39px;
                 height: 40px;
-                background-position: -15px -270px;
+                background-position: -289px -60px;
+
+            }
+            &.disabled {
+                width: 39px;
+                height: 40px;
+                background-position: -291px -200px;
             }
 
           }
@@ -156,12 +167,17 @@ body.songs-details {
           & > a {
             width: 39px;
             height: 39px;
-            background-position: -180px -62px;
+            background-position: -84px -131px;
 
             &:hover, &.active {
                 width: 39px;
                 height: 39px;
-                background-position: -84px -131px;
+                background-position: -111px -62px;
+            }
+            &.disabled {
+                width: 39px;
+                height: 39px;
+                background-position: -15px -131px;
             }
 
 

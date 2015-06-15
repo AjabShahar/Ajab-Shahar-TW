@@ -72,7 +72,7 @@
 
                 }
                 .text-middle-background {
-                    background: transparent url(/user/img/words/two.png) left bottom fixed;
+                    background: transparent url(/user/img/words/two.png) left bottom;
                     background-repeat: no-repeat repeat;
                     background-size: 100% 100%;
                     width: 100%;
@@ -80,7 +80,7 @@
 
                     .detail-content {
                         position: relative;
-                        top: -60px;
+                        top: -100px;
                         width: 90%;
                         margin: 0 auto;
                     }
@@ -250,32 +250,51 @@
               border-right: solid 1px #666;
               line-height: 2px;
               margin: 7px 0 0;
-              padding: 0 7px;
+              padding: 1px 7px;
 
               &:last-child {
                 border: none;
                 padding-right: 0;
               }
               & > a {
-                background: transparent url('/user/img/songs/av_sprite.png') 0 0 no-repeat;
+                /*background: transparent url('/user/img/songs/av_sprite.png') 0 0 no-repeat;
                 width: 12px;
                 height: 15px;
-                display: inline-block;
+                display: inline-block;*/
+
+                background-image: url(/user/img/common/icons/sprite_icons.png);
+                background-repeat: no-repeat;
+                display: block;
+                &.active {
+                    cursor: default;
+                }
 
                 &.video-icon {
-                  background-position: -13px 3px;
-                  &.active {
-                    background-position: 0 3px;
+                  width: 10px;
+                  height: 12px;
+                  background-position: -233px -200px;
+                  &:hover, &.active {
+                      width: 10px;
+                      height: 12px;
+                      background-position: -249px -62px;
                   }
+
+
                 }
 
                 &.audio-icon {
-                  background-position: -13px -12px;
-                  width: 20px;
-                  height: 20px;
-                  &.active {
-                    background-position: 0 -12px;
+                  width: 14px;
+                  height: 22px;
+                  background-position: -145px -16px;
+
+                  &:hover, &.active {
+                        width: 14px;
+                        height: 17px;
+                        background-position: -15px -16px;
+
                   }
+
+
                 }
               }
             }
