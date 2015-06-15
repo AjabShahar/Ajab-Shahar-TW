@@ -19,7 +19,7 @@ public class Words {
     }
 
     public Set<Word> findBy(boolean showOnMainLandingPage,boolean publish) {
-        return findBy(0, showOnMainLandingPage,publish);
+        return findBy(0, showOnMainLandingPage, publish);
     }
 
     public Word findBy(int id,boolean publish) {
@@ -27,10 +27,14 @@ public class Words {
     }
 
     private Set<Word> findBy(int wordId, boolean showOnMainLandingPage,boolean publish) {
-        return wordRepository.findBy(wordId, showOnMainLandingPage,publish);
+        return wordRepository.findBy(wordId, showOnMainLandingPage, publish);
     }
 
     public Set<Word> findWords(List<Long> wordIds) {
         return wordRepository.findWords(wordIds);
+    }
+
+    public Set<Word> findByPerson(int personId) {
+        return wordRepository.findWordsByPerson(personId);
     }
 }

@@ -28,18 +28,18 @@ public class WordDAO extends AbstractDAO<Word> {
             wordIntroduction.setWord(word);
             currentSession().saveOrUpdate(wordIntroduction);
         }
-        for(Word synonym : word.getSynonyms()){
+        for (Word synonym : word.getSynonyms()) {
             Set<Word> words = new HashSet<Word>();
             words.add(word);
-            Word newWord = (Word) findBy((int)synonym.getId(),false,false).iterator().next();
+            Word newWord = (Word) findBy((int) synonym.getId(), false, false).iterator().next();
             newWord.setSynonyms(words);
             currentSession().saveOrUpdate(newWord);
         }
 
-        for(Word relatedWord : word.getRelatedWords()){
+        for (Word relatedWord : word.getRelatedWords()) {
             Set<Word> words = new HashSet<Word>();
             words.add(word);
-            Word newWord = (Word) findBy((int)relatedWord.getId(),false,false).iterator().next();
+            Word newWord = (Word) findBy((int) relatedWord.getId(), false, false).iterator().next();
             newWord.setRelatedWords(words);
             currentSession().saveOrUpdate(newWord);
         }
@@ -63,21 +63,27 @@ public class WordDAO extends AbstractDAO<Word> {
         return words;
     }
 
-    private Criteria allWordsCriteria(Session session) {
-        return session.createCriteria(Word.class, "word")
-                .createCriteria("word.songs", "songs", JoinType.LEFT_OUTER_JOIN)
-                .setFetchMode("songs", FetchMode.JOIN)
-                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-    }
-
 
     public Set<Word> findWords(List<Long> wordIds) {
         Criteria wordCriteria = currentSession().createCriteria(Word.class);
         if (wordIds != null && !wordIds.isEmpty()) {
             wordCriteria.add(Restrictions.in("id", wordIds));
             return new LinkedHashSet<>(wordCriteria.list());
-        }else{
-            return findBy(0,false,true);
+        } else {
+            return findBy(0, false, true);
         }
+    }
+
+    public Set<Word> findWordsByPerson(int personId) {
+        Criteria allWords = currentSession().createCriteria(Word.class, "word");
+        if (personId > 0) {
+            allWords.createAlias("word.writers", "writers", JoinType.LEFT_OUTER_JOIN);
+            allWords.createAlias("word.people", "people", JoinType.LEFT_OUTER_JOIN);
+
+            allWords.add(Restrictions.eq("publish", true));
+            allWords.add(Restrictions.or(Restrictions.and(Restrictions.isNotNull("writers"), Restrictions.eq("writers.id", (long) personId)), Restrictions.and(Restrictions.isNotNull("people"), Restrictions.eq("people.id", (long) personId))));
+
+        }
+        return new LinkedHashSet<>(allWords.list());
     }
 }

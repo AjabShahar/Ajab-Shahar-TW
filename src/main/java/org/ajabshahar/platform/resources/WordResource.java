@@ -131,4 +131,14 @@ public class WordResource {
         Set<WordSummaryRepresentation> wordSummaryRepresentations = wordRepresentationFactory.create(allWords);
         return Response.ok(wordSummaryRepresentations).build();
     }
+
+    @GET
+    @Path("/byPerson")
+    @Produces(MediaType.APPLICATION_JSON)
+    @UnitOfWork
+    public Response getWordsBasedOnRelatedPerson(@QueryParam("personId") int personId){
+        Set<Word> wordSet = words.findByPerson(personId);
+        Set<WordSummaryRepresentation> wordSummaryRepresentations = wordRepresentationFactory.create(wordSet);
+        return Response.ok(wordSummaryRepresentations).build();
+    }
 }

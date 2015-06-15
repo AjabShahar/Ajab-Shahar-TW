@@ -694,6 +694,22 @@ public class WordResourceIT {
 
     }
 
+    @Test
+    public void shouldGetWordsBasedOnPerson() {
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_CATEGORY, DataSetup.INSERT_PERSON,
+                DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS,DataSetup.INSERT_WORD_WRITERS,DataSetup.INSERT_WORD_PEOPLE);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        ClientResponse words = httpGet("http://localhost:%d/api/words/byPerson?personId=1");
+
+        Set<WordSummaryRepresentation> wordsSummaryRepresentation = words.getEntity(Set.class);
+
+        assertEquals(1, wordsSummaryRepresentation.size());
+
+    }
+
     private ClientResponse httpGet(String getUrl) {
         return client.resource(
                 String.format(getUrl, RULE.getLocalPort()))

@@ -177,6 +177,7 @@ public class DataSetup {
                             .columns("word_id", "person_id")
                             .values(2, 1)
                             .values(2, 2)
+                            .values(3, 1)
                             .build());
 
     public static final Operation INSERT_RELATED_WORDS =
