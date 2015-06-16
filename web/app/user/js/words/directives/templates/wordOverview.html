@@ -22,7 +22,8 @@
 
         <div class="creditCont">
             <div class="creditBox" ng-repeat="writer in writers" ng-cloak>
-                <a href="/people/all#{{writer.id}}" class='title-dark ng-binding'>{{writer.name}}</a>{{writer.primaryOccupation}}
+                <a href="/people/all#{{writer.id}}" class='link-text ng-binding'>{{writer.name}}</a>
+                <span>{{writer.primaryOccupation}}</span>
             </div>
         </div>
     </div>

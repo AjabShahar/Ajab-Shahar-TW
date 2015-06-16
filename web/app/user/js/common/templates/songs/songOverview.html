@@ -34,16 +34,19 @@
             <a ng-href="/songs/?id={{id}}">enter song</a> or see <a ng-href="/songs/all" class="sub">all songs</a>
         </h3>
         <div class='creditCont' ng-cloak>
-            <div class='creditBox'><a href="/people/all#{{poet.id}}" class='link-text'>{{poet.name}}</a> POET</div>
+            <div class='creditBox'>
+                <a href="/people/all#{{poet.id}}" class='link-text'>{{poet.name}}</a>
+                <span>POET</span>
+            </div>
             <span class='creditBox' ng-repeat="singer in singers track by $index">
                 <a href="/people/all#{{singer.id}}" class='link-text'>{{singer.name}}</a>
-               <span class="creditBox">SINGER</span>
+                <span>SINGER</span>
             </span>
-                <span ng-repeat="word in words" class="creditBox">
-                     <a href="/words/#/details/{{word.id}}"
+            <span ng-repeat="word in words" class="creditBox">
+                <a href="/words/#/details/{{word.id}}"
                         target="_self" class="link-text">{{word.transliteration}}</a>
-                 <span> WORD  </span>
-                </span>
+                <span>WORD</span>
+            </span>
         </div>
     </div>
 </div>
