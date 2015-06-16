@@ -35,6 +35,16 @@ $lower-resolution: new-breakpoint(max-width 1024px);
         height: 95px;
         align-items: center;
         margin: 0px 17px;
+        p {
+            width: 100%;
+        }
+        .sub-main + span {
+            & > span {
+                &:first-child {
+                    margin-left: 4px;
+                }
+            }
+        }
 
       @include media($lower-resolution) {
         width: 55%;

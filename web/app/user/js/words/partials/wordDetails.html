@@ -7,18 +7,20 @@
                     <span class="page-logo">words</span>
                 </a>
             </div>
+            <!--TODO: Refactor this part-->
             <div class="page-title">
                 <p>
                     <span class="main" ng-bind="wordDetails.wordTransliteration"></span>
-                    <span class="sub-main" ng-bind="wordDetails.wordTranslation"></span>
-                    <span ng-repeat="word in associatedWords">
-                        <span class="header-translit-text" ng-cloak>{{word.wordTransliteration}}
-                            <span class="header-translate-text" ng-cloak>
-                                {{word.wordTranslation}}<span ng-hide="$last" class="comma-space">,  </span>
-                            </span>
-                        </span>
+                    <span class="sub-main" ng-bind="wordDetails.wordTranslation"></span><span ng-hide="associatedWords.length <= 0">,</span>
 
-                    </span>
+                          <span ng-repeat="word in associatedWords">
+                            <span class="header-translit-text" ng-cloak>{{ word.wordTransliteration}}
+                                <span class="header-translate-text" ng-cloak>
+                                    {{word.wordTranslation}}<span ng-hide="$last" class="comma-space">,</span>
+                                </span>
+                            </span>
+
+                        </span>
                 </p>
             </div>
         </div>
