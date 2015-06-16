@@ -702,7 +702,7 @@ public class WordResourceIT {
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
 
-        ClientResponse words = httpGet("http://localhost:%d/api/words/byPerson?personId=1");
+        ClientResponse words = httpGet("http://localhost:%d/api/words/summary?personId=1");
 
         Set<WordSummaryRepresentation> wordsSummaryRepresentation = words.getEntity(Set.class);
 

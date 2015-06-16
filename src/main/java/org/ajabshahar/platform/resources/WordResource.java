@@ -8,6 +8,7 @@ import org.ajabshahar.platform.models.Word;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,20 +41,18 @@ public class WordResource {
     public Response getWords(
             @DefaultValue("false") @QueryParam("showOnMainLandingPage") Boolean showOnMainLandingPage,
             @DefaultValue("false") @QueryParam("publish") boolean publish,
-            @QueryParam("ids")List<Long> ids,
-            @QueryParam("representation")String representation) {
-        if(ids != null && !ids.isEmpty()) {
+            @QueryParam("ids") List<Long> ids,
+            @QueryParam("representation") String representation) {
+        if (ids != null && !ids.isEmpty()) {
             Set<Word> wordsList = words.findWords(ids);
-            if(representation != null && representation.equals("custom") ){
+            if (representation != null && representation.equals("custom")) {
                 return Response.ok(WordCustomRepresentation.fromWords(wordsList)).build();
-            }
-            else{
+            } else {
                 WordsRepresentation wordsRepresentation = wordRepresentationFactory.createWordsRepresentation(wordsList);
                 wordsRepresentation.removeUnPublishedPeople();
                 return Response.ok(wordsRepresentation).build();
             }
-        }
-        else {
+        } else {
             Set<Word> wordsList = words.findBy(showOnMainLandingPage, publish);
             WordsRepresentation wordsRepresentation = wordRepresentationFactory.createWordsRepresentation(wordsList);
             wordsRepresentation.removeUnPublishedPeople();
@@ -69,7 +68,7 @@ public class WordResource {
         Word word = words.findBy(wordId, publish);
         WordRepresentation intermediateRepresentation = wordRepresentationFactory.createWordRepresentation(word);
 
-        if(publish){
+        if (publish) {
             intermediateRepresentation.removeUnPublishedPeople();
             removeUnPublishedPeopleFromWordReflection(intermediateRepresentation);
 
@@ -81,10 +80,9 @@ public class WordResource {
         Set<ReflectionSummaryRepresentation> reflections = intermediateRepresentation.getReflections();
         Set<ReflectionSummaryRepresentation> reflectionsWithOutUnPublishedPeople = new LinkedHashSet<>();
         for (ReflectionSummaryRepresentation reflection : reflections) {
-            if(reflection.getSpeaker().isPublish()) {
+            if (reflection.getSpeaker().isPublish()) {
                 reflectionsWithOutUnPublishedPeople.add(reflection);
-            }
-            else {
+            } else {
                 reflection.setSpeaker(null);
                 reflectionsWithOutUnPublishedPeople.add(reflection);
             }
@@ -92,7 +90,7 @@ public class WordResource {
 
         intermediateRepresentation.setReflections(reflectionsWithOutUnPublishedPeople);
 
-        if(intermediateRepresentation.getDefaultReflection() != null
+        if (intermediateRepresentation.getDefaultReflection() != null
                 && intermediateRepresentation.getDefaultReflection().getSpeaker() != null
                 && !intermediateRepresentation.getDefaultReflection().getSpeaker().isPublish()) {
             ReflectionSummaryRepresentation defaultReflection = intermediateRepresentation.getDefaultReflection();
@@ -126,18 +124,13 @@ public class WordResource {
     @Path("/summary")
     @Produces(MediaType.APPLICATION_JSON)
     @UnitOfWork
-    public Response getSummaryRepresentation() {
-        Set<Word> allWords = words.findBy(false, false);
-        Set<WordSummaryRepresentation> wordSummaryRepresentations = wordRepresentationFactory.create(allWords);
-        return Response.ok(wordSummaryRepresentations).build();
-    }
-
-    @GET
-    @Path("/byPerson")
-    @Produces(MediaType.APPLICATION_JSON)
-    @UnitOfWork
-    public Response getWordsBasedOnRelatedPerson(@QueryParam("personId") int personId){
-        Set<Word> wordSet = words.findByPerson(personId);
+    public Response getSummaryRepresentation(@QueryParam("personId") int personId) {
+        Set<Word> wordSet = new HashSet<>();
+        if (personId != 0) {
+            wordSet = words.findByPerson(personId);
+        } else {
+            wordSet = words.findBy(false, false);
+        }
         Set<WordSummaryRepresentation> wordSummaryRepresentations = wordRepresentationFactory.create(wordSet);
         return Response.ok(wordSummaryRepresentations).build();
     }
