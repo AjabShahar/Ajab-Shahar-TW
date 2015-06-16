@@ -6,9 +6,7 @@
  - search bar
  - icons for list and grid view
 */
-/*
-Todo: 768px of chrome and all resolutions with mozilla, styles need to be revisited
-*/
+
 
 $tab-portrait: new-breakpoint(max-width 768px);
 
@@ -33,7 +31,7 @@ $tab-portrait: new-breakpoint(max-width 768px);
     .toggle {
       font-size: $small;
       text-transform: uppercase;
-      width: 200px;
+      width: 165px;
       float: left;
       li {
         float: left;
@@ -71,7 +69,7 @@ $tab-portrait: new-breakpoint(max-width 768px);
     }
 
     .numeric-count {
-      float: right;
+      float: left;
       line-height: 12px;
       font-weight: 300;
       font-size: $small;
