@@ -18,7 +18,7 @@ public class ReflectionRepresentationFactory {
 
     private Reflection toReflection(ReflectionRepresentation reflectionRepresentation) {
         Reflection reflection = new Reflection();
-        if(reflectionRepresentation.getId() != 0){
+        if (reflectionRepresentation.getId() != 0) {
             reflection = reflectionDAO.find(reflectionRepresentation.getId());
         }
         reflection.setIsAuthoringComplete(reflectionRepresentation.isPublish());
@@ -31,7 +31,7 @@ public class ReflectionRepresentationFactory {
         reflection.setYoutubeVideo(reflectionRepresentation.getYoutubeVideoId());
         Set<ReflectionTranscript> reflectionTranscripts = reflectionRepresentation.getReflectionTranscripts();
         reflection.getReflectionTranscripts().clear();
-        if(reflectionTranscripts != null){
+        if (reflectionTranscripts != null) {
             for (ReflectionTranscript reflectionTranscript : reflectionTranscripts) {
                 reflectionTranscript.setReflection(reflection);
                 addReflectionTranscript(reflection, reflectionTranscript);
@@ -74,8 +74,10 @@ public class ReflectionRepresentationFactory {
 
     public ReflectionsSummaryRepresentation toReflectionsSummaryRepresentation(Set<Reflection> reflectionList) {
         ReflectionsSummaryRepresentation reflectionsSummaryRepresentation = new ReflectionsSummaryRepresentation();
-        for (Reflection reflection : reflectionList) {
-            reflectionsSummaryRepresentation.add(ReflectionSummaryRepresentation.createFrom(reflection));
+        if (reflectionList != null) {
+            for (Reflection reflection : reflectionList) {
+                reflectionsSummaryRepresentation.add(ReflectionSummaryRepresentation.createFrom(reflection));
+            }
         }
         return reflectionsSummaryRepresentation;
     }
@@ -136,7 +138,7 @@ public class ReflectionRepresentationFactory {
     public ReflectionRepresentation createReflectionRepresentation(Reflection reflection) {
         Set<Word> words = reflection.getWords();
         Set<WordSummaryRepresentation> wordSummaryRepresentations = wordRepresentationFactory.create(words);
-        Set<ReflectionTranscript> reflectionTranscripts = reflection.getReflectionTranscripts() != null ?reflection.getReflectionTranscripts() : new LinkedHashSet<>();
+        Set<ReflectionTranscript> reflectionTranscripts = reflection.getReflectionTranscripts() != null ? reflection.getReflectionTranscripts() : new LinkedHashSet<>();
         ReflectionRepresentation reflectionRepresentation = new ReflectionRepresentation(
                 (int) reflection.getId(),
                 reflection.getTitle(),

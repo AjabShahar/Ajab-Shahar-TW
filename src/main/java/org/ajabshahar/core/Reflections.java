@@ -38,4 +38,7 @@ public class Reflections {
         return reflectionRepository.find(id);
     }
 
+    public Set<Reflection> findReflectionsByPerson(int personId) {
+        return reflectionRepository.findReflectionsByPerson(personId);
+    }
 }

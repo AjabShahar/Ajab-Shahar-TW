@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -47,9 +48,14 @@ public class ReflectionResource {
     @GET
     @UnitOfWork
     @Path("/summaries")
-    public Response getReflectionSummaries(@QueryParam("ids") List<Long> ids) {
-        Set<Reflection> reflectionList = reflections.getAllByIds(ids);
-        Set<ReflectionSummaryRepresentation> reflectionsRepresentation = reflectionRepresentationFactory.toReflectionSummaryList(reflectionList);
+    public Response getReflectionSummaries(@QueryParam("ids") List<Long> ids, @QueryParam("personId") int personId) {
+        Set<Reflection> reflectionsSet = new HashSet<>();
+        if (personId != 0) {
+            reflectionsSet = reflections.findReflectionsByPerson(personId);
+        } else {
+            reflectionsSet = reflections.getAllByIds(ids);
+        }
+        Set<ReflectionSummaryRepresentation> reflectionsRepresentation = reflectionRepresentationFactory.toReflectionSummaryList(reflectionsSet);
         return Response.ok(reflectionsRepresentation).build();
     }
 
@@ -71,9 +77,10 @@ public class ReflectionResource {
     public ReflectionRepresentation getReflectionById(@QueryParam("id") int id, @DefaultValue("true") @QueryParam("publish") boolean publish) {
         Reflection reflection = reflections.findReflection(id);
         ReflectionRepresentation reflectionRepresentation = reflectionRepresentationFactory.createReflectionRepresentation(reflection);
-        if(publish){
+        if (publish) {
             reflectionRepresentation.removeUnPublishedPeople();
         }
         return reflectionRepresentation;
     }
+
 }

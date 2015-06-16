@@ -781,6 +781,24 @@ public class ReflectionResourceIT {
         assertThat(reflectionRepresentation.getSongs().size(), greaterThan(0));
         assertThat(reflectionRepresentation.getPeople().size(),greaterThan(0));
     }
+
+    @Test
+    public void shouldGetReflectionsByPerson() {
+        Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL,DataSetup.INSERT_COMPLETE_STARTER_SET);
+
+        DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
+        dbSetup.launch();
+
+        ClientResponse reflectionResponse = client.resource(
+                String.format("http://localhost:%d/api/reflections/summaries?personId=1", RULE.getLocalPort()))
+                .get(ClientResponse.class);
+
+        Set<ReflectionsSummaryRepresentation> reflectionsSummaryRepresentation = reflectionResponse.getEntity(Set.class);
+
+        assertEquals(1,reflectionsSummaryRepresentation.size());
+
+    }
+
     private static String resourceFilePath(String resource) {
         return ClassLoader.getSystemClassLoader().getResource(resource).getFile();
     }
