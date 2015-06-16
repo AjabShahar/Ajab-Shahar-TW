@@ -18,24 +18,28 @@ body {
 
   display: block;
   width: 220px;
-  height: 180px;
-  background: url(/user/img/introduction/enter.png) no-repeat;
+  height: 148px;
+  background: url(/user/img/introduction/enter-pink.png) no-repeat;
+  &:hover {
+    background: url(/user/img/introduction/enter-grey.png) no-repeat;
+  }
 
   a.enter {
     display: inline-block;
-    margin: 40px 0px 0 50px;
-    color: #fff;
-    width: 70px;
-    height: 20px;
+    width: 135px;
+    height: 38px;
     cursor: pointer;
+    position: relative;
+    top: 10px;
+    left: 8px;
   }
 
-  a.pravesh {
+  /*a.pravesh {
     display: inline-block;
     margin: 40px 0px 0 2px;
     color: #fff;
     width: 70px;
     height: 20px;
     cursor: pointer;
-  }
+  }*/
 }

@@ -29,3 +29,15 @@ introductionApp.animation('.slide', function () {
     }
 });
 
+introductionApp.animation('.fadeIn', function () {
+    var NgHideClassName = 'ng-hide';
+    return {
+        beforeAddClass: function (element, className, done) {
+            if (className === NgHideClassName) {
+                element.fadeIn();
+            }
+        }
+
+    }
+});
+
