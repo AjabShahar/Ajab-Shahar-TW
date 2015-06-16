@@ -22,8 +22,8 @@
                         <li title="a sample of reflections, songs & more, related through common words & ideas"><a target="_self" href="javascript:void(0)"
                                class="active">explore</a>
                             <ul class="child-list">
-                                <li title="" ng-show="contentAvailable('song')"><a href="javascript:void(0)" ng-click="applyFilter('song')" ng-class="{active:currentSelection==='song'}">songs</a></li>
                                 <li title="" ng-show="contentAvailable('reflection')"><a href="javascript:void(0)" ng-click="applyFilter('reflection')" ng-class="{active:currentSelection==='reflection'}">reflections</a></li>
+                                <li title="" ng-show="contentAvailable('song')"><a href="javascript:void(0)" ng-click="applyFilter('song')" ng-class="{active:currentSelection==='song'}">songs</a></li>
 
                                 <li title=""><a href="javascript:void(0)" ng-click="clearFilters()" ng-class="{active:!currentSelection}">all</a></li>
                             </ul>
@@ -39,7 +39,9 @@
                         , related through the common words -
                         <!--{{song.words}}-->
                         <span ng-repeat="word in song.words" >
-                            <a class="clickable-grey"  ng-show="word.publish" ng-href="/words/details/{{word.id}}" ng-bind="word.wordTransliteration"></a><span ng-show="word.publish" ng-hide="$last">,</span>
+                            <a  ng-show="word.publish && word.rootWord" ng-href="/words/details/{{word.id}}" ng-bind="word.wordTransliteration"></a>
+                            <span ng-show="word.publish && !word.rootWord" ng-bind="word.wordTransliteration"></span>
+                            <span ng-show="word.publish" ng-hide="$last">,</span>
                         </span>
                     </div>
                     <div class='grid-wrapper' >

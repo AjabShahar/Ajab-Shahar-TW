@@ -1,5 +1,6 @@
 'use strict';
 
+
 angular.module("word").service("wordService",["$http",function ($http) {
 
     var getWords = function () {

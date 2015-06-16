@@ -58,6 +58,8 @@ public class WordDAO extends AbstractDAO<Word> {
         if (publish) {
             allWords.add(Restrictions.eq("publish", true));
         }
+        allWords.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+
 
         Set words = new LinkedHashSet<>(allWords.list());
         return words;

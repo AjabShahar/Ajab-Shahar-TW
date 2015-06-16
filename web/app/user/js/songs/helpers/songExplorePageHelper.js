@@ -39,27 +39,40 @@ AjabShahar.SongExploreHelper = (function(){
         return songThumbnails;
     };
 
+    var containsItem = function(existingItems, newItem) {
+        return _.some(existingItems, function (existingItem) {
+            return existingItem ? newItem.id === existingItem.id : false;
+        });
+    };
+
     var getUnique = function(newItems,existingItems ){
         var uniqueItems= newItems || [];
         if(!_.isEmpty(existingItems) && !_.isEmpty(newItems)){
             uniqueItems = _.reject(newItems,function(newItem){
-                return _.some(existingItems,function(existingItem){
-                    return existingItem ? newItem.id === existingItem.id:false;
-                })
+                return containsItem(existingItems, newItem)
             });
         }
         return uniqueItems;
     };
 
     self.getReflectionsFromWordReflections = function(wordReflections,existingReflections){
+        function reflectionsWithoutTheDefault(reflectionsRelatedToWord, wordReflection) {
+            return reflectionsRelatedToWord.concat(_.reject(wordReflection.reflections, function (reflection) {
+                if (!_.isEmpty(wordReflection.defaultReflection)) {
+                    return reflection.id === wordReflection.defaultReflection.id;
+                }
+                return false;
+            }));
+        }
+
         var reflections =_.reduce(wordReflections,function(result,wordReflection){
-            var reflectionsRelatedToWords =[];
-            if(!_.isEmpty(wordReflection.defaultReflection)){
-                reflectionsRelatedToWords.push(wordReflection.defaultReflection)
-            }
-            reflectionsRelatedToWords = reflectionsRelatedToWords.concat(wordReflection.reflections);
-            var uniqueReflections = getUnique(reflectionsRelatedToWords,result.concat(existingReflections));
+            var reflectionsRelatedToWord =[];
+            reflectionsRelatedToWord = reflectionsWithoutTheDefault(reflectionsRelatedToWord, wordReflection);
+            var uniqueReflections = getUnique(reflectionsRelatedToWord,result.concat(existingReflections));
             var reflectionThumbnails = _.sample(self.createReflectionThumbnails(uniqueReflections),3);
+            if(!_.isEmpty(wordReflection.defaultReflection) && !containsItem(reflectionThumbnails,wordReflection.defaultReflection) ){
+                reflectionThumbnails.unshift(wordReflection.defaultReflection)
+            }
             result = result.concat(reflectionThumbnails);
             return result;
         },[]);
