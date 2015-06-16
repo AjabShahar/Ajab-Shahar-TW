@@ -1,4 +1,4 @@
-angular.module('people', ['ngRoute','htmlGenerator','utilities','animationModule','headerModule','wu.masonry'])
+angular.module('people', ['ngRoute','htmlGenerator','utilities','animationModule','headerModule','wu.masonry','thumbnailModule'])
     .config(["$routeProvider","$locationProvider", function ($routeProvider,$locationProvider) {
         $routeProvider
             .when('/allPeople', {
@@ -8,7 +8,7 @@ angular.module('people', ['ngRoute','htmlGenerator','utilities','animationModule
             })
             .when('/explore/:id',{
                 templateUrl:"/user/js/people/partials/explore.html",
-                controller:""
+                controller:"peopleExploreController"
             })
             .when('/all#:id',{
                 templateUrl: "/user/js/people/partials/allPeople.html",
