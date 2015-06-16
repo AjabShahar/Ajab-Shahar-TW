@@ -45,7 +45,7 @@
   }
 
   .moreDesc {
-    color: $color-regular-text;
+    color: $grey;
     font-size: $large;
     font-style: italic;
     font-weight: 300;
@@ -59,8 +59,8 @@
     font-size: $small;
     font-family: 'Merriweather Sans';
     line-height: 26px;
-    color: $color-regular-text;
-    font-weight: 700;
+    color: $grey;
+    font-weight: 400;
 
     small {
         text-transform: lowercase;
@@ -163,9 +163,8 @@
 
 .context {
   font-size: $large;
-  text-transform: capitalize;
   font-weight: 300;
-  color: $color-link;
+  color: $pink;
 
   &:hover {
     color: $color-hover-link;
@@ -238,11 +237,14 @@
     font-weight: 300;
     a {
       font-size: $double-x-large;
-      color: $color-link;
+      color: $pink;
       font-family: 'Merriweather';
       text-transform: capitalize;
       &.sub {
         font-size: $extra-large;
+      }
+      &:hover {
+        color: $dark-grey;
       }
     }
   }
