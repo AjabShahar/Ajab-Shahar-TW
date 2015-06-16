@@ -15,12 +15,14 @@
 
                 <div ng-if="content.type === 'reflection'" class="header-reflection"
                      ng-class="{'header-reflection-audiovideo': showVideo || showAudio}">
-                    <span class="author-name" ng-bind="content.people[0]"></span>
-                    <span class="header-verb" ng-bind="content.verb"></span>
-
                     <h3>
                         <span class="header-title" ng-bind="content.title"></span>
                     </h3>
+
+                    <span class="header-verb" ng-bind="content.verb"></span>
+                    <span class="author-name" ng-bind="content.people[0]"></span>
+
+
                 </div>
             </div>
             <!--end of titles-->

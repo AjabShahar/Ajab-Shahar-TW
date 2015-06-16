@@ -107,20 +107,6 @@ describe("Thumbnail model", function () {
 
 });
 
-describe("content thumbnail directive", function () {
-
-    it("should show singers irrespective of number of singers", function () {
-        var songThumbnail = new AjabShahar.ThumbnailObject(test_songRepresentation[1], "song");
-
-        expect(songThumbnail.showPrimaryVerbPeopleAlways()).toBeTruthy();
-        expect(songThumbnail.showPrimaryVerbPeopleInDetails()).toBeTruthy();
-
-        var songThumbnail = new AjabShahar.ThumbnailObject(test_songRepresentation[0], "song");
-
-        expect(songThumbnail.showPrimaryVerbPeopleAlways()).toBeTruthy();
-        expect(songThumbnail.showPrimaryVerbPeopleInDetails()).toBeFalsy();
-    })
-});
 var test_songRepresentation = [
     {
         "id": 11,

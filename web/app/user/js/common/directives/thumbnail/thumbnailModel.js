@@ -137,13 +137,6 @@ AjabShahar.ThumbnailObject = function (contentItem, type) {
         return self.type === 'reflection' ? "" : title;
     };
 
-    self.showPrimaryVerbPeopleAlways = function () {
-        return self.type === 'song' || self.type === 'word';
-    };
-
-    self.showPrimaryVerbPeopleInDetails = function () {
-        return (self.type === 'song' && self.verbPeople.verb.toLowerCase() === 'sing')
-    };
 
     if (type === 'song') {
         buildFromSong(contentItem);
