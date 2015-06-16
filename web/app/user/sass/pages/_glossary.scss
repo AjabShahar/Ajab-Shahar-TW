@@ -1,5 +1,5 @@
 #glossary_page {
-  background: transparent url(/user/img/glossary/glossary_bg.jpg) 0 0 repeat;
+  background: transparent url(/user/img/glossary/glossary_bg.jpg) 0 0 repeat fixed;
   background-size: contain;
   min-height: 1210px;
   width: 100%;
@@ -12,9 +12,9 @@
     margin: 0 auto;
 
     .logo-container {
-      position: absolute;
-      top: 20px;
-      left: 3%;
+      position: fixed;
+      top: 30px;
+      left: 2.5%;
       @media screen and (max-width: 768px) {
         left: 0.5%;
       }
@@ -32,6 +32,7 @@
       min-height: 1300px;
       background: transparent url(/user/img/glossary/white_bg.png) 0 0 no-repeat repeat;
       background-size: contain;
+      font-weight: 300;
 
       dl {
         margin-bottom: 3em;
@@ -39,32 +40,31 @@
 
       .word-title {
         font-family: 'Merriweather';
-        font-size: 21px;
-        color: #333;
+        font-size: $extra-large;
+        color: $dark-grey;
         width: 100%;
 
         &.root-word {
-          color: #ed1e79;
+          color: $pink;
         }
 
         .related {
           font-family: 'Merriweather Sans';
-          font-weight: 300;
-          font-size: 16px;
-          color: #808080;
+          font-size: $small;
+          color: $grey;
           .hindi {
-            font-family: 'Lohit Devanagari', serif;
-            font-size: 18px;
-            font-weight: 400;
+            font-family: 'Lohit Devanagari Sans';
+            font-size: $small-dev;
           }
         }
       }
 
       .word-meaning {
         width: 100%;
-        font-size: 12px;
+        font-size: $medium;
+        font-family: 'Merriweather';
         line-height: 21px;
-        color: #575756;
+        color: $grey;
         margin: 0;
       }
 
@@ -72,7 +72,7 @@
         display: inline-block;
         width: 100%;
         padding: 0% 0 2%;
-        margin-top: 0px;
+        margin-top: -6px;
         margin-left: 2px;
 
         & > .upper {
