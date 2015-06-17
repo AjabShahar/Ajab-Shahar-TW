@@ -61,8 +61,10 @@ body.songs-details {
 
     .poet-details {
       color: $grey;
-      font-size: $small;
+      font-size: $medium;
       padding-bottom: 70px;
+      position: relative;
+      top: -10px;
       a {
         text-transform: uppercase;
         color: $pink;
@@ -97,8 +99,10 @@ body.songs-details {
         color: $light-grey;
       }
       .poet {
-        font-size: $small-dev;
+        font-size: $medium-dev;
         padding-bottom: 70px;
+        position: relative;
+        top: -10px;
         a {
             color: $pink;
             &:hover {

@@ -43,6 +43,7 @@
         font-size: $extra-large;
         color: $dark-grey;
         width: 100%;
+        text-transform: capitalize;
 
         &.root-word {
           color: $pink;
@@ -66,6 +67,8 @@
         line-height: 21px;
         color: $grey;
         margin: 0;
+        margin-top: 8px;
+        line-height: 1.45em;
       }
 
       .pagination-head {
