@@ -11,7 +11,25 @@
 
         .grid-wrapper {
             margin-left: 125px;
+
+            .song-explore-text {
+                width: 85%;
+                margin: 0 auto;
+                font-family: 'Merriweather Sans';
+                font-size: $small;
+                color: $light-grey;
+                line-height: 20px;
+                padding-bottom: 10px;
+                .explore-words {
+                    color: $grey;
+                    font-family: 'Merriweather';
+                    text-transform: capitalize;
+                }
+            }
+
+
         }
+
 
     }
 

@@ -34,17 +34,18 @@
 
                 </div>
                 <div class='grid-view'>
-                    <span>A random sample of reflections, songs & more</span>
-                    <div ng-if="song.words && song.words.length > 0">
-                        , related through the common words -
+
+                    <div class='grid-wrapper' >
+                        <p class="song-explore-text">A random sample of reflections, songs & more
+                            <span ng-if="song.words && song.words.length > 0">
+                                , related through the common words -
                         <!--{{song.words}}-->
-                        <span ng-repeat="word in song.words" >
-                            <a  ng-show="word.publish && word.rootWord" ng-href="/words/details/{{word.id}}" ng-bind="word.wordTransliteration"></a>
+                            <span ng-repeat="word in song.words" class="explore-words">
+                                <a  ng-show="word.publish && word.rootWord" ng-href="/words/details/{{word.id}}" ng-bind="word.wordTransliteration"></a>
                             <span ng-show="word.publish && !word.rootWord" ng-bind="word.wordTransliteration"></span>
                             <span ng-show="word.publish" ng-hide="$last">,</span>
                         </span>
-                    </div>
-                    <div class='grid-wrapper' >
+                    </span></p>
                         <div id="container" masonry preserve-order height-offset="150">
                             <!--<ul class="media-list" height-offset="0">-->
                             <div ng-repeat="thumbnail in thumbnails | filter : contentTypeFilter" class="media masonry-brick">
