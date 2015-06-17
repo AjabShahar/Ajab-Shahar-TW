@@ -5,6 +5,20 @@ angular.module("people").controller("peopleExploreController", ['$scope','$route
     $scope.classes = ['hansas', 'sadhus', 'yoginis'];
 
     $scope.relatedData = [];
+
+    var sortService = function(firstItem, secondItem){
+        if(firstItem.type === 'reflection' && secondItem.type != 'reflection'){
+            return firstItem.englishTitle.localeCompare(secondItem.translitTitle);
+        }
+        else if(firstItem.type != 'reflection' && secondItem.type === 'reflection'){
+            return firstItem.translitTitle.localeCompare(secondItem.englishTitle);
+        }
+        else if(firstItem.type != 'reflection' && secondItem.type != 'reflection'){
+            return firstItem.translitTitle.localeCompare(secondItem.translitTitle);
+        }
+        return firstItem.englishTitle.localeCompare(secondItem.englishTitle);
+    };
+
     $scope.init = function(){
         $scope.person = {};
         var personId = $route.current.params.id;
@@ -37,9 +51,13 @@ angular.module("people").controller("peopleExploreController", ['$scope','$route
             _.each(words, function(word){
                 $scope.relatedData.push(new AjabShahar.ThumbnailObject(word,"word"));
             });
+            $scope.relatedData = $scope.relatedData.sort(sortService);
         });
 
+
     };
+
+
 
     $scope.selectThumbnail = function(thumbnail){
         $window.location.href = thumbnail.getUrl();

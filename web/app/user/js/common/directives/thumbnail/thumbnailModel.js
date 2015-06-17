@@ -77,7 +77,6 @@ AjabShahar.ThumbnailObject = function (contentItem, type) {
                 people: reflection.speaker && reflection.speaker.publish ? reflection.speaker.name : ""
             };
             self.englishTitle = reflection.title;
-            self.translitTitle = reflection.title;
             self.contentCategory = "reflection";
             self.duration = reflection.duration;
             self.contentFormat = getReflectionFormat(reflection);
