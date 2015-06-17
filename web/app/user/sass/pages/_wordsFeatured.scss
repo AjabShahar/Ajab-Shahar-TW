@@ -22,6 +22,10 @@
   .page-header {
     width: 90%;
     padding-top: 3%;
+    .logo-container > a {
+        position: relative;
+        top: -13px;
+    }
   }
   .pagination-head {
     width: 85%;
