@@ -20,12 +20,10 @@
                 <div class="main-content">
                     <div class="left-nav" scroll>
                         <ul>
-                            <li title="a sample of reflections, songs & more, related through common words & ideas"><a
-                                    target="_self" href="javascript:void(0)"
-                                    class="active">explore</a>
+                            <li title="a sample of reflections, songs & more, related through common words & ideas"><a target="_self" href="javascript:void(0)"
+                                                                                                                       class="active">explore</a>
                                 <ul class="child-list">
-                                    <li><a href="javascript:void(0)">songs</a></li>
-                                    <li><a href="javascript:void(0)">all</a></li>
+                                    <li title="" ng-repeat="item in dynamicList"><a href="javascript:void(0)" ng-click="applyFilter(item.name)" ng-class="{'active':item.selected === true}">{{item.name}}</a></li>
                                 </ul>
 
                             </li>
