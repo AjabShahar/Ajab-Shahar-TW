@@ -8,6 +8,7 @@
     }
     .no-pardah {
         background: none;
+        min-height: 120px;
     }
     .author-name {
         color: $pink;
@@ -27,7 +28,7 @@
     }
 
     .main-content {
-        margin-top: 60px;
+        margin-top: 50px;
         min-height: 500px;
         position: relative;
         padding-bottom: 15em;
@@ -372,7 +373,7 @@
     .left-nav {
         width: 70px;
         left: 0%;
-        top: -5px;
+        top: 25px;
         position: absolute;
         display: inline-block;
         text-align: left;

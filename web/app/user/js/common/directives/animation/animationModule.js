@@ -12,7 +12,7 @@ animationModule.directive("scroll", function ($window) {
                 $('.left-nav').css('top', (windowTop - containerTop)+ 50);
             }
             else {
-                $('.left-nav').css('top', -5);
+                $('.left-nav').css('top', 25);
             }
 
             scope.$apply();
