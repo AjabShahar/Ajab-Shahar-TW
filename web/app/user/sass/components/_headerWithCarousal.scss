@@ -40,22 +40,26 @@
     .versions {
 
       .jcarousel-control-prev, .jcarousel-control-next {
-        background: transparent url(/user/img/songs/carousel-left.png) 0 0 no-repeat;
+        background: transparent url(/user/img/songs/arrow-left.png) 0 0 no-repeat;
         width: 28px;
         height: 39px;
         display: inline-block;
         text-shadow: none;
         border-radius: 0;
         box-shadow: none;
-        top: 25%;
+        top: 50%;
       }
       .jcarousel-control-prev {
-        left: -10px;
+        left: 6px;
+        width: 55px;
+        height: 65px;
       }
 
       .jcarousel-control-next {
-        background-image: url(/user/img/songs/carousel-right.png);
+        background-image: url(/user/img/songs/arrow-right.png);
         right: 0;
+        width: 55px;
+        height: 65px;
       }
       .carousel-wrapper {
         border: none;
