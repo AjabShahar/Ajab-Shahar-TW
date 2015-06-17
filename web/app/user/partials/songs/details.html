@@ -65,17 +65,17 @@
                 <div ng-show="hasSongText()" id="poem_container" ng-cloak>
                     <div ng-show="originalVisible" class="toggleByFading  hindi">
                         <h2 class="song-heading">{{selectedSong.songTitle.originalTitle}}</h2>
-                        <div> कवि {{selectedSong.poets[0].hindiName}}</div>
+                        <div class="poet"> कवि <a href="#">{{selectedSong.poets[0].hindiName}}</a></div>
                         <div class="lyrics" bind-dynamic-html="selectedSong.songText.original"></div>
                     </div>
                     <div ng-show="englishTranslationVisible" class="toggleByFading">
                         <h2 class="song-heading">{{selectedSong.songTitle.englishTranslation}}</h2>
-                        <div> POET {{selectedSong.poets[0].name}}</div>
+                        <div class="poet-details"> POET <a href="#">{{selectedSong.poets[0].name}}</a></div>
                         <div class="lyrics" bind-dynamic-html="selectedSong.songText.translation"></div>
                     </div>
                     <div ng-show="englishTransliterationVisible" class="toggleByFading">
                         <h2 class="song-heading">{{selectedSong.songTitle.englishTransliteration}}</h2>
-                        <div> POET {{selectedSong.poets[0].name}}</div>
+                        <div class="poet-details"> POET <a href="#">{{selectedSong.poets[0].name}}</a></div>
                         <div class="lyrics" bind-dynamic-html="selectedSong.songText.transliteration"></div>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
                 <li class="transliteration" ng-click="showEnglishTransliteration()"><a href="javascript:void(0)" ng-class="{'active':englishTransliterationVisible}"></a></li>
                 <li class="translation" ng-click="showEnglishTranslation()"><a href="javascript:void(0)" ng-class="{'active':englishTranslationVisible}"></a></li>
             </ul>
-            <div class="glossary-link">see <a target="_blank" href="/words/#/glossary">Glossary</a></div>
+            <div class="glossary-link">See <a target="_blank" href="/words/#/glossary">Glossary</a></div>
         </div>
         <div class="footer-spacer"></div>
         <ajab-shahar-footer></ajab-shahar-footer>
