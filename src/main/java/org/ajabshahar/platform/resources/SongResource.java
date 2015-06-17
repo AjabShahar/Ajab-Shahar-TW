@@ -94,13 +94,15 @@ public class SongResource {
     @UnitOfWork
     public Response getSongs(@QueryParam("personId") int personId) {
         Set<Song> songList = new HashSet<>();
+        SongsSummaryRepresentation songsSummaryRepresentation = new SongsSummaryRepresentation();
         if (personId != 0) {
             songList = songs.findByPerson(personId);
+            songsSummaryRepresentation = songsRepresentationFactory.create(songList);
+            songsSummaryRepresentation.removeUnPublishedPeople();
         } else {
-
             songList = songs.findAll();
+            songsSummaryRepresentation = songsRepresentationFactory.create(songList);
         }
-        SongsSummaryRepresentation songsSummaryRepresentation = songsRepresentationFactory.create(songList);
         return Response.ok(songsSummaryRepresentation, MediaType.APPLICATION_JSON).build();
     }
 }

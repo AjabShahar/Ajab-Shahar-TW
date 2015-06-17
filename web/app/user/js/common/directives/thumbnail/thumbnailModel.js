@@ -74,9 +74,10 @@ AjabShahar.ThumbnailObject = function (contentItem, type) {
             self.description = reflection.excerpt ? reflection.excerpt : reflection.reflectionExcerpt;
             self.verbPeople = {
                 verb: reflection.verb,
-                people: reflection.speaker ? reflection.speaker.name : ""
+                people: reflection.speaker && reflection.speaker.publish ? reflection.speaker.name : ""
             };
             self.englishTitle = reflection.title;
+            self.translitTitle = reflection.title;
             self.contentCategory = "reflection";
             self.duration = reflection.duration;
             self.contentFormat = getReflectionFormat(reflection);
@@ -96,7 +97,7 @@ AjabShahar.ThumbnailObject = function (contentItem, type) {
     };
 
     var getWritersForWord = function (word) {
-        if (!_.isEmpty(word.writers)) {
+        if (!_.isEmpty(word.writers) && word.writers[0].publish) {
             return word.writers[0].name + (word.displayAjabShaharTeam === 'true' || word.displayAjabShaharTeam ? ", Ajab Shahar Team" : "");
         }
         return "";

@@ -1,4 +1,4 @@
-describe("Reflection details controller", function () {
+describe("all reflections controller", function () {
 
     var reflectionsContentService,
         scope,
@@ -84,6 +84,7 @@ var test_reflections = {
             "verb": "says",
             "speaker": {
                 "id": 7,
+                "publish": true,
                 "name": "Parvathy Baul",
                 "hindiName": "",
                 "primaryOccupation": "Singer"
@@ -137,6 +138,7 @@ var test_reflections = {
             "verb": "says",
             "speaker": {
                 "id": 16,
+                "publish": true,
                 "name": "Vipul Rikhi",
                 "hindiName": "",
                 "primaryOccupation": "Singer"

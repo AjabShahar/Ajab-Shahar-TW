@@ -74,7 +74,7 @@ describe("Thumbnail model", function () {
         expect(reflectionThumbnail.thumbnailImg).toBe("/images/TN-Reflection-Tosing-Kabirs-truth-reflection.png");
         expect(reflectionThumbnail.description).toBe("this is excerpt");
         expect(reflectionThumbnail.verbPeople.verb).toBe("describes");
-        expect(reflectionThumbnail.verbPeople.people).toBe("name");
+        expect(reflectionThumbnail.verbPeople.people).toBe("Kabir");
         expect(reflectionThumbnail.englishTitle).toBe("My Personal and Political Kabir");
         expect(reflectionThumbnail.contentCategory).toBe("reflection");
         expect(reflectionThumbnail.duration).toBe("1:16:54");
@@ -93,7 +93,11 @@ describe("Thumbnail model", function () {
         "title": "My Personal and Political Kabir",
         "verb": "describes",
         "speaker": {
-            name:"name"
+            "publish": true,
+            "id": 6,
+            "name": "Kabir",
+            "hindiName": "",
+            "primaryOccupation": "Poet"
         },
         "soundCloudId": null,
         "youtubeVideoId": "bWyTFl6s62s",
