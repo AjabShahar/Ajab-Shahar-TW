@@ -7,7 +7,13 @@ function getData($siteRoot) {
     $id = ctype_digit($_GET['id']) ? $_GET['id'] : 1;
     $rawData = http_get($siteRoot.'/api/reflections/edit?id='.$id, array('headers' => array('content_type' => 'application/json')), $info);
     $res =  http_parse_message($rawData)->body;
-    return json_decode($res);
+    $result = json_decode($res);
+
+    if (strpos($result->thumbnailURL,'http') === false) {
+        $result->thumbnailURL = "http://www.ajabshahar.com" . $result->thumbnailURL;
+    }
+
+    return $result;
 }
 
 function makePage($data, $siteRoot) {
