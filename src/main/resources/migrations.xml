@@ -373,4 +373,10 @@
             (select '_Legendary Figures', 'person' WHERE NOT EXISTS (select 1  from category where name='_Legendary Figures' AND category_type='person'));
         </sql>
     </changeSet>
+    <changeSet id="96" author="CHANAKYA">
+        <comment>Adding title field for splash screen</comment>
+        <sql>
+            ALTER TABLE splash_screen ADD COLUMN name varchar(200);
+        </sql>
+    </changeSet>
 </databaseChangeLog>

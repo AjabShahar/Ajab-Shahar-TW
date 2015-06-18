@@ -2,7 +2,7 @@
 <html ng-app="splashScreenOptionsApp">
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Ajab-Shahar poems - admin</title>
+    <title>Ajab poems - admin</title>
     <script src="/common/lib/angular/angular.js"></script>
     <script src="/common/lib/angular-route/angular-route.js"></script>
     <script src="/common/lib/angular-animate/angular-animate.js"></script>
@@ -18,12 +18,20 @@
 </a>
 
 <div class="left">
-    <h2>Enter Ajab-shahar poems</h2>
+    <h2>Enter Ajab poems</h2>
     <br/>
 
     <div ng-controller="splashScreenController">
         <form>
             <div class="left">
+                <div class="row">
+                    <div class="form-group col-sm-2">
+                        <label>Name</label>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <input type="text" name="name" ng-model="formInfo.NAME" class="form-control">
+                    </div>
+                </div>
                 <div class="row">
                     <div class="form-group col-sm-2">
                         <label>Format</label>
@@ -37,7 +45,7 @@
 
                 </div>
 
-                <div class="row">
+                <div class="row" ng-show="!shouldShowImageUrl()">
                     <div class="form-group col-sm-2">
                         <label>Youtube Id</label>
                     </div>

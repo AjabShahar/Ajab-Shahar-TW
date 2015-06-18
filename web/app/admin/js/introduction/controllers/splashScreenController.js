@@ -1,7 +1,6 @@
 var splashScreenController = function ($scope, $window, $http, contentService) {
     $scope.formInfo = {};
     $scope.option = {"url": "", "imageUrl": ""};
-    $scope.splashScreenOptions;
     $scope.optionsFormatList = [{'id': 'audio', 'name': 'Audio'}, {'id': 'video', 'name': 'Video'}];
 
     $scope.saveData = function () {

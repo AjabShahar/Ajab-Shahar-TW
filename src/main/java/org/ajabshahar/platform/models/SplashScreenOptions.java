@@ -24,6 +24,9 @@ public class SplashScreenOptions {
     @Column(name = "FORMAT", nullable = false)
     private String FORMAT;
 
+    @Column(name = "NAME")
+    private String NAME;
+
     public long getId() {
         return id;
     }
@@ -50,6 +53,14 @@ public class SplashScreenOptions {
 
     public void setFormat(String FORMAT) {
         this.FORMAT = FORMAT;
+    }
+
+    public String getName() {
+        return FORMAT;
+    }
+
+    public void setName(String NAME) {
+        this.NAME = NAME;
     }
 
     @Override
