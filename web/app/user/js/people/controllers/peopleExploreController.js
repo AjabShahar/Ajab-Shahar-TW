@@ -44,17 +44,17 @@ angular.module("people").controller("peopleExploreController", ['$scope','$route
             });
 
             var reflections = data[1].data;
-            reflections.length > 0 ? $scope.dynamicList.push({name:"reflections",selected:false}) : '';
 
             _.each(reflections, function(reflection){
                 $scope.relatedData.push(new AjabShahar.ThumbnailObject(reflection,"reflection"));
             });
 
             var words = data[2].data;
-            words.length > 0 ? $scope.dynamicList.push({name:"words",selected:false}):'';
             _.each(words, function(word){
                 $scope.relatedData.push(new AjabShahar.ThumbnailObject(word,"word"));
             });
+            reflections.length > 0 || words.length > 0? $scope.dynamicList.push({name:"reflections",selected:false}) : '';
+
             $scope.relatedData = $scope.relatedData.sort(sortService);
             $scope.dynamicList.push({name:"all",selected:true});
             $scope.allRelatedData = angular.copy($scope.relatedData);
@@ -66,7 +66,7 @@ angular.module("people").controller("peopleExploreController", ['$scope','$route
           $scope.relatedData = angular.copy($scope.allRelatedData);
         else{
             $scope.relatedData = _.filter($scope.allRelatedData,function(item){
-                return criteria.indexOf(item.type) === 0;
+                return criteria.indexOf(item.type) === 0 || criteria === 'reflections' && item.type === 'word' ;
             })
         }
 

@@ -47,11 +47,11 @@ describe("people explore controller", function () {
     it("should create dynamic list",function(){
         httpBackend.flush();
 
-        expect(scope.dynamicList.length).toBe(4);
+        expect(scope.dynamicList.length).toBe(3);
         expect(scope.dynamicList[0].name).toBe("songs");
         expect(scope.dynamicList[0].selected).toBeFalsy();
-        expect(scope.dynamicList[3].name).toBe("all");
-        expect(scope.dynamicList[3].selected).toBeTruthy();
+        expect(scope.dynamicList[2].name).toBe("all");
+        expect(scope.dynamicList[2].selected).toBeTruthy();
     });
 
     it("should apply filters",function(){
@@ -62,9 +62,9 @@ describe("people explore controller", function () {
         expect(scope.relatedData.length).toBe(1);
         expect(scope.relatedData[0].englishTitle).toBe('In This Body');
 
-        scope.applyFilter('words');
-        expect(scope.relatedData.length).toBe(1);
-        expect(scope.relatedData[0].englishTitle).toBe('translation of first word');
+        scope.applyFilter('reflections');
+        expect(scope.relatedData.length).toBe(2);
+        expect(scope.relatedData[0].englishTitle).toBe('first reflection');
 
         scope.applyFilter('all');
         expect(scope.relatedData.length).toBe(3);
