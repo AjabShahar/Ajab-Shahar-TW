@@ -1,0 +1,13 @@
+.song-explore {
+
+    .grid-view {
+        position: relative;
+        display: block;
+        & > .left-nav {
+            top: -15px;
+        }
+    }
+
+
+
+}
