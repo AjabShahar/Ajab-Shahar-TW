@@ -34,7 +34,7 @@ angular.module('utilities').factory('overviewMapperService', [function () {
                 "wordTransliteration": word.wordTransliteration,
                 "hindiIntroExcerpt": word.hindiIntroExcerpt,
                 "englishIntroExcerpt": word.englishIntroExcerpt,
-                "wordIntroEnglish": word.wordIntroEnglish,
+                "wordIntroEnglish": word.wordIntroductions[0].wordIntroEnglish,
                 "writers": word.writers,
                 "displayAjabShaharTeam": word.displayAjabShaharTeam
             });
