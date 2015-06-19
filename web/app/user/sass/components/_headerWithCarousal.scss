@@ -68,6 +68,7 @@
         border-radius: 0;
         width: 100%;
         padding: 137px 0 25px 0;
+        height: 450px;
 
         .carousel-box {
           /*width: 90%;*/
@@ -97,7 +98,7 @@
         .jcarousel {
             position: relative;
             width: 1200px;
-            height: 300px;
+
             overflow: hidden;
             @media screen and (max-width: 1024px) {
                 width: 900px;
@@ -109,7 +110,7 @@
 
 
           & > ul {
-
+            height: 450px;
 
             li {
 
