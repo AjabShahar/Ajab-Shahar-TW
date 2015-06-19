@@ -44,17 +44,35 @@
                 </div>
 
                 <!--sharing-->
-                <div class='shareItemsDropDown' ng-show="sharingVisible">
-                    <ul>
-                        <li><a href='http://www.facebook.com/share.php?u={{createUrl(content.shareUrl)}}' target="_blank">Share on Facebook</a>
+                <div class='toggleBySlide shareItemsDropDown' ng-show="sharingVisible">
+                    <ul class='shareItems'>
+                        <li>
+                            <a class="icon"
+                               href='http://www.facebook.com/share.php?u={{createUrl(content.shareUrl)}}'
+                               target="_blank">
+                                <i class="fa fa-facebook"></i>
+                            </a>
                         </li>
-                        <li><a class="twitter-share-button"
+                        <li>
+                            <a class="twitter-share-button icon"
                                href="https://twitter.com/intent/tweet?text={{createUrl(content.shareUrl)}}"
-                               target="_blank">Share on twitter</a></li>
-                        <li><a href="//pinterest.com/pin/create/link/?url={{createUrl(content.shareUrl)}}&media={{createURLForImage(content.image)}}" target="_blank">Share on
-                            Pinterest</a>
+                               target="_blank">
+                                <i class="fa fa-twitter"></i>
+                            </a>
                         </li>
-                        <li><a href="https://plus.google.com/share?url={{createUrl(content.shareUrl)}}" target="_blank">Share on Google+</a>
+                        <li>
+                            <a class="icon"
+                               href="https://plus.google.com/share?url={{createUrl(content.shareUrl)}}"
+                               target="_blank">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="icon"
+                               href="//pinterest.com/pin/create/link/?url={{createUrl(content.shareUrl)}}&media={{createURLForImage(content.image)}}"
+                               target="_blank">
+                                <i class="fa fa-pinterest"></i>
+                            </a>
                         </li>
                     </ul>
                 </div>
