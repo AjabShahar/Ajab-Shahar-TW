@@ -51,10 +51,11 @@ thumbnailModule.directive("contentDetails", function () {
                     if(imageURL.includes("http")){
                         return imageURL;
                     }
+                    else{
+                        return $scope.url + imageURL;
+                    }
                 }
-                else{
-                    return $scope.url + imageURL;
-                }
+                return imageURL;
             };
 
             var init = function(){
