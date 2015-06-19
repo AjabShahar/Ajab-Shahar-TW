@@ -5,7 +5,7 @@ angular.module("word", ['ngRoute', 'htmlGenerator', 'headerModule', 'animationMo
             templateUrl:"/user/js/words/partials/wordDetails.html",
             controller:"wordDetailsController"
         })
-        .when('/featuredContent', {
+        .when('/allWords', {
             templateUrl: "/user/js/words/partials/featuredContent.html",
             controller: "wordFeaturedContentController"
         })
