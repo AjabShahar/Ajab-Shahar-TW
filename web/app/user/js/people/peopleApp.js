@@ -1,7 +1,7 @@
 angular.module('people', ['ngRoute','htmlGenerator','utilities','animationModule','headerModule','wu.masonry','thumbnailModule'])
     .config(["$routeProvider","$locationProvider", function ($routeProvider,$locationProvider) {
         $routeProvider
-            .when('/allPeople', {
+            .when('/all', {
                 templateUrl: "/user/js/people/partials/allPeople.html",
                 controller:"allPeopleController"
 

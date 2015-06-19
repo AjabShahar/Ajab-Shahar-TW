@@ -21,7 +21,7 @@
                 <dl>
                     <dt class="word-title" ng-class="term.isRootWord ? 'root-word' : ''" ng-click="open('{{term.id}}')">
                                    <span ng-if="term.isRootWord">
-                                       <a href="/words/#/details/{{term.id}}" ng-cloak>{{term.wordTransliteration}}</a>
+                                       <a href="/words/#/details/{{term.id}}" ng-cloak target="_self">{{term.wordTransliteration}}</a>
                                    </span>
                                    <span ng-if="!term.isRootWord" ng-cloak>
                                        {{term.wordTransliteration}}
