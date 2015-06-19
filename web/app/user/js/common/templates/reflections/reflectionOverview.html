@@ -26,7 +26,7 @@
         <div class='creditCont'>
 
             <div class='creditBox' ng-repeat="person in people track by $index" ng-cloak>
-                <a class='link-text selected' href="/people/all#person.id">{{person.name}} </a>
+                <a class='link-text selected' href="/people/all#{{person.id}}">{{person.name}} </a>
                 <span>{{person.primaryOccupation}}</span>
             </div>
 
