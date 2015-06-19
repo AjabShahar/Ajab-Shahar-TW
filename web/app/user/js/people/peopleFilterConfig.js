@@ -6,6 +6,10 @@ AjabShahar.user.PeopleFilterConfig = (function () {
             name: "name",
             value: "",
             method: "startsWith"
+        },
+        {
+            name: "occupations[]",
+            value: ""
         }
     ];
 

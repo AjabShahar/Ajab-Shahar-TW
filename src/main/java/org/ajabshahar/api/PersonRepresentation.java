@@ -32,7 +32,6 @@ public class PersonRepresentation {
         this.firstNameInHindi = firstNameInHindi;
         this.middleNameInHindi = middleNameInHindi;
         this.lastNameInHindi = lastNameInHindi;
-        this.roles = new LinkedHashSet<>();
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;

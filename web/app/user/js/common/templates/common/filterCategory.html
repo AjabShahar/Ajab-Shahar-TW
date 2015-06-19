@@ -1,13 +1,13 @@
 <div class="first-layer-list">
     <ul class='filters'>
         <li class='head'>Filter by</li>
-        <li ng-repeat="criteria in criteriaList">
+        <li ng-cloak ng-repeat="criteria in criteriaList">
             <div ng-if="criteria.displayName">
                 <a href="javascript:void(0)" title="{{criteria.tooltip}}" ng-class="{active:criteria.active,disable:criteria.disabled}"
-                   ng-click="criteriaClicked(criteria)" ng-cloak>{{criteria.displayName}}</a>
+                   ng-click="criteriaClicked(criteria)" >{{criteria.displayName}}</a>
 
                 <div class="child-list" ng-show="criteria.value">
-                    <span ng-cloak>{{criteria.value}}<a ng-click="criteriaRemoved(criteria)">x</a></span>
+                    <span>{{criteria.value}}<a ng-click="criteriaRemoved(criteria)">x</a></span>
                 </div>
             </div>
         </li>

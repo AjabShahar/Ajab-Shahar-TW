@@ -34,5 +34,16 @@ AjabShahar.peopleModel = function (content) {
         return occupations;
     };
 
+    var isMetaOccupation = function(occupation){
+        return occupation ? occupation.indexOf("_") === 0 : false;
+    };
+
+    self.getOccupationsAsString = function(){
+        var occupations =_.reject( self.occupations,function(occupation){
+            return isMetaOccupation(occupation);
+        });
+        return occupations.join(", ");
+    };
+
     buildFromPerson(content);
 };

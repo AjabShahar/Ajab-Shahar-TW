@@ -4,7 +4,8 @@ angular.module("people").controller('allPeopleController', ['$scope', 'peopleSer
     $scope.people = [];
     $scope.allPeople = [];
     $scope.expandFilter = false;
-    $scope.numberOfPeople;
+    var currentSelection ="";
+    $scope.currentAlphabetSelection="ALL";
     $scope.alphabetFilters = ['ALL', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
         'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
@@ -15,7 +16,7 @@ angular.module("people").controller('allPeopleController', ['$scope', 'peopleSer
                 $scope.people.push(new AjabShahar.peopleModel(person));
             });
             $scope.allPeople = angular.copy($scope.people);
-            $scope.numberOfPeople = $scope.people.length;
+            updateFilterCount();
         });
     };
 
@@ -23,13 +24,28 @@ angular.module("people").controller('allPeopleController', ['$scope', 'peopleSer
     var sieve = new AjabShahar.user.Sieve($scope.criteriaList);
 
     $scope.applyAlphabetFilter = function (letter) {
+        clearExistingFilters();
         if (letter === "ALL")
             sieve.removeFilterCriteria("name");
         else
             sieve.setFilterCriteria("name", letter);
+        $scope.currentAlphabetSelection = letter;
         $scope.people = sieve.filter($scope.allPeople);
-        $scope.numberOfPeople = $scope.people.length;
+        updateFilterCount();
+    };
 
+    $scope.filterBy = function(occupation){
+        clearExistingFilters();
+        currentSelection = occupation;
+        sieve.setFilterCriteria("occupations[]", occupation);
+        $scope.people = sieve.filter($scope.allPeople);
+        updateFilterCount();
+    };
+
+    $scope.resetFilters = function(){
+        clearExistingFilters();
+        $scope.people = $scope.allPeople;
+        updateFilterCount();
     };
 
     $scope.scrollTo = function () {
@@ -43,5 +59,18 @@ angular.module("people").controller('allPeopleController', ['$scope', 'peopleSer
 
     };
 
+    $scope.isActive = function(criterion){
+        return currentSelection === criterion;
+    };
+
+    var clearExistingFilters = function(){
+        sieve.clearFilters();
+        currentSelection = "";
+        $scope.currentAlphabetSelection="ALL";
+    };
+
+    var updateFilterCount = function(){
+        $scope.numberOfPeople = $scope.people.length;
+    };
     $scope.init();
 }]);

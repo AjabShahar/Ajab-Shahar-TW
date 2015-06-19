@@ -20,40 +20,23 @@
                         <ul class='filters'>
                             <li class='head'>Filter by</li>
                             <li>
-                                <a href="javascript:void(0)"
-                                   title="writers or speakers who have reflected on a song, poem or idea"
-                                   class="disable">bhakti poets</a>
-
+                                <a ng-class="{active:isActive('_Poets')}" href="javascript:void(0)" ng-click="filterBy('_Poets')">poets</a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" title="words, metaphors or ideas in or about mystic poetry"
-                                   ng-click="openParda()">sufi poets</a>
+                                <a ng-class="{active:isActive('_Singers')}" href="javascript:void(0)" ng-click="filterBy('_Singers')">singers</a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" title="reflections on various poets"
-                                   class="disable">baul poets</a>
+                                <a ng-class="{active:isActive('_Writers')}" href="javascript:void(0)" ng-click="filterBy('_Writers')">writers</a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" title="reflections on various poets"
-                                   class="disable">legendary figures</a>
+                                <a ng-class="{active:isActive('_Artists')}" href="javascript:void(0)" ng-click="filterBy('_Artists')">artists</a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" title="reflections on various poets"
-                                   class="disable">singers</a>
+                                <a ng-class="{active:isActive('_Legendary Figures')}" href="javascript:void(0)" ng-click="filterBy('_Legendary Figures')">legendary figures</a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" title="reflections on various poets"
-                                   class="disable">writers</a>
+                                <a ng-class="{active:isActive('_Other')}" href="javascript:void(0)" ng-click="filterBy('_Other')">other</a>
                             </li>
-                            <li>
-                                <a href="javascript:void(0)" title="reflections on various poets"
-                                   class="disable">artists</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" title="reflections on various poets"
-                                   class="disable">other</a>
-                            </li>
-
 
                             <li class="reset-image"><a class="reset" ng-click="resetFilters()">reset</a></li>
                         </ul>
@@ -77,7 +60,7 @@
                                 <div class="lower">
                                     <ul class='alphabets'>
                                         <li ng-repeat="letter in alphabetFilters" ng-click="applyAlphabetFilter(letter)">
-                                            <a ng-cloak>{{letter}}</a>
+                                            <a ng-class="{active:letter === currentAlphabetSelection}" ng-bind="letter"></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -93,8 +76,7 @@
                                         <div class="people-info" read-more>
 
                                             <a href="explore/{{person.id}}"  target="_self"><span class="title" ng-cloak>{{person.name}}</span></a>
-                                            <span class="job-title" ng-repeat="role in person.occupations track by $index" style="display: inline">{{role}}<span ng-hide="$last" class="comma-space">,</span>
-                                            </span>
+                                            <span class="job-title" style="display: inline">{{person.getOccupationsAsString()}}</span>
                                             <div bind-dynamic-html = "person.profile"></div>
                                         </div>
                                         <a href="explore/{{person.id}}" target="_self" class="explore">Explore</a>
