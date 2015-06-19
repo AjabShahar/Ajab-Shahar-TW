@@ -8,7 +8,7 @@
                 <div ng-if="content.type === 'word'" class="header-intro-by">
                     <span ng-bind="content.verb"></span>
             <span class="author-name" ng-repeat="person in content.people">
-                <a href="" ng-bind="person"></a><span ng-hide="$last"> & </span><span ng-show="$last && content.displayAjabShaharTeam">,</span>
+                <a href="{{content.links[$index].link}}" ng-bind="person"></a><span ng-hide="$last"> & </span><span ng-show="$last && content.displayAjabShaharTeam">,</span>
             </span>
                     <span ng-show="content.displayAjabShaharTeam"> Ajab Shahar Team</span>
                 </div>
