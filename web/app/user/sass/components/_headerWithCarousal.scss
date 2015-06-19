@@ -97,9 +97,15 @@
         .jcarousel {
             position: relative;
             width: 1200px;
-
             height: 300px;
             overflow: hidden;
+            @media screen and (max-width: 1024px) {
+                width: 900px;
+            }
+            @media screen and (max-width: 768px) {
+                width: 600px;
+            }
+
 
 
           & > ul {
