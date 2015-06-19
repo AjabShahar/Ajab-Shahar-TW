@@ -55,7 +55,9 @@ thumbnailModule.directive("contentDetails", function () {
                         return $scope.url + imageURL;
                     }
                 }
-                return imageURL;
+                else{
+                    return imageURL;
+                }
             };
 
             var init = function(){
