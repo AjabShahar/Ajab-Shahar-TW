@@ -5,9 +5,7 @@ describe("contentDetails model", function () {
         expect(wordDetailsObject.audioId).toBe("http://sound.com/audioId");
         expect(wordDetailsObject.videoId).toBe("MtIoD16yTQc");
 
-        expect(wordDetailsObject.textSections.length).toBe(3);
-        expect(wordDetailsObject.textSections[0].text).toBe(test_wordRepresentation.wordIntroductions[0].wordIntroEnglish);
-        expect(wordDetailsObject.textSections[0].type).toBe('couplet');
+        expect(wordDetailsObject.textSections).toBe(test_wordRepresentation.wordIntroductions[0].wordIntroEnglish);
 
         expect(wordDetailsObject.links.length).toBe(2);
         expect(wordDetailsObject.links[0].name).toBe("Mooralala Marwada");
@@ -25,8 +23,7 @@ describe("contentDetails model", function () {
         expect(reflectionDetailsObject.audioId).toBe("http://sound.com/audioId");
         expect(reflectionDetailsObject.videoId).toBe("MtIoD16yTQc");
 
-        expect(reflectionDetailsObject.textSections.length).toBe(3);
-        expect(reflectionDetailsObject.textSections[1].text).toBe(test_reflectionRepresentation1.reflectionTranscripts[1].englishTranscript);
+        expect(reflectionDetailsObject.textSections).toBe(test_reflectionRepresentation1.reflectionTranscripts[0].englishTranscript);
 
         expect(reflectionDetailsObject.verb).toBe("says");
         expect(reflectionDetailsObject.people.length).toBe(1);
@@ -450,19 +447,9 @@ var test_reflectionRepresentation1 = {
     "youtubeVideoId": "MtIoD16yTQc",
     "reflectionTranscripts": [
         {
-            "id": 1,
-            "hindiTranscript": null,
-            "englishTranscript": null
-        },
-        {
             "id": 3,
             "hindiTranscript": "",
             "englishTranscript": "<p>That said, Žižek decries political correctness for two main reasons</p>"
-        },
-        {
-            "id": 4,
-            "hindiTranscript": "",
-            "englishTranscript": "<p>In fact these future machines will be even more humanlike than humans today</p>"
         }
     ],
     "words": [

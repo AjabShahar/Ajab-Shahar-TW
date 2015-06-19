@@ -34,10 +34,7 @@
                 <span class="header-text link" bind-dynamic-html="content.info"></span>
 
                 <div class="text-content link">
-                    <div id="text-section" ng-repeat="textSection in content.textSections" >
-                        <div bind-dynamic-html="textSection.text" ng-class="{couplet: textSection.type === 'couplet'}"></div>
-                        <div ng-show="textSection.poet"><a href="" ng-bind="textSection.poet"></a></div>
-                    </div>
+                        <div id="text-section" bind-dynamic-html="content.textSections"></div>
                 </div>
                 <div class="text-share-options" ng-click="toggleShare()">
                     <a href="javascript:void(0)" class="share" ng-class="{'active': sharingVisible}"></a>

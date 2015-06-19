@@ -153,13 +153,7 @@ AjabShahar.DetailsObject = function (content, type) {
             }
             if (type === 'text') {
                 if (!_.isEmpty(word.wordIntroductions)) {
-                    return word.wordIntroductions.map(function (wordIntro) {
-                        return {
-                            text: wordIntro.wordIntroEnglish,
-                            type: wordIntro.contentType,
-                            poet: wordIntro.poet?wordIntro.poet.name:""
-                        }
-                    });
+                    return word.wordIntroductions[0].wordIntroEnglish;
                 }
             }
             return null;
@@ -183,11 +177,7 @@ AjabShahar.DetailsObject = function (content, type) {
     var buildFromReflection = function (reflection) {
         var getReflectionTranscripts = function (reflection) {
             if (!_.isEmpty(reflection.reflectionTranscripts)) {
-                return reflection.reflectionTranscripts.map(function (transcript) {
-                    return {
-                        text: transcript.englishTranscript
-                    }
-                });
+                return reflection.reflectionTranscripts[0].englishTranscript;
             }
             return null;
         };
