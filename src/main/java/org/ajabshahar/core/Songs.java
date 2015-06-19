@@ -31,7 +31,7 @@ public class Songs {
         return findBy(0,personId);
     }
 
-    private Set<Song> findBy(int songId, int personId) {
+    public Set<Song> findBy(int songId, int personId) {
         return songsRepository.findBy(songId,personId);
     }
 

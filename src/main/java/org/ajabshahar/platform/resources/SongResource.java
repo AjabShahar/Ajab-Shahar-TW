@@ -58,7 +58,7 @@ public class SongResource {
     @UnitOfWork
     @Path("/getPublishedSongs")
     public Response getPublishedSongs() {
-        Set<Song> songList = songs.findAll();
+        Set<Song> songList = songs.findBy(0,0);
         if (songList == null || songList.size() == 0) {
             return Response.status(Status.NO_CONTENT).build();
         }
