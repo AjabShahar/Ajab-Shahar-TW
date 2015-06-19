@@ -70,11 +70,11 @@
         padding: 137px 0 25px 0;
 
         .carousel-box {
-          width: 90%;
+          /*width: 90%;*/
           text-align: center;
           margin: 0 auto;
           padding: 12px 0 0;
-          overflow: visible;
+
 
           @media screen and (max-width: 1380px) {
             width: 94%;
@@ -95,20 +95,27 @@
         }
 
         .jcarousel {
+            position: relative;
+            width: 1200px;
+
+            height: 300px;
+            overflow: hidden;
+
 
           & > ul {
-            height: 300px;
-            display: inline-block;
+
+
             li {
 
               border: none;
-              width: auto !important;
-              margin: 0 46px 0 53px;
+              width: 300px;
             }
+
           }
           .jcarousel-control-next,.jcarousel-control-prev{
             z-index: 20;
           }
+
 
         }
 
