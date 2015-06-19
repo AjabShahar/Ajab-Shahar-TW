@@ -55,6 +55,10 @@ body {
   padding: 0 6%;
 }
 
+.shareItemsDropDown ul li:hover{
+  color: $pink;
+}
+
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none;
 }
