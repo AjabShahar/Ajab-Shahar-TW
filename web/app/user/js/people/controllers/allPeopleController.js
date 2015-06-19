@@ -24,7 +24,6 @@ angular.module("people").controller('allPeopleController', ['$scope', 'peopleSer
     var sieve = new AjabShahar.user.Sieve($scope.criteriaList);
 
     $scope.applyAlphabetFilter = function (letter) {
-        clearExistingFilters();
         if (letter === "ALL")
             sieve.removeFilterCriteria("name");
         else
@@ -35,7 +34,7 @@ angular.module("people").controller('allPeopleController', ['$scope', 'peopleSer
     };
 
     $scope.filterBy = function(occupation){
-        clearExistingFilters();
+        sieve.removeFilterCriteria("occupations[]");
         currentSelection = occupation;
         sieve.setFilterCriteria("occupations[]", occupation);
         $scope.people = sieve.filter($scope.allPeople);
@@ -43,7 +42,8 @@ angular.module("people").controller('allPeopleController', ['$scope', 'peopleSer
     };
 
     $scope.resetFilters = function(){
-        clearExistingFilters();
+        sieve.removeFilterCriteria("occupations[]");
+        currentSelection = "";
         $scope.people = $scope.allPeople;
         updateFilterCount();
     };
@@ -63,11 +63,6 @@ angular.module("people").controller('allPeopleController', ['$scope', 'peopleSer
         return currentSelection === criterion;
     };
 
-    var clearExistingFilters = function(){
-        sieve.clearFilters();
-        currentSelection = "";
-        $scope.currentAlphabetSelection="ALL";
-    };
 
     var updateFilterCount = function(){
         $scope.numberOfPeople = $scope.people.length;
