@@ -22,8 +22,7 @@
                         <!--{{song.words}}-->
                             <span ng-repeat="word in song.words" class="explore-words">
                                 <a  ng-show="word.publish && word.rootWord" ng-href="/words/details/{{word.id}}" ng-bind="word.wordTransliteration"></a>
-                            <span ng-show="word.publish && !word.rootWord" ng-bind="word.wordTransliteration"></span>
-                            <span ng-show="word.publish" ng-hide="$last">,</span>
+                            <span ng-show="word.publish && !word.rootWord" ng-bind="word.wordTransliteration"><span ng-show="word.publish" ng-hide="$last">, </span></span>
                         </span>
                     </span></p>
 
