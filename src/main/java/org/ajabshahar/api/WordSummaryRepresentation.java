@@ -101,8 +101,8 @@ public class WordSummaryRepresentation {
         String wordOriginal = word.getWordOriginal() != null ? word.getWordOriginal() : "";
         String wordTranslation = word.getWordTranslation() != null ? word.getWordTranslation() : "";
         String wordTransliteration = word.getWordTransliteration() != null ? word.getWordTransliteration() : "";
-        String hindiIntroExcerpt = word.getEnglishIntroExcerpt() != null ? word.getEnglishIntroExcerpt() : "";
-        String englishIntroExcerpt = word.getHindiIntroExcerpt() != null ? word.getHindiIntroExcerpt() : "";
+        String englishIntroExcerpt = word.getEnglishIntroExcerpt() != null ? word.getEnglishIntroExcerpt() : "";
+        String hindiIntroExcerpt = word.getHindiIntroExcerpt() != null ? word.getHindiIntroExcerpt() : "";
         Set<PersonSummaryRepresentation> writers = PersonSummaryRepresentation.toPersonSummaries(word.getWriters());;
         return new WordSummaryRepresentation((int) word.getId(), wordOriginal, wordTranslation, wordTransliteration, hindiIntroExcerpt, englishIntroExcerpt, writers, word.getIsRootWord(), word.isPublish());
     }
