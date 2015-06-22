@@ -30,7 +30,7 @@
         <div class="versions toggleBySlide" ng-show="shouldShowCarousel()">
             <carousel items="carouselItems" item-clicked="selectThumbnail" format="'transliteration'"></carousel>
         </div>
-        <div class="see-more" ng-show="containsReflections()" ng-click="toggleCarousel()">
+        <div class="see-more" ng-show="containsMoreThanOneItem()" ng-click="toggleCarousel()">
             <a class="version" href="javascript:void(0)" ng-cloak>
                 <span ng-show="containsWordIntro">intro + </span> {{reflectionCount()}} reflection<span ng-show="reflectionCount() != 1">s</span>
                 <span class="arrow" ng-class="shouldShowCarousel() ? 'up-arrow' : ''"></span>
