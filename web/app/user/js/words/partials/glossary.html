@@ -26,8 +26,8 @@
                                    <span ng-if="!term.isRootWord" ng-cloak>
                                        {{term.wordTransliteration}}
                                    </span>
-                        <span class="related" ng-cloak>(<span
-                                class="hindi">{{term.wordOriginal}}</span>, {{term.diacritic}})</span>
+                        <span class="related" ng-cloak ng-show="term.wordOriginal || term.diacritic">(<span
+                                class="hindi">{{term.wordOriginal}}</span><span ng-show="term.wordOriginal && term.diacritic">, </span>{{term.diacritic}})</span>
                     </dt>
                     <dd class="word-meaning">
                         <div bind-dynamic-html='term.meaning'></div>
