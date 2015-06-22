@@ -3,12 +3,12 @@ angular.module("word").
 
         var carouselOpen = true;
 
-        $scope.containsReflections = function() {
-            return $scope.reflectionCount()>0;
+        $scope.containsMoreThanOneItem = function() {
+            return $scope.carouselItems.length > 1;
         };
 
         $scope.shouldShowCarousel = function(){
-            return  carouselOpen && $scope.containsReflections()
+            return  carouselOpen && $scope.containsMoreThanOneItem();
         };
 
         $scope.toggleCarousel = function(){

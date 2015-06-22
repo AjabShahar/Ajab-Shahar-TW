@@ -26,7 +26,7 @@
         </div>
     </div>
 
-    <div class="lower-pardah" ng-class="{'no-pardah': !containsReflections() }">
+    <div class="lower-pardah" ng-class="{'no-pardah': !containsMoreThanOneItem() }">
         <div class="versions toggleBySlide" ng-show="shouldShowCarousel()">
             <carousel items="carouselItems" item-clicked="selectThumbnail" format="'transliteration'"></carousel>
         </div>
