@@ -48,7 +48,7 @@ body.songs-details {
 
   #poem_container {
 /*    text-align: center;*/
-    padding: 10px 0 50px;
+    margin-top: -45px;
     font-weight: 300;
     line-height: 27px;
 
@@ -65,7 +65,7 @@ body.songs-details {
     .poet-details {
       color: $grey;
       font-size: $medium;
-      padding-bottom: 70px;
+      padding-bottom: 50px;
       position: relative;
       top: -10px;
       a {
@@ -103,7 +103,7 @@ body.songs-details {
       }
       .poet {
         font-size: $medium-dev;
-        padding-bottom: 70px;
+        padding-bottom: 50px;
         position: relative;
         top: -10px;
         a {
