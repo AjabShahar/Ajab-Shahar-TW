@@ -101,6 +101,8 @@
                                         font-size: $extra-large;
                                         color: $dark-grey;
                                         margin-right: 5px;
+                                        display: inline-block;
+                                        margin-top: 2px;
                                         &:hover {
                                             color: $pink;
                                         }
