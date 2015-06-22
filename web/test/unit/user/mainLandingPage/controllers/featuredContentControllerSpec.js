@@ -219,14 +219,14 @@ var test_words_mainfc = {
         "wordTranslation": "Waking Sleeping",
         "wordTransliteration": "Jaagna Sona",
         "englishIntroExcerpt": "",
-        "wordIntroductions": [
+        "wordIntroduction":
             {
                 "id": 1,
                 "wordIntroHindi": "<p>word intro, word intro word intro</p>",
                 "wordIntroEnglish": "<p>word intro, word intro word intro</p>",
                 "contentType": "text",
                 "poet": null
-            }],
+            },
         "writers": [
             {
                 "id": 7,

@@ -24,9 +24,9 @@ public class WordDAO extends AbstractDAO<Word> {
 
     public Word create(Word word) {
         word = persist(word);
-        for (WordIntroduction wordIntroduction : word.getWordIntroductions()) {
-            wordIntroduction.setWord(word);
-            currentSession().saveOrUpdate(wordIntroduction);
+        if(word.getWordIntroduction() != null){
+            word.getWordIntroduction().setWord(word);
+            currentSession().saveOrUpdate(word.getWordIntroduction());
         }
         for (Word synonym : word.getSynonyms()) {
             Set<Word> words = new HashSet<Word>();

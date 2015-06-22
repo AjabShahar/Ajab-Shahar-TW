@@ -14,6 +14,7 @@ import org.ajabshahar.api.*;
 import org.ajabshahar.platform.PlatformApplication;
 import org.ajabshahar.platform.PlatformConfiguration;
 import org.ajabshahar.platform.models.Word;
+import org.ajabshahar.platform.models.WordIntroduction;
 import org.h2.jdbcx.JdbcDataSource;
 import org.junit.Before;
 import org.junit.ClassRule;
@@ -34,15 +35,14 @@ public class WordResourceIT {
 
     private Client client;
     private JdbcDataSource dataSource;
-    private JSONObject jsonObject;
-    private Set wordIntroductions = new LinkedHashSet();
+    private JSONObject jsonObject = new JSONObject();
     private static final String API_TO_EDIT_THE_WORD_WITH_ID_ONE = "http://localhost:%d/api/words/edit?id=1";
     private String thumbnailUrl = "";
     private String reflectionExcerpt = "";
     private String duration = "";
     private String verb = "";
     private String contentType = "";
-    private JSONObject jsonWordIntroductions;
+    private JSONObject jsonWordIntroduction;
 
     private static String resourceFilePath(String resource) {
         return ClassLoader.getSystemClassLoader().getResource(resource).getFile();
@@ -55,7 +55,6 @@ public class WordResourceIT {
         dataSource.setUrl("jdbc:h2:./test");
         dataSource.setUser("sa");
         dataSource.setPassword("");
-        jsonObject = new JSONObject();
         jsonObject.put("wordOriginal", "शून्य");
         jsonObject.put("wordTranslation", "Emptiness");
         jsonObject.put("wordTransliteration", "Shoonya");
@@ -73,17 +72,11 @@ public class WordResourceIT {
         jsonObject.put("songs", new LinkedHashSet<>());
         jsonObject.put("writers", new LinkedHashSet<>());
 
-        jsonWordIntroductions = new JSONObject();
-        jsonWordIntroductions.put("contentType", "couplet");
-        jsonWordIntroductions.put("wordIntroEnglish", "new intro english");
-        jsonWordIntroductions.put("wordIntroHindi", "new intro hindi");
-        PersonSummaryRepresentation ravi = new PersonSummaryRepresentation();
-        ravi.setId(1);
-        jsonWordIntroductions.put("poet", ravi);
+        WordIntroduction wordIntroduction = new WordIntroduction();
+        wordIntroduction.setWordIntroEnglish("new intro english");
+        wordIntroduction.setWordIntroHindi("new intro hindi");
 
-        wordIntroductions.add(jsonWordIntroductions);
-
-        jsonObject.put("wordIntroductions", wordIntroductions);
+        jsonObject.put("wordIntroduction", wordIntroduction);
     }
 
     @Test
@@ -99,10 +92,8 @@ public class WordResourceIT {
 
         WordRepresentation responseEntity = getWord(response);
 
-        assertEquals(1, responseEntity.getWordIntroductions().size());
-        assertEquals("text", responseEntity.getWordIntroductions().iterator().next().getContentType());
-        assertEquals("word intro english", responseEntity.getWordIntroductions().iterator().next().getWordIntroEnglish());
-        assertEquals("word intro hindi", responseEntity.getWordIntroductions().iterator().next().getWordIntroHindi());
+        assertEquals("word intro english", responseEntity.getWordIntroduction().getWordIntroEnglish());
+        assertEquals("word intro hindi", responseEntity.getWordIntroduction().getWordIntroHindi());
     }
 
     @Test
@@ -116,9 +107,8 @@ public class WordResourceIT {
         WordRepresentation word = getWord(wordResponse);
 
         assertThat(wordResponse.getStatus(), is(200));
-        assertThat(word.getWordIntroductions().iterator().next().getContentType(), is("couplet"));
-        assertThat(word.getWordIntroductions().iterator().next().getWordIntroEnglish(), is("new intro english"));
-        assertThat(word.getWordIntroductions().iterator().next().getWordIntroHindi(), is("new intro hindi"));
+        assertThat(word.getWordIntroduction().getWordIntroEnglish(), is("new intro english"));
+        assertThat(word.getWordIntroduction().getWordIntroHindi(), is("new intro hindi"));
     }
 
     @Test
@@ -132,28 +122,27 @@ public class WordResourceIT {
         WordRepresentation word = getWord(wordResponse);
 
         assertThat(wordResponse.getStatus(), is(200));
-        assertThat(word.getWordIntroductions().iterator().next().getWordIntroEnglish(), is("new intro english"));
+        assertThat(word.getWordIntroduction().getWordIntroEnglish(), is("new intro english"));
 
-        wordIntroductions.clear();
-        jsonObject.put("wordIntroductions", wordIntroductions);
+        jsonObject.put("wordIntroduction", null);
 
-        jsonWordIntroductions.put("id", word.getWordIntroductions().iterator().next().getId());
-        jsonWordIntroductions.put("wordIntroEnglish", "edited intro english");
+        WordIntroduction wordIntroduction = word.getWordIntroduction();
+        wordIntroduction.setWordIntroEnglish("edited intro english");
 
-        wordIntroductions.add(jsonWordIntroductions);
+        jsonObject.put("wordIntroduction", wordIntroduction);
 
         wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
         word = getWord(wordResponse);
 
         assertThat(wordResponse.getStatus(), is(200));
-        assertThat(word.getWordIntroductions().iterator().next().getWordIntroEnglish(), is("edited intro english"));
+        assertThat(word.getWordIntroduction().getWordIntroEnglish(), is("edited intro english"));
     }
 
     @Test
     public void shouldHaveWordIntroductions() {
         Operation operation = Operations.sequenceOf(DataSetup.DELETE_ALL, DataSetup.INSERT_CATEGORY,DataSetup.INSERT_PERSON,
                 DataSetup.INSERT_REFLECTIONS, DataSetup.INSERT_WORDS,
-                DataSetup.INSERT_WORD_INTRODUCTION, DataSetup.INSERT_WORD_INTRODUCTION);
+                DataSetup.INSERT_WORD_INTRODUCTION);
 
         DbSetup dbSetup = new DbSetup(new DataSourceDestination(dataSource), operation);
         dbSetup.launch();
@@ -162,7 +151,7 @@ public class WordResourceIT {
 
         WordRepresentation responseEntity = getWord(response);
 
-        assertEquals(2, responseEntity.getWordIntroductions().size());
+        assertEquals("word intro english", responseEntity.getWordIntroduction().getWordIntroEnglish());
     }
 
     @Test
@@ -188,7 +177,10 @@ public class WordResourceIT {
         ClientResponse wordResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
 
         jsonObject.put("id", getWord(wordResponse).getId());
-        jsonObject.put("wordIntroductions", wordIntroductions);
+
+        WordIntroduction wordIntroduction = new WordIntroduction();
+        wordIntroduction.setWordIntroEnglish("word intro english");
+        jsonObject.put("wordIntroduction",wordIntroduction);
 
         ClientResponse wordEditResponse = loginAndPost("http://localhost:%d/api/words", jsonObject);
 

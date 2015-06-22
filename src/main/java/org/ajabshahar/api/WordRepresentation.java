@@ -32,7 +32,7 @@ public class WordRepresentation extends BaseRepresentation{
 
     private String meaning;
 
-    private Set<WordIntroductionRepresentation> wordIntroductions;
+    private WordIntroduction wordIntroduction;
 
     private Set<ReflectionSummaryRepresentation> reflections;
 

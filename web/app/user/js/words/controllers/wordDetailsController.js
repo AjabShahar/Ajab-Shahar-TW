@@ -48,9 +48,9 @@ angular.module("word").
             wordService.getWord($scope.wordId).success(function(response){
                 $scope.wordDetails = response;
                 $scope.associatedWords = [].concat($scope.wordDetails.synonyms).concat($scope.wordDetails.relatedWords);
-                $scope.containsWordIntro =  (!_.isEmpty($scope.wordDetails)  && !_.isEmpty($scope.wordDetails.wordIntroductions));
+                $scope.containsWordIntro =  (!_.isEmpty($scope.wordDetails)  && !_.isEmpty($scope.wordDetails.wordIntroduction));
 
-                if(!_.isEmpty($scope.wordDetails.wordIntroductions )){
+                if(!_.isEmpty($scope.wordDetails.wordIntroduction )){
                     $scope.carouselItems.push(new AjabShahar.ThumbnailObject($scope.wordDetails,"word"))
                 }
                 $scope.carouselItems = $scope.carouselItems.concat(

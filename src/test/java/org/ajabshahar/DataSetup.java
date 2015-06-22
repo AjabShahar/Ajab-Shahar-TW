@@ -84,14 +84,8 @@ public class DataSetup {
     public static final Operation INSERT_WORD_INTRODUCTION =
             sequenceOf(
                     insertInto("word_introduction")
-                            .columns("word_id", "word_intro_hindi", "word_intro_english", "content_type", "poet_id")
-                            .values(1, "word intro hindi", "word intro english", "text", 1)
-                            .build());
-    public static final Operation INSERT_WORD_INTRODUCTION_WITH_COUPLET_CONTENT_TYPE =
-            sequenceOf(
-                    insertInto("word_introduction")
-                            .columns("word_id", "word_intro_hindi", "word_intro_english", "content_type", "poet_id")
-                            .values(2, "word intro hindi", "word intro english", "couplet", 1)
+                            .columns("word_id", "word_intro_hindi", "word_intro_english")
+                            .values(1, "word intro hindi", "word intro english")
                             .build());
     public static final Operation INSERT_SONG_WORD =
             sequenceOf(
@@ -230,7 +224,6 @@ public class DataSetup {
                     INSERT_WORD_PEOPLE,
                     INSERT_WORD_WRITERS,
                     INSERT_WORD_INTRODUCTION,
-                    INSERT_WORD_INTRODUCTION_WITH_COUPLET_CONTENT_TYPE,
                     INSERT_WORD_REFLECTIONS,
                     INSERT_SONG_WORD
             );

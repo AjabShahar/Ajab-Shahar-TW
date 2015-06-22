@@ -64,7 +64,7 @@ var test_wordDetail ={
     "isRootWord": true,
     "showOnLandingPage": true,
     "meaning": null,
-    "wordIntroductions": [
+    "wordIntroduction":
         {
             "id": 82,
             "wordIntroHindi": "",
@@ -72,14 +72,6 @@ var test_wordDetail ={
             "contentType": "text",
             "poet": null
         },
-        {
-            "id": 81,
-            "wordIntroHindi": "",
-            "wordIntroEnglish": "<p>some text hosfdo ijiojeq dsfije oernf opawed</p>",
-            "contentType": "text",
-            "poet": null
-        }
-    ],
     "reflections": [
         {
             "id": 4,

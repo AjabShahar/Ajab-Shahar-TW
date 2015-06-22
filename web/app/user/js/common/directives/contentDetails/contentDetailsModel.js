@@ -152,8 +152,8 @@ AjabShahar.DetailsObject = function (content, type) {
                 }
             }
             if (type === 'text') {
-                if (!_.isEmpty(word.wordIntroductions)) {
-                    return word.wordIntroductions[0].wordIntroEnglish;
+                if (!_.isEmpty(word.wordIntroduction)) {
+                    return word.wordIntroduction.wordIntroEnglish;
                 }
             }
             return null;

@@ -29,14 +29,7 @@ public class WordRepresentationFactory {
         word.setPublish(wordRepresentation.isPublish());
         word.setDisplayAjabShaharTeam(wordRepresentation.getDisplayAjabShaharTeam());
 
-        Set<WordIntroduction> wordIntroductions = new LinkedHashSet<>();
-        Set<WordIntroductionRepresentation> wordIntroductionRepresentations = wordRepresentation.getWordIntroductions();
-        if(wordIntroductionRepresentations != null) {
-            for (WordIntroductionRepresentation wordIntroductionRepresentation : wordIntroductionRepresentations) {
-                wordIntroductions.add(wordIntroductionRepresentation.toWordIntroduction());
-            }
-        }
-        word.setWordIntroductions(wordIntroductions);
+        word.setWordIntroduction(wordRepresentation.getWordIntroduction());
 
         word.setPeople(PersonRepresentationFactory.toPerson(wordRepresentation.getPeople()));
         word.setSongs(SongSummaryRepresentation.toSongs(wordRepresentation.getSongs()));
@@ -133,15 +126,7 @@ public class WordRepresentationFactory {
         wordRepresentation.setSongs(SongSummaryRepresentation.toSummaryRepresentations(word.getSongs()));
         wordRepresentation.setWriters(PersonRepresentationFactory.createPeopleSummaryRepresentation(word.getWriters()));
 
-        Set<WordIntroduction> wordIntroductions = new LinkedHashSet<>();
-        Set<WordIntroductionRepresentation> wordIntroductionRepresentations = wordRepresentation.getWordIntroductions();
-        if(wordIntroductionRepresentations != null) {
-            for (WordIntroductionRepresentation wordIntroductionRepresentation : wordIntroductionRepresentations) {
-                wordIntroductions.add(wordIntroductionRepresentation.toWordIntroduction());
-            }
-        }
-        WordIntroductionRepresentation wordIntroductionRepresentation = new WordIntroductionRepresentation();
-        wordRepresentation.setWordIntroductions(wordIntroductionRepresentation.toWordIntroductionRepresentations(word.getWordIntroductions()));
+        wordRepresentation.setWordIntroduction(word.getWordIntroduction());
 
         wordRepresentation.setDisplayAjabShaharTeam(word.getDisplayAjabShaharTeam());
         wordRepresentation.setDefaultReflection(ReflectionSummaryRepresentation.createFrom(word.getDefaultReflection()));

@@ -23,43 +23,9 @@ public class WordIntroduction {
     @Column(name = "word_intro_english", nullable = true)
     private String wordIntroEnglish;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "word_id", nullable = false)
     @JsonBackReference
     private Word word;
 
-    @Column(name = "content_type", nullable = false)
-    private String contentType;
-
-    @BatchSize(size = 30)
-    @OneToOne
-    private PersonDetails poet;
-
-    public long getId() {
-        return id;
-    }
-
-    public String getWordIntroHindi() {
-        return wordIntroHindi;
-    }
-
-    public void setWordIntroHindi(String wordIntroHindi) {
-        this.wordIntroHindi = wordIntroHindi;
-    }
-
-    public Word getWord() {
-        return word;
-    }
-
-    public void setWord(Word word) {
-        this.word = word;
-    }
-
-    public String getWordIntroEnglish() {
-        return wordIntroEnglish;
-    }
-
-    public void setWordIntroEnglish(String wordIntroEnglish) {
-        this.wordIntroEnglish = wordIntroEnglish;
-    }
 }

@@ -61,10 +61,10 @@ public class Word {
     private Reflection defaultReflection;
 
     @BatchSize(size = 50)
-    @OneToMany(mappedBy = "word")
+    @OneToOne(mappedBy = "word")
     @JsonManagedReference
     @OrderBy
-    private Set<WordIntroduction> wordIntroductions;
+    private WordIntroduction wordIntroduction;
 
     @BatchSize(size = 50)
     @ManyToMany

@@ -379,4 +379,11 @@
             ALTER TABLE splash_screen ADD COLUMN name varchar(200);
         </sql>
     </changeSet>
+    <changeSet id="97" author="Padma">
+        <comment>Dropping unused columns in word introduction</comment>
+        <sql>
+            ALTER TABLE word_introduction DROP COLUMN content_type;
+            ALTER TABLE word_introduction DROP COLUMN poet_id;
+        </sql>
+    </changeSet>
 </databaseChangeLog>

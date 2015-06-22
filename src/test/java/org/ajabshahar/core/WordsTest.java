@@ -40,7 +40,7 @@ public class WordsTest {
         word.setIsRootWord(false);
         word.setMeaning("something1");
         word.setShowOnLandingPage(false);
-        word.setWordIntroductions(new LinkedHashSet<>());
+        word.setWordIntroduction(new WordIntroduction());
         word.setReflections(new LinkedHashSet<>());
         word.setWriters(new LinkedHashSet<>());
         word.setPeople(new LinkedHashSet<>());
