@@ -51,6 +51,9 @@ body.songs-details {
     margin-top: -45px;
     font-weight: 300;
     line-height: 27px;
+    h1,h2,h3,h4,h5,h6 {
+        color: $grey;
+    }
 
     .song-heading {
       color: $grey;
@@ -88,6 +91,7 @@ body.songs-details {
       font-family: 'Merriweather';
       line-height: 21px;
       text-align: left;
+
     }
 
     .refrain{
