@@ -29,7 +29,11 @@ public class WordRepresentationFactory {
         word.setPublish(wordRepresentation.isPublish());
         word.setDisplayAjabShaharTeam(wordRepresentation.getDisplayAjabShaharTeam());
 
-        word.setWordIntroduction(wordRepresentation.getWordIntroduction());
+        WordIntroduction wordIntroduction = wordRepresentation.getWordIntroduction();
+        if(wordIntroduction != null) {
+            wordIntroduction.setWord(word);
+            word.setWordIntroduction(wordIntroduction);
+        }
 
         word.setPeople(PersonRepresentationFactory.toPerson(wordRepresentation.getPeople()));
         word.setSongs(SongSummaryRepresentation.toSongs(wordRepresentation.getSongs()));

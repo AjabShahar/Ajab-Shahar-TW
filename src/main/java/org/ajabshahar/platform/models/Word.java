@@ -61,7 +61,7 @@ public class Word {
     private Reflection defaultReflection;
 
     @BatchSize(size = 50)
-    @OneToOne(mappedBy = "word")
+    @OneToOne(mappedBy = "word",cascade = CascadeType.ALL)
     @JsonManagedReference
     @OrderBy
     private WordIntroduction wordIntroduction;
@@ -103,4 +103,27 @@ public class Word {
             inverseJoinColumns = {@JoinColumn(name = "PERSON_ID", referencedColumnName = "ID")})
     private Set<PersonDetails> people;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Word word = (Word) o;
+
+        if (id != word.id) return false;
+        if (wordTranslation != null ? !wordTranslation.equals(word.wordTranslation) : word.wordTranslation != null)
+            return false;
+        if (wordTransliteration != null ? !wordTransliteration.equals(word.wordTransliteration) : word.wordTransliteration != null)
+            return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + (wordTranslation != null ? wordTranslation.hashCode() : 0);
+        result = 31 * result + (wordTransliteration != null ? wordTransliteration.hashCode() : 0);
+        return result;
+    }
 }

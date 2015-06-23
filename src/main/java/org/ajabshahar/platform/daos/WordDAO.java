@@ -3,17 +3,11 @@ package org.ajabshahar.platform.daos;
 import io.dropwizard.hibernate.AbstractDAO;
 import org.ajabshahar.platform.models.Word;
 import org.ajabshahar.platform.models.WordIntroduction;
-import org.hibernate.Criteria;
-import org.hibernate.FetchMode;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.hibernate.*;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
 
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class WordDAO extends AbstractDAO<Word> {
 
@@ -23,28 +17,60 @@ public class WordDAO extends AbstractDAO<Word> {
     }
 
     public Word create(Word word) {
-        word = persist(word);
-        if(word.getWordIntroduction() != null){
-            word.getWordIntroduction().setWord(word);
-            currentSession().saveOrUpdate(word.getWordIntroduction());
+        if(word.getId() != 0){
+            unlinkDeletedSynonyms(word);
+            unlinkDeletedWordRelationsTo(word);
+            currentSession().merge(word);
         }
-        for (Word synonym : word.getSynonyms()) {
-            Set<Word> words = new HashSet<Word>();
-            words.add(word);
-            Word newWord = (Word) findBy((int) synonym.getId(), false, false).iterator().next();
-            newWord.setSynonyms(words);
-            currentSession().saveOrUpdate(newWord);
+        else{
+            word = persist(word);
         }
-
-        for (Word relatedWord : word.getRelatedWords()) {
-            Set<Word> words = new HashSet<Word>();
-            words.add(word);
-            Word newWord = (Word) findBy((int) relatedWord.getId(), false, false).iterator().next();
-            newWord.setRelatedWords(words);
-            currentSession().saveOrUpdate(newWord);
-        }
+        linkNewSynonyms(word);
+        linkNewlyRelatedWords(word);
         return word;
     }
+
+    private void linkNewlyRelatedWords(Word word) {
+        for (Word relatedWord : word.getRelatedWords()) {
+            Word newWord = (Word) findBy((int) relatedWord.getId(), false, false).iterator().next();
+            newWord.getRelatedWords().add(word);
+            currentSession().saveOrUpdate(newWord);
+        }
+    }
+
+    private void linkNewSynonyms(Word word) {
+        for (Word synonym : word.getSynonyms()) {
+            Word newWord = (Word) findBy((int) synonym.getId(), false, false).iterator().next();
+            newWord.getSynonyms().add(word);
+            currentSession().saveOrUpdate(newWord);
+        }
+    }
+
+    private void unlinkDeletedWordRelationsTo(Word word) {
+        Set<Word> relatedWordsToBeUnlinked =getDiff(findWordsRelatedTo(word.getId()), word.getRelatedWords());
+        for (Word relatedWords : relatedWordsToBeUnlinked) {
+            relatedWords.getRelatedWords().remove(word);
+            currentSession().saveOrUpdate(relatedWords);
+        }
+    }
+
+    private void unlinkDeletedSynonyms(Word word) {
+        Set<Word> synonymsToBeUnlinked =getDiff(findSynonymsOf(word.getId()), word.getSynonyms());
+        for (Word wordSynonym : synonymsToBeUnlinked) {
+            wordSynonym.getSynonyms().remove(word);
+            currentSession().saveOrUpdate(wordSynonym);
+        }
+    }
+
+    private Set<Word> getDiff(Set<Word> firstCollection, Set<Word> otherCollection){
+        if(firstCollection != null && otherCollection!= null){
+            for (Word word : otherCollection) {
+                firstCollection.remove(word);
+            }
+        }
+        return firstCollection == null? Collections.EMPTY_SET:firstCollection;
+    }
+
 
     public Set findBy(int wordId, Boolean showOnMainLandingPage, boolean publish) {
         Criteria allWords = currentSession().createCriteria(Word.class, "word");
@@ -87,5 +113,17 @@ public class WordDAO extends AbstractDAO<Word> {
 
         }
         return new LinkedHashSet<>(allWords.list());
+    }
+
+    public Set<Word> findSynonymsOf(Long wordId){
+        Query synonymsQuery = currentSession().createQuery("Select w.synonyms from Word w where w.id=:wordId");
+        synonymsQuery.setParameter("wordId", wordId);
+        return new LinkedHashSet<>(synonymsQuery.list());
+    }
+
+    public Set<Word> findWordsRelatedTo(Long wordId){
+        Query synonymsQuery = currentSession().createQuery("Select w.relatedWords from Word w where w.id=:wordId");
+        synonymsQuery.setParameter("wordId", wordId);
+        return new LinkedHashSet<>(synonymsQuery.list());
     }
 }
