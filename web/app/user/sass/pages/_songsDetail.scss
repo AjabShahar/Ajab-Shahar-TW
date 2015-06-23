@@ -78,7 +78,7 @@ body.songs-details {
     }
 
     .initial-couplets {
-      color: #808080;
+      color: $light-grey;
       font-style: italic;
     }
 
@@ -87,6 +87,7 @@ body.songs-details {
       color: $grey;
       font-family: 'Merriweather';
       line-height: 21px;
+      text-align: left;
     }
 
     .refrain{
@@ -113,13 +114,12 @@ body.songs-details {
             }
         }
       }
-      .initial-couplets {
-        font-size: 15px;
-      }
+
       .lyrics {
         font-size: $medium-dev;
         line-height: 21px;
         color: $grey;
+        text-align: left;
       }
     }
 
