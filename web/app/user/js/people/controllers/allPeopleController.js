@@ -12,7 +12,7 @@ angular.module("people").controller('allPeopleController', ['$scope', 'peopleSer
     $scope.init = function () {
         peopleService.getPeople().success(function (response) {
             var people = response.people;
-            _.each(people, function (person, index) {
+            _.each(people, function (person) {
                 $scope.people.push(new AjabShahar.peopleModel(person));
             });
             $scope.allPeople = angular.copy($scope.people);
@@ -39,6 +39,7 @@ angular.module("people").controller('allPeopleController', ['$scope', 'peopleSer
         sieve.setFilterCriteria("occupations[]", occupation);
         $scope.people = sieve.filter($scope.allPeople);
         updateFilterCount();
+        $scope.closeParda();
     };
 
     $scope.resetFilters = function(){
@@ -63,6 +64,9 @@ angular.module("people").controller('allPeopleController', ['$scope', 'peopleSer
         return currentSelection === criterion;
     };
 
+    $scope.closeParda = function(){
+      $scope.expandFilter = false;
+    };
 
     var updateFilterCount = function(){
         $scope.numberOfPeople = $scope.people.length;
