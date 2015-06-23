@@ -79,6 +79,16 @@ describe("song details controller", function () {
         expect(scope.originalVisible).toBeTruthy();
     });
 
+    it("should set variable whether it has explore page content or not",function(){
+
+        scope.selectThumbnail(scope.carouselItems[0]);
+        httpBackend.when('GET', '/api/songs/getPublishedSongs/' + scope.carouselItems[0].id).respond(song);
+        httpBackend.flush();
+
+        expect(scope.hasSongExploreContent).toBeTruthy();
+        expect(scope.getSongExploreUrl()).toBe('/songs/explore/1');
+    });
+
     var song = {
         "id": 1,
         "isAuthoringComplete": true,

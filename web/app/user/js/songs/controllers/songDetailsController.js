@@ -47,8 +47,10 @@ var songDetailsController = function ($scope, $location, songsContentService) {
             songsContentService.getSong(thumbnail.id).success(function (response) {
                 $scope.detailsObject = new AjabShahar.DetailsObject(response, thumbnail.type);
                 $scope.selectedSong = response || {};
+                $scope.hasSongExploreContent = false;
 
                 initialiseMainTitles();
+                hasExploreContent();
             });
         }
     };
@@ -97,7 +99,20 @@ var songDetailsController = function ($scope, $location, songsContentService) {
     $scope.init();
 
     $scope.getSongExploreUrl = function(){
-        return "/songs/explore/"+$scope.songId;
+        return !_.isEmpty($scope.detailsObject) &&$scope.hasSongExploreContent  ? "/songs/explore/"+$scope.detailsObject.id:'';
+    };
+
+    var hasExploreContent = function(){
+
+            _.every($scope.selectedSong.reflections,function(reflection){
+                if(reflection.published)
+                    $scope.hasSongExploreContent = true;
+            });
+
+             _.every($scope.selectedSong.words,function(word){
+                if(word.rootWord && word.publish)
+                    $scope.hasSongExploreContent = true;
+            });
     }
 };
 
