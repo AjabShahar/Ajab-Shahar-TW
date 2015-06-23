@@ -386,4 +386,14 @@
             ALTER TABLE word_introduction DROP COLUMN poet_id;
         </sql>
     </changeSet>
+    <changeSet id="98" author="CHANAKYA">
+        <comment>Adding occupations</comment>
+        <sql>
+            update category set name = 'Cultural Activist' where id = 48;
+            insert into category(name,category_type)
+            (select 'Qawwals', 'person' WHERE NOT EXISTS (select 1  from category where name='Qawwals' AND category_type='person'));
+            insert into category(name,category_type)
+            (select 'Legendary Figure', 'person' WHERE NOT EXISTS (select 1  from category where name='Legendary Figure' AND category_type='person'));
+        </sql>
+    </changeSet>
 </databaseChangeLog>
