@@ -37,15 +37,13 @@ body {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  margin-left: 10%;
 
-  padding: 1%;
   width: 23%;
   color: #b3b3b3;
   background: #ffffff;
   //box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1), 1px 1px 1px rgba(0, 0, 0, 0.1), -1px 1px 1px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  line-height: 1.5;
+  line-height: 4;
   background: transparent url('/user/img/songs/relatedlinks_parda.png') 0 0 no-repeat;
   background-size: 100% 100%;
 }
@@ -53,10 +51,11 @@ body {
 .shareItemsDropDown ul li{
   display: inline;
   padding: 0 6%;
+  color: $pink;
 }
 
 .shareItemsDropDown ul li:hover{
-  color: $pink;
+  color: $grey;
 }
 
 [ng\:cloak], [ng-cloak], .ng-cloak {
