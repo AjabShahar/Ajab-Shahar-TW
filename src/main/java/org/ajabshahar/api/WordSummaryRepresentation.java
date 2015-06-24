@@ -1,8 +1,6 @@
 package org.ajabshahar.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.ajabshahar.platform.models.Category;
-import org.ajabshahar.platform.models.PersonDetails;
 import org.ajabshahar.platform.models.Word;
 
 import java.util.Collections;
@@ -19,11 +17,12 @@ public class WordSummaryRepresentation {
     private Set<PersonSummaryRepresentation> writers;
     private Boolean isRootWord;
     private boolean publish;
+    private String thumbnailUrl;
 
     public WordSummaryRepresentation() {
     }
 
-    public WordSummaryRepresentation(int id, String originalWord, String wordTranslation, String wordTransliteration, String hindiIntroExcerpt, String englishIntroExcerpt, Set<PersonSummaryRepresentation> writers, Boolean isRootWord, boolean publish) {
+    public WordSummaryRepresentation(int id, String originalWord, String wordTranslation, String wordTransliteration, String hindiIntroExcerpt, String englishIntroExcerpt, Set<PersonSummaryRepresentation> writers, Boolean isRootWord, boolean publish, String thumbnailUrl) {
         this.id = id;
         this.originalWord = originalWord;
         this.wordTranslation = wordTranslation;
@@ -33,6 +32,7 @@ public class WordSummaryRepresentation {
         this.writers = writers;
         this.isRootWord = isRootWord;
         this.publish = publish;
+        this.thumbnailUrl = thumbnailUrl;
     }
 
     @JsonProperty("id")
@@ -104,8 +104,12 @@ public class WordSummaryRepresentation {
         String englishIntroExcerpt = word.getEnglishIntroExcerpt() != null ? word.getEnglishIntroExcerpt() : "";
         String hindiIntroExcerpt = word.getHindiIntroExcerpt() != null ? word.getHindiIntroExcerpt() : "";
         Set<PersonSummaryRepresentation> writers = PersonSummaryRepresentation.toPersonSummaries(word.getWriters());;
-        return new WordSummaryRepresentation((int) word.getId(), wordOriginal, wordTranslation, wordTransliteration, hindiIntroExcerpt, englishIntroExcerpt, writers, word.getIsRootWord(), word.isPublish());
+        return new WordSummaryRepresentation((int) word.getId(), wordOriginal, wordTranslation, wordTransliteration, hindiIntroExcerpt, englishIntroExcerpt, writers, word.getIsRootWord(), word.isPublish(), word.getThumbnailUrl());
     }
 
 
+    @JsonProperty("thumbnailUrl")
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
+    }
 }
