@@ -25,7 +25,7 @@ AjabShahar.DetailsObject = function (content, type) {
             var speakerLink = pluckPropertyFrom(song,"singers","map",function(singer){
                 return{
                     name: singer.name,
-                    description: "SINGER",
+                    description: singer.name.indexOf("&") != -1 || singer.name.indexOf(",") != -1 ? "SINGERS" : "SINGER",
                     link:"/people/all#"+singer.id
                 }
             });

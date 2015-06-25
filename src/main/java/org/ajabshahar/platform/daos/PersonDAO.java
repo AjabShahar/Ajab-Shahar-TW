@@ -7,10 +7,7 @@ import org.ajabshahar.platform.models.PersonDetails;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.CriteriaSpecification;
-import org.hibernate.criterion.Criterion;
-import org.hibernate.criterion.Disjunction;
-import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.*;
 import org.hibernate.sql.JoinType;
 
 import java.util.LinkedHashSet;
@@ -40,7 +37,7 @@ public class PersonDAO extends AbstractDAO<PersonDetails> {
             criteria.createAlias("personDetails.category", "category", JoinType.LEFT_OUTER_JOIN);
             criteria.createAlias("personDetails.primaryOccupation", "primaryOccupation",JoinType.LEFT_OUTER_JOIN);
 
-            criteria.add(Restrictions.or(Restrictions.eq("category.name", role), Restrictions.eq("primaryOccupation.name", role)));
+            criteria.add(Restrictions.or(Restrictions.ilike("category.name", role, MatchMode.ANYWHERE), Restrictions.ilike("primaryOccupation.name", role, MatchMode.ANYWHERE)));
         }
         if(show != null) {
             if (show.equals("published")) {
