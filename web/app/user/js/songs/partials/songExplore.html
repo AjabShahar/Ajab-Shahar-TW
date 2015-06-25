@@ -22,7 +22,7 @@
                         <!--{{song.words}}-->
                             <span ng-repeat="word in song.words" class="explore-words">
                                 <a  ng-show="word.publish && word.rootWord" ng-href="/words/details/{{word.id}}" ng-cloack>{{word.wordTransliteration}}<span ng-hide="$last">, </span> </a>
-                            <span ng-show="word.publish && !word.rootWord" ng-cloack>{{word.wordTransliteration}}<span ng-hide="$last">, </span></span>
+                            <span ng-show="word.publish && !word.rootWord" ng-cloack>{{word.wordTransliteration}}<span ng-hide="$last || word.publish">, </span></span>
                         </span>
                     </span></p>
 
