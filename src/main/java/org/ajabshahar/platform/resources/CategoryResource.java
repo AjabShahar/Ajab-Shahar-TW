@@ -28,12 +28,11 @@ public class CategoryResource {
     @POST
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createSplashScreen(String jsonSplashScreenOptions) {
-        Category category = new Gson().fromJson(jsonSplashScreenOptions, Category.class);
+    public Response createCategory(String jsonCategory) {
+        Category category = new Gson().fromJson(jsonCategory, Category.class);
         categoryDAO.create(category);
         return Response.status(200).entity(category.toString()).build();
     }
-
 
     @GET
     @UnitOfWork
