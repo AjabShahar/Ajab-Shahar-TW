@@ -47,7 +47,7 @@
         .media {
             min-height: 0px;
             width: 25%;
-            margin-bottom: 18px;
+            margin-bottom: 48px;
             float: left;
             @include media($tab-landscape) {
                width: 33%;
@@ -59,7 +59,7 @@
 
              .bubble {
                 position: relative;
-                top: -27px;
+                top: -4px;
                 left: -9px;
             }
         }
