@@ -1,8 +1,29 @@
 #glossary_page {
-  background: transparent url(/user/img/glossary/glossary_bg.jpg) 0 0 repeat fixed;
-  background-size: contain;
+
+
   min-height: 1210px;
   width: 100%;
+
+  &.envelope-letter-bg {
+    background: transparent url(/user/img/glossary/glossary_bg.jpg) 0 0 repeat fixed;
+    background-size: contain;
+  }
+  &.yellow-trapezium-bg {
+    background: transparent url(/user/img/glossary/yellow.png) 0 0 repeat fixed;
+    background-size: contain;
+  }
+  &.chakras-bg {
+    background: transparent url(/user/img/glossary/chakras.png) 0 0 repeat fixed;
+    background-size: contain;
+  }
+  &.benzene-bg {
+      background: transparent url(/user/img/glossary/benzene.png) 0 0 repeat fixed;
+      background-size: contain;
+  }
+  &.ameoba-bg {
+      background: transparent url(/user/img/glossary/ameoba.png) 0 0 repeat fixed;
+      background-size: contain;
+  }
 
   .ajab-wrapper {
 

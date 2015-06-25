@@ -16,5 +16,7 @@ angular.module("word").controller('glossaryController', ['$scope', 'wordService'
         });
     };
 
+    $scope.classes = ['envelope-letter-bg', 'yellow-trapezium-bg', 'chakras-bg','benzene-bg','ameoba-bg'];
+
     $scope.init();
 }]);
