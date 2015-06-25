@@ -3,6 +3,13 @@
     background-size: contain;
         .logo-with-filter {
             z-index: $zIndex-people-logo;
+            .category-logo {
+                padding-top: 32px;
+
+            }
+            & > a {
+                margin-top: 11px;
+            }
          }
          .slide-nav-list {
             z-index: $zIndex-people-filter-pardah1;
