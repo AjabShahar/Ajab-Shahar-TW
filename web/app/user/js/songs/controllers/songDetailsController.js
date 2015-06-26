@@ -104,12 +104,12 @@ var songDetailsController = function ($scope, $location, songsContentService) {
 
     var hasExploreContent = function(){
 
-            _.every($scope.selectedSong.reflections,function(reflection){
+            _.each($scope.selectedSong.reflections,function(reflection){
                 if(reflection.published)
                     $scope.hasSongExploreContent = true;
             });
 
-             _.every($scope.selectedSong.words,function(word){
+             _.each($scope.selectedSong.words,function(word){
                 if(word.rootWord && word.publish)
                     $scope.hasSongExploreContent = true;
             });
