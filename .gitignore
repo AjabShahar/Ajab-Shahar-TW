@@ -22,3 +22,8 @@ web/app/coverage
 *.log
 *.iml
 gradle*
+
+.classpath
+.project
+*.atxa
+.settings
