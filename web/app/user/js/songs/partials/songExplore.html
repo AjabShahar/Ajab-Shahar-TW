@@ -16,13 +16,11 @@
     <div class='ajab-container'>
         <div class='ajab-wrapper'>
             <div class="main-content">
-                <p class="song-explore-text">A random sample of reflections, songs & more
-                            <span ng-if="song.words && song.words.length > 0">
-                                , related through the common word/s -
+                <p class="song-explore-text">A random sample of reflections, songs & more<span ng-if="song.words && song.words.length > 0">, related through the common word/s -
                         <!--{{song.words}}-->
                             <span ng-repeat="word in song.words" class="explore-words">
-                                <a  ng-show="word.publish && word.rootWord" ng-href="/words/details/{{word.id}}" ng-cloack>{{word.wordTransliteration}}<span ng-hide="$last">, </span> </a>
-                            <span ng-show="word.publish && !word.rootWord" ng-cloack>{{word.wordTransliteration}}<span ng-hide="$last">, </span></span>
+                                <a  ng-show="word.publish && word.rootWord" ng-href="/words/details/{{word.id}}" ng-cloak>{{word.wordTransliteration}}</a><span ng-hide="!word.publish || !word.rootWord || $last">, </span>
+                            <span ng-show="word.publish && !word.rootWord" ng-cloak>{{word.wordTransliteration}}<span ng-hide="$last">, </span></span>
                         </span>
                     </span></p>
 

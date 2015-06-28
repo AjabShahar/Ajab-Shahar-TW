@@ -20,7 +20,9 @@
                         position: relative;
                         top: -25px;
                         .explore-words {
-                            color: $pink;
+                            a {
+                              color: $pink;
+                            }
                             font-family: 'Merriweather';
                             text-transform: capitalize;
                         }
