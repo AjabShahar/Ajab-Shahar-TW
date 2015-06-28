@@ -15,8 +15,9 @@ allSongsApp.controller('allSongsController', ['$scope', '$window', 'songsContent
     var contentTextRepresentation = 'Transliteration';
 
     $scope.$watch("contentTextRepresentation", function (value) {
-        contentTextRepresentation = value;
+        contentTextRepresentation = value || contentTextRepresentation;
         $scope.filteredSongList = sortService.sortList($scope.filteredSongList,value);
+        songs = sortService.sortList(songs,value);
     });
 
     var updateFilterCategoriesState = function(){
@@ -89,9 +90,9 @@ allSongsApp.controller('allSongsController', ['$scope', '$window', 'songsContent
     $scope.getAllSongs = function () {
         songsContentService.getAllSongs().then(function (songsList) {
             songs = songMapper.getThumbnails(songsList.data.songs);
+            songs = sortService.sortList(songs, contentTextRepresentation);
             $scope.filteredSongList = songs || [];
             loadFilterItemsFrom(songs);
-            $scope.filteredSongList = sortService.sortList($scope.filteredSongList, contentTextRepresentation);
             updateFilterCategoriesState();
         });
     };
