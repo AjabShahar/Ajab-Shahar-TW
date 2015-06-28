@@ -110,7 +110,7 @@ var songDetailsController = function ($scope, $location, songsContentService) {
             });
 
              _.each($scope.selectedSong.words,function(word){
-                if(word.rootWord && word.publish)
+                if(word.publish)
                     $scope.hasSongExploreContent = true;
             });
     }
