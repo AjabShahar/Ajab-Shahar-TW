@@ -29,7 +29,6 @@ AjabShahar.peopleModel = function (content) {
             occupations.push(person.primaryOccupation.name);
         }
         angular.forEach(person.roles,function(role){
-            if(role.indexOf("_") != 0)
                occupations.push(role);
         });
         return occupations;

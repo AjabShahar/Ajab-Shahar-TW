@@ -8,9 +8,8 @@
                     </a>
                 </div>
                 <div class="page-title">
-                    <span class="main">{{person.name}}</span>
-                    <span class="job" ng-repeat="role in person.occupations track by $index" style="display: inline">{{role}}<span
-                            ng-hide="$last" class="comma-space">,</span> </span>
+                    <span class="main" ng-bind="person.name"></span>
+                    <span class="job" style="display: inline" ng-bind="person.getOccupationsAsString()"></span>
                 </div>
             </div>
         </div>
