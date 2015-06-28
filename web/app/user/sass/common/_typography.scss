@@ -37,38 +37,45 @@ ul {
   list-style: none;
 }
 
-.link a{
+.link a {
   color: $color-link
 }
 
 .active {
-    color: $color-active-link;
+  color: $color-active-link;
 }
 
 .original-html-size {
-    h1 {
-        font-size: 2em;
-        line-height: 1.2em;
-    }
-    h2 {
-        font-size: 1.5em;
-        line-height: 1.2em;
-    }
-    h3 {
-        font-size: 1.17em;
-        line-height: 1.2em;
-    }
-    h4 {
-        font-size: 1.12em;
-        line-height: 1.2em;
-    }
-    h5 {
-        font-size: .83em;
-        line-height: 1.2em;
-    }
 
-    h6 {
-        font-size: .75em;
-        line-height: 1.2em;
-    }
+  h1 {
+    font-size: 2em;
+    line-height: 1.2em;
+    color: $dark-grey;
+  }
+  h2 {
+    font-size: 1.5em;
+    line-height: 1.2em;
+    color: $dark-grey;
+  }
+  h3 {
+    font-size: 1.17em;
+    line-height: 1.2em;
+    color: $dark-grey;
+  }
+  h4 {
+    font-size: 1.12em;
+    line-height: 1.2em;
+    color: $dark-grey;
+  }
+  h5 {
+    font-size: .83em;
+    line-height: 1.2em;
+    color: $dark-grey;
+  }
+
+  h6 {
+    font-size: .75em;
+    line-height: 1.2em;
+    color: $dark-grey;
+  }
 }

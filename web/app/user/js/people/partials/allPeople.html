@@ -77,7 +77,7 @@
 
                                             <a href="explore/{{person.id}}"  target="_self"><span class="title" ng-cloak>{{person.name}}</span></a>
                                             <span class="job-title" style="display: inline">{{person.getOccupationsAsString()}}</span>
-                                            <div bind-dynamic-html = "person.profile"></div>
+                                            <div class="original-html-size" bind-dynamic-html = "person.profile"></div>
                                         </div>
                                         <a href="explore/{{person.id}}" target="_self" class="explore">Explore</a>
                                     </div>

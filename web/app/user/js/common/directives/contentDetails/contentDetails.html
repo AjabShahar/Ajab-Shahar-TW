@@ -31,10 +31,10 @@
             <!--main content-->
             <!--text content-->
             <div class="text-container" ng-if="hasText()">
-                <span class="header-text link" bind-dynamic-html="content.info"></span>
+                <span class="header-text link original-html-size" bind-dynamic-html="content.info"></span>
 
                 <div class="text-content link">
-                        <div id="text-section" bind-dynamic-html="content.textSections"></div>
+                        <div id="text-section original-html-size" bind-dynamic-html="content.textSections"></div>
                 </div>
                 <div class="text-share-options" ng-click="toggleShare()">
                     <a href="javascript:void(0)" class="share" ng-class="{'active': sharingVisible}"></a>
@@ -167,7 +167,7 @@
                     </ul>
                 </div>
 
-                <div class="toggleBySlide about-info about-text link" bind-dynamic-html="content.about"
+                <div class="toggleBySlide about-info about-text link original-html-size" bind-dynamic-html="content.about"
                      ng-show="isAboutVisible"></div>
                 <!--end of toggle, about-->
 

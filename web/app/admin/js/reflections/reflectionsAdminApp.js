@@ -21,6 +21,11 @@ reflectionsAdminApp.config(function ($locationProvider,$provide) {
                         return coupletApplier.isAppliedToSelection();
                     }
                 });
+
+                taOptions.setup.textEditorSetup=function($element){
+                    $element.addClass('original-html-size');
+                };
+
                 taOptions.toolbar[1].push('couplet');
                 return taOptions;
             }]);

@@ -22,6 +22,9 @@ wordsAdminApp.config(function ($locationProvider,$provide) {
                     }
                 });
                 taOptions.toolbar[1].push('couplet');
+                taOptions.setup.textEditorSetup=function($element){
+                    $element.addClass('original-html-size');
+                };
                 return taOptions;
             }]);
     }

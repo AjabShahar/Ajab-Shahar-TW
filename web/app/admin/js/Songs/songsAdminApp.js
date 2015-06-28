@@ -33,6 +33,11 @@ songsAdminApp.config(function ($locationProvider,$provide) {
                         return refrainApplier.isAppliedToSelection();
                     }
                 });
+
+                taOptions.setup.textEditorSetup=function($element){
+                    $element.addClass('original-html-size');
+                };
+
                 taOptions.toolbar[1].push('refrain');
                 return taOptions;
             }]);
