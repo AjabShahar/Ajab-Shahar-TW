@@ -13,19 +13,19 @@
       line-height: 85px;
       float: left;
       clear: both;
-      color: #999;
+      color: $pink;
       font-family: 'Merriweather';
       font-size: 18px;
       font-weight: 300;
       cursor: pointer;
       &:hover {
-         color: $color-hover-link;
+         color: $dark-grey;
 
       }
-      .page-logo:hover {
+      /*.page-logo:hover {
         color: $color-hover-link;
         cursor: pointer;
-      }
+      }*/
     }
   }
 

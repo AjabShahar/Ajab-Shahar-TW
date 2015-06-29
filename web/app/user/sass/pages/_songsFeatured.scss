@@ -23,6 +23,13 @@ $generic-notebook: new-breakpoint(max-width 1280px);
         left: 2.5%;
         z-index: $zIndex-innerpage-logo;
     }
+    & > a {
+        cursor: default;
+        color: $dark-grey;
+        &:hover {
+            color: $dark-grey !important;
+        }
+    }
   }
 }
 

@@ -36,11 +36,13 @@
       position: fixed;
       top: 30px;
       left: 2.5%;
+
       @media screen and (max-width: 768px) {
         left: 0.5%;
       }
       & > a {
         font-size: 15px;
+        color: $dark-grey;
       }
     }
 

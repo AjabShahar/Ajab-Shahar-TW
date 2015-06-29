@@ -13,12 +13,12 @@
         width: 85px;
         height: 85px;
         padding-top: 30px;
-        color: $color-sub-link;
+        color: $pink;
         font-size: 20px;
         font-weight: 300;
 
         &:hover {
-           color: $color-link;
+           color: $dark-grey;
            cursor: pointer;
         }
       }
