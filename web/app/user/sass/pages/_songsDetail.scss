@@ -68,7 +68,7 @@ body.songs-details {
     .poet-details {
       color: $grey;
       font-size: $medium;
-      padding-bottom: 50px;
+      padding-bottom: 20px;
       position: relative;
       top: -10px;
       a {
@@ -91,7 +91,7 @@ body.songs-details {
       font-family: 'Merriweather';
       line-height: 21px;
       text-align: left;
-
+      padding-bottom: 30px
     }
 
     .refrain{
@@ -108,7 +108,7 @@ body.songs-details {
       }
       .poet {
         font-size: $medium-dev;
-        padding-bottom: 50px;
+        padding-bottom: 20px;
         position: relative;
         top: -10px;
         a {
@@ -124,6 +124,7 @@ body.songs-details {
         line-height: 24px;
         color: $grey;
         text-align: left;
+        padding-bottom: 30px
       }
     }
 
