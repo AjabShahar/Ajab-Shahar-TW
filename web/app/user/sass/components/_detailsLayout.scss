@@ -317,6 +317,7 @@
           background: transparent url('/user/img/songs/relatedlinks_parda.png') 0 0 no-repeat;
           background-size: 100% 100%;
 
+
           dl {
             margin: 4px auto;
             clear: both;
@@ -335,12 +336,14 @@
               display: inline-block;
               font-size: $medium;
               font-family: 'merriweather';
+              a {
+                color: $color-sub-link;
 
-              &:hover {
-                //cursor: pointer;
-                color: $color-hover-link;
+                &:hover {
+                    //cursor: pointer;
+                    color: $color-hover-link;
+                }
               }
-
               p {
                 color: $light-grey;
                 text-transform: uppercase;
