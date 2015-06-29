@@ -49,7 +49,20 @@ AjabShahar.DetailsObject = function (content, type) {
                 }
             });
 
-            relatedLinks = relatedLinks.concat(speakerLink).concat(relatedPeople).concat(relatedWords);
+            //relatedLinks = relatedLinks.concat(speakerLink).concat(relatedPeople).concat(relatedWords);
+
+            if(relatedPeople) {
+                relatedLinks = relatedLinks.concat(relatedPeople);
+            }
+
+            if(speakerLink) {
+                relatedLinks = relatedLinks.concat(speakerLink);
+            }
+
+            if(relatedWords){
+                relatedLinks = relatedLinks.concat(relatedWords);
+            }
+
         }
         return relatedLinks;
 
@@ -104,7 +117,18 @@ AjabShahar.DetailsObject = function (content, type) {
                     }
             });
 
-            relatedLinks = relatedLinks.concat(speakerLink).concat(relatedPeople).concat(relatedWords).concat(relatedSongs);
+            if(speakerLink) {
+                relatedLinks = relatedLinks.concat(speakerLink);
+            }
+            if(relatedPeople) {
+                relatedLinks = relatedLinks.concat(relatedPeople);
+            }
+            if(relatedWords){
+                relatedLinks = relatedLinks.concat(relatedWords);
+            }
+            if(relatedSongs){
+                relatedLinks = relatedLinks.concat(relatedSongs);
+            }
         }
         return relatedLinks;
     };

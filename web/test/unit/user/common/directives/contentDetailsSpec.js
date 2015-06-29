@@ -69,17 +69,14 @@ describe("contentDetails model", function () {
         expect(songDetails.videoId).toBe("tNh2kjmSzPw");
         expect(songDetails.about).toBe(null);
         expect(songDetails.downloadUrl).toBe(null);
-        expect(songDetails.links.length).toBe(4);
+        expect(songDetails.links.length).toBe(3);
 
-        expect(songDetails.links[0]).toBe(null);
-        expect(songDetails.links[1].name).toBe("Roshik");
-        expect(songDetails.links[1].description).toBe("POET");
-
-        expect(songDetails.links[2]).toBe(undefined);
-        expect(songDetails.links[3].name).toBe("word transliteration");
-        expect(songDetails.links[3].link).toBe("/words/#/details/6");
-        expect(songDetails.links[3].alternateName).toBe("translation");
-        expect(songDetails.links[3].description).toBe("WORD");
+        expect(songDetails.links[0].name).toBe('Roshik');
+        expect(songDetails.links[1]).toBe(undefined);
+        expect(songDetails.links[2].name).toBe("word transliteration");
+        expect(songDetails.links[2].link).toBe("/words/#/details/6");
+        expect(songDetails.links[2].alternateName).toBe("translation");
+        expect(songDetails.links[2].description).toBe("WORD");
 
     });
 
