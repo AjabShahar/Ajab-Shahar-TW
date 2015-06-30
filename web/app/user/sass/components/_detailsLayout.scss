@@ -149,6 +149,7 @@
         .about-link {
             font-weight: 300;
             color: $pink;
+            font-family: 'Merriweather';
             font-size: $medium-large;
             &:hover {
                 color: $dark-grey;
@@ -168,6 +169,7 @@
             font-family: 'Merriweather';
             font-weight: 300;
             overflow: auto;
+            text-align: left;
             line-height: 21px;
             a {
                 color: $pink;
