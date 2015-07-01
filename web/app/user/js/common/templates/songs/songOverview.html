@@ -40,7 +40,8 @@
             </div>
             <span class='creditBox' ng-repeat="singer in singers track by $index">
                 <a href="/people/all#{{singer.id}}" class='link-text'>{{singer.name}}</a>
-                <span>SINGER</span>
+                <span ng-show="singer.name.indexOf('&') != -1 || singer.name.indexOf(',') != -1">SINGERS</span>
+                <span ng-show="singer.name.indexOf('&') === -1 && singer.name.indexOf(',') === -1">SINGER</span>
             </span>
             <span ng-repeat="word in words" class="creditBox">
                 <a href="/words/#/details/{{word.id}}"

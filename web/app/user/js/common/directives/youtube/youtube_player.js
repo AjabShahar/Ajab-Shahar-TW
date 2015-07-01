@@ -18,7 +18,7 @@ mediaPlayer.directive('youtube', function ($window, YT_event, $sce) {
             playlist: "@"
         },
 
-        template: '<iframe id="ytplayer" type="text/html" width="{{width}}" height="{{height}}" ng-src="{{videoUrl}}" frameborder="0"/>',
+        template: '<iframe id="ytplayer" type="text/html" width="{{width}}" height="{{height}}" ng-src="{{videoUrl}}" frameborder="0" allowfullscreen/>',
 
         link: function (scope) {
             scope.$watch("videoid",function(){

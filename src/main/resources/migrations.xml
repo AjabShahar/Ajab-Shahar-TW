@@ -396,4 +396,14 @@
             (select 'Legendary Figure', 'person' WHERE NOT EXISTS (select 1  from category where name='Legendary Figure' AND category_type='person'));
         </sql>
     </changeSet>
+    <changeSet id="99" author="PADMA">
+        <comment>Adding occupations</comment>
+        <sql>
+            update category set name = 'Cultural Activist' where id = 48;
+            insert into category(name,category_type)
+            (select 'Dancer', 'person' WHERE NOT EXISTS (select 1  from category where name='Dancer' AND category_type='person'));
+            insert into category(name,category_type)
+            (select 'Legendary Figures', 'person' WHERE NOT EXISTS (select 1  from category where name='Legendary Figures' AND category_type='person'));
+        </sql>
+    </changeSet>
 </databaseChangeLog>
