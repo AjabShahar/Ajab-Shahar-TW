@@ -110,15 +110,6 @@ public class WordResource {
         return Response.ok(wordReflections).build();
     }
 
-    @GET
-    @Path("/songs")
-    @Produces(MediaType.APPLICATION_JSON)
-    @UnitOfWork
-    public Response getSongs(@QueryParam("ids") List<Long> wordIds) {
-        Set<Word> wordsList = words.findWords(wordIds);
-        Set<WordSongsRepresentation> wordReflections = wordRepresentationFactory.createWordSongs(wordsList);
-        return Response.ok(wordReflections).build();
-    }
 
     @GET
     @Path("/summary")

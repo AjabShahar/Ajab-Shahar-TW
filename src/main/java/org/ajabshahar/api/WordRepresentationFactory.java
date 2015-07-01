@@ -100,17 +100,6 @@ public class WordRepresentationFactory {
         return wordReflectionRepresentations;
     }
 
-    public Set<WordSongsRepresentation> createWordSongs(Set<Word> wordsList) {
-        Set<WordSongsRepresentation> wordSongsRepresentations = new LinkedHashSet<>();
-        for (Word word : wordsList) {
-            WordSongsRepresentation wordSongsRepresentation = new WordSongsRepresentation();
-            wordSongsRepresentation.setWord(WordSummaryRepresentation.fromWord(word));
-            wordSongsRepresentation.setSongs(SongSummaryRepresentation.toSummaryRepresentations(word.getSongs()));
-            wordSongsRepresentations.add(wordSongsRepresentation);
-        }
-        return wordSongsRepresentations;
-    }
-
     public WordRepresentation createWordRepresentation(Word word) {
         WordRepresentation wordRepresentation = new WordRepresentation();
         wordRepresentation.setId(word.getId());
