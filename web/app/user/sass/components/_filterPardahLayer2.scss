@@ -12,8 +12,9 @@
     font-size: 12px;
     box-sizing: border-box;
 
-    @include animation(pardah2-slideRight 0.5s forwards);
-
+    &.ng-hide-add {
+        @include animation(pardah2-slideRight 0.5s forwards);
+    }
     .overlay {
         background: transparent url('/user/img/songs/filter-pardah2.png') right -5px repeat-y;
         position: fixed;
