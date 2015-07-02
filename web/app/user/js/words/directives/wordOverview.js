@@ -22,7 +22,7 @@ thumbnailModule.directive("wordOverview", function () {
             }
 
             $scope.getPersonUrl = function(person){
-                return AjabShahar.user.ContentUrlCreator.getUrl(person,"person");
+                return person?AjabShahar.user.ContentUrlCreator.getUrl(person,"person"):"";
             };
 
             $scope.getWordUrl = function(){

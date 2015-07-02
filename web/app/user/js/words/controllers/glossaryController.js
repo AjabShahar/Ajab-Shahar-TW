@@ -17,7 +17,7 @@ angular.module("word").controller('glossaryController', ['$scope', 'wordService'
     };
 
     $scope.getWordUrl = function(word){
-        return AjabShahar.user.ContentUrlCreator.getUrl(word,"word");
+        return word?AjabShahar.user.ContentUrlCreator.getUrl(word,"word"):"";
     };
     $scope.classes = ['envelope-letter-bg', 'yellow-trapezium-bg', 'chakras-bg','benzene-bg','ameoba-bg'];
 

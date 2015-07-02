@@ -80,11 +80,11 @@ thumbnailModule.directive("songOverview", function () {
             };
 
             $scope.getPersonUrl = function(person){
-                return AjabShahar.user.ContentUrlCreator.getUrl(person,"person");
+                return person? AjabShahar.user.ContentUrlCreator.getUrl(person,"person"):"";
             };
 
             $scope.getWordUrl = function(word){
-                return AjabShahar.user.ContentUrlCreator.getUrl(word,"word");
+                return word? AjabShahar.user.ContentUrlCreator.getUrl(word,"word"):"";
             }
         }
     }

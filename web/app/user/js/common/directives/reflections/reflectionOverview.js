@@ -38,15 +38,15 @@ thumbnailModule.directive("reflectionOverview", function () {
             };
 
             $scope.getPersonUrl = function(person){
-                return AjabShahar.user.ContentUrlCreator.getUrl(person,"person");
+                return person ? AjabShahar.user.ContentUrlCreator.getUrl(person,"person"):"";
             };
 
             $scope.getWordUrl = function(word){
-                return AjabShahar.user.ContentUrlCreator.getUrl(word,"word");
+                return word? AjabShahar.user.ContentUrlCreator.getUrl(word,"word"):"";
             };
 
             $scope.getSongUrl = function(song){
-                return AjabShahar.user.ContentUrlCreator.getUrl(song,"song");
+                return song? AjabShahar.user.ContentUrlCreator.getUrl(song,"song") :"";
             };
         }
     }

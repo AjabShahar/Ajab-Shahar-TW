@@ -121,7 +121,10 @@ var songDetailsController = function ($scope, $location, songsContentService) {
     }
 
     $scope.getPersonUrl = function(person){
-        return AjabShahar.user.ContentUrlCreator.getUrl(person,"person");
+        if(person){
+            return AjabShahar.user.ContentUrlCreator.getUrl(person,"person");
+        }
+        return "";
     }
 };
 
