@@ -38,7 +38,7 @@ describe("song details controller", function () {
         expect(scope.detailsObject.id).toBe(1);
         expect(scope.detailsObject.audioId).toBe("https://soundcloud.com/zedsdead/zeds-dead-hadouken-vip");
         expect(scope.detailsObject.videoId).toBe("tNh2kjmSzPw");
-        expect(scope.detailsObject.links.length).toBe(3);
+        expect(scope.detailsObject.links.length).toBe(2);
     });
     it("should have main title for selected song", function () {
         scope.selectThumbnail(scope.carouselItems[0]);
@@ -86,7 +86,7 @@ describe("song details controller", function () {
         httpBackend.flush();
 
         expect(scope.hasSongExploreContent).toBeTruthy();
-        expect(scope.getSongExploreUrl()).toBe('/songs/explore/1');
+        expect(scope.getSongExploreUrl()).toBe('/songs/explore/1/Kichhu-din-mone-mone');
     });
 
     var song = {

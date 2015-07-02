@@ -68,18 +68,18 @@
 
                             </div>
                             <ul>
-                                <div id="{{person.id}}" ng-repeat="(index,person) in people | orderBy : 'name'" on-ng-repeat-end="scrollTo" class="row-wrapper">
+                                <div id="{{getPersonTag(person)}}" ng-repeat="(index,person) in people | orderBy : 'name'" on-ng-repeat-end="scrollTo" class="row-wrapper">
                                     <div class="image" >
                                         <img src="{{person.thumbnailImg}}">
                                     </div>
                                     <div class="people-wrapper">
                                         <div class="people-info" read-more>
 
-                                            <a href="explore/{{person.id}}"  target="_self"><span class="title" ng-cloak>{{person.name}}</span></a>
+                                            <a ng-href="{{getExploreUrl(person)}}"  target="_self"><span class="title" ng-cloak>{{person.name}}</span></a>
                                             <span class="job-title" style="display: inline">{{person.getOccupationsAsString()}}</span>
                                             <div class="original-html-size" bind-dynamic-html = "person.profile"></div>
                                         </div>
-                                        <a href="explore/{{person.id}}" target="_self" class="explore">Explore</a>
+                                        <a ng-href="{{getExploreUrl(person)}}" target="_self" class="explore">Explore</a>
                                     </div>
                                 </div>
                             </ul>

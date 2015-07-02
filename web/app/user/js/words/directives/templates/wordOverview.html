@@ -2,7 +2,7 @@
     <div id="content-wrapper">
         <div class="content-bg">
             <div class="header">
-                <a href="/words/#/details/{{id}}" class="title-pink" ng-cloak>{{wordTransliteration}} </a>
+                <a ng-href="{{getWordUrl()}}" class="title-pink" ng-cloak>{{wordTransliteration}} </a>
                 <span class="title-italic" ng-cloak>{{wordTranslation}}</span>
                 <h5 class="artistName">
                     <small ng-show="writers.length > 0" class="artist-text title-case">Introduction by </small>
@@ -15,14 +15,14 @@
     </div>
     <div class="mediaFooter">
         <h3 class='infoText'>For related reflections
-            <a href="/words/#/details/{{id}}">enter WORD</a>
+            <a ng-href="{{getWordUrl()}}">enter WORD</a>
             or see
             <a href="/words/allWords" class="sub">ALL WORDS</a>
         </h3>
 
         <div class="creditCont">
             <div class="creditBox" ng-repeat="writer in writers" ng-cloak>
-                <a href="/people/all#{{writer.id}}" class='link-text ng-binding'>{{writer.name}}</a>
+                <a ng-href="{{getPersonUrl(writer)}}" class='link-text ng-binding'>{{writer.name}}</a>
                 <span>{{writer.primaryOccupation}}</span>
             </div>
         </div>

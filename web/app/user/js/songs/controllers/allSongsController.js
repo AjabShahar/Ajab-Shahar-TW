@@ -107,8 +107,8 @@ allSongsApp.controller('allSongsController', ['$scope', '$window', 'songsContent
         });
     };
 
-    $scope.navigateToSong = function (id) {
-        $window.location.href = '/songs/?id=' + id;
+    $scope.navigateToSong = function (song) {
+        $window.location.href = AjabShahar.user.ContentUrlCreator.getUrl(song,"song");
     };
 
     $scope.getAllSongs();

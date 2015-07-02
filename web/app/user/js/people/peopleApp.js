@@ -6,11 +6,11 @@ angular.module('people', ['ngRoute','htmlGenerator','utilities','animationModule
                 controller:"allPeopleController"
 
             })
-            .when('/explore/:id',{
+            .when('/explore/:id/:title',{
                 templateUrl:"/user/js/people/partials/explore.html",
                 controller:"peopleExploreController"
             })
-            .when('/all#:id',{
+            .when('/all#:title',{
                 templateUrl: "/user/js/people/partials/allPeople.html",
                 controller:"allPeopleController"
             })

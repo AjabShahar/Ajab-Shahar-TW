@@ -44,7 +44,7 @@ angular.module("song").controller("songExploreController", ['$scope', '$route', 
     };
 
     $scope.getDetailsPageUrl = function(){
-        return "/songs/details?id="+songId;
+        return AjabShahar.user.ContentUrlCreator.getUrl($scope.song,"song");
     };
 
     $scope.init = function () {

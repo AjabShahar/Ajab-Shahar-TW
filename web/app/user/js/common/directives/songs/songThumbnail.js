@@ -79,6 +79,9 @@ thumbnailModule.directive("songThumbnail", function ($timeout) {
                 $scope.shouldShowDetails = false;
             };
 
+            $scope.getUrl = function(){
+                return AjabShahar.user.ContentUrlCreator.getUrl({id:$scope.id,title:$scope.englishTransliteration},"song")
+            };
             $scope.init();
         }
     }

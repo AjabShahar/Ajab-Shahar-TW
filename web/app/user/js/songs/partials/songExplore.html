@@ -48,7 +48,7 @@
                         <div id="container" masonry preserve-order height-offset="150">
                             <!--<ul class="media-list" height-offset="0">-->
                             <div ng-repeat="thumbnail in thumbnails | filter : contentTypeFilter" class="media masonry-brick">
-                                <content-thumbnail content="thumbnail" format="format" ng-click="selectThumbnail(thumbnail)" keep-expanded="true"
+                                <content-thumbnail content="thumbnail" format="format" ng-click="selectThumbnail(thumbnail)" keep-expanded="true" title-as-link="true"
                                                    current-index="{{$index}}"></content-thumbnail>
                             </div>
                             <!--</ul>-->

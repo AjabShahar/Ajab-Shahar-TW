@@ -7,6 +7,8 @@ AjabShahar.DetailsObject = function (content, type) {
     self.type = type;
     self.originalObject = content;
 
+    var urlCreator = AjabShahar.user.ContentUrlCreator;
+
     var pluckPropertyFrom = function (obj, propertyName, lambdaFunctionName, callback) {
         if (!_.isEmpty(obj) && !_.isEmpty(obj[propertyName])) {
             if (lambdaFunctionName) {
@@ -19,14 +21,13 @@ AjabShahar.DetailsObject = function (content, type) {
 
     var getRelatedLinksFromSong = function (song) {
         var relatedLinks = [];
-        var WORD_DETAILS_PATH = "/words/#/details/";
 
         if (!_.isEmpty(song)) {
             var speakerLink = pluckPropertyFrom(song,"singers","map",function(singer){
                 return{
                     name: singer.name,
                     description: singer.name.indexOf("&") != -1 || singer.name.indexOf(",") != -1 ? "SINGERS" : "SINGER",
-                    link:"/people/all#"+singer.id
+                    link:urlCreator.getUrl(singer,"person")
                 }
             });
 
@@ -34,7 +35,7 @@ AjabShahar.DetailsObject = function (content, type) {
                 return {
                     name: poet.name,
                     description: "POET",
-                    link:"/people/all#"+poet.id
+                    link:urlCreator.getUrl(poet,"person")
                 };
             });
 
@@ -42,7 +43,7 @@ AjabShahar.DetailsObject = function (content, type) {
                 if (word.rootWord && word.publish) {
                     return {
                         name: word.wordTransliteration,
-                        link: WORD_DETAILS_PATH + word.id,
+                        link: urlCreator.getUrl(word,"word"),
                         alternateName: word.wordTranslation,
                         description: "WORD"
                     }
@@ -73,28 +74,26 @@ AjabShahar.DetailsObject = function (content, type) {
             return {
                 name: writer.name,
                 description: writer.primaryOccupation,
-                link:"/people/all#"+writer.id
+                link:urlCreator.getUrl(writer,"person")
             };
         });
     };
 
     var getRelatedLinksFromReflection = function (reflection) {
         var relatedLinks = [];
-        var WORD_DETAILS_PATH = "/words/#/details/";
-        var SONG_DETAILS_PATH = "/songs/?id=";
 
         if (!_.isEmpty(reflection)) {
             var speakerLink = {
                 name: reflection.speaker ? reflection.speaker.name : "",
                 description: reflection.speaker ? reflection.speaker.primaryOccupation : "",
-                link:reflection.speaker ? "/people/all#"+reflection.speaker.id : ""
+                link:urlCreator.getUrl(reflection.speaker,"person")
             };
 
             var relatedPeople = pluckPropertyFrom(reflection, "people", "map", function (person) {
                 return {
                     name: person.name,
                     description: person.primaryOccupation,
-                    link:"/people/all#"+person.id
+                    link:urlCreator.getUrl(person,"person")
                 };
             });
 
@@ -102,7 +101,7 @@ AjabShahar.DetailsObject = function (content, type) {
                 if (word.rootWord && word.publish) {
                     return {
                         name: word.wordTransliteration,
-                        link: WORD_DETAILS_PATH + word.id,
+                        link: urlCreator.getUrl(word,"word"),
                         alternateName: word.wordTranslation,
                         description: "WORD"
                     }
@@ -112,7 +111,7 @@ AjabShahar.DetailsObject = function (content, type) {
             var relatedSongs = pluckPropertyFrom(reflection, "songs", "map", function (song) {
                     return {
                         name: song.englishTransliterationTitle,
-                        link: SONG_DETAILS_PATH + song.id,
+                        link: urlCreator.getUrl(song,"song"),
                         description: "SONG"
                     }
             });
@@ -158,9 +157,10 @@ AjabShahar.DetailsObject = function (content, type) {
         self.downloadUrl = song.downloadURL;
         self.image = song.thumbnailURL;
         self.about = song.about;
-        self.links = getRelatedLinksFromSong(song);
-        self.shareUrl = "/songs/?id=" + self.id;
+        self.links = _.compact(getRelatedLinksFromSong(song));
+        self.shareUrl = urlCreator.getUrl(song,"song");
         self.shareTitle = song.songTitle.englishTransliteration + " \n";
+        self.title = song.songTitle.englishTransliteration;
     };
 
     var buildFromWord = function (word) {
@@ -194,8 +194,9 @@ AjabShahar.DetailsObject = function (content, type) {
         self.displayAjabShaharTeam = word.displayAjabShaharTeam;
         self.info = "";
         self.image = word.thumbnailUrl;
-        self.shareUrl = "/words/details/" + self.id;
         self.shareTitle = word.wordTransliteration + " \n";
+        self.title = word.wordTransliteration + " \n";
+        self.shareUrl = urlCreator.getUrl(word,"word");
     };
 
     var buildFromReflection = function (reflection) {
@@ -217,8 +218,8 @@ AjabShahar.DetailsObject = function (content, type) {
         self.about = reflection.about;
         self.excerpt = reflection.reflectionExcerpt;
         self.image = reflection.thumbnailURL;
-        self.shareUrl = "/reflections/details/" + self.id;
         self.shareTitle = reflection.title + " \n";
+        self.shareUrl = urlCreator.getUrl(reflection,"reflection")
     };
 
     if (type === 'song') {

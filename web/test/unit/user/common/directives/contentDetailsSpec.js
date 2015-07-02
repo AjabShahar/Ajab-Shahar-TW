@@ -34,7 +34,7 @@ describe("contentDetails model", function () {
     });
 
     it("should construct reflection details object from reflection representation with proper values in the link field", function () {
-        reflectionDetailsObject = new AjabShahar.DetailsObject(test_reflectionRepresentation1, 'reflection');
+        var reflectionDetailsObject = new AjabShahar.DetailsObject(test_reflectionRepresentation1, 'reflection');
 
         expect(reflectionDetailsObject.links.length).toBe(5);
 
@@ -53,34 +53,62 @@ describe("contentDetails model", function () {
         expect(reflectionDetailsObject.links[3].name).toBe("shakkar");
         expect(reflectionDetailsObject.links[3].description).toBe("WORD");
         expect(reflectionDetailsObject.links[3].alternateName).toBe("sugar");
-        expect(reflectionDetailsObject.links[3].link).toBe("/words/#/details/15");
+        expect(reflectionDetailsObject.links[3].link).toBe("/words/details/15/shakkar");
 
         //related songs
         expect(reflectionDetailsObject.links[4].name).toBe("Nit Khair Manga");
         expect(reflectionDetailsObject.links[4].description).toBe("SONG");
-        expect(reflectionDetailsObject.links[4].link).toBe("/songs/?id=11");
+        expect(reflectionDetailsObject.links[4].link).toBe("/songs/?id=11&title=Nit-Khair-Manga");
     });
 
     it("should construct song details object from song representation ", function () {
-        songDetails = new AjabShahar.DetailsObject(test_song, 'song');
+        var songDetails = new AjabShahar.DetailsObject(test_song, 'song');
 
         expect(songDetails.id).toBe(1);
         expect(songDetails.audioId).toBe("https://soundcloud.com/zedsdead/zeds-dead-hadouken-vip");
         expect(songDetails.videoId).toBe("tNh2kjmSzPw");
         expect(songDetails.about).toBe(null);
         expect(songDetails.downloadUrl).toBe(null);
-        expect(songDetails.links.length).toBe(3);
+        expect(songDetails.links.length).toBe(2);
 
-        expect(songDetails.links[0].name).toBe('Roshik');
-        expect(songDetails.links[1]).toBe(undefined);
-        expect(songDetails.links[2].name).toBe("word transliteration");
-        expect(songDetails.links[2].link).toBe("/words/#/details/6");
-        expect(songDetails.links[2].alternateName).toBe("translation");
-        expect(songDetails.links[2].description).toBe("WORD");
+        expect(songDetails.links[0].name).toBe("Roshik");
+        expect(songDetails.links[0].description).toBe("POET");
+
+        expect(songDetails.links[1].name).toBe("word transliteration");
+        expect(songDetails.links[1].link).toBe("/words/details/6/word-transliteration");
+        expect(songDetails.links[1].alternateName).toBe("translation");
+        expect(songDetails.links[1].description).toBe("WORD");
 
     });
 
+    it("should construct share url with title for reflections, words and songs",function(){
+        var reflectionDetailsObject = new AjabShahar.DetailsObject(test_reflectionRepresentation1, 'reflection');
+        expect(reflectionDetailsObject.shareUrl).toBe("/reflections/details/1/Poet-is-God-says-Vipul","reflection url creation failed");
 
+        var songDetailsObject = new AjabShahar.DetailsObject(test_song, 'song');
+        expect(songDetailsObject.shareUrl).toBe("/songs/?id=1&title=Kichhu-din-mone-mone","song url creation failed");
+
+        var wordDetailsObject = new AjabShahar.DetailsObject(test_wordRepresentation, 'word');
+        expect(wordDetailsObject.shareUrl).toBe("/words/details/2/Jaagna-Sona","word url creation failed");
+    });
+
+
+    it("should construct related  links of people, word, song, reflection with titles in them",function(){
+        var reflectionDetailsObject = new AjabShahar.DetailsObject(test_reflectionRepresentation1, 'reflection');
+        expect(reflectionDetailsObject.links[0].link).toBe("/people/all#Vipul-Rikhi");
+        expect(reflectionDetailsObject.links[1].link).toBe("/people/all#Gavra-Devi");
+        expect(reflectionDetailsObject.links[2].link).toBe("/people/all#Roshik");
+        expect(reflectionDetailsObject.links[3].link).toBe("/words/details/15/shakkar");
+        expect(reflectionDetailsObject.links[4].link).toBe("/songs/?id=11&title=Nit-Khair-Manga");
+
+        var songDetailsObject = new AjabShahar.DetailsObject(test_song, 'song');
+        expect(songDetailsObject.links[0].link).toBe("/people/all#Roshik");
+        expect(songDetailsObject.links[1].link).toBe("/words/details/6/word-transliteration");
+
+        var wordDetailsObject = new AjabShahar.DetailsObject(test_wordRepresentation, 'word');
+        expect(wordDetailsObject.links[0].link).toBe("/people/all#Mooralala-Marwada");
+        expect(wordDetailsObject.links[1].link).toBe("/people/all#Parvathy-Baul");
+    });
 });
 
 describe("content details directive", function () {

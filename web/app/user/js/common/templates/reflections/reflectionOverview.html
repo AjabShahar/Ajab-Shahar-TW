@@ -19,25 +19,25 @@
     <div class="mediaFooter">
         <h3 class='infoText'>Go to
 
-            <a href="/reflections/#/details/{{id}}">Reflection</a> or see
-            <a href="/reflections/#/all">All Reflections</a>
+            <a ng-href="{{getReflectionUrl()}}">Reflection</a> or see
+            <a href="/reflections/all">All Reflections</a>
         </h3>
 
-        <div class='creditCont'>
+        <div class='creditCont' ng-cloak>
 
-            <div class='creditBox' ng-repeat="person in people track by $index" ng-cloak>
-                <a class='link-text selected' href="/people/all#{{person.id}}">{{person.name}} </a>
+            <div class='creditBox' ng-repeat="person in people track by $index" >
+                <a class='link-text selected' ng-href="{{getPersonUrl(person)}}">{{person.name}} </a>
                 <span>{{person.primaryOccupation}}</span>
             </div>
 
-            <span ng-repeat="word in words" class="creditBox ng-cloak">
-                 <a href="/words/#/details/{{word.id}}"
+            <span ng-repeat="word in words" class="creditBox">
+                 <a ng-href="{{getWordUrl(word)}}"
                         target="_self" class="link-text">{{word.transliteration}} <span class="italic-text">{{word.translation}}</span></a>
                  <span>WORD</span>
             </span>
 
-            <span ng-repeat="song in songs" class="creditBox" ng-cloak>
-                <a href="/songs/?id={{song.id}}" target="_self" class="link-text">{{song.englishTransliterationTitle}}</a>
+            <span ng-repeat="song in songs" class="creditBox" >
+                <a ng-href="{{getSongUrl(song)}}" target="_self" class="link-text">{{song.englishTransliterationTitle}}</a>
                 <span>SONG</span>
             </span>
 

@@ -5,7 +5,10 @@
     </div>
     <div class="bubble" >
         <div class="summary" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
-            <h3 class="title" ng-cloak>{{content.getTitle(format)}}</h3>
+            <h3 class="title" ng-cloak>
+                <span ng-hide="titleAsLink">{{content.getTitle(format)}}</span>
+                <a ng-show="titleAsLink" ng-href="{{content.getUrl()}}">{{content.getTitle(format)}}</a>
+            </h3>
             <h4 class="en-title" ng-cloak>{{content.getSecondTitle(format)}}</h4>
 
             <span class="singers" ng-cloak>{{content.verbPeople.verb}} {{content.verbPeople.people|uppercase}}</span>

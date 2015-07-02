@@ -9,10 +9,7 @@ AjabShahar.ThumbnailObject = function (contentItem, type) {
     };
 
     self.getUrl = function(){
-        if(self.type=='song'){
-            return "/songs/details?id="+self.id;
-        }
-        return "/"+self.type+"s/details/"+self.id;
+        return AjabShahar.user.ContentUrlCreator.getUrl(self,self.type);
     };
 
     var buildFromSong = function (song) {

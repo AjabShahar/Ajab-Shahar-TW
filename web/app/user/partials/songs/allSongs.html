@@ -56,7 +56,7 @@
                             <ul class="media-list songs">
                                 <li class="media" ng-repeat="song in filteredSongList">
                                     <song-thumbnail id="{{song.id}}" content-id="{{song.contentId}}"
-                                                    open="navigateToSong(song.id)" custom-style="{{song.customStyle}}"
+                                                    open="navigateToSong(song)" custom-style="{{song.customStyle}}"
                                                     img-src="{{song.thumbnailUrl}}" url="{{song.videoId}}"
                                                     english-transliteration="{{song.englishTransliteration}}"
                                                     english-translation="{{song.englishTranslation}}"
@@ -105,6 +105,9 @@
         <script type="text/javascript" src="/user/js/common/directives/common/onClickOutside.js"></script>
         <script type="text/javascript" src="/common/lib/angular-route/angular-route.js"></script>
         <script type="text/javascript" src="/user/js/common/modules/utilities.js"></script>
+
+        <script type="text/javascript" src="/user/js/common/utilities/ContentUrlCreator.js"></script>
+
         <script type="text/javascript" src="/user/js/words/wordApp.js"></script>
         <script type="text/javascript" src="/user/js/reflections/reflectionsApp.js"></script>
         <script type="text/javascript" src="/user/js/songs/services/songMapper.js"></script>

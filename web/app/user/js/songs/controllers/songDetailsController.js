@@ -99,7 +99,12 @@ var songDetailsController = function ($scope, $location, songsContentService) {
     $scope.init();
 
     $scope.getSongExploreUrl = function(){
-        return !_.isEmpty($scope.detailsObject) &&$scope.hasSongExploreContent  ? "/songs/explore/"+$scope.detailsObject.id:'';
+        return !_.isEmpty($scope.detailsObject) &&$scope.hasSongExploreContent  ? AjabShahar.user.ContentUrlCreator.songExploreUrl(
+            {
+                id:$scope.selectedSong.id,
+                title:$scope.selectedSong.songTitle.englishTransliteration
+            }
+        ):'';
     };
 
     var hasExploreContent = function(){
@@ -113,6 +118,10 @@ var songDetailsController = function ($scope, $location, songsContentService) {
                 if(word.publish)
                     $scope.hasSongExploreContent = true;
             });
+    }
+
+    $scope.getPersonUrl = function(person){
+        return AjabShahar.user.ContentUrlCreator.getUrl(person,"person");
     }
 };
 

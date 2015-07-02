@@ -34,8 +34,8 @@
             <div class='grid-wrapper' >
                 <div class="thumbnails-grid">
                     <ul class="media-list">
-                        <div ng-repeat="(index,reflection) in reflectionsList" class="media" ng-click="navigateToDetailPage(reflectionsList[$index].id)">
-                            <content-thumbnail content="reflectionsList[$index]" format="format"  custom-style="{{shiftThumbnail($index)}}"
+                        <div ng-repeat="(index,reflection) in reflectionsList" class="media" ng-click="navigateToDetailPage(reflectionsList[$index])">
+                            <content-thumbnail content="reflectionsList[$index]" format="format"  custom-style="{{shiftThumbnail($index)}}" title-as-link="true"
                                                        current-index=""></content-thumbnail>
                         </div>
                     </ul>

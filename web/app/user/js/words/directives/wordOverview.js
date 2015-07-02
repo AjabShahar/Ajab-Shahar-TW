@@ -20,6 +20,14 @@ thumbnailModule.directive("wordOverview", function () {
             if($scope.writers.length > 1){
                 $scope.people += " & " + $scope.writers[$scope.writers.length - 1].name;
             }
+
+            $scope.getPersonUrl = function(person){
+                return AjabShahar.user.ContentUrlCreator.getUrl(person,"person");
+            };
+
+            $scope.getWordUrl = function(){
+                return AjabShahar.user.ContentUrlCreator.getUrl({id:$scope.id, title:$scope.wordTransliteration},"word");
+            };
         }
     }
 });

@@ -2,19 +2,21 @@ describe("all reflections controller", function () {
 
     var reflectionsContentService,
         scope,
-        fakeWindow;
+        fakeWindow,
+        $location;
 
     beforeEach(module("reflection"));
 
-    beforeEach(inject(function (_$controller_, _$rootScope_, _$httpBackend_, _$window_, _reflectionsContentService_) {
+    beforeEach(inject(function (_$controller_, _$rootScope_, _$httpBackend_, _$window_, _reflectionsContentService_,_$location_) {
         scope = _$rootScope_.$new();
         $httpBackend = _$httpBackend_;
         reflectionsContentService = _reflectionsContentService_;
         fakeWindow = {location: {href: ''}};
 
+        $location = _$location_;
         _$controller_("allReflectionsController", {
             $scope: scope,
-            $window: fakeWindow,
+            $location: _$location_,
             reflectionsContentService: reflectionsContentService
         });
         $httpBackend.when("GET", "/api/reflections/completeInfo?content=authoringComplete").respond(test_reflections);
@@ -64,9 +66,9 @@ describe("all reflections controller", function () {
     });
 
     it("should redirect to details page on clicking of reflection thumbnail", function () {
-        scope.navigateToDetailPage(1);
+        scope.navigateToDetailPage(test_reflections.reflections[1]);
 
-        expect(fakeWindow.location.href).toBe('details/' + 1);
+        expect($location.url()).toBe('/reflections/details/1/Poet-is-God');
     });
 });
 

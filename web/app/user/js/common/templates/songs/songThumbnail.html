@@ -4,7 +4,7 @@
     </div>
     <div ng-cloak class="bubble" ng-click="open('{{id}}')">
         <div class="summary" ng-mouseEnter="showDetails()" ng-mouseleave="hideDetails()">
-            <h3 class="title" >{{primaryTitle}}</h3>
+            <h3 class="title" ><a ng-href="{{getUrl()}}">{{primaryTitle}}</a></h3>
             <h4 class="en-title" >{{secondaryTitle}}</h4>
             <div class="singers" >
                 <small class="" ng-show="multipleSingers">sing {{getSingers()| uppercase}}</small>

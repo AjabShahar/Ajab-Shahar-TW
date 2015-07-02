@@ -67,17 +67,17 @@
                 <div ng-show="hasSongText()" id="poem_container" ng-cloak>
                     <div ng-show="originalVisible" class="toggleByFading  hindi">
                         <h2 class="song-heading">{{selectedSong.songTitle.originalTitle}}</h2>
-                        <div class="poet"> कवि <a href="/people/all#{{selectedSong.poets[0].id}}" target="_self">{{selectedSong.poets[0].hindiName}}</a></div>
+                        <div class="poet"> कवि <a ng-href="{{getPersonUrl(selectedSong.poets[0])}}" target="_self">{{selectedSong.poets[0].hindiName}}</a></div>
                         <div class="lyrics original-html-size" bind-dynamic-html="selectedSong.songText.original"></div>
                     </div>
                     <div ng-show="englishTranslationVisible" class="toggleByFading">
                         <h2 class="song-heading">{{selectedSong.songTitle.englishTranslation}}</h2>
-                        <div class="poet-details"> POET <a href="/people/all#{{selectedSong.poets[0].id}}" target="_self">{{selectedSong.poets[0].name}}</a></div>
+                        <div class="poet-details"> POET <a ng-href="{{getPersonUrl(selectedSong.poets[0])}}" target="_self">{{selectedSong.poets[0].name}}</a></div>
                         <div class="lyrics original-html-size" bind-dynamic-html="selectedSong.songText.translation"></div>
                     </div>
                     <div ng-show="englishTransliterationVisible" class="toggleByFading">
                         <h2 class="song-heading">{{selectedSong.songTitle.englishTransliteration}}</h2>
-                        <div class="poet-details"> POET <a href="/people/all#{{selectedSong.poets[0].id}}" target="_self">{{selectedSong.poets[0].name}}</a></div>
+                        <div class="poet-details"> POET <a ng-href="{{getPersonUrl(selectedSong.poets[0])}}" target="_self">{{selectedSong.poets[0].name}}</a></div>
                         <div class="lyrics original-html-size" bind-dynamic-html="selectedSong.songText.transliteration"></div>
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                 <li class="transliteration" ng-click="showEnglishTransliteration()"><a href="javascript:void(0)" ng-class="{'active':englishTransliterationVisible}"></a></li>
                 <li class="translation" ng-click="showEnglishTranslation()"><a href="javascript:void(0)" ng-class="{'active':englishTranslationVisible}"></a></li>
             </ul>
-            <div class="glossary-link">See <a target="_blank" href="/words/#/glossary">Glossary</a></div>
+            <div class="glossary-link">See <a target="_blank" href="/words/glossary">Glossary</a></div>
         </div>
         <div class="footer-spacer"></div>
         <ajab-shahar-footer></ajab-shahar-footer>
@@ -126,6 +126,8 @@
     <script type="text/javascript" src="/user/js/common/directives/contentDetails/contentDetailsModel.js"></script>
     <script type="text/javascript" src="/user/js/common/directives/contentDetails/contentDetails.js"></script>
     <script type="text/javascript" src="/user/js/common/directives/onNgRepeatEnd/onNgRepeatEnd.js"></script>
+
+    <script type="text/javascript" src="/user/js/common/utilities/ContentUrlCreator.js"></script>
 
     <script type="text/javascript" src="/user/js/words/wordApp.js"></script>
     <script type="text/javascript" src="/user/js/reflections/reflectionsApp.js"></script>

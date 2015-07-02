@@ -18,6 +18,7 @@ angular.module("thumbnailModule").directive("contentThumbnail",["$timeout",funct
         if(!$scope.keepExpanded){
             $timeout($scope.onTimeOut,1000);
         }
+
     };
     
     return {
@@ -28,7 +29,8 @@ angular.module("thumbnailModule").directive("contentThumbnail",["$timeout",funct
             onClick:"=",
             format:"=",
             customStyle:"@",
-            keepExpanded:"@"
+            keepExpanded:"@",
+            titleAsLink:"@"
         },
         templateUrl:"/user/js/common/directives/thumbnail/contentThumbnail.html" ,
         controller:controller

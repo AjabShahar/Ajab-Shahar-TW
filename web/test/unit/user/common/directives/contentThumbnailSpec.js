@@ -66,6 +66,12 @@ describe("Thumbnail model", function () {
 
     });
 
+    it("should construct song url with song title ",function(){
+
+        var songThumbnail = new AjabShahar.ThumbnailObject(test_songRepresentation[1], "song");
+        expect(songThumbnail.getUrl()).toBe("/songs/?id=7&title=Kichhu-din-mone-mone");
+
+    });
     it("should construct reflection thumbnail from reflection representation", function () {
         var reflectionThumbnail = new AjabShahar.ThumbnailObject(test_reflection, "reflection");
 
@@ -79,6 +85,12 @@ describe("Thumbnail model", function () {
         expect(reflectionThumbnail.contentCategory).toBe("reflection");
         expect(reflectionThumbnail.duration).toBe("1:16:54");
         expect(reflectionThumbnail.contentFormat).toBe("video");
+
+    });
+
+    it("should construct reflection url with reflection title ",function(){
+        var reflectionThumbnail = new AjabShahar.ThumbnailObject(test_reflection, "reflection");
+        expect(reflectionThumbnail.getUrl()).toBe("/reflections/details/5/My-Personal-and-Political-Kabir");
 
     });
 

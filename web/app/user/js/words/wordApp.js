@@ -1,7 +1,7 @@
 angular.module("word", ['ngRoute', 'htmlGenerator', 'headerModule', 'animationModule', 'popupSupport','utilities', 'thumbnailModule','mediaPlayer'])
 .config(["$routeProvider","$locationProvider", function ($routeProvider,$locationProvider) {
     $routeProvider
-        .when("/details/:id",{
+        .when("/details/:id/:title",{
             templateUrl:"/user/js/words/partials/wordDetails.html",
             controller:"wordDetailsController"
         })

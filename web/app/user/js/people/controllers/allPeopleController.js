@@ -65,7 +65,14 @@ angular.module("people").controller('allPeopleController', ['$scope', 'peopleSer
     };
 
     $scope.closeParda = function(){
-      $scope.expandFilter = false;
+        $scope.expandFilter = false;
+    };
+    $scope.getExploreUrl = function(person){
+        return AjabShahar.user.ContentUrlCreator.personExploreUrl(person);
+    };
+
+    $scope.getPersonTag = function(person){
+        return AjabShahar.user.ContentUrlCreator.getFormattedTitle(person.name);
     };
 
     var updateFilterCount = function(){
