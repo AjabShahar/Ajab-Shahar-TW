@@ -28,6 +28,9 @@ public class PlatformConfiguration extends Configuration implements CachingBundl
 
     private String sessionTimeout;
 
+    @NotEmpty
+    private String salt;
+
     public DataSourceFactory getDataSourceFactory() {
         return database;
     }
@@ -70,5 +73,14 @@ public class PlatformConfiguration extends Configuration implements CachingBundl
     @Override
     public CacheControlConfiguration getCacheControl() {
         return cacheControl;
+    }
+
+    @JsonProperty
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 }

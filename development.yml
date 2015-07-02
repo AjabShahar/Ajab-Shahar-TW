@@ -1,6 +1,7 @@
 template: Hello, %s!
 defaultName: Stranger
 sessionTimeout: 7200
+salt : "A very long salt text."
 server:
   gzip:
     enabled: true

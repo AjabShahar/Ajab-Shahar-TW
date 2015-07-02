@@ -6,18 +6,20 @@ import io.dropwizard.auth.AuthenticationException;
 import io.dropwizard.auth.Authenticator;
 import io.dropwizard.auth.basic.BasicCredentials;
 import org.ajabshahar.core.Users;
+import org.ajabshahar.platform.PlatformConfiguration;
 import org.ajabshahar.platform.models.User;
 import org.apache.log4j.Logger;
 
 public class PasswordAuthenticator implements Authenticator<BasicCredentials, Principle> {
 
-    public static final String SALT = "A very long salt text.";
+    public static String SALT;
     public static final String ALGORITHM = "SHA-512";
     private Users users;
     private Logger logger = Logger.getLogger(this.getClass());
 
-    public PasswordAuthenticator(Users users) {
+    public PasswordAuthenticator(Users users, String salt) {
         this.users = users;
+        SALT = salt;
     }
 
 

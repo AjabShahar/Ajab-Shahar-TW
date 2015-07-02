@@ -1,5 +1,6 @@
 template: Hello, %s!
 defaultName: Stranger
+salt : "A very long salt text."
 server:
 
   applicationConnectors:

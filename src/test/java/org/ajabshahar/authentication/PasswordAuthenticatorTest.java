@@ -2,9 +2,13 @@ package org.ajabshahar.authentication;
 
 import com.google.common.base.Optional;
 import io.dropwizard.auth.basic.BasicCredentials;
+import io.dropwizard.testing.junit.DropwizardAppRule;
 import org.ajabshahar.core.Users;
+import org.ajabshahar.platform.PlatformApplication;
+import org.ajabshahar.platform.PlatformConfiguration;
 import org.ajabshahar.platform.models.User;
 import org.junit.Before;
+import org.junit.ClassRule;
 import org.junit.Test;
 import org.mockito.Mock;
 
@@ -19,10 +23,18 @@ public class PasswordAuthenticatorTest {
     @Mock
     private Users users;
 
+    @ClassRule
+    public static final DropwizardAppRule<PlatformConfiguration> RULE =
+            new DropwizardAppRule<>(PlatformApplication.class, resourceFilePath("test-config.yaml"));
+
+    private static String resourceFilePath(String resource) {
+        return ClassLoader.getSystemClassLoader().getResource(resource).getFile();
+    }
     @Before
     public void setUp() throws Exception {
         initMocks(this);
-        passwordAuthenticator = new PasswordAuthenticator(users);
+        String salt  =  RULE.getConfiguration().getSalt();
+        passwordAuthenticator = new PasswordAuthenticator(users, salt);
         String password = PasswordEncryptor.getEncryptedPassword("password", PasswordAuthenticator.SALT, PasswordAuthenticator.ALGORITHM);
         when(users.getUser(any(String.class))).thenReturn(new User("admin", password, "admin"));
     }
