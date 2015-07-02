@@ -35,11 +35,11 @@
         </h3>
         <div class='creditCont' ng-cloak>
             <div class='creditBox'>
-                <a ng-href="{{getPersonUrl(poet)}}" class='link-text'>{{poet.name}}</a>
+                <a ng-href="{{getPersonUrl(poet)}}" class='link-text' target="_self">{{poet.name}}</a>
                 <span>POET</span>
             </div>
             <span class='creditBox' ng-repeat="singer in singers track by $index">
-                <a ng-href="{{getPersonUrl(singer)}}" class='link-text'>{{singer.name}}</a>
+                <a ng-href="{{getPersonUrl(singer)}}" class='link-text' target="_self">{{singer.name}}</a>
                 <span>SINGER</span>
             </span>
             <span ng-repeat="word in words" class="creditBox">
