@@ -2,8 +2,8 @@ var introductionApp = angular.module('introductionApp', ['ngRoute', 'ngAnimate',
 
 introductionApp.config(resourceUrlWhiteList);
 
-introductionApp.config(['$routeProvider',
-    function ($routeProvider) {
+introductionApp.config(['$routeProvider', '$locationProvider',
+    function ($routeProvider, $locationProvider) {
         $routeProvider.
             when('/splashScreenVideo', {
                 templateUrl: '/user/partials/splashScreen/video.html'
@@ -11,6 +11,7 @@ introductionApp.config(['$routeProvider',
             when('/splashScreenAudio', {
                 templateUrl: '/user/partials/splashScreen/audio.html'
             });
+        $locationProvider.html5Mode(true);
     }]);
 
 introductionApp.animation('.slide', function () {

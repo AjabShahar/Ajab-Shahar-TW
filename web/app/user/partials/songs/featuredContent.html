@@ -2,6 +2,7 @@
 <html lang="en" ng-app="featuredContentApp" ng-controller="songsFeaturedContentController" class="{{selectedOverview().selected ? 'disableOuterScrollbar' : ''}}">
 <head>
     <meta charset="utf-8">
+    <meta name="fragment" content="!">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Songs landing Page</title>
     <link rel="stylesheet"
@@ -57,7 +58,7 @@
                                     <span class="number" ng-cloak>
                                         {{thumbnailsCount()}} of {{publishedSongsCount}}
                                     </span>
-                                <a href="/songs/all" class="all-link">
+                                <a href="/songs/all" class="all-link" target="_self" >
                                     see all
                                 </a>
                             </div>
