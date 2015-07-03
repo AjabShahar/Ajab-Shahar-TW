@@ -3,7 +3,7 @@ describe("all reflections controller", function () {
     var reflectionsContentService,
         scope,
         fakeWindow,
-        $location;
+        $window;
 
     beforeEach(module("reflection"));
 
@@ -16,7 +16,7 @@ describe("all reflections controller", function () {
         $location = _$location_;
         _$controller_("allReflectionsController", {
             $scope: scope,
-            $location: _$location_,
+            $window: fakeWindow,
             reflectionsContentService: reflectionsContentService
         });
         $httpBackend.when("GET", "/api/reflections/completeInfo?content=authoringComplete").respond(test_reflections);
@@ -68,7 +68,7 @@ describe("all reflections controller", function () {
     it("should redirect to details page on clicking of reflection thumbnail", function () {
         scope.navigateToDetailPage(test_reflections.reflections[1]);
 
-        expect($location.url()).toBe('/reflections/details/1/Poet-is-God');
+        expect(fakeWindow.location.href).toBe('/reflections/details/1/Poet-is-God');
     });
 });
 
