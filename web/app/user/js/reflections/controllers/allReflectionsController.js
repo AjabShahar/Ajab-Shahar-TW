@@ -1,5 +1,5 @@
-angular.module("reflection").controller('allReflectionsController', ['$scope', 'reflectionsContentService', '$location','$rootScope','$filter',
-    function ($scope, reflectionsContentService, $location,$rootScope,$filter) {
+angular.module("reflection").controller('allReflectionsController', ['$scope', 'reflectionsContentService', '$window','$rootScope','$filter',
+    function ($scope, reflectionsContentService, $window,$rootScope,$filter) {
         var reflections = [];
         $scope.reflectionsList = [];
     $scope.activeLetter = '';
@@ -104,7 +104,7 @@ angular.module("reflection").controller('allReflectionsController', ['$scope', '
     };
 
     $scope.navigateToDetailPage = function (reflection) {
-        $location.url(AjabShahar.user.ContentUrlCreator.getUrl(reflection,"reflection"));
+        $window.location.href = AjabShahar.user.ContentUrlCreator.getUrl(reflection,"reflection");
     };
 
     $scope.init = function () {

@@ -4,7 +4,7 @@
         <small> {{noun}}</small>
     </h5>
 
-    <h3 class="context"><a ng-href="{{getSongUrl()}}">{{englishTransliteration}}</a></h3>
+    <h3 class="context"><a ng-href="{{getSongUrl()}}" target="_self">{{englishTransliteration}}</a></h3>
     <h4 class='moreDesc'>{{englishTranslation}}</h4>
 
     <div ng-if="showVideo" class='youtubeVideo'>
@@ -31,7 +31,7 @@
 
     <div class="mediaFooter">
         <h3 class='infoText'>For lyrics, translations, versions, reflections and more
-            <a ng-href="{{getSongUrl()}}">enter song</a> or see <a ng-href="/songs/all" class="sub">all songs</a>
+            <a ng-href="{{getSongUrl()}}" target="_self">enter song</a> or see <a ng-href="/songs/all" class="sub" target="_self">all songs</a>
         </h3>
         <div class='creditCont' ng-cloak>
             <div class='creditBox'>
