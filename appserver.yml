@@ -28,10 +28,10 @@ database:
   checkConnectionWhileIdle: false
 
 logging:
-  level: INFO
+  level: WARN
   loggers:
-    org.ajabshahar: INFO
-    org.hibernate.SQL: ALL
+    org.ajabshahar: WARN
+    org.hibernate.SQL: WARN
   appenders:
     - type: file
       currentLogFilename: ./server.log
