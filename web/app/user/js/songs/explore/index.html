@@ -4,7 +4,7 @@
     <meta name="fragment" content="!">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>All Songs Page</title>
+    <title>{{exploreSong.songTitle.englishTransliteration}}</title>
     <link rel="stylesheet"
           href="//fonts.googleapis.com/css?family=Merriweather:400,300italic,300,400italic,700,700italic"/>
     <link rel="stylesheet"
@@ -28,6 +28,9 @@
         ga('send', 'pageview');
     </script>
     <base href="/songs/explore/" />
+    <meta property="og:title" content="{{exploreSong.songTitle.englishTransliteration}}" />
+    <meta property="og:description" content="{{exploreSong.about}}" />
+    <meta property="og:image" content="{{exploreSong.thumbnailURL}}" />
 </head>
 <body class="details">
 <ajab-shahar-header></ajab-shahar-header>

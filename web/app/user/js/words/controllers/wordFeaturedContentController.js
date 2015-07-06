@@ -1,5 +1,8 @@
 'use strict';
-angular.module("word").controller('wordFeaturedContentController', ['$scope', 'wordService', 'sortService', function ($scope, wordService, sortService) {
+angular.module("word").controller('wordFeaturedContentController', ['$scope', 'wordService', 'sortService','$rootScope', function ($scope, wordService, sortService,$rootScope) {
+    $rootScope.pageSynopsis = {
+        title:"All Words"
+    };
     $scope.words = [];
     $scope.init = function () {
         var contentTextRepresentation = 'Transliteration';

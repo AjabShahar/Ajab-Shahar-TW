@@ -1,7 +1,9 @@
 angular.module("word").
-    controller('wordDetailsController', ['$scope','wordService', '$route',function($scope,wordService, $route){
+    controller('wordDetailsController', ['$scope','wordService', '$route','$rootScope',function($scope,wordService, $route,$rootScope){
 
         var carouselOpen = true;
+
+
 
         $scope.containsMoreThanOneItem = function() {
             return $scope.carouselItems.length > 1;
@@ -34,12 +36,23 @@ angular.module("word").
             $scope.detailsObject = {};
             if(thumbnail.type === 'word'){
                 $scope.detailsObject = new AjabShahar.DetailsObject($scope.wordDetails,thumbnail.type)
+                $rootScope.pageSynopsis = {
+                    title:$scope.detailsObject.title,
+                    image:$scope.detailsObject.originalObject.thumbnailUrl,
+                    description:$scope.detailsObject.originalObject.meaning
+                };
             }
             else if (thumbnail.type === 'reflection'){
                 wordService.getReflection(thumbnail.id).success(function(response){
                     $scope.detailsObject =new AjabShahar.DetailsObject(response,thumbnail.type)
+                    $rootScope.pageSynopsis = {
+                        title:$scope.detailsObject.title,
+                        image:$scope.detailsObject.originalObject.thumbnailURL,
+                        description:$scope.detailsObject.originalObject.reflectionExcerpt
+                    };
                 })
             }
+
         };
 
         $scope.init = function () {

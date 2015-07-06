@@ -2,17 +2,21 @@ angular.module("reflection").controller('allReflectionsController', ['$scope', '
     function ($scope, reflectionsContentService, $window,$rootScope,$filter) {
         var reflections = [];
         $scope.reflectionsList = [];
-    $scope.activeLetter = '';
-    $scope.scrollIndex = 12;
-    $scope.reflectionCount = 0;
+        $scope.activeLetter = '';
+        $scope.scrollIndex = 12;
+        $scope.reflectionCount = 0;
 
-    $scope.activeLetter = '';
-    $scope.scrollIndex = 12;
-    $scope.expandFilter = false;
-    $scope.filterItems = {};
-    $scope.selectedFilterCategory = {};
-    $scope.openSecondParda = false;
-    $rootScope.isGridPage = true;
+        $scope.activeLetter = '';
+        $scope.scrollIndex = 12;
+        $scope.expandFilter = false;
+        $scope.filterItems = {};
+        $scope.selectedFilterCategory = {};
+        $scope.openSecondParda = false;
+        $rootScope.isGridPage = true;
+
+        $rootScope.pageSynopsis = {
+            title:"All Reflections "
+        };
 
         $scope.criteriaList = AjabShahar.user.ReflectionFilterConfig.filterCategories;
         var filterItemsLoaderConfig = AjabShahar.user.ReflectionFilterConfig.filterItemsLoader;

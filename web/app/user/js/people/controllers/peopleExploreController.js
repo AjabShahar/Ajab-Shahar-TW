@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("people").controller("peopleExploreController", ['$scope','$route','$q','$window','peopleService', function ($scope, $route,$q,$window, peopleService) {
+angular.module("people").controller("peopleExploreController", ['$scope','$route','$q','$window','peopleService','$rootScope', function ($scope, $route,$q,$window, peopleService,$rootScope) {
 
     $scope.classes = ['hansas', 'sadhus', 'yoginis'];
 
@@ -33,6 +33,11 @@ angular.module("people").controller("peopleExploreController", ['$scope','$route
 
         peopleService.getPerson(personId).then(function(response){
             $scope.person = new AjabShahar.peopleModel(response.data);
+            $rootScope.pageSynopsis = {
+                title:$scope.person.name,
+                image:$scope.person.thumbnailImg,
+                description:$scope.person.profile
+            };
         });
 
         $q.all(promises).then(function(data){
@@ -58,6 +63,8 @@ angular.module("people").controller("peopleExploreController", ['$scope','$route
             $scope.relatedData = $scope.relatedData.sort(sortService);
             $scope.dynamicList.push({name:"all",selected:true});
             $scope.allRelatedData = angular.copy($scope.relatedData);
+
+
         });
     };
 

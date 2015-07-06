@@ -21,6 +21,9 @@
         ga('create', 'UA-63286140-1', 'auto');
         ga('send', 'pageview');
     </script>
+    <meta property="og:title" content="{{selectedSong.title}}" />
+    <meta property="og:description" content="{{selectedSong.about}}" />
+    <meta property="og:image" content="{{selectedSong.thumbnailURL}}" />
 </head>
 
 <body class="songs-details header-with-carousel details">
@@ -53,7 +56,7 @@
     </div>
     <div class='ajab-container'>
         <div class='ajab-wrapper'>
-            <div class="main-content">
+            <div class="main-content" ng-cloak>
                     <div class="left-nav" scroll>
                         <ul>
                             <li><a href="javascript:void(0)" class="active ">song</a></li>
@@ -61,10 +64,10 @@
                         </ul>
 
                     </div>
-                <div>
-                    <content-details ng-if="detailsObject" content="detailsObject" ng-cloak></content-details>
+                <div ng-cloak>
+                    <content-details ng-if="detailsObject" content="detailsObject" ></content-details>
                 </div>
-                <div ng-show="hasSongText()" id="poem_container" ng-cloak>
+                <div ng-show="hasSongText()" id="poem_container" >
                     <div ng-show="originalVisible" class="toggleByFading  hindi">
                         <h2 class="song-heading">{{selectedSong.songTitle.originalTitle}}</h2>
                         <div class="poet"> कवि <a ng-href="{{getPersonUrl(selectedSong.poets[0])}}" target="_self">{{selectedSong.poets[0].hindiName}}</a></div>

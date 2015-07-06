@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="word">
 <head lang="en">
-    <title>Words</title>
+    <title>{{pageSynopsis.title}}</title>
     <meta name="fragment" content="!">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -26,6 +26,11 @@
         ga('create', 'UA-63286140-1', 'auto');
         ga('send', 'pageview');
     </script>
+
+    <meta property="og:title" content="{{pageSynopsis.title}}" />
+    <meta property="og:description" content="{{pageSynopsis.description}}" />
+    <meta property="og:image" content="{{pageSynopsis.image}}" />
+
 </head>
 <body>
     <ajab-shahar-header call-back="setPageHeight()"></ajab-shahar-header>

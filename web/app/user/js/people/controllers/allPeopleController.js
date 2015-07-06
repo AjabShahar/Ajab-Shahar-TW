@@ -1,5 +1,9 @@
-angular.module("people").controller('allPeopleController', ['$scope', 'peopleService', '$location', '$anchorScroll', function ($scope, peopleService, $location, $anchorScroll) {
+angular.module("people").controller('allPeopleController', ['$scope', 'peopleService', '$location', '$anchorScroll','$rootScope', function ($scope, peopleService, $location, $anchorScroll,$rootScope) {
     $scope.classes = ['hansas', 'sadhus', 'yoginis'];
+
+    $rootScope.pageSynopsis = {
+        title:"All People"
+    };
 
     $scope.people = [];
     $scope.allPeople = [];

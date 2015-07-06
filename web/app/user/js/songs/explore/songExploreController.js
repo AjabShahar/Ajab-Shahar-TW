@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("song").controller("songExploreController", ['$scope', '$route', 'songsContentService','$window',function ($scope, $route,songsContentService,$window) {
+angular.module("song").controller("songExploreController", ['$scope', '$route', 'songsContentService','$window','$rootScope',function ($scope, $route,songsContentService,$window,$rootScope) {
 
     var songId = null;
     if($route.current){
@@ -51,6 +51,8 @@ angular.module("song").controller("songExploreController", ['$scope', '$route', 
 
         songsContentService.getSong(songId).then(function (result) {
             $scope.song = result.data;
+            $rootScope.exploreSong = result.data;
+
             if(!_.isEmpty($scope.song)){
                 relatedWordIntros = AjabShahar.SongExploreHelper.createWordThumbnails($scope.song.words);
                 relatedReflections = AjabShahar.SongExploreHelper.createReflectionThumbnails($scope.song.reflections);

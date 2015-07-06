@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" ng-app="reflection">
-<head>
-    <title>reflections</title>
+<head >
+    <title >{{pageSynopsis.title}}</title>
     <meta charset="utf-8">
     <meta name="fragment" content="!">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -26,6 +26,9 @@
         ga('create', 'UA-63286140-1', 'auto');
         ga('send', 'pageview');
     </script>
+    <meta property="og:title" content="{{pageSynopsis.title}}" />
+    <meta property="og:description" content="{{pageSynopsis.description}}" />
+    <meta property="og:image" content="{{pageSynopsis.image}}" />
 </head>
 <body ng-class="{'grid-layout':isGridPage}">
 

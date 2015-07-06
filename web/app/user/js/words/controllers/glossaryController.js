@@ -1,5 +1,8 @@
-angular.module("word").controller('glossaryController', ['$scope', 'wordService',  '$filter', function ($scope, wordService,$filter) {
+angular.module("word").controller('glossaryController', ['$scope', 'wordService',  '$filter','$rootScope', function ($scope, wordService,$filter,$rootScope) {
 
+    $rootScope.pageSynopsis = {
+        title:"Glossary"
+    };
     var sortList = function (list, sortCriteria) {
         return $filter('orderBy')(list, sortCriteria);
     };
